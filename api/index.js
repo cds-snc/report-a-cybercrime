@@ -1,9 +1,11 @@
-const express = require('express')
-const graphqlHTTP = require('express-graphql')
-const { schema } = require('./src/schema')
+const Server = require('./src/server').default
+const { db } = require('./src/db')
 
-let server = express()
-
-server.use('/', graphqlHTTP({ schema, graphiql: true }))
-
-server.listen(3000)
+Server(db)
+  .then(server => {
+    server.listen({ port: 3000 }, () =>
+      // eslint-disable-next-line no-console
+      console.log(`🚀 API listening on port 3000`),
+    )
+  })
+  .catch(console.log)
