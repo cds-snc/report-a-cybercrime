@@ -2,12 +2,12 @@ const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
 
 const query = new GraphQLObjectType({
   name: 'Query',
-	fields: () => ({
+  fields: () => ({
     hello: {
       description: 'greets the world',
       type: GraphQLString,
-      resolve: () => {
-        return 'hello world'
+      resolve: (root, args, { db }, info) => {
+        return db.hello()
       },
     },
   }),
