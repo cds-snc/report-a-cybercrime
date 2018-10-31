@@ -2,3 +2,4 @@ node_modules
 *.swp
 api/.env
 api/.env.test
+.idea
