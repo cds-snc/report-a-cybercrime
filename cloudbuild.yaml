@@ -4,11 +4,19 @@ steps:
   args: ['install']
   dir: 'api'
 
-- name: "arangodb/arangodb:3.3.19"
-  id: arangodb
-  env:
-    - 'ARANGO_ROOT_PASSWORD=test'
+- name: "mikewilliamson/usesthis-ci"
+  id: start_arangodb
+  entrypoint: "/bin/sh"
+  args: [ "-c", "
+  docker run -d --network=cloudbuild -p=8529:8529 --name=arangodb mikewilliamson/aci \
+  && /wait-for arangodb:8529
+" ]
 
 - name: 'gcr.io/cloud-builders/npm'
   args: ['test']
   dir: 'api'
+  env:
+  - "DB_NAME=rcmp_development"
+  - "DB_URL=http://arangodb:8529"
+  - "DB_USER=root"
+  - "DB_PASSWORD=test"
