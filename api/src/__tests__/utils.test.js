@@ -4,7 +4,6 @@ const {
   dbNameFromFile,
   getFilenameFromPath,
 } = require('../utils')
-const { Database } = require('arangojs')
 
 const { DB_USER: user, DB_URL: url, DB_PASSWORD: password } = process.env
 
