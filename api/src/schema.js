@@ -6,7 +6,7 @@ const query = new GraphQLObjectType({
     hello: {
       description: 'greets the world',
       type: GraphQLString,
-      resolve: (root, args, { db }, info) => {
+      resolve: (_root, _args, { db }, _info) => {
         return db.hello()
       },
     },

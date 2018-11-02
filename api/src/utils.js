@@ -25,7 +25,7 @@ const makeTestDatabase = async ({
   conn.useDatabase('_system')
   conn.useBasicAuth(user, password)
   // create a second database
-  const info = await conn.createDatabase(dbname, [{ user }])
+  const _info = await conn.createDatabase(dbname, [{ user }])
 
   // Create wrapper instance for our new database
   let testdb = new Database({ url, databaseName: dbname })

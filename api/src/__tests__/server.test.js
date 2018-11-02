@@ -1,28 +1,16 @@
 require('dotenv-safe').config()
 const request = require('supertest')
 const { Server } = require('../server')
-const { dbinit } = require('../dbinit')
-const {
-  makeTestDatabase,
-  getFilenameFromPath,
-  dbNameFromFile,
-} = require('../utils')
-const { Database } = require('arangojs')
-
-// About the ugliness:
-// Since Jest runs tests in parallel, each file needs to create it's own db,
-// otherwise test data from one test clobbers test data in another. The result
-// nondeterministic tests and general unhappiness.
-// TODO: This will need to be cleaned up and most likely shared across tests.
+const { makeTestDatabase, dbNameFromFile } = require('../utils')
 
 const { DB_USER: user, DB_URL: url, DB_PASSWORD: password } = process.env
 
-let db, drop, truncate, collections
+let db, drop, truncate
 
 describe('Queries', () => {
   describe('hello', () => {
     beforeAll(async () => {
-      ({ db, drop, truncate, collections } = await makeTestDatabase({
+      ;({ db, drop, truncate } = await makeTestDatabase({
         dbname: dbNameFromFile(__filename),
         user,
         password,
