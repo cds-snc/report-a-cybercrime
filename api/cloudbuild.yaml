@@ -11,10 +11,11 @@ steps:
 
 - name: 'gcr.io/cloud-builders/npm'
   id: install
+  dir: api
   args: ['install']
 
 - name: 'gcr.io/cloud-builders/npm'
-  timeout: 600s
+  dir: api
   args: ['test']
   env:
   - "DB_NAME=usesthis_test"
