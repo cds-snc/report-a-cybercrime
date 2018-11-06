@@ -5,12 +5,27 @@ const server = http.createServer(app);
 
 let currentApp = app;
 
-server.listen(process.env.PORT || 3000, error => {
+const { env } = require('process')
+
+const port = () =>
+  parseInt(
+    env.RAZZLE_PORT ||
+    env.PORT ||
+    process.env.RAZZLE_PORT ||
+    process.env.PORT ||
+    3000,
+    10,
+  )
+
+const _port = port()
+
+
+
+server.listen(_port, error => {
   if (error) {
     console.log(error); // eslint-disable-line no-console
   }
-
-  console.log('🚀 started'); // eslint-disable-line no-console
+  console.log(`🚀 started on port ${_port}`); // eslint-disable-line no-console
 });
 
 if (module.hot) {
