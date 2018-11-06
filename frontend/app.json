@@ -3,8 +3,8 @@
   "description": "",
   "scripts": {},
   "env": {
-    "PORT": { "required": false },
-    "PROJECT_PATH": { "required": false }
+    "PROJECT_PATH": { "required": true },
+    "RAZZLE_PUBLIC_DIR": { "required": true }
   },
   "formation": {},
   "addons": [],
