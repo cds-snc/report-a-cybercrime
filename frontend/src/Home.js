@@ -1,28 +1,28 @@
 import React from "react";
 import { Router, Link } from "@reach/router";
 
-const App = ({ children }) => (
+const Home = ({ children }) => (
   <div>
     <nav>
-      <Link to="/">Home</Link> <Link to="dashboard">Dashboard</Link>
+      <Link to="/">Main</Link> <Link to="p2">Page 2</Link>
     </nav>
     <Router>
-      <Home path="/" />
-      <Dashboard path="dashboard" />
+      <Main path="/" />
+      <Dashboard path="p2" />
     </Router>
   </div>
 );
 
-const Home = () => (
+const Main = () => (
   <div>
-    <h2>Welcome</h2>
+    <h2>Main Page</h2>
   </div>
 );
 
 const Dashboard = () => (
   <div>
-    <h2>Dashboard</h2>
+    <h2>Page 2</h2>
   </div>
 );
 
-export default App
+export default Home
