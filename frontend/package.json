@@ -5,7 +5,8 @@
   "scripts": {
     "start": "razzle start",
     "build": "razzle build",
-    "test": "razzle test --env=jsdom",
+    "test": "jest",
+    "jest": "jest",
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "dependencies": {
@@ -14,5 +15,11 @@
     "razzle": "^2.4.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "jest": "^23.6.0"
   }
 }
