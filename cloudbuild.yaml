@@ -1,0 +1,18 @@
+steps:
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        for d in */; do
+          config="${d}cloudbuild.yaml"
+          if [[ ! -f "${config}" ]]; then
+            continue
+          fi
+
+          echo "Building $d ... "
+          (
+            gcloud builds submit $d --config=${config}
+          ) &
+        done
+        wait
