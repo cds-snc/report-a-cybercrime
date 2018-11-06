@@ -1,8 +1,0 @@
-{
-  "name": "configheroku",
-  "version": "0.1.0",
-  "scripts": {
-    "postinstall": "npm install --prefix frontend",
-    "heroku-postbuild": "npm run-script build --prefix frontend"
-  }
-}
