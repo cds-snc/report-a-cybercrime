@@ -1,7 +1,7 @@
 import React from "react";
 import { Router, Link } from "@reach/router";
 
-const Home = ({ children }) => (
+const Home = () => (
   <div>
     <nav>
       <Link to="/">Main</Link> <Link to="p2">Page 2</Link>

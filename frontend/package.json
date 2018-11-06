@@ -6,7 +6,7 @@
     "start": "razzle start",
     "build": "razzle build",
     "test": "jest",
-    "jest": "jest",
+    "lint": "eslint src/**",
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "dependencies": {
@@ -20,6 +20,15 @@
     "babel-jest": "^23.6.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
+    "eslint": "^5.8.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.27.1",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
     "jest": "^23.6.0"
   }
 }
