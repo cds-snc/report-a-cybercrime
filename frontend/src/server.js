@@ -1,6 +1,5 @@
 import App from './App';
 import React from 'react';
-import { StaticRouter } from 'react-router-dom';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
 
@@ -13,9 +12,7 @@ server
   .get('/*', (req, res) => {
     const context = {};
     const markup = renderToString(
-      <StaticRouter context={context} location={req.url}>
         <App />
-      </StaticRouter>
     );
 
     if (context.url) {
