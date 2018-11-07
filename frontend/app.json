@@ -1,0 +1,19 @@
+{
+  "name": "rac-prototype",
+  "description": "",
+  "scripts": {},
+  "env": {
+    "PROJECT_PATH": { "required": true },
+    "RAZZLE_PUBLIC_DIR": { "required": true }
+  },
+  "formation": {},
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "https://github.com/timanovsky/subdir-heroku-buildpack"
+    },
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
