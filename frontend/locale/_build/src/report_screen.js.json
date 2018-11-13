@@ -1,0 +1,11 @@
+{
+  "Report a cybercrime": {
+    "origin": [["src/report_screen.js", 41]]
+  },
+  "What happened?": {
+    "origin": [["src/report_screen.js", 46]]
+  },
+  "Submit": {
+    "origin": [["src/report_screen.js", 49]]
+  }
+}

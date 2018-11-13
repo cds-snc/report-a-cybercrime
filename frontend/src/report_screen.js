@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { css } from "react-emotion";
+import { Trans } from "@lingui/macro";
 import TextArea from "@govuk-react/text-area";
 import Button from "@govuk-react/button";
-import { css } from "react-emotion";
 import Header from "@govuk-react/header";
 
 const submitButton = css`
@@ -23,7 +24,7 @@ export class ReportScreen extends Component {
   }
 
   handleSubmit(event) {
-    alert("What Happened: " + this.state.whatHappened);
+    alert("What happened: " + this.state.whatHappened);
     event.preventDefault();
   }
 
@@ -36,14 +37,16 @@ export class ReportScreen extends Component {
 
     return (
       <div>
-        <Header level={1}>Report a CyberCrime</Header>
+        <Header level={1}>
+          <Trans>Report a cybercrime</Trans>
+        </Header>
 
         <form onSubmit={this.handleSubmit}>
           <TextArea name="group1" input={input}>
-            What Happened?
+            <Trans>What happened?</Trans>
           </TextArea>
           <Button className={submitButton} type="submit">
-            Submit
+            <Trans>Submit</Trans>
           </Button>
         </form>
       </div>

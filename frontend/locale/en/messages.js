@@ -10,15 +10,17 @@
         return n10 == 1 && n100 != 11
           ? "one"
           : n10 == 2 && n100 != 12
-            ? "two"
-            : n10 == 3 && n100 != 13
-              ? "few"
-              : "other";
+          ? "two"
+          : n10 == 3 && n100 != 13
+          ? "few"
+          : "other";
       return n == 1 && v0 ? "one" : "other";
     }
   },
   messages: {
-    "More information": "More information",
-    "Report a cybercrime": "Report a cybercrime"
+    "For internal use only": "For internal use only",
+    "Report a cybercrime": "Report a cybercrime",
+    Submit: "Submit",
+    "What happened?": "What happened?"
   }
 };

@@ -6,7 +6,9 @@
     }
   },
   messages: {
-    "More information": "Plus d'informations",
-    "Report a cybercrime": "Signaler une cybercriminalit\xE9"
+    "For internal use only": "Pour usage interne uniquement",
+    "Report a cybercrime": "Signaler une cybercriminalit\xE9",
+    Submit: "Soumettre",
+    "What happened?": "Ce qui s'est pass\xE9?"
   }
 };

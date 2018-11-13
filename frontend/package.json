@@ -11,7 +11,8 @@
     "start": "NODE_ENV=production node build/server.js",
     "add-locale": "lingui add-locale",
     "extract": "lingui extract",
-    "compile": "NODE_ENV=development lingui compile"
+    "compile": "NODE_ENV=development lingui compile",
+    "clean": "lingui extract --clean"
   },
   "husky": {
     "hooks": {

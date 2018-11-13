@@ -1,8 +1,9 @@
 import React from "react";
 import { Router } from "@reach/router";
-import { ReportScreen } from "./report_screen";
-import PhaseBanner from "@govuk-react/phase-banner";
+import { Trans } from "@lingui/macro";
 import { css } from "emotion";
+import PhaseBanner from "@govuk-react/phase-banner";
+import { ReportScreen } from "./report_screen";
 
 const root = css`
   margin: 20pt;
@@ -14,7 +15,9 @@ const screen = css`
 
 const Home = () => (
   <div className={root}>
-    <PhaseBanner level="alpha">For internal use only</PhaseBanner>
+    <PhaseBanner level="alpha">
+      <Trans>For internal use only</Trans>
+    </PhaseBanner>
 
     <div className={screen}>
       <Router>

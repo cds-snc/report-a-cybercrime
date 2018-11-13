@@ -1,8 +1,5 @@
 {
-  "Report a cybercrime": {
+  "For internal use only": {
     "origin": [["src/Home.js", 19]]
-  },
-  "More information": {
-    "origin": [["src/Home.js", 25]]
   }
 }
