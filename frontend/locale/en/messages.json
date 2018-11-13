@@ -1,10 +1,18 @@
 {
-  "More information": {
-    "translation": "More information",
-    "origin": [["src/Home.js", 25]]
+  "For internal use only": {
+    "translation": "For internal use only",
+    "origin": [["src/Home.js", 19]]
   },
   "Report a cybercrime": {
     "translation": "Report a cybercrime",
-    "origin": [["src/Home.js", 19]]
+    "origin": [["src/report_screen.js", 41]]
+  },
+  "Submit": {
+    "translation": "Submit",
+    "origin": [["src/report_screen.js", 49]]
+  },
+  "What happened?": {
+    "translation": "What happened?",
+    "origin": [["src/report_screen.js", 46]]
   }
 }

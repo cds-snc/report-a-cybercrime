@@ -1,32 +1,29 @@
 import React from "react";
-import { Router, Link } from "@reach/router";
+import { Router } from "@reach/router";
 import { Trans } from "@lingui/macro";
+import { css } from "emotion";
+import PhaseBanner from "@govuk-react/phase-banner";
+import { ReportScreen } from "./report_screen";
+
+const root = css`
+  margin: 20pt;
+`;
+
+const screen = css`
+  margin-top: 30pt;
+`;
 
 const Home = () => (
-  <div>
-    <nav>
-      <Link to="/">Home</Link> <Link to="moreInfo">More Information</Link>
-    </nav>
-    <Router>
-      <Main path="/" />
-      <MoreInfo path="moreInfo" />
-    </Router>
-  </div>
-);
+  <div className={root}>
+    <PhaseBanner level="alpha">
+      <Trans>For internal use only</Trans>
+    </PhaseBanner>
 
-const Main = () => (
-  <div>
-    <h2>
-      <Trans>Report a cybercrime</Trans>
-    </h2>
-  </div>
-);
-
-const MoreInfo = () => (
-  <div>
-    <h2>
-      <Trans>More information</Trans>
-    </h2>
+    <div className={screen}>
+      <Router>
+        <ReportScreen path="/" />
+      </Router>
+    </div>
   </div>
 );
 
