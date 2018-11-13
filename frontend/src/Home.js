@@ -1,5 +1,6 @@
 import React from "react";
 import { Router, Link } from "@reach/router";
+import { Trans } from "@lingui/macro";
 
 const Home = () => (
   <div>
@@ -15,13 +16,17 @@ const Home = () => (
 
 const Main = () => (
   <div>
-    <h2>Report a cybercrime</h2>
+    <h2>
+      <Trans>Report a cybercrime</Trans>
+    </h2>
   </div>
 );
 
 const MoreInfo = () => (
   <div>
-    <h2>More information</h2>
+    <h2>
+      <Trans>More information</Trans>
+    </h2>
   </div>
 );
 

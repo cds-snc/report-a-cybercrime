@@ -5,5 +5,11 @@ steps:
     args: ["install"]
 
   - name: "gcr.io/cloud-builders/npm"
+    id: test
     dir: frontend
     args: ["test"]
+
+  - name: "gcr.io/cloud-builders/npm"
+    id: lint
+    dir: frontend
+    args: ["run", "lint"]

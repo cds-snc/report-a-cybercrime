@@ -1,0 +1,10 @@
+{
+  "More information": {
+    "translation": "More information",
+    "origin": [["src/Home.js", 25]]
+  },
+  "Report a cybercrime": {
+    "translation": "Report a cybercrime",
+    "origin": [["src/Home.js", 19]]
+  }
+}
