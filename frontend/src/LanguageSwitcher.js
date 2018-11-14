@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Query, Mutation } from 'react-apollo'
 import styled, { css } from 'react-emotion'
 import { Trans } from '@lingui/react'
@@ -36,20 +37,46 @@ const langHeader = css`
 `
 
 export const LanguageSwitcher = () => (
-  <section>
-    <h2 className={langHeader}>
-      <Trans>Language Selection</Trans>
-    </h2>
-    <Query query={GET_LANGUAGE_QUERY}>
-      {({ data: { language } }) => (
-        <Mutation mutation={CHANGE_LANGUAGE_MUTATION}>
-          {switchLanguage => (
-            <A onClick={() => switchLanguage()}>
-              {language === 'en' ? 'Français' : 'English'}
-            </A>
-          )}
-        </Mutation>
-      )}
-    </Query>
-  </section>
+  <Query query={GET_LANGUAGE_QUERY}>
+    {({ data: { language } }) => (
+      <Mutation mutation={CHANGE_LANGUAGE_MUTATION}>
+        {switchLanguage => (
+          <LanguageSwitcherBase
+            language={language}
+            switchLanguage={switchLanguage}
+          />
+        )}
+      </Mutation>
+    )}
+  </Query>
 )
+
+export class LanguageSwitcherBase extends React.Component {
+  componentDidMount() {
+    const browserLanguage = navigator.language
+    if (
+      browserLanguage.toLowerCase().indexOf('fr') !== -1 &&
+      this.props.language === 'en'
+    ) {
+      this.props.switchLanguage()
+    }
+  }
+
+  render() {
+    return (
+      <section>
+        <h2 className={langHeader}>
+          <Trans>Language Selection</Trans>
+        </h2>
+        <A onClick={() => this.props.switchLanguage()}>
+          {this.props.language === 'en' ? 'Français' : 'English'}
+        </A>
+      </section>
+    )
+  }
+}
+
+LanguageSwitcherBase.propTypes = {
+  language: PropTypes.string.isRequired,
+  switchLanguage: PropTypes.func.isRequired,
+}
