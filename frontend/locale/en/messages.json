@@ -3,6 +3,10 @@
     "translation": "For internal use only",
     "origin": [["src/Home.js", 19]]
   },
+  "Language Selection": {
+    "translation": "Language Selection",
+    "origin": [["src/LanguageSwitcher.js", 41]]
+  },
   "Report a cybercrime": {
     "translation": "Report a cybercrime",
     "origin": [["src/report_screen.js", 41]]
@@ -14,5 +18,9 @@
   "What happened?": {
     "translation": "What happened?",
     "origin": [["src/report_screen.js", 46]]
+  },
+  "loading...": {
+    "translation": "loading...",
+    "origin": [["src/withLanguageSwitching.js", 23]]
   }
 }

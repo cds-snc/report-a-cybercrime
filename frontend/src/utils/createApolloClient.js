@@ -6,8 +6,6 @@ import { withClientState } from 'apollo-link-state'
 import fetch from 'isomorphic-fetch'
 import gql from 'graphql-tag'
 
-const cache = new InMemoryCache()
-
 const typeDefs = `
   type Mutation {
     switchLanguage: String
@@ -18,32 +16,37 @@ const typeDefs = `
   }
 `
 
-const stateLink = withClientState({
-  cache,
-  resolvers: {
-    Mutation: {
-      switchLanguage: (_, args, { cache }) => {
-        let query = gql`
-          {
-            language @client
+function createApolloClient({
+  initialState = { language: 'en' },
+  ssrMode = true,
+}) {
+  const cache = new InMemoryCache().restore(initialState)
+
+  const stateLink = withClientState({
+    cache,
+    resolvers: {
+      Mutation: {
+        switchLanguage: (_, args, { cache }) => {
+          let query = gql`
+            {
+              language @client
+            }
+          `
+          let current = cache.readQuery({ query })
+          const data = {
+            language: current.language === 'en' ? 'fr' : 'en',
           }
-        `
-        let current = cache.readQuery({ query })
-        const data = {
-          language: current.language === 'en' ? 'fr' : 'en',
-        }
-        cache.writeQuery({ data, query })
-        return null
+          cache.writeQuery({ data, query })
+          return null
+        },
       },
     },
-  },
-  defaults: {
-    language: 'en',
-  },
-  typeDefs,
-})
+    defaults: {
+      language: initialState.language,
+    },
+    typeDefs,
+  })
 
-function createApolloClient({ ssrMode = true }) {
   return new ApolloClient({
     ssrMode,
     link: ApolloLink.from([
@@ -54,7 +57,7 @@ function createApolloClient({ ssrMode = true }) {
         fetch,
       }),
     ]),
-    cache: new InMemoryCache(),
+    cache,
   })
 }
 

@@ -1,12 +1,15 @@
-import App from './App';
-import React from 'react';
-import { hydrate } from 'react-dom';
+import { hydrate } from 'react-dom'
+import { withLanguageSwitching } from './withLanguageSwitching'
+import createApolloClient from './utils/createApolloClient'
+import App from './App'
 
-hydrate(
-    <App />,
-  document.getElementById('root')
-);
+const client = createApolloClient({
+  initialState: window.__APOLLO_STATE__,
+  ssrMode: false,
+})
+
+hydrate(withLanguageSwitching(App, client), document.getElementById('root'))
 
 if (module.hot) {
-  module.hot.accept();
+  module.hot.accept()
 }
