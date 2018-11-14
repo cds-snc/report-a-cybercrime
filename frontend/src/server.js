@@ -1,22 +1,20 @@
-import App from './App';
-import React from 'react';
-import express from 'express';
-import { renderToString } from 'react-dom/server';
+import App from './App'
+import React from 'react'
+import express from 'express'
+import { renderToString } from 'react-dom/server'
 
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
+const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
-const server = express();
+const server = express()
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
-    const context = {};
-    const markup = renderToString(
-        <App />
-    );
+    const context = {}
+    const markup = renderToString(<App />)
 
     if (context.url) {
-      res.redirect(context.url);
+      res.redirect(context.url)
     } else {
       res.status(200).send(
         `<!doctype html>
@@ -40,9 +38,9 @@ server
     <body>
         <div id="root">${markup}</div>
     </body>
-</html>`
-      );
+</html>`,
+      )
     }
-  });
+  })
 
-export default server;
+export default server
