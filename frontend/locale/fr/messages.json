@@ -3,8 +3,12 @@
     "translation": "Pour usage interne uniquement",
     "origin": [["src/Home.js", 19]]
   },
+  "Language Selection": {
+    "translation": "Choix de langue",
+    "origin": [["src/LanguageSwitcher.js", 41]]
+  },
   "Report a cybercrime": {
-    "translation": "Signaler une cybercriminalité",
+    "translation": "Signaler un acte de cybercrime",
     "origin": [["src/report_screen.js", 41]]
   },
   "Submit": {
@@ -14,5 +18,9 @@
   "What happened?": {
     "translation": "Ce qui s'est passé?",
     "origin": [["src/report_screen.js", 46]]
+  },
+  "loading...": {
+    "translation": "Chargement en cours...",
+    "origin": [["src/withLanguageSwitching.js", 23]]
   }
 }

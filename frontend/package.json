@@ -35,6 +35,7 @@
     "apollo-link-state": "^0.4.2",
     "emotion": "^9.2.12",
     "express": "^4.16.4",
+    "express-request-language": "^1.1.15",
     "govuk-react": "^0.3.1",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
@@ -43,6 +44,7 @@
     "react-apollo": "^2.2.4",
     "react-dom": "^16.6.0",
     "react-emotion": "^9.2.12",
+    "supertest": "^3.3.0",
     "unfetch": "^4.0.1"
   },
   "devDependencies": {
