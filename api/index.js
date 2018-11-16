@@ -1,4 +1,4 @@
-const Server = require('./src/server').default
+const { Server } = require('./src/server')
 const { db } = require('./src/db')
 
 Server(db)
