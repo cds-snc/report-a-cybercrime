@@ -39,7 +39,7 @@
     "govuk-react": "^0.3.1",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
-    "razzle": "^2.4.0",
+    "razzle": "^3.0.0-alpha.0",
     "react": "^16.6.0",
     "react-apollo": "^2.2.4",
     "react-dom": "^16.6.0",
