@@ -3,6 +3,7 @@
   "description": "",
   "scripts": {},
   "env": {
+    "PROCFILE": { "required": true },
     "PROJECT_PATH": { "required": true },
     "RAZZLE_PUBLIC_DIR": { "required": true }
   },
@@ -10,7 +11,7 @@
   "addons": [],
   "buildpacks": [
     {
-      "url": "https://github.com/timanovsky/subdir-heroku-buildpack"
+      "url": "https://github.com/heroku/heroku-buildpack-multi-procfile"
     },
     {
       "url": "heroku/nodejs"
