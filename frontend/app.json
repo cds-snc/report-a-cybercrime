@@ -1,11 +1,14 @@
 {
   "name": "rac-prototype",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "postdeploy": "export API_URL=`echo $HEROKU_APP_NAME | sed s/frontend/api/`"
+  },
   "env": {
     "PROCFILE": { "required": true },
     "PROJECT_PATH": { "required": true },
-    "RAZZLE_PUBLIC_DIR": { "required": true }
+    "RAZZLE_PUBLIC_DIR": { "required": true },
+    "HEROKU_APP_NAME": { "required": false }
   },
   "formation": {},
   "addons": [],
