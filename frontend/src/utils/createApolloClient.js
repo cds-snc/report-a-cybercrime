@@ -52,7 +52,7 @@ function createApolloClient({
     link: ApolloLink.from([
       stateLink,
       createHttpLink({
-        uri: 'https://swapi.graph.cool/',
+        uri: 'http://api:4000/',
         credentials: 'same-origin',
         fetch,
       }),
