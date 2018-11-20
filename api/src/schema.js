@@ -10,6 +10,13 @@ const query = new GraphQLObjectType({
         return db.hello()
       },
     },
+    saveReport: {
+      description: 'report stuff',
+      type: GraphQLString,
+      resolve: (_root, _args, { db }, _info) => {
+        return db.saveReport('stuff')
+      },
+    },
   }),
 })
 
