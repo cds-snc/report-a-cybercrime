@@ -20,7 +20,7 @@ const onSubmit = () => {
 
 const validate = () => {}
 
-const MyForm = () => (
+const MyForm = options => (
   <Form
     onSubmit={onSubmit}
     validate={validate}
@@ -33,75 +33,19 @@ const MyForm = () => (
             </label>
           </H3>
           <div>
-            <label>
-              <Field
-                name="involved"
-                component="input"
-                type="checkbox"
-                value="website"
-              />{' '}
-              <Trans>Website</Trans>
-            </label>
-
-            <label>
-              <Field
-                name="involved"
-                component="input"
-                type="checkbox"
-                value="email"
-              />{' '}
-              <Trans>Email</Trans>
-            </label>
-
-            <label>
-              <Field
-                name="involved"
-                component="input"
-                type="checkbox"
-                value="phone"
-              />{' '}
-              <Trans>Phone call</Trans>
-            </label>
-
-            <label>
-              <Field
-                name="involved"
-                component="input"
-                type="checkbox"
-                value="text message"
-              />{' '}
-              <Trans>Text message</Trans>
-            </label>
-
-            <label>
-              <Field
-                name="involved"
-                component="input"
-                type="checkbox"
-                value="social media"
-              />{' '}
-              <Trans>Social media</Trans>
-            </label>
-
-            <label>
-              <Field
-                name="involved"
-                component="input"
-                type="checkbox"
-                value="Bank account"
-              />{' '}
-              <Trans>Bank account</Trans>
-            </label>
-
-            <label>
-              <Field
-                name="involved"
-                component="input"
-                type="checkbox"
-                value="I’m not sure"
-              />{' '}
-              <Trans>I’m not sure</Trans>
-            </label>
+            {options.map(option => {
+              return (
+                <label key={option}>
+                  <Field
+                    name="involved"
+                    component="input"
+                    type="checkbox"
+                    value={option}
+                  />{' '}
+                  <Trans>{option}</Trans>
+                </label>
+              )
+            })}
           </div>
         </div>
 
@@ -115,12 +59,21 @@ const MyForm = () => (
 
 export class Screen2 extends Component {
   render() {
+    const options = [
+      'website',
+      'email',
+      'phone',
+      'text message',
+      'social media',
+      'bank account',
+      'I’m not sure',
+    ]
     return (
       <div>
         <H1 level={1}>
           <Trans>What was involved?</Trans>
         </H1>
-        {MyForm()}
+        {MyForm(options)}
       </div>
     )
   }
