@@ -5,7 +5,7 @@ import { css } from 'emotion'
 import PhaseBanner from '@govuk-react/phase-banner'
 import { ReportScreen } from './report_screen'
 import { LandingPage } from './LandingPage'
-import { Form1 } from './form1'
+import { Screen1 } from './screen1'
 const root = css`
   margin: 20pt;
 `
@@ -23,7 +23,7 @@ const Home = () => (
     <div className={screen}>
       <Router>
         <LandingPage path="/" />
-        <Form1 path="form1" />
+        <Screen1 path="form1" />
         <ReportScreen path="test" />
       </Router>
     </div>

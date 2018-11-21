@@ -3,7 +3,6 @@ import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Link } from '@reach/router'
 import { H1, H3 } from '@govuk-react/header'
-import Paragraph from '@govuk-react/paragraph'
 import ListItem from '@govuk-react/list-item'
 import WarningText from '@govuk-react/warning-text'
 
