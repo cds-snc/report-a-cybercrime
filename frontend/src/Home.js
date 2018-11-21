@@ -1,17 +1,18 @@
-import React from "react";
-import { Router } from "@reach/router";
-import { Trans } from "@lingui/macro";
-import { css } from "emotion";
-import PhaseBanner from "@govuk-react/phase-banner";
-import { ReportScreen } from "./report_screen";
-
+import React from 'react'
+import { Router } from '@reach/router'
+import { Trans } from '@lingui/macro'
+import { css } from 'emotion'
+import PhaseBanner from '@govuk-react/phase-banner'
+import { ReportScreen } from './report_screen'
+import { LandingPage } from './LandingPage'
+import { Form1 } from './form1'
 const root = css`
   margin: 20pt;
-`;
+`
 
 const screen = css`
   margin-top: 30pt;
-`;
+`
 
 const Home = () => (
   <div className={root}>
@@ -21,10 +22,12 @@ const Home = () => (
 
     <div className={screen}>
       <Router>
-        <ReportScreen path="/" />
+        <LandingPage path="/" />
+        <Form1 path="form1" />
+        <ReportScreen path="test" />
       </Router>
     </div>
   </div>
-);
+)
 
-export default Home;
+export default Home
