@@ -24,7 +24,7 @@ const MyForm = options => (
   <Form
     onSubmit={onSubmit}
     validate={validate}
-    render={({ handleSubmit, pristine, invalid }) => (
+    render={({ handleSubmit, invalid }) => (
       <form onSubmit={handleSubmit}>
         <div>
           <H3 className={labelFormat}>
