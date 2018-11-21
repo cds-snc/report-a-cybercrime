@@ -63,7 +63,7 @@ export class Screen1 extends Component {
   render() {
     return (
       <div>
-        <H1 level={1}>
+        <H1>
           <Trans>Describe what happened.</Trans>
         </H1>
 

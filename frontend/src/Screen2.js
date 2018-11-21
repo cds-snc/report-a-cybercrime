@@ -70,7 +70,7 @@ export class Screen2 extends Component {
     }
     return (
       <div>
-        <H1 level={1}>
+        <H1>
           <Trans>What was involved?</Trans>
         </H1>
         {MyForm(options)}

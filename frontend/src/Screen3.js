@@ -64,7 +64,7 @@ export class Screen3 extends Component {
   render() {
     return (
       <div>
-        <H1 level={1}>
+        <H1>
           <Trans>How were you affected?</Trans>
         </H1>
 
