@@ -6,7 +6,6 @@
     "dev": "razzle start",
     "build": "razzle build",
     "test": "jest",
-    "postinstall": "razzle build",
     "lint": "eslint 'src/**/*.js'",
     "start": "NODE_ENV=production node build/server.js",
     "add-locale": "lingui add-locale",
