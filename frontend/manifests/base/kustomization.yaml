@@ -1,0 +1,3 @@
+resources:
+  - cybercrime-frontend-deployment.yaml
+  - cybercrime-frontend-service.yaml
