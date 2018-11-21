@@ -7,7 +7,9 @@
     "test": "jest",
     "lint": "eslint src/**",
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "start": "node index.js"
+    "start": "node index.js",
+    "minikube": "kustomize build manifests/overlays/minikube | kubectl apply -f -",
+    "delete-minikube": "kustomize build manifests/overlays/minikube | kubectl delete -f -"
   },
   "author": "CDS",
   "license": "MIT",

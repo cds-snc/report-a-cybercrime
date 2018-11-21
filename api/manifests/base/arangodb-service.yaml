@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: arangodb
+spec:
+  ports:
+    - name: '8529'
+      port: 8529
+  selector:
+    app: arangodb
+  type: ClusterIP
+status:
+  loadBalancer: {}
