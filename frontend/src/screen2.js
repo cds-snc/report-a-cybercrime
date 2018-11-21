@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { navigate } from '@reach/router'
 import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -14,7 +15,7 @@ const submitButton = css`
 `
 
 const onSubmit = () => {
-  alert('onSubmit')
+  navigate('form3')
 }
 
 const validate = () => {}
@@ -104,11 +105,7 @@ const MyForm = () => (
           </div>
         </div>
 
-        <Button
-          className={submitButton}
-          type="submit"
-          disabled={pristine || invalid}
-        >
+        <Button className={submitButton} type="submit" disabled={invalid}>
           <Trans>Next</Trans>
         </Button>
       </form>

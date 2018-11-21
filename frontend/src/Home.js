@@ -7,6 +7,8 @@ import { ReportScreen } from './report_screen'
 import { LandingPage } from './LandingPage'
 import { Screen1 } from './screen1'
 import { Screen2 } from './screen2'
+import { Screen3 } from './screen3'
+
 const root = css`
   margin: 20pt;
 `
@@ -26,6 +28,7 @@ const Home = () => (
         <LandingPage path="/" />
         <Screen1 path="form1" />
         <Screen2 path="form2" />
+        <Screen3 path="form3" />
         <ReportScreen path="test" />
       </Router>
     </div>
