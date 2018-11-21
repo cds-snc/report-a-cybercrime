@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cybercrime-api
+  name: cybercrime-api
+  namespace: default
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: cybercrime-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: cybercrime-api
+    spec:
+      initContainers:
+        - image: cdssnc/cybercrime-arangoinit
+          imagePullPolicy: Always
+          name: cybercrime-arangoinit
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: cybercrime-api
+                  key: DB_USER
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: cybercrime-api
+                  key: DB_NAME
+            - name: DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: cybercrime-api
+                  key: DB_URL
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: cybercrime-api
+                  key: DB_PASSWORD
+      containers:
+        - image: cdssnc/cybercrime-api
+          imagePullPolicy: Always
+          name: cybercrime-api
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: cybercrime-api
+                  key: DB_USER
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: cybercrime-api
+                  key: DB_NAME
+            - name: DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: cybercrime-api
+                  key: DB_URL
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: cybercrime-api
+                  key: DB_PASSWORD
+          resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}

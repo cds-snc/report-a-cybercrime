@@ -1,0 +1,50 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: arangodb
+  name: arangodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arangodb
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: arangodb
+        name: arangodb
+    spec:
+      containers:
+        - env:
+            - name: ARANGO_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: ARANGO_ROOT_PASSWORD
+                  name: arango-secrets
+          image: arangodb:3.3.19
+          livenessProbe:
+            initialDelaySeconds: 1
+            periodSeconds: 5
+            tcpSocket:
+              port: 8529
+          name: arangodb
+          ports:
+            - containerPort: 8529
+          readinessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            tcpSocket:
+              port: 8529
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/arangodb3
+              name: arangodb-claim0
+      restartPolicy: Always
+      volumes:
+        - name: arangodb-claim0
+          persistentVolumeClaim:
+            claimName: arangodb-claim0
+status: {}
