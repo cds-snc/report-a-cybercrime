@@ -5,13 +5,21 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
 import { H1, H3 } from '@govuk-react/header'
+import ListItem from '@govuk-react/list-item'
 
 const labelFormat = css`
   margin-top: 20pt;
 `
-
 const submitButton = css`
   margin-top: 20pt;
+`
+const listitem = css`
+  margin: 5pt;
+  margin-left: 20pt;
+`
+const textArea = css`
+  width: 500pt;
+  height: 200pt;
 `
 
 const onSubmit = () => {
@@ -28,35 +36,14 @@ const MyForm = () => (
       <form onSubmit={handleSubmit}>
         <H3 className={labelFormat}>
           <label>
-            <Trans>What was your reaction?</Trans>
-          </label>
-        </H3>
-        <div>
-          <Field name="reaction" component="textarea" placeholder="" />
-        </div>
-
-        <H3 className={labelFormat}>
-          <label>
-            <Trans>Did you lose money or personal information?</Trans>
+            <Trans>How were you affected?</Trans>
           </label>
         </H3>
         <div>
           <Field
-            name="lose_money_or_info"
+            name="how_affected"
             component="textarea"
-            placeholder=""
-          />
-        </div>
-
-        <H3 className={labelFormat}>
-          <label>
-            <Trans>Was your reputation or productivity affected?</Trans>
-          </label>
-        </H3>
-        <div>
-          <Field
-            name="reputation_affected"
-            component="textarea"
+            className={textArea}
             placeholder=""
           />
         </div>
@@ -80,6 +67,16 @@ export class Screen3 extends Component {
         <H1 level={1}>
           <Trans>How were you affected?</Trans>
         </H1>
+
+        <ListItem className={listitem}>
+          <Trans>What was your reaction?</Trans>
+        </ListItem>
+        <ListItem className={listitem}>
+          <Trans>Did you lose money or personal information?</Trans>
+        </ListItem>
+        <ListItem className={listitem}>
+          <Trans>Was your reputation or productivity affected?</Trans>
+        </ListItem>
 
         {MyForm()}
       </div>

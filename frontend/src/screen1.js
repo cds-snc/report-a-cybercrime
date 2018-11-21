@@ -5,15 +5,22 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
 import { H1, H3 } from '@govuk-react/header'
+import ListItem from '@govuk-react/list-item'
 
 const labelFormat = css`
   margin-top: 20pt;
 `
-
 const submitButton = css`
   margin-top: 20pt;
 `
-
+const listitem = css`
+  margin: 5pt;
+  margin-left: 20pt;
+`
+const textArea = css`
+  width: 500pt;
+  height: 200pt;
+`
 const onSubmit = () => {
   navigate('/form2')
 }
@@ -28,29 +35,16 @@ const MyForm = () => (
       <form onSubmit={handleSubmit}>
         <H3 className={labelFormat}>
           <label>
-            <Trans>When did it take place?</Trans>
+            <Trans>What happened?</Trans>
           </label>
         </H3>
         <div>
-          <Field name="when" component="input" placeholder="mm/dd/yyyy" />
-        </div>
-
-        <H3 className={labelFormat}>
-          <label>
-            <Trans>Who was involved?</Trans>
-          </label>
-        </H3>
-        <div>
-          <Field name="who" component="textarea" placeholder="" />
-        </div>
-
-        <H3 className={labelFormat}>
-          <label>
-            <Trans>How were you affected?</Trans>
-          </label>
-        </H3>
-        <div>
-          <Field name="how" component="textarea" placeholder="" />
+          <Field
+            name="what happened"
+            component="textarea"
+            className={textArea}
+            placeholder=""
+          />
         </div>
 
         <Button
@@ -72,6 +66,16 @@ export class Screen1 extends Component {
         <H1 level={1}>
           <Trans>Describe what happened.</Trans>
         </H1>
+
+        <ListItem className={listitem}>
+          <Trans>When did it take place?</Trans>
+        </ListItem>
+        <ListItem className={listitem}>
+          <Trans>Who was involved?</Trans>
+        </ListItem>
+        <ListItem className={listitem}>
+          <Trans>How were you affected?</Trans>
+        </ListItem>
 
         {MyForm()}
       </div>

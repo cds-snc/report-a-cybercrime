@@ -10,10 +10,12 @@ const warning = css`
   padding-top: 20pt;
   padding-bottom: 20pt;
 `
-
 const listitem = css`
   margin: 5pt;
   margin-left: 20pt;
+`
+const link = css`
+  font-size: 30pt;
 `
 
 export class LandingPage extends Component {
@@ -42,8 +44,8 @@ export class LandingPage extends Component {
           <Trans>You do not need to provide any personal information.</Trans>
         </WarningText>
 
-        <Link to={'form1'}>
-          <Trans>Share your story.</Trans>
+        <Link to={'form1'} className={link}>
+          <Trans>Share your story</Trans>
         </Link>
       </div>
     )
