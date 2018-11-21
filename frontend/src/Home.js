@@ -5,9 +5,9 @@ import { css } from 'emotion'
 import PhaseBanner from '@govuk-react/phase-banner'
 import { ReportScreen } from './report_screen'
 import { LandingPage } from './LandingPage'
-import { Screen1 } from './screen1'
-import { Screen2 } from './screen2'
-import { Screen3 } from './screen3'
+import { Screen1 } from './Screen1'
+import { Screen2 } from './Screen2'
+import { Screen3 } from './Screen3'
 import { Thanks } from './thanks'
 
 const root = css`
