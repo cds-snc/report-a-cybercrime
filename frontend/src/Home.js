@@ -6,6 +6,7 @@ import PhaseBanner from '@govuk-react/phase-banner'
 import { ReportScreen } from './report_screen'
 import { LandingPage } from './LandingPage'
 import { Screen1 } from './screen1'
+import { Screen2 } from './screen2'
 const root = css`
   margin: 20pt;
 `
@@ -24,6 +25,7 @@ const Home = () => (
       <Router>
         <LandingPage path="/" />
         <Screen1 path="form1" />
+        <Screen2 path="form2" />
         <ReportScreen path="test" />
       </Router>
     </div>
