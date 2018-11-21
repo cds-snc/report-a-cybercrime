@@ -1,0 +1,17 @@
+{
+  "How were you affected?": {
+    "origin": [["src/Screen3.js", 39], ["src/Screen3.js", 68]]
+  },
+  "Next": {
+    "origin": [["src/Screen3.js", 56]]
+  },
+  "What was your reaction?": {
+    "origin": [["src/Screen3.js", 72]]
+  },
+  "Did you lose money or personal information?": {
+    "origin": [["src/Screen3.js", 75]]
+  },
+  "Was your reputation or productivity affected?": {
+    "origin": [["src/Screen3.js", 78]]
+  }
+}

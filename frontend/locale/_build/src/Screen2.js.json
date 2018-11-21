@@ -1,0 +1,32 @@
+{
+  "Choose all that apply": {
+    "origin": [["src/Screen2.js", 32]]
+  },
+  "Next": {
+    "origin": [["src/Screen2.js", 53]]
+  },
+  "website": {
+    "origin": [["src/Screen2.js", 63]]
+  },
+  "email": {
+    "origin": [["src/Screen2.js", 64]]
+  },
+  "phone": {
+    "origin": [["src/Screen2.js", 65]]
+  },
+  "text message": {
+    "origin": [["src/Screen2.js", 66]]
+  },
+  "social media": {
+    "origin": [["src/Screen2.js", 67]]
+  },
+  "bank account": {
+    "origin": [["src/Screen2.js", 68]]
+  },
+  "I’m not sure": {
+    "origin": [["src/Screen2.js", 69]]
+  },
+  "What was involved?": {
+    "origin": [["src/Screen2.js", 74]]
+  }
+}

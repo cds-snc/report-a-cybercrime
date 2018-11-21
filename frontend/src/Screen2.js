@@ -33,16 +33,16 @@ const MyForm = options => (
             </label>
           </H3>
           <div>
-            {options.map(option => {
+            {Object.keys(options).map(key => {
               return (
-                <label key={option}>
+                <label key={key}>
                   <Field
                     name="involved"
                     component="input"
                     type="checkbox"
-                    value={option}
+                    value={key}
                   />{' '}
-                  <Trans>{option}</Trans>
+                  {options[key]}
                 </label>
               )
             })}
@@ -59,15 +59,15 @@ const MyForm = options => (
 
 export class Screen2 extends Component {
   render() {
-    const options = [
-      'website',
-      'email',
-      'phone',
-      'text message',
-      'social media',
-      'bank account',
-      'I’m not sure',
-    ]
+    const options = {
+      website: <Trans>website</Trans>,
+      email: <Trans>email</Trans>,
+      phone: <Trans>phone</Trans>,
+      'text message': <Trans>text message</Trans>,
+      'social media': <Trans>social media</Trans>,
+      'bank account': <Trans>bank account</Trans>,
+      'I’m not sure': <Trans>I’m not sure</Trans>,
+    }
     return (
       <div>
         <H1 level={1}>

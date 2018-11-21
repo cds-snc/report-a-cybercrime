@@ -1,0 +1,20 @@
+{
+  "What happened?": {
+    "origin": [["src/Screen1.js", 38]]
+  },
+  "Submit": {
+    "origin": [["src/Screen1.js", 55]]
+  },
+  "Describe what happened.": {
+    "origin": [["src/Screen1.js", 67]]
+  },
+  "When did it take place?": {
+    "origin": [["src/Screen1.js", 71]]
+  },
+  "Who was involved?": {
+    "origin": [["src/Screen1.js", 74]]
+  },
+  "How were you affected?": {
+    "origin": [["src/Screen1.js", 77]]
+  }
+}
