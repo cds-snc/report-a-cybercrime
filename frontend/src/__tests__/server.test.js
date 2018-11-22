@@ -10,7 +10,7 @@ describe('Server Side Rendering', () => {
 
       let { text } = response
 
-      expect(text).toMatch(/Signaler un acte de cybercrime/)
+      expect(text).toMatch(/Pour usage interne uniquement/)
     })
   })
 
@@ -22,7 +22,7 @@ describe('Server Side Rendering', () => {
 
       let { text } = response
 
-      expect(text).toMatch(/Report a cybercrime/)
+      expect(text).toMatch(/For internal use only/)
     })
   })
 })

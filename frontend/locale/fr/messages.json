@@ -1,26 +1,126 @@
 {
+  "Choose all that apply": {
+    "translation": "Cochez tout ce qui s'applique",
+    "origin": [["src/Screen2.js", 32]]
+  },
+  "Describe what happened.": {
+    "translation": "Décrivez ce qui s'est passé.",
+    "origin": [["src/Screen1.js", 67]]
+  },
+  "Describe what happened. Provide as much information as you can.": {
+    "translation": "Décrivez ce qui s'est passé. Fournissez autant d'informations que possible.",
+    "origin": [["src/LandingPage.js", 32]]
+  },
+  "Did you lose money or personal information?": {
+    "translation": "Avez-vous perdu de l'argent ou des renseignements personnels ?",
+    "origin": [["src/Screen3.js", 75]]
+  },
   "For internal use only": {
     "translation": "Pour usage interne uniquement",
-    "origin": [["src/Home.js", 19]]
+    "origin": [["src/Home.js", 24]]
+  },
+  "Have you or someone you know encountered a cybercrime?": {
+    "translation": "Avez-vous, ou quelqu'un que vous connaissez, été confronté à un cybercrime ?",
+    "origin": [["src/LandingPage.js", 26]]
+  },
+  "How were you affected?": {
+    "translation": "Comment avez-vous été affecté ?",
+    "origin": [
+      ["src/Screen1.js", 77],
+      ["src/Screen3.js", 39],
+      ["src/Screen3.js", 68]
+    ]
+  },
+  "I’m not sure": {
+    "translation": "Je ne suis pas sûr",
+    "origin": [["src/Screen2.js", 69]]
   },
   "Language Selection": {
     "translation": "Choix de langue",
     "origin": [["src/LanguageSwitcher.js", 41]]
   },
+  "Next": {
+    "translation": "Suivant",
+    "origin": [["src/Screen2.js", 53], ["src/Screen3.js", 56]]
+  },
   "Report a cybercrime": {
     "translation": "Signaler un acte de cybercrime",
     "origin": [["src/report_screen.js", 41]]
   },
+  "Select where you encountered the cybercrime.": {
+    "translation": "Sélectionnez l'endroit où vous avez rencontré la cybercriminalité.",
+    "origin": [["src/LandingPage.js", 37]]
+  },
+  "Share how you were you impacted.": {
+    "translation": "Partagez l'impact que vous avez eu sur vous.",
+    "origin": [["src/LandingPage.js", 40]]
+  },
+  "Share your story": {
+    "translation": "Partagez votre histoire",
+    "origin": [["src/LandingPage.js", 48]]
+  },
   "Submit": {
     "translation": "Soumettre",
-    "origin": [["src/report_screen.js", 49]]
+    "origin": [["src/Screen1.js", 55], ["src/report_screen.js", 49]]
+  },
+  "Thank you for sharing your story.": {
+    "translation": "Merci d'avoir partagé votre histoire.",
+    "origin": [["src/thanks.js", 17]]
+  },
+  "Was your reputation or productivity affected?": {
+    "translation": "Votre réputation ou votre productivité a-t-elle été affectée ?",
+    "origin": [["src/Screen3.js", 78]]
   },
   "What happened?": {
     "translation": "Ce qui s'est passé?",
-    "origin": [["src/report_screen.js", 46]]
+    "origin": [["src/Screen1.js", 38], ["src/report_screen.js", 46]]
+  },
+  "What was involved?": {
+    "translation": "De quoi s'agissait-il ?",
+    "origin": [["src/Screen2.js", 74]]
+  },
+  "What was your reaction?": {
+    "translation": "Quelle a été votre réaction ?",
+    "origin": [["src/Screen3.js", 72]]
+  },
+  "When did it take place?": {
+    "translation": "Quand cela s'est-il passé ?",
+    "origin": [["src/Screen1.js", 71]]
+  },
+  "Who was involved?": {
+    "translation": "Qui était impliqué ?",
+    "origin": [["src/Screen1.js", 74]]
+  },
+  "You do not need to provide any personal information.": {
+    "translation": "Vous n'avez pas besoin de fournir de renseignements personnels.",
+    "origin": [["src/LandingPage.js", 44]]
+  },
+  "bank account": {
+    "translation": "compte en banque",
+    "origin": [["src/Screen2.js", 68]]
+  },
+  "email": {
+    "translation": "courriel",
+    "origin": [["src/Screen2.js", 64]]
   },
   "loading...": {
     "translation": "Chargement en cours...",
     "origin": [["src/withLanguageSwitching.js", 23]]
+  },
+  "phone": {
+    "translation": "téléphoner",
+    "origin": [["src/Screen2.js", 65]]
+  },
+  "social media": {
+    "translation": "médias sociaux",
+    "origin": [["src/Screen2.js", 67]]
+  },
+  "text message": {
+    "translation": "message SMS",
+    "origin": [["src/Screen2.js", 66]]
+  },
+  "website": {
+    "translation": "site Internet",
+    "origin": [["src/Screen2.js", 63]]
   }
 }
