@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { navigate } from '@reach/router'
 import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
@@ -57,24 +57,21 @@ const MyForm = options => (
   />
 )
 
-export class Screen2 extends Component {
-  render() {
-    const options = {
-      website: <Trans>website</Trans>,
-      email: <Trans>email</Trans>,
-      phone: <Trans>phone</Trans>,
-      'text message': <Trans>text message</Trans>,
-      'social media': <Trans>social media</Trans>,
-      'bank account': <Trans>bank account</Trans>,
-      'I’m not sure': <Trans>I’m not sure</Trans>,
-    }
-    return (
-      <div>
-        <H1>
-          <Trans>What was involved?</Trans>
-        </H1>
-        {MyForm(options)}
-      </div>
-    )
-  }
+const options = {
+  website: <Trans>website</Trans>,
+  email: <Trans>email</Trans>,
+  phone: <Trans>phone</Trans>,
+  'text message': <Trans>text message</Trans>,
+  'social media': <Trans>social media</Trans>,
+  'bank account': <Trans>bank account</Trans>,
+  "I'm not sure": <Trans>I’m not sure</Trans>,
 }
+
+export const Screen2 = () => (
+  <div>
+    <H1>
+      <Trans>What was involved?</Trans>
+    </H1>
+    {MyForm(options)}
+  </div>
+)

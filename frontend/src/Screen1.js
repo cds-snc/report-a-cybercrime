@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { navigate } from '@reach/router'
 import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
@@ -59,26 +59,22 @@ const MyForm = () => (
   />
 )
 
-export class Screen1 extends Component {
-  render() {
-    return (
-      <div>
-        <H1>
-          <Trans>Describe what happened.</Trans>
-        </H1>
+export const Screen1 = () => (
+  <div>
+    <H1>
+      <Trans>Describe what happened.</Trans>
+    </H1>
 
-        <ListItem className={listitem}>
-          <Trans>When did it take place?</Trans>
-        </ListItem>
-        <ListItem className={listitem}>
-          <Trans>Who was involved?</Trans>
-        </ListItem>
-        <ListItem className={listitem}>
-          <Trans>How were you affected?</Trans>
-        </ListItem>
+    <ListItem className={listitem}>
+      <Trans>When did it take place?</Trans>
+    </ListItem>
+    <ListItem className={listitem}>
+      <Trans>Who was involved?</Trans>
+    </ListItem>
+    <ListItem className={listitem}>
+      <Trans>How were you affected?</Trans>
+    </ListItem>
 
-        {MyForm()}
-      </div>
-    )
-  }
-}
+    {MyForm()}
+  </div>
+)
