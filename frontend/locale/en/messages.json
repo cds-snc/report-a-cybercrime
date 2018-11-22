@@ -1,26 +1,126 @@
 {
+  "Choose all that apply": {
+    "translation": "Choose all that apply",
+    "origin": [["src/Screen2.js", 32]]
+  },
+  "Describe what happened.": {
+    "translation": "Describe what happened.",
+    "origin": [["src/Screen1.js", 67]]
+  },
+  "Describe what happened. Provide as much information as you can.": {
+    "translation": "Describe what happened. Provide as much information as you can.",
+    "origin": [["src/LandingPage.js", 32]]
+  },
+  "Did you lose money or personal information?": {
+    "translation": "Did you lose money or personal information?",
+    "origin": [["src/Screen3.js", 75]]
+  },
   "For internal use only": {
     "translation": "For internal use only",
-    "origin": [["src/Home.js", 19]]
+    "origin": [["src/Home.js", 24]]
+  },
+  "Have you or someone you know encountered a cybercrime?": {
+    "translation": "Have you or someone you know encountered a cybercrime?",
+    "origin": [["src/LandingPage.js", 26]]
+  },
+  "How were you affected?": {
+    "translation": "How were you affected?",
+    "origin": [
+      ["src/Screen1.js", 77],
+      ["src/Screen3.js", 39],
+      ["src/Screen3.js", 68]
+    ]
+  },
+  "I’m not sure": {
+    "translation": "I’m not sure",
+    "origin": [["src/Screen2.js", 69]]
   },
   "Language Selection": {
     "translation": "Language Selection",
     "origin": [["src/LanguageSwitcher.js", 41]]
   },
+  "Next": {
+    "translation": "Next",
+    "origin": [["src/Screen2.js", 53], ["src/Screen3.js", 56]]
+  },
   "Report a cybercrime": {
     "translation": "Report a cybercrime",
     "origin": [["src/report_screen.js", 41]]
   },
+  "Select where you encountered the cybercrime.": {
+    "translation": "Select where you encountered the cybercrime.",
+    "origin": [["src/LandingPage.js", 37]]
+  },
+  "Share how you were you impacted.": {
+    "translation": "Share how you were you impacted.",
+    "origin": [["src/LandingPage.js", 40]]
+  },
+  "Share your story": {
+    "translation": "Share your story",
+    "origin": [["src/LandingPage.js", 48]]
+  },
   "Submit": {
     "translation": "Submit",
-    "origin": [["src/report_screen.js", 49]]
+    "origin": [["src/Screen1.js", 55], ["src/report_screen.js", 49]]
+  },
+  "Thank you for sharing your story.": {
+    "translation": "Thank you for sharing your story.",
+    "origin": [["src/thanks.js", 17]]
+  },
+  "Was your reputation or productivity affected?": {
+    "translation": "Was your reputation or productivity affected?",
+    "origin": [["src/Screen3.js", 78]]
   },
   "What happened?": {
     "translation": "What happened?",
-    "origin": [["src/report_screen.js", 46]]
+    "origin": [["src/Screen1.js", 38], ["src/report_screen.js", 46]]
+  },
+  "What was involved?": {
+    "translation": "What was involved?",
+    "origin": [["src/Screen2.js", 74]]
+  },
+  "What was your reaction?": {
+    "translation": "What was your reaction?",
+    "origin": [["src/Screen3.js", 72]]
+  },
+  "When did it take place?": {
+    "translation": "When did it take place?",
+    "origin": [["src/Screen1.js", 71]]
+  },
+  "Who was involved?": {
+    "translation": "Who was involved?",
+    "origin": [["src/Screen1.js", 74]]
+  },
+  "You do not need to provide any personal information.": {
+    "translation": "You do not need to provide any personal information.",
+    "origin": [["src/LandingPage.js", 44]]
+  },
+  "bank account": {
+    "translation": "bank account",
+    "origin": [["src/Screen2.js", 68]]
+  },
+  "email": {
+    "translation": "email",
+    "origin": [["src/Screen2.js", 64]]
   },
   "loading...": {
     "translation": "loading...",
     "origin": [["src/withLanguageSwitching.js", 23]]
+  },
+  "phone": {
+    "translation": "phone",
+    "origin": [["src/Screen2.js", 65]]
+  },
+  "social media": {
+    "translation": "social media",
+    "origin": [["src/Screen2.js", 67]]
+  },
+  "text message": {
+    "translation": "text message",
+    "origin": [["src/Screen2.js", 66]]
+  },
+  "website": {
+    "translation": "website",
+    "origin": [["src/Screen2.js", 63]]
   }
 }

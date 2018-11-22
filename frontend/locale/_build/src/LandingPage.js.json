@@ -1,0 +1,20 @@
+{
+  "Have you or someone you know encountered a cybercrime?": {
+    "origin": [["src/LandingPage.js", 26]]
+  },
+  "Describe what happened. Provide as much information as you can.": {
+    "origin": [["src/LandingPage.js", 32]]
+  },
+  "Select where you encountered the cybercrime.": {
+    "origin": [["src/LandingPage.js", 37]]
+  },
+  "Share how you were you impacted.": {
+    "origin": [["src/LandingPage.js", 40]]
+  },
+  "You do not need to provide any personal information.": {
+    "origin": [["src/LandingPage.js", 44]]
+  },
+  "Share your story": {
+    "origin": [["src/LandingPage.js", 48]]
+  }
+}
