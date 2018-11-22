@@ -1,0 +1,4 @@
+bases:
+  - ../../base
+resources:
+  - traefik-ingress-service.yaml
