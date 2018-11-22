@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { css } from 'react-emotion'
-import { Query, Mutation } from 'react-apollo'
+import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import TextArea from '@govuk-react/text-area'
 import Button from '@govuk-react/button'
 import Header from '@govuk-react/header'
 import gql from 'graphql-tag'
-import { I18nProvider } from '@lingui/react'
 
 export const HELLO_QUERY = gql`
   query GetHello {
