@@ -9,11 +9,13 @@ const dbinit = async db => {
       let results = await db.query(query)
       return results.next()
     },
-    saveReport: async whatHappened => {
-      await db
-        .collection('report_collection')
-        .save({ whatHappened: whatHappened })
-      return 'success'
+    saveReport: async report => {
+      let query = aql`
+        INSERT ${report} IN reports
+        RETURN NEW
+  `
+      let results = await db.query(query)
+      return results.next()
     },
   }
 }
