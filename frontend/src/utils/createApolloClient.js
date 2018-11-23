@@ -14,6 +14,10 @@ const typeDefs = `
   type Query {
     language: String
   }
+  
+  type Query {
+    whatHappened: String
+  }
 `
 
 function createApolloClient({
@@ -43,6 +47,9 @@ function createApolloClient({
     },
     defaults: {
       language: initialState.language,
+      whatHappened: 'default what happened',
+      whatWasInvolved: 'default involved',
+      howWereYouAffected: 'default affected',
     },
     typeDefs,
   })

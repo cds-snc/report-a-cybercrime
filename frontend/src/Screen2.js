@@ -5,6 +5,7 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
 import { H1, H3 } from '@govuk-react/header'
+import { ApolloConsumer } from 'react-apollo'
 
 const labelFormat = css`
   margin-top: 20pt;
@@ -14,47 +15,52 @@ const submitButton = css`
   margin-top: 20pt;
 `
 
-const onSubmit = () => {
-  navigate('form3')
+const submitAndNavigate = (client, data) => {
+  client.writeData({ data: data })
+  navigate('/form3')
 }
 
 const validate = () => {}
 
 const MyForm = options => (
-  <Form
-    onSubmit={onSubmit}
-    validate={validate}
-    render={({ handleSubmit, invalid }) => (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <H3 className={labelFormat}>
-            <label>
-              <Trans>Choose all that apply</Trans>
-            </label>
-          </H3>
-          <div>
-            {Object.keys(options).map(key => {
-              return (
-                <label key={key}>
-                  <Field
-                    name="involved"
-                    component="input"
-                    type="checkbox"
-                    value={key}
-                  />{' '}
-                  {options[key]}
+  <ApolloConsumer>
+    {client => (
+      <Form
+        onSubmit={data => submitAndNavigate(client, data)}
+        validate={validate}
+        render={({ handleSubmit, invalid }) => (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <H3 className={labelFormat}>
+                <label>
+                  <Trans>Choose all that apply</Trans>
                 </label>
-              )
-            })}
-          </div>
-        </div>
+              </H3>
+              <div>
+                {Object.keys(options).map(key => {
+                  return (
+                    <label key={key}>
+                      <Field
+                        name="whatWasInvolved"
+                        component="input"
+                        type="checkbox"
+                        value={key}
+                      />{' '}
+                      {options[key]}
+                    </label>
+                  )
+                })}
+              </div>
+            </div>
 
-        <Button className={submitButton} type="submit" disabled={invalid}>
-          <Trans>Next</Trans>
-        </Button>
-      </form>
+            <Button className={submitButton} type="submit" disabled={invalid}>
+              <Trans>Next</Trans>
+            </Button>
+          </form>
+        )}
+      />
     )}
-  />
+  </ApolloConsumer>
 )
 
 const options = {

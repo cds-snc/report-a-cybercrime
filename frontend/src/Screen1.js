@@ -1,5 +1,6 @@
 import React from 'react'
 import { navigate } from '@reach/router'
+import { ApolloConsumer } from 'react-apollo'
 import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -21,42 +22,48 @@ const textArea = css`
   width: 500pt;
   height: 200pt;
 `
-const onSubmit = () => {
+
+const submitAndNavigate = (client, data) => {
+  client.writeData({ data: data })
   navigate('/form2')
 }
 
 const validate = () => {}
 
 const MyForm = () => (
-  <Form
-    onSubmit={onSubmit}
-    validate={validate}
-    render={({ handleSubmit, pristine, invalid }) => (
-      <form onSubmit={handleSubmit}>
-        <H3 className={labelFormat}>
-          <label>
-            <Trans>What happened?</Trans>
-          </label>
-        </H3>
-        <div>
-          <Field
-            name="what happened"
-            component="textarea"
-            className={textArea}
-            placeholder=""
-          />
-        </div>
+  <ApolloConsumer>
+    {client => (
+      <Form
+        onSubmit={data => submitAndNavigate(client, data)}
+        validate={validate}
+        render={({ handleSubmit, pristine, invalid }) => (
+          <form onSubmit={handleSubmit}>
+            <H3 className={labelFormat}>
+              <label>
+                <Trans>What happened?</Trans>
+              </label>
+            </H3>
+            <div>
+              <Field
+                name="whatHappened"
+                component="textarea"
+                className={textArea}
+                placeholder=""
+              />
+            </div>
 
-        <Button
-          className={submitButton}
-          type="submit"
-          disabled={pristine || invalid}
-        >
-          <Trans>Submit</Trans>
-        </Button>
-      </form>
+            <Button
+              className={submitButton}
+              type="submit"
+              disabled={pristine || invalid}
+            >
+              <Trans>Submit</Trans>
+            </Button>
+          </form>
+        )}
+      />
     )}
-  />
+  </ApolloConsumer>
 )
 
 export const Screen1 = () => (

@@ -7,7 +7,7 @@ import Button from '@govuk-react/button'
 import { H1, H3 } from '@govuk-react/header'
 import ListItem from '@govuk-react/list-item'
 import gql from 'graphql-tag'
-import { Mutation } from 'react-apollo'
+import { Mutation, Query } from 'react-apollo'
 
 const labelFormat = css`
   margin-top: 20pt;
@@ -22,6 +22,12 @@ const listitem = css`
 const textArea = css`
   width: 500pt;
   height: 200pt;
+`
+
+export const WHAT_HAPPENED_QUERY = gql`
+  query {
+    whatHappened @client
+  }
 `
 
 export const SAVE_REPORT_MUTATION = gql`
@@ -102,5 +108,11 @@ export const Screen3 = () => (
     </ListItem>
 
     {MyForm()}
+
+    <Query query={WHAT_HAPPENED_QUERY}>
+      {({ data: { whatHappened } }) => (
+        <div>{'what happened: ' + whatHappened}</div>
+      )}
+    </Query>
   </div>
 )
