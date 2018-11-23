@@ -4,6 +4,7 @@ metadata:
   labels:
     io.kompose.service: arangodb-claim0
   name: arangodb-claim0
+  namespace: cybercrime-api
 spec:
   accessModes:
     - ReadWriteOnce
