@@ -7,7 +7,7 @@ import Button from '@govuk-react/button'
 import { H1, H3 } from '@govuk-react/header'
 import ListItem from '@govuk-react/list-item'
 import gql from 'graphql-tag'
-import { Mutation, Query } from 'react-apollo'
+import { ApolloConsumer, Mutation } from 'react-apollo'
 
 const labelFormat = css`
   margin-top: 20pt;
@@ -22,12 +22,6 @@ const listitem = css`
 const textArea = css`
   width: 500pt;
   height: 200pt;
-`
-
-export const WHAT_HAPPENED_QUERY = gql`
-  query {
-    whatHappened @client
-  }
 `
 
 export const SAVE_REPORT_MUTATION = gql`
@@ -48,7 +42,17 @@ export const SAVE_REPORT_MUTATION = gql`
   }
 `
 
-const submitAndNavigate = (saveReport, data) => {
+const submitAndNavigate = (client, saveReport, { howWereYouAffected }) => {
+  let data = client.readQuery({
+    query: gql`
+      query readCache {
+        whatHappened
+        whatWasInvolved
+      }
+    `,
+  })
+  data.howWereYouAffected = howWereYouAffected
+  data.whatWasInvolved = data.whatWasInvolved.join(', ')
   saveReport({ variables: data })
   navigate('thanks')
 }
@@ -56,39 +60,43 @@ const submitAndNavigate = (saveReport, data) => {
 const validate = () => {}
 
 const MyForm = () => (
-  <Mutation mutation={SAVE_REPORT_MUTATION}>
-    {saveReport => (
-      <Form
-        onSubmit={data => submitAndNavigate(saveReport, data)}
-        validate={validate}
-        render={({ handleSubmit, pristine, invalid }) => (
-          <form onSubmit={handleSubmit}>
-            <H3 className={labelFormat}>
-              <label>
-                <Trans>How were you affected?</Trans>
-              </label>
-            </H3>
-            <div>
-              <Field
-                name="howWereYouAffected"
-                component="textarea"
-                className={textArea}
-                placeholder=""
-              />
-            </div>
+  <ApolloConsumer>
+    {client => (
+      <Mutation mutation={SAVE_REPORT_MUTATION}>
+        {saveReport => (
+          <Form
+            onSubmit={data => submitAndNavigate(client, saveReport, data)}
+            validate={validate}
+            render={({ handleSubmit, pristine, invalid }) => (
+              <form onSubmit={handleSubmit}>
+                <H3 className={labelFormat}>
+                  <label>
+                    <Trans>How were you affected?</Trans>
+                  </label>
+                </H3>
+                <div>
+                  <Field
+                    name="howWereYouAffected"
+                    component="textarea"
+                    className={textArea}
+                    placeholder=""
+                  />
+                </div>
 
-            <Button
-              className={submitButton}
-              type="submit"
-              disabled={pristine || invalid}
-            >
-              <Trans>Next</Trans>
-            </Button>
-          </form>
+                <Button
+                  className={submitButton}
+                  type="submit"
+                  disabled={pristine || invalid}
+                >
+                  <Trans>Next</Trans>
+                </Button>
+              </form>
+            )}
+          />
         )}
-      />
+      </Mutation>
     )}
-  </Mutation>
+  </ApolloConsumer>
 )
 
 export const Screen3 = () => (
@@ -108,11 +116,5 @@ export const Screen3 = () => (
     </ListItem>
 
     {MyForm()}
-
-    <Query query={WHAT_HAPPENED_QUERY}>
-      {({ data: { whatHappened } }) => (
-        <div>{'what happened: ' + whatHappened}</div>
-      )}
-    </Query>
   </div>
 )
