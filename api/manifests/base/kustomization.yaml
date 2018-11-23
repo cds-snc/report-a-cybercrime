@@ -1,7 +1,7 @@
 resources:
-  - arangodb-claim0-pvc.yaml
   - arangodb-deployment.yaml
   - arangodb-service.yaml
   - cybercrime-api-deployment.yaml
   - cybercrime-api-ingress.yaml
   - cybercrime-api-service.yaml
+  - cybercrime-api-namespace.yaml
