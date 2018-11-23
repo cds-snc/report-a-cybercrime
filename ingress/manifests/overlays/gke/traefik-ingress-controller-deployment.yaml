@@ -13,7 +13,6 @@ spec:
     spec:
       containers:
         - args:
-            - --api
             - --kubernetes
             - --logLevel=DEBUG
             - --debug
@@ -38,9 +37,6 @@ spec:
             - containerPort: 443
               hostPort: 443
               name: https
-            - containerPort: 8080
-              hostPort: 8080
-              name: admin
           securityContext:
             capabilities:
               add:
