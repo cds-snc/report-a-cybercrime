@@ -8,7 +8,6 @@ import { H1, H3 } from '@govuk-react/header'
 import ListItem from '@govuk-react/list-item'
 import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
-import { CHANGE_LANGUAGE_MUTATION } from './LanguageSwitcher'
 
 const labelFormat = css`
   margin-top: 20pt;
@@ -37,22 +36,14 @@ export const SAVE_REPORT_MUTATION = gql`
       howWereYouAffected: $howWereYouAffected
     ) {
       whatHappened
+      whatWasInvolved
+      howWereYouAffected
     }
   }
 `
 
-const onSubmit = (
-  saveReport,
-  whatHappened,
-  whatWasInvolved,
-  howWereYouAffected,
-) => {
-  console.log('onSubmit')
-  const res = saveReport(
-    whatHappened,
-    whatWasInvolved,
-    howWereYouAffected,
-  ).then(console.log)
+const submitAndNavigate = (saveReport, data) => {
+  saveReport({ variables: data })
   navigate('thanks')
 }
 
@@ -62,7 +53,7 @@ const MyForm = () => (
   <Mutation mutation={SAVE_REPORT_MUTATION}>
     {saveReport => (
       <Form
-        onSubmit={() => onSubmit(saveReport, 'happ', 'inv', 'affect')}
+        onSubmit={data => submitAndNavigate(saveReport, data)}
         validate={validate}
         render={({ handleSubmit, pristine, invalid }) => (
           <form onSubmit={handleSubmit}>
@@ -73,7 +64,7 @@ const MyForm = () => (
             </H3>
             <div>
               <Field
-                name="how_affected"
+                name="howWereYouAffected"
                 component="textarea"
                 className={textArea}
                 placeholder=""
