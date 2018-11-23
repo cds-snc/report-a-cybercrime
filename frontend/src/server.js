@@ -2,6 +2,7 @@ import { getDataFromTree } from 'react-apollo'
 import express from 'express'
 import requestLanguage from 'express-request-language'
 import { renderToString } from 'react-dom/server'
+import { renderStylesToString } from 'emotion-server'
 import { withLanguageSwitching } from './withLanguageSwitching'
 import createApolloClient from './utils/createApolloClient'
 import App from './App'
@@ -32,7 +33,9 @@ server
     })
 
     getDataFromTree(withLanguageSwitching(App, client)).then(() => {
-      const markup = renderToString(withLanguageSwitching(App, client))
+      const markup = renderStylesToString(
+        renderToString(withLanguageSwitching(App, client)),
+      )
 
       res.status(200).send(`
         <!doctype html>
