@@ -1,11 +1,12 @@
 import React from 'react'
-import { navigate } from '@reach/router'
+import { Link, navigate } from '@reach/router'
 import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
 import { H1, H3 } from '@govuk-react/header'
 import ListItem from '@govuk-react/list-item'
+import Breadcrumb from '@govuk-react/breadcrumb'
 
 const labelFormat = css`
   margin-top: 20pt;
@@ -61,8 +62,14 @@ const MyForm = () => (
 
 export const Screen1 = () => (
   <div>
+    <Breadcrumb>
+      <Link to={'/'}>
+        <Trans>Landing Page</Trans>
+      </Link>
+    </Breadcrumb>
+
     <H1>
-      <Trans>Describe what happened.</Trans>
+      <Trans>Describe what happened</Trans>
     </H1>
 
     <ListItem className={listitem}>
