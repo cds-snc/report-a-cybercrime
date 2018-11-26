@@ -22,6 +22,12 @@ const submitButton = css`
   margin-top: 20pt;
 `
 
+const labelStyle = css`
+  margin-bottom: 8pt;
+  font-size: 1.25rem;
+  display: block;
+`
+
 const submitAndNavigate = (client, data) => {
   client.writeData({
     data: Object.keys(data).length !== 0 ? data : { whatWasInvolved: [] },
@@ -48,7 +54,7 @@ const MyForm = options => (
               <div>
                 {Object.keys(options).map(key => {
                   return (
-                    <label key={key}>
+                    <label key={key} className={labelStyle}>
                       <Field
                         name="whatWasInvolved"
                         component="input"
