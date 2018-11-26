@@ -10,7 +10,7 @@ describe('Server Side Rendering', () => {
 
       let { text } = response
 
-      expect(text).toMatch(/Pour usage interne uniquement/)
+      expect(text).toMatch(/Pour usage interne seulement./)
     })
   })
 

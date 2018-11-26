@@ -18,28 +18,43 @@
     },
   },
   messages: {
+    'Bank accounts': 'Bank accounts',
     'Choose all that apply': 'Choose all that apply',
+    'Describe what happened': 'Describe what happened',
     'Describe what happened.': 'Describe what happened.',
     'Describe what happened. Provide as much information as you can.':
       'Describe what happened. Provide as much information as you can.',
     'Did you lose money or personal information?':
       'Did you lose money or personal information?',
+    'Email address': 'Email address',
     'For internal use only': 'For internal use only',
+    'For internal use only.': 'For internal use only.',
+    'Have you or someone you know encountered a cybercrime ?':
+      'Have you or someone you know encountered a cybercrime ?',
     'Have you or someone you know encountered a cybercrime?':
       'Have you or someone you know encountered a cybercrime?',
     'How were you affected?': 'How were you affected?',
     'I\u2019m not sure': 'I\u2019m not sure',
+    'Landing Page': 'Landing Page',
     'Language Selection': 'Language Selection',
     Next: 'Next',
+    Phone: 'Phone',
+    'Please do not provide any personal information.':
+      'Please do not provide any personal information.',
     'Report a cybercrime': 'Report a cybercrime',
     'Select where you encountered the cybercrime.':
       'Select where you encountered the cybercrime.',
+    'Share how you were impacted.': 'Share how you were impacted.',
     'Share how you were you impacted.': 'Share how you were you impacted.',
     'Share your story': 'Share your story',
+    'Share your story\u2192': 'Share your story\u2192',
+    'Social media accounts': 'Social media accounts',
     Submit: 'Submit',
+    'Text messages': 'Text messages',
     'Thank you for sharing your story.': 'Thank you for sharing your story.',
     'Was your reputation or productivity affected?':
       'Was your reputation or productivity affected?',
+    Website: 'Website',
     'What happened?': 'What happened?',
     'What was involved?': 'What was involved?',
     'What was your reaction?': 'What was your reaction?',

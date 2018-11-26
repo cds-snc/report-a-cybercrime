@@ -3,7 +3,6 @@ import { Router } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { css } from 'emotion'
 import PhaseBanner from '@govuk-react/phase-banner'
-import { ReportScreen } from './report_screen'
 import { LandingPage } from './LandingPage'
 import { Screen1 } from './Screen1'
 import { Screen2 } from './Screen2'
@@ -31,7 +30,6 @@ const Home = () => (
         <Screen2 path="form2" />
         <Screen3 path="form3" />
         <Thanks path="thanks" />
-        <ReportScreen path="test" />
       </Router>
     </div>
   </div>

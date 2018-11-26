@@ -19,6 +19,7 @@ const typeDefs = `
 function createApolloClient({
   initialState = { language: 'en' },
   ssrMode = true,
+  uri,
 }) {
   const cache = new InMemoryCache().restore(initialState)
 
@@ -52,7 +53,7 @@ function createApolloClient({
     link: ApolloLink.from([
       stateLink,
       createHttpLink({
-        uri: 'https://swapi.graph.cool/',
+        uri,
         credentials: 'same-origin',
         fetch,
       }),

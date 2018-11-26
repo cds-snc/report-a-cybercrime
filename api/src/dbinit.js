@@ -9,6 +9,14 @@ const dbinit = async db => {
       let results = await db.query(query)
       return results.next()
     },
+    saveReport: async report => {
+      let query = aql`
+        INSERT ${report} IN reports
+        RETURN NEW
+  `
+      let results = await db.query(query)
+      return results.next()
+    },
   }
 }
 module.exports.dbinit = dbinit

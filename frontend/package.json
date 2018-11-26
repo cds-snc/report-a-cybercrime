@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "razzle start",
     "build": "razzle build",
+    "heroku-postbuild": "razzle build",
     "test": "jest",
     "lint": "eslint 'src/**/*.js'",
     "start": "NODE_ENV=production node build/server.js",

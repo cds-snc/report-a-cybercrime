@@ -6,6 +6,8 @@ import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
 import { H1, H3 } from '@govuk-react/header'
 import ListItem from '@govuk-react/list-item'
+import gql from 'graphql-tag'
+import { ApolloConsumer, Mutation } from 'react-apollo'
 import Breadcrumb from '@govuk-react/breadcrumb'
 
 const centercontent = css`
@@ -29,42 +31,79 @@ const textArea = css`
   font-size: 19pt;
 `
 
-const onSubmit = () => {
+export const SAVE_REPORT_MUTATION = gql`
+  mutation saveReport(
+    $whatHappened: String
+    $whatWasInvolved: String
+    $howWereYouAffected: String
+  ) {
+    saveReport(
+      whatHappened: $whatHappened
+      whatWasInvolved: $whatWasInvolved
+      howWereYouAffected: $howWereYouAffected
+    ) {
+      whatHappened
+      whatWasInvolved
+      howWereYouAffected
+    }
+  }
+`
+
+const submitAndNavigate = (client, saveReport, { howWereYouAffected }) => {
+  let data = client.readQuery({
+    query: gql`
+      query readCache {
+        whatHappened
+        whatWasInvolved
+      }
+    `,
+  })
+  data.howWereYouAffected = howWereYouAffected
+  data.whatWasInvolved = data.whatWasInvolved.join(', ')
+  saveReport({ variables: data })
   navigate('thanks')
 }
 
 const validate = () => {}
 
 const MyForm = () => (
-  <Form
-    onSubmit={onSubmit}
-    validate={validate}
-    render={({ handleSubmit, pristine, invalid }) => (
-      <form onSubmit={handleSubmit}>
-        <H3 className={labelFormat}>
-          <label>
-            <Trans>How were you affected?</Trans>
-          </label>
-        </H3>
-        <div>
-          <Field
-            name="how_affected"
-            component="textarea"
-            className={textArea}
-            placeholder=""
-          />
-        </div>
+  <ApolloConsumer>
+    {client => (
+      <Mutation mutation={SAVE_REPORT_MUTATION}>
+        {saveReport => (
+          <Form
+            onSubmit={data => submitAndNavigate(client, saveReport, data)}
+            validate={validate}
+            render={({ handleSubmit, pristine, invalid }) => (
+              <form onSubmit={handleSubmit}>
+                <H3 className={labelFormat}>
+                  <label>
+                    <Trans>How were you affected?</Trans>
+                  </label>
+                </H3>
+                <div>
+                  <Field
+                    name="howWereYouAffected"
+                    component="textarea"
+                    className={textArea}
+                    placeholder=""
+                  />
+                </div>
 
-        <Button
-          className={submitButton}
-          type="submit"
-          disabled={pristine || invalid}
-        >
-          <Trans>Next</Trans>
-        </Button>
-      </form>
+                <Button
+                  className={submitButton}
+                  type="submit"
+                  disabled={pristine || invalid}
+                >
+                  <Trans>Next</Trans>
+                </Button>
+              </form>
+            )}
+          />
+        )}
+      </Mutation>
     )}
-  />
+  </ApolloConsumer>
 )
 
 export const Screen3 = () => (
