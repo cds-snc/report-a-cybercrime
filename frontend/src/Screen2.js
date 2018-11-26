@@ -16,7 +16,9 @@ const submitButton = css`
 `
 
 const submitAndNavigate = (client, data) => {
-  client.writeData({ data: data })
+  client.writeData({
+    data: Object.keys(data).length !== 0 ? data : { whatWasInvolved: [] },
+  })
   navigate('/form3')
 }
 

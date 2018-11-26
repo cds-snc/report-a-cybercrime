@@ -52,7 +52,7 @@ function createApolloClient({
     link: ApolloLink.from([
       stateLink,
       createHttpLink({
-        uri: 'http://api:4000/',
+        uri: 'http://api:3000/',
         credentials: 'same-origin',
         fetch,
       }),
