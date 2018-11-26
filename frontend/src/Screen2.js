@@ -22,7 +22,7 @@ const submitButton = css`
   margin-top: 20pt;
 `
 
-const labelStyle = css`
+const checkboxStyle = css`
   margin-bottom: 8pt;
   font-size: 1.25rem;
   display: block;
@@ -54,7 +54,7 @@ const MyForm = options => (
               <div>
                 {Object.keys(options).map(key => {
                   return (
-                    <label key={key} className={labelStyle}>
+                    <label key={key} className={checkboxStyle}>
                       <Field
                         name="whatWasInvolved"
                         component="input"
