@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
-import { H1 } from '@govuk-react/header'
+import { H1, H3 } from '@govuk-react/header'
 
 const centercontent = css`
   max-width: 750px;
@@ -19,6 +19,12 @@ export const Thanks = () => (
     <H1>
       <Trans>Thank you for sharing your story.</Trans>
     </H1>
+
+    <H3>
+      <Trans>
+        You are the 5th person to use this tool to share a cybercrime story.
+      </Trans>
+    </H3>
 
     <div className={paragraph}>
       For more information on how to stay safe online, you can visit{' '}

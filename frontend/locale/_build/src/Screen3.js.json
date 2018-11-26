@@ -1,17 +1,26 @@
 {
   "How were you affected?": {
-    "origin": [["src/Screen3.js", 39], ["src/Screen3.js", 68]]
+    "origin": [["src/Screen3.js", 81], ["src/Screen3.js", 123]]
   },
   "Next": {
-    "origin": [["src/Screen3.js", 56]]
+    "origin": [["src/Screen3.js", 98]]
+  },
+  "Landing Page": {
+    "origin": [["src/Screen3.js", 113]]
+  },
+  "What happened?": {
+    "origin": [["src/Screen3.js", 116]]
+  },
+  "What was involved?": {
+    "origin": [["src/Screen3.js", 119]]
   },
   "What was your reaction?": {
-    "origin": [["src/Screen3.js", 72]]
+    "origin": [["src/Screen3.js", 127]]
   },
   "Did you lose money or personal information?": {
-    "origin": [["src/Screen3.js", 75]]
+    "origin": [["src/Screen3.js", 130]]
   },
   "Was your reputation or productivity affected?": {
-    "origin": [["src/Screen3.js", 78]]
+    "origin": [["src/Screen3.js", 133]]
   }
 }

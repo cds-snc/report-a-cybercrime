@@ -1,107 +1,181 @@
 {
+  "Bank accounts": {
+    "translation": "Bank accounts",
+    "origin": [["src/Screen2.js", 81]]
+  },
   "Choose all that apply": {
     "translation": "Choose all that apply",
-    "origin": [["src/Screen2.js", 32]]
+    "origin": [["src/Screen2.js", 45]]
+  },
+  "Describe what happened": {
+    "translation": "Describe what happened",
+    "origin": [["src/Screen1.js", 90]]
   },
   "Describe what happened.": {
     "translation": "Describe what happened.",
-    "origin": [["src/Screen1.js", 67]]
+    "origin": [["src/Screen1.js", 67]],
+    "obsolete": true
   },
   "Describe what happened. Provide as much information as you can.": {
     "translation": "Describe what happened. Provide as much information as you can.",
-    "origin": [["src/LandingPage.js", 32]]
+    "origin": [["src/LandingPage.js", 34]]
   },
   "Did you lose money or personal information?": {
     "translation": "Did you lose money or personal information?",
-    "origin": [["src/Screen3.js", 75]]
+    "origin": [["src/Screen3.js", 130]]
+  },
+  "Email address": {
+    "translation": "Email address",
+    "origin": [["src/Screen2.js", 77]]
   },
   "For internal use only": {
     "translation": "For internal use only",
-    "origin": [["src/Home.js", 24]]
+    "origin": [["src/Home.js", 24]],
+    "obsolete": true
+  },
+  "For internal use only.": {
+    "translation": "For internal use only.",
+    "origin": [["src/Home.js", 23]]
+  },
+  "Have you or someone you know encountered a cybercrime ?": {
+    "translation": "Have you or someone you know encountered a cybercrime ?",
+    "origin": [["src/LandingPage.js", 30]]
   },
   "Have you or someone you know encountered a cybercrime?": {
     "translation": "Have you or someone you know encountered a cybercrime?",
-    "origin": [["src/LandingPage.js", 26]]
+    "origin": [["src/LandingPage.js", 26]],
+    "obsolete": true
   },
   "How were you affected?": {
     "translation": "How were you affected?",
     "origin": [
-      ["src/Screen1.js", 77],
-      ["src/Screen3.js", 39],
-      ["src/Screen3.js", 68]
+      ["src/Screen1.js", 100],
+      ["src/Screen3.js", 81],
+      ["src/Screen3.js", 123]
     ]
   },
   "I’m not sure": {
     "translation": "I’m not sure",
-    "origin": [["src/Screen2.js", 69]]
+    "origin": [["src/Screen2.js", 82]]
+  },
+  "Landing Page": {
+    "translation": "Landing Page",
+    "origin": [
+      ["src/Screen1.js", 85],
+      ["src/Screen2.js", 89],
+      ["src/Screen3.js", 113]
+    ]
   },
   "Language Selection": {
     "translation": "Language Selection",
-    "origin": [["src/LanguageSwitcher.js", 41]]
+    "origin": [["src/LanguageSwitcher.js", 44]]
   },
   "Next": {
     "translation": "Next",
-    "origin": [["src/Screen2.js", 53], ["src/Screen3.js", 56]]
+    "origin": [
+      ["src/Screen1.js", 72],
+      ["src/Screen2.js", 66],
+      ["src/Screen3.js", 98]
+    ]
+  },
+  "Phone": {
+    "translation": "Phone",
+    "origin": [["src/Screen2.js", 78]]
+  },
+  "Please do not provide any personal information.": {
+    "translation": "Please do not provide any personal information.",
+    "origin": [["src/Screen1.js", 105]]
   },
   "Report a cybercrime": {
     "translation": "Report a cybercrime",
-    "origin": [["src/report_screen.js", 41]]
+    "origin": [["src/report_screen.js", 41]],
+    "obsolete": true
   },
   "Select where you encountered the cybercrime.": {
     "translation": "Select where you encountered the cybercrime.",
-    "origin": [["src/LandingPage.js", 37]]
+    "origin": [["src/LandingPage.js", 39]]
+  },
+  "Share how you were impacted.": {
+    "translation": "Share how you were impacted.",
+    "origin": [["src/LandingPage.js", 42]]
   },
   "Share how you were you impacted.": {
     "translation": "Share how you were you impacted.",
-    "origin": [["src/LandingPage.js", 40]]
+    "origin": [["src/LandingPage.js", 40]],
+    "obsolete": true
   },
   "Share your story": {
     "translation": "Share your story",
+    "origin": [["src/LandingPage.js", 48]],
+    "obsolete": true
+  },
+  "Share your story→": {
+    "translation": "Share your story→",
     "origin": [["src/LandingPage.js", 48]]
+  },
+  "Social media accounts": {
+    "translation": "Social media accounts",
+    "origin": [["src/Screen2.js", 80]]
   },
   "Submit": {
     "translation": "Submit",
-    "origin": [["src/Screen1.js", 55], ["src/report_screen.js", 49]]
+    "origin": [["src/Screen1.js", 55], ["src/report_screen.js", 49]],
+    "obsolete": true
+  },
+  "Text messages": {
+    "translation": "Text messages",
+    "origin": [["src/Screen2.js", 79]]
   },
   "Thank you for sharing your story.": {
     "translation": "Thank you for sharing your story.",
-    "origin": [["src/thanks.js", 17]]
+    "origin": [["src/thanks.js", 20]]
   },
   "Was your reputation or productivity affected?": {
     "translation": "Was your reputation or productivity affected?",
-    "origin": [["src/Screen3.js", 78]]
+    "origin": [["src/Screen3.js", 133]]
+  },
+  "Website": {
+    "translation": "Website",
+    "origin": [["src/Screen2.js", 76]]
   },
   "What happened?": {
     "translation": "What happened?",
-    "origin": [["src/Screen1.js", 38], ["src/report_screen.js", 46]]
+    "origin": [
+      ["src/Screen1.js", 55],
+      ["src/Screen2.js", 92],
+      ["src/Screen3.js", 116]
+    ]
   },
   "What was involved?": {
     "translation": "What was involved?",
-    "origin": [["src/Screen2.js", 74]]
+    "origin": [["src/Screen2.js", 96], ["src/Screen3.js", 119]]
   },
   "What was your reaction?": {
     "translation": "What was your reaction?",
-    "origin": [["src/Screen3.js", 72]]
+    "origin": [["src/Screen3.js", 127]]
   },
   "When did it take place?": {
     "translation": "When did it take place?",
-    "origin": [["src/Screen1.js", 71]]
+    "origin": [["src/Screen1.js", 94]]
   },
   "Who was involved?": {
     "translation": "Who was involved?",
-    "origin": [["src/Screen1.js", 74]]
+    "origin": [["src/Screen1.js", 97]]
   },
   "You do not need to provide any personal information.": {
     "translation": "You do not need to provide any personal information.",
-    "origin": [["src/LandingPage.js", 44]]
+    "origin": [["src/LandingPage.js", 44]],
+    "obsolete": true
   },
   "bank account": {
     "translation": "bank account",
-    "origin": [["src/Screen2.js", 68]]
+    "origin": [["src/Screen2.js", 68]],
+    "obsolete": true
   },
   "email": {
     "translation": "email",
-    "origin": [["src/Screen2.js", 64]]
+    "origin": [["src/Screen2.js", 64]],
+    "obsolete": true
   },
   "loading...": {
     "translation": "loading...",
@@ -109,18 +183,22 @@
   },
   "phone": {
     "translation": "phone",
-    "origin": [["src/Screen2.js", 65]]
+    "origin": [["src/Screen2.js", 65]],
+    "obsolete": true
   },
   "social media": {
     "translation": "social media",
-    "origin": [["src/Screen2.js", 67]]
+    "origin": [["src/Screen2.js", 67]],
+    "obsolete": true
   },
   "text message": {
     "translation": "text message",
-    "origin": [["src/Screen2.js", 66]]
+    "origin": [["src/Screen2.js", 66]],
+    "obsolete": true
   },
   "website": {
     "translation": "website",
-    "origin": [["src/Screen2.js", 63]]
+    "origin": [["src/Screen2.js", 63]],
+    "obsolete": true
   }
 }
