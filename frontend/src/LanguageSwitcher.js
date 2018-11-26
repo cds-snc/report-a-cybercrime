@@ -25,7 +25,9 @@ const A = styled('a')`
     cursor: pointer;
   }
 `
-
+const thing = css`
+  align-content: right;
+`
 const langHeader = css`
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
@@ -33,10 +35,11 @@ const langHeader = css`
   margin: 0;
   overflow: hidden;
   position: absolute;
+  align-content: right;
 `
 
 export const LanguageSwitcher = () => (
-  <section>
+  <section className={thing}>
     <h2 className={langHeader}>
       <Trans>Language Selection</Trans>
     </h2>

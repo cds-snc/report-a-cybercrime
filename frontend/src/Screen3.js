@@ -8,6 +8,11 @@ import { H1, H3 } from '@govuk-react/header'
 import ListItem from '@govuk-react/list-item'
 import Breadcrumb from '@govuk-react/breadcrumb'
 
+const centercontent = css`
+  max-width: 750px;
+  margin: auto;
+`
+
 const labelFormat = css`
   margin-top: 20pt;
 `
@@ -21,6 +26,7 @@ const listitem = css`
 const textArea = css`
   width: 500pt;
   height: 200pt;
+  font-size: 19pt;
 `
 
 const onSubmit = () => {
@@ -62,7 +68,7 @@ const MyForm = () => (
 )
 
 export const Screen3 = () => (
-  <div>
+  <div className={centercontent}>
     <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
