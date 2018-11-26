@@ -26,6 +26,13 @@ server
       languages: ['en', 'fr'],
     }),
   )
+  .get('/monitoring/alive', (req, res) => {
+    res.status(200).send('yes')
+  })
+  .get('/monitoring/ready', (req, res) => {
+    res.status(200).send('yes')
+  })
+
   .get('/*', (req, res) => {
     const client = createApolloClient({
       initialState: { language: req.language },
