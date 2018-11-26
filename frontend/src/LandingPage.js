@@ -42,7 +42,7 @@ export const LandingPage = () => (
       <Trans> Share how you were impacted. </Trans>{' '}
     </ListItem>
     <WarningText className={warning}>
-      Please do not need to provide any personal information.{' '}
+      Please do not provide any personal information.{' '}
     </WarningText>
     <Link to={'form1'} className={link}>
       <Trans> Share your story→ </Trans>{' '}
