@@ -29,6 +29,18 @@ spec:
             - name: PORT
               value: '3000'
           resources: {}
+          livenessProbe:
+            httpGet:
+              path: /monitoring/alive
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /monitoring/ready
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
