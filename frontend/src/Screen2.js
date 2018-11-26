@@ -1,11 +1,13 @@
 import React from 'react'
-import { navigate } from '@reach/router'
+import { navigate, Link } from '@reach/router'
+
 import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
 import { H1, H3 } from '@govuk-react/header'
 import { ApolloConsumer } from 'react-apollo'
+import Breadcrumb from '@govuk-react/breadcrumb'
 
 const labelFormat = css`
   margin-top: 20pt;
@@ -77,6 +79,14 @@ const options = {
 
 export const Screen2 = () => (
   <div>
+    <Breadcrumb>
+      <Link to={'/'}>
+        <Trans>Landing Page</Trans>
+      </Link>
+      <Link to={'/form1'}>
+        <Trans>What happened?</Trans>
+      </Link>
+    </Breadcrumb>
     <H1>
       <Trans>What was involved?</Trans>
     </H1>

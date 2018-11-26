@@ -9,7 +9,7 @@ const Server = async db => {
 
   app.use(
     '/',
-    cors({ origin: 'http://localhost:3000' }),
+    cors(),
     graphqlHTTP({
       schema,
       graphiql: true,

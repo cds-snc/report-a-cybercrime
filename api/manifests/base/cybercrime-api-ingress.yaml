@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: cybercrime-api
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  name: cybercrime-api-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: cybercrime-api
+              servicePort: api-port
+            path: /graphql

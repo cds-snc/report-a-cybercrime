@@ -1,0 +1,6 @@
+bases:
+  - ../../base
+resources:
+  - traefik-ingress-service.yaml
+patches:
+  - traefik-ingress-controller-deployment.yaml

@@ -1,6 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  namespace: cybercrime-api
   creationTimestamp: null
   labels:
     app: arangodb
@@ -41,10 +42,10 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /var/lib/arangodb3
-              name: arangodb-claim0
+              name: arangodb-claim
       restartPolicy: Always
       volumes:
-        - name: arangodb-claim0
+        - name: arangodb-claim
           persistentVolumeClaim:
-            claimName: arangodb-claim0
+            claimName: arangodb-claim
 status: {}
