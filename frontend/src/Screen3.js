@@ -10,6 +10,11 @@ import gql from 'graphql-tag'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import Breadcrumb from '@govuk-react/breadcrumb'
 
+const centercontent = css`
+  max-width: 750px;
+  margin: auto;
+`
+
 const labelFormat = css`
   margin-top: 20pt;
 `
@@ -23,6 +28,7 @@ const listitem = css`
 const textArea = css`
   width: 500pt;
   height: 200pt;
+  font-size: 19pt;
 `
 
 export const SAVE_REPORT_MUTATION = gql`
@@ -101,7 +107,7 @@ const MyForm = () => (
 )
 
 export const Screen3 = () => (
-  <div>
+  <div className={centercontent}>
     <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>

@@ -9,6 +9,15 @@ import { H1, H3 } from '@govuk-react/header'
 import ListItem from '@govuk-react/list-item'
 import Breadcrumb from '@govuk-react/breadcrumb'
 
+const warning = css`
+  color: green;
+  font-size: 19pts;
+`
+
+const centercontent = css`
+  max-width: 750px;
+  margin: auto;
+`
 const labelFormat = css`
   margin-top: 20pt;
 `
@@ -18,10 +27,12 @@ const submitButton = css`
 const listitem = css`
   margin: 5pt;
   margin-left: 20pt;
+  font-size: 19pt;
 `
 const textArea = css`
   width: 500pt;
   height: 200pt;
+  font-size: 19pt;
 `
 
 const submitAndNavigate = (client, data) => {
@@ -58,7 +69,7 @@ const MyForm = () => (
               type="submit"
               disabled={pristine || invalid}
             >
-              <Trans>Submit</Trans>
+              <Trans>Next</Trans>
             </Button>
           </form>
         )}
@@ -68,7 +79,7 @@ const MyForm = () => (
 )
 
 export const Screen1 = () => (
-  <div>
+  <div className={centercontent}>
     <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
@@ -87,6 +98,12 @@ export const Screen1 = () => (
     </ListItem>
     <ListItem className={listitem}>
       <Trans>How were you affected?</Trans>
+    </ListItem>
+
+    <ListItem className={listitem}>
+      <div className={warning}>
+        <Trans> Please do not provide any personal information. </Trans>{' '}
+      </div>
     </ListItem>
 
     {MyForm()}

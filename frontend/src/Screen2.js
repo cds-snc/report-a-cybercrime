@@ -9,6 +9,11 @@ import { H1, H3 } from '@govuk-react/header'
 import { ApolloConsumer } from 'react-apollo'
 import Breadcrumb from '@govuk-react/breadcrumb'
 
+const centercontent = css`
+  max-width: 750px;
+  margin: auto;
+`
+
 const labelFormat = css`
   margin-top: 20pt;
 `
@@ -68,17 +73,17 @@ const MyForm = options => (
 )
 
 const options = {
-  website: <Trans>website</Trans>,
-  email: <Trans>email</Trans>,
-  phone: <Trans>phone</Trans>,
-  'text message': <Trans>text message</Trans>,
-  'social media': <Trans>social media</Trans>,
-  'bank account': <Trans>bank account</Trans>,
+  website: <Trans>Website</Trans>,
+  email: <Trans>Email address</Trans>,
+  phone: <Trans>Phone</Trans>,
+  'text message': <Trans>Text messages</Trans>,
+  'social media': <Trans>Social media accounts</Trans>,
+  'bank account': <Trans>Bank accounts</Trans>,
   "I'm not sure": <Trans>I’m not sure</Trans>,
 }
 
 export const Screen2 = () => (
-  <div>
+  <div className={centercontent}>
     <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>

@@ -3,6 +3,11 @@ import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { H1 } from '@govuk-react/header'
 
+const centercontent = css`
+  max-width: 750px;
+  margin: auto;
+`
+
 const paragraph = css`
   padding-top: 20pt;
   padding-bottom: 20pt;
@@ -10,7 +15,7 @@ const paragraph = css`
 `
 
 export const Thanks = () => (
-  <div>
+  <div className={centercontent}>
     <H1>
       <Trans>Thank you for sharing your story.</Trans>
     </H1>
