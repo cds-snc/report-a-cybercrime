@@ -30,6 +30,7 @@ server
     const client = createApolloClient({
       initialState: { language: req.language },
       ssrMode: true,
+      uri: 'http://api/graphql',
     })
 
     getDataFromTree(withLanguageSwitching(App, client)).then(() => {
