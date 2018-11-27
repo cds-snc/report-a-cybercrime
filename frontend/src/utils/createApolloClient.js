@@ -44,6 +44,10 @@ function createApolloClient({
     },
     defaults: {
       language: initialState.language,
+      whatHappened: '',
+      whatWasInvolved: [],
+      whatWasInvolvedOther: '',
+      howWereYouAffected: '',
     },
     typeDefs,
   })
