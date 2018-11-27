@@ -2,6 +2,7 @@ FROM node:11-alpine AS build-env
 ADD . /app
 WORKDIR /app
 RUN npm ci
+RUN npm run compile
 RUN npm run build
 
 FROM node:11-alpine

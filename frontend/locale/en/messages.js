@@ -29,6 +29,8 @@
     'Email address': 'Email address',
     'For internal use only': 'For internal use only',
     'For internal use only.': 'For internal use only.',
+    'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>':
+      'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>',
     'Have you or someone you know encountered a cybercrime ?':
       'Have you or someone you know encountered a cybercrime ?',
     'Have you or someone you know encountered a cybercrime?':
@@ -52,6 +54,8 @@
     'Share your story\u2192': 'Share your story\u2192',
     'Social media accounts': 'Social media accounts',
     Submit: 'Submit',
+    'Tell us your story in three easy steps:':
+      'Tell us your story in three easy steps:',
     'Text messages': 'Text messages',
     'Thank you for sharing your story.': 'Thank you for sharing your story.',
     'Was your reputation or productivity affected?':
