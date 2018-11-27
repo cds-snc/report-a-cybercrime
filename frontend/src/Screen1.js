@@ -94,18 +94,16 @@ export const Screen1 = () => (
       <Trans>When did it take place?</Trans>
     </ListItem>
     <ListItem className={listitem}>
-      <Trans>Who was involved?</Trans>
+      <Trans>In general terms, who was involved?</Trans>
     </ListItem>
     <ListItem className={listitem}>
       <Trans>How were you affected?</Trans>
     </ListItem>
-
     <ListItem className={listitem}>
       <div className={warning}>
         <Trans> Please do not provide any personal information. </Trans>{' '}
       </div>
     </ListItem>
-
     {MyForm()}
   </div>
 )

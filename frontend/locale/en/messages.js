@@ -34,6 +34,8 @@
     'Have you or someone you know encountered a cybercrime?':
       'Have you or someone you know encountered a cybercrime?',
     'How were you affected?': 'How were you affected?',
+    'In general terms, who was involved?':
+      'In general terms, who was involved?',
     'I\u2019m not sure': 'I\u2019m not sure',
     'Landing Page': 'Landing Page',
     'Language Selection': 'Language Selection',
@@ -60,6 +62,8 @@
     'What was your reaction?': 'What was your reaction?',
     'When did it take place?': 'When did it take place?',
     'Who was involved?': 'Who was involved?',
+    'You are the 5th person to use this tool to share a cybercrime story.':
+      'You are the 5th person to use this tool to share a cybercrime story.',
     'You do not need to provide any personal information.':
       'You do not need to provide any personal information.',
     'bank account': 'bank account',

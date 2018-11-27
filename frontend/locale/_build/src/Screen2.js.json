@@ -1,38 +1,38 @@
 {
   "Choose all that apply": {
-    "origin": [["src/Screen2.js", 45]]
+    "origin": [["src/Screen2.js", 51]]
   },
   "Next": {
-    "origin": [["src/Screen2.js", 66]]
+    "origin": [["src/Screen2.js", 72]]
   },
   "Website": {
-    "origin": [["src/Screen2.js", 76]]
-  },
-  "Email address": {
-    "origin": [["src/Screen2.js", 77]]
-  },
-  "Phone": {
-    "origin": [["src/Screen2.js", 78]]
-  },
-  "Text messages": {
-    "origin": [["src/Screen2.js", 79]]
-  },
-  "Social media accounts": {
-    "origin": [["src/Screen2.js", 80]]
-  },
-  "Bank accounts": {
-    "origin": [["src/Screen2.js", 81]]
-  },
-  "I’m not sure": {
     "origin": [["src/Screen2.js", 82]]
   },
+  "Email address": {
+    "origin": [["src/Screen2.js", 83]]
+  },
+  "Phone": {
+    "origin": [["src/Screen2.js", 84]]
+  },
+  "Text messages": {
+    "origin": [["src/Screen2.js", 85]]
+  },
+  "Social media accounts": {
+    "origin": [["src/Screen2.js", 86]]
+  },
+  "Bank accounts": {
+    "origin": [["src/Screen2.js", 87]]
+  },
+  "I’m not sure": {
+    "origin": [["src/Screen2.js", 88]]
+  },
   "Landing Page": {
-    "origin": [["src/Screen2.js", 89]]
+    "origin": [["src/Screen2.js", 95]]
   },
   "What happened?": {
-    "origin": [["src/Screen2.js", 92]]
+    "origin": [["src/Screen2.js", 98]]
   },
   "What was involved?": {
-    "origin": [["src/Screen2.js", 96]]
+    "origin": [["src/Screen2.js", 102]]
   }
 }
