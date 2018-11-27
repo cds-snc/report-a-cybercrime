@@ -6,7 +6,7 @@
     },
   },
   messages: {
-    'Bank accounts': 'Bank accounts',
+    'Bank accounts': 'Comptes bancaires',
     'Choose all that apply': "Cochez toutes les r\xE9ponses qui s'appliquent",
     'Describe what happened': "D\xE9crivez ce qui s'est pass\xE9",
     'Describe what happened.': "D\xE9crivez ce qui s'est pass\xE9.",
@@ -14,7 +14,7 @@
       "D\xE9crivez ce qui s'est pass\xE9. Veuillez fournir autant de renseignements que possible.",
     'Did you lose money or personal information?':
       "Avez-vous perdu de l'argent ou des renseignements personnels ?",
-    'Email address': 'Email address',
+    'Email address': 'Adresse de courriel',
     'For internal use only': 'Pour usage interne seulement',
     'For internal use only.': 'Pour usage interne seulement.',
     'Have you or someone you know encountered a cybercrime ?':
@@ -22,13 +22,15 @@
     'Have you or someone you know encountered a cybercrime?':
       "Avez-vous, ou connaissez-vous quelqu'un qui a, \xE9t\xE9 confront\xE9 \xE0 un cybercrime ?",
     'How were you affected?': 'Comment avez-vous \xE9t\xE9 affect\xE9?',
+    'In general terms, who was involved?':
+      'En termes g\xE9n\xE9raux, qui \xE9tait impliqu\xE9 ?',
     'I\u2019m not sure': 'Je ne suis pas certain(e)',
-    'Landing Page': 'Landing Page',
+    'Landing Page': "Page d'atterrissage",
     'Language Selection': 'Choix de langue',
     Next: 'Suivant',
     Phone: 'Phone',
     'Please do not provide any personal information.':
-      'Please do not provide any personal information.',
+      'Veuillez ne pas fournir de renseignements personnels.',
     'Report a cybercrime': 'Signalez un cas de cybercriminalit\xE9',
     'Select where you encountered the cybercrime.':
       'Veuillez s\xE9lectionner o\xF9 vous avez rencontr\xE9 la cybercriminalit\xE9.',
@@ -38,9 +40,9 @@
       'Partagez comment vous avez \xE9t\xE9 affect\xE9.',
     'Share your story': 'Partagez votre histoire',
     'Share your story\u2192': 'Partagez votre histoire\u2192',
-    'Social media accounts': 'Social media accounts',
+    'Social media accounts': 'Comptes de m\xE9dias sociaux',
     Submit: 'Soumettre',
-    'Text messages': 'Text messages',
+    'Text messages': 'Messages texte',
     'Thank you for sharing your story.':
       "Merci d'avoir partag\xE9 votre histoire.",
     'Was your reputation or productivity affected?':
@@ -51,6 +53,8 @@
     'What was your reaction?': 'Quelle a \xE9t\xE9 votre r\xE9action?',
     'When did it take place?': "Quand cela s'est-il pass\xE9?",
     'Who was involved?': 'Qui \xE9tait impliqu\xE9?',
+    'You are the 5th person to use this tool to share a cybercrime story.':
+      'Vous \xEAtes la 5e personne \xE0 utiliser cet outil pour partager une histoire de cybercriminalit\xE9.',
     'You do not need to provide any personal information.':
       'Vous ne devez pas fournir des renseignements personnels.',
     'bank account': 'compte bancaire',

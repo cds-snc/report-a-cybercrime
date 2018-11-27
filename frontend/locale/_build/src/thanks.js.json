@@ -1,5 +1,8 @@
 {
   "Thank you for sharing your story.": {
     "origin": [["src/thanks.js", 20]]
+  },
+  "You are the 5th person to use this tool to share a cybercrime story.": {
+    "origin": [["src/thanks.js", 24]]
   }
 }
