@@ -33,9 +33,7 @@ export const LandingPage = () => (
       <Trans>Tell us your story in three easy steps:</Trans>
     </h3>
     <ListItem className={listitem}>
-      <Trans>
-        Describe what happened. Provide as much information as you can.{' '}
-      </Trans>{' '}
+      <Trans>Describe what happened.</Trans>{' '}
     </ListItem>{' '}
     <ListItem className={listitem}>
       <Trans> Select where you encountered the cybercrime. </Trans>{' '}
