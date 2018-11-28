@@ -7,6 +7,7 @@ import ListItem from '@govuk-react/list-item'
 import WarningText from '@govuk-react/warning-text'
 
 const warning = css`
+  font-family: Arial, sans-serif;
   padding-top: 20pt;
   padding-bottom: 20pt;
   color: green;
@@ -29,9 +30,9 @@ export const LandingPage = () => (
     <H1>
       <Trans> Have you or someone you know encountered a cybercrime ? </Trans>{' '}
     </H1>
-    <h3>
+    <H3>
       <Trans>Tell us your story in three easy steps:</Trans>
-    </h3>
+    </H3>
     <ListItem className={listitem}>
       <Trans>Describe what happened.</Trans>{' '}
     </ListItem>{' '}
