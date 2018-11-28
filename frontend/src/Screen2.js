@@ -5,7 +5,7 @@ import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
-import { H1, H3 } from '@govuk-react/header'
+import { H1, H3, H4 } from '@govuk-react/header'
 import { ApolloConsumer } from 'react-apollo'
 import Breadcrumb from '@govuk-react/breadcrumb'
 
@@ -13,25 +13,25 @@ const centercontent = css`
   max-width: 750px;
   margin: auto;
 `
-
 const labelFormat = css`
   margin-top: 20pt;
 `
-
 const submitButton = css`
   margin-top: 20pt;
 `
-
 const checkboxStyle = css`
   margin-bottom: 8pt;
   font-size: 1.25rem;
   display: block;
 `
+const textArea = css`
+  width: 500pt;
+  height: 200pt;
+  font-size: 19pt;
+`
 
 const submitAndNavigate = (client, data) => {
-  client.writeData({
-    data: Object.keys(data).length !== 0 ? data : { whatWasInvolved: [] },
-  })
+  client.writeData({ data })
   navigate('/form3')
 }
 
@@ -66,6 +66,19 @@ const MyForm = options => (
                   )
                 })}
               </div>
+            </div>
+            <H4 className={labelFormat}>
+              <label>
+                <Trans>Other</Trans>
+              </label>
+            </H4>
+            <div>
+              <Field
+                name="whatWasInvolvedOther"
+                component="textarea"
+                className={textArea}
+                placeholder=""
+              />
             </div>
 
             <Button className={submitButton} type="submit" disabled={invalid}>
