@@ -101,7 +101,7 @@ export const Screen1 = () => (
     </ListItem>
     <ListItem className={listitem}>
       <div className={warning}>
-        <Trans> Please do not provide any personal information. </Trans>{' '}
+        <Trans>Please do not provide any personal information.</Trans>{' '}
       </div>
     </ListItem>
     {MyForm()}

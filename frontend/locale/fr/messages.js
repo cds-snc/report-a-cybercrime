@@ -17,6 +17,8 @@
     'Email address': 'Adresse de courriel',
     'For internal use only': 'Pour usage interne seulement',
     'For internal use only.': 'Pour usage interne seulement.',
+    'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>':
+      "Pour plus d'informations sur la fa\xE7on de rester en s\xE9curit\xE9 en ligne, vous pouvez visiter <0>GetCyberSafe</0> et le <1>Top 10 des conseils de pr\xE9vention</1> de la cybercriminalit\xE9.",
     'Have you or someone you know encountered a cybercrime ?':
       "Avez-vous, ou connaissez-vous quelqu'un qui a, \xE9t\xE9 confront\xE9 \xE0 un cybercrime ?",
     'Have you or someone you know encountered a cybercrime?':
@@ -42,6 +44,8 @@
     'Share your story\u2192': 'Partagez votre histoire\u2192',
     'Social media accounts': 'Comptes de m\xE9dias sociaux',
     Submit: 'Soumettre',
+    'Tell us your story in three easy steps:':
+      'Racontez-nous votre histoire en trois \xE9tapes faciles:',
     'Text messages': 'Messages texte',
     'Thank you for sharing your story.':
       "Merci d'avoir partag\xE9 votre histoire.",
