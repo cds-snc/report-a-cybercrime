@@ -29,6 +29,10 @@
     'Email address': 'Email address',
     'For internal use only': 'For internal use only',
     'For internal use only.': 'For internal use only.',
+    'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>':
+      'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>',
+    'Have you or someone you know encountered a cybercrime ?':
+      'Have you or someone you know encountered a cybercrime ?',
     'Have you or someone you know encountered a cybercrime?':
       'Have you or someone you know encountered a cybercrime?',
     'How were you affected?': 'How were you affected?',
@@ -38,6 +42,7 @@
     'Landing Page': 'Landing Page',
     'Language Selection': 'Language Selection',
     Next: 'Next',
+    Other: 'Other',
     Phone: 'Phone',
     'Please do not provide any personal information.':
       'Please do not provide any personal information.',

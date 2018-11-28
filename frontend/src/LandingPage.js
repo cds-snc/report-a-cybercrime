@@ -30,8 +30,7 @@ export const LandingPage = () => (
       <Trans> Have you or someone you know encountered a cybercrime? </Trans>{' '}
     </H1>
     <H3>
-      {' '}
-      <Trans>Tell us your story in three easy steps:</Trans>{' '}
+      <Trans>Tell us your story in three easy steps:</Trans>
     </H3>
     <ListItem className={listitem}>
       <Trans>
@@ -42,13 +41,13 @@ export const LandingPage = () => (
       <Trans> Select where you encountered the cybercrime. </Trans>{' '}
     </ListItem>{' '}
     <ListItem className={listitem}>
-      <Trans> Share how you were impacted. </Trans>{' '}
+      <Trans>Share how you were impacted.</Trans>{' '}
     </ListItem>
     <WarningText className={warning}>
       <Trans>Please do not provide any personal information.</Trans>{' '}
     </WarningText>
     <Link to={'form1'} className={link}>
-      <Trans> Share your story→ </Trans>{' '}
+      <Trans>Share your story→ </Trans>{' '}
     </Link>{' '}
   </div>
 )

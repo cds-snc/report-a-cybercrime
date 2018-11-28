@@ -3,21 +3,21 @@
     "origin": [["src/LandingPage.js", 30]]
   },
   "Tell us your story in three easy steps:": {
-    "origin": [["src/LandingPage.js", 32]]
+    "origin": [["src/LandingPage.js", 33]]
   },
   "Describe what happened. Provide as much information as you can.": {
-    "origin": [["src/LandingPage.js", 34]]
+    "origin": [["src/LandingPage.js", 36]]
   },
   "Select where you encountered the cybercrime.": {
-    "origin": [["src/LandingPage.js", 39]]
+    "origin": [["src/LandingPage.js", 41]]
   },
   "Share how you were impacted.": {
-    "origin": [["src/LandingPage.js", 42]]
+    "origin": [["src/LandingPage.js", 44]]
   },
   "Please do not provide any personal information.": {
-    "origin": [["src/LandingPage.js", 45]]
+    "origin": [["src/LandingPage.js", 47]]
   },
   "Share your story→": {
-    "origin": [["src/LandingPage.js", 48]]
+    "origin": [["src/LandingPage.js", 50]]
   }
 }

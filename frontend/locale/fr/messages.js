@@ -17,6 +17,10 @@
     'Email address': 'Adresse de courriel',
     'For internal use only': 'Pour usage interne seulement',
     'For internal use only.': 'Pour usage interne seulement.',
+    'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>':
+      "Pour plus d'informations sur la fa\xE7on de rester en s\xE9curit\xE9 en ligne, vous pouvez visiter <0>GetCyberSafe</0> et le <1>Top 10 des conseils de pr\xE9vention</1> de la cybercriminalit\xE9.",
+    'Have you or someone you know encountered a cybercrime ?':
+      "Avez-vous, ou connaissez-vous quelqu'un qui a, \xE9t\xE9 confront\xE9 \xE0 un cybercrime ?",
     'Have you or someone you know encountered a cybercrime?':
       "Avez-vous, ou connaissez-vous quelqu'un qui a, \xE9t\xE9 confront\xE9 \xE0 un cybercrime?",
     'How were you affected?': 'Comment avez-vous \xE9t\xE9 affect\xE9?',
@@ -26,7 +30,8 @@
     'Landing Page': "Page d'atterrissage",
     'Language Selection': 'Choix de langue',
     Next: 'Suivant',
-    Phone: 'Phone',
+    Other: 'Autre',
+    Phone: 'T\xE9l\xE9phone',
     'Please do not provide any personal information.':
       'Veuillez ne pas fournir de renseignements personnels.',
     Privacy: 'Confidentialit\xE9',
@@ -48,7 +53,7 @@
       "Merci d'avoir partag\xE9 votre histoire.",
     'Was your reputation or productivity affected?':
       'Votre r\xE9putation ou votre productivit\xE9 ont-elles \xE9t\xE9 affect\xE9es?',
-    Website: 'Website',
+    Website: 'Site web',
     'What happened?': "Qu'est-ce qui s'est pass\xE9?",
     'What was involved?': "Qu'est-ce qui a \xE9t\xE9 impliqu\xE9?",
     'What was your reaction?': 'Quelle a \xE9t\xE9 votre r\xE9action?',

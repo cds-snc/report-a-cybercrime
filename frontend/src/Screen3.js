@@ -35,15 +35,18 @@ export const SAVE_REPORT_MUTATION = gql`
   mutation saveReport(
     $whatHappened: String
     $whatWasInvolved: String
+    $whatWasInvolvedOther: String
     $howWereYouAffected: String
   ) {
     saveReport(
       whatHappened: $whatHappened
       whatWasInvolved: $whatWasInvolved
+      whatWasInvolvedOther: $whatWasInvolvedOther
       howWereYouAffected: $howWereYouAffected
     ) {
       whatHappened
       whatWasInvolved
+      whatWasInvolvedOther
       howWereYouAffected
     }
   }
@@ -55,6 +58,7 @@ const submitAndNavigate = (client, saveReport, { howWereYouAffected }) => {
       query readCache {
         whatHappened
         whatWasInvolved
+        whatWasInvolvedOther
       }
     `,
   })

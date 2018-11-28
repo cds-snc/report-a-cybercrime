@@ -9,6 +9,9 @@ var Report = new GraphQLObjectType({
     whatWasInvolved: {
       type: GraphQLString,
     },
+    whatWasInvolvedOther: {
+      type: GraphQLString,
+    },
     howWereYouAffected: {
       type: GraphQLString,
     },
@@ -40,6 +43,10 @@ const mutation = new GraphQLObjectType({
           type: GraphQLString,
           description: 'What was involved',
         },
+        whatWasInvolvedOther: {
+          type: GraphQLString,
+          description: 'Free text field for what was involved',
+        },
         howWereYouAffected: {
           type: GraphQLString,
           description: 'How were you affected',
@@ -47,13 +54,19 @@ const mutation = new GraphQLObjectType({
       },
       resolve: (
         _root,
-        { whatHappened, whatWasInvolved, howWereYouAffected },
+        {
+          whatHappened,
+          whatWasInvolved,
+          whatWasInvolvedOther,
+          howWereYouAffected,
+        },
         { db },
         _info,
       ) => {
         return db.saveReport({
           whatHappened,
           whatWasInvolved,
+          whatWasInvolvedOther,
           howWereYouAffected,
         })
       },
