@@ -30,8 +30,8 @@ export const H1 = props => (
 )
 
 H1.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.Array, PropTypes.object]),
-  className: PropTypes.object,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  className: PropTypes.string,
 }
 
 export const H3 = props => (
@@ -39,8 +39,8 @@ export const H3 = props => (
 )
 
 H3.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.Array, PropTypes.object]),
-  className: PropTypes.object,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  className: PropTypes.string,
 }
 
 export const H4 = props => (
@@ -48,6 +48,6 @@ export const H4 = props => (
 )
 
 H4.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.Array, PropTypes.object]),
-  className: PropTypes.object,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  className: PropTypes.string,
 }
