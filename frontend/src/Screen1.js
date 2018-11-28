@@ -10,10 +10,12 @@ import ListItem from '@govuk-react/list-item'
 import Breadcrumb from '@govuk-react/breadcrumb'
 
 const warning = css`
+  display: block;
   color: green;
-  font-size: 19pts;
+  padding-top: 10pt;
+  margin-left: 0pt;
+  font-size: 19pt;
 `
-
 const centercontent = css`
   max-width: 750px;
   margin: auto;
@@ -99,11 +101,11 @@ export const Screen1 = () => (
     <ListItem className={listitem}>
       <Trans>How were you affected?</Trans>
     </ListItem>
-    <ListItem className={listitem}>
-      <div className={warning}>
-        <Trans> Please do not provide any personal information. </Trans>{' '}
-      </div>
-    </ListItem>
+
+    <span className={warning}>
+      <Trans> Please do not provide any personal information. </Trans>
+    </span>
+
     {MyForm()}
   </div>
 )
