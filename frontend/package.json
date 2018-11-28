@@ -99,6 +99,9 @@
         "lines": 75,
         "statements": 75
       }
+    },
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
     }
   }
 }
