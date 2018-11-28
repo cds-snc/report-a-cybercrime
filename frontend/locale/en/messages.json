@@ -9,7 +9,7 @@
   },
   "Describe what happened": {
     "translation": "Describe what happened",
-    "origin": [["src/Screen1.js", 92]]
+    "origin": [["src/Screen1.js", 90]]
   },
   "Describe what happened.": {
     "translation": "Describe what happened.",
@@ -18,7 +18,7 @@
   },
   "Describe what happened. Provide as much information as you can.": {
     "translation": "Describe what happened. Provide as much information as you can.",
-    "origin": [["src/LandingPage.js", 34]]
+    "origin": [["src/LandingPage.js", 36]]
   },
   "Did you lose money or personal information?": {
     "translation": "Did you lose money or personal information?",
@@ -37,6 +37,10 @@
     "translation": "For internal use only.",
     "origin": [["src/Home.js", 23]]
   },
+  "For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>": {
+    "translation": "For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>",
+    "origin": [["src/thanks.js", 30]]
+  },
   "Have you or someone you know encountered a cybercrime ?": {
     "translation": "Have you or someone you know encountered a cybercrime ?",
     "origin": [["src/LandingPage.js", 30]]
@@ -49,14 +53,14 @@
   "How were you affected?": {
     "translation": "How were you affected?",
     "origin": [
-      ["src/Screen1.js", 102],
+      ["src/Screen1.js", 100],
       ["src/Screen3.js", 81],
       ["src/Screen3.js", 123]
     ]
   },
   "In general terms, who was involved?": {
     "translation": "In general terms, who was involved?",
-    "origin": [["src/Screen1.js", 99]]
+    "origin": [["src/Screen1.js", 97]]
   },
   "I’m not sure": {
     "translation": "I’m not sure",
@@ -65,7 +69,7 @@
   "Landing Page": {
     "translation": "Landing Page",
     "origin": [
-      ["src/Screen1.js", 87],
+      ["src/Screen1.js", 85],
       ["src/Screen2.js", 95],
       ["src/Screen3.js", 113]
     ]
@@ -77,7 +81,7 @@
   "Next": {
     "translation": "Next",
     "origin": [
-      ["src/Screen1.js", 74],
+      ["src/Screen1.js", 72],
       ["src/Screen2.js", 72],
       ["src/Screen3.js", 98]
     ]
@@ -88,7 +92,7 @@
   },
   "Please do not provide any personal information.": {
     "translation": "Please do not provide any personal information.",
-    "origin": [["src/Screen1.js", 106]]
+    "origin": [["src/LandingPage.js", 47], ["src/Screen1.js", 104]]
   },
   "Report a cybercrime": {
     "translation": "Report a cybercrime",
@@ -97,11 +101,11 @@
   },
   "Select where you encountered the cybercrime.": {
     "translation": "Select where you encountered the cybercrime.",
-    "origin": [["src/LandingPage.js", 39]]
+    "origin": [["src/LandingPage.js", 41]]
   },
   "Share how you were impacted.": {
     "translation": "Share how you were impacted.",
-    "origin": [["src/LandingPage.js", 42]]
+    "origin": [["src/LandingPage.js", 44]]
   },
   "Share how you were you impacted.": {
     "translation": "Share how you were you impacted.",
@@ -115,7 +119,7 @@
   },
   "Share your story→": {
     "translation": "Share your story→",
-    "origin": [["src/LandingPage.js", 48]]
+    "origin": [["src/LandingPage.js", 50]]
   },
   "Social media accounts": {
     "translation": "Social media accounts",
@@ -125,6 +129,10 @@
     "translation": "Submit",
     "origin": [["src/Screen1.js", 55], ["src/report_screen.js", 49]],
     "obsolete": true
+  },
+  "Tell us your story in three easy steps:": {
+    "translation": "Tell us your story in three easy steps:",
+    "origin": [["src/LandingPage.js", 33]]
   },
   "Text messages": {
     "translation": "Text messages",
@@ -145,7 +153,7 @@
   "What happened?": {
     "translation": "What happened?",
     "origin": [
-      ["src/Screen1.js", 57],
+      ["src/Screen1.js", 55],
       ["src/Screen2.js", 98],
       ["src/Screen3.js", 116]
     ]
@@ -160,7 +168,7 @@
   },
   "When did it take place?": {
     "translation": "When did it take place?",
-    "origin": [["src/Screen1.js", 96]]
+    "origin": [["src/Screen1.js", 94]]
   },
   "Who was involved?": {
     "translation": "Who was involved?",
