@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Link } from '@reach/router'
-import { H1, H3 } from '@govuk-react/header'
+import { H1, H3 } from './utils/headers'
 import ListItem from '@govuk-react/list-item'
 import WarningText from '@govuk-react/warning-text'
 
@@ -29,9 +29,9 @@ export const LandingPage = () => (
     <H1>
       <Trans> Have you or someone you know encountered a cybercrime ? </Trans>{' '}
     </H1>
-    <H3>
+    <h3>
       <Trans>Tell us your story in three easy steps:</Trans>
-    </H3>
+    </h3>
     <ListItem className={listitem}>
       <Trans>
         Describe what happened. Provide as much information as you can.{' '}
