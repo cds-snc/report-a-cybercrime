@@ -29,8 +29,6 @@
     'Email address': 'Email address',
     'For internal use only': 'For internal use only',
     'For internal use only.': 'For internal use only.',
-    'Have you or someone you know encountered a cybercrime ?':
-      'Have you or someone you know encountered a cybercrime ?',
     'Have you or someone you know encountered a cybercrime?':
       'Have you or someone you know encountered a cybercrime?',
     'How were you affected?': 'How were you affected?',
@@ -43,6 +41,7 @@
     Phone: 'Phone',
     'Please do not provide any personal information.':
       'Please do not provide any personal information.',
+    Privacy: 'Privacy',
     'Report a cybercrime': 'Report a cybercrime',
     'Select where you encountered the cybercrime.':
       'Select where you encountered the cybercrime.',
@@ -52,6 +51,8 @@
     'Share your story\u2192': 'Share your story\u2192',
     'Social media accounts': 'Social media accounts',
     Submit: 'Submit',
+    'Tell us your story in three easy steps:':
+      'Tell us your story in three easy steps:',
     'Text messages': 'Text messages',
     'Thank you for sharing your story.': 'Thank you for sharing your story.',
     'Was your reputation or productivity affected?':

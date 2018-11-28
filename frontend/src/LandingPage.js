@@ -27,9 +27,12 @@ const centercontent = css`
 export const LandingPage = () => (
   <div className={centercontent}>
     <H1>
-      <Trans> Have you or someone you know encountered a cybercrime ? </Trans>{' '}
+      <Trans> Have you or someone you know encountered a cybercrime? </Trans>{' '}
     </H1>
-    <H3> Tell us your story in three easy steps : </H3>
+    <H3>
+      {' '}
+      <Trans>Tell us your story in three easy steps:</Trans>{' '}
+    </H3>
     <ListItem className={listitem}>
       <Trans>
         Describe what happened. Provide as much information as you can.{' '}
@@ -42,7 +45,7 @@ export const LandingPage = () => (
       <Trans> Share how you were impacted. </Trans>{' '}
     </ListItem>
     <WarningText className={warning}>
-      Please do not provide any personal information.{' '}
+      <Trans>Please do not provide any personal information.</Trans>{' '}
     </WarningText>
     <Link to={'form1'} className={link}>
       <Trans> Share your story→ </Trans>{' '}
