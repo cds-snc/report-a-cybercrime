@@ -11,6 +11,14 @@ export const GET_LANGUAGE_QUERY = gql`
   }
 `
 
+export const GET_STATS_QUERY = gql`
+  query GetStats {
+    stats {
+      reportCount
+    }
+  }
+`
+
 const centercontent = css`
   max-width: 750px;
   margin: auto;
@@ -29,11 +37,16 @@ export const Thanks = () => (
           <Trans>Thank you for sharing your story.</Trans>
         </H1>
 
-        <H3>
-          <Trans>
-            You are the 5th person to use this tool to share a cybercrime story.
-          </Trans>
-        </H3>
+        <Query query={GET_STATS_QUERY}>
+          {({ data: { stats } }) => (
+            <H3>
+              <Trans>
+                You are the {stats ? stats.reportCount : ''}th person to use
+                this tool to share a cybercrime story.
+              </Trans>
+            </H3>
+          )}
+        </Query>
 
         <div className={paragraph}>
           <Trans>

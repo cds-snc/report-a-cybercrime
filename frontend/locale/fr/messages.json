@@ -29,7 +29,7 @@
   },
   "For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>": {
     "translation": "Pour plus d'informations sur la façon de rester en sécurité en ligne, vous pouvez visiter <0>Pensez cybersécurité</0> et le <1>Les dix meilleurs conseils pour prévenir un cybercrime.</1>",
-    "origin": [["src/thanks.js", 39]]
+    "origin": [["src/thanks.js", 52]]
   },
   "Have you or someone you know encountered a cybercrime?": {
     "translation": "Avez-vous, ou connaissez-vous quelqu'un qui a, été confronté à un cybercrime?",
@@ -105,7 +105,7 @@
   },
   "Thank you for sharing your story.": {
     "translation": "Merci d'avoir partagé votre histoire.",
-    "origin": [["src/thanks.js", 29]]
+    "origin": [["src/thanks.js", 37]]
   },
   "Was your reputation or productivity affected?": {
     "translation": "Votre réputation ou votre productivité ont-elles été affectées?",
@@ -133,7 +133,12 @@
   },
   "You are the 5th person to use this tool to share a cybercrime story.": {
     "translation": "Vous êtes la 5e personne à utiliser cet outil pour partager une histoire de cybercriminalité.",
-    "origin": [["src/thanks.js", 33]]
+    "origin": [["src/thanks.js", 33]],
+    "obsolete": true
+  },
+  "You are the {0}th person to use this tool to share a cybercrime story.": {
+    "translation": "Vous êtes la {0}e personne à utiliser cet outil pour partager une histoire de cybercriminalité.",
+    "origin": [["src/thanks.js", 43]]
   },
   "loading...": {
     "translation": "chargement en cours...",
