@@ -13,12 +13,12 @@
   },
   "Describe what happened.": {
     "translation": "Décrivez ce qui s'est passé.",
-    "origin": [["src/Screen1.js", 67]],
-    "obsolete": true
+    "origin": [["src/LandingPage.js", 37]]
   },
   "Describe what happened. Provide as much information as you can.": {
     "translation": "Décrivez ce qui s'est passé. Veuillez fournir autant de renseignements que possible.",
-    "origin": [["src/LandingPage.js", 36]]
+    "origin": [["src/LandingPage.js", 36]],
+    "obsolete": true
   },
   "Did you lose money or personal information?": {
     "translation": "Avez-vous perdu de l'argent ou des renseignements personnels?",
@@ -35,11 +35,11 @@
   },
   "For internal use only.": {
     "translation": "Pour usage interne seulement.",
-    "origin": [["src/Home.js", 23]]
+    "origin": [["src/Home.js", 24]]
   },
   "For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>": {
     "translation": "Pour plus d'informations sur la façon de rester en sécurité en ligne, vous pouvez visiter <0>GetCyberSafe</0> et le <1>Top 10 des conseils de prévention</1> de la cybercriminalité.",
-    "origin": [["src/thanks.js", 30]]
+    "origin": [["src/thanks.js", 44]]
   },
   "Have you or someone you know encountered a cybercrime ?": {
     "translation": "Avez-vous, ou connaissez-vous quelqu'un qui a, été confronté à un cybercrime ?",
@@ -48,7 +48,7 @@
   },
   "Have you or someone you know encountered a cybercrime?": {
     "translation": "Avez-vous, ou connaissez-vous quelqu'un qui a, été confronté à un cybercrime?",
-    "origin": [["src/LandingPage.js", 30]]
+    "origin": [["src/LandingPage.js", 31]]
   },
   "How were you affected?": {
     "translation": "Comment avez-vous été affecté?",
@@ -97,7 +97,7 @@
   },
   "Please do not provide any personal information.": {
     "translation": "Veuillez ne pas fournir de renseignements personnels.",
-    "origin": [["src/LandingPage.js", 47], ["src/Screen1.js", 106]]
+    "origin": [["src/LandingPage.js", 46], ["src/Screen1.js", 106]]
   },
   "Privacy": {
     "translation": "Confidentialité",
@@ -110,11 +110,11 @@
   },
   "Select where you encountered the cybercrime.": {
     "translation": "Veuillez sélectionner où vous avez rencontré la cybercriminalité.",
-    "origin": [["src/LandingPage.js", 41]]
+    "origin": [["src/LandingPage.js", 40]]
   },
   "Share how you were impacted.": {
     "translation": "Partagez comment vous avez été affecté.",
-    "origin": [["src/LandingPage.js", 44]]
+    "origin": [["src/LandingPage.js", 43]]
   },
   "Share how you were you impacted.": {
     "translation": "Partagez comment vous avez été affecté.",
@@ -128,7 +128,7 @@
   },
   "Share your story→": {
     "translation": "Partagez votre histoire→",
-    "origin": [["src/LandingPage.js", 50]]
+    "origin": [["src/LandingPage.js", 49]]
   },
   "Social media accounts": {
     "translation": "Comptes de médias sociaux",
@@ -141,7 +141,7 @@
   },
   "Tell us your story in three easy steps:": {
     "translation": "Racontez-nous votre histoire en trois étapes faciles:",
-    "origin": [["src/LandingPage.js", 33]]
+    "origin": [["src/LandingPage.js", 34]]
   },
   "Text messages": {
     "translation": "Messages texte",
@@ -149,7 +149,7 @@
   },
   "Thank you for sharing your story.": {
     "translation": "Merci d'avoir partagé votre histoire.",
-    "origin": [["src/thanks.js", 20]]
+    "origin": [["src/thanks.js", 30]]
   },
   "Was your reputation or productivity affected?": {
     "translation": "Votre réputation ou votre productivité ont-elles été affectées?",
@@ -186,7 +186,12 @@
   },
   "You are the 5th person to use this tool to share a cybercrime story.": {
     "translation": "Vous êtes la 5e personne à utiliser cet outil pour partager une histoire de cybercriminalité.",
-    "origin": [["src/thanks.js", 24]]
+    "origin": [["src/thanks.js", 24]],
+    "obsolete": true
+  },
+  "You are the {0}th person to use this tool to share a cybercrime story.": {
+    "translation": "Vous êtes la {0}e personne à utiliser cet outil pour partager une histoire de cybercriminalité.",
+    "origin": [["src/thanks.js", 36]]
   },
   "You do not need to provide any personal information.": {
     "translation": "Vous ne devez pas fournir des renseignements personnels.",
