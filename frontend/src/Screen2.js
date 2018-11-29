@@ -5,7 +5,7 @@ import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
-import { H1, H3, H4 } from '@govuk-react/header'
+import { H1, H3, H4 } from './utils/headers'
 import { ApolloConsumer } from 'react-apollo'
 import Breadcrumb from '@govuk-react/breadcrumb'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
-import { H1, H3 } from '@govuk-react/header'
+import { H1, H3 } from './utils/headers'
 
 const centercontent = css`
   max-width: 750px;
