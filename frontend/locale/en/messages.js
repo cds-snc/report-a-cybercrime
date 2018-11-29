@@ -42,9 +42,11 @@
     'Landing Page': 'Landing Page',
     'Language Selection': 'Language Selection',
     Next: 'Next',
+    Other: 'Other',
     Phone: 'Phone',
     'Please do not provide any personal information.':
       'Please do not provide any personal information.',
+    Privacy: 'Privacy',
     'Report a cybercrime': 'Report a cybercrime',
     'Select where you encountered the cybercrime.':
       'Select where you encountered the cybercrime.',

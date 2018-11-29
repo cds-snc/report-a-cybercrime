@@ -13,7 +13,7 @@
     'Describe what happened. Provide as much information as you can.':
       "D\xE9crivez ce qui s'est pass\xE9. Veuillez fournir autant de renseignements que possible.",
     'Did you lose money or personal information?':
-      "Avez-vous perdu de l'argent ou des renseignements personnels ?",
+      "Avez-vous perdu de l'argent ou des renseignements personnels?",
     'Email address': 'Adresse de courriel',
     'For internal use only': 'Pour usage interne seulement',
     'For internal use only.': 'Pour usage interne seulement.',
@@ -22,17 +22,19 @@
     'Have you or someone you know encountered a cybercrime ?':
       "Avez-vous, ou connaissez-vous quelqu'un qui a, \xE9t\xE9 confront\xE9 \xE0 un cybercrime ?",
     'Have you or someone you know encountered a cybercrime?':
-      "Avez-vous, ou connaissez-vous quelqu'un qui a, \xE9t\xE9 confront\xE9 \xE0 un cybercrime ?",
+      "Avez-vous, ou connaissez-vous quelqu'un qui a, \xE9t\xE9 confront\xE9 \xE0 un cybercrime?",
     'How were you affected?': 'Comment avez-vous \xE9t\xE9 affect\xE9?',
     'In general terms, who was involved?':
-      'En termes g\xE9n\xE9raux, qui \xE9tait impliqu\xE9 ?',
+      'En termes g\xE9n\xE9raux, qui \xE9tait impliqu\xE9?',
     'I\u2019m not sure': 'Je ne suis pas certain(e)',
     'Landing Page': "Page d'atterrissage",
     'Language Selection': 'Choix de langue',
     Next: 'Suivant',
-    Phone: 'Phone',
+    Other: 'Autre',
+    Phone: 'T\xE9l\xE9phone',
     'Please do not provide any personal information.':
       'Veuillez ne pas fournir de renseignements personnels.',
+    Privacy: 'Confidentialit\xE9',
     'Report a cybercrime': 'Signalez un cas de cybercriminalit\xE9',
     'Select where you encountered the cybercrime.':
       'Veuillez s\xE9lectionner o\xF9 vous avez rencontr\xE9 la cybercriminalit\xE9.',
@@ -50,8 +52,8 @@
     'Thank you for sharing your story.':
       "Merci d'avoir partag\xE9 votre histoire.",
     'Was your reputation or productivity affected?':
-      'Votre r\xE9putation ou votre productivit\xE9 ont-elles \xE9t\xE9 affect\xE9es ?',
-    Website: 'Website',
+      'Votre r\xE9putation ou votre productivit\xE9 ont-elles \xE9t\xE9 affect\xE9es?',
+    Website: 'Site web',
     'What happened?': "Qu'est-ce qui s'est pass\xE9?",
     'What was involved?': "Qu'est-ce qui a \xE9t\xE9 impliqu\xE9?",
     'What was your reaction?': 'Quelle a \xE9t\xE9 votre r\xE9action?',

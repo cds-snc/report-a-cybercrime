@@ -27,7 +27,7 @@ const centercontent = css`
 export const LandingPage = () => (
   <div className={centercontent}>
     <H1>
-      <Trans> Have you or someone you know encountered a cybercrime ? </Trans>{' '}
+      <Trans> Have you or someone you know encountered a cybercrime? </Trans>{' '}
     </H1>
     <H3>
       <Trans>Tell us your story in three easy steps:</Trans>

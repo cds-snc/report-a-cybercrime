@@ -1,7 +1,7 @@
 {
   "Bank accounts": {
     "translation": "Bank accounts",
-    "origin": [["src/Screen2.js", 87]]
+    "origin": [["src/Screen2.js", 100]]
   },
   "Choose all that apply": {
     "translation": "Choose all that apply",
@@ -9,7 +9,7 @@
   },
   "Describe what happened": {
     "translation": "Describe what happened",
-    "origin": [["src/Screen1.js", 90]]
+    "origin": [["src/Screen1.js", 92]]
   },
   "Describe what happened.": {
     "translation": "Describe what happened.",
@@ -22,11 +22,11 @@
   },
   "Did you lose money or personal information?": {
     "translation": "Did you lose money or personal information?",
-    "origin": [["src/Screen3.js", 130]]
+    "origin": [["src/Screen3.js", 134]]
   },
   "Email address": {
     "translation": "Email address",
-    "origin": [["src/Screen2.js", 83]]
+    "origin": [["src/Screen2.js", 96]]
   },
   "For internal use only": {
     "translation": "For internal use only",
@@ -43,56 +43,65 @@
   },
   "Have you or someone you know encountered a cybercrime ?": {
     "translation": "Have you or someone you know encountered a cybercrime ?",
-    "origin": [["src/LandingPage.js", 30]]
+    "origin": [["src/LandingPage.js", 30]],
+    "obsolete": true
   },
   "Have you or someone you know encountered a cybercrime?": {
     "translation": "Have you or someone you know encountered a cybercrime?",
-    "origin": [["src/LandingPage.js", 26]],
-    "obsolete": true
+    "origin": [["src/LandingPage.js", 30]]
   },
   "How were you affected?": {
     "translation": "How were you affected?",
     "origin": [
-      ["src/Screen1.js", 100],
-      ["src/Screen3.js", 81],
-      ["src/Screen3.js", 123]
+      ["src/Screen1.js", 102],
+      ["src/Screen3.js", 85],
+      ["src/Screen3.js", 127]
     ]
   },
   "In general terms, who was involved?": {
     "translation": "In general terms, who was involved?",
-    "origin": [["src/Screen1.js", 97]]
+    "origin": [["src/Screen1.js", 99]]
   },
   "I’m not sure": {
     "translation": "I’m not sure",
-    "origin": [["src/Screen2.js", 88]]
+    "origin": [["src/Screen2.js", 101]]
   },
   "Landing Page": {
     "translation": "Landing Page",
     "origin": [
-      ["src/Screen1.js", 85],
-      ["src/Screen2.js", 95],
-      ["src/Screen3.js", 113]
+      ["src/Screen1.js", 87],
+      ["src/Screen2.js", 108],
+      ["src/Screen3.js", 117]
     ]
   },
   "Language Selection": {
     "translation": "Language Selection",
-    "origin": [["src/LanguageSwitcher.js", 44]]
+    "origin": [["src/LanguageSwitcher.js", 44]],
+    "obsolete": true
   },
   "Next": {
     "translation": "Next",
     "origin": [
-      ["src/Screen1.js", 72],
-      ["src/Screen2.js", 72],
-      ["src/Screen3.js", 98]
+      ["src/Screen1.js", 74],
+      ["src/Screen2.js", 85],
+      ["src/Screen3.js", 102]
     ]
+  },
+  "Other": {
+    "translation": "Other",
+    "origin": [["src/Screen2.js", 72]]
   },
   "Phone": {
     "translation": "Phone",
-    "origin": [["src/Screen2.js", 84]]
+    "origin": [["src/Screen2.js", 97]]
   },
   "Please do not provide any personal information.": {
     "translation": "Please do not provide any personal information.",
-    "origin": [["src/LandingPage.js", 47], ["src/Screen1.js", 104]]
+    "origin": [["src/LandingPage.js", 47], ["src/Screen1.js", 106]]
+  },
+  "Privacy": {
+    "translation": "Privacy",
+    "origin": [["src/App.js", 91]]
   },
   "Report a cybercrime": {
     "translation": "Report a cybercrime",
@@ -123,7 +132,7 @@
   },
   "Social media accounts": {
     "translation": "Social media accounts",
-    "origin": [["src/Screen2.js", 86]]
+    "origin": [["src/Screen2.js", 99]]
   },
   "Submit": {
     "translation": "Submit",
@@ -136,7 +145,7 @@
   },
   "Text messages": {
     "translation": "Text messages",
-    "origin": [["src/Screen2.js", 85]]
+    "origin": [["src/Screen2.js", 98]]
   },
   "Thank you for sharing your story.": {
     "translation": "Thank you for sharing your story.",
@@ -144,31 +153,31 @@
   },
   "Was your reputation or productivity affected?": {
     "translation": "Was your reputation or productivity affected?",
-    "origin": [["src/Screen3.js", 133]]
+    "origin": [["src/Screen3.js", 137]]
   },
   "Website": {
     "translation": "Website",
-    "origin": [["src/Screen2.js", 82]]
+    "origin": [["src/Screen2.js", 95]]
   },
   "What happened?": {
     "translation": "What happened?",
     "origin": [
-      ["src/Screen1.js", 55],
-      ["src/Screen2.js", 98],
-      ["src/Screen3.js", 116]
+      ["src/Screen1.js", 57],
+      ["src/Screen2.js", 111],
+      ["src/Screen3.js", 120]
     ]
   },
   "What was involved?": {
     "translation": "What was involved?",
-    "origin": [["src/Screen2.js", 102], ["src/Screen3.js", 119]]
+    "origin": [["src/Screen2.js", 115], ["src/Screen3.js", 123]]
   },
   "What was your reaction?": {
     "translation": "What was your reaction?",
-    "origin": [["src/Screen3.js", 127]]
+    "origin": [["src/Screen3.js", 131]]
   },
   "When did it take place?": {
     "translation": "When did it take place?",
-    "origin": [["src/Screen1.js", 94]]
+    "origin": [["src/Screen1.js", 96]]
   },
   "Who was involved?": {
     "translation": "Who was involved?",
