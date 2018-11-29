@@ -22,7 +22,7 @@ spec:
             - --acme
             - --acme.onhostrule
             - --acme.entrypoint=https
-            - --acme.domains=report-a-cybercrime.cdssandbox.xyz
+            - --acme.domains=racontez-nous.cds-snc.ca,tell-us.cds-snc.ca
             - --acme.email=mike.williamson@cds-snc.ca
             - --acme.storage=/certs/acme.json
             - --acme.httpchallenge
