@@ -36,6 +36,7 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "verbose": true
+    "verbose": true,
+    "setupTestFrameworkScriptFile": "<rootDir>/setUpJest.js"
   }
 }

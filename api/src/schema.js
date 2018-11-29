@@ -1,4 +1,5 @@
 const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
+const { Stats } = require('./Stats')
 
 var Report = new GraphQLObjectType({
   name: 'Report',
@@ -21,12 +22,10 @@ var Report = new GraphQLObjectType({
 const query = new GraphQLObjectType({
   name: 'Query',
   fields: () => ({
-    hello: {
-      description: 'greets the world',
-      type: GraphQLString,
-      resolve: (_root, _args, { db }, _info) => {
-        return db.hello()
-      },
+    stats: {
+      description: 'Stats about report collection',
+      type: Stats,
+      resolve: () => ({}),
     },
   }),
 })
