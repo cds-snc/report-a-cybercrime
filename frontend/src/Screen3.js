@@ -4,7 +4,7 @@ import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
-import { H1, H3 } from './utils/headers'
+import { H1 } from './utils/headers'
 import ListItem from '@govuk-react/list-item'
 import gql from 'graphql-tag'
 import { ApolloConsumer, Mutation } from 'react-apollo'
@@ -14,8 +14,7 @@ const centercontent = css`
   max-width: 750px;
   margin: auto;
 `
-
-const labelFormat = css`
+const formFormat = css`
   margin-top: 20pt;
 `
 const submitButton = css`
@@ -80,11 +79,6 @@ const MyForm = () => (
             validate={validate}
             render={({ handleSubmit, pristine, invalid }) => (
               <form onSubmit={handleSubmit}>
-                <H3 className={labelFormat}>
-                  <label>
-                    <Trans>How were you affected?</Trans>
-                  </label>
-                </H3>
                 <div>
                   <Field
                     name="howWereYouAffected"
@@ -137,6 +131,6 @@ export const Screen3 = () => (
       <Trans>Was your reputation or productivity affected?</Trans>
     </ListItem>
 
-    {MyForm()}
+    <div className={formFormat}>{MyForm()}</div>
   </div>
 )
