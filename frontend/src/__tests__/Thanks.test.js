@@ -2,11 +2,12 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { ApolloProvider } from 'react-apollo'
 import { Thanks } from '../thanks'
+import { testClient } from '../utils/createTestClient'
 
-describe('Screen3', () => {
+describe('Thanks', () => {
   it('renders', () => {
     mount(
-      <ApolloProvider client={{}}>
+      <ApolloProvider client={testClient({ language: 'en' })}>
         <Thanks />
       </ApolloProvider>,
     )
