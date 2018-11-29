@@ -5,7 +5,7 @@ import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
-import { H1, H3 } from './utils/headers'
+import { H1 } from './utils/headers'
 import ListItem from '@govuk-react/list-item'
 import Breadcrumb from '@govuk-react/breadcrumb'
 
@@ -14,14 +14,12 @@ const warning = css`
   color: green;
   padding-top: 10pt;
   margin-left: 0pt;
+  margin-bottom: 20pt;
   font-size: 19pt;
 `
 const centercontent = css`
   max-width: 750px;
   margin: auto;
-`
-const labelFormat = css`
-  margin-top: 20pt;
 `
 const submitButton = css`
   margin-top: 20pt;
@@ -52,11 +50,6 @@ const MyForm = () => (
         validate={validate}
         render={({ handleSubmit, pristine, invalid }) => (
           <form onSubmit={handleSubmit}>
-            <H3 className={labelFormat}>
-              <label>
-                <Trans>What happened?</Trans>
-              </label>
-            </H3>
             <div>
               <Field
                 name="whatHappened"

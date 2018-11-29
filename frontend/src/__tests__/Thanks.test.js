@@ -1,13 +1,16 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { MockedProvider } from 'react-apollo/test-utils'
-import { Thanks } from '../thanks'
+import { ApolloProvider } from 'react-apollo'
 import gql from 'graphql-tag'
+import { Thanks } from '../thanks'
+import { testClient } from '../utils/createTestClient'
 
 describe('Thanks', () => {
-  let mocks
+  let mocks, client
 
   beforeEach(() => {
+    client = testClient({ language: 'en' })
     const query = gql`
       query GetStats {
         stats {
@@ -26,7 +29,9 @@ describe('Thanks', () => {
   it('renders', () => {
     mount(
       <MockedProvider mocks={mocks}>
-        <Thanks />
+        <ApolloProvider client={client}>
+          <Thanks />
+        </ApolloProvider>
       </MockedProvider>,
     )
   })
