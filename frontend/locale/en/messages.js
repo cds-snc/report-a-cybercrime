@@ -70,6 +70,15 @@
     'Who was involved?': 'Who was involved?',
     'You are the 5th person to use this tool to share a cybercrime story.':
       'You are the 5th person to use this tool to share a cybercrime story.',
+    'You are the {0}th person to use this tool to share a cybercrime story.': function(
+      a,
+    ) {
+      return [
+        'You are the ',
+        a('0'),
+        'th person to use this tool to share a cybercrime story.',
+      ]
+    },
     'You do not need to provide any personal information.':
       'You do not need to provide any personal information.',
     'bank account': 'bank account',

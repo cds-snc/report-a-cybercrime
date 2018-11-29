@@ -61,6 +61,15 @@
     'Who was involved?': 'Qui \xE9tait impliqu\xE9?',
     'You are the 5th person to use this tool to share a cybercrime story.':
       'Vous \xEAtes la 5e personne \xE0 utiliser cet outil pour partager une histoire de cybercriminalit\xE9.',
+    'You are the {0}th person to use this tool to share a cybercrime story.': function(
+      a,
+    ) {
+      return [
+        'Vous \xEAtes la ',
+        a('0'),
+        'e personne \xE0 utiliser cet outil pour partager une histoire de cybercriminalit\xE9.',
+      ]
+    },
     'You do not need to provide any personal information.':
       'Vous ne devez pas fournir des renseignements personnels.',
     'bank account': 'compte bancaire',

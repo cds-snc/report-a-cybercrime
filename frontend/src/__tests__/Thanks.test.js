@@ -1,14 +1,33 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { ApolloProvider } from 'react-apollo'
+import { MockedProvider } from 'react-apollo/test-utils'
 import { Thanks } from '../thanks'
+import gql from 'graphql-tag'
 
-describe('Screen3', () => {
+describe('Thanks', () => {
+  let mocks
+
+  beforeEach(() => {
+    const query = gql`
+      query GetStats {
+        stats {
+          reportCount
+        }
+      }
+    `
+    mocks = [
+      {
+        request: { query },
+        result: { data: { stats: { reportCount: 555 } } },
+      },
+    ]
+  })
+
   it('renders', () => {
     mount(
-      <ApolloProvider client={{}}>
+      <MockedProvider mocks={mocks}>
         <Thanks />
-      </ApolloProvider>,
+      </MockedProvider>,
     )
   })
 })

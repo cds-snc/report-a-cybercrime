@@ -14,6 +14,12 @@ const typeDefs = `
   type Query {
     language: String
   }
+  
+  type Query {
+    stats {
+      reportCount: Int
+    }
+  }
 `
 
 function createApolloClient({
