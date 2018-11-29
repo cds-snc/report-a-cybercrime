@@ -1,13 +1,20 @@
 import React from 'react'
 import { css } from 'react-emotion'
+import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { H1, H3 } from './utils/headers'
+import gql from 'graphql-tag'
+
+export const GET_LANGUAGE_QUERY = gql`
+  query GetLanguage {
+    language @client
+  }
+`
 
 const centercontent = css`
   max-width: 750px;
   margin: auto;
 `
-
 const paragraph = css`
   padding-top: 20pt;
   padding-bottom: 20pt;
@@ -15,26 +22,44 @@ const paragraph = css`
 `
 
 export const Thanks = () => (
-  <div className={centercontent}>
-    <H1>
-      <Trans>Thank you for sharing your story.</Trans>
-    </H1>
+  <Query query={GET_LANGUAGE_QUERY}>
+    {({ data: { language } }) => (
+      <div className={centercontent}>
+        <H1>
+          <Trans>Thank you for sharing your story.</Trans>
+        </H1>
 
-    <H3>
-      <Trans>
-        You are the 5th person to use this tool to share a cybercrime story.
-      </Trans>
-    </H3>
+        <H3>
+          <Trans>
+            You are the 5th person to use this tool to share a cybercrime story.
+          </Trans>
+        </H3>
 
-    <div className={paragraph}>
-      <Trans>
-        For more information on how to stay safe online, you can visit{' '}
-        <a href="https://www.getcybersafe.gc.ca/index-en.aspx">GetCyberSafe</a>{' '}
-        and the{' '}
-        <a href="http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm">
-          Top 10 Cyber Crime Prevention Tips.
-        </a>
-      </Trans>
-    </div>
-  </div>
+        <div className={paragraph}>
+          <Trans>
+            For more information on how to stay safe online, you can visit{' '}
+            <a
+              href={
+                language === 'en'
+                  ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
+                  : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
+              }
+            >
+              GetCyberSafe
+            </a>{' '}
+            and the{' '}
+            <a
+              href={
+                language === 'en'
+                  ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
+                  : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
+              }
+            >
+              Top 10 Cyber Crime Prevention Tips.
+            </a>
+          </Trans>
+        </div>
+      </div>
+    )}
+  </Query>
 )
