@@ -1,4 +1,3 @@
-require('dotenv-safe').config()
 const request = require('supertest')
 const { Server } = require('../server')
 const { makeTestDatabase, dbNameFromFile } = require('../utils')
@@ -8,14 +7,14 @@ const { DB_USER: user, DB_URL: url, DB_PASSWORD: password } = process.env
 let db, drop, truncate
 
 describe('Queries', () => {
-  describe('hello', () => {
+  describe('stats', () => {
     beforeAll(async () => {
       ;({ db, drop, truncate } = await makeTestDatabase({
         dbname: dbNameFromFile(__filename),
         user,
         password,
         url,
-        collections: ['data'],
+        collections: ['reports'],
       }))
     })
 
@@ -27,20 +26,28 @@ describe('Queries', () => {
       await truncate()
     })
 
-    it('returns A "Hello world" message from the database', async () => {
+    it('lets you query the number of reports via a stats type', async () => {
+      let reports = await db.collection('reports')
+      reports.save({ foo: 'I am a fake report' })
       let app = await Server(db)
 
       let response = await request(app)
         .post('/graphql')
         .set('Content-Type', 'application/json; charset=utf-8')
         .send({
-          query: `{hello}`,
+          query: `{
+          stats {
+            reportCount
+          }
+        }`,
         })
 
       let {
-        data: { hello },
+        data: {
+          stats: { reportCount },
+        },
       } = response.body
-      expect(hello).toEqual('Hello world')
+      expect(reportCount).toEqual(1)
     })
   })
 })
