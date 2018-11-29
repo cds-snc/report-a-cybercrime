@@ -1,0 +1,64 @@
+version: "3.7"
+
+services:
+  arangodb:
+    image: arangodb/arangodb:3.1.19
+    environment:
+      - ARANGO_ROOT_PASSWORD=$DB_PASSWORD
+    ports:
+      - "8529"
+    labels:
+      - "traefik.backend=arangodb"
+      - "traefik.frontend.rule=PathPrefix:/"
+      - "traefik.frontend.entryPoints=arango"
+      - "traefik.port=8529"
+    volumes:
+      - arangodata:/var/lib/arangodb3
+  api:
+    environment:
+      - PORT=3002
+      - DB_NAME=cybercrime
+      - DB_URL=http://arangodb:8529
+      - DB_USER
+      - DB_PASSWORD
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "3002"
+    volumes:
+      - ./api:/app
+    command: npm start
+    labels:
+      - "traefik.backend=api"
+      - "traefik.frontend.rule=PathPrefix:/graphql"
+      - "traefik.frontend.entryPoints=http"
+      - "traefik.port=3002"
+  traefik:
+    image: traefik:1.7
+    command: --docker --api --entrypoints="Name:http Address::3000" --entrypoints="Name:arango Address::8529" --defaultentrypoints="Name:http,arango"
+    ports:
+      - "3000:3000"
+      - "8529:8529"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  frontend:
+    environment:
+      - RAZZLE_PORT=3000
+    ports:
+      - "3000"
+      - "3001:3001"
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.backend=frontend"
+      - "traefik.frontend.rule=PathPrefix:/"
+      - "traefik.frontend.entryPoints=http"
+      - "traefik.port=3000"
+    volumes:
+      - ./frontend:/app
+    command: npm run dev
+volumes:
+  arangodata:
