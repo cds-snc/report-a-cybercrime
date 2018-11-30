@@ -38,6 +38,7 @@
     'Social media accounts': 'Comptes de m\xE9dias sociaux',
     'Tell us your story in three easy steps:':
       'Racontez-nous votre histoire en trois \xE9tapes faciles:',
+    'Terms and Conditions': 'Avis',
     'Text messages': 'Messages texte',
     'Thank you for sharing your story.':
       "Merci d'avoir partag\xE9 votre histoire.",

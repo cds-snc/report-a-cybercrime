@@ -51,7 +51,11 @@ server
           <head>
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>🙅🖥️😈</title>
+            <title>${
+              req.language.indexOf('en') > -1
+                ? 'Tell us your cybercrime story'
+                : 'Racontez-nous votre histoire de cybercriminalité'
+            }</title>
             ${
               assets.client.css
                 ? `<link rel="stylesheet" href="${assets.client.css}">`

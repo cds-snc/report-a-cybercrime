@@ -1,5 +1,8 @@
 {
   "Privacy": {
-    "origin": [["src/App.js", 91]]
+    "origin": [["src/App.js", 92]]
+  },
+  "Terms and Conditions": {
+    "origin": [["src/App.js", 103]]
   }
 }

@@ -49,6 +49,7 @@
     'Social media accounts': 'Social media accounts',
     'Tell us your story in three easy steps:':
       'Tell us your story in three easy steps:',
+    'Terms and Conditions': 'Terms and Conditions',
     'Text messages': 'Text messages',
     'Thank you for sharing your story.': 'Thank you for sharing your story.',
     'Was your reputation or productivity affected?':

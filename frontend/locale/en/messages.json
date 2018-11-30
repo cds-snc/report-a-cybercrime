@@ -82,7 +82,7 @@
   },
   "Privacy": {
     "translation": "Privacy",
-    "origin": [["src/App.js", 91]]
+    "origin": [["src/App.js", 92]]
   },
   "Select where you encountered the cybercrime.": {
     "translation": "Select where you encountered the cybercrime.",
@@ -103,6 +103,10 @@
   "Tell us your story in three easy steps:": {
     "translation": "Tell us your story in three easy steps:",
     "origin": [["src/LandingPage.js", 34]]
+  },
+  "Terms and Conditions": {
+    "translation": "Terms and Conditions",
+    "origin": [["src/App.js", 103]]
   },
   "Text messages": {
     "translation": "Text messages",
