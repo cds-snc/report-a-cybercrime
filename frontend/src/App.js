@@ -52,7 +52,7 @@ const wordMark = css`
 `
 
 const Content = styled('div')`
-  min-height: calc(100vh - 75px);
+  min-height: calc(100vh - 55px);
 `
 
 const TopBanner = props => (
