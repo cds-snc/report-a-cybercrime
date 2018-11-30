@@ -21,7 +21,7 @@ const screen = css`
 const Home = () => (
   <div className={root}>
     <PhaseBanner level="discovery">
-      <Trans>For internal use only.</Trans>
+      <Trans>For research purposes only.</Trans>
     </PhaseBanner>
 
     <div className={screen}>
