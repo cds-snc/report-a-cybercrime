@@ -48,7 +48,7 @@ const MyForm = options => (
             <div>
               <H3 className={labelFormat}>
                 <label>
-                  <Trans>Choose all that apply</Trans>
+                  <Trans>What was affected? Choose all that apply.</Trans>
                 </label>
               </H3>
               <div>
@@ -112,7 +112,7 @@ export const Screen2 = () => (
       </Link>
     </Breadcrumb>
     <H1>
-      <Trans>What was involved?</Trans>
+      <Trans>How did that happen?</Trans>
     </H1>
     {MyForm(options)}
   </div>

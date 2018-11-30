@@ -30,6 +30,7 @@
       'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>',
     'Have you or someone you know encountered a cybercrime?':
       'Have you or someone you know encountered a cybercrime?',
+    'How did that happen?': 'How did that happen?',
     'How were you affected?': 'How were you affected?',
     'In general terms, who was involved?':
       'In general terms, who was involved?',
@@ -54,6 +55,8 @@
       'Was your reputation or productivity affected?',
     Website: 'Website',
     'What happened?': 'What happened?',
+    'What was affected? Choose all that apply.':
+      'What was affected? Choose all that apply.',
     'What was involved?': 'What was involved?',
     'What was your reaction?': 'What was your reaction?',
     'When did it take place?': 'When did it take place?',
