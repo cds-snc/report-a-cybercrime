@@ -14,7 +14,7 @@
   },
   "Describe what happened.": {
     "translation": "Décrivez ce qui s'est passé.",
-    "origin": [["src/LandingPage.js", 37]]
+    "origin": [["src/LandingPage.js", 49]]
   },
   "Did you lose money or personal information?": {
     "translation": "Avez-vous perdu de l'argent ou des renseignements personnels?",
@@ -34,12 +34,12 @@
     "origin": [["src/thanks.js", 52]]
   },
   "For research purposes only.": {
-    "translation": "À des fins de recherche seulement",
+    "translation": "À des fins de recherche seulement.",
     "origin": [["src/Home.js", 24]]
   },
   "Have you or someone you know encountered a cybercrime?": {
     "translation": "Avez-vous, ou connaissez-vous quelqu'un qui a, été confronté à un cybercrime?",
-    "origin": [["src/LandingPage.js", 31]]
+    "origin": [["src/LandingPage.js", 43]]
   },
   "How did that happen?": {
     "translation": "Comment cela s'est-il passé?",
@@ -83,7 +83,7 @@
   },
   "Please do not provide any personal information.": {
     "translation": "Veuillez ne pas fournir de renseignements personnels.",
-    "origin": [["src/LandingPage.js", 46], ["src/Screen1.js", 99]]
+    "origin": [["src/LandingPage.js", 58], ["src/Screen1.js", 99]]
   },
   "Privacy": {
     "translation": "Confidentialité",
@@ -91,15 +91,15 @@
   },
   "Select where you encountered the cybercrime.": {
     "translation": "Veuillez sélectionner où vous avez rencontré la cybercriminalité.",
-    "origin": [["src/LandingPage.js", 40]]
+    "origin": [["src/LandingPage.js", 52]]
   },
   "Share how you were impacted.": {
     "translation": "Partagez comment vous avez été affecté.",
-    "origin": [["src/LandingPage.js", 43]]
+    "origin": [["src/LandingPage.js", 55]]
   },
   "Share your story→": {
     "translation": "Partagez votre histoire→",
-    "origin": [["src/LandingPage.js", 49]]
+    "origin": [["src/LandingPage.js", 61]]
   },
   "Social media accounts": {
     "translation": "Comptes de médias sociaux",
@@ -107,7 +107,7 @@
   },
   "Tell us your story in three easy steps:": {
     "translation": "Racontez-nous votre histoire en trois étapes faciles:",
-    "origin": [["src/LandingPage.js", 34]]
+    "origin": [["src/LandingPage.js", 46]]
   },
   "Terms and Conditions": {
     "translation": "Avis",
@@ -132,6 +132,10 @@
   "What happened?": {
     "translation": "Qu'est-ce qui s'est passé?",
     "origin": [["src/Screen2.js", 111], ["src/Screen3.js", 114]]
+  },
+  "What is a cybercrime?": {
+    "translation": "Qu'est-ce qu'un cybercrime?",
+    "origin": [["src/LandingPage.js", 72]]
   },
   "What was affected? Choose all that apply.": {
     "translation": "Qu'est-ce qui a été affecté? Cochez toutes les réponses qui s'appliquent.",
