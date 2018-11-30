@@ -14,7 +14,7 @@
   },
   "Describe what happened.": {
     "translation": "Describe what happened.",
-    "origin": [["src/LandingPage.js", 37]]
+    "origin": [["src/LandingPage.js", 49]]
   },
   "Did you lose money or personal information?": {
     "translation": "Did you lose money or personal information?",
@@ -39,7 +39,7 @@
   },
   "Have you or someone you know encountered a cybercrime?": {
     "translation": "Have you or someone you know encountered a cybercrime?",
-    "origin": [["src/LandingPage.js", 31]]
+    "origin": [["src/LandingPage.js", 43]]
   },
   "How did that happen?": {
     "translation": "How did that happen?",
@@ -83,7 +83,7 @@
   },
   "Please do not provide any personal information.": {
     "translation": "Please do not provide any personal information.",
-    "origin": [["src/LandingPage.js", 46], ["src/Screen1.js", 99]]
+    "origin": [["src/LandingPage.js", 58], ["src/Screen1.js", 99]]
   },
   "Privacy": {
     "translation": "Privacy",
@@ -91,15 +91,15 @@
   },
   "Select where you encountered the cybercrime.": {
     "translation": "Select where you encountered the cybercrime.",
-    "origin": [["src/LandingPage.js", 40]]
+    "origin": [["src/LandingPage.js", 52]]
   },
   "Share how you were impacted.": {
     "translation": "Share how you were impacted.",
-    "origin": [["src/LandingPage.js", 43]]
+    "origin": [["src/LandingPage.js", 55]]
   },
   "Share your story→": {
     "translation": "Share your story→",
-    "origin": [["src/LandingPage.js", 49]]
+    "origin": [["src/LandingPage.js", 61]]
   },
   "Social media accounts": {
     "translation": "Social media accounts",
@@ -107,7 +107,7 @@
   },
   "Tell us your story in three easy steps:": {
     "translation": "Tell us your story in three easy steps:",
-    "origin": [["src/LandingPage.js", 34]]
+    "origin": [["src/LandingPage.js", 46]]
   },
   "Terms and Conditions": {
     "translation": "Terms and Conditions",
@@ -132,6 +132,10 @@
   "What happened?": {
     "translation": "What happened?",
     "origin": [["src/Screen2.js", 111], ["src/Screen3.js", 114]]
+  },
+  "What is a cybercrime?": {
+    "translation": "What is a cybercrime?",
+    "origin": [["src/LandingPage.js", 72]]
   },
   "What was affected? Choose all that apply.": {
     "translation": "What was affected? Choose all that apply.",
