@@ -28,6 +28,7 @@
     'For internal use only.': 'For internal use only.',
     'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>':
       'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>',
+    'For research purposes only.': 'For research purposes only.',
     'Have you or someone you know encountered a cybercrime?':
       'Have you or someone you know encountered a cybercrime?',
     'How did that happen?': 'How did that happen?',

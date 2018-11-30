@@ -26,11 +26,16 @@
   },
   "For internal use only.": {
     "translation": "Pour usage interne seulement.",
-    "origin": [["src/Home.js", 24]]
+    "origin": [["src/Home.js", 24]],
+    "obsolete": true
   },
   "For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>": {
     "translation": "Pour plus d'informations sur la façon de rester en sécurité en ligne, vous pouvez visiter <0>Pensez cybersécurité</0> et le <1>Les dix meilleurs conseils pour prévenir un cybercrime.</1>",
     "origin": [["src/thanks.js", 52]]
+  },
+  "For research purposes only.": {
+    "translation": "À des fins de recherche seulement",
+    "origin": [["src/Home.js", 24]]
   },
   "Have you or someone you know encountered a cybercrime?": {
     "translation": "Avez-vous, ou connaissez-vous quelqu'un qui a, été confronté à un cybercrime?",
