@@ -38,6 +38,7 @@ const footer = css`
 const privacy = css`
   font-size: 15pt;
   margin-top: 100pt;
+  margin-right: 20pt;
   color: white;
   :visited {
     color: white;
@@ -90,6 +91,18 @@ const App = () => (
           >
             <Trans>Privacy</Trans>
           </a>
+
+          <a
+            href={
+              language === 'en'
+                ? 'https://digital.canada.ca/legal/terms/'
+                : 'https://numerique.canada.ca/transparence/avis/'
+            }
+            className={privacy}
+          >
+            <Trans>Terms and Conditions</Trans>
+          </a>
+
           <div className={wordMark}>
             <WordMark width="6em" flag="#fff" text="#fff" />
           </div>
