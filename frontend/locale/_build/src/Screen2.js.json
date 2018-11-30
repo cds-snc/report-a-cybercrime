@@ -1,5 +1,5 @@
 {
-  "Choose all that apply": {
+  "What was affected? Choose all that apply.": {
     "origin": [["src/Screen2.js", 51]]
   },
   "Other": {
@@ -35,7 +35,7 @@
   "What happened?": {
     "origin": [["src/Screen2.js", 111]]
   },
-  "What was involved?": {
+  "How did that happen?": {
     "origin": [["src/Screen2.js", 115]]
   }
 }

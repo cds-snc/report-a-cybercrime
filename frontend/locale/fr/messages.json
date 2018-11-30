@@ -5,7 +5,8 @@
   },
   "Choose all that apply": {
     "translation": "Cochez toutes les réponses qui s'appliquent",
-    "origin": [["src/Screen2.js", 51]]
+    "origin": [["src/Screen2.js", 51]],
+    "obsolete": true
   },
   "Describe what happened": {
     "translation": "Décrivez ce qui s'est passé",
@@ -34,6 +35,10 @@
   "Have you or someone you know encountered a cybercrime?": {
     "translation": "Avez-vous, ou connaissez-vous quelqu'un qui a, été confronté à un cybercrime?",
     "origin": [["src/LandingPage.js", 31]]
+  },
+  "How did that happen?": {
+    "translation": "Comment cela s'est-il passé?",
+    "origin": [["src/Screen2.js", 115]]
   },
   "How were you affected?": {
     "translation": "Comment avez-vous été affecté?",
@@ -119,9 +124,13 @@
     "translation": "Qu'est-ce qui s'est passé?",
     "origin": [["src/Screen2.js", 111], ["src/Screen3.js", 114]]
   },
+  "What was affected? Choose all that apply.": {
+    "translation": "Qu'est-ce qui a été affecté? Cochez toutes les réponses qui s'appliquent.",
+    "origin": [["src/Screen2.js", 51]]
+  },
   "What was involved?": {
     "translation": "Qu'est-ce qui a été impliqué?",
-    "origin": [["src/Screen2.js", 115], ["src/Screen3.js", 117]]
+    "origin": [["src/Screen3.js", 117]]
   },
   "What was your reaction?": {
     "translation": "Quelle a été votre réaction?",

@@ -18,6 +18,7 @@
       "Pour plus d'informations sur la fa\xE7on de rester en s\xE9curit\xE9 en ligne, vous pouvez visiter <0>Pensez cybers\xE9curit\xE9</0> et le <1>Les dix meilleurs conseils pour pr\xE9venir un cybercrime.</1>",
     'Have you or someone you know encountered a cybercrime?':
       "Avez-vous, ou connaissez-vous quelqu'un qui a, \xE9t\xE9 confront\xE9 \xE0 un cybercrime?",
+    'How did that happen?': "Comment cela s'est-il pass\xE9?",
     'How were you affected?': 'Comment avez-vous \xE9t\xE9 affect\xE9?',
     'In general terms, who was involved?':
       'En termes g\xE9n\xE9raux, qui \xE9tait impliqu\xE9?',
@@ -44,6 +45,8 @@
       'Votre r\xE9putation ou votre productivit\xE9 ont-elles \xE9t\xE9 affect\xE9es?',
     Website: 'Site web',
     'What happened?': "Qu'est-ce qui s'est pass\xE9?",
+    'What was affected? Choose all that apply.':
+      "Qu'est-ce qui a \xE9t\xE9 affect\xE9? Cochez toutes les r\xE9ponses qui s'appliquent.",
     'What was involved?': "Qu'est-ce qui a \xE9t\xE9 impliqu\xE9?",
     'What was your reaction?': 'Quelle a \xE9t\xE9 votre r\xE9action?',
     'When did it take place?': "Quand cela s'est-il pass\xE9?",
