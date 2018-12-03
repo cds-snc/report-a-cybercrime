@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'react-emotion'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 import { GoCSignature, WordMark } from '@cdssnc/gcui'
 import Home from './Home'
 import { LanguageSwitcher } from './LanguageSwitcher'
@@ -75,6 +76,10 @@ const App = () => (
   <Query query={GET_LANGUAGE_QUERY}>
     {({ data: { language } }) => (
       <div>
+        <Helmet>
+          <html lang={language} />
+        </Helmet>
+
         <Content>
           <TopBanner lang={language} />
           <Home />
