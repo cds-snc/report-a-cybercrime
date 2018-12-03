@@ -7,6 +7,7 @@ import ListItem from '@govuk-react/list-item'
 import WarningText from '@govuk-react/warning-text'
 import { Query } from 'react-apollo'
 import { GET_LANGUAGE_QUERY } from "./utils/queriesAndMutations"
+import { TrackPageViews } from './TrackPageViews'
 
 const warning = css`
   font-family: Arial, sans-serif;
@@ -39,6 +40,7 @@ export const LandingPage = () => (
         <H3>
           <Trans>Tell us your story in three easy steps:</Trans>
         </H3>
+        <TrackPageViews />
         <ListItem className={listitem}>
           <Trans>Describe what happened.</Trans>
         </ListItem>{' '}

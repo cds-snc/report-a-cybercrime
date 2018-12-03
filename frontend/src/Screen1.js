@@ -8,6 +8,7 @@ import Button from '@govuk-react/button'
 import { H1 } from './utils/headers'
 import ListItem from '@govuk-react/list-item'
 import Breadcrumb from '@govuk-react/breadcrumb'
+import { TrackPageViews } from './TrackPageViews'
 
 const warning = css`
   display: block;
@@ -85,6 +86,7 @@ export const Screen1 = () => (
       <Trans>Describe what happened</Trans>
     </H1>
 
+    <TrackPageViews />
     <ListItem className={listitem}>
       <Trans>When did it take place?</Trans>
     </ListItem>

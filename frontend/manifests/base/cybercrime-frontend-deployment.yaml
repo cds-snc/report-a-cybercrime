@@ -28,6 +28,11 @@ spec:
           env:
             - name: PORT
               value: '3000'
+            - name: RAZZLE_GOOGLE_ANALYTICS_ID
+              valueFrom:
+                secretKeyRef:
+                  key: RAZZLE_GOOGLE_ANALYTICS_ID
+                  name: frontend-secrets
           resources: {}
           livenessProbe:
             httpGet:
