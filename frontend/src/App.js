@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'react-emotion'
+import styled, { css, injectGlobal } from 'react-emotion'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 import { GoCSignature, WordMark } from '@cdssnc/gcui'
@@ -11,6 +11,13 @@ import { Trans } from '@lingui/macro'
 export const GET_LANGUAGE_QUERY = gql`
   query GetLanguage {
     language @client
+  }
+`
+
+injectGlobal`
+  html, body, #root {
+    font-family: Arial, sans-serif;
+    margin: 0;
   }
 `
 const fipBanner = css`
