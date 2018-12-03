@@ -50,6 +50,7 @@ server
           </ServerLocation>,
         ),
       )
+
       res.status(200).send(`
         <!doctype html>
         <html lang="${req.language}">
