@@ -10,6 +10,7 @@ import gql from 'graphql-tag'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import Breadcrumb from '@govuk-react/breadcrumb'
 import { SAVE_REPORT_MUTATION } from "./utils/queriesAndMutations"
+import { TrackPageViews } from './TrackPageViews'
 
 const centercontent = css`
   max-width: 750px;
@@ -101,6 +102,7 @@ export const Screen3 = () => (
       <Trans>How were you affected?</Trans>
     </H1>
 
+    <TrackPageViews />
     <ListItem className={listitem}>
       <Trans>What was your reaction?</Trans>
     </ListItem>
