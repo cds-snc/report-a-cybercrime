@@ -5,14 +5,8 @@ import PropTypes from 'prop-types'
 import { GoCSignature, WordMark } from '@cdssnc/gcui'
 import Home from './Home'
 import { LanguageSwitcher } from './LanguageSwitcher'
-import gql from 'graphql-tag'
 import { Trans } from '@lingui/macro'
-
-export const GET_LANGUAGE_QUERY = gql`
-  query GetLanguage {
-    language @client
-  }
-`
+import { GET_LANGUAGE_QUERY } from "./utils/queriesAndMutations"
 
 injectGlobal`
   html, body, #root {
@@ -20,6 +14,7 @@ injectGlobal`
     margin: 0;
   }
 `
+
 const fipBanner = css`
   background-color: black;
   margin: auto;
