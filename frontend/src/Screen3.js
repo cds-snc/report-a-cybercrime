@@ -9,6 +9,7 @@ import ListItem from '@govuk-react/list-item'
 import gql from 'graphql-tag'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import Breadcrumb from '@govuk-react/breadcrumb'
+import { SAVE_REPORT_MUTATION } from "./utils/queriesAndMutations"
 
 const centercontent = css`
   max-width: 750px;
@@ -28,27 +29,6 @@ const textArea = css`
   width: 500pt;
   height: 200pt;
   font-size: 19pt;
-`
-
-export const SAVE_REPORT_MUTATION = gql`
-  mutation saveReport(
-    $whatHappened: String
-    $whatWasInvolved: String
-    $whatWasInvolvedOther: String
-    $howWereYouAffected: String
-  ) {
-    saveReport(
-      whatHappened: $whatHappened
-      whatWasInvolved: $whatWasInvolved
-      whatWasInvolvedOther: $whatWasInvolvedOther
-      howWereYouAffected: $howWereYouAffected
-    ) {
-      whatHappened
-      whatWasInvolved
-      whatWasInvolvedOther
-      howWereYouAffected
-    }
-  }
 `
 
 const submitAndNavigate = (client, saveReport, { howWereYouAffected }) => {

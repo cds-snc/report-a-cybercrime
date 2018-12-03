@@ -3,21 +3,7 @@ import { css } from 'react-emotion'
 import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { H1, H3 } from './utils/headers'
-import gql from 'graphql-tag'
-
-export const GET_LANGUAGE_QUERY = gql`
-  query GetLanguage {
-    language @client
-  }
-`
-
-export const GET_STATS_QUERY = gql`
-  query GetStats {
-    stats {
-      reportCount
-    }
-  }
-`
+import { GET_LANGUAGE_QUERY, GET_STATS_QUERY } from "./utils/queriesAndMutations"
 
 const centercontent = css`
   max-width: 750px;
