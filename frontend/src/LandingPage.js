@@ -6,7 +6,7 @@ import { H1, H3 } from './utils/headers'
 import ListItem from '@govuk-react/list-item'
 import WarningText from '@govuk-react/warning-text'
 import { Query } from 'react-apollo'
-import { GET_LANGUAGE_QUERY } from "./utils/queriesAndMutations"
+import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
 
 const warning = css`

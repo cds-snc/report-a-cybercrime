@@ -3,7 +3,10 @@ import { css } from 'react-emotion'
 import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { H1, H3 } from './utils/headers'
-import { GET_LANGUAGE_QUERY, GET_STATS_QUERY } from "./utils/queriesAndMutations"
+import {
+  GET_LANGUAGE_QUERY,
+  GET_STATS_QUERY,
+} from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
 
 const centercontent = css`

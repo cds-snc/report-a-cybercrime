@@ -1,7 +1,10 @@
 import React from 'react'
 import { Query, Mutation } from 'react-apollo'
 import styled, { css } from 'react-emotion'
-import { GET_LANGUAGE_QUERY, CHANGE_LANGUAGE_MUTATION } from "./utils/queriesAndMutations"
+import {
+  GET_LANGUAGE_QUERY,
+  CHANGE_LANGUAGE_MUTATION,
+} from './utils/queriesAndMutations'
 
 const A = styled('a')`
   font-family: Arial, Helvetica, sans-serif;

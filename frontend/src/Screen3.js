@@ -9,7 +9,7 @@ import ListItem from '@govuk-react/list-item'
 import gql from 'graphql-tag'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import Breadcrumb from '@govuk-react/breadcrumb'
-import { SAVE_REPORT_MUTATION } from "./utils/queriesAndMutations"
+import { SAVE_REPORT_MUTATION } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
 
 const centercontent = css`

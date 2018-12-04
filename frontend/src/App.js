@@ -2,11 +2,12 @@ import React from 'react'
 import styled, { css, injectGlobal } from 'react-emotion'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 import { GoCSignature, WordMark } from '@cdssnc/gcui'
 import Home from './Home'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { Trans } from '@lingui/macro'
-import { GET_LANGUAGE_QUERY } from "./utils/queriesAndMutations"
+import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 
 injectGlobal`
   html, body, #root {
@@ -77,6 +78,10 @@ const App = () => (
   <Query query={GET_LANGUAGE_QUERY}>
     {({ data: { language } }) => (
       <div>
+        <Helmet>
+          <html lang={language} />
+        </Helmet>
+
         <Content>
           <TopBanner lang={language} />
           <Home />
