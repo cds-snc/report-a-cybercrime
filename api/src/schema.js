@@ -1,23 +1,6 @@
 const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
 const { Stats } = require('./Stats')
-
-var Report = new GraphQLObjectType({
-  name: 'Report',
-  fields: () => ({
-    whatHappened: {
-      type: GraphQLString,
-    },
-    whatWasInvolved: {
-      type: GraphQLString,
-    },
-    whatWasInvolvedOther: {
-      type: GraphQLString,
-    },
-    howWereYouAffected: {
-      type: GraphQLString,
-    },
-  }),
-})
+const { Report } = require('./Report')
 
 const query = new GraphQLObjectType({
   name: 'Query',
