@@ -5,14 +5,9 @@ import { Link } from '@reach/router'
 import { H1, H3 } from './utils/headers'
 import ListItem from '@govuk-react/list-item'
 import WarningText from '@govuk-react/warning-text'
-import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
-
-export const GET_LANGUAGE_QUERY = gql`
-  query GetLanguage {
-    language @client
-  }
-`
+import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
+import { TrackPageViews } from './TrackPageViews'
 
 const warning = css`
   font-family: Arial, sans-serif;
@@ -45,6 +40,7 @@ export const LandingPage = () => (
         <H3>
           <Trans>Tell us your story in three easy steps:</Trans>
         </H3>
+        <TrackPageViews />
         <ListItem className={listitem}>
           <Trans>Describe what happened.</Trans>
         </ListItem>{' '}

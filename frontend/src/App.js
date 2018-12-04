@@ -1,19 +1,21 @@
 import React from 'react'
-import styled, { css } from 'react-emotion'
+import styled, { css, injectGlobal } from 'react-emotion'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { GoCSignature, WordMark } from '@cdssnc/gcui'
 import Home from './Home'
 import { LanguageSwitcher } from './LanguageSwitcher'
-import gql from 'graphql-tag'
 import { Trans } from '@lingui/macro'
+import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 
-export const GET_LANGUAGE_QUERY = gql`
-  query GetLanguage {
-    language @client
+injectGlobal`
+  html, body, #root {
+    font-family: Arial, sans-serif;
+    margin: 0;
   }
 `
+
 const fipBanner = css`
   background-color: black;
   margin: auto;

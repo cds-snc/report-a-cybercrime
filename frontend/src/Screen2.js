@@ -8,6 +8,7 @@ import Button from '@govuk-react/button'
 import { H1, H3, H4 } from './utils/headers'
 import { ApolloConsumer } from 'react-apollo'
 import Breadcrumb from '@govuk-react/breadcrumb'
+import { TrackPageViews } from './TrackPageViews'
 
 const centercontent = css`
   max-width: 750px;
@@ -107,6 +108,7 @@ export const Screen2 = () => (
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
       </Link>
+      <TrackPageViews />
       <Link to={'/form1'}>
         <Trans>What happened?</Trans>
       </Link>
