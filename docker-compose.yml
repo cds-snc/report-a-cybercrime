@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   arangodb:
-    image: arangodb/arangodb:3.1.19
+    image: arangodb/arangodb:3.4.0
     environment:
       - ARANGO_ROOT_PASSWORD=$DB_PASSWORD
     ports:
