@@ -1,15 +1,32 @@
 steps:
-  - name: "gcr.io/cloud-builders/npm"
+  - name: 'gcr.io/cloud-builders/npm'
     id: install
     dir: frontend
-    args: ["install"]
+    args: ['install']
 
-  - name: "gcr.io/cloud-builders/npm"
+  - name: 'gcr.io/cloud-builders/npm'
     id: test
     dir: frontend
-    args: ["test"]
+    args: ['test']
 
-  - name: "gcr.io/cloud-builders/npm"
+  - name: 'gcr.io/cloud-builders/npm'
     id: lint
     dir: frontend
-    args: ["run", "lint"]
+    args: ['run', 'lint']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'frontend'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/frontend:$BRANCH_NAME-$SHORT_SHA',
+        '-t',
+        'gcr.io/$PROJECT_ID/frontend:latest',
+        '-f',
+        'Dockerfile',
+        '.',
+      ]
+images:
+  - 'gcr.io/$PROJECT_ID/frontend:$BRANCH_NAME-$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/frontend:latest'

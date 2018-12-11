@@ -1,24 +1,42 @@
 steps:
+  - name: 'mikewilliamson/usesthis-ci'
+    id: start_arangodb
+    entrypoint: '/bin/sh'
+    args: [
+        '-c',
+        "
+        docker run -d --network=cloudbuild -p=8529:8529 --name=arangodb mikewilliamson/aci \
+        && /wait-for arangodb:8529
+        ",
+      ]
 
+  - name: 'gcr.io/cloud-builders/npm'
+    id: install
+    dir: api
+    args: ['install']
 
-- name: "mikewilliamson/usesthis-ci"
-  id: start_arangodb
-  entrypoint: "/bin/sh"
-  args: [ "-c", "
-  docker run -d --network=cloudbuild -p=8529:8529 --name=arangodb mikewilliamson/aci \
-  && /wait-for arangodb:8529
-" ]
+  - name: 'gcr.io/cloud-builders/npm'
+    dir: api
+    args: ['test']
+    env:
+      - 'DB_NAME=usesthis_test'
+      - 'DB_URL=http://arangodb:8529'
+      - 'DB_USER=root'
+      - 'DB_PASSWORD=test'
 
-- name: 'gcr.io/cloud-builders/npm'
-  id: install
-  dir: api
-  args: ['install']
-
-- name: 'gcr.io/cloud-builders/npm'
-  dir: api
-  args: ['test']
-  env:
-  - "DB_NAME=usesthis_test"
-  - "DB_URL=http://arangodb:8529"
-  - "DB_USER=root"
-  - "DB_PASSWORD=test"
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'api'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/api:$BRANCH_NAME-$SHORT_SHA',
+        '-t',
+        'gcr.io/$PROJECT_ID/api:latest',
+        '-f',
+        'Dockerfile',
+        '.',
+      ]
+images:
+  - 'gcr.io/$PROJECT_ID/api:$BRANCH_NAME-$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/api:latest'
