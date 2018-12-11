@@ -1,7 +1,0 @@
-bases:
-  - ../../base
-patches:
-  - cybercrime-api-service.yaml
-resources:
-  - arango-claim.yaml
-  - ssd-storageclass.yaml
