@@ -4,6 +4,8 @@ metadata:
   namespace: cybercrime-api
   labels:
     app: cybercrime-api
+  annotations:
+    flux.weave.works/automated: 'true'
   name: cybercrime-api
 spec:
   replicas: 1
@@ -47,7 +49,7 @@ spec:
                   name: cybercrime-api
                   key: DB_PASSWORD
       containers:
-        - image: cdssnc/cybercrime-api
+        - image: gcr.io/report-a-cyber-crime/api:master-f7904c5
           imagePullPolicy: Always
           name: cybercrime-api
           env:
