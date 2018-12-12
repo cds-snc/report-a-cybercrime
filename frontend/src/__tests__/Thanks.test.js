@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 import { MockedProvider } from 'react-apollo/test-utils'
 import { ApolloProvider } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Thanks } from '../thanks'
+import { Thanks } from '../Thanks'
 import { testClient } from '../utils/createTestClient'
 
 describe('Thanks', () => {
