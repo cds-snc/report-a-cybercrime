@@ -7,7 +7,7 @@ import { LandingPage } from './LandingPage'
 import { Screen1 } from './Screen1'
 import { Screen2 } from './Screen2'
 import { Screen3 } from './Screen3'
-import { Thanks } from './thanks'
+import { Thanks } from './Thanks'
 
 const root = css`
   margin: 20pt;

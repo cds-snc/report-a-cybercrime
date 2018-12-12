@@ -74,7 +74,8 @@
     "prettier": "^1.15.3",
     "pretty-quick": "^1.8.0",
     "supertest": "^3.3.0",
-    "unfetch": "^4.0.1"
+    "unfetch": "^4.0.1",
+    "waait": "^1.0.2"
   },
   "lingui": {
     "srcPathIgnorePatterns": [
