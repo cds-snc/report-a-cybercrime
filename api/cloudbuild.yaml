@@ -10,13 +10,15 @@ steps:
         ",
       ]
 
-  - name: 'gcr.io/cloud-builders/npm'
-    id: install
+  - name: node:11-alpine
+    id: ci
     dir: api
-    args: ['install']
+    entrypoint: npm
+    args: ['ci']
 
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: node:11-alpine
     dir: api
+    entrypoint: npm
     args: ['test']
     env:
       - 'DB_NAME=usesthis_test'
