@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   labels:
     app: cybercrime-frontend
+  annotations:
+    flux.weave.works/automated: 'true'
   name: cybercrime-frontend
   namespace: default
 spec:
@@ -22,7 +24,7 @@ spec:
         app: cybercrime-frontend
     spec:
       containers:
-        - image: cdssnc/cybercrime-frontend
+        - image: gcr.io/report-a-cyber-crime/frontend:master-f7904c5
           imagePullPolicy: Always
           name: cybercrime-api
           env:
