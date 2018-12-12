@@ -1,17 +1,20 @@
 steps:
-  - name: 'gcr.io/cloud-builders/npm'
-    id: install
+  - name: node:11-alpine
+    id: ci
     dir: frontend
-    args: ['install']
+    entrypoint: npm
+    args: ['ci']
 
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: node:11-alpine
     id: test
     dir: frontend
+    entrypoint: npm
     args: ['test']
 
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: node:11-alpine
     id: lint
     dir: frontend
+    entrypoint: npm
     args: ['run', 'lint']
 
   - name: 'gcr.io/cloud-builders/docker'
