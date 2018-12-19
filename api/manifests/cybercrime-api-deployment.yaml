@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -24,56 +25,56 @@ spec:
         app: cybercrime-api
     spec:
       initContainers:
-        - image: cdssnc/cybercrime-arangoinit
-          imagePullPolicy: Always
-          name: cybercrime-arangoinit
-          env:
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: cybercrime-api
-                  key: DB_USER
-            - name: DB_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: cybercrime-api
-                  key: DB_NAME
-            - name: DB_URL
-              valueFrom:
-                secretKeyRef:
-                  name: cybercrime-api
-                  key: DB_URL
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: cybercrime-api
-                  key: DB_PASSWORD
+      - image: cdssnc/cybercrime-arangoinit
+        imagePullPolicy: Always
+        name: cybercrime-arangoinit
+        env:
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: cybercrime-api
+              key: DB_USER
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: cybercrime-api
+              key: DB_NAME
+        - name: DB_URL
+          valueFrom:
+            secretKeyRef:
+              name: cybercrime-api
+              key: DB_URL
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cybercrime-api
+              key: DB_PASSWORD
       containers:
-        - image: gcr.io/report-a-cyber-crime/api:master-f7904c5
-          imagePullPolicy: Always
-          name: cybercrime-api
-          env:
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: cybercrime-api
-                  key: DB_USER
-            - name: DB_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: cybercrime-api
-                  key: DB_NAME
-            - name: DB_URL
-              valueFrom:
-                secretKeyRef:
-                  name: cybercrime-api
-                  key: DB_URL
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: cybercrime-api
-                  key: DB_PASSWORD
-          resources: {}
+      - image: gcr.io/report-a-cyber-crime/api:master-d85a6f3
+        imagePullPolicy: Always
+        name: cybercrime-api
+        env:
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: cybercrime-api
+              key: DB_USER
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: cybercrime-api
+              key: DB_NAME
+        - name: DB_URL
+          valueFrom:
+            secretKeyRef:
+              name: cybercrime-api
+              key: DB_URL
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cybercrime-api
+              key: DB_PASSWORD
+        resources: {}
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
