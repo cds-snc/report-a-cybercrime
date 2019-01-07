@@ -62,6 +62,7 @@ server
                 ? 'Tell us your cybercrime story'
                 : 'Racontez-nous votre histoire de cybercriminalité'
             }</title>
+            <link rel="manifest" href="manifest.json" />
             ${
               assets.client.css
                 ? `<link rel="stylesheet" href="${assets.client.css}">`

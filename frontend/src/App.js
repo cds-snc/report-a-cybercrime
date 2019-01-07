@@ -8,6 +8,12 @@ import Home from './Home'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
+import * as serviceWorker from './utils/serviceWorker'
+
+if (typeof window !== 'undefined') {
+  console.log('App: going to register!!')
+  serviceWorker.register()
+}
 
 injectGlobal`
   html, body, #root {
