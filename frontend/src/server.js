@@ -35,6 +35,10 @@ server
     res.status(200).send('yes')
   })
 
+  .get('/service-worker.js', (req, res) => {
+    res.sendFile('service-worker.js')
+  })
+
   .get('/*', (req, res) => {
     const client = createApolloClient({
       initialState: { language: req.language },
