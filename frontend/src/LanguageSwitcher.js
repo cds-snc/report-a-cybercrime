@@ -9,7 +9,7 @@ import {
 const buttonThatLooksLikeALink = css`
   background: none;
   border: none;
-  font-family: Arial, Helvetica, sans-serif;
+  font: inherit;
   color: white;
   text-decoration: underline;
   &:hover {
