@@ -8,7 +8,8 @@ import Home from './Home'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
-import * as serviceWorker from '../public/service-worker'
+// import * as serviceWorker from '../public/service-worker'
+const serviceWorker = require('../public/service-worker')
 
 if (typeof window !== 'undefined') {
   console.log('App: going to register!!')
