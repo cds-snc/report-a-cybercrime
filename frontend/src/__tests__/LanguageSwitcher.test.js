@@ -27,4 +27,13 @@ describe('<LanguageSwitcher />', () => {
       expect(wrapper.text()).toMatch(/English/)
     })
   })
+
+  it(`renders a button and not a link because it doesn't navigate anywhere`, () => {
+    const wrapper = mount(
+      <ApolloProvider client={testClient({ language: 'fr' })}>
+        <LanguageSwitcher />
+      </ApolloProvider>,
+    )
+    expect(wrapper.find('button')).toHaveLength(1)
+  })
 })
