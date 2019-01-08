@@ -36,7 +36,8 @@ server
   })
 
   .get('/service-worker.js', (req, res) => {
-    res.sendFile('service-worker.js')
+    console.log('trying to send service-worker.js')
+    res.sendFile(`${publicDir}/service-worker.js`)
   })
 
   .get('/*', (req, res) => {
