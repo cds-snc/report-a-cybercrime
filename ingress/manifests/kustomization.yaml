@@ -1,5 +1,0 @@
-resources:
-  - traefik-ingress-controller-cluster-role-binding.yaml
-  - traefik-ingress-controller-cluster-role.yaml
-  - traefik-ingress-controller-deployment.yaml
-  - traefik-ingress-controller-service-account.yaml
