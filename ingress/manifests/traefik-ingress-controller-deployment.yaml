@@ -17,8 +17,8 @@ spec:
             - --logLevel=DEBUG
             - --debug
             - --defaultentrypoints=http,https
-            - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https
-            - --entrypoints=Name:https Address::443 TLS
+            - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https Compress:true
+            - --entrypoints=Name:https Address::443 TLS Compress:true
             - --acme
             - --acme.onhostrule
             - --acme.entrypoint=https
