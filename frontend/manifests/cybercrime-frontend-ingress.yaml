@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/custom-request-headers: 'Strict-Transport-Security: max-age=31536000'
   name: cybercrime-frontend-ingress
 spec:
   rules:
