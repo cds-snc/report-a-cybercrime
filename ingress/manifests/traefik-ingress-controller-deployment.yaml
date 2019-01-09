@@ -4,6 +4,8 @@ metadata:
   labels:
     k8s-app: traefik-ingress-lb
   name: traefik-ingress-controller
+  annotations:
+    flux.weave.works/automated: "true"
   namespace: kube-system
 spec:
   template:
