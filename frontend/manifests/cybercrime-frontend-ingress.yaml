@@ -6,6 +6,8 @@ metadata:
     ingress.kubernetes.io/force-hsts: 'true'
     ingress.kubernetes.io/hsts-max-age: '315360000'
     ingress.kubernetes.io/hsts-include-subdomains: 'true'
+    ingress.kubernetes.io/content-type-nosniff: 'true'
+    ingress.kubernetes.io/frame-deny: 'true'
   name: cybercrime-frontend-ingress
 spec:
   rules:
