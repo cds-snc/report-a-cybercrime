@@ -31,62 +31,43 @@ const cybercrimeLink = css`
 `
 
 export const LandingPage = () => (
-  <div>
-    <script>
-      if ('serviceWorker' in navigator){' '}
-      {window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('sw.js')
-          .then(swReg => {
-            console.log('Service Worker is registered', swReg)
-          })
-          .catch(err => {
-            console.error('Service Worker Error', err)
-          })
-      })}
-    </script>
-
-    <Query query={GET_LANGUAGE_QUERY}>
-      {({ data: { language } }) => (
-        <div className={centercontent}>
-          <H1>
-            <Trans>
-              {' '}
-              Have you or someone you know encountered a cybercrime?
-            </Trans>
-          </H1>
-          <H3>
-            <Trans>Tell us your story in three easy steps:</Trans>
-          </H3>
-          <TrackPageViews />
-          <ListItem className={listitem}>
-            <Trans>Describe what happened.</Trans>
-          </ListItem>{' '}
-          <ListItem className={listitem}>
-            <Trans> Select where you encountered the cybercrime. </Trans>
-          </ListItem>{' '}
-          <ListItem className={listitem}>
-            <Trans>Share how you were impacted.</Trans>
-          </ListItem>
-          <WarningText className={warning}>
-            <Trans>Please do not provide any personal information.</Trans>
-          </WarningText>
-          <Link to={'form1'} className={link}>
-            <Trans>Share your story→ </Trans>
-          </Link>
-          <div className={cybercrimeLink}>
-            <a
-              href={
-                language === 'en'
-                  ? 'http://www.rcmp-grc.gc.ca/en/cybercrime-an-overview-incidents-and-issues-canada'
-                  : 'http://www.rcmp-grc.gc.ca/fr/cybercriminalite-survol-des-incidents-et-des-enjeux-au-canada'
-              }
-            >
-              <Trans>What is a cybercrime?</Trans>
-            </a>
-          </div>
+  <Query query={GET_LANGUAGE_QUERY}>
+    {({ data: { language } }) => (
+      <div className={centercontent}>
+        <H1>
+          <Trans> Have you or someone you know encountered a cybercrime?</Trans>
+        </H1>
+        <H3>
+          <Trans>Tell us your story in three easy steps:</Trans>
+        </H3>
+        <TrackPageViews />
+        <ListItem className={listitem}>
+          <Trans>Describe what happened.</Trans>
+        </ListItem>{' '}
+        <ListItem className={listitem}>
+          <Trans> Select where you encountered the cybercrime. </Trans>
+        </ListItem>{' '}
+        <ListItem className={listitem}>
+          <Trans>Share how you were impacted.</Trans>
+        </ListItem>
+        <WarningText className={warning}>
+          <Trans>Please do not provide any personal information.</Trans>
+        </WarningText>
+        <Link to={'form1'} className={link}>
+          <Trans>Share your story→ </Trans>
+        </Link>
+        <div className={cybercrimeLink}>
+          <a
+            href={
+              language === 'en'
+                ? 'http://www.rcmp-grc.gc.ca/en/cybercrime-an-overview-incidents-and-issues-canada'
+                : 'http://www.rcmp-grc.gc.ca/fr/cybercriminalite-survol-des-incidents-et-des-enjeux-au-canada'
+            }
+          >
+            <Trans>What is a cybercrime?</Trans>
+          </a>
         </div>
-      )}
-    </Query>
-  </div>
+      </div>
+    )}
+  </Query>
 )

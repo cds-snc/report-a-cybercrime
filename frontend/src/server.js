@@ -83,6 +83,21 @@ server
           </head>
           <body>
             <div id="root">${markup}</div>
+             <script>
+                if ('serviceWorker' in navigator) {
+                  window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('sw.js')
+                    .then(swReg => {
+                      console.log('Service Worker is registered', swReg);
+                    })
+                    .catch(err => {
+                      console.error('Service Worker Error', err);
+                    });
+                  });
+                }
+             </script>
+                        
+            
           </body>
         </html>
       `)
