@@ -75,6 +75,8 @@ server
                   }" defer crossorigin></script>`
             }
 
+            <link rel="manifest" href="/manifest.json" />
+            <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png" />
             <script>
               window.__APOLLO_STATE__=${JSON.stringify({
                 language: req.language,
