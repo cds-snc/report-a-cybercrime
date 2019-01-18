@@ -29,31 +29,60 @@ self.addEventListener('activate', event => {
   )
 })
 
-self.addEventListener('fetch', event => {
+// network first, fallback to cache
+// useful in development, where we want to see the app changes right away
+// in production should maybe change to cache first
+self.addEventListener('fetch', function(event) {
   console.log('Fetch event for ', event.request.url)
   event.respondWith(
-    caches
-      .match(event.request)
+    fetch(event.request)
       .then(response => {
-        if (response) {
+        if (event.request.url.indexOf('sockjs-node') !== -1) {
+          return response
+        } else {
+          return caches.open(staticCacheName).then(cache => {
+            console.log(`Caching new page ${event.request.url}`)
+            cache.put(event.request.url, response.clone())
+            return response
+          })
+        }
+      })
+      .catch(() => {
+        return caches.match(event.request).then(response => {
           console.log('Found ', event.request.url, ' in cache')
           return response
-        }
-        console.log('Network request for ', event.request.url)
-        return fetch(event.request).then(response => {
-          if (event.request.url.indexOf('sockjs-node') !== -1) {
-            return response
-          } else {
-            console.log(`Caching new page ${event.request.url}`)
-            return caches.open(staticCacheName).then(cache => {
-              cache.put(event.request.url, response.clone())
-              return response
-            })
-          }
         })
-      })
-      .catch(error => {
-        console.log(`fetch error ${error}`)
       }),
   )
 })
+
+// cache first
+
+// self.addEventListener('fetch', event => {
+//   console.log('Fetch event for ', event.request.url)
+//   event.respondWith(
+//     caches
+//       .match(event.request)
+//       .then(response => {
+//         if (response) {
+//           console.log('Found ', event.request.url, ' in cache')
+//           return response
+//         }
+//         console.log('Network request for ', event.request.url)
+//         return fetch(event.request).then(response => {
+//           if (event.request.url.indexOf('sockjs-node') !== -1) {
+//             return response
+//           } else {
+//             console.log(`Caching new page ${event.request.url}`)
+//             return caches.open(staticCacheName).then(cache => {
+//               cache.put(event.request.url, response.clone())
+//               return response
+//             })
+//           }
+//         })
+//       })
+//       .catch(error => {
+//         console.log(`fetch error ${error}`)
+//       }),
+//   )
+// })
