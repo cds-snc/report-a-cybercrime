@@ -88,7 +88,7 @@ server
              <script>
                 if ('serviceWorker' in navigator) {
                   window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('sw.js')
+                    navigator.serviceWorker.register('service-worker.js')
                     .then(swReg => {
                       console.log('Service Worker is registered', swReg);
                     })
@@ -97,9 +97,7 @@ server
                     });
                   });
                 }
-             </script>
-                        
-            
+             </script>            
           </body>
         </html>
       `)
