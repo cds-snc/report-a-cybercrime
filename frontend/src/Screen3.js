@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, navigate } from '@reach/router'
 import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
+import { i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import Button from '@govuk-react/button'
 import { H1 } from './utils/headers'
@@ -31,6 +32,12 @@ const textArea = css`
   height: 200pt;
   font-size: 19pt;
 `
+const errorMessage = css`
+  margin-top: 10pt;
+  display: inline-block;
+  font-size: 19pt;
+  color: red;
+`
 
 const submitAndNavigate = (client, saveReport, { howWereYouAffected }) => {
   let data = client.readQuery({
@@ -48,8 +55,15 @@ const submitAndNavigate = (client, saveReport, { howWereYouAffected }) => {
   navigate('thanks')
 }
 
-const validate = () => {}
-
+const validate = values => {
+  let errors = {}
+  if (!values.howWereYouAffected) {
+    errors.howWereYouAffected = i18nMark(
+      'Please tell us what how you were affected.',
+    )
+  }
+  return errors
+}
 const MyForm = () => (
   <ApolloConsumer>
     {client => (
@@ -61,19 +75,25 @@ const MyForm = () => (
             render={({ handleSubmit, pristine, invalid }) => (
               <form onSubmit={handleSubmit}>
                 <div>
-                  <Field
-                    name="howWereYouAffected"
-                    component="textarea"
-                    className={textArea}
-                    placeholder=""
-                  />
+                  <Field name="howWereYouAffected">
+                    {({ input, meta }) => (
+                      <div>
+                        <textarea
+                          {...input}
+                          placeholder=""
+                          className={textArea}
+                        />
+                        <div className={errorMessage}>
+                          {meta.error && meta.touched && (
+                            <Trans id={meta.error} />
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </Field>
                 </div>
 
-                <Button
-                  className={submitButton}
-                  type="submit"
-                  disabled={pristine || invalid}
-                >
+                <Button className={submitButton} type="submit">
                   <Trans>Next</Trans>
                 </Button>
               </form>

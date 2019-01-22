@@ -11,14 +11,12 @@ const textArea = css`
   height: 200pt;
   font-size: 19pt;
 `
-
 const errorMessage = css`
   margin-top: 10pt;
   display: inline-block;
   font-size: 19pt;
   color: red;
 `
-
 const submitButton = css`
   margin-top: 20pt;
 `
@@ -41,7 +39,7 @@ export const WhatHappenedForm = ({ onSubmit }) => (
           <label htmlFor="whatHappened">
             <Trans>What Happened</Trans>
           </label>
-          <Field id="whatHappened" name="whatHappened" component="textarea">
+          <Field id="whatHappened" name="whatHappened">
             {({ input, meta }) => (
               <div>
                 <textarea {...input} placeholder="" className={textArea} />

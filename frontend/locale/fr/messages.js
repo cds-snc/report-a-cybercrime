@@ -32,6 +32,8 @@
       'Veuillez ne pas fournir de renseignements personnels.',
     'Please tell us what happened.':
       "S'il vous pla\xEEt, dites-nous ce qui s'est pass\xE9.",
+    'Please tell us what how you were affected.':
+      'Veuillez nous dire de quelle fa\xE7on vous avez \xE9t\xE9 affect\xE9.',
     Privacy: 'Confidentialit\xE9',
     'Select where you encountered the cybercrime.':
       'Veuillez s\xE9lectionner o\xF9 vous avez rencontr\xE9 la cybercriminalit\xE9.',

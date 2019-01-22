@@ -1,11 +1,11 @@
 {
   "Please tell us what happened.": {
-    "origin": [["src/WhatHappenedForm.js", 29]]
+    "origin": [["src/WhatHappenedForm.js", 27]]
   },
   "What Happened": {
-    "origin": [["src/WhatHappenedForm.js", 41]]
+    "origin": [["src/WhatHappenedForm.js", 40]]
   },
   "Next": {
-    "origin": [["src/WhatHappenedForm.js", 62]]
+    "origin": [["src/WhatHappenedForm.js", 55]]
   }
 }

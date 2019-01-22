@@ -18,7 +18,7 @@
   },
   "Did you lose money or personal information?": {
     "translation": "Avez-vous perdu de l'argent ou des renseignements personnels?",
-    "origin": [["src/Screen3.js", 110]]
+    "origin": [["src/Screen3.js", 127]]
   },
   "Email address": {
     "translation": "Adresse de courriel",
@@ -47,7 +47,7 @@
   },
   "How were you affected?": {
     "translation": "Comment avez-vous été affecté?",
-    "origin": [["src/Screen1.js", 52], ["src/Screen3.js", 102]]
+    "origin": [["src/Screen1.js", 52], ["src/Screen3.js", 119]]
   },
   "In general terms, who was involved?": {
     "translation": "En termes généraux, qui était impliqué?",
@@ -62,15 +62,15 @@
     "origin": [
       ["src/Screen1.js", 36],
       ["src/Screen2.js", 109],
-      ["src/Screen3.js", 92]
+      ["src/Screen3.js", 109]
     ]
   },
   "Next": {
     "translation": "Suivant",
     "origin": [
       ["src/Screen2.js", 86],
-      ["src/Screen3.js", 77],
-      ["src/WhatHappenedForm.js", 62]
+      ["src/Screen3.js", 94],
+      ["src/WhatHappenedForm.js", 55]
     ]
   },
   "Other": {
@@ -87,7 +87,11 @@
   },
   "Please tell us what happened.": {
     "translation": "S'il vous plaît, dites-nous ce qui s'est passé.",
-    "origin": [["src/WhatHappenedForm.js", 29]]
+    "origin": [["src/WhatHappenedForm.js", 27]]
+  },
+  "Please tell us what how you were affected.": {
+    "translation": "Veuillez nous dire de quelle façon vous avez été affecté.",
+    "origin": [["src/Screen3.js", 61]]
   },
   "Privacy": {
     "translation": "Confidentialité",
@@ -127,7 +131,7 @@
   },
   "Was your reputation or productivity affected?": {
     "translation": "Votre réputation ou votre productivité ont-elles été affectées?",
-    "origin": [["src/Screen3.js", 113]]
+    "origin": [["src/Screen3.js", 130]]
   },
   "Website": {
     "translation": "Site web",
@@ -135,11 +139,11 @@
   },
   "What Happened": {
     "translation": "Qu'est-ce qui s'est passé?",
-    "origin": [["src/WhatHappenedForm.js", 41]]
+    "origin": [["src/WhatHappenedForm.js", 40]]
   },
   "What happened?": {
     "translation": "Qu'est-ce qui s'est passé?",
-    "origin": [["src/Screen2.js", 113], ["src/Screen3.js", 95]]
+    "origin": [["src/Screen2.js", 113], ["src/Screen3.js", 112]]
   },
   "What is a cybercrime?": {
     "translation": "Qu'est-ce qu'un cybercrime?",
@@ -151,11 +155,11 @@
   },
   "What was involved?": {
     "translation": "Qu'est-ce qui a été impliqué?",
-    "origin": [["src/Screen3.js", 98]]
+    "origin": [["src/Screen3.js", 115]]
   },
   "What was your reaction?": {
     "translation": "Quelle a été votre réaction?",
-    "origin": [["src/Screen3.js", 107]]
+    "origin": [["src/Screen3.js", 124]]
   },
   "When did it take place?": {
     "translation": "Quand cela s'est-il passé?",
