@@ -75,6 +75,8 @@ server
                   }" defer crossorigin></script>`
             }
 
+            <link rel="manifest" href="/manifest.json" />
+            <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png" />
             <script>
               window.__APOLLO_STATE__=${JSON.stringify({
                 language: req.language,
@@ -83,6 +85,19 @@ server
           </head>
           <body>
             <div id="root">${markup}</div>
+             <script>
+                if ('serviceWorker' in navigator) {
+                  window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('service-worker.js')
+                    .then(swReg => {
+                      console.log('Service Worker is registered', swReg);
+                    })
+                    .catch(err => {
+                      console.error('Service Worker Error', err);
+                    });
+                  });
+                }
+             </script>            
           </body>
         </html>
       `)
