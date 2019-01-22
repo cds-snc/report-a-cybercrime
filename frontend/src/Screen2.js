@@ -108,7 +108,6 @@ export const Screen2 = () => (
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
       </Link>
-      <TrackPageViews />
       <Link to={'/form1'}>
         <Trans>What happened?</Trans>
       </Link>
@@ -116,6 +115,7 @@ export const Screen2 = () => (
     <H1>
       <Trans>How did that happen?</Trans>
     </H1>
+    <TrackPageViews />
     {MyForm(options)}
   </div>
 )
