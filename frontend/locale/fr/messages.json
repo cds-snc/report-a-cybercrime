@@ -1,7 +1,7 @@
 {
   "Bank accounts": {
     "translation": "Comptes bancaires",
-    "origin": [["src/Screen2.js", 101]]
+    "origin": [["src/Screen2.js", 119]]
   },
   "Choose all that apply": {
     "translation": "Cochez toutes les réponses qui s'appliquent",
@@ -18,11 +18,11 @@
   },
   "Did you lose money or personal information?": {
     "translation": "Avez-vous perdu de l'argent ou des renseignements personnels?",
-    "origin": [["src/Screen3.js", 127]]
+    "origin": [["src/Screen3.js", 130]]
   },
   "Email address": {
     "translation": "Adresse de courriel",
-    "origin": [["src/Screen2.js", 97]]
+    "origin": [["src/Screen2.js", 115]]
   },
   "For internal use only.": {
     "translation": "Pour usage interne seulement.",
@@ -43,11 +43,11 @@
   },
   "How did that happen?": {
     "translation": "Comment cela s'est-il passé?",
-    "origin": [["src/Screen2.js", 117]]
+    "origin": [["src/Screen2.js", 135]]
   },
   "How were you affected?": {
     "translation": "Comment avez-vous été affecté?",
-    "origin": [["src/Screen1.js", 52], ["src/Screen3.js", 119]]
+    "origin": [["src/Screen1.js", 52], ["src/Screen3.js", 122]]
   },
   "In general terms, who was involved?": {
     "translation": "En termes généraux, qui était impliqué?",
@@ -55,31 +55,31 @@
   },
   "I’m not sure": {
     "translation": "Je ne suis pas certain(e)",
-    "origin": [["src/Screen2.js", 102]]
+    "origin": [["src/Screen2.js", 120]]
   },
   "Landing Page": {
     "translation": "Page d'atterrissage",
     "origin": [
       ["src/Screen1.js", 36],
-      ["src/Screen2.js", 109],
-      ["src/Screen3.js", 109]
+      ["src/Screen2.js", 127],
+      ["src/Screen3.js", 112]
     ]
   },
   "Next": {
     "translation": "Suivant",
     "origin": [
-      ["src/Screen2.js", 86],
-      ["src/Screen3.js", 94],
+      ["src/Screen2.js", 104],
+      ["src/Screen3.js", 97],
       ["src/WhatHappenedForm.js", 55]
     ]
   },
   "Other": {
     "translation": "Autre",
-    "origin": [["src/Screen2.js", 73]]
+    "origin": [["src/Screen2.js", 85]]
   },
   "Phone": {
     "translation": "Téléphone",
-    "origin": [["src/Screen2.js", 98]]
+    "origin": [["src/Screen2.js", 116]]
   },
   "Please do not provide any personal information.": {
     "translation": "Veuillez ne pas fournir de renseignements personnels.",
@@ -92,6 +92,10 @@
   "Please tell us what how you were affected.": {
     "translation": "Veuillez nous dire de quelle façon vous avez été affecté.",
     "origin": [["src/Screen3.js", 61]]
+  },
+  "Please tell us what things were affected.": {
+    "translation": "S'il vous plaît, dites-nous quelles sont les choses qui ont été affecté.",
+    "origin": [["src/Screen2.js", 49]]
   },
   "Privacy": {
     "translation": "Confidentialité",
@@ -111,7 +115,7 @@
   },
   "Social media accounts": {
     "translation": "Comptes de médias sociaux",
-    "origin": [["src/Screen2.js", 100]]
+    "origin": [["src/Screen2.js", 118]]
   },
   "Tell us your story in three easy steps:": {
     "translation": "Racontez-nous votre histoire en trois étapes faciles:",
@@ -123,7 +127,7 @@
   },
   "Text messages": {
     "translation": "Messages texte",
-    "origin": [["src/Screen2.js", 99]]
+    "origin": [["src/Screen2.js", 117]]
   },
   "Thank you for sharing your story.": {
     "translation": "Merci d'avoir partagé votre histoire.",
@@ -131,11 +135,11 @@
   },
   "Was your reputation or productivity affected?": {
     "translation": "Votre réputation ou votre productivité ont-elles été affectées?",
-    "origin": [["src/Screen3.js", 130]]
+    "origin": [["src/Screen3.js", 133]]
   },
   "Website": {
     "translation": "Site web",
-    "origin": [["src/Screen2.js", 96]]
+    "origin": [["src/Screen2.js", 114]]
   },
   "What Happened": {
     "translation": "Qu'est-ce qui s'est passé?",
@@ -143,7 +147,7 @@
   },
   "What happened?": {
     "translation": "Qu'est-ce qui s'est passé?",
-    "origin": [["src/Screen2.js", 113], ["src/Screen3.js", 112]]
+    "origin": [["src/Screen2.js", 131], ["src/Screen3.js", 115]]
   },
   "What is a cybercrime?": {
     "translation": "Qu'est-ce qu'un cybercrime?",
@@ -151,15 +155,15 @@
   },
   "What was affected? Choose all that apply.": {
     "translation": "Qu'est-ce qui a été affecté? Cochez toutes les réponses qui s'appliquent.",
-    "origin": [["src/Screen2.js", 52]]
+    "origin": [["src/Screen2.js", 64]]
   },
   "What was involved?": {
     "translation": "Qu'est-ce qui a été impliqué?",
-    "origin": [["src/Screen3.js", 115]]
+    "origin": [["src/Screen3.js", 118]]
   },
   "What was your reaction?": {
     "translation": "Quelle a été votre réaction?",
-    "origin": [["src/Screen3.js", 124]]
+    "origin": [["src/Screen3.js", 127]]
   },
   "When did it take place?": {
     "translation": "Quand cela s'est-il passé?",

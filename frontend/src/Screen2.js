@@ -9,6 +9,7 @@ import { H1, H3, H4 } from './utils/headers'
 import { ApolloConsumer } from 'react-apollo'
 import Breadcrumb from '@govuk-react/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
+import { i18nMark } from '@lingui/react'
 
 const centercontent = css`
   max-width: 750px;
@@ -30,14 +31,30 @@ const textArea = css`
   height: 200pt;
   font-size: 19pt;
 `
+const errorMessage = css`
+  margin-top: 10pt;
+  display: inline-block;
+  font-size: 19pt;
+  color: red;
+`
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data })
   navigate('/form3')
 }
 
-const validate = () => {}
-
+const validate = values => {
+  let errors = {}
+  if (
+    (!values.whatWasInvolved || !values.whatWasInvolved.length) &&
+    !values.whatWasInvolvedOther
+  ) {
+    errors.whatWasInvolvedOther = i18nMark(
+      'Please tell us what things were affected.',
+    )
+  }
+  return errors
+}
 const MyForm = options => (
   <ApolloConsumer>
     {client => (
@@ -74,15 +91,19 @@ const MyForm = options => (
               </label>
             </H4>
             <div>
-              <Field
-                name="whatWasInvolvedOther"
-                component="textarea"
-                className={textArea}
-                placeholder=""
-              />
+              <Field name="whatWasInvolvedOther">
+                {({ input, meta }) => (
+                  <div>
+                    <textarea {...input} placeholder="" className={textArea} />
+                    <div className={errorMessage}>
+                      {meta.error && meta.touched && <Trans id={meta.error} />}
+                    </div>
+                  </div>
+                )}
+              </Field>
             </div>
 
-            <Button className={submitButton} type="submit" disabled={invalid}>
+            <Button className={submitButton} type="submit">
               <Trans>Next</Trans>
             </Button>
           </form>

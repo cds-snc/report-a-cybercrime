@@ -45,6 +45,8 @@
     'Please tell us what happened.': 'Please tell us what happened.',
     'Please tell us what how you were affected.':
       'Please tell us what how you were affected.',
+    'Please tell us what things were affected.':
+      'Please tell us what things were affected.',
     Privacy: 'Privacy',
     'Select where you encountered the cybercrime.':
       'Select where you encountered the cybercrime.',

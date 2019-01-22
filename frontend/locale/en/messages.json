@@ -1,7 +1,7 @@
 {
   "Bank accounts": {
     "translation": "Bank accounts",
-    "origin": [["src/Screen2.js", 101]]
+    "origin": [["src/Screen2.js", 119]]
   },
   "Choose all that apply": {
     "translation": "Choose all that apply",
@@ -18,11 +18,11 @@
   },
   "Did you lose money or personal information?": {
     "translation": "Did you lose money or personal information?",
-    "origin": [["src/Screen3.js", 127]]
+    "origin": [["src/Screen3.js", 130]]
   },
   "Email address": {
     "translation": "Email address",
-    "origin": [["src/Screen2.js", 97]]
+    "origin": [["src/Screen2.js", 115]]
   },
   "For internal use only.": {
     "translation": "For internal use only.",
@@ -43,11 +43,11 @@
   },
   "How did that happen?": {
     "translation": "How did that happen?",
-    "origin": [["src/Screen2.js", 117]]
+    "origin": [["src/Screen2.js", 135]]
   },
   "How were you affected?": {
     "translation": "How were you affected?",
-    "origin": [["src/Screen1.js", 52], ["src/Screen3.js", 119]]
+    "origin": [["src/Screen1.js", 52], ["src/Screen3.js", 122]]
   },
   "In general terms, who was involved?": {
     "translation": "In general terms, who was involved?",
@@ -55,31 +55,31 @@
   },
   "I’m not sure": {
     "translation": "I’m not sure",
-    "origin": [["src/Screen2.js", 102]]
+    "origin": [["src/Screen2.js", 120]]
   },
   "Landing Page": {
     "translation": "Landing Page",
     "origin": [
       ["src/Screen1.js", 36],
-      ["src/Screen2.js", 109],
-      ["src/Screen3.js", 109]
+      ["src/Screen2.js", 127],
+      ["src/Screen3.js", 112]
     ]
   },
   "Next": {
     "translation": "Next",
     "origin": [
-      ["src/Screen2.js", 86],
-      ["src/Screen3.js", 94],
+      ["src/Screen2.js", 104],
+      ["src/Screen3.js", 97],
       ["src/WhatHappenedForm.js", 55]
     ]
   },
   "Other": {
     "translation": "Other",
-    "origin": [["src/Screen2.js", 73]]
+    "origin": [["src/Screen2.js", 85]]
   },
   "Phone": {
     "translation": "Phone",
-    "origin": [["src/Screen2.js", 98]]
+    "origin": [["src/Screen2.js", 116]]
   },
   "Please do not provide any personal information.": {
     "translation": "Please do not provide any personal information.",
@@ -92,6 +92,10 @@
   "Please tell us what how you were affected.": {
     "translation": "Please tell us what how you were affected.",
     "origin": [["src/Screen3.js", 61]]
+  },
+  "Please tell us what things were affected.": {
+    "translation": "Please tell us what things were affected.",
+    "origin": [["src/Screen2.js", 49]]
   },
   "Privacy": {
     "translation": "Privacy",
@@ -111,7 +115,7 @@
   },
   "Social media accounts": {
     "translation": "Social media accounts",
-    "origin": [["src/Screen2.js", 100]]
+    "origin": [["src/Screen2.js", 118]]
   },
   "Tell us your story in three easy steps:": {
     "translation": "Tell us your story in three easy steps:",
@@ -123,7 +127,7 @@
   },
   "Text messages": {
     "translation": "Text messages",
-    "origin": [["src/Screen2.js", 99]]
+    "origin": [["src/Screen2.js", 117]]
   },
   "Thank you for sharing your story.": {
     "translation": "Thank you for sharing your story.",
@@ -131,11 +135,11 @@
   },
   "Was your reputation or productivity affected?": {
     "translation": "Was your reputation or productivity affected?",
-    "origin": [["src/Screen3.js", 130]]
+    "origin": [["src/Screen3.js", 133]]
   },
   "Website": {
     "translation": "Website",
-    "origin": [["src/Screen2.js", 96]]
+    "origin": [["src/Screen2.js", 114]]
   },
   "What Happened": {
     "translation": "What Happened",
@@ -143,7 +147,7 @@
   },
   "What happened?": {
     "translation": "What happened?",
-    "origin": [["src/Screen2.js", 113], ["src/Screen3.js", 112]]
+    "origin": [["src/Screen2.js", 131], ["src/Screen3.js", 115]]
   },
   "What is a cybercrime?": {
     "translation": "What is a cybercrime?",
@@ -151,15 +155,15 @@
   },
   "What was affected? Choose all that apply.": {
     "translation": "What was affected? Choose all that apply.",
-    "origin": [["src/Screen2.js", 52]]
+    "origin": [["src/Screen2.js", 64]]
   },
   "What was involved?": {
     "translation": "What was involved?",
-    "origin": [["src/Screen3.js", 115]]
+    "origin": [["src/Screen3.js", 118]]
   },
   "What was your reaction?": {
     "translation": "What was your reaction?",
-    "origin": [["src/Screen3.js", 124]]
+    "origin": [["src/Screen3.js", 127]]
   },
   "When did it take place?": {
     "translation": "When did it take place?",
