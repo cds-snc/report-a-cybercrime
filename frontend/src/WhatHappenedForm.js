@@ -33,7 +33,7 @@ export const WhatHappenedForm = ({ onSubmit }) => (
   <Form
     onSubmit={onSubmit}
     validate={validate}
-    render={({ handleSubmit, pristine, invalid }) => (
+    render={({ handleSubmit }) => (
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="whatHappened">

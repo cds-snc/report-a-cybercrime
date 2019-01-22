@@ -72,7 +72,7 @@ const MyForm = () => (
           <Form
             onSubmit={data => submitAndNavigate(client, saveReport, data)}
             validate={validate}
-            render={({ handleSubmit, pristine, invalid }) => (
+            render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
                 <div>
                   <Field name="howWereYouAffected">

@@ -61,7 +61,7 @@ const MyForm = options => (
       <Form
         onSubmit={data => submitAndNavigate(client, data)}
         validate={validate}
-        render={({ handleSubmit, invalid }) => (
+        render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <div>
               <H3 className={labelFormat}>
