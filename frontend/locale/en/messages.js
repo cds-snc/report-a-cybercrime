@@ -42,6 +42,7 @@
     Phone: 'Phone',
     'Please do not provide any personal information.':
       'Please do not provide any personal information.',
+    'Please tell us what happened.': 'Please tell us what happened.',
     Privacy: 'Privacy',
     'Select where you encountered the cybercrime.':
       'Select where you encountered the cybercrime.',
@@ -56,6 +57,7 @@
     'Was your reputation or productivity affected?':
       'Was your reputation or productivity affected?',
     Website: 'Website',
+    'What Happened': 'What Happened',
     'What happened?': 'What happened?',
     'What is a cybercrime?': 'What is a cybercrime?',
     'What was affected? Choose all that apply.':
@@ -73,5 +75,8 @@
       ]
     },
     'loading...': 'loading...',
+    '{0}': function(a) {
+      return [a('0')]
+    },
   },
 }

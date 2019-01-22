@@ -30,6 +30,8 @@
     Phone: 'T\xE9l\xE9phone',
     'Please do not provide any personal information.':
       'Veuillez ne pas fournir de renseignements personnels.',
+    'Please tell us what happened.':
+      "S'il vous pla\xEEt, dites-nous ce qui s'est pass\xE9.",
     Privacy: 'Confidentialit\xE9',
     'Select where you encountered the cybercrime.':
       'Veuillez s\xE9lectionner o\xF9 vous avez rencontr\xE9 la cybercriminalit\xE9.',
@@ -46,6 +48,7 @@
     'Was your reputation or productivity affected?':
       'Votre r\xE9putation ou votre productivit\xE9 ont-elles \xE9t\xE9 affect\xE9es?',
     Website: 'Site web',
+    'What Happened': "Qu'est-ce qui s'est pass\xE9?",
     'What happened?': "Qu'est-ce qui s'est pass\xE9?",
     'What is a cybercrime?': "Qu'est-ce qu'un cybercrime?",
     'What was affected? Choose all that apply.':
