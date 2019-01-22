@@ -39,10 +39,15 @@ export const WhatHappenedForm = ({ onSubmit }) => (
           <label htmlFor="whatHappened">
             <Trans>What Happened</Trans>
           </label>
-          <Field id="whatHappened" name="whatHappened">
+          <Field name="whatHappened">
             {({ input, meta }) => (
               <div>
-                <textarea {...input} placeholder="" className={textArea} />
+                <textarea
+                  {...input}
+                  id="whatHappened"
+                  placeholder=""
+                  className={textArea}
+                />
                 <div className={errorMessage}>
                   {meta.error && meta.touched && <Trans id={meta.error} />}
                 </div>
