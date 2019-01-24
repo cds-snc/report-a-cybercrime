@@ -59,7 +59,7 @@ const validate = values => {
   let errors = {}
   if (!values.howWereYouAffected) {
     errors.howWereYouAffected = i18nMark(
-      'Please tell us what how you were affected.',
+      'Please complete the text box to tell us how you were affected.',
     )
   }
   return errors

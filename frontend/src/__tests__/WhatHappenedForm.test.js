@@ -56,6 +56,6 @@ describe('<WhatHappenedForm/>', () => {
     await wait(0) // Wait for promises to resolve
 
     expect(submitMock).not.toHaveBeenCalled()
-    getByText(/Please tell us what happened./i)
+    getByText(/Please complete the text box to tell us what happened./i)
   })
 })

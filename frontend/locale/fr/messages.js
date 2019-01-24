@@ -7,13 +7,11 @@
   },
   messages: {
     'Bank accounts': 'Comptes bancaires',
-    'Choose all that apply': "Cochez toutes les r\xE9ponses qui s'appliquent",
     'Describe what happened': "D\xE9crivez ce qui s'est pass\xE9",
     'Describe what happened.': "D\xE9crivez ce qui s'est pass\xE9.",
     'Did you lose money or personal information?':
       "Avez-vous perdu de l'argent ou des renseignements personnels?",
     'Email address': 'Adresse de courriel',
-    'For internal use only.': 'Pour usage interne seulement.',
     'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>':
       "Pour plus d'informations sur la fa\xE7on de rester en s\xE9curit\xE9 en ligne, vous pouvez visiter <0>Pensez cybers\xE9curit\xE9</0> et le <1>Les dix meilleurs conseils pour pr\xE9venir un cybercrime.</1>",
     'For research purposes only.': '\xC0 des fins de recherche seulement.',
@@ -28,14 +26,14 @@
     Next: 'Suivant',
     Other: 'Autre',
     Phone: 'T\xE9l\xE9phone',
+    'Please complete the form to tell us what was affected.':
+      'Veuillez remplir le formulaire pour nous dire ce qui a \xE9t\xE9 touch\xE9.',
+    'Please complete the text box to tell us how you were affected.':
+      'Veuillez remplir la zone de texte pour nous dire comment vous avez \xE9t\xE9 touch\xE9.',
+    'Please complete the text box to tell us what happened.':
+      "Veuillez remplir la zone de texte pour nous dire ce qui s'est pass\xE9.",
     'Please do not provide any personal information.':
       'Veuillez ne pas fournir de renseignements personnels.',
-    'Please tell us what happened.':
-      "S'il vous pla\xEEt, dites-nous ce qui s'est pass\xE9.",
-    'Please tell us what how you were affected.':
-      'Veuillez nous dire de quelle fa\xE7on vous avez \xE9t\xE9 affect\xE9.',
-    'Please tell us what things were affected.':
-      "S'il vous pla\xEEt, dites-nous quelles sont les choses qui ont \xE9t\xE9 affect\xE9.",
     Privacy: 'Confidentialit\xE9',
     'Select where you encountered the cybercrime.':
       'Veuillez s\xE9lectionner o\xF9 vous avez rencontr\xE9 la cybercriminalit\xE9.',
@@ -60,8 +58,6 @@
     'What was involved?': "Qu'est-ce qui a \xE9t\xE9 impliqu\xE9?",
     'What was your reaction?': 'Quelle a \xE9t\xE9 votre r\xE9action?',
     'When did it take place?': "Quand cela s'est-il pass\xE9?",
-    'You are the 5th person to use this tool to share a cybercrime story.':
-      'Vous \xEAtes la 5e personne \xE0 utiliser cet outil pour partager une histoire de cybercriminalit\xE9.',
     'You are the {0}th person to use this tool to share a cybercrime story.': function(
       a,
     ) {

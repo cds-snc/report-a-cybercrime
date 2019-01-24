@@ -19,13 +19,11 @@
   },
   messages: {
     'Bank accounts': 'Bank accounts',
-    'Choose all that apply': 'Choose all that apply',
     'Describe what happened': 'Describe what happened',
     'Describe what happened.': 'Describe what happened.',
     'Did you lose money or personal information?':
       'Did you lose money or personal information?',
     'Email address': 'Email address',
-    'For internal use only.': 'For internal use only.',
     'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>':
       'For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>',
     'For research purposes only.': 'For research purposes only.',
@@ -40,13 +38,14 @@
     Next: 'Next',
     Other: 'Other',
     Phone: 'Phone',
+    'Please complete the form to tell us what was affected.':
+      'Please complete the form to tell us what was affected.',
+    'Please complete the text box to tell us how you were affected.':
+      'Please complete the text box to tell us how you were affected.',
+    'Please complete the text box to tell us what happened.':
+      'Please complete the text box to tell us what happened.',
     'Please do not provide any personal information.':
       'Please do not provide any personal information.',
-    'Please tell us what happened.': 'Please tell us what happened.',
-    'Please tell us what how you were affected.':
-      'Please tell us what how you were affected.',
-    'Please tell us what things were affected.':
-      'Please tell us what things were affected.',
     Privacy: 'Privacy',
     'Select where you encountered the cybercrime.':
       'Select where you encountered the cybercrime.',
@@ -79,8 +78,5 @@
       ]
     },
     'loading...': 'loading...',
-    '{0}': function(a) {
-      return [a('0')]
-    },
   },
 }

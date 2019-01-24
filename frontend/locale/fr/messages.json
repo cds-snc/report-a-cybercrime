@@ -1,12 +1,7 @@
 {
   "Bank accounts": {
     "translation": "Comptes bancaires",
-    "origin": [["src/Screen2.js", 119]]
-  },
-  "Choose all that apply": {
-    "translation": "Cochez toutes les réponses qui s'appliquent",
-    "origin": [["src/Screen2.js", 51]],
-    "obsolete": true
+    "origin": [["src/Screen2.js", 122]]
   },
   "Describe what happened": {
     "translation": "Décrivez ce qui s'est passé",
@@ -22,12 +17,7 @@
   },
   "Email address": {
     "translation": "Adresse de courriel",
-    "origin": [["src/Screen2.js", 115]]
-  },
-  "For internal use only.": {
-    "translation": "Pour usage interne seulement.",
-    "origin": [["src/Home.js", 24]],
-    "obsolete": true
+    "origin": [["src/Screen2.js", 118]]
   },
   "For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>": {
     "translation": "Pour plus d'informations sur la façon de rester en sécurité en ligne, vous pouvez visiter <0>Pensez cybersécurité</0> et le <1>Les dix meilleurs conseils pour prévenir un cybercrime.</1>",
@@ -43,7 +33,7 @@
   },
   "How did that happen?": {
     "translation": "Comment cela s'est-il passé?",
-    "origin": [["src/Screen2.js", 135]]
+    "origin": [["src/Screen2.js", 138]]
   },
   "How were you affected?": {
     "translation": "Comment avez-vous été affecté?",
@@ -55,47 +45,47 @@
   },
   "I’m not sure": {
     "translation": "Je ne suis pas certain(e)",
-    "origin": [["src/Screen2.js", 120]]
+    "origin": [["src/Screen2.js", 123]]
   },
   "Landing Page": {
     "translation": "Page d'atterrissage",
     "origin": [
       ["src/Screen1.js", 36],
-      ["src/Screen2.js", 127],
+      ["src/Screen2.js", 130],
       ["src/Screen3.js", 112]
     ]
   },
   "Next": {
     "translation": "Suivant",
     "origin": [
-      ["src/Screen2.js", 104],
+      ["src/Screen2.js", 107],
       ["src/Screen3.js", 97],
-      ["src/WhatHappenedForm.js", 55]
+      ["src/WhatHappenedForm.js", 60]
     ]
   },
   "Other": {
     "translation": "Autre",
-    "origin": [["src/Screen2.js", 85]]
+    "origin": [["src/Screen2.js", 90]]
   },
   "Phone": {
     "translation": "Téléphone",
-    "origin": [["src/Screen2.js", 116]]
+    "origin": [["src/Screen2.js", 119]]
+  },
+  "Please complete the form to tell us what was affected.": {
+    "translation": "Veuillez remplir le formulaire pour nous dire ce qui a été touché.",
+    "origin": [["src/Screen2.js", 52]]
+  },
+  "Please complete the text box to tell us how you were affected.": {
+    "translation": "Veuillez remplir la zone de texte pour nous dire comment vous avez été touché.",
+    "origin": [["src/Screen3.js", 61]]
+  },
+  "Please complete the text box to tell us what happened.": {
+    "translation": "Veuillez remplir la zone de texte pour nous dire ce qui s'est passé.",
+    "origin": [["src/WhatHappenedForm.js", 27]]
   },
   "Please do not provide any personal information.": {
     "translation": "Veuillez ne pas fournir de renseignements personnels.",
     "origin": [["src/LandingPage.js", 54], ["src/Screen1.js", 56]]
-  },
-  "Please tell us what happened.": {
-    "translation": "S'il vous plaît, dites-nous ce qui s'est passé.",
-    "origin": [["src/WhatHappenedForm.js", 27]]
-  },
-  "Please tell us what how you were affected.": {
-    "translation": "Veuillez nous dire de quelle façon vous avez été affecté.",
-    "origin": [["src/Screen3.js", 61]]
-  },
-  "Please tell us what things were affected.": {
-    "translation": "S'il vous plaît, dites-nous quelles sont les choses qui ont été affecté.",
-    "origin": [["src/Screen2.js", 49]]
   },
   "Privacy": {
     "translation": "Confidentialité",
@@ -115,7 +105,7 @@
   },
   "Social media accounts": {
     "translation": "Comptes de médias sociaux",
-    "origin": [["src/Screen2.js", 118]]
+    "origin": [["src/Screen2.js", 121]]
   },
   "Tell us your story in three easy steps:": {
     "translation": "Racontez-nous votre histoire en trois étapes faciles:",
@@ -127,7 +117,7 @@
   },
   "Text messages": {
     "translation": "Messages texte",
-    "origin": [["src/Screen2.js", 117]]
+    "origin": [["src/Screen2.js", 120]]
   },
   "Thank you for sharing your story.": {
     "translation": "Merci d'avoir partagé votre histoire.",
@@ -139,7 +129,7 @@
   },
   "Website": {
     "translation": "Site web",
-    "origin": [["src/Screen2.js", 114]]
+    "origin": [["src/Screen2.js", 117]]
   },
   "What Happened": {
     "translation": "Qu'est-ce qui s'est passé?",
@@ -147,7 +137,7 @@
   },
   "What happened?": {
     "translation": "Qu'est-ce qui s'est passé?",
-    "origin": [["src/Screen2.js", 131], ["src/Screen3.js", 115]]
+    "origin": [["src/Screen2.js", 134], ["src/Screen3.js", 115]]
   },
   "What is a cybercrime?": {
     "translation": "Qu'est-ce qu'un cybercrime?",
@@ -155,7 +145,7 @@
   },
   "What was affected? Choose all that apply.": {
     "translation": "Qu'est-ce qui a été affecté? Cochez toutes les réponses qui s'appliquent.",
-    "origin": [["src/Screen2.js", 64]]
+    "origin": [["src/Screen2.js", 69]]
   },
   "What was involved?": {
     "translation": "Qu'est-ce qui a été impliqué?",
@@ -168,11 +158,6 @@
   "When did it take place?": {
     "translation": "Quand cela s'est-il passé?",
     "origin": [["src/Screen1.js", 46]]
-  },
-  "You are the 5th person to use this tool to share a cybercrime story.": {
-    "translation": "Vous êtes la 5e personne à utiliser cet outil pour partager une histoire de cybercriminalité.",
-    "origin": [["src/thanks.js", 33]],
-    "obsolete": true
   },
   "You are the {0}th person to use this tool to share a cybercrime story.": {
     "translation": "Vous êtes la {0}e personne à utiliser cet outil pour partager une histoire de cybercriminalité.",

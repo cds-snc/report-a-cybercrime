@@ -24,7 +24,9 @@ const submitButton = css`
 const validate = values => {
   let errors = {}
   if (!values.whatHappened) {
-    errors.whatHappened = i18nMark('Please tell us what happened.')
+    errors.whatHappened = i18nMark(
+      'Please complete the text box to tell us what happened.',
+    )
   }
   return errors
 }

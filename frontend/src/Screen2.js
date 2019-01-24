@@ -50,7 +50,7 @@ const validate = values => {
     !values.whatWasInvolvedOther
   ) {
     errors.whatWasInvolvedOther = i18nMark(
-      'Please tell us what things were affected.',
+      'Please complete the form to tell us what was affected.',
     )
   }
   return errors
