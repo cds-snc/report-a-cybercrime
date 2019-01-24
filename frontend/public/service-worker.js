@@ -1,4 +1,4 @@
-const filesToCache = ['/']
+const filesToCache = ['/', '/static/js/bundle.js']
 
 const staticCacheName = 'pages-cache-v1'
 
@@ -30,6 +30,7 @@ self.addEventListener('activate', event => {
 
 // Network falling back to the cache
 self.addEventListener('fetch', function(event) {
+  console.log('Fetch', event.request)
   event.respondWith(
     fetch(event.request).catch(function() {
       return caches.match(event.request)
