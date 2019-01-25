@@ -1,26 +1,26 @@
 {
   "Have you or someone you know encountered a cybercrime?": {
-    "origin": [["src/LandingPage.js", 43]]
+    "origin": [["src/LandingPage.js", 38]]
   },
   "Tell us your story in three easy steps:": {
-    "origin": [["src/LandingPage.js", 46]]
+    "origin": [["src/LandingPage.js", 41]]
   },
   "Describe what happened.": {
-    "origin": [["src/LandingPage.js", 49]]
+    "origin": [["src/LandingPage.js", 45]]
   },
   "Select where you encountered the cybercrime.": {
-    "origin": [["src/LandingPage.js", 52]]
+    "origin": [["src/LandingPage.js", 48]]
   },
   "Share how you were impacted.": {
-    "origin": [["src/LandingPage.js", 55]]
+    "origin": [["src/LandingPage.js", 51]]
   },
   "Please do not provide any personal information.": {
-    "origin": [["src/LandingPage.js", 58]]
+    "origin": [["src/LandingPage.js", 54]]
   },
   "Share your story→": {
-    "origin": [["src/LandingPage.js", 61]]
+    "origin": [["src/LandingPage.js", 57]]
   },
   "What is a cybercrime?": {
-    "origin": [["src/LandingPage.js", 72]]
+    "origin": [["src/LandingPage.js", 67]]
   }
 }

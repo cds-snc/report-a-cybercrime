@@ -1,23 +1,20 @@
 {
-  "Next": {
-    "origin": [["src/Screen1.js", 67]]
-  },
   "Landing Page": {
-    "origin": [["src/Screen1.js", 80]]
+    "origin": [["src/Screen1.js", 36]]
   },
   "Describe what happened": {
-    "origin": [["src/Screen1.js", 85]]
+    "origin": [["src/Screen1.js", 41]]
   },
   "When did it take place?": {
-    "origin": [["src/Screen1.js", 89]]
+    "origin": [["src/Screen1.js", 46]]
   },
   "In general terms, who was involved?": {
-    "origin": [["src/Screen1.js", 92]]
+    "origin": [["src/Screen1.js", 49]]
   },
   "How were you affected?": {
-    "origin": [["src/Screen1.js", 95]]
+    "origin": [["src/Screen1.js", 52]]
   },
   "Please do not provide any personal information.": {
-    "origin": [["src/Screen1.js", 99]]
+    "origin": [["src/Screen1.js", 56]]
   }
 }

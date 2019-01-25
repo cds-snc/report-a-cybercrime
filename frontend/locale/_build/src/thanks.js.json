@@ -1,11 +1,8 @@
 {
   "Thank you for sharing your story.": {
-    "origin": [["src/thanks.js", 37]]
-  },
-  "You are the {0}th person to use this tool to share a cybercrime story.": {
-    "origin": [["src/thanks.js", 43]]
+    "origin": [["src/Thanks.js", 42]]
   },
   "For more information on how to stay safe online, you can visit <0>GetCyberSafe</0> and the <1>Top 10 Cyber Crime Prevention Tips.</1>": {
-    "origin": [["src/thanks.js", 52]]
+    "origin": [["src/Thanks.js", 49]]
   }
 }
