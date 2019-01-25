@@ -1,4 +1,4 @@
-const filesToCache = ['/']
+let filesToCache = ['/']
 
 const staticCacheName = 'pages-cache-v1'
 
@@ -7,7 +7,17 @@ self.addEventListener('install', event => {
   self.skipWaiting()
   event.waitUntil(
     caches.open(staticCacheName).then(cache => {
-      return cache.addAll(filesToCache)
+      return fetch('assets')
+        .then(response => {
+          return response.json()
+        })
+        .then(assets => {
+          filesToCache.push(assets.client.js)
+          return filesToCache
+        })
+        .then(files => {
+          return cache.addAll(files)
+        })
     }),
   )
 })

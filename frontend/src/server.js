@@ -28,6 +28,9 @@ server
       languages: ['en', 'fr'],
     }),
   )
+  .get('/assets', (req, res) => {
+    res.status(200).send(JSON.stringify(assets))
+  })
   .get('/monitoring/alive', (req, res) => {
     res.status(200).send('yes')
   })
