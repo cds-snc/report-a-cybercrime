@@ -25,7 +25,7 @@ spec:
                 secretKeyRef:
                   key: ARANGO_ROOT_PASSWORD
                   name: arango-secrets
-          image: arangodb:3.3.19
+          image: arangodb:3.4.1
           livenessProbe:
             initialDelaySeconds: 1
             periodSeconds: 5
