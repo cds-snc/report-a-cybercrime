@@ -1,4 +1,4 @@
-const filesToCache = ['/', '/static/js/bundle.js']
+const filesToCache = ['/']
 
 const staticCacheName = 'pages-cache-v1'
 
@@ -32,8 +32,15 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', function(event) {
   console.log('Fetch', event.request)
   event.respondWith(
-    fetch(event.request).catch(function() {
-      return caches.match(event.request)
-    }),
+    fetch(event.request)
+      .then(response => {
+        return caches.open(staticCacheName).then(cache => {
+          cache.put(event.request, response.clone())
+          return response
+        })
+      })
+      .catch(function() {
+        return caches.match(event.request)
+      }),
   )
 })
