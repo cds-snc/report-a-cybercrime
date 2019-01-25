@@ -13,3 +13,5 @@ build
 
 locale/_build/
 src/locales/
+locale/en/messages.js
+locale/fr/messages.js
