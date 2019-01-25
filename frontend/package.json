@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "razzle start",
     "build": "razzle build",
-    "heroku-postbuild": "razzle build",
+    "heroku-postbuild": "NODE_ENV=production lingui compile && razzle build",
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test": "jest",
     "lint": "eslint 'src/**/*.js'",
