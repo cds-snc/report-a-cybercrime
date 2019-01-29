@@ -25,7 +25,7 @@ spec:
         app: cybercrime-frontend
     spec:
       containers:
-      - image: gcr.io/report-a-cyber-crime/frontend:master-2ec24c7
+      - image: gcr.io/report-a-cyber-crime/frontend:master-5c98e43
         imagePullPolicy: Always
         name: cybercrime-api
         env:
