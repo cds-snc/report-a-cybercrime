@@ -4,6 +4,7 @@ ENV RAZZLE_GOOGLE_ANALYTICS_ID $RAZZLE_GOOGLE_ANALYTICS_ID
 ADD . /app
 WORKDIR /app
 RUN npm ci
+RUN npm run extract
 RUN npm run compile
 RUN npm run build
 
