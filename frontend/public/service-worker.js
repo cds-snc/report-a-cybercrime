@@ -1,4 +1,4 @@
-const filesToCache = ['/']
+let filesToCache = ['/']
 
 const staticCacheName = 'pages-cache-v1'
 
@@ -7,7 +7,17 @@ self.addEventListener('install', event => {
   self.skipWaiting()
   event.waitUntil(
     caches.open(staticCacheName).then(cache => {
-      return cache.addAll(filesToCache)
+      return fetch('assets')
+        .then(response => {
+          return response.json()
+        })
+        .then(assets => {
+          filesToCache.push(assets.client.js)
+          return filesToCache
+        })
+        .then(files => {
+          return cache.addAll(files)
+        })
     }),
   )
 })
@@ -30,9 +40,17 @@ self.addEventListener('activate', event => {
 
 // Network falling back to the cache
 self.addEventListener('fetch', function(event) {
+  console.log('Fetch', event.request)
   event.respondWith(
-    fetch(event.request).catch(function() {
-      return caches.match(event.request)
-    }),
+    fetch(event.request)
+      .then(response => {
+        return caches.open(staticCacheName).then(cache => {
+          cache.put(event.request, response.clone())
+          return response
+        })
+      })
+      .catch(function() {
+        return caches.match(event.request)
+      }),
   )
 })
