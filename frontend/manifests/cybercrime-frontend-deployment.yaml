@@ -7,7 +7,7 @@ metadata:
   annotations:
     flux.weave.works/automated: 'true'
   name: cybercrime-frontend
-  namespace: default
+  namespace: cybercrime-frontend
 spec:
   replicas: 1
   revisionHistoryLimit: 10
@@ -27,12 +27,12 @@ spec:
       containers:
       - image: gcr.io/report-a-cyber-crime/frontend:master-aab5bee
         imagePullPolicy: Always
-        name: cybercrime-api
+        name: cybercrime-frontend
         env:
-        - name: PORT
-          value: '3000'
-        - name: RAZZLE_GOOGLE_ANALYTICS_ID
-          value: 'UA-130179934-1'
+          - name: PORT
+            value: '3000'
+          - name: RAZZLE_GOOGLE_ANALYTICS_ID
+            value: 'UA-130179934-1'
         resources: {}
         livenessProbe:
           httpGet:

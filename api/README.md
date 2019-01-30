@@ -30,22 +30,24 @@ npm test
 We are using Kubernetes to deploy the API, and the manifests describing the
 cluster config are in the `manifests` directory.
 
-We are using [Kustomize](https://github.com/kubernetes-sigs/kustomize) to
-generate platform/environment specific variations of our configuration.
+```sh
+kubectl apply -f manifests
+```
 
-For example to get this going in
-[Minikube](https://github.com/kubernetes/minikube) you would do something like
-the following.
+### Creating secrets
+
+Secrets for this project are dealt with using [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets).
+
+Creating the secret for ArangoDB looks like the following:
 
 ```sh
-# start minikube with a non-resource hogging driver and lots of memory
-minikube start --vm-driver=kvm2 --memory=8096
-# create the cybercrime-api namespace to scope access to the secrets
-kubectl create namespace cybercrime-api
-# create a secret for the root db password
-kubectl create secret generic arango-secrets --namespace=cybercrime-api --from-literal=ARANGO_ROOT_PASSWORD=soopersecret
-# create a secret from the env file
-kubectl create secret generic cybercrime-api --namespace=cybercrime-api --from-env-file=.env
-# generate the config and pipe it into kubectl
-kustomize build manifests/overlays/minikube/ | kubectl apply -f -
+kubectl create secret generic arango-secrets --namespace=cybercrime-api --from-literal=ARANGO_PASSWORD=soopersecret --dry-run -o yaml \
+ | kubeseal --cert=/path/to/cert/tls.crt --format yaml - > manifests/arango-secrets.yaml
+```
+
+Creating the secret for cybercrime-api looks like the following:
+
+```sh
+kubectl create secret generic cybercrime-api-secrets --namespace=cybercrime-api --from-env-file=.env --dry-run -o yaml \
+ | kubeseal --cert=/path/to/cert/tls.crt --format yaml - > manifests/cybercrime-api-secrets.yaml
 ```
