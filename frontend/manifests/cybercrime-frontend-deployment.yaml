@@ -25,14 +25,14 @@ spec:
         app: cybercrime-frontend
     spec:
       containers:
-      - image: gcr.io/report-a-cyber-crime/frontend:master-aab5bee
+      - image: gcr.io/report-a-cyber-crime/frontend:master-8c61ab5
         imagePullPolicy: Always
         name: cybercrime-frontend
         env:
-          - name: PORT
-            value: '3000'
-          - name: RAZZLE_GOOGLE_ANALYTICS_ID
-            value: 'UA-130179934-1'
+        - name: PORT
+          value: '3000'
+        - name: RAZZLE_GOOGLE_ANALYTICS_ID
+          value: 'UA-130179934-1'
         resources: {}
         livenessProbe:
           httpGet:
