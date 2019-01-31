@@ -23,7 +23,7 @@ spec:
             - name: ARANGO_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: ARANGO_ROOT_PASSWORD
+                  key: ARANGO_PASSWORD
                   name: arango-secrets
           image: arangodb:3.4.1
           livenessProbe:

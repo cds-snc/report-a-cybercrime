@@ -3,7 +3,6 @@ kind: Namespace
 metadata:
   labels:
     istio-injection: enabled
-  creationTimestamp: null
-  name: cybercrime-api
+  name: cybercrime-frontend
 spec: {}
 status: {}
