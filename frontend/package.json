@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@cdssnc/gcui": "0.0.31",
+    "@emotion/core": "^10.0.6",
+    "@emotion/styled": "^10.0.6",
     "@lingui/react": "^2.7.2",
     "@reach/component-component": "^0.1.1",
     "@reach/router": "^1.2.1",

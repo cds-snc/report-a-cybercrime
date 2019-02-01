@@ -1,44 +1,39 @@
 import React from 'react'
-import styled, { css, injectGlobal } from 'react-emotion'
+import styled from '@emotion/styled'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { GoCSignature, WordMark } from '@cdssnc/gcui'
+import { WordMark } from '@cdssnc/gcui'
+import GoCSignature from './components/gocsig'
 import Home from './Home'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 
-injectGlobal`
-  html, body, #root {
-    font-family: Arial, sans-serif;
-    margin: 0;
-  }
-`
-
-const fipBanner = css`
+const FipBanner = styled('div')`
   background-color: black;
   margin: auto;
   padding: 10px;
   height: 40px;
 `
-const flag = css`
+const Flag = styled('div')`
   float: left;
   padding: 5px;
   width: 300px;
 `
-const languageButton = css`
+const LanguageButton = styled('div')`
   display: inline-block;
   float: right;
   margin-top: 10px;
 `
-const footer = css`
+
+const Footer = styled('div')`
   background-color: black;
   margin: auto;
   padding: 15px;
   height: 25px;
 `
-const privacy = css`
+const Privacy = styled('a')`
   font-size: 15pt;
   margin-top: 100pt;
   margin-right: 20pt;
@@ -47,7 +42,7 @@ const privacy = css`
     color: white;
   }
 `
-const wordMark = css`
+const WordMarkDiv = styled('div')`
   display: inline-block;
   float: right;
   // margin-top: 10px;
@@ -59,15 +54,15 @@ const Content = styled('div')`
 `
 
 const TopBanner = props => (
-  <div className={fipBanner}>
-    <div className={flag}>
+  <FipBanner>
+    <Flag>
       <GoCSignature width="100%" lang={props.lang} flag="#fff" text="#fff" />
-    </div>
+    </Flag>
 
-    <div className={languageButton}>
+    <LanguageButton>
       <LanguageSwitcher />
-    </div>
-  </div>
+    </LanguageButton>
+  </FipBanner>
 )
 
 TopBanner.propTypes = {
@@ -87,33 +82,31 @@ const App = () => (
           <Home />
         </Content>
 
-        <div className={footer}>
-          <a
+        <Footer>
+          <Privacy
             href={
               language === 'en'
                 ? 'https://digital.canada.ca/legal/privacy/'
                 : 'https://numerique.canada.ca/transparence/confidentialite/'
             }
-            className={privacy}
           >
             <Trans>Privacy</Trans>
-          </a>
+          </Privacy>
 
-          <a
+          <Privacy
             href={
               language === 'en'
                 ? 'https://digital.canada.ca/legal/terms/'
                 : 'https://numerique.canada.ca/transparence/avis/'
             }
-            className={privacy}
           >
             <Trans>Terms and Conditions</Trans>
-          </a>
+          </Privacy>
 
-          <div className={wordMark}>
+          <WordMarkDiv>
             <WordMark width="6em" flag="#fff" text="#fff" />
-          </div>
-        </div>
+          </WordMarkDiv>
+        </Footer>
       </div>
     )}
   </Query>
