@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link, navigate } from '@reach/router'
-import { css } from 'react-emotion'
+//import { css } from 'react-emotion'
+import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './utils/headers'
 import { ApolloConsumer } from 'react-apollo'
-import ListItem from '@govuk-react/list-item'
-import Breadcrumb from '@govuk-react/breadcrumb'
+// import ListItem from '@govuk-react/list-item'
+// import Breadcrumb from '@govuk-react/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
 import { WhatHappenedForm } from './WhatHappenedForm'
 
-const warning = css`
+const Warning = styled('div')`
   display: block;
   color: green;
   padding-top: 10pt;
@@ -18,43 +19,45 @@ const warning = css`
   font-size: 19pt;
 `
 
-const centercontent = css`
+const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
 `
 
-const listitem = css`
+const ListItem = styled('li')`
   margin: 5pt;
   margin-left: 20pt;
   font-size: 19pt;
 `
 
 export const Screen1 = () => (
-  <div className={centercontent}>
-    <Breadcrumb>
+  <CenterContent>
+    {/* <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
       </Link>
-    </Breadcrumb>
+    </Breadcrumb> */}
 
     <H1>
       <Trans>Describe what happened</Trans>
     </H1>
 
     <TrackPageViews />
-    <ListItem className={listitem}>
-      <Trans>When did it take place?</Trans>
-    </ListItem>
-    <ListItem className={listitem}>
-      <Trans>In general terms, who was involved?</Trans>
-    </ListItem>
-    <ListItem className={listitem}>
-      <Trans>How were you affected?</Trans>
-    </ListItem>
+    <ul>
+      <ListItem>
+        <Trans>When did it take place?</Trans>
+      </ListItem>
+      <ListItem>
+        <Trans>In general terms, who was involved?</Trans>
+      </ListItem>
+      <ListItem>
+        <Trans>How were you affected?</Trans>
+      </ListItem>
+    </ul>
 
-    <span className={warning}>
+    <Warning>
       <Trans>Please do not provide any personal information.</Trans>
-    </span>
+    </Warning>
 
     <ApolloConsumer>
       {client => (
@@ -66,5 +69,5 @@ export const Screen1 = () => (
         />
       )}
     </ApolloConsumer>
-  </div>
+  </CenterContent>
 )

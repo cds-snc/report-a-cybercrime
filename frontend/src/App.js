@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { WordMark } from '@cdssnc/gcui'
+// import { WordMark } from '@cdssnc/gcui'
 import GoCSignature from './components/gocsig'
 import Home from './Home'
 import { LanguageSwitcher } from './LanguageSwitcher'
@@ -104,7 +104,7 @@ const App = () => (
           </Privacy>
 
           <WordMarkDiv>
-            <WordMark width="6em" flag="#fff" text="#fff" />
+            <GoCSignature width="6em" flag="#fff" text="#fff" />
           </WordMarkDiv>
         </Footer>
       </div>

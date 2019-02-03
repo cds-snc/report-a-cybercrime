@@ -22,7 +22,6 @@
     }
   },
   "dependencies": {
-    "@cdssnc/gcui": "0.0.31",
     "@emotion/core": "^10.0.6",
     "@emotion/styled": "^10.0.6",
     "@lingui/react": "^2.7.2",
@@ -39,21 +38,18 @@
     "express": "^4.16.4",
     "express-request-language": "^1.1.15",
     "final-form": "^4.11.0",
-    "govuk-react": "^0.3.1",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "razzle": "^3.0.0-alpha.0",
     "react": "^16.6.3",
     "react-apollo": "^2.3.2",
     "react-dom": "^16.6.3",
-    "react-emotion": "^9.2.12",
     "react-final-form": "^4.0.2",
     "react-ga": "^2.5.6",
     "react-helmet": "^5.2.0",
     "react-markdown": "^4.0.4"
   },
   "devDependencies": {
-    "acorn": "^6.0.5",
     "@babel/core": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "^7.2.1",
     "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
@@ -63,6 +59,7 @@
     "@lingui/babel-preset-react": "^2.7.2",
     "@lingui/cli": "^2.7.2",
     "@lingui/macro": "^2.7.2",
+    "acorn": "^6.0.5",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.6.0",

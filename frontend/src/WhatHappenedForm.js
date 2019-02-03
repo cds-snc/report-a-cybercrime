@@ -2,22 +2,22 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
-import { css } from 'react-emotion'
-import Button from '@govuk-react/button'
+import styled from '@emotion/styled'
+// import Button from '@govuk-react/button'
 import PropTypes from 'prop-types'
 
-const textArea = css`
+const TextArea = styled('textarea')`
   width: 500pt;
   height: 200pt;
   font-size: 19pt;
 `
-const errorMessage = css`
+const ErrorMessage = styled('div')`
   margin-top: 10pt;
   display: inline-block;
   font-size: 19pt;
   color: red;
 `
-const submitButton = css`
+const SubmitButton = styled('button')`
   margin-top: 20pt;
 `
 
@@ -44,23 +44,18 @@ export const WhatHappenedForm = ({ onSubmit }) => (
           <Field name="whatHappened">
             {({ input, meta }) => (
               <div>
-                <textarea
-                  {...input}
-                  id="whatHappened"
-                  placeholder=""
-                  className={textArea}
-                />
-                <div className={errorMessage}>
+                <TextArea {...input} id="whatHappened" placeholder="" />
+                <ErrorMessage>
                   {meta.error && meta.touched && <Trans id={meta.error} />}
-                </div>
+                </ErrorMessage>
               </div>
             )}
           </Field>
         </div>
 
-        <Button className={submitButton} type="submit">
+        <SubmitButton type="submit">
           <Trans>Next</Trans>
-        </Button>
+        </SubmitButton>
       </form>
     )}
   />

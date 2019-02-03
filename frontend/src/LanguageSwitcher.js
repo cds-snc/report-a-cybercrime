@@ -1,12 +1,12 @@
 import React from 'react'
 import { Query, Mutation } from 'react-apollo'
-import { css } from 'react-emotion'
+import styled from '@emotion/styled'
 import {
   GET_LANGUAGE_QUERY,
   CHANGE_LANGUAGE_MUTATION,
 } from './utils/queriesAndMutations'
 
-const buttonThatLooksLikeALink = css`
+const ButtonLink = styled('button')`
   background: none;
   border: none;
   font: inherit;
@@ -19,26 +19,23 @@ const buttonThatLooksLikeALink = css`
     outline: 3px solid #ffbf47;
   }
 `
-const languageSwitcher = css`
+const LanguageSwitcherStyle = styled('section')`
   align-content: right;
   display: block-inline;
 `
 
 export const LanguageSwitcher = () => (
-  <section className={languageSwitcher}>
+  <LanguageSwitcherStyle>
     <Query query={GET_LANGUAGE_QUERY}>
       {({ data: { language } }) => (
         <Mutation mutation={CHANGE_LANGUAGE_MUTATION}>
           {switchLanguage => (
-            <button
-              className={buttonThatLooksLikeALink}
-              onClick={() => switchLanguage()}
-            >
+            <ButtonLink onClick={() => switchLanguage()}>
               {language === 'en' ? 'Français' : 'English'}
-            </button>
+            </ButtonLink>
           )}
         </Mutation>
       )}
     </Query>
-  </section>
+  </LanguageSwitcherStyle>
 )
