@@ -22,7 +22,7 @@ const Home = () => (
     {/* <PhaseBanner level="discovery">
       <Trans>For research purposes only.</Trans>
     </PhaseBanner> */}
-
+    <div>Placeholder for phase banner</div>
     <Screen>
       <Router>
         <LandingPage path="/" />

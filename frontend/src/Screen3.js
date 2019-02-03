@@ -4,9 +4,7 @@ import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
-// import Button from '@govuk-react/button'
 import { H1 } from './utils/headers'
-// import ListItem from '@govuk-react/list-item'
 import gql from 'graphql-tag'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 // import Breadcrumb from '@govuk-react/breadcrumb'
@@ -114,6 +112,7 @@ export const Screen3 = () => (
         <Trans>What was involved?</Trans>
       </Link>
     </Breadcrumb> */}
+    <div>Placeholder for Breacrumb</div>
     <H1>
       <Trans>How were you affected?</Trans>
     </H1>

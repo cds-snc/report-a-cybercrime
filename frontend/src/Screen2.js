@@ -1,10 +1,8 @@
 import React from 'react'
 import { navigate, Link } from '@reach/router'
 import styled from '@emotion/styled'
-// import { css } from 'react-emotion'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-// import Button from '@govuk-react/button'
 import { H1, H3, H4 } from './utils/headers'
 import { ApolloConsumer } from 'react-apollo'
 // import Breadcrumb from '@govuk-react/breadcrumb'
@@ -133,6 +131,7 @@ export const Screen2 = () => (
         <Trans>What happened?</Trans>
       </Link>
     </Breadcrumb> */}
+    <div>Placeholder for Breacrumb</div>
     <H1>
       <Trans>How did that happen?</Trans>
     </H1>
