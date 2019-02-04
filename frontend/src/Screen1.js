@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, navigate } from '@reach/router'
+// import { Link, navigate } from '@reach/router'
+import { navigate } from '@reach/router'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './utils/headers'

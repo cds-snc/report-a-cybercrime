@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-// import { WordMark } from '@cdssnc/gcui'
+import WordMark from './components/wordmark'
 import GoCSignature from './components/gocsig'
 import Home from './Home'
 import { LanguageSwitcher } from './LanguageSwitcher'
@@ -45,7 +45,7 @@ const Privacy = styled('a')`
 const WordMarkDiv = styled('div')`
   display: inline-block;
   float: right;
-  // margin-top: 10px;
+  margin-top: 10px;
   height: 25px;
 `
 
@@ -104,7 +104,7 @@ const App = () => (
           </Privacy>
 
           <WordMarkDiv>
-            <GoCSignature width="6em" flag="#fff" text="#fff" />
+            <WordMark width="6em" flag="#fff" text="#fff" />
           </WordMarkDiv>
         </Footer>
       </div>
