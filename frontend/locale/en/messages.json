@@ -33,7 +33,7 @@
   },
   "How did that happen?": {
     "translation": "How did that happen?",
-    "origin": [["src/Screen2.js", 138]]
+    "origin": [["src/Screen2.js", 137]]
   },
   "How were you affected?": {
     "translation": "How were you affected?",
@@ -60,7 +60,7 @@
     "origin": [
       ["src/Screen2.js", 107],
       ["src/Screen3.js", 97],
-      ["src/WhatHappenedForm.js", 60]
+      ["src/WhatHappenedForm.js", 62]
     ]
   },
   "Other": {
@@ -133,11 +133,11 @@
   },
   "What Happened": {
     "translation": "What Happened",
-    "origin": [["src/WhatHappenedForm.js", 40]]
+    "origin": [["src/WhatHappenedForm.js", 42]]
   },
   "What happened?": {
     "translation": "What happened?",
-    "origin": [["src/Screen2.js", 134], ["src/Screen3.js", 115]]
+    "origin": [["src/Screen2.js", 133], ["src/Screen3.js", 115]]
   },
   "What is a cybercrime?": {
     "translation": "What is a cybercrime?",
