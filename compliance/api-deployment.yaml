@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: compliance-api
+  name: compliance-api
+  namespace: symmorfosi
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: compliance-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: compliance-api
+    spec:
+      nodeSelector:
+        compliance: master
+      containers:
+        - image: cdssnc/compliance-api
+          imagePullPolicy: Always
+          name: compliance-api
+          env:
+            - name: PORT
+              value: "3000"
+            - name: CHECKS_PATH
+              value: "/checks"
+            - name: DEFINITIONS_URL
+              value: "https://raw.githubusercontent.com/cds-snc/ITSG-33-definitions/master/ITSG-33a.yaml"
+            - name: CERTIFICATION_URL
+              value: "https://raw.githubusercontent.com/cds-snc/ITSG-33-baselines/master/light.yaml"
+            - name: DB_URI
+              value: "mongodb://mongo.symmorfosi.svc.cluster.local:27017/compliance"
+            - name: DB_USER
+              value: ""
+            - name: DB_PASS
+              value: ""
+          resources: {}
+          livenessProbe:
+            httpGet:
+              path: /monitoring/alive
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /monitoring/ready
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: compliance-checks
+          persistentVolumeClaim:
+            claimName: checks-claim
+status: {}

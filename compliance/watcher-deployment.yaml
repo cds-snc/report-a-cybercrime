@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: compliance-watcher
+  name: compliance-watcher
+  namespace: symmorfosi
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: compliance-watcher
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: compliance-watcher
+    spec:
+      nodeSelector:
+        compliance: master
+      containers:
+        - image: cdssnc/compliance-watcher
+          imagePullPolicy: Always
+          name: compliance-watcher
+          env:
+            - name: PORT
+              value: "3000"
+            - name: WEBHOOK_URL
+              value: "run_compliance"
+          resources: {}
+          livenessProbe:
+            httpGet:
+              path: /monitoring/alive
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /monitoring/ready
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: compliance-checks
+          persistentVolumeClaim:
+            claimName: checks-claim
+status: {}

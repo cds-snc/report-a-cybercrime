@@ -11,3 +11,6 @@ subjects:
   - apiGroup: rbac.authorization.k8s.io
     kind: User
     name: mike.williamson@cds-snc.ca
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: max.neuvians@cds-snc.ca
