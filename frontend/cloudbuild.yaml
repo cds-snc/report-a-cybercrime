@@ -6,6 +6,12 @@ steps:
     args: ['ci']
 
   - name: node:11-alpine
+    id: compile-languages
+    dir: frontend
+    entrypoint: npm
+    args: ['run', 'compile']
+
+  - name: node:11-alpine
     id: test
     dir: frontend
     entrypoint: npm
