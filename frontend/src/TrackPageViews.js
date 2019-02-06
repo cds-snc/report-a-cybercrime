@@ -8,6 +8,7 @@ const GA = process.env.RAZZLE_GOOGLE_ANALYTICS_ID || ''
 ReactGA.initialize(GA, {
   testMode: process.env.NODE_ENV === 'production' ? false : true,
 })
+ReactGA.set({ anonymizeIp: true })
 
 const logPageView = path => {
   if (typeof window === 'object') {
