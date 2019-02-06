@@ -5,6 +5,7 @@ metadata:
 spec:
   hosts:
     - raw.githubusercontent.com
+    - api.github.com
   ports:
     - number: 443
       name: https
@@ -19,6 +20,7 @@ metadata:
 spec:
   hosts:
     - raw.githubusercontent.com
+    - api.github.com
   tls:
     - match:
         - port: 443
@@ -27,6 +29,16 @@ spec:
       route:
         - destination:
             host: raw.githubusercontent.com
+            port:
+              number: 443
+          weight: 100
+    - match:
+        - port: 443
+          sni_hosts:
+            - api.github.com
+      route:
+        - destination:
+            host: api.github.com
             port:
               number: 443
           weight: 100
