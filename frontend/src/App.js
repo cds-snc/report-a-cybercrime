@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { Global, css } from '@emotion/core'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
@@ -76,6 +77,14 @@ const App = () => (
         <Helmet>
           <html lang={language} />
         </Helmet>
+        <Global
+          styles={css`
+            body {
+              margin: 0;
+              font-family: sans;
+            }
+          `}
+        />
 
         <Content>
           <TopBanner lang={language} />
