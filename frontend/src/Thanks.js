@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from 'react-emotion'
+import styled from '@emotion/styled'
 import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { H1 } from './utils/headers'
@@ -19,11 +19,11 @@ const getCyberTipsLink = lang => {
     : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
 }
 
-const centercontent = css`
+const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
 `
-const paragraph = css`
+const Paragraph = styled('div')`
   padding-top: 20pt;
   padding-bottom: 20pt;
   font-size: 20pt;
@@ -37,7 +37,7 @@ export const Thanks = () => (
 
       let { language } = data
       return (
-        <div className={centercontent}>
+        <CenterContent>
           <H1>
             <Trans>Thank you for sharing your story.</Trans>
           </H1>
@@ -45,7 +45,7 @@ export const Thanks = () => (
           <Stats />
 
           <TrackPageViews />
-          <div className={paragraph}>
+          <Paragraph>
             <Trans>
               For more information on how to stay safe online, you can visit{' '}
               <a href={getCyberSafeLink(language)}>GetCyberSafe</a> and the{' '}
@@ -53,8 +53,8 @@ export const Thanks = () => (
                 Top 10 Cyber Crime Prevention Tips.
               </a>
             </Trans>
-          </div>
-        </div>
+          </Paragraph>
+        </CenterContent>
       )
     }}
   </Query>

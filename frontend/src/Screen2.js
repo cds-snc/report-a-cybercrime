@@ -1,37 +1,36 @@
 import React from 'react'
-import { navigate, Link } from '@reach/router'
-
-import { css } from 'react-emotion'
+// import { navigate, Link } from '@reach/router'
+import { navigate } from '@reach/router'
+import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import Button from '@govuk-react/button'
-import { H1, H3, H4 } from './utils/headers'
+import { H1 } from './utils/headers'
 import { ApolloConsumer } from 'react-apollo'
-import Breadcrumb from '@govuk-react/breadcrumb'
+// import Breadcrumb from '@govuk-react/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
 import { i18nMark } from '@lingui/react'
 
-const centercontent = css`
+const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
 `
-const labelFormat = css`
+const LabelFormat = styled('h4')`
   margin-top: 20pt;
 `
-const submitButton = css`
+const SubmitButton = styled('button')`
   margin-top: 20pt;
 `
-const checkboxStyle = css`
+const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
   font-size: 1.25rem;
   display: block;
 `
-const textArea = css`
+const TextArea = styled('textarea')`
   width: 500pt;
   height: 200pt;
   font-size: 19pt;
 `
-const errorMessage = css`
+const ErrorMessage = styled('div')`
   margin-top: 10pt;
   display: inline-block;
   font-size: 19pt;
@@ -64,15 +63,15 @@ const MyForm = options => (
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <div>
-              <H3 className={labelFormat}>
+              <LabelFormat>
                 <label>
                   <Trans>What was affected? Choose all that apply.</Trans>
                 </label>
-              </H3>
+              </LabelFormat>
               <div>
                 {Object.keys(options).map(key => {
                   return (
-                    <label key={key} className={checkboxStyle}>
+                    <CheckboxStyle key={key}>
                       <Field
                         name="whatWasInvolved"
                         component="input"
@@ -80,32 +79,32 @@ const MyForm = options => (
                         value={key}
                       />{' '}
                       {options[key]}
-                    </label>
+                    </CheckboxStyle>
                   )
                 })}
               </div>
             </div>
-            <H4 className={labelFormat}>
+            <LabelFormat>
               <label>
                 <Trans>Other</Trans>
               </label>
-            </H4>
+            </LabelFormat>
             <div>
               <Field name="whatWasInvolvedOther">
                 {({ input, meta }) => (
                   <div>
-                    <textarea {...input} placeholder="" className={textArea} />
-                    <div className={errorMessage}>
+                    <TextArea {...input} placeholder="" />
+                    <ErrorMessage>
                       {meta.error && meta.touched && <Trans id={meta.error} />}
-                    </div>
+                    </ErrorMessage>
                   </div>
                 )}
               </Field>
             </div>
 
-            <Button className={submitButton} type="submit">
+            <SubmitButton type="submit">
               <Trans>Next</Trans>
-            </Button>
+            </SubmitButton>
           </form>
         )}
       />
@@ -124,19 +123,20 @@ const options = {
 }
 
 export const Screen2 = () => (
-  <div className={centercontent}>
-    <Breadcrumb>
+  <CenterContent>
+    {/* <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
       </Link>
       <Link to={'/form1'}>
         <Trans>What happened?</Trans>
       </Link>
-    </Breadcrumb>
+    </Breadcrumb> */}
+    <div>Placeholder for Breacrumb</div>
     <H1>
       <Trans>How did that happen?</Trans>
     </H1>
     <TrackPageViews />
     {MyForm(options)}
-  </div>
+  </CenterContent>
 )

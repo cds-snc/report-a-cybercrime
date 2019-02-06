@@ -1,39 +1,34 @@
 import React from 'react'
-import { css } from 'react-emotion'
+import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Link } from '@reach/router'
 import { H1, H3 } from './utils/headers'
-import ListItem from '@govuk-react/list-item'
-import WarningText from '@govuk-react/warning-text'
 import { Query } from 'react-apollo'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
 
-const warning = css`
+const Warning = styled('div')`
   font-family: Arial, sans-serif;
   padding-top: 20pt;
   padding-bottom: 20pt;
   color: green;
 `
-const listitem = css`
+const ListItem = styled('li')`
   margin: 5pt;
   margin-left: 20pt;
 `
-const link = css`
-  font-size: 20pt;
-`
-const centercontent = css`
+const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
 `
-const cybercrimeLink = css`
+const CybercrimeLink = styled('div')`
   padding-top: 20pt;
 `
 
 export const LandingPage = () => (
   <Query query={GET_LANGUAGE_QUERY}>
     {({ data: { language } }) => (
-      <div className={centercontent}>
+      <CenterContent>
         <H1>
           <Trans> Have you or someone you know encountered a cybercrime?</Trans>
         </H1>
@@ -41,22 +36,24 @@ export const LandingPage = () => (
           <Trans>Tell us your story in three easy steps:</Trans>
         </H3>
         <TrackPageViews />
-        <ListItem className={listitem}>
-          <Trans>Describe what happened.</Trans>
-        </ListItem>{' '}
-        <ListItem className={listitem}>
-          <Trans> Select where you encountered the cybercrime. </Trans>
-        </ListItem>{' '}
-        <ListItem className={listitem}>
-          <Trans>Share how you were impacted.</Trans>
-        </ListItem>
-        <WarningText className={warning}>
+        <ul>
+          <ListItem>
+            <Trans>Describe what happened.</Trans>
+          </ListItem>{' '}
+          <ListItem>
+            <Trans> Select where you encountered the cybercrime. </Trans>
+          </ListItem>{' '}
+          <ListItem>
+            <Trans>Share how you were impacted.</Trans>
+          </ListItem>
+        </ul>
+        <Warning>
           <Trans>Please do not provide any personal information.</Trans>
-        </WarningText>
-        <Link to={'form1'} className={link}>
+        </Warning>
+        <Link to={'form1'}>
           <Trans>Share your story→ </Trans>
         </Link>
-        <div className={cybercrimeLink}>
+        <CybercrimeLink>
           <a
             href={
               language === 'en'
@@ -66,8 +63,8 @@ export const LandingPage = () => (
           >
             <Trans>What is a cybercrime?</Trans>
           </a>
-        </div>
-      </div>
+        </CybercrimeLink>
+      </CenterContent>
     )}
   </Query>
 )
