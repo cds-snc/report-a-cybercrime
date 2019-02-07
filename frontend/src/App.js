@@ -76,12 +76,16 @@ const App = () => (
       <div>
         <Helmet>
           <html lang={language} />
+          <link
+            href="https://fonts.googleapis.com/css?family=Roboto"
+            rel="stylesheet"
+          />
         </Helmet>
         <Global
           styles={css`
             body {
               margin: 0;
-              font-family: sans;
+              font-family: 'Roboto', sans-serif;
             }
           `}
         />
