@@ -4,13 +4,14 @@ import express from 'express'
 import requestLanguage from 'express-request-language'
 import { renderToString } from 'react-dom/server'
 import { ServerLocation } from '@reach/router'
+import { Logger } from '@cdssnc/logdriver'
 import { withLanguageSwitching } from './withLanguageSwitching'
 import createApolloClient from './utils/createApolloClient'
 import App from './App'
 
 let assets, publicDir
 
-if (process.env.NODE_ENV == 'test') {
+if (process.env.NODE_ENV === 'test') {
   assets = { client: { css: {} } }
   publicDir = 'public'
 } else {
@@ -90,10 +91,10 @@ server
                   window.addEventListener('load', () => {
                     navigator.serviceWorker.register('service-worker.js')
                     .then(swReg => {
-                      console.log('Service Worker is registered', swReg);
+                      Logger.info('Service Worker is registered', swReg);
                     })
                     .catch(err => {
-                      console.error('Service Worker Error', err);
+                      Logger.error('Service Worker Error', err);
                     });
                   });
                 }

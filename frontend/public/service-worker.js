@@ -40,7 +40,6 @@ self.addEventListener('activate', event => {
 
 // Network falling back to the cache
 self.addEventListener('fetch', function(event) {
-  console.log('Fetch', event.request)
   event.respondWith(
     fetch(event.request)
       .then(response => {
