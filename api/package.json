@@ -15,6 +15,7 @@
   "license": "MIT",
   "repository": "github:cds-snc/report-a-cybercrime",
   "dependencies": {
+    "@cdssnc/logdriver": "0.0.2",
     "arangojs": "^6.10.0",
     "cors": "^2.8.5",
     "dotenv-safe": "^6.1.0",
