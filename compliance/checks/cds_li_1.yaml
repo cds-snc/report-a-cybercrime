@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cds-li-1
+  namespace: symmorfosi
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      nodeSelector:
+        compliance: master
+      restartPolicy: Never
+      containers:
+        - image: "cdssnc/lighthouse-compliance:latest"
+          imagePullPolicy: Always
+          name: "cds-li-1"
+          env:
+            - name: ORIGIN
+              value: "cdssnc/lighthouse-compliance:latest"
+            - name: COMPONENT
+              value: "Web site"
+            - name: SATISFIES
+              value: "CDS-LI-1"
+            - name: URL
+              value: "https://tell-us.cds-snc.ca"
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+      volumes:
+        - name: compliance-checks
+          persistentVolumeClaim:
+            claimName: checks-claim
