@@ -4,7 +4,6 @@ import express from 'express'
 import requestLanguage from 'express-request-language'
 import { renderToString } from 'react-dom/server'
 import { ServerLocation } from '@reach/router'
-import { Logger } from '@cdssnc/logdriver'
 import { withLanguageSwitching } from './withLanguageSwitching'
 import createApolloClient from './utils/createApolloClient'
 import App from './App'
@@ -98,7 +97,7 @@ server
                     });
                   });
                 }
-             </script>            
+             </script>
           </body>
         </html>
       `)
