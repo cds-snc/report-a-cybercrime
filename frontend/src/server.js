@@ -4,7 +4,6 @@ import express from 'express'
 import requestLanguage from 'express-request-language'
 import { renderToString } from 'react-dom/server'
 import { ServerLocation } from '@reach/router'
-import { Logger } from '@cdssnc/logdriver'
 import { withLanguageSwitching } from './withLanguageSwitching'
 import createApolloClient from './utils/createApolloClient'
 import App from './App'
@@ -90,15 +89,9 @@ server
                 if ('serviceWorker' in navigator) {
                   window.addEventListener('load', () => {
                     navigator.serviceWorker.register('service-worker.js')
-                    .then(swReg => {
-                      Logger.info('Service Worker is registered', swReg);
-                    })
-                    .catch(err => {
-                      Logger.error('Service Worker Error', err);
-                    });
                   });
                 }
-             </script>            
+             </script>
           </body>
         </html>
       `)
