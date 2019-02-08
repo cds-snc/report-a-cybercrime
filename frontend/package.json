@@ -39,6 +39,7 @@
     "final-form": "^4.11.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
+    "racc-ui": "github:cds-snc/racc-ui#master",
     "razzle": "^3.0.0-alpha.0",
     "react": "^16.6.3",
     "react-apollo": "^2.3.2",
