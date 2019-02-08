@@ -89,12 +89,6 @@ server
                 if ('serviceWorker' in navigator) {
                   window.addEventListener('load', () => {
                     navigator.serviceWorker.register('service-worker.js')
-                    .then(swReg => {
-                      Logger.info('Service Worker is registered', swReg);
-                    })
-                    .catch(err => {
-                      Logger.error('Service Worker Error', err);
-                    });
                   });
                 }
              </script>
