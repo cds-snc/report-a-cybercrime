@@ -30,9 +30,11 @@ export const LandingPage = () => (
     {({ data: { language } }) => (
       <CenterContent>
         <H1 fontSize={[5, null, 7]}>
-          Have you or someone you know encountered a cybercrime?
+          <Trans>Have you or someone you know encountered a cybercrime?</Trans>
         </H1>
-        <H2 fontSize={[3, null, 4]}>Tell us your story in three easy steps:</H2>
+        <H2 fontSize={[3, null, 4]}>
+          <Trans>Tell us your story in three easy steps:</Trans>
+        </H2>
         <TrackPageViews />
         <ul>
           <ListItem>
