@@ -8,9 +8,7 @@ describe('Paragraph', () => {
   const example = 'example'
   const wrapper = (
     <ThemeProvider theme={theme}>
-      <Paragraph size={'LARGE'} color={'black'}>
-        {example}
-      </Paragraph>
+      <Paragraph color="black">{example}</Paragraph>
     </ThemeProvider>
   )
 
