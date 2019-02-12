@@ -5,7 +5,6 @@ import requestLanguage from 'express-request-language'
 import { renderToString } from 'react-dom/server'
 import { renderStylesToString } from 'emotion-server'
 import { ServerLocation } from '@reach/router'
-import { Logger } from '@cdssnc/logdriver'
 import { withLanguageSwitching } from './withLanguageSwitching'
 import createApolloClient from './utils/createApolloClient'
 import App from './App'
@@ -61,6 +60,7 @@ server
           <head>
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
             <title>${
               req.language.indexOf('en') > -1
                 ? 'Tell us your cybercrime story'
@@ -93,15 +93,9 @@ server
                 if ('serviceWorker' in navigator) {
                   window.addEventListener('load', () => {
                     navigator.serviceWorker.register('service-worker.js')
-                    .then(swReg => {
-                      Logger.info('Service Worker is registered', swReg);
-                    })
-                    .catch(err => {
-                      Logger.error('Service Worker Error', err);
-                    });
                   });
                 }
-             </script>            
+             </script>
           </body>
         </html>
       `)
