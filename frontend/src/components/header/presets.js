@@ -16,7 +16,7 @@ export const H1 = props => (
 )
 
 H1.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
 }
 
 export const H2 = props => (
@@ -33,7 +33,7 @@ export const H2 = props => (
 )
 
 H2.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
 }
 
 export const H3 = props => (
@@ -50,7 +50,7 @@ export const H3 = props => (
 )
 
 H3.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
 }
 
 export const H4 = props => (
@@ -67,7 +67,7 @@ export const H4 = props => (
 )
 
 H4.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
 }
 
 export const H5 = props => (
@@ -84,7 +84,7 @@ export const H5 = props => (
 )
 
 H5.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
 }
 
 export const H6 = props => (
@@ -101,5 +101,5 @@ export const H6 = props => (
 )
 
 H6.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
 }
