@@ -3,16 +3,11 @@ import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Link } from '@reach/router'
 import { H1, H2 } from './components/header'
+import { P } from './components/paragraph'
 import { Query } from 'react-apollo'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
 
-const Warning = styled('div')`
-  font-family: Arial, sans-serif;
-  padding-top: 20pt;
-  padding-bottom: 20pt;
-  color: green;
-`
 const ListItem = styled('li')`
   margin: 5pt;
   margin-left: 20pt;
@@ -47,9 +42,9 @@ export const LandingPage = () => (
             <Trans>Share how you were impacted.</Trans>
           </ListItem>
         </ul>
-        <Warning>
+        <P color="green" fontWeight="bolder">
           <Trans>Please do not provide any personal information.</Trans>
-        </Warning>
+        </P>
         <Link to={'form1'}>
           <Trans>Share your story→ </Trans>
         </Link>
