@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Global, css } from '@emotion/core'
+import { ThemeProvider } from 'emotion-theming'
+import theme from './theme'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
@@ -89,37 +91,38 @@ const App = () => (
             }
           `}
         />
+        <ThemeProvider theme={theme}>
+          <Content>
+            <TopBanner lang={language} />
+            <Home />
+          </Content>
 
-        <Content>
-          <TopBanner lang={language} />
-          <Home />
-        </Content>
+          <Footer>
+            <Privacy
+              href={
+                language === 'en'
+                  ? 'https://digital.canada.ca/legal/privacy/'
+                  : 'https://numerique.canada.ca/transparence/confidentialite/'
+              }
+            >
+              <Trans>Privacy</Trans>
+            </Privacy>
 
-        <Footer>
-          <Privacy
-            href={
-              language === 'en'
-                ? 'https://digital.canada.ca/legal/privacy/'
-                : 'https://numerique.canada.ca/transparence/confidentialite/'
-            }
-          >
-            <Trans>Privacy</Trans>
-          </Privacy>
+            <Privacy
+              href={
+                language === 'en'
+                  ? 'https://digital.canada.ca/legal/terms/'
+                  : 'https://numerique.canada.ca/transparence/avis/'
+              }
+            >
+              <Trans>Terms and Conditions</Trans>
+            </Privacy>
 
-          <Privacy
-            href={
-              language === 'en'
-                ? 'https://digital.canada.ca/legal/terms/'
-                : 'https://numerique.canada.ca/transparence/avis/'
-            }
-          >
-            <Trans>Terms and Conditions</Trans>
-          </Privacy>
-
-          <WordMarkDiv>
-            <WordMark width="6em" flag="#fff" text="#fff" />
-          </WordMarkDiv>
-        </Footer>
+            <WordMarkDiv>
+              <WordMark width="6em" flag="#fff" text="#fff" />
+            </WordMarkDiv>
+          </Footer>
+        </ThemeProvider>
       </div>
     )}
   </Query>
