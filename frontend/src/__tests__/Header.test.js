@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 //import { mount } from 'enzyme'
 import { ThemeProvider } from 'emotion-theming'
 import theme from '../theme'
-import Header, { H1, H2, H3, H4, H5, H6 } from '../components/header'
+import { Header, H1, H2, H3, H4, H5, H6 } from '../components/header'
 
 //these are just the same base tests as govuk package
 

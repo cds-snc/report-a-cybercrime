@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '.'
+import { Header } from '.'
 import PropTypes from 'prop-types'
 
 export const H1 = props => (
