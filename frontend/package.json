@@ -97,7 +97,7 @@
       "build"
     ],
     "sourceLocale": "en",
-    "format": "lingui"
+    "format": "minimal"
   },
   "jest": {
     "verbose": true,
