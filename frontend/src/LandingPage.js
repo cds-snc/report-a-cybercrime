@@ -29,7 +29,7 @@ export const LandingPage = () => (
   <Query query={GET_LANGUAGE_QUERY}>
     {({ data: { language } }) => (
       <CenterContent>
-        <H1 fontSize={[5, null, 7]}>
+        <H1>
           <Trans>Have you or someone you know encountered a cybercrime?</Trans>
         </H1>
         <H2 fontSize={[3, null, 4]}>

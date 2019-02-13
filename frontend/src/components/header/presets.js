@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 export const H1 = props => (
   <Header
     is="h1"
-    fontSize={[6, null, 7]}
-    lineHeight={[6, null, 7]}
+    fontSize={[5, null, 7]}
+    lineHeight={[5, null, 7]}
     mb={4}
     fontWeight="bold"
     {...props}

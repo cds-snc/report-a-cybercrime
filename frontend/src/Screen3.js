@@ -114,7 +114,7 @@ export const Screen3 = () => (
       </Link>
     </Breadcrumb> */}
     <div>Placeholder for Breacrumb</div>
-    <H1 fontSize={[5, null, 7]}>
+    <H1>
       <Trans>How were you affected?</Trans>
     </H1>
 

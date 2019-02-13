@@ -38,7 +38,7 @@ export const Thanks = () => (
       let { language } = data
       return (
         <CenterContent>
-          <H1 fontSize={[5, null, 7]}>
+          <H1>
             <Trans>Thank you for sharing your story.</Trans>
           </H1>
 

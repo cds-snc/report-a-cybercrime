@@ -133,7 +133,7 @@ export const Screen2 = () => (
       </Link>
     </Breadcrumb> */}
     <div>Placeholder for Breacrumb</div>
-    <H1 fontSize={[5, null, 7]}>
+    <H1>
       <Trans>How did that happen?</Trans>
     </H1>
     <TrackPageViews />
