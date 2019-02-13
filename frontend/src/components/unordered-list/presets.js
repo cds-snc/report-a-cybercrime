@@ -5,8 +5,8 @@ import { css } from '@emotion/core'
 
 export const Ul = props => (
   <UnorderedList
-    fontSize={[1, null, 2]}
-    lineHeight={[1, null, 2]}
+    fontSize={[2, null, 3]}
+    lineHeight={[2, null, 3]}
     pl={[5, null, 6]}
     mb={4}
     {...props}
@@ -21,8 +21,8 @@ Ul.propTypes = {
 
 export const UlNone = props => (
   <UnorderedList
-    fontSize={[1, null, 2]}
-    lineHeight={[1, null, 2]}
+    fontSize={[2, null, 3]}
+    lineHeight={[2, null, 3]}
     mb={4}
     css={css`
       list-style-type: none;
@@ -39,8 +39,8 @@ UlNone.propTypes = {
 
 export const UlSquare = props => (
   <UnorderedList
-    fontSize={[1, null, 2]}
-    lineHeight={[1, null, 2]}
+    fontSize={[2, null, 3]}
+    lineHeight={[2, null, 3]}
     mb={4}
     pl={[5, null, 6]}
     css={css`

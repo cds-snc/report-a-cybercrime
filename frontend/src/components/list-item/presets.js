@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 
 export const Li = props => (
   <ListItem
-    fontSize={[1, null, 2]}
-    lineHeight={[1, null, 2]}
+    fontSize={[2, null, 3]}
+    lineHeight={[2, null, 3]}
     mb={[0, null, 1]}
-    fontWeight="400"
+    fontWeight="normal"
     {...props}
   >
     {props.children}
