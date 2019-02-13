@@ -4,14 +4,12 @@ import { Trans } from '@lingui/macro'
 import { Link } from '@reach/router'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
+import { Ul } from './components/unordered-list'
+import { Li } from './components/list-item'
 import { Query } from 'react-apollo'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
 
-const ListItem = styled('li')`
-  margin: 5pt;
-  margin-left: 20pt;
-`
 const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
@@ -31,17 +29,17 @@ export const LandingPage = () => (
           <Trans>Tell us your story in three easy steps:</Trans>
         </H2>
         <TrackPageViews />
-        <ul>
-          <ListItem>
+        <Ul>
+          <Li>
             <Trans>Describe what happened.</Trans>
-          </ListItem>{' '}
-          <ListItem>
+          </Li>{' '}
+          <Li>
             <Trans> Select where you encountered the cybercrime. </Trans>
-          </ListItem>{' '}
-          <ListItem>
+          </Li>{' '}
+          <Li>
             <Trans>Share how you were impacted.</Trans>
-          </ListItem>
-        </ul>
+          </Li>
+        </Ul>
         <P color="green" fontWeight="bolder">
           <Trans>Please do not provide any personal information.</Trans>
         </P>
