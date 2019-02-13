@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Link } from '@reach/router'
-import { H1, H3 } from './utils/headers'
+import { H1, H2 } from './components/header'
 import { Query } from 'react-apollo'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
@@ -29,12 +29,12 @@ export const LandingPage = () => (
   <Query query={GET_LANGUAGE_QUERY}>
     {({ data: { language } }) => (
       <CenterContent>
-        <H1>
-          <Trans> Have you or someone you know encountered a cybercrime?</Trans>
+        <H1 fontSize={[5, null, 7]}>
+          <Trans>Have you or someone you know encountered a cybercrime?</Trans>
         </H1>
-        <H3>
+        <H2 fontSize={[3, null, 4]}>
           <Trans>Tell us your story in three easy steps:</Trans>
-        </H3>
+        </H2>
         <TrackPageViews />
         <ul>
           <ListItem>

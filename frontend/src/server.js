@@ -3,6 +3,7 @@ import { getDataFromTree } from 'react-apollo'
 import express from 'express'
 import requestLanguage from 'express-request-language'
 import { renderToString } from 'react-dom/server'
+import { renderStylesToString } from 'emotion-server'
 import { ServerLocation } from '@reach/router'
 import { withLanguageSwitching } from './withLanguageSwitching'
 import createApolloClient from './utils/createApolloClient'
@@ -45,10 +46,12 @@ server
     })
 
     getDataFromTree(withLanguageSwitching(App, client)).then(() => {
-      const markup = renderToString(
-        <ServerLocation url={req.url}>
-          {withLanguageSwitching(App, client)}
-        </ServerLocation>,
+      const markup = renderStylesToString(
+        renderToString(
+          <ServerLocation url={req.url}>
+            {withLanguageSwitching(App, client)}
+          </ServerLocation>,
+        ),
       )
 
       res.status(200).send(`
