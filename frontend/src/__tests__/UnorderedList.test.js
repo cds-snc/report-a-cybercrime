@@ -2,12 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'emotion-theming'
 import theme from '../theme'
-import {
-  UnorderedList,
-  Ul,
-  UlNone,
-  UlSquare,
-} from '../components/unordered-list'
+import { UnorderedList, Ul } from '../components/unordered-list'
 
 describe('Unordered List', () => {
   const example = 'example'
@@ -24,24 +19,12 @@ describe('Unordered List', () => {
     </ThemeProvider>
   )
 
-  it('renders an UnorderedList, Ul, UlNone & UlSquare component without crashing', () => {
+  it('renders an UnorderedList and Ul component without crashing', () => {
     const div = document.createElement('div')
     ReactDOM.render(wrapper, div)
     ReactDOM.render(
       <ThemeProvider theme={theme}>
         <Ul>{example}</Ul>
-      </ThemeProvider>,
-      div,
-    )
-    ReactDOM.render(
-      <ThemeProvider theme={theme}>
-        <UlNone>{example}</UlNone>
-      </ThemeProvider>,
-      div,
-    )
-    ReactDOM.render(
-      <ThemeProvider theme={theme}>
-        <UlSquare>{example}</UlSquare>
       </ThemeProvider>,
       div,
     )
