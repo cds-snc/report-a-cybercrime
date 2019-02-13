@@ -14,7 +14,6 @@ describe('ListItem', () => {
         fontSize={[1, null, 2]}
         lineHeight={[1, null, 2]}
         mb={[0, null, 1]}
-        fontWeight="400"
       >
         {example}
       </ListItem>
