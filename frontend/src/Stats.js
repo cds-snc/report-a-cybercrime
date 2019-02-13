@@ -1,5 +1,5 @@
 import React from 'react'
-import { H3 } from './utils/headers'
+import { H3 } from './components/header'
 import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
