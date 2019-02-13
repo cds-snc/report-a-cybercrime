@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
-import { H1 } from './utils/headers'
+import { H1 } from './components/header'
 import gql from 'graphql-tag'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 // import Breadcrumb from '@govuk-react/breadcrumb'
@@ -114,7 +114,7 @@ export const Screen3 = () => (
       </Link>
     </Breadcrumb> */}
     <div>Placeholder for Breacrumb</div>
-    <H1>
+    <H1 fontSize={[5, null, 7]}>
       <Trans>How were you affected?</Trans>
     </H1>
 

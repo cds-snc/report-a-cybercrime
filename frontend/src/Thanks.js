@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
-import { H1 } from './utils/headers'
+import { H1 } from './components/header'
 import { Stats } from './Stats'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
@@ -38,7 +38,7 @@ export const Thanks = () => (
       let { language } = data
       return (
         <CenterContent>
-          <H1>
+          <H1 fontSize={[5, null, 7]}>
             <Trans>Thank you for sharing your story.</Trans>
           </H1>
 

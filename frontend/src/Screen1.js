@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '@reach/router'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
-import { H1 } from './utils/headers'
+import { H1 } from './components/header'
 import { ApolloConsumer } from 'react-apollo'
 // import Breadcrumb from '@govuk-react/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
@@ -37,7 +37,7 @@ export const Screen1 = () => (
       </Link>
     </Breadcrumb> */}
     <div>Placeholder for Breacrumb</div>
-    <H1>
+    <H1 fontSize={[5, null, 7]}>
       <Trans>Describe what happened</Trans>
     </H1>
 
