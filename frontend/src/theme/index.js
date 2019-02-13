@@ -39,6 +39,7 @@ const theme = {
     lightBlue: '#2b8cc4',
     purple: '#4c2c92',
     yellow: '#ffbf47',
+    crimson: '#dc143c',
   },
 
   textStyles: {
