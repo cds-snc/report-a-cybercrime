@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { A, Link } from './components/link'
 import { H1, H2 } from './components/header'
-import { P } from './components/paragraph'
+import { P, Lead } from './components/paragraph'
 import { Ol } from './components/ordered-list'
 import { Li } from './components/list-item'
 import { Query } from 'react-apollo'
@@ -13,9 +13,6 @@ import { TrackPageViews } from './TrackPageViews'
 const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
-`
-const CybercrimeLink = styled('div')`
-  padding-top: 20pt;
 `
 
 export const LandingPage = () => (
@@ -40,13 +37,15 @@ export const LandingPage = () => (
             <Trans>Share how you were impacted.</Trans>
           </Li>
         </Ol>
-        <P color="green" fontWeight="bolder">
+        <Lead color="green" fontWeight="bolder">
           <Trans>Please do not provide any personal information.</Trans>
+        </Lead>
+        <P mt={6}>
+          <Link fontSize={[3, null, 4]} lineHeight={[3, null, 4]} to={'form1'}>
+            <Trans>Share your story→ </Trans>
+          </Link>
         </P>
-        <Link to={'form1'}>
-          <Trans>Share your story→ </Trans>
-        </Link>
-        <CybercrimeLink>
+        <P mt={4}>
           <A
             href={
               language === 'en'
@@ -56,7 +55,7 @@ export const LandingPage = () => (
           >
             <Trans>What is a cybercrime?</Trans>
           </A>
-        </CybercrimeLink>
+        </P>
       </CenterContent>
     )}
   </Query>
