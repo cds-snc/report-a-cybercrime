@@ -29,4 +29,15 @@ describe('Unordered List', () => {
       div,
     )
   })
+
+  it('UL accepts a listStyleType prop', () => {
+    const div = document.createElement('div')
+    ReactDOM.render(wrapper, div)
+    ReactDOM.render(
+      <ThemeProvider theme={theme}>
+        <Ul listStyleType="square">{example}</Ul>
+      </ThemeProvider>,
+      div,
+    )
+  })
 })

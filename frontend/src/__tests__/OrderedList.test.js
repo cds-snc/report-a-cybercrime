@@ -29,4 +29,14 @@ describe('Ordered List', () => {
       div,
     )
   })
+
+  it('OL accepts a listStyleType prop', () => {
+    const div = document.createElement('div')
+    ReactDOM.render(
+      <ThemeProvider theme={theme}>
+        <Ol listStyleType="lower-roman">{example}</Ol>
+      </ThemeProvider>,
+      div,
+    )
+  })
 })
