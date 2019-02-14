@@ -4,7 +4,7 @@ import { Trans } from '@lingui/macro'
 import { A, Link } from './components/link'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
-import { Ul } from './components/unordered-list'
+import { Ol } from './components/ordered-list'
 import { Li } from './components/list-item'
 import { Query } from 'react-apollo'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
@@ -29,7 +29,7 @@ export const LandingPage = () => (
           <Trans>Tell us your story in three easy steps:</Trans>
         </H2>
         <TrackPageViews />
-        <Ul>
+        <Ol>
           <Li>
             <Trans>Describe what happened.</Trans>
           </Li>{' '}
@@ -39,7 +39,7 @@ export const LandingPage = () => (
           <Li>
             <Trans>Share how you were impacted.</Trans>
           </Li>
-        </Ul>
+        </Ol>
         <P color="green" fontWeight="bolder">
           <Trans>Please do not provide any personal information.</Trans>
         </P>

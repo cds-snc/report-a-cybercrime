@@ -20,4 +20,4 @@ UnorderedList.propTypes = {
   ...fontWeight.propTypes,
 }
 
-export { Ul, UlNone, UlSquare } from './presets'
+export { Ul } from './presets'
