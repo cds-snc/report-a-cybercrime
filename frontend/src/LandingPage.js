@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
-import { Link } from '@reach/router'
+import { Link } from './components/link'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
+import { asAnchor } from './utils/asAnchor'
 import { Query } from 'react-apollo'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
@@ -17,6 +18,8 @@ const CenterContent = styled('div')`
 const CybercrimeLink = styled('div')`
   padding-top: 20pt;
 `
+
+const StyledLink = asAnchor('a')
 
 export const LandingPage = () => (
   <Query query={GET_LANGUAGE_QUERY}>
@@ -47,7 +50,7 @@ export const LandingPage = () => (
           <Trans>Share your story→ </Trans>
         </Link>
         <CybercrimeLink>
-          <a
+          <StyledLink
             href={
               language === 'en'
                 ? 'http://www.rcmp-grc.gc.ca/en/cybercrime-an-overview-incidents-and-issues-canada'
@@ -55,7 +58,7 @@ export const LandingPage = () => (
             }
           >
             <Trans>What is a cybercrime?</Trans>
-          </a>
+          </StyledLink>
         </CybercrimeLink>
       </CenterContent>
     )}
