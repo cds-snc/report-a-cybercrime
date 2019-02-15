@@ -2,8 +2,9 @@ import { fontSize, lineHeight, space, color, fontWeight } from 'styled-system'
 import styled from '@emotion/styled'
 import tag from 'clean-tag'
 
-export const BreadcrumbList = styled(tag.ol)`
-  display: 'inline-block';
+export const BreadcrumbList = styled(tag.ul)`
+  display: inline-block;
+  list-style-type: none;
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
   padding: 0;
@@ -22,7 +23,7 @@ BreadcrumbList.propTypes = {
 }
 
 export const BreadcrumbListItem = styled(tag.li)`
-  display: 'inline-block';
+  display: inline-block;
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
   ${fontSize};

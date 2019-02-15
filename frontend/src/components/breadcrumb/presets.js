@@ -36,7 +36,9 @@ export const Breadcrumb = props => {
       {...props}
     >
       {props.children.map((child, index) => (
-        <BreadcrumbLi key={index}>{child}</BreadcrumbLi>
+        <BreadcrumbLi key={index}>
+          {child}&nbsp;{index === props.children.length - 1 ? null : '/'}&nbsp;
+        </BreadcrumbLi>
       ))}
     </BreadcrumbList>
   )
