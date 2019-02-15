@@ -1,8 +1,9 @@
 import React from 'react'
-import { BreadcrumbListItem, BreadcrumbList } from '.'
+import { BreadcrumbList, BreadcrumbListItem } from '.'
 import PropTypes from 'prop-types'
+import { css } from '@emotion/core'
 
-export const Breadcrumb = ({ children, ...props }) => (
+export const BreadcrumbLi = props => (
   <BreadcrumbListItem
     fontSize={[2, null, 3]}
     lineHeight={[2, null, 3]}
@@ -18,20 +19,29 @@ BreadcrumbLi.propTypes = {
   children: PropTypes.any,
 }
 
-const Breadcrumb = ({ children, ...props }) => (
-  <BreadcrumbContainer {...props}>
-    <BreadcrumbList>
-      {children.length && children.map ? (
-        children.map((child, i) =>
-          child && (child.length || child.props) ? (
-            <BreadcrumbListItem key={child.key || i}>
-              {child}
-            </BreadcrumbListItem>
-          ) : null,
-        )
-      ) : (
-        <BreadcrumbListItem>{children}</BreadcrumbListItem>
-      )}
+export const Breadcrumb = props => {
+  var paddingValue
+
+  paddingValue = 0
+
+  return (
+    <BreadcrumbList
+      fontSize={[1, null, 2]}
+      lineHeight={[1, null, 2]}
+      pl={paddingValue}
+      mb={4}
+      css={css`
+        list-style-type: 'none';
+      `}
+      {...props}
+    >
+      {props.children.map((child, index) => (
+        <BreadcrumbLi key={index}>{child}</BreadcrumbLi>
+      ))}
     </BreadcrumbList>
-  </BreadcrumbContainer>
-)
+  )
+}
+
+Breadcrumb.propTypes = {
+  children: PropTypes.any,
+}
