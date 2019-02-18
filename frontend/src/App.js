@@ -14,23 +14,6 @@ import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { FlexContainer, Box } from './components/flexbox'
 
-const FipBanner = styled('div')`
-  background-color: black;
-  margin: auto;
-  padding: 10px;
-  height: 40px;
-`
-const Flag = styled('div')`
-  float: left;
-  padding: 5px;
-  width: 300px;
-`
-const LanguageButton = styled('div')`
-  display: inline-block;
-  float: right;
-  margin-top: 10px;
-`
-
 const Footer = styled('div')`
   background-color: black;
   margin: auto;
@@ -58,17 +41,16 @@ const Content = styled('div')`
 `
 
 const TopBanner = props => (
-  <React.Fragment>
-    <FlexContainer
-      bg="black"
-      display="flex"
-      flex="1 1 auto"
-      flexDirection="row"
-      width={1}
-      height={[50, null, 60]}
-      alignItems="center"
-    >
-      <Box width={[250, null, 300]} pl={3}>
+  <FlexContainer
+    bg="black"
+    display="flex"
+    flexDirection="row"
+    width={1}
+    height={[50, null, 60]}
+    alignItems="center"
+  >
+    <Box flex="0 0 50%" ml={3}>
+      <Box width={[250, null, 300]}>
         <GoCSignature
           width="100%"
           lang={props.lang}
@@ -79,17 +61,17 @@ const TopBanner = props => (
           `}
         />
       </Box>
-    </FlexContainer>
-    {/* <FipBanner>
-      <Flag>
-        <GoCSignature width="100%" lang={props.lang} flag="#fff" text="#fff" />
-      </Flag>
-
-      <LanguageButton>
-        <LanguageSwitcher />
-      </LanguageButton>
-    </FipBanner> */}
-  </React.Fragment>
+    </Box>
+    <Box
+      flex="1 1 50%"
+      mr={3}
+      css={css`
+        text-align: right;
+      `}
+    >
+      <LanguageSwitcher />
+    </Box>
+  </FlexContainer>
 )
 
 TopBanner.propTypes = {
@@ -114,32 +96,6 @@ const App = () => (
         <ThemeProvider theme={theme}>
           <Content>
             <TopBanner lang={language} />
-            {/* <FlexContainer
-              flex="1 1 auto"
-              display="flex"
-              width={1}
-              bg="blue"
-              color="white"
-              flexDirection="row"
-            >
-              <Box
-                height={100}
-                width={400}
-                borderColor="white"
-                border="1px solid"
-              >
-                content
-              </Box>
-              <Box
-                height={100}
-                width={400}
-                borderColor="white"
-                border="1px solid"
-              >
-                {' '}
-                content 2
-              </Box>
-            </FlexContainer> */}
             <Home />
           </Content>
 
