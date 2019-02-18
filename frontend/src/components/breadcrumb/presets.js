@@ -1,5 +1,6 @@
 import React from 'react'
 import { BreadcrumbList, BreadcrumbListItem } from '.'
+import { Text } from '../text'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
@@ -37,7 +38,12 @@ export const Breadcrumb = props => {
     >
       {props.children.map((child, index) => (
         <BreadcrumbLi key={index}>
-          {child}&nbsp;{index === props.children.length - 1 ? null : '/'}&nbsp;
+          {child}
+          {index === props.children.length - 1 ? null : (
+            <Text {...props} display="inline-block">
+              &nbsp;/&nbsp;
+            </Text>
+          )}
         </BreadcrumbLi>
       ))}
     </BreadcrumbList>
