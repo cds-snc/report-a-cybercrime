@@ -2,7 +2,6 @@ import React from 'react'
 import { BreadcrumbList, BreadcrumbListItem } from '.'
 import { Text } from '../text'
 import PropTypes from 'prop-types'
-import { css } from '@emotion/core'
 
 export const BreadcrumbLi = props => (
   <BreadcrumbListItem
@@ -21,19 +20,11 @@ BreadcrumbLi.propTypes = {
 }
 
 export const Breadcrumb = props => {
-  var paddingValue
-
-  paddingValue = 0
-
   return (
     <BreadcrumbList
       fontSize={[1, null, 2]}
       lineHeight={[1, null, 2]}
-      pl={paddingValue}
       mb={4}
-      css={css`
-        list-style-type: 'none';
-      `}
       {...props}
     >
       {props.children.map((child, index) => (
