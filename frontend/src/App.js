@@ -65,12 +65,19 @@ const TopBanner = props => (
       flex="1 1 auto"
       flexDirection="row"
       width={1}
-      height={40}
-      p={2}
-      m="auto"
+      height={[50, null, 60]}
+      alignItems="center"
     >
-      <Box width={[250, null, 300]} pt={[2, null, 1]}>
-        <GoCSignature width="100%" lang={props.lang} flag="#fff" text="#fff" />
+      <Box width={[250, null, 300]} pl={3}>
+        <GoCSignature
+          width="100%"
+          lang={props.lang}
+          flag="#fff"
+          text="#fff"
+          css={css`
+            display: block;
+          `}
+        />
       </Box>
     </FlexContainer>
     {/* <FipBanner>
