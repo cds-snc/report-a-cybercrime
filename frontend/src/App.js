@@ -49,21 +49,19 @@ const TopBanner = props => (
     height={[50, null, 60]}
     alignItems="center"
   >
-    <Box flex="0 0 50%" ml={3}>
-      <Box width={[250, null, 300]}>
-        <GoCSignature
-          width="100%"
-          lang={props.lang}
-          flag="#fff"
-          text="#fff"
-          css={css`
-            display: block;
-          `}
-        />
-      </Box>
+    <Box ml={3} width={[250, null, 300]}>
+      <GoCSignature
+        width="100%"
+        lang={props.lang}
+        flag="#fff"
+        text="#fff"
+        css={css`
+          display: block;
+        `}
+      />
     </Box>
     <Box
-      flex="1 1 50%"
+      flex="1 1 auto"
       mr={3}
       css={css`
         text-align: right;
