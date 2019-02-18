@@ -59,9 +59,21 @@ const Content = styled('div')`
 
 const TopBanner = props => (
   <React.Fragment>
-    <FlexContainer />
-
-    <FipBanner>
+    <FlexContainer
+      bg="black"
+      display="flex"
+      flex="1 1 auto"
+      flexDirection="row"
+      width={1}
+      height={40}
+      p={2}
+      m="auto"
+    >
+      <Box width={[250, null, 300]} pt={[2, null, 1]}>
+        <GoCSignature width="100%" lang={props.lang} flag="#fff" text="#fff" />
+      </Box>
+    </FlexContainer>
+    {/* <FipBanner>
       <Flag>
         <GoCSignature width="100%" lang={props.lang} flag="#fff" text="#fff" />
       </Flag>
@@ -69,7 +81,7 @@ const TopBanner = props => (
       <LanguageButton>
         <LanguageSwitcher />
       </LanguageButton>
-    </FipBanner>
+    </FipBanner> */}
   </React.Fragment>
 )
 
