@@ -12,6 +12,7 @@ import Home from './Home'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
+import { FlexContainer, Box } from './components/flexbox'
 
 const FipBanner = styled('div')`
   background-color: black;
@@ -57,15 +58,19 @@ const Content = styled('div')`
 `
 
 const TopBanner = props => (
-  <FipBanner>
-    <Flag>
-      <GoCSignature width="100%" lang={props.lang} flag="#fff" text="#fff" />
-    </Flag>
+  <React.Fragment>
+    <FlexContainer />
 
-    <LanguageButton>
-      <LanguageSwitcher />
-    </LanguageButton>
-  </FipBanner>
+    <FipBanner>
+      <Flag>
+        <GoCSignature width="100%" lang={props.lang} flag="#fff" text="#fff" />
+      </Flag>
+
+      <LanguageButton>
+        <LanguageSwitcher />
+      </LanguageButton>
+    </FipBanner>
+  </React.Fragment>
 )
 
 TopBanner.propTypes = {
@@ -90,6 +95,32 @@ const App = () => (
         <ThemeProvider theme={theme}>
           <Content>
             <TopBanner lang={language} />
+            {/* <FlexContainer
+              flex="1 1 auto"
+              display="flex"
+              width={1}
+              bg="blue"
+              color="white"
+              flexDirection="row"
+            >
+              <Box
+                height={100}
+                width={400}
+                borderColor="white"
+                border="1px solid"
+              >
+                content
+              </Box>
+              <Box
+                height={100}
+                width={400}
+                borderColor="white"
+                border="1px solid"
+              >
+                {' '}
+                content 2
+              </Box>
+            </FlexContainer> */}
             <Home />
           </Content>
 
