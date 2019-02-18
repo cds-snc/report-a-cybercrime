@@ -4,6 +4,7 @@ import { navigate } from '@reach/router'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { Text } from './components/text'
 import { ApolloConsumer } from 'react-apollo'
 // import Breadcrumb from '@govuk-react/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
@@ -36,7 +37,11 @@ export const Screen1 = () => (
         <Trans>Landing Page</Trans>
       </Link>
     </Breadcrumb> */}
-    <div>Placeholder for Breacrumb</div>
+    <div>
+      <Text display="inline-block">Placeholder&nbsp;</Text>
+      <Text display="inline-block">for</Text>
+      <Text fontSize={[4, 4, 5]}>Breadcrumb</Text>
+    </div>
     <H1>
       <Trans>Describe what happened</Trans>
     </H1>
