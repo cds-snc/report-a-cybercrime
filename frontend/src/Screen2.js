@@ -5,6 +5,7 @@ import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { H1 } from './components/header'
+import { CheckboxAdapter } from './components/multiple-choice'
 import { ApolloConsumer } from 'react-apollo'
 // import Breadcrumb from '@govuk-react/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
@@ -74,11 +75,11 @@ const MyForm = options => (
                     <CheckboxStyle key={key}>
                       <Field
                         name="whatWasInvolved"
-                        component="input"
+                        component={CheckboxAdapter}
                         type="checkbox"
                         value={key}
+                        label={options[key]}
                       />{' '}
-                      {options[key]}
                     </CheckboxStyle>
                   )
                 })}
