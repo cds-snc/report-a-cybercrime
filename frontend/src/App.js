@@ -4,15 +4,12 @@ import { Global, css } from '@emotion/core'
 import { ThemeProvider } from 'emotion-theming'
 import theme from './theme'
 import { Query } from 'react-apollo'
-import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import WordMark from './components/wordmark'
-import GoCSignature from './components/gocsig'
 import Home from './Home'
-import { LanguageSwitcher } from './LanguageSwitcher'
 import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
-import { FlexContainer, Box } from './components/flexbox'
+import { TopBanner } from './components/topbanner'
 
 const Footer = styled('div')`
   background-color: black;
@@ -40,41 +37,41 @@ const Content = styled('div')`
   min-height: calc(100vh - 55px);
 `
 
-const TopBanner = props => (
-  <FlexContainer
-    bg="black"
-    display="flex"
-    flexDirection="row"
-    width={1}
-    height={[50, null, 60]}
-    alignItems="center"
-  >
-    <Box ml={3} width={[250, null, 300]}>
-      <GoCSignature
-        width="100%"
-        lang={props.lang}
-        flag="#fff"
-        text="#fff"
-        css={css`
-          display: block;
-        `}
-      />
-    </Box>
-    <Box
-      flex="1 1 auto"
-      mr={3}
-      css={css`
-        text-align: right;
-      `}
-    >
-      <LanguageSwitcher />
-    </Box>
-  </FlexContainer>
-)
+// const TopBanner = props => (
+//   <FlexContainer
+//     bg="black"
+//     display="flex"
+//     flexDirection="row"
+//     width={1}
+//     height={[50, null, 60]}
+//     alignItems="center"
+//   >
+//     <Box ml={3} width={[250, null, 300]}>
+//       <GoCSignature
+//         width="100%"
+//         lang={props.lang}
+//         flag="#fff"
+//         text="#fff"
+//         css={css`
+//           display: block;
+//         `}
+//       />
+//     </Box>
+//     <Box
+//       flex="1 1 auto"
+//       mr={3}
+//       css={css`
+//         text-align: right;
+//       `}
+//     >
+//       <LanguageSwitcher />
+//     </Box>
+//   </FlexContainer>
+// )
 
-TopBanner.propTypes = {
-  lang: PropTypes.string,
-}
+// TopBanner.propTypes = {
+//   lang: PropTypes.string,
+// }
 
 const App = () => (
   <Query query={GET_LANGUAGE_QUERY}>
@@ -93,7 +90,7 @@ const App = () => (
         />
         <ThemeProvider theme={theme}>
           <Content>
-            <TopBanner lang={language} />
+            <TopBanner lang={language} bg="black" />
             <Home />
           </Content>
 

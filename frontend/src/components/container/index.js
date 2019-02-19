@@ -19,7 +19,7 @@ import {
 } from 'styled-system'
 import tag from 'clean-tag'
 
-export const FlexContainer = styled(tag.div)`
+export const Container = styled(tag.div)`
     ${alignItems}
     ${alignContent}
     ${justifyContent}
@@ -34,7 +34,7 @@ export const FlexContainer = styled(tag.div)`
     ${space}
 `
 
-FlexContainer.propTypes = {
+Container.propTypes = {
   ...alignItems.propTypes,
   ...alignContent.propTypes,
   ...justifyContent.propTypes,
