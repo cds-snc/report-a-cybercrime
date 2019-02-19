@@ -6,9 +6,12 @@ export const Button = props => (
   <BaseButton
     fontSize={[2, null, 3]}
     lineHeight={[2, null, 3]}
+    padding={[2, null, 3]}
     mt={[2, null, 3]}
     color="white"
     bg="green"
+    py={1}
+    px={[2, null, 3]}
     {...props}
   >
     {props.children}

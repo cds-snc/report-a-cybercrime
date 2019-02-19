@@ -5,10 +5,10 @@ import tag from 'clean-tag'
 export const BaseButton = styled(tag.button)`
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
+  border: 0;
   &:focus {
     outline: 3px solid #ffbf47;
   }
-
   ${fontSize};
   ${lineHeight};
   ${space};
