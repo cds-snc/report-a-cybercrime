@@ -15,21 +15,21 @@ export const PhaseBanner = ({ phase, message, phaseColor, ...rest }) => (
     <Text
       display="inline-block"
       bg={phaseColor}
-      px={1}
+      px={[1, null, 2]}
       color="white"
       fontSize={[1, null, 2]}
       lineHeight={[1, null, 2]}
-      mb={2}
+      mb={[1, null, 2]}
       {...rest}
     >
       {phase}
     </Text>
     <Text
-      pl={2}
+      pl={[1, null, 2]}
       display="inline-block"
       fontSize={[1, null, 2]}
       lineHeight={[1, null, 2]}
-      mb={1}
+      mb={[1, null, 2]}
       {...rest}
     >
       {message}
