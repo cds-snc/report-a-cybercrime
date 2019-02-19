@@ -1,26 +1,26 @@
-import React from 'react'
+/** @jsx jsx */
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
+import { jsx, css } from '@emotion/core'
 import { Text } from '../text'
-import tag from 'clean-tag'
 
-export const PhaseBannerContainer = styled(tag.div)`
-  margin: 0;
-  padding-bottom: 10px;
-  border-bottom: 1px solid black;
-`
-
-export const PhaseBanner = ({ phase, message, phaseColor, ...rest }) => (
-  <PhaseBannerContainer>
+export const PhaseBanner = ({ phase, children, phaseColor, ...rest }) => (
+  <div
+    css={css`
+      margin: 0;
+      padding-bottom: 10px;
+      border-bottom: 1px solid black;
+    `}
+    {...rest}
+  >
     <Text
       display="inline-block"
       bg={phaseColor}
+      p="4px 8px;"
       px={[1, null, 2]}
       color="white"
       fontSize={[1, null, 2]}
       lineHeight={[1, null, 2]}
       mb={[1, null, 2]}
-      {...rest}
     >
       {phase}
     </Text>
@@ -30,15 +30,14 @@ export const PhaseBanner = ({ phase, message, phaseColor, ...rest }) => (
       fontSize={[1, null, 2]}
       lineHeight={[1, null, 2]}
       mb={[1, null, 2]}
-      {...rest}
     >
-      {message}
+      {children}
     </Text>
-  </PhaseBannerContainer>
+  </div>
 )
 
 PhaseBanner.propTypes = {
   phase: PropTypes.any.isRequired,
   phaseColor: PropTypes.string.isRequired,
-  message: PropTypes.any,
+  children: PropTypes.node,
 }

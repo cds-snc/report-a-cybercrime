@@ -19,11 +19,9 @@ const Screen = styled('div')`
 
 const Home = () => (
   <Root>
-    <PhaseBanner
-      phase={<Trans>DISCOVERY</Trans>}
-      phaseColor="blue"
-      message={<Trans>For research purposes only.</Trans>}
-    />
+    <PhaseBanner phase={<Trans>DISCOVERY</Trans>} phaseColor="blue">
+      <Trans>For research purposes only.</Trans>
+    </PhaseBanner>
     <Screen>
       <Router>
         <LandingPage path="/" />
