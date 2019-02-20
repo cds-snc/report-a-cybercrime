@@ -6,9 +6,11 @@ import { Trans } from '@lingui/macro'
 import { i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { H1 } from './components/header'
+import { Link } from './components/link'
+import { Text } from './components/text'
 import gql from 'graphql-tag'
 import { ApolloConsumer, Mutation } from 'react-apollo'
-// import Breadcrumb from '@govuk-react/breadcrumb'
+import { Breadcrumb } from './components/breadcrumb'
 import { SAVE_REPORT_MUTATION } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
 
@@ -102,18 +104,20 @@ const MyForm = () => (
 
 export const Screen3 = () => (
   <CenterContent>
-    {/* <Breadcrumb>
+    <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
       </Link>
       <Link to={'/form1'}>
-        <Trans>What happened?</Trans>
+        <Trans>What Happened</Trans>
       </Link>
-      <Link to={'/form2'}>
-        <Trans>What was involved?</Trans>
+      <Link to="{'/form2'}">
+        <Trans>How did that happen?</Trans>
       </Link>
-    </Breadcrumb> */}
-    <div>Placeholder for Breacrumb</div>
+      <Text display="inline-block">
+        <Trans>How were you affected?</Trans>
+      </Text>
+    </Breadcrumb>
     <H1>
       <Trans>How were you affected?</Trans>
     </H1>
