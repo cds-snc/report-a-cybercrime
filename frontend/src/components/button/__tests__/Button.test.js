@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'emotion-theming'
-import theme from '../theme'
-import { Button } from '../components/button'
+import theme from '../../../theme'
+import { Button } from '../'
 
 describe('Button', () => {
   const example = 'example'
