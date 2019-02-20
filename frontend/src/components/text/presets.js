@@ -7,7 +7,6 @@ export const Text = props => (
     display="block"
     fontSize={[2, null, 3]}
     lineHeight={[2, null, 3]}
-    mb={4}
     color="black"
     {...props}
   >
