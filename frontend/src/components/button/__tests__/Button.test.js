@@ -1,19 +1,20 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render, cleanup } from 'react-testing-library'
 import { ThemeProvider } from 'emotion-theming'
 import theme from '../../../theme'
 import { Button } from '../'
 
-describe('Button', () => {
-  const example = 'example'
+describe('<Button />', () => {
+  afterEach(cleanup)
 
-  it('Renders a Button component preset without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(
+  it('properly renders child components', () => {
+    const { getAllByText } = render(
       <ThemeProvider theme={theme}>
-        <Button>{example}</Button>
+        <Button>
+          <em>foo</em>
+        </Button>
       </ThemeProvider>,
-      div,
     )
+    expect(getAllByText(/foo/)).toHaveLength(1)
   })
 })
