@@ -23,7 +23,7 @@ const Checkbox = ({ label, className, ...props }) => {
   return (
     <StyledCheckbox className={className} htmlFor={guid}>
       <StyledInput type="checkbox" {...props} id={guid} />
-      <StyledLabel>{label}</StyledLabel>
+      <StyledLabel {...props}>{label}</StyledLabel>
     </StyledCheckbox>
   )
 }

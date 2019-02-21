@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { H1 } from './components/header'
-import { CheckboxAdapter } from './components/checkbox'
+import { Checkbox, CheckboxAdapter } from './components/checkbox'
 import { Link } from './components/link'
 import { Text } from './components/text'
 import { Breadcrumb } from './components/breadcrumb'
@@ -82,7 +82,7 @@ const MyForm = options => (
                         type="checkbox"
                         value={key}
                         label={options[key]}
-                      />{' '}
+                      />
                     </CheckboxStyle>
                   )
                 })}
