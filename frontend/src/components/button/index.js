@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { fontSize, lineHeight, space, color, fontWeight } from 'styled-system'
+import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 import tag from 'clean-tag'
 import PropTypes from 'prop-types'
 
@@ -12,29 +12,28 @@ const BaseButton = styled(tag.button)`
     outline: 3px solid #ffbf47;
   }
   ${fontSize};
-  ${lineHeight};
-  ${space};
-  ${color};
   ${fontWeight};
+  ${lineHeight};
+  ${color};
+  ${space};
 `
 
 BaseButton.propTypes = {
   ...fontSize.propTypes,
-  ...lineHeight.propTypes,
-  ...space.propTypes,
-  ...color.propTypes,
   ...fontWeight.propTypes,
+  ...lineHeight.propTypes,
+  ...color.propTypes,
+  ...space.propTypes,
 }
 
 export const Button = props => (
   <BaseButton
     fontSize={[2, null, 3]}
+    fontWeight="normal"
     lineHeight={[2, null, 3]}
-    padding={[2, null, 3]}
-    borderColor="blue"
-    mt={[2, null, 3]}
     color="white"
     bg="green"
+    mt={[2, null, 3]}
     py={1}
     px={[2, null, 3]}
     {...props}
