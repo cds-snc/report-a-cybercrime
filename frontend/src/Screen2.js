@@ -9,7 +9,6 @@ import { Link } from './components/link'
 import { Text } from './components/text'
 import { Breadcrumb } from './components/breadcrumb'
 import { ApolloConsumer } from 'react-apollo'
-// import Breadcrumb from '@govuk-react/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
 import { i18nMark } from '@lingui/react'
 
@@ -128,10 +127,10 @@ const options = {
 export const Screen2 = () => (
   <CenterContent>
     <Breadcrumb>
-      <Link to={'/'}>
+      <Link to="/">
         <Trans>Landing Page</Trans>
       </Link>
-      <Link to={'/form1'}>
+      <Link to="/form1">
         <Trans>What Happened</Trans>
       </Link>
       <Text display="inline-block">
