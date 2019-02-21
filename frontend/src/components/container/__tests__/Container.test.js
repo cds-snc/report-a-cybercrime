@@ -5,7 +5,6 @@ import { render, cleanup } from 'react-testing-library'
 
 describe('<Container />', () => {
   afterEach(cleanup)
-  // const example = 'example'
 
   it('properly renders child components', () => {
     const { getAllByText } = render(
