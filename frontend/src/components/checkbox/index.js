@@ -1,7 +1,8 @@
-import theme from '../../theme'
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
+import { StyledLabel } from './styled-label'
+import { StyledInput } from './styled-input'
 
 const uuidv4 = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -15,72 +16,6 @@ const StyledCheckbox = styled('label')({
   display: 'block',
   position: 'relative',
   padding: '0 0 0 38px',
-})
-
-const StyledInput = styled('input')(
-  {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    width: '24px',
-    height: '24px',
-    zIndex: 1,
-    margin: 0,
-    zoom: 1,
-    opacity: 0,
-    ':checked + span:after': {
-      opacity: 1,
-    },
-    ':focus + span:before': {
-      boxShadow: `0 0 0 3px ${theme.colors.yellow}`,
-    },
-  },
-  ({ disabled }) => ({
-    cursor: disabled ? 'auto' : 'pointer',
-    ' + span': {
-      pointerEvents: disabled ? 'none' : 'auto',
-    },
-  }),
-)
-
-const StyledLabel = styled('span')({
-  fontFamily: theme.fontSans,
-  fontWeight: 400,
-  textTransform: 'none',
-  fontSize: '24px',
-  lineHeight: '16px',
-  cursor: 'pointer',
-  padding: '8px 0px 9px 8px',
-  display: 'block',
-  height: '28px',
-  color: `${theme.colors.black}`,
-  '::before': {
-    content: "''",
-    display: 'block',
-    border: `2px solid ${theme.colors.black}`,
-    background: 'transparent',
-    width: '24px',
-    height: '24px',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-  },
-  '::after': {
-    content: "''",
-    border: 'solid',
-    color: theme.colors.black,
-    borderWidth: '0 0 4px 4px',
-    background: 'transparent',
-    borderTopColor: 'transparent',
-    width: '11px',
-    height: '5px',
-    position: 'absolute',
-    top: '8px',
-    left: '6px',
-    transform: 'rotate(-45deg)',
-    zoom: 1,
-    opacity: 0,
-  },
 })
 
 const Checkbox = ({ label, className, ...props }) => {

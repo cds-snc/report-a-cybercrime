@@ -1,0 +1,42 @@
+import styled from '@emotion/styled'
+import theme from '../../theme'
+
+export const StyledLabel = styled('span')({
+  fontFamily: theme.fontSans,
+  fontWeight: 400,
+  textTransform: 'none',
+  fontSize: '24px',
+  lineHeight: '16px',
+  cursor: 'pointer',
+  padding: '8px 0px 9px 8px',
+  display: 'block',
+  height: '28px',
+  color: `${theme.colors.black}`,
+  '::before': {
+    content: "''",
+    display: 'block',
+    border: `2px solid ${theme.colors.black}`,
+    background: 'transparent',
+    width: '24px',
+    height: '24px',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+  '::after': {
+    content: "''",
+    border: 'solid',
+    color: theme.colors.black,
+    borderWidth: '0 0 4px 4px',
+    background: 'transparent',
+    borderTopColor: 'transparent',
+    width: '11px',
+    height: '5px',
+    position: 'absolute',
+    top: '8px',
+    left: '6px',
+    transform: 'rotate(-45deg)',
+    zoom: 1,
+    opacity: 0,
+  },
+})
