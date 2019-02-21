@@ -2,7 +2,7 @@ import React from 'react'
 import { Router } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import styled from '@emotion/styled'
-// import PhaseBanner from '@govuk-react/phase-banner'
+import { PhaseBanner } from './components/phase-banner'
 import { LandingPage } from './LandingPage'
 import { Screen1 } from './Screen1'
 import { Screen2 } from './Screen2'
@@ -19,13 +19,9 @@ const Screen = styled('div')`
 
 const Home = () => (
   <Root>
-    {/* <PhaseBanner level="discovery">
+    <PhaseBanner phase={<Trans>DISCOVERY</Trans>} phaseColor="blue">
       <Trans>For research purposes only.</Trans>
-    </PhaseBanner> */}
-    <div>
-      <Trans>For research purposes only.</Trans>
-    </div>
-    <div>Placeholder for phase banner</div>
+    </PhaseBanner>
     <Screen>
       <Router>
         <LandingPage path="/" />

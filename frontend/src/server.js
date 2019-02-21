@@ -11,6 +11,8 @@ import App from './App'
 
 let assets, publicDir
 
+const inProductionEnvironment = process.env.NODE_ENV === 'production'
+
 if (process.env.NODE_ENV === 'test') {
   assets = { client: { css: {} } }
   publicDir = 'public'
@@ -72,7 +74,7 @@ server
                 : ''
             }
             ${
-              process.env.NODE_ENV === 'production'
+              inProductionEnvironment
                 ? `<script src="${assets.client.js}" defer></script>`
                 : `<script src="${
                     assets.client.js
@@ -89,13 +91,17 @@ server
           </head>
           <body>
             <div id="root">${markup}</div>
-             <script>
-                if ('serviceWorker' in navigator) {
-                  window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('service-worker.js')
-                  });
-                }
-             </script>
+            ${
+              inProductionEnvironment
+                ? `<script>
+                  if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', () => {
+                      navigator.serviceWorker.register('service-worker.js')
+                    });
+                  }
+                </script>`
+                : ''
+            }
           </body>
         </html>
       `)

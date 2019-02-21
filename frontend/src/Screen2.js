@@ -6,6 +6,9 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { H1 } from './components/header'
 import { CheckboxAdapter } from './components/checkbox'
+import { Link } from './components/link'
+import { Text } from './components/text'
+import { Breadcrumb } from './components/breadcrumb'
 import { ApolloConsumer } from 'react-apollo'
 // import Breadcrumb from '@govuk-react/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
@@ -125,15 +128,17 @@ const options = {
 
 export const Screen2 = () => (
   <CenterContent>
-    {/* <Breadcrumb>
+    <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
       </Link>
       <Link to={'/form1'}>
-        <Trans>What happened?</Trans>
+        <Trans>What Happened</Trans>
       </Link>
-    </Breadcrumb> */}
-    <div>Placeholder for Breacrumb</div>
+      <Text display="inline-block">
+        <Trans>How did that happen?</Trans>
+      </Text>
+    </Breadcrumb>
     <H1>
       <Trans>How did that happen?</Trans>
     </H1>
