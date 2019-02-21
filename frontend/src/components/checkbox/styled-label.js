@@ -1,42 +1,72 @@
+import React from 'react'
 import styled from '@emotion/styled'
+import PropTypes from 'prop-types'
+import tag from 'clean-tag'
 import theme from '../../theme'
+import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 
-export const StyledLabel = styled('span')({
-  fontFamily: theme.fontSans,
-  fontWeight: 400,
-  textTransform: 'none',
-  fontSize: '24px',
-  lineHeight: '16px',
-  cursor: 'pointer',
-  padding: '8px 0px 9px 8px',
-  display: 'block',
-  height: '28px',
-  color: `${theme.colors.black}`,
-  '::before': {
-    content: "''",
-    display: 'block',
-    border: `2px solid ${theme.colors.black}`,
-    background: 'transparent',
-    width: '24px',
-    height: '24px',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-  },
-  '::after': {
-    content: "''",
-    border: 'solid',
-    color: theme.colors.black,
-    borderWidth: '0 0 4px 4px',
-    background: 'transparent',
-    borderTopColor: 'transparent',
-    width: '11px',
-    height: '5px',
-    position: 'absolute',
-    top: '8px',
-    left: '6px',
-    transform: 'rotate(-45deg)',
-    zoom: 1,
-    opacity: 0,
-  },
-})
+const BaseStyledLabel = styled(tag.span)`
+  font-family: ${({ theme }) => theme.fontSans};
+  margin: 0;
+  text-transform: none;
+  cursor: pointer;
+  padding: 8px 0px 9px 8px;
+  display: block;
+  height: 28px;
+  color: ${theme.colors.black};
+  ::before {
+    content: '';
+    display: block;
+    border: 2px solid ${({ theme }) => theme.colors.black};
+    background: transparent;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  ::after {
+    content: '';
+    border: solid;
+    color: ${({ theme }) => theme.colors.black};
+    border-width: 0 0 4px 4px;
+    background: transparent;
+    border-top-color: transparent;
+    width: 11px;
+    height: 5px;
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    transform: rotate(-45deg);
+    zoom: 1;
+    opacity: 0;
+  }
+  ${fontSize};
+  ${fontWeight};
+  ${lineHeight};
+  ${space};
+  ${color};
+`
+
+BaseStyledLabel.propTypes = {
+  ...fontSize.propTypes,
+  ...fontWeight.propTypes,
+  ...lineHeight.propTypes,
+  ...space.propTypes,
+  ...color.propTypes,
+}
+
+export const StyledLabel = props => (
+  <BaseStyledLabel
+    fontWeight="400"
+    fontSize="24px"
+    lineHeight="16px"
+    {...props}
+  >
+    {props.children}
+  </BaseStyledLabel>
+)
+
+StyledLabel.propTypes = {
+  children: PropTypes.any,
+}
