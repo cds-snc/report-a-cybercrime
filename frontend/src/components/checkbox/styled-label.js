@@ -6,7 +6,7 @@ import theme from '../../theme'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 
 const BaseStyledLabel = styled(tag.span)`
-  font-family: ${({ theme }) => theme.fontSans};
+  font-family: ${theme.fontSans};
   margin: 0;
   text-transform: none;
   cursor: pointer;
@@ -17,7 +17,7 @@ const BaseStyledLabel = styled(tag.span)`
   ::before {
     content: '';
     display: block;
-    border: 2px solid ${({ theme }) => theme.colors.black};
+    border: 2px solid ${theme.colors.black};
     background: transparent;
     width: ${({ fontSize }) => fontSize};
     height: ${({ fontSize }) => fontSize};
@@ -28,7 +28,7 @@ const BaseStyledLabel = styled(tag.span)`
   ::after {
     content: '';
     border: solid;
-    color: ${({ theme }) => theme.colors.black};
+    color: ${theme.colors.black};
     border-width: 0 0 4px 4px;
     background: transparent;
     border-top-color: transparent;

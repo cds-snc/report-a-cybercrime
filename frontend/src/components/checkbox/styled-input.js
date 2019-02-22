@@ -18,7 +18,7 @@ const BaseStyledInput = styled(tag.input)`
     opacity: 1;
   }
   :focus + span:before {
-    boxshadow: 0 0 0 3px ${({ theme }) => theme.colors.yellow};
+    box-shadow: 0 0 0 3px ${theme.colors.yellow};
   }
 `
 
