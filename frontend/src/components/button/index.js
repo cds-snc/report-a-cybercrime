@@ -18,14 +18,6 @@ const BaseButton = styled(tag.button)`
   ${space};
 `
 
-BaseButton.propTypes = {
-  ...fontSize.propTypes,
-  ...fontWeight.propTypes,
-  ...lineHeight.propTypes,
-  ...color.propTypes,
-  ...space.propTypes,
-}
-
 export const Button = props => (
   <BaseButton
     fontSize={[2, null, 3]}
@@ -37,11 +29,9 @@ export const Button = props => (
     py={1}
     px={[2, null, 3]}
     {...props}
-  >
-    {props.children}
-  </BaseButton>
+  />
 )
 
 Button.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
 }
