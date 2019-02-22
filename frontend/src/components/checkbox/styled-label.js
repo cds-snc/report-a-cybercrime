@@ -32,8 +32,8 @@ const BaseStyledLabel = styled(tag.span)`
     border-width: 0 0 4px 4px;
     background: transparent;
     border-top-color: transparent;
-    width: ${({ checkScale }) => 11 * checkScale}px;
-    height: ${({ checkScale }) => 5 * checkScale}px;
+    width: ${({ checkscale }) => 11 * checkscale}px;
+    height: ${({ checkscale }) => 5 * checkscale}px;
     position: absolute;
     top: 8px;
     left: 6px;
@@ -54,7 +54,7 @@ BaseStyledLabel.propTypes = {
   ...lineHeight.propTypes,
   ...space.propTypes,
   ...color.propTypes,
-  checkScale: PropTypes.string,
+  checkscale: PropTypes.string,
 }
 
 export const StyledLabel = props => (
@@ -62,7 +62,7 @@ export const StyledLabel = props => (
     fontWeight="400"
     fontSize="24px"
     lineHeight="16px"
-    checkScale="1"
+    checkscale="1"
     {...props}
   >
     {props.children}

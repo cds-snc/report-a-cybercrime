@@ -36,7 +36,7 @@ Checkbox.propTypes = {
   /**
    * Text content for checkbox
    */
-  label: PropTypes.element,
+  label: PropTypes.any.isRequired,
 
   /**
    * CSS Classname for outermost container
