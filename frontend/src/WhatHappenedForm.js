@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro'
 import { i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import styled from '@emotion/styled'
-// import Button from '@govuk-react/button'
+import { Button } from './components/button'
 import PropTypes from 'prop-types'
 
 const TextArea = styled('textarea')`
@@ -16,9 +16,6 @@ const ErrorMessage = styled('div')`
   display: inline-block;
   font-size: 19pt;
   color: red;
-`
-const SubmitButton = styled('button')`
-  margin-top: 20pt;
 `
 
 const validate = values => {
@@ -53,9 +50,9 @@ export const WhatHappenedForm = ({ onSubmit }) => (
           </Field>
         </div>
 
-        <SubmitButton type="submit">
+        <Button type="submit">
           <Trans>Next</Trans>
-        </SubmitButton>
+        </Button>
       </form>
     )}
   />
