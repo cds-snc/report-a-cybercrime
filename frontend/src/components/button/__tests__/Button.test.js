@@ -18,26 +18,6 @@ describe('<Button />', () => {
     expect(getAllByText(/foo/)).toHaveLength(1)
   })
 
-  it('has correct default styling', () => {
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <Button>foo</Button>
-      </ThemeProvider>,
-    )
-    const test = getByText(/foo/)
-
-    expect(test).toHaveStyleRule('font-size', theme.fontSizes[2])
-    expect(test).toHaveStyleRule('font-weight', 'normal')
-    expect(test).toHaveStyleRule('line-height', String(theme.lineHeights[2]))
-    expect(test).toHaveStyleRule('color', theme.colors.white)
-    expect(test).toHaveStyleRule('background-color', 'green')
-    expect(test).toHaveStyleRule('margin-top', theme.space[2])
-    expect(test).toHaveStyleRule('padding-top', theme.space[1])
-    expect(test).toHaveStyleRule('padding-bottom', theme.space[1])
-    expect(test).toHaveStyleRule('padding-left', theme.space[2])
-    expect(test).toHaveStyleRule('padding-right', theme.space[2])
-  })
-
   it('uses styling props correctly', () => {
     const { getByText } = render(
       <ThemeProvider theme={theme}>
@@ -53,7 +33,6 @@ describe('<Button />', () => {
       </ThemeProvider>,
     )
     const test = getByText(/foo/)
-
     expect(test).toHaveStyleRule('font-size', '11pt')
     expect(test).toHaveStyleRule('font-weight', 'bold')
     expect(test).toHaveStyleRule('line-height', '6.6')
