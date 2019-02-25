@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'emotion-theming'
-import theme from '../theme'
-import { Link, A } from '../components/link'
+import theme from '../../../theme'
+import { Link, A } from '..'
 
 describe('Links', () => {
   const example = 'example'

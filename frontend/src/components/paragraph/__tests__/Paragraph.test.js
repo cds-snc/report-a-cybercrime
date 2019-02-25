@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'emotion-theming'
-import theme from '../theme'
-import { Paragraph, P, Lead } from '../components/paragraph'
+import theme from '../../../theme'
+import { Paragraph, P, Lead } from '..'
 
 describe('Paragraph', () => {
   const example = 'example'
