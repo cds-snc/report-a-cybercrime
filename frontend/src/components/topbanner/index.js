@@ -43,6 +43,10 @@ export const TopBanner = props => {
 }
 
 TopBanner.propTypes = {
-  lang: PropTypes.string,
+  lang: PropTypes.string.isRequired,
   bg: PropTypes.string,
+}
+
+TopBanner.defaultProps = {
+  bg: 'black',
 }

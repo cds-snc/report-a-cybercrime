@@ -36,4 +36,18 @@ describe('<TopBanner />', () => {
     const test = getByTestId('background-color')
     expect(test).toHaveStyleRule('background-color', '#005ea5')
   })
+
+  it('renders with a black bg if no bg color prop specified', () => {
+    const englishClient = testClient({ language: 'en' })
+
+    const { getByTestId } = render(
+      <ApolloProvider client={englishClient}>
+        <ThemeProvider theme={{ colors: { black: '#000000' } }}>
+          <TopBanner lang="en" />
+        </ThemeProvider>
+      </ApolloProvider>,
+    )
+    const test = getByTestId('background-color')
+    expect(test).toHaveStyleRule('background-color', '#000000')
+  })
 })
