@@ -19,7 +19,7 @@ const StyledCheckbox = styled('label')({
   padding: '0 0 0 38px',
 })
 
-const Checkbox = ({ label, className, ...props }) => {
+export const Checkbox = ({ label, className, ...props }) => {
   const guid = uuidv4()
   return (
     <StyledCheckbox className={className} htmlFor={guid}>
@@ -46,23 +46,3 @@ Checkbox.propTypes = {
   ...color.propTypes,
   className: PropTypes.string,
 }
-
-const CheckboxAdapter = ({ input, ...rest }) => (
-  <Checkbox {...input} {...rest} />
-)
-
-CheckboxAdapter.propTypes = {
-  input: PropTypes.shape({
-    value: PropTypes.any.isRequired,
-    onChange: PropTypes.func.isRequired,
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    ...fontSize.propTypes,
-    ...fontWeight.propTypes,
-    ...lineHeight.propTypes,
-    ...space.propTypes,
-    ...color.propTypes,
-  }),
-}
-
-export { Checkbox, CheckboxAdapter }

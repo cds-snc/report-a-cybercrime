@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { H1 } from './components/header'
-import { CheckboxAdapter } from './components/checkbox'
+import { Checkbox } from './components/checkbox'
 import { Link } from './components/link'
 import { Text } from './components/text'
 import { Breadcrumb } from './components/breadcrumb'
@@ -13,6 +13,9 @@ import { ApolloConsumer } from 'react-apollo'
 // import Breadcrumb from '@govuk-react/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
 import { i18nMark } from '@lingui/react'
+import { finalFormAdapter } from './utils/finalFormAdapter'
+
+const CheckboxAdapter = finalFormAdapter(Checkbox)
 
 const CenterContent = styled('div')`
   max-width: 750px;
