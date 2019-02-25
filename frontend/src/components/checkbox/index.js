@@ -19,10 +19,10 @@ const StyledCheckbox = styled('label')({
   padding: '0 0 0 38px',
 })
 
-export const Checkbox = ({ label, className, ...props }) => {
+export const Checkbox = ({ label, ...props }) => {
   const guid = uuidv4()
   return (
-    <StyledCheckbox className={className} htmlFor={guid}>
+    <StyledCheckbox htmlFor={guid}>
       <StyledInput type="checkbox" {...props} id={guid} />
       <StyledLabel {...props}>{label}</StyledLabel>
     </StyledCheckbox>
@@ -30,7 +30,6 @@ export const Checkbox = ({ label, className, ...props }) => {
 }
 
 Checkbox.defaultProps = {
-  className: undefined,
   fontWeight: '400',
   fontSize: '24px',
   lineHeight: '16px',
@@ -38,11 +37,10 @@ Checkbox.defaultProps = {
 }
 
 Checkbox.propTypes = {
-  label: PropTypes.any.isRequired,
+  label: PropTypes.node.isRequired,
   ...fontSize.propTypes,
   ...fontWeight.propTypes,
   ...lineHeight.propTypes,
   ...space.propTypes,
   ...color.propTypes,
-  className: PropTypes.string,
 }
