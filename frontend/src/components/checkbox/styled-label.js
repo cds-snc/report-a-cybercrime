@@ -1,11 +1,10 @@
-import React from 'react'
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 import tag from 'clean-tag'
 import theme from '../../theme'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 
-const BaseStyledLabel = styled(tag.span)`
+export const StyledLabel = styled(tag.span)`
   font-family: ${theme.fontSans};
   margin: 0;
   text-transform: none;
@@ -48,27 +47,11 @@ const BaseStyledLabel = styled(tag.span)`
   ${color};
 `
 
-BaseStyledLabel.propTypes = {
+StyledLabel.propTypes = {
   ...fontSize.propTypes,
   ...fontWeight.propTypes,
   ...lineHeight.propTypes,
   ...space.propTypes,
   ...color.propTypes,
   checkscale: PropTypes.string,
-}
-
-export const StyledLabel = props => (
-  <BaseStyledLabel
-    fontWeight="400"
-    fontSize="24px"
-    lineHeight="16px"
-    checkscale="1"
-    {...props}
-  >
-    {props.children}
-  </BaseStyledLabel>
-)
-
-StyledLabel.propTypes = {
-  children: PropTypes.any,
 }

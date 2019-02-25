@@ -1,10 +1,8 @@
-import React from 'react'
 import styled from '@emotion/styled'
-import PropTypes from 'prop-types'
 import tag from 'clean-tag'
 import theme from '../../theme'
 
-const BaseStyledInput = styled(tag.input)`
+export const StyledInput = styled(tag.input)`
   position: absolute;
   left: 0;
   top: 0;
@@ -21,11 +19,3 @@ const BaseStyledInput = styled(tag.input)`
     box-shadow: 0 0 0 3px ${theme.colors.yellow};
   }
 `
-
-export const StyledInput = props => (
-  <BaseStyledInput {...props}>{props.children}</BaseStyledInput>
-)
-
-StyledInput.propTypes = {
-  children: PropTypes.any,
-}
