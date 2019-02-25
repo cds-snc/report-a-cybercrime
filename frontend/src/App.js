@@ -4,31 +4,12 @@ import { Global, css } from '@emotion/core'
 import { ThemeProvider } from 'emotion-theming'
 import theme from './theme'
 import { Query } from 'react-apollo'
-import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import WordMark from './components/wordmark'
-import GoCSignature from './components/gocsig'
 import Home from './Home'
-import { LanguageSwitcher } from './LanguageSwitcher'
 import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
-
-const FipBanner = styled('div')`
-  background-color: black;
-  margin: auto;
-  padding: 10px;
-  height: 40px;
-`
-const Flag = styled('div')`
-  float: left;
-  padding: 5px;
-  width: 300px;
-`
-const LanguageButton = styled('div')`
-  display: inline-block;
-  float: right;
-  margin-top: 10px;
-`
+import { TopBanner } from './components/topbanner'
 
 const Footer = styled('div')`
   background-color: black;
@@ -56,22 +37,6 @@ const Content = styled('div')`
   min-height: calc(100vh - 55px);
 `
 
-const TopBanner = props => (
-  <FipBanner>
-    <Flag>
-      <GoCSignature width="100%" lang={props.lang} flag="#fff" text="#fff" />
-    </Flag>
-
-    <LanguageButton>
-      <LanguageSwitcher />
-    </LanguageButton>
-  </FipBanner>
-)
-
-TopBanner.propTypes = {
-  lang: PropTypes.string,
-}
-
 const App = () => (
   <Query query={GET_LANGUAGE_QUERY}>
     {({ data: { language } }) => (
@@ -89,7 +54,7 @@ const App = () => (
         />
         <ThemeProvider theme={theme}>
           <Content>
-            <TopBanner lang={language} />
+            <TopBanner lang={language} bg="black" />
             <Home />
           </Content>
 
