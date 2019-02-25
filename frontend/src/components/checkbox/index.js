@@ -57,6 +57,11 @@ CheckboxAdapter.propTypes = {
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
+    ...fontSize.propTypes,
+    ...fontWeight.propTypes,
+    ...lineHeight.propTypes,
+    ...space.propTypes,
+    ...color.propTypes,
   }),
 }
 
