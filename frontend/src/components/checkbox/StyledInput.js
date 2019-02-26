@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import tag from 'clean-tag'
-import theme from '../../theme'
 
 export const StyledInput = styled(tag.input)`
   position: absolute;
@@ -16,6 +15,6 @@ export const StyledInput = styled(tag.input)`
     opacity: 1;
   }
   :focus + span:before {
-    box-shadow: 0 0 0 3px ${theme.colors.yellow};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.yellow};
   }
 `

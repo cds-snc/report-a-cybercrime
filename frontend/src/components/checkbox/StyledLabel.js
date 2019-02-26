@@ -1,22 +1,21 @@
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 import tag from 'clean-tag'
-import theme from '../../theme'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 
 export const StyledLabel = styled(tag.span)`
-  font-family: ${theme.fontSans};
+  font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
   text-transform: none;
   cursor: pointer;
   padding: 8px 0px 9px 8px;
   display: block;
   height: 28px;
-  color: ${theme.colors.black};
+  color: ${({ theme }) => theme.colors.black};
   ::before {
     content: '';
     display: block;
-    border: 2px solid ${theme.colors.black};
+    border: 2px solid ${({ theme }) => theme.colors.black};
     background: transparent;
     width: ${({ fontSize }) => fontSize};
     height: ${({ fontSize }) => fontSize};
@@ -27,7 +26,7 @@ export const StyledLabel = styled(tag.span)`
   ::after {
     content: '';
     border: solid;
-    color: ${theme.colors.black};
+    color: ${({ theme }) => theme.colors.black};
     border-width: 0 0 4px 4px;
     background: transparent;
     border-top-color: transparent;

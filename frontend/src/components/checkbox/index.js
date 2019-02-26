@@ -1,31 +1,31 @@
-import React from 'react'
+/** @jsx jsx */
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
-import { StyledLabel } from './styled-label'
-import { StyledInput } from './styled-input'
+import { jsx, css } from '@emotion/core'
+import { StyledLabel } from './StyledLabel'
+import { StyledInput } from './StyledInput'
+import { UniqueID } from '../unique-id'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 
-const uuidv4 = () => {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = (Math.random() * 16) | 0,
-      v = c === 'x' ? r : (r & 0x3) | 0x8
-    return v.toString(16)
-  })
-}
-
-const StyledCheckbox = styled('label')({
-  display: 'block',
-  position: 'relative',
-  padding: '0 0 0 38px',
-})
-
 export const Checkbox = ({ label, ...props }) => {
-  const guid = uuidv4()
   return (
-    <StyledCheckbox htmlFor={guid}>
-      <StyledInput type="checkbox" {...props} id={guid} />
-      <StyledLabel {...props}>{label}</StyledLabel>
-    </StyledCheckbox>
+    <UniqueID>
+      {id => {
+        return (
+          <div
+            css={css`
+              display: block;
+              position: relative;
+              padding: 0 0 0 38px;
+            `}
+          >
+            <StyledInput type="checkbox" {...props} id={id} />
+            <StyledLabel htmlFor={id} {...props}>
+              {label}
+            </StyledLabel>
+          </div>
+        )
+      }}
+    </UniqueID>
   )
 }
 
