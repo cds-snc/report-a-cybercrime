@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'emotion-theming'
-import theme from '../theme'
-import { ListItem, Li } from '../components/list-item'
+import theme from '../../../theme'
+import { ListItem, Li } from '..'
 
 //these are just the same base tests as govuk package
 
