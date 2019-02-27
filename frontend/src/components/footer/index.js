@@ -19,16 +19,23 @@ export const Footer = props => {
     >
       <Container color="white" flex="1 1 auto">
         <Ul listStyleType="none" mb={0}>
-          <Li ml={3} display={['block', null, 'inline-block']}>
+          <Li ml={3} display="inline-block" fontSize={[1, null, 2]}>
             Privacy
           </Li>
-          <Li ml={3} display={['block', null, 'inline-block']}>
+          <Li ml={3} display="inline-block" fontSize={[1, null, 2]}>
             Terms and Conditions
           </Li>
         </Ul>
       </Container>
-      <Container flex="1 1 auto" textAlign="right" mr={3}>
-        <WordMark width="6em" flag="#fff" text="#fff" />
+      <Container mr={3} width={['4em', null, '6em']}>
+        <WordMark
+          width="100%"
+          flag="#fff"
+          text="#fff"
+          css={css`
+            display: block;
+          `}
+        />
       </Container>
     </Container>
   )
