@@ -5,18 +5,18 @@ import { ThemeProvider } from 'emotion-theming'
 import theme from './theme'
 import { Query } from 'react-apollo'
 import { Helmet } from 'react-helmet'
-import WordMark from './components/wordmark'
 import Home from './Home'
 import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TopBanner } from './components/topbanner'
+import { Footer } from './components/footer'
 
-const Footer = styled('div')`
-  background-color: black;
-  margin: auto;
-  padding: 15px;
-  height: 25px;
-`
+// const Footer = styled('div')`
+//   background-color: black;
+//   margin: auto;
+//   padding: 15px;
+//   height: 25px;
+// `
 const Privacy = styled('a')`
   font-size: 15pt;
   margin-top: 100pt;
@@ -58,7 +58,9 @@ const App = () => (
             <Home />
           </Content>
 
-          <Footer>
+          <Footer />
+
+          {/* <Footer>
             <Privacy
               href={
                 language === 'en'
@@ -82,7 +84,7 @@ const App = () => (
             <WordMarkDiv>
               <WordMark width="6em" flag="#fff" text="#fff" />
             </WordMarkDiv>
-          </Footer>
+          </Footer> */}
         </ThemeProvider>
       </div>
     )}
