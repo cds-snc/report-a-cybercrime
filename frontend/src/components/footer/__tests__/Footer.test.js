@@ -1,6 +1,5 @@
 import React from 'react'
 import { ThemeProvider } from 'emotion-theming'
-import theme from '../../../theme'
 import { Footer } from '../'
 import { render, cleanup } from 'react-testing-library'
 
