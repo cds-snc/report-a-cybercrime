@@ -63,6 +63,13 @@ const theme = {
         color: '#2b8cc4',
       },
     },
+
+    footerLink: {
+      color: '#FFF',
+      '&:focus': {
+        outline: '3px solid #ffbf47',
+      },
+    },
   },
 }
 

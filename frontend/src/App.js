@@ -58,7 +58,7 @@ const App = () => (
             <Home />
           </Content>
 
-          <Footer />
+          <Footer lang={language} bg="black" />
 
           {/* <Footer>
             <Privacy

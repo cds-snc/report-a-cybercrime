@@ -37,3 +37,18 @@ export const A = props => (
 A.propTypes = {
   children: PropTypes.any,
 }
+
+export const FooterLink = props => (
+  <BaseAnchor
+    fontSize={[1, null, 2]}
+    lineHeight={[1, null, 2]}
+    colors="footerLink"
+    {...props}
+  >
+    {props.children}
+  </BaseAnchor>
+)
+
+FooterLink.propTypes = {
+  children: PropTypes.any,
+}

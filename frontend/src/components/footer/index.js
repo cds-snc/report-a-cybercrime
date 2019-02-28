@@ -5,11 +5,15 @@ import { Container } from '../container'
 import WordMark from '../wordmark'
 import { Li } from '../list-item'
 import { Ul } from '../unordered-list'
+import { FooterLink } from '../link'
+import { Trans } from '@lingui/macro'
 
 export const Footer = props => {
+  const { lang, bg } = props
+
   return (
     <Container
-      bg="black"
+      bg={bg}
       display="flex"
       flexDirection="row"
       width={1}
@@ -19,11 +23,27 @@ export const Footer = props => {
     >
       <Container color="white" flex="1 1 auto">
         <Ul listStyleType="none" mb={0}>
-          <Li ml={3} display="inline-block" fontSize={[1, null, 2]}>
-            Privacy
+          <Li ml={3} display="inline-block">
+            <FooterLink
+              href={
+                lang === 'en'
+                  ? 'https://digital.canada.ca/legal/privacy/'
+                  : 'https://numerique.canada.ca/transparence/confidentialite/'
+              }
+            >
+              <Trans>Privacy</Trans>
+            </FooterLink>
           </Li>
-          <Li ml={3} display="inline-block" fontSize={[1, null, 2]}>
-            Terms and Conditions
+          <Li ml={3} display="inline-block">
+            <FooterLink
+              href={
+                lang === 'en'
+                  ? 'https://digital.canada.ca/legal/terms/'
+                  : 'https://numerique.canada.ca/transparence/avis/'
+              }
+            >
+              <Trans>Terms and Conditions</Trans>
+            </FooterLink>
           </Li>
         </Ul>
       </Container>
