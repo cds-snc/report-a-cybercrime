@@ -3,13 +3,10 @@ import PropTypes from 'prop-types'
 import { jsx, css } from '@emotion/core'
 import { Container } from '../container'
 import WordMark from '../wordmark'
-import { Li } from '../list-item'
 import { Ul } from '../unordered-list'
-import { FooterLink } from '../link'
-import { Trans } from '@lingui/macro'
 
 export const Footer = props => {
-  const { lang, bg } = props
+  const { bg } = props
 
   return (
     <Container
@@ -21,30 +18,9 @@ export const Footer = props => {
       alignItems="center"
       data-testid="background-color"
     >
-      <Container color="white" flex="1 1 auto">
+      <Container flex="1 1 auto">
         <Ul listStyleType="none" mb={0}>
-          <Li ml={3} display="inline-block">
-            <FooterLink
-              href={
-                lang === 'en'
-                  ? 'https://digital.canada.ca/legal/privacy/'
-                  : 'https://numerique.canada.ca/transparence/confidentialite/'
-              }
-            >
-              <Trans>Privacy</Trans>
-            </FooterLink>
-          </Li>
-          <Li ml={3} display="inline-block">
-            <FooterLink
-              href={
-                lang === 'en'
-                  ? 'https://digital.canada.ca/legal/terms/'
-                  : 'https://numerique.canada.ca/transparence/avis/'
-              }
-            >
-              <Trans>Terms and Conditions</Trans>
-            </FooterLink>
-          </Li>
+          {props.children}
         </Ul>
       </Container>
       <Container mr={3} width={['4em', null, '6em']}>
@@ -61,6 +37,9 @@ export const Footer = props => {
   )
 }
 
-Footer.propTypes = {}
+Footer.propTypes = {
+  children: PropTypes.any,
+  bg: PropTypes.string,
+}
 
-Footer.defaultProps = {}
+Footer.defaultProps = { bg: 'black' }

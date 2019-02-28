@@ -10,28 +10,7 @@ import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TopBanner } from './components/topbanner'
 import { Footer } from './components/footer'
-
-// const Footer = styled('div')`
-//   background-color: black;
-//   margin: auto;
-//   padding: 15px;
-//   height: 25px;
-// `
-const Privacy = styled('a')`
-  font-size: 15pt;
-  margin-top: 100pt;
-  margin-right: 20pt;
-  color: white;
-  :visited {
-    color: white;
-  }
-`
-const WordMarkDiv = styled('div')`
-  display: inline-block;
-  float: right;
-  margin-top: 10px;
-  height: 25px;
-`
+import { FooterLink } from './components/link'
 
 const Content = styled('div')`
   min-height: calc(100vh - 55px);
@@ -58,10 +37,8 @@ const App = () => (
             <Home />
           </Content>
 
-          <Footer lang={language} bg="black" />
-
-          {/* <Footer>
-            <Privacy
+          <Footer lang={language} bg="black">
+            <FooterLink
               href={
                 language === 'en'
                   ? 'https://digital.canada.ca/legal/privacy/'
@@ -69,9 +46,8 @@ const App = () => (
               }
             >
               <Trans>Privacy</Trans>
-            </Privacy>
-
-            <Privacy
+            </FooterLink>
+            <FooterLink
               href={
                 language === 'en'
                   ? 'https://digital.canada.ca/legal/terms/'
@@ -79,12 +55,8 @@ const App = () => (
               }
             >
               <Trans>Terms and Conditions</Trans>
-            </Privacy>
-
-            <WordMarkDiv>
-              <WordMark width="6em" flag="#fff" text="#fff" />
-            </WordMarkDiv>
-          </Footer> */}
+            </FooterLink>
+          </Footer>
         </ThemeProvider>
       </div>
     )}
