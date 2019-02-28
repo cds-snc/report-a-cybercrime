@@ -37,7 +37,7 @@ const App = () => (
             <Home />
           </Content>
 
-          <Footer lang={language} bg="black">
+          <Footer bg="black">
             <FooterLink
               href={
                 language === 'en'
