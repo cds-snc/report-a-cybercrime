@@ -1,59 +1,115 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'emotion-theming'
-import theme from '../../../theme'
-import { Header, H1, H2, H3, H4, H5, H6 } from '..'
+import { render, cleanup } from 'react-testing-library'
+import { mount } from 'enzyme'
+import { Header, H1, H2, H3, H4, H5, H6 } from '../'
 
-//these are just the same base tests as govuk package
+describe('<Header />', () => {
+  afterEach(cleanup)
 
-describe('Header', () => {
-  const example = 'example'
-  const wrapper = (
-    <ThemeProvider theme={theme}>
-      <Header level={1} size={'LARGE'}>
-        example
-      </Header>
-    </ThemeProvider>
-  )
+  it('Properly render child components', () => {
+    const { getAllByText } = render(<Header is="h1">foo</Header>)
 
-  it('renders a Header and all the H-level tags without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(wrapper, div)
-    ReactDOM.render(
-      <ThemeProvider theme={theme}>
-        <H1>{example}</H1>
+    const test = getAllByText(/foo/)
+    expect(test).toHaveLength(1)
+  })
+
+  it('Properly handles font size props', () => {
+    const { getByText } = render(
+      <ThemeProvider theme={{ fontSizes: ['14px'] }}>
+        <Header fontSize={0} is="h1">
+          foo
+        </Header>
       </ThemeProvider>,
-      div,
     )
-    ReactDOM.render(
-      <ThemeProvider theme={theme}>
-        <H2>{example}</H2>
+
+    const test = getByText('foo')
+    expect(test).toHaveStyleRule('font-size', '14px')
+  })
+
+  it('Properly handles line height props', () => {
+    const { getByText } = render(
+      <ThemeProvider theme={{ lineHeights: ['1'] }}>
+        <Header lineHeight={0} is="h1">
+          foo
+        </Header>
       </ThemeProvider>,
-      div,
     )
-    ReactDOM.render(
-      <ThemeProvider theme={theme}>
-        <H3>{example}</H3>
+
+    const test = getByText('foo')
+    expect(test).toHaveStyleRule('line-height', '1')
+  })
+
+  it('Properly handles space props', () => {
+    const { getByText } = render(
+      <ThemeProvider theme={{ space: ['5px', '10px'] }}>
+        <Header p={0} ml={1} is="h1">
+          foo
+        </Header>
       </ThemeProvider>,
-      div,
     )
-    ReactDOM.render(
-      <ThemeProvider theme={theme}>
-        <H4>{example}</H4>
+
+    const test = getByText('foo')
+    expect(test).toHaveStyleRule('padding', '5px')
+    expect(test).toHaveStyleRule('margin-left', '10px')
+  })
+
+  it('Properly handles color props', () => {
+    const { getByText } = render(
+      <ThemeProvider theme={{ colors: { blue: '#005ea5' } }}>
+        <Header color="blue" is="h1">
+          foo
+        </Header>
       </ThemeProvider>,
-      div,
     )
-    ReactDOM.render(
-      <ThemeProvider theme={theme}>
-        <H5>{example}</H5>
-      </ThemeProvider>,
-      div,
+
+    const test = getByText('foo')
+    expect(test).toHaveStyleRule('color', '#005ea5')
+  })
+
+  it('Properly handles font weight', () => {
+    const { getByText } = render(
+      <Header fontWeight="bold" is="h1">
+        foo
+      </Header>,
     )
-    ReactDOM.render(
-      <ThemeProvider theme={theme}>
-        <H6>{example}</H6>
-      </ThemeProvider>,
-      div,
-    )
+
+    const test = getByText('foo')
+    expect(test).toHaveStyleRule('font-weight', 'bold')
+  })
+
+  it("The 'is' prop sets correct header tag", () => {
+    let wrapper = mount(<Header is="h1" />).find('h1')
+    expect(wrapper.is('h1')).toBeTruthy()
+  })
+
+  it('H1 preset renders as h1', () => {
+    let wrapper = mount(<H1 />).find('h1')
+    expect(wrapper.is('h1')).toBeTruthy()
+  })
+
+  it('H2 preset renders as h2', () => {
+    let wrapper = mount(<H2 />).find('h2')
+    expect(wrapper.is('h2')).toBeTruthy()
+  })
+
+  it('H3 preset renders as h3', () => {
+    let wrapper = mount(<H3 />).find('h3')
+    expect(wrapper.is('h3')).toBeTruthy()
+  })
+
+  it('H4 preset renders as h4', () => {
+    let wrapper = mount(<H4 />).find('h4')
+    expect(wrapper.is('h4')).toBeTruthy()
+  })
+
+  it('H5 preset renders as h5', () => {
+    let wrapper = mount(<H5 />).find('h5')
+    expect(wrapper.is('h5')).toBeTruthy()
+  })
+
+  it('H6 preset renders as h6', () => {
+    let wrapper = mount(<H6 />).find('h6')
+    expect(wrapper.is('h6')).toBeTruthy()
   })
 })
