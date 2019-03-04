@@ -25,27 +25,27 @@ spec:
         app: cybercrime-frontend
     spec:
       containers:
-        - image: gcr.io/report-a-cyber-crime/frontend:master-9cd3705
-          imagePullPolicy: Always
-          name: cybercrime-frontend
-          env:
-            - name: PORT
-              value: '3000'
-            - name: RAZZLE_GOOGLE_ANALYTICS_ID
-              value: 'UA-130179934-1'
-          resources: {}
-          livenessProbe:
-            httpGet:
-              path: /monitoring/alive
-              port: 3000
-            initialDelaySeconds: 5
-            periodSeconds: 5
-          readinessProbe:
-            httpGet:
-              path: /monitoring/ready
-              port: 3000
-            initialDelaySeconds: 5
-            periodSeconds: 5
+      - image: gcr.io/report-a-cyber-crime/frontend:master-9cd3705
+        imagePullPolicy: Always
+        name: cybercrime-frontend
+        env:
+        - name: PORT
+          value: '3000'
+        - name: RAZZLE_GOOGLE_ANALYTICS_ID
+          value: 'UA-130179934-1'
+        resources: {}
+        livenessProbe:
+          httpGet:
+            path: /monitoring/alive
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /monitoring/ready
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
