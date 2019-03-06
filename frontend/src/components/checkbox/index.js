@@ -10,7 +10,6 @@ import { BREAKPOINTS } from '../../theme'
 const mq = BREAKPOINTS.map(bp => `@media (min-width: ${bp})`)
 
 export const Checkbox = ({ label, ...props }) => {
-  console.log(mq[2])
   return (
     <UniqueID>
       {id => {
@@ -47,9 +46,8 @@ export const Checkbox = ({ label, ...props }) => {
             />
             <Label
               m={0}
-              pt={0}
+              p={0}
               pr={2}
-              pb={0}
               pl={2}
               display="block"
               color="black"
@@ -71,6 +69,22 @@ export const Checkbox = ({ label, ...props }) => {
                   position: 'absolute',
                   top: '0',
                   left: '0',
+                },
+                '::after': {
+                  content: '""',
+                  border: 'solid',
+                  color: theme.colors.black,
+                  borderWidth: '0 0 4px 4px',
+                  background: 'transparent',
+                  borderTopColor: 'transparent',
+                  width: `${11 * props.checkscale}px`,
+                  height: `${5 * props.checkscale}px`,
+                  position: 'absolute',
+                  top: '8px',
+                  left: '6px',
+                  transform: 'rotate(-45deg)',
+                  zoom: '1',
+                  opacity: '0',
                 },
               })}
               htmlFor={id}
