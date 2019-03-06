@@ -25,6 +25,18 @@ const SPACING = ['0px', '5px', '10px', '15px', '20px', '30px', '40px', '50px']
 
 export const BREAKPOINTS = ['320px', '641px', '769px']
 
+const colors = {
+  white: '#FFF',
+  black: '#000',
+  blue: '#005ea5',
+  lightBlue: '#2b8cc4',
+  purple: '#4c2c92',
+  yellow: '#ffbf47',
+  focusColor: '#ffbf47',
+  crimson: '#dc143c',
+  green: '#008000',
+}
+
 const theme = {
   fontSans: 'Roboto, sans-serif',
   fontSizes: FONT_SIZES,
@@ -36,15 +48,7 @@ const theme = {
     labelSize: '28px',
   },
 
-  colors: {
-    white: '#FFF',
-    black: '#000',
-    blue: '#005ea5',
-    lightBlue: '#2b8cc4',
-    purple: '#4c2c92',
-    yellow: '#ffbf47',
-    crimson: '#dc143c',
-  },
+  colors: colors,
 
   textStyles: {
     caps: {
@@ -55,16 +59,23 @@ const theme = {
 
   colorStyles: {
     link: {
-      color: '#005ea5',
+      color: colors.blue,
       '&:focus': {
-        backgroundColor: '#ffbf47',
-        outline: '3px solid #ffbf47',
+        backgroundColor: colors.focusColor,
+        outline: `3px solid ${colors.focusColor}`,
       },
       '&:visited': {
-        color: '#4c2c92',
+        color: colors.purple,
       },
       '&:hover': {
-        color: '#2b8cc4',
+        color: colors.lightBlue,
+      },
+    },
+    button: {
+      color: colors.white,
+      backgroundColor: colors.green,
+      '&:focus': {
+        outline: `3px solid ${colors.focusColor}`,
       },
     },
   },
