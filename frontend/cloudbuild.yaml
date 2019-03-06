@@ -23,6 +23,12 @@ steps:
     entrypoint: npm
     args: ['run', 'lint']
 
+  - name: node:11-alpine
+    id: translations
+    dir: frontend
+    entrypoint: npm
+    args: ['run', 'check-translations']
+
   - name: 'gcr.io/cloud-builders/docker'
     dir: 'frontend'
     args:
