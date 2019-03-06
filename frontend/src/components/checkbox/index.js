@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types'
 import { jsx, css } from '@emotion/core'
 import { Input } from '../input'
+import { Container } from '../container'
 import { Label } from '../label'
 import { UniqueID } from '../unique-id'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
@@ -14,13 +15,11 @@ export const Checkbox = ({ label, ...props }) => {
     <UniqueID>
       {id => {
         return (
-          <div
-            css={css`
-              display: block;
-              position: relative;
-              padding: 0 0 0 38px;
-              margin-top: 1.5rem;
-            `}
+          <Container
+            display="block"
+            position="relative"
+            pl={6}
+            mt={[3, null, 5]}
           >
             <Input
               type="checkbox"
@@ -74,14 +73,22 @@ export const Checkbox = ({ label, ...props }) => {
                   content: '""',
                   border: 'solid',
                   color: theme.colors.black,
-                  borderWidth: '0 0 4px 4px',
                   background: 'transparent',
                   borderTopColor: 'transparent',
-                  width: `${11 * props.checkscale}px`,
-                  height: `${5 * props.checkscale}px`,
                   position: 'absolute',
                   top: '8px',
-                  left: '6px',
+                  [mq[0]]: {
+                    left: '5px',
+                    width: `${9 * props.checkscale}px`,
+                    height: `${3 * props.checkscale}px`,
+                    borderWidth: '0 0 3px 3px',
+                  },
+                  [mq[2]]: {
+                    left: '6px',
+                    width: `${11 * props.checkscale}px`,
+                    height: `${5 * props.checkscale}px`,
+                    borderWidth: '0 0 4px 4px',
+                  },
                   transform: 'rotate(-45deg)',
                   zoom: '1',
                   opacity: '0',
@@ -92,7 +99,7 @@ export const Checkbox = ({ label, ...props }) => {
             >
               {label}
             </Label>
-          </div>
+          </Container>
         )
       }}
     </UniqueID>
