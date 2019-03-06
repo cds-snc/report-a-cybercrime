@@ -31,6 +31,10 @@ const theme = {
   lineHeights: LINE_HEIGHTS,
   space: SPACING,
   breakpoints: BREAKPOINTS,
+  checkboxes: {
+    size: '24px',
+    labelSize: '28px',
+  },
 
   colors: {
     white: '#FFF',
