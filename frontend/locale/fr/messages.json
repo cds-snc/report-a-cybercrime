@@ -1,5 +1,6 @@
 {
   "Bank accounts": "Comptes bancaires",
+  "DISCOVERY": "DÉCOUVERTE",
   "Describe what happened": "Décrivez ce qui s'est passé",
   "Describe what happened.": "Décrivez ce qui s'est passé.",
   "Did you lose money or personal information?": "Avez-vous perdu de l'argent ou des renseignements personnels?",
@@ -14,6 +15,7 @@
   "Landing Page": "Page d'Accueil",
   "Next": "Suivant",
   "Other": "Autre",
+  "Page Not Found": "Page Introuvable",
   "Phone": "Téléphone",
   "Please complete the form to tell us what was affected.": "Veuillez remplir le formulaire pour nous dire ce qui a été touché.",
   "Please complete the text box to tell us how you were affected.": "Veuillez remplir la zone de texte pour nous dire comment vous avez été touché.",
@@ -24,6 +26,7 @@
   "Share how you were impacted.": "Partagez comment vous avez été affecté.",
   "Share your story→": "Partagez votre histoire→",
   "Social media accounts": "Comptes de médias sociaux",
+  "Sorry, but the page you were trying to view does not exist.": "Désolé, mais la page que vous essayiez de voir n'existe pas.",
   "Tell us your story in three easy steps:": "Racontez-nous votre histoire en trois étapes faciles:",
   "Terms and Conditions": "Avis",
   "Text messages": "Messages texte",
