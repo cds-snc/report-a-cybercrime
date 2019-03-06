@@ -23,7 +23,7 @@ const LINE_HEIGHTS = [
 ]
 const SPACING = ['0px', '5px', '10px', '15px', '20px', '30px', '40px', '50px']
 
-const BREAKPOINTS = ['320px', '641px', '769px']
+export const BREAKPOINTS = ['320px', '641px', '769px']
 
 const theme = {
   fontSans: 'Roboto, sans-serif',

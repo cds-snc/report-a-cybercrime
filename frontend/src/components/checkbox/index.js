@@ -1,17 +1,16 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
-// import { StyledLabel } from './StyledLabel'
-// import { StyledInput } from './StyledInput'
 import { Input } from '../input'
 import { Label } from '../label'
 import { UniqueID } from '../unique-id'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
+import { BREAKPOINTS } from '../../theme'
+
+const mq = BREAKPOINTS.map(bp => `@media (min-width: ${bp})`)
 
 export const Checkbox = ({ label, ...props }) => {
-  console.log(props.fontSize)
-  // console.log(themeGet('checkboxSize', '5px')(props.theme))
+  console.log(mq[2])
   return (
     <UniqueID>
       {id => {
@@ -21,6 +20,7 @@ export const Checkbox = ({ label, ...props }) => {
               display: block;
               position: relative;
               padding: 0 0 0 38px;
+              margin-top: 1.5rem;
             `}
           >
             <Input
@@ -47,7 +47,7 @@ export const Checkbox = ({ label, ...props }) => {
             />
             <Label
               m={0}
-              pt={2}
+              pt={0}
               pr={2}
               pb={0}
               pl={2}
@@ -60,8 +60,14 @@ export const Checkbox = ({ label, ...props }) => {
                   display: 'block',
                   border: `2px solid ${theme.colors.black}`,
                   background: 'transparent',
-                  width: '25px',
-                  height: '25px',
+                  [mq[0]]: {
+                    width: theme.fontSizes[3],
+                    height: theme.fontSizes[3],
+                  },
+                  [mq[2]]: {
+                    width: theme.fontSizes[4],
+                    height: theme.fontSizes[4],
+                  },
                   position: 'absolute',
                   top: '0',
                   left: '0',
@@ -81,8 +87,8 @@ export const Checkbox = ({ label, ...props }) => {
 
 Checkbox.defaultProps = {
   fontWeight: '400',
-  fontSize: [2, null, 3],
-  lineHeight: '16px',
+  fontSize: [3, null, 4],
+  lineHeight: [3, null, 4],
   checkscale: '1',
 }
 
