@@ -16,7 +16,7 @@ To upload the function do:
 gcloud beta functions --project=myproject deploy buildPubSub \
   --runtime=nodejs8 --trigger-resource cloud-builds \
   --trigger-event google.pubsub.topic.publish \
-  --set-env-vars GITHUB_TOKEN=mytoken
+  --set-env-vars GITHUB_TOKEN=mytoken SLACK_WEBHOOK_URL=mywebhook
 ```
 
 If you need to delete the function you can do it with the following command.

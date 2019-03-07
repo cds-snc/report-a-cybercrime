@@ -1,4 +1,12 @@
 const octokit = require('@octokit/rest')()
+const IncomingWebhook = require('@slack/client').IncomingWebhook
+
+const createSlackMessage = state => {
+  let message = {
+    text: `Build State: ${state}`,
+  }
+  return message
+}
 
 exports.buildPubSub = (event, context, callback) => {
   const data = event.data
@@ -65,6 +73,11 @@ exports.buildPubSub = (event, context, callback) => {
       sha: data.sourceProvenance.resolvedRepoSource.commitSha,
       context: 'CloudBuild',
     })
+
+    if (state === 'error') {
+      const webhook = new IncomingWebhook(process.env.SLACK_WEBHOOK_URL)
+      webhook.send(createSlackMessage(state), callback)
+    }
   }
 
   callback()
