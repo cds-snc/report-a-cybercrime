@@ -9,6 +9,7 @@ import { ApolloConsumer } from 'react-apollo'
 import { Breadcrumb } from './components/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
 import { WhatHappenedForm } from './WhatHappenedForm'
+import { Text } from './components/text'
 
 const Warning = styled('div')`
   display: block;
@@ -36,9 +37,9 @@ export const Screen1 = () => (
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
       </Link>
-      <Link to="/form1">
+      <Text display="inline-block">
         <Trans>What Happened</Trans>
-      </Link>
+      </Text>
     </Breadcrumb>
     <H1>
       <Trans>Describe what happened</Trans>
