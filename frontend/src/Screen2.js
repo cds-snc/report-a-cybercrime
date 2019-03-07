@@ -130,10 +130,10 @@ const options = {
 export const Screen2 = () => (
   <CenterContent>
     <Breadcrumb>
-      <Link to={'/'}>
+      <Link to="/">
         <Trans>Landing Page</Trans>
       </Link>
-      <Link to={'/form1'}>
+      <Link to="/form1">
         <Trans>What Happened</Trans>
       </Link>
       <Text display="inline-block">
