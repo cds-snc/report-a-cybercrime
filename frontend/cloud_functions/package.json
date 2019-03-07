@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/cds-snc/platform-challenge#readme",
   "dependencies": {
-    "@octokit/rest": "^15.18.1"
+    "@octokit/rest": "^15.18.1",
+    "@slack/client": "^4.10.0"
   }
 }
