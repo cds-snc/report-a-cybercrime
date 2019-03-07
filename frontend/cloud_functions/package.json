@@ -1,0 +1,19 @@
+{
+  "name": "platform-challenge-github-notifier",
+  "version": "1.0.0",
+  "description": "A cloud function for Google Cloud to notify a GitHub Repo about Cloud Build status",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cds-snc/platform-challenge.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cds-snc/platform-challenge/issues"
+  },
+  "homepage": "https://github.com/cds-snc/platform-challenge#readme",
+  "dependencies": {
+    "@octokit/rest": "^15.18.1"
+  }
+}
