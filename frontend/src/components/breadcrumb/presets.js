@@ -27,10 +27,10 @@ export const Breadcrumb = props => {
       mb={4}
       {...props}
     >
-      {props.children.map((child, index) => (
-        <BreadcrumbLi key={index}>
+      {React.Children.map(props.children, (child, index) => (
+        <BreadcrumbLi>
           {child}
-          {index === props.children.length - 1 ? null : (
+          {index === React.Children.count(props.children) - 1 ? null : (
             <Text {...props} display="inline-block">
               &nbsp;/&nbsp;
             </Text>

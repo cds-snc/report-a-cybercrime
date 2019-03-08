@@ -1,4 +1,11 @@
-import { fontSize, lineHeight, space, color, fontWeight } from 'styled-system'
+import {
+  fontSize,
+  lineHeight,
+  space,
+  color,
+  fontWeight,
+  display,
+} from 'styled-system'
 import tag from 'clean-tag'
 import styled from '@emotion/styled'
 
@@ -10,6 +17,7 @@ export const ListItem = styled(tag.li)`
   ${space};
   ${color};
   ${fontWeight};
+  ${display};
 `
 
 ListItem.propTypes = {
@@ -18,6 +26,7 @@ ListItem.propTypes = {
   ...space.propTypes,
   ...color.propTypes,
   ...fontWeight.propTypes,
+  ...display.propTypes,
 }
 
 export { Li } from './presets'
