@@ -11,7 +11,7 @@ steps:
     entrypoint: npm
     args: ['run', 'compile']
 
-  - name: node:11-alpine
+  - name: node:11.10-alpine
     id: test
     dir: frontend
     entrypoint: npm
