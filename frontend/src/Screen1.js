@@ -4,11 +4,12 @@ import { navigate } from '@reach/router'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { Text } from './components/text'
+import { Link } from './components/link'
 import { ApolloConsumer } from 'react-apollo'
-// import Breadcrumb from '@govuk-react/breadcrumb'
+import { Breadcrumb } from './components/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
 import { WhatHappenedForm } from './WhatHappenedForm'
+import { Text } from './components/text'
 
 const Warning = styled('div')`
   display: block;
@@ -32,16 +33,14 @@ const ListItem = styled('li')`
 
 export const Screen1 = () => (
   <CenterContent>
-    {/* <Breadcrumb>
+    <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
       </Link>
-    </Breadcrumb> */}
-    <div>
-      <Text display="inline-block">Placeholder&nbsp;</Text>
-      <Text display="inline-block">for</Text>
-      <Text fontSize={[4, 4, 5]}>Breadcrumb</Text>
-    </div>
+      <Text display="inline-block">
+        <Trans>What Happened</Trans>
+      </Text>
+    </Breadcrumb>
     <H1>
       <Trans>Describe what happened</Trans>
     </H1>
