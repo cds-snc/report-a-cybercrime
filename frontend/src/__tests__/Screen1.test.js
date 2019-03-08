@@ -20,4 +20,8 @@ describe('<Screen1/>', () => {
 
     expect(container).toHaveTextContent('Describe what happened')
   })
+
+  it('really fails', () => {
+    expect(false).toBeTruthy()
+  })
 })
