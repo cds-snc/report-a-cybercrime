@@ -1,6 +1,7 @@
 import { fontSize, lineHeight, space, color, fontWeight } from 'styled-system'
 import tag from 'clean-tag'
 import styled from '@emotion/styled'
+import PropTypes from 'prop-types'
 
 export const Header = styled(tag)`
   font-family: ${({ theme }) => theme.fontSans};
@@ -13,6 +14,7 @@ export const Header = styled(tag)`
 `
 
 Header.propTypes = {
+  is: PropTypes.string.isRequired,
   ...fontSize.propTypes,
   ...lineHeight.propTypes,
   ...space.propTypes,
