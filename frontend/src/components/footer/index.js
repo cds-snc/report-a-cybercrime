@@ -14,7 +14,7 @@ export const Footer = props => {
       display="flex"
       flexDirection="row"
       width={1}
-      height={[50, null, 60]}
+      height={55}
       alignItems="center"
       data-testid="background-color"
     >
