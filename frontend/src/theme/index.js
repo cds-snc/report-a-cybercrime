@@ -74,6 +74,13 @@ const theme = {
         outline: `3px solid ${colors.focusColor}`,
       },
     },
+
+    footerLink: {
+      color: '#FFF',
+      '&:focus': {
+        outline: '3px solid #ffbf47',
+      },
+    },
   },
 }
 

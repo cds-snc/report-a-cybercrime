@@ -16,6 +16,7 @@ import {
   display,
   alignSelf,
   space,
+  textAlign,
 } from 'styled-system'
 import tag from 'clean-tag'
 
@@ -36,6 +37,7 @@ export const Container = styled(tag.div)`
   ${alignSelf}
   ${borders}
   ${borderColor}
+  ${textAlign}
 `
 
 Container.propTypes = {
@@ -55,4 +57,5 @@ Container.propTypes = {
   ...alignSelf.propTypes,
   ...borders.propTypes,
   ...borderColor.propTypes,
+  ...textAlign.propTypes,
 }

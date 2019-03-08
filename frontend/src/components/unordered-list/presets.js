@@ -1,7 +1,7 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import { UnorderedList } from '.'
-import { css } from '@emotion/core'
+/** @jsx jsx **/
+import { jsx, css } from '@emotion/core'
 
 export const Ul = props => {
   const { listStyleType, ...rest } = props

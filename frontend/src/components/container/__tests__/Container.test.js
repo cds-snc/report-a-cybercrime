@@ -112,4 +112,11 @@ describe('<Container />', () => {
     expect(test).toHaveStyleRule('justify-self', 'center')
     expect(test).toHaveStyleRule('align-self', 'center')
   })
+
+  it('properly handles text alignment props', () => {
+    const { getByText } = render(<Container textAlign="right">test</Container>)
+
+    const test = getByText(/test/)
+    expect(test).toHaveStyleRule('text-align', 'right')
+  })
 })
