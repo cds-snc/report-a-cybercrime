@@ -5,12 +5,9 @@ import { Form, Field } from 'react-final-form'
 import styled from '@emotion/styled'
 import { Button } from './components/button'
 import PropTypes from 'prop-types'
+import { Text } from './components/text'
+import { TextArea } from './components/text-area'
 
-const TextArea = styled('textarea')`
-  width: 500pt;
-  height: 200pt;
-  font-size: 19pt;
-`
 const ErrorMessage = styled('div')`
   margin-top: 10pt;
   display: inline-block;
@@ -36,7 +33,9 @@ export const WhatHappenedForm = ({ onSubmit }) => (
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="whatHappened">
-            <Trans>What Happened</Trans>
+            <Text pb={1}>
+              <Trans>What Happened</Trans>
+            </Text>
           </label>
           <Field name="whatHappened">
             {({ input, meta }) => (
