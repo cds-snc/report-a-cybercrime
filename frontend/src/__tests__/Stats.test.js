@@ -39,7 +39,7 @@ describe('<Stats/>', () => {
     })
   })
 
-  describe('when loading', async () => {
+  describe('when loading', () => {
     it('displays an empty string', async () => {
       let mocks = [
         {
@@ -68,7 +68,7 @@ describe('<Stats/>', () => {
     })
   })
 
-  describe('when an error is raised', async () => {
+  describe('when an error is raised', () => {
     it('displays an error message', async () => {
       let mocks = [
         {
