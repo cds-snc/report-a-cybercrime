@@ -31,6 +31,8 @@ spec:
         env:
         - name: PORT
           value: '3000'
+        - name: RAZZLE_SERVER_SIDE_API_URI
+          value: http://cybercrime-api.cybercrime-api.svc.cluster.local/graphql
         - name: RAZZLE_GOOGLE_ANALYTICS_ID
           value: 'UA-130179934-1'
         resources: {}

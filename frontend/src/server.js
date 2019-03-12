@@ -11,6 +11,9 @@ import App from './App'
 
 let assets, publicDir
 
+const {
+  RAZZLE_SERVER_SIDE_API_URI, // Razzle strips env vars that are not prefixed
+} = process.env
 const inProductionEnvironment = process.env.NODE_ENV === 'production'
 
 if (process.env.NODE_ENV === 'test') {
@@ -44,7 +47,7 @@ server
     const client = createApolloClient({
       initialState: { language: req.language },
       ssrMode: true,
-      uri: 'http://api/graphql',
+      uri: RAZZLE_SERVER_SIDE_API_URI,
     })
 
     getDataFromTree(withLanguageSwitching(App, client)).then(() => {
