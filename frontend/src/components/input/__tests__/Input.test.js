@@ -93,7 +93,7 @@ describe('<Input />', () => {
 
     const test = getByLabelText(/Test/)
     expect(test).toHaveStyleRule('position', 'absolute')
-    expect(test).toHaveStyleRule('zIndex', '1')
+    expect(test).toHaveStyleRule('z-index', '1')
     expect(test).toHaveStyleRule('top', '1')
     expect(test).toHaveStyleRule('right', '2')
     expect(test).toHaveStyleRule('bottom', '3')
