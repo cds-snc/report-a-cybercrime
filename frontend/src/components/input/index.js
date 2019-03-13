@@ -5,7 +5,7 @@ import {
   width,
   space,
   borders,
-  fontSize,
+  borderColor,
   display,
   position,
   top,
@@ -20,7 +20,7 @@ export const Input = styled(tag.input)`
   ${width};
   ${space};
   ${borders};
-  ${fontSize};
+  ${borderColor};
   ${display};
   ${position};
   ${top};
