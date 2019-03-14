@@ -8,6 +8,7 @@ import {
   color,
   display,
   border,
+  borderColor,
   width,
   height,
   position,
@@ -18,7 +19,7 @@ import {
   left,
 } from 'styled-system'
 
-export const Label = styled(tag.span)`
+export const Label = styled(tag.label)`
   ${fontSize};
   ${fontWeight};
   ${lineHeight};
@@ -26,6 +27,7 @@ export const Label = styled(tag.span)`
   ${color};
   ${display};
   ${border};
+  ${borderColor};
   ${width};
   ${height};
   ${position};
