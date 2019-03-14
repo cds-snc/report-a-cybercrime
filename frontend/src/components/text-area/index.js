@@ -46,6 +46,7 @@ export const TextArea = props => (
     lineHeight={[2, null, 3]}
     colors="textArea"
     width={['300px', null, '600px']}
+    height={['200px', null, '300px']}
     {...props}
   >
     {props.children}
