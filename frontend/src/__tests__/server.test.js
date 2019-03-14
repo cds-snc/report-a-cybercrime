@@ -10,7 +10,9 @@ describe('Server Side Rendering', () => {
 
       let { text } = response
 
-      expect(text).toMatch(/À des fins de recherche seulement/)
+      expect(text).toMatch(
+        /Ce site évoluera au fur et à mesure que nous testons des idées et apprenons des gens comme vous./,
+      )
     })
   })
 
@@ -22,7 +24,7 @@ describe('Server Side Rendering', () => {
 
       let { text } = response
 
-      expect(text).toMatch(/For research purposes only/)
+      expect(text).toMatch(/We want to help people affected by cybercrime./)
     })
   })
 })

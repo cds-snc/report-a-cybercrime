@@ -51,8 +51,18 @@ describe('<Thanks/>', () => {
   })
 
   it('links to French resources when the language is French', async () => {
+    let frenchMocks = [
+      {
+        request: { query: GET_LANGUAGE_QUERY },
+        result: { data: { language: 'fr' } },
+      },
+      {
+        request: { query: GET_STATS_QUERY },
+        result: { data: { stats: { reportCount: 555 } } },
+      },
+    ]
     let { getByText } = render(
-      <MockedProvider mocks={mocks}>
+      <MockedProvider mocks={frenchMocks}>
         <I18nProvider language={'fr'} catalogs={catalogs}>
           <Thanks />
         </I18nProvider>

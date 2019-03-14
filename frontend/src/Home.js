@@ -4,6 +4,7 @@ import { Trans } from '@lingui/macro'
 import styled from '@emotion/styled'
 import { PhaseBanner } from './components/phase-banner'
 import { LandingPage } from './LandingPage'
+import { NewLandingPage } from './NewLandingPage'
 import { Screen1 } from './Screen1'
 import { Screen2 } from './Screen2'
 import { Screen3 } from './Screen3'
@@ -18,15 +19,19 @@ const Screen = styled('div')`
   margin-top: 30pt;
 `
 
-const Home = () => (
+export const Home = () => (
   <Root>
-    <PhaseBanner phase={<Trans>DISCOVERY</Trans>} phaseColor="blue">
-      <Trans>For research purposes only.</Trans>
+    <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
+      <Trans>
+        This site will be changing as we test ideas and learn from people like
+        you.
+      </Trans>
     </PhaseBanner>
     <Screen>
       <Router>
         <PageNotFound default />
-        <LandingPage path="/" />
+        <NewLandingPage path="/" />
+        <LandingPage path="/old" />
         <Screen1 path="form1" />
         <Screen2 path="form2" />
         <Screen3 path="form3" />
@@ -35,5 +40,3 @@ const Home = () => (
     </Screen>
   </Root>
 )
-
-export default Home
