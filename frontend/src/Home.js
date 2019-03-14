@@ -19,7 +19,7 @@ const Screen = styled('div')`
   margin-top: 30pt;
 `
 
-const Home = () => (
+export const Home = () => (
   <Root>
     <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
       <Trans>
@@ -30,8 +30,8 @@ const Home = () => (
     <Screen>
       <Router>
         <PageNotFound default />
-        <NewLandingPage path="/nlp" />
-        <LandingPage path="/" />
+        <NewLandingPage path="/" />
+        <LandingPage path="/old" />
         <Screen1 path="form1" />
         <Screen2 path="form2" />
         <Screen3 path="form3" />
@@ -40,5 +40,3 @@ const Home = () => (
     </Screen>
   </Root>
 )
-
-export default Home

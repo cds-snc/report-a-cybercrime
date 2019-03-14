@@ -24,9 +24,7 @@ describe('Server Side Rendering', () => {
 
       let { text } = response
 
-      expect(text).toMatch(
-        /This site will changing as we test ideas and learn from people like you./,
-      )
+      expect(text).toMatch(/We want to help people affected by cybercrime./)
     })
   })
 })
