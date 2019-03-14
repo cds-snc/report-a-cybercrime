@@ -9,7 +9,6 @@ import {
   GET_LANGUAGE_QUERY,
   GET_STATS_QUERY,
 } from '../utils/queriesAndMutations'
-import { I18nProvider } from '@lingui/react'
 import { render, cleanup } from 'react-testing-library'
 import { MockedProvider } from 'react-apollo/test-utils'
 import { Home } from '../Home'
@@ -31,7 +30,7 @@ describe('<Home/>', () => {
     it('displays a coming soon message on the root route', async () => {
       let history = createHistory(createMemorySource('/'))
 
-      let { getAllByText, debug } = render(
+      let { getAllByText } = render(
         <MockedProvider mocks={mocks}>
           <LocationProvider history={history}>
             <Home />
@@ -48,7 +47,7 @@ describe('<Home/>', () => {
     it('displays the old landing page', async () => {
       let history = createHistory(createMemorySource('/old'))
 
-      let { getAllByText, debug } = render(
+      let { getAllByText } = render(
         <MockedProvider mocks={mocks}>
           <LocationProvider history={history}>
             <Home />
