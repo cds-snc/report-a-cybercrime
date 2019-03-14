@@ -7,7 +7,7 @@ import { mount } from 'enzyme'
 describe('<Input />', () => {
   afterEach(cleanup)
 
-  it('properly renders as an input tag', () => {
+  it('component is rendered in HTML as an input tag', () => {
     let wrapper = mount(
       <form>
         <label>Test</label> <Input />
@@ -16,7 +16,7 @@ describe('<Input />', () => {
     expect(wrapper.is('input')).toBeTruthy()
   })
 
-  it('properly handles dimension props', () => {
+  it('dimension props set height and width in CSS', () => {
     const { getByLabelText } = render(
       <form>
         <label id="test">Test</label>{' '}
@@ -29,7 +29,7 @@ describe('<Input />', () => {
     expect(test).toHaveStyleRule('width', '2rem')
   })
 
-  it('properly handles space props', () => {
+  it('space props set padding and margins in CSS', () => {
     const SPACING = ['0px', '5px']
     const { getByLabelText } = render(
       <ThemeProvider theme={{ space: SPACING }}>
@@ -48,7 +48,7 @@ describe('<Input />', () => {
     expect(test).toHaveStyleRule('padding-right', '5px')
   })
 
-  it('properly handles border props', () => {
+  it('border props set border style, size and color in CSS', () => {
     const { getByLabelText } = render(
       <ThemeProvider theme={{ colors: { blue: '#005ea5' } }}>
         <form>
@@ -63,7 +63,7 @@ describe('<Input />', () => {
     expect(test).toHaveStyleRule('border-color', '#005ea5')
   })
 
-  it('properly handles layout props', () => {
+  it('layout props set display type in CSS', () => {
     const { getByLabelText } = render(
       <form>
         <label id="test">Test</label>{' '}
@@ -75,7 +75,7 @@ describe('<Input />', () => {
     expect(test).toHaveStyleRule('display', 'inline-block')
   })
 
-  it('properly handles position props', () => {
+  it('position props set type of positioning and positioning values in CSS', () => {
     const { getByLabelText } = render(
       <form>
         <label id="test">Test</label>{' '}
