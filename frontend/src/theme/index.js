@@ -78,7 +78,14 @@ const theme = {
     footerLink: {
       color: '#FFF',
       '&:focus': {
-        outline: '3px solid #ffbf47',
+        outline: `3px solid ${colors.focusColor}`,
+      },
+    },
+
+    textArea: {
+      color: colors.black,
+      '&:focus': {
+        outline: `3px solid ${colors.focusColor}`,
       },
     },
   },
