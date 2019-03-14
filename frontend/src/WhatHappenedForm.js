@@ -1,3 +1,4 @@
+/** @jsx jsx */
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { i18nMark } from '@lingui/react'
@@ -7,13 +8,8 @@ import { Button } from './components/button'
 import PropTypes from 'prop-types'
 import { Text } from './components/text'
 import { TextArea } from './components/text-area'
-
-const ErrorMessage = styled('div')`
-  margin-top: 10pt;
-  display: inline-block;
-  font-size: 19pt;
-  color: red;
-`
+import { Container } from './components/container'
+import { jsx, css } from '@emotion/core'
 
 const validate = values => {
   let errors = {}
@@ -41,9 +37,16 @@ export const WhatHappenedForm = ({ onSubmit }) => (
             {({ input, meta }) => (
               <div>
                 <TextArea {...input} id="whatHappened" placeholder="" />
-                <ErrorMessage>
+                <Container
+                  css={css`
+                    margin-top: 10pt;
+                    display: inline-block;
+                    font-size: 19pt;
+                    color: red;
+                  `}
+                >
                   {meta.error && meta.touched && <Trans id={meta.error} />}
-                </ErrorMessage>
+                </Container>
               </div>
             )}
           </Field>
