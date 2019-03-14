@@ -16,9 +16,6 @@ import tag from 'clean-tag'
 export const StyledTextArea = styled(tag.textarea)`
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
-  :focus: {
-    outline: 3px solid ${({ theme }) => theme.colors.focusColor};
-  },
   ${display};
   ${fontSize};
   ${lineHeight};
