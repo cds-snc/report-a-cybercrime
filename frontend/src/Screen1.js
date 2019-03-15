@@ -12,6 +12,7 @@ import { Text } from './components/text'
 import { Container } from './components/container'
 import { jsx, css } from '@emotion/core'
 import { Li } from './components/list-item'
+import { UnorderedList } from './components/unordered-list'
 
 export const Screen1 = () => (
   <Container
@@ -33,7 +34,7 @@ export const Screen1 = () => (
     </H1>
 
     <TrackPageViews />
-    <ul>
+    <UnorderedList>
       <Li>
         <Trans>When did it take place?</Trans>
       </Li>
@@ -43,7 +44,7 @@ export const Screen1 = () => (
       <Li>
         <Trans>How were you affected?</Trans>
       </Li>
-    </ul>
+    </UnorderedList>
 
     <Container
       css={css`
