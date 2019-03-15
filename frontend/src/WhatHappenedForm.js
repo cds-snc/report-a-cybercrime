@@ -3,12 +3,12 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
-import styled from '@emotion/styled'
 import { Button } from './components/button'
 import PropTypes from 'prop-types'
 import { Text } from './components/text'
 import { TextArea } from './components/text-area'
 import { Container } from './components/container'
+import { Label } from './components/label'
 import { jsx, css } from '@emotion/core'
 
 const validate = values => {
@@ -27,15 +27,15 @@ export const WhatHappenedForm = ({ onSubmit }) => (
     validate={validate}
     render={({ handleSubmit }) => (
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="whatHappened">
+        <Container>
+          <Label htmlFor="whatHappened">
             <Text pb={1}>
               <Trans>What Happened</Trans>
             </Text>
-          </label>
+          </Label>
           <Field name="whatHappened">
             {({ input, meta }) => (
-              <div>
+              <Container>
                 <TextArea {...input} id="whatHappened" placeholder="" />
                 <Container
                   css={css`
@@ -47,10 +47,10 @@ export const WhatHappenedForm = ({ onSubmit }) => (
                 >
                   {meta.error && meta.touched && <Trans id={meta.error} />}
                 </Container>
-              </div>
+              </Container>
             )}
           </Field>
-        </div>
+        </Container>
 
         <Button type="submit">
           <Trans>Next</Trans>

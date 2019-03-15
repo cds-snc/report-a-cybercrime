@@ -1,7 +1,6 @@
+/** @jsx jsx */
 import React from 'react'
-// import { Link, navigate } from '@reach/router'
 import { navigate } from '@reach/router'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
@@ -13,32 +12,12 @@ import { ApolloConsumer, Mutation } from 'react-apollo'
 import { Breadcrumb } from './components/breadcrumb'
 import { SAVE_REPORT_MUTATION } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
-const FormFormat = styled('div')`
-  margin-top: 20pt;
-`
-const SubmitButton = styled('button')`
-  margin-top: 20pt;
-`
-const ListItem = styled('li')`
-  margin: 5pt;
-  margin-left: 20pt;
-`
-const TextArea = styled('textarea')`
-  width: 500pt;
-  height: 200pt;
-  font-size: 19pt;
-`
-const ErrorMessage = styled('div')`
-  margin-top: 10pt;
-  display: inline-block;
-  font-size: 19pt;
-  color: red;
-`
+import { Container } from './components/container'
+import { jsx, css } from '@emotion/core'
+import { TextArea } from './components/text-area'
+import { Button } from './components/button'
+import { Li } from './components/list-item'
+import { UnorderedList } from './components/unordered-list'
 
 const submitAndNavigate = (client, saveReport, { howWereYouAffected }) => {
   let data = client.readQuery({
@@ -75,24 +54,31 @@ const MyForm = () => (
             validate={validate}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-                <div>
+                <Container>
                   <Field name="howWereYouAffected">
                     {({ input, meta }) => (
-                      <div>
+                      <Container
+                        css={css`
+                          margin-top: 10pt;
+                          display: inline-block;
+                          font-size: 19pt;
+                          color: red;
+                        `}
+                      >
                         <TextArea {...input} placeholder="" />
-                        <ErrorMessage>
+                        <Container>
                           {meta.error && meta.touched && (
                             <Trans id={meta.error} />
                           )}
-                        </ErrorMessage>
-                      </div>
+                        </Container>
+                      </Container>
                     )}
                   </Field>
-                </div>
+                </Container>
 
-                <SubmitButton type="submit">
+                <Button type="submit">
                   <Trans>Next</Trans>
-                </SubmitButton>
+                </Button>
               </form>
             )}
           />
@@ -103,7 +89,12 @@ const MyForm = () => (
 )
 
 export const Screen3 = () => (
-  <CenterContent>
+  <Container
+    css={css`
+      max-width: 750px;
+      margin: auto;
+    `}
+  >
     <Breadcrumb>
       <Link to="/">
         <Trans>Landing Page</Trans>
@@ -123,17 +114,17 @@ export const Screen3 = () => (
     </H1>
 
     <TrackPageViews />
-    <ul>
-      <ListItem>
+    <UnorderedList>
+      <Li>
         <Trans>What was your reaction?</Trans>
-      </ListItem>
-      <ListItem>
+      </Li>
+      <Li>
         <Trans>Did you lose money or personal information?</Trans>
-      </ListItem>
-      <ListItem>
+      </Li>
+      <Li>
         <Trans>Was your reputation or productivity affected?</Trans>
-      </ListItem>
-    </ul>
-    <FormFormat>{MyForm()}</FormFormat>
-  </CenterContent>
+      </Li>
+    </UnorderedList>
+    <Container>{MyForm()}</Container>
+  </Container>
 )
