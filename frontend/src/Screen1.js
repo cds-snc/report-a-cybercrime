@@ -1,3 +1,4 @@
+/** @jsx jsx */
 import React from 'react'
 // import { Link, navigate } from '@reach/router'
 import { navigate } from '@reach/router'
@@ -10,29 +11,17 @@ import { Breadcrumb } from './components/breadcrumb'
 import { TrackPageViews } from './TrackPageViews'
 import { WhatHappenedForm } from './WhatHappenedForm'
 import { Text } from './components/text'
-
-const Warning = styled('div')`
-  display: block;
-  color: green;
-  padding-top: 10pt;
-  margin-left: 0pt;
-  margin-bottom: 20pt;
-  font-size: 19pt;
-`
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
-
-const ListItem = styled('li')`
-  margin: 5pt;
-  margin-left: 20pt;
-  font-size: 19pt;
-`
+import { Container } from './components/container'
+import { jsx, css } from '@emotion/core'
+import { ListItem } from './components/list-item'
 
 export const Screen1 = () => (
-  <CenterContent>
+  <Container
+    css={css`
+      max-width: 750px;
+      margin: auto;
+    `}
+  >
     <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
@@ -58,9 +47,18 @@ export const Screen1 = () => (
       </ListItem>
     </ul>
 
-    <Warning>
+    <Container
+      css={css`
+        display: block;
+        color: green;
+        padding-top: 10pt;
+        margin-left: 0pt;
+        margin-bottom: 20pt;
+        font-size: 19pt;
+      `}
+    >
       <Trans>Please do not provide any personal information.</Trans>
-    </Warning>
+    </Container>
 
     <ApolloConsumer>
       {client => (
@@ -72,5 +70,5 @@ export const Screen1 = () => (
         />
       )}
     </ApolloConsumer>
-  </CenterContent>
+  </Container>
 )
