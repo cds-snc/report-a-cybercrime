@@ -44,7 +44,7 @@ const ErrorMessage = styled('div')`
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data })
-  navigate('/form3')
+  navigate('/old/form3')
 }
 
 const validate = values => {
@@ -130,10 +130,10 @@ const options = {
 export const Screen2 = () => (
   <CenterContent>
     <Breadcrumb>
-      <Link to="/">
+      <Link to="/old">
         <Trans>Landing Page</Trans>
       </Link>
-      <Link to="/form1">
+      <Link to="/old/form1">
         <Trans>What Happened</Trans>
       </Link>
       <Text display="inline-block">

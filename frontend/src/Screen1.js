@@ -34,7 +34,7 @@ const ListItem = styled('li')`
 export const Screen1 = () => (
   <CenterContent>
     <Breadcrumb>
-      <Link to={'/'}>
+      <Link to={'/old'}>
         <Trans>Landing Page</Trans>
       </Link>
       <Text display="inline-block">
@@ -67,7 +67,7 @@ export const Screen1 = () => (
         <WhatHappenedForm
           onSubmit={data => {
             client.writeData({ data })
-            navigate('/form2')
+            navigate('/old/form2')
           }}
         />
       )}
