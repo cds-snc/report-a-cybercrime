@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-// import { Link, navigate } from '@reach/router'
 import { navigate } from '@reach/router'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Link } from './components/link'
@@ -13,7 +11,7 @@ import { WhatHappenedForm } from './WhatHappenedForm'
 import { Text } from './components/text'
 import { Container } from './components/container'
 import { jsx, css } from '@emotion/core'
-import { ListItem } from './components/list-item'
+import { Li } from './components/list-item'
 
 export const Screen1 = () => (
   <Container
@@ -36,15 +34,15 @@ export const Screen1 = () => (
 
     <TrackPageViews />
     <ul>
-      <ListItem>
+      <Li>
         <Trans>When did it take place?</Trans>
-      </ListItem>
-      <ListItem>
+      </Li>
+      <Li>
         <Trans>In general terms, who was involved?</Trans>
-      </ListItem>
-      <ListItem>
+      </Li>
+      <Li>
         <Trans>How were you affected?</Trans>
-      </ListItem>
+      </Li>
     </ul>
 
     <Container
