@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { jsx } from '@emotion/core'
+import { jsx, css } from '@emotion/core'
 import { Input } from '../input'
 import { Container } from '../container'
 import { Label } from '../label'
