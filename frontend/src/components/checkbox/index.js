@@ -37,7 +37,7 @@ export const Checkbox = ({ label, ...props }) => {
                   opacity: '1',
                 },
                 ':focus + span:before': {
-                  boxShadow: `0 0 0 3px ${theme.colors.focusColor}`,
+                  boxShadow: `0 0 0 3px ${theme.colors.yellow}`,
                 },
               })}
               {...props}
