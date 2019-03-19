@@ -12,7 +12,9 @@ export const Stats = () => (
       if (error)
         return (
           <P color="crimson" fontWeight="bolder">
-            Error! ${error.message}
+            Error connecting to database:
+            <br />
+            {error.message}
           </P>
         )
 

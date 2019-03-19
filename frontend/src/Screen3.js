@@ -105,13 +105,13 @@ const MyForm = () => (
 export const Screen3 = () => (
   <CenterContent>
     <Breadcrumb>
-      <Link to="/">
+      <Link to="/old">
         <Trans>Landing Page</Trans>
       </Link>
-      <Link to="/form1">
+      <Link to="/old/form1">
         <Trans>What Happened</Trans>
       </Link>
-      <Link to="/form2">
+      <Link to="/old/form2">
         <Trans>How did that happen?</Trans>
       </Link>
       <Text display="inline-block">
