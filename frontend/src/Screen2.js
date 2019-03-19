@@ -1,7 +1,5 @@
 /** @jsx jsx */
-import React from 'react'
 import { navigate } from '@reach/router'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { H1, H4 } from './components/header'

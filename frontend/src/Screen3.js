@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { i18nMark } from '@lingui/react'

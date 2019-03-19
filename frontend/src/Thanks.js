@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from 'react'
 import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
