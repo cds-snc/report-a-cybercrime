@@ -19,7 +19,7 @@ import {
   left,
 } from 'styled-system'
 
-export const Label = styled(tag.span)`
+export const Label = styled(tag.label)`
   ${fontSize};
   ${fontWeight};
   ${lineHeight};

@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Input } from '../input'
 import { Container } from '../container'
-import { Label } from '../label'
+import { Text } from '../text'
 import { UniqueID } from '../unique-id'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 import { BREAKPOINTS } from '../../theme'
@@ -43,7 +43,7 @@ export const Checkbox = ({ label, ...props }) => {
               {...props}
               id={id}
             />
-            <Label
+            <Text
               m={0}
               p={0}
               pr={2}
@@ -98,7 +98,7 @@ export const Checkbox = ({ label, ...props }) => {
               {...props}
             >
               {label}
-            </Label>
+            </Text>
           </Container>
         )
       }}
