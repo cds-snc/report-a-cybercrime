@@ -52,7 +52,8 @@
     "react-final-form": "^4.1.0",
     "react-ga": "^2.5.7",
     "react-helmet": "^5.2.0",
-    "styled-system": "^4.0.3"
+    "styled-system": "^4.0.3",
+    "unfetch": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -92,7 +93,6 @@
     "prop-types": "^15.7.2",
     "react-testing-library": "^6.0.0",
     "supertest": "^4.0.0",
-    "unfetch": "^4.1.0",
     "waait": "^1.0.4"
   },
   "lingui": {
