@@ -54,7 +54,7 @@
     "react-final-form": "^4.1.0",
     "react-ga": "^2.5.7",
     "react-helmet-async": "^0.2.0",
-    "styled-system": "^4.0.3"
+    "styled-system": "^4.0.3",
     "unfetch": "^4.1.0"
   },
   "devDependencies": {
