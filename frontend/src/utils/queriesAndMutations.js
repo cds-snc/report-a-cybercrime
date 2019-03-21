@@ -14,12 +14,6 @@ export const GET_STATS_QUERY = gql`
   }
 `
 
-export const CHANGE_LANGUAGE_MUTATION = gql`
-  mutation switchLanguage {
-    switchLanguage @client
-  }
-`
-
 export const SAVE_REPORT_MUTATION = gql`
   mutation saveReport(
     $whatHappened: String

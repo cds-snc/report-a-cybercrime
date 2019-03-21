@@ -1,4 +1,4 @@
-import { language, switchLanguage } from '../ClientResolvers'
+import { language } from '../ClientResolvers'
 import { HttpLink } from 'apollo-link-http'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
@@ -11,10 +11,6 @@ const createApolloClient = ({
   uri = '/graphql',
 }) => {
   const typeDefs = gql`
-    extend type Mutation {
-      switchLanguage: String
-    }
-
     extend type Query {
       language: String
     }
@@ -44,7 +40,7 @@ const createApolloClient = ({
     typeDefs,
     resolvers: {
       Query: { language },
-      Mutation: { switchLanguage },
+      Mutation: {},
     },
   })
 
