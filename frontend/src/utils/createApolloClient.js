@@ -40,7 +40,6 @@ const createApolloClient = ({
     typeDefs,
     resolvers: {
       Query: { language },
-      Mutation: {},
     },
   })
 

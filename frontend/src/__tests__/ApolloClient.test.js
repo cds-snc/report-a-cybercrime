@@ -35,7 +35,6 @@ describe('ApolloClient', () => {
       typeDefs,
       resolvers: {
         Query: { language },
-        Mutation: {},
       },
     })
 

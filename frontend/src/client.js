@@ -35,7 +35,6 @@ const client = new ApolloClient({
   typeDefs,
   resolvers: {
     Query: { language },
-    Mutation: {},
   },
 })
 
