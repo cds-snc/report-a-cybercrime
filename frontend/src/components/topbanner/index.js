@@ -36,7 +36,8 @@ export const TopBanner = props => {
           text-align: right;
         `}
       >
-        <LanguageSwitcher />
+        <LanguageSwitcher language="en" />
+        <LanguageSwitcher language="fr" />
       </Container>
     </Container>
   )
