@@ -24,6 +24,7 @@ const LanguageSwitcherStyle = styled('section')`
 const languageNames = {
   en: 'English',
   fr: 'Français',
+  de: 'Deutsch',
 }
 
 export const LanguageSwitcher = props => (

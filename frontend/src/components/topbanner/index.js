@@ -42,6 +42,7 @@ export const TopBanner = props => {
           >
             {language === 'en' ? null : <LanguageSwitcher language="en" />}
             {language === 'fr' ? null : <LanguageSwitcher language="fr" />}
+            {language === 'de' ? null : <LanguageSwitcher language="de" />}
           </Container>
         </Container>
       )}
