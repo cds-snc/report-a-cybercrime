@@ -30,11 +30,7 @@ export const LanguageSwitcher = props => (
   <ApolloConsumer>
     {client => (
       <LanguageSwitcherStyle>
-        <ButtonLink
-          onClick={() =>
-            client.writeData({ data: { language: props.language } })
-          }
-        >
+        <ButtonLink onClick={() => client.writeData({ data: props })}>
           {languageNames[props.language]}
         </ButtonLink>
       </LanguageSwitcherStyle>
@@ -43,5 +39,5 @@ export const LanguageSwitcher = props => (
 )
 
 LanguageSwitcher.propTypes = {
-  language: PropTypes.string,
+  language: PropTypes.string.isRequired,
 }
