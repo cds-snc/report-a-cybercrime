@@ -17,6 +17,12 @@ import {
   alignSelf,
   space,
   textAlign,
+  position,
+  top,
+  right,
+  bottom,
+  left,
+  zIndex,
 } from 'styled-system'
 import tag from 'clean-tag'
 
@@ -38,24 +44,10 @@ export const Container = styled(tag.div)`
   ${borders}
   ${borderColor}
   ${textAlign}
+  ${position}
+  ${top}
+  ${bottom}
+  ${left}
+  ${right}
+  ${zIndex}
 `
-
-Container.propTypes = {
-  ...alignItems.propTypes,
-  ...alignContent.propTypes,
-  ...justifyContent.propTypes,
-  ...flex.propTypes,
-  ...flexWrap.propTypes,
-  ...flexBasis.propTypes,
-  ...flexDirection.propTypes,
-  ...width.propTypes,
-  ...height.propTypes,
-  ...color.propTypes,
-  ...display.propTypes,
-  ...space.propTypes,
-  ...justifySelf.propTypes,
-  ...alignSelf.propTypes,
-  ...borders.propTypes,
-  ...borderColor.propTypes,
-  ...textAlign.propTypes,
-}
