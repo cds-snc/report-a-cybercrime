@@ -1,3 +1,4 @@
+import '@babel/polyfill'
 import app from './server'
 import http from 'http'
 import { Logger } from '@cdssnc/logdriver'
