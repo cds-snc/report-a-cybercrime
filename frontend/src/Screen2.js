@@ -69,7 +69,7 @@ const MyForm = options => (
           <form onSubmit={handleSubmit}>
             <div>
               <LabelFormat>
-                <label>
+                <label htmlFor="whatWasInvolved">
                   <Trans>What was affected? Choose all that apply.</Trans>
                 </label>
               </LabelFormat>
@@ -78,6 +78,7 @@ const MyForm = options => (
                   return (
                     <CheckboxStyle key={key}>
                       <Field
+                        id="whatWasInvolved"
                         name="whatWasInvolved"
                         component={CheckboxAdapter}
                         type="checkbox"
@@ -90,12 +91,12 @@ const MyForm = options => (
               </div>
             </div>
             <LabelFormat>
-              <label>
+              <label htmlFor="whatWasInvolvedOther">
                 <Trans>Other</Trans>
               </label>
             </LabelFormat>
             <div>
-              <Field name="whatWasInvolvedOther">
+              <Field id="whatWasInvolvedOther" name="whatWasInvolvedOther">
                 {({ input, meta }) => (
                   <div>
                     <TextArea {...input} placeholder="" />

@@ -20,7 +20,7 @@ describe('<Checkbox />', () => {
 
   it('uses styling props correctly', () => {
     const { getByText } = render(
-      <ThemeProvider theme={{ colors: { dodgerblue: 'rgb(30, 144, 255)' } }}>
+      <ThemeProvider theme={theme}>
         <Checkbox label="foo" fontSize="34pt" checkscale="2" />
       </ThemeProvider>,
     )

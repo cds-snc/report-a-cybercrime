@@ -23,7 +23,7 @@ const LINE_HEIGHTS = [
 ]
 const SPACING = ['0px', '5px', '10px', '15px', '20px', '30px', '40px', '50px']
 
-const BREAKPOINTS = ['320px', '641px', '769px']
+export const BREAKPOINTS = ['320px', '641px', '769px']
 
 const colors = {
   white: '#FFF',
@@ -43,6 +43,11 @@ const theme = {
   lineHeights: LINE_HEIGHTS,
   space: SPACING,
   breakpoints: BREAKPOINTS,
+
+  checkboxes: {
+    size: '24px',
+    labelSize: '28px',
+  },
 
   colors: colors,
 
