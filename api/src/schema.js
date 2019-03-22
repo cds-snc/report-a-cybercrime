@@ -50,6 +50,9 @@ const mutation = new GraphQLObjectType({
           whatWasInvolved,
           whatWasInvolvedOther,
           howWereYouAffected,
+          createdAt: new Date(Date.now()).toLocaleString('en-ca', {
+            timeZone: 'America/Toronto',
+          }),
         })
       },
     },
