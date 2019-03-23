@@ -9,17 +9,12 @@ import { TrackPageViews } from './TrackPageViews'
 import { WhatHappenedForm } from './WhatHappenedForm'
 import { Text } from './components/text'
 import { Container } from './components/container'
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Li } from './components/list-item'
-import { UnorderedList } from './components/unordered-list'
+import { Ul } from './components/unordered-list'
 
 export const Screen1 = () => (
-  <Container
-    css={css`
-      max-width: 750px;
-      margin: auto;
-    `}
-  >
+  <Container m="auto" maxWidth={[300, null, 750]}>
     <Breadcrumb>
       <Link to={'/'}>
         <Trans>Landing Page</Trans>
@@ -33,7 +28,7 @@ export const Screen1 = () => (
     </H1>
 
     <TrackPageViews />
-    <UnorderedList>
+    <Ul>
       <Li>
         <Trans>When did it take place?</Trans>
       </Li>
@@ -43,18 +38,9 @@ export const Screen1 = () => (
       <Li>
         <Trans>How were you affected?</Trans>
       </Li>
-    </UnorderedList>
+    </Ul>
 
-    <Container
-      css={css`
-        display: block;
-        color: green;
-        padding-top: 10pt;
-        margin-left: 0pt;
-        margin-bottom: 20pt;
-        font-size: 19pt;
-      `}
-    >
+    <Container color="green" display="block" pt={3} ml={1} mb={5} fontSize={4}>
       <Trans>Please do not provide any personal information.</Trans>
     </Container>
 
