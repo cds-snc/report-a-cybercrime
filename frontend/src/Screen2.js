@@ -16,6 +16,7 @@ import { jsx } from '@emotion/core'
 import { TextArea } from './components/text-area'
 import { Button } from './components/button'
 import { Label } from './components/label'
+import { P } from './components/paragraph'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 
@@ -67,11 +68,11 @@ const MyForm = options => (
                 })}
               </Container>
             </Container>
-            <H4>
+            <P fontSize={4}>
               <Label htmlFor="whatWasInvolvedOther">
                 <Trans>Other</Trans>
               </Label>
-            </H4>
+            </P>
             <Container>
               <Field id="whatWasInvolvedOther" name="whatWasInvolvedOther">
                 {({ input, meta }) => (
