@@ -2,7 +2,7 @@
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { H1, H4 } from './components/header'
+import { H1 } from './components/header'
 import { Checkbox } from './components/checkbox'
 import { Link } from './components/link'
 import { Text } from './components/text'
