@@ -26,7 +26,6 @@ const App = () => (
             html,
             body {
               height: 100%;
-              font-family: sans-serif;
             }
 
             body {
@@ -42,8 +41,7 @@ const App = () => (
           `}
         />
         <ThemeProvider theme={theme}>
-          <Home />
-          {/* <TopBanner lang={language} bg="black" />
+          <TopBanner lang={language} bg="black" />
           <Content>
             <Home />
           </Content>
@@ -67,7 +65,7 @@ const App = () => (
             >
               <Trans>Terms and Conditions</Trans>
             </FooterLink>
-          </Footer> */}
+          </Footer>
         </ThemeProvider>
       </React.Fragment>
     )}

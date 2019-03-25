@@ -1,6 +1,4 @@
-/**@jsx jsx */
 import React from 'react'
-import { jsx, css } from '@emotion/core'
 import { Router } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import styled from '@emotion/styled'
@@ -22,42 +20,23 @@ const Screen = styled('div')`
 `
 
 export const Home = () => (
-  <React.Fragment>
-    <main
-      css={css`
-        flex: 1 0 auto;
-      `}
-    >
-      main content
-    </main>
-    <footer
-      css={css`
-        flex-shrink: 0;
-        text-align: center;
-        background-color: tomato;
-        color: white;
-      `}
-    >
-      footer content
-    </footer>
-  </React.Fragment>
-  // <Root>
-  //   <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
-  //     <Trans>
-  //       This site will be changing as we test ideas and learn from people like
-  //       you.
-  //     </Trans>
-  //   </PhaseBanner>
-  //   <Screen>
-  //     <Router>
-  //       <PageNotFound default />
-  //       <NewLandingPage path="/" />
-  //       <LandingPage path="/old" />
-  //       <Screen1 path="/old/form1" />
-  //       <Screen2 path="/old/form2" />
-  //       <Screen3 path="/old/form3" />
-  //       <Thanks path="/old/thanks" />
-  //     </Router>
-  //   </Screen>
-  // </Root>
+  <Root>
+    <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
+      <Trans>
+        This site will be changing as we test ideas and learn from people like
+        you.
+      </Trans>
+    </PhaseBanner>
+    <Screen>
+      <Router>
+        <PageNotFound default />
+        <NewLandingPage path="/" />
+        <LandingPage path="/old" />
+        <Screen1 path="/old/form1" />
+        <Screen2 path="/old/form2" />
+        <Screen3 path="/old/form3" />
+        <Thanks path="/old/thanks" />
+      </Router>
+    </Screen>
+  </Root>
 )
