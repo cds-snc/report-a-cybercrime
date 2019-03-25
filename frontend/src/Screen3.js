@@ -12,11 +12,11 @@ import { Breadcrumb } from './components/breadcrumb'
 import { SAVE_REPORT_MUTATION } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
 import { Container } from './components/container'
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { TextArea } from './components/text-area'
 import { Button } from './components/button'
 import { Li } from './components/list-item'
-import { UnorderedList } from './components/unordered-list'
+import { Ul } from './components/unordered-list'
 
 const submitAndNavigate = (client, saveReport, { howWereYouAffected }) => {
   let data = client.readQuery({
@@ -57,12 +57,10 @@ const MyForm = () => (
                   <Field name="howWereYouAffected">
                     {({ input, meta }) => (
                       <Container
-                        css={css`
-                          margin-top: 10pt;
-                          display: inline-block;
-                          font-size: 19pt;
-                          color: red;
-                        `}
+                        mt={3}
+                        display="inline-block"
+                        fontSize={4}
+                        color="red"
                       >
                         <TextArea {...input} placeholder="" />
                         <Container>
@@ -88,12 +86,7 @@ const MyForm = () => (
 )
 
 export const Screen3 = () => (
-  <Container
-    css={css`
-      max-width: 750px;
-      margin: auto;
-    `}
-  >
+  <Container m="auto" width={[1, 1 / 2, 1 / 4]}>
     <Breadcrumb>
       <Link to="/old">
         <Trans>Landing Page</Trans>
@@ -113,7 +106,7 @@ export const Screen3 = () => (
     </H1>
 
     <TrackPageViews />
-    <UnorderedList>
+    <Ul>
       <Li>
         <Trans>What was your reaction?</Trans>
       </Li>
@@ -123,7 +116,7 @@ export const Screen3 = () => (
       <Li>
         <Trans>Was your reputation or productivity affected?</Trans>
       </Li>
-    </UnorderedList>
+    </Ul>
     <Container>{MyForm()}</Container>
   </Container>
 )
