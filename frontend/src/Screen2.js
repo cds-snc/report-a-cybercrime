@@ -1,6 +1,5 @@
-import React from 'react'
+/** @jsx jsx */
 import { navigate } from '@reach/router'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { H1 } from './components/header'
@@ -12,35 +11,14 @@ import { ApolloConsumer } from 'react-apollo'
 import { TrackPageViews } from './TrackPageViews'
 import { i18nMark } from '@lingui/react'
 import { finalFormAdapter } from './utils/finalFormAdapter'
+import { Container } from './components/container'
+import { jsx } from '@emotion/core'
+import { TextArea } from './components/text-area'
+import { Button } from './components/button'
+import { Label } from './components/label'
+import { P } from './components/paragraph'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
-const LabelFormat = styled('h4')`
-  margin-top: 20pt;
-`
-const SubmitButton = styled('button')`
-  margin-top: 20pt;
-`
-const CheckboxStyle = styled('label')`
-  margin-bottom: 8pt;
-  font-size: 1.25rem;
-  display: block;
-`
-const TextArea = styled('textarea')`
-  width: 500pt;
-  height: 200pt;
-  font-size: 19pt;
-`
-const ErrorMessage = styled('div')`
-  margin-top: 10pt;
-  display: inline-block;
-  font-size: 19pt;
-  color: red;
-`
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data })
@@ -67,16 +45,16 @@ const MyForm = options => (
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <div>
-              <LabelFormat>
-                <label htmlFor="whatWasInvolved">
+            <Container>
+              <P fontSize={4}>
+                <Label htmlFor="whatWasInvolved">
                   <Trans>What was affected? Choose all that apply.</Trans>
-                </label>
-              </LabelFormat>
-              <div>
+                </Label>
+              </P>
+              <Container mb={5}>
                 {Object.keys(options).map(key => {
                   return (
-                    <CheckboxStyle key={key}>
+                    <Label key={key}>
                       <Field
                         id="whatWasInvolved"
                         name="whatWasInvolved"
@@ -85,32 +63,36 @@ const MyForm = options => (
                         value={key}
                         label={options[key]}
                       />
-                    </CheckboxStyle>
+                    </Label>
                   )
                 })}
-              </div>
-            </div>
-            <LabelFormat>
-              <label htmlFor="whatWasInvolvedOther">
+              </Container>
+            </Container>
+            <P fontSize={4}>
+              <Label htmlFor="whatWasInvolvedOther">
                 <Trans>Other</Trans>
-              </label>
-            </LabelFormat>
-            <div>
+              </Label>
+            </P>
+            <Container>
               <Field id="whatWasInvolvedOther" name="whatWasInvolvedOther">
                 {({ input, meta }) => (
-                  <div>
+                  <Container>
                     <TextArea {...input} placeholder="" />
-                    <ErrorMessage>
+                    <Container
+                      mt={3}
+                      display="inline-block"
+                      fontSize={4}
+                      color="red"
+                    >
                       {meta.error && meta.touched && <Trans id={meta.error} />}
-                    </ErrorMessage>
-                  </div>
+                    </Container>
+                  </Container>
                 )}
               </Field>
-            </div>
-
-            <SubmitButton type="submit">
+            </Container>
+            <Button type="submit">
               <Trans>Next</Trans>
-            </SubmitButton>
+            </Button>
           </form>
         )}
       />
@@ -129,7 +111,7 @@ const options = {
 }
 
 export const Screen2 = () => (
-  <CenterContent>
+  <Container m="auto" width={[1, 1 / 2, 1 / 4]}>
     <Breadcrumb>
       <Link to="/old">
         <Trans>Landing Page</Trans>
@@ -146,5 +128,5 @@ export const Screen2 = () => (
     </H1>
     <TrackPageViews />
     {MyForm(options)}
-  </CenterContent>
+  </Container>
 )

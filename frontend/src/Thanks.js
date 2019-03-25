@@ -1,11 +1,13 @@
-import React from 'react'
-import styled from '@emotion/styled'
+/** @jsx jsx */
 import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Stats } from './Stats'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
+import { jsx } from '@emotion/core'
+import { Container } from './components/container'
+import { Paragraph } from './components/paragraph'
 
 const getCyberSafeLink = lang => {
   return lang === 'en'
@@ -19,16 +21,6 @@ const getCyberTipsLink = lang => {
     : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
 }
 
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
-const Paragraph = styled('div')`
-  padding-top: 20pt;
-  padding-bottom: 20pt;
-  font-size: 20pt;
-`
-
 export const Thanks = () => (
   <Query query={GET_LANGUAGE_QUERY}>
     {({ loading, error, data }) => {
@@ -37,7 +29,7 @@ export const Thanks = () => (
 
       let { language } = data
       return (
-        <CenterContent>
+        <Container m="auto" width={[1, 1 / 2, 1 / 4]}>
           <H1>
             <Trans>Thank you for sharing your story.</Trans>
           </H1>
@@ -54,7 +46,7 @@ export const Thanks = () => (
               </a>
             </Trans>
           </Paragraph>
-        </CenterContent>
+        </Container>
       )
     }}
   </Query>
