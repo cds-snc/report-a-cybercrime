@@ -8,7 +8,7 @@ import { Text } from './components/text'
 import { TextArea } from './components/text-area'
 import { Container } from './components/container'
 import { Label } from './components/label'
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 
 const validate = values => {
   let errors = {}
@@ -37,12 +37,10 @@ export const WhatHappenedForm = ({ onSubmit }) => (
               <Container>
                 <TextArea {...input} id="whatHappened" placeholder="" />
                 <Container
-                  css={css`
-                    margin-top: 10pt;
-                    display: inline-block;
-                    font-size: 19pt;
-                    color: red;
-                  `}
+                  mt={3}
+                  display="inline-block"
+                  fontSize={4}
+                  color="red"
                 >
                   {meta.error && meta.touched && <Trans id={meta.error} />}
                 </Container>
