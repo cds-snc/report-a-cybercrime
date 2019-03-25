@@ -4,7 +4,7 @@
   "license": "MIT",
   "repository": "github:cds-snc/report-a-cybercrime",
   "scripts": {
-    "dev": "razzle start",
+    "dev": "lingui compile && razzle start",
     "build": "lingui compile && razzle build",
     "heroku-postbuild": "NODE_ENV=production lingui extract && lingui compile && razzle build",
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
