@@ -21,7 +21,7 @@ const CheckboxAdapter = finalFormAdapter(Checkbox)
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data })
-  navigate('/form3')
+  navigate('/old/form3')
 }
 
 const validate = values => {
@@ -44,9 +44,15 @@ const MyForm = options => (
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
+
             <Container>
               <H4>
-                <label>
+                
+
+            
+              <LabelFormat>
+                <label htmlFor="whatWasInvolved">
+
                   <Trans>What was affected? Choose all that apply.</Trans>
                 </label>
               </H4>
@@ -55,6 +61,7 @@ const MyForm = options => (
                   return (
                     <Label key={key}>
                       <Field
+                        id="whatWasInvolved"
                         name="whatWasInvolved"
                         component={CheckboxAdapter}
                         type="checkbox"
@@ -64,15 +71,19 @@ const MyForm = options => (
                     </Label>
                   )
                 })}
+
               </Container>
             </Container>
             <H4>
-              <Label>
+              <LabelFormat>
+              <label htmlFor="whatWasInvolvedOther">
                 <Trans>Other</Trans>
-              </Label>
+              </label>
+            </LabelFormat>
             </H4>
             <Container>
-              <Field name="whatWasInvolvedOther">
+              <Field id="whatWasInvolvedOther" name="whatWasInvolvedOther">
+
                 {({ input, meta }) => (
                   <Container>
                     <TextArea {...input} placeholder="" />
@@ -119,10 +130,10 @@ export const Screen2 = () => (
     `}
   >
     <Breadcrumb>
-      <Link to="/">
+      <Link to="/old">
         <Trans>Landing Page</Trans>
       </Link>
-      <Link to="/form1">
+      <Link to="/old/form1">
         <Trans>What Happened</Trans>
       </Link>
       <Text display="inline-block">

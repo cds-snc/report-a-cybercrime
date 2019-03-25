@@ -10,7 +10,10 @@ describe('<TextArea />', () => {
   it('properly renders as a textarea tag', () => {
     let wrapper = mount(
       <form>
-        <label>Test</label> <TextArea />
+        <label>
+          Test
+          <TextArea />
+        </label>
       </form>,
     ).find('textarea')
     expect(wrapper.is('textarea')).toBeTruthy()
@@ -19,9 +22,9 @@ describe('<TextArea />', () => {
   it('sets font properties from props', () => {
     const { getByLabelText } = render(
       <form>
-        <label id="test">Test</label>{' '}
+        <label htmlFor="test">Test</label>{' '}
         <TextArea
-          aria-labelledby="test"
+          id="test"
           fontSize="30px"
           fontWeight={200}
           lineHeight="20pt"
@@ -37,8 +40,8 @@ describe('<TextArea />', () => {
   it('sets height and width from props', () => {
     const { getByLabelText } = render(
       <form>
-        <label id="test">Test</label>{' '}
-        <TextArea aria-labelledby="test" height={300} width="2rem" />{' '}
+        <label htmlFor="test">Test</label>{' '}
+        <TextArea id="test" height={300} width="2rem" />{' '}
       </form>,
     )
     const test = getByLabelText(/Test/)
@@ -51,8 +54,8 @@ describe('<TextArea />', () => {
     const { getByLabelText } = render(
       <ThemeProvider theme={{ space: SPACING }}>
         <form>
-          <label id="test">Test</label>{' '}
-          <TextArea aria-labelledby="test" m="auto" ml={1} p={0} px={1} />{' '}
+          <label htmlFor="test">Test</label>{' '}
+          <TextArea id="test" m="auto" ml={1} p={0} px={1} />{' '}
         </form>
       </ThemeProvider>,
     )
@@ -67,8 +70,8 @@ describe('<TextArea />', () => {
   it('sets display from props', () => {
     const { getByLabelText } = render(
       <form>
-        <label id="test">Test</label>{' '}
-        <TextArea aria-labelledby="test" display="inline-block" />{' '}
+        <label htmlFor="test">Test</label>{' '}
+        <TextArea id="test" display="inline-block" />{' '}
       </form>,
     )
     const test = getByLabelText(/Test/)

@@ -4,8 +4,8 @@ import { Global, css } from '@emotion/core'
 import { ThemeProvider } from 'emotion-theming'
 import theme from './theme'
 import { Query } from 'react-apollo'
-import { Helmet } from 'react-helmet'
 import { Home } from './Home'
+import Helmet from 'react-helmet-async'
 import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TopBanner } from './components/topbanner'
@@ -22,6 +22,37 @@ const App = () => (
       <div>
         <Helmet>
           <html lang={language} />
+          <meta charset="utf-8" />
+          <title lang={language}>
+            {language === 'en'
+              ? 'Tell us your cybercrime story'
+              : 'Racontez-nous votre histoire de cybercriminalité'}
+          </title>
+          <link
+            href="https://fonts.googleapis.com/css?family=Roboto"
+            rel="stylesheet"
+          />
+          <link rel="manifest" href="/manifest.json" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link
+            rel="apple-touch-icon"
+            sizes="192x192"
+            href="/apple-touch-icon.png"
+          />
+          <script>
+            {`
+              window.__APOLLO_STATE__=${JSON.stringify({
+                language,
+              })}`}
+          </script>
+          <script>
+            {`
+                if ('serviceWorker' in navigator) {
+                  window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('service-worker.js')
+                  });
+                }`}
+          </script>
         </Helmet>
         <Global
           styles={css`

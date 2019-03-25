@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import server from '../server'
 const request = require('supertest')
 

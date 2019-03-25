@@ -16,7 +16,7 @@ import { Ul } from './components/unordered-list'
 export const Screen1 = () => (
   <Container m="auto" maxWidth={[300, null, 750]}>
     <Breadcrumb>
-      <Link to={'/'}>
+      <Link to={'/old'}>
         <Trans>Landing Page</Trans>
       </Link>
       <Text display="inline-block">
@@ -49,7 +49,7 @@ export const Screen1 = () => (
         <WhatHappenedForm
           onSubmit={data => {
             client.writeData({ data })
-            navigate('/form2')
+            navigate('/old/form2')
           }}
         />
       )}

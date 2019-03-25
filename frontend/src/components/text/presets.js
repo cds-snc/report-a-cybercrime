@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyledDiv } from '.'
+import { StyledSpan } from '.'
 import PropTypes from 'prop-types'
 
 export const Text = props => (
-  <StyledDiv
+  <StyledSpan
     display="block"
     fontSize={[2, null, 3]}
     lineHeight={[2, null, 3]}
@@ -11,7 +11,7 @@ export const Text = props => (
     {...props}
   >
     {props.children}
-  </StyledDiv>
+  </StyledSpan>
 )
 
 Text.propTypes = {

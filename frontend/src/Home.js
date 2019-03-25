@@ -32,10 +32,10 @@ export const Home = () => (
         <PageNotFound default />
         <NewLandingPage path="/" />
         <LandingPage path="/old" />
-        <Screen1 path="form1" />
-        <Screen2 path="form2" />
-        <Screen3 path="form3" />
-        <Thanks path="thanks" />
+        <Screen1 path="/old/form1" />
+        <Screen2 path="/old/form2" />
+        <Screen3 path="/old/form3" />
+        <Thanks path="/old/thanks" />
       </Router>
     </Screen>
   </Root>
