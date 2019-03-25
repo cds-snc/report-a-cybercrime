@@ -44,17 +44,11 @@ const MyForm = options => (
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-
             <Container>
               <H4>
-                
-
-            
-              <LabelFormat>
-                <label htmlFor="whatWasInvolved">
-
+                <Label htmlFor="whatWasInvolved">
                   <Trans>What was affected? Choose all that apply.</Trans>
-                </label>
+                </Label>
               </H4>
               <Container>
                 {Object.keys(options).map(key => {
@@ -71,19 +65,15 @@ const MyForm = options => (
                     </Label>
                   )
                 })}
-
               </Container>
             </Container>
             <H4>
-              <LabelFormat>
-              <label htmlFor="whatWasInvolvedOther">
+              <Label htmlFor="whatWasInvolvedOther">
                 <Trans>Other</Trans>
-              </label>
-            </LabelFormat>
+              </Label>
             </H4>
             <Container>
               <Field id="whatWasInvolvedOther" name="whatWasInvolvedOther">
-
                 {({ input, meta }) => (
                   <Container>
                     <TextArea {...input} placeholder="" />
