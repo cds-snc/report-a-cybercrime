@@ -8,7 +8,7 @@
     "build": "lingui compile && razzle build",
     "heroku-postbuild": "NODE_ENV=production lingui extract && lingui compile && razzle build",
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "test": "lingui compile && jest",
+    "test": "jest",
     "lint": "eslint 'src/**/*.js'",
     "start": "NODE_ENV=production node build/server.js",
     "add-locale": "lingui add-locale",
