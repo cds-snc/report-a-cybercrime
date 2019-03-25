@@ -1,6 +1,5 @@
 /**@jsx jsx **/
 import React from 'react'
-import styled from '@emotion/styled'
 import { Global, css, jsx } from '@emotion/core'
 import { ThemeProvider } from 'emotion-theming'
 import theme from './theme'

@@ -1,6 +1,6 @@
+/** @jsx jsx **/
 import styled from '@emotion/styled'
-import { css } from '@emotion/css'
-import React from 'react'
+import { jsx, css } from '@emotion/core'
 import PropTypes from 'prop-types'
 
 import {
@@ -56,13 +56,12 @@ export const Container = styled(tag.div)`
   ${zIndex}
 `
 export const Content = props => (
-  <main>
-    <Container
-      m="auto"
-      width={[9 / 10, null, 4 / 5]}
-      flex="1 0 auto"
-      {...props}
-    >
+  <main
+    css={css`
+      flex: 1 0 auto;
+    `}
+  >
+    <Container m="auto" width={[9 / 10, null, 4 / 5]} {...props}>
       {props.children}
     </Container>
   </main>
