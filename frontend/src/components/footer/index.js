@@ -9,31 +9,39 @@ export const Footer = props => {
   const { bg } = props
 
   return (
-    <Container
-      bg={bg}
-      display="flex"
-      flexDirection="row"
-      width={1}
-      height={55}
-      alignItems="center"
-      data-testid="background-color"
+    <footer
+      css={css`
+        margin: auto auto 0 auto;
+      `}
     >
-      <Container flex="1 1 auto">
-        <Ul listStyleType="none" mb={0}>
-          {props.children}
-        </Ul>
-      </Container>
-      <Container mr={3} width={['4em', null, '6em']}>
-        <WordMark
-          width="100%"
-          flag="#fff"
-          text="#fff"
-          css={css`
-            display: block;
-          `}
-        />
-      </Container>
-    </Container>
+      Test
+    </footer>
+    // <Container
+    //   bg={bg}
+    //   display="flex"
+    //   flexDirection="row"
+    //   width={1}
+    //   height={55}
+    //   alignItems="center"
+    //   data-testid="background-color"
+    //   m="auto auto 0 auto"
+    // >
+    //   <Container flex="1 1 auto">
+    //     <Ul listStyleType="none" mb={0}>
+    //       {props.children}
+    //     </Ul>
+    //   </Container>
+    //   <Container mr={3} width={['4em', null, '6em']}>
+    //     <WordMark
+    //       width="100%"
+    //       flag="#fff"
+    //       text="#fff"
+    //       css={css`
+    //         display: block;
+    //       `}
+    //     />
+    //   </Container>
+    // </Container>
   )
 }
 

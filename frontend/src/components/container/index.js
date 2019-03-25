@@ -1,4 +1,7 @@
 import styled from '@emotion/styled'
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import {
   alignItems,
   alignContent,
@@ -39,23 +42,12 @@ export const Container = styled(tag.div)`
   ${borderColor}
   ${textAlign}
 `
+export const Content = props => (
+  <Container m="auto" width={[3 / 5, null, 4 / 5]} {...props}>
+    {props.children}
+  </Container>
+)
 
-Container.propTypes = {
-  ...alignItems.propTypes,
-  ...alignContent.propTypes,
-  ...justifyContent.propTypes,
-  ...flex.propTypes,
-  ...flexWrap.propTypes,
-  ...flexBasis.propTypes,
-  ...flexDirection.propTypes,
-  ...width.propTypes,
-  ...height.propTypes,
-  ...color.propTypes,
-  ...display.propTypes,
-  ...space.propTypes,
-  ...justifySelf.propTypes,
-  ...alignSelf.propTypes,
-  ...borders.propTypes,
-  ...borderColor.propTypes,
-  ...textAlign.propTypes,
+Content.propTypes = {
+  children: PropTypes.any,
 }
