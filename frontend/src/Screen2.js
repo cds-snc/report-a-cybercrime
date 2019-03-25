@@ -12,7 +12,7 @@ import { TrackPageViews } from './TrackPageViews'
 import { i18nMark } from '@lingui/react'
 import { finalFormAdapter } from './utils/finalFormAdapter'
 import { Container } from './components/container'
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { TextArea } from './components/text-area'
 import { Button } from './components/button'
 import { Label } from './components/label'
@@ -50,7 +50,7 @@ const MyForm = options => (
                   <Trans>What was affected? Choose all that apply.</Trans>
                 </Label>
               </H4>
-              <Container>
+              <Container mb={5}>
                 {Object.keys(options).map(key => {
                   return (
                     <Label key={key}>
@@ -78,12 +78,10 @@ const MyForm = options => (
                   <Container>
                     <TextArea {...input} placeholder="" />
                     <Container
-                      css={css`
-                        margin-top: 10pt;
-                        display: inline-block;
-                        font-size: 19pt;
-                        color: red;
-                      `}
+                      mt={3}
+                      display="inline-block"
+                      fontSize={4}
+                      color="red"
                     >
                       {meta.error && meta.touched && <Trans id={meta.error} />}
                     </Container>
@@ -91,7 +89,6 @@ const MyForm = options => (
                 )}
               </Field>
             </Container>
-
             <Button type="submit">
               <Trans>Next</Trans>
             </Button>
@@ -113,12 +110,7 @@ const options = {
 }
 
 export const Screen2 = () => (
-  <Container
-    css={css`
-      max-width: 750px;
-      margin: auto;
-    `}
-  >
+  <Container m="auto" width={[1, 1 / 2, 1 / 4]}>
     <Breadcrumb>
       <Link to="/old">
         <Trans>Landing Page</Trans>
