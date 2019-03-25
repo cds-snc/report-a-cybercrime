@@ -119,4 +119,27 @@ describe('<Container />', () => {
     const test = getByText(/test/)
     expect(test).toHaveStyleRule('text-align', 'right')
   })
+
+  it('uses the position props to set type of positioning and positioning values in CSS', () => {
+    const { getByText } = render(
+      <Container
+        position="absolute"
+        zIndex="1"
+        top="1"
+        right="2"
+        bottom="3"
+        left="4"
+      >
+        foo
+      </Container>,
+    )
+
+    const test = getByText(/foo/)
+    expect(test).toHaveStyleRule('position', 'absolute')
+    expect(test).toHaveStyleRule('z-index', '1')
+    expect(test).toHaveStyleRule('top', '1')
+    expect(test).toHaveStyleRule('right', '2')
+    expect(test).toHaveStyleRule('bottom', '3')
+    expect(test).toHaveStyleRule('left', '4')
+  })
 })

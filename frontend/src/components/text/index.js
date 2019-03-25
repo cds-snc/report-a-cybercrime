@@ -1,32 +1,42 @@
 import styled from '@emotion/styled'
 import {
-  display,
   fontSize,
+  fontWeight,
   lineHeight,
   space,
   color,
-  fontWeight,
+  display,
+  border,
+  borderColor,
+  width,
+  height,
+  position,
+  zIndex,
+  top,
+  right,
+  bottom,
+  left,
 } from 'styled-system'
 import tag from 'clean-tag'
 
-export const StyledDiv = styled(tag.div)`
+export const StyledSpan = styled(tag.span)`
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
-  ${display};
   ${fontSize};
+  ${fontWeight};
   ${lineHeight};
   ${space};
   ${color};
-  ${fontWeight};
+  ${display};
+  ${border};
+  ${borderColor};
+  ${width};
+  ${height};
+  ${position};
+  ${zIndex};
+  ${top};
+  ${right};
+  ${bottom};
+  ${left};
 `
-
-StyledDiv.propTypes = {
-  ...display.propTypes,
-  ...fontSize.propTypes,
-  ...lineHeight.propTypes,
-  ...space.propTypes,
-  ...color.propTypes,
-  ...fontWeight.propTypes,
-}
-
 export { Text } from './presets'

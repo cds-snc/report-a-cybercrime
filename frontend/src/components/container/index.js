@@ -21,6 +21,12 @@ import {
   alignSelf,
   space,
   textAlign,
+  position,
+  top,
+  right,
+  bottom,
+  left,
+  zIndex,
 } from 'styled-system'
 import tag from 'clean-tag'
 
@@ -42,6 +48,12 @@ export const Container = styled(tag.div)`
   ${borders}
   ${borderColor}
   ${textAlign}
+  ${position}
+  ${top}
+  ${bottom}
+  ${left}
+  ${right}
+  ${zIndex}
 `
 export const Content = props => (
   <main>

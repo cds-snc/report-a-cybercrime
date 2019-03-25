@@ -4,7 +4,7 @@
   "license": "MIT",
   "repository": "github:cds-snc/report-a-cybercrime",
   "scripts": {
-    "dev": "razzle start",
+    "dev": "lingui compile && razzle start",
     "build": "lingui compile && razzle build",
     "heroku-postbuild": "NODE_ENV=production lingui extract && lingui compile && razzle build",
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
@@ -24,6 +24,8 @@
     }
   },
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@babel/runtime": "^7.3.1",
     "@cdssnc/logdriver": "0.0.2",
     "@emotion/core": "^10.0.9",
     "@emotion/styled": "^10.0.9",
@@ -51,7 +53,7 @@
     "react-dom": "^16.8.4",
     "react-final-form": "^4.1.0",
     "react-ga": "^2.5.7",
-    "react-helmet": "^5.2.0",
+    "react-helmet-async": "^0.2.0",
     "styled-system": "^4.0.3",
     "unfetch": "^4.1.0"
   },
@@ -78,6 +80,7 @@
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jest": "^22.3.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.12.4",

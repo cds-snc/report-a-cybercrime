@@ -1,5 +1,5 @@
 {
-  "plugins": ["react", "react-hooks", "import"],
+  "plugins": ["react", "react-hooks", "import", "jsx-a11y"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
@@ -19,11 +19,16 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
+    "plugin:jsx-a11y/recommended"
   ],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      { "controlComponents": ["Input", "TextArea"] }
+    ]
   },
   "settings": {
     "react": {
