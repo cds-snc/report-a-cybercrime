@@ -46,11 +46,11 @@ const MyForm = options => (
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Container>
-              <H4>
+              <P fontSize={4}>
                 <Label htmlFor="whatWasInvolved">
                   <Trans>What was affected? Choose all that apply.</Trans>
                 </Label>
-              </H4>
+              </P>
               <Container mb={5}>
                 {Object.keys(options).map(key => {
                   return (
