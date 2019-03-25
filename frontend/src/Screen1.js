@@ -14,7 +14,7 @@ import { Li } from './components/list-item'
 import { Ul } from './components/unordered-list'
 
 export const Screen1 = () => (
-  <Container m="auto" maxWidth={[300, null, 750]}>
+  <Container m="auto" width={[1, 1 / 2, 1 / 4]}>
     <Breadcrumb>
       <Link to={'/old'}>
         <Trans>Landing Page</Trans>
