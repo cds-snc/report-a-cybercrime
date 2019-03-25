@@ -5,7 +5,7 @@ import { H1 } from './components/header'
 import { Stats } from './Stats'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Container } from './components/container'
 import { Paragraph } from './components/paragraph'
 
@@ -29,12 +29,7 @@ export const Thanks = () => (
 
       let { language } = data
       return (
-        <Container
-          css={css`
-            max-width: 750px;
-            margin: auto;
-          `}
-        >
+        <Container m="auto" width={[1, 1 / 2, 1 / 4]}>
           <H1>
             <Trans>Thank you for sharing your story.</Trans>
           </H1>
