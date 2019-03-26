@@ -1,17 +1,13 @@
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
-import { language, switchLanguage } from '../ClientResolvers'
+import { language } from '../ClientResolvers'
 import fetch from 'unfetch'
 import gql from 'graphql-tag'
 
 describe('ApolloClient', () => {
   it('can be created with proper defaults', async () => {
     const typeDefs = gql`
-      extend type Mutation {
-        switchLanguage: String
-      }
-
       extend type Query {
         language: String
       }
@@ -39,7 +35,6 @@ describe('ApolloClient', () => {
       typeDefs,
       resolvers: {
         Query: { language },
-        Mutation: { switchLanguage },
       },
     })
 

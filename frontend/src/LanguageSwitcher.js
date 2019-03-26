@@ -1,10 +1,7 @@
 import React from 'react'
-import { Query, Mutation } from 'react-apollo'
+import { ApolloConsumer } from 'react-apollo'
 import styled from '@emotion/styled'
-import {
-  GET_LANGUAGE_QUERY,
-  CHANGE_LANGUAGE_MUTATION,
-} from './utils/queriesAndMutations'
+import PropTypes from 'prop-types'
 
 const ButtonLink = styled('button')`
   background: none;
@@ -24,18 +21,24 @@ const LanguageSwitcherStyle = styled('section')`
   display: block-inline;
 `
 
-export const LanguageSwitcher = () => (
-  <LanguageSwitcherStyle>
-    <Query query={GET_LANGUAGE_QUERY}>
-      {({ data: { language } }) => (
-        <Mutation mutation={CHANGE_LANGUAGE_MUTATION}>
-          {switchLanguage => (
-            <ButtonLink onClick={() => switchLanguage()}>
-              {language === 'en' ? 'Français' : 'English'}
-            </ButtonLink>
-          )}
-        </Mutation>
-      )}
-    </Query>
-  </LanguageSwitcherStyle>
+const languageNames = {
+  en: 'English',
+  fr: 'Français',
+  de: 'Deutsch',
+}
+
+export const LanguageSwitcher = props => (
+  <ApolloConsumer>
+    {client => (
+      <LanguageSwitcherStyle>
+        <ButtonLink onClick={() => client.writeData({ data: props })}>
+          {languageNames[props.language]}
+        </ButtonLink>
+      </LanguageSwitcherStyle>
+    )}
+  </ApolloConsumer>
 )
+
+LanguageSwitcher.propTypes = {
+  language: PropTypes.string.isRequired,
+}

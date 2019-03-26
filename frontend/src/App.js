@@ -13,6 +13,16 @@ import { Footer } from './components/footer'
 import { FooterLink } from './components/link'
 import { Content } from './components/container'
 
+const pageTitle = language => {
+  if (language === 'fr') {
+    return 'Racontez-nous votre histoire de cybercriminalité'
+  } else if (language === 'de') {
+    return 'Erzählen Sie uns Ihre Geschichte zur Cyberkriminalität.'
+  } else {
+    return 'Tell us your cybercrime story'
+  }
+}
+
 const App = () => (
   <Query query={GET_LANGUAGE_QUERY}>
     {({ data: { language } }) => (
@@ -20,11 +30,7 @@ const App = () => (
         <Helmet>
           <html lang={language} />
           <meta charset="utf-8" />
-          <title lang={language}>
-            {language === 'en'
-              ? 'Tell us your cybercrime story'
-              : 'Racontez-nous votre histoire de cybercriminalité'}
-          </title>
+          <title lang={language}>{pageTitle(language)}</title>
           <link
             href="https://fonts.googleapis.com/css?family=Roboto"
             rel="stylesheet"
