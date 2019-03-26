@@ -1,6 +1,6 @@
+/**@jsx jsx **/
 import React from 'react'
-import styled from '@emotion/styled'
-import { Global, css } from '@emotion/core'
+import { Global, css, jsx } from '@emotion/core'
 import { ThemeProvider } from 'emotion-theming'
 import theme from './theme'
 import { Query } from 'react-apollo'
@@ -11,15 +11,12 @@ import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TopBanner } from './components/topbanner'
 import { Footer } from './components/footer'
 import { FooterLink } from './components/link'
-
-const Content = styled('div')`
-  min-height: calc(100vh - 55px);
-`
+import { Content } from './components/container'
 
 const App = () => (
   <Query query={GET_LANGUAGE_QUERY}>
     {({ data: { language } }) => (
-      <div>
+      <React.Fragment>
         <Helmet>
           <html lang={language} />
           <meta charset="utf-8" />
@@ -56,15 +53,26 @@ const App = () => (
         </Helmet>
         <Global
           styles={css`
+            html,
+            body {
+              height: 100%;
+            }
+
             body {
               margin: 0;
-              font-family: 'Roboto', sans-serif;
+              padding: 0;
+            }
+
+            #root {
+              display: flex;
+              flex-direction: column;
+              height: 100%;
             }
           `}
         />
         <ThemeProvider theme={theme}>
+          <TopBanner lang={language} bg="black" />
           <Content>
-            <TopBanner lang={language} bg="black" />
             <Home />
           </Content>
 
@@ -89,7 +97,7 @@ const App = () => (
             </FooterLink>
           </Footer>
         </ThemeProvider>
-      </div>
+      </React.Fragment>
     )}
   </Query>
 )
