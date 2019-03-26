@@ -1,7 +1,10 @@
+import React from 'react'
 import { hydrate } from 'react-dom'
-import { withLanguageSwitching } from './withLanguageSwitching'
+import { ApolloProvider } from 'react-apollo'
 import { language } from './ClientResolvers'
 import { HttpLink } from 'apollo-link-http'
+import { HelmetProvider } from 'react-helmet-async'
+import { LanguageSwitching } from './LanguageSwitching'
 import App from './App'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
@@ -38,7 +41,16 @@ const client = new ApolloClient({
   },
 })
 
-hydrate(withLanguageSwitching(App, client), document.getElementById('root'))
+hydrate(
+  <HelmetProvider>
+    <ApolloProvider client={client}>
+      <LanguageSwitching>
+        <App />
+      </LanguageSwitching>
+    </ApolloProvider>
+  </HelmetProvider>,
+  document.getElementById('root'),
+)
 
 if (module.hot) {
   module.hot.accept()
