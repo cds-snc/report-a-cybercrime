@@ -13,38 +13,40 @@ export const TopBanner = props => {
   return (
     <Query query={GET_LANGUAGE_QUERY}>
       {({ data: { language } }) => (
-        <Container
-          bg={bg}
-          display="flex"
-          flexDirection="row"
-          width={1}
-          height={[50, null, 60]}
-          alignItems="center"
-          data-testid="background-color"
-        >
-          <Container ml={3} width={[250, null, 300]}>
-            <GoCSignature
-              width="100%"
-              lang={lang}
-              flag="#fff"
-              text="#fff"
-              css={css`
-                display: block;
-              `}
-            />
-          </Container>
+        <header>
           <Container
-            flex="1 1 auto"
-            mr={3}
-            css={css`
-              text-align: right;
-            `}
+            bg={bg}
+            display="flex"
+            flexDirection="row"
+            width={1}
+            height={[50, null, 60]}
+            alignItems="center"
+            data-testid="background-color"
           >
-            {language === 'en' ? null : <LanguageSwitcher language="en" />}
-            {language === 'fr' ? null : <LanguageSwitcher language="fr" />}
-            {language === 'de' ? null : <LanguageSwitcher language="de" />}
+            <Container ml={3} width={[250, null, 300]}>
+              <GoCSignature
+                width="100%"
+                lang={lang}
+                flag="#fff"
+                text="#fff"
+                css={css`
+                  display: block;
+                `}
+              />
+            </Container>
+            <Container
+              flex="1 1 auto"
+              mr={3}
+              css={css`
+                text-align: right;
+              `}
+            >
+              {language === 'en' ? null : <LanguageSwitcher language="en" />}
+              {language === 'fr' ? null : <LanguageSwitcher language="fr" />}
+              {language === 'de' ? null : <LanguageSwitcher language="de" />}
+            </Container>
           </Container>
-        </Container>
+        </header>
       )}
     </Query>
   )
