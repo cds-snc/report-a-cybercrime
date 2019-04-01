@@ -50,7 +50,7 @@ const App = () => (
           </script>
           <script>
             {`
-                if ('serviceWorker' in navigator) {
+                if ('REMOVE_THIS_LATER_serviceWorker' in navigator) {
                   window.addEventListener('load', () => {
                     navigator.serviceWorker.register('service-worker.js')
                   });
