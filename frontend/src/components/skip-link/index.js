@@ -18,8 +18,14 @@ const makeInvisible = css`
     z-index: 999;
   }
 `
-export const SkipLink = props => <A css={makeInvisible} {...props} />
+export const SkipLink = props => (
+  <A css={props.invisible ? makeInvisible : null} {...props} />
+)
 
+SkipLink.defaultProps = {
+  invisible: false,
+}
 SkipLink.propTypes = {
   children: PropTypes.any,
+  invisible: PropTypes.bool,
 }

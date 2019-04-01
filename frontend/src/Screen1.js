@@ -56,6 +56,8 @@ export const Screen1 = () => (
         />
       )}
     </ApolloConsumer>
-    <SkipLink href="#top">Skip to top</SkipLink>
+    <SkipLink invisible href="#top">
+      Skip to top
+    </SkipLink>
   </Container>
 )
