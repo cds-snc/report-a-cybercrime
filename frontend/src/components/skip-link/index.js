@@ -26,6 +26,5 @@ SkipLink.defaultProps = {
   invisible: false,
 }
 SkipLink.propTypes = {
-  children: PropTypes.any,
   invisible: PropTypes.bool,
 }
