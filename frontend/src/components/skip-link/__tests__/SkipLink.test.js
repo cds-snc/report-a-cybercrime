@@ -7,7 +7,7 @@ import { SkipLink } from '..'
 describe('SkipLinks', () => {
   afterEach(cleanup)
 
-  it('Renders without crashing', () => {
+  it('Render without crashing', () => {
     render(
       <ThemeProvider theme={theme}>
         <SkipLink to="#top">skip to top</SkipLink>
