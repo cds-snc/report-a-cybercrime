@@ -30,10 +30,7 @@ cache.writeData({
 })
 
 const client = new ApolloClient({
-  link: new HttpLink({
-    uri: '/graphql',
-    credentials: 'same-origin',
-  }),
+  link: new HttpLink(),
   cache,
   typeDefs,
   resolvers: {
