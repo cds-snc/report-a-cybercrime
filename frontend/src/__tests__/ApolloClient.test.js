@@ -2,7 +2,7 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import { language } from '../ClientResolvers'
-import fetch from 'unfetch'
+import fetch from 'isomorphic-unfetch'
 import gql from 'graphql-tag'
 
 describe('ApolloClient', () => {
