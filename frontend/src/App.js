@@ -48,14 +48,6 @@ const App = () => (
                 language,
               })}`}
           </script>
-          <script>
-            {`
-                if ('serviceWorker' in navigator) {
-                  window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('service-worker.js')
-                  });
-                }`}
-          </script>
         </Helmet>
         <Global
           styles={css`

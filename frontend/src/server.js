@@ -98,6 +98,17 @@ server
               ? `<script src="${assets.client.js}" defer></script>`
               : `<script src="${assets.client.js}" defer crossorigin></script>`
           }
+          ${
+            process.env.NODE_ENV === 'production'
+              ? `<script>
+                  if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', () => {
+                      navigator.serviceWorker.register('service-worker.js')
+                    });
+                  }
+                </script>`
+              : ''
+          }
         </head>
         <body ${helmet.bodyAttributes.toString()}>
           <div id="root">${markup}</div>
