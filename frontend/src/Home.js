@@ -10,6 +10,7 @@ import { Screen2 } from './Screen2'
 import { Screen3 } from './Screen3'
 import { Thanks } from './Thanks'
 import { PageNotFound } from './PageNotFound'
+import { Th1P1 } from './th1-p1'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -36,6 +37,7 @@ export const Home = () => (
         <Screen2 path="/old/form2" />
         <Screen3 path="/old/form3" />
         <Thanks path="/old/thanks" />
+        <Th1P1 path="/th1-p1" />
       </Router>
     </Screen>
   </Root>
