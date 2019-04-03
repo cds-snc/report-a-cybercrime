@@ -1,6 +1,7 @@
 const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
 const { Stats } = require('./Stats')
 const { Report } = require('./Report')
+const GraphQLEmail = require('./Email')
 
 const query = new GraphQLObjectType({
   name: 'Query',
@@ -50,6 +51,7 @@ const mutation = new GraphQLObjectType({
           whatWasInvolved,
           whatWasInvolvedOther,
           howWereYouAffected,
+          email,
           createdAt: new Date(Date.now()).toLocaleString('en-ca', {
             timeZone: 'America/Toronto',
           }),
