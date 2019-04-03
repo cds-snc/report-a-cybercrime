@@ -1,25 +1,48 @@
 import React from 'react'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
+import PropTypes from 'prop-types'
 import { Container } from './components/container'
-import { H1, H2 } from './components/header'
-import { P, Lead } from './components/paragraph'
-import { Ol } from './components/ordered-list'
-import { Li } from './components/list-item'
-import { Query } from 'react-apollo'
-import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
-import { TrackPageViews } from './TrackPageViews'
-import { jsx, css } from '@emotion/core'
+import { css } from '@emotion/core'
+import { Text } from './components/text'
 
-export const Counters = () => (
-  <Container>
-    <Container>
-      <P>
-        14 <Trans>Phone numbers</Trans>
-      </P>
+const Counter = props => (
+  <React.Fragment>
+    <Text textAlign="center" fontSize={[4, null, 6]}>
+      {' '}
+      {props.number}{' '}
+    </Text>
+    <Text textAlign="center"> {props.text}</Text>
+  </React.Fragment>
+)
+
+Counter.propTypes = {
+  number: PropTypes.number,
+  text: PropTypes.string,
+}
+
+export const Counters = props => (
+  <Container
+    display="flex"
+    flexDirection="row"
+    width={1}
+    height={55}
+    alignItems="top"
+    m="auto auto 0 auto"
+    css={css`
+      flex-shrink: 0;
+    `}
+    {...props}
+  >
+    <Container flex="0.5 0.5 auto">
+      <Counter number={111} text={<Trans>numbers</Trans>} />
     </Container>
-    <Container>
-      <P>30</P>
+
+    <Container flex="0.5 0.5 auto">
+      <Counter number={222} text={<Trans>URLs</Trans>} />
+    </Container>
+
+    <Container flex="0.5 0.5 auto">
+      <Counter number={333} text={<Trans>addresses</Trans>} />
     </Container>
   </Container>
 )
