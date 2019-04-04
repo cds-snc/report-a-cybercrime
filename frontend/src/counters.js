@@ -23,7 +23,12 @@ Counter.propTypes = {
   text: PropTypes.object,
 }
 
-export const Counters = props => (
+export const Counters = ({
+  websites,
+  phoneNumbers,
+  emailAddresses,
+  ...rest
+}) => (
   <Container
     display="flex"
     flexDirection="row"
@@ -34,18 +39,24 @@ export const Counters = props => (
     css={css`
       flex-shrink: 0;
     `}
-    {...props}
+    {...rest}
   >
-    <Container flex="0.5 0.5 auto">
-      <Counter number={2} text={<Trans>Phone numbers</Trans>} />
+    <Container data-testid="phoneNumbers" flex="0.5 0.5 auto">
+      <Counter number={phoneNumbers} text={<Trans>Phone numbers</Trans>} />
     </Container>
 
-    <Container flex="0.5 0.5 auto">
-      <Counter number={83} text={<Trans>Website links</Trans>} />
+    <Container data-testid="websites" flex="0.5 0.5 auto">
+      <Counter number={websites} text={<Trans>Website links</Trans>} />
     </Container>
 
-    <Container flex="0.5 0.5 auto">
-      <Counter number={666} text={<Trans>Email addresses</Trans>} />
+    <Container data-testid="emailAddresses" flex="0.5 0.5 auto">
+      <Counter number={emailAddresses} text={<Trans>Email addresses</Trans>} />
     </Container>
   </Container>
 )
+
+Counters.propTypes = {
+  websites: PropTypes.number,
+  phoneNumbers: PropTypes.number,
+  emailAddresses: PropTypes.number,
+}

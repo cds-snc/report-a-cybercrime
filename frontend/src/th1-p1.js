@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
-import { Link } from './components/link'
-import { H1, H2, H3 } from './components/header'
+import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
@@ -22,7 +21,7 @@ export const Th1P1 = () => (
       <Trans>Do you suspect a scam? Let us know.</Trans>
     </H1>
     <H2 fontSize={[3, null, 4]}>
-      <Trans>Tell us what you're worried about.</Trans>
+      <Trans>Tell us what you‘re worried about.</Trans>
     </H2>
 
     <P mt={[4, null, 5]}>
@@ -41,6 +40,6 @@ export const Th1P1 = () => (
     <P fontSize={[2, null, 3]}>
       <Trans>In the past month people have told us about:</Trans>
     </P>
-    <Counters mt={0} />
+    <Counters phoneNumbers={2} websites={83} emailAddresses={666} mt={0} />
   </CenterContent>
 )
