@@ -1,7 +1,6 @@
 /* global describe, test, expect */
 
 const { Kind } = require('graphql/language')
-
 const { URL } = require('../types/URL')
 
 // this file taken and modified from https://github.com/okgrow/graphql-scalars
@@ -75,7 +74,6 @@ const SHOULD_NOT_MATCH = [
   'http://foo.bar/foo(bar)baz quux',
   'ftps://foo.bar/',
   'http://-error-.invalid/',
-  // 'http://a.b--c.de/',
   'http://-a.b.co',
   'http://a.b-.co',
   'http://0.0.0.0',
@@ -86,7 +84,6 @@ const SHOULD_NOT_MATCH = [
   'http://123.123.123',
   'http://3628126748',
   'http://.www.foo.bar/',
-  // 'http://www.foo.bar./',
   'http://.www.foo.bar./',
   'http://10.1.1.1',
 ]
@@ -165,16 +162,16 @@ describe('URL', () => {
 
     describe('not a string', () => {
       test('serialize', () => {
-        expect(() => URL.serialize(123)).toThrow(/Value is not string/)
+        expect(() => URL.serialize(123)).toThrow(/Value is not a string/)
       })
 
       test('parseValue', () => {
-        expect(() => URL.parseValue(123)).toThrow(/Value is not string/)
+        expect(() => URL.parseValue(123)).toThrow(/Value is not a string/)
       })
 
       test('parseLiteral', () => {
         expect(() => URL.parseLiteral({ value: 123, kind: Kind.INT })).toThrow(
-          /Can only validate strings as URLs but got a/,
+          /Can only validate strings as URLs/,
         )
       })
     })
