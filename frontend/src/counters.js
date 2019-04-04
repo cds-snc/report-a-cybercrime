@@ -17,7 +17,7 @@ const Counter = props => (
 
 Counter.propTypes = {
   number: PropTypes.number,
-  text: PropTypes.string,
+  text: PropTypes.object,
 }
 
 export const Counters = props => (

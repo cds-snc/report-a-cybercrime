@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Link } from './components/link'
-import { H1, H2 } from './components/header'
+import { H1, H2, H3 } from './components/header'
 import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { Counters } from './counters'
@@ -24,11 +24,12 @@ export const Th1P1 = () => (
     <H2 fontSize={[3, null, 4]}>
       <Trans>To learn more about the tools used to commit cybercrime</Trans>
     </H2>
-    <P>
-      <Trans>It takes 1 step to provide an insecure identifier.</Trans>
-    </P>
 
-    <P mt={[1, null, 4]}>
+    <H3 fontSize={[3, null, 4]} mt={[6, null, 6]}>
+      <Trans>It takes 1 step to provide an insecure identifier.</Trans>
+    </H3>
+
+    <P>
       <Link fontSize={[3, null, 4]} lineHeight={[3, null, 4]} to={'form1'}>
         <Trans>Submit an identifier</Trans>
       </Link>
