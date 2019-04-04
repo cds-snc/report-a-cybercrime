@@ -11,6 +11,7 @@ import {
   fontWeight,
   width,
   height,
+  borders,
 } from 'styled-system'
 import tag from 'clean-tag'
 
@@ -25,7 +26,8 @@ export const StyledTextArea = styled(tag.textarea)`
   ${color};
   ${fontWeight};
   ${width};
-  ${height}
+  ${height};
+  ${borders}
 `
 StyledTextArea.propTypes = {
   ...display.propTypes,
