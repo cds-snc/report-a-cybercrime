@@ -21,11 +21,11 @@ export const Th1P1 = () => (
       <Trans>Do you suspect a scam? Let us know.</Trans>
     </H1>
     <H2 fontSize={[3, null, 4]}>
-      <Trans>Tell us what you‘re worried about.</Trans>
+      <Trans>Tell us what you‘re worried about and help protect others.</Trans>
     </H2>
 
     <P mt={[4, null, 5]}>
-      <Trans>You can share:</Trans>
+      <Trans>You can signal:</Trans>
     </P>
     <Ul mt={0}>
       <Li>an email address</Li>
@@ -38,8 +38,8 @@ export const Th1P1 = () => (
     </Button>
 
     <P fontSize={[2, null, 3]}>
-      <Trans>In the past month people have told us about:</Trans>
+      <Trans>In the past month, people have shared:</Trans>
     </P>
-    <Counters phoneNumbers={2} websites={83} emailAddresses={666} mt={0} />
+    <Counters emailAddresses={666} phoneNumbers={2} websites={83} mt={0} />
   </CenterContent>
 )
