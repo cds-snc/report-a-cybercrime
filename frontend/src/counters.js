@@ -7,11 +7,14 @@ import { Text } from './components/text'
 
 const Counter = props => (
   <React.Fragment>
-    <Text textAlign="center" fontSize={[4, null, 6]}>
+    <Text textAlign="center" fontSize={[5, null, 6]}>
       {' '}
       {props.number}{' '}
     </Text>
-    <Text textAlign="center"> {props.text}</Text>
+    <Text textAlign="center" fontSize={[2, null, 2]}>
+      {' '}
+      {props.text}
+    </Text>
   </React.Fragment>
 )
 
@@ -34,15 +37,15 @@ export const Counters = props => (
     {...props}
   >
     <Container flex="0.5 0.5 auto">
-      <Counter number={111} text={<Trans>numbers</Trans>} />
+      <Counter number={2} text={<Trans>Phone numbers</Trans>} />
     </Container>
 
     <Container flex="0.5 0.5 auto">
-      <Counter number={222} text={<Trans>URLs</Trans>} />
+      <Counter number={83} text={<Trans>Website links</Trans>} />
     </Container>
 
     <Container flex="0.5 0.5 auto">
-      <Counter number={333} text={<Trans>addresses</Trans>} />
+      <Counter number={666} text={<Trans>Email addresses</Trans>} />
     </Container>
   </Container>
 )
