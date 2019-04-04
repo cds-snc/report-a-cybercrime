@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -48,7 +47,7 @@ const MyForm = () => (
                 {({ input }) => (
                   <Container>
                     <TextArea
-                      width={[1, null, 4 / 5]}
+                      width={1}
                       border="1px solid black"
                       height={['100px', null, '200px']}
                       {...input}
@@ -71,7 +70,7 @@ const MyForm = () => (
                 {({ input, meta }) => (
                   <Container>
                     <TextArea
-                      width={[1, null, 4 / 5]}
+                      width={1}
                       border="1px solid black"
                       height={['35px', null, '45px']}
                       {...input}
@@ -88,11 +87,7 @@ const MyForm = () => (
                 )}
               </Field>
             </Container>
-            <Container
-              display="flex"
-              flexDirection="row"
-              width={[1, null, 4 / 5]}
-            >
+            <Container display="flex" flexDirection="row" width={1}>
               <Container width={1 / 2}>
                 <Button>
                   <Trans>&lt; Back</Trans>
@@ -117,7 +112,7 @@ const MyForm = () => (
 )
 
 export const Screen2 = () => (
-  <Container>
+  <Container width={['100%', null, '750px']} m="auto">
     <H1>Signal a suspected scam</H1>
     <TrackPageViews />
     <MyForm />
