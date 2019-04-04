@@ -14,7 +14,7 @@ const CenterContent = styled('div')`
   margin: auto;
 `
 
-export const Th1P1 = () => (
+export const Page1 = () => (
   <CenterContent>
     <TrackPageViews />
     <H1 fontSize={[5, null, 6]}>
