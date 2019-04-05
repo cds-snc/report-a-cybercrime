@@ -18,7 +18,6 @@ import { P, Lead } from './components/paragraph'
 /* eslint-disable-next-line */
 const submitAndNavigate = (client, data) => {
   // client.writeData({ data })
-  // console.log('hit submit')
   navigate('/summary')
 }
 
@@ -31,7 +30,7 @@ const validate = values => {
   let errors = {}
   if (!values.identifier) {
     errors.identifier = i18nMark(
-      'Please complete the form to tell us what was affected.',
+      'Please enter the contact information you suspect in the box.',
     )
   }
   return errors
@@ -47,14 +46,18 @@ const MyForm = () => (
             <Label htmlFor="identifier">
               {' '}
               <Lead mt={5}>
-                Enter a website link, email address, or phone number
+                <Trans>
+                  Enter a website link, email address, or phone number
+                </Trans>
               </Lead>
               <P fontSize={[2, null, 3]} lineHeight={[2, null, 3]} mb={2}>
                 {' '}
-                For example:
+                <Trans>For example:</Trans>
               </P>
               <Ul>
-                <Li>suspect@email.com</Li>
+                <Li>
+                  <Trans>suspect@email.com</Trans>
+                </Li>
                 <Li>www.scam.com</Li>
                 <Li>1-800-111-1111</Li>
               </Ul>
@@ -84,7 +87,7 @@ const MyForm = () => (
             <Container display="flex" flexDirection="row" width={1}>
               <Container width={1 / 2}>
                 <Button onClick={goBack}>
-                  <Trans>&lt; Back</Trans>
+                  &lt; <Trans>Back</Trans>
                 </Button>
               </Container>
               <Container width={1 / 2}>
@@ -94,7 +97,7 @@ const MyForm = () => (
                     float: right;
                   `}
                 >
-                  <Trans>Next &gt;</Trans>
+                  <Trans>Next</Trans> &gt;
                 </Button>
               </Container>
             </Container>
@@ -107,7 +110,9 @@ const MyForm = () => (
 
 export const Page2 = () => (
   <Container width={['100%', null, '750px']} m="auto">
-    <H1>Signal a suspected scam</H1>
+    <H1>
+      <Trans>Signal a suspected scam</Trans>
+    </H1>
     <TrackPageViews />
     <MyForm />
   </Container>
