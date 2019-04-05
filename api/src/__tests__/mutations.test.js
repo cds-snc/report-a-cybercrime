@@ -38,7 +38,6 @@ describe('Mutations', () => {
               flagPhoneNumber(phoneNumber: "555-555-5555") {
                 phoneNumber
                 summary {
-                  date
                   total
                 }
               }
@@ -52,7 +51,6 @@ describe('Mutations', () => {
           phoneNumber: '555-555-5555',
           summary: [
             {
-              date: '2019-04-03',
               total: 1,
             },
           ],
