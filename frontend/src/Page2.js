@@ -24,12 +24,12 @@ const submitAndNavigate = (client, data) => {
 
 const goBack = e => {
   e.preventDefault()
-  // console.log('go back')
+  window.location.href = '/'
 }
 
 const validate = values => {
   let errors = {}
-  if (!values.whatAreYouWorriedAbout || !values.identifier) {
+  if (!values.identifier) {
     errors.identifier = i18nMark(
       'Please complete the form to tell us what was affected.',
     )
@@ -105,7 +105,7 @@ const MyForm = () => (
   </ApolloConsumer>
 )
 
-export const Screen2 = () => (
+export const Page2 = () => (
   <Container width={['100%', null, '750px']} m="auto">
     <H1>Signal a suspected scam</H1>
     <TrackPageViews />

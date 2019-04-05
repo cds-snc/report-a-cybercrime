@@ -4,9 +4,9 @@ import { Trans } from '@lingui/macro'
 import styled from '@emotion/styled'
 import { PhaseBanner } from './components/phase-banner'
 import { Summary } from './Summary'
-import { Screen2 } from './Page2'
 import { PageNotFound } from './PageNotFound'
 import { Page1 } from './Page1'
+import { Page2 } from './Page2'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -28,7 +28,7 @@ export const Home = () => (
       <Router>
         <PageNotFound default />
         <Page1 path="/" />
-        <Screen2 path="/flag" />
+        <Page2 path="/flag" />
         <Summary path="/summary" />
       </Router>
     </Screen>
