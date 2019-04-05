@@ -3,7 +3,8 @@ import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { H1 } from './components/header'
-
+import { Ul } from './components/unordered-list'
+import { Li } from './components/list-item'
 import { ApolloConsumer } from 'react-apollo'
 import { TrackPageViews } from './TrackPageViews'
 import { i18nMark } from '@lingui/react'
@@ -12,17 +13,17 @@ import { jsx, css } from '@emotion/core'
 import { TextArea } from './components/text-area'
 import { Button } from './components/button'
 import { Label } from './components/label'
-import { P } from './components/paragraph'
+import { P, Lead } from './components/paragraph'
 
 const submitAndNavigate = (client, data) => {
   // client.writeData({ data })
-  console.log('hit submit')
+  // console.log('hit submit')
   navigate('/old/form3')
 }
 
 const goBack = e => {
   e.preventDefault()
-  console.log('go back')
+  // console.log('go back')
 }
 
 const validate = values => {
@@ -42,14 +43,21 @@ const MyForm = () => (
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <P fontSize={[3, null, 4]} mt={5}>
-              <Label htmlFor="identifier">
-                <Trans>
-                  {' '}
-                  Enter a website link, email address, or phone number
-                </Trans>
-              </Label>
-            </P>
+            <Label htmlFor="identifier">
+              {' '}
+              <Lead mt={5}>
+                Enter a website link, email address, or phone number
+              </Lead>
+              <P fontSize={[2, null, 3]} lineHeight={[2, null, 3]} mb={2}>
+                {' '}
+                For example:
+              </P>
+              <Ul>
+                <Li>suspect@email.com</Li>
+                <Li>www.scam.com</Li>
+                <Li>1-800-111-1111</Li>
+              </Ul>
+            </Label>
             <Container>
               <Field id="identifier" name="identifier">
                 {({ input, meta }) => (
