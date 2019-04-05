@@ -28,9 +28,15 @@ export const Page1 = () => (
       <Trans>You can signal:</Trans>
     </P>
     <Ul mt={0}>
-      <Li>an email address</Li>
-      <Li>a phone number</Li>
-      <Li>a website link</Li>
+      <Li>
+        <Trans>an email address</Trans>
+      </Li>
+      <Li>
+        <Trans>a phone number</Trans>
+      </Li>
+      <Li>
+        <Trans>a website link</Trans>
+      </Li>
     </Ul>
 
     <Button mb={[3, null, 5]}>
