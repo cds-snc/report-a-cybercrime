@@ -15,6 +15,7 @@ import { Button } from './components/button'
 import { Label } from './components/label'
 import { P, Lead } from './components/paragraph'
 
+/* eslint-disable-next-line */
 const submitAndNavigate = (client, data) => {
   // client.writeData({ data })
   // console.log('hit submit')
