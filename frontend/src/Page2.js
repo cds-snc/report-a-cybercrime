@@ -19,12 +19,12 @@ import { P, Lead } from './components/paragraph'
 const submitAndNavigate = (client, data) => {
   // client.writeData({ data })
   // console.log('hit submit')
-  navigate('/old/form3')
+  navigate('/summary')
 }
 
 const goBack = e => {
   e.preventDefault()
-  window.location.href = '/'
+  navigate('/')
 }
 
 const validate = values => {
