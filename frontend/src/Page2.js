@@ -20,6 +20,11 @@ const submitAndNavigate = (client, data) => {
   navigate('/old/form3')
 }
 
+const goBack = e => {
+  e.preventDefault()
+  console.log('go back')
+}
+
 const validate = values => {
   let errors = {}
   if (!values.whatAreYouWorriedAbout || !values.identifier) {
@@ -37,26 +42,6 @@ const MyForm = () => (
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <P fontSize={[3, null, 4]}>
-              <Label htmlFor="whatAreYouWorriedAbout">
-                <Trans>What are you worried about?</Trans>
-              </Label>
-            </P>
-            <Container>
-              <Field id="whatAreYouWorriedAbout" name="whatAreYouWorriedAbout">
-                {({ input }) => (
-                  <Container>
-                    <TextArea
-                      width={1}
-                      border="1px solid black"
-                      height={['100px', null, '200px']}
-                      {...input}
-                      placeholder=""
-                    />
-                  </Container>
-                )}
-              </Field>
-            </Container>
             <P fontSize={[3, null, 4]} mt={5}>
               <Label htmlFor="identifier">
                 <Trans>
@@ -89,7 +74,7 @@ const MyForm = () => (
             </Container>
             <Container display="flex" flexDirection="row" width={1}>
               <Container width={1 / 2}>
-                <Button>
+                <Button onClick={goBack}>
                   <Trans>&lt; Back</Trans>
                 </Button>
               </Container>
