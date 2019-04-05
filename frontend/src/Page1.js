@@ -42,7 +42,7 @@ export const Page1 = () => (
     <Button
       mb={[3, null, 5]}
       onClick={() => {
-        window.location.href = 'summary'
+        window.location.href = '/flag'
       }}
       value="Continue"
     >
