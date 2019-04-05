@@ -39,7 +39,13 @@ export const Page1 = () => (
       </Li>
     </Ul>
 
-    <Button mb={[3, null, 5]}>
+    <Button
+      mb={[3, null, 5]}
+      onClick={() => {
+        window.location.href = 'Page2'
+      }}
+      value="Continue"
+    >
       <Trans>Continue</Trans>
     </Button>
 
