@@ -24,7 +24,7 @@ const submitAndNavigate = (client, data) => {
 
 const goBack = e => {
   e.preventDefault()
-  navigate('/')
+  window.location.href = '/'
 }
 
 const validate = values => {
