@@ -27,7 +27,7 @@ describe('<Home/>', () => {
   afterEach(cleanup)
 
   describe('navigating to /', () => {
-    it('displays a coming soon message on the root route', async () => {
+    it('displays the Page 1 header', async () => {
       let history = createHistory(createMemorySource('/'))
 
       let { getAllByText } = render(
@@ -39,7 +39,7 @@ describe('<Home/>', () => {
       )
       await wait(0) // Wait for promises to resolve
 
-      expect(getAllByText(/Coming soon/)).toHaveLength(1)
+      expect(getAllByText(/Do you suspect a scam/)).toHaveLength(1)
     })
   })
 
