@@ -48,6 +48,18 @@ const App = () => (
                 language,
               })}`}
           </script>
+
+          {process.env.NODE_ENV === 'production' ? (
+            <script>
+              {`
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker.register('service-worker.js')
+                });
+              }
+            `}
+            </script>
+          ) : null}
         </Helmet>
         <Global
           styles={css`
