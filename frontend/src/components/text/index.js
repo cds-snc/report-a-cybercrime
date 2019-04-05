@@ -16,6 +16,7 @@ import {
   right,
   bottom,
   left,
+  textAlign,
 } from 'styled-system'
 import tag from 'clean-tag'
 
@@ -38,5 +39,6 @@ export const StyledSpan = styled(tag.span)`
   ${right};
   ${bottom};
   ${left};
+  ${textAlign}
 `
 export { Text } from './presets'
