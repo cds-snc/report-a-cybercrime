@@ -33,7 +33,6 @@ export const Counters = ({
     display="flex"
     flexDirection="row"
     width={1}
-    height={55}
     alignItems="top"
     m="auto auto 0 auto"
     css={css`
