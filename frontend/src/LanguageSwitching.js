@@ -6,8 +6,7 @@ import gql from 'graphql-tag'
 import { P } from './components/paragraph'
 import catalogFr from '../locale/fr/messages.js'
 import catalogEn from '../locale/en/messages.js'
-import catalogDe from '../locale/de/messages.js'
-const catalogs = { fr: catalogFr, en: catalogEn, de: catalogDe }
+const catalogs = { fr: catalogFr, en: catalogEn }
 
 export const LanguageSwitching = ({ children }) => (
   <Query

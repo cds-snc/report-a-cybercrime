@@ -10,6 +10,7 @@ import { Screen2 } from './Page2'
 import { Screen3 } from './Screen3'
 import { Thanks } from './Thanks'
 import { PageNotFound } from './PageNotFound'
+import { Page1 } from './Page1'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -30,7 +31,8 @@ export const Home = () => (
     <Screen>
       <Router>
         <PageNotFound default />
-        <NewLandingPage path="/" />
+        <Page1 path="/" />
+        <NewLandingPage path="/landingpage" />
         <LandingPage path="/old" />
         <Screen1 path="/old/form1" />
         <Screen2 path="/old/form2" />
