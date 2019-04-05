@@ -30,12 +30,7 @@ class Chart extends PureComponent {
             <CartesianGrid strokeDasharray="2 2" />
             <XAxis dataKey="date" />
             <YAxis dataKey="total" />
-            <Area
-              type="monotone"
-              dataKey="total"
-              stroke="#8884d8"
-              fill="#8884d8"
-            />
+            <Area type="monotone" dataKey="total" stroke="#000" fill="#999" />
           </AreaChart>
         </ResponsiveContainer>
       </div>
