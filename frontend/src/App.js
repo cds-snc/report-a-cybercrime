@@ -16,8 +16,6 @@ import { Content } from './components/container'
 const pageTitle = language => {
   if (language === 'fr') {
     return 'Racontez-nous votre histoire de cybercriminalité'
-  } else if (language === 'de') {
-    return 'Erzählen Sie uns Ihre Geschichte zur Cyberkriminalität.'
   } else {
     return 'Tell us your cybercrime story'
   }

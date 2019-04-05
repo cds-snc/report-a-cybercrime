@@ -50,5 +50,34 @@ describe('dbinit', () => {
         expect(count).toEqual(1)
       })
     })
+
+    describe('summariseByDay', () => {
+      it('returns reports grouped by date', async () => {
+        let phone = '613-986-5383'
+        let dbfunctions = await dbinit(db)
+
+        await dbfunctions.saveReport({
+          identifier: phone,
+          createdAt: '2019-04-03T18:42:32.381Z',
+        })
+
+        await dbfunctions.saveReport({
+          identifier: phone,
+          createdAt: '2019-04-02T18:42:32.384Z',
+        })
+
+        await dbfunctions.saveReport({
+          identifier: phone,
+          createdAt: '2019-04-02T18:47:32.384Z',
+        })
+
+        let count = await dbfunctions.summariseByDay(phone)
+
+        expect(count).toEqual([
+          { date: '2019-04-02', total: 2 },
+          { date: '2019-04-03', total: 1 },
+        ])
+      })
+    })
   })
 })
