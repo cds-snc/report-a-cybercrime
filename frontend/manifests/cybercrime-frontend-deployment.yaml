@@ -25,14 +25,14 @@ spec:
         app: cybercrime-frontend
     spec:
       containers:
-      - image: gcr.io/report-a-cyber-crime/frontend:master-5893344
+      - image: gcr.io/report-a-cybercrime-alpha/frontend:grey-goo-for-you-a9cf214
         imagePullPolicy: Always
         name: cybercrime-frontend
         env:
         - name: PORT
           value: '3000'
         - name: RAZZLE_SERVER_SIDE_API_URI
-          value: http://cybercrime-api.cybercrime-api.svc.cluster.local/graphql
+          value: http://cybercrime-api.cybercrime-api.svc.cluster.local:3000/graphql
         - name: RAZZLE_GOOGLE_ANALYTICS_ID
           value: 'UA-130179934-1'
         resources: {}

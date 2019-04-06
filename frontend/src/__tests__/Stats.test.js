@@ -3,29 +3,42 @@ import wait from 'waait'
 import { mount } from 'enzyme'
 import { MockedProvider } from 'react-apollo/test-utils'
 import { I18nProvider } from '@lingui/react'
-import gql from 'graphql-tag'
 import { Stats } from '../Stats'
 import en from '../../locale/en/messages.js'
+import { PHONENUMBERFLAGGINGSWITHIN } from '../utils/queriesAndMutations'
 const catalogs = { en }
+
+let mocks = [
+  {
+    request: {
+      query: PHONENUMBERFLAGGINGSWITHIN,
+      variables: { phone: '555-555-5555' },
+    },
+    result: {
+      data: {
+        stats: {
+          phoneNumberFlaggingsWithin: {
+            phoneNumber: '555-555-5555',
+            summary: [
+              { date: 'Monday', total: 6 },
+              { date: 'Tuesday', total: 9 },
+              { date: 'Wednesday', total: 23 },
+              { date: 'Thursday', total: 30 },
+              { date: 'Friday', total: 54 },
+            ],
+          },
+        },
+      },
+    },
+  },
+]
 
 describe('<Stats/>', () => {
   describe('when the API returns data', () => {
     it('displays stats', async () => {
-      let mocks = [
-        {
-          request: {
-            query: gql`
-              query GetStats {
-                stats {
-                  reportCount
-                }
-              }
-            `,
-          },
-          result: { data: { stats: { reportCount: 5 } } },
-        },
-      ]
-
+      /* eslint-disable no-console */
+      let warn = console.warn
+      console.warn = jest.fn()
       let wrapper = mount(
         <MockedProvider mocks={mocks} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -35,27 +48,14 @@ describe('<Stats/>', () => {
       )
 
       await wait(0)
-      expect(wrapper.text()).toMatch(/You are the 5th person/)
+      expect(wrapper.text()).toMatch(/Reports about 555-555-5555/)
+      console.warn = warn
+      /* eslint-enable no-console */
     })
   })
 
   describe('when loading', () => {
     it('displays an empty string', async () => {
-      let mocks = [
-        {
-          request: {
-            query: gql`
-              query GetStats {
-                stats {
-                  reportCount
-                }
-              }
-            `,
-          },
-          result: { data: { stats: { reportCount: 5 } } },
-        },
-      ]
-
       let wrapper = mount(
         <MockedProvider mocks={mocks} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -70,16 +70,14 @@ describe('<Stats/>', () => {
 
   describe('when an error is raised', () => {
     it('displays an error message', async () => {
+      /* eslint-disable no-console */
+      let warn = console.warn
+      console.warn = jest.fn()
       let mocks = [
         {
           request: {
-            query: gql`
-              query GetStats {
-                stats {
-                  reportCount
-                }
-              }
-            `,
+            query: PHONENUMBERFLAGGINGSWITHIN,
+            variables: { phone: '555-555-5555' },
           },
           error: new Error('sadness'),
         },
@@ -95,6 +93,8 @@ describe('<Stats/>', () => {
 
       await wait(0)
       expect(wrapper.text()).toMatch(/sadness/)
+      console.warn = warn
+      /* eslint-enable no-console */
     })
   })
 })

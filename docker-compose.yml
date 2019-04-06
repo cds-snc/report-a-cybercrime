@@ -47,7 +47,7 @@ services:
     environment:
       - RAZZLE_PORT=3000
       - RAZZLE_GOOGLE_ANALYTICS_ID
-      - RAZZLE_SERVER_SIDE_API_URI=http://api/graphql
+      - RAZZLE_SERVER_SIDE_API_URI=http://api:3002/graphql
     ports:
       - "3000"
       - "3001:3001"

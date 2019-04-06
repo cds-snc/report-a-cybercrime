@@ -12,6 +12,7 @@ import { Container } from './components/container'
 import { jsx } from '@emotion/core'
 import { Li } from './components/list-item'
 import { Ul } from './components/unordered-list'
+import { SkipLink } from './components/skip-link'
 
 export const Screen1 = () => (
   <Container m="auto" width={[1, 1 / 2, 1 / 4]}>
@@ -23,7 +24,8 @@ export const Screen1 = () => (
         <Trans>What Happened</Trans>
       </Text>
     </Breadcrumb>
-    <H1>
+
+    <H1 id="top" tabIndex="-1">
       <Trans>Describe what happened</Trans>
     </H1>
 
@@ -54,5 +56,8 @@ export const Screen1 = () => (
         />
       )}
     </ApolloConsumer>
+    <SkipLink invisible href="#top">
+      Skip to top
+    </SkipLink>
   </Container>
 )

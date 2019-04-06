@@ -1,11 +1,14 @@
 import React from 'react'
+import { HttpLink } from 'apollo-link-http'
+import { ApolloClient } from 'apollo-client'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import fetch from 'isomorphic-unfetch'
 import { ApolloProvider, renderToStringWithData } from 'react-apollo'
 import { LanguageSwitching } from './LanguageSwitching'
 import { HelmetProvider } from 'react-helmet-async'
 import express from 'express'
 import requestLanguage from 'express-request-language'
 import { ServerLocation } from '@reach/router'
-import createApolloClient from './utils/createApolloClient'
 import App from './App'
 
 let assets, publicDir
@@ -41,34 +44,55 @@ server
     res.status(200).send('yes')
   })
   .get('/*', async (req, res) => {
-    const client = createApolloClient({
-      initialState: { language: req.language },
+    const cache = new InMemoryCache()
+
+    // Add defaults for form fields
+    cache.writeData({
+      data: {
+        language: req.language,
+        whatHappened: '',
+        whatWasInvolved: [],
+        whatWasInvolvedOther: '',
+        howWereYouAffected: '',
+      },
+    })
+
+    const client = new ApolloClient({
       ssrMode: true,
-      uri: RAZZLE_SERVER_SIDE_API_URI,
+      link: new HttpLink({
+        uri: RAZZLE_SERVER_SIDE_API_URI,
+        fetch,
+      }),
+      cache,
     })
 
     const helmetContext = {}
 
-    const markup = await renderToStringWithData(
-      <HelmetProvider context={helmetContext}>
-        <ApolloProvider client={client}>
-          <ServerLocation url={req.url}>
-            <LanguageSwitching>
-              <App />
-            </LanguageSwitching>
-          </ServerLocation>
-        </ApolloProvider>
-      </HelmetProvider>,
-    )
+    let markup
+    try {
+      markup = await renderToStringWithData(
+        <HelmetProvider context={helmetContext}>
+          <ApolloProvider client={client}>
+            <ServerLocation url={req.url}>
+              <LanguageSwitching>
+                <App />
+              </LanguageSwitching>
+            </ServerLocation>
+          </ApolloProvider>
+        </HelmetProvider>,
+      )
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Data fetching during SSR Failed:', e)
+    }
 
     const { helmet } = helmetContext
 
-    res.status(200).send(`
-      <!DOCTYPE html>
+    res.status(200).send(
+      `<!DOCTYPE html>
       <html ${helmet.htmlAttributes.toString()}>
         <head>
-          ${helmet.title.toString()}
-          ${helmet.meta.toString()}
+          ${helmet.title.toString()} ${helmet.meta.toString()}
           ${helmet.link.toString()}
           ${
             assets.client.css
@@ -84,8 +108,8 @@ server
         <body ${helmet.bodyAttributes.toString()}>
           <div id="root">${markup}</div>
         </body>
-      </html>
-    `)
+      </html>`,
+    )
   })
 
 export default server
