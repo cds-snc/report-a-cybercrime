@@ -7,15 +7,15 @@ const { PhoneNumber } = require('../types/PhoneNumber')
 
 describe('PhoneNumber', () => {
   describe('valid', () => {
-    test('serialize', () => {
+    it('serialize', () => {
       expect(PhoneNumber.serialize('+17895551234')).toBe('+17895551234')
     })
 
-    test('parseValue', () => {
+    it('parseValue', () => {
       expect(PhoneNumber.parseValue('+17895551234')).toBe('+17895551234')
     })
 
-    test('parseLiteral', () => {
+    it('parseLiteral', () => {
       expect(
         PhoneNumber.parseLiteral({ value: '+17895551234', kind: Kind.STRING }),
       ).toBe('+17895551234')
@@ -24,7 +24,7 @@ describe('PhoneNumber', () => {
 
   describe('invalid', () => {
     describe('not a phone number', () => {
-      test('serialize', () => {
+      it('serialize', () => {
         expect(() =>
           PhoneNumber.serialize('this is not a phone number'),
         ).toThrow(
@@ -32,7 +32,7 @@ describe('PhoneNumber', () => {
         )
       })
 
-      test('parseValue', () => {
+      it('parseValue', () => {
         expect(() =>
           PhoneNumber.parseValue('this is not a phone number'),
         ).toThrow(
@@ -40,7 +40,7 @@ describe('PhoneNumber', () => {
         )
       })
 
-      test('parseLiteral', () => {
+      it('parseLiteral', () => {
         expect(() =>
           PhoneNumber.parseLiteral({
             value: 'this is not a phone number',
@@ -53,19 +53,19 @@ describe('PhoneNumber', () => {
     })
 
     describe('not a string', () => {
-      test('serialize', () => {
+      it('serialize', () => {
         expect(() => PhoneNumber.serialize(123)).toThrow(
           /Value is not a string/,
         )
       })
 
-      test('parseValue', () => {
+      it('parseValue', () => {
         expect(() => PhoneNumber.parseValue(123)).toThrow(
           /Value is not a string/,
         )
       })
 
-      test('parseLiteral', () => {
+      it('parseLiteral', () => {
         expect(() =>
           PhoneNumber.parseLiteral({ value: 123, kind: Kind.INT }),
         ).toThrow(/Can only validate strings as phone numbers/)
@@ -73,19 +73,19 @@ describe('PhoneNumber', () => {
     })
 
     describe('too short', () => {
-      test('serialize', () => {
+      it('serialize', () => {
         expect(() => PhoneNumber.serialize('+1789555123')).toThrow(
           /^Value is not a valid phone number of the form \+17895551234 \(10-15 digits\)/,
         )
       })
 
-      test('parseValue', () => {
+      it('parseValue', () => {
         expect(() => PhoneNumber.parseValue('+1789555123')).toThrow(
           /^Value is not a valid phone number of the form \+17895551234 \(10-15 digits\)/,
         )
       })
 
-      test('parseLiteral', () => {
+      it('parseLiteral', () => {
         expect(() =>
           PhoneNumber.parseLiteral({ value: '+1789555123', kind: Kind.STRING }),
         ).toThrow(
@@ -95,19 +95,19 @@ describe('PhoneNumber', () => {
     })
 
     describe('too long', () => {
-      test('serialize', () => {
+      it('serialize', () => {
         expect(() => PhoneNumber.serialize('+1789555123456789')).toThrow(
           /^Value is not a valid phone number of the form \+17895551234 \(10-15 digits\)/,
         )
       })
 
-      test('parseValue', () => {
+      it('parseValue', () => {
         expect(() => PhoneNumber.parseValue('+1789555123456789')).toThrow(
           /^Value is not a valid phone number of the form \+17895551234 \(10-15 digits\)/,
         )
       })
 
-      test('parseLiteral', () => {
+      it('parseLiteral', () => {
         expect(() =>
           PhoneNumber.parseLiteral({
             value: '+1789555123456789',
@@ -120,19 +120,19 @@ describe('PhoneNumber', () => {
     })
 
     describe('no plus sign', () => {
-      test('serialize', () => {
+      it('serialize', () => {
         expect(() => PhoneNumber.serialize('17895551234')).toThrow(
           /^Value is not a valid phone number of the form \+17895551234 \(10-15 digits\)/,
         )
       })
 
-      test('parseValue', () => {
+      it('parseValue', () => {
         expect(() => PhoneNumber.parseValue('17895551234')).toThrow(
           /^Value is not a valid phone number of the form \+17895551234 \(10-15 digits\)/,
         )
       })
 
-      test('parseLiteral', () => {
+      it('parseLiteral', () => {
         expect(() =>
           PhoneNumber.parseLiteral({ value: '17895551234', kind: Kind.STRING }),
         ).toThrow(
