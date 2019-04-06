@@ -92,28 +92,28 @@ describe('URL', () => {
   describe('valid', () => {
     // eslint-disable-next-line
     SHOULD_MATCH.forEach(url => {
-      test(`serialize ${url}`, () => {
+      it(`serialize ${url}`, () => {
         expect(URL.serialize(url)).toBe(url)
       })
-      test(`parseValue ${url}`, () => {
+      it(`parseValue ${url}`, () => {
         expect(URL.parseValue(url)).toBe(url)
       })
-      test(`parseLiteral ${url}`, () => {
+      it(`parseLiteral ${url}`, () => {
         expect(URL.parseLiteral({ value: url, kind: Kind.STRING })).toBe(url)
       })
     })
   })
 
   describe('valid - localhost', () => {
-    test('serialize', () => {
+    it('serialize', () => {
       expect(URL.serialize('http://localhost')).toBe('http://localhost')
     })
 
-    test('parseValue', () => {
+    it('parseValue', () => {
       expect(URL.parseValue('http://localhost')).toBe('http://localhost')
     })
 
-    test('parseLiteral', () => {
+    it('parseLiteral', () => {
       expect(
         URL.parseLiteral({ value: 'http://localhost', kind: Kind.STRING }),
       ).toBe('http://localhost')
@@ -121,19 +121,19 @@ describe('URL', () => {
   })
 
   describe('valid - localhost with port', () => {
-    test('serialize', () => {
+    it('serialize', () => {
       expect(URL.serialize('http://localhost:3000')).toBe(
         'http://localhost:3000',
       )
     })
 
-    test('parseValue', () => {
+    it('parseValue', () => {
       expect(URL.parseValue('http://localhost:3000')).toBe(
         'http://localhost:3000',
       )
     })
 
-    test('parseLiteral', () => {
+    it('parseLiteral', () => {
       expect(
         URL.parseLiteral({ value: 'http://localhost:3000', kind: Kind.STRING }),
       ).toBe('http://localhost:3000')
@@ -144,15 +144,15 @@ describe('URL', () => {
     describe('not a URL', () => {
       // eslint-disable-next-line
       SHOULD_NOT_MATCH.forEach(url => {
-        test(`serialize ${url}`, () => {
+        it(`serialize ${url}`, () => {
           expect(() => URL.serialize(url)).toThrow(/Value is not a valid URL/)
         })
 
-        test(`parseValue ${url}`, () => {
+        it(`parseValue ${url}`, () => {
           expect(() => URL.parseValue(url)).toThrow(/Value is not a valid URL/)
         })
 
-        test(`parseLiteral ${url}`, () => {
+        it(`parseLiteral ${url}`, () => {
           expect(() =>
             URL.parseLiteral({ value: url, kind: Kind.STRING }),
           ).toThrow(/Value is not a valid URL/)
@@ -161,15 +161,15 @@ describe('URL', () => {
     })
 
     describe('not a string', () => {
-      test('serialize', () => {
+      it('serialize', () => {
         expect(() => URL.serialize(123)).toThrow(/Value is not a string/)
       })
 
-      test('parseValue', () => {
+      it('parseValue', () => {
         expect(() => URL.parseValue(123)).toThrow(/Value is not a string/)
       })
 
-      test('parseLiteral', () => {
+      it('parseLiteral', () => {
         expect(() => URL.parseLiteral({ value: 123, kind: Kind.INT })).toThrow(
           /Can only validate strings as URLs/,
         )
