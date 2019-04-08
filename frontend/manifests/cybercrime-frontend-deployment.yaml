@@ -6,6 +6,7 @@ metadata:
     app: cybercrime-frontend
   annotations:
     flux.weave.works/automated: 'true'
+    flux.weave.works/tag.frontend: regex:master-*
   name: cybercrime-frontend
   namespace: cybercrime-frontend
 spec:
