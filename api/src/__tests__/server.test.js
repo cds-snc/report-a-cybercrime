@@ -54,7 +54,7 @@ describe('Queries', () => {
       })
     })
 
-    describe('phoneNumberFlaggingsWithin', () => {
+    describe('identifierFlaggingsWithin', () => {
       it('', async () => {
         let reports = await db.collection('reports')
         reports.save({ foo: 'I am a fake report' })
@@ -67,8 +67,8 @@ describe('Queries', () => {
             query: `
             {
               stats {
-                flags:phoneNumberFlaggingsWithin(phoneNumber: "555-555-5555") {
-                  phoneNumber
+                flags:identifierFlaggingsWithin(identifier: "555-555-5555") {
+                  identifier
                   summary {
                     date
                     total
@@ -84,7 +84,7 @@ describe('Queries', () => {
         } = response.body
         expect(stats).toEqual({
           flags: {
-            phoneNumber: '555-555-5555',
+            identifier: '555-555-5555',
             summary: [],
           },
         })

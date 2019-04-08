@@ -7,7 +7,7 @@ const { DB_USER: user, DB_URL: url, DB_PASSWORD: password } = process.env
 let db, drop, truncate
 
 describe('Mutations', () => {
-  describe('flagPhoneNumber', () => {
+  describe('flagIdentifier', () => {
     beforeAll(async () => {
       ;({ db, drop, truncate } = await makeTestDatabase({
         dbname: dbNameFromFile(__filename),
@@ -26,7 +26,7 @@ describe('Mutations', () => {
       await truncate()
     })
 
-    it('accepts a phone number and returns a summary', async () => {
+    it('accepts an identifier and returns a summary', async () => {
       let app = await Server(db)
 
       let response = await request(app)
@@ -35,8 +35,8 @@ describe('Mutations', () => {
         .send({
           query: `
             mutation {
-              flagPhoneNumber(phoneNumber: "555-555-5555") {
-                phoneNumber
+              flagIdentifier(identifier: "555-555-5555") {
+                identifier
                 summary {
                   total
                 }
@@ -47,8 +47,8 @@ describe('Mutations', () => {
 
       let { data } = response.body
       expect(data).toEqual({
-        flagPhoneNumber: {
-          phoneNumber: '555-555-5555',
+        flagIdentifier: {
+          identifier: '555-555-5555',
           summary: [
             {
               total: 1,
@@ -58,7 +58,7 @@ describe('Mutations', () => {
       })
     })
 
-    describe('phoneNumberFlaggingsWithin', () => {
+    describe('identifierFlaggingsWithin', () => {
       it('', async () => {
         let reports = await db.collection('reports')
         reports.save({ foo: 'I am a fake report' })
@@ -71,8 +71,8 @@ describe('Mutations', () => {
             query: `
             {
               stats {
-                flags:phoneNumberFlaggingsWithin(phoneNumber: "555-555-5555") {
-                  phoneNumber
+                flags:identifierFlaggingsWithin(identifier: "555-555-5555") {
+                  identifier
                   summary {
                     date
                     total
@@ -88,7 +88,7 @@ describe('Mutations', () => {
         } = response.body
         expect(stats).toEqual({
           flags: {
-            phoneNumber: '555-555-5555',
+            identifier: '555-555-5555',
             summary: [],
           },
         })

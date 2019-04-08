@@ -3,7 +3,7 @@ import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import PropTypes from 'prop-types'
 import { P } from './components/paragraph'
-import { PHONENUMBERFLAGGINGSWITHIN } from './utils/queriesAndMutations'
+import { IDENTIFIER_FLAGGINGS_WITHIN } from './utils/queriesAndMutations'
 import {
   AreaChart,
   Area,
@@ -42,8 +42,8 @@ Chart.propTypes = { data: PropTypes.array }
 
 export const Stats = () => (
   <Query
-    query={PHONENUMBERFLAGGINGSWITHIN}
-    variables={{ phone: '555-555-5555' }}
+    query={IDENTIFIER_FLAGGINGS_WITHIN}
+    variables={{ identifier: '555-555-5555' }}
     errorPolicy="all"
   >
     {({ loading, error, data }) => {
@@ -62,10 +62,10 @@ export const Stats = () => (
         <>
           <h3>
             <Trans>
-              Reports about {stats.phoneNumberFlaggingsWithin.phoneNumber}
+              Reports about {stats.identifierFlaggingsWithin.identifier}
             </Trans>
           </h3>
-          <Chart data={stats.phoneNumberFlaggingsWithin.summary} />
+          <Chart data={stats.identifierFlaggingsWithin.summary} />
         </>
       )
     }}

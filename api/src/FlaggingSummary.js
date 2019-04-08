@@ -14,9 +14,9 @@ const DailyTotal = new GraphQLObjectType({
 })
 
 const FlaggingSummary = new GraphQLObjectType({
-  name: 'PhoneNumberFlaggingsSummary',
+  name: 'identifierFlaggingsSummary',
   fields: () => ({
-    phoneNumber: { type: GraphQLString },
+    identifier: { type: GraphQLString },
     summary: { type: new GraphQLList(DailyTotal) },
   }),
 })

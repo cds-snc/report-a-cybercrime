@@ -12,19 +12,19 @@ const Stats = new GraphQLObjectType({
         return db.countReports()
       },
     },
-    phoneNumberFlaggingsWithin: {
+    identifierFlaggingsWithin: {
       type: FlaggingSummary,
-      description: 'Daily totals for the phone number specified',
+      description: 'Daily totals for the identifier specified',
       args: {
-        phoneNumber: {
+        identifier: {
           type: GraphQLString,
-          description: 'the suspects phone number',
+          description: 'the suspects identifier',
         },
       },
-      resolve: async (_root, { phoneNumber }, { db }) => {
-        let summary = await db.summariseByDay(phoneNumber)
+      resolve: async (_root, { identifier }, { db }) => {
+        let summary = await db.summariseByDay(identifier)
         return {
-          phoneNumber,
+          identifier,
           summary,
         }
       },
