@@ -52,6 +52,6 @@ export const Page1 = () => (
     <P fontSize={[2, null, 3]}>
       <Trans>In the past month, people have shared:</Trans>
     </P>
-    <Counters emailAddresses={666} phoneNumbers={2} websites={83} mt={0} />
+    <Counters emailAddresses={326} phoneNumbers={2} websites={83} mt={0} />
   </CenterContent>
 )
