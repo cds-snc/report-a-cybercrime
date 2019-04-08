@@ -12,10 +12,10 @@ const CenterContent = styled('div')`
 export const PageNotFound = () => (
   <CenterContent>
     <H1>
-      <Trans>Page not found</Trans>
+      <Trans>Page Not Found</Trans>
     </H1>
     <P>
-      <Trans>Sorry, the page you are trying to view does not exist.</Trans>
+      <Trans>Sorry, but the page you were trying to view does not exist.</Trans>
     </P>
 
     <TrackPageViews />
