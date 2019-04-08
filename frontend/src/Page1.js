@@ -18,10 +18,10 @@ export const Page1 = () => (
   <CenterContent>
     <TrackPageViews />
     <H1 fontSize={[5, null, 6]}>
-      <Trans>Do you suspect a scam? Let us know.</Trans>
+      <Trans>See a sign of trouble?</Trans>
     </H1>
     <H2 fontSize={[3, null, 4]}>
-      <Trans>Tell us what you‘re worried about and help protect others.</Trans>
+      <Trans>Let us know and help us identify cybercriminals.</Trans>
     </H2>
 
     <P mt={[4, null, 5]}>
@@ -52,6 +52,6 @@ export const Page1 = () => (
     <P fontSize={[2, null, 3]}>
       <Trans>In the past month, people have shared:</Trans>
     </P>
-    <Counters emailAddresses={666} phoneNumbers={2} websites={83} mt={0} />
+    <Counters emailAddresses={25} phoneNumbers={8} websites={83} mt={0} />
   </CenterContent>
 )
