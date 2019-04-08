@@ -18,7 +18,7 @@ export const Page1 = () => (
   <CenterContent>
     <TrackPageViews />
     <H1 fontSize={[5, null, 6]}>
-      <Trans>Do you suspect a scam? Let us know.</Trans>
+      <Trans>Do you suspect a scam or cybercrime? Let us know.</Trans>
     </H1>
     <H2 fontSize={[3, null, 4]}>
       <Trans>Tell us what you‘re worried about and help protect others.</Trans>
@@ -52,6 +52,6 @@ export const Page1 = () => (
     <P fontSize={[2, null, 3]}>
       <Trans>In the past month, people have shared:</Trans>
     </P>
-    <Counters emailAddresses={666} phoneNumbers={2} websites={83} mt={0} />
+    <Counters emailAddresses={25} phoneNumbers={8} websites={89} mt={0} />
   </CenterContent>
 )

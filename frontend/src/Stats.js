@@ -62,7 +62,8 @@ export const Stats = () => (
         <>
           <h3>
             <Trans>
-              Reports about {stats.phoneNumberFlaggingsWithin.phoneNumber}
+              You are not alone Reports about{' '}
+              {stats.phoneNumberFlaggingsWithin.phoneNumber}
             </Trans>
           </h3>
           <Chart data={stats.phoneNumberFlaggingsWithin.summary} />
