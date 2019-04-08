@@ -28,8 +28,8 @@ export const Home = () => (
       <Router>
         <PageNotFound default />
         <Page1 path="/" />
-        <Page2 path="/flag" />
-        <Summary path="/summary" />
+        <Page2 path="/signal" />
+        <Summary path="/thanks" />
       </Router>
     </Screen>
   </Root>
