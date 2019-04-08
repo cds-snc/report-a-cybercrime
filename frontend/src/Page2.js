@@ -47,7 +47,7 @@ const MyForm = () => (
               {' '}
               <Lead mt={5}>
                 <Trans>
-                  Enter an email address, phone number, or website link.
+                  Enter a website link, email address, or phone number
                 </Trans>
               </Lead>
               <P fontSize={[2, null, 3]} lineHeight={[2, null, 3]} mb={2}>
@@ -111,7 +111,7 @@ const MyForm = () => (
 export const Page2 = () => (
   <Container width={['100%', null, '750px']} m="auto">
     <H1>
-      <Trans>Signal a suspected scam or cybercrime</Trans>
+      <Trans>Signal a suspected scam</Trans>
     </H1>
     <TrackPageViews />
     <MyForm />
