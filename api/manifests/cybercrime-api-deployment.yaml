@@ -51,7 +51,7 @@ spec:
               name: cybercrime-api-secrets
               key: DB_PASSWORD
       containers:
-      - image: gcr.io/report-a-cybercrime-alpha/api:master-ba60a2b
+      - image: gcr.io/report-a-cybercrime-alpha/api:master-d69cd7f
         imagePullPolicy: Always
         name: cybercrime-api
         env:
