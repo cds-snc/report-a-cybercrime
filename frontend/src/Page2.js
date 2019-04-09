@@ -5,7 +5,8 @@ import { Form, Field } from 'react-final-form'
 import { H1 } from './components/header'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
-import { ApolloConsumer } from 'react-apollo'
+import { ApolloConsumer, Mutation } from 'react-apollo'
+import { FLAG_IDENTIFIER_MUTATION } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
 import { i18nMark } from '@lingui/react'
 import { Container } from './components/container'
@@ -16,8 +17,8 @@ import { Label } from './components/label'
 import { P, Lead } from './components/paragraph'
 
 /* eslint-disable-next-line */
-const submitAndNavigate = (client, data) => {
-  // client.writeData({ data })
+const submitAndNavigate = (flagIdentifier, data) => {
+  flagIdentifier({ variables: data })
   navigate('/summary')
 }
 
@@ -37,73 +38,77 @@ const validate = values => {
 }
 const MyForm = () => (
   <ApolloConsumer>
-    {client => (
-      <Form
-        onSubmit={data => submitAndNavigate(client, data)}
-        validate={validate}
-        render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <Label htmlFor="identifier">
-              {' '}
-              <Lead mt={5}>
-                <Trans>
-                  Enter a website link, email address, or phone number
-                </Trans>
-              </Lead>
-              <P fontSize={[2, null, 3]} lineHeight={[2, null, 3]} mb={2}>
-                {' '}
-                <Trans>For example:</Trans>
-              </P>
-              <Ul>
-                <Li>
-                  <Trans>suspect@email.com</Trans>
-                </Li>
-                <Li>www.scam.com</Li>
-                <Li>1-800-111-1111</Li>
-              </Ul>
-            </Label>
-            <Container>
-              <Field id="identifier" name="identifier">
-                {({ input, meta }) => (
-                  <Container>
-                    <TextArea
-                      width={1}
-                      border="1px solid black"
-                      height={['35px', null, '45px']}
-                      {...input}
-                      placeholder=""
-                    />
-                    <Container mt={3} display="inline-block">
-                      <P fontSize={[2, null, 3]} color="red">
-                        {meta.error && meta.touched && (
-                          <Trans id={meta.error} />
-                        )}
-                      </P>
-                    </Container>
+    {() => (
+      <Mutation mutation={FLAG_IDENTIFIER_MUTATION}>
+        {flagIdentifier => (
+          <Form
+            onSubmit={data => submitAndNavigate(flagIdentifier, data)}
+            validate={validate}
+            render={({ handleSubmit }) => (
+              <form onSubmit={handleSubmit}>
+                <Label htmlFor="identifier">
+                  {' '}
+                  <Lead mt={5}>
+                    <Trans>
+                      Enter a website link, email address, or phone number
+                    </Trans>
+                  </Lead>
+                  <P fontSize={[2, null, 3]} lineHeight={[2, null, 3]} mb={2}>
+                    {' '}
+                    <Trans>For example:</Trans>
+                  </P>
+                  <Ul>
+                    <Li>
+                      <Trans>suspect@email.com</Trans>
+                    </Li>
+                    <Li>www.scam.com</Li>
+                    <Li>1-800-111-1111</Li>
+                  </Ul>
+                </Label>
+                <Container>
+                  <Field id="identifier" name="identifier">
+                    {({ input, meta }) => (
+                      <Container>
+                        <TextArea
+                          width={1}
+                          border="1px solid black"
+                          height={['35px', null, '45px']}
+                          {...input}
+                          placeholder=""
+                        />
+                        <Container mt={3} display="inline-block">
+                          <P fontSize={[2, null, 3]} color="red">
+                            {meta.error && meta.touched && (
+                              <Trans id={meta.error} />
+                            )}
+                          </P>
+                        </Container>
+                      </Container>
+                    )}
+                  </Field>
+                </Container>
+                <Container display="flex" flexDirection="row" width={1}>
+                  <Container width={1 / 2}>
+                    <Button onClick={goBack}>
+                      &lt; <Trans>Back</Trans>
+                    </Button>
                   </Container>
-                )}
-              </Field>
-            </Container>
-            <Container display="flex" flexDirection="row" width={1}>
-              <Container width={1 / 2}>
-                <Button onClick={goBack}>
-                  &lt; <Trans>Back</Trans>
-                </Button>
-              </Container>
-              <Container width={1 / 2}>
-                <Button
-                  type="submit"
-                  css={css`
-                    float: right;
-                  `}
-                >
-                  <Trans>Next</Trans> &gt;
-                </Button>
-              </Container>
-            </Container>
-          </form>
+                  <Container width={1 / 2}>
+                    <Button
+                      type="submit"
+                      css={css`
+                        float: right;
+                      `}
+                    >
+                      <Trans>Next</Trans> &gt;
+                    </Button>
+                  </Container>
+                </Container>
+              </form>
+            )}
+          />
         )}
-      />
+      </Mutation>
     )}
   </ApolloConsumer>
 )
