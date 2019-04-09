@@ -7,7 +7,7 @@ metadata:
     app: cybercrime-api
   annotations:
     flux.weave.works/automated: 'true'
-    flux.weave.works/tag.api: regex:master-*
+    flux.weave.works/tag.cybercrime-api: glob:master-*
   name: cybercrime-api
 spec:
   replicas: 1
