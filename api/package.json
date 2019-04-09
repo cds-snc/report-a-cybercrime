@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "print-schema": "bin/print-schema > schema.graphql && git add ./schema.graphql",
     "lint": "eslint src/**",
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "start": "node index.js",
@@ -32,6 +33,7 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "husky": "^1.3.1",
     "jest": "^24.5.0",
     "prettier": "^1.16.4",
     "supertest": "^4.0.0"
@@ -42,5 +44,10 @@
     "setupFilesAfterEnv": [
       "<rootDir>/setUpJest.js"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run print-schema"
+    }
   }
 }
