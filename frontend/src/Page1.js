@@ -6,7 +6,6 @@ import { P } from './components/paragraph'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { ButtonLink } from './components/link'
-import { Button } from './components/button'
 import { TrackPageViews } from './TrackPageViews'
 import { Counters } from './counters'
 
