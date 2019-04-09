@@ -13,6 +13,7 @@ import { Container } from './components/container'
 import { jsx, css } from '@emotion/core'
 import { TextArea } from './components/text-area'
 import { Button } from './components/button'
+import { ButtonLink } from './components/link'
 import { Label } from './components/label'
 import { P, Lead } from './components/paragraph'
 
@@ -20,11 +21,6 @@ import { P, Lead } from './components/paragraph'
 const submitAndNavigate = (flagIdentifier, data) => {
   flagIdentifier({ variables: data })
   navigate('/summary')
-}
-
-const goBack = e => {
-  e.preventDefault()
-  window.location.href = '/'
 }
 
 const validate = values => {
@@ -90,9 +86,9 @@ const MyForm = () => (
                 </Container>
                 <Container display="flex" flexDirection="row" width={1}>
                   <Container width={1 / 2}>
-                    <Button onClick={goBack}>
+                    <ButtonLink onClick={e => e.preventDefault} to="/">
                       &lt; <Trans>Back</Trans>
-                    </Button>
+                    </ButtonLink>
                   </Container>
                   <Container width={1 / 2}>
                     <Button

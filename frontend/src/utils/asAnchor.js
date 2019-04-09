@@ -6,6 +6,7 @@ import {
   space,
   fontWeight,
   colorStyle,
+  display,
 } from 'styled-system'
 import cleanElement from 'clean-element'
 import PropTypes from 'prop-types'
@@ -25,6 +26,7 @@ export const asAnchor = AnchorType => {
     ...space.propTypes,
     ...colorStyle.propTypes,
     ...fontWeight.propTypes,
+    ...display.propTypes,
   }
 
   const StyledAnchor = styled(CleanAnchor)`
@@ -35,6 +37,7 @@ export const asAnchor = AnchorType => {
     ${space};
     ${colorStyle};
     ${fontWeight};
+    ${display};
   `
   return StyledAnchor
 }

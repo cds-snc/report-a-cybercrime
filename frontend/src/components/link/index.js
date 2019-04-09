@@ -1,4 +1,5 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
 import { asAnchor } from '../../utils/asAnchor'
 import { Link as ReachLink } from '@reach/router'
 import PropTypes from 'prop-types'
@@ -20,6 +21,29 @@ export const Link = props => (
 )
 
 Link.propTypes = {
+  children: PropTypes.any,
+}
+
+export const ButtonLink = props => (
+  <BaseLink
+    fontSize={[2, null, 3]}
+    fontWeight="normal"
+    lineHeight={[2, null, 3]}
+    colors="button"
+    mt={[2, null, 3]}
+    py={1}
+    px={[2, null, 3]}
+    {...props}
+    css={css`
+      text-decoration: none;
+    `}
+    display="inline-block"
+  >
+    {props.children}
+  </BaseLink>
+)
+
+ButtonLink.propTypes = {
   children: PropTypes.any,
 }
 
