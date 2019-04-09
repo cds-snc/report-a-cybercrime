@@ -1,4 +1,4 @@
-const { Email } = require('../Email')
+const { Email } = require('../types/Email')
 const { Kind } = require('graphql/language')
 const { GraphQLError } = require('graphql/error')
 
