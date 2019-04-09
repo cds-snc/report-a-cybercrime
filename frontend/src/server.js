@@ -68,17 +68,23 @@ server
 
     const helmetContext = {}
 
-    const markup = await renderToStringWithData(
-      <HelmetProvider context={helmetContext}>
-        <ApolloProvider client={client}>
-          <ServerLocation url={req.url}>
-            <LanguageSwitching>
-              <App />
-            </LanguageSwitching>
-          </ServerLocation>
-        </ApolloProvider>
-      </HelmetProvider>,
-    )
+    let markup
+    try {
+      markup = await renderToStringWithData(
+        <HelmetProvider context={helmetContext}>
+          <ApolloProvider client={client}>
+            <ServerLocation url={req.url}>
+              <LanguageSwitching>
+                <App />
+              </LanguageSwitching>
+            </ServerLocation>
+          </ApolloProvider>
+        </HelmetProvider>,
+      )
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Data fetching during SSR Failed:', e)
+    }
 
     const { helmet } = helmetContext
 

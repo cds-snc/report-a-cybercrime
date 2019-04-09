@@ -7,6 +7,7 @@ metadata:
     app: cybercrime-api
   annotations:
     flux.weave.works/automated: 'true'
+    flux.weave.works/tag.api: regex:master-*
   name: cybercrime-api
 spec:
   replicas: 1
@@ -50,7 +51,7 @@ spec:
               name: cybercrime-api-secrets
               key: DB_PASSWORD
       containers:
-      - image: gcr.io/report-a-cyber-crime/api:master-eb49e4c
+      - image: gcr.io/report-a-cybercrime-alpha/api:fix-jsyaml-vulnerabilties-70ee95c
         imagePullPolicy: Always
         name: cybercrime-api
         env:

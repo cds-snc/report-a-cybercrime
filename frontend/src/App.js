@@ -16,8 +16,6 @@ import { Content } from './components/container'
 const pageTitle = language => {
   if (language === 'fr') {
     return 'Racontez-nous votre histoire de cybercriminalité'
-  } else if (language === 'de') {
-    return 'Erzählen Sie uns Ihre Geschichte zur Cyberkriminalität.'
   } else {
     return 'Tell us your cybercrime story'
   }
@@ -48,14 +46,18 @@ const App = () => (
                 language,
               })}`}
           </script>
-          <script>
-            {`
-                if ('serviceWorker' in navigator) {
-                  window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('service-worker.js')
-                  });
-                }`}
-          </script>
+
+          {process.env.NODE_ENV === 'production' ? (
+            <script>
+              {`
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker.register('service-worker.js')
+                });
+              }
+            `}
+            </script>
+          ) : null}
         </Helmet>
         <Global
           styles={css`

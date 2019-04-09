@@ -14,7 +14,7 @@ describe('Server Side Rendering', () => {
       let { text } = response
 
       expect(text).toMatch(
-        /Ce site évoluera au fur et à mesure que nous testons des idées et apprenons des gens comme vous./,
+        /Ceci est un prototype à des fins de recherche seulement./,
       )
     })
   })
@@ -27,7 +27,7 @@ describe('Server Side Rendering', () => {
 
       let { text } = response
 
-      expect(text).toMatch(/We want to help people affected by cybercrime./)
+      expect(text).toMatch(/This is a prototype for research purposes only./)
     })
   })
 })

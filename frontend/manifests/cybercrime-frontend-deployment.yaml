@@ -6,6 +6,7 @@ metadata:
     app: cybercrime-frontend
   annotations:
     flux.weave.works/automated: 'true'
+    flux.weave.works/tag.frontend: regex:master-*
   name: cybercrime-frontend
   namespace: cybercrime-frontend
 spec:
@@ -25,7 +26,7 @@ spec:
         app: cybercrime-frontend
     spec:
       containers:
-      - image: gcr.io/report-a-cyber-crime/frontend:master-5893344
+      - image: gcr.io/report-a-cybercrime-alpha/frontend:fix-fonts-9584977
         imagePullPolicy: Always
         name: cybercrime-frontend
         env:
