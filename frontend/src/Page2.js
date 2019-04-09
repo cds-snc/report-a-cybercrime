@@ -86,7 +86,7 @@ const MyForm = () => (
                 </Container>
                 <Container display="flex" flexDirection="row" width={1}>
                   <Container width={1 / 2}>
-                    <ButtonLink onClick={e => e.preventDefault} to="/">
+                    <ButtonLink to="/">
                       &lt; <Trans>Back</Trans>
                     </ButtonLink>
                   </Container>
