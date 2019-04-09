@@ -5,20 +5,20 @@ import { MockedProvider } from 'react-apollo/test-utils'
 import { I18nProvider } from '@lingui/react'
 import { Stats } from '../Stats'
 import en from '../../locale/en/messages.js'
-import { PHONENUMBERFLAGGINGSWITHIN } from '../utils/queriesAndMutations'
+import { IDENTIFIER_FLAGGINGS_WITHIN } from '../utils/queriesAndMutations'
 const catalogs = { en }
 
 let mocks = [
   {
     request: {
-      query: PHONENUMBERFLAGGINGSWITHIN,
-      variables: { phone: '555-555-5555' },
+      query: IDENTIFIER_FLAGGINGS_WITHIN,
+      variables: { identifier: '555-555-5555' },
     },
     result: {
       data: {
         stats: {
-          phoneNumberFlaggingsWithin: {
-            phoneNumber: '555-555-5555',
+          identifierFlaggingsWithin: {
+            identifier: '555-555-5555',
             summary: [
               { date: 'Monday', total: 6 },
               { date: 'Tuesday', total: 9 },
@@ -76,8 +76,8 @@ describe('<Stats/>', () => {
       let mocks = [
         {
           request: {
-            query: PHONENUMBERFLAGGINGSWITHIN,
-            variables: { phone: '555-555-5555' },
+            query: IDENTIFIER_FLAGGINGS_WITHIN,
+            variables: { identifier: '555-555-5555' },
           },
           error: new Error('sadness'),
         },

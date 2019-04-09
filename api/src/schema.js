@@ -16,23 +16,23 @@ const query = new GraphQLObjectType({
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: () => ({
-    flagPhoneNumber: {
-      description: 'Flag a phone number',
+    flagIdentifier: {
+      description: 'Flag an identifier',
       type: FlaggingSummary,
       args: {
-        phoneNumber: {
+        identifier: {
           type: GraphQLString,
-          description: 'the suspects phone number',
+          description: 'the suspects identifier (phone no, url or email)',
         },
       },
-      resolve: async (_root, { phoneNumber }, { db }, _info) => {
+      resolve: async (_root, { identifier }, { db }, _info) => {
         await db.saveReport({
-          identifier: phoneNumber,
+          identifier: identifier,
           createdAt: new Date().toISOString(),
         })
-        let summary = await db.summariseByDay(phoneNumber)
+        let summary = await db.summariseByDay(identifier)
         return {
-          phoneNumber,
+          identifier,
           summary,
         }
       },

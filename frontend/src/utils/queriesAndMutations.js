@@ -6,11 +6,11 @@ export const GET_LANGUAGE_QUERY = gql`
   }
 `
 
-export const PHONENUMBERFLAGGINGSWITHIN = gql`
-  query($phone: String!) {
+export const IDENTIFIER_FLAGGINGS_WITHIN = gql`
+  query($identifier: String!) {
     stats {
-      phoneNumberFlaggingsWithin(phoneNumber: $phone) {
-        phoneNumber
+      identifierFlaggingsWithin(identifier: $identifier) {
+        identifier
         summary {
           date
           total
@@ -23,6 +23,14 @@ export const GET_STATS_QUERY = gql`
   query GetStats {
     stats {
       reportCount
+    }
+  }
+`
+
+export const FLAG_IDENTIFIER_MUTATION = gql`
+  mutation flagIdentifier($identifier: String) {
+    flagIdentifier(identifier: $identifier) {
+      identifier
     }
   }
 `
