@@ -4,9 +4,10 @@ import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 
 const ButtonLink = styled('button')`
+  font-family: ${({ theme }) => theme.fontSans};
+  font-size: ${({ theme }) => theme.fontSizes[2]};
   background: none;
   border: none;
-  font: inherit;
   color: white;
   text-decoration: underline;
   &:hover {
