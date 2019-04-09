@@ -19,7 +19,7 @@ const BaseButtonLink = styled(tag.button)`
     cursor: pointer;
   }
   &:focus {
-    outline: 3px solid #ffbf47;
+    outline: 3px solid ${({ theme }) => theme.colors.focusColor};
   }
 `
 
