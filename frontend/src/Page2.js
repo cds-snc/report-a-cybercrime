@@ -47,7 +47,7 @@ const MyForm = () => (
               {' '}
               <Lead mt={5}>
                 <Trans>
-                  Enter the suspicious website, email address, or phone number.
+                  Enter the suspicious email address, phone number, or website.
                 </Trans>
               </Lead>
               <P fontSize={[2, null, 3]} lineHeight={[2, null, 3]} mb={2}>

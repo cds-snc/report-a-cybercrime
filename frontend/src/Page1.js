@@ -25,7 +25,7 @@ export const Page1 = () => (
     </H2>
     <P mt={[4, null, 5]}>
       <Trans>
-        You can help us stop this from happening by sharing a suspicious:
+        You can help stop this from happening by sharing a suspicious:
       </Trans>
     </P>
     <Ul mt={0}>
@@ -54,8 +54,8 @@ export const Page1 = () => (
     </Button>
 
     <P fontSize={[2, null, 3]}>
-      <Trans>In the past month, people have shared:</Trans>
+      <Trans>Over the past month, people have shared:</Trans>
     </P>
-    <Counters emailAddresses={25} phoneNumbers={8} websites={83} mt={0} />
+    <Counters emailAddresses={25} phoneNumbers={65} websites={83} mt={0} />
   </CenterContent>
 )

@@ -24,8 +24,8 @@ export const Summary = () => (
     <P>
       <Trans>
         Everything we learn from people like you can help stop this from
-        happening again. Help us stop cybercrime and fraud by sharing this site
-        with others.
+        happening again. You can help us stop cybercrime and fraud by sharing
+        this site with others.
       </Trans>
     </P>
     <TrackPageViews />
@@ -37,7 +37,7 @@ export const Summary = () => (
       }}
       value="Tell us another"
     >
-      <Trans>Tell us another</Trans>
+      <Trans>Submit another</Trans>
     </Button>
   </Container>
 )
