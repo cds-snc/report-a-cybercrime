@@ -26,7 +26,7 @@ spec:
         app: cybercrime-frontend
     spec:
       containers:
-      - image: gcr.io/report-a-cybercrime-alpha/frontend:fix-fonts-ca53bcb
+      - image: gcr.io/report-a-cybercrime-alpha/frontend:fix-fonts-9584977
         imagePullPolicy: Always
         name: cybercrime-frontend
         env:
