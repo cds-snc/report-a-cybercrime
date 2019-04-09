@@ -18,26 +18,30 @@ export const Page1 = () => (
   <CenterContent>
     <TrackPageViews />
     <H1 fontSize={[5, null, 6]}>
-      <Trans>Do you suspect a scam? Let us know.</Trans>
+      <Trans>Do you suspect a scam, cybercrime, or fraud?</Trans>
     </H1>
     <H2 fontSize={[3, null, 4]}>
-      <Trans>Tell us what you‘re worried about and help protect others.</Trans>
+      <Trans />
     </H2>
-
     <P mt={[4, null, 5]}>
-      <Trans>You can signal:</Trans>
+      <Trans>
+        You can help us stop this from happening by sharing a suspicious:
+      </Trans>
     </P>
     <Ul mt={0}>
       <Li>
-        <Trans>an email address</Trans>
+        <Trans>email address</Trans>
       </Li>
       <Li>
-        <Trans>a phone number</Trans>
+        <Trans>phone number</Trans>
       </Li>
       <Li>
-        <Trans>a website link</Trans>
+        <Trans>website</Trans>
       </Li>
     </Ul>
+    <P mt={[4, null, 5]}>
+      <Trans>We'll use this information to investigate.</Trans>
+    </P>
 
     <Button
       mb={[3, null, 5]}
@@ -52,6 +56,6 @@ export const Page1 = () => (
     <P fontSize={[2, null, 3]}>
       <Trans>In the past month, people have shared:</Trans>
     </P>
-    <Counters emailAddresses={666} phoneNumbers={2} websites={83} mt={0} />
+    <Counters emailAddresses={25} phoneNumbers={8} websites={83} mt={0} />
   </CenterContent>
 )

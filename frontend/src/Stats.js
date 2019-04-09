@@ -3,6 +3,7 @@ import { Query } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import PropTypes from 'prop-types'
 import { P } from './components/paragraph'
+import { H3 } from './components/header'
 import { PHONENUMBERFLAGGINGSWITHIN } from './utils/queriesAndMutations'
 import {
   AreaChart,
@@ -60,11 +61,6 @@ export const Stats = () => (
       let { stats } = data
       return (
         <>
-          <h3>
-            <Trans>
-              Reports about {stats.phoneNumberFlaggingsWithin.phoneNumber}
-            </Trans>
-          </h3>
           <Chart data={stats.phoneNumberFlaggingsWithin.summary} />
         </>
       )
