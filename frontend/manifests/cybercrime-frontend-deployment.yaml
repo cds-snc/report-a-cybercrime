@@ -26,7 +26,7 @@ spec:
         app: cybercrime-frontend
     spec:
       containers:
-      - image: gcr.io/report-a-cybercrime-alpha/frontend:email-type-c853667
+      - image: gcr.io/report-a-cybercrime-alpha/frontend:email-type-1baadfb
         imagePullPolicy: Always
         name: cybercrime-frontend
         env:
