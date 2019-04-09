@@ -40,7 +40,7 @@ export const Page1 = () => (
       </Li>
     </Ul>
     <P mt={[4, null, 5]}>
-      <Trans>We'll use this information to investigate.</Trans>
+      <Trans>We‘ll use this information to investigate.</Trans>
     </P>
 
     <Button

@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Query } from 'react-apollo'
-import { Trans } from '@lingui/macro'
 import PropTypes from 'prop-types'
 import { P } from './components/paragraph'
-import { H3 } from './components/header'
 import { PHONENUMBERFLAGGINGSWITHIN } from './utils/queriesAndMutations'
 import {
   AreaChart,

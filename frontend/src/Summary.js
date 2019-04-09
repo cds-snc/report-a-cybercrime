@@ -3,7 +3,6 @@ import { Stats } from './Stats'
 import { TrackPageViews } from './TrackPageViews'
 import { jsx } from '@emotion/core'
 import { Container } from './components/container'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
@@ -16,7 +15,7 @@ export const Summary = () => (
     </H1>
 
     <H2 fontSize={[3, null, 4]}>
-      <Trans>You're the 10th person to help us with this.</Trans>
+      <Trans>You‘re the 10th person to help us with this.</Trans>
     </H2>
 
     <Stats />

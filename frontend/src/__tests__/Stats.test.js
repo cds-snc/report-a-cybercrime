@@ -48,7 +48,7 @@ describe('<Stats/>', () => {
       )
 
       await wait(0)
-      expect(wrapper.text()).toMatch(/Reports about 555-555-5555/)
+      expect(wrapper.text()).toMatch('')
       console.warn = warn
       /* eslint-enable no-console */
     })
