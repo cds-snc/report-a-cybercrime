@@ -5,7 +5,7 @@ import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
-import { Button } from './components/button'
+import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Counters } from './counters'
 
@@ -43,15 +43,9 @@ export const Page1 = () => (
       <Trans>We‘ll use this information to investigate.</Trans>
     </P>
 
-    <Button
-      mb={[3, null, 5]}
-      onClick={() => {
-        window.location.href = '/flag'
-      }}
-      value="Continue"
-    >
+    <ButtonLink mb={[3, null, 5]} to="/flag">
       <Trans>Continue</Trans>
-    </Button>
+    </ButtonLink>
 
     <P fontSize={[2, null, 3]}>
       <Trans>Over the past month, people have shared:</Trans>
