@@ -50,7 +50,8 @@ const MyForm = () => (
                   {' '}
                   <Lead mt={5}>
                     <Trans>
-                      Enter a website link, email address, or phone number
+                      Enter the suspicious email address, phone number, or
+                      website.
                     </Trans>
                   </Lead>
                   <P fontSize={[2, null, 3]} lineHeight={[2, null, 3]} mb={2}>
@@ -62,7 +63,7 @@ const MyForm = () => (
                       <Trans>suspect@email.com</Trans>
                     </Li>
                     <Li>www.scam.com</Li>
-                    <Li>1-800-111-1111</Li>
+                    <Li>1-888-111-1111</Li>
                   </Ul>
                 </Label>
                 <Container>
@@ -100,7 +101,7 @@ const MyForm = () => (
                         float: right;
                       `}
                     >
-                      <Trans>Next</Trans> &gt;
+                      <Trans>Submit</Trans> &gt;
                     </Button>
                   </Container>
                 </Container>
@@ -115,8 +116,8 @@ const MyForm = () => (
 
 export const Page2 = () => (
   <Container width={['100%', null, '750px']} m="auto">
-    <H1>
-      <Trans>Signal a suspected scam</Trans>
+    <H1 fontSize={[5, null, 6]}>
+      <Trans>What do you suspect?</Trans>
     </H1>
     <TrackPageViews />
     <MyForm />

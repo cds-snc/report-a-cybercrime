@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { Query } from 'react-apollo'
-import { Trans } from '@lingui/macro'
 import PropTypes from 'prop-types'
 import { P } from './components/paragraph'
 import { IDENTIFIER_FLAGGINGS_WITHIN } from './utils/queriesAndMutations'
@@ -58,16 +57,7 @@ export const Stats = () => (
         )
 
       let { stats } = data
-      return (
-        <>
-          <h3>
-            <Trans>
-              Reports about {stats.identifierFlaggingsWithin.identifier}
-            </Trans>
-          </h3>
-          <Chart data={stats.identifierFlaggingsWithin.summary} />
-        </>
-      )
+      return <Chart data={stats.identifierFlaggingsWithin.summary} />
     }}
   </Query>
 )

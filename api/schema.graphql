@@ -4,9 +4,13 @@ type DailyTotal {
 }
 
 type Mutation {
-  """Flag a phone number"""
+  """
+  Flag a phone number
+  """
   flagPhoneNumber(
-    """the suspects phone number"""
+    """
+    the suspects phone number
+    """
     phoneNumber: String
   ): PhoneNumberFlaggingsSummary
 }
@@ -17,7 +21,9 @@ type PhoneNumberFlaggingsSummary {
 }
 
 type Query {
-  """Stats about report collection"""
+  """
+  Stats about report collection
+  """
   stats: Stats
 }
 
@@ -29,28 +35,43 @@ type Report {
 }
 
 type Stats {
-  """The total number of reports submitted."""
+  """
+  The total number of reports submitted.
+  """
   reportCount: Int
 
-  """Daily totals for the phone number specified"""
+  """
+  Daily totals for the phone number specified
+  """
   phoneNumberFlaggingsWithin(
-    """the suspects phone number"""
+    """
+    the suspects phone number
+    """
     phoneNumber: String
   ): PhoneNumberFlaggingsSummary
 
-  """report stuff"""
+  """
+  report stuff
+  """
   saveReport(
-    """What happened"""
+    """
+    What happened
+    """
     whatHappened: String
 
-    """What was involved"""
+    """
+    What was involved
+    """
     whatWasInvolved: String
 
-    """Free text field for what was involved"""
+    """
+    Free text field for what was involved
+    """
     whatWasInvolvedOther: String
 
-    """How were you affected"""
+    """
+    How were you affected
+    """
     howWereYouAffected: String
   ): Report
 }
-
