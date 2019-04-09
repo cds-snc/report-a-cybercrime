@@ -2,20 +2,8 @@ import React from 'react'
 import { ApolloConsumer } from 'react-apollo'
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
+import { ButtonLink } from './components/button-link'
 
-const ButtonLink = styled('button')`
-  background: none;
-  border: none;
-  font: inherit;
-  color: white;
-  text-decoration: underline;
-  &:hover {
-    cursor: pointer;
-  }
-  &:focus {
-    outline: 3px solid #ffbf47;
-  }
-`
 const LanguageSwitcherStyle = styled('section')`
   align-content: right;
   display: block-inline;
