@@ -1,20 +1,19 @@
-# 101 jest-puppeteer RACC(Report A Cyper Crime)
+# 101 jest-puppeteer integration for RACC(Report A Cyper Crime) App
 
 This is an example of the very begining testing with jest-puppeteer
 
-<!-- [START usecases] -->
-
-###### What can I do with it in RACC App?
+#### What can I do with it in RACC App?
 
 Most things that you can do manually in the browser can be done using Puppeteer! Here are a few examples:
 
-- Report any accessibility issue with Axe-core API integrations(coming soon)
+- Report any accessibility issue with Axe-core API integrations
 - Automate form submission, UI testing, keyboard input, etc.
 - Create an up-to-date, automated testing environment.
 - Capture a [timeline trace](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/reference) of your site to help diagnose performance issues.
 - Generate screenshots and PDFs of pages.
 - and more ...
-  <!-- [END usecases] -->
+
+## Getting Started
 
 ```
 npm install
