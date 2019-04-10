@@ -65,7 +65,7 @@ const MyForm = () => (
                 <Container>
                   <Field id="identifier" name="identifier">
                     {({ input, meta }) => (
-                      <Container>
+                      <Container width={['100%', null, '600px']}>
                         <TextArea
                           width={1}
                           border="1px solid black"
@@ -84,7 +84,11 @@ const MyForm = () => (
                     )}
                   </Field>
                 </Container>
-                <Container display="flex" flexDirection="row" width={1}>
+                <Container
+                  display="flex"
+                  flexDirection="row"
+                  width={['100%', null, '600px']}
+                >
                   <Container width={1 / 2}>
                     <ButtonLink to="/">
                       &lt; <Trans>Back</Trans>
@@ -111,7 +115,7 @@ const MyForm = () => (
 )
 
 export const Page2 = () => (
-  <Container width={['100%', null, '750px']} m="auto">
+  <Container width={['100%', null, '600px']} m="auto">
     <H1 fontSize={[5, null, 6]}>
       <Trans>What do you suspect?</Trans>
     </H1>
