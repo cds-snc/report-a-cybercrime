@@ -6,6 +6,7 @@ import {
   lineHeight,
   space,
   color,
+  colorStyle,
   display,
   border,
   borderColor,
@@ -20,11 +21,13 @@ import {
 } from 'styled-system'
 
 export const Label = styled(tag.label)`
+  font-family: ${({ theme }) => theme.fontSans};
   ${fontSize};
   ${fontWeight};
   ${lineHeight};
   ${space};
   ${color};
+  ${colorStyle};
   ${display};
   ${border};
   ${borderColor};
