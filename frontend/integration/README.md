@@ -6,7 +6,7 @@ This is an example of the very begining testing with jest-puppeteer
 
 Most things that you can do manually in the browser can be done using Puppeteer! Here are a few examples:
 
-- Report any accessibility issue with Axe-core API integrations
+- Report any accessibility issue with Axe-core API integrations(coming soon)
 - Automate form submission, UI testing, keyboard input, etc.
 - Create an up-to-date, automated testing environment.
 - Capture a [timeline trace](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/reference) of your site to help diagnose performance issues.
