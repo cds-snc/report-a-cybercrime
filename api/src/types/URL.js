@@ -5,8 +5,6 @@ const { isUrl } = require('../utils')
 
 // this file taken and modified from https://github.com/okgrow/graphql-scalars
 
-// see https://gist.github.com/dperini/729294
-
 const URL = new GraphQLScalarType({
   name: 'URL',
 
