@@ -13,4 +13,8 @@ describe('app', () => {
       'suspisiuis@gmail.com',
     )
   })
+
+  it('should click a button with text Submit', async () => {
+    await expect(page).toClick('button', { text: 'Submit' })
+  })
 })
