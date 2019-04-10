@@ -1,8 +1,8 @@
-# 101 jest-puppeteer integration for RACC(Report A Cyper Crime) App
+# 101 jest-puppeteer integration for Report A Cyper Crime App
 
 This is an example of the very begining testing with jest-puppeteer
 
-#### What can I do with it in RACC App?
+#### What can I do with it in the App?
 
 Most things that you can do manually in the browser can be done using Puppeteer! Here are a few examples:
 
