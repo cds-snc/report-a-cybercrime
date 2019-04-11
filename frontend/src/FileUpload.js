@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { Component } from 'react'
-import { jsx } from '@emotion/core'
+import { jsx, css } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Button } from './components/button'
 import { Label } from './components/label'
@@ -8,17 +8,18 @@ import { P } from './components/paragraph'
 
 // based on https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#Examples
 
+const buttonStyle = css`
+  input:focus {
+    outline: 5px solid red;
+  }
+`
+
 export class FileUpload extends Component {
   state = {
     file: undefined,
   }
-  componentDidMount() {
-    var input = document.querySelector('input')
-    input.style.opacity = 0
-  }
 
   onChange = e => {
-    console.log(e.target.files[0])
     this.setState({ file: e.target.files[0] })
   }
 
@@ -26,7 +27,12 @@ export class FileUpload extends Component {
     return (
       <form>
         <div>
-          <Label colors="button" padding={1} htmlFor="image_uploads">
+          <Label
+            colors="button"
+            css={buttonStyle}
+            padding={1}
+            htmlFor="image_uploads"
+          >
             <Trans>Choose image to upload (PNG, JPG)</Trans>
           </Label>
           <input
@@ -35,6 +41,9 @@ export class FileUpload extends Component {
             name="image_uploads"
             accept=".jpg, .jpeg, .png"
             onChange={this.onChange}
+            css={css`
+              opacity: 0;
+            `}
           />
         </div>
         <P mt={4}>
