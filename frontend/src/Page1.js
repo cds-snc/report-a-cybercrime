@@ -7,7 +7,6 @@ import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
-import { Counters } from './counters'
 
 const CenterContent = styled('div')`
   max-width: 750px;
@@ -18,38 +17,32 @@ export const Page1 = () => (
   <CenterContent>
     <TrackPageViews />
     <H1 fontSize={[5, null, 6]}>
-      <Trans>Do you suspect a scam, cybercrime, or fraud?</Trans>
+      <Trans>Report a scam</Trans>
     </H1>
     <H2 fontSize={[3, null, 4]}>
-      <Trans />
+      <Trans>The RCMP needs your help to learn about scams in Canada.</Trans>
     </H2>
     <P mt={[4, null, 5]}>
-      <Trans>
-        You can help stop this from happening by sharing a suspicious:
-      </Trans>
+      <Trans>Tell the RCMP about a scam you received from:</Trans>
     </P>
     <Ul mt={0}>
       <Li>
-        <Trans>email address</Trans>
+        <Trans>an email address</Trans>
       </Li>
       <Li>
-        <Trans>phone number</Trans>
+        <Trans>a phone number</Trans>
       </Li>
       <Li>
-        <Trans>website</Trans>
+        <Trans>a website</Trans>
       </Li>
     </Ul>
-    <P mt={[4, null, 5]}>
-      <Trans>We‘ll use this information to investigate.</Trans>
-    </P>
-
-    <ButtonLink mb={[3, null, 5]} to="/flag">
-      <Trans>Continue</Trans>
-    </ButtonLink>
-
     <P fontSize={[2, null, 3]}>
-      <Trans>Over the past month, people have shared:</Trans>
+      <Trans>
+        Every report can help stop this from happening and protects others.
+      </Trans>
     </P>
-    <Counters emailAddresses={25} phoneNumbers={65} websites={83} mt={0} />
+    <ButtonLink mb={[3, null, 5]} to="/flag">
+      <Trans>Report now</Trans>
+    </ButtonLink>
   </CenterContent>
 )
