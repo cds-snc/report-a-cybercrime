@@ -27,8 +27,23 @@ describe('<Home/>', () => {
   afterEach(cleanup)
 
   describe('navigating to /', () => {
-    it('displays the Page 1 header', async () => {
+    it('displays a valid page', async () => {
       let history = createHistory(createMemorySource('/'))
+
+      let { queryByTestId } = render(
+        <MockedProvider mocks={mocks}>
+          <LocationProvider history={history}>
+            <Home />
+          </LocationProvider>
+        </MockedProvider>,
+      )
+      await wait(0) // Wait for promises to resolve
+      expect(queryByTestId('Scam')).toBeNull()
+    })
+  })
+  describe('navigating to /not-a-page', () => {
+    it('displays page not found', async () => {
+      let history = createHistory(createMemorySource('/not-a-page'))
 
       let { getAllByText } = render(
         <MockedProvider mocks={mocks}>
@@ -39,7 +54,7 @@ describe('<Home/>', () => {
       )
       await wait(0) // Wait for promises to resolve
 
-      expect(getAllByText(/Do you suspect a scam/)).toHaveLength(1)
+      expect(getAllByText(/Page Not Found/)).toHaveLength(1)
     })
   })
 })
