@@ -13,6 +13,8 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from 'recharts'
+import theme from './theme'
+import { ThemeContext } from '@emotion/core'
 
 class Chart extends PureComponent {
   render() {
@@ -28,15 +30,21 @@ class Chart extends PureComponent {
               margin={{
                 top: 0,
                 right: 0,
-                left: -25,
+                left: -20,
                 bottom: 0,
               }}
             >
               <CartesianGrid strokeDasharray="2 2" />
-              <XAxis dataKey="date" />
+              <XAxis fontFamily={theme.fontSans} dataKey="date" />
               <YAxis
                 dataKey="total"
-                label={{ value: i18nMark('Reports per day'), angle: -90 }}
+                fontFamily={theme.fontSans}
+                label={{
+                  value: i18nMark('Reports per day'),
+                  fontSize: '17px',
+                  angle: -90,
+                  fontFamily: theme.fontSans,
+                }}
               />
               <Area type="monotone" dataKey="total" stroke="#000" fill="#999" />
             </AreaChart>
