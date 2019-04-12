@@ -31,7 +31,7 @@ const validate = values => {
   let errors = {}
   if (!values.identifier) {
     errors.identifier = i18nMark(
-      'Please enter the contact information you suspect in the box.',
+      'Please enter information about the scam in the box.',
     )
   }
   return errors
@@ -48,23 +48,19 @@ const MyForm = () => (
               <form onSubmit={handleSubmit}>
                 <Label htmlFor="identifier">
                   {' '}
-                  <Lead mt={5}>
-                    <Trans>
-                      Enter the suspicious email address, phone number, or
-                      website.
-                    </Trans>
-                  </Lead>
+                  <Lead mt={5} />
                   <P fontSize={[2, null, 3]} lineHeight={[2, null, 3]} mb={2}>
                     {' '}
-                    <Trans>For example:</Trans>
                   </P>
-                  <Ul>
-                    <Li>
-                      <Trans>suspect@email.com</Trans>
-                    </Li>
-                    <Li>www.scam.com</Li>
-                    <Li>1-888-111-1111</Li>
-                  </Ul>
+                  <P fontSize={[2, null, 3]} lineHeight={[2, null, 3]} mb={2}>
+                    {' '}
+                    <Trans>
+                      <b>
+                        Enter the email address, phone number, or website of the
+                        scam:
+                      </b>
+                    </Trans>
+                  </P>
                 </Label>
                 <Container>
                   <Field id="identifier" name="identifier">
@@ -96,12 +92,12 @@ const MyForm = () => (
                   </Container>
                   <Container width={1 / 2}>
                     <Button
-                      type="submit"
+                      type="Submit"
                       css={css`
                         float: right;
                       `}
                     >
-                      <Trans>Submit</Trans> &gt;
+                      <Trans>Submit scam</Trans> &gt;
                     </Button>
                   </Container>
                 </Container>
@@ -117,7 +113,7 @@ const MyForm = () => (
 export const Page2 = () => (
   <Container width={['100%', null, '750px']} m="auto">
     <H1 fontSize={[5, null, 6]}>
-      <Trans>What do you suspect?</Trans>
+      <Trans>Report a scam</Trans>
     </H1>
     <TrackPageViews />
     <MyForm />

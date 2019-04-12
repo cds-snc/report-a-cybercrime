@@ -11,20 +11,19 @@ import { Button } from './components/button'
 export const Summary = () => (
   <Container mx={'auto'} width={[1, 1, 1]}>
     <H1 fontSize={[5, null, 6]}>
-      <Trans>Thank you for sharing.</Trans>
+      <Trans>Thank you for reporting.</Trans>
     </H1>
 
     <H2 fontSize={[3, null, 4]}>
-      <Trans>You‘re the 10th person to help us with this.</Trans>
+      <Trans>You‘re the 12th person to help us with this scam.</Trans>
     </H2>
 
     <Stats />
 
     <P>
       <Trans>
-        Everything we learn from people like you can help stop this from
-        happening again. You can help us stop cybercrime and fraud by sharing
-        this site with others.
+        Everything we learn from people like you can help stop scams like this
+        from happening.
       </Trans>
     </P>
     <TrackPageViews />
@@ -34,9 +33,9 @@ export const Summary = () => (
       onClick={() => {
         window.location.href = '/'
       }}
-      value="Tell us another"
+      value="Report again"
     >
-      <Trans>Submit another</Trans>
+      <Trans>Report again</Trans>
     </Button>
   </Container>
 )
