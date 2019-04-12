@@ -23,7 +23,7 @@ export const Summary = () => (
     <P>
       <Trans>
         Everything we learn from people like you can help stop scams like this
-        from happening.
+        from happening again.
       </Trans>
     </P>
     <TrackPageViews />
@@ -33,9 +33,9 @@ export const Summary = () => (
       onClick={() => {
         window.location.href = '/'
       }}
-      value="Report again"
+      value="Report"
     >
-      <Trans>Report again</Trans>
+      <Trans>Report another</Trans>
     </Button>
   </Container>
 )
