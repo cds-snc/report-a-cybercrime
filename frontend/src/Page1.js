@@ -5,9 +5,8 @@ import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
-import { Button } from './components/button'
+import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
-import { Counters } from './counters'
 
 const CenterContent = styled('div')`
   max-width: 750px;
@@ -42,15 +41,8 @@ export const Page1 = () => (
         Every report can help stop this from happening and protects others.
       </Trans>
     </P>
-
-    <Button
-      mb={[3, null, 5]}
-      onClick={() => {
-        window.location.href = '/flag'
-      }}
-      value="Report"
-    >
+    <ButtonLink mb={[3, null, 5]} to="/flag">
       <Trans>Report now</Trans>
-    </Button>
+    </ButtonLink>
   </CenterContent>
 )

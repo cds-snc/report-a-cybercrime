@@ -6,7 +6,7 @@ import { Container } from './components/container'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
-import { Button } from './components/button'
+import { ButtonLink } from './components/link'
 
 export const Summary = () => (
   <Container mx={'auto'} width={[1, 1, 1]}>
@@ -27,15 +27,8 @@ export const Summary = () => (
       </Trans>
     </P>
     <TrackPageViews />
-
-    <Button
-      mb={[3, null, 5]}
-      onClick={() => {
-        window.location.href = '/'
-      }}
-      value="Report"
-    >
+    <ButtonLink mb={[3, null, 5]} to="/">
       <Trans>Report another</Trans>
-    </Button>
+    </ButtonLink>
   </Container>
 )

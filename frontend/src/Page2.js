@@ -3,8 +3,6 @@ import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { H1 } from './components/header'
-import { Ul } from './components/unordered-list'
-import { Li } from './components/list-item'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import { FLAG_IDENTIFIER_MUTATION } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
@@ -13,6 +11,7 @@ import { Container } from './components/container'
 import { jsx, css } from '@emotion/core'
 import { TextArea } from './components/text-area'
 import { Button } from './components/button'
+import { ButtonLink } from './components/link'
 import { Label } from './components/label'
 import { P, Lead } from './components/paragraph'
 
@@ -20,11 +19,6 @@ import { P, Lead } from './components/paragraph'
 const submitAndNavigate = (flagIdentifier, data) => {
   flagIdentifier({ variables: data })
   navigate('/summary')
-}
-
-const goBack = e => {
-  e.preventDefault()
-  window.location.href = '/'
 }
 
 const validate = values => {
@@ -65,7 +59,7 @@ const MyForm = () => (
                 <Container>
                   <Field id="identifier" name="identifier">
                     {({ input, meta }) => (
-                      <Container>
+                      <Container width={['100%', null, '600px']}>
                         <TextArea
                           width={1}
                           border="1px solid black"
@@ -84,11 +78,15 @@ const MyForm = () => (
                     )}
                   </Field>
                 </Container>
-                <Container display="flex" flexDirection="row" width={1}>
+                <Container
+                  display="flex"
+                  flexDirection="row"
+                  width={['100%', null, '600px']}
+                >
                   <Container width={1 / 2}>
-                    <Button onClick={goBack}>
+                    <ButtonLink to="/">
                       &lt; <Trans>Back</Trans>
-                    </Button>
+                    </ButtonLink>
                   </Container>
                   <Container width={1 / 2}>
                     <Button
@@ -111,7 +109,7 @@ const MyForm = () => (
 )
 
 export const Page2 = () => (
-  <Container width={['100%', null, '750px']} m="auto">
+  <Container width={['100%', null, '600px']} m="auto">
     <H1 fontSize={[5, null, 6]}>
       <Trans>Report a scam</Trans>
     </H1>

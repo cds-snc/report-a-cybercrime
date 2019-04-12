@@ -3,21 +3,21 @@ type DailyTotal {
   total: Int
 }
 
-type Mutation {
-  """
-  Flag a phone number
-  """
-  flagPhoneNumber(
-    """
-    the suspects phone number
-    """
-    phoneNumber: String
-  ): PhoneNumberFlaggingsSummary
+type identifierFlaggingsSummary {
+  identifier: String
+  summary: [DailyTotal]
 }
 
-type PhoneNumberFlaggingsSummary {
-  phoneNumber: String
-  summary: [DailyTotal]
+type Mutation {
+  """
+  Flag an identifier
+  """
+  flagIdentifier(
+    """
+    the suspects identifier (phone no, url or email)
+    """
+    identifier: String
+  ): identifierFlaggingsSummary
 }
 
 type Query {
@@ -41,14 +41,14 @@ type Stats {
   reportCount: Int
 
   """
-  Daily totals for the phone number specified
+  Daily totals for the identifier specified
   """
-  phoneNumberFlaggingsWithin(
+  identifierFlaggingsWithin(
     """
-    the suspects phone number
+    the suspects identifier
     """
-    phoneNumber: String
-  ): PhoneNumberFlaggingsSummary
+    identifier: String
+  ): identifierFlaggingsSummary
 
   """
   report stuff
