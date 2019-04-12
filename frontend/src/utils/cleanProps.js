@@ -2,7 +2,7 @@ export const cleanProps = prop => {
   if (!styledSystemProps.includes(prop)) return prop
 }
 
-const styledSystemProps = [
+export const styledSystemProps = [
   'margin',
   'marginTop',
   'marginRight',
