@@ -88,8 +88,11 @@ server
 
     const { helmet } = helmetContext
 
-    res.status(200).send(
-      `<!DOCTYPE html>
+    res
+      .set({ 'Content-Language': req.language })
+      .status(200)
+      .send(
+        `<!DOCTYPE html>
       <html ${helmet.htmlAttributes.toString()}>
         <head>
           ${helmet.title.toString()} ${helmet.meta.toString()}
@@ -109,7 +112,7 @@ server
           <div id="root">${markup}</div>
         </body>
       </html>`,
-    )
+      )
   })
 
 export default server
