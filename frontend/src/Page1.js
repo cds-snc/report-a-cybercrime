@@ -20,7 +20,10 @@ export const Page1 = () => (
       <Trans>Report a scam</Trans>
     </H1>
     <H2 fontSize={[3, null, 4]}>
-      <Trans>The RCMP needs your help to learn about scams in Canada.</Trans>
+      <Trans>
+        The Royal Canadian Mounted Police (RCMP) needs your help to learn about
+        scams in Canada.
+      </Trans>
     </H2>
     <P mt={[4, null, 5]}>
       <Trans>Tell the RCMP about a scam you received from:</Trans>
