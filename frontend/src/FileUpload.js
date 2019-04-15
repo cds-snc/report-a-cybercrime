@@ -2,7 +2,6 @@
 import { Component } from 'react'
 import { jsx } from '@emotion/core'
 import { P } from './components/paragraph'
-import { Trans } from '@lingui/macro'
 import { Button } from './components/button'
 import { FileUpload } from './components/file-upload'
 
@@ -22,14 +21,12 @@ export class FileUploadPage extends Component {
       <div>
         <form margin="20px">
           <FileUpload onChange={this.onChange} accept=".jpg, .jpeg, .png">
-            <Trans>Choose an image</Trans>
+            Upload Image
           </FileUpload>
           <P mt={4}>
-            {this.state.file ? (
-              this.state.file.name
-            ) : (
-              <Trans>{'No files currently selected for upload'}</Trans>
-            )}
+            {this.state.file
+              ? this.state.file.name
+              : 'No files currently selected for upload'}
           </P>
           <div>
             <Button>Submit</Button>
