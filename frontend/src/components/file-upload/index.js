@@ -3,15 +3,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, css } from '@emotion/core'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
-import { Trans } from '@lingui/macro'
 import { Label } from '../label'
 import { Input } from '../input'
 
-export const FileUpload = ({ label, onChange, accept, ...props }) => {
+export const FileUpload = ({ onChange, accept, ...props }) => {
   return (
     <React.Fragment>
       <Label colors="button" padding={1} htmlFor="uploader" {...props}>
-        <Trans>{label}</Trans>
+        {props.children}
       </Label>
       <Input
         type="file"
@@ -35,7 +34,6 @@ FileUpload.defaultProps = {
 }
 
 FileUpload.propTypes = {
-  label: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
   accept: PropTypes.string,
   ...fontSize.propTypes,

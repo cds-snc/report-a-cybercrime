@@ -21,11 +21,9 @@ export class FileUploadPage extends Component {
     return (
       <div>
         <form margin="20px">
-          <FileUpload
-            label="Choose an image"
-            onChange={this.onChange}
-            accept=".jpg, .jpeg, .png"
-          />
+          <FileUpload onChange={this.onChange} accept=".jpg, .jpeg, .png">
+            <Trans>Choose an image</Trans>
+          </FileUpload>
           <P mt={4}>
             {this.state.file ? (
               this.state.file.name
