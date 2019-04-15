@@ -1,5 +1,6 @@
 export const cleanProps = prop => {
-  if (!styledSystemProps.includes(prop)) return prop
+  if (!styledSystemProps.includes(prop) && prop != 'as') return true
+  return false
 }
 
 export const styledSystemProps = [

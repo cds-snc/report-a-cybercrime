@@ -1,9 +1,11 @@
 import { fontSize, lineHeight, space, color, fontWeight } from 'styled-system'
-import tag from 'clean-tag'
+import { cleanProps } from '../../utils/cleanProps'
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 
-export const Header = styled(tag)`
+export const Header = styled('span', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
   ${fontSize};
@@ -14,7 +16,7 @@ export const Header = styled(tag)`
 `
 
 Header.propTypes = {
-  is: PropTypes.string.isRequired,
+  as: PropTypes.string.isRequired,
   ...fontSize.propTypes,
   ...lineHeight.propTypes,
   ...space.propTypes,

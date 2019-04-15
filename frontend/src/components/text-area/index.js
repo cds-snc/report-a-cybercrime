@@ -13,9 +13,11 @@ import {
   height,
   borders,
 } from 'styled-system'
-import tag from 'clean-tag'
+import { cleanProps } from '../../utils/cleanProps'
 
-export const StyledTextArea = styled(tag.textarea)`
+export const StyledTextArea = styled('textarea', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
   ${display};

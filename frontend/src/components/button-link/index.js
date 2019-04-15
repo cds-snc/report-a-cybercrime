@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
-import tag from 'clean-tag'
 import PropTypes from 'prop-types'
+import { cleanProps } from '../../utils/cleanProps'
 
-const BaseButtonLink = styled(tag.button)`
+const BaseButtonLink = styled('button', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   font-family: ${({ theme }) => theme.fontSans};
   background: none;
   border: none;

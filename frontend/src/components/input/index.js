@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import tag from 'clean-tag'
+import { cleanProps } from '../../utils/cleanProps'
 import {
   height,
   width,
@@ -15,7 +15,9 @@ import {
   zIndex,
 } from 'styled-system'
 
-export const Input = styled(tag.input)`
+export const Input = styled('input', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   ${height};
   ${width};
   ${space};

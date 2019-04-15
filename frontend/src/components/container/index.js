@@ -28,9 +28,11 @@ import {
   left,
   zIndex,
 } from 'styled-system'
-import tag from 'clean-tag'
+import { cleanProps } from '../../utils/cleanProps'
 
-export const Container = styled(tag.div)`
+export const Container = styled('div', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   ${alignItems}
   ${alignContent}
   ${justifyContent}
