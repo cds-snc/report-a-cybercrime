@@ -38,8 +38,6 @@
     "apollo-link-http": "^1.5.14",
     "babel-plugin-macros": "^2.5.1",
     "cds-size-plugin": "^1.2.0",
-    "clean-element": "^1.0.3",
-    "clean-tag": "3.0.0",
     "emotion": "^10.0.9",
     "emotion-server": "^10.0.9",
     "emotion-theming": "^10.0.9",
