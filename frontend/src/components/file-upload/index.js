@@ -1,66 +1,46 @@
+/** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
+import { jsx, css } from '@emotion/core'
+import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
+import { Trans } from '@lingui/macro'
 import { Label } from '../label'
-import { Text } from '../text'
 import { Input } from '../input'
 
-export const FileUpload = ({
-  meta,
-  children,
-  hint,
-  acceptedFormats,
-  onChange,
-  ...props
-}) => {
+export const FileUpload = ({ label, onChange, accept, ...props }) => {
   return (
-    <Label {...props}>
-      <Text error={meta.error}>{children}</Text>
-      {hint && (
-        <Text fontSize={[1, null, 1]} color="purple">
-          {hint}
-        </Text>
-      )}
-      {meta.touched && meta.error && <Text color="red">{meta.error}</Text>}
+    <React.Fragment>
+      <Label colors="button" padding={1} htmlFor="uploader" {...props}>
+        <Trans>{label}</Trans>
+      </Label>
       <Input
         type="file"
-        accept={acceptedFormats}
-        error={meta.error}
+        id="uploader"
+        name="uploader"
+        accept={accept}
         onChange={onChange}
-        ref={fileInput => console.log({ fileInput })}
+        css={css`
+          opacity: 0;
+        `}
       />
-    </Label>
+    </React.Fragment>
   )
 }
 
 FileUpload.defaultProps = {
-  hint: undefined,
-  meta: {},
-  acceptedFormats: undefined,
+  accept: undefined,
+  fontWeight: '400',
+  fontSize: [2, null, 3],
+  lineHeight: [2, null, 3],
 }
 
 FileUpload.propTypes = {
-  /**
-   * Optional hint text
-   */
-  hint: PropTypes.any,
-  /**
-   * Final form meta object, pending adjustment/removal
-   */
-  meta: PropTypes.shape({
-    active: PropTypes.bool,
-    dirty: PropTypes.bool,
-    dirtySinceLastSubmit: PropTypes.bool,
-    error: PropTypes.any,
-    initial: PropTypes.any,
-    invalid: PropTypes.bool,
-    pristine: PropTypes.bool,
-    submitError: PropTypes.any,
-    submitFailed: PropTypes.bool,
-    submitSucceeded: PropTypes.bool,
-    touched: PropTypes.bool,
-    valid: PropTypes.bool,
-    visited: PropTypes.bool,
-  }),
-  children: PropTypes.node.isRequired,
-  acceptedFormats: PropTypes.string,
+  label: PropTypes.node.isRequired,
+  onChange: PropTypes.func.isRequired,
+  accept: PropTypes.string,
+  ...fontSize.propTypes,
+  ...fontWeight.propTypes,
+  ...lineHeight.propTypes,
+  ...space.propTypes,
+  ...color.propTypes,
 }

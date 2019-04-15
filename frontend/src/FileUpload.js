@@ -1,20 +1,14 @@
 /** @jsx jsx */
 import { Component } from 'react'
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
+import { P } from './components/paragraph'
 import { Trans } from '@lingui/macro'
 import { Button } from './components/button'
-import { Label } from './components/label'
-import { P } from './components/paragraph'
+import { FileUpload } from './components/file-upload'
 
 // based on https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#Examples
 
-const buttonStyle = css`
-  input:focus {
-    outline: 5px solid red;
-  }
-`
-
-export class FileUpload extends Component {
+export class FileUploadPage extends Component {
   state = {
     file: undefined,
   }
@@ -25,38 +19,25 @@ export class FileUpload extends Component {
 
   render() {
     return (
-      <form>
-        <div>
-          <Label
-            colors="button"
-            css={buttonStyle}
-            padding={1}
-            htmlFor="image_uploads"
-          >
-            <Trans>Choose image to upload (PNG, JPG)</Trans>
-          </Label>
-          <input
-            type="file"
-            id="image_uploads"
-            name="image_uploads"
-            accept=".jpg, .jpeg, .png"
+      <div>
+        <form margin="20px">
+          <FileUpload
+            label="Choose an image"
             onChange={this.onChange}
-            css={css`
-              opacity: 0;
-            `}
+            accept=".jpg, .jpeg, .png"
           />
-        </div>
-        <P mt={4}>
-          {this.state.file ? (
-            this.state.file.name
-          ) : (
-            <Trans>{'No files currently selected for upload'}</Trans>
-          )}
-        </P>
-        <div>
-          <Button>Submit</Button>
-        </div>
-      </form>
+          <P mt={4}>
+            {this.state.file ? (
+              this.state.file.name
+            ) : (
+              <Trans>{'No files currently selected for upload'}</Trans>
+            )}
+          </P>
+          <div>
+            <Button>Submit</Button>
+          </div>
+        </form>
+      </div>
     )
   }
 }

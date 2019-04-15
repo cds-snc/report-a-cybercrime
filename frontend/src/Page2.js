@@ -16,12 +16,9 @@ import { Button } from './components/button'
 import { ButtonLink } from './components/link'
 import { Label } from './components/label'
 import { P, Lead } from './components/paragraph'
-import { FileUpload } from './components/file-upload'
 
 /* eslint-disable-next-line */
 const submitAndNavigate = (flagIdentifier, data) => {
-  console.log({ data })
-
   flagIdentifier({ variables: data })
   navigate('/summary')
 }
@@ -84,19 +81,6 @@ const MyForm = () => (
                           </P>
                         </Container>
                       </Container>
-                    )}
-                  </Field>
-
-                  <Field id="file" name="file">
-                    {({ meta }) => (
-                      <FileUpload
-                        meta={meta}
-                        hint={<Trans>Only jpg or png</Trans>}
-                        acceptedFormats=".jpg, .png"
-                        onChange={e => console.log(e.target.files[0])}
-                      >
-                        <Trans>Upload a File</Trans>
-                      </FileUpload>
                     )}
                   </Field>
                 </Container>
