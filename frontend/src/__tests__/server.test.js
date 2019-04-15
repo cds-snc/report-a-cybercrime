@@ -11,11 +11,8 @@ describe('Server Side Rendering', () => {
         .get('/')
         .set('Accept-Language', 'fr-CA')
 
-      let { text } = response
-
-      expect(text).toMatch(
-        /Ceci est un prototype à des fins de recherche seulement./,
-      )
+      let { headers } = response
+      expect(headers['content-language']).toEqual('fr')
     })
   })
 
@@ -25,9 +22,8 @@ describe('Server Side Rendering', () => {
         .get('/')
         .set('Accept-Language', 'en-US')
 
-      let { text } = response
-
-      expect(text).toMatch(/This is a prototype for research purposes only./)
+      let { headers } = response
+      expect(headers['content-language']).toEqual('en')
     })
   })
 })
