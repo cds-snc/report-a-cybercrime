@@ -15,7 +15,7 @@ export const PageNotFound = () => (
       <Trans>Page Not Found</Trans>
     </H1>
     <P>
-      <Trans>Sorry, but the page you were trying to view does not exist.</Trans>
+      <Trans>Sorry, the page you were trying to view does not exist.</Trans>
     </P>
 
     <TrackPageViews />

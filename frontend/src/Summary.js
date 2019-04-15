@@ -11,26 +11,24 @@ import { ButtonLink } from './components/link'
 export const Summary = () => (
   <Container mx={'auto'} width={[1, 1, 1]}>
     <H1 fontSize={[5, null, 6]}>
-      <Trans>Thank you for sharing.</Trans>
+      <Trans>Thank you for reporting.</Trans>
     </H1>
 
     <H2 fontSize={[3, null, 4]}>
-      <Trans>You‘re the 10th person to help us with this.</Trans>
+      <Trans>You‘re the 12th person to help us with this scam.</Trans>
     </H2>
 
     <Stats />
 
     <P>
       <Trans>
-        Everything we learn from people like you can help stop this from
-        happening again. You can help us stop cybercrime and fraud by sharing
-        this site with others.
+        Everything we learn from people like you can help stop scams like this
+        from happening again.
       </Trans>
     </P>
     <TrackPageViews />
-
     <ButtonLink mb={[3, null, 5]} to="/">
-      <Trans>Submit another</Trans>
+      <Trans>Report another</Trans>
     </ButtonLink>
   </Container>
 )
