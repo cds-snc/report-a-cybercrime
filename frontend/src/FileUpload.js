@@ -19,7 +19,7 @@ export class FileUploadPage extends Component {
   }
 
   submit = () => {
-    console.log('submitted:', this.state.file)
+    console.log('submitted:', this.state.file) // eslint-disable-line no-console
   }
 
   validate = () => {}

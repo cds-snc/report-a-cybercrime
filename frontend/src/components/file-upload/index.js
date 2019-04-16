@@ -5,7 +5,7 @@ import { jsx } from '@emotion/core'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 import { Label } from '../label'
 import { Input } from '../input'
-import('./index.css')
+require('./index.css')
 
 export const FileUpload = ({ onChange, accept, ...props }) => {
   return (
