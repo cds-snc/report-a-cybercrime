@@ -1,6 +1,5 @@
 const { GraphQLString, GraphQLObjectType, GraphQLInt } = require('graphql')
 const { FlaggingSummary } = require('./FlaggingSummary')
-const { Report } = require('./Report')
 
 const Stats = new GraphQLObjectType({
   name: 'Stats',
@@ -27,44 +26,6 @@ const Stats = new GraphQLObjectType({
           identifier,
           summary,
         }
-      },
-    },
-    saveReport: {
-      description: 'report stuff',
-      type: Report,
-      args: {
-        whatHappened: { type: GraphQLString, description: 'What happened' },
-        whatWasInvolved: {
-          type: GraphQLString,
-          description: 'What was involved',
-        },
-        whatWasInvolvedOther: {
-          type: GraphQLString,
-          description: 'Free text field for what was involved',
-        },
-        howWereYouAffected: {
-          type: GraphQLString,
-          description: 'How were you affected',
-        },
-      },
-      resolve: (
-        _root,
-        {
-          whatHappened,
-          whatWasInvolved,
-          whatWasInvolvedOther,
-          howWereYouAffected,
-        },
-        { db },
-        _info,
-      ) => {
-        return db.saveReport({
-          whatHappened,
-          whatWasInvolved,
-          whatWasInvolvedOther,
-          howWereYouAffected,
-          createdAt: new Date().toISOString(),
-        })
       },
     },
   }),

@@ -21,13 +21,6 @@ type Query {
   stats: Stats
 }
 
-type Report {
-  whatHappened: String
-  whatWasInvolved: String
-  whatWasInvolvedOther: String
-  howWereYouAffected: String
-}
-
 type Stats {
   """The total number of reports submitted."""
   reportCount: Int
@@ -37,20 +30,5 @@ type Stats {
     """the suspects identifier"""
     identifier: String
   ): identifierFlaggingsSummary
-
-  """report stuff"""
-  saveReport(
-    """What happened"""
-    whatHappened: String
-
-    """What was involved"""
-    whatWasInvolved: String
-
-    """Free text field for what was involved"""
-    whatWasInvolvedOther: String
-
-    """How were you affected"""
-    howWereYouAffected: String
-  ): Report
 }
 
