@@ -35,7 +35,7 @@ describe('<Checkbox />', () => {
     expect(test).toHaveStyle('font-size: 34pt;')
   })
 
-  test('uploads file', async () => {
+  test('chooses a file', async () => {
     const onChange = jest.fn()
     const file = new File(['test'], 'testfile')
     const { getByLabelText } = render(
