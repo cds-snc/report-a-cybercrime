@@ -54,7 +54,7 @@ describe('<Home/>', () => {
       )
       await wait(0) // Wait for promises to resolve
 
-      expect(getAllByText(/Page Not Found/)).toHaveLength(1)
+      expect(getAllByText(/Page not found/)).toHaveLength(1)
     })
   })
 })
