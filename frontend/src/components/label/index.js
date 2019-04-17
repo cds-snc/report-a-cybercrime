@@ -6,6 +6,7 @@ import {
   lineHeight,
   space,
   color,
+  colorStyle,
   display,
   border,
   borderColor,
@@ -22,11 +23,13 @@ import {
 export const Label = styled('label', {
   shouldForwardProp: prop => cleanProps(prop),
 })`
+  font-family: ${({ theme }) => theme.fontSans};
   ${fontSize};
   ${fontWeight};
   ${lineHeight};
   ${space};
   ${color};
+  ${colorStyle};
   ${display};
   ${border};
   ${borderColor};
