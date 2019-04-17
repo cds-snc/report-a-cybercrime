@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import tag from 'clean-tag'
+import { cleanProps } from '../../utils/cleanProps'
 import {
   fontSize,
   fontWeight,
@@ -20,7 +20,9 @@ import {
   left,
 } from 'styled-system'
 
-export const Label = styled(tag.label)`
+export const Label = styled('label', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   font-family: ${({ theme }) => theme.fontSans};
   ${fontSize};
   ${fontWeight};

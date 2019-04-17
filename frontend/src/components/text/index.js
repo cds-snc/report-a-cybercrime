@@ -18,9 +18,11 @@ import {
   left,
   textAlign,
 } from 'styled-system'
-import tag from 'clean-tag'
+import { cleanProps } from '../../utils/cleanProps'
 
-export const StyledSpan = styled(tag.span)`
+export const StyledSpan = styled('span', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
   ${fontSize};

@@ -6,10 +6,12 @@ import {
   fontWeight,
   display,
 } from 'styled-system'
-import tag from 'clean-tag'
+import { cleanProps } from '../../utils/cleanProps'
 import styled from '@emotion/styled'
 
-export const ListItem = styled(tag.li)`
+export const ListItem = styled('li', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
   ${fontSize};
