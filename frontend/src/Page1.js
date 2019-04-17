@@ -22,11 +22,11 @@ export const Page1 = () => (
     <H2 fontSize={[3, null, 4]}>
       <Trans>
         The Royal Canadian Mounted Police (RCMP) needs your help to learn about
-        scams in Canada.
+        scams.
       </Trans>
     </H2>
     <P mt={[4, null, 5]}>
-      <Trans>Tell the RCMP about a scam you received from:</Trans>
+      <Trans>Tell the RCMP about a scam you received by submitting:</Trans>
     </P>
     <Ul mt={0}>
       <Li>
@@ -41,7 +41,7 @@ export const Page1 = () => (
     </Ul>
     <P fontSize={[2, null, 3]}>
       <Trans>
-        Every report can help stop this from happening and protects others.
+        Every report can help stop this from happening and protect others.
       </Trans>
     </P>
     <ButtonLink mb={[3, null, 5]} to="/flag">

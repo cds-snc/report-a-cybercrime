@@ -23,12 +23,12 @@ export const Summary = () => (
     <P>
       <Trans>
         Everything we learn from people like you can help stop scams like this
-        from happening again.
+        from happening.
       </Trans>
     </P>
     <TrackPageViews />
     <ButtonLink mb={[3, null, 5]} to="/">
-      <Trans>Report another</Trans>
+      <Trans>Report another scam</Trans>
     </ButtonLink>
   </Container>
 )
