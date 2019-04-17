@@ -49,7 +49,7 @@
     "graphql": "^14.2.1",
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
-    "razzle": "3.0.0-alpha.0",
+    "razzle": "3.0.0",
     "react": "^16.8.6",
     "react-apollo": "2.5.4",
     "react-dom": "^16.8.6",
