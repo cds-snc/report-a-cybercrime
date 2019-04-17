@@ -8,7 +8,7 @@ import {
   colorStyle,
   display,
 } from 'styled-system'
-import cleanElement from 'clean-element'
+import { cleanProps } from './cleanProps'
 import PropTypes from 'prop-types'
 
 export const asAnchor = AnchorType => {
@@ -18,18 +18,9 @@ export const asAnchor = AnchorType => {
     children: PropTypes.any,
   }
 
-  const CleanAnchor = cleanElement(Anchor)
-
-  CleanAnchor.propTypes = {
-    ...fontSize.propTypes,
-    ...lineHeight.propTypes,
-    ...space.propTypes,
-    ...colorStyle.propTypes,
-    ...fontWeight.propTypes,
-    ...display.propTypes,
-  }
-
-  const StyledAnchor = styled(CleanAnchor)`
+  const StyledAnchor = styled(Anchor, {
+    shouldForwardProp: prop => cleanProps(prop),
+  })`
     font-family: ${({ theme }) => theme.fontSans};
     margin: 0;
     ${fontSize};
@@ -39,5 +30,15 @@ export const asAnchor = AnchorType => {
     ${fontWeight};
     ${display};
   `
+
+  StyledAnchor.propTypes = {
+    ...fontSize.propTypes,
+    ...lineHeight.propTypes,
+    ...space.propTypes,
+    ...colorStyle.propTypes,
+    ...fontWeight.propTypes,
+    ...display.propTypes,
+  }
+
   return StyledAnchor
 }

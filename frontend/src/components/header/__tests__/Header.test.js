@@ -8,7 +8,7 @@ describe('<Header />', () => {
   afterEach(cleanup)
 
   it('Properly render child components', () => {
-    const { getAllByText } = render(<Header is="h1">foo</Header>)
+    const { getAllByText } = render(<Header as="h1">foo</Header>)
 
     const test = getAllByText(/foo/)
     expect(test).toHaveLength(1)
@@ -17,7 +17,7 @@ describe('<Header />', () => {
   it('Properly handles font size props', () => {
     const { getByText } = render(
       <ThemeProvider theme={{ fontSizes: ['14px'] }}>
-        <Header fontSize={0} is="h1">
+        <Header fontSize={0} as="h1">
           foo
         </Header>
       </ThemeProvider>,
@@ -30,7 +30,7 @@ describe('<Header />', () => {
   it('Properly handles line height props', () => {
     const { getByText } = render(
       <ThemeProvider theme={{ lineHeights: ['1'] }}>
-        <Header lineHeight={0} is="h1">
+        <Header lineHeight={0} as="h1">
           foo
         </Header>
       </ThemeProvider>,
@@ -43,7 +43,7 @@ describe('<Header />', () => {
   it('Properly handles space props', () => {
     const { getByText } = render(
       <ThemeProvider theme={{ space: ['5px', '10px'] }}>
-        <Header p={0} ml={1} is="h1">
+        <Header p={0} ml={1} as="h1">
           foo
         </Header>
       </ThemeProvider>,
@@ -57,7 +57,7 @@ describe('<Header />', () => {
   it('Properly handles color props', () => {
     const { getByText } = render(
       <ThemeProvider theme={{ colors: { blue: '#005ea5' } }}>
-        <Header color="blue" is="h1">
+        <Header color="blue" as="h1">
           foo
         </Header>
       </ThemeProvider>,
@@ -69,7 +69,7 @@ describe('<Header />', () => {
 
   it('Properly handles font weight', () => {
     const { getByText } = render(
-      <Header fontWeight="bold" is="h1">
+      <Header fontWeight="bold" as="h1">
         foo
       </Header>,
     )
@@ -79,7 +79,7 @@ describe('<Header />', () => {
   })
 
   it("The 'is' prop sets correct header tag", () => {
-    let wrapper = mount(<Header is="h1" />).find('h1')
+    let wrapper = mount(<Header as="h1" />).find('h1')
     expect(wrapper.is('h1')).toBeTruthy()
   })
 

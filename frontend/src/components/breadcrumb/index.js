@@ -1,8 +1,10 @@
 import { fontSize, lineHeight, space, color, fontWeight } from 'styled-system'
 import styled from '@emotion/styled'
-import tag from 'clean-tag'
+import { cleanProps } from '../../utils/cleanProps'
 
-export const BreadcrumbList = styled(tag.ul)`
+export const BreadcrumbList = styled('ul', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   display: inline-block;
   list-style-type: none;
   font-family: ${({ theme }) => theme.fontSans};
@@ -22,7 +24,9 @@ BreadcrumbList.propTypes = {
   ...fontWeight.propTypes,
 }
 
-export const BreadcrumbListItem = styled(tag.li)`
+export const BreadcrumbListItem = styled('li', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   display: inline-block;
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
