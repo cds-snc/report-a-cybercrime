@@ -8,10 +8,12 @@ import {
   colorStyle,
   color,
 } from 'styled-system'
-import tag from 'clean-tag'
+import { cleanProps } from '../../utils/cleanProps'
 import PropTypes from 'prop-types'
 
-const BaseButton = styled(tag.button)`
+const BaseButton = styled('button', {
+  shouldForwardProp: prop => cleanProps(prop),
+})`
   font-family: ${({ theme }) => theme.fontSans};
   margin: 0;
   border: 0;
