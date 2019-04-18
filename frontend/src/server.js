@@ -50,10 +50,6 @@ server
     cache.writeData({
       data: {
         language: req.language,
-        whatHappened: '',
-        whatWasInvolved: [],
-        whatWasInvolvedOther: '',
-        howWereYouAffected: '',
       },
     })
 

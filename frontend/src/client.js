@@ -21,11 +21,7 @@ const cache = new InMemoryCache()
 // Add defaults for form fields
 cache.writeData({
   data: {
-    language: 'en',
-    whatHappened: '',
-    whatWasInvolved: [],
-    whatWasInvolvedOther: '',
-    howWereYouAffected: '',
+    language: navigator.languages.includes('fr') ? 'fr' : 'en',
   },
 })
 
