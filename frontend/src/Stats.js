@@ -3,7 +3,6 @@ import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
 import { I18n } from '@lingui/react'
 import { t, Trans } from '@lingui/macro'
-import { P } from './components/paragraph'
 import { H3 } from './components/header'
 import { IDENTIFIER_FLAGGINGS_WITHIN } from './utils/queriesAndMutations'
 import {
@@ -15,6 +14,10 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 import theme from './theme'
+
+const demoData = JSON.parse(
+  `[{"date":"2019-04-03","total":2,"__typename":"DailyTotal"},{"date":"2019-04-04","total":7,"__typename":"DailyTotal"},{"date":"2019-04-05","total":1,"__typename":"DailyTotal"},{"date":"2019-04-08","total":2,"__typename":"DailyTotal"}]`,
+)
 
 class Chart extends PureComponent {
   render() {
@@ -73,18 +76,11 @@ export const Stats = () => (
     errorPolicy="all"
   >
     {({ loading, error, data }) => {
-      if (loading) return ''
-      if (error)
-        return (
-          <P color="crimson" fontWeight="bolder">
-            Error connecting to database:
-            <br />
-            {error.message}
-          </P>
-        )
-
-      let { stats } = data
-      return <Chart data={stats.identifierFlaggingsWithin.summary} />
+      let summary = undefined
+      if (error) summary = demoData
+      else if (loading) return ''
+      else summary = data.stats.identifierFlaggingsWithin.summary
+      return <Chart data={summary} />
     }}
   </Query>
 )
