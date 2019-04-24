@@ -16,16 +16,18 @@ const typeDefs = gql`
   }
 `
 
-const cache = new InMemoryCache()
+const getLanguage = () => {
+  if (navigator.language.match(/^en/)) return 'en'
+  if (navigator.language.match(/^fr/)) return 'fr'
+  if (navigator.languages.filter(l => l.match(/^en/)).length > 0) return 'en'
+  if (navigator.languages.filter(l => l.match(/^fr/)).length > 0) return 'fr'
+}
 
+const cache = new InMemoryCache()
 // Add defaults for form fields
 cache.writeData({
   data: {
-    language: 'en',
-    whatHappened: '',
-    whatWasInvolved: [],
-    whatWasInvolvedOther: '',
-    howWereYouAffected: '',
+    language: getLanguage(),
   },
 })
 
