@@ -1,4 +1,4 @@
-/* global describe, test, expect */
+/* global describe, expect */
 
 const { Kind } = require('graphql/language')
 const { URL } = require('../types/URL')
