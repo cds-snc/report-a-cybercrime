@@ -5,6 +5,23 @@ export const GET_LANGUAGE_QUERY = gql`
     language @client
   }
 `
+export const FLAGGINGS_WITHIN = gql`
+  query($identifier: String!, $startDate: DateTime!, $endDate: DateTime!) {
+    stats {
+      flaggingsWithin(
+        identifier: $identifier
+        startDate: $startDate
+        endDate: $endDate
+      ) {
+        identifier
+        summary {
+          date
+          total
+        }
+      }
+    }
+  }
+`
 
 export const IDENTIFIER_FLAGGINGS_WITHIN = gql`
   query($identifier: String!) {
