@@ -14,57 +14,38 @@ type identifierFlaggingsSummary {
 }
 
 type Mutation {
-  """
-  Flag an identifier
-  """
+  """Flag an identifier"""
   flagIdentifier(
-    """
-    the suspects identifier (phone no, url or email)
-    """
+    """the suspects identifier (phone no, url or email)"""
     identifier: String
   ): identifierFlaggingsSummary
 }
 
 type Query {
-  """
-  Stats about report collection
-  """
+  """Stats about report collection"""
   stats: Stats
 }
 
 type Stats {
-  """
-  The total number of reports submitted.
-  """
+  """The total number of reports submitted."""
   reportCount: Int
 
-  """
-  Daily totals for the identifier specified
-  """
+  """Daily totals for the identifier specified"""
   identifierFlaggingsWithin(
-    """
-    the suspects identifier
-    """
+    """the suspects identifier"""
     identifier: String
   ): identifierFlaggingsSummary
 
-  """
-  Daily totals for the identifier specified
-  """
+  """Daily totals for the identifier specified"""
   flaggingsWithin(
-    """
-    a phone number, email address or URL
-    """
+    """a phone number, email address or URL"""
     identifier: String!
 
-    """
-    An ISO8601(YYYY-MM-DD) formatted date string
-    """
+    """An ISO8601(YYYY-MM-DD) formatted date string"""
     startDate: DateTime!
 
-    """
-    An ISO8601(YYYY-MM-DD) formatted date string
-    """
+    """An ISO8601(YYYY-MM-DD) formatted date string"""
     endDate: DateTime!
   ): identifierFlaggingsSummary
 }
+

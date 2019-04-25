@@ -26,7 +26,7 @@ export const Summary = ({ identifier }) => (
       {({ summary }) => (
         <>
           <H2 fontSize={[3, null, 4]}>
-            <Trans>You‘re the 12th person to help us with this scam.</Trans>
+            <Trans>You’re the 12th person to help us with this scam.</Trans>
           </H2>
           <Chart data={summary} />
         </>
