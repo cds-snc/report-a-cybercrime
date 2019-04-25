@@ -15,10 +15,9 @@ import { ButtonLink } from './components/link'
 import { Label } from './components/label'
 import { P, Lead } from './components/paragraph'
 
-/* eslint-disable-next-line */
 const submitAndNavigate = (flagIdentifier, data) => {
   flagIdentifier({ variables: data })
-  navigate('/summary')
+  navigate(`/summary/${encodeURIComponent(data.identifier)}`)
 }
 
 const validate = values => {
