@@ -4,6 +4,7 @@ const { makeTestDatabase, dbNameFromFile } = require('../utils')
 const { DB_USER: user, DB_URL: url, DB_PASSWORD: password } = process.env
 
 let db, drop, reports
+let dbfunctions
 
 describe('dbinit', () => {
   describe('produces database functions given a database object', () => {
@@ -16,6 +17,7 @@ describe('dbinit', () => {
         collections: ['reports'],
       }))
 
+      dbfunctions = await dbinit(db)
       reports = db.collection('reports')
     })
 
@@ -30,7 +32,6 @@ describe('dbinit', () => {
     describe('countReports', () => {
       it('lets you query the number of reports via a stats type', async () => {
         await reports.save({ foo: 'I am a fake report' })
-        let dbfunctions = await dbinit(db)
 
         let count = await dbfunctions.countReports()
 
@@ -40,8 +41,6 @@ describe('dbinit', () => {
 
     describe('saveReport', () => {
       it('saves a report to the reports collection', async () => {
-        let dbfunctions = await dbinit(db)
-
         let _savedReport = await dbfunctions.saveReport({
           foo: 'I am a fake report',
         })
@@ -54,7 +53,6 @@ describe('dbinit', () => {
     describe('summariseByDay', () => {
       it('returns reports grouped by date', async () => {
         let phone = '613-986-5383'
-        let dbfunctions = await dbinit(db)
 
         await dbfunctions.saveReport({
           identifier: phone,
@@ -76,6 +74,41 @@ describe('dbinit', () => {
         expect(count).toEqual([
           { date: '2019-04-02', total: 2 },
           { date: '2019-04-03', total: 1 },
+        ])
+      })
+    })
+
+    describe('summariseReportsWithin', () => {
+      it('returns report counts within a date range', async () => {
+        let identifier = '555-555-5555'
+        let startDate = '2019-04-01'
+        let endDate = '2019-04-03'
+
+        await dbfunctions.saveReport({
+          identifier,
+          createdAt: '2019-04-01T18:42:32.381Z',
+        })
+
+        await dbfunctions.saveReport({
+          identifier,
+          createdAt: '2019-04-03T18:42:32.384Z',
+        })
+
+        await dbfunctions.saveReport({
+          identifier,
+          createdAt: '2019-04-03T19:47:32.384Z',
+        })
+
+        let summary = await dbfunctions.summariseReportsBetween({
+          identifier,
+          startDate,
+          endDate,
+        })
+
+        expect(summary).toEqual([
+          { date: '2019-04-01', total: 1 },
+          { date: '2019-04-02', total: 0 },
+          { date: '2019-04-03', total: 2 },
         ])
       })
     })

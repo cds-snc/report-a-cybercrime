@@ -1,5 +1,3 @@
-/* global describe, test, expect */
-
 const { Kind } = require('graphql/language')
 const { PhoneNumber } = require('../types/PhoneNumber')
 

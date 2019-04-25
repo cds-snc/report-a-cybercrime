@@ -2,6 +2,7 @@ require('dotenv-safe').config()
 const {
   makeTestDatabase,
   dbNameFromFile,
+  generateDateObjects,
   getFilenameFromPath,
 } = require('../utils')
 
@@ -11,6 +12,32 @@ describe('Utils', () => {
   describe('getFilenameFromPath', () => {
     it('returns the filename given an absolute path', async () => {
       expect(getFilenameFromPath(__filename)).toEqual('utils.test.js')
+    })
+  })
+
+  describe('generateDateObjects', () => {
+    it('generates on object per day within a range', async () => {
+      let startDate = '2019-04-01'
+      let endDate = '2019-04-03'
+
+      let dates = generateDateObjects(startDate, endDate)
+      expect(dates).toEqual([
+        { date: '2019-04-01' },
+        { date: '2019-04-02' },
+        { date: '2019-04-03' },
+      ])
+    })
+
+    it('adds additional props if passed', async () => {
+      let startDate = '2019-04-01'
+      let endDate = '2019-04-03'
+
+      let dates = generateDateObjects(startDate, endDate, { foo: 'bar' })
+      expect(dates).toEqual([
+        { date: '2019-04-01', foo: 'bar' },
+        { date: '2019-04-02', foo: 'bar' },
+        { date: '2019-04-03', foo: 'bar' },
+      ])
     })
   })
 

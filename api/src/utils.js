@@ -1,9 +1,31 @@
 const { Database } = require('arangojs')
 const { parse } = require('path')
+const Moment = require('moment')
+const MomentRange = require('moment-range')
+const moment = MomentRange.extendMoment(Moment)
 
 const getFilenameFromPath = path => parse(path).base
 
 module.exports.getFilenameFromPath = getFilenameFromPath
+
+const generateDateObjects = (startDate, endDate, props = {}) => {
+  const start = moment(startDate)
+  const end = moment(endDate)
+  const range = moment.range(start, end)
+  const dates = Array.from(range.by('days'))
+  return dates.map(d =>
+    Object.assign({}, props, { date: d.format('YYYY-MM-DD') }),
+  )
+}
+
+module.exports.generateDateObjects = generateDateObjects
+
+const uniqueArray = a =>
+  [...new Set(a.map(o => JSON.stringify(o)))].map(s => JSON.parse(s))
+module.exports.uniqueArray = uniqueArray
+
+const sortByDateAttribute = a => a.sort((a, b) => a.date.localeCompare(b.date))
+module.exports.sortByDateAttribute = sortByDateAttribute
 
 const dbNameFromFile = filename =>
   getFilenameFromPath(filename).replace(/\./g, '_') + '_' + Date.now()
