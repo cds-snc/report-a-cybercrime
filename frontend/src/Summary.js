@@ -22,12 +22,18 @@ export const Summary = () => (
       startDate="2019-04-01"
       endDate="2019-04-20"
     >
-      {({ summary }) => (
+      {({ reportCount, flaggingsWithin }) => (
         <>
           <H2 fontSize={[3, null, 4]}>
-            <Trans>You‘re the 12th person to help us with this scam.</Trans>
+            {reportCount === 1 ? (
+              <Trans>You‘re the first person to help us with this scam.</Trans>
+            ) : (
+              <Trans>
+                You‘re the {reportCount}th person to help us with this scam.
+              </Trans>
+            )}
           </H2>
-          <Chart data={summary} />
+          <Chart data={flaggingsWithin.summary} />
         </>
       )}
     </Stats>
