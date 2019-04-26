@@ -4,6 +4,7 @@ import React from 'react'
 import { Stats } from './Stats'
 import { Chart } from './Chart'
 import { TrackPageViews } from './TrackPageViews'
+import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Container } from './components/container'
 import { Trans } from '@lingui/macro'
@@ -11,16 +12,16 @@ import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { ButtonLink } from './components/link'
 
-export const Summary = () => (
+export const Summary = ({ identifier }) => (
   <Container mx={'auto'} width={[1, 1, 1]}>
     <H1 fontSize={[5, null, 6]}>
       <Trans>Thank you for reporting.</Trans>
     </H1>
 
     <Stats
-      identifier="555-555-5555"
+      identifier={identifier}
       startDate="2019-04-01"
-      endDate="2019-04-20"
+      endDate={new Date().toISOString().split('T')[0]}
     >
       {({ reportCount, flaggingsWithin }) => (
         <>
@@ -50,3 +51,4 @@ export const Summary = () => (
     </ButtonLink>
   </Container>
 )
+Summary.propTypes = { identifier: PropTypes.string }

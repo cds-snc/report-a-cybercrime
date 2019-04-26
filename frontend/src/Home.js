@@ -30,7 +30,7 @@ export const Home = () => (
         <PageNotFound default />
         <Page1 path="/" />
         <Page2 path="/flag" />
-        <Summary path="/summary" />
+        <Summary path="/summary/:identifier" />
         <FileUploadPage path="/fileuploader" />
       </Router>
     </Screen>
