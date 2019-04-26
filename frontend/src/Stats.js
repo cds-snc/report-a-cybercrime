@@ -32,7 +32,7 @@ export const Stats = ({
 
       let { stats } = data
       {
-        return children(stats)
+        return children(stats.flaggingsWithin)
       }
     }}
   </Query>

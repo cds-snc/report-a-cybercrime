@@ -10,6 +10,7 @@ scalar DateTime
 
 type identifierFlaggingsSummary {
   identifier: String
+  summaryTotal: Int
   summary: [DailyTotal]
 }
 

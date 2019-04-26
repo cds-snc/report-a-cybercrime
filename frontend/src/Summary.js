@@ -23,18 +23,18 @@ export const Summary = ({ identifier }) => (
       startDate="2019-04-01"
       endDate={new Date().toISOString().split('T')[0]}
     >
-      {({ reportCount, flaggingsWithin }) => (
+      {({ summaryTotal, summary }) => (
         <>
           <H2 fontSize={[3, null, 4]}>
-            {reportCount === 1 ? (
+            {summaryTotal === 1 ? (
               <Trans>You‘re the first person to help us with this scam.</Trans>
             ) : (
               <Trans>
-                You‘re the {reportCount}th person to help us with this scam.
+                You‘re the {summaryTotal}th person to help us with this scam.
               </Trans>
             )}
           </H2>
-          <Chart data={flaggingsWithin.summary} />
+          <Chart data={summary} />
         </>
       )}
     </Stats>
