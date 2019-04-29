@@ -23,7 +23,7 @@
   "This site will be changing as we test ideas and learn from people like you.": "Ceci est un prototype à des fins de recherche seulement.",
   "Website links": "adresse de sites web",
   "You‘re the first person to help us with this scam.": "Vous êtes la première personne à nous aider avec cette fraude.",
-  "You‘re the {reportCount}th person to help us with this scam.": "Vous êtes la {reportCount}ième personne à nous aider avec cette fraude.",
+  "You‘re the {summaryTotal}th person to help us with this scam.": "Vous êtes la {summaryTotal}ième personne à nous aider avec cette fraude.",
   "a phone number": "par numéro de téléphone",
   "a website": "sur un site web",
   "an email address": "par courriel",
