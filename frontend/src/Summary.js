@@ -23,10 +23,16 @@ export const Summary = ({ identifier }) => (
       startDate="2019-04-01"
       endDate={new Date().toISOString().split('T')[0]}
     >
-      {({ summary }) => (
+      {({ summaryTotal, summary }) => (
         <>
           <H2 fontSize={[3, null, 4]}>
-            <Trans>You’re the 12th person to help us with this scam.</Trans>
+            {summaryTotal === 1 ? (
+              <Trans>You‘re the first person to help us with this scam.</Trans>
+            ) : (
+              <Trans>
+                You‘re the {summaryTotal}th person to help us with this scam.
+              </Trans>
+            )}
           </H2>
           <Chart data={summary} />
         </>

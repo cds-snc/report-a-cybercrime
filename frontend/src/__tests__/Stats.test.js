@@ -43,6 +43,7 @@ let mocks = [
         stats: {
           flaggingsWithin: {
             identifier: '555-555-5555',
+            summaryTotal: 5,
             summary: data,
           },
         },

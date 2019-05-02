@@ -57,8 +57,10 @@ const Stats = new GraphQLObjectType({
           endDate,
           identifier,
         })
+        let summaryTotal = summary.reduce((a, b) => a + b.total, 0)
         return {
           identifier,
+          summaryTotal,
           summary,
         }
       },

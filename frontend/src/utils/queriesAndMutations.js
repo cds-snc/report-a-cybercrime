@@ -14,6 +14,7 @@ export const FLAGGINGS_WITHIN = gql`
         endDate: $endDate
       ) {
         identifier
+        summaryTotal
         summary {
           date
           total
