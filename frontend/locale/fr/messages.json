@@ -16,7 +16,7 @@
   "Reports similar to yours": "Alertes semblables à la vôtre",
   "Sorry, the page you were trying to view does not exist.": "Désolé, la page que vous essayiez de voir n'existe pas.",
   "Submit scam": "Soumettre une fraude",
-  "Tell the RCMP about a scam you received by submitting:": "Veuillez informer la GRC de la façon dont la fraude a été commise en soumettant:",
+  "Tell the RCMP about a scam you received by submitting:": "Veuillez informer la GRC de la façon dont une fraude a été commise en soumettant:",
   "Terms and Conditions": "Avis",
   "Thank you for reporting.": "Merci d'avoir signalé la fraude.",
   "The Royal Canadian Mounted Police (RCMP) needs your help to learn about scams.": "La Gendarmerie royale du Canada (GRC) a besoin de votre aide afin d’apprendre au sujet de la fraude.",
@@ -24,8 +24,8 @@
   "Website links": "adresse de sites web",
   "You‘re the first person to help us with this scam.": "Vous êtes la première personne à nous aider avec cette fraude.",
   "You‘re the {summaryTotal}th person to help us with this scam.": "Vous êtes la {summaryTotal}ième personne à nous aider avec cette fraude.",
-  "a phone number": "par numéro de téléphone",
-  "a website": "sur un site web",
-  "an email address": "par courriel",
+  "a phone number": "un numéro de téléphone",
+  "a website": "un site web",
+  "an email address": "une adresse courriel",
   "loading...": "chargement en cours..."
 }
