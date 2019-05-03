@@ -5,3 +5,4 @@ api/.env
 api/.env.test
 .idea
 build-sizes.json
+data
