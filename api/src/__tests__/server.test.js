@@ -1,5 +1,6 @@
 const request = require('supertest')
 const { Server } = require('../server')
+const { dbinit } = require('../dbinit')
 const { makeTestDatabase, dbNameFromFile } = require('../utils')
 
 const { DB_USER: user, DB_URL: url, DB_PASSWORD: password } = process.env
@@ -30,7 +31,9 @@ describe('Queries', () => {
       it('lets you query the number of reports via a stats type', async () => {
         let reports = await db.collection('reports')
         await reports.save({ foo: 'I am a fake report' })
-        let app = await Server(db)
+        let app = await Server({
+          db: await dbinit(db),
+        })
 
         let response = await request(app)
           .post('/graphql')
@@ -58,7 +61,9 @@ describe('Queries', () => {
       it('', async () => {
         let reports = await db.collection('reports')
         reports.save({ foo: 'I am a fake report' })
-        let app = await Server(db)
+        let app = await Server({
+          db: await dbinit(db),
+        })
 
         let response = await request(app)
           .post('/graphql')
