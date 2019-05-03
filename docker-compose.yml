@@ -1,6 +1,22 @@
 version: "3.7"
 
 services:
+  minio:
+    environment:
+      - MINIO_ACCESS_KEY
+      - MINIO_SECRET_KEY
+      - MINIO_BUCKET_NAME
+    image: minio/minio
+    command: server /data
+    ports:
+      - "9000"
+    labels:
+      - "traefik.backend=minio"
+      - "traefik.frontend.rule=PathPrefix:/"
+      - "traefik.frontend.entryPoints=minio"
+      - "traefik.port=9000"
+    volumes:
+      - miniodata:/data
   arangodb:
     image: arangodb/arangodb:3.4.0
     environment:
@@ -36,11 +52,12 @@ services:
       - "traefik.port=3002"
   traefik:
     image: traefik:1.7
-    command: --docker --api --entrypoints="Name:http Address::3000" --entrypoints="Name:arango Address::8529" --defaultentrypoints="Name:http,arango"
+    command: --docker --api --entrypoints="Name:http Address::3000" --entrypoints="Name:arango Address::8529" --entrypoints="Name:minio Address::9000" --defaultentrypoints="Name:http,arango,minio"
     ports:
       - "3000:3000"
       - "8529:8529"
       - "8080:8080"
+      - "9000:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   frontend:
@@ -64,3 +81,4 @@ services:
     command: npm run dev
 volumes:
   arangodata:
+  miniodata:

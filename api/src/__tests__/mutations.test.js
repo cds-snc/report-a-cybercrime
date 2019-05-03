@@ -107,7 +107,7 @@ describe('Mutations', () => {
 
         let app = await Server({
           db: await dbinit(db),
-          minio: { putObject: putMock },
+          minio: { client: { putObject: putMock }, bucket: 'kittens' },
         })
 
         // This is constructed according to the file uploading spec:

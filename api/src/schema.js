@@ -43,7 +43,13 @@ const mutation = new GraphQLObjectType({
           type: GraphQLUpload,
         },
       },
-      async resolve(_parent, { image }, { minio }) {
+      async resolve(
+        _parent,
+        { image },
+        {
+          minio: { client, bucket },
+        },
+      ) {
         const { filename, _mimetype, _encoding, createReadStream } = await image
         const stream = createReadStream()
         // in case you want to print the file to stdout:
@@ -51,7 +57,7 @@ const mutation = new GraphQLObjectType({
 
         // Accessing Minio from the context and calling the putObject function:
         // https://docs.min.io/docs/javascript-client-api-reference#putObject
-        let response = await minio.putObject('kittens', filename, stream)
+        let response = await client.putObject(bucket, filename, stream)
 
         // probably save details to ArangoDB
         console.log(response)

@@ -2,31 +2,34 @@ const { Server } = require('./src/server')
 const { db } = require('./src/db')
 const { dbinit } = require('./src/dbinit')
 const { Logger } = require('@cdssnc/logdriver')
-var Minio = require('minio')
+const Minio = require('minio')
 
-// Instantiate the minio client with the endpoint
-// and access keys as shown below.
+const {
+  MINIO_ACCESS_KEY,
+  MINIO_SECRET_KEY,
+  MINIO_BUCKET_NAME,
+  NODE_ENV,
+} = process.env
+
 var minioClient = new Minio.Client({
-  // XXX this is Minio's test server. It's OK to use it for testing and dev, but
-  // be careful what you send there.
-  endPoint: 'play.minio.io',
+  endPoint: 'minio', // this dns name exists in local docker and k8s
   port: 9000,
-  useSSL: true,
-  accessKey: 'Q3AM3UQ867SPQQA43P2F',
-  secretKey: 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG',
+  useSSL: false,
+  accessKey: MINIO_ACCESS_KEY,
+  secretKey: MINIO_SECRET_KEY,
 })
 
 const port = process.env.PORT || 3000
 ;(async () => {
-  let bucket = await minioClient.bucketExists('kittens')
+  let bucket = await minioClient.bucketExists(MINIO_BUCKET_NAME)
 
   if (!bucket) {
-    await minioClient.makeBucket('kittens')
+    await minioClient.makeBucket(MINIO_BUCKET_NAME)
   }
 
   const context = {
     db: await dbinit(db),
-    minio: minioClient,
+    minio: { client: minioClient, bucket: MINIO_BUCKET_NAME },
   }
 
   Server(context)
