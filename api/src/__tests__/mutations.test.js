@@ -1,5 +1,7 @@
 const request = require('supertest')
+const fs = require('fs')
 const { Server } = require('../server')
+const { dbinit } = require('../dbinit')
 const { makeTestDatabase, dbNameFromFile } = require('../utils')
 
 const { DB_USER: user, DB_URL: url, DB_PASSWORD: password } = process.env
@@ -27,7 +29,9 @@ describe('Mutations', () => {
     })
 
     it('accepts an identifier and returns a summary', async () => {
-      let app = await Server(db)
+      let app = await Server({
+        db: await dbinit(db),
+      })
 
       let response = await request(app)
         .post('/graphql')
@@ -62,7 +66,9 @@ describe('Mutations', () => {
       it('', async () => {
         let reports = await db.collection('reports')
         reports.save({ foo: 'I am a fake report' })
-        let app = await Server(db)
+        let app = await Server({
+          db: await dbinit(db),
+        })
 
         let response = await request(app)
           .post('/graphql')
@@ -92,6 +98,43 @@ describe('Mutations', () => {
             summary: [],
           },
         })
+      })
+    })
+
+    describe('file uploading', () => {
+      it('accepts a file', async () => {
+        const putMock = jest.fn()
+
+        let app = await Server({
+          db: await dbinit(db),
+          minio: { putObject: putMock },
+        })
+
+        // This is constructed according to the file uploading spec:
+        // https://github.com/jaydenseric/graphql-multipart-request-spec
+        let response = await request(app)
+          .post('/graphql')
+          .field(
+            'operations',
+            JSON.stringify({
+              query: `
+            mutation ($image: Upload) {
+              uploadImage(image: $image)
+            }
+          `,
+            }),
+          )
+          .field('map', '{ "0": ["variables.image"] }')
+          .field('0', fs.createReadStream('./src/__tests__/kitten.jpg'))
+
+        expect(response.body).toEqual({
+          data: { uploadImage: true },
+        })
+        expect(putMock).toHaveBeenCalledWith(
+          'kittens',
+          'kitten.jpg',
+          expect.any(Object),
+        )
       })
     })
   })
