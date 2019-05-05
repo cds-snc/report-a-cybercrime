@@ -1,7 +1,9 @@
 import React from 'react'
 import { HttpLink } from 'apollo-link-http'
+import { createUploadLink } from 'apollo-upload-client'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+import { ApolloLink } from 'apollo-link'
 import fetch from 'isomorphic-unfetch'
 import { ApolloProvider, renderToStringWithData } from 'react-apollo'
 import { LanguageSwitching } from './LanguageSwitching'
@@ -53,12 +55,18 @@ server
       },
     })
 
+    // https://medium.com/@dilipkumar/graphql-and-file-upload-using-react-and-node-js-c1d629e1b86b
+
+    console.log({ RAZZLE_SERVER_SIDE_API_URI })
+
+    const uploadLink = createUploadLink({
+      uri: RAZZLE_SERVER_SIDE_API_URI,
+      fetch,
+    })
+    const httpLink = new HttpLink({ uri: RAZZLE_SERVER_SIDE_API_URI, fetch })
     const client = new ApolloClient({
       ssrMode: true,
-      link: new HttpLink({
-        uri: RAZZLE_SERVER_SIDE_API_URI,
-        fetch,
-      }),
+      link: ApolloLink.from([uploadLink, httpLink]),
       cache,
     })
 
