@@ -10,7 +10,9 @@
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "start": "node index.js",
     "minikube": "kustomize build manifests/overlays/minikube | kubectl apply -f -",
-    "delete-minikube": "kustomize build manifests/overlays/minikube | kubectl delete -f -"
+    "delete-minikube": "kustomize build manifests/overlays/minikube | kubectl delete -f -",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "CDS",
   "license": "MIT",
@@ -28,7 +30,8 @@
     "lodash.unionby": "^4.8.0",
     "minio": "^7.0.8",
     "moment": "^2.24.0",
-    "moment-range": "^4.0.2"
+    "moment-range": "^4.0.2",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
@@ -55,5 +58,6 @@
     "hooks": {
       "pre-commit": "npm run print-schema"
     }
-  }
+  },
+  "snyk": true
 }
