@@ -25,7 +25,7 @@ export const Option3Page = () => (
       </Container>
       <Container>
         <ButtonLink mb={[3, null, 5]} to="">
-          <Trans>Long Form</Trans>
+          <Trans>Long form</Trans>
         </ButtonLink>
       </Container>
       <Container>
