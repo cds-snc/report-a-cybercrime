@@ -10,6 +10,7 @@ import { Page2 } from './Page2'
 import { FileUploadPage } from './FileUpload'
 import { AmountOfInfoPage } from './amountOfInfoPage'
 import { Option3Page } from './Option3Page'
+import { HowToTellPolice } from './HowToTellPolice'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -33,6 +34,7 @@ export const Home = () => (
         <Page1 path="/" />
         <Page2 path="/flag" />
         <Option3Page path="/option3" />
+        <HowToTellPolice path="/howtotell" />
         <Summary path="/summary/:identifier" />
         <FileUploadPage path="/fileuploader" />
         <AmountOfInfoPage path="/amountofinfo" />
