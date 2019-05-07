@@ -1,31 +1,121 @@
-import React from 'react'
+/**@jsx jsx */
+import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
-import { H1 } from './components/header'
-import { ButtonLink } from './components/link'
-import { TrackPageViews } from './TrackPageViews'
+import { H1, H2 } from './components/header'
 import { Container } from './components/container'
+import followup from './images/followup.svg'
+import noFollowup from './images/nofollowup.svg'
+import { Link } from '@reach/router'
+import { ButtonLink } from './components/link'
 
 const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
 `
 
+const Card = styled('div')`
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid grey;
+  max-width: 300px;
+  :hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+`
+
 export const IdentityPage = () => (
   <CenterContent>
-    <TrackPageViews />
-    <H1 textAlign="center" fontSize={[5, null, 6]}>
+    <H1 fontSize={[5, null, 6]} mb={5}>
       <Trans>How do you want to report?</Trans>
     </H1>
-    <Container textAlign="center">
-      <Container>
-        <ButtonLink mb={[3, null, 5]} to="">
-          <Trans>Anonymously</Trans>
+    <Container
+      display="flex"
+      flexDirection={['column', null, 'row']}
+      width={1}
+      alignItems="center"
+      mb={6}
+    >
+      <Container
+        flex="1 1 auto"
+        css={css`
+          text-align: center;
+          float: left;
+        `}
+        mb={[4, null, 0]}
+        mr={[0, null, 5]}
+      >
+        <Link to="/">
+          <Card>
+            <img
+              src={noFollowup}
+              alt="No followup"
+              css={css`
+                width: 100%;
+              `}
+            />
+            <H2
+              fontSize={[3, null, 4]}
+              css={css`
+                text-decoration: underline;
+              `}
+            >
+              <Trans>{'Anonymously'}</Trans>
+              <br />
+              <br />
+            </H2>
+          </Card>
+        </Link>
+      </Container>
+      <Container
+        flex="1 1 auto"
+        css={css`
+          text-align: center;
+          float: right;
+        `}
+      >
+        <Link to="/">
+          <Card
+            css={css`
+              float: right;
+            `}
+          >
+            <img
+              src={followup}
+              alt="With followup"
+              css={css`
+                width: 100%;
+              `}
+            />
+            <H2
+              fontSize={[3, null, 4]}
+              css={css`
+                text-decoration: underline;
+              `}
+            >
+              <Trans>{'Full report with my information'}</Trans>
+            </H2>
+          </Card>
+        </Link>
+      </Container>
+    </Container>
+
+    <Container display="flex" flexDirection="row">
+      <Container width={1 / 2}>
+        <ButtonLink to="/">
+          &lt; <Trans>Back</Trans>
         </ButtonLink>
       </Container>
-      <Container>
-        <ButtonLink mb={[3, null, 5]} to="">
-          <Trans>Full report with my information</Trans>
+      <Container width={1 / 2}>
+        <ButtonLink
+          to="/"
+          css={css`
+            float: right;
+          `}
+        >
+          <Trans>Cancel</Trans>
         </ButtonLink>
       </Container>
     </Container>
