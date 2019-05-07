@@ -36,7 +36,7 @@ export const Urgency = () => (
     </H1>
     <Container
       display="flex"
-      flexDirection="row"
+      flexDirection={['column', null, 'row']}
       width={1}
       alignItems="center"
       mb={5}
@@ -47,6 +47,7 @@ export const Urgency = () => (
         css={css`
           text-align: center;
         `}
+        mb={[4, null, 0]}
       >
         <Link to="/">
           <Card>
