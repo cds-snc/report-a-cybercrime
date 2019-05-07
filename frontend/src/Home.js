@@ -8,6 +8,7 @@ import { PageNotFound } from './PageNotFound'
 import { Page1 } from './Page1'
 import { Page2 } from './Page2'
 import { FileUploadPage } from './FileUpload'
+import { AmountOfInfoPage } from './amountOfInfoPage'
 import { Option3Page } from './Option3Page'
 
 const Root = styled('div')`
@@ -34,6 +35,7 @@ export const Home = () => (
         <Option3Page path="/option3" />
         <Summary path="/summary/:identifier" />
         <FileUploadPage path="/fileuploader" />
+        <AmountOfInfoPage path="/amountofinfo" />
       </Router>
     </Screen>
   </Root>
