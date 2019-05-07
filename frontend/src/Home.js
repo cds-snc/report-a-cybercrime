@@ -8,6 +8,7 @@ import { PageNotFound } from './PageNotFound'
 import { Page1 } from './Page1'
 import { Page2 } from './Page2'
 import { FileUploadPage } from './FileUpload'
+import { Option3Page } from './Option3Page'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -30,6 +31,7 @@ export const Home = () => (
         <PageNotFound default />
         <Page1 path="/" />
         <Page2 path="/flag" />
+        <Option3Page path="/option3" />
         <Summary path="/summary/:identifier" />
         <FileUploadPage path="/fileuploader" />
       </Router>
