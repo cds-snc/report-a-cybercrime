@@ -16,7 +16,7 @@ export const HowToTellPolice = () => (
     <H1 fontSize={[5, null, 6]}>
       <Trans>How do you want to tell the police?</Trans>
     </H1>
-    <Container alignItems="center" mb={3} mt={3}>
+    <Container textAlign="center" mb={3} mt={3}>
       <P fontSize={[3, null, 4]}>
         <Link to="/tbd">
           <Trans>I want to talk to someone directly</Trans>
@@ -28,7 +28,7 @@ export const HowToTellPolice = () => (
         alt="Talk to somebody"
       />
     </Container>
-    <Container alignItems="center" mb={3} mt={3}>
+    <Container textAlign="center" mb={3} mt={3}>
       <P fontSize={[3, null, 4]}>
         <Link to="/tbd">
           <Trans>I want to report on my own</Trans>
