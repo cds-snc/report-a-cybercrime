@@ -9,6 +9,8 @@ import { Page1 } from './Page1'
 import { Page2 } from './Page2'
 import { FileUploadPage } from './FileUpload'
 import { AmountOfInfoPage } from './amountOfInfoPage'
+import { IdentityPage } from './identityPage'
+
 import { Option3Page } from './Option3Page'
 
 const Root = styled('div')`
@@ -36,6 +38,7 @@ export const Home = () => (
         <Summary path="/summary/:identifier" />
         <FileUploadPage path="/fileuploader" />
         <AmountOfInfoPage path="/amountofinfo" />
+        <IdentityPage path="/identity" />
       </Router>
     </Screen>
   </Root>
