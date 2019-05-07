@@ -47,6 +47,29 @@ ButtonLink.propTypes = {
   children: PropTypes.any,
 }
 
+export const ButtonAnchor = props => (
+  <BaseAnchor
+    fontSize={[2, null, 3]}
+    fontWeight="normal"
+    lineHeight={[2, null, 3]}
+    colors="button"
+    mt={[2, null, 3]}
+    py={1}
+    px={[2, null, 3]}
+    {...props}
+    css={css`
+      text-decoration: none;
+    `}
+    display="inline-block"
+  >
+    {props.children}
+  </BaseAnchor>
+)
+
+ButtonAnchor.propTypes = {
+  children: PropTypes.any,
+}
+
 export const A = props => (
   <BaseAnchor
     fontSize={[2, null, 3]}
