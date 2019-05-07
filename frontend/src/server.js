@@ -66,7 +66,7 @@ server
     const httpLink = new HttpLink({ uri: RAZZLE_SERVER_SIDE_API_URI, fetch })
     const client = new ApolloClient({
       ssrMode: true,
-      link: ApolloLink.from([uploadLink, httpLink]),
+      link: uploadLink,
       cache,
     })
 

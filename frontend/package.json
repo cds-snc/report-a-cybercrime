@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "repository": "github:cds-snc/report-a-cybercrime",
+  "proxy": "http://localhost:3002",
   "scripts": {
     "dev": "lingui compile && razzle start",
     "build": "lingui compile && razzle build",
