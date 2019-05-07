@@ -101,23 +101,5 @@ export const IdentityPage = () => (
         </Link>
       </Container>
     </Container>
-
-    <Container display="flex" flexDirection="row">
-      <Container width={1 / 2}>
-        <ButtonLink to="/">
-          &lt; <Trans>Back</Trans>
-        </ButtonLink>
-      </Container>
-      <Container width={1 / 2}>
-        <ButtonLink
-          to="/"
-          css={css`
-            float: right;
-          `}
-        >
-          <Trans>Cancel</Trans>
-        </ButtonLink>
-      </Container>
-    </Container>
   </CenterContent>
 )
