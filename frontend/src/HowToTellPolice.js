@@ -8,21 +8,25 @@ import { TrackPageViews } from './TrackPageViews'
 import { Container } from './components/container'
 import { P } from './components/paragraph'
 import { jsx, css } from '@emotion/core'
-import phoneconvo from './images/phoneconvo.jpeg'
-import manusingcomputer from './images/manusingcomputer.png'
+import cafc from './images/cafc.svg'
+import online from './images/online.svg'
 
 export const HowToTellPolice = () => (
   <Container width={['100%', null, '600px']} m="auto">
     <H1 fontSize={[5, null, 6]}>
       <Trans>How do you want to tell the police?</Trans>
     </H1>
-    <Container alignItems="center" fontSize={[3, null, 4]} mb={3} mt={3}>
+    <Container alignItems="center" mb={3} mt={3}>
       <P fontSize={[3, null, 4]}>
         <Link to="/tbd">
           <Trans>I want to talk to someone directly</Trans>
         </Link>
       </P>
-      <img src={phoneconvo} alt="Talk to somebody" />
+      <img
+        src={cafc}
+        style={{ width: '250px', height: '250px' }}
+        alt="Talk to somebody"
+      />
     </Container>
     <Container alignItems="center" mb={3} mt={3}>
       <P fontSize={[3, null, 4]}>
@@ -30,7 +34,11 @@ export const HowToTellPolice = () => (
           <Trans>I want to report on my own</Trans>
         </Link>
       </P>
-      <img src={manusingcomputer} alt="Report on my own" />
+      <img
+        src={online}
+        alt="Report on my own"
+        style={{ width: '250px', height: '250px' }}
+      />
     </Container>
     <TrackPageViews />
     <Container display="flex" flexDirection="row">
