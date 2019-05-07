@@ -63,7 +63,7 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>It's an emergency</Trans>
+              <Trans>{"It's an emergency"}</Trans>
             </H2>
           </Card>
         </Link>
@@ -94,7 +94,7 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>It's not an emergency</Trans>
+              <Trans>{"It's not an emergency"}</Trans>
             </H2>
           </Card>
         </Link>
