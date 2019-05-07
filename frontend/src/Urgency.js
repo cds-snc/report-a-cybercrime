@@ -7,8 +7,6 @@ import { P } from './components/paragraph'
 import { Container } from './components/container'
 import emergency from './images/emergency.svg'
 import nonemergency from './images/nonemergency.svg'
-import { ButtonLink } from './components/link'
-import { Button } from './components/button'
 import { Link } from '@reach/router'
 
 const CenterContent = styled('div')`
@@ -39,7 +37,7 @@ export const Urgency = () => (
       flexDirection={['column', null, 'row']}
       width={1}
       alignItems="center"
-      mb={5}
+      mb={6}
     >
       <Container
         flex="1 1 auto"
@@ -100,23 +98,6 @@ export const Urgency = () => (
             </H2>
           </Card>
         </Link>
-      </Container>
-    </Container>
-    <Container display="flex" flexDirection="row">
-      <Container width={1 / 2}>
-        <ButtonLink to="/">
-          &lt; <Trans>Back</Trans>
-        </ButtonLink>
-      </Container>
-      <Container width={'400px'}>
-        <Button
-          type="Submit"
-          css={css`
-            float: right;
-          `}
-        >
-          <Trans>Cancel</Trans>
-        </Button>
       </Container>
     </Container>
   </CenterContent>
