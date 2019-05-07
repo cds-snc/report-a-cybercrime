@@ -7,6 +7,7 @@ import { Summary } from './Summary'
 import { PageNotFound } from './PageNotFound'
 import { Page1 } from './Page1'
 import { Page2 } from './Page2'
+import { Urgency } from './Urgency'
 import { FileUploadPage } from './FileUpload'
 
 const Root = styled('div')`
@@ -32,6 +33,7 @@ export const Home = () => (
         <Page2 path="/flag" />
         <Summary path="/summary/:identifier" />
         <FileUploadPage path="/fileuploader" />
+        <Urgency path="/urgency" />
       </Router>
     </Screen>
   </Root>
