@@ -126,7 +126,8 @@
       }
     },
     "moduleNameMapper": {
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+      "^.+\\.svg$": "<rootDir>/src/images/svgTransform.js"
     }
   }
 }

@@ -19,10 +19,10 @@ const CenterContent = styled('div')`
 const Card = styled('div')`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 300px;
   padding-bottom: 1rem;
   border-radius: 5px;
   border: 1px solid grey;
+  max-width: 300px;
 
   :hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -43,11 +43,12 @@ export const Urgency = () => (
     >
       <Container
         flex="1 1 auto"
-        mr={3}
         css={css`
           text-align: center;
+          float: left;
         `}
         mb={[4, null, 0]}
+        mr={[0, null, 5]}
       >
         <Link to="/">
           <Card>
@@ -64,16 +65,16 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              It's an emergency
+              <Trans>It's an emergency</Trans>
             </H2>
           </Card>
         </Link>
       </Container>
       <Container
         flex="1 1 auto"
-        mr={3}
         css={css`
           text-align: center;
+          float: right;
         `}
       >
         <Link to="/">
@@ -95,7 +96,7 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              It's not an emergency
+              <Trans>It's not an emergency</Trans>
             </H2>
           </Card>
         </Link>
