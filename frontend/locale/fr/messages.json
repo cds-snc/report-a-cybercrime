@@ -11,6 +11,7 @@
   "Everything we learn from people like you can help stop scams like this from happening.": "Tout ce que nous apprenons des gens comme vous peut nous aider à empêcher que des fraudes comme celle-ci ne se reproduisent.",
   "Fast online": "Rapide en ligne",
   "Full report with my information": "Rapport complet avec mes informations",
+  "How do you want to make your report?": "Comment voulez-vous faire votre rapport ?",
   "How do you want to report?": "Comment voulez-vous faire un rapport?",
   "How do you want to tell the police?": "Comment voulez-vous le dire à la police ?",
   "How much information do you have to report?": "Quelle quantité d'information devez-vous déclarer?",
@@ -19,6 +20,8 @@
   "I have evidence that could help identify who is responsible": "J’ai des preuves qui pourraient aider à identifier la personne responsable",
   "I want to report on my own": "Je veux faire un rapport de mon propre chef",
   "I want to talk to someone directly": "Je veux parler à quelqu'un directement",
+  "I would like to report online on my own": "J'aimerais faire mon propre rapport en ligne.",
+  "I would like to talk to someone": "J'aimerais parler à quelqu'un.",
   "It's an emergency": "C'est une urgence",
   "It's not an emergency": "Ce n'est pas une urgence.",
   "Local, immediate response": "Intervention locale et immédiate",
@@ -46,6 +49,7 @@
   "This site will be changing as we test ideas and learn from people like you.": "Ceci est un prototype à des fins de recherche seulement.",
   "Website links": "adresse de sites web",
   "What information do you have to report?": "Quel type de renseignements avez-vous à signaler?",
+  "You can call the Canadian Anti-Fraud Centre": " Vous pouvez appeler le Centre antifraude du Canada",
   "You can:": "Vous pouvez:",
   "You will get:": "Vous obtiendrez",
   "You‘re the first person to help us with this scam.": "Vous êtes la première personne à nous aider avec cette fraude.",
@@ -54,10 +58,8 @@
   "a website": "un site web",
   "an email address": "une adresse courriel",
   "loading...": "chargement en cours...",
-  "I would like to talk to someone": "J'aimerais parler à quelqu'un.",
-  "I would like to report online on my own": "J'aimerais faire mon propre rapport en ligne.",
-  "How do you want to make your report?": "Comment voulez-vous faire votre rapport ?",
   "Report a scam or an online crime": "Signaler une escroquerie ou un crime en ligne",
   "First, find out which option is most relevant for you.": "Tout d'abord, déterminez quelle option est la plus pertinente pour vous.",
-  "Get started": "Commencez à travailler"
+  "Get started": "Commencez à travailler",
+  "specific advice based on your situation": "des conseils spécifiques à votre situation"
 }
