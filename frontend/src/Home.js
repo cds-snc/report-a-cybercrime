@@ -10,11 +10,11 @@ import { Page2 } from './Page2'
 import { Urgency } from './Urgency'
 import { FileUploadPage } from './FileUpload'
 import { AmountOfInfoPage } from './amountOfInfoPage'
+import { HowToTellPolice } from './HowToTellPolice'
 import { IdentityPage } from './identityPage'
 import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
-import { HowToTellPolice } from './HowToTellPolice'
 
 const Root = styled('div')`
   margin: 20pt;
