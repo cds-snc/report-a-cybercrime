@@ -82,7 +82,7 @@ export const Urgency = () => (
           >
             <img
               src={nonemergency}
-              alt="It's not an emergency"
+              alt="An illustration of a person with thought bubbles of phones, money, emails, websites"
               css={css`
                 width: 100%;
               `}
@@ -93,7 +93,7 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>{"It's not an emergency"}</Trans>
+              <Trans>{"I’d like to report, but it’s not an emergency."}</Trans>
             </H2>
           </Card>
         </Link>
