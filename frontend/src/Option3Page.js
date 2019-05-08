@@ -23,7 +23,7 @@ export const Option3Page = () => (
       </A>
     </H1>
     <Container>
-      <Container marginTop={[3, null, 5]}>
+      <Container marginTop={[6, null, 7]}>
         <P fontSize={[3, null, 4]}>
           <Trans>
             You’ll make the Royal Canadian Mounted Police aware of your
