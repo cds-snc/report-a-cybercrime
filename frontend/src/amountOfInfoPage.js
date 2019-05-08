@@ -62,9 +62,7 @@ export const AmountOfInfoPage = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>
-                I have evidence that could help identify who is responsible
-              </Trans>
+              <Trans>I have a story to tell about what happened</Trans>
             </H2>
           </Card>
         </Link>
@@ -95,7 +93,9 @@ export const AmountOfInfoPage = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>I have a story to tell about what happened</Trans>
+              <Trans>
+                I have evidence that could help identify who is responsible
+              </Trans>
             </H2>
           </Card>
         </Link>
