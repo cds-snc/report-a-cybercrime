@@ -46,7 +46,7 @@ export const HowToTellPolice = () => (
         mb={[4, null, 0]}
         mr={[0, null, 5]}
       >
-        <Link to="/">
+        <Link to="/option2">
           <Card>
             <img
               src={cafc}
@@ -75,7 +75,7 @@ export const HowToTellPolice = () => (
           float: right;
         `}
       >
-        <Link to="/">
+        <Link to="/amountofinfo">
           <Card
             css={css`
               float: right;
