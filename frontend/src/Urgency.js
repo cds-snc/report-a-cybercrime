@@ -47,7 +47,7 @@ export const Urgency = () => (
         mb={[4, null, 0]}
         mr={[0, null, 5]}
       >
-        <Link to="/">
+        <Link to="/call911">
           <Card>
             <img
               src={emergency}
@@ -74,7 +74,7 @@ export const Urgency = () => (
           float: right;
         `}
       >
-        <Link to="/">
+        <Link to="/amountofinfo">
           <Card
             css={css`
               float: right;
