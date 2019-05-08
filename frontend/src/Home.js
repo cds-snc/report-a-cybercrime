@@ -13,6 +13,7 @@ import { AmountOfInfoPage } from './amountOfInfoPage'
 import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
+import { HowToTellPolice } from './HowToTellPolice'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -38,6 +39,7 @@ export const Home = () => (
         <Option1Page path="/option1" />
         <Option2Page path="/option2" />
         <Option3Page path="/option3" />
+        <HowToTellPolice path="/howtotell" />
         <Summary path="/summary/:identifier" />
         <FileUploadPage path="/fileuploader" />
         <Urgency path="/urgency" />
