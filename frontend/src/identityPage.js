@@ -46,7 +46,7 @@ export const IdentityPage = () => (
         mb={[4, null, 0]}
         mr={[0, null, 5]}
       >
-        <Link to="/">
+        <Link to="/option3">
           <Card>
             <img
               src={noFollowup}
@@ -75,7 +75,7 @@ export const IdentityPage = () => (
           float: right;
         `}
       >
-        <Link to="/">
+        <Link to="/option3">
           <Card
             css={css`
               float: right;
