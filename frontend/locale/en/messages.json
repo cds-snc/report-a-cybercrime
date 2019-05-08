@@ -9,6 +9,9 @@
   "Everything we learn from people like you can help stop scams like this from happening.": "Everything we learn from people like you can help stop scams like this from happening.",
   "Fast online": "Fast online",
   "How much information do you have to report?": "How much information do you have to report?",
+  "How urgent is it?": "How urgent is it?",
+  "It's an emergency": "It's an emergency",
+  "It's not an emergency": "It's not an emergency",
   "Long form": "Long form",
   "None": "None",
   "Not much": "Not much",
@@ -38,5 +41,8 @@
   "a phone number": "a phone number",
   "a website": "a website",
   "an email address": "an email address",
-  "loading...": "loading..."
+  "loading...": "loading...",
+  "I want to talk to someone directly": "I want to talk to someone directly",
+  "I want to report on my own": "I want to report on my own",
+  "How do you want to tell the police?": "How do you want to tell the police?"
 }
