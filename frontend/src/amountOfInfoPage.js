@@ -42,16 +42,18 @@ export const AmountOfInfoPage = () => (
         flex="1 1 auto"
         css={css`
           text-align: center;
-          float: left;
+          float: right;
         `}
-        mb={[4, null, 0]}
-        mr={[0, null, 5]}
       >
         <Link to="/howtotell">
-          <Card>
+          <Card
+            css={css`
+              float: right;
+            `}
+          >
             <img
-              src={evidence}
-              alt="suspect information"
+              src={story}
+              alt="tell a story"
               css={css`
                 width: 100%;
               `}
@@ -71,18 +73,16 @@ export const AmountOfInfoPage = () => (
         flex="1 1 auto"
         css={css`
           text-align: center;
-          float: right;
+          float: left;
         `}
+        mb={[4, null, 0]}
+        mr={[0, null, 5]}
       >
         <Link to="/howtotell">
-          <Card
-            css={css`
-              float: right;
-            `}
-          >
+          <Card>
             <img
-              src={story}
-              alt="tell a story"
+              src={evidence}
+              alt="suspect information"
               css={css`
                 width: 100%;
               `}
