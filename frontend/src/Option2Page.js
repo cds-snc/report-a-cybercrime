@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
-import { H1 } from './components/header'
-import { ButtonLink } from './components/link'
+import { H1, H2 } from './components/header'
+import { Ul } from './components/unordered-list'
+import { Li } from './components/list-item'
 import { TrackPageViews } from './TrackPageViews'
 import { Container } from './components/container'
 
@@ -14,25 +15,22 @@ const CenterContent = styled('div')`
 export const Option2Page = () => (
   <CenterContent>
     <TrackPageViews />
-    <H1 textAlign="center" fontSize={[5, null, 6]}>
-      <Trans>You can:</Trans>
+    <H1 textAlign="center">
+      <Trans>You can call the Canadian Anti-Fraud Centre</Trans>
+      <br />
+      <br />
+      1-888-495-8501
     </H1>
-    <Container textAlign="center">
-      <Container>
-        <ButtonLink mb={[3, null, 5]} to="">
-          <Trans>Call CAFC</Trans> <br />
-          1-888-495-8501
-        </ButtonLink>
-      </Container>
-      <Container>
-        <ButtonLink mb={[3, null, 5]} to="">
-          <Trans>Report online</Trans>
-        </ButtonLink>
-      </Container>
-      <Container>
-        <ButtonLink mb={[3, null, 5]} to="">
-          <Trans>Fast online</Trans>
-        </ButtonLink>
+    <Container>
+      <Container marginTop={[3, null, 5]}>
+        <H2 fontSize={[3, null, 4]}>
+          <Trans>You will get:</Trans>
+        </H2>
+        <Ul>
+          <Li>
+            <Trans>specific advice based on your situation</Trans>
+          </Li>
+        </Ul>
       </Container>
     </Container>
   </CenterContent>
