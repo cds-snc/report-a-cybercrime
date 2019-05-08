@@ -29,7 +29,7 @@ const Card = styled('div')`
 export const Urgency = () => (
   <CenterContent>
     <H1 fontSize={[5, null, 6]} mb={5}>
-      <Trans>How urgent is it?</Trans>
+      <Trans>How urgent is your situation?</Trans>
     </H1>
     <Container
       display="flex"
@@ -51,7 +51,7 @@ export const Urgency = () => (
           <Card>
             <img
               src={emergency}
-              alt="It's an emergency"
+              alt="An illustration of a person looking worried. A phone and 9-1-1 in speech bubble hover above their head."
               css={css`
                 width: 100%;
               `}
@@ -62,7 +62,7 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>{"It's an emergency"}</Trans>
+              <Trans>{"It's an emergency: I need help now because someone's life is in danger."}</Trans>
             </H2>
           </Card>
         </Link>
@@ -82,7 +82,7 @@ export const Urgency = () => (
           >
             <img
               src={nonemergency}
-              alt="It's not an emergency"
+              alt="An illustration of a person with thought bubbles of phones, money, emails, websites"
               css={css`
                 width: 100%;
               `}
@@ -93,7 +93,7 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>{"It's not an emergency"}</Trans>
+              <Trans>{"I’d like to report, but it’s not an emergency."}</Trans>
             </H2>
           </Card>
         </Link>
