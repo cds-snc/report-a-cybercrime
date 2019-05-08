@@ -75,7 +75,7 @@ export const HowToTellPolice = () => (
           float: right;
         `}
       >
-        <Link to="/amountofinfo">
+        <Link to="/identity">
           <Card
             css={css`
               float: right;
