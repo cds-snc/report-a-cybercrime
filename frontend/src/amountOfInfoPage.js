@@ -19,12 +19,12 @@ export const AmountOfInfoPage = () => (
     </H1>
     <Container textAlign="center">
       <Container>
-        <ButtonLink mb={[3, null, 5]} to="">
+        <ButtonLink mb={[3, null, 5]} to="/howtotell">
           <Trans>Suspect information</Trans>
         </ButtonLink>
       </Container>
       <Container>
-        <ButtonLink mb={[3, null, 5]} to="">
+        <ButtonLink mb={[3, null, 5]} to="/howtotell">
           <Trans>Not much</Trans>
         </ButtonLink>
       </Container>
