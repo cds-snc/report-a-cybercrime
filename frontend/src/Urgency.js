@@ -29,7 +29,7 @@ const Card = styled('div')`
 export const Urgency = () => (
   <CenterContent>
     <H1 fontSize={[5, null, 6]} mb={5}>
-      <Trans>How urgent is it?</Trans>
+      <Trans>How urgent is your situation?</Trans>
     </H1>
     <Container
       display="flex"
