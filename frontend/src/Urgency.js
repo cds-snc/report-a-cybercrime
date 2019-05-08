@@ -51,7 +51,7 @@ export const Urgency = () => (
           <Card>
             <img
               src={emergency}
-              alt="It's an emergency"
+              alt="An illustration of a person looking worried. A phone and 9-1-1 in speech bubble hover above their head."
               css={css`
                 width: 100%;
               `}
@@ -62,7 +62,7 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>{"It's an emergency"}</Trans>
+              <Trans>{"It's an emergency: I need help now because someone's life is in danger."}</Trans>
             </H2>
           </Card>
         </Link>
