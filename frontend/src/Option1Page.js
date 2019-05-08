@@ -2,7 +2,6 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
-import { P } from './components/paragraph'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { TrackPageViews } from './TrackPageViews'
@@ -24,13 +23,11 @@ export const Option1Page = () => (
         <H2 fontSize={[3, null, 4]}>
           <Trans>You will get:</Trans>
         </H2>
-        <P>
-          <Ul>
-            <Li>
-              <Trans>Local, immediate response</Trans>
-            </Li>
-          </Ul>
-        </P>
+        <Ul>
+          <Li>
+            <Trans>Local, immediate response</Trans>
+          </Li>
+        </Ul>
       </Container>
     </Container>
   </CenterContent>
