@@ -44,7 +44,7 @@ export const Page1 = () => (
         Every report can help stop this from happening and protect others.
       </Trans>
     </P>
-    <ButtonLink mb={[3, null, 5]} to="/flag">
+    <ButtonLink mb={[3, null, 5]} to="/urgency">
       <Trans>Report now</Trans>
     </ButtonLink>
   </CenterContent>

@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
 import { Container } from './components/container'
-import emergency from './images/emergency.svg'
-import nonemergency from './images/nonemergency.svg'
+import followup from './images/followup.svg'
+import noFollowup from './images/nofollowup.svg'
 import { Link } from '@reach/router'
 
 const CenterContent = styled('div')`
@@ -20,16 +20,15 @@ const Card = styled('div')`
   border-radius: 5px;
   border: 1px solid grey;
   max-width: 300px;
-
   :hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
 `
 
-export const Urgency = () => (
+export const IdentityPage = () => (
   <CenterContent>
     <H1 fontSize={[5, null, 6]} mb={5}>
-      <Trans>How urgent is it?</Trans>
+      <Trans>How do you want to report?</Trans>
     </H1>
     <Container
       display="flex"
@@ -47,11 +46,11 @@ export const Urgency = () => (
         mb={[4, null, 0]}
         mr={[0, null, 5]}
       >
-        <Link to="/call911">
+        <Link to="/">
           <Card>
             <img
-              src={emergency}
-              alt="It's an emergency"
+              src={noFollowup}
+              alt="No followup"
               css={css`
                 width: 100%;
               `}
@@ -62,7 +61,9 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>{"It's an emergency"}</Trans>
+              <Trans>{'Anonymously'}</Trans>
+              <br />
+              <br />
             </H2>
           </Card>
         </Link>
@@ -74,15 +75,15 @@ export const Urgency = () => (
           float: right;
         `}
       >
-        <Link to="/amountofinfo">
+        <Link to="/">
           <Card
             css={css`
               float: right;
             `}
           >
             <img
-              src={nonemergency}
-              alt="It's not an emergency"
+              src={followup}
+              alt="With followup"
               css={css`
                 width: 100%;
               `}
@@ -93,7 +94,7 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>{"It's not an emergency"}</Trans>
+              <Trans>{'Full report with my information'}</Trans>
             </H2>
           </Card>
         </Link>

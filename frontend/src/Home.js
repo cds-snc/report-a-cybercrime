@@ -10,9 +10,16 @@ import { Page2 } from './Page2'
 import { Urgency } from './Urgency'
 import { FileUploadPage } from './FileUpload'
 import { AmountOfInfoPage } from './amountOfInfoPage'
+<<<<<<< HEAD
 import { Option3Page } from './Option3Page'
 import { HowToTellPolice } from './HowToTellPolice'
+=======
+import { IdentityPage } from './identityPage'
+import { Option1Page } from './Option1Page'
+>>>>>>> 7eb7cb258e8b0ab3cbe2534923f6d86ad72223c4
 import { Option2Page } from './Option2Page'
+import { Option3Page } from './Option3Page'
+import { HowToTellPolice } from './HowToTellPolice'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -35,13 +42,20 @@ export const Home = () => (
         <PageNotFound default />
         <Page1 path="/" />
         <Page2 path="/flag" />
+<<<<<<< HEAD
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
+=======
+        <Option1Page path="/option1" />
+>>>>>>> 7eb7cb258e8b0ab3cbe2534923f6d86ad72223c4
         <Option2Page path="/option2" />
+        <Option3Page path="/option3" />
+        <HowToTellPolice path="/howtotell" />
         <Summary path="/summary/:identifier" />
         <FileUploadPage path="/fileuploader" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
+        <IdentityPage path="/identity" />
       </Router>
     </Screen>
   </Root>
