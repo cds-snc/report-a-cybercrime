@@ -7,7 +7,6 @@ import { Container } from './components/container'
 import followup from './images/followup.svg'
 import noFollowup from './images/nofollowup.svg'
 import { Link } from '@reach/router'
-import { ButtonLink } from './components/link'
 
 const CenterContent = styled('div')`
   max-width: 750px;
