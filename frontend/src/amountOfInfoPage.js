@@ -50,8 +50,8 @@ export const AmountOfInfoPage = () => (
         <Link to="/howtotell">
           <Card>
             <img
-              src={evidence}
-              alt="suspect information"
+              src={story}
+              alt="tell a story"
               css={css`
                 width: 100%;
               `}
@@ -62,9 +62,7 @@ export const AmountOfInfoPage = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>
-                I have evidence that could help identify who is responsible
-              </Trans>
+              <Trans>I have a story to tell about what happened</Trans>
             </H2>
           </Card>
         </Link>
@@ -83,8 +81,8 @@ export const AmountOfInfoPage = () => (
             `}
           >
             <img
-              src={story}
-              alt="tell a story"
+              src={evidence}
+              alt="suspect information"
               css={css`
                 width: 100%;
               `}
@@ -95,7 +93,9 @@ export const AmountOfInfoPage = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>I have a story to tell about what happened</Trans>
+              <Trans>
+                I have evidence that could help identify who is responsible
+              </Trans>
             </H2>
           </Card>
         </Link>
