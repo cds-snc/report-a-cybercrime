@@ -1,6 +1,7 @@
 {
   "<0>Enter the email address, phone number, or website of the scam:</0>": "<0>Enter the email address, phone number, or website of the scam:</0>",
   "ALPHA": "ALPHA",
+  "Anonymously": "Anonymously",
   "Back": "Back",
   "Call 911": "Call 911",
   "Call CAFC": "Call CAFC",
@@ -9,8 +10,13 @@
   "Every report can help stop this from happening and protect others.": "Every report can help stop this from happening and protect others.",
   "Everything we learn from people like you can help stop scams like this from happening.": "Everything we learn from people like you can help stop scams like this from happening.",
   "Fast online": "Fast online",
+  "Full report with my information": "Full report with my information",
+  "How do you want to report?": "How do you want to report?",
+  "How do you want to tell the police?": "How do you want to tell the police?",
   "How much information do you have to report?": "How much information do you have to report?",
   "How urgent is it?": "How urgent is it?",
+  "I want to report on my own": "I want to report on my own",
+  "I want to talk to someone directly": "I want to talk to someone directly",
   "It's an emergency": "It's an emergency",
   "It's not an emergency": "It's not an emergency",
   "Local, immediate response": "Local, immediate response",
@@ -38,15 +44,11 @@
   "This site will be changing as we test ideas and learn from people like you.": "This is a prototype for research purposes only.",
   "Website links": "Website links",
   "You can:": "You can:",
-  "You should:": "You should:",
   "You will get:": "You will get:",
   "You‘re the first person to help us with this scam.": "You‘re the first person to help us with this scam.",
   "You‘re the {summaryTotal}th person to help us with this scam.": "You‘re the {summaryTotal}th person to help us with this scam.",
   "a phone number": "a phone number",
   "a website": "a website",
   "an email address": "an email address",
-  "loading...": "loading...",
-  "I want to talk to someone directly": "I want to talk to someone directly",
-  "I want to report on my own": "I want to report on my own",
-  "How do you want to tell the police?": "How do you want to tell the police?"
+  "loading...": "loading..."
 }

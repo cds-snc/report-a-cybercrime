@@ -10,6 +10,7 @@ import { Page2 } from './Page2'
 import { Urgency } from './Urgency'
 import { FileUploadPage } from './FileUpload'
 import { AmountOfInfoPage } from './amountOfInfoPage'
+import { IdentityPage } from './identityPage'
 import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
@@ -44,6 +45,7 @@ export const Home = () => (
         <FileUploadPage path="/fileuploader" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
+        <IdentityPage path="/identity" />
       </Router>
     </Screen>
   </Root>
