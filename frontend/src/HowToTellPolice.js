@@ -60,6 +60,7 @@ export const HowToTellPolice = () => (
               fontSize={[3, null, 4]}
               css={css`
                 text-decoration: underline;
+                color: blue;
               `}
             >
               <Trans>{'I would like to talk to someone'}</Trans>
@@ -91,6 +92,7 @@ export const HowToTellPolice = () => (
               fontSize={[3, null, 4]}
               css={css`
                 text-decoration: underline;
+                color: blue;
               `}
             >
               <Trans>{'I would like to report online on my own'}</Trans>

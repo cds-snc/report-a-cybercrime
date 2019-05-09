@@ -60,6 +60,7 @@ export const Urgency = () => (
               fontSize={[3, null, 4]}
               css={css`
                 text-decoration: underline;
+                color: blue;
               `}
             >
               <Trans>
@@ -95,6 +96,7 @@ export const Urgency = () => (
               fontSize={[3, null, 4]}
               css={css`
                 text-decoration: underline;
+                color: blue;
               `}
             >
               <Trans>{'I’d like to report, but it’s not an emergency.'}</Trans>

@@ -61,6 +61,7 @@ export const IdentityPage = () => (
               fontSize={[3, null, 4]}
               css={css`
                 text-decoration: underline;
+                color: blue;
               `}
             >
               <Trans>{'I don’t expect to receive a follow-up'}</Trans>
@@ -94,6 +95,7 @@ export const IdentityPage = () => (
               fontSize={[3, null, 4]}
               css={css`
                 text-decoration: underline;
+                color: blue;
               `}
             >
               <Trans>
