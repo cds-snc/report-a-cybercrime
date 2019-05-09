@@ -63,7 +63,7 @@ export const IdentityPage = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>{'Anonymously'}</Trans>
+              <Trans>{'I don’t expect to receive a follow-up'}</Trans>
               <br />
               <br />
             </H2>
@@ -96,7 +96,11 @@ export const IdentityPage = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>{'Full report with my information'}</Trans>
+              <Trans>
+                {
+                  'I would like to be contacted should my report warrant a follow-up'
+                }
+              </Trans>
             </H2>
           </Card>
         </Link>
