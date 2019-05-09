@@ -18,7 +18,7 @@ export const Option1Page = () => (
       <Trans>Call 911</Trans>
     </H1>
     <Container>
-      <Container marginTop={[3, null, 5]}>
+      <Container marginTop={[6, null, 7]}>
         <P fontSize={[3, null, 4]}>
           <Trans>You will get a local immediate response.</Trans>
         </P>
