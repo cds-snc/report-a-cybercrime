@@ -60,6 +60,7 @@ export const AmountOfInfoPage = () => (
               fontSize={[3, null, 4]}
               css={css`
                 text-decoration: underline;
+                color: blue;
               `}
             >
               <Trans>
@@ -93,6 +94,7 @@ export const AmountOfInfoPage = () => (
               fontSize={[3, null, 4]}
               css={css`
                 text-decoration: underline;
+                color: blue;
               `}
             >
               <Trans>I have a story to tell about what happened</Trans>
