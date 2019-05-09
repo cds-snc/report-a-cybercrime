@@ -62,7 +62,11 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>{"It's an emergency: I need help now because someone's life is in danger."}</Trans>
+              <Trans>
+                {
+                  "It's an emergency: I need help now because someone's life is in danger."
+                }
+              </Trans>
             </H2>
           </Card>
         </Link>
@@ -93,7 +97,7 @@ export const Urgency = () => (
                 text-decoration: underline;
               `}
             >
-              <Trans>{"I’d like to report, but it’s not an emergency."}</Trans>
+              <Trans>{'I’d like to report, but it’s not an emergency.'}</Trans>
             </H2>
           </Card>
         </Link>

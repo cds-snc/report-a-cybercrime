@@ -28,7 +28,9 @@ const Card = styled('div')`
 export const IdentityPage = () => (
   <CenterContent>
     <H1 fontSize={[5, null, 6]} mb={5}>
-      <Trans>How do you want to report?</Trans>
+      <Trans>
+        Would you like to leave contact information for a potential follow-up?
+      </Trans>
     </H1>
     <Container
       display="flex"
