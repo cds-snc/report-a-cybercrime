@@ -3,7 +3,7 @@ const { dbinit } = require('../dbinit')
 const { schema } = require('../schema')
 const { makeTestDatabase, dbNameFromFile } = require('../utils')
 
-const { DB_USER: user, DB_URL: url, DB_PASSWORD: password } = process.env
+const { DB_USER: user, TEST_DB_URL: url, DB_PASSWORD: password } = process.env
 
 // eslint-disable-next-line
 let db, drop, truncate, reports, dbfunctions

@@ -6,7 +6,7 @@ const {
   getFilenameFromPath,
 } = require('../utils')
 
-const { DB_USER: user, DB_URL: url, DB_PASSWORD: password } = process.env
+const { DB_USER: user, TEST_DB_URL: url, DB_PASSWORD: password } = process.env
 
 describe('Utils', () => {
   describe('getFilenameFromPath', () => {

@@ -1,8 +1,6 @@
 node_modules
 ./package-lock.json
 *.swp
-api/.env
-api/.env.test
 .idea
 build-sizes.json
 data

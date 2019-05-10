@@ -3,7 +3,7 @@ const { Server } = require('../server')
 const { dbinit } = require('../dbinit')
 const { makeTestDatabase, dbNameFromFile } = require('../utils')
 
-const { DB_USER: user, DB_URL: url, DB_PASSWORD: password } = process.env
+const { DB_USER: user, TEST_DB_URL: url, DB_PASSWORD: password } = process.env
 
 let db, drop, truncate
 
