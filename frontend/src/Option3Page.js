@@ -24,7 +24,7 @@ export const Option3Page = () => (
     </H1>
     <Container>
       <Container marginTop={[6, null, 7]}>
-        <P fontSize={[3, null, 4]}>
+        <P fontSize={[3, null, 4]} textAlign="center">
           <Trans>
             You’ll make the Royal Canadian Mounted Police aware of your
             situation and get general advice.

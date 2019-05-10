@@ -22,7 +22,7 @@ export const Option2Page = () => (
     </H1>
     <Container>
       <Container marginTop={[6, null, 7]}>
-        <P fontSize={[3, null, 4]}>
+        <P fontSize={[3, null, 4]} textAlign="center">
           <Trans>You’ll get specific advice based on your situation.</Trans>
         </P>
       </Container>

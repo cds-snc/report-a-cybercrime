@@ -19,7 +19,7 @@ export const Option1Page = () => (
     </H1>
     <Container>
       <Container marginTop={[6, null, 7]}>
-        <P fontSize={[3, null, 4]}>
+        <P fontSize={[3, null, 4]} textAlign="center">
           <Trans>You will get a local immediate response.</Trans>
         </P>
       </Container>
