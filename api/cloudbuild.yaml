@@ -23,6 +23,7 @@ steps:
     env:
       - 'DB_NAME=$_DB_NAME'
       - 'DB_URL=$_DB_URL'
+      - 'TEST_DB_URL=$_TEST_DB_URL'
       - 'DB_USER=$_DB_USER'
       - 'DB_PASSWORD=$_DB_PASSWORD'
       - 'MINIO_ACCESS_KEY=$_MINIO_ACCESS_KEY'
