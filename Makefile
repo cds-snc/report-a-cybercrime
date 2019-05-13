@@ -1,7 +1,19 @@
 SHELL ?= /usr/bin/bash
-# set up minikube for local testing.
+
+.PHONY: setup
 setup:
 	docker-compose build
+
+.PHONY: dev
 dev:
 	docker-compose up
+
+.PHONY: api
+api:
+	docker-compose up api minio arangodb
+
+.PHONY: frontend
+frontend:
+	docker-compose up frontend
+
 .ONESHELL:
