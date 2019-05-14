@@ -15,10 +15,10 @@ export const Option2Page = () => (
   <CenterContent>
     <TrackPageViews />
     <H1 textAlign="center">
-      <Trans>You can call the Canadian Anti-Fraud Centre</Trans>
+      <Trans>You can call us</Trans>
       <br />
       <br />
-      1-888-495-8501
+      1-888-CYBERCRIME
     </H1>
     <Container>
       <Container marginTop={[6, null, 7]}>
