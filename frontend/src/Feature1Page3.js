@@ -46,7 +46,7 @@ export const Feature1Page3 = ({ identifier }) => (
       </Trans>
     </P>
     <TrackPageViews />
-    <ButtonLink mb={[3, null, 5]} to="/">
+    <ButtonLink mb={[3, null, 5]} to="/feature1">
       <Trans>Report another scam</Trans>
     </ButtonLink>
   </Container>

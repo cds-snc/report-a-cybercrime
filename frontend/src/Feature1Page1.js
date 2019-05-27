@@ -44,7 +44,7 @@ export const Feature1Page1 = () => (
         Every report can help stop this from happening and protects others.
       </Trans>
     </P>
-    <ButtonLink mb={[3, null, 5]} to="/f1-p2">
+    <ButtonLink mb={[3, null, 5]} to="page2">
       <Trans>Report now</Trans>
     </ButtonLink>
   </CenterContent>

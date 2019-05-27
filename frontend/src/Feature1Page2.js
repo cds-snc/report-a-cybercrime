@@ -17,7 +17,7 @@ import { P, Lead } from './components/paragraph'
 
 const submitAndNavigate = (flagIdentifier, data) => {
   flagIdentifier({ variables: data })
-  navigate(`/f1-p3/${encodeURIComponent(data.identifier)}`)
+  navigate(`page3/${encodeURIComponent(data.identifier)}`)
 }
 
 const validate = values => {
@@ -83,7 +83,7 @@ const MyForm = () => (
                   width={['100%', null, '600px']}
                 >
                   <Container width={1 / 2}>
-                    <ButtonLink to="/f1-p1">
+                    <ButtonLink to="/feature1">
                       &lt; <Trans>Back</Trans>
                     </ButtonLink>
                   </Container>

@@ -36,10 +36,10 @@ export const Home = () => (
     <Screen>
       <Router>
         <PageNotFound default />
+        <Feature1Page1 path="/feature1/" />
+        <Feature1Page2 path="/feature1/page2" />
+        <Feature1Page3 path="/feature1/page3/:identifier" />
         <Page1 path="/" />
-        <Feature1Page1 path="/f1-p1" />
-        <Feature1Page2 path="/f1-p2" />
-        <Feature1Page3 path="/f1-p3/:identifier" />
         <Option1Page path="/option1" />
         <Option2Page path="/option2" />
         <Option3Page path="/option3" />
