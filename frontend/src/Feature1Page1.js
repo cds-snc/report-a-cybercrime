@@ -41,7 +41,7 @@ export const Feature1Page1 = () => (
     </Ul>
     <P fontSize={[2, null, 3]}>
       <Trans>
-        Every report can help stop this from happening and protect others.
+        Every report can help stop this from happening and protects others.
       </Trans>
     </P>
     <ButtonLink mb={[3, null, 5]} to="/f1-p2">
