@@ -3,10 +3,11 @@ import { Router } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import styled from '@emotion/styled'
 import { PhaseBanner } from './components/phase-banner'
-import { Summary } from './Summary'
 import { PageNotFound } from './PageNotFound'
 import { Page1 } from './Page1'
-import { Page2 } from './Page2'
+import { Feature1Page1 } from './Feature1Page1'
+import { Feature1Page2 } from './Feature1Page2'
+import { Feature1Page3 } from './Feature1Page3'
 import { Urgency } from './Urgency'
 import { FileUploadPage } from './FileUpload'
 import { AmountOfInfoPage } from './amountOfInfoPage'
@@ -36,12 +37,13 @@ export const Home = () => (
       <Router>
         <PageNotFound default />
         <Page1 path="/" />
-        <Page2 path="/flag" />
+        <Feature1Page1 path="/f1-p1" />
+        <Feature1Page2 path="/f1-p2" />
+        <Feature1Page3 path="/f1-p3/:identifier" />
         <Option1Page path="/option1" />
         <Option2Page path="/option2" />
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
-        <Summary path="/summary/:identifier" />
         <FileUploadPage path="/fileuploader" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
