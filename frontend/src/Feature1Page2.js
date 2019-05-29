@@ -17,7 +17,7 @@ import { P, Lead } from './components/paragraph'
 
 const submitAndNavigate = (flagIdentifier, data) => {
   flagIdentifier({ variables: data })
-  navigate(`/summary/${encodeURIComponent(data.identifier)}`)
+  navigate(`page3/${encodeURIComponent(data.identifier)}`)
 }
 
 const validate = values => {
@@ -83,7 +83,7 @@ const MyForm = () => (
                   width={['100%', null, '600px']}
                 >
                   <Container width={1 / 2}>
-                    <ButtonLink to="/">
+                    <ButtonLink to="/feature1">
                       &lt; <Trans>Back</Trans>
                     </ButtonLink>
                   </Container>
@@ -107,7 +107,7 @@ const MyForm = () => (
   </ApolloConsumer>
 )
 
-export const Page2 = () => (
+export const Feature1Page2 = () => (
   <Container width={['100%', null, '600px']} m="auto">
     <H1 fontSize={[5, null, 6]}>
       <Trans>Report a scam</Trans>

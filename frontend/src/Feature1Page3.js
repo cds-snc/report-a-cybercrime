@@ -12,7 +12,7 @@ import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { ButtonLink } from './components/link'
 
-export const Summary = ({ identifier }) => (
+export const Feature1Page3 = ({ identifier }) => (
   <Container mx={'auto'} width={[1, 1, 1]}>
     <H1 fontSize={[5, null, 6]}>
       <Trans>Thank you for reporting.</Trans>
@@ -46,9 +46,9 @@ export const Summary = ({ identifier }) => (
       </Trans>
     </P>
     <TrackPageViews />
-    <ButtonLink mb={[3, null, 5]} to="/">
+    <ButtonLink mb={[3, null, 5]} to="/feature1">
       <Trans>Report another scam</Trans>
     </ButtonLink>
   </Container>
 )
-Summary.propTypes = { identifier: PropTypes.string }
+Feature1Page3.propTypes = { identifier: PropTypes.string }
