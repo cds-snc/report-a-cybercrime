@@ -62,6 +62,15 @@ export API_PORT=3002
 You will know that your environment is set up correctly if you can see those
 variables in the output of the `env` command.
 
+### Install modules
+
+The approach we currently use for running locally requires you to install the required modules manually. From the root folder of the project run
+
+```
+cd frontend && npm install && cd ..
+cd api && npm install && cd ..
+```
+
 ### Run project with Docker
 
 With those environmental vars defined, navigate to the root project folder and
