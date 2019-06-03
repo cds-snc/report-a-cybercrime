@@ -16,6 +16,18 @@ import {
 } from 'recharts'
 import theme from './theme'
 
+const fakeStats = {
+  identifierFlaggingsWithin: {
+    identifier: '555-555-5555',
+    summary: [
+      { date: '2019-04-05', total: 2 },
+      { date: '2019-04-08', total: 1 },
+      { date: '2019-04-10', total: 5 },
+      { date: '2019-04-15', total: 4 },
+    ],
+  },
+}
+
 class Chart extends PureComponent {
   render() {
     return (
@@ -74,16 +86,15 @@ export const Stats = () => (
   >
     {({ loading, error, data }) => {
       if (loading) return ''
-      if (error)
-        return (
-          <P color="crimson" fontWeight="bolder">
-            Error connecting to database:
-            <br />
-            {error.message}
-          </P>
-        )
-
-      let { stats } = data
+      // if (error)
+      //   return (
+      //     <P color="crimson" fontWeight="bolder">
+      //       Error connecting to database:
+      //       <br />
+      //       {error.message}
+      //     </P>
+      //   )
+      const stats = error ? fakeStats : data.stats
       return <Chart data={stats.identifierFlaggingsWithin.summary} />
     }}
   </Query>
