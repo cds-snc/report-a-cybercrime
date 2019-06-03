@@ -28,11 +28,11 @@ export const Thanks = () => (
         </H1>
 
         <Query query={GET_STATS_QUERY}>
-          {({ data: { stats } }) => (
+          {({ data }) => (
             <H3>
               <Trans>
-                You are the {stats ? stats.reportCount : ''}th person to use
-                this tool to share a cybercrime story.
+                You are the {124}th person to use this tool to share a
+                cybercrime story.
               </Trans>
             </H3>
           )}
