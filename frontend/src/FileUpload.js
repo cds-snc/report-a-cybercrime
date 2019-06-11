@@ -46,9 +46,7 @@ export class FileUploadPage extends Component {
     var returnString = ''
     returnString += (result.success === true ? "File uploaded successfully" : result.errorMessage)
     if (result.success === true){
-      returnString += "\n" + "CE ID: " + result.ce
       returnString += "\n" + "MD5: " + result.md5
-      returnString += "\n" + "SHA1: " + result.sha1
     }
     return returnString 
   }

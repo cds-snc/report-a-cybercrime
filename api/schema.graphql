@@ -12,8 +12,6 @@ type fileUploadResult {
   success: Boolean
   errorMessage: String
   md5: String
-  sha1: String
-  ce: String
 }
 
 type identifierFlaggingsSummary {

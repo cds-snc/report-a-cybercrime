@@ -13,8 +13,6 @@ const FileUploadResult = new GraphQLObjectType({
     errorMessage: { type: GraphQLString },
     // Fields are nullable by default so these are not required in the return
     md5: { type: GraphQLString },
-    sha1: { type: GraphQLString },
-    ce: { type: GraphQLString }
   }),
 })
 

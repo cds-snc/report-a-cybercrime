@@ -118,8 +118,6 @@ const mutation = new GraphQLObjectType({
 
         // Hashing this file will consume the stream, so we make several streams.
         const md5stream = createReadStream()
-        const sha1stream = createReadStream()
-        const sha256stream = createReadStream()
 
         // in case you want to print the file to stdout:
         // console.log(await streamToString(stream))
@@ -147,8 +145,6 @@ const mutation = new GraphQLObjectType({
             fileName: filename,
             MD5: await calculateHash(createHash('md5'), md5stream),
             submittedOn: today.toISOString(),
-            SHA1: await calculateHash(createHash('sha1'), sha1stream),
-            SHA256: await calculateHash(createHash('sha256'), sha256stream),
             TLP: TLP,
             TLPShare: TLPShare,
             internetAccessAllowed: internetAccessAllowed,
@@ -168,15 +164,11 @@ const mutation = new GraphQLObjectType({
             success: true,
             errorMessage: '',
             md5: upData.MD5,
-            sha1: upData.SHA1,
-            ce: upData.ceName,
           })
           return {
             success: true,
             errorMessage: '',
             md5: upData.MD5,
-            sha1: upData.SHA1,
-            ce: upData.ceName,
           }
         } catch (e) {
           if (e.name === 'PayloadTooLargeError') {
