@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Form, Field } from 'react-final-form'
 import styled from '@emotion/styled'
 import { P } from './components/paragraph'
+import { H1 } from './components/header'
 import { Button } from './components/button'
 import { FileUpload } from './components/file-upload'
 import { finalFormAdapter } from './utils/finalFormAdapter'
@@ -30,7 +31,7 @@ export class FileUploadPage extends Component {
   }
 
   onChange = e => {
-    this.resetRadioButtons()
+    // this.resetRadioButtons()
     this.setState({ file: e.target.files[0] })
   }
 
@@ -63,41 +64,40 @@ export class FileUploadPage extends Component {
     //navigate(`/summary/${encodeURIComponent(data.identifier)}`)
   }
 
-  resetRadioButtons = () => {
-    for (let x of document.getElementsByClassName('resettable-radio-button')) {
-      x.checked = false
-    }
-    this.forceUpdate()
-  }
+  // resetRadioButtons = () => {
+  //   for (let x of document.getElementsByClassName('resettable-radio-button')) {
+  //     x.checked = false
+  //   }
+  //   this.forceUpdate()
+  // }
 
-  reportAnswerSelected = () => {
-    for (let x of document.getElementsByClassName('resettable-radio-button')) {
-      if (
-        x.checked === true &&
-        x.name === 'Question1' &&
-        (x.value === 'true' || x.value === 'false')
-      ) {
-        // These are stored as text, we need to convert to boolean
-        return x.value === 'true'
-      }
-    }
-    return null
-  }
+  // reportAnswerSelected = () => {
+  //   for (let x of document.getElementsByClassName('resettable-radio-button')) {
+  //     if (
+  //       x.checked === true &&
+  //       x.name === 'Question1' &&
+  //       (x.value === 'true' || x.value === 'false')
+  //     ) {
+  //       // These are stored as text, we need to convert to boolean
+  //       return x.value === 'true'
+  //     }
+  //   }
+  //   return null
+  // }
 
-  shareAnswerSelected = () => {
-    for (let x of document.getElementsByClassName('resettable-radio-button')) {
-      if (x.checked === true && x.name === 'Question2') {
-        // These are stored as text, we need to convert to boolean
-        return x.value
-      }
-    }
-    return null
-  }
+  // shareAnswerSelected = () => {
+  //   for (let x of document.getElementsByClassName('resettable-radio-button')) {
+  //     if (x.checked === true && x.name === 'Question2') {
+  //       // These are stored as text, we need to convert to boolean
+  //       return x.value
+  //     }
+  //   }
+  //   return null
+  // }
 
   drawTextbox = () => {
     return (
       <TextArea
-        width="800px"
         padding="10px"
         style={{ resize: 'none', boxSizing: 'border-box' }}
         height="100px"
@@ -105,9 +105,7 @@ export class FileUploadPage extends Component {
           this.setState({ dataRestrictionsSpecific: text.target.value })
         }
         placeholder="Write your data restrictions here..."
-      >
-        {this.state.dataRestrictionsSpecific}
-      </TextArea>
+      />
     )
   }
 
@@ -119,104 +117,81 @@ export class FileUploadPage extends Component {
         {() => (
           <Mutation mutation={UPLOAD_FILE_MUTATION}>
             {uploadFile => (
-              <CenterContent>
-                <Container width="1200px" marginLeft="calc(50% - 630px)">
-                  <P>
-                    <Trans>
-                      Share suspicious files with the Canadian Cyber Center for
-                      Security (CCCS) to help making a safer internet for all
-                      Canadians.
-                    </Trans>
-                  </P>
-                  <P>
-                    <Trans>
-                      The files shared with the CCCS are analyzed to extract
-                      indicators of compromise (IoCs) that can be used by other
-                      members of the cyber security community to better protect
-                      their network. Indeed, it is likely that multiple Canadian
-                      organizations or individuals are targeted by the same
-                      malicious actor, however, if the information is shared,
-                      others can learn from the behaviour of the file you
-                      submitted and implement proactive protection measures.
-                      Similarly, you benefit from the information others have
-                      shared to improve your defenses.
-                    </Trans>
-                  </P>
-                  <Container
-                    width="800px"
-                    marginLeft="200px"
-                    marginTop="50px"
-                    padding="30px"
-                    backgroundColor="#EEE"
-                    borderRadius="10px"
-                  >
-                    <Form
-                      margin="20px"
-                      float="left"
-                      onSubmit={() => {
-                        this.submit(uploadFile)
-                      }}
-                      validate={this.validate}
-                      render={({ handleSubmit }) => (
-                        <form onSubmit={handleSubmit}>
-                          <center>
-                            {!this.state.postSubmission && (
-                              <Field
-                                id="file"
-                                name="file"
-                                component={FileUploadAdapter}
-                                onChange={this.onChange}
-                                paddingLeft="15px"
-                                paddingRight="15px"
-                                margin="0 auto"
-                              >
-                                <Trans>Upload File</Trans>
-                              </Field>
-                            )}
-
-                            {!this.state.postSubmission && (
-                              <P mt={4}>
-                                {this.state.file ? (
-                                  this.state.file.name
-                                ) : (
-                                  <Trans>
-                                    No files currently selected for upload
-                                  </Trans>
-                                )}
-                              </P>
-                            )}
-                            {this.drawTextbox()}
-                            {this.state.file !== undefined && (
-                              <Button type="submit">
-                                <Trans>Submit!</Trans>
-                              </Button>
-                            )}
-                            <P
-                              mt={4}
-                              style={{ whiteSpace: 'pre-wrap' }}
-                              hidden={this.state.resultText === ''}
+              <Container>
+                <H1
+                  fontSize={[5, null, 6]}
+                  textAlign="center"
+                  marginBottom="100px"
+                >
+                  <Trans>Upload a suspicious file</Trans>
+                </H1>
+                <CenterContent padding="30px">
+                  <Form
+                    margin="200px"
+                    float="left"
+                    onSubmit={() => {
+                      this.submit(uploadFile)
+                    }}
+                    validate={this.validate}
+                    render={({ handleSubmit }) => (
+                      <form onSubmit={handleSubmit}>
+                        <center>
+                          {!this.state.postSubmission && (
+                            <Field
+                              id="file"
+                              name="file"
+                              component={FileUploadAdapter}
+                              onChange={this.onChange}
+                              paddingLeft="15px"
+                              paddingRight="15px"
+                              margin="0 auto"
                             >
-                              {this.state.resultText}
+                              <Trans>Choose File</Trans>
+                            </Field>
+                          )}
+
+                          {!this.state.postSubmission && (
+                            <P mt={4}>
+                              {this.state.file ? (
+                                this.state.file.name
+                              ) : (
+                                <Trans>
+                                  No files currently selected for upload
+                                </Trans>
+                              )}
                             </P>
-                            {this.state.postSubmission && (
-                              <Button
-                                onClick={() =>
-                                  this.setState({
-                                    postSubmission: false,
-                                    resultText: '',
-                                  })
-                                }
-                              >
-                                <Trans>Upload another file</Trans>
-                              </Button>
-                            )}
-                          </center>
-                        </form>
-                      )}
-                    />
-                  </Container>
-                </Container>
-              </CenterContent>
+                          )}
+                          {this.drawTextbox()}
+                          {this.state.file !== undefined && (
+                            <Button type="submit">
+                              <Trans>Submit!</Trans>
+                            </Button>
+                          )}
+                          <P
+                            mt={4}
+                            style={{ whiteSpace: 'pre-wrap' }}
+                            hidden={this.state.resultText === ''}
+                          >
+                            {this.state.resultText}
+                          </P>
+                          {this.state.postSubmission && (
+                            <Button
+                              onClick={() =>
+                                this.setState({
+                                  postSubmission: false,
+                                  resultText: '',
+                                })
+                              }
+                            >
+                              <Trans>Upload another file</Trans>
+                            </Button>
+                          )}
+                        </center>
+                      </form>
+                    )}
+                  />
+                </CenterContent>
+              </Container>
             )}
           </Mutation>
         )}

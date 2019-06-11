@@ -25,7 +25,7 @@ const App = () => (
                 <html lang={language} />
                 <meta charset="utf-8" />
                 console.log(i18n) return (
-                <title lang={language}>{i18n._('Upload a file')}</title>
+                <title lang={language}>{i18n._('Report a file')}</title>
                 )
                 <link
                   href="https://fonts.googleapis.com/css?family=Roboto"
@@ -65,7 +65,7 @@ const App = () => (
                   body {
                     height: 100%;
                   }
-                  img body {
+                  body {
                     margin: 0;
                     padding: 0;
                   }
@@ -78,41 +78,18 @@ const App = () => (
                 `}
               />
               <ThemeProvider theme={theme}>
-                <TopBanner lang={language} bg="#000" />
-                <center style={{ display: 'flex', justifyContent: 'center' }}>
-                  <img
-                    src="/public/rcmp.png"
-                    alt="RCMP logo"
-                    style={{ maxHeight: '116px', maxWidth: '30%' }}
-                  />
-                  <img
-                    src="/public/cccs.jpg"
-                    alt="CCCS logo"
-                    style={{
-                      maxHeight: '116px',
-                      width: '30%',
-                      marginLeft: '10%',
-                      marginRight: '10%',
-                    }}
-                  />
-                  <img
-                    src="/public/crtc.png"
-                    alt="CRTC logo"
-                    style={{ maxHeight: '116px', maxWidth: '30%' }}
-                  />
-                </center>
+                <TopBanner lang={language} bg="black" />
                 <Content>
                   <Home />
                 </Content>
 
-                <Footer bg="#000">
+                <Footer bg="black">
                   <FooterLink
                     href={
                       language === 'en'
                         ? 'https://digital.canada.ca/legal/privacy/'
                         : 'https://numerique.canada.ca/transparence/confidentialite/'
                     }
-                    e
                   >
                     <Trans>Privacy</Trans>
                   </FooterLink>
