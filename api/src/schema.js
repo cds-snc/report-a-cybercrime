@@ -5,15 +5,6 @@ const { FlaggingSummary } = require('./FlaggingSummary')
 const { FileUploadResult } = require('./FileUploadResult')
 const { createHash } = require('crypto')
 
-// Puts a 0 in front of a number until it meets minLength
-const padNumber = (num, minLength) => {
-  var numString = num.toString()
-  while (numString.length < minLength) {
-    numString = '0' + numString
-  }
-  return numString
-}
-
 // eslint-disable-next-line
 const streamToString = stream =>
   new Promise((resolve, reject) => {
@@ -93,17 +84,12 @@ const mutation = new GraphQLObjectType({
           await client.putObject(bucket, filename, stream)
           // We need to create an object name for this
           const today = new Date()
-          const ceName =
-            'CE' +
-            today.getUTCFullYear().toString() +
-            '-' +
-            padNumber(today.getUTCDate(), 2) +
-            padNumber(today.getUTCMonth(), 2) +
-            padNumber(Math.floor(Math.random() * 9999 + 1), 4)
+          const md5 = await calculateHash(createHash('md5'), md5stream)
+          const ceName = 'CE-' + md5
           const upData = {
             ceName: ceName,
             fileName: filename,
-            MD5: await calculateHash(createHash('md5'), md5stream),
+            MD5: md5,
             submittedOn: today.toISOString(),
             dataRestrictionsSpecific: dataRestrictionsSpecific,
           }
