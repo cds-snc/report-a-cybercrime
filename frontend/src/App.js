@@ -25,7 +25,7 @@ const App = () => (
                 <html lang={language} />
                 <meta charset="utf-8" />
                 console.log(i18n) return (
-                <title lang={language}>{i18n._('Report a file')}</title>
+                <title lang={language}>{i18n._('Report a scam')}</title>
                 )
                 <link
                   href="https://fonts.googleapis.com/css?family=Roboto"
@@ -65,6 +65,7 @@ const App = () => (
                   body {
                     height: 100%;
                   }
+
                   body {
                     margin: 0;
                     padding: 0;

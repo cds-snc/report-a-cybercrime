@@ -32,7 +32,6 @@ cache.writeData({
 })
 
 const client = new ApolloClient({
-  //link: new HttpLink(), // does not work when uploading a file
   link: createUploadLink(),
   cache,
   typeDefs,

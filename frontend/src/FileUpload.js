@@ -71,7 +71,6 @@ export class FileUploadPage extends Component {
         onChange={text =>
           this.setState({ dataRestrictionsSpecific: text.target.value })
         }
-        placeholder="Write your data restrictions here..."
       />
     )
   }
