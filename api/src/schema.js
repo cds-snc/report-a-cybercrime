@@ -1,9 +1,4 @@
-const {
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLBoolean,
-  GraphQLString,
-} = require('graphql')
+const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
 const { Stats } = require('./Stats')
 const { GraphQLUpload } = require('graphql-upload')
 const { FlaggingSummary } = require('./FlaggingSummary')
@@ -32,7 +27,7 @@ const streamToString = stream =>
   })
 
 const calculateHash = (hashStream, fileStream) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     fileStream.on('end', () => {
       hashStream.end()
       var data = ''
@@ -94,8 +89,8 @@ const mutation = new GraphQLObjectType({
         try {
           // Before trying to feed this to minIO we try to read the entire stream.
           // A failure results in a thrown exception.
-          const stringStream = await streamToString(createReadStream())
-          let response = await client.putObject(bucket, filename, stream)
+          await streamToString(createReadStream())
+          await client.putObject(bucket, filename, stream)
           // We need to create an object name for this
           const today = new Date()
           const ceName =
@@ -105,8 +100,6 @@ const mutation = new GraphQLObjectType({
             padNumber(today.getUTCDate(), 2) +
             padNumber(today.getUTCMonth(), 2) +
             padNumber(Math.floor(Math.random() * 9999 + 1), 4)
-          // probably save details to ArangoDB
-          console.log(response)
           const upData = {
             ceName: ceName,
             fileName: filename,
@@ -114,18 +107,12 @@ const mutation = new GraphQLObjectType({
             submittedOn: today.toISOString(),
             dataRestrictionsSpecific: dataRestrictionsSpecific,
           }
-          console.log(upData)
           await db.saveFileReport(upData)
           // Return some sensible data to the client.
           // Example client setup here:
           // https://blog.apollographql.com/file-uploads-with-apollo-server-2-0-5db2f3f60675
           // Make sure what you return from this function matches the
           // return type you use above (line 39)
-          console.log({
-            success: true,
-            errorMessage: '',
-            md5: upData.MD5,
-          })
           return {
             success: true,
             errorMessage: '',

@@ -1,10 +1,4 @@
-const {
-  GraphQLString,
-  GraphQLObjectType,
-  GraphQLList,
-  GraphQLBoolean,
-  GraphQLInt,
-} = require('graphql')
+const { GraphQLString, GraphQLObjectType, GraphQLBoolean } = require('graphql')
 
 const FileUploadResult = new GraphQLObjectType({
   name: 'fileUploadResult',

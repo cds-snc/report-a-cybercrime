@@ -47,7 +47,6 @@ export class FileUploadPage extends Component {
   }
 
   submit = uploadFile => {
-    console.log(this.state.file)
     const file = this.state.file
     uploadFile({
       variables: {
@@ -55,7 +54,6 @@ export class FileUploadPage extends Component {
         dataRestrictionsSpecific: this.state.dataRestrictionsSpecific,
       },
     }).then(fileResult => {
-      console.log(fileResult)
       this.setState({
         file: undefined,
         postSubmission: true,
@@ -155,7 +153,7 @@ export class FileUploadPage extends Component {
                     <Form
                       margin="20px"
                       float="left"
-                      onSubmit={data => {
+                      onSubmit={() => {
                         this.submit(uploadFile)
                       }}
                       validate={this.validate}

@@ -12,12 +12,14 @@ const Server = async context => {
     cors(),
     graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 1 }),
     express.json(),
-    (req,res,next) => {
-      if (req.url === "/graphql/files"){
-        if (req.body.secret === "BigShush"){
-          context.db.getFiles(req.body.ce ? req.body.ce : "ALL").then((data) => res.send(data),(err) => res.sendStatus(500))
+    (req, res, next) => {
+      if (req.url === '/graphql/files') {
+        if (req.body.secret === 'BigShush') {
+          context.db
+            .getFiles(req.body.ce ? req.body.ce : 'ALL')
+            .then(data => res.send(data), () => res.sendStatus(500))
         } else {
-          res.send({NO:"No files unless you provide a valid key!"})
+          res.send({ NO: 'No files unless you provide a valid key!' })
         }
       } else {
         next()

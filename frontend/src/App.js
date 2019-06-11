@@ -64,9 +64,8 @@ const App = () => (
                   html,
                   body {
                     height: 100%;
-                  }Img
-
-                  body {
+                  }
+                  img body {
                     margin: 0;
                     padding: 0;
                   }
@@ -79,11 +78,28 @@ const App = () => (
                 `}
               />
               <ThemeProvider theme={theme}>
-                <TopBanner lang={language} bg="#000"/>
-                <center style={{display:"flex",justifyContent:"center"}}>
-                <img src="/public/rcmp.png" style={{maxHeight:"116px", maxWidth:"30%"}}/>
-                <img src="/public/cccs.jpg" style={{maxHeight:"116px", width:"30%", marginLeft:"10%", marginRight:"10%"}}/>
-                <img src="/public/crtc.png" style={{maxHeight:"116px", maxWidth:"30%"}}/>
+                <TopBanner lang={language} bg="#000" />
+                <center style={{ display: 'flex', justifyContent: 'center' }}>
+                  <img
+                    src="/public/rcmp.png"
+                    alt="RCMP logo"
+                    style={{ maxHeight: '116px', maxWidth: '30%' }}
+                  />
+                  <img
+                    src="/public/cccs.jpg"
+                    alt="CCCS logo"
+                    style={{
+                      maxHeight: '116px',
+                      width: '30%',
+                      marginLeft: '10%',
+                      marginRight: '10%',
+                    }}
+                  />
+                  <img
+                    src="/public/crtc.png"
+                    alt="CRTC logo"
+                    style={{ maxHeight: '116px', maxWidth: '30%' }}
+                  />
                 </center>
                 <Content>
                   <Home />
@@ -95,7 +111,8 @@ const App = () => (
                       language === 'en'
                         ? 'https://digital.canada.ca/legal/privacy/'
                         : 'https://numerique.canada.ca/transparence/confidentialite/'
-                    }e
+                    }
+                    e
                   >
                     <Trans>Privacy</Trans>
                   </FooterLink>
