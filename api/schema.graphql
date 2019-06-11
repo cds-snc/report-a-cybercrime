@@ -26,24 +26,6 @@ type Mutation {
     """File."""
     file: Upload
 
-    """What TLP to share this at"""
-    TLP: String
-
-    """Whether or not we can share the sample itself"""
-    TLPShare: Boolean
-
-    """Can we consult with third parties?"""
-    thirdPartiesAllowed: Boolean
-
-    """Can we allow the sample to contact the internet?"""
-    internetAccessAllowed: Boolean
-
-    """Can we research the open source?"""
-    openSourceAllowed: Boolean
-
-    """Are there any additional data restrictions?"""
-    dataRestrictions: Boolean
-
     """Specific data restrictions"""
     dataRestrictionsSpecific: String
   ): fileUploadResult

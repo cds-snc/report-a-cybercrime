@@ -41,24 +41,9 @@ export const FLAG_IDENTIFIER_MUTATION = gql`
 `
 
 export const UPLOAD_FILE_MUTATION = gql`
-  mutation uploadFile(
-    $file: Upload!
-    $TLP: String!
-    $TLPShare: Boolean!
-    $thirdPartiesAllowed: Boolean!
-    $internetAccessAllowed: Boolean!
-    $openSourceAllowed: Boolean!
-    $dataRestrictions: Boolean!
-    $dataRestrictionsSpecific: String!
-  ) {
+  mutation uploadFile($file: Upload!, $dataRestrictionsSpecific: String!) {
     uploadFile(
       file: $file
-      TLP: $TLP
-      TLPShare: $TLPShare
-      thirdPartiesAllowed: $thirdPartiesAllowed
-      internetAccessAllowed: $internetAccessAllowed
-      openSourceAllowed: $openSourceAllowed
-      dataRestrictions: $dataRestrictions
       dataRestrictionsSpecific: $dataRestrictionsSpecific
     ) {
       success

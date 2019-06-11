@@ -67,30 +67,6 @@ const mutation = new GraphQLObjectType({
           description: 'File.',
           type: GraphQLUpload,
         },
-        TLP: {
-          description: 'What TLP to share this at',
-          type: GraphQLString,
-        },
-        TLPShare: {
-          description: 'Whether or not we can share the sample itself',
-          type: GraphQLBoolean,
-        },
-        thirdPartiesAllowed: {
-          description: 'Can we consult with third parties?',
-          type: GraphQLBoolean,
-        },
-        internetAccessAllowed: {
-          description: 'Can we allow the sample to contact the internet?',
-          type: GraphQLBoolean,
-        },
-        openSourceAllowed: {
-          description: 'Can we research the open source?',
-          type: GraphQLBoolean,
-        },
-        dataRestrictions: {
-          description: 'Are there any additional data restrictions?',
-          type: GraphQLBoolean,
-        },
         dataRestrictionsSpecific: {
           description: 'Specific data restrictions',
           type: GraphQLString,
@@ -98,16 +74,7 @@ const mutation = new GraphQLObjectType({
       },
       async resolve(
         _parent,
-        {
-          file,
-          TLP,
-          TLPShare,
-          thirdPartiesAllowed,
-          internetAccessAllowed,
-          openSourceAllowed,
-          dataRestrictions,
-          dataRestrictionsSpecific,
-        },
+        { file, dataRestrictionsSpecific },
         {
           minio: { client, bucket },
           db,
@@ -145,12 +112,6 @@ const mutation = new GraphQLObjectType({
             fileName: filename,
             MD5: await calculateHash(createHash('md5'), md5stream),
             submittedOn: today.toISOString(),
-            TLP: TLP,
-            TLPShare: TLPShare,
-            internetAccessAllowed: internetAccessAllowed,
-            thirdPartiesAllowed: thirdPartiesAllowed,
-            openSourceAllowed: openSourceAllowed,
-            dataRestrictions: dataRestrictions,
             dataRestrictionsSpecific: dataRestrictionsSpecific,
           }
           console.log(upData)
