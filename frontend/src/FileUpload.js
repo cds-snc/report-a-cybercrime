@@ -31,7 +31,6 @@ export class FileUploadPage extends Component {
   }
 
   onChange = e => {
-    // this.resetRadioButtons()
     this.setState({ file: e.target.files[0] })
   }
 
@@ -61,39 +60,7 @@ export class FileUploadPage extends Component {
         resultText: this.makeFeedbackString(fileResult.data.uploadFile),
       })
     })
-    //navigate(`/summary/${encodeURIComponent(data.identifier)}`)
   }
-
-  // resetRadioButtons = () => {
-  //   for (let x of document.getElementsByClassName('resettable-radio-button')) {
-  //     x.checked = false
-  //   }
-  //   this.forceUpdate()
-  // }
-
-  // reportAnswerSelected = () => {
-  //   for (let x of document.getElementsByClassName('resettable-radio-button')) {
-  //     if (
-  //       x.checked === true &&
-  //       x.name === 'Question1' &&
-  //       (x.value === 'true' || x.value === 'false')
-  //     ) {
-  //       // These are stored as text, we need to convert to boolean
-  //       return x.value === 'true'
-  //     }
-  //   }
-  //   return null
-  // }
-
-  // shareAnswerSelected = () => {
-  //   for (let x of document.getElementsByClassName('resettable-radio-button')) {
-  //     if (x.checked === true && x.name === 'Question2') {
-  //       // These are stored as text, we need to convert to boolean
-  //       return x.value
-  //     }
-  //   }
-  //   return null
-  // }
 
   drawTextbox = () => {
     return (

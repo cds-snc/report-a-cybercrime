@@ -11,6 +11,7 @@ export const testClient = data => {
     ssrMode: true,
     link: new HttpLink({ fetch }),
     cache,
+    resolvers: {},
     typeDefs: `
     type Query {
       language: String

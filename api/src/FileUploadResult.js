@@ -5,7 +5,6 @@ const FileUploadResult = new GraphQLObjectType({
   fields: () => ({
     success: { type: GraphQLBoolean },
     errorMessage: { type: GraphQLString },
-    // Fields are nullable by default so these are not required in the return
     md5: { type: GraphQLString },
   }),
 })

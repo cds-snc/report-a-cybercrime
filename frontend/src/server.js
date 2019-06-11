@@ -62,6 +62,7 @@ server
         fetch,
       }),
       cache,
+      resolvers: {},
     })
 
     const helmetContext = {}

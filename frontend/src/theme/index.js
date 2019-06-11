@@ -35,10 +35,6 @@ const colors = {
   focusColor: '#ffbf47',
   crimson: '#dc143c',
   green: '#008000',
-  grey: '#C0C0C0',
-  cccsPurple: "#202A45",
-  cccsOrange: "#E2491D",
-  canadaRed: "#D62718"
 }
 
 const theme = {
@@ -49,11 +45,6 @@ const theme = {
   breakpoints: BREAKPOINTS,
 
   checkboxes: {
-    size: '24px',
-    labelSize: '28px',
-  },
-
-  radiobuttons: {
     size: '24px',
     labelSize: '28px',
   },
@@ -83,13 +74,10 @@ const theme = {
     },
     button: {
       color: colors.white,
-      backgroundColor: colors.canadaRed,
+      backgroundColor: colors.green,
       '&:focus': {
         outline: `3px solid ${colors.focusColor}`,
       },
-      '&:disabled': {
-        backgroundColor: colors.grey
-      }
     },
 
     footerLink: {
