@@ -7,8 +7,7 @@ services:
       - MINIO_SECRET_KEY
       - MINIO_BUCKET_NAME
     image: minio/minio
-    command: server /Users/stephen/minio_data
-    # command: gateway azure
+    command: server /data
     ports:
       - "9000"
     labels:
@@ -17,7 +16,7 @@ services:
       - "traefik.frontend.entryPoints=minio"
       - "traefik.port=9000"
     volumes:
-      - miniodata:/Users/stephen/minio_data
+      - miniodata:/data
   arangodb:
     image: arangodb/arangodb:3.4.0
     environment:
@@ -44,9 +43,6 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    depends_on:
-      - "minio"
-    user: ${CURRENT_UUID}
     ports:
       - "3002"
     volumes:
@@ -75,7 +71,6 @@ services:
     ports:
       - "3000"
       - "3001:3001"
-    user: ${CURRENT_UUID}
     build:
       context: ./frontend
       dockerfile: Dockerfile
