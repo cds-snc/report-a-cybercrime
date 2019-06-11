@@ -25,7 +25,7 @@ const App = () => (
                 <html lang={language} />
                 <meta charset="utf-8" />
                 console.log(i18n) return (
-                <title lang={language}>{i18n._('Report a scam')}</title>
+                <title lang={language}>{i18n._('Upload a file')}</title>
                 )
                 <link
                   href="https://fonts.googleapis.com/css?family=Roboto"
@@ -64,7 +64,7 @@ const App = () => (
                   html,
                   body {
                     height: 100%;
-                  }
+                  }Img
 
                   body {
                     margin: 0;
@@ -79,18 +79,23 @@ const App = () => (
                 `}
               />
               <ThemeProvider theme={theme}>
-                <TopBanner lang={language} bg="black" />
+                <TopBanner lang={language} bg="#000"/>
+                <center style={{display:"flex",justifyContent:"center"}}>
+                <img src="/public/rcmp.png" style={{maxHeight:"116px", maxWidth:"30%"}}/>
+                <img src="/public/cccs.jpg" style={{maxHeight:"116px", width:"30%", marginLeft:"10%", marginRight:"10%"}}/>
+                <img src="/public/crtc.png" style={{maxHeight:"116px", maxWidth:"30%"}}/>
+                </center>
                 <Content>
                   <Home />
                 </Content>
 
-                <Footer bg="black">
+                <Footer bg="#000">
                   <FooterLink
                     href={
                       language === 'en'
                         ? 'https://digital.canada.ca/legal/privacy/'
                         : 'https://numerique.canada.ca/transparence/confidentialite/'
-                    }
+                    }e
                   >
                     <Trans>Privacy</Trans>
                   </FooterLink>

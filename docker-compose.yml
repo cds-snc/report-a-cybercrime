@@ -7,7 +7,8 @@ services:
       - MINIO_SECRET_KEY
       - MINIO_BUCKET_NAME
     image: minio/minio
-    command: server /data
+    command: server /Users/stephen/minio_data
+    # command: gateway azure
     ports:
       - "9000"
     labels:
@@ -16,7 +17,7 @@ services:
       - "traefik.frontend.entryPoints=minio"
       - "traefik.port=9000"
     volumes:
-      - miniodata:/data
+      - miniodata:/Users/stephen/minio_data
   arangodb:
     image: arangodb/arangodb:3.4.0
     environment:
@@ -32,22 +33,22 @@ services:
       - arangodata:/var/lib/arangodb3
   api:
     environment:
-      - PORT=$API_PORT
-      - DB_NAME
-      - DB_URL
+      - PORT=3002
+      - DB_NAME=cybercrime
+      - DB_URL=http://arangodb:8529
       - DB_USER
       - DB_PASSWORD
-      - MINIO_ACCESS_KEY
-      - MINIO_SECRET_KEY
-      - MINIO_BUCKET_NAME
     build:
       context: ./api
       dockerfile: Dockerfile
+    depends_on:
+      - "minio"
+    user: ${CURRENT_UUID}
     ports:
       - "3002"
     volumes:
       - ./api:/app
-    command: npm start
+    command: npm run start
     labels:
       - "traefik.backend=api"
       - "traefik.frontend.rule=PathPrefix:/graphql"
@@ -57,7 +58,7 @@ services:
     image: traefik:1.7
     command: --docker --api --entrypoints="Name:http Address::3000" --entrypoints="Name:arango Address::8529" --entrypoints="Name:minio Address::9000" --defaultentrypoints="Name:http,arango,minio"
     ports:
-      - "3000:3000"
+      - "80:3000"
       - "8529:8529"
       - "8080:8080"
       - "9000:9000"
@@ -65,12 +66,13 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
   frontend:
     environment:
-      - RAZZLE_PORT
+      - RAZZLE_PORT=3000
       - RAZZLE_GOOGLE_ANALYTICS_ID
-      - RAZZLE_SERVER_SIDE_API_URI
+      - RAZZLE_SERVER_SIDE_API_URI=http://api:3002/graphql
     ports:
       - "3000"
       - "3001:3001"
+    user: ${CURRENT_UUID}
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -81,7 +83,7 @@ services:
       - "traefik.port=3000"
     volumes:
       - ./frontend:/app
-    command: npm run dev
+    command: sh -c "npm run build && npm run start"
 volumes:
   arangodata:
   miniodata:

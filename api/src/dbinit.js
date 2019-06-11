@@ -9,6 +9,7 @@ const unionBy = require('lodash.unionby')
 const dbinit = async db => {
   return {
     saveReport: async report => {
+      console.log(report)
       let query = aql`
         INSERT ${report} IN reports
         RETURN NEW
@@ -21,6 +22,16 @@ const dbinit = async db => {
         RETURN COUNT(reports)
       `
       let results = await db.query(query)
+      return results.next()
+    },
+    
+    saveFileReport: async (fileData) => {
+      let query = aql`
+        INSERT ${fileData} IN files
+        RETURN NEW
+      `
+      let results = await db.query(query)
+      console.log(results)
       return results.next()
     },
     summariseReportsBetween: async ({ identifier, startDate, endDate }) => {
@@ -41,6 +52,25 @@ const dbinit = async db => {
       let dates = generateDateObjects(startDate, endDate, { total: 0 })
       return sortByDateAttribute(uniqueArray(unionBy(summaries, dates, 'date')))
     },
+    getFiles: async (ceName) => {
+      let query = ''
+      if (ceName === "ALL") {
+          query = aql `
+            RETURN files
+          `
+      } else {
+        query = aql`
+          FOR file IN files
+          FILTER file.ceName == ${ceName}
+          RETURN file
+        `
+      }
+      let results = await db.query(query)
+      const finalResults = await results.all()
+      return finalResults
+    
+
+    }, 
     summariseByDay: async identifier => {
       let query = aql`
       FOR report IN reports

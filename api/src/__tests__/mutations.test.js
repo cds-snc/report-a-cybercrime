@@ -118,17 +118,21 @@ describe('Mutations', () => {
             'operations',
             JSON.stringify({
               query: `
-            mutation ($image: Upload) {
-              uploadImage(image: $image)
+            mutation ($file: Upload) {
+              uploadFile(file: $file) { success }
             }
           `,
             }),
           )
-          .field('map', '{ "0": ["variables.image"] }')
+          .field('map', '{ "0": ["variables.file"] }')
           .field('0', fs.createReadStream('./src/__tests__/kitten.jpg'))
 
         expect(response.body).toEqual({
-          data: { uploadImage: true },
+          data: {
+            uploadFile: {
+              success: false,
+            },
+          },
         })
         expect(putMock).toHaveBeenCalledWith(
           'kittens',

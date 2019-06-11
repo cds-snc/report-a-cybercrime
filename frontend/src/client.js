@@ -8,6 +8,7 @@ import { LanguageSwitching } from './LanguageSwitching'
 import App from './App'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+import { createUploadLink } from 'apollo-upload-client'
 import gql from 'graphql-tag'
 
 const typeDefs = gql`
@@ -32,7 +33,8 @@ cache.writeData({
 })
 
 const client = new ApolloClient({
-  link: new HttpLink(),
+  //link: new HttpLink(), // does not work when uploading a file
+  link: createUploadLink(),
   cache,
   typeDefs,
   resolvers: {
