@@ -53,14 +53,14 @@ const mutation = new GraphQLObjectType({
           description: 'File.',
           type: GraphQLUpload,
         },
-        dataRestrictionsSpecific: {
+        fileDescription: {
           description: 'Specific data restrictions',
           type: GraphQLString,
         },
       },
       async resolve(
         _parent,
-        { file, dataRestrictionsSpecific },
+        { file, fileDescription },
         {
           minio: { client, bucket },
           db,
@@ -91,7 +91,7 @@ const mutation = new GraphQLObjectType({
             fileName: filename,
             MD5: md5,
             submittedOn: today.toISOString(),
-            dataRestrictionsSpecific: dataRestrictionsSpecific,
+            fileDescription: fileDescription,
           }
           await db.saveFileReport(upData)
           // Return some sensible data to the client.

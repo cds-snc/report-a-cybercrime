@@ -27,7 +27,7 @@ type Mutation {
     file: Upload
 
     """Specific data restrictions"""
-    dataRestrictionsSpecific: String
+    fileDescription: String
   ): fileUploadResult
 
   """Flag an identifier"""

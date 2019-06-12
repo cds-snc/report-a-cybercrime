@@ -31,7 +31,7 @@ export class FileUploadPage extends Component {
       fileMD5: undefined,
       resultText: '', // Text that shows the result of the upload operation, does not appear if blank
       postSubmission: false, // Whether or not we are asking the user to submit further files
-      dataRestrictionsSpecific: '',
+      fileDescription: '',
     }
   }
 
@@ -56,7 +56,7 @@ export class FileUploadPage extends Component {
     uploadFile({
       variables: {
         file: file,
-        dataRestrictionsSpecific: this.state.dataRestrictionsSpecific,
+        fileDescription: this.state.fileDescription,
       },
     }).then(fileResult => {
       this.setState({
@@ -82,7 +82,7 @@ export class FileUploadPage extends Component {
           style={{ resize: 'none', boxSizing: 'border-box' }}
           height="100px"
           onChange={text =>
-            this.setState({ dataRestrictionsSpecific: text.target.value })
+            this.setState({ fileDescription: text.target.value })
           }
         />
       </Container>
