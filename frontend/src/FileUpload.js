@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { Component } from 'react'
 import { Trans } from '@lingui/macro'
-import { I18n } from '@lingui/react'
 import { jsx } from '@emotion/core'
 import { Form, Field } from 'react-final-form'
 import styled from '@emotion/styled'
@@ -15,7 +14,6 @@ import { Button } from './components/button'
 import { FileUpload } from './components/file-upload'
 import { finalFormAdapter } from './utils/finalFormAdapter'
 import { UPLOAD_FILE_MUTATION } from './utils/queriesAndMutations'
-import { valueToObjectRepresentation } from 'apollo-utilities'
 
 const FileUploadAdapter = finalFormAdapter(FileUpload)
 const CenterContent = styled('div')`
@@ -38,18 +36,6 @@ export class FileUploadPage extends Component {
   onChange = e => {
     this.setState({ file: e.target.files[0] })
   }
-
-  // makeFeedbackString = result => {
-  //   var returnString = ''
-  //   returnString +=
-  //     result.success === true
-  //       ? 'File uploaded successfully'
-  //       : result.errorMessage
-  //   // if (result.success === true) {
-  //   //   returnString += '\n' + 'MD5: ' + result.md5
-  //   // }
-  //   return returnString
-  // }
 
   submit = uploadFile => {
     const file = this.state.file

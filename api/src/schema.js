@@ -54,7 +54,7 @@ const mutation = new GraphQLObjectType({
           type: GraphQLUpload,
         },
         fileDescription: {
-          description: 'Specific data restrictions',
+          description: 'File description.',
           type: GraphQLString,
         },
       },
