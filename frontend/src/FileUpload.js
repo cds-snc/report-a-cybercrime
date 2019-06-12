@@ -1,18 +1,19 @@
 /** @jsx jsx */
 import { Component } from 'react'
+import { Trans } from '@lingui/macro'
 import { jsx } from '@emotion/core'
 import { Form, Field } from 'react-final-form'
 import styled from '@emotion/styled'
+import { ApolloConsumer, Mutation } from 'react-apollo'
+import { Container } from './components/container'
+import { TextArea } from './components/text-area'
 import { P } from './components/paragraph'
+import { Text } from './components/text'
 import { H1 } from './components/header'
 import { Button } from './components/button'
 import { FileUpload } from './components/file-upload'
 import { finalFormAdapter } from './utils/finalFormAdapter'
-import { ApolloConsumer, Mutation } from 'react-apollo'
 import { UPLOAD_FILE_MUTATION } from './utils/queriesAndMutations'
-import { Trans } from '@lingui/macro'
-import { Container } from './components/container'
-import { TextArea } from './components/text-area'
 
 const FileUploadAdapter = finalFormAdapter(FileUpload)
 const CenterContent = styled('div')`
@@ -64,14 +65,22 @@ export class FileUploadPage extends Component {
 
   drawTextbox = () => {
     return (
-      <TextArea
-        padding="10px"
-        style={{ resize: 'none', boxSizing: 'border-box' }}
-        height="100px"
-        onChange={text =>
-          this.setState({ dataRestrictionsSpecific: text.target.value })
-        }
-      />
+      <Container>
+        <label htmlFor="description">
+          <Text>
+            <Trans>Description</Trans>
+          </Text>
+        </label>
+        <TextArea
+          id="description"
+          padding="10px"
+          style={{ resize: 'none', boxSizing: 'border-box' }}
+          height="100px"
+          onChange={text =>
+            this.setState({ dataRestrictionsSpecific: text.target.value })
+          }
+        />
+      </Container>
     )
   }
 
