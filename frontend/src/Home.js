@@ -13,6 +13,7 @@ import { IdentityPage } from './identityPage'
 import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
+import { DemoPage } from './DemoPage'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -33,6 +34,7 @@ export const Home = () => (
     <Screen>
       <Router>
         <PageNotFound default />
+        <DemoPage path="/demo" />
         <Page1 path="/" />
         <Option1Page path="/option1" />
         <Option2Page path="/option2" />

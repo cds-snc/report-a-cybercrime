@@ -49,6 +49,11 @@ const theme = {
     labelSize: '28px',
   },
 
+  radiobuttons: {
+    size: '24px',
+    labelSize: '28px',
+  },
+
   colors: colors,
 
   textStyles: {
