@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage",
     "print-schema": "bin/print-schema > schema.graphql && git add ./schema.graphql",
     "lint": "eslint src/**",
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
@@ -49,7 +50,18 @@
     "verbose": true,
     "setupFilesAfterEnv": [
       "<rootDir>/setUpJest.js"
-    ]
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
   },
   "husky": {
     "hooks": {
