@@ -58,11 +58,9 @@ const MyForm = options => (
           <form onSubmit={handleSubmit}>
             <div>
               <LabelFormat>
-                <label>
-                  <Text>
-                    <Trans>What was affected? Choose all that apply.</Trans>
-                  </Text>
-                </label>
+                <Text>
+                  <Trans>What was affected? Choose all that apply.</Trans>
+                </Text>
               </LabelFormat>
               <div>
                 {Object.keys(options).map(key => {
@@ -101,11 +99,9 @@ const MyForm2 = options => (
           <form onSubmit={handleSubmit}>
             <div>
               <LabelFormat>
-                <label>
-                  <Text>
-                    <Trans>What was affected? Choose all that apply.</Trans>
-                  </Text>
-                </label>
+                <Text>
+                  <Trans>What was affected? Choose all that apply.</Trans>
+                </Text>
               </LabelFormat>
               <div>
                 {Object.keys(options).map(key => {
