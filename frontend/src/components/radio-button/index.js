@@ -22,7 +22,7 @@ export const RadioButton = ({ label, ...props }) => {
             mt={[3, null, 5]}
           >
             <Input
-              type="checkbox"
+              type="radio"
               position="absolute"
               left="0"
               top="0"
@@ -55,6 +55,7 @@ export const RadioButton = ({ label, ...props }) => {
                 '::before': {
                   content: '""',
                   display: 'block',
+                  borderRadius: theme.checkboxes.labelSize,
                   border: `2px solid ${theme.colors.black}`,
                   background: 'transparent',
                   [mq[0]]: {
