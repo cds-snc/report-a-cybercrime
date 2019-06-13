@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: traefik-ingress-controller
+  namespace: kube-system
+  labels:
+    k8s-app: traefik-ingress-lb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: traefik-ingress-lb
+  template:
+    metadata:
+      labels:
+        k8s-app: traefik-ingress-lb
+        name: traefik-ingress-lb
+    spec:
+      serviceAccountName: traefik-ingress-controller
+      terminationGracePeriodSeconds: 60
+      containers:
+        - image: traefik
+          name: traefik-ingress-lb
+          ports:
+            - containerPort: 80
+              hostPort: 80
+              name: http
+          args:
+            - --api=false
+            - --kubernetes
+            - --logLevel=DEBUG
+            - --debug
+            - --defaultentrypoints=http
+            - --entrypoints=Name:http Address::80 Compress:true
+            - --tracing=true
