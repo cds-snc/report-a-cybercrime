@@ -40,7 +40,7 @@ export const Home = () => (
         <Option2Page path="/option2" />
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
-        <FileUploadPage path="/fileuploader" />
+        <FileUploadPage path="/file" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />

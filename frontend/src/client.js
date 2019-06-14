@@ -2,12 +2,12 @@ import React from 'react'
 import { hydrate } from 'react-dom'
 import { ApolloProvider } from 'react-apollo'
 import { language } from './ClientResolvers'
-import { HttpLink } from 'apollo-link-http'
 import { HelmetProvider } from 'react-helmet-async'
 import { LanguageSwitching } from './LanguageSwitching'
 import App from './App'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+import { createUploadLink } from 'apollo-upload-client'
 import gql from 'graphql-tag'
 
 const typeDefs = gql`
@@ -32,7 +32,7 @@ cache.writeData({
 })
 
 const client = new ApolloClient({
-  link: new HttpLink(),
+  link: createUploadLink(),
   cache,
   typeDefs,
   resolvers: {

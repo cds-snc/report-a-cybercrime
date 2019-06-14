@@ -37,6 +37,7 @@
     "apollo-client": "^2.6.0",
     "apollo-link-error": "^1.1.10",
     "apollo-link-http": "^1.5.14",
+    "apollo-upload-client": "^10.0.1",
     "babel-plugin-macros": "^2.5.1",
     "cds-size-plugin": "^1.2.0",
     "emotion": "^10.0.9",

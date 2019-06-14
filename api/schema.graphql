@@ -8,6 +8,12 @@ The DateTime scalar type represents date time strings complying to ISO-8601.
 """
 scalar DateTime
 
+type fileUploadResult {
+  success: Boolean
+  errorMessage: String
+  md5: String
+}
+
 type identifierFlaggingsSummary {
   identifier: String
   summaryTotal: Int
@@ -15,11 +21,14 @@ type identifierFlaggingsSummary {
 }
 
 type Mutation {
-  """Uploads an image."""
-  uploadImage(
-    """Image file."""
-    image: Upload
-  ): Boolean
+  """Uploads a file."""
+  uploadFile(
+    """File."""
+    file: Upload
+
+    """File description."""
+    fileDescription: String
+  ): fileUploadResult
 
   """Flag an identifier"""
   flagIdentifier(
