@@ -6,10 +6,8 @@ import { Form, Field } from 'react-final-form'
 import { H1 } from './components/header'
 import { Checkbox } from './components/checkbox'
 import { RadioButton } from './components/radio-button'
-import { Link } from './components/link'
 import { Button } from './components/button'
 import { Text } from './components/text'
-import { Breadcrumb } from './components/breadcrumb'
 import { ApolloConsumer } from 'react-apollo'
 import { TrackPageViews } from './TrackPageViews'
 import { i18nMark } from '@lingui/react'
@@ -137,17 +135,6 @@ const options = {
 
 export const DemoPage = () => (
   <CenterContent>
-    <Breadcrumb>
-      <Link to={'/'}>
-        <Trans>Landing Page</Trans>
-      </Link>
-      <Link to={'/form1'}>
-        <Trans>What Happened</Trans>
-      </Link>
-      <Text display="inline-block">
-        <Trans>How did that happen?</Trans>
-      </Text>
-    </Breadcrumb>
     <H1>
       <Trans>How did that happen?</Trans>
     </H1>
