@@ -29,15 +29,15 @@ export const RadioButton = ({ label, ...props }) => {
               zIndex="1"
               m={0}
               css={theme => ({
-                height: theme.checkboxes.size,
-                width: theme.checkboxes.size,
+                height: theme.radioButtons.size,
+                width: theme.radioButtons.size,
                 opacity: 0,
                 zoom: '1',
                 ':checked + span:after': {
                   opacity: '1',
                 },
                 ':focus + span:before': {
-                  boxShadow: `0 0 0 3px ${theme.colors.yellow}`,
+                  boxShadow: `0 0 0 3px ${theme.colors.focusColor}`,
                 },
               })}
               {...props}
