@@ -2,7 +2,7 @@ import React from 'react'
 import { ThemeProvider } from 'emotion-theming'
 import theme from '../../../theme'
 import { TopBanner } from '../'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 import { testClient } from '../../../utils/createTestClient'
 import { ApolloProvider } from 'react-apollo'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'emotion-theming'
 import { Footer } from '../'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 
 describe('<Footer />', () => {
   afterEach(cleanup)

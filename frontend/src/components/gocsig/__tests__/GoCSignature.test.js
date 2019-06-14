@@ -1,6 +1,6 @@
 import React from 'react'
 import GoCSignature from '../'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 
 describe('<GoCSignature />', () => {
   afterEach(cleanup)

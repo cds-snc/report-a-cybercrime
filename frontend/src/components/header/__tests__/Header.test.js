@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'emotion-theming'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 import { mount } from 'enzyme'
 import { Header, H1, H2, H3, H4, H5, H6 } from '../'
 
