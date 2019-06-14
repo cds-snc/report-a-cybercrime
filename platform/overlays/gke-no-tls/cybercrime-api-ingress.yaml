@@ -1,0 +1,10 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cybercrime-api-ingress
+  namespace: cybercrime-api
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/content-type-nosniff: "true"
+    ingress.kubernetes.io/frame-deny: "true"
+    ingress.kubernetes.io/browser-xss-filter: "true"

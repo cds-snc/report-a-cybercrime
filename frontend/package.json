@@ -9,6 +9,7 @@
     "heroku-postbuild": "NODE_ENV=production lingui extract && lingui compile && razzle build",
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test": "jest",
+    "coverage": "jest --coverage",
     "lint": "eslint 'src/**/*.js'",
     "start": "NODE_ENV=production node build/server.js",
     "add-locale": "lingui add-locale",
@@ -116,14 +117,14 @@
       "<rootDir>/node_modules/"
     ],
     "collectCoverageFrom": [
-      "src/*.js"
+      "src/**/*.{js,jsx}"
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 75,
-        "functions": 75,
-        "lines": 75,
-        "statements": 75
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
       }
     },
     "moduleNameMapper": {

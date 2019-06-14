@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: arangodb-claim
+  namespace: cybercrime-api
+spec:
+  storageClassName: managed-premium-retain
