@@ -1,7 +1,7 @@
 import React from 'react'
 import { cleanProps, styledSystemProps } from '../cleanProps'
 import styled from '@emotion/styled'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 
 describe('cleanProps() utility', () => {
   afterEach(cleanup)

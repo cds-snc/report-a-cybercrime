@@ -1,6 +1,6 @@
 import React from 'react'
 import wait from 'waait'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 import { MockedProvider } from 'react-apollo/test-utils'
 import { I18nProvider } from '@lingui/react'
 import { Stats } from '../Stats'

@@ -9,7 +9,7 @@ import {
   GET_LANGUAGE_QUERY,
   GET_STATS_QUERY,
 } from '../utils/queriesAndMutations'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 import { MockedProvider } from 'react-apollo/test-utils'
 import { Home } from '../Home'
 

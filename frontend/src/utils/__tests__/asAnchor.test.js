@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
 import { mount } from 'enzyme'
 import { asAnchor } from '../asAnchor'
