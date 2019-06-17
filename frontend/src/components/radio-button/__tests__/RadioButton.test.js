@@ -1,7 +1,7 @@
 import React from 'react'
+import { render, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
 import theme from '../../../theme'
-import { render, cleanup } from 'react-testing-library'
 import { RadioButton } from '../'
 
 describe('<Checkbox />', () => {
