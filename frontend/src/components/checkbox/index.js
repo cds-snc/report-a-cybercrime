@@ -19,7 +19,7 @@ export const Checkbox = ({ label, ...props }) => {
             display="block"
             position="relative"
             pl={6}
-            mt={[3, null, 5]}
+            mt={[1, null, 1]}
           >
             <Input
               type="checkbox"
@@ -108,8 +108,8 @@ export const Checkbox = ({ label, ...props }) => {
 
 Checkbox.defaultProps = {
   fontWeight: '400',
-  fontSize: [3, null, 4],
-  lineHeight: [3, null, 4],
+  fontSize: [2, null, 3],
+  lineHeight: [2, null, 3],
   checkscale: '1',
 }
 
