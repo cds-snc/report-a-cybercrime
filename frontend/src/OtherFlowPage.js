@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
@@ -9,7 +9,7 @@ import { H1 } from './components/header'
 import { Checkbox } from './components/checkbox'
 import { RadioButton } from './components/radio-button'
 import { TextArea } from './components/text-area'
-import { Input } from './components/input'
+// import { Input } from './components/input'
 
 import { Button } from './components/button'
 import { Text } from './components/text'
@@ -20,6 +20,7 @@ import { finalFormAdapter } from './utils/finalFormAdapter'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const RadioButtonAdapter = finalFormAdapter(RadioButton)
+const TextAreaAdapter = finalFormAdapter(TextArea)
 
 const methodsOfPayment = ['Credit card', 'Cash', 'Gift Card', 'Other']
 
@@ -37,19 +38,19 @@ const CheckboxStyle = styled('label')`
 `
 
 const submitAndNavigate = (client, data) => {
+  window.alert(JSON.stringify(data))
+
   client.writeData({ data })
   navigate('/form3')
 }
 
 const validate = values => {
   let errors = {}
-  if (
-    (!values.whatWasInvolved || !values.whatWasInvolved.length) &&
-    !values.whatWasInvolvedOther
-  ) {
-    errors.whatWasInvolvedOther = i18nMark(
-      'Please complete the form to tell us what was affected.',
-    )
+  if (!values.howWereYouContacted) {
+    errors.howWereYouContacted = i18nMark('Required')
+  }
+  if (!values.whenWereYouContacted) {
+    errors.whenWereYouContacted = i18nMark('Required')
   }
   return errors
 }
@@ -62,11 +63,11 @@ const MyForm = () => (
         initialValues={{ wasMoneyTaken: undefined, methodsOfPayment: [] }}
         render={({
           handleSubmit,
-          reset,
-          submitting,
-          pristine,
+          // reset,
+          // submitting,
+          // pristine,
           values,
-          invalid,
+          // invalid,
         }) => (
           <form onSubmit={handleSubmit}>
             <LabelFormat>
@@ -77,7 +78,7 @@ const MyForm = () => (
             <div>
               <Field
                 name="howWereYouContacted"
-                component={TextArea}
+                component={TextAreaAdapter}
                 height="50px"
                 placeholder=""
               />
@@ -91,7 +92,7 @@ const MyForm = () => (
             <div>
               <Field
                 name="whenWereYouContacted"
-                component={TextArea}
+                component={TextAreaAdapter}
                 height="25px"
               />
             </div>
@@ -125,7 +126,11 @@ const MyForm = () => (
                   </Text>
                 </LabelFormat>
                 <div>
-                  <Field name="currency" component={TextArea} height="25px" />
+                  <Field
+                    name="currency"
+                    component={TextAreaAdapter}
+                    height="25px"
+                  />
                 </div>
 
                 <LabelFormat>
@@ -134,7 +139,11 @@ const MyForm = () => (
                   </Text>
                 </LabelFormat>
                 <div>
-                  <Field name="amount" component={TextArea} height="25px" />
+                  <Field
+                    name="amount"
+                    component={TextAreaAdapter}
+                    height="25px"
+                  />
                 </div>
 
                 <LabelFormat>
@@ -168,7 +177,7 @@ const MyForm = () => (
                     <div>
                       <Field
                         name="otherMethodOfPayment"
-                        component={TextArea}
+                        component={TextAreaAdapter}
                         height="25px"
                       />
                     </div>
@@ -181,6 +190,15 @@ const MyForm = () => (
               ''
             )}
 
+            <Text>
+              {JSON.stringify(validate(values)) === JSON.stringify({}) ? (
+                ''
+              ) : (
+                <Text>
+                  <Trans>Please fill out all fields</Trans>
+                </Text>
+              )}
+            </Text>
             <Button type="submit">
               <Trans>Next</Trans>
             </Button>
