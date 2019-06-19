@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx } from '@emotion/core'
-import { navigate } from '@reach/router'
+// import { navigate } from '@reach/router'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -9,8 +9,6 @@ import { H1 } from './components/header'
 import { Checkbox } from './components/checkbox'
 import { RadioButton } from './components/radio-button'
 import { TextArea } from './components/text-area'
-// import { Input } from './components/input'
-
 import { Button } from './components/button'
 import { Text } from './components/text'
 import { ApolloConsumer } from 'react-apollo'
@@ -22,7 +20,8 @@ const CheckboxAdapter = finalFormAdapter(Checkbox)
 const RadioButtonAdapter = finalFormAdapter(RadioButton)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
-const methodsOfPayment = ['Credit card', 'Cash', 'Gift Card', 'Other']
+const methodsOfPayment = ['credit card', 'cash', 'gift card', 'other']
+const howContacted = ['phone', 'email', 'website link', 'other']
 
 const CenterContent = styled('div')`
   max-width: 750px;
@@ -39,9 +38,8 @@ const CheckboxStyle = styled('label')`
 
 const submitAndNavigate = (client, data) => {
   window.alert(JSON.stringify(data))
-
-  client.writeData({ data })
-  navigate('/form3')
+  // client.writeData({ data })
+  // navigate('/form3')
 }
 
 const validate = values => {
@@ -52,15 +50,21 @@ const validate = values => {
   if (!values.whenWereYouContacted) {
     errors.whenWereYouContacted = i18nMark('Required')
   }
-  return errors
+  // return {errors}
+  return {}
 }
+
 const MyForm = () => (
   <ApolloConsumer>
     {client => (
       <Form
         onSubmit={data => submitAndNavigate(client, data)}
         validate={validate}
-        initialValues={{ wasMoneyTaken: undefined, methodsOfPayment: [] }}
+        initialValues={{
+          wasMoneyTaken: undefined,
+          howWereYouContacted: [],
+          methodsOfPayment: [],
+        }}
         render={({
           handleSubmit,
           // reset,
@@ -76,13 +80,39 @@ const MyForm = () => (
               </Text>
             </LabelFormat>
             <div>
-              <Field
-                name="howWereYouContacted"
-                component={TextAreaAdapter}
-                height="50px"
-                placeholder=""
-              />
+              {howContacted.map(key => {
+                return (
+                  <CheckboxStyle key={key}>
+                    <Field
+                      name="howWereYouContacted"
+                      component={CheckboxAdapter}
+                      type="checkbox"
+                      value={key}
+                      label={key}
+                    />
+                  </CheckboxStyle>
+                )
+              })}
             </div>
+
+            {values.howWereYouContacted.indexOf('other') > -1 ? (
+              <React.Fragment>
+                <LabelFormat>
+                  <Text>
+                    <Trans>Other method of contact</Trans>
+                  </Text>
+                </LabelFormat>
+                <div>
+                  <Field
+                    name="otherMethodOfContact"
+                    component={TextAreaAdapter}
+                    height="25px"
+                  />
+                </div>
+              </React.Fragment>
+            ) : (
+              ''
+            )}
 
             <LabelFormat>
               <Text>
@@ -167,7 +197,7 @@ const MyForm = () => (
                   })}
                 </div>
 
-                {values.methodsOfPayment.indexOf('Other') > -1 ? (
+                {values.methodsOfPayment.indexOf('other') > -1 ? (
                   <React.Fragment>
                     <LabelFormat>
                       <Text>
@@ -209,17 +239,12 @@ const MyForm = () => (
   </ApolloConsumer>
 )
 
-const options = {
-  website: <Trans>Website</Trans>,
-  "I'm not sure": <Trans>I’m not sure</Trans>,
-}
-
 export const OtherFlowPage = () => (
   <CenterContent>
     <H1>
       <Trans>Other flow</Trans>
     </H1>
     <TrackPageViews />
-    {MyForm(options)}
+    {MyForm()}
   </CenterContent>
 )
