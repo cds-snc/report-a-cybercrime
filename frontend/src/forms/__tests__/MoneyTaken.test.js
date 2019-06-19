@@ -4,7 +4,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react'
 import { MockedProvider } from 'react-apollo/test-utils'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { ContactedForm } from '../ContactedForm'
+import { MoneyTaken } from '../MoneyTaken'
 import en from '../../../locale/en/messages.js'
 import theme from '../../theme'
 
@@ -15,7 +15,7 @@ const fillIn = (element, { with: value }) =>
 
 const clickOn = element => fireEvent.click(element)
 
-describe('<ContactedForm/>', () => {
+describe('<MoneyTaken/> form', () => {
   afterEach(cleanup)
 
   it('calls the onSubmit function when the form is submitted', async () => {
@@ -25,23 +25,23 @@ describe('<ContactedForm/>', () => {
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
-            <ContactedForm onSubmit={submitMock} />
+            <MoneyTaken onSubmit={submitMock} />
           </I18nProvider>
         </MockedProvider>
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('When were you contacted?')
+    const inputNode = getByLabelText('Amount')
     const nextButton = getByText(/Next/i)
 
-    fillIn(inputNode, { with: 'today' })
+    fillIn(inputNode, { with: '$10,000' })
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 
     expect(submitMock).toHaveBeenCalledTimes(1)
     expect(submitMock).toHaveBeenCalledWith(
       expect.any(Object), // client
-      { whenWereYouContacted: 'today' }, // data
+      { amount: '$10,000' }, // data
     )
   })
 
