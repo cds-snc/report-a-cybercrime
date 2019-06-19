@@ -41,7 +41,7 @@ describe('<ContactedForm/>', () => {
     expect(submitMock).toHaveBeenCalledTimes(1)
     expect(submitMock).toHaveBeenCalledWith(
       expect.any(Object), // client
-      { howWereYouContacted: [], whenWereYouContacted: 'today' }, // data
+      { whenWereYouContacted: 'today' }, // data
     )
   })
 

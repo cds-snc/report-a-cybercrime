@@ -18,13 +18,8 @@ const TextAreaAdapter = finalFormAdapter(TextArea)
 
 const howContacted = ['phone', 'email', 'website link', 'other']
 
-const LabelFormat = styled('label')`
-  margin-top: 20pt;
-`
 const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
-  font-size: 1.25rem;
-  display: block;
 `
 
 const validate = values => {
@@ -45,9 +40,6 @@ export const ContactedForm = ({ onSubmit }) => (
       <Form
         onSubmit={data => onSubmit(client, data)}
         validate={validate}
-        initialValues={{
-          howWereYouContacted: [],
-        }}
         render={({
           handleSubmit,
           // reset,
@@ -57,17 +49,18 @@ export const ContactedForm = ({ onSubmit }) => (
           // invalid,
         }) => (
           <form onSubmit={handleSubmit}>
-            <LabelFormat>
+            <label htmlFor="howWereYouContacted">
               <Text>
                 <Trans>How were you contacted?</Trans>
               </Text>
-            </LabelFormat>
+            </label>
             <div>
               {howContacted.map(key => {
                 return (
                   <CheckboxStyle key={key}>
                     <Field
                       name="howWereYouContacted"
+                      id="howWereYouContacted"
                       component={CheckboxAdapter}
                       type="checkbox"
                       value={key}
@@ -78,16 +71,18 @@ export const ContactedForm = ({ onSubmit }) => (
               })}
             </div>
 
-            {values.howWereYouContacted.indexOf('other') > -1 ? (
+            {values.howWereYouContacted &&
+            values.howWereYouContacted.indexOf('other') > -1 ? (
               <React.Fragment>
-                <LabelFormat>
+                <label htmlFor="otherMethodOfContact">
                   <Text>
                     <Trans>Other method of contact</Trans>
                   </Text>
-                </LabelFormat>
+                </label>
                 <div>
                   <Field
                     name="otherMethodOfContact"
+                    id="otherMethodOfContact"
                     component={TextAreaAdapter}
                     height="25px"
                   />
@@ -97,11 +92,11 @@ export const ContactedForm = ({ onSubmit }) => (
               ''
             )}
 
-            <LabelFormat htmlFor="whenWereYouContacted">
-              <Text>
+            <label htmlFor="whenWereYouContacted">
+              <Text marginTop={[4, null, 5]}>
                 <Trans>When were you contacted?</Trans>
               </Text>
-            </LabelFormat>
+            </label>
             <div>
               <Field
                 name="whenWereYouContacted"
