@@ -6,7 +6,7 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 
 import { TrackPageViews } from './TrackPageViews'
-import { MoneyTaken } from './forms/MoneyTaken'
+import { MoneyLost } from './forms/MoneyLost'
 
 const CenterContent = styled('div')`
   max-width: 750px;
@@ -19,12 +19,12 @@ const submitAndNavigate = (client, data) => {
   // navigate('/form3')
 }
 
-export const MoneyTakenPage = () => (
+export const MoneyLostPage = () => (
   <CenterContent>
     <H1>
-      <Trans>Money Taken</Trans>
+      <Trans>Money Lost</Trans>
     </H1>
     <TrackPageViews />
-    <MoneyTaken onSubmit={submitAndNavigate} />
+    <MoneyLost onSubmit={submitAndNavigate} />
   </CenterContent>
 )
