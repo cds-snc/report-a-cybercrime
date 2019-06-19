@@ -51,11 +51,12 @@ export const MoneyTaken = ({ onSubmit }) => (
                 id="amount"
                 component={TextAreaAdapter}
                 height="25px"
+                width="200px"
               />
             </div>
 
             <label htmlFor="currency">
-              <Text>
+              <Text marginTop={[4, null, 5]}>
                 <Trans>Currency</Trans>
               </Text>
             </label>
@@ -65,11 +66,12 @@ export const MoneyTaken = ({ onSubmit }) => (
                 id="currency"
                 component={TextAreaAdapter}
                 height="25px"
+                width="200px"
               />
             </div>
 
             <label htmlFor="methodsOfPayment">
-              <Text>
+              <Text marginTop={[4, null, 5]}>
                 <Trans>Method of payment</Trans>
               </Text>
             </label>
@@ -104,6 +106,7 @@ export const MoneyTaken = ({ onSubmit }) => (
                     id="otherMethodOfPayment"
                     component={TextAreaAdapter}
                     height="25px"
+                    width="200px"
                   />
                 </div>
               </React.Fragment>
