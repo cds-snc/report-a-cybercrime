@@ -108,8 +108,8 @@ export const Checkbox = ({ label, ...props }) => {
 
 Checkbox.defaultProps = {
   fontWeight: '400',
-  fontSize: [3, null, 3],
-  lineHeight: [3, null, 3],
+  fontSize: [2, null, 3],
+  lineHeight: [2, null, 3],
   checkscale: '1',
 }
 
