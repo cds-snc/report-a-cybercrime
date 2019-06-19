@@ -13,6 +13,7 @@ import { IdentityPage } from './identityPage'
 import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
+import {Ifvictim} from './Ifvictim'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -26,7 +27,7 @@ export const Home = () => (
   <Root>
     <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
       <Trans>
-        This site will be changing as we test ideas and learn from people like
+        Hello, This site will be changing as we test ideas and learn from people like
         you.
       </Trans>
     </PhaseBanner>
@@ -42,6 +43,7 @@ export const Home = () => (
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
+        <Ifvictim path="/ifvictim"/>
       </Router>
     </Screen>
   </Root>
