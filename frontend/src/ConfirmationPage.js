@@ -19,7 +19,11 @@ const CenterContent = styled('div')`
 `
 
 const scamEventSummary = client => {
-  const data = client.readQuery({
+  const {
+    howWereYouContacted,
+    otherMethodOfContact,
+    whenWereYouContacted,
+  } = client.readQuery({
     query: gql`
       query readCache {
         howWereYouContacted
@@ -29,12 +33,12 @@ const scamEventSummary = client => {
     `,
   })
   if (
-    JSON.stringify(data.howWereYouContacted) !== JSON.stringify([]) ||
-    data.whenWereYouContacted != ''
+    JSON.stringify(howWereYouContacted) !== JSON.stringify([]) ||
+    whenWereYouContacted != ''
   ) {
     const howContacted =
-      data.howWereYouContacted.filter(s => s !== 'other').join() +
-      (data.otherMethodOfContact ? ', ' + data.otherMethodOfContact : '')
+      howWereYouContacted.filter(s => s !== 'other').join() +
+      (otherMethodOfContact ? ', ' + otherMethodOfContact : '')
     return (
       <React.Fragment>
         <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
@@ -44,7 +48,7 @@ const scamEventSummary = client => {
           <Trans>Contacted by: {howContacted}</Trans>
         </Text>
         <Text>
-          <Trans>Event Occured on: {data.whenWereYouContacted}</Trans>
+          <Trans>Event Occured on: {whenWereYouContacted}</Trans>
         </Text>
       </React.Fragment>
     )
