@@ -53,121 +53,114 @@ export class FileUploadPage extends Component {
     const { files } = this.state
 
     return (
-      <ApolloConsumer>
-        {() => (
-          <Mutation mutation={UPLOAD_FILE_MUTATION}>
-            {uploadFile => (
-              <Container>
-                <TrackPageViews />
-                <H1 fontSize={[5, null, 6]} marginBottom="70px">
-                  <Trans>Upload Evidence</Trans>
-                </H1>
+      <Container>
+        <ApolloConsumer>
+          {() => (
+            <Container>
+              <TrackPageViews />
+              <H1 fontSize={[5, null, 6]} marginBottom="70px">
+                <Trans>Upload Evidence</Trans>
+              </H1>
 
-                <Form
-                  onSubmit={() => {
-                    this.submit(uploadFile)
-                  }}
-                  validate={this.validate}
-                  render={({ handleSubmit }) => (
-                    <form onSubmit={handleSubmit}>
-                      <Container
-                        width="300px"
-                        marginBottom={[2, null, 3]}
-                        css={css`
-                          display: flex;
-                          flex-direction: row;
-                          justify-content: space-between;
-                        `}
+              <Form
+                onSubmit={() => {}}
+                validate={this.validate}
+                render={({ handleSubmit }) => (
+                  <form onSubmit={handleSubmit}>
+                    <Container
+                      width="300px"
+                      marginBottom={[2, null, 3]}
+                      css={css`
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                      `}
+                    >
+                      <Field
+                        id="file"
+                        name="file"
+                        component={FileUploadAdapter}
+                        onChange={this.onChange}
+                        paddingLeft="15px"
+                        paddingRight="15px"
+                        margin="0 auto"
                       >
-                        <Field
-                          id="file"
-                          name="file"
-                          component={FileUploadAdapter}
-                          onChange={this.onChange}
-                          paddingLeft="15px"
-                          paddingRight="15px"
-                          margin="0 auto"
-                        >
-                          <Trans>Choose a file</Trans>
-                        </Field>
-                      </Container>
-                      <H2 fontSize={[3, null, 5]} marginTop={[5, null, 6]}>
-                        <Trans>{files.length} files selected</Trans>
-                      </H2>
+                        <Trans>Choose a file</Trans>
+                      </Field>
+                    </Container>
+                  </form>
+                )}
+              />
+            </Container>
+          )}
+        </ApolloConsumer>
 
-                      <Container>
-                        {files.map((f, index) => (
-                          <Container
-                            width="300px"
-                            marginBottom={[2, null, 3]}
-                            key={index}
-                            css={css`
-                              display: flex;
-                              flex-direction: row;
-                              justify-content: space-between;
-                            `}
-                          >
-                            <Text>{f.name}</Text>
-                            <Button
-                              float="right"
-                              marginTop={0}
-                              backgroundColor="crimson"
-                              type="button"
-                              onClick={() => this.removeFile(index)}
-                            >
-                              Remove
-                            </Button>
-                          </Container>
-                        ))}
-                      </Container>
+        <H2 fontSize={[3, null, 5]} marginTop={[5, null, 6]}>
+          <Trans>{files.length} files selected</Trans>
+        </H2>
 
-                      <Container
-                        width="300px"
-                        marginTop={[7, null, 8]}
-                        css={css`
-                          display: flex;
-                          flex-direction: row;
-                          justify-content: space-between;
-                        `}
-                      >
-                        <Button type="button">
-                          <Trans>Back</Trans>
-                        </Button>
+        <Container>
+          {files.map((f, index) => (
+            <Container
+              width="300px"
+              marginBottom={[2, null, 3]}
+              key={index}
+              css={css`
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+              `}
+            >
+              <Text>{f.name}</Text>
+              <Button
+                float="right"
+                marginTop={0}
+                backgroundColor="crimson"
+                type="button"
+                onClick={() => this.removeFile(index)}
+              >
+                Remove
+              </Button>
+            </Container>
+          ))}
+        </Container>
 
-                        <Button type="submit">
-                          <Trans>Next</Trans>
-                        </Button>
-                      </Container>
+        <Container
+          width="300px"
+          marginTop={[7, null, 8]}
+          css={css`
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          `}
+        >
+          <Button type="button">
+            <Trans>Back</Trans>
+          </Button>
 
-                      <Container
-                        width="300px"
-                        marginTop={[2, null, 3]}
-                        css={css`
-                          display: flex;
-                          flex-direction: column;
-                          justify-content: space-between;
-                        `}
-                      >
-                        <ButtonLink type="button" color="black">
-                          <Trans>Cancel Report</Trans>
-                        </ButtonLink>
+          <Button type="submit">
+            <Trans>Next</Trans>
+          </Button>
+        </Container>
 
-                        <ButtonLink
-                          type="button"
-                          color="black"
-                          marginTop={[1, null, 1]}
-                        >
-                          <Trans>Save Report</Trans>
-                        </ButtonLink>
-                      </Container>
-                    </form>
-                  )}
-                />
-              </Container>
-            )}
-          </Mutation>
-        )}
-      </ApolloConsumer>
+        <Container
+          width="300px"
+          marginTop={[2, null, 3]}
+          css={css`
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          `}
+        >
+          <ButtonLink type="button" color="black">
+            <Trans>Cancel Report</Trans>
+          </ButtonLink>
+
+          <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
+            <Trans>Save Report</Trans>
+          </ButtonLink>
+        </Container>
+      </Container>
     )
   }
 }
