@@ -49,7 +49,7 @@ export const TextArea = props => (
     fontSize={[2, null, 3]}
     lineHeight={[2, null, 3]}
     colors="textArea"
-    width={['300px', null, '600px']}
+    width={['300px', null, '500px']}
     height={['200px', null, '300px']}
     {...props}
   >
