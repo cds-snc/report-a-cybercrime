@@ -70,18 +70,27 @@ export class FileUploadPage extends Component {
                   validate={this.validate}
                   render={({ handleSubmit }) => (
                     <form onSubmit={handleSubmit}>
-                      <Field
-                        id="file"
-                        name="file"
-                        component={FileUploadAdapter}
-                        onChange={this.onChange}
-                        paddingLeft="15px"
-                        paddingRight="15px"
-                        // margin="0 auto"
+                      <Container
+                        width="300px"
+                        marginBottom={[2, null, 3]}
+                        css={css`
+                          display: flex;
+                          flex-direction: row;
+                          justify-content: space-between;
+                        `}
                       >
-                        <Trans>Choose a file</Trans>
-                      </Field>
-
+                        <Field
+                          id="file"
+                          name="file"
+                          component={FileUploadAdapter}
+                          onChange={this.onChange}
+                          paddingLeft="15px"
+                          paddingRight="15px"
+                          margin="0 auto"
+                        >
+                          <Trans>Choose a file</Trans>
+                        </Field>
+                      </Container>
                       <H2 fontSize={[3, null, 5]} marginTop={[5, null, 6]}>
                         <Trans>{files.length} files selected</Trans>
                       </H2>
@@ -102,19 +111,19 @@ export class FileUploadPage extends Component {
                             <Button
                               float="right"
                               marginTop={0}
-                              backgroundColor="red"
+                              backgroundColor="crimson"
                               type="button"
                               onClick={() => this.removeFile(index)}
                             >
-                              X
+                              Remove
                             </Button>
                           </Container>
                         ))}
                       </Container>
 
                       <Container
-                        width="305px"
-                        marginTop={[5, null, 6]}
+                        width="300px"
+                        marginTop={[7, null, 8]}
                         css={css`
                           display: flex;
                           flex-direction: row;
