@@ -17,6 +17,7 @@ import { DemoPage } from './DemoPage'
 import { OtherFlowPage } from './OtherFlowPage'
 import { MoneyLostPage } from './MoneyLostPage'
 import { SuspectInfoPage } from './SuspectInfoPage'
+import { ContactInfoPage } from './ContactInfoPage'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -50,6 +51,7 @@ export const Home = () => (
         <OtherFlowPage path="/otherflow" />
         <MoneyLostPage path="/moneylost" />
         <SuspectInfoPage path="/suspectinfo" />
+        <ContactInfoPage path="/contactinfo" />
       </Router>
     </Screen>
   </Root>
