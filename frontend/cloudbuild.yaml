@@ -4,6 +4,7 @@ steps:
     dir: frontend
     entrypoint: npm
     args: ['ci']
+    env: ['HUSKY_SKIP_INSTALL=true']
 
   - name: node:11-alpine
     id: compile-languages
