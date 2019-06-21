@@ -15,8 +15,7 @@ export class FileUploadPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      // file: undefined,
-      files: [{ name: 'test.txt' }],
+      files: [],
     }
   }
 
@@ -30,7 +29,10 @@ export class FileUploadPage extends Component {
     this.setState({ files: newFiles })
   }
 
-  validate = () => {}
+  submitAndNavigate = () => {
+    // client.writeData({ files: this.state.files })
+    // navigate('/form3')
+  }
 
   render() {
     const { files } = this.state
@@ -41,27 +43,23 @@ export class FileUploadPage extends Component {
         <H1 fontSize={[5, null, 6]} marginBottom="70px">
           <Trans>Upload Evidence</Trans>
         </H1>
-        <ApolloConsumer>
-          {() => (
-            <Container
-              width="300px"
-              marginBottom={[2, null, 3]}
-              css={css`
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-              `}
-            >
-              <FileUpload
-                onChange={this.onChange}
-                paddingLeft="15px"
-                paddingRight="15px"
-              >
-                <Trans>Choose a file</Trans>
-              </FileUpload>
-            </Container>
-          )}
-        </ApolloConsumer>
+        <Container
+          width="300px"
+          marginBottom={[2, null, 3]}
+          css={css`
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+          `}
+        >
+          <FileUpload
+            onChange={this.onChange}
+            paddingLeft="15px"
+            paddingRight="15px"
+          >
+            <Trans>Choose a file</Trans>
+          </FileUpload>
+        </Container>
 
         <H2 fontSize={[3, null, 5]} marginTop={[5, null, 6]}>
           <Trans>{files.length} files selected</Trans>
@@ -93,41 +91,51 @@ export class FileUploadPage extends Component {
           ))}
         </Container>
 
-        <Container
-          width="300px"
-          marginTop={[7, null, 8]}
-          css={css`
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-          `}
-        >
-          <Button type="button">
-            <Trans>Back</Trans>
-          </Button>
+        <ApolloConsumer>
+          {client => (
+            <Container>
+              <Container
+                width="300px"
+                marginTop={[7, null, 8]}
+                css={css`
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                `}
+              >
+                <Button type="button">
+                  <Trans>Back</Trans>
+                </Button>
 
-          <Button type="submit">
-            <Trans>Next</Trans>
-          </Button>
-        </Container>
+                <Button onClick={() => this.submitAndNavigate(client)}>
+                  <Trans>Next</Trans>
+                </Button>
+              </Container>
 
-        <Container
-          width="300px"
-          marginTop={[2, null, 3]}
-          css={css`
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-          `}
-        >
-          <ButtonLink type="button" color="black">
-            <Trans>Cancel Report</Trans>
-          </ButtonLink>
+              <Container
+                width="300px"
+                marginTop={[2, null, 3]}
+                css={css`
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                `}
+              >
+                <ButtonLink type="button" color="black">
+                  <Trans>Cancel Report</Trans>
+                </ButtonLink>
 
-          <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
-            <Trans>Save Report</Trans>
-          </ButtonLink>
-        </Container>
+                <ButtonLink
+                  type="button"
+                  color="black"
+                  marginTop={[1, null, 1]}
+                >
+                  <Trans>Save Report</Trans>
+                </ButtonLink>
+              </Container>
+            </Container>
+          )}
+        </ApolloConsumer>
       </Container>
     )
   }
