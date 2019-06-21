@@ -16,6 +16,7 @@ import { Option3Page } from './Option3Page'
 import { DemoPage } from './DemoPage'
 import { OtherFlowPage } from './OtherFlowPage'
 import { MoneyLostPage } from './MoneyLostPage'
+import { ContactInfoPage } from './ContactInfoPage'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -48,6 +49,7 @@ export const Home = () => (
         <IdentityPage path="/identity" />
         <OtherFlowPage path="/otherflow" />
         <MoneyLostPage path="/moneylost" />
+        <ContactInfoPage path="/contactinfo" />
       </Router>
     </Screen>
   </Root>
