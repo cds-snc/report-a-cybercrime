@@ -1,7 +1,9 @@
 {
   "ALPHA": "ALPHA",
   "Amount": "Amount",
+  "Back": "Back",
   "Call 911": "Call 911",
+  "Cancel Report": "Cancel Report",
   "Choose File": "Choose File",
   "Currency": "Currency",
   "Description": "Description",
@@ -40,6 +42,7 @@
   "Reports per day": "Reports per day",
   "Reports similar to yours": "Reports similar to yours",
   "Required": "Required",
+  "Save Report": "Save Report",
   "Sorry, the page you were trying to view does not exist.": "Sorry, the page you were trying to view does not exist.",
   "Submit!": "Submit!",
   "Terms and Conditions": "Terms and Conditions",

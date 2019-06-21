@@ -1,7 +1,9 @@
 {
   "ALPHA": "ALPHA",
   "Amount": "Montant",
+  "Back": "Retour",
   "Call 911": "Composez le 911",
+  "Cancel Report": "Annuler le rapport",
   "Choose File": "Choisissez Fichier",
   "Currency": "Monnaie",
   "Description": "Description",
@@ -40,6 +42,7 @@
   "Reports per day": "Alertes par jour",
   "Reports similar to yours": "Alertes semblables à la vôtre",
   "Required": "Requis",
+  "Save Report": "Enregistrer le rapport",
   "Sorry, the page you were trying to view does not exist.": "Désolé, la page que vous essayiez de voir n'existe pas.",
   "Submit!": "Soumettre!",
   "Terms and Conditions": "Avis",
