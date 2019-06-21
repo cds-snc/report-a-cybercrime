@@ -62,7 +62,7 @@ export class FileUploadPage extends Component {
         </Container>
 
         <H2 fontSize={[3, null, 5]} marginTop={[5, null, 6]}>
-          <Trans>{files.length} files selected</Trans>
+          {files.length} <Trans>files selected</Trans>
         </H2>
 
         <Container>
@@ -85,7 +85,7 @@ export class FileUploadPage extends Component {
                 type="button"
                 onClick={() => this.removeFile(index)}
               >
-                Remove
+                <Trans>Remove</Trans>
               </Button>
             </Container>
           ))}
