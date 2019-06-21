@@ -2,31 +2,14 @@
 import { Component } from 'react'
 import { Trans } from '@lingui/macro'
 import { css, jsx } from '@emotion/core'
-import { Form, Field } from 'react-final-form'
-import styled from '@emotion/styled'
-import { ApolloConsumer, Mutation } from 'react-apollo'
+import { ApolloConsumer } from 'react-apollo'
 import { Container } from './components/container'
-import { Text, StyledSpan } from './components/text'
+import { Text } from './components/text'
 import { H1, H2 } from './components/header'
 import { Button } from './components/button'
 import { ButtonLink } from './components/button-link'
 import { FileUpload } from './components/file-upload'
-import { finalFormAdapter } from './utils/finalFormAdapter'
-import { UPLOAD_FILE_MUTATION } from './utils/queriesAndMutations'
 import { TrackPageViews } from './TrackPageViews'
-
-const FileUploadAdapter = finalFormAdapter(FileUpload)
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
-
-const submitAndNavigate = (client, data) => {
-  window.alert(JSON.stringify(data))
-  // client.writeData({ data })
-  // navigate('/form3')
-}
 
 export class FileUploadPage extends Component {
   constructor(props) {
@@ -54,43 +37,28 @@ export class FileUploadPage extends Component {
 
     return (
       <Container>
+        <TrackPageViews />
+        <H1 fontSize={[5, null, 6]} marginBottom="70px">
+          <Trans>Upload Evidence</Trans>
+        </H1>
         <ApolloConsumer>
           {() => (
-            <Container>
-              <TrackPageViews />
-              <H1 fontSize={[5, null, 6]} marginBottom="70px">
-                <Trans>Upload Evidence</Trans>
-              </H1>
-
-              <Form
-                onSubmit={() => {}}
-                validate={this.validate}
-                render={({ handleSubmit }) => (
-                  <form onSubmit={handleSubmit}>
-                    <Container
-                      width="300px"
-                      marginBottom={[2, null, 3]}
-                      css={css`
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: space-between;
-                      `}
-                    >
-                      <Field
-                        id="file"
-                        name="file"
-                        component={FileUploadAdapter}
-                        onChange={this.onChange}
-                        paddingLeft="15px"
-                        paddingRight="15px"
-                        margin="0 auto"
-                      >
-                        <Trans>Choose a file</Trans>
-                      </Field>
-                    </Container>
-                  </form>
-                )}
-              />
+            <Container
+              width="300px"
+              marginBottom={[2, null, 3]}
+              css={css`
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+              `}
+            >
+              <FileUpload
+                onChange={this.onChange}
+                paddingLeft="15px"
+                paddingRight="15px"
+              >
+                <Trans>Choose a file</Trans>
+              </FileUpload>
             </Container>
           )}
         </ApolloConsumer>
