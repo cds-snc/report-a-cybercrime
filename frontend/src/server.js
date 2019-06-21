@@ -52,6 +52,15 @@ server
     cache.writeData({
       data: {
         language: req.language,
+
+        howWereYouContacted: [],
+        otherMethodOfContact: '',
+        whenWereYouContacted: '',
+
+        lostAmount: '',
+        lostCurrency: '',
+        lostMethodsOfPayment: [],
+        lostOtherMethodOfPayment: '',
       },
     })
 

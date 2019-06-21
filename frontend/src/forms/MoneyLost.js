@@ -1,13 +1,15 @@
 /** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
+import { Container } from '../components/container'
 import { Checkbox } from '../components/checkbox'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
+import { ButtonLink } from '../components/button-link'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
@@ -31,46 +33,39 @@ export const MoneyLost = ({ onSubmit }) => (
       <Form
         onSubmit={data => onSubmit(client, data)}
         validate={validate}
-        render={({
-          handleSubmit,
-          // reset,
-          // submitting,
-          // pristine,
-          values,
-          // invalid,
-        }) => (
+        render={({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="amount">
+            <label htmlFor="lostAmount">
               <Text>
                 <Trans>Amount</Trans>
               </Text>
             </label>
             <div>
               <Field
-                name="amount"
-                id="amount"
+                name="lostAmount"
+                id="lostAmount"
                 component={TextAreaAdapter}
                 height="25px"
                 width="200px"
               />
             </div>
 
-            <label htmlFor="currency">
+            <label htmlFor="lostCurrency">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Currency</Trans>
               </Text>
             </label>
             <div>
               <Field
-                name="currency"
-                id="currency"
+                name="lostCurrency"
+                id="lostCurrency"
                 component={TextAreaAdapter}
                 height="25px"
                 width="200px"
               />
             </div>
 
-            <label htmlFor="methodsOfPayment">
+            <label htmlFor="lostMethodsOfPayment">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Method of payment</Trans>
               </Text>
@@ -80,8 +75,8 @@ export const MoneyLost = ({ onSubmit }) => (
                 return (
                   <CheckboxStyle key={key}>
                     <Field
-                      name="methodsOfPayment"
-                      id="methodsOfPayment"
+                      name="lostMethodsOfPayment"
+                      id="lostMethodsOfPayment"
                       component={CheckboxAdapter}
                       type="checkbox"
                       value={key}
@@ -95,15 +90,15 @@ export const MoneyLost = ({ onSubmit }) => (
             {values.methodsOfPayment &&
             values.methodsOfPayment.indexOf('other') > -1 ? (
               <React.Fragment>
-                <label htmlFor="otherMethodOfPayment">
+                <label htmlFor="lostOtherMethodOfPayment">
                   <Text>
                     <Trans>Other method of payment</Trans>
                   </Text>
                 </label>
                 <div>
                   <Field
-                    name="otherMethodOfPayment"
-                    id="otherMethodOfPayment"
+                    name="lostOtherMethodOfPayment"
+                    id="lostOtherMethodOfPayment"
                     component={TextAreaAdapter}
                     height="25px"
                     width="200px"
@@ -114,9 +109,41 @@ export const MoneyLost = ({ onSubmit }) => (
               ''
             )}
 
-            <Button type="submit">
-              <Trans>Next</Trans>
-            </Button>
+            <Container
+              width="305px"
+              marginTop={[3, null, 4]}
+              css={css`
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+              `}
+            >
+              <Button type="button">
+                <Trans>Back</Trans>
+              </Button>
+
+              <Button type="submit">
+                <Trans>Next</Trans>
+              </Button>
+            </Container>
+
+            <Container
+              width="300px"
+              marginTop={[2, null, 3]}
+              css={css`
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              `}
+            >
+              <ButtonLink type="button" color="black">
+                <Trans>Cancel Report</Trans>
+              </ButtonLink>
+
+              <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
+                <Trans>Save Report</Trans>
+              </ButtonLink>
+            </Container>
           </form>
         )}
       />

@@ -28,6 +28,15 @@ const cache = new InMemoryCache()
 cache.writeData({
   data: {
     language: getLanguage(),
+
+    howWereYouContacted: ['phone', 'other'],
+    otherMethodOfContact: 'door',
+    whenWereYouContacted: 'today',
+
+    lostAmount: '$10.00',
+    lostCurrency: 'CAD',
+    lostMethodsOfPayment: ['cash', 'other'],
+    lostOtherMethodOfPayment: 'CatCoin',
   },
 })
 

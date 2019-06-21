@@ -41,7 +41,7 @@ describe('<MoneyLost/> form', () => {
     expect(submitMock).toHaveBeenCalledTimes(1)
     expect(submitMock).toHaveBeenCalledWith(
       expect.any(Object), // client
-      { amount: '$10,000' }, // data
+      { lostAmount: '$10,000' }, // data
     )
   })
 })
