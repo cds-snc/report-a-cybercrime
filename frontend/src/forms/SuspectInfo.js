@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { I18n, i18nMark } from '@lingui/react'
@@ -9,9 +9,11 @@ import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../components/checkbox'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
+import { ButtonLink } from '../components/button-link'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
+import { Container } from '../components/container'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
@@ -157,9 +159,41 @@ export const SuspectInfo = ({ onSubmit }) => (
               />
             </div>
 
-            <Button type="submit">
-              <Trans>Next</Trans>
-            </Button>
+            <Container
+              width="305px"
+              marginTop={[3, null, 4]}
+              css={css`
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+              `}
+            >
+              <Button type="button">
+                <Trans>Back</Trans>
+              </Button>
+
+              <Button type="submit">
+                <Trans>Next</Trans>
+              </Button>
+            </Container>
+
+            <Container
+              width="300px"
+              marginTop={[2, null, 3]}
+              css={css`
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              `}
+            >
+              <ButtonLink type="button" color="black">
+                <Trans>Cancel Report</Trans>
+              </ButtonLink>
+
+              <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
+                <Trans>Save Report</Trans>
+              </ButtonLink>
+            </Container>
           </form>
         )}
       />
