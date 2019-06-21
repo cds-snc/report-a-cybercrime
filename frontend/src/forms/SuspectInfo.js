@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
+import { I18n, i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../components/checkbox'
 import { TextArea } from '../components/text-area'
@@ -15,7 +16,7 @@ import { finalFormAdapter } from '../utils/finalFormAdapter'
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
-const languages = ['English', 'French', 'other']
+const languages = [i18nMark('English'), i18nMark('French'), i18nMark('other')]
 
 const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
@@ -69,20 +70,24 @@ export const SuspectInfo = ({ onSubmit }) => (
               </Text>
             </label>
             <div>
-              {languages.map(key => {
-                return (
-                  <CheckboxStyle key={key}>
-                    <Field
-                      name="suspectLanguage"
-                      id="suspectLanguage"
-                      component={CheckboxAdapter}
-                      type="checkbox"
-                      value={key}
-                      label={key}
-                    />
-                  </CheckboxStyle>
-                )
-              })}
+              <I18n>
+                {({ i18n }) =>
+                  languages.map(key => {
+                    return (
+                      <CheckboxStyle key={key}>
+                        <Field
+                          name="suspectLanguage"
+                          id="suspectLanguage"
+                          component={CheckboxAdapter}
+                          type="checkbox"
+                          value={key}
+                          label={i18n._(key)}
+                        />
+                      </CheckboxStyle>
+                    )
+                  })
+                }
+              </I18n>
             </div>
 
             {values.suspectLanguage &&

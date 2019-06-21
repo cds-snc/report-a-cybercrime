@@ -7,9 +7,11 @@
   "Currency": "Currency",
   "Description": "Description",
   "Email addresses": "Email addresses",
+  "English": "English",
   "Error uploading file": "Error uploading file",
   "File uploaded successfully, MD5: {0}": "File uploaded successfully, MD5: {0}",
   "First, find out which option is most relevant for you.": "First, find out which option is most relevant for you.",
+  "French": "French",
   "Get Started": "Get Started",
   "How did that happen?": "How did that happen?",
   "How do you want to make your report?": "How do you want to make your report?",
@@ -59,5 +61,6 @@
   "You’ll get specific advice based on your situation.": "You’ll get specific advice based on your situation.",
   "You’ll make the Royal Canadian Mounted Police aware of your situation and get general advice.": "You’ll make the Royal Canadian Mounted Police aware of your situation and get general advice.",
   "loading...": "loading...",
+  "other": "other",
   "report-cyber.ca": "report-cyber.ca"
 }
