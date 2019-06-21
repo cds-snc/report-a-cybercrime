@@ -10,7 +10,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
   - name: gcr.io/report-a-cybercrime-alpha/frontend
-    newTag: master-0488eef
+    newTag: master-db01707
   - name: microsoft/azure-vote-front
     newTag: v2
 resources:
