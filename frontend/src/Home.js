@@ -16,6 +16,7 @@ import { Option3Page } from './Option3Page'
 import { DemoPage } from './DemoPage'
 import { OtherFlowPage } from './OtherFlowPage'
 import { MoneyLostPage } from './MoneyLostPage'
+import { SuspectInfoPage } from './SuspectInfoPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { LoseMoney } from './LoseMoney'
 
@@ -51,6 +52,7 @@ export const Home = () => (
         <IdentityPage path="/identity" />
         <OtherFlowPage path="/otherflow" />
         <MoneyLostPage path="/moneylost" />
+        <SuspectInfoPage path="/suspectinfo" />
         <ContactInfoPage path="/contactinfo" />
       </Router>
     </Screen>
