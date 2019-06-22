@@ -18,6 +18,7 @@ import { OtherFlowPage } from './OtherFlowPage'
 import { MoneyLostPage } from './MoneyLostPage'
 import { SuspectInfoPage } from './SuspectInfoPage'
 import { ContactInfoPage } from './ContactInfoPage'
+import { LoseMoney } from './LoseMoney'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -44,6 +45,7 @@ export const Home = () => (
         <Option2Page path="/option2" />
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
+        <LoseMoney path="/losemoney" />
         <FileUploadPage path="/file" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
