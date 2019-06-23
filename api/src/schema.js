@@ -138,6 +138,23 @@ const mutation = new GraphQLObjectType({
           type: GraphQLString,
           description: 'when the victim was contacted',
         },
+        lostAmount: {
+          type: GraphQLString,
+          description: 'the amount of money lost',
+        },
+        lostCurrency: {
+          type: GraphQLString,
+          description: 'the currency used in the loss',
+        },
+        lostMethodsOfPayment: {
+          type: GraphQLString,
+          description:
+            'the method of payment used (credit card, etc) used in the loss',
+        },
+        lostOtherMethodOfPayment: {
+          type: GraphQLString,
+          description: 'a user specified  method of paymend used in the loss',
+        },
       },
       resolve: async (
         _root,

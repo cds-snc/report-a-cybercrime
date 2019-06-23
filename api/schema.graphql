@@ -24,6 +24,18 @@ type Mutation {
 
     """when the victim was contacted"""
     whenWereYouContacted: String
+
+    """the amount of money lost"""
+    lostAmount: String
+
+    """the currency used in the loss"""
+    lostCurrency: String
+
+    """the method of payment used (credit card, etc) used in the loss"""
+    lostMethodsOfPayment: String
+
+    """a user specified  method of paymend used in the loss"""
+    lostOtherMethodOfPayment: String
   ): reportSummary
 }
 
