@@ -1,9 +1,10 @@
 const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
-const { Stats } = require('./Stats')
 const { GraphQLUpload } = require('graphql-upload')
-const { FlaggingSummary } = require('./FlaggingSummary')
+const { ReportSummary } = require('./ReportSummary')
+const { Stats } = require('./Stats')
 const { FileUploadResult } = require('./FileUploadResult')
 const { createHash } = require('crypto')
+const uuidv4 = require('uuid/v4')
 
 // eslint-disable-next-line
 const streamToString = stream =>
@@ -120,24 +121,50 @@ const mutation = new GraphQLObjectType({
         }
       },
     },
-    flagIdentifier: {
-      description: 'Flag an identifier',
-      type: FlaggingSummary,
+
+    submitReport: {
+      description: 'Submit report to database',
+      type: ReportSummary,
       args: {
-        identifier: {
+        howWereYouContacted: {
           type: GraphQLString,
-          description: 'the suspects identifier (phone no, url or email)',
+          description: 'the list of ways the victim was contacted',
+        },
+        otherMethodOfContact: {
+          type: GraphQLString,
+          description: 'user specified method used to contact the victim',
+        },
+        whenWereYouContacted: {
+          type: GraphQLString,
+          description: 'when the victim was contacted',
         },
       },
-      resolve: async (_root, { identifier }, { db }, _info) => {
+      resolve: async (
+        _root,
+        {
+          howWereYouContacted,
+          otherMethodOfContact,
+          whenWereYouContacted,
+          lostAmount,
+          lostCurrency,
+          lostMethodsOfPayment,
+          lostOtherMethodOfPayment,
+        },
+        { db },
+        _info,
+      ) => {
         await db.saveReport({
-          identifier: identifier,
+          howWereYouContacted,
+          otherMethodOfContact,
+          whenWereYouContacted,
+          lostAmount,
+          lostCurrency,
+          lostMethodsOfPayment,
+          lostOtherMethodOfPayment,
           createdAt: new Date().toISOString(),
         })
-        let summary = await db.summariseByDay(identifier)
         return {
-          identifier,
-          summary,
+          reportID: uuidv4(),
         }
       },
     },

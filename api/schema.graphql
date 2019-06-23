@@ -1,23 +1,7 @@
-type DailyTotal {
-  date: String
-  total: Int
-}
-
-"""
-The DateTime scalar type represents date time strings complying to ISO-8601.
-"""
-scalar DateTime
-
 type fileUploadResult {
   success: Boolean
   errorMessage: String
   md5: String
-}
-
-type identifierFlaggingsSummary {
-  identifier: String
-  summaryTotal: Int
-  summary: [DailyTotal]
 }
 
 type Mutation {
@@ -30,11 +14,17 @@ type Mutation {
     fileDescription: String
   ): fileUploadResult
 
-  """Flag an identifier"""
-  flagIdentifier(
-    """the suspects identifier (phone no, url or email)"""
-    identifier: String
-  ): identifierFlaggingsSummary
+  """Submit report to database"""
+  submitReport(
+    """the list of ways the victim was contacted"""
+    howWereYouContacted: String
+
+    """user specified method used to contact the victim"""
+    otherMethodOfContact: String
+
+    """when the victim was contacted"""
+    whenWereYouContacted: String
+  ): reportSummary
 }
 
 type Query {
@@ -42,27 +32,13 @@ type Query {
   stats: Stats
 }
 
+type reportSummary {
+  reportID: String
+}
+
 type Stats {
   """The total number of reports submitted."""
   reportCount: Int
-
-  """Daily totals for the identifier specified"""
-  identifierFlaggingsWithin(
-    """the suspects identifier"""
-    identifier: String
-  ): identifierFlaggingsSummary
-
-  """Daily totals for the identifier specified"""
-  flaggingsWithin(
-    """a phone number, email address or URL"""
-    identifier: String!
-
-    """An ISO8601(YYYY-MM-DD) formatted date string"""
-    startDate: DateTime!
-
-    """An ISO8601(YYYY-MM-DD) formatted date string"""
-    endDate: DateTime!
-  ): identifierFlaggingsSummary
 }
 
 """The `Upload` scalar type represents a file upload."""
