@@ -36,6 +36,36 @@ type Mutation {
 
     """a user specified  method of paymend used in the loss"""
     lostOtherMethodOfPayment: String
+
+    """the name of the suspect"""
+    suspectName: String
+
+    """the address of the suspect"""
+    suspectAddress: String
+
+    """the language of the suspect"""
+    suspectLanguage: String
+
+    """a user specified language of the suspect"""
+    otherSuspectLanguage: String
+
+    """the phone number of the suspect"""
+    suspectPhone: String
+
+    """the website of the suspect"""
+    suspectWebsite: String
+
+    """the IP address of the suspect"""
+    suspectIP: String
+
+    """the name of the user"""
+    contactInfoName: String
+
+    """the email address of the user"""
+    contactInfoEmail: String
+
+    """the phone number of the user"""
+    contactInfoPhone: String
   ): reportSummary
 }
 

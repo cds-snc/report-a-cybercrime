@@ -1,4 +1,9 @@
-const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
+const {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLList,
+} = require('graphql')
 const { GraphQLUpload } = require('graphql-upload')
 const { ReportSummary } = require('./ReportSummary')
 const { Stats } = require('./Stats')
@@ -155,6 +160,46 @@ const mutation = new GraphQLObjectType({
           type: GraphQLString,
           description: 'a user specified  method of paymend used in the loss',
         },
+        suspectName: {
+          type: GraphQLString,
+          description: 'the name of the suspect',
+        },
+        suspectAddress: {
+          type: GraphQLString,
+          description: 'the address of the suspect',
+        },
+        suspectLanguage: {
+          type: GraphQLString,
+          description: 'the language of the suspect',
+        },
+        otherSuspectLanguage: {
+          type: GraphQLString,
+          description: 'a user specified language of the suspect',
+        },
+        suspectPhone: {
+          type: GraphQLString,
+          description: 'the phone number of the suspect',
+        },
+        suspectWebsite: {
+          type: GraphQLString,
+          description: 'the website of the suspect',
+        },
+        suspectIP: {
+          type: GraphQLString,
+          description: 'the IP address of the suspect',
+        },
+        contactInfoName: {
+          type: GraphQLString,
+          description: 'the name of the user',
+        },
+        contactInfoEmail: {
+          type: GraphQLString,
+          description: 'the email address of the user',
+        },
+        contactInfoPhone: {
+          type: GraphQLString,
+          description: 'the phone number of the user',
+        },
       },
       resolve: async (
         _root,
@@ -166,6 +211,16 @@ const mutation = new GraphQLObjectType({
           lostCurrency,
           lostMethodsOfPayment,
           lostOtherMethodOfPayment,
+          suspectName,
+          suspectAddress,
+          suspectLanguage,
+          otherSuspectLanguage,
+          suspectPhone,
+          suspectWebsite,
+          suspectIP,
+          contactInfoName,
+          contactInfoEmail,
+          contactInfoPhone,
         },
         { db },
         _info,
@@ -178,6 +233,16 @@ const mutation = new GraphQLObjectType({
           lostCurrency,
           lostMethodsOfPayment,
           lostOtherMethodOfPayment,
+          suspectName,
+          suspectAddress,
+          suspectLanguage,
+          otherSuspectLanguage,
+          suspectPhone,
+          suspectWebsite,
+          suspectIP,
+          contactInfoName,
+          contactInfoEmail,
+          contactInfoPhone,
           createdAt: new Date().toISOString(),
         })
         return {
