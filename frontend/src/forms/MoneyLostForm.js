@@ -28,7 +28,7 @@ const validate = () => {
   return {}
 }
 
-export const MoneyLost = ({ onSubmit }) => (
+export const MoneyLostForm = ({ onSubmit }) => (
   <ApolloConsumer>
     {client => (
       <Form
@@ -152,6 +152,6 @@ export const MoneyLost = ({ onSubmit }) => (
   </ApolloConsumer>
 )
 
-MoneyLost.propTypes = {
+MoneyLostForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }

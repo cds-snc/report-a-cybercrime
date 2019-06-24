@@ -29,7 +29,7 @@ const validate = () => {
   return {}
 }
 
-export const SuspectInfo = ({ onSubmit }) => (
+export const SuspectInfoForm = ({ onSubmit }) => (
   <ApolloConsumer>
     {client => (
       <Form
@@ -202,6 +202,6 @@ export const SuspectInfo = ({ onSubmit }) => (
   </ApolloConsumer>
 )
 
-SuspectInfo.propTypes = {
+SuspectInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }

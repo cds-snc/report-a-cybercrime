@@ -6,7 +6,7 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 
 import { TrackPageViews } from './TrackPageViews'
-import { MoneyLost } from './forms/MoneyLost'
+import { MoneyLostForm } from './forms/MoneyLostForm'
 
 const CenterContent = styled('div')`
   max-width: 750px;
@@ -24,6 +24,6 @@ export const MoneyLostPage = () => (
       <Trans>Money Lost</Trans>
     </H1>
     <TrackPageViews />
-    <MoneyLost onSubmit={submitAndNavigate} />
+    <MoneyLostForm onSubmit={submitAndNavigate} />
   </CenterContent>
 )
