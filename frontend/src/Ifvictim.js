@@ -15,16 +15,27 @@ export const Ifvictim = () => (
   <CenterContent>
     <TrackPageViews />
     <H1 fontSize={[5, null, 6]}>
-      <Trans>{'Are you a victim?'}</Trans>
+      <Trans>Are you a victim?</Trans>
     </H1>
     <p>
       <ButtonLink color="black" mb={[3, null, 5]} to="/urgency">
-        <Trans>{'Yes'}</Trans>
+        <Trans>Yes</Trans>
       </ButtonLink>
     </p>
+    <br />
+    <br />
+
     <p>
       <ButtonLink color="black" mb={[3, null, 5]} to="/urgency">
         <Trans>No</Trans>
+      </ButtonLink>
+    </p>
+    <br />
+    <br />
+
+    <p>
+      <ButtonLink color="black" mb={[3, null, 5]} to="/">
+        <Trans>Cancel Report</Trans>
       </ButtonLink>
     </p>
   </CenterContent>
