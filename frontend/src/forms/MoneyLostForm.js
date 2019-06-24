@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
+import { I18n, i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { Container } from '../components/container'
 import { Checkbox } from '../components/checkbox'
@@ -18,7 +19,12 @@ import { finalFormAdapter } from '../utils/finalFormAdapter'
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
-const methodsOfPayment = ['credit card', 'cash', 'gift card', 'other']
+const methodsOfPayment = [
+  i18nMark('credit card'),
+  i18nMark('cash'),
+  i18nMark('gift card'),
+  i18nMark('other'),
+]
 
 const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
@@ -38,7 +44,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="lostAmount">
               <Text>
-                <Trans>Amount</Trans>
+                <Trans>Enter the total amount lost</Trans>
               </Text>
             </label>
             <div>
@@ -68,24 +74,28 @@ export const MoneyLostForm = ({ onSubmit }) => (
 
             <label htmlFor="lostMethodsOfPayment">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Method of payment</Trans>
+                <Trans>Select payment method involved in this scam</Trans>
               </Text>
             </label>
             <div>
-              {methodsOfPayment.map(key => {
-                return (
-                  <CheckboxStyle key={key}>
-                    <Field
-                      name="lostMethodsOfPayment"
-                      id="lostMethodsOfPayment"
-                      component={CheckboxAdapter}
-                      type="checkbox"
-                      value={key}
-                      label={key}
-                    />
-                  </CheckboxStyle>
-                )
-              })}
+              <I18n>
+                {({ i18n }) =>
+                  methodsOfPayment.map(key => {
+                    return (
+                      <CheckboxStyle key={key}>
+                        <Field
+                          name="lostMethodsOfPayment"
+                          id="lostMethodsOfPayment"
+                          component={CheckboxAdapter}
+                          type="checkbox"
+                          value={key}
+                          label={i18n._(key)}
+                        />
+                      </CheckboxStyle>
+                    )
+                  })
+                }
+              </I18n>
             </div>
 
             {values.methodsOfPayment &&
