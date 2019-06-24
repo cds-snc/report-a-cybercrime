@@ -56,6 +56,7 @@ server
         howWereYouContacted: [],
         otherMethodOfContact: '',
         whenWereYouContacted: '',
+        scamDetails: '',
 
         lostAmount: '',
         lostCurrency: '',

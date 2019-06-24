@@ -23,18 +23,21 @@ const scamEventSummary = client => {
     howWereYouContacted,
     otherMethodOfContact,
     whenWereYouContacted,
+    scamDetails,
   } = client.readQuery({
     query: gql`
       query readCache {
         howWereYouContacted
         otherMethodOfContact
         whenWereYouContacted
+        scamDetails
       }
     `,
   })
   if (
     (howWereYouContacted && howWereYouContacted.length) ||
-    whenWereYouContacted
+    whenWereYouContacted ||
+    scamDetails
   ) {
     const howContacted =
       howWereYouContacted.filter(s => s !== 'other').join() +
@@ -49,6 +52,9 @@ const scamEventSummary = client => {
         </Text>
         <Text>
           <Trans>Event Occured on: {whenWereYouContacted}</Trans>
+        </Text>
+        <Text>
+          <Trans>Details: {scamDetails}</Trans>
         </Text>
       </React.Fragment>
     )

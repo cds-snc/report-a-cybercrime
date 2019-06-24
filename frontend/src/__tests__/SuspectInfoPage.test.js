@@ -3,13 +3,13 @@ import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { ScamInfoPage } from '../ScamInfoPage'
+import { SuspectInfoPage } from '../SuspectInfoPage'
 import theme from '../theme'
 import en from '../../locale/en/messages.js'
 
 const catalogs = { en }
 
-describe('<ScamInfoPage />', () => {
+describe('<SuspectInfoPage />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
@@ -17,7 +17,7 @@ describe('<ScamInfoPage />', () => {
       <ThemeProvider theme={theme}>
         <ApolloProvider client={{}}>
           <I18nProvider language={'en'} catalogs={catalogs}>
-            <ScamInfoPage />
+            <SuspectInfoPage />
           </I18nProvider>
         </ApolloProvider>
       </ThemeProvider>,

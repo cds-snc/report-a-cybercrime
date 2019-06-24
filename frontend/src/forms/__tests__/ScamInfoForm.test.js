@@ -15,7 +15,7 @@ const fillIn = (element, { with: value }) =>
 
 const clickOn = element => fireEvent.click(element)
 
-describe('<ContactedForm/>', () => {
+describe('<ScamInfoForm />', () => {
   afterEach(cleanup)
 
   it('calls the onSubmit function when the form is submitted', async () => {
@@ -31,7 +31,7 @@ describe('<ContactedForm/>', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('When were you contacted?')
+    const inputNode = getByLabelText('When did this scam occur?')
     const nextButton = getByText(/Next/i)
 
     fillIn(inputNode, { with: 'today' })

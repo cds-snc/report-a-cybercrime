@@ -32,6 +32,7 @@ cache.writeData({
     howWereYouContacted: [],
     otherMethodOfContact: '',
     whenWereYouContacted: '',
+    scamDetails: '',
 
     lostAmount: '',
     lostCurrency: '',

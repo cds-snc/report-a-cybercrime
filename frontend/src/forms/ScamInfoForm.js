@@ -4,6 +4,8 @@ import { navigate } from '@reach/router'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
+import { ApolloConsumer } from 'react-apollo'
+import { I18n, i18nMark } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../components/checkbox'
@@ -12,28 +14,23 @@ import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { ButtonLink } from '../components/button-link'
 import { Text } from '../components/text'
-import { ApolloConsumer } from 'react-apollo'
-import { i18nMark } from '@lingui/react'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
-const howContacted = ['phone', 'email', 'website link', 'other']
+const howContacted = [
+  i18nMark('phone'),
+  i18nMark('email'),
+  i18nMark('website link'),
+  i18nMark('other'),
+]
 
 const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
 `
 
-const validate = values => {
-  let errors = {}
-  if (!values.howWereYouContacted) {
-    errors.howWereYouContacted = i18nMark('Required')
-  }
-  if (!values.whenWereYouContacted) {
-    errors.whenWereYouContacted = i18nMark('Required')
-  }
-  // return {errors}
+const validate = () => {
   return {}
 }
 
@@ -54,24 +51,28 @@ export const ScamInfoForm = ({ onSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="howWereYouContacted">
               <Text>
-                <Trans>How were you contacted?</Trans>
+                <Trans>How were you first contacted by the suspect?</Trans>
               </Text>
             </label>
             <div>
-              {howContacted.map(key => {
-                return (
-                  <CheckboxStyle key={key}>
-                    <Field
-                      name="howWereYouContacted"
-                      id="howWereYouContacted"
-                      component={CheckboxAdapter}
-                      type="checkbox"
-                      value={key}
-                      label={key}
-                    />
-                  </CheckboxStyle>
-                )
-              })}
+              <I18n>
+                {({ i18n }) =>
+                  howContacted.map(key => {
+                    return (
+                      <CheckboxStyle key={key}>
+                        <Field
+                          name="howWereYouContacted"
+                          id="howWereYouContacted"
+                          component={CheckboxAdapter}
+                          type="checkbox"
+                          value={key}
+                          label={i18n._(key)}
+                        />
+                      </CheckboxStyle>
+                    )
+                  })
+                }
+              </I18n>
             </div>
 
             {values.howWereYouContacted &&
@@ -98,7 +99,7 @@ export const ScamInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="whenWereYouContacted">
               <Text marginTop={[4, null, 5]}>
-                <Trans>When were you contacted?</Trans>
+                <Trans>When did this scam occur?</Trans>
               </Text>
             </label>
             <div>
@@ -107,6 +108,21 @@ export const ScamInfoForm = ({ onSubmit }) => (
                 id="whenWereYouContacted"
                 component={TextAreaAdapter}
                 height="25px"
+                width="300px"
+              />
+            </div>
+
+            <label htmlFor="scamDetails">
+              <Text marginTop={[4, null, 5]}>
+                <Trans>How did this scam take place?</Trans>
+              </Text>
+            </label>
+            <div>
+              <Field
+                name="scamDetails"
+                id="scamDetails"
+                component={TextAreaAdapter}
+                height="100px"
                 width="300px"
               />
             </div>
