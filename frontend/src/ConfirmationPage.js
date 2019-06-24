@@ -185,6 +185,34 @@ const suspectInfoSummary = client => {
   }
 }
 
+const fileUploadSummary = client => {
+  const { files } = client.readQuery({
+    query: gql`
+      query readCache {
+        files
+      }
+    `,
+  })
+  if (files && files.length) {
+    const fileList = files.join(', ')
+    return (
+      <React.Fragment>
+        <H2
+          fontSize={[3, null, 4]}
+          marginTop={[3, null, 4]}
+          marginBottom={[1, null, 1]}
+        >
+          <Trans>Evidence</Trans>
+        </H2>
+        <Text>
+          <Trans>Files: {fileList}</Trans>
+        </Text>
+      </React.Fragment>
+    )
+  } else {
+    return null
+  }
+}
 const contactInfoSummary = client => {
   const {
     contactInfoName,
@@ -237,6 +265,7 @@ export const ConfirmationPage = () => (
           {scamEventSummary(client)}
           {lostMoneySummary(client)}
           {suspectInfoSummary(client)}
+          {fileUploadSummary(client)}
           {contactInfoSummary(client)}
         </React.Fragment>
       )}

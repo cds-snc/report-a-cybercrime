@@ -47,7 +47,6 @@ export const Home = () => (
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
         <LoseMoney path="/losemoney" />
-        <FileUploadPage path="/uploadfiles" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
@@ -55,6 +54,7 @@ export const Home = () => (
         <ScamInfoPage path="/scaminfo" />
         <MoneyLostPage path="/moneylost" />
         <SuspectInfoPage path="/suspectinfo" />
+        <FileUploadPage path="/uploadfiles" />
         <ContactInfoPage path="/contactinfo" />
         <ConfirmationPage path="/confirmation" />
       </Router>

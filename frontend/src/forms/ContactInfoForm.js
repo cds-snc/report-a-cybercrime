@@ -80,7 +80,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <Button type="button" onClick={() => navigate('/suspectinfo')}>
+              <Button type="button" onClick={() => navigate('/uploadfiles')}>
                 <Trans>Back</Trans>
               </Button>
 

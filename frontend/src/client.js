@@ -48,6 +48,8 @@ cache.writeData({
     suspectWebsite: '',
     suspectIP: '',
 
+    files: [],
+
     contactInfoName: '',
     contactInfoEmail: '',
     contactInfoPhone: '',

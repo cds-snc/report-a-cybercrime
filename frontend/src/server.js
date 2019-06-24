@@ -72,6 +72,7 @@ server
         suspectWebsite: '',
         suspectIP: '',
 
+        files: [],
         contactInfoName: '',
         contactInfoEmail: '',
         contactInfoPhone: '',
