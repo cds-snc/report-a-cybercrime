@@ -17,6 +17,9 @@ import { DemoPage } from './DemoPage'
 import { OtherFlowPage } from './OtherFlowPage'
 import { MoneyLostPage } from './MoneyLostPage'
 import { ConfirmationPage } from './ConfirmationPage'
+import { SuspectInfoPage } from './SuspectInfoPage'
+import { ContactInfoPage } from './ContactInfoPage'
+import { LoseMoney } from './LoseMoney'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -43,6 +46,7 @@ export const Home = () => (
         <Option2Page path="/option2" />
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
+        <LoseMoney path="/losemoney" />
         <FileUploadPage path="/file" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
@@ -51,6 +55,8 @@ export const Home = () => (
         <OtherFlowPage path="/otherflow" />
         <MoneyLostPage path="/moneylost" />
         <ConfirmationPage path="/confirmation" />
+        <SuspectInfoPage path="/suspectinfo" />
+        <ContactInfoPage path="/contactinfo" />
       </Router>
     </Screen>
   </Root>
