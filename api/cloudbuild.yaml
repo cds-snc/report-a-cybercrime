@@ -1,7 +1,7 @@
 steps:
-  - name: 'mikewilliamson/usesthis-ci'
+  - name: mikewilliamson/usesthis-ci
     id: start_arangodb
-    entrypoint: '/bin/sh'
+    entrypoint: /bin/sh
     args: [
         '-c',
         "
@@ -37,12 +37,20 @@ steps:
       - 'MINIO_SECRET_KEY=$_MINIO_SECRET_KEY'
       - 'MINIO_BUCKET_NAME=$_MINIO_BUCKET_NAME'
 
-  - name: gcr.io/kaniko-project/executor:debug
-    dir: 'api'
+  - name: gcr.io/cloud-builders/docker
+    dir: api
     args:
-      - '--destination=gcr.io/$PROJECT_ID/api:$BRANCH_NAME-$SHORT_SHA'
-      - '--destination=gcr.io/$PROJECT_ID/api:latest'
-      - '--dockerfile=./Dockerfile'
-      - '--reproducible'
-      - '--cache=true'
-      - '--cache-ttl=6h'
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/api:$BRANCH_NAME-$SHORT_SHA',
+        '-t',
+        'gcr.io/$PROJECT_ID/api:latest',
+        '-f',
+        'Dockerfile',
+        '.',
+      ]
+
+images:
+  - 'gcr.io/$PROJECT_ID/api:$BRANCH_NAME-$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/api:latest'
