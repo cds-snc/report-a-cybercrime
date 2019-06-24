@@ -46,7 +46,7 @@ export const Home = () => (
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
         <LoseMoney path="/losemoney" />
-        <FileUploadPage path="/file" />
+        <FileUploadPage path="/uploadfiles" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
