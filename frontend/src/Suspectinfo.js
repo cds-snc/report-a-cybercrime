@@ -10,8 +10,6 @@ const CenterContent = styled('div')`
   margin: AudioTrack;
 `
 
-const Card = styled('div')
-
 export const Suspectinfo = () => (
   <CenterContent>
     <TrackPageViews />
