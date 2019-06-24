@@ -39,3 +39,13 @@ export const FLAG_IDENTIFIER_MUTATION = gql`
     }
   }
 `
+
+export const UPLOAD_FILE_MUTATION = gql`
+  mutation uploadFile($file: Upload!, $fileDescription: String!) {
+    uploadFile(file: $file, fileDescription: $fileDescription) {
+      success
+      errorMessage
+      md5
+    }
+  }
+`

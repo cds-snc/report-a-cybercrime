@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage",
     "print-schema": "bin/print-schema > schema.graphql && git add ./schema.graphql",
     "lint": "eslint src/**",
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "start": "node index.js",
+    "upgrade-interactive": "npm-check --update",
     "minikube": "kustomize build manifests/overlays/minikube | kubectl apply -f -",
     "delete-minikube": "kustomize build manifests/overlays/minikube | kubectl delete -f -"
   },
@@ -20,9 +22,9 @@
     "arangojs": "^6.10.0",
     "cors": "^2.8.5",
     "dotenv-safe": "^6.1.0",
-    "express": "^4.16.4",
-    "express-graphql": "^0.7.1",
-    "graphql": "^14.2.1",
+    "express": "^4.17.1",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.3.1",
     "graphql-custom-types": "^1.5.0",
     "graphql-upload": "^8.0.6",
     "lodash.unionby": "^4.8.0",
@@ -32,16 +34,17 @@
   },
   "devDependencies": {
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-prettier": "^4.3.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jest": "^22.4.1",
-    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
-    "husky": "^1.3.1",
-    "jest": "^24.7.1",
-    "prettier": "^1.16.4",
+    "husky": "^2.3.0",
+    "jest": "^24.8.0",
+    "npm-check": "^5.9.0",
+    "prettier": "^1.17.1",
     "supertest": "^4.0.2"
   },
   "jest": {
@@ -49,7 +52,18 @@
     "verbose": true,
     "setupFilesAfterEnv": [
       "<rootDir>/setUpJest.js"
-    ]
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
   },
   "husky": {
     "hooks": {

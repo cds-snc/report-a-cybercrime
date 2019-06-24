@@ -40,6 +40,8 @@ server
   .get('/monitoring/alive', (req, res) => {
     res.status(200).send('yes')
   })
+  .use('/public', express.static(__dirname + '/public'))
+  .use('/static', express.static('static'))
   .get('/monitoring/ready', (req, res) => {
     res.status(200).send('yes')
   })

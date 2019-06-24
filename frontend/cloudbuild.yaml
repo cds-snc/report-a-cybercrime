@@ -4,6 +4,7 @@ steps:
     dir: frontend
     entrypoint: npm
     args: ['ci']
+    env: ['HUSKY_SKIP_INSTALL=true']
 
   - name: node:11-alpine
     id: compile-languages
@@ -11,11 +12,11 @@ steps:
     entrypoint: npm
     args: ['run', 'compile']
 
-  - name: node:11.10-alpine
-    id: test
+  - name: node:11-alpine
+    id: coverage
     dir: frontend
     entrypoint: npm
-    args: ['test']
+    args: ['run', 'coverage']
 
   - name: node:11-alpine
     id: lint
@@ -34,6 +35,7 @@ steps:
     args:
       [
         'build',
+        '--build-arg=RAZZLE_GOOGLE_ANALYTICS_ID=$_RAZZLE_GOOGLE_ANALYTICS_ID',
         '-t',
         'gcr.io/$PROJECT_ID/frontend:$BRANCH_NAME-$SHORT_SHA',
         '-t',

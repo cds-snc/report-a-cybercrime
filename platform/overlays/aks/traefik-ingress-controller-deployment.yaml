@@ -1,0 +1,55 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: traefik-ingress-controller
+  namespace: kube-system
+  labels:
+    k8s-app: traefik-ingress-lb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: traefik-ingress-lb
+  template:
+    metadata:
+      labels:
+        k8s-app: traefik-ingress-lb
+        name: traefik-ingress-lb
+    spec:
+      serviceAccountName: traefik-ingress-controller
+      terminationGracePeriodSeconds: 60
+      containers:
+        - image: traefik
+          name: traefik-ingress-lb
+          ports:
+            - containerPort: 80
+              hostPort: 80
+              name: http
+            - containerPort: 443
+              hostPort: 443
+              name: https
+          args:
+            - --api=false
+            - --kubernetes
+            - --logLevel=DEBUG
+            - --debug
+            - --defaultentrypoints=http,https
+            - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https Compress:true
+            - --entrypoints=Name:https Address::443 TLS Compress:true TLS.MinVersion:VersionTLS12 TLS.CipherSuites:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 TLS.SniStrict:true
+            - --acme
+            - --acme.onhostrule
+            - --acme.entrypoint=https
+            - --acme.domains=report-a-cybercrime.cds-snc.ca
+            - --acme.domains=signalez-un-crime-informatique.cds-snc.ca
+            - --acme.email=mike.williamson@cds-snc.ca
+            - --acme.storage=/certs/acme.json
+            - --acme.httpchallenge
+            - --acme.httpchallenge.entrypoint=http
+            - --tracing=true
+          volumeMounts:
+            - mountPath: /certs
+              name: certs-claim
+      volumes:
+        - name: certs-claim
+          persistentVolumeClaim:
+            claimName: certs-claim

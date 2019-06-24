@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, cleanup } from 'react-testing-library'
+import { render, cleanup } from '@testing-library/react'
 import { Option3Page } from '../Option3Page'
 
 describe('<Option3Page/>', () => {

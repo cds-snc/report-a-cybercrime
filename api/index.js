@@ -21,10 +21,15 @@ var minioClient = new Minio.Client({
 
 const port = process.env.PORT || 3000
 ;(async () => {
-  let bucket = await minioClient.bucketExists(MINIO_BUCKET_NAME)
-
-  if (!bucket) {
-    await minioClient.makeBucket(MINIO_BUCKET_NAME)
+  let bucket
+  try {
+    bucket = await minioClient.bucketExists(MINIO_BUCKET_NAME)
+    if (!bucket) {
+      await minioClient.makeBucket(MINIO_BUCKET_NAME)
+    }
+  } catch (error) {
+    Logger.error(`Error connecting to Minio: ${error}`)
+    return 1
   }
 
   const context = {
