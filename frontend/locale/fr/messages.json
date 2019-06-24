@@ -8,6 +8,7 @@
   "Call 911": "Composez le 911",
   "Cancel Report": "Annuler le rapport",
   "Choose File": "Choisissez Fichier",
+  "Choose a file": "Choisissez un fichier",
   "Contacted by: {howContacted}": "Contacté par: {howContacted}",
   "Currency": "Monnaie",
   "Currency: {lostCurrency}": "Monnaie {lostCurrency}",
@@ -66,6 +67,7 @@
   "Please complete the form to tell us what was affected.": "Veuillez remplir le formulaire pour nous dire ce qui a été touché.",
   "Please fill out all fields": "Veuillez remplir tous les champs",
   "Privacy": "Confidentialité",
+  "Remove": "Enlever",
   "Report a scam": "Signalez une fraude",
   "Report a scam or an online crime": "Signalez une fraude ou un crime informatique",
   "Reports per day": "Alertes par jour",
@@ -81,6 +83,7 @@
   "Tell RCMP your story": "Racontez votre histoire à la GRC",
   "Terms and Conditions": "Avis",
   "This site will be changing as we test ideas and learn from people like you.": "Ceci est un prototype à des fins de recherche seulement.",
+  "Upload Evidence": "Télécharger la preuve",
   "Upload a suspicious file": "Télécharger un fichier suspect",
   "Upload another file": "Télécharger un autre fichier",
   "Website": "Site web",
@@ -101,10 +104,12 @@
   "cash": "argent liquide",
   "credit card": "carte bancaire",
   "email": "adress courriel",
+  "files selected": "fichiers sélectionnés",
   "gift card": "carte-cadeau",
   "loading...": "chargement en cours...",
   "other": "autre",
   "phone": "numéro de téléphone",
   "report-cyber.ca": "signaler-cyber.ca",
-  "website link": "adresse de site web"
+  "website link": "adresse de site web",
+  "{0} files selected": "{0} fichiers sélectionnés"
 }

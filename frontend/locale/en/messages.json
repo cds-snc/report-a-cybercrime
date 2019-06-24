@@ -8,6 +8,7 @@
   "Call 911": "Call 911",
   "Cancel Report": "Cancel Report",
   "Choose File": "Choose File",
+  "Choose a file": "Choose a file",
   "Contacted by: {howContacted}": "Contacted by: {howContacted}",
   "Currency": "Currency",
   "Currency: {lostCurrency}": "Currency: {lostCurrency}",
@@ -66,6 +67,7 @@
   "Please complete the form to tell us what was affected.": "Please complete the form to tell us what was affected.",
   "Please fill out all fields": "Please fill out all fields",
   "Privacy": "Privacy",
+  "Remove": "Remove",
   "Report a scam": "Report a scam",
   "Report a scam or an online crime": "Report a scam or an online crime",
   "Reports per day": "Reports per day",
@@ -81,6 +83,7 @@
   "Tell RCMP your story": "Tell RCMP your story",
   "Terms and Conditions": "Terms and Conditions",
   "This site will be changing as we test ideas and learn from people like you.": "This is a prototype for research purposes only.",
+  "Upload Evidence": "Upload Evidence",
   "Upload a suspicious file": "Upload a suspicious file",
   "Upload another file": "Upload another file",
   "Website": "Website",
@@ -101,10 +104,12 @@
   "cash": "cash",
   "credit card": "credit card",
   "email": "email",
+  "files selected": "files selected",
   "gift card": "gift card",
   "loading...": "loading...",
   "other": "other",
   "phone": "phone",
   "report-cyber.ca": "report-cyber.ca",
-  "website link": "website link"
+  "website link": "website link",
+  "{0} files selected": "{0} files selected"
 }
