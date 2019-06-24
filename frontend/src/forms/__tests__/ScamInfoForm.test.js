@@ -4,7 +4,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react'
 import { MockedProvider } from 'react-apollo/test-utils'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { ContactedForm } from '../ContactedForm'
+import { ScamInfoForm } from '../ScamInfoForm'
 import en from '../../../locale/en/messages.js'
 import theme from '../../theme'
 
@@ -25,7 +25,7 @@ describe('<ContactedForm/>', () => {
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
-            <ContactedForm onSubmit={submitMock} />
+            <ScamInfoForm onSubmit={submitMock} />
           </I18nProvider>
         </MockedProvider>
       </ThemeProvider>,
@@ -44,22 +44,4 @@ describe('<ContactedForm/>', () => {
       { whenWereYouContacted: 'today' }, // data
     )
   })
-
-  // it('displays error message if no content submitted', async () => {
-  //   const submitMock = jest.fn()
-
-  //   const { getByText } = render(
-  //     <MockedProvider mocks={[]} addTypename={false}>
-  //       <I18nProvider language={'en'} catalogs={catalogs}>
-  //         <ContactedForm onSubmit={submitMock} />
-  //       </I18nProvider>
-  //     </MockedProvider>,
-  //   )
-  //   const nextButton = getByText(/Next/i)
-  //   clickOn(nextButton)
-  //   await wait(0) // Wait for promises to resolve
-
-  //   expect(submitMock).not.toHaveBeenCalled()
-  //   getByText(/Please complete the text box to tell us what happened./i)
-  // })
 })

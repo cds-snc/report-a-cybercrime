@@ -2,7 +2,7 @@ import React from 'react'
 import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
-import { OtherFlowPage } from '../OtherFlowPage'
+import { ScamInfoPage } from '../ScamInfoPage'
 import theme from '../theme'
 
 describe('<OtherFlowPage />', () => {
@@ -12,7 +12,7 @@ describe('<OtherFlowPage />', () => {
     render(
       <ThemeProvider theme={theme}>
         <ApolloProvider client={{}}>
-          <OtherFlowPage />
+          <ScamInfoPage />
         </ApolloProvider>
       </ThemeProvider>,
     )

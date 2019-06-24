@@ -6,7 +6,7 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 
 import { TrackPageViews } from './TrackPageViews'
-import { ContactedForm } from './forms/ContactedForm'
+import { ScamInfoForm } from './forms/ScamInfoForm'
 
 const CenterContent = styled('div')`
   max-width: 750px;
@@ -18,12 +18,12 @@ const submitAndNavigate = (client, data) => {
   navigate('/moneylost')
 }
 
-export const OtherFlowPage = () => (
+export const ScamInfoPage = () => (
   <CenterContent>
     <H1>
       <Trans>Other flow</Trans>
     </H1>
     <TrackPageViews />
-    <ContactedForm onSubmit={submitAndNavigate} />
+    <ScamInfoForm onSubmit={submitAndNavigate} />
   </CenterContent>
 )

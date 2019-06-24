@@ -14,7 +14,7 @@ import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
 import { DemoPage } from './DemoPage'
-import { OtherFlowPage } from './OtherFlowPage'
+import { ScamInfoPage } from './ScamInfoPage'
 import { MoneyLostPage } from './MoneyLostPage'
 import { ConfirmationPage } from './ConfirmationPage'
 import { SuspectInfoPage } from './SuspectInfoPage'
@@ -52,7 +52,7 @@ export const Home = () => (
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
 
-        <OtherFlowPage path="/otherflow" />
+        <ScamInfoPage path="/scaminfo" />
         <MoneyLostPage path="/moneylost" />
         <SuspectInfoPage path="/suspectinfo" />
         <ContactInfoPage path="/contactinfo" />
