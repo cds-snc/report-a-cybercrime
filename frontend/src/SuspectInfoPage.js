@@ -14,7 +14,6 @@ const CenterContent = styled('div')`
 `
 
 const submitAndNavigate = (client, data) => {
-  window.alert(JSON.stringify(data))
   client.writeData({ data })
   navigate('/contactinfo')
 }

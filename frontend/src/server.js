@@ -61,6 +61,15 @@ server
         lostCurrency: '',
         lostMethodsOfPayment: [],
         lostOtherMethodOfPayment: '',
+
+        suspectName: '',
+        suspectAddress: '',
+        suspectLanguage: [],
+        otherSuspectLanguage: '',
+
+        contactInfoName: '',
+        contactInfoEmail: '',
+        contactInfoPhone: '',
       },
     })
 

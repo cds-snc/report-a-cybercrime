@@ -33,8 +33,8 @@ const scamEventSummary = client => {
     `,
   })
   if (
-    JSON.stringify(howWereYouContacted) !== JSON.stringify([]) ||
-    whenWereYouContacted != ''
+    (howWereYouContacted && howWereYouContacted.length) ||
+    whenWereYouContacted
   ) {
     const howContacted =
       howWereYouContacted.filter(s => s !== 'other').join() +
@@ -73,7 +73,7 @@ const lostMoneySummary = client => {
       }
     `,
   })
-  if (lostAmount !== '') {
+  if (lostAmount) {
     const methodsOfPayment =
       lostMethodsOfPayment.filter(s => s !== 'other').join() +
       (lostOtherMethodOfPayment ? ', ' + lostOtherMethodOfPayment : '')
@@ -118,14 +118,22 @@ const suspectInfoSummary = client => {
       }
     `,
   })
-  if (suspectName || suspectAddress || suspectLanguage) {
+  if (
+    suspectName ||
+    suspectAddress ||
+    (suspectLanguage && suspectLanguage.length)
+  ) {
     const language =
       suspectLanguage.filter(s => s !== 'other').join() +
       (otherSuspectLanguage ? ', ' + otherSuspectLanguage : '')
     return (
       <React.Fragment>
-        <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
-          <Trans>Suspect Details</Trans>
+        <H2
+          fontSize={[3, null, 4]}
+          marginTop={[3, null, 4]}
+          marginBottom={[1, null, 1]}
+        >
+          <Trans>Suspect Information</Trans>
         </H2>
         <Text>
           <Trans>Name: {suspectName}</Trans>
@@ -165,7 +173,7 @@ const contactInfoSummary = client => {
           marginTop={[3, null, 4]}
           marginBottom={[1, null, 1]}
         >
-          <Trans>If Police need to contact you</Trans>
+          <Trans>If the police have any questions</Trans>
         </H2>
         <Text>
           <Trans>Name: {contactInfoName}</Trans>

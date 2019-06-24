@@ -29,14 +29,23 @@ cache.writeData({
   data: {
     language: getLanguage(),
 
-    howWereYouContacted: ['phone', 'other'],
-    otherMethodOfContact: 'door',
-    whenWereYouContacted: 'today',
+    howWereYouContacted: [],
+    otherMethodOfContact: '',
+    whenWereYouContacted: '',
 
-    lostAmount: '$10.00',
-    lostCurrency: 'CAD',
-    lostMethodsOfPayment: ['cash', 'other'],
-    lostOtherMethodOfPayment: 'CatCoin',
+    lostAmount: '',
+    lostCurrency: '',
+    lostMethodsOfPayment: [],
+    lostOtherMethodOfPayment: '',
+
+    suspectName: '',
+    suspectAddress: '',
+    suspectLanguage: [],
+    otherSuspectLanguage: '',
+
+    contactInfoName: '',
+    contactInfoEmail: '',
+    contactInfoPhone: '',
   },
 })
 
