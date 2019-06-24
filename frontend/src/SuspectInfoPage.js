@@ -21,7 +21,7 @@ const submitAndNavigate = (client, data) => {
 export const SuspectInfoPage = () => (
   <CenterContent>
     <H1>
-      <Trans>Suspect Information</Trans>
+      <Trans>Add any suspect information you may have</Trans>
     </H1>
     <TrackPageViews />
     <SuspectInfoForm onSubmit={submitAndNavigate} />

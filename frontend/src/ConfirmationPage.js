@@ -118,6 +118,10 @@ const suspectInfoSummary = client => {
     suspectAddress,
     suspectLanguage,
     otherSuspectLanguage,
+    suspectPhone,
+    suspectEmail,
+    suspectWebsite,
+    suspectIP,
   } = client.readQuery({
     query: gql`
       query readCache {
@@ -125,13 +129,21 @@ const suspectInfoSummary = client => {
         suspectAddress
         suspectLanguage
         otherSuspectLanguage
+        suspectPhone
+        suspectEmail
+        suspectWebsite
+        suspectIP
       }
     `,
   })
   if (
     suspectName ||
     suspectAddress ||
-    (suspectLanguage && suspectLanguage.length)
+    (suspectLanguage && suspectLanguage.length) ||
+    suspectPhone ||
+    suspectEmail ||
+    suspectWebsite ||
+    suspectIP
   ) {
     const language =
       suspectLanguage.filter(s => s !== 'other').join() +
@@ -153,6 +165,18 @@ const suspectInfoSummary = client => {
         </Text>
         <Text>
           <Trans>Language: {language}</Trans>
+        </Text>
+        <Text>
+          <Trans>Phone number: {suspectPhone}</Trans>
+        </Text>
+        <Text>
+          <Trans>Email address: {suspectEmail}</Trans>
+        </Text>
+        <Text>
+          <Trans>Website: {suspectWebsite}</Trans>
+        </Text>
+        <Text>
+          <Trans>IP address: {suspectIP}</Trans>
         </Text>
       </React.Fragment>
     )

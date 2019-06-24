@@ -117,7 +117,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="suspectPhone">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Phone Number</Trans>
+                <Trans>Phone number</Trans>
               </Text>
             </label>
             <div>
@@ -130,9 +130,24 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               />
             </div>
 
+            <label htmlFor="suspectEmail">
+              <Text marginTop={[4, null, 5]}>
+                <Trans>Email address</Trans>
+              </Text>
+            </label>
+            <div>
+              <Field
+                name="suspectEmail"
+                id="suspectEmail"
+                component={TextAreaAdapter}
+                height="25px"
+                width="300px"
+              />
+            </div>
+
             <label htmlFor="suspectWebsite">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Website</Trans>
+                <Trans>Website link</Trans>
               </Text>
             </label>
             <div>

@@ -67,6 +67,7 @@ server
         suspectAddress: '',
         suspectLanguage: [],
         otherSuspectLanguage: '',
+        suspectEmail: '',
 
         contactInfoName: '',
         contactInfoEmail: '',

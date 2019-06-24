@@ -43,6 +43,7 @@ cache.writeData({
     suspectAddress: '',
     suspectLanguage: [],
     otherSuspectLanguage: '',
+    suspectEmail: '',
 
     contactInfoName: '',
     contactInfoEmail: '',
