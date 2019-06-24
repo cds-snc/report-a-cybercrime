@@ -98,8 +98,8 @@ export const MoneyLostForm = ({ onSubmit }) => (
               </I18n>
             </div>
 
-            {values.methodsOfPayment &&
-            values.methodsOfPayment.indexOf('other') > -1 ? (
+            {values.lostMethodsOfPayment &&
+            values.lostMethodsOfPayment.indexOf('other') > -1 ? (
               <React.Fragment>
                 <label htmlFor="lostOtherMethodOfPayment">
                   <Text>
