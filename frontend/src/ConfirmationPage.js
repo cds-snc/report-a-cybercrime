@@ -102,6 +102,87 @@ const lostMoneySummary = client => {
   }
 }
 
+const suspectInfoSummary = client => {
+  const {
+    suspectName,
+    suspectAddress,
+    suspectLanguage,
+    otherSuspectLanguage,
+  } = client.readQuery({
+    query: gql`
+      query readCache {
+        suspectName
+        suspectAddress
+        suspectLanguage
+        otherSuspectLanguage
+      }
+    `,
+  })
+  if (suspectName || suspectAddress || suspectLanguage) {
+    const language =
+      suspectLanguage.filter(s => s !== 'other').join() +
+      (otherSuspectLanguage ? ', ' + otherSuspectLanguage : '')
+    return (
+      <React.Fragment>
+        <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
+          <Trans>Suspect Details</Trans>
+        </H2>
+        <Text>
+          <Trans>Name: {suspectName}</Trans>
+        </Text>
+        <Text>
+          <Trans>Address: {suspectAddress}</Trans>
+        </Text>
+        <Text>
+          <Trans>Language: {language}</Trans>
+        </Text>
+      </React.Fragment>
+    )
+  } else {
+    return null
+  }
+}
+
+const contactInfoSummary = client => {
+  const {
+    contactInfoName,
+    contactInfoEmail,
+    contactInfoPhone,
+  } = client.readQuery({
+    query: gql`
+      query readCache {
+        contactInfoName
+        contactInfoEmail
+        contactInfoPhone
+      }
+    `,
+  })
+  if (contactInfoName || contactInfoEmail || contactInfoPhone) {
+    return (
+      <React.Fragment>
+        <H2
+          fontSize={[3, null, 4]}
+          marginTop={[3, null, 4]}
+          marginBottom={[1, null, 1]}
+        >
+          <Trans>If Police need to contact you</Trans>
+        </H2>
+        <Text>
+          <Trans>Name: {contactInfoName}</Trans>
+        </Text>
+        <Text>
+          <Trans>Email: {contactInfoEmail}</Trans>
+        </Text>
+        <Text>
+          <Trans>Phone: {contactInfoPhone}</Trans>
+        </Text>
+      </React.Fragment>
+    )
+  } else {
+    return null
+  }
+}
+
 export const ConfirmationPage = () => (
   <CenterContent>
     <H1>
@@ -113,6 +194,8 @@ export const ConfirmationPage = () => (
         <React.Fragment>
           {scamEventSummary(client)}
           {lostMoneySummary(client)}
+          {suspectInfoSummary(client)}
+          {contactInfoSummary(client)}
         </React.Fragment>
       )}
     </ApolloConsumer>

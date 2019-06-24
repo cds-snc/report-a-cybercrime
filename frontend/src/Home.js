@@ -54,9 +54,9 @@ export const Home = () => (
 
         <OtherFlowPage path="/otherflow" />
         <MoneyLostPage path="/moneylost" />
-        <ConfirmationPage path="/confirmation" />
         <SuspectInfoPage path="/suspectinfo" />
         <ContactInfoPage path="/contactinfo" />
+        <ConfirmationPage path="/confirmation" />
       </Router>
     </Screen>
   </Root>
