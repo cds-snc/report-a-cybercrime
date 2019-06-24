@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import React from 'react'
-// import { navigate } from '@reach/router'
+import { navigate } from '@reach/router'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { ApolloConsumer } from 'react-apollo'
@@ -73,7 +73,11 @@ const lostMoneySummary = client => {
       }
     `,
   })
-  if (lostAmount) {
+  if (
+    lostAmount ||
+    lostCurrency ||
+    (lostMethodsOfPayment && lostMethodsOfPayment.length)
+  ) {
     const methodsOfPayment =
       lostMethodsOfPayment.filter(s => s !== 'other').join() +
       (lostOtherMethodOfPayment ? ', ' + lostOtherMethodOfPayment : '')
@@ -217,7 +221,7 @@ export const ConfirmationPage = () => (
         justify-content: space-between;
       `}
     >
-      <Button type="button">
+      <Button type="button" onClick={() => navigate('/contactinfo')}>
         <Trans>Back</Trans>
       </Button>
 

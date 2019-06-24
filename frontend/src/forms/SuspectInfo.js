@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
+import { navigate } from '@reach/router'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
@@ -168,7 +169,7 @@ export const SuspectInfo = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <Button type="button">
+              <Button type="button" onClick={() => navigate('moneylost')}>
                 <Trans>Back</Trans>
               </Button>
 
