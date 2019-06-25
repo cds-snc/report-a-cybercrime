@@ -23,11 +23,12 @@ import { MoneyLostPage } from './MoneyLostPage'
 import { SuspectInfoPage } from './SuspectInfoPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { LoseMoney } from './LoseMoney'
+import { Willbecontacted } from './Willbecontacted'
+import { LandingPage } from './LandingPage'
 
 const Root = styled('div')`
   margin: 20pt;
 `
-
 const Screen = styled('div')`
   margin-top: 30pt;
 `
@@ -43,7 +44,7 @@ export const Home = () => (
       <Router>
         <PageNotFound default />
         <DemoPage path="/demo" />
-        <Page1 path="/" />
+        {/* <Page1 path="/" /> */}
         <Option1Page path="/option1" />
         <Option2Page path="/option2" />
         <Option3Page path="/option3" />
@@ -61,6 +62,8 @@ export const Home = () => (
         <MoneyLostPage path="/moneylost" />
         <SuspectInfoPage path="/suspectinfo" />
         <ContactInfoPage path="/contactinfo" />
+        <Willbecontacted path="/Willbecontacted" />
+        <LandingPage path="/landingpage" />
       </Router>
     </Screen>
   </Root>
