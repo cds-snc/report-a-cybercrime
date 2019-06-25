@@ -1,11 +1,10 @@
-const {
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLList,
-} = require('graphql')
+const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
 const { GraphQLUpload } = require('graphql-upload')
 const { ReportSummary } = require('./ReportSummary')
+const { ScamInfoInput } = require('./ScamInfoInput')
+const { LostMoneyInput } = require('./LostMoneyInput')
+const { SuspectInfoInput } = require('./SuspectInfoInput')
+const { ContactInfoInput } = require('./ContactInfoInput')
 const { Stats } = require('./Stats')
 const { FileUploadResult } = require('./FileUploadResult')
 const { createHash } = require('crypto')
@@ -131,118 +130,34 @@ const mutation = new GraphQLObjectType({
       description: 'Submit report to database',
       type: ReportSummary,
       args: {
-        howWereYouContacted: {
-          type: GraphQLString,
-          description: 'the list of ways the victim was contacted',
+        scamInfo: {
+          type: ScamInfoInput,
+          description: 'details about the scam',
         },
-        otherMethodOfContact: {
-          type: GraphQLString,
-          description: 'user specified method used to contact the victim',
+        lostMoney: {
+          type: LostMoneyInput,
+          description: 'details about the money lost',
         },
-        whenWereYouContacted: {
-          type: GraphQLString,
-          description: 'when the victim was contacted',
+        suspectInfo: {
+          type: SuspectInfoInput,
+          description: 'details about the suspect',
         },
-        lostAmount: {
-          type: GraphQLString,
-          description: 'the amount of money lost',
-        },
-        lostCurrency: {
-          type: GraphQLString,
-          description: 'the currency used in the loss',
-        },
-        lostMethodsOfPayment: {
-          type: GraphQLString,
-          description:
-            'the method of payment used (credit card, etc) used in the loss',
-        },
-        lostOtherMethodOfPayment: {
-          type: GraphQLString,
-          description: 'a user specified  method of paymend used in the loss',
-        },
-        suspectName: {
-          type: GraphQLString,
-          description: 'the name of the suspect',
-        },
-        suspectAddress: {
-          type: GraphQLString,
-          description: 'the address of the suspect',
-        },
-        suspectLanguage: {
-          type: GraphQLString,
-          description: 'the language of the suspect',
-        },
-        otherSuspectLanguage: {
-          type: GraphQLString,
-          description: 'a user specified language of the suspect',
-        },
-        suspectPhone: {
-          type: GraphQLString,
-          description: 'the phone number of the suspect',
-        },
-        suspectWebsite: {
-          type: GraphQLString,
-          description: 'the website of the suspect',
-        },
-        suspectIP: {
-          type: GraphQLString,
-          description: 'the IP address of the suspect',
-        },
-        contactInfoName: {
-          type: GraphQLString,
-          description: 'the name of the user',
-        },
-        contactInfoEmail: {
-          type: GraphQLString,
-          description: 'the email address of the user',
-        },
-        contactInfoPhone: {
-          type: GraphQLString,
-          description: 'the phone number of the user',
+        contactInfo: {
+          type: ContactInfoInput,
+          description: 'contact details about the user',
         },
       },
       resolve: async (
         _root,
-        {
-          howWereYouContacted,
-          otherMethodOfContact,
-          whenWereYouContacted,
-          lostAmount,
-          lostCurrency,
-          lostMethodsOfPayment,
-          lostOtherMethodOfPayment,
-          suspectName,
-          suspectAddress,
-          suspectLanguage,
-          otherSuspectLanguage,
-          suspectPhone,
-          suspectWebsite,
-          suspectIP,
-          contactInfoName,
-          contactInfoEmail,
-          contactInfoPhone,
-        },
+        { scamInfo, lostMoney, suspectInfo, contactInfo },
         { db },
         _info,
       ) => {
         await db.saveReport({
-          howWereYouContacted,
-          otherMethodOfContact,
-          whenWereYouContacted,
-          lostAmount,
-          lostCurrency,
-          lostMethodsOfPayment,
-          lostOtherMethodOfPayment,
-          suspectName,
-          suspectAddress,
-          suspectLanguage,
-          otherSuspectLanguage,
-          suspectPhone,
-          suspectWebsite,
-          suspectIP,
-          contactInfoName,
-          contactInfoEmail,
-          contactInfoPhone,
+          scamInfo,
+          lostMoney,
+          suspectInfo,
+          contactInfo,
           createdAt: new Date().toISOString(),
         })
         return {

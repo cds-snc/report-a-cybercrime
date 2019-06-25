@@ -39,7 +39,7 @@ describe('Mutations', () => {
         .send({
           query: `
             mutation {
-              submitReport(howWereYouContacted,: "email") {
+              submitReport(scamInfo: {howWereYouContacted: "email"}) {
                 reportID
               }
             }
