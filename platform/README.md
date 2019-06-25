@@ -37,11 +37,11 @@ Generating your own key means you will need to recreate the secrets.
 If you have the full version of kustomize installed you can generate config for the AKS environment with the following command:
 
 ```sh
-kustomize build platform/overlays/aks 
-``` 
+kustomize build platform/overlays/aks
+```
 
 Kustomize is also built directly into the kubectl command, so you can also deploy everything with apply:
 
 ```sh
-kubctl apply -k platform/overlays/aks 
-``` 
+kubctl apply -k platform/overlays/aks
+```
