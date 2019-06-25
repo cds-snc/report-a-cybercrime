@@ -19,7 +19,7 @@ const CenterContent = styled('div')`
 `
 
 const scamEventSummary = client => {
-  const {
+  let {
     howWereYouContacted,
     otherMethodOfContact,
     whenWereYouContacted,
@@ -39,16 +39,19 @@ const scamEventSummary = client => {
     whenWereYouContacted ||
     scamDetails
   ) {
-    const howContacted =
-      howWereYouContacted.filter(s => s !== 'other').join() +
-      (otherMethodOfContact ? ', ' + otherMethodOfContact : '')
+    if (otherMethodOfContact) {
+      howWereYouContacted = howWereYouContacted.concat(otherMethodOfContact)
+    }
+    howWereYouContacted = howWereYouContacted
+      .filter(s => s !== 'other')
+      .join(', ')
     return (
       <React.Fragment>
         <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
           <Trans>Scam event</Trans>
         </H2>
         <Text>
-          <Trans>Contacted by: {howContacted}</Trans>
+          <Trans>Contacted by: {howWereYouContacted}</Trans>
         </Text>
         <Text>
           <Trans>Event Occured on: {whenWereYouContacted}</Trans>
@@ -64,7 +67,7 @@ const scamEventSummary = client => {
 }
 
 const lostMoneySummary = client => {
-  const {
+  let {
     lostAmount,
     lostCurrency,
     lostMethodsOfPayment,
@@ -84,9 +87,14 @@ const lostMoneySummary = client => {
     lostCurrency ||
     (lostMethodsOfPayment && lostMethodsOfPayment.length)
   ) {
-    const methodsOfPayment =
-      lostMethodsOfPayment.filter(s => s !== 'other').join() +
-      (lostOtherMethodOfPayment ? ', ' + lostOtherMethodOfPayment : '')
+    if (lostOtherMethodOfPayment) {
+      lostMethodsOfPayment = lostMethodsOfPayment.concat(
+        lostOtherMethodOfPayment,
+      )
+    }
+    lostMethodsOfPayment = lostMethodsOfPayment
+      .filter(s => s !== 'other')
+      .join(', ')
     return (
       <React.Fragment>
         <H2
@@ -103,7 +111,7 @@ const lostMoneySummary = client => {
           <Trans>Currency: {lostCurrency}</Trans>
         </Text>
         <Text>
-          <Trans>Method: {methodsOfPayment}</Trans>
+          <Trans>Method: {lostMethodsOfPayment}</Trans>
         </Text>
       </React.Fragment>
     )
@@ -113,7 +121,7 @@ const lostMoneySummary = client => {
 }
 
 const suspectInfoSummary = client => {
-  const {
+  let {
     suspectName,
     suspectAddress,
     suspectLanguage,
@@ -145,9 +153,10 @@ const suspectInfoSummary = client => {
     suspectWebsite ||
     suspectIP
   ) {
-    const language =
-      suspectLanguage.filter(s => s !== 'other').join() +
-      (otherSuspectLanguage ? ', ' + otherSuspectLanguage : '')
+    if (otherSuspectLanguage) {
+      suspectLanguage = suspectLanguage.concat(otherSuspectLanguage)
+    }
+    suspectLanguage = suspectLanguage.filter(s => s !== 'other').join(', ')
     return (
       <React.Fragment>
         <H2
@@ -164,7 +173,7 @@ const suspectInfoSummary = client => {
           <Trans>Address: {suspectAddress}</Trans>
         </Text>
         <Text>
-          <Trans>Language: {language}</Trans>
+          <Trans>Language: {suspectLanguage}</Trans>
         </Text>
         <Text>
           <Trans>Phone number: {suspectPhone}</Trans>
