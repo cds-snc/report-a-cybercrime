@@ -1,4 +1,9 @@
-const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
+const {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLList,
+} = require('graphql')
 const { GraphQLUpload } = require('graphql-upload')
 const { ReportSummary } = require('./ReportSummary')
 const { ScamInfoInput } = require('./ScamInfoInput')
@@ -142,6 +147,10 @@ const mutation = new GraphQLObjectType({
           type: SuspectInfoInput,
           description: 'details about the suspect',
         },
+        files: {
+          type: new GraphQLList(GraphQLString),
+          description: 'files uploaded',
+        },
         contactInfo: {
           type: ContactInfoInput,
           description: 'contact details about the user',
@@ -149,7 +158,7 @@ const mutation = new GraphQLObjectType({
       },
       resolve: async (
         _root,
-        { scamInfo, lostMoney, suspectInfo, contactInfo },
+        { scamInfo, lostMoney, suspectInfo, files, contactInfo },
         { db },
         _info,
       ) => {
@@ -157,6 +166,7 @@ const mutation = new GraphQLObjectType({
           scamInfo,
           lostMoney,
           suspectInfo,
+          files,
           contactInfo,
           createdAt: new Date().toISOString(),
         })
