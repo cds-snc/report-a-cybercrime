@@ -5,7 +5,7 @@ import { ThemeProvider } from 'emotion-theming'
 import { ThankYou } from '../ThankYou'
 import theme from '../theme'
 
-describe('<LoseMoney />', () => {
+describe('<ThankYou />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
