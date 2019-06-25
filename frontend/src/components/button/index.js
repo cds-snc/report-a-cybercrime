@@ -31,7 +31,7 @@ export const Button = props => (
     fontWeight="normal"
     lineHeight={[2, null, 3]}
     colors="button"
-    mt={[2, null, 3]}
+    marginTop={[2, null, 3]}
     py={1}
     px={[2, null, 3]}
     {...props}

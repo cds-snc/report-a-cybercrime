@@ -6,19 +6,24 @@ import { PhaseBanner } from './components/phase-banner'
 import { PageNotFound } from './PageNotFound'
 import { Page1 } from './Page1'
 import { Urgency } from './Urgency'
-import { FileUploadPage } from './FileUpload'
+import { FileUploadPage } from './FileUploadPage'
 import { AmountOfInfoPage } from './amountOfInfoPage'
 import { HowToTellPolice } from './HowToTellPolice'
 import { IdentityPage } from './identityPage'
 import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
+
+import { Ifvictim } from './Ifvictim'
+import { Suspectinfo } from './Suspectinfo'
+
 import { DemoPage } from './DemoPage'
 import { OtherFlowPage } from './OtherFlowPage'
 import { MoneyLostPage } from './MoneyLostPage'
 import { SuspectInfoPage } from './SuspectInfoPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { LoseMoney } from './LoseMoney'
+import { FilesToUpload } from './FilesToUpload'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -27,13 +32,12 @@ const Root = styled('div')`
 const Screen = styled('div')`
   margin-top: 30pt;
 `
-
 export const Home = () => (
   <Root>
     <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
       <Trans>
-        This site will be changing as we test ideas and learn from people like
-        you.
+        Hello, This site will be changing as we test ideas and learn from people
+        like you.
       </Trans>
     </PhaseBanner>
     <Screen>
@@ -46,14 +50,19 @@ export const Home = () => (
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
         <LoseMoney path="/losemoney" />
-        <FileUploadPage path="/file" />
+        <FileUploadPage path="/uploadfiles" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
+
+        <Ifvictim path="/ifvictim" />
+        <Suspectinfo path="/Suspectinfo" />
+
         <OtherFlowPage path="/otherflow" />
         <MoneyLostPage path="/moneylost" />
         <SuspectInfoPage path="/suspectinfo" />
         <ContactInfoPage path="/contactinfo" />
+        <FilesToUpload path="/filestoupload" />
       </Router>
     </Screen>
   </Root>
