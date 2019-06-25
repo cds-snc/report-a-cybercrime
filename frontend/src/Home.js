@@ -19,6 +19,7 @@ import { MoneyLostPage } from './MoneyLostPage'
 import { SuspectInfoPage } from './SuspectInfoPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { LoseMoney } from './LoseMoney'
+import { ThankYou } from './ThankYou'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -54,6 +55,7 @@ export const Home = () => (
         <MoneyLostPage path="/moneylost" />
         <SuspectInfoPage path="/suspectinfo" />
         <ContactInfoPage path="/contactinfo" />
+        <ThankYou path="/thankyou" />
       </Router>
     </Screen>
   </Root>
