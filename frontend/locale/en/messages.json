@@ -55,6 +55,7 @@
   "Privacy": "Privacy",
   "Report a scam": "Report a scam",
   "Report a scam or an online crime": "Report a scam or an online crime",
+  "Report online": "Report online",
   "Reports per day": "Reports per day",
   "Reports similar to yours": "Reports similar to yours",
   "Required": "Required",
@@ -63,6 +64,7 @@
   "Sorry, the page you were trying to view does not exist.": "Sorry, the page you were trying to view does not exist.",
   "Submit!": "Submit!",
   "Suspect Information": "Suspect Information",
+  "Talk to someone": "Talk to someone",
   "Terms and Conditions": "Terms and Conditions",
   "This site will be changing as we test ideas and learn from people like you.": "This is a prototype for research purposes only.",
   "Upload a suspicious file": "Upload a suspicious file",
@@ -80,7 +82,12 @@
   "You will get a local immediate response.": "You will get a local immediate response.",
   "You’ll get specific advice based on your situation.": "You’ll get specific advice based on your situation.",
   "You’ll make the Royal Canadian Mounted Police aware of your situation and get general advice.": "You’ll make the Royal Canadian Mounted Police aware of your situation and get general advice.",
+  "describe of the scan event": "describe of the scan event",
+  "image and/or other files": "image and/or other files",
   "loading...": "loading...",
   "other": "other",
-  "report-cyber.ca": "report-cyber.ca"
+  "report-cyber.ca": "report-cyber.ca",
+  "suspect information": "suspect information",
+  "what do you need to prepare in order to report the scam online:": "what do you need to prepare in order to report the scam online:",
+  "what do you need to prepare in order to report the scam online?": "what do you need to prepare in order to report the scam online?"
 }
