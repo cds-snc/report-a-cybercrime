@@ -7,6 +7,7 @@
   "Call 911": "Composez le 911",
   "Cancel Report": "Annuler le rapport",
   "Choose File": "Choisissez Fichier",
+  "Choose a file": "Choisissez un fichier",
   "Currency": "Monnaie",
   "Description": "Description",
   "Did you lose money?": "Vous avez perdu de l'argent ?",
@@ -53,6 +54,7 @@
   "Please complete the form to tell us what was affected.": "Veuillez remplir le formulaire pour nous dire ce qui a été touché.",
   "Please fill out all fields": "Veuillez remplir tous les champs",
   "Privacy": "Confidentialité",
+  "Remove": "Enlever",
   "Report a scam": "Signalez une fraude",
   "Report a scam or an online crime": "Signalez une fraude ou un crime informatique",
   "Report online": "Rapport en ligne",
@@ -67,6 +69,7 @@
   "Talk to someone": "Parler à quelqu'un",
   "Terms and Conditions": "Avis",
   "This site will be changing as we test ideas and learn from people like you.": "Ceci est un prototype à des fins de recherche seulement.",
+  "Upload Evidence": "Télécharger la preuve",
   "Upload a suspicious file": "Télécharger un fichier suspect",
   "Upload another file": "Télécharger un autre fichier",
   "Was money taken?": "A-t-on pris de l'argent?",
@@ -84,9 +87,13 @@
   "You’ll make the Royal Canadian Mounted Police aware of your situation and get general advice.": "Vous informerez la Gendarmerie royale du Canada de votre situation et vous obtiendrez des conseils généraux.",
   "describe of the scan event": "décrire l'événement de balayage",
   "image and/or other files": "images et/ou autres fichiers",
+
+  "suspect information": "information suspecte",
+  "what do you need to prepare in order to report the scam online?": "que devez-vous préparer pour signaler l'escroquerie en ligne ?",
+  "files selected": "fichiers sélectionnés",
   "loading...": "chargement en cours...",
   "other": "autre",
   "report-cyber.ca": "signaler-cyber.ca",
-  "suspect information": "information suspecte",
-  "what do you need to prepare in order to report the scam online?": "que devez-vous préparer pour signaler l'escroquerie en ligne ?"
+  "Do you have any images or files to support your report?": "Avez-vous des images ou des fichiers à l'appui de votre rapport ?",
+  "{0} files selected": "{0} fichiers sélectionnés"
 }

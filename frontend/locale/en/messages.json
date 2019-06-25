@@ -7,6 +7,7 @@
   "Call 911": "Call 911",
   "Cancel Report": "Cancel Report",
   "Choose File": "Choose File",
+  "Choose a file": "Choose a file",
   "Currency": "Currency",
   "Description": "Description",
   "Did you lose money?": "Did you lose money?",
@@ -53,6 +54,7 @@
   "Please complete the form to tell us what was affected.": "Please complete the form to tell us what was affected.",
   "Please fill out all fields": "Please fill out all fields",
   "Privacy": "Privacy",
+  "Remove": "Remove",
   "Report a scam": "Report a scam",
   "Report a scam or an online crime": "Report a scam or an online crime",
   "Report online": "Report online",
@@ -67,6 +69,7 @@
   "Talk to someone": "Talk to someone",
   "Terms and Conditions": "Terms and Conditions",
   "This site will be changing as we test ideas and learn from people like you.": "This is a prototype for research purposes only.",
+  "Upload Evidence": "Upload Evidence",
   "Upload a suspicious file": "Upload a suspicious file",
   "Upload another file": "Upload another file",
   "Was money taken?": "Was money taken?",
@@ -84,10 +87,14 @@
   "You’ll make the Royal Canadian Mounted Police aware of your situation and get general advice.": "You’ll make the Royal Canadian Mounted Police aware of your situation and get general advice.",
   "describe of the scan event": "describe of the scan event",
   "image and/or other files": "image and/or other files",
+
+  "suspect information": "suspect information",
+  "what do you need to prepare in order to report the scam online:": "what do you need to prepare in order to report the scam online:",
+  "what do you need to prepare in order to report the scam online?": "what do you need to prepare in order to report the scam online?",
+  "files selected": "files selected",
   "loading...": "loading...",
   "other": "other",
   "report-cyber.ca": "report-cyber.ca",
-  "suspect information": "suspect information",
-  "what do you need to prepare in order to report the scam online:": "what do you need to prepare in order to report the scam online:",
-  "what do you need to prepare in order to report the scam online?": "what do you need to prepare in order to report the scam online?"
+  "Do you have any images or files to support your report?": "Do you have any images or files to support your report?",
+  "{0} files selected": "{0} files selected"
 }

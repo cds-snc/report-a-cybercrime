@@ -4,9 +4,9 @@ import { Trans } from '@lingui/macro'
 import styled from '@emotion/styled'
 import { PhaseBanner } from './components/phase-banner'
 import { PageNotFound } from './PageNotFound'
-import { Page1 } from './Page1'
+
 import { Urgency } from './Urgency'
-import { FileUploadPage } from './FileUpload'
+import { FileUploadPage } from './FileUploadPage'
 import { AmountOfInfoPage } from './amountOfInfoPage'
 import { HowToTellPolice } from './HowToTellPolice'
 import { IdentityPage } from './identityPage'
@@ -25,6 +25,7 @@ import { ContactInfoPage } from './ContactInfoPage'
 import { LoseMoney } from './LoseMoney'
 import { Willbecontacted } from './Willbecontacted'
 import { LandingPage } from './LandingPage'
+import { FilesToUpload } from './FilesToUpload'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -50,7 +51,7 @@ export const Home = () => (
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
         <LoseMoney path="/losemoney" />
-        <FileUploadPage path="/file" />
+        <FileUploadPage path="/uploadfiles" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
@@ -64,6 +65,7 @@ export const Home = () => (
         <ContactInfoPage path="/contactinfo" />
         <Willbecontacted path="/Willbecontacted" />
         <LandingPage path="/landingpage" />
+        <FilesToUpload path="/filestoupload" />
       </Router>
     </Screen>
   </Root>
