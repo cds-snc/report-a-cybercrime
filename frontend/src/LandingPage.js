@@ -17,15 +17,23 @@ export const LandingPage = () => (
     </H1>
 
     <p fontSize={[8, null, 8]}>
-      what do you need to prepare in order to report the scam online:
+      <Trans>
+        what do you need to prepare in order to report the scam online?
+      </Trans>
     </p>
     <ol fontSize={[8, null, 8]}>
-      <li>suspect information</li>
+      <li>
+        <Trans>suspect information</Trans>
+      </li>
       <br />
-      <li>image and/or other files</li>
+      <li>
+        <Trans>image and/or other files</Trans>
+      </li>
       <br />
 
-      <li>describe of the scan event</li>
+      <li>
+        <Trans>describe of the scan event</Trans>
+      </li>
       <br />
     </ol>
     <p>
