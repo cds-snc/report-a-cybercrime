@@ -13,6 +13,10 @@ import { IdentityPage } from './identityPage'
 import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
+
+import { Ifvictim } from './Ifvictim'
+import { Suspectinfo } from './Suspectinfo'
+
 import { DemoPage } from './DemoPage'
 import { OtherFlowPage } from './OtherFlowPage'
 import { MoneyLostPage } from './MoneyLostPage'
@@ -27,13 +31,12 @@ const Root = styled('div')`
 const Screen = styled('div')`
   margin-top: 30pt;
 `
-
 export const Home = () => (
   <Root>
     <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
       <Trans>
-        This site will be changing as we test ideas and learn from people like
-        you.
+        Hello, This site will be changing as we test ideas and learn from people
+        like you.
       </Trans>
     </PhaseBanner>
     <Screen>
@@ -50,6 +53,10 @@ export const Home = () => (
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
+
+        <Ifvictim path="/ifvictim" />
+        <Suspectinfo path="/Suspectinfo" />
+
         <OtherFlowPage path="/otherflow" />
         <MoneyLostPage path="/moneylost" />
         <SuspectInfoPage path="/suspectinfo" />
