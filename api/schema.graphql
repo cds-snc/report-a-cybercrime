@@ -1,76 +1,68 @@
+input contactInfoInput {
+  contactInfoName: String
+  contactInfoEmail: String
+  contactInfoPhone: String
+}
+
 type fileUploadResult {
   success: Boolean
   errorMessage: String
   md5: String
 }
 
+input lostMoneyInput {
+  lostAmount: String
+  lostCurrency: String
+  lostMethodsOfPayment: [String]
+  lostOtherMethodOfPayment: String
+}
+
 type Mutation {
-  """Uploads a file."""
+  """
+  Uploads a file.
+  """
   uploadFile(
-    """File."""
+    """
+    File.
+    """
     file: Upload
 
-    """File description."""
+    """
+    File description.
+    """
     fileDescription: String
   ): fileUploadResult
 
-  """Submit report to database"""
+  """
+  Submit report to database
+  """
   submitReport(
-    """the list of ways the victim was contacted"""
-    howWereYouContacted: String
+    """
+    details about the scam
+    """
+    scamInfo: scamInfoInput
 
-    """user specified method used to contact the victim"""
-    otherMethodOfContact: String
+    """
+    details about the money lost
+    """
+    lostMoney: lostMoneyInput
 
-    """when the victim was contacted"""
-    whenWereYouContacted: String
+    """
+    details about the suspect
+    """
+    suspectInfo: suspectInfoInput
 
-    """the amount of money lost"""
-    lostAmount: String
-
-    """the currency used in the loss"""
-    lostCurrency: String
-
-    """the method of payment used (credit card, etc) used in the loss"""
-    lostMethodsOfPayment: String
-
-    """a user specified  method of paymend used in the loss"""
-    lostOtherMethodOfPayment: String
-
-    """the name of the suspect"""
-    suspectName: String
-
-    """the address of the suspect"""
-    suspectAddress: String
-
-    """the language of the suspect"""
-    suspectLanguage: String
-
-    """a user specified language of the suspect"""
-    otherSuspectLanguage: String
-
-    """the phone number of the suspect"""
-    suspectPhone: String
-
-    """the website of the suspect"""
-    suspectWebsite: String
-
-    """the IP address of the suspect"""
-    suspectIP: String
-
-    """the name of the user"""
-    contactInfoName: String
-
-    """the email address of the user"""
-    contactInfoEmail: String
-
-    """the phone number of the user"""
-    contactInfoPhone: String
+    """
+    contact details about the user
+    """
+    contactInfo: contactInfoInput
   ): reportSummary
 }
 
 type Query {
-  """Stats about report collection"""
+  """
+  Stats about report collection
+  """
   stats: Stats
 }
 
@@ -78,11 +70,31 @@ type reportSummary {
   reportID: String
 }
 
+input scamInfoInput {
+  howWereYouContacted: [String]
+  otherMethodOfContact: String
+  whenWereYouContacted: String
+  scamDetails: String
+}
+
 type Stats {
-  """The total number of reports submitted."""
+  """
+  The total number of reports submitted.
+  """
   reportCount: Int
 }
 
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload
+input suspectInfoInput {
+  suspectName: String
+  suspectAddress: String
+  suspectLanguage: [String]
+  otherSuspectLanguage: String
+  suspectPhone: String
+  suspectWebsite: String
+  suspectIP: String
+}
 
+"""
+The `Upload` scalar type represents a file upload.
+"""
+scalar Upload
