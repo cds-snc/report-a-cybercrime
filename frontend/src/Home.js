@@ -23,6 +23,7 @@ import { MoneyLostPage } from './MoneyLostPage'
 import { SuspectInfoPage } from './SuspectInfoPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { LoseMoney } from './LoseMoney'
+import { FilesToUpload } from './FilesToUpload'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -61,6 +62,7 @@ export const Home = () => (
         <MoneyLostPage path="/moneylost" />
         <SuspectInfoPage path="/suspectinfo" />
         <ContactInfoPage path="/contactinfo" />
+        <FilesToUpload path="/filestoupload" />
       </Router>
     </Screen>
   </Root>
