@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-// import { navigate } from '@reach/router'
+import { navigate } from '@reach/router'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
@@ -14,9 +14,8 @@ const CenterContent = styled('div')`
 `
 
 const submitAndNavigate = (client, data) => {
-  window.alert(JSON.stringify(data))
-  // client.writeData({ data })
-  // navigate('/form3')
+  client.writeData({ data })
+  navigate('/confirmation')
 }
 
 export const ContactInfoPage = () => (

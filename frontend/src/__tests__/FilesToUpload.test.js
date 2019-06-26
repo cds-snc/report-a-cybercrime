@@ -2,17 +2,17 @@ import React from 'react'
 import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
-import { OtherFlowPage } from '../OtherFlowPage'
 import theme from '../theme'
+import { FilesToUpload } from '../FilesToUpload'
 
-describe('<OtherFlowPage />', () => {
+describe('<FilesToUpload />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
     render(
       <ThemeProvider theme={theme}>
         <ApolloProvider client={{}}>
-          <OtherFlowPage />
+          <FilesToUpload />
         </ApolloProvider>
       </ThemeProvider>,
     )

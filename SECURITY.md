@@ -4,7 +4,7 @@
 
 **Do not post any security issues on the public repository!** Security vulnerabilities must be reported by email to [john.obrien@tbs-sct.gc.ca](mailto:john.obrien@tbs-sct.gc.ca)
 
-______________________
+---
 
 ## Sécurité
 

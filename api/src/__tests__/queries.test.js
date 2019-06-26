@@ -56,44 +56,5 @@ describe('Queries', () => {
         expect(reportCount).toEqual(1)
       })
     })
-
-    describe('identifierFlaggingsWithin', () => {
-      it('', async () => {
-        let reports = await db.collection('reports')
-        reports.save({ foo: 'I am a fake report' })
-        let app = await Server({
-          db: await dbinit(db),
-        })
-
-        let response = await request(app)
-          .post('/graphql')
-          .set('Content-Type', 'application/json; charset=utf-8')
-          .send({
-            query: `
-            {
-              stats {
-                flags:identifierFlaggingsWithin(identifier: "555-555-5555") {
-                  identifier
-                  summary {
-                    date
-                    total
-                  }
-                }
-              }
-            }
-          `,
-          })
-
-        let {
-          data: { stats },
-        } = response.body
-        expect(stats).toEqual({
-          flags: {
-            identifier: '555-555-5555',
-            summary: [],
-          },
-        })
-      })
-    })
   })
 })

@@ -1,12 +1,8 @@
-type DailyTotal {
-  date: String
-  total: Int
+input contactInfoInput {
+  contactInfoName: String
+  contactInfoEmail: String
+  contactInfoPhone: String
 }
-
-"""
-The DateTime scalar type represents date time strings complying to ISO-8601.
-"""
-scalar DateTime
 
 type fileUploadResult {
   success: Boolean
@@ -14,57 +10,91 @@ type fileUploadResult {
   md5: String
 }
 
-type identifierFlaggingsSummary {
-  identifier: String
-  summaryTotal: Int
-  summary: [DailyTotal]
+input lostMoneyInput {
+  lostAmount: String
+  lostCurrency: String
+  lostMethodsOfPayment: [String]
+  lostOtherMethodOfPayment: String
 }
 
 type Mutation {
-  """Uploads a file."""
+  """
+  Uploads a file.
+  """
   uploadFile(
-    """File."""
+    """
+    File.
+    """
     file: Upload
 
-    """File description."""
+    """
+    File description.
+    """
     fileDescription: String
   ): fileUploadResult
 
-  """Flag an identifier"""
-  flagIdentifier(
-    """the suspects identifier (phone no, url or email)"""
-    identifier: String
-  ): identifierFlaggingsSummary
+  """
+  Submit report to database
+  """
+  submitReport(
+    """
+    details about the scam
+    """
+    scamInfo: scamInfoInput
+
+    """
+    details about the money lost
+    """
+    lostMoney: lostMoneyInput
+
+    """
+    details about the suspect
+    """
+    suspectInfo: suspectInfoInput
+
+    """
+    contact details about the user
+    """
+    contactInfo: contactInfoInput
+  ): reportSummary
 }
 
 type Query {
-  """Stats about report collection"""
+  """
+  Stats about report collection
+  """
   stats: Stats
 }
 
-type Stats {
-  """The total number of reports submitted."""
-  reportCount: Int
-
-  """Daily totals for the identifier specified"""
-  identifierFlaggingsWithin(
-    """the suspects identifier"""
-    identifier: String
-  ): identifierFlaggingsSummary
-
-  """Daily totals for the identifier specified"""
-  flaggingsWithin(
-    """a phone number, email address or URL"""
-    identifier: String!
-
-    """An ISO8601(YYYY-MM-DD) formatted date string"""
-    startDate: DateTime!
-
-    """An ISO8601(YYYY-MM-DD) formatted date string"""
-    endDate: DateTime!
-  ): identifierFlaggingsSummary
+type reportSummary {
+  reportID: String
 }
 
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload
+input scamInfoInput {
+  howWereYouContacted: [String]
+  otherMethodOfContact: String
+  whenWereYouContacted: String
+  scamDetails: String
+}
 
+type Stats {
+  """
+  The total number of reports submitted.
+  """
+  reportCount: Int
+}
+
+input suspectInfoInput {
+  suspectName: String
+  suspectAddress: String
+  suspectLanguage: [String]
+  otherSuspectLanguage: String
+  suspectPhone: String
+  suspectWebsite: String
+  suspectIP: String
+}
+
+"""
+The `Upload` scalar type represents a file upload.
+"""
+scalar Upload

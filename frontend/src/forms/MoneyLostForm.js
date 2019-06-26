@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import React from 'react'
+import { navigate } from '@reach/router'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { I18n, i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
+import { Container } from '../components/container'
 import { Checkbox } from '../components/checkbox'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
@@ -13,12 +15,16 @@ import { ButtonLink } from '../components/button-link'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
-import { Container } from '../components/container'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
-const languages = [i18nMark('English'), i18nMark('French'), i18nMark('other')]
+const methodsOfPayment = [
+  i18nMark('credit card'),
+  i18nMark('cash'),
+  i18nMark('gift card'),
+  i18nMark('other'),
+]
 
 const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
@@ -28,7 +34,7 @@ const validate = () => {
   return {}
 }
 
-export const SuspectInfo = ({ onSubmit }) => (
+export const MoneyLostForm = ({ onSubmit }) => (
   <ApolloConsumer>
     {client => (
       <Form
@@ -36,50 +42,50 @@ export const SuspectInfo = ({ onSubmit }) => (
         validate={validate}
         render={({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="suspectName">
+            <label htmlFor="lostAmount">
               <Text>
-                <Trans>Name</Trans>
+                <Trans>Enter the total amount lost</Trans>
               </Text>
             </label>
             <div>
               <Field
-                name="suspectName"
-                id="suspectName"
+                name="lostAmount"
+                id="lostAmount"
                 component={TextAreaAdapter}
                 height="25px"
-                width="300px"
+                width="200px"
               />
             </div>
 
-            <label htmlFor="suspectAddress">
+            <label htmlFor="lostCurrency">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Address</Trans>
+                <Trans>Currency</Trans>
               </Text>
             </label>
             <div>
               <Field
-                name="suspectAddress"
-                id="suspectAddress"
+                name="lostCurrency"
+                id="lostCurrency"
                 component={TextAreaAdapter}
-                height="100px"
-                width="300px"
+                height="25px"
+                width="200px"
               />
             </div>
 
-            <label htmlFor="suspectLanguage">
+            <label htmlFor="lostMethodsOfPayment">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Language</Trans>
+                <Trans>Select payment method involved in this scam</Trans>
               </Text>
             </label>
             <div>
               <I18n>
                 {({ i18n }) =>
-                  languages.map(key => {
+                  methodsOfPayment.map(key => {
                     return (
                       <CheckboxStyle key={key}>
                         <Field
-                          name="suspectLanguage"
-                          id="suspectLanguage"
+                          name="lostMethodsOfPayment"
+                          id="lostMethodsOfPayment"
                           component={CheckboxAdapter}
                           type="checkbox"
                           value={key}
@@ -92,72 +98,27 @@ export const SuspectInfo = ({ onSubmit }) => (
               </I18n>
             </div>
 
-            {values.suspectLanguage &&
-            values.suspectLanguage.indexOf('other') > -1 ? (
+            {values.lostMethodsOfPayment &&
+            values.lostMethodsOfPayment.indexOf('other') > -1 ? (
               <React.Fragment>
-                <label htmlFor="otherSuspectLanguage">
+                <label htmlFor="lostOtherMethodOfPayment">
                   <Text>
-                    <Trans>Other language</Trans>
+                    <Trans>Other method of payment</Trans>
                   </Text>
                 </label>
                 <div>
                   <Field
-                    name="otherSuspectLanguage"
-                    id="otherSuspectLanguage"
+                    name="lostOtherMethodOfPayment"
+                    id="lostOtherMethodOfPayment"
                     component={TextAreaAdapter}
                     height="25px"
-                    width="300px"
+                    width="200px"
                   />
                 </div>
               </React.Fragment>
             ) : (
               ''
             )}
-
-            <label htmlFor="suspectPhone">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Phone Number</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectPhone"
-                id="suspectPhone"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
-
-            <label htmlFor="suspectWebsite">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Website</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectWebsite"
-                id="suspectWebsite"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
-
-            <label htmlFor="suspectIP">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>IP address</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectIP"
-                id="suspectIP"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
 
             <Container
               width="305px"
@@ -168,7 +129,7 @@ export const SuspectInfo = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <Button type="button">
+              <Button type="button" onClick={() => navigate('/scaminfo')}>
                 <Trans>Back</Trans>
               </Button>
 
@@ -201,6 +162,6 @@ export const SuspectInfo = ({ onSubmit }) => (
   </ApolloConsumer>
 )
 
-SuspectInfo.propTypes = {
+MoneyLostForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }

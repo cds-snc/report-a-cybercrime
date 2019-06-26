@@ -1,9 +1,19 @@
-const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql')
-const { Stats } = require('./Stats')
+const {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLList,
+} = require('graphql')
 const { GraphQLUpload } = require('graphql-upload')
-const { FlaggingSummary } = require('./FlaggingSummary')
+const { ReportSummary } = require('./ReportSummary')
+const { ScamInfoInput } = require('./ScamInfoInput')
+const { LostMoneyInput } = require('./LostMoneyInput')
+const { SuspectInfoInput } = require('./SuspectInfoInput')
+const { ContactInfoInput } = require('./ContactInfoInput')
+const { Stats } = require('./Stats')
 const { FileUploadResult } = require('./FileUploadResult')
 const { createHash } = require('crypto')
+const uuidv4 = require('uuid/v4')
 
 // eslint-disable-next-line
 const streamToString = stream =>
@@ -120,24 +130,48 @@ const mutation = new GraphQLObjectType({
         }
       },
     },
-    flagIdentifier: {
-      description: 'Flag an identifier',
-      type: FlaggingSummary,
+
+    submitReport: {
+      description: 'Submit report to database',
+      type: ReportSummary,
       args: {
-        identifier: {
-          type: GraphQLString,
-          description: 'the suspects identifier (phone no, url or email)',
+        scamInfo: {
+          type: ScamInfoInput,
+          description: 'details about the scam',
+        },
+        lostMoney: {
+          type: LostMoneyInput,
+          description: 'details about the money lost',
+        },
+        suspectInfo: {
+          type: SuspectInfoInput,
+          description: 'details about the suspect',
+        },
+        files: {
+          type: new GraphQLList(GraphQLString),
+          description: 'files uploaded',
+        },
+        contactInfo: {
+          type: ContactInfoInput,
+          description: 'contact details about the user',
         },
       },
-      resolve: async (_root, { identifier }, { db }, _info) => {
+      resolve: async (
+        _root,
+        { scamInfo, lostMoney, suspectInfo, files, contactInfo },
+        { db },
+        _info,
+      ) => {
         await db.saveReport({
-          identifier: identifier,
+          scamInfo,
+          lostMoney,
+          suspectInfo,
+          files,
+          contactInfo,
           createdAt: new Date().toISOString(),
         })
-        let summary = await db.summariseByDay(identifier)
         return {
-          identifier,
-          summary,
+          reportID: uuidv4(),
         }
       },
     },

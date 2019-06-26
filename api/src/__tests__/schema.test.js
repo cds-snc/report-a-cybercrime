@@ -16,7 +16,7 @@ describe('Query Type', () => {
     })
   })
 
-  describe('Query.stats.flaggingsWithin', () => {
+  describe('Query.stats.reportCount', () => {
     beforeAll(async () => {
       ;({ db, drop, truncate } = await makeTestDatabase({
         dbname: dbNameFromFile(__filename),
@@ -28,43 +28,22 @@ describe('Query Type', () => {
       reports = db.collection('reports')
     })
 
-    it('returns a count per day of the flaggings for an identifier', async () => {
-      let variables = {
-        phone: '555-555-5555',
-        startDate: '2019-04-01',
-        endDate: '2019-04-02',
-      }
+    it('returns the total number of reports', async () => {
       let query = `
-        query($phone: String!, $startDate: DateTime!, $endDate: DateTime!) {
+        query {
           stats {
-            flaggingsWithin(
-              identifier: $phone
-              startDate: $startDate
-              endDate: $endDate
-            ) {
-              identifier
-              summary {
-                date
-                total
-              }
-            }
+            reportCount
           }
         }
       `
       let context = {
         db: await dbinit(db),
       }
-      let response = await graphql(schema, query, {}, context, variables)
+      let response = await graphql(schema, query, {}, context)
       expect(response).toEqual({
         data: {
           stats: {
-            flaggingsWithin: {
-              identifier: '555-555-5555',
-              summary: [
-                { date: '2019-04-01', total: 0 },
-                { date: '2019-04-02', total: 0 },
-              ],
-            },
+            reportCount: 0,
           },
         },
       })
