@@ -19,13 +19,13 @@ export const Willbecontacted = () => (
       </Trans>
     </H1>
     <p>
-      <ButtonLink color="black" mb={[3, null, 5]} to="/yourInformationPage">
+      <ButtonLink color="black" mb={[3, null, 5]} to="/contactinfo">
         <Trans>Yes</Trans>
       </ButtonLink>
     </p>
 
     <p>
-      <ButtonLink color="black" mb={[3, null, 5]} to="/submitPage">
+      <ButtonLink color="black" mb={[3, null, 5]} to="/confirmation">
         <Trans>No</Trans>
       </ButtonLink>
     </p>

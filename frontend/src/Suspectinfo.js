@@ -17,14 +17,14 @@ export const Suspectinfo = () => (
       <Trans>Do you have information about the suspect</Trans>
     </H1>
     <p>
-      <ButtonLink mb={[3, null, 5]} to="/urgency">
+      <ButtonLink mb={[3, null, 5]} to="/suspectinfo">
         <Trans>Yes</Trans>
       </ButtonLink>
     </p>
 
     <br />
     <p>
-      <ButtonLink mb={[3, null, 5]} to="/urgency">
+      <ButtonLink mb={[3, null, 5]} to="/moneylostquestion">
         <Trans>No</Trans>
       </ButtonLink>
     </p>

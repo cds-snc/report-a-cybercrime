@@ -27,10 +27,10 @@ export const LoseMoney = () => (
       <Trans>Did you lose money?</Trans>
     </H1>
     <Container css={bottomBarContainer}>
-      <ButtonLink mb={[3, null, 5]} to="/">
+      <ButtonLink mb={[3, null, 5]} to="/moneylost">
         <Trans>Yes</Trans>
       </ButtonLink>
-      <ButtonLink mb={[3, null, 5]} to="/">
+      <ButtonLink mb={[3, null, 5]} to="/uploadfilesquestion">
         <Trans>No</Trans>
       </ButtonLink>
     </Container>

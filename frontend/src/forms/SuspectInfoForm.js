@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-import { navigate } from '@reach/router'
+
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
@@ -180,14 +180,10 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               marginTop={[3, null, 4]}
               css={css`
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: space-between;
               `}
             >
-              <Button type="button" onClick={() => navigate('moneylost')}>
-                <Trans>Back</Trans>
-              </Button>
-
               <Button type="submit">
                 <Trans>Next</Trans>
               </Button>
@@ -204,10 +200,6 @@ export const SuspectInfoForm = ({ onSubmit }) => (
             >
               <ButtonLink type="button" color="black">
                 <Trans>Cancel Report</Trans>
-              </ButtonLink>
-
-              <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
-                <Trans>Save Report</Trans>
               </ButtonLink>
             </Container>
           </form>

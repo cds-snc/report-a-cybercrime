@@ -15,7 +15,7 @@ const CenterContent = styled('div')`
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data })
-  navigate('/suspectinfo')
+  navigate('/uploadfilesquestion')
 }
 
 export const MoneyLostPage = () => (

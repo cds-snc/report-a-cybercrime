@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import React from 'react'
-import { navigate } from '@reach/router'
+
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { ApolloConsumer } from 'react-apollo'

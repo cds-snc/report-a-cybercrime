@@ -18,13 +18,13 @@ export const Ifvictim = () => (
       <Trans>Are you a victim?</Trans>
     </H1>
     <p>
-      <ButtonLink color="black" mb={[3, null, 5]} to="/urgency">
+      <ButtonLink color="black" mb={[3, null, 5]} to="/scaminfo">
         <Trans>Yes</Trans>
       </ButtonLink>
     </p>
     <br />
     <p>
-      <ButtonLink color="black" mb={[3, null, 5]} to="/urgency">
+      <ButtonLink color="black" mb={[3, null, 5]} to="/scaminfo">
         <Trans>No</Trans>
       </ButtonLink>
     </p>

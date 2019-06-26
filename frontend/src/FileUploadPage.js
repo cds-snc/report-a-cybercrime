@@ -34,7 +34,7 @@ export class FileUploadPage extends Component {
     const files = this.state.files.map(file => file.name)
     const data = { files }
     client.writeData({ data }) // TODO: actually upload files
-    navigate('/contactinfo')
+    navigate('/contactinfoquestion')
   }
 
   render() {
