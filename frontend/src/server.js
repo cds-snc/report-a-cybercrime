@@ -73,6 +73,8 @@ server
         suspectIP: '',
 
         files: [],
+
+        userIsTheVictim: '',
         contactInfoName: '',
         contactInfoEmail: '',
         contactInfoPhone: '',

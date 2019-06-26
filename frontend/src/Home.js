@@ -14,7 +14,6 @@ import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
 
-import { Ifvictim } from './Ifvictim'
 import { Suspectinfo } from './Suspectinfo'
 import { DemoPage } from './DemoPage'
 import { ScamInfoPage } from './ScamInfoPage'
@@ -55,7 +54,6 @@ export const Home = () => (
         <IdentityPage path="/identity" />
 
         <LandingPage path="/" />
-        <Ifvictim path="/ifvictimquestion" />
         <ScamInfoPage path="/scaminfo" />
         <Suspectinfo path="/suspectinfoquestion" />
         <SuspectInfoPage path="/suspectinfo" />

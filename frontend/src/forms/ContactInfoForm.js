@@ -1,18 +1,30 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import { navigate } from '@reach/router'
+import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
+import { I18n, i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { Container } from '../components/container'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { ButtonLink } from '../components/button-link'
+import { RadioButton } from '../components/radio-button'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
+const RadioButtonAdapter = finalFormAdapter(RadioButton)
+
+const CheckboxStyle = styled('label')`
+  margin-bottom: 8pt;
+  font-size: 1.25rem;
+  display: block;
+`
+
+const victimOptions = [i18nMark('yes'), i18nMark('no')]
 
 const validate = () => {
   return {}
@@ -26,6 +38,30 @@ export const ContactInfoForm = ({ onSubmit }) => (
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
+            <label htmlFor="userIsTheVictim">
+              <Text>
+                <Trans>Are you the victim?</Trans>
+              </Text>
+            </label>
+            <I18n>
+              {({ i18n }) =>
+                victimOptions.map(key => {
+                  return (
+                    <CheckboxStyle key={key}>
+                      <Field
+                        name="userIsTheVictim"
+                        id="userIsTheVictim"
+                        component={RadioButtonAdapter}
+                        type="radio"
+                        value={key}
+                        label={i18n._(key)}
+                      />
+                    </CheckboxStyle>
+                  )
+                })
+              }
+            </I18n>
+
             <label htmlFor="contactInfoName">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Name</Trans>
