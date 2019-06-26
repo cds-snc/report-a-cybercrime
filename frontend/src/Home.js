@@ -18,8 +18,9 @@ import { Ifvictim } from './Ifvictim'
 import { Suspectinfo } from './Suspectinfo'
 
 import { DemoPage } from './DemoPage'
-import { OtherFlowPage } from './OtherFlowPage'
+import { ScamInfoPage } from './ScamInfoPage'
 import { MoneyLostPage } from './MoneyLostPage'
+import { ConfirmationPage } from './ConfirmationPage'
 import { SuspectInfoPage } from './SuspectInfoPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { LoseMoney } from './LoseMoney'
@@ -51,18 +52,19 @@ export const Home = () => (
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
         <LoseMoney path="/losemoney" />
-        <FileUploadPage path="/uploadfiles" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
 
+        <ScamInfoPage path="/scaminfo" />
         <Ifvictim path="/ifvictim" />
         <Suspectinfo path="/Suspectinfo" />
 
-        <OtherFlowPage path="/otherflow" />
         <MoneyLostPage path="/moneylost" />
         <SuspectInfoPage path="/suspectinfo" />
+        <FileUploadPage path="/uploadfiles" />
         <ContactInfoPage path="/contactinfo" />
+        <ConfirmationPage path="/confirmation" />
         <Willbecontacted path="/Willbecontacted" />
         <LandingPage path="/landingpage" />
         <FilesToUpload path="/filestoupload" />

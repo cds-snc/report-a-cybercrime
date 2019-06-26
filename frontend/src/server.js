@@ -52,6 +52,30 @@ server
     cache.writeData({
       data: {
         language: req.language,
+
+        howWereYouContacted: [],
+        otherMethodOfContact: '',
+        whenWereYouContacted: '',
+        scamDetails: '',
+
+        lostAmount: '',
+        lostCurrency: '',
+        lostMethodsOfPayment: [],
+        lostOtherMethodOfPayment: '',
+
+        suspectName: '',
+        suspectAddress: '',
+        suspectLanguage: [],
+        otherSuspectLanguage: '',
+        suspectPhone: '',
+        suspectEmail: '',
+        suspectWebsite: '',
+        suspectIP: '',
+
+        files: [],
+        contactInfoName: '',
+        contactInfoEmail: '',
+        contactInfoPhone: '',
       },
     })
 
