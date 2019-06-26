@@ -16,7 +16,6 @@ import { Option3Page } from './Option3Page'
 
 import { Ifvictim } from './Ifvictim'
 import { Suspectinfo } from './Suspectinfo'
-
 import { DemoPage } from './DemoPage'
 import { ScamInfoPage } from './ScamInfoPage'
 import { MoneyLostPage } from './MoneyLostPage'
@@ -28,7 +27,6 @@ import { ThankYou } from './ThankYou'
 import { Willbecontacted } from './Willbecontacted'
 import { LandingPage } from './LandingPage'
 import { FilesToUpload } from './FilesToUpload'
-
 
 const Root = styled('div')`
   margin: 20pt;
@@ -48,29 +46,27 @@ export const Home = () => (
       <Router>
         <PageNotFound default />
         <DemoPage path="/demo" />
-        {/* <Page1 path="/" /> */}
         <Option1Page path="/option1" />
         <Option2Page path="/option2" />
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
-        <LoseMoney path="/losemoney" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
 
+        <LandingPage path="/" />
+        <Ifvictim path="/ifvictimquestion" />
         <ScamInfoPage path="/scaminfo" />
-        <Ifvictim path="/ifvictim" />
-        <Suspectinfo path="/Suspectinfo" />
-
-        <MoneyLostPage path="/moneylost" />
+        <Suspectinfo path="/suspectinfoquestion" />
         <SuspectInfoPage path="/suspectinfo" />
+        <LoseMoney path="/moneylostquestion" />
+        <MoneyLostPage path="/moneylost" />
+        <FilesToUpload path="/uploadfilesquestion" />
         <FileUploadPage path="/uploadfiles" />
+        <Willbecontacted path="/contactinfoquestion" />
         <ContactInfoPage path="/contactinfo" />
-        <ThankYou path="/thankyou" />
         <ConfirmationPage path="/confirmation" />
-        <Willbecontacted path="/Willbecontacted" />
-        <LandingPage path="/landingpage" />
-        <FilesToUpload path="/filestoupload" />
+        <ThankYou path="/thankyou" />
       </Router>
     </Screen>
   </Root>
