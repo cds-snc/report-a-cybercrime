@@ -18,32 +18,32 @@ export const LandingPage = () => (
 
     <p fontSize={[8, null, 8]}>
       <Trans>
-        what do you need to prepare in order to report the scam online?
+        Tell the RCMP's National Cybercrime Coordination Unit (NC3) about a
+        scam. NC3 will analyze your report and work with police across Canada to
+        stop this from happening again. You will be asked to:
       </Trans>
     </p>
     <ol fontSize={[8, null, 8]}>
       <li>
-        <Trans>suspect information</Trans>
+        <Trans>describe what happened</Trans>
       </li>
       <br />
       <li>
-        <Trans>image and/or other files</Trans>
+        <Trans>specify if money was lost</Trans>
       </li>
       <br />
-
       <li>
-        <Trans>describe of the scan event</Trans>
+        <Trans>add scammer details</Trans>
+      </li>
+      <br />
+      <li>
+        <Trans>attach additfiles</Trans>
       </li>
       <br />
     </ol>
     <p>
       <ButtonLink color="black" mb={[3, null, 5]} to="/">
-        <Trans>Talk to someone</Trans>
-      </ButtonLink>
-    </p>
-    <p>
-      <ButtonLink color="black" mb={[3, null, 5]} to="/">
-        <Trans>Report online</Trans>
+        <Trans>Report now</Trans>
       </ButtonLink>
     </p>
   </CenterContent>
