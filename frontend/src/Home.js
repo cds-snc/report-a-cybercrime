@@ -28,7 +28,6 @@ import { Willbecontacted } from './Willbecontacted'
 import { LandingPage } from './LandingPage'
 import { FilesToUpload } from './FilesToUpload'
 
-
 const Root = styled('div')`
   margin: 20pt;
 `
@@ -66,8 +65,8 @@ export const Home = () => (
         <FileUploadPage path="/uploadfiles" />
         <Willbecontacted path="/contactinfoquestion" />
         <ContactInfoPage path="/contactinfo" />
-        <ThankYou path="/thankyou" />
         <ConfirmationPage path="/confirmation" />
+        <ThankYou path="/thankyou" />
       </Router>
     </Screen>
   </Root>

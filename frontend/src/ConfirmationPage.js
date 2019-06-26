@@ -293,7 +293,7 @@ export const ConfirmationPage = () => (
         <Trans>Back</Trans>
       </Button>
 
-      <Button type="submit">
+      <Button type="submit" onClick={() => navigate('/thankyou')}>
         <Trans>Submit</Trans>
       </Button>
     </Container>
