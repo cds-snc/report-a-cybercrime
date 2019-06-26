@@ -21,14 +21,14 @@ export const Suspectinfo = () => (
         <Trans>Yes</Trans>
       </ButtonLink>
     </p>
-    <br />
+
     <br />
     <p>
       <ButtonLink mb={[3, null, 5]} to="/urgency">
         <Trans>No</Trans>
       </ButtonLink>
     </p>
-    <br />
+
     <br />
     <p>
       <ButtonLink mb={[3, null, 5]} to="/">

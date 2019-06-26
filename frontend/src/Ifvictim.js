@@ -23,15 +23,11 @@ export const Ifvictim = () => (
       </ButtonLink>
     </p>
     <br />
-    <br />
-
     <p>
       <ButtonLink color="black" mb={[3, null, 5]} to="/urgency">
         <Trans>No</Trans>
       </ButtonLink>
     </p>
-    <br />
-    <br />
 
     <p>
       <ButtonLink color="black" mb={[3, null, 5]} to="/">

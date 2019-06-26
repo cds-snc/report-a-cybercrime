@@ -18,29 +18,26 @@ export const LandingPage = () => (
 
     <p fontSize={[8, null, 8]}>
       <Trans>
-        what do you need to prepare in order to report the scam online?
+        <h2>what do you need to prepare in order to report the scam online?</h2>
       </Trans>
     </p>
     <ol fontSize={[8, null, 8]}>
-      <li>
-        <Trans>suspect information</Trans>
-      </li>
-      <br />
-      <li>
-        <Trans>image and/or other files</Trans>
-      </li>
-      <br />
+      <h4>
+        <li>
+          <Trans>suspect information</Trans>
+        </li>
+        <br />
+        <li>
+          <Trans>image and/or other files</Trans>
+        </li>
+        <br />
 
-      <li>
-        <Trans>describe of the scan event</Trans>
-      </li>
-      <br />
+        <li>
+          <Trans>describe of the scan event</Trans>
+        </li>
+        <br />
+      </h4>
     </ol>
-    <p>
-      <ButtonLink color="black" mb={[3, null, 5]} to="/">
-        <Trans>Talk to someone</Trans>
-      </ButtonLink>
-    </p>
     <p>
       <ButtonLink color="black" mb={[3, null, 5]} to="/">
         <Trans>Report online</Trans>
