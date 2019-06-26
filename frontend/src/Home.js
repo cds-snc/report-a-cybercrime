@@ -23,9 +23,11 @@ import { ConfirmationPage } from './ConfirmationPage'
 import { SuspectInfoPage } from './SuspectInfoPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { LoseMoney } from './LoseMoney'
+import { ThankYou } from './ThankYou'
 import { Willbecontacted } from './Willbecontacted'
 import { LandingPage } from './LandingPage'
 import { FilesToUpload } from './FilesToUpload'
+
 
 const Root = styled('div')`
   margin: 20pt;
@@ -64,6 +66,7 @@ export const Home = () => (
         <FileUploadPage path="/uploadfiles" />
         <Willbecontacted path="/contactinfoquestion" />
         <ContactInfoPage path="/contactinfo" />
+        <ThankYou path="/thankyou" />
         <ConfirmationPage path="/confirmation" />
       </Router>
     </Screen>
