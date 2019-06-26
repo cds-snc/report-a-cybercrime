@@ -42,7 +42,7 @@ export const LandingPage = () => (
       </ButtonLink>
     </p>
     <p>
-      <ButtonLink color="black" mb={[3, null, 5]} to="/">
+      <ButtonLink color="black" mb={[3, null, 5]} to="ifvictimquestion">
         <Trans>Report online</Trans>
       </ButtonLink>
     </p>
