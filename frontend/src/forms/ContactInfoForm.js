@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
+import { navigate } from '@reach/router'
 import { css, jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -79,7 +80,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <Button type="button">
+              <Button type="button" onClick={() => navigate('/uploadfiles')}>
                 <Trans>Back</Trans>
               </Button>
 

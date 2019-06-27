@@ -16,13 +16,14 @@ import { Option3Page } from './Option3Page'
 
 import { Ifvictim } from './Ifvictim'
 import { Suspectinfo } from './Suspectinfo'
-
 import { DemoPage } from './DemoPage'
-import { OtherFlowPage } from './OtherFlowPage'
+import { ScamInfoPage } from './ScamInfoPage'
 import { MoneyLostPage } from './MoneyLostPage'
+import { ConfirmationPage } from './ConfirmationPage'
 import { SuspectInfoPage } from './SuspectInfoPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { LoseMoney } from './LoseMoney'
+import { ThankYou } from './ThankYou'
 import { Willbecontacted } from './Willbecontacted'
 import { LandingPage } from './LandingPage'
 import { FilesToUpload } from './FilesToUpload'
@@ -45,27 +46,27 @@ export const Home = () => (
       <Router>
         <PageNotFound default />
         <DemoPage path="/demo" />
-        {/* <Page1 path="/" /> */}
         <Option1Page path="/option1" />
         <Option2Page path="/option2" />
         <Option3Page path="/option3" />
         <HowToTellPolice path="/howtotell" />
-        <LoseMoney path="/losemoney" />
-        <FileUploadPage path="/uploadfiles" />
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
 
-        <Ifvictim path="/ifvictim" />
-        <Suspectinfo path="/Suspectinfo" />
-
-        <OtherFlowPage path="/otherflow" />
-        <MoneyLostPage path="/moneylost" />
+        <LandingPage path="/" />
+        <Ifvictim path="/ifvictimquestion" />
+        <ScamInfoPage path="/scaminfo" />
+        <Suspectinfo path="/suspectinfoquestion" />
         <SuspectInfoPage path="/suspectinfo" />
+        <LoseMoney path="/moneylostquestion" />
+        <MoneyLostPage path="/moneylost" />
+        <FilesToUpload path="/uploadfilesquestion" />
+        <FileUploadPage path="/uploadfiles" />
+        <Willbecontacted path="/contactinfoquestion" />
         <ContactInfoPage path="/contactinfo" />
-        <Willbecontacted path="/Willbecontacted" />
-        <LandingPage path="/landingpage" />
-        <FilesToUpload path="/filestoupload" />
+        <ConfirmationPage path="/confirmation" />
+        <ThankYou path="/thankyou" />
       </Router>
     </Screen>
   </Root>

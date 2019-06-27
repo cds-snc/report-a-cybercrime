@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { Component } from 'react'
+import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
@@ -29,9 +30,11 @@ export class FileUploadPage extends Component {
     this.setState({ files: newFiles })
   }
 
-  submitAndNavigate = () => {
-    // client.writeData({ files: this.state.files })
-    // navigate('/form3')
+  submitAndNavigate = client => {
+    const files = this.state.files.map(file => file.name)
+    const data = { files }
+    client.writeData({ data }) // TODO: actually upload files
+    navigate('/contactinfoquestion')
   }
 
   render() {
@@ -103,7 +106,7 @@ export class FileUploadPage extends Component {
                   justify-content: space-between;
                 `}
               >
-                <Button type="button">
+                <Button type="button" onClick={() => navigate('/suspectinfo')}>
                   <Trans>Back</Trans>
                 </Button>
 

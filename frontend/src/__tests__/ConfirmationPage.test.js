@@ -2,23 +2,23 @@ import React from 'react'
 import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
-import { I18nProvider } from '@lingui/react'
-import { MoneyLostPage } from '../MoneyLostPage'
+import { ConfirmationPage } from '../ConfirmationPage'
 import theme from '../theme'
-import en from '../../locale/en/messages.js'
 
-const catalogs = { en }
-
-describe('<MoneyLostPage />', () => {
+describe('<ConfirmationPage />', () => {
   afterEach(cleanup)
+  const client = {
+    readQuery: () => ({
+      howWereYouContacted: [],
+      lostMethodsOfPayment: [],
+    }),
+  }
 
   it('renders', () => {
     render(
       <ThemeProvider theme={theme}>
-        <ApolloProvider client={{}}>
-          <I18nProvider language={'en'} catalogs={catalogs}>
-            <MoneyLostPage />
-          </I18nProvider>
+        <ApolloProvider client={client}>
+          <ConfirmationPage />
         </ApolloProvider>
       </ThemeProvider>,
     )

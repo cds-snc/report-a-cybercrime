@@ -19,7 +19,7 @@ export const Page1 = () => (
     <H2 fontSize={[3, null, 4]}>
       <Trans>{'First, find out which option is most relevant for you.'}</Trans>
     </H2>
-    <ButtonLink mb={[3, null, 5]} to="/urgency">
+    <ButtonLink mb={[3, null, 5]} to="/scaminfo">
       <Trans>{'Get Started'}</Trans>
     </ButtonLink>
   </CenterContent>

@@ -4,7 +4,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react'
 import { MockedProvider } from 'react-apollo/test-utils'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { SuspectInfo } from '../SuspectInfo'
+import { SuspectInfoForm } from '../SuspectInfoForm'
 import en from '../../../locale/en/messages.js'
 import theme from '../../theme'
 
@@ -15,7 +15,7 @@ const fillIn = (element, { with: value }) =>
 
 const clickOn = element => fireEvent.click(element)
 
-describe('<SuspectInfo /> form', () => {
+describe('<SuspectInfoForm />', () => {
   afterEach(cleanup)
 
   it('calls the onSubmit function when the form is submitted', async () => {
@@ -25,7 +25,7 @@ describe('<SuspectInfo /> form', () => {
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
-            <SuspectInfo onSubmit={submitMock} />
+            <SuspectInfoForm onSubmit={submitMock} />
           </I18nProvider>
         </MockedProvider>
       </ThemeProvider>,

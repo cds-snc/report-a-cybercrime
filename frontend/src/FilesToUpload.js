@@ -27,10 +27,10 @@ export const FilesToUpload = () => (
       <Trans>Do you have any images or files to support your report?</Trans>
     </H1>
     <Container css={bottomBarContainer}>
-      <ButtonLink mb={[3, null, 5]} to="/">
+      <ButtonLink mb={[3, null, 5]} to="/uploadfiles">
         <Trans>Yes</Trans>
       </ButtonLink>
-      <ButtonLink mb={[3, null, 5]} to="/">
+      <ButtonLink mb={[3, null, 5]} to="/contactinfoquestion">
         <Trans>No</Trans>
       </ButtonLink>
     </Container>

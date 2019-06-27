@@ -2,17 +2,23 @@ import React from 'react'
 import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
-import { OtherFlowPage } from '../OtherFlowPage'
+import { I18nProvider } from '@lingui/react'
+import { ScamInfoPage } from '../ScamInfoPage'
 import theme from '../theme'
+import en from '../../locale/en/messages.js'
 
-describe('<OtherFlowPage />', () => {
+const catalogs = { en }
+
+describe('<ScamInfoPage />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
     render(
       <ThemeProvider theme={theme}>
         <ApolloProvider client={{}}>
-          <OtherFlowPage />
+          <I18nProvider language={'en'} catalogs={catalogs}>
+            <ScamInfoPage />
+          </I18nProvider>
         </ApolloProvider>
       </ThemeProvider>,
     )
