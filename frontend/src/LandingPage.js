@@ -39,7 +39,7 @@ export const LandingPage = () => (
       </li>
       <br />
       <li>
-        <Trans>attach additfiles</Trans>
+        <Trans>attach files</Trans>
       </li>
       <br />
     </ol>
