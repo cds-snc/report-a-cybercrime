@@ -15,7 +15,6 @@ import { Button } from '../components/button'
 import { ButtonLink } from '../components/button-link'
 import { Text } from '../components/text'
 import { DateSelector } from '../components/date-picker'
-
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
@@ -58,14 +57,7 @@ export class ScamInfoForm extends Component {
           <Form
             onSubmit={data => onSubmit(client, data)}
             validate={validate}
-            render={({
-              handleSubmit,
-              // reset,
-              // submitting,
-              // pristine,
-              values,
-              // invalid,
-            }) => (
+            render={({ handleSubmit, values }) => (
               <form onSubmit={handleSubmit}>
                 <label htmlFor="howWereYouContacted">
                   <Text>
