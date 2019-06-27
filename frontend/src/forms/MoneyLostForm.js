@@ -44,7 +44,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="lostAmount">
               <Text>
-                <Trans>Enter the total amount lost</Trans>
+                <Trans>How much did you lose?</Trans>
               </Text>
             </label>
             <div>
@@ -74,7 +74,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
 
             <label htmlFor="lostMethodsOfPayment">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Select payment method involved in this scam</Trans>
+                <Trans>What method of payment was used?</Trans>
               </Text>
             </label>
             <div>

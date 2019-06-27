@@ -49,9 +49,39 @@ export const ScamInfoForm = ({ onSubmit }) => (
           // invalid,
         }) => (
           <form onSubmit={handleSubmit}>
+            <label htmlFor="scamDetails">
+              <Text marginTop={[5, null, 6]}>
+                <Trans>What happened?</Trans>
+              </Text>
+            </label>
+            <div>
+              <Field
+                name="scamDetails"
+                id="scamDetails"
+                component={TextAreaAdapter}
+                height="100px"
+                width="300px"
+              />
+            </div>
+
+            <label htmlFor="whenWereYouContacted">
+              <Text marginTop={[5, null, 6]}>
+                <Trans>When did it happen?</Trans>
+              </Text>
+            </label>
+            <div>
+              <Field
+                name="whenWereYouContacted"
+                id="whenWereYouContacted"
+                component={TextAreaAdapter}
+                height="25px"
+                width="300px"
+              />
+            </div>
+
             <label htmlFor="howWereYouContacted">
-              <Text>
-                <Trans>How were you first contacted by the suspect?</Trans>
+              <Text marginTop={[5, null, 6]}>
+                <Trans>How did it start?</Trans>
               </Text>
             </label>
             <div>
@@ -96,36 +126,6 @@ export const ScamInfoForm = ({ onSubmit }) => (
             ) : (
               ''
             )}
-
-            <label htmlFor="whenWereYouContacted">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>When did this scam occur?</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="whenWereYouContacted"
-                id="whenWereYouContacted"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
-
-            <label htmlFor="scamDetails">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>How did this scam take place?</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="scamDetails"
-                id="scamDetails"
-                component={TextAreaAdapter}
-                height="100px"
-                width="300px"
-              />
-            </div>
 
             <Text>
               {JSON.stringify(validate(values)) === JSON.stringify({}) ? (

@@ -21,7 +21,7 @@ const submitAndNavigate = (client, data) => {
 export const MoneyLostPage = () => (
   <CenterContent>
     <H1>
-      <Trans>Money Lost</Trans>
+      <Trans>Specify money lost.</Trans>
     </H1>
     <TrackPageViews />
     <MoneyLostForm onSubmit={submitAndNavigate} />

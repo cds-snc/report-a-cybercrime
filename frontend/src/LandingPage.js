@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
@@ -9,6 +10,7 @@ const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
 `
+
 export const LandingPage = () => (
   <CenterContent>
     <TrackPageViews />
@@ -18,29 +20,32 @@ export const LandingPage = () => (
 
     <p fontSize={[8, null, 8]}>
       <Trans>
-        <h2>what do you need to prepare in order to report the scam online?</h2>
+        Tell the RCMP's National Cybercrime Coordination Unit (NC3) about a
+        scam. NC3 will analyze your report and work with police across Canada to
+        stop this from happening again. You will be asked to:
       </Trans>
     </p>
     <ol fontSize={[8, null, 8]}>
-      <h4>
-        <li>
-          <Trans>suspect information</Trans>
-        </li>
-        <br />
-        <li>
-          <Trans>image and/or other files</Trans>
-        </li>
-        <br />
-
-        <li>
-          <Trans>describe of the scan event</Trans>
-        </li>
-        <br />
-      </h4>
+      <li>
+        <Trans>describe what happened</Trans>
+      </li>
+      <br />
+      <li>
+        <Trans>specify if money was lost</Trans>
+      </li>
+      <br />
+      <li>
+        <Trans>add scammer details</Trans>
+      </li>
+      <br />
+      <li>
+        <Trans>attach files</Trans>
+      </li>
+      <br />
     </ol>
     <p>
-      <ButtonLink color="black" mb={[3, null, 5]} to="/ifvictimquestion">
-        <Trans>Report online</Trans>
+      <ButtonLink color="black" mb={[3, null, 5]} to="ifvictimquestion">
+        <Trans>Report now</Trans>
       </ButtonLink>
     </p>
   </CenterContent>

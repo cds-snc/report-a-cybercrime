@@ -21,7 +21,7 @@ const submitAndNavigate = (client, data) => {
 export const ScamInfoPage = () => (
   <CenterContent>
     <H1>
-      <Trans>Tell RCMP your story</Trans>
+      <Trans>Describe the scam.</Trans>
     </H1>
     <TrackPageViews />
     <ScamInfoForm onSubmit={submitAndNavigate} />
