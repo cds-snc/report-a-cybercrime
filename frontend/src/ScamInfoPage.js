@@ -24,8 +24,9 @@ export const ScamInfoPage = () => (
       <Trans>Describe the scam</Trans>
     </H1>
     <P>
-      Understanding how the scam took place can help link your report to others
-      that are similar.
+      Getting an understanding of how the scam took place could help link your
+      report to other similar reports and build a stronger case for an
+      investigation.
     </P>
     <TrackPageViews />
     <ScamInfoForm onSubmit={submitAndNavigate} />
