@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
-import { H1, H2, H3 } from './components/header'
+import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { A } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
@@ -34,9 +34,9 @@ export const ThankYou = () => (
         touch
       </Trans>
     </P>
-    <H3>
+    <H2 fontSize={[4, null, 5]}>
       <Trans>You may also want to contact the following other services:</Trans>
-    </H3>
+    </H2>
     <P>Description of how these links can help</P>
     <A href="https://www.consumer.equifax.ca/personal/">Equifax</A>
     <br /> <br />
