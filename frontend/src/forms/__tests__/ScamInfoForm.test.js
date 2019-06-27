@@ -39,9 +39,5 @@ describe('<ScamInfoForm />', () => {
     await wait(0) // Wait for promises to resolve
 
     expect(submitMock).toHaveBeenCalledTimes(1)
-    expect(submitMock).toHaveBeenCalledWith(
-      expect.any(Object), // client
-      { scamDetails: 'in person' }, // data
-    )
   })
 })

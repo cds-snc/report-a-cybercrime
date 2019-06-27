@@ -54,7 +54,6 @@ export class ScamInfoForm extends Component {
     // data.whenWereYouContacted = `${this.state.startDate}`.substr(0, 15)
 
     data.whenWereYouContacted = this.state.startDate.toISOString().slice(0, 10)
-    console.log({ data })
 
     onSubmit(client, data)
   }
