@@ -29,6 +29,8 @@ const howContacted = [
   i18nMark('other'),
 ]
 
+i18nMark('en') // locale
+
 const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
 `
@@ -119,15 +121,20 @@ export class ScamInfoForm extends Component {
                   </Text>
                 </label>
                 <div>
-                  <Field
-                    name="whenWereYouContacted"
-                    id="whenWereYouContacted"
-                    component={DateSelectorAdapter}
-                    selected={this.state.startDate}
-                    onChange={this.handleChange}
-                    height="25px"
-                    width="300px"
-                  />
+                  <I18n>
+                    {({ i18n }) => (
+                      <Field
+                        name="whenWereYouContacted"
+                        id="whenWereYouContacted"
+                        component={DateSelectorAdapter}
+                        locale={i18n._('en')}
+                        selected={this.state.startDate}
+                        onChange={this.handleChange}
+                        height="25px"
+                        width="300px"
+                      />
+                    )}
+                  </I18n>
                 </div>
 
                 <label htmlFor="scamDetails">

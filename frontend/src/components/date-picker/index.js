@@ -1,15 +1,27 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import DatePicker from 'react-datepicker'
+import DatePicker, { registerLocale } from 'react-datepicker'
 import { jsx } from '@emotion/core'
-
+import fr from './locale/fr'
+import en from './locale/en-CA'
 import 'react-datepicker/dist/react-datepicker.css'
 
-export const DateSelector = ({ value, onChange, ...props }) => {
-  return <DatePicker selected={value} onChange={onChange} {...props} />
+registerLocale('fr', fr)
+registerLocale('en', en)
+
+export const DateSelector = ({ value, onChange, locale, ...props }) => {
+  return (
+    <DatePicker
+      locale={locale}
+      selected={value}
+      onChange={onChange}
+      {...props}
+    />
+  )
 }
 
 DateSelector.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
+  locale: PropTypes.string,
 }
