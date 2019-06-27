@@ -33,7 +33,6 @@ export const Suspectinfo = () => (
         responsible?
       </Trans>
     </P>
-    <p>
     <Container css={bottomBarContainer}>
       <ButtonLink mb={[3, null, 5]} to="/suspectinfo">
         <Trans>Yes</Trans>
