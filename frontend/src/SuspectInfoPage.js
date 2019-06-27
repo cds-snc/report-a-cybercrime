@@ -25,10 +25,8 @@ export const SuspectInfoPage = () => (
     </H1>
     <P>
       <Trans>
-        <Strong>
-          Any clues about who might be responsible can help police identify
-          suspects.
-        </Strong>
+        Any clues about who might be responsible can help police identify
+        suspects.
       </Trans>
     </P>
     <TrackPageViews />

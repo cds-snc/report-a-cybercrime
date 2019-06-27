@@ -43,8 +43,12 @@ export const MoneyLostForm = ({ onSubmit }) => (
         render={({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="lostAmount">
+              <Text marginTop={[4, null, 5]}>
+                <Trans>How much money was lost?</Trans>
+              </Text>
               <Text>
-                <Trans>How much did you lose?</Trans>
+                <br></br>
+                <Trans>Amount</Trans>
               </Text>
             </label>
             <div>
@@ -76,6 +80,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               <Text marginTop={[4, null, 5]}>
                 <Trans>What method of payment was used?</Trans>
               </Text>
+              <br></br>
             </label>
             <div>
               <I18n>
@@ -103,7 +108,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               <React.Fragment>
                 <label htmlFor="lostOtherMethodOfPayment">
                   <Text>
-                    <Trans>Other method of payment</Trans>
+                    <Trans>Other</Trans>
                   </Text>
                 </label>
                 <div>
@@ -129,10 +134,6 @@ export const MoneyLostForm = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <Button type="button" onClick={() => navigate('/scaminfo')}>
-                <Trans>Back</Trans>
-              </Button>
-
               <Button type="submit">
                 <Trans>Next</Trans>
               </Button>
@@ -149,10 +150,6 @@ export const MoneyLostForm = ({ onSubmit }) => (
             >
               <ButtonLink type="button" color="black">
                 <Trans>Cancel Report</Trans>
-              </ButtonLink>
-
-              <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
-                <Trans>Save Report</Trans>
               </ButtonLink>
             </Container>
           </form>

@@ -21,12 +21,12 @@ const submitAndNavigate = (client, data) => {
 export const MoneyLostPage = () => (
   <CenterContent>
     <H1>
-      <Trans>Specify money lost.</Trans>
+      <Trans>Specify money lost</Trans>
     </H1>
     <P>
       <Trans>
-        Do you have any information about the scammer or who might be
-        responsible?
+        We won't be able to recover the money, but understanding the impact of
+        the scam can help build a case.
       </Trans>
     </P>
     <TrackPageViews />
