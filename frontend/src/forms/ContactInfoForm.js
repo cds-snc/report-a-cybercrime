@@ -43,7 +43,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="contactInfoEmail">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Email</Trans>
+                <Trans>Email address</Trans>
               </Text>
             </label>
             <div>

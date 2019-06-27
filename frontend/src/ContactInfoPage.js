@@ -21,7 +21,7 @@ const submitAndNavigate = (client, data) => {
 export const ContactInfoPage = () => (
   <CenterContent>
     <H1>
-      <Trans>Share your contact information</Trans>
+      <Trans>Enter your contact information</Trans>
     </H1>
     <TrackPageViews />
     <ContactInfoForm onSubmit={submitAndNavigate} />
