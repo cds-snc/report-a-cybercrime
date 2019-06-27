@@ -4,7 +4,7 @@ import { navigate } from '@reach/router'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-
+import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { SuspectInfoForm } from './forms/SuspectInfoForm'
 
@@ -21,8 +21,14 @@ const submitAndNavigate = (client, data) => {
 export const SuspectInfoPage = () => (
   <CenterContent>
     <H1>
-      <Trans>Add scammer details.</Trans>
+      <Trans>Add scammer details</Trans>
     </H1>
+    <P>
+      <Trans>
+        Any clues about who might be responsible can help police identify
+        suspects.
+      </Trans>
+    </P>
     <TrackPageViews />
     <SuspectInfoForm onSubmit={submitAndNavigate} />
   </CenterContent>

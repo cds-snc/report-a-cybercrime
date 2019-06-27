@@ -32,7 +32,7 @@ describe('<ScamInfoForm />', () => {
     )
 
     const inputNode = getByLabelText('When did it happen?')
-    const nextButton = getByText(/Next/i)
+    const nextButton = getByText(/Continue/i)
 
     fillIn(inputNode, { with: 'in person' })
     clickOn(nextButton)

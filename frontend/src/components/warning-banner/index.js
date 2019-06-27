@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /** @jsx jsx **/
 import { css, jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
@@ -24,8 +25,8 @@ export const WarningBanner = props => {
       >
         <Text paddingLeft="10px" paddingRight="10px" textAlign="center">
           <Trans>
-            Warning! This is a prototype. No information you enter will be
-            investigated by the police.
+            Warning! This is a prototype. It won't actually submit your report
+            to the RCMP.
           </Trans>
         </Text>
       </Container>
