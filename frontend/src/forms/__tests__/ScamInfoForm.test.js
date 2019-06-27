@@ -31,7 +31,7 @@ describe('<ScamInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('How did this scam take place?')
+    const inputNode = getByLabelText('When did it happen?')
     const nextButton = getByText(/Next/i)
 
     fillIn(inputNode, { with: 'in person' })
