@@ -44,7 +44,7 @@ export const LandingPage = () => (
       <br />
     </ol>
     <p>
-      <ButtonLink color="black" mb={[3, null, 5]} to="ifvictimquestion">
+      <ButtonLink color="black" mb={[3, null, 5]} to="scaminfo">
         <Trans>Report now</Trans>
       </ButtonLink>
     </p>

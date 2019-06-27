@@ -2,8 +2,12 @@ import React from 'react'
 import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
+import { I18nProvider } from '@lingui/react'
 import { ContactInfoPage } from '../ContactInfoPage'
 import theme from '../theme'
+import en from '../../locale/en/messages.js'
+
+const catalogs = { en }
 
 describe('<ContactInfoPage />', () => {
   afterEach(cleanup)
@@ -12,7 +16,9 @@ describe('<ContactInfoPage />', () => {
     render(
       <ThemeProvider theme={theme}>
         <ApolloProvider client={{}}>
-          <ContactInfoPage />
+          <I18nProvider language={'en'} catalogs={catalogs}>
+            <ContactInfoPage />
+          </I18nProvider>
         </ApolloProvider>
       </ThemeProvider>,
     )

@@ -9,6 +9,7 @@
   "Amount": "Amount",
   "Amount: {lostAmount}": "Amount: {lostAmount}",
   "Are you a victim?": "Are you a victim?",
+  "Are you the victim?": "Are you the victim?",
   "Back": "Back",
   "Call 911": "Call 911",
   "Cancel Report": "Cancel Report",
@@ -133,6 +134,7 @@
   "Would you like to leave contact information for a potential follow-up?": "Would you like to leave contact information for a potential follow-up?",
   "Would you like to submit this report?": "Would you like to submit this report?",
   "Yes": "Yes",
+  "You are the victim: {userIsTheVictim}": "You are the victim: {userIsTheVictim}",
   "You can call the call centre": "You can call the call centre",
   "You can report online": "You can report online",
   "You may also want to contact the following other services:": "You may also want to contact the following other services:",
@@ -152,6 +154,7 @@
   "gift card": "gift card",
   "image and/or other files": "image and/or other files",
   "loading...": "loading...",
+  "no": "no",
   "other": "other",
   "phone": "phone",
   "report-cyber.ca": "report-cyber.ca",
@@ -160,5 +163,6 @@
   "website link": "website link",
   "what do you need to prepare in order to report the scam online:": "what do you need to prepare in order to report the scam online:",
   "what do you need to prepare in order to report the scam online?": "what do you need to prepare in order to report the scam online?",
+  "yes": "yes",
   "{0} files selected": "{0} files selected"
 }
