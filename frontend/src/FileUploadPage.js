@@ -44,7 +44,7 @@ export class FileUploadPage extends Component {
       <Container>
         <TrackPageViews />
         <H1 fontSize={[5, null, 6]} marginBottom="70px">
-          <Trans>Upload Evidence</Trans>
+          <Trans>Files and images</Trans>
         </H1>
         <Container
           width="300px"
@@ -60,7 +60,7 @@ export class FileUploadPage extends Component {
             paddingLeft="15px"
             paddingRight="15px"
           >
-            <Trans>Choose a file</Trans>
+            <Trans>Add a file</Trans>
           </FileUpload>
         </Container>
 
