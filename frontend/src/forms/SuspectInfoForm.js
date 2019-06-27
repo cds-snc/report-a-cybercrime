@@ -188,10 +188,6 @@ export const SuspectInfoForm = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <Button type="button" onClick={() => navigate('moneylost')}>
-                <Trans>Back</Trans>
-              </Button>
-
               <Button type="submit">
                 <Trans>Next</Trans>
               </Button>
@@ -208,10 +204,6 @@ export const SuspectInfoForm = ({ onSubmit }) => (
             >
               <ButtonLink type="button" color="black">
                 <Trans>Cancel Report</Trans>
-              </ButtonLink>
-
-              <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
-                <Trans>Save Report</Trans>
               </ButtonLink>
             </Container>
           </form>

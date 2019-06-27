@@ -2,7 +2,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
-import { H1 } from './components/header'
+import { P } from './components/paragraph'
+import { H1, H2 } from './components/header'
 import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 
@@ -15,38 +16,43 @@ export const LandingPage = () => (
   <CenterContent>
     <TrackPageViews />
     <H1 fontSize={[5, null, 6]}>
-      <Trans>Report a scam </Trans>
+      <Trans>Report a scam</Trans>
     </H1>
-
-    <p>
+    <P>
       <Trans>
         Tell the RCMP's National Cybercrime Coordination Unit (NC3) about a
-        scam. NC3 will analyze your report and work with police across Canada to
-        stop this from happening again. You will be asked to:
+        scam.
       </Trans>
-    </p>
-    <ol fontSize={[8, null, 8]}>
-      <li>
-        <Trans>describe what happened</Trans>
-      </li>
-      <br />
-      <li>
-        <Trans>specify if money was lost</Trans>
-      </li>
-      <br />
-      <li>
-        <Trans>add scammer details</Trans>
-      </li>
-      <br />
-      <li>
-        <Trans>upload supporting files</Trans>
-      </li>
-      <br />
-    </ol>
-    <p>
+    </P>
+    <P>
+      <Trans>
+        NC3 will analyze your report and work with police across Canada to stop
+        this from happening again.
+      </Trans>
+    </P>
+    <H2 fontSize={[4, null, 5]}>
+      <Trans>You will be asked to:</Trans>
+    </H2>
+    <P>
+      <ul fontSize={[8, null, 8]}>
+        <li>
+          <Trans>Describe what happened</Trans>
+        </li>
+        <li>
+          <Trans>Specify if money was lost</Trans>
+        </li>
+        <li>
+          <Trans>Add scammer details</Trans>
+        </li>
+        <li>
+          <Trans>Upload supporting files</Trans>
+        </li>
+      </ul>
+    </P>
+    <P>
       <ButtonLink color="black" mb={[3, null, 5]} to="ifvictimquestion">
         <Trans>Report now</Trans>
       </ButtonLink>
-    </p>
+    </P>
   </CenterContent>
 )

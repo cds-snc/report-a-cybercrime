@@ -66,7 +66,7 @@ export const ScamInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="whenWereYouContacted">
               <Text marginTop={[5, null, 6]}>
-                <Trans>When did it happen?</Trans>
+                <Trans>When did it take place?</Trans>
               </Text>
             </label>
             <div>
@@ -110,7 +110,7 @@ export const ScamInfoForm = ({ onSubmit }) => (
               <React.Fragment>
                 <label htmlFor="otherMethodOfContact">
                   <Text>
-                    <Trans>Other method of contact</Trans>
+                    <Trans>other channel</Trans>
                   </Text>
                 </label>
                 <div>
@@ -146,10 +146,6 @@ export const ScamInfoForm = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <Button type="button" onClick={() => navigate('/')}>
-                <Trans>Back</Trans>
-              </Button>
-
               <Button type="submit">
                 <Trans>Next</Trans>
               </Button>
@@ -166,10 +162,6 @@ export const ScamInfoForm = ({ onSubmit }) => (
             >
               <ButtonLink type="button" color="black">
                 <Trans>Cancel Report</Trans>
-              </ButtonLink>
-
-              <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
-                <Trans>Save Report</Trans>
               </ButtonLink>
             </Container>
           </form>
