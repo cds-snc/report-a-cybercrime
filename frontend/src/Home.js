@@ -4,7 +4,6 @@ import { Trans } from '@lingui/macro'
 import styled from '@emotion/styled'
 import { PhaseBanner } from './components/phase-banner'
 import { PageNotFound } from './PageNotFound'
-
 import { Urgency } from './Urgency'
 import { FileUploadPage } from './FileUploadPage'
 import { AmountOfInfoPage } from './amountOfInfoPage'
@@ -13,7 +12,6 @@ import { IdentityPage } from './identityPage'
 import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
-
 import { Suspectinfo } from './Suspectinfo'
 import { DemoPage } from './DemoPage'
 import { ScamInfoPage } from './ScamInfoPage'
@@ -52,7 +50,6 @@ export const Home = () => (
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
-
         <LandingPage path="/" />
         <ScamInfoPage path="/scaminfo" />
         <Suspectinfo path="/suspectinfoquestion" />

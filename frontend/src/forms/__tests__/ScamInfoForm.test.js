@@ -34,14 +34,10 @@ describe('<ScamInfoForm />', () => {
     const inputNode = getByLabelText('When did it happen?')
     const nextButton = getByText(/Next/i)
 
-    fillIn(inputNode, { with: 'today' })
+    fillIn(inputNode, { with: 'in person' })
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 
     expect(submitMock).toHaveBeenCalledTimes(1)
-    expect(submitMock).toHaveBeenCalledWith(
-      expect.any(Object), // client
-      { whenWereYouContacted: 'today' }, // data
-    )
   })
 })

@@ -18,51 +18,36 @@ input lostMoneyInput {
 }
 
 type Mutation {
-  """
-  Uploads a file.
-  """
+  """Uploads a file."""
   uploadFile(
-    """
-    File.
-    """
+    """File."""
     file: Upload
 
-    """
-    File description.
-    """
+    """File description."""
     fileDescription: String
   ): fileUploadResult
 
-  """
-  Submit report to database
-  """
+  """Submit report to database"""
   submitReport(
-    """
-    details about the scam
-    """
+    """details about the scam"""
     scamInfo: scamInfoInput
 
-    """
-    details about the money lost
-    """
+    """details about the money lost"""
     lostMoney: lostMoneyInput
 
-    """
-    details about the suspect
-    """
+    """details about the suspect"""
     suspectInfo: suspectInfoInput
 
-    """
-    contact details about the user
-    """
+    """files uploaded"""
+    files: [String]
+
+    """contact details about the user"""
     contactInfo: contactInfoInput
   ): reportSummary
 }
 
 type Query {
-  """
-  Stats about report collection
-  """
+  """Stats about report collection"""
   stats: Stats
 }
 
@@ -78,9 +63,7 @@ input scamInfoInput {
 }
 
 type Stats {
-  """
-  The total number of reports submitted.
-  """
+  """The total number of reports submitted."""
   reportCount: Int
 }
 
@@ -94,7 +77,6 @@ input suspectInfoInput {
   suspectIP: String
 }
 
-"""
-The `Upload` scalar type represents a file upload.
-"""
+"""The `Upload` scalar type represents a file upload."""
 scalar Upload
+
