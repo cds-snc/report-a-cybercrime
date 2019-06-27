@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-import { navigate } from '@reach/router'
+
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
@@ -19,7 +19,11 @@ import { Container } from '../components/container'
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
-const languages = [i18nMark('English'), i18nMark('French'), i18nMark('other')]
+const languages = [
+  i18nMark('English'),
+  i18nMark('French'),
+  i18nMark('Other language'),
+]
 
 const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
@@ -52,6 +56,51 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               />
             </div>
 
+            <label htmlFor="suspectEmail">
+              <Text marginTop={[4, null, 5]}>
+                <Trans>Email address</Trans>
+              </Text>
+            </label>
+            <div>
+              <Field
+                name="suspectEmail"
+                id="suspectEmail"
+                component={TextAreaAdapter}
+                height="25px"
+                width="300px"
+              />
+            </div>
+
+            <label htmlFor="suspectPhone">
+              <Text marginTop={[4, null, 5]}>
+                <Trans>Phone number</Trans>
+              </Text>
+            </label>
+            <div>
+              <Field
+                name="suspectPhone"
+                id="suspectPhone"
+                component={TextAreaAdapter}
+                height="25px"
+                width="300px"
+              />
+            </div>
+
+            <label htmlFor="suspectWebsite">
+              <Text marginTop={[4, null, 5]}>
+                <Trans>Website link</Trans>
+              </Text>
+            </label>
+            <div>
+              <Field
+                name="suspectWebsite"
+                id="suspectWebsite"
+                component={TextAreaAdapter}
+                height="25px"
+                width="300px"
+              />
+            </div>
+
             <label htmlFor="suspectAddress">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Address</Trans>
@@ -63,6 +112,21 @@ export const SuspectInfoForm = ({ onSubmit }) => (
                 id="suspectAddress"
                 component={TextAreaAdapter}
                 height="100px"
+                width="300px"
+              />
+            </div>
+
+            <label htmlFor="suspectIP">
+              <Text marginTop={[4, null, 5]}>
+                <Trans>IP address</Trans>
+              </Text>
+            </label>
+            <div>
+              <Field
+                name="suspectIP"
+                id="suspectIP"
+                component={TextAreaAdapter}
+                height="25px"
                 width="300px"
               />
             </div>
@@ -115,79 +179,15 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               ''
             )}
 
-            <label htmlFor="suspectPhone">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Phone number</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectPhone"
-                id="suspectPhone"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
-
-            <label htmlFor="suspectEmail">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Email address</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectEmail"
-                id="suspectEmail"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
-
-            <label htmlFor="suspectWebsite">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Website link</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectWebsite"
-                id="suspectWebsite"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
-
-            <label htmlFor="suspectIP">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>IP address</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectIP"
-                id="suspectIP"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
-
             <Container
               width="305px"
               marginTop={[3, null, 4]}
               css={css`
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: space-between;
               `}
             >
-              <Button type="button" onClick={() => navigate('moneylost')}>
-                <Trans>Back</Trans>
-              </Button>
-
               <Button type="submit">
                 <Trans>Next</Trans>
               </Button>
@@ -204,10 +204,6 @@ export const SuspectInfoForm = ({ onSubmit }) => (
             >
               <ButtonLink type="button" color="black">
                 <Trans>Cancel Report</Trans>
-              </ButtonLink>
-
-              <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
-                <Trans>Save Report</Trans>
               </ButtonLink>
             </Container>
           </form>

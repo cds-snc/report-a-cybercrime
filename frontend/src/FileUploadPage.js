@@ -44,7 +44,7 @@ export class FileUploadPage extends Component {
       <Container>
         <TrackPageViews />
         <H1 fontSize={[5, null, 6]} marginBottom="70px">
-          <Trans>Upload Evidence</Trans>
+          <Trans>Files and images</Trans>
         </H1>
         <Container
           width="300px"
@@ -60,7 +60,7 @@ export class FileUploadPage extends Component {
             paddingLeft="15px"
             paddingRight="15px"
           >
-            <Trans>Choose a file</Trans>
+            <Trans>Add a file</Trans>
           </FileUpload>
         </Container>
 
@@ -102,14 +102,10 @@ export class FileUploadPage extends Component {
                 marginTop={[7, null, 8]}
                 css={css`
                   display: flex;
-                  flex-direction: row;
+                  flex-direction: column;
                   justify-content: space-between;
                 `}
               >
-                <Button type="button" onClick={() => navigate('/suspectinfo')}>
-                  <Trans>Back</Trans>
-                </Button>
-
                 <Button onClick={() => this.submitAndNavigate(client)}>
                   <Trans>Next</Trans>
                 </Button>
@@ -126,14 +122,6 @@ export class FileUploadPage extends Component {
               >
                 <ButtonLink type="button" color="black">
                   <Trans>Cancel Report</Trans>
-                </ButtonLink>
-
-                <ButtonLink
-                  type="button"
-                  color="black"
-                  marginTop={[1, null, 1]}
-                >
-                  <Trans>Save Report</Trans>
                 </ButtonLink>
               </Container>
             </Container>

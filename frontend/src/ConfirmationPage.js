@@ -295,14 +295,10 @@ export const ConfirmationPage = () => (
       marginTop={[3, null, 4]}
       css={css`
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
       `}
     >
-      <Button type="button" onClick={() => navigate('/contactinfo')}>
-        <Trans>Back</Trans>
-      </Button>
-
       <Button type="submit" onClick={() => navigate('/thankyou')}>
         <Trans>Submit</Trans>
       </Button>
@@ -319,10 +315,6 @@ export const ConfirmationPage = () => (
     >
       <ButtonLink type="button" color="black">
         <Trans>Cancel Report</Trans>
-      </ButtonLink>
-
-      <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
-        <Trans>Save Report</Trans>
       </ButtonLink>
     </Container>
   </CenterContent>

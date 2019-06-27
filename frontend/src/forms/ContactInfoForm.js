@@ -79,7 +79,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="contactInfoEmail">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Email</Trans>
+                <Trans>Email address</Trans>
               </Text>
             </label>
             <div>
@@ -112,15 +112,11 @@ export const ContactInfoForm = ({ onSubmit }) => (
               marginTop={[3, null, 4]}
               css={css`
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: space-between;
               `}
             >
-              <Button type="button" onClick={() => navigate('/uploadfiles')}>
-                <Trans>Back</Trans>
-              </Button>
-
-              <Button type="submit">
+              <Button type="submit" onClick={() => navigate('/confirmation')}>
                 <Trans>Next</Trans>
               </Button>
             </Container>
