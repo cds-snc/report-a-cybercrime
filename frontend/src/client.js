@@ -50,6 +50,7 @@ cache.writeData({
 
     files: [],
 
+    userIsTheVictim: '',
     contactInfoName: '',
     contactInfoEmail: '',
     contactInfoPhone: '',

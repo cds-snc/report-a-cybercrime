@@ -224,19 +224,26 @@ const fileUploadSummary = client => {
 }
 const contactInfoSummary = client => {
   const {
+    userIsTheVictim,
     contactInfoName,
     contactInfoEmail,
     contactInfoPhone,
   } = client.readQuery({
     query: gql`
       query readCache {
+        userIsTheVictim
         contactInfoName
         contactInfoEmail
         contactInfoPhone
       }
     `,
   })
-  if (contactInfoName || contactInfoEmail || contactInfoPhone) {
+  if (
+    userIsTheVictim ||
+    contactInfoName ||
+    contactInfoEmail ||
+    contactInfoPhone
+  ) {
     return (
       <React.Fragment>
         <H2
@@ -246,6 +253,9 @@ const contactInfoSummary = client => {
         >
           <Trans>If the police have any questions</Trans>
         </H2>
+        <Text>
+          <Trans>You are the victim: {userIsTheVictim}</Trans>
+        </Text>
         <Text>
           <Trans>Name: {contactInfoName}</Trans>
         </Text>
@@ -285,14 +295,10 @@ export const ConfirmationPage = () => (
       marginTop={[3, null, 4]}
       css={css`
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
       `}
     >
-      <Button type="button" onClick={() => navigate('/contactinfo')}>
-        <Trans>Back</Trans>
-      </Button>
-
       <Button type="submit" onClick={() => navigate('/thankyou')}>
         <Trans>Submit</Trans>
       </Button>
@@ -309,10 +315,6 @@ export const ConfirmationPage = () => (
     >
       <ButtonLink type="button" color="black">
         <Trans>Cancel Report</Trans>
-      </ButtonLink>
-
-      <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
-        <Trans>Save Report</Trans>
       </ButtonLink>
     </Container>
   </CenterContent>

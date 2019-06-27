@@ -109,7 +109,7 @@ export class FileUploadPage extends Component {
                 marginTop={[7, null, 8]}
                 css={css`
                   display: flex;
-                  flex-direction: row;
+                  flex-direction: column;
                   justify-content: space-between;
                 `}
               >
