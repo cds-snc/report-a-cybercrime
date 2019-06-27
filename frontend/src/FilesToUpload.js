@@ -15,7 +15,7 @@ const CenterContent = styled('div')`
 
 const bottomBarContainer = css`
   display: flex;
-  width: 90%;
+  width: 50%;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;

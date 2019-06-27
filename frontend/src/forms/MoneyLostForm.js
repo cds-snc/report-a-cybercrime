@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-import { navigate } from '@reach/router'
+
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
@@ -130,7 +130,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               marginTop={[3, null, 4]}
               css={css`
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: space-between;
               `}
             >

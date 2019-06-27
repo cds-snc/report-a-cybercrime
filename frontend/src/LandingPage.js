@@ -29,6 +29,7 @@ export const LandingPage = () => (
         NC3 will analyze your report and work with police across Canada to stop
         this from happening again.
       </Trans>
+
     </P>
     <H2 fontSize={[4, null, 5]}>
       <Trans>You will be asked to:</Trans>
