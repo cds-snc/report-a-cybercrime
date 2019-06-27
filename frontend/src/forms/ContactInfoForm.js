@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
+
 import { css, jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -42,7 +43,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="contactInfoEmail">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Email</Trans>
+                <Trans>Email address</Trans>
               </Text>
             </label>
             <div>
@@ -75,14 +76,10 @@ export const ContactInfoForm = ({ onSubmit }) => (
               marginTop={[3, null, 4]}
               css={css`
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: space-between;
               `}
             >
-              <Button type="button">
-                <Trans>Back</Trans>
-              </Button>
-
               <Button type="submit">
                 <Trans>Next</Trans>
               </Button>

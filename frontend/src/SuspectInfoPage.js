@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-// import { navigate } from '@reach/router'
+import { navigate } from '@reach/router'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 
 import { TrackPageViews } from './TrackPageViews'
-import { SuspectInfo } from './forms/SuspectInfo'
+import { SuspectInfoForm } from './forms/SuspectInfoForm'
 
 const CenterContent = styled('div')`
   max-width: 750px;
@@ -14,17 +14,16 @@ const CenterContent = styled('div')`
 `
 
 const submitAndNavigate = (client, data) => {
-  window.alert(JSON.stringify(data))
-  // client.writeData({ data })
-  // navigate('/form3')
+  client.writeData({ data })
+  navigate('/moneylostquestion')
 }
 
 export const SuspectInfoPage = () => (
   <CenterContent>
     <H1>
-      <Trans>Suspect Information</Trans>
+      <Trans>Add scammer details.</Trans>
     </H1>
     <TrackPageViews />
-    <SuspectInfo onSubmit={submitAndNavigate} />
+    <SuspectInfoForm onSubmit={submitAndNavigate} />
   </CenterContent>
 )

@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet-async'
 import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TopBanner } from './components/topbanner'
+import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
 import { FooterLink } from './components/link'
 import { Content } from './components/container'
@@ -79,7 +80,9 @@ const App = () => (
                 `}
               />
               <ThemeProvider theme={theme}>
+                <WarningBanner />
                 <TopBanner lang={language} bg="black" />
+
                 <Content>
                   <Home />
                 </Content>
