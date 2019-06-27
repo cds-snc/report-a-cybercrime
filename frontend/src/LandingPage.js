@@ -39,18 +39,18 @@ export const LandingPage = () => (
           <Trans>Describe what happened</Trans>
         </li>
         <li>
-          <Trans>Specify if money was lost</Trans>
+          <Trans>Specify whether money was lost</Trans>
         </li>
         <li>
           <Trans>Add scammer details</Trans>
         </li>
         <li>
-          <Trans>Upload supporting files</Trans>
+          <Trans>Attach supporting files</Trans>
         </li>
       </ul>
     </P>
     <P>
-      <ButtonLink color="black" mb={[3, null, 5]} to="ifvictimquestion">
+      <ButtonLink color="black" mb={[3, null, 5]} to="scaminfo">
         <Trans>Report now</Trans>
       </ButtonLink>
     </P>
