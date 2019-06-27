@@ -39,7 +39,7 @@ export const LandingPage = () => (
       </h4>
     </ol>
     <p>
-      <ButtonLink color="black" mb={[3, null, 5]} to="/">
+      <ButtonLink color="black" mb={[3, null, 5]} to="/ifvictimquestion">
         <Trans>Report online</Trans>
       </ButtonLink>
     </p>

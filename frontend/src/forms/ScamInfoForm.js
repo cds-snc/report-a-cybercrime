@@ -138,7 +138,7 @@ export const ScamInfoForm = ({ onSubmit }) => (
             </Text>
 
             <Container
-              width="300px"
+              width="305px"
               marginTop={[1, null, 1]}
               css={css`
                 display: flex;
