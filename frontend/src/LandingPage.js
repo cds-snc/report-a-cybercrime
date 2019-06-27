@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
@@ -9,6 +10,7 @@ const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
 `
+
 export const LandingPage = () => (
   <CenterContent>
     <TrackPageViews />
