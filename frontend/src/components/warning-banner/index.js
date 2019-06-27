@@ -24,8 +24,8 @@ export const WarningBanner = props => {
       >
         <Text paddingLeft="10px" paddingRight="10px" textAlign="center">
           <Trans>
-            Warning! This is a prototype that won't actually submit your report
-            to RCMP.
+            Warning! This is a prototype. It won't actually submit your report
+            to the RCMP.
           </Trans>
         </Text>
       </Container>
