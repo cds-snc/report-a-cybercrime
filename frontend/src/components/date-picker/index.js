@@ -25,6 +25,6 @@ export const DateSelector = ({ value, onChange, locale, ...props }) => {
 
 DateSelector.propTypes = {
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.String,
   locale: PropTypes.string,
 }

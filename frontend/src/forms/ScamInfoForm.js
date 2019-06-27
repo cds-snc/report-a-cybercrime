@@ -49,13 +49,23 @@ export class ScamInfoForm extends Component {
     })
   }
 
-  render() {
+  localOnSubmit = (client, data) => {
     const { onSubmit } = this.props
+    // data.whenWereYouContacted = `${this.state.startDate}`.substr(0, 15)
+
+    data.whenWereYouContacted = this.state.startDate.toISOString().slice(0, 10)
+    console.log({ data })
+
+    onSubmit(client, data)
+  }
+
+  render() {
+    // const { onSubmit } = this.props
     return (
       <ApolloConsumer>
         {client => (
           <Form
-            onSubmit={data => onSubmit(client, data)}
+            onSubmit={data => this.localOnSubmit(client, data)}
             validate={validate}
             render={({ handleSubmit, values }) => (
               <form onSubmit={handleSubmit}>
