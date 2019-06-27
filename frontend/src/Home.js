@@ -13,7 +13,6 @@ import { IdentityPage } from './identityPage'
 import { Option1Page } from './Option1Page'
 import { Option2Page } from './Option2Page'
 import { Option3Page } from './Option3Page'
-
 import { Ifvictim } from './Ifvictim'
 import { Suspectinfo } from './Suspectinfo'
 import { DemoPage } from './DemoPage'
@@ -27,6 +26,7 @@ import { ThankYou } from './ThankYou'
 import { Willbecontacted } from './Willbecontacted'
 import { LandingPage } from './LandingPage'
 import { FilesToUpload } from './FilesToUpload'
+
 
 const Root = styled('div')`
   margin: 20pt;
@@ -53,7 +53,6 @@ export const Home = () => (
         <Urgency path="/urgency" />
         <AmountOfInfoPage path="/amountofinfo" />
         <IdentityPage path="/identity" />
-
         <LandingPage path="/" />
         <Ifvictim path="/ifvictimquestion" />
         <ScamInfoPage path="/scaminfo" />
