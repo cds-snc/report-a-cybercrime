@@ -23,13 +23,13 @@ export const Willbecontacted = () => (
         <Trans>Yes</Trans>
       </ButtonLink>
     </p>
-    <br />
+
     <p>
       <ButtonLink color="black" mb={[3, null, 5]} to="/confirmation">
         <Trans>No</Trans>
       </ButtonLink>
     </p>
-    <br />
+
     <p>
       <ButtonLink color="black" mb={[3, null, 5]} to="/">
         <Trans>Cancel Report</Trans>
