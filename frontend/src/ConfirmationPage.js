@@ -12,10 +12,18 @@ import { Text } from './components/text'
 import { Button } from './components/button'
 import { ButtonLink } from './components/button-link'
 import { TrackPageViews } from './TrackPageViews'
+import { Steps } from './components/stepper'
 
 const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
+`
+
+const topBarContainer = css`
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  margin-bottom: 20px;
 `
 
 const scamEventSummary = client => {
@@ -156,7 +164,9 @@ const suspectInfoSummary = client => {
     if (otherSuspectLanguage) {
       suspectLanguage = suspectLanguage.concat(otherSuspectLanguage)
     }
-    suspectLanguage = suspectLanguage.filter(s => s !== 'other').join(', ')
+    suspectLanguage = suspectLanguage
+      .filter(s => s !== 'Other language')
+      .join(', ')
     return (
       <React.Fragment>
         <H2
@@ -274,6 +284,9 @@ const contactInfoSummary = client => {
 
 export const ConfirmationPage = () => (
   <CenterContent>
+    <Container css={topBarContainer}>
+      <Steps activeStep={4} />
+    </Container>
     <H1>
       <Trans>Would you like to submit this report?</Trans>
     </H1>

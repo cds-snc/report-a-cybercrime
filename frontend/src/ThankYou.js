@@ -1,19 +1,32 @@
 /**@jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1, H2, H3 } from './components/header'
 import { P } from './components/paragraph'
 import { A } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
+import { Steps } from './components/stepper'
+import { Container } from './components/container'
 
 const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
 `
+
+const topBarContainer = css`
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  margin-bottom: 20px;
+`
+
 export const ThankYou = () => (
   <CenterContent>
     <TrackPageViews />
+    <Container css={topBarContainer}>
+      <Steps activeStep={4} />
+    </Container>
     <H1 fontSize={[5, null, 6]}>
       <Trans>Thank you for reporting</Trans>
     </H1>

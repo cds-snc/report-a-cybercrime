@@ -6,23 +6,32 @@ import { H1 } from './components/header'
 import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Container } from './components/container'
+import { Steps } from './components/stepper'
 
 const CenterContent = styled('div')`
   max-width: 750px;
   margin: AudioTrack;
 `
-
 const bottomBarContainer = css`
   display: flex;
-  width: 50%;
+  width: 90%;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 20px;
+`
+const topBarContainer = css`
+  display: flex;
+  width: 90%;
+  flex-direction: row;
   margin-bottom: 20px;
 `
 
 export const Willbecontacted = () => (
   <CenterContent>
     <TrackPageViews />
+    <Container css={topBarContainer}>
+      <Steps activeStep={4} />
+    </Container>
     <H1 fontSize={[5, null, 6]}>
       <Trans>
         If the police need more information, would you like to be contacted

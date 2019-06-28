@@ -7,10 +7,18 @@ import { Container } from './components/container'
 import followup from './images/followup.svg'
 import noFollowup from './images/nofollowup.svg'
 import { Link } from '@reach/router'
+import { Steps } from './components/stepper'
 
 const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
+`
+
+const topBarContainer = css`
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  margin-bottom: 20px;
 `
 
 const Card = styled('div')`
@@ -27,6 +35,9 @@ const Card = styled('div')`
 
 export const IdentityPage = () => (
   <CenterContent>
+    <Container css={topBarContainer}>
+      <Steps activeStep={4} />
+    </Container>
     <H1 fontSize={[5, null, 6]} mb={5}>
       <Trans>
         Would you like to leave contact information for a potential follow-up?

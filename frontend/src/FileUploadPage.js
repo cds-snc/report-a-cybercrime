@@ -1,8 +1,9 @@
-/** @jsx jsx */
+/**@jsx jsx */
+import { jsx, css } from '@emotion/core'
+import styled from '@emotion/styled'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
-import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Container } from './components/container'
 import { Text } from './components/text'
@@ -11,6 +12,21 @@ import { Button } from './components/button'
 import { ButtonLink } from './components/button-link'
 import { FileUpload } from './components/file-upload'
 import { TrackPageViews } from './TrackPageViews'
+
+import { Steps } from './components/stepper'
+
+const topBarContainer = css`
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  margin-bottom: 20px;
+`
+
+const CenterContent = styled('div')`
+  max-width: 750px;
+  margin: auto;
+`
+
 import { P } from './components/paragraph'
 
 export class FileUploadPage extends Component {
@@ -42,8 +58,11 @@ export class FileUploadPage extends Component {
     const { files } = this.state
 
     return (
-      <Container>
+      <CenterContent>
         <TrackPageViews />
+        <Container css={topBarContainer}>
+          <Steps activeStep={3} />
+        </Container>
         <H1 fontSize={[5, null, 6]} marginBottom="70px">
           <Trans>Upload supporting files</Trans>
         </H1>
@@ -134,7 +153,7 @@ export class FileUploadPage extends Component {
             </Container>
           )}
         </ApolloConsumer>
-      </Container>
+      </CenterContent>
     )
   }
 }
