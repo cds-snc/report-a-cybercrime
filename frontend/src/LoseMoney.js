@@ -14,14 +14,6 @@ const CenterContent = styled('div')`
   margin: auto;
 `
 
-const bottomBarContainer = css`
-  display: flex;
-  max-width: 300px;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 20px;
-`
-
 const topBarContainer = css`
   display: flex;
   width: 90%;
@@ -41,7 +33,14 @@ export const LoseMoney = () => (
     <P>
       <Trans>Did you lose money as a result of the scam?</Trans>
     </P>
-    <Container css={bottomBarContainer}>
+
+    <Container
+      display="flex"
+      maxWidth={['200px', null, '300px']}
+      flexDirection="row"
+      justifyContent="space-between"
+      marginBottom=""
+    >
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
