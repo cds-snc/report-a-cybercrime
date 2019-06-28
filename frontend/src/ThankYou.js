@@ -30,20 +30,6 @@ export const ThankYou = () => (
     <H1 fontSize={[5, null, 6]}>
       <Trans>Thank you for reporting</Trans>
     </H1>
-    <P>
-      <Trans>Your report has been submitted</Trans>
-    </P>
-    <H2>
-      <Trans>What happens next?</Trans>
-    </H2>
-    <P>
-      <Trans>
-        If your complaint becomes an investigation, an officer will be in touch
-      </Trans>
-    </P>
-    <H3>
-      <Trans>Helpful Links</Trans>
-    </H3>
     <P fontSize={[4, null, 5]}>
       <Trans>
         <strong>RCMP has received your report.</strong>
