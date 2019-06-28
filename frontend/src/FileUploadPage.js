@@ -12,6 +12,7 @@ import { Button } from './components/button'
 import { ButtonLink } from './components/button-link'
 import { FileUpload } from './components/file-upload'
 import { TrackPageViews } from './TrackPageViews'
+
 import { Steps } from './components/stepper'
 
 const topBarContainer = css`
@@ -25,6 +26,8 @@ const CenterContent = styled('div')`
   max-width: 750px;
   margin: auto;
 `
+
+import { P } from './components/paragraph'
 
 export class FileUploadPage extends Component {
   constructor(props) {
@@ -61,7 +64,7 @@ export class FileUploadPage extends Component {
           <Steps activeStep={3} />
         </Container>
         <H1 fontSize={[5, null, 6]} marginBottom="70px">
-          <Trans>Files and images</Trans>
+          <Trans>Upload supporting files</Trans>
         </H1>
         <Container
           width="300px"
@@ -77,12 +80,18 @@ export class FileUploadPage extends Component {
             paddingLeft="15px"
             paddingRight="15px"
           >
-            <Trans>Add a file</Trans>
+            <Trans>Attach file</Trans>
           </FileUpload>
         </Container>
-
+        <P>
+          <Trans>
+            {' '}
+            Supporting files could include copies of emails, text messages, and
+            receipts. Any documentation could serve as evidence for police.
+          </Trans>
+        </P>
         <H2 fontSize={[3, null, 5]} marginTop={[5, null, 6]}>
-          {files.length} <Trans>files selected</Trans>
+          {files.length} <Trans>files attached</Trans>
         </H2>
 
         <Container>

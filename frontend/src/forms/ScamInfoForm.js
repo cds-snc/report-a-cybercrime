@@ -34,7 +34,6 @@ const CheckboxStyle = styled('label')`
 const validate = () => {
   return {}
 }
-
 export class ScamInfoForm extends Component {
   state = {
     startDate: new Date(),
@@ -139,7 +138,7 @@ export class ScamInfoForm extends Component {
                   <React.Fragment>
                     <label htmlFor="otherMethodOfContact">
                       <Text>
-                        <Trans>Other method of contact</Trans>
+                        <Trans>Other channel</Trans>
                       </Text>
                     </label>
                     <div>
@@ -165,7 +164,6 @@ export class ScamInfoForm extends Component {
                     </Text>
                   )}
                 </Text>
-
                 <Container
                   width="305px"
                   marginTop={[1, null, 1]}
@@ -176,7 +174,7 @@ export class ScamInfoForm extends Component {
                   `}
                 >
                   <Button type="submit">
-                    <Trans>Next</Trans>
+                    <Trans>Continue</Trans>
                   </Button>
                 </Container>
 

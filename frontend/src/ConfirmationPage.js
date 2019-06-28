@@ -232,19 +232,26 @@ const fileUploadSummary = client => {
 }
 const contactInfoSummary = client => {
   const {
+    userIsTheVictim,
     contactInfoName,
     contactInfoEmail,
     contactInfoPhone,
   } = client.readQuery({
     query: gql`
       query readCache {
+        userIsTheVictim
         contactInfoName
         contactInfoEmail
         contactInfoPhone
       }
     `,
   })
-  if (contactInfoName || contactInfoEmail || contactInfoPhone) {
+  if (
+    userIsTheVictim ||
+    contactInfoName ||
+    contactInfoEmail ||
+    contactInfoPhone
+  ) {
     return (
       <React.Fragment>
         <H2
@@ -254,6 +261,9 @@ const contactInfoSummary = client => {
         >
           <Trans>If the police have any questions</Trans>
         </H2>
+        <Text>
+          <Trans>You are the victim: {userIsTheVictim}</Trans>
+        </Text>
         <Text>
           <Trans>Name: {contactInfoName}</Trans>
         </Text>

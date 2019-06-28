@@ -43,8 +43,8 @@ export const MoneyLostForm = ({ onSubmit }) => (
         render={({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="lostAmount">
-              <Text>
-                <Trans>How much did you lose?</Trans>
+              <Text marginTop={[4, null, 5]}>
+                <Trans>Amount</Trans>
               </Text>
             </label>
             <div>
@@ -76,6 +76,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               <Text marginTop={[4, null, 5]}>
                 <Trans>What method of payment was used?</Trans>
               </Text>
+              <br></br>
             </label>
             <div>
               <I18n>
@@ -103,7 +104,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               <React.Fragment>
                 <label htmlFor="lostOtherMethodOfPayment">
                   <Text>
-                    <Trans>Other method of payment</Trans>
+                    <Trans>Other</Trans>
                   </Text>
                 </label>
                 <div>

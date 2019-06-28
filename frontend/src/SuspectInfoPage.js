@@ -6,6 +6,7 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Container } from './components/container'
 import { Steps } from './components/stepper'
+import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { SuspectInfoForm } from './forms/SuspectInfoForm'
 
@@ -32,8 +33,14 @@ export const SuspectInfoPage = () => (
       <Steps activeStep={2} />
     </Container>
     <H1>
-      <Trans>Add scammer details.</Trans>
+      <Trans>Add scammer details</Trans>
     </H1>
+    <P>
+      <Trans>
+        Any clues about who might be responsible can help police identify
+        suspects.
+      </Trans>
+    </P>
     <TrackPageViews />
     <SuspectInfoForm onSubmit={submitAndNavigate} />
   </CenterContent>

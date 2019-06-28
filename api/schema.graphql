@@ -53,6 +53,11 @@ type Mutation {
     suspectInfo: suspectInfoInput
 
     """
+    files uploaded
+    """
+    files: [String]
+
+    """
     contact details about the user
     """
     contactInfo: contactInfoInput
