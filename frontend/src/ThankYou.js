@@ -2,7 +2,7 @@
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
-import { H1, H2, H3 } from './components/header'
+import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { A } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
@@ -53,9 +53,9 @@ export const ThankYou = () => (
     <P>
       <ul>
         <li>Report to the service provider where the scam took place.</li>
-        <br></br>
+        <br />
         <li>Report to your financial institution if you lost money.</li>
-        <br></br>
+        <br />
         <li>
           Report to{' '}
           <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
