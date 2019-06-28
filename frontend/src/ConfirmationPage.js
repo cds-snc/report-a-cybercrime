@@ -156,7 +156,9 @@ const suspectInfoSummary = client => {
     if (otherSuspectLanguage) {
       suspectLanguage = suspectLanguage.concat(otherSuspectLanguage)
     }
-    suspectLanguage = suspectLanguage.filter(s => s !== 'other').join(', ')
+    suspectLanguage = suspectLanguage
+      .filter(s => s !== 'Other language')
+      .join(', ')
     return (
       <React.Fragment>
         <H2

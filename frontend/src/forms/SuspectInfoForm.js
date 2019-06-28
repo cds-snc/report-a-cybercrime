@@ -158,7 +158,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
             </div>
 
             {values.suspectLanguage &&
-            values.suspectLanguage.indexOf('other') > -1 ? (
+            values.suspectLanguage.indexOf('Other language') > -1 ? (
               <React.Fragment>
                 <label htmlFor="otherSuspectLanguage">
                   <Text>
