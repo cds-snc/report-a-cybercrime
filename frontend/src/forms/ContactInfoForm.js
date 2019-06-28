@@ -38,30 +38,6 @@ export const ContactInfoForm = ({ onSubmit }) => (
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="userIsTheVictim">
-              <Text>
-                <Trans>Are you the victim?</Trans>
-              </Text>
-            </label>
-            <I18n>
-              {({ i18n }) =>
-                victimOptions.map(key => {
-                  return (
-                    <CheckboxStyle key={key}>
-                      <Field
-                        name="userIsTheVictim"
-                        id="userIsTheVictim"
-                        component={RadioButtonAdapter}
-                        type="radio"
-                        value={key}
-                        label={i18n._(key)}
-                      />
-                    </CheckboxStyle>
-                  )
-                })
-              }
-            </I18n>
-
             <label htmlFor="contactInfoName">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Name</Trans>
@@ -106,6 +82,30 @@ export const ContactInfoForm = ({ onSubmit }) => (
                 width="300px"
               />
             </div>
+
+            <label htmlFor="userIsTheVictim">
+              <Text marginTop={[4, null, 5]}>
+                <Trans>Are you the victim?</Trans>
+              </Text>
+            </label>
+            <I18n>
+              {({ i18n }) =>
+                victimOptions.map(key => {
+                  return (
+                    <CheckboxStyle key={key}>
+                      <Field
+                        name="userIsTheVictim"
+                        id="userIsTheVictim"
+                        component={RadioButtonAdapter}
+                        type="radio"
+                        value={key}
+                        label={i18n._(key)}
+                      />
+                    </CheckboxStyle>
+                  )
+                })
+              }
+            </I18n>
 
             <Container
               width="305px"
