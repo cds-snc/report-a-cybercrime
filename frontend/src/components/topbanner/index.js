@@ -3,19 +3,21 @@ import PropTypes from 'prop-types'
 import { jsx, css } from '@emotion/core'
 import { Query } from 'react-apollo'
 import { Container } from '../container'
-import GoCSignature from '../gocsig'
+
 import { LanguageSwitcher } from '../../LanguageSwitcher'
 import { GET_LANGUAGE_QUERY } from '../../utils/queriesAndMutations'
+import rcmpbrandingeng from '../../images/rcmpbrandingeng.svg'
+import rcmpbrandingfre from '../../images/rcmpbrandingfre.svg'
 
 export const TopBanner = props => {
-  const { lang, bg } = props
+  const { bg } = props
 
   return (
     <Query query={GET_LANGUAGE_QUERY}>
       {({ data: { language } }) => (
         <header>
           <Container
-            bg={bg}
+            bg={'blue'}
             display="flex"
             flexDirection="row"
             width={1}
@@ -24,7 +26,7 @@ export const TopBanner = props => {
             data-testid="background-color"
           >
             <Container ml={3} width={[250, null, 300]}>
-              <GoCSignature
+              {/* <GoCSignature
                 width="100%"
                 lang={lang}
                 flag="#fff"
@@ -32,6 +34,10 @@ export const TopBanner = props => {
                 css={css`
                   display: block;
                 `}
+              /> */}
+              <img
+                src={language === 'en' ? rcmpbrandingeng : rcmpbrandingfre}
+                alt="RCMP branding."
               />
             </Container>
             <Container
