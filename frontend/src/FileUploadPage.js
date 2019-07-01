@@ -11,7 +11,7 @@ import { Button } from './components/button'
 import { ButtonLink } from './components/button-link'
 import { FileUpload } from './components/file-upload'
 import { TrackPageViews } from './TrackPageViews'
-import Layout from './Layout'
+import { Layout } from './components/layout'
 
 import { Steps } from './components/stepper'
 

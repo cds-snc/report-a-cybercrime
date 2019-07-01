@@ -7,7 +7,7 @@ import { Steps } from './components/stepper'
 import { Container } from './components/container'
 import { TrackPageViews } from './TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
-import Layout from './Layout'
+import { Layout } from './components/layout'
 
 const topBarContainer = css`
   display: flex;

@@ -8,7 +8,7 @@ import { TrackPageViews } from './TrackPageViews'
 import { ScamInfoForm } from './forms/ScamInfoForm'
 import { Container } from './components/container'
 import { Steps } from './components/stepper'
-import Layout from './Layout'
+import { Layout } from './components/layout'
 
 const topBarContainer = css`
   display: flex;

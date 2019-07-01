@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container } from './components/container'
+import { Container } from '../container'
 
-const Layout = ({ children }) => (
+export const Layout = ({ children }) => (
   <Container maxWidth="650px" margin="auto">
     {children}
   </Container>
@@ -11,5 +11,3 @@ const Layout = ({ children }) => (
 Layout.propTypes = {
   children: PropTypes.any,
 }
-
-export default Layout

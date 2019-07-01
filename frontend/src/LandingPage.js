@@ -5,7 +5,7 @@ import { P } from './components/paragraph'
 import { H1, H2 } from './components/header'
 import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
-import Layout from './Layout'
+import { Layout } from './components/layout'
 
 export const LandingPage = () => (
   <Layout>

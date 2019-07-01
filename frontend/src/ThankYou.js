@@ -7,7 +7,7 @@ import { A } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
 import { Container } from './components/container'
-import Layout from './Layout'
+import { Layout } from './components/layout'
 
 const topBarContainer = css`
   display: flex;

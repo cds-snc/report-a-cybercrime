@@ -8,7 +8,7 @@ import { Steps } from './components/stepper'
 import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { SuspectInfoForm } from './forms/SuspectInfoForm'
-import Layout from './Layout'
+import { Layout } from './components/layout'
 
 const topBarContainer = css`
   display: flex;

@@ -12,7 +12,7 @@ import { Button } from './components/button'
 import { ButtonLink } from './components/button-link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
-import Layout from './Layout'
+import { Layout } from './components/layout'
 
 const topBarContainer = css`
   display: flex;
