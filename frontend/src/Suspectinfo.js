@@ -35,7 +35,7 @@ export const Suspectinfo = () => (
     <Container css={topBarContainer}>
       <Steps activeStep={2} />
     </Container>
-    <H1 fontSize={[5, null, 6]}>
+    <H1>
       <Trans>Add scammer details</Trans>
     </H1>
     <P>

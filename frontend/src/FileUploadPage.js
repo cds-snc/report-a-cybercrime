@@ -63,7 +63,7 @@ export class FileUploadPage extends Component {
         <Container css={topBarContainer}>
           <Steps activeStep={3} />
         </Container>
-        <H1 fontSize={[5, null, 6]} marginBottom="70px">
+        <H1 marginBottom="70px">
           <Trans>Upload supporting files</Trans>
         </H1>
         <Container

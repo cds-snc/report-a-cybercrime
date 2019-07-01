@@ -32,7 +32,7 @@ export const Willbecontacted = () => (
     <Container css={topBarContainer}>
       <Steps activeStep={4} />
     </Container>
-    <H1 fontSize={[5, null, 6]}>
+    <H1>
       <Trans>
         If the police need more information, would you like to be contacted
       </Trans>

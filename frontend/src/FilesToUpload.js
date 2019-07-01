@@ -34,7 +34,7 @@ export const FilesToUpload = () => (
       <Steps activeStep={3} />
     </Container>
     <TrackPageViews />
-    <H1 fontSize={[5, null, 6]}>
+    <H1>
       <Trans>Upload suppporting files</Trans>
     </H1>
     <P>

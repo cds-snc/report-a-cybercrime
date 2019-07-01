@@ -28,7 +28,7 @@ const Card = styled('div')`
 
 export const AmountOfInfoPage = () => (
   <CenterContent>
-    <H1 fontSize={[5, null, 6]} mb={5}>
+    <H1 mb={5}>
       <Trans>What information do you have to report?</Trans>
     </H1>
     <Container
