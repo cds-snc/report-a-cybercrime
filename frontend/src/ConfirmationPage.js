@@ -2,7 +2,6 @@
 import { css, jsx } from '@emotion/core'
 import React from 'react'
 import { navigate } from '@reach/router'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { ApolloConsumer } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -13,11 +12,7 @@ import { Button } from './components/button'
 import { ButtonLink } from './components/button-link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
+import Layout from './Layout'
 
 const topBarContainer = css`
   display: flex;
@@ -283,7 +278,7 @@ const contactInfoSummary = client => {
 }
 
 export const ConfirmationPage = () => (
-  <CenterContent>
+  <Layout>
     <Container css={topBarContainer}>
       <Steps activeStep={4} />
     </Container>
@@ -330,5 +325,5 @@ export const ConfirmationPage = () => (
         <Trans>Cancel Report</Trans>
       </ButtonLink>
     </Container>
-  </CenterContent>
+  </Layout>
 )

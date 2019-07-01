@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { navigate } from '@reach/router'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Container } from './components/container'
@@ -9,11 +8,7 @@ import { Steps } from './components/stepper'
 import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { SuspectInfoForm } from './forms/SuspectInfoForm'
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
+import Layout from './Layout'
 
 const topBarContainer = css`
   display: flex;
@@ -28,7 +23,7 @@ const submitAndNavigate = (client, data) => {
 }
 
 export const SuspectInfoPage = () => (
-  <CenterContent>
+  <Layout>
     <Container css={topBarContainer}>
       <Steps activeStep={2} />
     </Container>
@@ -43,5 +38,5 @@ export const SuspectInfoPage = () => (
     </P>
     <TrackPageViews />
     <SuspectInfoForm onSubmit={submitAndNavigate} />
-  </CenterContent>
+  </Layout>
 )

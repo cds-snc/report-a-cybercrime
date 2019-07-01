@@ -1,6 +1,5 @@
 /**@jsx jsx */
 import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
@@ -8,11 +7,7 @@ import { A } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
 import { Container } from './components/container'
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
+import Layout from './Layout'
 
 const topBarContainer = css`
   display: flex;
@@ -22,7 +17,7 @@ const topBarContainer = css`
 `
 
 export const ThankYou = () => (
-  <CenterContent>
+  <Layout>
     <TrackPageViews />
     <Container css={topBarContainer}>
       <Steps activeStep={4} />
@@ -64,5 +59,5 @@ export const ThankYou = () => (
         </li>
       </ul>
     </P>
-  </CenterContent>
+  </Layout>
 )
