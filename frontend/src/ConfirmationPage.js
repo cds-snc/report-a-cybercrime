@@ -78,6 +78,7 @@ const lostMoneySummary = client => {
   let {
     lostAmount,
     lostCurrency,
+    lostOtherCurrency,
     lostMethodsOfPayment,
     lostOtherMethodOfPayment,
   } = client.readQuery({
@@ -85,6 +86,7 @@ const lostMoneySummary = client => {
       query readCache {
         lostAmount
         lostCurrency
+        lostOtherCurrency
         lostMethodsOfPayment
         lostOtherMethodOfPayment
       }
@@ -116,7 +118,9 @@ const lostMoneySummary = client => {
           <Trans>Amount: {lostAmount}</Trans>
         </Text>
         <Text>
-          <Trans>Currency: {lostCurrency}</Trans>
+          <Trans>
+            Currency: {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
+          </Trans>
         </Text>
         <Text>
           <Trans>Method: {lostMethodsOfPayment}</Trans>
