@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Container } from './components/container'
 
 const Layout = ({ children }) => (
-  <Container maxWidth="750px" margin="auto">
+  <Container maxWidth="650px" margin="auto">
     {children}
   </Container>
 )
