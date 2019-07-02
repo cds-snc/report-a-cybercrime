@@ -20,7 +20,7 @@ describe('<TopBanner />', () => {
       </ApolloProvider>,
     )
     const test = getByRole('img')
-    expect(test.getAttribute('aria-label')).toBe('Government of Canada')
+    expect(test.getAttribute('alt')).toBe('Royal Canadian Mounted Police')
   })
 
   it('renders using the bg color prop correctly', () => {
