@@ -63,12 +63,13 @@ export class FileUploadPage extends Component {
         <Container css={topBarContainer}>
           <Steps activeStep={3} />
         </Container>
-        <H1 fontSize={[5, null, 6]} marginBottom="70px">
+        <H1 fontSize={[5, null, 6]}>
           <Trans>Upload supporting files</Trans>
         </H1>
         <Container
           width="300px"
-          marginBottom={[2, null, 3]}
+          marginTop={[2, null, 5]}
+          marginBottom={[2, null, 5]}
           css={css`
             display: flex;
             flex-direction: row;
@@ -90,7 +91,10 @@ export class FileUploadPage extends Component {
             receipts. Any documentation could serve as evidence for police.
           </Trans>
         </P>
-        <H2 fontSize={[3, null, 5]} marginTop={[5, null, 6]}>
+
+        <hr />
+
+        <H2 fontSize={[3, null, 5]}>
           {files.length} <Trans>files attached</Trans>
         </H2>
 
