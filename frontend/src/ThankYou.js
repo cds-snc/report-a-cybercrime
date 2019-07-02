@@ -61,7 +61,7 @@ export const ThankYou = () => (
         <br />
         <li>
           <Trans>
-            Report to both credit bureaus,{' '}
+            Report to the credit bureaus,{' '}
             <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
             <A href="https://www.transunion.ca/">TransUnion</A>, if your
             identity was stolen.
