@@ -9,6 +9,7 @@
     "heroku-postbuild": "NODE_ENV=production lingui extract && lingui compile && razzle build",
     "dbg": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test": "jest",
+    "test-all": "npm run lint && npm run check-translations && npm run coverage",
     "coverage": "jest",
     "lint": "eslint 'src/**/*.js'",
     "start": "NODE_ENV=production node build/server.js",
