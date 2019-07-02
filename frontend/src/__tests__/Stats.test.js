@@ -84,6 +84,7 @@ describe('<Stats/>', () => {
 
       let dates = data.map(d => d.date)
       expect(chartLabels).toContain(...dates)
+      /* eslint-disable require-atomic-updates */
       console.warn = warn
       /* eslint-enable no-console */
     })
@@ -120,6 +121,7 @@ describe('<Stats/>', () => {
   describe('when an error is raised', () => {
     it('displays an error message instead of the child', async () => {
       /* eslint-disable no-console */
+      /* eslint-disable require-atomic-updates */
       let warn = console.warn
       console.warn = jest.fn()
       let failureMock = [
