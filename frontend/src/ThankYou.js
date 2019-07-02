@@ -22,7 +22,7 @@ export const ThankYou = () => (
     <Container css={topBarContainer}>
       <Steps activeStep={4} />
     </Container>
-    <H1 fontSize={[5, null, 6]}>
+    <H1>
       <Trans>Thank you for reporting</Trans>
     </H1>
     <P fontSize={[4, null, 5]}>

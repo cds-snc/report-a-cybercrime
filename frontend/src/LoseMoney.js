@@ -22,7 +22,7 @@ export const LoseMoney = () => (
     <Container css={topBarContainer}>
       <Steps activeStep={1} />
     </Container>
-    <H1 fontSize={[5, null, 6]}>
+    <H1>
       <Trans>Specify money lost</Trans>
     </H1>
     <P>
