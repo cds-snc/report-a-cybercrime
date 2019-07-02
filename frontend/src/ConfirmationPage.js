@@ -312,7 +312,7 @@ export const ConfirmationPage = () => (
       `}
     >
       <Button type="submit" onClick={() => navigate('/thankyou')}>
-        <Trans>Submit</Trans>
+        <Trans>Submit report</Trans>
       </Button>
     </Container>
 
@@ -326,7 +326,7 @@ export const ConfirmationPage = () => (
       `}
     >
       <Link type="button" color="black" to="/" textAlign="center">
-        <Trans>Cancel Report</Trans>
+        <Trans>Cancel report</Trans>
       </Link>
     </Container>
   </Layout>

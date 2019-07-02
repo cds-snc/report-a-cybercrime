@@ -103,7 +103,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="suspectAddress">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Address</Trans>
+                <Trans>Mailing address</Trans>
               </Text>
             </label>
             <div>
@@ -133,7 +133,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="suspectLanguage">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Language</Trans>
+                <Trans>Language of communications</Trans>
               </Text>
             </label>
             <div>

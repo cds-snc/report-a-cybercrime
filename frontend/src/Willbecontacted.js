@@ -2,6 +2,7 @@
 import { jsx, css } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Container } from './components/container'
@@ -22,10 +23,13 @@ export const Willbecontacted = () => (
       <Steps activeStep={4} />
     </Container>
     <H1>
-      <Trans>
-        If the police need more information, would you like to be contacted
-      </Trans>
+      <Trans>Leave your contact information</Trans>
     </H1>
+    <P>
+      <Trans>
+        Would you like to be contacted, should the police need more information?
+      </Trans>
+    </P>
 
     <Container
       display="flex"

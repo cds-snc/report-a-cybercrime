@@ -27,7 +27,7 @@ export const ContactInfoPage = () => (
       <Steps activeStep={4} />
     </Container>
     <H1>
-      <Trans>Enter your contact information</Trans>
+      <Trans>Leave your contact information</Trans>
     </H1>
     <TrackPageViews />
     <ContactInfoForm onSubmit={submitAndNavigate} />
