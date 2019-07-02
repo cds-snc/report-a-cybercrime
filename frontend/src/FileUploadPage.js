@@ -1,6 +1,5 @@
 /**@jsx jsx */
 import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
@@ -12,6 +11,7 @@ import { Button } from './components/button'
 import { ButtonLink } from './components/button-link'
 import { FileUpload } from './components/file-upload'
 import { TrackPageViews } from './TrackPageViews'
+import { Layout } from './components/layout'
 
 import { Steps } from './components/stepper'
 
@@ -20,11 +20,6 @@ const topBarContainer = css`
   width: 90%;
   flex-direction: row;
   margin-bottom: 20px;
-`
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
 `
 
 import { P } from './components/paragraph'
@@ -58,7 +53,7 @@ export class FileUploadPage extends Component {
     const { files } = this.state
 
     return (
-      <CenterContent>
+      <Layout>
         <TrackPageViews />
         <Container css={topBarContainer}>
           <Steps activeStep={3} />
@@ -157,7 +152,7 @@ export class FileUploadPage extends Component {
             </Container>
           )}
         </ApolloConsumer>
-      </CenterContent>
+      </Layout>
     )
   }
 }

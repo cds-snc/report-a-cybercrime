@@ -1,17 +1,12 @@
 /**@jsx jsx */
 import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Container } from './components/container'
 import { Steps } from './components/stepper'
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: AudioTrack;
-`
+import { Layout } from './components/layout'
 
 const topBarContainer = css`
   display: flex;
@@ -21,7 +16,7 @@ const topBarContainer = css`
 `
 
 export const Willbecontacted = () => (
-  <CenterContent>
+  <Layout>
     <TrackPageViews />
     <Container css={topBarContainer}>
       <Steps activeStep={4} />
@@ -54,5 +49,5 @@ export const Willbecontacted = () => (
         <Trans>No</Trans>
       </ButtonLink>
     </Container>
-  </CenterContent>
+  </Layout>
 )

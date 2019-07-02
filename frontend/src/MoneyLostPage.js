@@ -2,7 +2,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { navigate } from '@reach/router'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Container } from './components/container'
@@ -10,11 +9,8 @@ import { Steps } from './components/stepper'
 import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { MoneyLostForm } from './forms/MoneyLostForm'
+import { Layout } from './components/layout'
 
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
 const topBarContainer = css`
   display: flex;
   width: 90%;
@@ -28,7 +24,7 @@ const submitAndNavigate = (client, data) => {
 }
 
 export const MoneyLostPage = () => (
-  <CenterContent>
+  <Layout>
     <Container css={topBarContainer}>
       <Steps activeStep={1} />
     </Container>
@@ -43,5 +39,5 @@ export const MoneyLostPage = () => (
     </P>
     <TrackPageViews />
     <MoneyLostForm onSubmit={submitAndNavigate} />
-  </CenterContent>
+  </Layout>
 )
