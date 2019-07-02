@@ -8,7 +8,7 @@ import { Container } from './components/container'
 import { Text } from './components/text'
 import { H1, H2 } from './components/header'
 import { Button } from './components/button'
-import { ButtonLink } from './components/button-link'
+import { Link } from './components/link'
 import { FileUpload } from './components/file-upload'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
@@ -145,9 +145,9 @@ export class FileUploadPage extends Component {
                   justify-content: space-between;
                 `}
               >
-                <ButtonLink type="button" color="black">
+                <Link type="button" color="black" to="/" textAlign="center">
                   <Trans>Cancel Report</Trans>
-                </ButtonLink>
+                </Link>
               </Container>
             </Container>
           )}

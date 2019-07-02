@@ -11,7 +11,7 @@ import { Checkbox } from '../components/checkbox'
 import { Container } from '../components/container'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
-import { ButtonLink } from '../components/button-link'
+import { Link } from '../components/link'
 import { Text } from '../components/text'
 import { DateSelector } from '../components/date-picker'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
@@ -187,9 +187,9 @@ export class ScamInfoForm extends Component {
                     justify-content: space-between;
                   `}
                 >
-                  <ButtonLink type="button" color="black">
+                  <Link type="button" color="black" to="/" textAlign="center">
                     <Trans>Cancel Report</Trans>
-                  </ButtonLink>
+                  </Link>
                 </Container>
               </form>
             )}
