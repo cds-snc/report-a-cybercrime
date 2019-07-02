@@ -23,7 +23,7 @@ export const FilesToUpload = () => (
     </Container>
     <TrackPageViews />
     <H1 fontSize={[5, null, 6]}>
-      <Trans>Upload suppporting files</Trans>
+      <Trans>Upload supporting files</Trans>
     </H1>
     <P>
       <Trans>
