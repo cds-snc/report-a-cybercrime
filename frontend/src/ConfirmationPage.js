@@ -9,7 +9,7 @@ import { H1, H2 } from './components/header'
 import { Container } from './components/container'
 import { Text } from './components/text'
 import { Button } from './components/button'
-import { ButtonLink } from './components/button-link'
+import { Link } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
@@ -325,9 +325,9 @@ export const ConfirmationPage = () => (
         justify-content: space-between;
       `}
     >
-      <ButtonLink type="button" color="black">
+      <Link type="button" color="black" to="/" textAlign="center">
         <Trans>Cancel Report</Trans>
-      </ButtonLink>
+      </Link>
     </Container>
   </Layout>
 )
