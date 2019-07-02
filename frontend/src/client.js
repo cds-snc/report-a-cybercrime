@@ -28,6 +28,33 @@ const cache = new InMemoryCache()
 cache.writeData({
   data: {
     language: getLanguage(),
+
+    howWereYouContacted: [],
+    otherMethodOfContact: '',
+    whenWereYouContacted: '',
+    scamDetails: '',
+
+    lostAmount: '',
+    lostCurrency: '',
+    lostOtherCurrency: '',
+    lostMethodsOfPayment: [],
+    lostOtherMethodOfPayment: '',
+
+    suspectName: '',
+    suspectAddress: '',
+    suspectLanguage: [],
+    otherSuspectLanguage: '',
+    suspectPhone: '',
+    suspectEmail: '',
+    suspectWebsite: '',
+    suspectIP: '',
+
+    files: [],
+
+    userIsTheVictim: '',
+    contactInfoName: '',
+    contactInfoEmail: '',
+    contactInfoPhone: '',
   },
 })
 

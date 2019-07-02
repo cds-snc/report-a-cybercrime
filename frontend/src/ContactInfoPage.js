@@ -1,30 +1,35 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
-// import { navigate } from '@reach/router'
-import styled from '@emotion/styled'
+import { jsx, css } from '@emotion/core'
+import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-
+import { Steps } from './components/stepper'
+import { Container } from './components/container'
 import { TrackPageViews } from './TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
+import { Layout } from './components/layout'
 
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
+const topBarContainer = css`
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  margin-bottom: 20px;
 `
 
 const submitAndNavigate = (client, data) => {
-  window.alert(JSON.stringify(data))
-  // client.writeData({ data })
-  // navigate('/form3')
+  client.writeData({ data })
+  navigate('/confirmation')
 }
 
 export const ContactInfoPage = () => (
-  <CenterContent>
+  <Layout>
+    <Container css={topBarContainer}>
+      <Steps activeStep={4} />
+    </Container>
     <H1>
-      <Trans>Share your contact information</Trans>
+      <Trans>Enter your contact information</Trans>
     </H1>
     <TrackPageViews />
     <ContactInfoForm onSubmit={submitAndNavigate} />
-  </CenterContent>
+  </Layout>
 )

@@ -1,30 +1,42 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
-// import { navigate } from '@reach/router'
-import styled from '@emotion/styled'
+import { jsx, css } from '@emotion/core'
+import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-
+import { Container } from './components/container'
+import { Steps } from './components/stepper'
+import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
-import { SuspectInfo } from './forms/SuspectInfo'
+import { SuspectInfoForm } from './forms/SuspectInfoForm'
+import { Layout } from './components/layout'
 
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
+const topBarContainer = css`
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  margin-bottom: 20px;
 `
 
 const submitAndNavigate = (client, data) => {
-  window.alert(JSON.stringify(data))
-  // client.writeData({ data })
-  // navigate('/form3')
+  client.writeData({ data })
+  navigate('/uploadfilesquestion')
 }
 
 export const SuspectInfoPage = () => (
-  <CenterContent>
+  <Layout>
+    <Container css={topBarContainer}>
+      <Steps activeStep={2} />
+    </Container>
     <H1>
-      <Trans>Suspect Information</Trans>
+      <Trans>Add scammer details</Trans>
     </H1>
+    <P>
+      <Trans>
+        Any clues about who might be responsible can help police identify
+        suspects.
+      </Trans>
+    </P>
     <TrackPageViews />
-    <SuspectInfo onSubmit={submitAndNavigate} />
-  </CenterContent>
+    <SuspectInfoForm onSubmit={submitAndNavigate} />
+  </Layout>
 )
