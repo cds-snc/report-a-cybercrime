@@ -49,8 +49,7 @@ export const ThankYou = () => (
       <ul>
         <li>
           <Trans>
-            Report directly to the website where the scam took place, if it
-            happened online.
+            Report directly to the website where the scam took place.
           </Trans>
         </li>
         <br />
