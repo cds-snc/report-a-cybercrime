@@ -60,6 +60,7 @@ server
 
         lostAmount: '',
         lostCurrency: '',
+        lostOtherCurrency: '',
         lostMethodsOfPayment: [],
         lostOtherMethodOfPayment: '',
 

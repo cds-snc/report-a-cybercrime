@@ -12,13 +12,7 @@ const CenterContent = styled('div')`
   max-width: 750px;
   margin: AudioTrack;
 `
-const bottomBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 20px;
-`
+
 const topBarContainer = css`
   display: flex;
   width: 90%;
@@ -38,11 +32,25 @@ export const Willbecontacted = () => (
       </Trans>
     </H1>
 
-    <Container css={bottomBarContainer}>
-      <ButtonLink mb={[3, null, 5]} to="/contactinfo">
+    <Container
+      display="flex"
+      maxWidth={['200px', null, '300px']}
+      flexDirection="row"
+      justifyContent="space-between"
+      marginBottom=""
+    >
+      <ButtonLink
+        width={['40px', null, '50px']}
+        textAlign="center"
+        to="/contactinfo"
+      >
         <Trans>Yes</Trans>
       </ButtonLink>
-      <ButtonLink mb={[3, null, 5]} to="/confirmation">
+      <ButtonLink
+        width={['40px', null, '50px']}
+        textAlign="center"
+        to="/confirmation"
+      >
         <Trans>No</Trans>
       </ButtonLink>
     </Container>

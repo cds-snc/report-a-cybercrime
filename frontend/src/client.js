@@ -36,6 +36,7 @@ cache.writeData({
 
     lostAmount: '',
     lostCurrency: '',
+    lostOtherCurrency: '',
     lostMethodsOfPayment: [],
     lostOtherMethodOfPayment: '',
 

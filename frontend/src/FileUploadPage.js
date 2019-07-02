@@ -68,7 +68,8 @@ export class FileUploadPage extends Component {
         </H1>
         <Container
           width="300px"
-          marginBottom={[2, null, 3]}
+          marginTop={[2, null, 5]}
+          marginBottom={[2, null, 5]}
           css={css`
             display: flex;
             flex-direction: row;
@@ -90,7 +91,10 @@ export class FileUploadPage extends Component {
             receipts. Any documentation could serve as evidence for police.
           </Trans>
         </P>
-        <H2 fontSize={[3, null, 5]} marginTop={[5, null, 6]}>
+
+        <hr />
+
+        <H2 fontSize={[3, null, 5]}>
           {files.length} <Trans>files attached</Trans>
         </H2>
 
