@@ -27,7 +27,7 @@ export const ScamInfoPage = () => (
     <Container css={topBarContainer}>
       <Steps activeStep={0} />
     </Container>
-    <H1>
+    <H1 role="banner">
       <Trans>Describe the scam</Trans>
     </H1>
     <P>
