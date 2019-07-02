@@ -26,9 +26,9 @@
     "express-graphql": "^0.8.0",
     "graphql": "^14.3.1",
     "graphql-custom-types": "^1.5.0",
-    "graphql-upload": "^8.0.6",
+    "graphql-upload": "^8.0.7",
     "lodash.unionby": "^4.8.0",
-    "minio": "^7.0.8",
+    "minio": "^7.0.10",
     "moment": "^2.24.0",
     "moment-range": "^4.0.2",
     "uuid": "^3.3.2"
