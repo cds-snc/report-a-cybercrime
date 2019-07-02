@@ -11,7 +11,7 @@ import { Container } from '../components/container'
 import { Checkbox } from '../components/checkbox'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
-import { ButtonLink } from '../components/button-link'
+import { Link } from '../components/link'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
@@ -144,9 +144,9 @@ export const MoneyLostForm = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <ButtonLink type="button" color="black">
+              <Link type="button" color="black" to="/" textAlign="center">
                 <Trans>Cancel Report</Trans>
-              </ButtonLink>
+              </Link>
             </Container>
           </form>
         )}

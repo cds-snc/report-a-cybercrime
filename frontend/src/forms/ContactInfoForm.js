@@ -10,6 +10,7 @@ import { Container } from '../components/container'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { ButtonLink } from '../components/button-link'
+import { Link } from '../components/link'
 import { RadioButton } from '../components/radio-button'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
@@ -130,9 +131,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <ButtonLink type="button" color="black">
+              <Link type="button" color="black" to="/" textAlign="center">
                 <Trans>Cancel Report</Trans>
-              </ButtonLink>
+              </Link>
 
               <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
                 <Trans>Save Report</Trans>
