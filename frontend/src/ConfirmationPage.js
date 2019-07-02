@@ -51,7 +51,7 @@ const scamEventSummary = client => {
     return (
       <React.Fragment>
         <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
-          <Trans>Scam event</Trans>
+          <Trans>Scam</Trans>
         </H2>
         <Text>
           <Trans>Contacted by: {howWereYouContacted}</Trans>
@@ -287,7 +287,7 @@ export const ConfirmationPage = () => (
       <Steps activeStep={4} />
     </Container>
     <H1>
-      <Trans>Would you like to submit this report?</Trans>
+      <Trans>Confirm report information</Trans>
     </H1>
     <TrackPageViews />
     <ApolloConsumer>
