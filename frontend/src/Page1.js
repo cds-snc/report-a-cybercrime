@@ -13,7 +13,7 @@ const CenterContent = styled('div')`
 export const Page1 = () => (
   <CenterContent>
     <TrackPageViews />
-    <H1 fontSize={[5, null, 6]}>
+    <H1>
       <Trans>{'Report a scam or an online crime'}</Trans>
     </H1>
     <H2 fontSize={[3, null, 4]}>

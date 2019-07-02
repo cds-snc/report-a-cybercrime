@@ -15,7 +15,7 @@ const CenterContent = styled('div')`
 export const LandingPage = () => (
   <CenterContent>
     <TrackPageViews />
-    <H1 fontSize={[5, null, 6]}>
+    <H1>
       <Trans>Report a scam</Trans>
     </H1>
     <P>
