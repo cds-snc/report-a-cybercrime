@@ -188,7 +188,7 @@ export class ScamInfoForm extends Component {
                   `}
                 >
                   <Link type="button" color="black" to="/" textAlign="center">
-                    <Trans>Cancel Report</Trans>
+                    <Trans>Cancel report</Trans>
                   </Link>
                 </Container>
               </form>

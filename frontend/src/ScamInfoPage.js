@@ -31,9 +31,11 @@ export const ScamInfoPage = () => (
       <Trans>Describe the scam</Trans>
     </H1>
     <P>
-      Provide as many details as possible so your report can be linked to
-      similar reports. More details will help build a stronger case for
-      investigating it.
+      <Trans>
+        Provide as many details as possible so your report can be linked to
+        similar reports. More details will help build a stronger case for
+        investigating it.
+      </Trans>
     </P>
     <TrackPageViews />
     <ScamInfoForm onSubmit={submitAndNavigate} />
