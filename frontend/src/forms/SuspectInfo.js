@@ -66,7 +66,7 @@ export const SuspectInfo = ({ onSubmit }) => (
               />
             </div>
 
-            <label htmlFor="suspectLanguage">
+            <label id="languageLabel" htmlFor="suspectLanguage">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Language</Trans>
               </Text>
@@ -80,6 +80,7 @@ export const SuspectInfo = ({ onSubmit }) => (
                         <Field
                           name="suspectLanguage"
                           id="suspectLanguage"
+                          aria-labelledby="languageLabel"
                           component={CheckboxAdapter}
                           type="checkbox"
                           value={key}
