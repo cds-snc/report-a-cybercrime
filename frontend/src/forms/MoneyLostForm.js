@@ -144,7 +144,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               <React.Fragment>
                 <label htmlFor="lostOtherMethodOfPayment">
                   <Text>
-                    <Trans>Other</Trans>
+                    <Trans>other</Trans>
                   </Text>
                 </label>
                 <div>
@@ -171,7 +171,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               `}
             >
               <Button type="submit">
-                <Trans>Next</Trans>
+                <Trans>Continue</Trans>
               </Button>
             </Container>
 
@@ -185,7 +185,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               `}
             >
               <Link type="button" color="black" to="/" textAlign="center">
-                <Trans>Cancel Report</Trans>
+                <Trans>Cancel report</Trans>
               </Link>
             </Container>
           </form>
