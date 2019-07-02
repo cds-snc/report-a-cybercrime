@@ -1,12 +1,16 @@
 {
   "urls": [
     "",
-    "ifvictim",
-    "Suspectinfo",
-    "otherflow",
-    "moneylost",
+    "scaminfo",
+    "suspectinfoquestion",
     "suspectinfo",
+    "moneylostquestion",
+    "moneylost",
+    "uploadfilesquestion",
+    "uploadfiles",
+    "contactinfoquestion",
     "contactinfo",
-    "filestoupload"
+    "confirmation",
+    "thankyou"
   ]
 }
