@@ -145,7 +145,6 @@ export const SuspectInfoForm = ({ onSubmit }) => (
                         <Field
                           name="suspectLanguage"
                           id="suspectLanguage"
-                          aria-labelledby="languageLabel"
                           component={CheckboxAdapter}
                           type="checkbox"
                           value={key}
