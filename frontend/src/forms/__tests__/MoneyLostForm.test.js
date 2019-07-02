@@ -32,7 +32,7 @@ describe('<MoneyLostForm /> form', () => {
     )
 
     const inputNode = getByLabelText('Amount')
-    const nextButton = getByText(/Next/i)
+    const nextButton = getByText(/Continue/i)
 
     fillIn(inputNode, { with: '$10,000' })
     clickOn(nextButton)

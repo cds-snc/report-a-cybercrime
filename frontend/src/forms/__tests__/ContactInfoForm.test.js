@@ -18,7 +18,7 @@ const clickOn = element => fireEvent.click(element)
 describe('<ContactInfoForm />', () => {
   afterEach(cleanup)
 
-  it('calls the onSubmit function when the form is submitted', async () => {
+  it.only('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
     const { getByLabelText, getByText } = render(
@@ -31,8 +31,8 @@ describe('<ContactInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('Name')
-    const nextButton = getByText(/Next/i)
+    const inputNode = getByLabelText('Full name')
+    const nextButton = getByText(/Continue/i)
 
     fillIn(inputNode, { with: 'Mallory' })
     clickOn(nextButton)
