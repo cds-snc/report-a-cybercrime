@@ -9,6 +9,7 @@ import { I18n, i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { Container } from '../components/container'
 import { Checkbox } from '../components/checkbox'
+import { RadioButton } from '../components/radio-button'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { ButtonLink } from '../components/button-link'
@@ -17,12 +18,20 @@ import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
+const RadioButtonAdapter = finalFormAdapter(RadioButton)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
 const methodsOfPayment = [
   i18nMark('credit card'),
   i18nMark('cash'),
   i18nMark('gift card'),
+  i18nMark('other'),
+]
+
+const currencies = [
+  i18nMark('Canadian dollar'),
+  i18nMark('US dollar'),
+  i18nMark('Euros'),
   i18nMark('other'),
 ]
 
@@ -62,15 +71,46 @@ export const MoneyLostForm = ({ onSubmit }) => (
                 <Trans>Currency</Trans>
               </Text>
             </label>
-            <div>
-              <Field
-                name="lostCurrency"
-                id="lostCurrency"
-                component={TextAreaAdapter}
-                height="25px"
-                width="200px"
-              />
-            </div>
+            <I18n>
+              {({ i18n }) =>
+                currencies.map(key => {
+                  return (
+                    <CheckboxStyle key={key}>
+                      <Field
+                        name="lostCurrency"
+                        id="lostCurrency"
+                        component={RadioButtonAdapter}
+                        type="radio"
+                        value={key}
+                        label={i18n._(key)}
+                      />
+                    </CheckboxStyle>
+                  )
+                })
+              }
+            </I18n>
+
+            {values.lostCurrency &&
+            values.lostCurrency.indexOf('other') > -1 ? (
+              <React.Fragment>
+                <label htmlFor="lostOtherCurrency">
+                  <Text>
+                    <Trans>Other</Trans>
+                  </Text>
+                </label>
+                <div>
+                  <Field
+                    name="lostOtherCurrency"
+                    id="lostOtherCurrency"
+                    component={TextAreaAdapter}
+                    height="25px"
+                    width="200px"
+                  />
+                </div>
+              </React.Fragment>
+            ) : (
+              ''
+            )}
 
             <label htmlFor="lostMethodsOfPayment">
               <Text marginTop={[4, null, 5]}>
