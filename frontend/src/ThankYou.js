@@ -47,17 +47,38 @@ export const ThankYou = () => (
     </H2>
     <P>
       <ul>
-        <li>Report to the service provider where the scam took place.</li>
-        <br />
-        <li>Report to your financial institution if you lost money.</li>
+        <li>
+          <Trans>
+            Report to the service provider where the scam took place.
+          </Trans>
+        </li>
         <br />
         <li>
-          Report to{' '}
-          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-          <A href="https://www.transunion.ca/">TransUnion</A> if your identity
-          was stolen.
+          <Trans>Report to your financial institution if you lost money.</Trans>
+        </li>
+        <br />
+        <li>
+          <Trans>
+            Report to{' '}
+            <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
+            <A href="https://www.transunion.ca/">TransUnion</A> if your identity
+            was stolen.
+          </Trans>
         </li>
       </ul>
     </P>
+    <Container
+      maxWidth="300px"
+      marginTop={[2, null, 3]}
+      css={css`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      `}
+    >
+      <A href="http://localhost:3000/" textAlign="center">
+        <Trans> New Report</Trans>
+      </A>
+    </Container>
   </Layout>
 )
