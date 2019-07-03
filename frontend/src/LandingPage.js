@@ -34,7 +34,7 @@ export const LandingPage = () => (
           <Trans>Describe what happened</Trans>
         </li>
         <li>
-          <Trans>Specify whether money was lost</Trans>
+          <Trans>Tell us if money was lost</Trans>
         </li>
         <li>
           <Trans>Add scammer details</Trans>

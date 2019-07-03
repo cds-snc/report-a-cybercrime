@@ -29,7 +29,7 @@ export const MoneyLostPage = () => (
       <Steps activeStep={1} />
     </Container>
     <H1>
-      <Trans>Specify money lost</Trans>
+      <Trans>Tell us about the money lost</Trans>
     </H1>
     <P>
       <Trans>

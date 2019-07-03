@@ -38,29 +38,6 @@ export const ContactInfoForm = ({ onSubmit }) => (
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="userIsTheVictim">
-              <Text>
-                <Trans>Are you reporting a scam that happened to you?</Trans>
-              </Text>
-            </label>
-            <I18n>
-              {({ i18n }) =>
-                victimOptions.map(key => {
-                  return (
-                    <CheckboxStyle key={key}>
-                      <Field
-                        name="userIsTheVictim"
-                        id="userIsTheVictim"
-                        component={RadioButtonAdapter}
-                        type="radio"
-                        value={key}
-                        label={i18n._(key)}
-                      />
-                    </CheckboxStyle>
-                  )
-                })
-              }
-            </I18n>
             <label htmlFor="contactInfoName">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Full name</Trans>
@@ -108,7 +85,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="userIsTheVictim">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Are you the victim?</Trans>
+                <Trans>Are you reporting a scam that happened to you?</Trans>
               </Text>
             </label>
             <I18n>
