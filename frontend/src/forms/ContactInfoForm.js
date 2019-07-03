@@ -25,7 +25,7 @@ const CheckboxStyle = styled('label')`
   display: block;
 `
 
-const victimOptions = [i18nMark('yes'), i18nMark('no')]
+const victimOptions = [i18nMark('Yes'), i18nMark('No')]
 
 const validate = () => {
   return {}
