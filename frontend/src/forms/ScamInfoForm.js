@@ -134,11 +134,11 @@ export class ScamInfoForm extends Component {
                 </div>
 
                 {values.howWereYouContacted &&
-                values.howWereYouContacted.indexOf('other') > -1 ? (
+                values.howWereYouContacted.indexOf('Other') > -1 ? (
                   <React.Fragment>
                     <label htmlFor="otherMethodOfContact">
                       <Text>
-                        <Trans>Other channel</Trans>
+                        <Trans>Other</Trans>
                       </Text>
                     </label>
                     <div>

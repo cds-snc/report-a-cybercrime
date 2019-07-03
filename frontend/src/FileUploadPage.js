@@ -86,18 +86,10 @@ export class FileUploadPage extends Component {
             <Trans>Attach file</Trans>
           </FileUpload>
         </Container>
-        <P>
-          <Trans>
-            {' '}
-            Supporting files could include copies of emails, text messages, and
-            receipts. Any documentation could serve as evidence for police.
-          </Trans>
-        </P>
-
         <hr />
 
         <H2 fontSize={[3, null, 5]}>
-          {files.length} <Trans>files attached</Trans>
+          {files.length} <Trans>file(s) attached</Trans>
         </H2>
 
         <Container>
@@ -120,7 +112,7 @@ export class FileUploadPage extends Component {
                 type="button"
                 onClick={() => this.removeFile(index)}
               >
-                <Trans>Remove</Trans>
+                <Trans>Remove file</Trans>
               </Button>
             </Container>
           ))}

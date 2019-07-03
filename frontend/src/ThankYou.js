@@ -93,8 +93,11 @@ export const ThankYou = () => (
         </ButtonLink>
       </Container>
 
-      {/* <A href="http://localhost:3000/" textAlign="center">
-        <Trans> New Report</Trans>
+      {/* <A
+        href="https://www.report-a-cybercrime.alpha.rcmp-grc.gc.ca/"
+        textAlign="center"
+      >
+        <Trans>Report another scam</Trans>
       </A> */}
     </Container>
   </Layout>
