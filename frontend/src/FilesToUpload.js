@@ -23,7 +23,7 @@ export const FilesToUpload = () => (
     </Container>
     <TrackPageViews />
     <H1>
-      <Trans>Upload supporting files</Trans>
+      <Trans>Attach supporting files</Trans>
     </H1>
     <P>
       <Trans>

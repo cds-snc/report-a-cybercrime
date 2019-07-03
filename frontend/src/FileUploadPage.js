@@ -59,8 +59,15 @@ export class FileUploadPage extends Component {
           <Steps activeStep={3} />
         </Container>
         <H1 marginBottom="70px">
-          <Trans>Upload supporting files</Trans>
+          <Trans>Attach supporting files</Trans>
         </H1>
+        <P>
+          <Trans>
+            {' '}
+            Supporting files could include copies of emails, text messages, and
+            receipts. Any documentation could serve as evidence for police.
+          </Trans>
+        </P>
         <Container
           width="300px"
           marginTop={[2, null, 5]}
@@ -132,7 +139,7 @@ export class FileUploadPage extends Component {
                 `}
               >
                 <Button onClick={() => this.submitAndNavigate(client)}>
-                  <Trans>Next</Trans>
+                  <Trans>Continue</Trans>
                 </Button>
               </Container>
 
@@ -146,7 +153,7 @@ export class FileUploadPage extends Component {
                 `}
               >
                 <Link type="button" color="black" to="/" textAlign="center">
-                  <Trans>Cancel Report</Trans>
+                  <Trans>Cancel report</Trans>
                 </Link>
               </Container>
             </Container>

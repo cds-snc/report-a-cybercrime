@@ -54,13 +54,13 @@ const scamEventSummary = client => {
           <Trans>Scam event</Trans>
         </H2>
         <Text>
+          <Trans>Description: {scamDetails}</Trans>
+        </Text>
+        <Text>
+          <Trans>Date: {whenWereYouContacted}</Trans>
+        </Text>
+        <Text>
           <Trans>Contacted by: {howWereYouContacted}</Trans>
-        </Text>
-        <Text>
-          <Trans>Event Occured on: {whenWereYouContacted}</Trans>
-        </Text>
-        <Text>
-          <Trans>Details: {scamDetails}</Trans>
         </Text>
       </React.Fragment>
     )
@@ -118,7 +118,7 @@ const lostMoneySummary = client => {
           </Trans>
         </Text>
         <Text>
-          <Trans>Method: {lostMethodsOfPayment}</Trans>
+          <Trans>Payment method: {lostMethodsOfPayment}</Trans>
         </Text>
       </React.Fragment>
     )
@@ -173,16 +173,10 @@ const suspectInfoSummary = client => {
           marginTop={[3, null, 4]}
           marginBottom={[1, null, 1]}
         >
-          <Trans>Suspect Information</Trans>
+          <Trans>Scammer details</Trans>
         </H2>
         <Text>
           <Trans>Name: {suspectName}</Trans>
-        </Text>
-        <Text>
-          <Trans>Address: {suspectAddress}</Trans>
-        </Text>
-        <Text>
-          <Trans>Language: {suspectLanguage}</Trans>
         </Text>
         <Text>
           <Trans>Phone number: {suspectPhone}</Trans>
@@ -194,7 +188,13 @@ const suspectInfoSummary = client => {
           <Trans>Website: {suspectWebsite}</Trans>
         </Text>
         <Text>
+          <Trans>Mailing address: {suspectAddress}</Trans>
+        </Text>
+        <Text>
           <Trans>IP address: {suspectIP}</Trans>
+        </Text>
+        <Text>
+          <Trans>Language of correspondence: {suspectLanguage}</Trans>
         </Text>
       </React.Fragment>
     )
@@ -220,10 +220,10 @@ const fileUploadSummary = client => {
           marginTop={[3, null, 4]}
           marginBottom={[1, null, 1]}
         >
-          <Trans>Evidence</Trans>
+          <Trans>Files attached</Trans>
         </H2>
         <Text>
-          <Trans>Files: {fileList}</Trans>
+          <Trans>File name: {fileList}</Trans>
         </Text>
       </React.Fragment>
     )
@@ -260,10 +260,10 @@ const contactInfoSummary = client => {
           marginTop={[3, null, 4]}
           marginBottom={[1, null, 1]}
         >
-          <Trans>If the police have any questions</Trans>
+          <Trans>Contact information</Trans>
         </H2>
         <Text>
-          <Trans>You are the victim: {userIsTheVictim}</Trans>
+          <Trans>Victim: {userIsTheVictim}</Trans>
         </Text>
         <Text>
           <Trans>Name: {contactInfoName}</Trans>
@@ -272,7 +272,7 @@ const contactInfoSummary = client => {
           <Trans>Email: {contactInfoEmail}</Trans>
         </Text>
         <Text>
-          <Trans>Phone: {contactInfoPhone}</Trans>
+          <Trans>Phone number: {contactInfoPhone}</Trans>
         </Text>
       </React.Fragment>
     )
@@ -287,7 +287,7 @@ export const ConfirmationPage = () => (
       <Steps activeStep={4} />
     </Container>
     <H1>
-      <Trans>Would you like to submit this report?</Trans>
+      <Trans>Confirm report information</Trans>
     </H1>
     <TrackPageViews />
     <ApolloConsumer>
@@ -312,7 +312,7 @@ export const ConfirmationPage = () => (
       `}
     >
       <Button type="submit" onClick={() => navigate('/thankyou')}>
-        <Trans>Submit</Trans>
+        <Trans>Submit report</Trans>
       </Button>
     </Container>
 
@@ -326,7 +326,7 @@ export const ConfirmationPage = () => (
       `}
     >
       <Link type="button" color="black" to="/" textAlign="center">
-        <Trans>Cancel Report</Trans>
+        <Trans>Cancel report</Trans>
       </Link>
     </Container>
   </Layout>

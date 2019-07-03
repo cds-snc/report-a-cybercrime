@@ -27,7 +27,7 @@ export const ThankYou = () => (
     </H1>
     <P fontSize={[4, null, 5]}>
       <Trans>
-        <strong>RCMP has received your report.</strong>
+        <strong>NC3 has received your report.</strong>
       </Trans>
     </P>
     <P>
@@ -49,20 +49,22 @@ export const ThankYou = () => (
       <ul>
         <li>
           <Trans>
-            Report to the service provider where the scam took place.
+            Report directly to the website where the scam took place.
           </Trans>
         </li>
         <br />
         <li>
-          <Trans>Report to your financial institution if you lost money.</Trans>
+          <Trans>
+            Report to the financial institution where you sent money.
+          </Trans>
         </li>
         <br />
         <li>
           <Trans>
-            Report to{' '}
+            Report to the credit bureaus,{' '}
             <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-            <A href="https://www.transunion.ca/">TransUnion</A> if your identity
-            was stolen.
+            <A href="https://www.transunion.ca/">TransUnion</A>, if your
+            identity was stolen.
           </Trans>
         </li>
       </ul>

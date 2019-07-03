@@ -33,8 +33,8 @@ export const MoneyLostPage = () => (
     </H1>
     <P>
       <Trans>
-        We won't be able to recover the money, but understanding the impact of
-        the scam can help build a case.
+        We probably won't be able to recover the money, but understanding the
+        impact of the scam can help build a case.
       </Trans>
     </P>
     <TrackPageViews />

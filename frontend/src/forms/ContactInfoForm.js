@@ -9,7 +9,6 @@ import { Form, Field } from 'react-final-form'
 import { Container } from '../components/container'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
-import { ButtonLink } from '../components/button-link'
 import { Link } from '../components/link'
 import { RadioButton } from '../components/radio-button'
 import { Text } from '../components/text'
@@ -39,9 +38,32 @@ export const ContactInfoForm = ({ onSubmit }) => (
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
+            <label htmlFor="userIsTheVictim">
+              <Text>
+                <Trans>Are you reporting a scam that happened to you?</Trans>
+              </Text>
+            </label>
+            <I18n>
+              {({ i18n }) =>
+                victimOptions.map(key => {
+                  return (
+                    <CheckboxStyle key={key}>
+                      <Field
+                        name="userIsTheVictim"
+                        id="userIsTheVictim"
+                        component={RadioButtonAdapter}
+                        type="radio"
+                        value={key}
+                        label={i18n._(key)}
+                      />
+                    </CheckboxStyle>
+                  )
+                })
+              }
+            </I18n>
             <label htmlFor="contactInfoName">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Name</Trans>
+                <Trans>Full name</Trans>
               </Text>
             </label>
             <div>
@@ -118,7 +140,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
               `}
             >
               <Button type="submit" onClick={() => navigate('/confirmation')}>
-                <Trans>Next</Trans>
+                <Trans>Continue</Trans>
               </Button>
             </Container>
 
@@ -132,12 +154,8 @@ export const ContactInfoForm = ({ onSubmit }) => (
               `}
             >
               <Link type="button" color="black" to="/" textAlign="center">
-                <Trans>Cancel Report</Trans>
+                <Trans>Cancel report</Trans>
               </Link>
-
-              <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
-                <Trans>Save Report</Trans>
-              </ButtonLink>
             </Container>
           </form>
         )}

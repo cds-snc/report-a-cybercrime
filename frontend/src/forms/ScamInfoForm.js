@@ -21,10 +21,10 @@ const TextAreaAdapter = finalFormAdapter(TextArea)
 const DateSelectorAdapter = finalFormAdapter(DateSelector)
 
 const howContacted = [
-  i18nMark('phone'),
-  i18nMark('email'),
-  i18nMark('website link'),
-  i18nMark('other'),
+  i18nMark('Telephone'),
+  i18nMark('Email'),
+  i18nMark('Website'),
+  i18nMark('Other'),
 ]
 
 const CheckboxStyle = styled('label')`
@@ -188,7 +188,7 @@ export class ScamInfoForm extends Component {
                   `}
                 >
                   <Link type="button" color="black" to="/" textAlign="center">
-                    <Trans>Cancel Report</Trans>
+                    <Trans>Cancel report</Trans>
                   </Link>
                 </Container>
               </form>

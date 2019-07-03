@@ -22,10 +22,11 @@ const RadioButtonAdapter = finalFormAdapter(RadioButton)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
 const methodsOfPayment = [
-  i18nMark('credit card'),
-  i18nMark('cash'),
-  i18nMark('gift card'),
-  i18nMark('other'),
+  i18nMark('Credit card'),
+  i18nMark('E-transfer'),
+  i18nMark('Cash'),
+  i18nMark('Gift card'),
+  i18nMark('Other method'),
 ]
 
 const currencies = [
@@ -140,11 +141,11 @@ export const MoneyLostForm = ({ onSubmit }) => (
             </div>
 
             {values.lostMethodsOfPayment &&
-            values.lostMethodsOfPayment.indexOf('other') > -1 ? (
+            values.lostMethodsOfPayment.indexOf('Other method') > -1 ? (
               <React.Fragment>
                 <label htmlFor="lostOtherMethodOfPayment">
                   <Text>
-                    <Trans>Other</Trans>
+                    <Trans>Other method</Trans>
                   </Text>
                 </label>
                 <div>
@@ -171,7 +172,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               `}
             >
               <Button type="submit">
-                <Trans>Next</Trans>
+                <Trans>Continue</Trans>
               </Button>
             </Container>
 
@@ -185,7 +186,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               `}
             >
               <Link type="button" color="black" to="/" textAlign="center">
-                <Trans>Cancel Report</Trans>
+                <Trans>Cancel report</Trans>
               </Link>
             </Container>
           </form>
