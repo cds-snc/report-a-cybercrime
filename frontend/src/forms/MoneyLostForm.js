@@ -22,18 +22,18 @@ const RadioButtonAdapter = finalFormAdapter(RadioButton)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
 const methodsOfPayment = [
+  i18nMark('Cash'),
   i18nMark('Credit card'),
   i18nMark('E-transfer'),
-  i18nMark('Cash'),
   i18nMark('Gift card'),
   i18nMark('Other method'),
 ]
 
 const currencies = [
   i18nMark('Canadian dollar'),
-  i18nMark('US dollar'),
+  i18nMark('U.S. dollar'),
   i18nMark('Euros'),
-  i18nMark('other'),
+  i18nMark('Other'),
 ]
 
 const CheckboxStyle = styled('label')`

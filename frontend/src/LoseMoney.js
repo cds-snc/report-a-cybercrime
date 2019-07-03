@@ -23,7 +23,7 @@ export const LoseMoney = () => (
       <Steps activeStep={1} />
     </Container>
     <H1>
-      <Trans>Tell us about money lost</Trans>
+      <Trans>Tell us if money was lost</Trans>
     </H1>
     <P>
       <Trans>Did you lose money as a result of the scam?</Trans>
