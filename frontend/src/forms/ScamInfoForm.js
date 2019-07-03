@@ -80,7 +80,7 @@ export class ScamInfoForm extends Component {
                     name="scamDetails"
                     id="scamDetails"
                     component={TextAreaAdapter}
-                    height="100px"
+                    height="200px"
                     width="300px"
                   />
                 </div>
