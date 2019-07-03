@@ -33,7 +33,7 @@ const currencies = [
   i18nMark('Canadian dollar'),
   i18nMark('U.S. dollar'),
   i18nMark('Euros'),
-  i18nMark('Other'),
+  i18nMark('Other currency'),
 ]
 
 const CheckboxStyle = styled('label')`
@@ -92,11 +92,11 @@ export const MoneyLostForm = ({ onSubmit }) => (
             </I18n>
 
             {values.lostCurrency &&
-            values.lostCurrency.indexOf('other') > -1 ? (
+            values.lostCurrency.indexOf('Other currency') > -1 ? (
               <React.Fragment>
                 <label htmlFor="lostOtherCurrency">
                   <Text>
-                    <Trans>Other</Trans>
+                    <Trans>Other currency</Trans>
                   </Text>
                 </label>
                 <div>
