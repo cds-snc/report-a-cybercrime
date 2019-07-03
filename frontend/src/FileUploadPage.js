@@ -89,7 +89,7 @@ export class FileUploadPage extends Component {
         <hr />
 
         <H2 fontSize={[3, null, 5]}>
-          {files.length} <Trans>files attached</Trans>
+          {files.length} <Trans>file(s) attached</Trans>
         </H2>
 
         <Container>
