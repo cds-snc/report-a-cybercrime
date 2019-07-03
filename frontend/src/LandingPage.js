@@ -1,21 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
 import { H1, H2 } from './components/header'
 import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
+import { Layout } from './components/layout'
 
 export const LandingPage = () => (
-  <CenterContent>
+  <Layout>
     <TrackPageViews />
-    <H1 fontSize={[5, null, 6]}>
+    <H1>
       <Trans>Report a scam</Trans>
     </H1>
     <P>
@@ -54,5 +49,5 @@ export const LandingPage = () => (
         <Trans>Report now</Trans>
       </ButtonLink>
     </P>
-  </CenterContent>
+  </Layout>
 )

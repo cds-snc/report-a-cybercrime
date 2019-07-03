@@ -1,6 +1,5 @@
 /**@jsx jsx */
 import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
@@ -9,9 +8,10 @@ import { Container } from './components/container'
 import { Text } from './components/text'
 import { H1, H2 } from './components/header'
 import { Button } from './components/button'
-import { ButtonLink } from './components/button-link'
+import { Link } from './components/link'
 import { FileUpload } from './components/file-upload'
 import { TrackPageViews } from './TrackPageViews'
+import { Layout } from './components/layout'
 
 import { Steps } from './components/stepper'
 
@@ -20,11 +20,6 @@ const topBarContainer = css`
   width: 90%;
   flex-direction: row;
   margin-bottom: 20px;
-`
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
 `
 
 import { P } from './components/paragraph'
@@ -58,17 +53,18 @@ export class FileUploadPage extends Component {
     const { files } = this.state
 
     return (
-      <CenterContent>
+      <Layout>
         <TrackPageViews />
         <Container css={topBarContainer}>
           <Steps activeStep={3} />
         </Container>
-        <H1 fontSize={[5, null, 6]} marginBottom="70px">
+        <H1 marginBottom="70px">
           <Trans>Upload supporting files</Trans>
         </H1>
         <Container
           width="300px"
-          marginBottom={[2, null, 3]}
+          marginTop={[2, null, 5]}
+          marginBottom={[2, null, 5]}
           css={css`
             display: flex;
             flex-direction: row;
@@ -90,7 +86,10 @@ export class FileUploadPage extends Component {
             receipts. Any documentation could serve as evidence for police.
           </Trans>
         </P>
-        <H2 fontSize={[3, null, 5]} marginTop={[5, null, 6]}>
+
+        <hr />
+
+        <H2 fontSize={[3, null, 5]}>
           {files.length} <Trans>files attached</Trans>
         </H2>
 
@@ -146,14 +145,14 @@ export class FileUploadPage extends Component {
                   justify-content: space-between;
                 `}
               >
-                <ButtonLink type="button" color="black">
+                <Link type="button" color="black" to="/" textAlign="center">
                   <Trans>Cancel Report</Trans>
-                </ButtonLink>
+                </Link>
               </Container>
             </Container>
           )}
         </ApolloConsumer>
-      </CenterContent>
+      </Layout>
     )
   }
 }

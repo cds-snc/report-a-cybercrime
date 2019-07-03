@@ -2,7 +2,6 @@
 import { css, jsx } from '@emotion/core'
 import React from 'react'
 import { navigate } from '@reach/router'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { ApolloConsumer } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -10,14 +9,10 @@ import { H1, H2 } from './components/header'
 import { Container } from './components/container'
 import { Text } from './components/text'
 import { Button } from './components/button'
-import { ButtonLink } from './components/button-link'
+import { Link } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
+import { Layout } from './components/layout'
 
 const topBarContainer = css`
   display: flex;
@@ -78,6 +73,7 @@ const lostMoneySummary = client => {
   let {
     lostAmount,
     lostCurrency,
+    lostOtherCurrency,
     lostMethodsOfPayment,
     lostOtherMethodOfPayment,
   } = client.readQuery({
@@ -85,6 +81,7 @@ const lostMoneySummary = client => {
       query readCache {
         lostAmount
         lostCurrency
+        lostOtherCurrency
         lostMethodsOfPayment
         lostOtherMethodOfPayment
       }
@@ -116,7 +113,9 @@ const lostMoneySummary = client => {
           <Trans>Amount: {lostAmount}</Trans>
         </Text>
         <Text>
-          <Trans>Currency: {lostCurrency}</Trans>
+          <Trans>
+            Currency: {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
+          </Trans>
         </Text>
         <Text>
           <Trans>Method: {lostMethodsOfPayment}</Trans>
@@ -283,7 +282,7 @@ const contactInfoSummary = client => {
 }
 
 export const ConfirmationPage = () => (
-  <CenterContent>
+  <Layout>
     <Container css={topBarContainer}>
       <Steps activeStep={4} />
     </Container>
@@ -326,9 +325,9 @@ export const ConfirmationPage = () => (
         justify-content: space-between;
       `}
     >
-      <ButtonLink type="button" color="black">
+      <Link type="button" color="black" to="/" textAlign="center">
         <Trans>Cancel Report</Trans>
-      </ButtonLink>
+      </Link>
     </Container>
-  </CenterContent>
+  </Layout>
 )

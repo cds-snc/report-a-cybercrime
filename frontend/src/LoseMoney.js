@@ -1,6 +1,5 @@
 /**@jsx jsx */
 import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
@@ -8,19 +7,7 @@ import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Container } from './components/container'
 import { Steps } from './components/stepper'
-
-const CenterContent = styled('div')`
-  max-width: 750px;
-  margin: auto;
-`
-
-const bottomBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 20px;
-`
+import { Layout } from './components/layout'
 
 const topBarContainer = css`
   display: flex;
@@ -30,24 +17,39 @@ const topBarContainer = css`
 `
 
 export const LoseMoney = () => (
-  <CenterContent>
+  <Layout>
     <TrackPageViews />
     <Container css={topBarContainer}>
       <Steps activeStep={1} />
     </Container>
-    <H1 fontSize={[5, null, 6]}>
-      <Trans>Specify money lost</Trans>
+    <H1>
+      <Trans>Tell us about money lost</Trans>
     </H1>
     <P>
       <Trans>Did you lose money as a result of the scam?</Trans>
     </P>
-    <Container css={bottomBarContainer}>
-      <ButtonLink mb={[3, null, 5]} to="/moneylost">
+
+    <Container
+      display="flex"
+      maxWidth={['200px', null, '300px']}
+      flexDirection="row"
+      justifyContent="space-between"
+      marginBottom=""
+    >
+      <ButtonLink
+        width={['40px', null, '50px']}
+        textAlign="center"
+        to="/moneylost"
+      >
         <Trans>Yes</Trans>
       </ButtonLink>
-      <ButtonLink mb={[3, null, 5]} to="/suspectinfoquestion">
+      <ButtonLink
+        width={['40px', null, '50px']}
+        textAlign="center"
+        to="/suspectinfoquestion"
+      >
         <Trans>No</Trans>
       </ButtonLink>
     </Container>
-  </CenterContent>
+  </Layout>
 )

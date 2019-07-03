@@ -10,6 +10,7 @@ import { Container } from '../components/container'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { ButtonLink } from '../components/button-link'
+import { Link } from '../components/link'
 import { RadioButton } from '../components/radio-button'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
@@ -24,7 +25,7 @@ const CheckboxStyle = styled('label')`
   display: block;
 `
 
-const victimOptions = [i18nMark('yes'), i18nMark('no')]
+const victimOptions = [i18nMark('Yes'), i18nMark('No')]
 
 const validate = () => {
   return {}
@@ -38,30 +39,6 @@ export const ContactInfoForm = ({ onSubmit }) => (
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="userIsTheVictim">
-              <Text>
-                <Trans>Are you the victim?</Trans>
-              </Text>
-            </label>
-            <I18n>
-              {({ i18n }) =>
-                victimOptions.map(key => {
-                  return (
-                    <CheckboxStyle key={key}>
-                      <Field
-                        name="userIsTheVictim"
-                        id="userIsTheVictim"
-                        component={RadioButtonAdapter}
-                        type="radio"
-                        value={key}
-                        label={i18n._(key)}
-                      />
-                    </CheckboxStyle>
-                  )
-                })
-              }
-            </I18n>
-
             <label htmlFor="contactInfoName">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Name</Trans>
@@ -107,6 +84,30 @@ export const ContactInfoForm = ({ onSubmit }) => (
               />
             </div>
 
+            <label htmlFor="userIsTheVictim">
+              <Text marginTop={[4, null, 5]}>
+                <Trans>Are you the victim?</Trans>
+              </Text>
+            </label>
+            <I18n>
+              {({ i18n }) =>
+                victimOptions.map(key => {
+                  return (
+                    <CheckboxStyle key={key}>
+                      <Field
+                        name="userIsTheVictim"
+                        id="userIsTheVictim"
+                        component={RadioButtonAdapter}
+                        type="radio"
+                        value={key}
+                        label={i18n._(key)}
+                      />
+                    </CheckboxStyle>
+                  )
+                })
+              }
+            </I18n>
+
             <Container
               width="305px"
               marginTop={[3, null, 4]}
@@ -130,9 +131,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <ButtonLink type="button" color="black">
+              <Link type="button" color="black" to="/" textAlign="center">
                 <Trans>Cancel Report</Trans>
-              </ButtonLink>
+              </Link>
 
               <ButtonLink type="button" color="black" marginTop={[1, null, 1]}>
                 <Trans>Save Report</Trans>
