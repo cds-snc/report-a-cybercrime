@@ -263,9 +263,6 @@ const contactInfoSummary = client => {
           <Trans>Contact information</Trans>
         </H2>
         <Text>
-          <Trans>Victim: {userIsTheVictim}</Trans>
-        </Text>
-        <Text>
           <Trans>Name: {contactInfoName}</Trans>
         </Text>
         <Text>
@@ -273,6 +270,9 @@ const contactInfoSummary = client => {
         </Text>
         <Text>
           <Trans>Phone number: {contactInfoPhone}</Trans>
+        </Text>
+        <Text>
+          <Trans>Victim: {userIsTheVictim}</Trans>
         </Text>
       </React.Fragment>
     )
