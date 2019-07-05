@@ -84,6 +84,7 @@ describe('<Stats/>', () => {
 
       let dates = data.map(d => d.date)
       expect(chartLabels).toContain(...dates)
+      // eslint-disable-next-line require-atomic-updates
       console.warn = warn
       /* eslint-enable no-console */
     })
@@ -112,6 +113,7 @@ describe('<Stats/>', () => {
 
       let child = container.firstChild
       expect(child.textContent).toEqual('')
+      // eslint-disable-next-line require-atomic-updates
       console.warn = warn
       /* eslint-enable no-console */
     })
@@ -155,6 +157,7 @@ describe('<Stats/>', () => {
       await wait(0)
       let child = container.firstChild
       expect(child.textContent).toMatch(/sadness/)
+      // eslint-disable-next-line require-atomic-updates
       console.warn = warn
       /* eslint-enable no-console */
     })

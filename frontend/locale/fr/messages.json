@@ -240,5 +240,6 @@
   "website link": "sur un site web",
   "what do you need to prepare in order to report the scam online?": "que devez-vous préparer pour signaler la fraude en ligne ?",
   "yes": "oui",
+  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
   "{0} files selected": "{0} fichiers sélectionnés"
 }
