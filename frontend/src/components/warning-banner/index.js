@@ -16,21 +16,19 @@ export const WarningBanner = props => {
   const { bg } = props
 
   return (
-    <header>
-      <Container
-        data-testid="background-color"
-        css={bannerStyle}
-        bg={bg}
-        height={[50, null, 60]}
-      >
-        <Text paddingLeft="10px" paddingRight="10px" textAlign="center">
-          <Trans>
-            Warning! This is a prototype. It won't actually submit your report
-            to the RCMP.
-          </Trans>
-        </Text>
-      </Container>
-    </header>
+    <Container
+      data-testid="background-color"
+      css={bannerStyle}
+      bg={bg}
+      height={[50, null, 60]}
+    >
+      <Text paddingLeft="10px" paddingRight="10px" textAlign="center">
+        <Trans>
+          Warning! This is a prototype. It won't actually submit your report to
+          the RCMP.
+        </Trans>
+      </Text>
+    </Container>
   )
 }
 
