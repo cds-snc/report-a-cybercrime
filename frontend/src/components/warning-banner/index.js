@@ -20,7 +20,8 @@ export const WarningBanner = props => {
       data-testid="background-color"
       css={bannerStyle}
       bg={bg}
-      height={[50, null, 60]}
+      paddingTop={[1, null, 2]}
+      paddingBottom={[1, null, 2]}
     >
       <Text paddingLeft="10px" paddingRight="10px" textAlign="center">
         <Trans>
