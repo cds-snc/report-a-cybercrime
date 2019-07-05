@@ -54,13 +54,22 @@ const scamEventSummary = client => {
           <Trans>Scam event</Trans>
         </H2>
         <Text>
-          <Trans>Description: {scamDetails}</Trans>
+          <strong>
+            <Trans>Description:</Trans>
+          </strong>
+          {scamDetails}
         </Text>
         <Text>
-          <Trans>Date: {whenWereYouContacted}</Trans>
+          <strong>
+            <Trans>Date: </Trans>
+          </strong>
+          {whenWereYouContacted}
         </Text>
         <Text>
-          <Trans>Contacted by: {howWereYouContacted}</Trans>
+          <strong>
+            <Trans>Contacted by:</Trans>
+          </strong>{' '}
+          {howWereYouContacted}
         </Text>
       </React.Fragment>
     )
@@ -110,15 +119,23 @@ const lostMoneySummary = client => {
           <Trans>Money lost</Trans>
         </H2>
         <Text>
-          <Trans>Amount: {lostAmount}</Trans>
+          <strong>
+            {' '}
+            <Trans>Amount</Trans>:{' '}
+          </strong>
+          {lostAmount}
         </Text>
         <Text>
-          <Trans>
-            Currency: {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
-          </Trans>
+          <strong>
+            <Trans>Currency</Trans> :
+          </strong>
+          {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
         </Text>
         <Text>
-          <Trans>Payment method: {lostMethodsOfPayment}</Trans>
+          <strong>
+            <Trans>Payment method</Trans>:{' '}
+          </strong>
+          {lostMethodsOfPayment}
         </Text>
       </React.Fragment>
     )
@@ -176,25 +193,47 @@ const suspectInfoSummary = client => {
           <Trans>Scammer details</Trans>
         </H2>
         <Text>
-          <Trans>Name: {suspectName}</Trans>
+          <strong>
+            <Trans>Name</Trans>:
+          </strong>{' '}
+          {suspectName}
         </Text>
         <Text>
-          <Trans>Phone number: {suspectPhone}</Trans>
+          <strong>
+            <Trans>Phone number</Trans>:{' '}
+          </strong>
+          {suspectPhone}
         </Text>
         <Text>
-          <Trans>Email address: {suspectEmail}</Trans>
+          <strong>
+            <Trans>Email address</Trans>:{' '}
+          </strong>
+          {suspectEmail}
         </Text>
         <Text>
-          <Trans>Website: {suspectWebsite}</Trans>
+          <strong>
+            <Trans>Website</Trans>:{' '}
+          </strong>
+          {suspectWebsite}
         </Text>
         <Text>
-          <Trans>Mailing address: {suspectAddress}</Trans>
+          <strong>
+            {' '}
+            <Trans>Mailing address</Trans>:{' '}
+          </strong>
+          {suspectAddress}
         </Text>
         <Text>
-          <Trans>IP address: {suspectIP}</Trans>
+          <strong>
+            <Trans>IP address</Trans>:{' '}
+          </strong>
+          {suspectIP}
         </Text>
         <Text>
-          <Trans>Language of correspondence: {suspectLanguage}</Trans>
+          <strong>
+            <Trans>Language of correspondence</Trans>:{' '}
+          </strong>
+          {suspectLanguage}
         </Text>
       </React.Fragment>
     )
@@ -223,7 +262,10 @@ const fileUploadSummary = client => {
           <Trans>Files attached</Trans>
         </H2>
         <Text>
-          <Trans>File name: {fileList}</Trans>
+          <strong>
+            <Trans>File name</Trans>:{' '}
+          </strong>
+          {fileList}
         </Text>
       </React.Fragment>
     )
@@ -263,16 +305,28 @@ const contactInfoSummary = client => {
           <Trans>Contact information</Trans>
         </H2>
         <Text>
-          <Trans>Victim: {userIsTheVictim}</Trans>
+          <strong>
+            <Trans>Victim</Trans>:{' '}
+          </strong>
+          {userIsTheVictim}
         </Text>
         <Text>
-          <Trans>Name: {contactInfoName}</Trans>
+          <strong>
+            <Trans>Name</Trans>:{' '}
+          </strong>
+          {contactInfoName}
         </Text>
         <Text>
-          <Trans>Email: {contactInfoEmail}</Trans>
+          <strong>
+            <Trans>Email</Trans>:{' '}
+          </strong>
+          {contactInfoEmail}
         </Text>
         <Text>
-          <Trans>Phone number: {contactInfoPhone}</Trans>
+          <strong>
+            <Trans>Phone number</Trans>:
+          </strong>{' '}
+          {contactInfoPhone}
         </Text>
       </React.Fragment>
     )

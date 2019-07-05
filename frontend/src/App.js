@@ -29,7 +29,7 @@ const App = () => (
                 <title lang={language}>{i18n._('Report a scam')}</title>
                 )
                 <link
-                  href="https://fonts.googleapis.com/css?family=Roboto"
+                  href="https://fonts.googleapis.com/css?family=Roboto:400,700"
                   rel="stylesheet"
                 />
                 <link rel="manifest" href="/manifest.json" />
