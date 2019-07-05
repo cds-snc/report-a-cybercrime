@@ -241,5 +241,6 @@
   "what do you need to prepare in order to report the scam online:": "what do you need to prepare in order to report the scam online:",
   "what do you need to prepare in order to report the scam online?": "what do you need to prepare in order to report the scam online?",
   "yes": "yes",
+  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}",
   "{0} files selected": "{0} files selected"
 }
