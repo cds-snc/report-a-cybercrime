@@ -34,13 +34,13 @@ export const LandingPage = () => (
           <Trans>Describe what happened</Trans>
         </li>
         <li>
-          <Trans>Tell us if money was lost</Trans>
+          <Trans>Tell us how much money was lost</Trans>
         </li>
         <li>
-          <Trans>Add scammer details</Trans>
+          <Trans>Add details about the scammer</Trans>
         </li>
         <li>
-          <Trans>Attach supporting files</Trans>
+          <Trans>Attach any supporting files</Trans>
         </li>
       </ul>
     </P>

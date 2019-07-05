@@ -305,6 +305,7 @@ const contactInfoSummary = client => {
           <Trans>Contact information</Trans>
         </H2>
         <Text>
+
           <strong>
             <Trans>Victim</Trans>:{' '}
           </strong>
@@ -315,6 +316,8 @@ const contactInfoSummary = client => {
             <Trans>Name</Trans>:{' '}
           </strong>
           {contactInfoName}
+          <Trans>Name: {contactInfoName}</Trans>
+
         </Text>
         <Text>
           <strong>
@@ -327,6 +330,9 @@ const contactInfoSummary = client => {
             <Trans>Phone number</Trans>:
           </strong>{' '}
           {contactInfoPhone}
+        </Text>
+        <Text>
+          <Trans>Victim: {userIsTheVictim}</Trans>
         </Text>
       </React.Fragment>
     )
