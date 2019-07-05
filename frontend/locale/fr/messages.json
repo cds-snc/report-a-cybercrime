@@ -1,12 +1,14 @@
 {
   "<0>NC3 has received your report.</0>": "<0>NC3 a bien reçu votre rapport.</0>",
   "ALPHA": "ALPHA",
+  "Add details about the scammer": "Ajouter des détails au sujet du fraudeur",
   "Add scammer details": "Ajoutez des détails au sujet du fraudeur",
   "Amount": "Montant",
   "Amount: {lostAmount}": "Montant : {lostAmount}",
   "An analyst will assess the information, combine it with other reports, and decide whether the report can become a police investigation.": "Un analyste évaluera l'information, combinera celle-ci avec d'autres rapports, et décidera si les rapports peuvent devenir une investigation policière.",
   "Any clues about who might be responsible can help police identify suspects.": "Tous les indices au sujet de la personne pouvant être responsable peuvent aider la police à identifier des suspects.",
   "Are you reporting a scam that happened to you?": "Êtes-vous la personne visée par la fraude que vous signalez?",
+  "Attach any supporting files": "Joindre des fichiers complémentaires",
   "Attach file": "Joindre un fichier",
   "Attach supporting files": "Joignez des fichiers complémentaires",
   "Canadian dollar": "Dollar canadien",
@@ -32,7 +34,7 @@
   "Email address: {suspectEmail}": "Adresse courriel : {suspectEmail}",
   "Email: {contactInfoEmail}": "Adresse courriel : {contactInfoEmail}",
   "English": "Anglais",
-  "Euros": "Euros",
+  "Euro": "Euro",
   "File name: {fileList}": "Nom du fichier : {fileList}",
   "Files attached": "Fichiers joints",
   "French": "Français",
@@ -80,6 +82,7 @@
   "Telephone": "Au téléphone",
   "Tell the RCMP's National Cybercrime Coordination Unit (NC3) about a scam.": "Veuillez informer l'Unité nationale de coordination de la lutte contre la cybercriminalité de la GRC (NC3) de l'incidence d'une fraude.",
   "Tell us about the money lost": "Précisez le montant d'argent qui a été perdu",
+  "Tell us how much money was lost": "Préciser le montant d'argent que vous avez perdu",
   "Tell us if money was lost": "Précisez si de l'argent a été perdu",
   "Terms and Conditions": "Avis",
   "Thank you for reporting": "Merci d'avoir signalé cette fraude",
@@ -99,6 +102,6 @@
   "You may also want to:": "Vous pourriez aussi :",
   "You will be asked to:": "Vous pourrez :",
   "en": "fr",
-  "file(s) attached": "fichier(s) joint(s)",
-  "loading...": "chargement en cours..."
+  "loading...": "chargement en cours...",
+  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 }

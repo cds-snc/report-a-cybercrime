@@ -1,12 +1,14 @@
 {
   "<0>NC3 has received your report.</0>": "<0>NC3 has received your report.</0>",
   "ALPHA": "ALPHA",
+  "Add details about the scammer": "Add details about the scammer",
   "Add scammer details": "Add scammer details",
   "Amount": "Amount",
   "Amount: {lostAmount}": "Amount: {lostAmount}",
   "An analyst will assess the information, combine it with other reports, and decide whether the report can become a police investigation.": "An analyst will assess the information, combine it with other reports, and decide whether the report can become a police investigation.",
   "Any clues about who might be responsible can help police identify suspects.": "Any clues about who might be responsible can help police identify suspects.",
   "Are you reporting a scam that happened to you?": "Are you reporting a scam that happened to you?",
+  "Attach any supporting files": "Attach any supporting files",
   "Attach file": "Attach file",
   "Attach supporting files": "Attach supporting files",
   "Canadian dollar": "Canadian dollar",
@@ -32,7 +34,7 @@
   "Email address: {suspectEmail}": "Email address: {suspectEmail}",
   "Email: {contactInfoEmail}": "Email: {contactInfoEmail}",
   "English": "English",
-  "Euros": "Euros",
+  "Euro": "Euro",
   "File name: {fileList}": "File name: {fileList}",
   "Files attached": "Files attached",
   "French": "French",
@@ -80,6 +82,7 @@
   "Telephone": "Telephone",
   "Tell the RCMP's National Cybercrime Coordination Unit (NC3) about a scam.": "Tell the RCMP's National Cybercrime Coordination Unit (NC3) about a scam.",
   "Tell us about the money lost": "Tell us about the money lost",
+  "Tell us how much money was lost": "Tell us how much money was lost",
   "Tell us if money was lost": "Tell us if money was lost",
   "Terms and Conditions": "Terms and Conditions",
   "Thank you for reporting": "Thank you for reporting",
@@ -99,6 +102,6 @@
   "You may also want to:": "You may also want to:",
   "You will be asked to:": "You will be asked to:",
   "en": "en",
-  "file(s) attached": "file(s) attached",
-  "loading...": "loading..."
+  "loading...": "loading...",
+  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }

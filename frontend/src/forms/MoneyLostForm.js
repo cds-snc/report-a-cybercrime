@@ -32,7 +32,7 @@ const methodsOfPayment = [
 const currencies = [
   i18nMark('Canadian dollar'),
   i18nMark('U.S. dollar'),
-  i18nMark('Euros'),
+  i18nMark('Euro'),
   i18nMark('Other currency'),
 ]
 
