@@ -27,7 +27,7 @@ export const ThankYou = () => (
     </H1>
     <P fontSize={[4, null, 5]}>
       <Trans>
-        <strong>RCMP has received your report.</strong>
+        <strong>NC3 has received your report.</strong>
       </Trans>
     </P>
     <P>
@@ -47,17 +47,43 @@ export const ThankYou = () => (
     </H2>
     <P>
       <ul>
-        <li>Report to the service provider where the scam took place.</li>
-        <br />
-        <li>Report to your financial institution if you lost money.</li>
+        <li>
+          <Trans>
+            Report directly to the website where the scam took place.
+          </Trans>
+        </li>
         <br />
         <li>
-          Report to{' '}
-          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-          <A href="https://www.transunion.ca/">TransUnion</A> if your identity
-          was stolen.
+          <Trans>
+            Report to the financial institution where you sent money.
+          </Trans>
+        </li>
+        <br />
+        <li>
+          <Trans>
+            Report to the credit bureaus,{' '}
+            <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
+            <A href="https://www.transunion.ca/">TransUnion</A>, if your
+            identity was stolen.
+          </Trans>
         </li>
       </ul>
     </P>
+    <Container
+      maxWidth="300px"
+      marginTop={[2, null, 3]}
+      css={css`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      `}
+    >
+      <A
+        href="https://www.report-a-cybercrime.alpha.rcmp-grc.gc.ca/"
+        textAlign="center"
+      >
+        <Trans>Report another scam</Trans>
+      </A>
+    </Container>
   </Layout>
 )

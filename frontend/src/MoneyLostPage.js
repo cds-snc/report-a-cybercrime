@@ -29,12 +29,12 @@ export const MoneyLostPage = () => (
       <Steps activeStep={1} />
     </Container>
     <H1>
-      <Trans>Specify money lost</Trans>
+      <Trans>Tell us about the money lost</Trans>
     </H1>
     <P>
       <Trans>
-        We won't be able to recover the money, but understanding the impact of
-        the scam can help build a case.
+        We probably won't be able to recover the money, but understanding the
+        impact of the scam can help build a case.
       </Trans>
     </P>
     <TrackPageViews />

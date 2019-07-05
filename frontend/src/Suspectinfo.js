@@ -27,8 +27,7 @@ export const Suspectinfo = () => (
     </H1>
     <P>
       <Trans>
-        Do you have any information about the scammer or who might be
-        responsible?
+        Do you have any information about who might be responsible for the scam?
       </Trans>
     </P>
 

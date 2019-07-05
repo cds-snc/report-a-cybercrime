@@ -39,8 +39,10 @@ spec:
             - --acme
             - --acme.onhostrule
             - --acme.entrypoint=https
-            - --acme.domains=report-a-cybercrime.cds-snc.ca
-            - --acme.domains=signalez-un-crime-informatique.cds-snc.ca
+            - --acme.domains=www.report-a-cybercrime.alpha.rcmp-grc.gc.ca
+            - --acme.domains=www.signalez-un-crime-informatique.alpha.rcmp-grc.gc.ca
+            - --acme.domains=report-a-cybercrime.alpha.rcmp-grc.gc.ca
+            - --acme.domains=signalez-un-crime-informatique.alpha.rcmp-grc.gc.ca
             - --acme.email=mike.williamson@cds-snc.ca
             - --acme.storage=/certs/acme.json
             - --acme.httpchallenge

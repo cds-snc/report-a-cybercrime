@@ -3,12 +3,13 @@ import { jsx, css } from '@emotion/core'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
+import { I18n } from '@lingui/react'
 import { ApolloConsumer } from 'react-apollo'
 import { Container } from './components/container'
 import { Text } from './components/text'
 import { H1, H2 } from './components/header'
 import { Button } from './components/button'
-import { ButtonLink } from './components/button-link'
+import { Link } from './components/link'
 import { FileUpload } from './components/file-upload'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
@@ -59,8 +60,15 @@ export class FileUploadPage extends Component {
           <Steps activeStep={3} />
         </Container>
         <H1 marginBottom="70px">
-          <Trans>Upload supporting files</Trans>
+          <Trans>Attach supporting files</Trans>
         </H1>
+        <P>
+          <Trans>
+            {' '}
+            Supporting files could include copies of emails, text messages, and
+            receipts. Any documentation could serve as evidence for police.
+          </Trans>
+        </P>
         <Container
           width="300px"
           marginTop={[2, null, 5]}
@@ -79,19 +87,19 @@ export class FileUploadPage extends Component {
             <Trans>Attach file</Trans>
           </FileUpload>
         </Container>
-        <P>
-          <Trans>
-            {' '}
-            Supporting files could include copies of emails, text messages, and
-            receipts. Any documentation could serve as evidence for police.
-          </Trans>
-        </P>
-
         <hr />
 
-        <H2 fontSize={[3, null, 5]}>
-          {files.length} <Trans>files attached</Trans>
-        </H2>
+        <I18n>
+          {({ i18n }) => (
+            <H2 fontSize={[3, null, 5]}>
+              {i18n.plural({
+                value: files.length,
+                one: '# file attached',
+                other: '# files attached',
+              })}
+            </H2>
+          )}
+        </I18n>
 
         <Container>
           {files.map((f, index) => (
@@ -113,7 +121,7 @@ export class FileUploadPage extends Component {
                 type="button"
                 onClick={() => this.removeFile(index)}
               >
-                <Trans>Remove</Trans>
+                <Trans>Remove file</Trans>
               </Button>
             </Container>
           ))}
@@ -132,7 +140,7 @@ export class FileUploadPage extends Component {
                 `}
               >
                 <Button onClick={() => this.submitAndNavigate(client)}>
-                  <Trans>Next</Trans>
+                  <Trans>Continue</Trans>
                 </Button>
               </Container>
 
@@ -145,9 +153,9 @@ export class FileUploadPage extends Component {
                   justify-content: space-between;
                 `}
               >
-                <ButtonLink type="button" color="black">
-                  <Trans>Cancel Report</Trans>
-                </ButtonLink>
+                <Link type="button" color="black" to="/" textAlign="center">
+                  <Trans>Cancel report</Trans>
+                </Link>
               </Container>
             </Container>
           )}

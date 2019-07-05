@@ -11,7 +11,7 @@ import { Checkbox } from '../components/checkbox'
 import { Container } from '../components/container'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
-import { ButtonLink } from '../components/button-link'
+import { Link } from '../components/link'
 import { Text } from '../components/text'
 import { DateSelector } from '../components/date-picker'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
@@ -21,10 +21,10 @@ const TextAreaAdapter = finalFormAdapter(TextArea)
 const DateSelectorAdapter = finalFormAdapter(DateSelector)
 
 const howContacted = [
-  i18nMark('phone'),
-  i18nMark('email'),
-  i18nMark('website link'),
-  i18nMark('other'),
+  i18nMark('Telephone'),
+  i18nMark('Email'),
+  i18nMark('Website'),
+  i18nMark('Other'),
 ]
 
 const CheckboxStyle = styled('label')`
@@ -80,7 +80,7 @@ export class ScamInfoForm extends Component {
                     name="scamDetails"
                     id="scamDetails"
                     component={TextAreaAdapter}
-                    height="100px"
+                    height="200px"
                     width="300px"
                   />
                 </div>
@@ -134,11 +134,11 @@ export class ScamInfoForm extends Component {
                 </div>
 
                 {values.howWereYouContacted &&
-                values.howWereYouContacted.indexOf('other') > -1 ? (
+                values.howWereYouContacted.indexOf('Other') > -1 ? (
                   <React.Fragment>
                     <label htmlFor="otherMethodOfContact">
                       <Text>
-                        <Trans>Other channel</Trans>
+                        <Trans>Other</Trans>
                       </Text>
                     </label>
                     <div>
@@ -187,9 +187,9 @@ export class ScamInfoForm extends Component {
                     justify-content: space-between;
                   `}
                 >
-                  <ButtonLink type="button" color="black">
-                    <Trans>Cancel Report</Trans>
-                  </ButtonLink>
+                  <Link type="button" color="black" to="/" textAlign="center">
+                    <Trans>Cancel report</Trans>
+                  </Link>
                 </Container>
               </form>
             )}
