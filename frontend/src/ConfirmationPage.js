@@ -347,11 +347,33 @@ const submit = (client, submitReport) => {
   // contactInfoName = randomizeString(contactInfoName)
 
   const data = {
-    steve: 'New Steve',
+    scamInfo: {
+      howWereYouContacted,
+      otherMethodOfContact,
+      whenWereYouContacted,
+      scamDetails,
+    },
+    lostMoney: {
+      lostAmount,
+      lostCurrency,
+      lostOtherCurrency,
+      lostMethodsOfPayment,
+      lostOtherMethodOfPayment,
+    },
+    suspectInfo: {
+      suspectName,
+      suspectAddress,
+      suspectLanguage,
+      otherSuspectLanguage,
+      suspectPhone,
+      suspectEmail,
+      suspectWebsite,
+      suspectIP,
+    },
     contactInfo: {
-      contactInfoName: 'Steve The Second',
-      contactInfoEmail: 'steve@go.com',
-      contactInfoPhone: '333-3333',
+      contactInfoName,
+      contactInfoEmail,
+      contactInfoPhone,
     },
   }
   console.log('submitting', data)

@@ -9,6 +9,7 @@ const LostMoneyInput = new GraphQLInputObjectType({
   fields: () => ({
     lostAmount: { type: GraphQLString },
     lostCurrency: { type: GraphQLString },
+    lostOtherCurrency: { type: GraphQLString },
     lostMethodsOfPayment: { type: new GraphQLList(GraphQLString) },
     lostOtherMethodOfPayment: { type: GraphQLString },
   }),

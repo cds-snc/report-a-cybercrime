@@ -13,6 +13,7 @@ type fileUploadResult {
 input lostMoneyInput {
   lostAmount: String
   lostCurrency: String
+  lostOtherCurrency: String
   lostMethodsOfPayment: [String]
   lostOtherMethodOfPayment: String
 }
@@ -29,9 +30,6 @@ type Mutation {
 
   """Submit report to database"""
   submitReport(
-    """Steve!"""
-    steve: String
-
     """details about the scam"""
     scamInfo: scamInfoInput
 
@@ -72,6 +70,7 @@ type Stats {
 
 input suspectInfoInput {
   suspectName: String
+  suspectEmail: String
   suspectAddress: String
   suspectLanguage: [String]
   otherSuspectLanguage: String
