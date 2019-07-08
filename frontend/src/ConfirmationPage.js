@@ -282,13 +282,18 @@ const contactInfoSummary = client => {
   }
 }
 
+const randLetter = () => {
+  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  return letters[Math.floor(Math.random() * letters.length)]
+}
+const randDigit = () => {
+  return Math.floor(Math.random() * 10)
+}
+
 const randomizeString = s => {
-  s.replace(/\S/g, c =>
-    Math.random()
-      .toString(36)
-      .substring(1),
-  )
-  return s
+  let newString = s.replace(/[a-z]/g, () => randLetter())
+  newString = newString.replace(/[A-Z]/g, () => randLetter().toUpperCase())
+  return newString.replace(/[0-9]/g, () => randDigit())
 }
 
 const submit = (client, submitReport) => {
@@ -344,7 +349,16 @@ const submit = (client, submitReport) => {
     `,
   })
 
-  // contactInfoName = randomizeString(contactInfoName)
+  suspectName = randomizeString(suspectName)
+  suspectAddress = randomizeString(suspectAddress)
+  suspectPhone = randomizeString(suspectPhone)
+  suspectEmail = randomizeString(suspectEmail)
+  suspectWebsite = randomizeString(suspectWebsite)
+  suspectIP = randomizeString(suspectIP)
+
+  contactInfoName = randomizeString(contactInfoName)
+  contactInfoEmail = randomizeString(contactInfoEmail)
+  contactInfoPhone = randomizeString(contactInfoPhone)
 
   const data = {
     scamInfo: {
