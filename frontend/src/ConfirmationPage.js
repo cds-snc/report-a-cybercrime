@@ -55,19 +55,19 @@ const scamEventSummary = client => {
         </H2>
         <Text>
           <strong>
-            <Trans>Description:</Trans>
+            <Trans>Description</Trans>:
           </strong>
           {scamDetails}
         </Text>
         <Text>
           <strong>
-            <Trans>Date: </Trans>
+            <Trans>Date </Trans>:
           </strong>
           {whenWereYouContacted}
         </Text>
         <Text>
           <strong>
-            <Trans>Contacted by:</Trans>
+            <Trans>Contacted by</Trans>:
           </strong>{' '}
           {howWereYouContacted}
         </Text>
@@ -305,7 +305,6 @@ const contactInfoSummary = client => {
           <Trans>Contact information</Trans>
         </H2>
         <Text>
-
           <strong>
             <Trans>Victim</Trans>:{' '}
           </strong>
@@ -317,7 +316,6 @@ const contactInfoSummary = client => {
           </strong>
           {contactInfoName}
           <Trans>Name: {contactInfoName}</Trans>
-
         </Text>
         <Text>
           <strong>
@@ -332,7 +330,10 @@ const contactInfoSummary = client => {
           {contactInfoPhone}
         </Text>
         <Text>
-          <Trans>Victim: {userIsTheVictim}</Trans>
+          <strong>
+            <Trans>Victim</Trans>:
+          </strong>{' '}
+          {userIsTheVictim}
         </Text>
       </React.Fragment>
     )
