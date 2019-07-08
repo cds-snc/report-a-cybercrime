@@ -3,6 +3,7 @@ import { jsx, css } from '@emotion/core'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
+import { I18n } from '@lingui/react'
 import { ApolloConsumer } from 'react-apollo'
 import { Container } from './components/container'
 import { Text } from './components/text'
@@ -88,9 +89,17 @@ export class FileUploadPage extends Component {
         </Container>
         <hr />
 
-        <H2 fontSize={[3, null, 5]}>
-          {files.length} <Trans>file(s) attached</Trans>
-        </H2>
+        <I18n>
+          {({ i18n }) => (
+            <H2 fontSize={[3, null, 5]}>
+              {i18n.plural({
+                value: files.length,
+                one: '# file attached',
+                other: '# files attached',
+              })}
+            </H2>
+          )}
+        </I18n>
 
         <Container>
           {files.map((f, index) => (
