@@ -29,6 +29,9 @@ type Mutation {
 
   """Submit report to database"""
   submitReport(
+    """Steve!"""
+    steve: String
+
     """details about the scam"""
     scamInfo: scamInfoInput
 
