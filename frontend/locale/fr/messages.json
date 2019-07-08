@@ -17,11 +17,7 @@
   "Confirm report information": "Confirmez les renseignement du rapport",
   "Contact information": "Coordonnées",
 
-  "Contact : {howWereYouContacted}",
   "Contacted by": "Contacté par",
-
-
- 
 
   "Continue": "Continuer",
   "Credit card": "Carte de crédit",
@@ -32,8 +28,6 @@
 
   "Describe": "Décrire",
 
- "Date : {whenWereYouContacted}",
-
   "Describe the scam": "Décrivez la fraude",
   "Describe what happened": "Décrire ce qui s'est passé",
 
@@ -42,7 +36,7 @@
 
   "Description: {scamDetails}": " Description : {scamDetails}",
 
-"Did you lose money as a result of the scam?": "Avez-vous perdu de l'argent suite à la fraude?",
+  "Did you lose money as a result of the scam?": "Avez-vous perdu de l'argent suite à la fraude?",
   "Do you have any documents, images, screenshots, or receipts?": "Avez-vous des documents, des images, des captures d'écran ou des reçus?",
   "Do you have any information about who might be responsible for the scam?": "Avez-vous des renseignements au sujet de la personne qui pourrait être responsable?",
   "E-transfer": "Virement de fonds",
@@ -60,8 +54,6 @@
   "File uploaded successfully, MD5: {0}": "Fichier téléchargé avec succès, MD5 : {0}",
   "Files and images": "Fichiers et images",
 
- 
-
   "Files attached": "Fichiers joints",
   "French": "Français",
   "Full name": "Nom complet",
@@ -75,7 +67,6 @@
   "Language of correspondence": "Langue de correspondence",
   "Language: {suspectLanguage}": "Langue: {suspectLanguage}",
 
-  
   "Leave your contact information": "Laissez vos coordonnées",
   "Mailing address": "Adresse postale",
   "Mailing address: {suspectAddress}": "Adresse postale : {suspectAddress}",
@@ -134,7 +125,6 @@
   "Upload suppporting files": "Téléchargez des fichier complémentaires",
   "Victim": "Victime",
 
-  
   "Warning! This is a prototype. It won't actually submit your report to the RCMP.": "Attention! Ce site est un prototype. Votre rapport ne sera pas réellement soumise à la GRC.",
   "We probably won't be able to recover the money, but understanding the impact of the scam can help build a case.": "Nous ne pourrons probablement pas récupérer l'argent, mais comprendre les répercussions de la fraude pourrait nous aider à monter un dossier.",
   "Website": "Sur un site web",
