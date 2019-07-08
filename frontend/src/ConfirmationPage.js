@@ -370,6 +370,7 @@ const submit = (client, submitReport) => {
       suspectWebsite,
       suspectIP,
     },
+    files,
     contactInfo: {
       contactInfoName,
       contactInfoEmail,
