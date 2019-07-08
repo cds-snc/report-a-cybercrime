@@ -40,6 +40,26 @@ export const FLAG_IDENTIFIER_MUTATION = gql`
   }
 `
 
+export const SUBMIT_REPORT_MUTATION = gql`
+  mutation submitReport(
+    $scamInfo: Object
+    $lostMoney: Object
+    $suspectInfo: Object
+    $files: Array
+    $contactInfo: Object
+  ) {
+    submitReport(
+      scamInfo: $scamInfo
+      lostMoney: $lostMoney
+      suspectInfo: $suspectInfo
+      files: $files
+      contactInfo: $contactInfo
+    ) {
+      reportID
+    }
+  }
+`
+
 export const UPLOAD_FILE_MUTATION = gql`
   mutation uploadFile($file: Upload!, $fileDescription: String!) {
     uploadFile(file: $file, fileDescription: $fileDescription) {

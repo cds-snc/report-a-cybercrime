@@ -162,6 +162,8 @@ const mutation = new GraphQLObjectType({
         { db },
         _info,
       ) => {
+        console.log('saving info', contactInfo)
+
         await db.saveReport({
           scamInfo,
           lostMoney,
