@@ -40,9 +40,24 @@ export const FLAG_IDENTIFIER_MUTATION = gql`
   }
 `
 
+gql`
+  type ContactInfo {
+    contactInfoName: String!
+    contactInfoEmail: String!
+    contactInfoPhone: String!
+  }
+`
+
 export const SUBMIT_REPORT_MUTATION = gql`
   mutation submitReport($steve: String) {
-    submitReport(steve: $steve) {
+    submitReport(
+      steve: $steve
+      contactInfo: {
+        contactInfoName: "ssjjjaaa"
+        contactInfoEmail: "email"
+        contactInfoPhone: "phone"
+      }
+    ) {
       reportID
     }
   }

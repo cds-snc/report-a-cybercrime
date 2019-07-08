@@ -347,7 +347,12 @@ const submit = (client, submitReport) => {
   // contactInfoName = randomizeString(contactInfoName)
 
   const data = {
-    steve: 'Steve',
+    steve: 'New Steve',
+    contactInfo: {
+      contactInfoName: 'Steve',
+      contactInfoEmail: 'steve@go.com',
+      contactInfoPhone: '333-3333',
+    },
   }
   console.log('submitting', data)
 
