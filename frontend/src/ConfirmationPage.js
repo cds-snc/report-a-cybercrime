@@ -349,7 +349,7 @@ const submit = (client, submitReport) => {
   const data = {
     steve: 'New Steve',
     contactInfo: {
-      contactInfoName: 'Steve',
+      contactInfoName: 'Steve The Second',
       contactInfoEmail: 'steve@go.com',
       contactInfoPhone: '333-3333',
     },
