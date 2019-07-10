@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
@@ -11,13 +11,6 @@ import { TrackPageViews } from './TrackPageViews'
 import { MoneyLostForm } from './forms/MoneyLostForm'
 import { Layout } from './components/layout'
 
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
 const submitAndNavigate = (client, data) => {
   client.writeData({ data })
   navigate('/suspectinfoquestion')
@@ -25,7 +18,12 @@ const submitAndNavigate = (client, data) => {
 
 export const MoneyLostPage = () => (
   <Layout>
-    <Container css={topBarContainer}>
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
       <Steps activeStep={1} />
     </Container>
     <H1>

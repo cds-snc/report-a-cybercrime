@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
@@ -12,17 +12,15 @@ import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { Text } from './components/text'
 
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
 export const ThankYou = () => (
   <Layout>
     <TrackPageViews />
-    <Container css={topBarContainer}>
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
       <Steps activeStep={4} />
     </Container>
     <H1>
@@ -71,27 +69,15 @@ export const ThankYou = () => (
       </Ul>
     </Text>
     <Container
-      maxWidth="300px"
-      marginTop={[2, null, 3]}
-      css={css`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      `}
+      width="305px"
+      marginTop={[1, null, 1]}
+      display="flex"
+      flexDirection="column"
+      justifyContent="space-between"
     >
-      <Container
-        width="305px"
-        marginTop={[1, null, 1]}
-        css={css`
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        `}
-      >
-        <ButtonLink type="submit" to="/" textAlign="center">
-          <Trans> Report another scam</Trans>
-        </ButtonLink>
-      </Container>
+      <ButtonLink type="submit" to="/" textAlign="center">
+        <Trans> Report another scam</Trans>
+      </ButtonLink>
     </Container>
   </Layout>
 )

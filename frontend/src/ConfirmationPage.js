@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
@@ -13,13 +13,6 @@ import { Link } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
-
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
 
 const scamEventSummary = client => {
   let {
@@ -343,7 +336,12 @@ const contactInfoSummary = client => {
 
 export const ConfirmationPage = () => (
   <Layout>
-    <Container css={topBarContainer}>
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
       <Steps activeStep={4} />
     </Container>
     <H1>
@@ -365,11 +363,9 @@ export const ConfirmationPage = () => (
     <Container
       maxWidth="305px"
       marginTop={[3, null, 4]}
-      css={css`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      `}
+      display="flex"
+      flex-direction="column"
+      justify-content="space-between"
     >
       <Button type="submit" onClick={() => navigate('/thankyou')}>
         <Trans>Submit report</Trans>
@@ -379,11 +375,9 @@ export const ConfirmationPage = () => (
     <Container
       maxWidth="300px"
       marginTop={[2, null, 3]}
-      css={css`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      `}
+      display="flex"
+      flex-direction="column"
+      justify-content="space-between"
     >
       <Link type="button" color="black" to="/" textAlign="center">
         <Trans>Cancel report</Trans>
