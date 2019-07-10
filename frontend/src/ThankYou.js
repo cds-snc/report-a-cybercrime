@@ -5,7 +5,6 @@ import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { A, ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
-import { Steps } from './components/stepper'
 import { Container } from './components/container'
 import { Layout } from './components/layout'
 import { Ul } from './components/unordered-list'
@@ -15,14 +14,6 @@ import { Text } from './components/text'
 export const ThankYou = () => (
   <Layout>
     <TrackPageViews />
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={4} />
-    </Container>
     <H1>
       <Trans>Thank you for reporting</Trans>
     </H1>
