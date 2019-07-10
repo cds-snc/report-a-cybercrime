@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
-import { ApolloConsumer } from 'react-apollo'
+import { ApolloConsumer, Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { H1, H2 } from './components/header'
 import { Container } from './components/container'
@@ -13,6 +13,7 @@ import { Link } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
+import { SUBMIT_REPORT_MUTATION } from './utils/queriesAndMutations'
 
 const scamEventSummary = client => {
   let {
@@ -334,6 +335,118 @@ const contactInfoSummary = client => {
   }
 }
 
+const randLetter = () => {
+  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  return letters[Math.floor(Math.random() * letters.length)]
+}
+const randDigit = () => Math.floor(Math.random() * 10)
+
+const randomizeString = s =>
+  s
+    .replace(/[a-z]/g, () => randLetter())
+    .replace(/[A-Z]/g, () => randLetter().toUpperCase())
+    .replace(/[0-9]/g, () => randDigit())
+
+const submit = (client, submitReport) => {
+  let {
+    howWereYouContacted,
+    otherMethodOfContact,
+    whenWereYouContacted,
+    scamDetails,
+    lostAmount,
+    lostCurrency,
+    lostOtherCurrency,
+    lostMethodsOfPayment,
+    lostOtherMethodOfPayment,
+    suspectName,
+    suspectAddress,
+    suspectLanguage,
+    otherSuspectLanguage,
+    suspectPhone,
+    suspectEmail,
+    suspectWebsite,
+    suspectIP,
+    files,
+    userIsTheVictim,
+    contactInfoName,
+    contactInfoEmail,
+    contactInfoPhone,
+  } = client.readQuery({
+    query: gql`
+      query readCache {
+        howWereYouContacted
+        otherMethodOfContact
+        whenWereYouContacted
+        scamDetails
+        lostAmount
+        lostCurrency
+        lostOtherCurrency
+        lostMethodsOfPayment
+        lostOtherMethodOfPayment
+        suspectName
+        suspectAddress
+        suspectLanguage
+        otherSuspectLanguage
+        suspectPhone
+        suspectEmail
+        suspectWebsite
+        suspectIP
+        files
+        userIsTheVictim
+        contactInfoName
+        contactInfoEmail
+        contactInfoPhone
+      }
+    `,
+  })
+
+  suspectName = randomizeString(suspectName)
+  suspectAddress = randomizeString(suspectAddress)
+  suspectPhone = randomizeString(suspectPhone)
+  suspectEmail = randomizeString(suspectEmail)
+  suspectWebsite = randomizeString(suspectWebsite)
+  suspectIP = randomizeString(suspectIP)
+
+  contactInfoName = randomizeString(contactInfoName)
+  contactInfoEmail = randomizeString(contactInfoEmail)
+  contactInfoPhone = randomizeString(contactInfoPhone)
+
+  const data = {
+    scamInfo: {
+      howWereYouContacted,
+      otherMethodOfContact,
+      whenWereYouContacted,
+      scamDetails,
+    },
+    lostMoney: {
+      lostAmount,
+      lostCurrency,
+      lostOtherCurrency,
+      lostMethodsOfPayment,
+      lostOtherMethodOfPayment,
+    },
+    suspectInfo: {
+      suspectName,
+      suspectAddress,
+      suspectLanguage,
+      otherSuspectLanguage,
+      suspectPhone,
+      suspectEmail,
+      suspectWebsite,
+      suspectIP,
+    },
+    files,
+    contactInfo: {
+      userIsTheVictim,
+      contactInfoName,
+      contactInfoEmail,
+      contactInfoPhone,
+    },
+  }
+  submitReport({ variables: data })
+  navigate('/thankyou')
+}
+
 export const ConfirmationPage = () => (
   <Layout>
     <Container
@@ -367,9 +480,20 @@ export const ConfirmationPage = () => (
       flex-direction="column"
       justify-content="space-between"
     >
-      <Button type="submit" onClick={() => navigate('/thankyou')}>
-        <Trans>Submit report</Trans>
-      </Button>
+      <ApolloConsumer>
+        {client => (
+          <Mutation mutation={SUBMIT_REPORT_MUTATION}>
+            {submitReport => (
+              <Button
+                type="submit"
+                onClick={() => submit(client, submitReport)}
+              >
+                <Trans>Submit report</Trans>
+              </Button>
+            )}
+          </Mutation>
+        )}
+      </ApolloConsumer>
     </Container>
 
     <Container

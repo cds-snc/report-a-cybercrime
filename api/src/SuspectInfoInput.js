@@ -8,6 +8,7 @@ const SuspectInfoInput = new GraphQLInputObjectType({
   name: 'suspectInfoInput',
   fields: () => ({
     suspectName: { type: GraphQLString },
+    suspectEmail: { type: GraphQLString },
     suspectAddress: { type: GraphQLString },
     suspectLanguage: { type: new GraphQLList(GraphQLString) },
     otherSuspectLanguage: { type: GraphQLString },
