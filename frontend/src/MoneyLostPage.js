@@ -26,7 +26,7 @@ const submitAndNavigate = (client, data) => {
 export const MoneyLostPage = () => (
   <Layout>
     <Container css={topBarContainer}>
-      <Steps activeStep={1} />
+      <Steps activeStep={1} steps={[{ href: '/scaminfo' }, {}, {}, {}, {}]} />
     </Container>
     <H1>
       <Trans>Tell us about the money lost</Trans>

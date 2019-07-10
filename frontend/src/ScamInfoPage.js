@@ -25,7 +25,7 @@ const submitAndNavigate = (client, data) => {
 export const ScamInfoPage = () => (
   <Layout>
     <Container css={topBarContainer}>
-      <Steps activeStep={0} />
+      <Steps activeStep={0} steps={[{}, {}, {}, {}, {}]} />
     </Container>
     <H1>
       <Trans>Describe the scam</Trans>

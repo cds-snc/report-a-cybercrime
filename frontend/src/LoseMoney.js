@@ -20,7 +20,7 @@ export const LoseMoney = () => (
   <Layout>
     <TrackPageViews />
     <Container css={topBarContainer}>
-      <Steps activeStep={1} />
+      <Steps activeStep={1} steps={[{ href: '/scaminfo' }, {}, {}, {}, {}]} />
     </Container>
     <H1>
       <Trans>Tell us if money was lost</Trans>

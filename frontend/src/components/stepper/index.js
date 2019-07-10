@@ -11,13 +11,7 @@ export const Steps = ({ activeStep, steps, ...props }) => (
 )
 
 Steps.defaultProps = {
-  steps: [
-    { title: '' },
-    { title: '' },
-    { title: '' },
-    { title: '' },
-    { title: '' },
-  ],
+  steps: [{ title: '' }],
 }
 Steps.propTypes = {
   steps: PropTypes.array,

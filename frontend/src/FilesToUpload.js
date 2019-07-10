@@ -19,7 +19,16 @@ const topBarContainer = css`
 export const FilesToUpload = () => (
   <Layout>
     <Container css={topBarContainer}>
-      <Steps activeStep={3} />
+      <Steps
+        activeStep={3}
+        steps={[
+          { href: '/scaminfo' },
+          { href: '/moneylost' },
+          { href: '/suspectinfo' },
+          {},
+          {},
+        ]}
+      />
     </Container>
     <TrackPageViews />
     <H1>

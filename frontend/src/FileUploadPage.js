@@ -57,7 +57,16 @@ export class FileUploadPage extends Component {
       <Layout>
         <TrackPageViews />
         <Container css={topBarContainer}>
-          <Steps activeStep={3} />
+          <Steps
+            activeStep={3}
+            steps={[
+              { href: '/scaminfo' },
+              { href: '/moneylost' },
+              { href: '/suspectinfo' },
+              {},
+              {},
+            ]}
+          />
         </Container>
         <H1 marginBottom="70px">
           <Trans>Attach supporting files</Trans>

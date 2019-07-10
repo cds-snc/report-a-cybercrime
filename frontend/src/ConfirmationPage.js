@@ -344,7 +344,16 @@ const contactInfoSummary = client => {
 export const ConfirmationPage = () => (
   <Layout>
     <Container css={topBarContainer}>
-      <Steps activeStep={4} />
+      <Steps
+        activeStep={4}
+        steps={[
+          { href: '/scaminfo' },
+          { href: '/moneylost' },
+          { href: '/suspectinfo' },
+          { href: 'uploadfiles' },
+          { href: 'contactinfo' },
+        ]}
+      />
     </Container>
     <H1>
       <Trans>Confirm report information</Trans>

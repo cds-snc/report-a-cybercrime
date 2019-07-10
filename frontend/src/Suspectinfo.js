@@ -20,7 +20,10 @@ export const Suspectinfo = () => (
   <Layout>
     <TrackPageViews />
     <Container css={topBarContainer}>
-      <Steps activeStep={2} />
+      <Steps
+        activeStep={2}
+        steps={[{ href: '/scaminfo' }, { href: '/moneylost' }, {}, {}, {}]}
+      />
     </Container>
     <H1>
       <Trans>Add scammer details</Trans>
