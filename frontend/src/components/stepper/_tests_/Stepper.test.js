@@ -15,7 +15,7 @@ describe('<Steps />', () => {
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
-            <Steps activeStep="2">
+            <Steps activeStep={2}>
               <div>foo</div>
               <div>foo 2</div>
             </Steps>
