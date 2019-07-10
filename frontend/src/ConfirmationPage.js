@@ -53,24 +53,29 @@ const scamEventSummary = client => {
         <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
           <Trans>Scam event</Trans>
         </H2>
-        <Text>
-          <strong>
-            <Trans>Description</Trans>:
-          </strong>
-          {scamDetails}
-        </Text>
+        {scamDetails ? (
+          <Text>
+            <strong>
+              <Trans>Description</Trans>:
+            </strong>
+            {scamDetails}
+          </Text>
+        ) : null}
+
         <Text>
           <strong>
             <Trans>Date </Trans>:
           </strong>
           {whenWereYouContacted}
         </Text>
-        <Text>
-          <strong>
-            <Trans>Contacted by</Trans>:
-          </strong>{' '}
-          {howWereYouContacted}
-        </Text>
+        {howWereYouContacted ? (
+          <Text>
+            <strong>
+              <Trans>Contacted by</Trans>:
+            </strong>{' '}
+            {howWereYouContacted}
+          </Text>
+        ) : null}
       </React.Fragment>
     )
   } else {
@@ -118,25 +123,30 @@ const lostMoneySummary = client => {
         >
           <Trans>Money lost</Trans>
         </H2>
-        <Text>
-          <strong>
-            {' '}
-            <Trans>Amount</Trans>:{' '}
-          </strong>
-          {lostAmount}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Currency</Trans> :
-          </strong>
-          {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Payment method</Trans>:{' '}
-          </strong>
-          {lostMethodsOfPayment}
-        </Text>
+        {lostAmount ? (
+          <Text>
+            <strong>
+              <Trans>Amount</Trans>:
+            </strong>
+            {lostAmount}
+          </Text>
+        ) : null}
+        {lostOtherCurrency ? (
+          <Text>
+            <strong>
+              <Trans>Currency</Trans> :
+            </strong>
+            {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
+          </Text>
+        ) : null}
+        {lostMethodsOfPayment ? (
+          <Text>
+            <strong>
+              <Trans>Payment method</Trans>:
+            </strong>
+            {lostMethodsOfPayment}
+          </Text>
+        ) : null}
       </React.Fragment>
     )
   } else {
@@ -192,49 +202,59 @@ const suspectInfoSummary = client => {
         >
           <Trans>Scammer details</Trans>
         </H2>
-        <Text>
-          <strong>
-            <Trans>Name</Trans>:
-          </strong>{' '}
-          {suspectName}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Phone number</Trans>:{' '}
-          </strong>
-          {suspectPhone}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Email address</Trans>:{' '}
-          </strong>
-          {suspectEmail}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Website</Trans>:{' '}
-          </strong>
-          {suspectWebsite}
-        </Text>
-        <Text>
-          <strong>
-            {' '}
-            <Trans>Mailing address</Trans>:{' '}
-          </strong>
-          {suspectAddress}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>IP address</Trans>:{' '}
-          </strong>
-          {suspectIP}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Language of correspondence</Trans>:{' '}
-          </strong>
-          {suspectLanguage}
-        </Text>
+
+        {suspectName ? (
+          <Text>
+            <strong>
+              <Trans>Name</Trans>:
+            </strong>{' '}
+            {suspectName}
+          </Text>
+        ) : null}
+
+        {suspectEmail ? (
+          <Text>
+            <strong>
+              <Trans>Email address</Trans>:{' '}
+            </strong>
+            {suspectEmail}
+          </Text>
+        ) : null}
+
+        {suspectWebsite ? (
+          <Text>
+            <strong>
+              <Trans>Website</Trans>:{' '}
+            </strong>
+            {suspectWebsite}
+          </Text>
+        ) : null}
+
+        {suspectAddress ? (
+          <Text>
+            <strong>
+              {' '}
+              <Trans>Mailing address</Trans>:{' '}
+            </strong>
+            {suspectAddress}
+          </Text>
+        ) : null}
+        {suspectIP ? (
+          <Text>
+            <strong>
+              <Trans>IP address</Trans>:{' '}
+            </strong>
+            {suspectIP}
+          </Text>
+        ) : null}
+        {suspectLanguage ? (
+          <Text>
+            <strong>
+              <Trans>Language of correspondence</Trans>:{' '}
+            </strong>
+            {suspectLanguage}
+          </Text>
+        ) : null}
       </React.Fragment>
     )
   } else {
@@ -304,36 +324,48 @@ const contactInfoSummary = client => {
         >
           <Trans>Contact information</Trans>
         </H2>
-        <Text>
-          <strong>
-            <Trans>Victim</Trans>:{' '}
-          </strong>
-          {userIsTheVictim}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Name</Trans>:{' '}
-          </strong>
-          {contactInfoName}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Email</Trans>:{' '}
-          </strong>
-          {contactInfoEmail}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Phone number</Trans>:
-          </strong>{' '}
-          {contactInfoPhone}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Victim</Trans>:
-          </strong>{' '}
-          {userIsTheVictim}
-        </Text>
+        {userIsTheVictim ? (
+          <Text>
+            <strong>
+              <Trans>Victim</Trans>:{' '}
+            </strong>
+            {userIsTheVictim}
+          </Text>
+        ) : null}
+
+        {contactInfoName ? (
+          <Text>
+            <strong>
+              <Trans>Name</Trans>:{' '}
+            </strong>
+            {contactInfoName}
+          </Text>
+        ) : null}
+
+        {contactInfoEmail ? (
+          <Text>
+            <strong>
+              <Trans>Email</Trans>:{' '}
+            </strong>
+            {contactInfoEmail}
+          </Text>
+        ) : null}
+        {contactInfoPhone ? (
+          <Text>
+            <strong>
+              <Trans>Phone number</Trans>:
+            </strong>{' '}
+            {contactInfoPhone}
+          </Text>
+        ) : null}
+        {userIsTheVictim ? (
+          <Text>
+            <strong>
+              <Trans>Victim</Trans>:
+            </strong>{' '}
+            {userIsTheVictim}
+          </Text>
+        ) : null}
       </React.Fragment>
     )
   } else {

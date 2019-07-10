@@ -23,18 +23,12 @@
   "Credit card": "Credit card",
   "Currency": "Currency",
   "Currency: {0}": "Currency: {0}",
-
   "Currency: {lostCurrency}": "Currency: {lostCurrency}",
   "Date": "Date",
-  
-
   "Date: {whenWereYouContacted}": "Date: {whenWereYouContacted}",
   "Describe the scam": "Describe the scam",
   "Describe what happened": "Describe what happened",
-
   "Description": "Description",
-  
-
   "Description: {scamDetails}": "Description: {scamDetails}",
   "Did you lose money as a result of the scam?": "Did you lose money as a result of the scam?",
   "Do you have any documents, images, screenshots, or receipts?": "Do you have any documents, images, screenshots, or receipts?",
@@ -46,12 +40,10 @@
   "Email: {contactInfoEmail}": "Email: {contactInfoEmail}",
   "English": "English",
   "Euro": "Euro",
-
   "Euros": "Euros",
   "Event Occured on: {whenWereYouContacted}": "Event Occured on: {whenWereYouContacted}",
   "Evidence": "Evidence",
   "File name": "File name",
-
   "File name: {fileList}": "File name: {fileList}",
   "Files attached": "Files attached",
   "French": "French",
@@ -107,18 +99,13 @@
   "Thank you for reporting": "Thank you for reporting",
   "This site will change as we test ideas.": "This site will change as we test ideas.",
   "U.S. dollar": "U.S. dollar",
-
   "US dollar": "US dollar",
   "Upload": "Upload",
   "Upload Evidence": "Upload Evidence",
   "Upload a suspicious file": "Upload a suspicious file",
   "Upload another file": "Upload another file",
   "Upload supporting files": "Upload supporting files",
-  
   "Victim": "Victim",
-
-
-  
   "Warning! This is a prototype. It won't actually submit your report to the RCMP.": "Warning! This is a prototype. It won't actually submit your report to the RCMP.",
   "We probably won't be able to recover the money, but understanding the impact of the scam can help build a case.": "We probably won't be able to recover the money, but understanding the impact of the scam can help build a case.",
   "Website": "Website",
@@ -133,7 +120,6 @@
   "You will be asked to:": "You will be asked to:",
   "en": "en",
   "loading...": "loading...",
-
   "no": "no",
   "other": "other",
   "phone": "phone",
@@ -147,6 +133,3 @@
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}",
   "{0} files selected": "{0} files selected"
 }
-
- 
-
