@@ -16,14 +16,25 @@
   "Cash": "Cash",
   "Confirm report information": "Confirm report information",
   "Contact information": "Contact information",
+  "Contacted by": "Contacted by",
+  "Contacted by:": "Contacted by:",
   "Contacted by: {howWereYouContacted}": "Contacted by: {howWereYouContacted}",
   "Continue": "Continue",
   "Credit card": "Credit card",
   "Currency": "Currency",
   "Currency: {0}": "Currency: {0}",
+
+  "Currency: {lostCurrency}": "Currency: {lostCurrency}",
+  "Date": "Date",
+  
+
   "Date: {whenWereYouContacted}": "Date: {whenWereYouContacted}",
   "Describe the scam": "Describe the scam",
   "Describe what happened": "Describe what happened",
+
+  "Description": "Description",
+  
+
   "Description: {scamDetails}": "Description: {scamDetails}",
   "Did you lose money as a result of the scam?": "Did you lose money as a result of the scam?",
   "Do you have any documents, images, screenshots, or receipts?": "Do you have any documents, images, screenshots, or receipts?",
@@ -35,6 +46,12 @@
   "Email: {contactInfoEmail}": "Email: {contactInfoEmail}",
   "English": "English",
   "Euro": "Euro",
+
+  "Euros": "Euros",
+  "Event Occured on: {whenWereYouContacted}": "Event Occured on: {whenWereYouContacted}",
+  "Evidence": "Evidence",
+  "File name": "File name",
+
   "File name: {fileList}": "File name: {fileList}",
   "Files attached": "Files attached",
   "French": "French",
@@ -45,6 +62,7 @@
   "IP address: {suspectIP}": "IP address: {suspectIP}",
   "If your report becomes an investigation, a local police officer may be in touch to get more information.": "If your report becomes an investigation, a local police officer may be in touch to get more information.",
   "Language of communications": "Language of communications",
+  "Language of correspondence": "Language of correspondence",
   "Language of correspondence: {suspectLanguage}": "Language of correspondence: {suspectLanguage}",
   "Leave your contact information": "Leave your contact information",
   "Mailing address": "Mailing address",
@@ -60,6 +78,7 @@
   "Other language": "Other language",
   "Other method": "Other method",
   "Page not found": "Page not found",
+  "Payment method": "Payment method",
   "Payment method: {lostMethodsOfPayment}": "Payment method: {lostMethodsOfPayment}",
   "Phone number": "Phone number",
   "Phone number: {contactInfoPhone}": "Phone number: {contactInfoPhone}",
@@ -88,7 +107,18 @@
   "Thank you for reporting": "Thank you for reporting",
   "This site will change as we test ideas.": "This site will change as we test ideas.",
   "U.S. dollar": "U.S. dollar",
-  "Victim: {userIsTheVictim}": "Victim: {userIsTheVictim}",
+
+  "US dollar": "US dollar",
+  "Upload": "Upload",
+  "Upload Evidence": "Upload Evidence",
+  "Upload a suspicious file": "Upload a suspicious file",
+  "Upload another file": "Upload another file",
+  "Upload supporting files": "Upload supporting files",
+  
+  "Victim": "Victim",
+
+
+  
   "Warning! This is a prototype. It won't actually submit your report to the RCMP.": "Warning! This is a prototype. It won't actually submit your report to the RCMP.",
   "We probably won't be able to recover the money, but understanding the impact of the scam can help build a case.": "We probably won't be able to recover the money, but understanding the impact of the scam can help build a case.",
   "Website": "Website",
@@ -103,5 +133,20 @@
   "You will be asked to:": "You will be asked to:",
   "en": "en",
   "loading...": "loading...",
-  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
+
+  "no": "no",
+  "other": "other",
+  "phone": "phone",
+  "report-cyber.ca": "report-cyber.ca",
+  "specify if money was lost": "specify if money was lost",
+  "suspect information": "suspect information",
+  "website link": "website link",
+  "what do you need to prepare in order to report the scam online:": "what do you need to prepare in order to report the scam online:",
+  "what do you need to prepare in order to report the scam online?": "what do you need to prepare in order to report the scam online?",
+  "yes": "yes",
+  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}",
+  "{0} files selected": "{0} files selected"
 }
+
+ 
+
