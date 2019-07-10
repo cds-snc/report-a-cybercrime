@@ -315,7 +315,6 @@ const contactInfoSummary = client => {
             <Trans>Name</Trans>:{' '}
           </strong>
           {contactInfoName}
-          <Trans>Name: {contactInfoName}</Trans>
         </Text>
         <Text>
           <strong>

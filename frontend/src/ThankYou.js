@@ -3,11 +3,12 @@ import { jsx, css } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
-import { A } from './components/link'
+import { A, ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
 import { Container } from './components/container'
 import { Layout } from './components/layout'
+// import { ButtonLink } from './components/link'
 
 const topBarContainer = css`
   display: flex;
@@ -78,12 +79,21 @@ export const ThankYou = () => (
         justify-content: space-between;
       `}
     >
-      <A
-        href="https://www.report-a-cybercrime.alpha.rcmp-grc.gc.ca/"
-        textAlign="center"
+      <Container
+        width="305px"
+        marginTop={[1, null, 1]}
+        css={css`
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        `}
       >
-        <Trans>Report another scam</Trans>
-      </A>
+        <ButtonLink type="submit" to="/" textAlign="center">
+          <Trans> Report another scam</Trans>
+        </ButtonLink>
+      </Container>
+
+     
     </Container>
   </Layout>
 )

@@ -122,9 +122,8 @@
   "Upload a suspicious file": "Télécharger un fichier suspect",
   "Upload another file": "Télécharger un autre fichier",
   "Upload supporting files": "Téléchargez des fichier complémentaires",
-  "Upload suppporting files": "Téléchargez des fichier complémentaires",
   "Victim": "Victime",
-
+  "Victim: {userIsTheVictim}": "Victime : {userIsTheVictim}",
   "Warning! This is a prototype. It won't actually submit your report to the RCMP.": "Attention! Ce site est un prototype. Votre rapport ne sera pas réellement soumise à la GRC.",
   "We probably won't be able to recover the money, but understanding the impact of the scam can help build a case.": "Nous ne pourrons probablement pas récupérer l'argent, mais comprendre les répercussions de la fraude pourrait nous aider à monter un dossier.",
   "Website": "Sur un site web",
