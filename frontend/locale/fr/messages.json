@@ -88,6 +88,15 @@
   "Thank you for reporting": "Merci d'avoir signalé cette fraude",
   "This site will change as we test ideas.": "Ce site évoluera au fur et à mesure que nous testons des idées.",
   "U.S. dollar": "Dollar américain",
+
+  "US dollar": "Dollar des États-Unis",
+  "Upload": "Télécharger",
+  "Upload Evidence": "Télécharger la preuve",
+  "Upload a suspicious file": "Télécharger un fichier suspect",
+  "Upload another file": "Télécharger un autre fichier",
+  "Upload supporting files": "Téléchargez des fichier complémentaires",
+
+
   "Victim: {userIsTheVictim}": "Victime : {userIsTheVictim}",
   "Warning! This is a prototype. It won't actually submit your report to the RCMP.": "Attention! Ce site est un prototype. Votre rapport ne sera pas réellement soumise à la GRC.",
   "We probably won't be able to recover the money, but understanding the impact of the scam can help build a case.": "Nous ne pourrons probablement pas récupérer l'argent, mais comprendre les répercussions de la fraude pourrait nous aider à monter un dossier.",
