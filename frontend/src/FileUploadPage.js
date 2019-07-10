@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
@@ -13,16 +13,7 @@ import { Link } from './components/link'
 import { FileUpload } from './components/file-upload'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
-
 import { Steps } from './components/stepper'
-
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
 import { P } from './components/paragraph'
 
 export class FileUploadPage extends Component {
@@ -56,7 +47,12 @@ export class FileUploadPage extends Component {
     return (
       <Layout>
         <TrackPageViews />
-        <Container css={topBarContainer}>
+        <Container
+          display="flex"
+          width="90%"
+          flexDirection="row"
+          marginBottom="20px"
+        >
           <Steps
             activeStep={3}
             steps={[
@@ -82,11 +78,9 @@ export class FileUploadPage extends Component {
           width="300px"
           marginTop={[2, null, 5]}
           marginBottom={[2, null, 5]}
-          css={css`
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-          `}
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
         >
           <FileUpload
             onChange={this.onChange}
@@ -116,11 +110,9 @@ export class FileUploadPage extends Component {
               width="300px"
               marginBottom={[2, null, 3]}
               key={index}
-              css={css`
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-              `}
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
             >
               <Text>{f.name}</Text>
               <Button
@@ -142,11 +134,9 @@ export class FileUploadPage extends Component {
               <Container
                 width="300px"
                 marginTop={[7, null, 8]}
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-between;
-                `}
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
               >
                 <Button onClick={() => this.submitAndNavigate(client)}>
                   <Trans>Continue</Trans>
@@ -156,11 +146,9 @@ export class FileUploadPage extends Component {
               <Container
                 width="300px"
                 marginTop={[2, null, 3]}
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-between;
-                `}
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
               >
                 <Link type="button" color="black" to="/" textAlign="center">
                   <Trans>Cancel report</Trans>

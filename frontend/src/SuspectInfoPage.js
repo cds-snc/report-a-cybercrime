@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
@@ -10,13 +10,6 @@ import { TrackPageViews } from './TrackPageViews'
 import { SuspectInfoForm } from './forms/SuspectInfoForm'
 import { Layout } from './components/layout'
 
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
 const submitAndNavigate = (client, data) => {
   client.writeData({ data })
   navigate('/uploadfilesquestion')
@@ -24,7 +17,12 @@ const submitAndNavigate = (client, data) => {
 
 export const SuspectInfoPage = () => (
   <Layout>
-    <Container css={topBarContainer}>
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
       <Steps
         activeStep={2}
         steps={[{ href: '/scaminfo' }, { href: '/moneylost' }, {}, {}, {}]}

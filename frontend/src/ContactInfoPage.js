@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
@@ -9,13 +9,6 @@ import { TrackPageViews } from './TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from './components/layout'
 
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
 const submitAndNavigate = (client, data) => {
   client.writeData({ data })
   navigate('/confirmation')
@@ -23,7 +16,12 @@ const submitAndNavigate = (client, data) => {
 
 export const ContactInfoPage = () => (
   <Layout>
-    <Container css={topBarContainer}>
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
       <Steps
         activeStep={4}
         steps={[
