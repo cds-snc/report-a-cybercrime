@@ -286,15 +286,13 @@ const randLetter = () => {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
   return letters[Math.floor(Math.random() * letters.length)]
 }
-const randDigit = () => {
-  return Math.floor(Math.random() * 10)
-}
+const randDigit = () => Math.floor(Math.random() * 10)
 
-const randomizeString = s => {
-  let newString = s.replace(/[a-z]/g, () => randLetter())
-  newString = newString.replace(/[A-Z]/g, () => randLetter().toUpperCase())
-  return newString.replace(/[0-9]/g, () => randDigit())
-}
+const randomizeString = s =>
+  s
+    .replace(/[a-z]/g, () => randLetter())
+    .replace(/[A-Z]/g, () => randLetter().toUpperCase())
+    .replace(/[0-9]/g, () => randDigit())
 
 const submit = (client, submitReport) => {
   let {
