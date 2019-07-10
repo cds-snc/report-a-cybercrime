@@ -386,15 +386,14 @@ const submit = (client, submitReport) => {
     },
     files,
     contactInfo: {
+      userIsTheVictim,
       contactInfoName,
       contactInfoEmail,
       contactInfoPhone,
     },
   }
-  console.log('submitting', data)
-
   submitReport({ variables: data })
-  // navigate('/thankyou')
+  navigate('/thankyou')
 }
 
 export const ConfirmationPage = () => (
