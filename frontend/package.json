@@ -100,7 +100,8 @@
     "pretty-quick": "^1.11.1",
     "prop-types": "^15.7.2",
     "supertest": "^4.0.2",
-    "waait": "^1.0.5"
+    "waait": "^1.0.5",
+    "webpack-bundle-analyzer": "^3.3.2"
   },
   "lingui": {
     "srcPathIgnorePatterns": [
