@@ -2,7 +2,6 @@ import '@babel/polyfill'
 import app from './server'
 import http from 'http'
 import { Logger } from '@cdssnc/logdriver'
-import fetch from 'node-fetch'
 
 const server = http.createServer(app)
 
@@ -21,13 +20,6 @@ const port = () =>
   )
 
 const _port = port()
-
-fetch(
-  'http://compliance-watcher.symmorfosi.svc.cluster.local:3000/run_compliance',
-  { method: 'POST', body: '' },
-).catch(err => {
-  Logger.error(`Error triggering compliance api: ${err}`)
-})
 
 server.listen(_port, error => {
   if (error) {
