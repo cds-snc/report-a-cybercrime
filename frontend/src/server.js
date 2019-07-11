@@ -52,25 +52,11 @@ server
     cache.writeData({
       data: {
         language: req.language,
-
         scamInfo: JSON.stringify({}),
         lostMoney: JSON.stringify({}),
-
-        suspectName: '',
-        suspectAddress: '',
-        suspectLanguage: [],
-        otherSuspectLanguage: '',
-        suspectPhone: '',
-        suspectEmail: '',
-        suspectWebsite: '',
-        suspectIP: '',
-
+        suspectInfo: JSON.stringify({}),
         files: [],
-
-        userIsTheVictim: '',
-        contactInfoName: '',
-        contactInfoEmail: '',
-        contactInfoPhone: '',
+        contactInfo: JSON.stringify({}),
       },
     })
 

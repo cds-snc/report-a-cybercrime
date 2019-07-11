@@ -28,25 +28,11 @@ const cache = new InMemoryCache()
 cache.writeData({
   data: {
     language: getLanguage(),
-
     scamInfo: JSON.stringify({}),
     lostMoney: JSON.stringify({}),
-
-    suspectName: '',
-    suspectAddress: '',
-    suspectLanguage: [],
-    otherSuspectLanguage: '',
-    suspectPhone: '',
-    suspectEmail: '',
-    suspectWebsite: '',
-    suspectIP: '',
-
+    suspectInfo: JSON.stringify({}),
     files: [],
-
-    userIsTheVictim: '',
-    contactInfoName: '',
-    contactInfoEmail: '',
-    contactInfoPhone: '',
+    contactInfo: JSON.stringify({}),
   },
 })
 
