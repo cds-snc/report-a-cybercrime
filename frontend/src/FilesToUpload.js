@@ -17,7 +17,16 @@ export const FilesToUpload = () => (
       flexDirection="row"
       marginBottom="20px"
     >
-      <Steps activeStep={3} />
+      <Steps
+        activeStep={3}
+        steps={[
+          { href: '/scaminfo' },
+          { href: '/moneylost' },
+          { href: '/suspectinfo' },
+          {},
+          {},
+        ]}
+      />
     </Container>
     <TrackPageViews />
     <H1>

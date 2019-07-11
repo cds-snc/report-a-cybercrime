@@ -23,7 +23,7 @@ export const ScamInfoPage = () => (
       flexDirection="row"
       marginBottom="20px"
     >
-      <Steps activeStep={0} />
+      <Steps activeStep={0} steps={[{}, {}, {}, {}, {}]} />
     </Container>
     <H1>
       <Trans>Describe the scam</Trans>

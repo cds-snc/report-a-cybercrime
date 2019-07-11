@@ -18,7 +18,16 @@ export const Willbecontacted = () => (
       flexDirection="row"
       marginBottom="20px"
     >
-      <Steps activeStep={4} />
+      <Steps
+        activeStep={4}
+        steps={[
+          { href: '/scaminfo' },
+          { href: '/moneylost' },
+          { href: '/suspectinfo' },
+          { href: 'uploadfiles' },
+          {},
+        ]}
+      />
     </Container>
     <H1>
       <Trans>Leave your contact information</Trans>

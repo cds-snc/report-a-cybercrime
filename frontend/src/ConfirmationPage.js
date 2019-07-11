@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
-import { ApolloConsumer } from 'react-apollo'
+import { ApolloConsumer, Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { H1, H2 } from './components/header'
 import { Container } from './components/container'
@@ -13,6 +13,7 @@ import { Link } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
+import { SUBMIT_REPORT_MUTATION } from './utils/queriesAndMutations'
 
 const scamEventSummary = client => {
   let {
@@ -46,24 +47,29 @@ const scamEventSummary = client => {
         <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
           <Trans>Scam event</Trans>
         </H2>
-        <Text>
-          <strong>
-            <Trans>Description</Trans>:
-          </strong>
-          {scamDetails}
-        </Text>
+        {scamDetails ? (
+          <Text>
+            <strong>
+              <Trans>Description</Trans>:
+            </strong>
+            {scamDetails}
+          </Text>
+        ) : null}
+
         <Text>
           <strong>
             <Trans>Date </Trans>:
           </strong>
           {whenWereYouContacted}
         </Text>
-        <Text>
-          <strong>
-            <Trans>Contacted by</Trans>:
-          </strong>{' '}
-          {howWereYouContacted}
-        </Text>
+        {howWereYouContacted ? (
+          <Text>
+            <strong>
+              <Trans>Contacted by</Trans>:
+            </strong>{' '}
+            {howWereYouContacted}
+          </Text>
+        ) : null}
       </React.Fragment>
     )
   } else {
@@ -111,25 +117,30 @@ const lostMoneySummary = client => {
         >
           <Trans>Money lost</Trans>
         </H2>
-        <Text>
-          <strong>
-            {' '}
-            <Trans>Amount</Trans>:{' '}
-          </strong>
-          {lostAmount}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Currency</Trans> :
-          </strong>
-          {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Payment method</Trans>:{' '}
-          </strong>
-          {lostMethodsOfPayment}
-        </Text>
+        {lostAmount ? (
+          <Text>
+            <strong>
+              <Trans>Amount</Trans>:
+            </strong>
+            {lostAmount}
+          </Text>
+        ) : null}
+        {lostOtherCurrency ? (
+          <Text>
+            <strong>
+              <Trans>Currency</Trans> :
+            </strong>
+            {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
+          </Text>
+        ) : null}
+        {lostMethodsOfPayment ? (
+          <Text>
+            <strong>
+              <Trans>Payment method</Trans>:
+            </strong>
+            {lostMethodsOfPayment}
+          </Text>
+        ) : null}
       </React.Fragment>
     )
   } else {
@@ -185,49 +196,59 @@ const suspectInfoSummary = client => {
         >
           <Trans>Scammer details</Trans>
         </H2>
-        <Text>
-          <strong>
-            <Trans>Name</Trans>:
-          </strong>{' '}
-          {suspectName}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Phone number</Trans>:{' '}
-          </strong>
-          {suspectPhone}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Email address</Trans>:{' '}
-          </strong>
-          {suspectEmail}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Website</Trans>:{' '}
-          </strong>
-          {suspectWebsite}
-        </Text>
-        <Text>
-          <strong>
-            {' '}
-            <Trans>Mailing address</Trans>:{' '}
-          </strong>
-          {suspectAddress}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>IP address</Trans>:{' '}
-          </strong>
-          {suspectIP}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Language of correspondence</Trans>:{' '}
-          </strong>
-          {suspectLanguage}
-        </Text>
+
+        {suspectName ? (
+          <Text>
+            <strong>
+              <Trans>Name</Trans>:
+            </strong>{' '}
+            {suspectName}
+          </Text>
+        ) : null}
+
+        {suspectEmail ? (
+          <Text>
+            <strong>
+              <Trans>Email address</Trans>:{' '}
+            </strong>
+            {suspectEmail}
+          </Text>
+        ) : null}
+
+        {suspectWebsite ? (
+          <Text>
+            <strong>
+              <Trans>Website</Trans>:{' '}
+            </strong>
+            {suspectWebsite}
+          </Text>
+        ) : null}
+
+        {suspectAddress ? (
+          <Text>
+            <strong>
+              {' '}
+              <Trans>Mailing address</Trans>:{' '}
+            </strong>
+            {suspectAddress}
+          </Text>
+        ) : null}
+        {suspectIP ? (
+          <Text>
+            <strong>
+              <Trans>IP address</Trans>:{' '}
+            </strong>
+            {suspectIP}
+          </Text>
+        ) : null}
+        {suspectLanguage ? (
+          <Text>
+            <strong>
+              <Trans>Language of correspondence</Trans>:{' '}
+            </strong>
+            {suspectLanguage}
+          </Text>
+        ) : null}
       </React.Fragment>
     )
   } else {
@@ -297,41 +318,165 @@ const contactInfoSummary = client => {
         >
           <Trans>Contact information</Trans>
         </H2>
-        <Text>
-          <strong>
-            <Trans>Victim</Trans>:{' '}
-          </strong>
-          {userIsTheVictim}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Name</Trans>:{' '}
-          </strong>
-          {contactInfoName}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Email</Trans>:{' '}
-          </strong>
-          {contactInfoEmail}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Phone number</Trans>:
-          </strong>{' '}
-          {contactInfoPhone}
-        </Text>
-        <Text>
-          <strong>
-            <Trans>Victim</Trans>:
-          </strong>{' '}
-          {userIsTheVictim}
-        </Text>
+        {userIsTheVictim ? (
+          <Text>
+            <strong>
+              <Trans>Victim</Trans>:{' '}
+            </strong>
+            {userIsTheVictim}
+          </Text>
+        ) : null}
+
+        {contactInfoName ? (
+          <Text>
+            <strong>
+              <Trans>Name</Trans>:{' '}
+            </strong>
+            {contactInfoName}
+          </Text>
+        ) : null}
+
+        {contactInfoEmail ? (
+          <Text>
+            <strong>
+              <Trans>Email</Trans>:{' '}
+            </strong>
+            {contactInfoEmail}
+          </Text>
+        ) : null}
+        {contactInfoPhone ? (
+          <Text>
+            <strong>
+              <Trans>Phone number</Trans>:
+            </strong>{' '}
+            {contactInfoPhone}
+          </Text>
+        ) : null}
+        {userIsTheVictim ? (
+          <Text>
+            <strong>
+              <Trans>Victim</Trans>:
+            </strong>{' '}
+            {userIsTheVictim}
+          </Text>
+        ) : null}
       </React.Fragment>
     )
   } else {
     return null
   }
+}
+
+const randLetter = () => {
+  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  return letters[Math.floor(Math.random() * letters.length)]
+}
+const randDigit = () => Math.floor(Math.random() * 10)
+
+const randomizeString = s =>
+  s
+    .replace(/[a-z]/g, () => randLetter())
+    .replace(/[A-Z]/g, () => randLetter().toUpperCase())
+    .replace(/[0-9]/g, () => randDigit())
+
+const submit = (client, submitReport) => {
+  let {
+    howWereYouContacted,
+    otherMethodOfContact,
+    whenWereYouContacted,
+    scamDetails,
+    lostAmount,
+    lostCurrency,
+    lostOtherCurrency,
+    lostMethodsOfPayment,
+    lostOtherMethodOfPayment,
+    suspectName,
+    suspectAddress,
+    suspectLanguage,
+    otherSuspectLanguage,
+    suspectPhone,
+    suspectEmail,
+    suspectWebsite,
+    suspectIP,
+    files,
+    userIsTheVictim,
+    contactInfoName,
+    contactInfoEmail,
+    contactInfoPhone,
+  } = client.readQuery({
+    query: gql`
+      query readCache {
+        howWereYouContacted
+        otherMethodOfContact
+        whenWereYouContacted
+        scamDetails
+        lostAmount
+        lostCurrency
+        lostOtherCurrency
+        lostMethodsOfPayment
+        lostOtherMethodOfPayment
+        suspectName
+        suspectAddress
+        suspectLanguage
+        otherSuspectLanguage
+        suspectPhone
+        suspectEmail
+        suspectWebsite
+        suspectIP
+        files
+        userIsTheVictim
+        contactInfoName
+        contactInfoEmail
+        contactInfoPhone
+      }
+    `,
+  })
+
+  suspectName = randomizeString(suspectName)
+  suspectAddress = randomizeString(suspectAddress)
+  suspectPhone = randomizeString(suspectPhone)
+  suspectEmail = randomizeString(suspectEmail)
+  suspectWebsite = randomizeString(suspectWebsite)
+  suspectIP = randomizeString(suspectIP)
+
+  contactInfoName = randomizeString(contactInfoName)
+  contactInfoEmail = randomizeString(contactInfoEmail)
+  contactInfoPhone = randomizeString(contactInfoPhone)
+
+  const data = {
+    scamInfo: {
+      howWereYouContacted,
+      otherMethodOfContact,
+      whenWereYouContacted,
+      scamDetails,
+    },
+    lostMoney: {
+      lostAmount,
+      lostCurrency,
+      lostOtherCurrency,
+      lostMethodsOfPayment,
+      lostOtherMethodOfPayment,
+    },
+    suspectInfo: {
+      suspectName,
+      suspectAddress,
+      suspectLanguage,
+      otherSuspectLanguage,
+      suspectPhone,
+      suspectEmail,
+      suspectWebsite,
+      suspectIP,
+    },
+    files,
+    contactInfo: {
+      userIsTheVictim,
+      contactInfoName,
+      contactInfoEmail,
+      contactInfoPhone,
+    },
+  }
+  submitReport({ variables: data })
+  navigate('/thankyou')
 }
 
 export const ConfirmationPage = () => (
@@ -342,7 +487,16 @@ export const ConfirmationPage = () => (
       flexDirection="row"
       marginBottom="20px"
     >
-      <Steps activeStep={4} />
+      <Steps
+        activeStep={4}
+        steps={[
+          { href: '/scaminfo' },
+          { href: '/moneylost' },
+          { href: '/suspectinfo' },
+          { href: 'uploadfiles' },
+          { href: 'contactinfo' },
+        ]}
+      />
     </Container>
     <H1>
       <Trans>Confirm report information</Trans>
@@ -367,9 +521,20 @@ export const ConfirmationPage = () => (
       flex-direction="column"
       justify-content="space-between"
     >
-      <Button type="submit" onClick={() => navigate('/thankyou')}>
-        <Trans>Submit report</Trans>
-      </Button>
+      <ApolloConsumer>
+        {client => (
+          <Mutation mutation={SUBMIT_REPORT_MUTATION}>
+            {submitReport => (
+              <Button
+                type="submit"
+                onClick={() => submit(client, submitReport)}
+              >
+                <Trans>Submit report</Trans>
+              </Button>
+            )}
+          </Mutation>
+        )}
+      </ApolloConsumer>
     </Container>
 
     <Container
