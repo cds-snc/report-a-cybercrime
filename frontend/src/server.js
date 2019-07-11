@@ -34,15 +34,15 @@ server
       languages: ['en', 'fr'],
     }),
   )
-  .get('/assets', (req, res) => {
+  .get('/assets', (_req, res) => {
     res.status(200).send(JSON.stringify(assets))
   })
-  .get('/monitoring/alive', (req, res) => {
+  .get('/monitoring/alive', (_req, res) => {
     res.status(200).send('yes')
   })
   .use('/public', express.static(__dirname + '/public'))
   .use('/static', express.static('static'))
-  .get('/monitoring/ready', (req, res) => {
+  .get('/monitoring/ready', (_req, res) => {
     res.status(200).send('yes')
   })
   .get('/*', async (req, res) => {
