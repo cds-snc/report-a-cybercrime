@@ -29,10 +29,7 @@ cache.writeData({
   data: {
     language: getLanguage(),
 
-    howWereYouContacted: [],
-    otherMethodOfContact: '',
-    whenWereYouContacted: '',
-    scamDetails: '',
+    scamInfo: JSON.stringify({}),
 
     lostAmount: '',
     lostCurrency: '',

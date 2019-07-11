@@ -53,10 +53,7 @@ server
       data: {
         language: req.language,
 
-        howWereYouContacted: [],
-        otherMethodOfContact: '',
-        whenWereYouContacted: '',
-        scamDetails: '',
+        scamInfo: JSON.stringify({}),
 
         lostAmount: '',
         lostCurrency: '',

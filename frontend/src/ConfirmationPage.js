@@ -16,21 +16,20 @@ import { Layout } from './components/layout'
 import { SUBMIT_REPORT_MUTATION } from './utils/queriesAndMutations'
 
 const scamEventSummary = client => {
+  let { scamInfo } = client.readQuery({
+    query: gql`
+      query readCache {
+        scamInfo
+      }
+    `,
+  })
   let {
     howWereYouContacted,
     otherMethodOfContact,
     whenWereYouContacted,
     scamDetails,
-  } = client.readQuery({
-    query: gql`
-      query readCache {
-        howWereYouContacted
-        otherMethodOfContact
-        whenWereYouContacted
-        scamDetails
-      }
-    `,
-  })
+  } = JSON.parse(scamInfo)
+
   if (
     (howWereYouContacted && howWereYouContacted.length) ||
     whenWereYouContacted ||
@@ -40,8 +39,8 @@ const scamEventSummary = client => {
       howWereYouContacted = howWereYouContacted.concat(otherMethodOfContact)
     }
     howWereYouContacted = howWereYouContacted
-      .filter(s => s !== 'other')
-      .join(', ')
+      ? howWereYouContacted.filter(s => s !== 'other').join(', ')
+      : ''
     return (
       <React.Fragment>
         <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
@@ -381,10 +380,7 @@ const randomizeString = s =>
 
 const submit = (client, submitReport) => {
   let {
-    howWereYouContacted,
-    otherMethodOfContact,
-    whenWereYouContacted,
-    scamDetails,
+    scamInfo,
     lostAmount,
     lostCurrency,
     lostOtherCurrency,
@@ -406,10 +402,7 @@ const submit = (client, submitReport) => {
   } = client.readQuery({
     query: gql`
       query readCache {
-        howWereYouContacted
-        otherMethodOfContact
-        whenWereYouContacted
-        scamDetails
+        scamInfo
         lostAmount
         lostCurrency
         lostOtherCurrency
@@ -431,6 +424,13 @@ const submit = (client, submitReport) => {
       }
     `,
   })
+
+  let {
+    howWereYouContacted,
+    otherMethodOfContact,
+    whenWereYouContacted,
+    scamDetails,
+  } = JSON.parse(scamInfo)
 
   suspectName = randomizeString(suspectName)
   suspectAddress = randomizeString(suspectAddress)
