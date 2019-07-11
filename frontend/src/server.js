@@ -54,12 +54,7 @@ server
         language: req.language,
 
         scamInfo: JSON.stringify({}),
-
-        lostAmount: '',
-        lostCurrency: '',
-        lostOtherCurrency: '',
-        lostMethodsOfPayment: [],
-        lostOtherMethodOfPayment: '',
+        lostMoney: JSON.stringify({}),
 
         suspectName: '',
         suspectAddress: '',

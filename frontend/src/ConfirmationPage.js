@@ -77,23 +77,21 @@ const scamEventSummary = client => {
 }
 
 const lostMoneySummary = client => {
+  let { lostMoney } = client.readQuery({
+    query: gql`
+      query readCache {
+        lostMoney
+      }
+    `,
+  })
   let {
     lostAmount,
     lostCurrency,
     lostOtherCurrency,
     lostMethodsOfPayment,
     lostOtherMethodOfPayment,
-  } = client.readQuery({
-    query: gql`
-      query readCache {
-        lostAmount
-        lostCurrency
-        lostOtherCurrency
-        lostMethodsOfPayment
-        lostOtherMethodOfPayment
-      }
-    `,
-  })
+  } = JSON.parse(lostMoney)
+
   if (
     lostAmount ||
     lostCurrency ||
@@ -105,8 +103,8 @@ const lostMoneySummary = client => {
       )
     }
     lostMethodsOfPayment = lostMethodsOfPayment
-      .filter(s => s !== 'other')
-      .join(', ')
+      ? lostMethodsOfPayment.filter(s => s !== 'other').join(', ')
+      : ''
     return (
       <React.Fragment>
         <H2
@@ -124,7 +122,7 @@ const lostMoneySummary = client => {
             {lostAmount}
           </Text>
         ) : null}
-        {lostOtherCurrency ? (
+        {lostCurrency || lostOtherCurrency ? (
           <Text>
             <strong>
               <Trans>Currency</Trans> :
@@ -381,11 +379,7 @@ const randomizeString = s =>
 const submit = (client, submitReport) => {
   let {
     scamInfo,
-    lostAmount,
-    lostCurrency,
-    lostOtherCurrency,
-    lostMethodsOfPayment,
-    lostOtherMethodOfPayment,
+    lostMoney,
     suspectName,
     suspectAddress,
     suspectLanguage,
@@ -403,11 +397,7 @@ const submit = (client, submitReport) => {
     query: gql`
       query readCache {
         scamInfo
-        lostAmount
-        lostCurrency
-        lostOtherCurrency
-        lostMethodsOfPayment
-        lostOtherMethodOfPayment
+        lostMoney
         suspectName
         suspectAddress
         suspectLanguage
@@ -424,14 +414,8 @@ const submit = (client, submitReport) => {
       }
     `,
   })
-
-  let {
-    howWereYouContacted,
-    otherMethodOfContact,
-    whenWereYouContacted,
-    scamDetails,
-  } = JSON.parse(scamInfo)
-
+  scamInfo = JSON.parse(scamInfo)
+  lostMoney = JSON.parse(lostMoney)
   suspectName = randomizeString(suspectName)
   suspectAddress = randomizeString(suspectAddress)
   suspectPhone = randomizeString(suspectPhone)
@@ -444,19 +428,8 @@ const submit = (client, submitReport) => {
   contactInfoPhone = randomizeString(contactInfoPhone)
 
   const data = {
-    scamInfo: {
-      howWereYouContacted,
-      otherMethodOfContact,
-      whenWereYouContacted,
-      scamDetails,
-    },
-    lostMoney: {
-      lostAmount,
-      lostCurrency,
-      lostOtherCurrency,
-      lostMethodsOfPayment,
-      lostOtherMethodOfPayment,
-    },
+    scamInfo,
+    lostMoney,
     suspectInfo: {
       suspectName,
       suspectAddress,
