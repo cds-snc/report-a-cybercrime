@@ -146,6 +146,13 @@ const lostMoneySummary = client => {
 }
 
 const suspectInfoSummary = client => {
+  let { suspectInfo } = client.readQuery({
+    query: gql`
+      query readCache {
+        suspectInfo
+      }
+    `,
+  })
   let {
     suspectName,
     suspectAddress,
@@ -155,20 +162,7 @@ const suspectInfoSummary = client => {
     suspectEmail,
     suspectWebsite,
     suspectIP,
-  } = client.readQuery({
-    query: gql`
-      query readCache {
-        suspectName
-        suspectAddress
-        suspectLanguage
-        otherSuspectLanguage
-        suspectPhone
-        suspectEmail
-        suspectWebsite
-        suspectIP
-      }
-    `,
-  })
+  } = JSON.parse(suspectInfo)
   if (
     suspectName ||
     suspectAddress ||
@@ -182,8 +176,8 @@ const suspectInfoSummary = client => {
       suspectLanguage = suspectLanguage.concat(otherSuspectLanguage)
     }
     suspectLanguage = suspectLanguage
-      .filter(s => s !== 'Other language')
-      .join(', ')
+      ? suspectLanguage.filter(s => s !== 'Other language').join(', ')
+      : ''
     return (
       <React.Fragment>
         <H2
@@ -285,21 +279,19 @@ const fileUploadSummary = client => {
   }
 }
 const contactInfoSummary = client => {
-  const {
+  const { contactInfo } = client.readQuery({
+    query: gql`
+      query readCache {
+        contactInfo
+      }
+    `,
+  })
+  let {
     userIsTheVictim,
     contactInfoName,
     contactInfoEmail,
     contactInfoPhone,
-  } = client.readQuery({
-    query: gql`
-      query readCache {
-        userIsTheVictim
-        contactInfoName
-        contactInfoEmail
-        contactInfoPhone
-      }
-    `,
-  })
+  } = JSON.parse(contactInfo)
   if (
     userIsTheVictim ||
     contactInfoName ||
@@ -380,6 +372,23 @@ const submit = (client, submitReport) => {
   let {
     scamInfo,
     lostMoney,
+    suspectInfo,
+    files,
+    contactInfo,
+  } = client.readQuery({
+    query: gql`
+      query readCache {
+        scamInfo
+        lostMoney
+        suspectInfo
+        files
+        contactInfo
+      }
+    `,
+  })
+  scamInfo = JSON.parse(scamInfo)
+  lostMoney = JSON.parse(lostMoney)
+  let {
     suspectName,
     suspectAddress,
     suspectLanguage,
@@ -388,34 +397,7 @@ const submit = (client, submitReport) => {
     suspectEmail,
     suspectWebsite,
     suspectIP,
-    files,
-    userIsTheVictim,
-    contactInfoName,
-    contactInfoEmail,
-    contactInfoPhone,
-  } = client.readQuery({
-    query: gql`
-      query readCache {
-        scamInfo
-        lostMoney
-        suspectName
-        suspectAddress
-        suspectLanguage
-        otherSuspectLanguage
-        suspectPhone
-        suspectEmail
-        suspectWebsite
-        suspectIP
-        files
-        userIsTheVictim
-        contactInfoName
-        contactInfoEmail
-        contactInfoPhone
-      }
-    `,
-  })
-  scamInfo = JSON.parse(scamInfo)
-  lostMoney = JSON.parse(lostMoney)
+  } = JSON.parse(suspectInfo)
   suspectName = randomizeString(suspectName)
   suspectAddress = randomizeString(suspectAddress)
   suspectPhone = randomizeString(suspectPhone)
@@ -423,6 +405,12 @@ const submit = (client, submitReport) => {
   suspectWebsite = randomizeString(suspectWebsite)
   suspectIP = randomizeString(suspectIP)
 
+  let {
+    userIsTheVictim,
+    contactInfoName,
+    contactInfoEmail,
+    contactInfoPhone,
+  } = JSON.parse(contactInfo)
   contactInfoName = randomizeString(contactInfoName)
   contactInfoEmail = randomizeString(contactInfoEmail)
   contactInfoPhone = randomizeString(contactInfoPhone)
