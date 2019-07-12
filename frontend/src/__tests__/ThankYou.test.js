@@ -5,13 +5,17 @@ import { ThemeProvider } from 'emotion-theming'
 import { ThankYou } from '../ThankYou'
 import theme from '../theme'
 
+const client = {
+  writeData: jest.fn(),
+}
+
 describe('<ThankYou />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
     render(
       <ThemeProvider theme={theme}>
-        <ApolloProvider client={{}}>
+        <ApolloProvider client={client}>
           <ThankYou />
         </ApolloProvider>
       </ThemeProvider>,
