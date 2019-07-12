@@ -38,7 +38,7 @@ const colors = {
 }
 
 const theme = {
-  fontSans: 'Roboto, sans-serif',
+  fontSans: 'robotoregular, sans-serif',
   fontSizes: FONT_SIZES,
   lineHeights: LINE_HEIGHTS,
   space: SPACING,
