@@ -9,8 +9,11 @@ describe('<ConfirmationPage />', () => {
   afterEach(cleanup)
   const client = {
     readQuery: () => ({
-      howWereYouContacted: [],
-      lostMethodsOfPayment: [],
+      scamInfo: JSON.stringify({}),
+      lostMoney: JSON.stringify({}),
+      suspectInfo: JSON.stringify({}),
+      files: [],
+      contactInfo: JSON.stringify({}),
     }),
   }
 

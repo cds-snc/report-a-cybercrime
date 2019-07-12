@@ -69,3 +69,116 @@ export const UPLOAD_FILE_MUTATION = gql`
     }
   }
 `
+
+export const getScamInfo = client => {
+  let { scamInfo } = client.readQuery({
+    query: gql`
+      query readCache {
+        scamInfo
+      }
+    `,
+  })
+  let {
+    howWereYouContacted,
+    otherMethodOfContact,
+    whenWereYouContacted,
+    scamDetails,
+  } = JSON.parse(scamInfo)
+  return {
+    howWereYouContacted: howWereYouContacted ? howWereYouContacted : [],
+    otherMethodOfContact: otherMethodOfContact ? otherMethodOfContact : '',
+    whenWereYouContacted: whenWereYouContacted ? whenWereYouContacted : '',
+    scamDetails: scamDetails ? scamDetails : '',
+  }
+}
+
+export const getLostMoney = client => {
+  let { lostMoney } = client.readQuery({
+    query: gql`
+      query readCache {
+        lostMoney
+      }
+    `,
+  })
+  let {
+    lostAmount,
+    lostCurrency,
+    lostOtherCurrency,
+    lostMethodsOfPayment,
+    lostOtherMethodOfPayment,
+  } = JSON.parse(lostMoney)
+
+  return {
+    lostAmount: lostAmount ? lostAmount : '',
+    lostCurrency: lostCurrency ? lostCurrency : '',
+    lostOtherCurrency: lostOtherCurrency ? lostOtherCurrency : '',
+    lostMethodsOfPayment: lostMethodsOfPayment ? lostMethodsOfPayment : [],
+    lostOtherMethodOfPayment: lostOtherMethodOfPayment
+      ? lostOtherMethodOfPayment
+      : '',
+  }
+}
+
+export const getSuspectInfo = client => {
+  let { suspectInfo } = client.readQuery({
+    query: gql`
+      query readCache {
+        suspectInfo
+      }
+    `,
+  })
+  let {
+    suspectName,
+    suspectAddress,
+    suspectLanguage,
+    otherSuspectLanguage,
+    suspectPhone,
+    suspectEmail,
+    suspectWebsite,
+    suspectIP,
+  } = JSON.parse(suspectInfo)
+  return {
+    suspectName: suspectName ? suspectName : '',
+    suspectAddress: suspectAddress ? suspectAddress : '',
+    suspectLanguage: suspectLanguage ? suspectLanguage : [],
+    otherSuspectLanguage: otherSuspectLanguage ? otherSuspectLanguage : '',
+    suspectPhone: suspectPhone ? suspectPhone : '',
+    suspectEmail: suspectEmail ? suspectEmail : '',
+    suspectWebsite: suspectWebsite ? suspectWebsite : '',
+    suspectIP: suspectIP ? suspectIP : '',
+  }
+}
+
+export const getFiles = client => {
+  const { files } = client.readQuery({
+    query: gql`
+      query readCache {
+        files
+      }
+    `,
+  })
+  return files ? files : []
+}
+
+export const getContactInfo = client => {
+  const { contactInfo } = client.readQuery({
+    query: gql`
+      query readCache {
+        contactInfo
+      }
+    `,
+  })
+  let {
+    userIsTheVictim,
+    contactInfoName,
+    contactInfoEmail,
+    contactInfoPhone,
+  } = JSON.parse(contactInfo)
+
+  return {
+    userIsTheVictim: userIsTheVictim ? userIsTheVictim : '',
+    contactInfoName: contactInfoName ? contactInfoName : '',
+    contactInfoEmail: contactInfoEmail ? contactInfoEmail : '',
+    contactInfoPhone: contactInfoPhone ? contactInfoPhone : '',
+  }
+}

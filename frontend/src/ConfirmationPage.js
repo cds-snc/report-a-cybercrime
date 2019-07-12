@@ -4,7 +4,6 @@ import React from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { ApolloConsumer, Mutation } from 'react-apollo'
-import gql from 'graphql-tag'
 import { H1, H2 } from './components/header'
 import { Container } from './components/container'
 import { Text } from './components/text'
@@ -13,7 +12,14 @@ import { Link } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
-import { SUBMIT_REPORT_MUTATION } from './utils/queriesAndMutations'
+import {
+  SUBMIT_REPORT_MUTATION,
+  getScamInfo,
+  getLostMoney,
+  getSuspectInfo,
+  getFiles,
+  getContactInfo,
+} from './utils/queriesAndMutations'
 
 const scamEventSummary = client => {
   let {
@@ -21,16 +27,8 @@ const scamEventSummary = client => {
     otherMethodOfContact,
     whenWereYouContacted,
     scamDetails,
-  } = client.readQuery({
-    query: gql`
-      query readCache {
-        howWereYouContacted
-        otherMethodOfContact
-        whenWereYouContacted
-        scamDetails
-      }
-    `,
-  })
+  } = getScamInfo(client)
+
   if (
     (howWereYouContacted && howWereYouContacted.length) ||
     whenWereYouContacted ||
@@ -40,8 +38,8 @@ const scamEventSummary = client => {
       howWereYouContacted = howWereYouContacted.concat(otherMethodOfContact)
     }
     howWereYouContacted = howWereYouContacted
-      .filter(s => s !== 'other')
-      .join(', ')
+      ? howWereYouContacted.filter(s => s !== 'other').join(', ')
+      : ''
     return (
       <React.Fragment>
         <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
@@ -84,22 +82,8 @@ const lostMoneySummary = client => {
     lostOtherCurrency,
     lostMethodsOfPayment,
     lostOtherMethodOfPayment,
-  } = client.readQuery({
-    query: gql`
-      query readCache {
-        lostAmount
-        lostCurrency
-        lostOtherCurrency
-        lostMethodsOfPayment
-        lostOtherMethodOfPayment
-      }
-    `,
-  })
-  if (
-    lostAmount ||
-    lostCurrency ||
-    (lostMethodsOfPayment && lostMethodsOfPayment.length)
-  ) {
+  } = getLostMoney(client)
+  if (lostAmount || lostCurrency || lostMethodsOfPayment.length) {
     if (lostOtherMethodOfPayment) {
       lostMethodsOfPayment = lostMethodsOfPayment.concat(
         lostOtherMethodOfPayment,
@@ -125,7 +109,7 @@ const lostMoneySummary = client => {
             {lostAmount}
           </Text>
         ) : null}
-        {lostOtherCurrency ? (
+        {lostCurrency || lostOtherCurrency ? (
           <Text>
             <strong>
               <Trans>Currency</Trans> :
@@ -158,24 +142,11 @@ const suspectInfoSummary = client => {
     suspectEmail,
     suspectWebsite,
     suspectIP,
-  } = client.readQuery({
-    query: gql`
-      query readCache {
-        suspectName
-        suspectAddress
-        suspectLanguage
-        otherSuspectLanguage
-        suspectPhone
-        suspectEmail
-        suspectWebsite
-        suspectIP
-      }
-    `,
-  })
+  } = getSuspectInfo(client)
   if (
     suspectName ||
     suspectAddress ||
-    (suspectLanguage && suspectLanguage.length) ||
+    suspectLanguage.length ||
     suspectPhone ||
     suspectEmail ||
     suspectWebsite ||
@@ -187,6 +158,7 @@ const suspectInfoSummary = client => {
     suspectLanguage = suspectLanguage
       .filter(s => s !== 'Other language')
       .join(', ')
+
     return (
       <React.Fragment>
         <H2
@@ -257,14 +229,8 @@ const suspectInfoSummary = client => {
 }
 
 const fileUploadSummary = client => {
-  const { files } = client.readQuery({
-    query: gql`
-      query readCache {
-        files
-      }
-    `,
-  })
-  if (files && files.length) {
+  const files = getFiles(client)
+  if (files.length) {
     const fileList = files.join(', ')
     return (
       <React.Fragment>
@@ -288,21 +254,12 @@ const fileUploadSummary = client => {
   }
 }
 const contactInfoSummary = client => {
-  const {
+  let {
     userIsTheVictim,
     contactInfoName,
     contactInfoEmail,
     contactInfoPhone,
-  } = client.readQuery({
-    query: gql`
-      query readCache {
-        userIsTheVictim
-        contactInfoName
-        contactInfoEmail
-        contactInfoPhone
-      }
-    `,
-  })
+  } = getContactInfo(client)
   if (
     userIsTheVictim ||
     contactInfoName ||
@@ -318,14 +275,6 @@ const contactInfoSummary = client => {
         >
           <Trans>Contact information</Trans>
         </H2>
-        {userIsTheVictim ? (
-          <Text>
-            <strong>
-              <Trans>Victim</Trans>:{' '}
-            </strong>
-            {userIsTheVictim}
-          </Text>
-        ) : null}
 
         {contactInfoName ? (
           <Text>
@@ -375,21 +324,20 @@ const randDigit = () => Math.floor(Math.random() * 10)
 
 const randomizeString = s =>
   s
-    .replace(/[a-z]/g, () => randLetter())
-    .replace(/[A-Z]/g, () => randLetter().toUpperCase())
-    .replace(/[0-9]/g, () => randDigit())
+    ? s
+        .replace(/[a-z]/g, () => randLetter())
+        .replace(/[A-Z]/g, () => randLetter().toUpperCase())
+        .replace(/[0-9]/g, () => randDigit())
+    : s
 
 const submit = (client, submitReport) => {
+  let scamInfo = getScamInfo(client)
+  let lostMoney = getLostMoney(client)
+  let suspectInfo = getSuspectInfo(client)
+  let files = getFiles(client)
+  let contactInfo = getContactInfo(client)
+
   let {
-    howWereYouContacted,
-    otherMethodOfContact,
-    whenWereYouContacted,
-    scamDetails,
-    lostAmount,
-    lostCurrency,
-    lostOtherCurrency,
-    lostMethodsOfPayment,
-    lostOtherMethodOfPayment,
     suspectName,
     suspectAddress,
     suspectLanguage,
@@ -398,40 +346,7 @@ const submit = (client, submitReport) => {
     suspectEmail,
     suspectWebsite,
     suspectIP,
-    files,
-    userIsTheVictim,
-    contactInfoName,
-    contactInfoEmail,
-    contactInfoPhone,
-  } = client.readQuery({
-    query: gql`
-      query readCache {
-        howWereYouContacted
-        otherMethodOfContact
-        whenWereYouContacted
-        scamDetails
-        lostAmount
-        lostCurrency
-        lostOtherCurrency
-        lostMethodsOfPayment
-        lostOtherMethodOfPayment
-        suspectName
-        suspectAddress
-        suspectLanguage
-        otherSuspectLanguage
-        suspectPhone
-        suspectEmail
-        suspectWebsite
-        suspectIP
-        files
-        userIsTheVictim
-        contactInfoName
-        contactInfoEmail
-        contactInfoPhone
-      }
-    `,
-  })
-
+  } = suspectInfo
   suspectName = randomizeString(suspectName)
   suspectAddress = randomizeString(suspectAddress)
   suspectPhone = randomizeString(suspectPhone)
@@ -439,24 +354,19 @@ const submit = (client, submitReport) => {
   suspectWebsite = randomizeString(suspectWebsite)
   suspectIP = randomizeString(suspectIP)
 
+  let {
+    userIsTheVictim,
+    contactInfoName,
+    contactInfoEmail,
+    contactInfoPhone,
+  } = contactInfo
   contactInfoName = randomizeString(contactInfoName)
   contactInfoEmail = randomizeString(contactInfoEmail)
   contactInfoPhone = randomizeString(contactInfoPhone)
 
   const data = {
-    scamInfo: {
-      howWereYouContacted,
-      otherMethodOfContact,
-      whenWereYouContacted,
-      scamDetails,
-    },
-    lostMoney: {
-      lostAmount,
-      lostCurrency,
-      lostOtherCurrency,
-      lostMethodsOfPayment,
-      lostOtherMethodOfPayment,
-    },
+    scamInfo,
+    lostMoney,
     suspectInfo: {
       suspectName,
       suspectAddress,
