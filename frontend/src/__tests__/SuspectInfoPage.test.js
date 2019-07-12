@@ -8,6 +8,11 @@ import theme from '../theme'
 import en from '../../locale/en/messages.js'
 
 const catalogs = { en }
+const client = {
+  readQuery: () => ({
+    suspectInfo: JSON.stringify({}),
+  }),
+}
 
 describe('<SuspectInfoPage />', () => {
   afterEach(cleanup)
@@ -15,7 +20,7 @@ describe('<SuspectInfoPage />', () => {
   it('renders', () => {
     render(
       <ThemeProvider theme={theme}>
-        <ApolloProvider client={{}}>
+        <ApolloProvider client={client}>
           <I18nProvider language={'en'} catalogs={catalogs}>
             <SuspectInfoPage />
           </I18nProvider>

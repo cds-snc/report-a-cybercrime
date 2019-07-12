@@ -21,9 +21,8 @@ import { getDoneForms, getFiles } from './utils/queriesAndMutations'
 class FileUploadInternal extends Component {
   constructor(props) {
     super(props)
-    const files = getFiles(props.client).map(name => ({ name }))
     this.state = {
-      files,
+      files: getFiles(props.client).map(name => ({ name })),
     }
   }
 

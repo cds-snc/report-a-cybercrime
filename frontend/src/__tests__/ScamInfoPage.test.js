@@ -9,13 +9,20 @@ import en from '../../locale/en/messages.js'
 
 const catalogs = { en }
 
+const client = {
+  readQuery: () => ({
+    scamInfo: JSON.stringify({}),
+  }),
+  writeData: jest.fn(),
+}
+
 describe('<ScamInfoPage />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
     render(
       <ThemeProvider theme={theme}>
-        <ApolloProvider client={{}}>
+        <ApolloProvider client={client}>
           <I18nProvider language={'en'} catalogs={catalogs}>
             <ScamInfoPage />
           </I18nProvider>

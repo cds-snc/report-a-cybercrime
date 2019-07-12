@@ -16,6 +16,7 @@ import { Text } from '../components/text'
 import { DateSelector } from '../components/date-picker'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getScamInfo } from '../utils/queriesAndMutations'
+
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 const DateSelectorAdapter = finalFormAdapter(DateSelector)

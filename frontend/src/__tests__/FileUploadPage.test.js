@@ -9,11 +9,16 @@ import en from '../../locale/en/messages.js'
 
 describe('<FileUploadPage />', () => {
   afterEach(cleanup)
-
+  const client = {
+    readQuery: () => ({
+      files: [],
+    }),
+    writeData: jest.fn(),
+  }
   it('renders', () => {
     render(
       <ThemeProvider theme={theme}>
-        <ApolloProvider client={{}}>
+        <ApolloProvider client={client}>
           <I18nProvider language={'en'} catalogs={{ en }}>
             <FileUploadPage />
           </I18nProvider>
