@@ -18,8 +18,8 @@ export const Option3Page = () => (
     <H1 textAlign="center">
       <Trans>You can report online</Trans>
       <br />
-      <A href="https://report-cyber.ca">
-        <Trans>report-cyber.ca</Trans>
+      <A href="https://report-a-cybercrime.alpha.rcmp-grc.gc.ca">
+        <Trans>report-a-cybercrime.alpha.rcmp-grc.gc.ca</Trans>
       </A>
     </H1>
     <Container>

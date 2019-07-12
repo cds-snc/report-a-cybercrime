@@ -8,7 +8,6 @@
   "First, find out which option is most relevant for you.": "First, find out which option is most relevant for you.",
   "Get Started": "Get Started",
   "How do you want to make your report?": "How do you want to make your report?",
-  "How do you want to report?": "How do you want to report?",
   "How urgent is your situation?": "How urgent is your situation?",
   "I don’t expect to receive a follow-up": "I don’t expect to receive a follow-up",
   "I have a story to tell about what happened": "I have a story to tell about what happened",
@@ -35,7 +34,7 @@
   "Website links": "Website links",
   "What information do you have to report?": "What information do you have to report?",
   "Would you like to leave contact information for a potential follow-up?": "Would you like to leave contact information for a potential follow-up?",
-  "You can call the Canadian Anti-Fraud Centre": "You can call the Canadian Anti-Fraud Centre",
+  "You can call us": "You can call us",
   "You can report online": "You can report online",
   "You will get a local immediate response.": "You will get a local immediate response.",
   "You‘re the first person to help us with this scam.": "You‘re the first person to help us with this scam.",
@@ -43,5 +42,5 @@
   "You’ll get specific advice based on your situation.": "You’ll get specific advice based on your situation.",
   "You’ll make the Royal Canadian Mounted Police aware of your situation and get general advice.": "You’ll make the Royal Canadian Mounted Police aware of your situation and get general advice.",
   "loading...": "loading...",
-  "report-cyber.ca": "report-cyber.ca"
+  "report-a-cybercrime.alpha.rcmp-grc.gc.ca": "report-a-cybercrime.alpha.rcmp-grc.gc.ca"
 }

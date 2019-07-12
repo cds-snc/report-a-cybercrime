@@ -8,7 +8,6 @@
   "First, find out which option is most relevant for you.": "D'abord, trouvez l'option la plus pertinente pour vous.",
   "Get Started": "Commencer",
   "How do you want to make your report?": "Comment aimeriez-vous signaler ce méfait?",
-  "How do you want to report?": "Comment aimeriez-vous signaler ce méfait?",
   "How urgent is your situation?": "Quelle est l'urgence de votre situation?",
   "I don’t expect to receive a follow-up": "Je ne m’attends pas à recevoir de suivi.",
   "I have a story to tell about what happened": "J’ai une expérience à raconter sur ce qui s’est passé",
@@ -35,7 +34,7 @@
   "Website links": "adresse de sites web",
   "What information do you have to report?": "Quel type de renseignements avez-vous à signaler?",
   "Would you like to leave contact information for a potential follow-up?": "Aimeriez-vous laisser vos coordonnées pour un suivi éventuel?",
-  "You can call the Canadian Anti-Fraud Centre": " Vous pouvez appeler le Centre antifraude du Canada",
+  "You can call us": "Vous pouvez nous appeler",
   "You can report online": "Vous pouvez signaler le méfait en ligne",
   "You will get a local immediate response.": "Vous obtiendrez immédiatement une réponse locale.",
   "You‘re the first person to help us with this scam.": "Vous êtes la première personne à nous aider avec cette fraude.",
@@ -43,5 +42,5 @@
   "You’ll get specific advice based on your situation.": "Vous obtiendrez des conseils spécifiques à votre situation.",
   "You’ll make the Royal Canadian Mounted Police aware of your situation and get general advice.": "Vous informerez la Gendarmerie royale du Canada de votre situation et vous obtiendrez des conseils généraux.",
   "loading...": "chargement en cours...",
-  "report-cyber.ca": "signaler-cyber.ca"
+  "report-a-cybercrime.alpha.rcmp-grc.gc.ca": "signalez-un-crime-informatique.alpha.rcmp-grc.gc.ca"
 }
