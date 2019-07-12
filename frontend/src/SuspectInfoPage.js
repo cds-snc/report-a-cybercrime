@@ -11,7 +11,7 @@ import { SuspectInfoForm } from './forms/SuspectInfoForm'
 import { Layout } from './components/layout'
 
 const submitAndNavigate = (client, data) => {
-  client.writeData({ data })
+  client.writeData({ data: { suspectInfo: JSON.stringify(data) } })
   navigate('/uploadfilesquestion')
 }
 

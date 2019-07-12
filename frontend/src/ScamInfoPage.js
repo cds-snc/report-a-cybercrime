@@ -11,7 +11,7 @@ import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
 
 const submitAndNavigate = (client, data) => {
-  client.writeData({ data })
+  client.writeData({ data: { scamInfo: JSON.stringify(data) } })
   navigate('/moneylostquestion')
 }
 

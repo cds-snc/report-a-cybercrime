@@ -12,7 +12,7 @@ import { MoneyLostForm } from './forms/MoneyLostForm'
 import { Layout } from './components/layout'
 
 const submitAndNavigate = (client, data) => {
-  client.writeData({ data })
+  client.writeData({ data: { lostMoney: JSON.stringify(data) } })
   navigate('/suspectinfoquestion')
 }
 

@@ -10,7 +10,7 @@ import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from './components/layout'
 
 const submitAndNavigate = (client, data) => {
-  client.writeData({ data })
+  client.writeData({ data: { contactInfo: JSON.stringify(data) } })
   navigate('/confirmation')
 }
 
