@@ -80,53 +80,51 @@ const lostMoneySummary = client => {
     lostMethodsOfPayment,
     lostOtherMethodOfPayment,
   } = getLostMoney(client)
-  if (lostAmount || lostCurrency || lostMethodsOfPayment.length) {
-    if (lostOtherMethodOfPayment) {
-      lostMethodsOfPayment = lostMethodsOfPayment.concat(
-        lostOtherMethodOfPayment,
-      )
-    }
-    lostMethodsOfPayment = lostMethodsOfPayment
-      .filter(s => s !== 'other')
-      .join(', ')
-    return (
-      <React.Fragment>
-        <H2
-          fontSize={[3, null, 4]}
-          marginTop={[3, null, 4]}
-          marginBottom={[1, null, 1]}
-        >
-          <Trans>Money lost</Trans>
-        </H2>
-        {lostAmount ? (
-          <Text>
-            <strong>
-              <Trans>Amount</Trans>:
-            </strong>
-            {lostAmount}
-          </Text>
-        ) : null}
-        {lostCurrency || lostOtherCurrency ? (
-          <Text>
-            <strong>
-              <Trans>Currency</Trans> :
-            </strong>
-            {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
-          </Text>
-        ) : null}
-        {lostMethodsOfPayment ? (
-          <Text>
-            <strong>
-              <Trans>Payment method</Trans>:
-            </strong>
-            {lostMethodsOfPayment}
-          </Text>
-        ) : null}
-      </React.Fragment>
-    )
-  } else {
-    return null
+
+  if (lostOtherMethodOfPayment) {
+    lostMethodsOfPayment = lostMethodsOfPayment.concat(lostOtherMethodOfPayment)
   }
+  lostMethodsOfPayment = lostMethodsOfPayment
+    .filter(s => s !== 'other')
+    .join(', ')
+  return (
+    <React.Fragment>
+      <H2
+        fontSize={[3, null, 4]}
+        marginTop={[3, null, 4]}
+        marginBottom={[1, null, 1]}
+      >
+        <Trans>Money lost</Trans>{' '}
+        <Link type="button" color="black" to="/moneylost" textAlign="center">
+          <Trans>Edit</Trans>
+        </Link>
+      </H2>
+      {lostAmount ? (
+        <Text>
+          <strong>
+            <Trans>Amount</Trans>:
+          </strong>
+          {lostAmount}
+        </Text>
+      ) : null}
+      {lostCurrency || lostOtherCurrency ? (
+        <Text>
+          <strong>
+            <Trans>Currency</Trans> :
+          </strong>
+          {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
+        </Text>
+      ) : null}
+      {lostMethodsOfPayment ? (
+        <Text>
+          <strong>
+            <Trans>Payment method</Trans>:
+          </strong>
+          {lostMethodsOfPayment}
+        </Text>
+      ) : null}
+    </React.Fragment>
+  )
 }
 
 const suspectInfoSummary = client => {
