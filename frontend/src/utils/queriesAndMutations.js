@@ -78,8 +78,6 @@ export const getDoneForms = client => {
       }
     `,
   })
-  console.log({ doneForms })
-
   return doneForms
 }
 

@@ -1,5 +1,6 @@
 /**@jsx jsx */
 import { jsx } from '@emotion/core'
+import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
@@ -15,13 +16,14 @@ import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { Steps } from './components/stepper'
 import { P } from './components/paragraph'
-import { getDoneForms } from './utils/queriesAndMutations'
+import { getDoneForms, getFiles } from './utils/queriesAndMutations'
 
-export class FileUploadPage extends Component {
+class FileUploadInternal extends Component {
   constructor(props) {
     super(props)
+    const files = getFiles(props.client).map(name => ({ name }))
     this.state = {
-      files: [],
+      files,
     }
   }
 
@@ -162,3 +164,13 @@ export class FileUploadPage extends Component {
     )
   }
 }
+
+FileUploadInternal.propTypes = {
+  client: PropTypes.object.isRequired,
+}
+
+export const FileUploadPage = () => (
+  <ApolloConsumer>
+    {client => <FileUploadInternal client={client} />}
+  </ApolloConsumer>
+)
