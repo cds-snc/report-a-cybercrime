@@ -257,60 +257,55 @@ const contactInfoSummary = client => {
     contactInfoEmail,
     contactInfoPhone,
   } = getContactInfo(client)
-  if (
-    userIsTheVictim ||
-    contactInfoName ||
-    contactInfoEmail ||
-    contactInfoPhone
-  ) {
-    return (
-      <React.Fragment>
-        <H2
-          fontSize={[3, null, 4]}
-          marginTop={[3, null, 4]}
-          marginBottom={[1, null, 1]}
-        >
-          <Trans>Contact information</Trans>
-        </H2>
 
-        {contactInfoName ? (
-          <Text>
-            <strong>
-              <Trans>Name</Trans>:{' '}
-            </strong>
-            {contactInfoName}
-          </Text>
-        ) : null}
+  return (
+    <React.Fragment>
+      <H2
+        fontSize={[3, null, 4]}
+        marginTop={[3, null, 4]}
+        marginBottom={[1, null, 1]}
+      >
+        <Trans>Contact information</Trans>{' '}
+        <Link type="button" color="black" to="/contactinfo" textAlign="center">
+          <Trans>Edit</Trans>
+        </Link>
+      </H2>
 
-        {contactInfoEmail ? (
-          <Text>
-            <strong>
-              <Trans>Email</Trans>:{' '}
-            </strong>
-            {contactInfoEmail}
-          </Text>
-        ) : null}
-        {contactInfoPhone ? (
-          <Text>
-            <strong>
-              <Trans>Phone number</Trans>:
-            </strong>{' '}
-            {contactInfoPhone}
-          </Text>
-        ) : null}
-        {userIsTheVictim ? (
-          <Text>
-            <strong>
-              <Trans>Victim</Trans>:
-            </strong>{' '}
-            {userIsTheVictim}
-          </Text>
-        ) : null}
-      </React.Fragment>
-    )
-  } else {
-    return null
-  }
+      {contactInfoName ? (
+        <Text>
+          <strong>
+            <Trans>Name</Trans>:{' '}
+          </strong>
+          {contactInfoName}
+        </Text>
+      ) : null}
+
+      {contactInfoEmail ? (
+        <Text>
+          <strong>
+            <Trans>Email</Trans>:{' '}
+          </strong>
+          {contactInfoEmail}
+        </Text>
+      ) : null}
+      {contactInfoPhone ? (
+        <Text>
+          <strong>
+            <Trans>Phone number</Trans>:
+          </strong>{' '}
+          {contactInfoPhone}
+        </Text>
+      ) : null}
+      {userIsTheVictim ? (
+        <Text>
+          <strong>
+            <Trans>Victim</Trans>:
+          </strong>{' '}
+          {userIsTheVictim}
+        </Text>
+      ) : null}
+    </React.Fragment>
+  )
 }
 
 const randLetter = () => {
