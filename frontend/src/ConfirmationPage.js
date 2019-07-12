@@ -46,7 +46,7 @@ const scamEventSummary = client => {
       {scamDetails ? (
         <Text>
           <strong>
-            <Trans>Description</Trans>:
+            <Trans>Description</Trans>:{' '}
           </strong>
           {scamDetails}
         </Text>
@@ -55,7 +55,7 @@ const scamEventSummary = client => {
       {whenWereYouContacted ? (
         <Text>
           <strong>
-            <Trans>Date </Trans>:
+            <Trans>Date </Trans>:{' '}
           </strong>
           {whenWereYouContacted}
         </Text>
@@ -63,8 +63,8 @@ const scamEventSummary = client => {
       {howWereYouContacted ? (
         <Text>
           <strong>
-            <Trans>Contacted by</Trans>:
-          </strong>{' '}
+            <Trans>Contacted by</Trans>:{' '}
+          </strong>
           {howWereYouContacted}
         </Text>
       ) : null}
@@ -102,7 +102,7 @@ const lostMoneySummary = client => {
       {lostAmount ? (
         <Text>
           <strong>
-            <Trans>Amount</Trans>:
+            <Trans>Amount</Trans>:{' '}
           </strong>
           {lostAmount}
         </Text>
@@ -110,7 +110,7 @@ const lostMoneySummary = client => {
       {lostCurrency || lostOtherCurrency ? (
         <Text>
           <strong>
-            <Trans>Currency</Trans> :
+            <Trans>Currency</Trans>:{' '}
           </strong>
           {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
         </Text>
@@ -118,7 +118,7 @@ const lostMoneySummary = client => {
       {lostMethodsOfPayment ? (
         <Text>
           <strong>
-            <Trans>Payment method</Trans>:
+            <Trans>Payment method</Trans>:{' '}
           </strong>
           {lostMethodsOfPayment}
         </Text>
@@ -162,8 +162,8 @@ const suspectInfoSummary = client => {
       {suspectName ? (
         <Text>
           <strong>
-            <Trans>Name</Trans>:
-          </strong>{' '}
+            <Trans>Name</Trans>:{' '}
+          </strong>
           {suspectName}
         </Text>
       ) : null}
@@ -291,16 +291,16 @@ const contactInfoSummary = client => {
       {contactInfoPhone ? (
         <Text>
           <strong>
-            <Trans>Phone number</Trans>:
-          </strong>{' '}
+            <Trans>Phone number</Trans>:{' '}
+          </strong>
           {contactInfoPhone}
         </Text>
       ) : null}
       {userIsTheVictim ? (
         <Text>
           <strong>
-            <Trans>Victim</Trans>:
-          </strong>{' '}
+            <Trans>Victim</Trans>:{' '}
+          </strong>
           {userIsTheVictim}
         </Text>
       ) : null}
