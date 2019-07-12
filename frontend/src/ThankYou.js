@@ -18,7 +18,14 @@ export const ThankYou = () => (
     <ApolloConsumer>
       {client =>
         client.writeData({
-          data: { doneForms: false },
+          data: {
+            doneForms: false,
+            scamInfo: JSON.stringify({}),
+            lostMoney: JSON.stringify({}),
+            suspectInfo: JSON.stringify({}),
+            files: [],
+            contactInfo: JSON.stringify({}),
+          },
         })
       }
     </ApolloConsumer>
