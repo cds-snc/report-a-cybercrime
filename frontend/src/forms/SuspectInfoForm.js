@@ -15,6 +15,7 @@ import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { Container } from '../components/container'
+import { getSuspectInfo } from '../utils/queriesAndMutations'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
@@ -37,6 +38,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
   <ApolloConsumer>
     {client => (
       <Form
+        initialValues={getSuspectInfo(client)}
         onSubmit={data => onSubmit(client, data)}
         validate={validate}
         render={({ handleSubmit, values }) => (

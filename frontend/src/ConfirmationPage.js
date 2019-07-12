@@ -138,89 +138,90 @@ const suspectInfoSummary = client => {
     suspectWebsite,
     suspectIP,
   } = getSuspectInfo(client)
-  if (
-    suspectName ||
-    suspectAddress ||
-    suspectLanguage.length ||
-    suspectPhone ||
-    suspectEmail ||
-    suspectWebsite ||
-    suspectIP
-  ) {
-    if (otherSuspectLanguage) {
-      suspectLanguage = suspectLanguage.concat(otherSuspectLanguage)
-    }
-    suspectLanguage = suspectLanguage
-      .filter(s => s !== 'Other language')
-      .join(', ')
 
-    return (
-      <React.Fragment>
-        <H2
-          fontSize={[3, null, 4]}
-          marginTop={[3, null, 4]}
-          marginBottom={[1, null, 1]}
-        >
-          <Trans>Scammer details</Trans>
-        </H2>
-
-        {suspectName ? (
-          <Text>
-            <strong>
-              <Trans>Name</Trans>:
-            </strong>{' '}
-            {suspectName}
-          </Text>
-        ) : null}
-
-        {suspectEmail ? (
-          <Text>
-            <strong>
-              <Trans>Email address</Trans>:{' '}
-            </strong>
-            {suspectEmail}
-          </Text>
-        ) : null}
-
-        {suspectWebsite ? (
-          <Text>
-            <strong>
-              <Trans>Website</Trans>:{' '}
-            </strong>
-            {suspectWebsite}
-          </Text>
-        ) : null}
-
-        {suspectAddress ? (
-          <Text>
-            <strong>
-              {' '}
-              <Trans>Mailing address</Trans>:{' '}
-            </strong>
-            {suspectAddress}
-          </Text>
-        ) : null}
-        {suspectIP ? (
-          <Text>
-            <strong>
-              <Trans>IP address</Trans>:{' '}
-            </strong>
-            {suspectIP}
-          </Text>
-        ) : null}
-        {suspectLanguage ? (
-          <Text>
-            <strong>
-              <Trans>Language of correspondence</Trans>:{' '}
-            </strong>
-            {suspectLanguage}
-          </Text>
-        ) : null}
-      </React.Fragment>
-    )
-  } else {
-    return null
+  if (otherSuspectLanguage) {
+    suspectLanguage = suspectLanguage.concat(otherSuspectLanguage)
   }
+  suspectLanguage = suspectLanguage
+    .filter(s => s !== 'Other language')
+    .join(', ')
+
+  return (
+    <React.Fragment>
+      <H2
+        fontSize={[3, null, 4]}
+        marginTop={[3, null, 4]}
+        marginBottom={[1, null, 1]}
+      >
+        <Trans>Scammer details</Trans>{' '}
+        <Link type="button" color="black" to="/suspectinfo" textAlign="center">
+          <Trans>Edit</Trans>
+        </Link>
+      </H2>
+
+      {suspectName ? (
+        <Text>
+          <strong>
+            <Trans>Name</Trans>:
+          </strong>{' '}
+          {suspectName}
+        </Text>
+      ) : null}
+
+      {suspectEmail ? (
+        <Text>
+          <strong>
+            <Trans>Email address</Trans>:{' '}
+          </strong>
+          {suspectEmail}
+        </Text>
+      ) : null}
+
+      {suspectPhone ? (
+        <Text>
+          <strong>
+            <Trans>Phone number</Trans>:{' '}
+          </strong>
+          {suspectPhone}
+        </Text>
+      ) : null}
+
+      {suspectWebsite ? (
+        <Text>
+          <strong>
+            <Trans>Website</Trans>:{' '}
+          </strong>
+          {suspectWebsite}
+        </Text>
+      ) : null}
+
+      {suspectAddress ? (
+        <Text>
+          <strong>
+            {' '}
+            <Trans>Mailing address</Trans>:{' '}
+          </strong>
+          {suspectAddress}
+        </Text>
+      ) : null}
+      {suspectIP ? (
+        <Text>
+          <strong>
+            <Trans>IP address</Trans>:{' '}
+          </strong>
+          {suspectIP}
+        </Text>
+      ) : null}
+      {suspectLanguage ? (
+        <Text>
+          <strong>
+            <Trans>Language of correspondence</Trans>:{' '}
+          </strong>
+          {suspectLanguage}
+        </Text>
+      ) : null}
+    </React.Fragment>
+  )
 }
 
 const fileUploadSummary = client => {
