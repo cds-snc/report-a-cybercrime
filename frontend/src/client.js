@@ -28,6 +28,7 @@ const cache = new InMemoryCache()
 cache.writeData({
   data: {
     language: getLanguage(),
+    doneForms: false,
     scamInfo: JSON.stringify({}),
     lostMoney: JSON.stringify({}),
     suspectInfo: JSON.stringify({}),

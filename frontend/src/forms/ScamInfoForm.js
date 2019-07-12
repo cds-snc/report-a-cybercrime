@@ -15,7 +15,7 @@ import { Link } from '../components/link'
 import { Text } from '../components/text'
 import { DateSelector } from '../components/date-picker'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
-
+import { getScamInfo } from '../utils/queriesAndMutations'
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 const DateSelectorAdapter = finalFormAdapter(DateSelector)
@@ -59,6 +59,7 @@ export class ScamInfoForm extends Component {
       <ApolloConsumer>
         {client => (
           <Form
+            initialValues={getScamInfo(client)}
             onSubmit={data => this.localOnSubmit(client, data)}
             validate={validate}
             render={({

@@ -29,50 +29,47 @@ const scamEventSummary = client => {
     scamDetails,
   } = getScamInfo(client)
 
-  if (
-    (howWereYouContacted && howWereYouContacted.length) ||
-    whenWereYouContacted ||
-    scamDetails
-  ) {
-    if (otherMethodOfContact) {
-      howWereYouContacted = howWereYouContacted.concat(otherMethodOfContact)
-    }
-    howWereYouContacted = howWereYouContacted
-      ? howWereYouContacted.filter(s => s !== 'other').join(', ')
-      : ''
-    return (
-      <React.Fragment>
-        <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
-          <Trans>Scam event</Trans>
-        </H2>
-        {scamDetails ? (
-          <Text>
-            <strong>
-              <Trans>Description</Trans>:
-            </strong>
-            {scamDetails}
-          </Text>
-        ) : null}
+  if (otherMethodOfContact) {
+    howWereYouContacted = howWereYouContacted.concat(otherMethodOfContact)
+  }
+  howWereYouContacted = howWereYouContacted
+    ? howWereYouContacted.filter(s => s !== 'other').join(', ')
+    : ''
+  return (
+    <React.Fragment>
+      <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
+        <Trans>Scam event</Trans>{' '}
+        <Link type="button" color="black" to="/scaminfo" textAlign="center">
+          <Trans>Edit</Trans>
+        </Link>
+      </H2>
+      {scamDetails ? (
+        <Text>
+          <strong>
+            <Trans>Description</Trans>:
+          </strong>
+          {scamDetails}
+        </Text>
+      ) : null}
 
+      {whenWereYouContacted ? (
         <Text>
           <strong>
             <Trans>Date </Trans>:
           </strong>
           {whenWereYouContacted}
         </Text>
-        {howWereYouContacted ? (
-          <Text>
-            <strong>
-              <Trans>Contacted by</Trans>:
-            </strong>{' '}
-            {howWereYouContacted}
-          </Text>
-        ) : null}
-      </React.Fragment>
-    )
-  } else {
-    return null
-  }
+      ) : null}
+      {howWereYouContacted ? (
+        <Text>
+          <strong>
+            <Trans>Contacted by</Trans>:
+          </strong>{' '}
+          {howWereYouContacted}
+        </Text>
+      ) : null}
+    </React.Fragment>
+  )
 }
 
 const lostMoneySummary = client => {
@@ -389,74 +386,82 @@ const submit = (client, submitReport) => {
   navigate('/thankyou')
 }
 
-export const ConfirmationPage = () => (
-  <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps
-        activeStep={4}
-        steps={[
-          { href: '/scaminfo' },
-          { href: '/moneylost' },
-          { href: '/suspectinfo' },
-          { href: 'uploadfiles' },
-          { href: 'contactinfo' },
-        ]}
-      />
-    </Container>
-    <H1>
-      <Trans>Confirm report information</Trans>
-    </H1>
-    <TrackPageViews />
-    <ApolloConsumer>
-      {client => (
-        <React.Fragment>
-          {scamEventSummary(client)}
-          {lostMoneySummary(client)}
-          {suspectInfoSummary(client)}
-          {fileUploadSummary(client)}
-          {contactInfoSummary(client)}
-        </React.Fragment>
-      )}
-    </ApolloConsumer>
-
-    <Container
-      maxWidth="305px"
-      marginTop={[3, null, 4]}
-      display="flex"
-      flex-direction="column"
-      justify-content="space-between"
-    >
+export const ConfirmationPage = () => {
+  return (
+    <Layout>
+      <Container
+        display="flex"
+        width="90%"
+        flexDirection="row"
+        marginBottom="20px"
+      >
+        <Steps
+          activeStep={4}
+          steps={[
+            { href: '/scaminfo' },
+            { href: '/moneylost' },
+            { href: '/suspectinfo' },
+            { href: 'uploadfiles' },
+            { href: 'contactinfo' },
+          ]}
+        />
+      </Container>
+      <H1>
+        <Trans>Confirm report information</Trans>
+      </H1>
+      <TrackPageViews />
       <ApolloConsumer>
-        {client => (
-          <Mutation mutation={SUBMIT_REPORT_MUTATION}>
-            {submitReport => (
-              <Button
-                type="submit"
-                onClick={() => submit(client, submitReport)}
-              >
-                <Trans>Submit report</Trans>
-              </Button>
-            )}
-          </Mutation>
-        )}
-      </ApolloConsumer>
-    </Container>
+        {client => {
+          client.writeData({
+            data: { doneForms: true },
+          })
 
-    <Container
-      maxWidth="300px"
-      marginTop={[2, null, 3]}
-      display="flex"
-      flex-direction="column"
-      justify-content="space-between"
-    >
-      <Link type="button" color="black" to="/" textAlign="center">
-        <Trans>Cancel report</Trans>
-      </Link>
-    </Container>
-  </Layout>
-)
+          return (
+            <React.Fragment>
+              {scamEventSummary(client)}
+              {lostMoneySummary(client)}
+              {suspectInfoSummary(client)}
+              {fileUploadSummary(client)}
+              {contactInfoSummary(client)}
+            </React.Fragment>
+          )
+        }}
+      </ApolloConsumer>
+
+      <Container
+        maxWidth="305px"
+        marginTop={[3, null, 4]}
+        display="flex"
+        flex-direction="column"
+        justify-content="space-between"
+      >
+        <ApolloConsumer>
+          {client => (
+            <Mutation mutation={SUBMIT_REPORT_MUTATION}>
+              {submitReport => (
+                <Button
+                  type="submit"
+                  onClick={() => submit(client, submitReport)}
+                >
+                  <Trans>Submit report</Trans>
+                </Button>
+              )}
+            </Mutation>
+          )}
+        </ApolloConsumer>
+      </Container>
+
+      <Container
+        maxWidth="300px"
+        marginTop={[2, null, 3]}
+        display="flex"
+        flex-direction="column"
+        justify-content="space-between"
+      >
+        <Link type="button" color="black" to="/" textAlign="center">
+          <Trans>Cancel report</Trans>
+        </Link>
+      </Container>
+    </Layout>
+  )
+}

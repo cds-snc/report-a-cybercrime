@@ -52,6 +52,7 @@ server
     cache.writeData({
       data: {
         language: req.language,
+        doneForms: false,
         scamInfo: JSON.stringify({}),
         lostMoney: JSON.stringify({}),
         suspectInfo: JSON.stringify({}),

@@ -70,6 +70,19 @@ export const UPLOAD_FILE_MUTATION = gql`
   }
 `
 
+export const getDoneForms = client => {
+  let { doneForms } = client.readQuery({
+    query: gql`
+      query readCache {
+        doneForms
+      }
+    `,
+  })
+  console.log({ doneForms })
+
+  return doneForms
+}
+
 export const getScamInfo = client => {
   let { scamInfo } = client.readQuery({
     query: gql`
