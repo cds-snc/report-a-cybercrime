@@ -14,9 +14,7 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: 
-    name: node:11-alpine
-    id: translations
-    dir: frontend
-    entrypoint: npm
-    args: ['run', 'check-translations']
-  displayName: 'Run a multi-line script'
+    cd frontend
+    npm run check-translations
+    
+  displayName: 'Run check translations'
