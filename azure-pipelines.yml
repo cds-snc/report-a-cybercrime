@@ -13,7 +13,10 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
+- script: 
+    name: node:11-alpine
+    id: translations
+    dir: frontend
+    entrypoint: npm
+    args: ['run', 'check-translations']
   displayName: 'Run a multi-line script'
