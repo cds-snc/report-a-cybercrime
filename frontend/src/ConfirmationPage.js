@@ -226,28 +226,29 @@ const suspectInfoSummary = client => {
 
 const fileUploadSummary = client => {
   const files = getFiles(client)
-  if (files.length) {
-    const fileList = files.join(', ')
-    return (
-      <React.Fragment>
-        <H2
-          fontSize={[3, null, 4]}
-          marginTop={[3, null, 4]}
-          marginBottom={[1, null, 1]}
-        >
-          <Trans>Files attached</Trans>
-        </H2>
+  const fileList = files.join(', ')
+  return (
+    <React.Fragment>
+      <H2
+        fontSize={[3, null, 4]}
+        marginTop={[3, null, 4]}
+        marginBottom={[1, null, 1]}
+      >
+        <Trans>Files attached</Trans>{' '}
+        <Link type="button" color="black" to="/uploadfiles" textAlign="center">
+          <Trans>Edit</Trans>
+        </Link>
+      </H2>
+      {files.length ? (
         <Text>
           <strong>
             <Trans>File name</Trans>:{' '}
           </strong>
           {fileList}
         </Text>
-      </React.Fragment>
-    )
-  } else {
-    return null
-  }
+      ) : null}
+    </React.Fragment>
+  )
 }
 const contactInfoSummary = client => {
   let {

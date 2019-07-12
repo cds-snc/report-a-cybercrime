@@ -15,6 +15,7 @@ import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { Steps } from './components/stepper'
 import { P } from './components/paragraph'
+import { getDoneForms } from './utils/queriesAndMutations'
 
 export class FileUploadPage extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ export class FileUploadPage extends Component {
     const files = this.state.files.map(file => file.name)
     const data = { files }
     client.writeData({ data }) // TODO: actually upload files
-    navigate('/contactinfoquestion')
+    navigate(getDoneForms(client) ? '/confirmation' : '/contactinfoquestion')
   }
 
   render() {
