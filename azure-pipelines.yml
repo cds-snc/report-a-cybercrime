@@ -13,10 +13,8 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: 
-    name: node:11-alpine
-    id: translations
-    dir: frontend
-    entrypoint: npm
-    args: ['run', 'check-translations']
+- script: |
+    echo Hellow, world!
+    cd frontend
+    echo yo yo yo
   displayName: 'Run a multi-line script'
