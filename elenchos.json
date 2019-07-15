@@ -1,0 +1,7 @@
+{
+  "dockerfiles": {
+    "gcr.io/report-a-cybercrime-alpha/api": "api/.",
+    "gcr.io/report-a-cybercrime-alpha/frontend": "frontend/."
+  },
+  "overlay": "platform/overlays/elenchos"
+}
