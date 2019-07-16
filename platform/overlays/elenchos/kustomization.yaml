@@ -9,3 +9,5 @@ patchesStrategicMerge:
 images:
   - name: cybercrime-frontend
     newName: gcr.io/report-a-cybercrime-alpha/frontend-dev
+  - name: gcr.io/report-a-cybercrime-alpha/frontend
+  - name: gcr.io/report-a-cybercrime-alpha/api
