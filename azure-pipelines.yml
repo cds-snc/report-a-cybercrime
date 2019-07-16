@@ -1,0 +1,37 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- azure-pipelines-2
+
+- 
+
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+
+
+
+steps:
+- script: |
+    cd frontend
+    npm install
+    npm run compile
+    npm run coverage
+    npm run lint
+    npm run check-translations
+  displayName: 'Run a multi-line script'
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'scMpSub'
+    azureContainerRegistry: '{"loginServer":"acrrcmpcybercrime.azurecr.io", "id" : "/subscriptions/3c883e67-6e1d-4170-b9f1-12aceb454141/resourceGroups/MpSCNc3Rg/providers/Microsoft.ContainerRegistry/registries/acrRCMPCybercrime"}'
+    dockerComposeFile: '**/docker-compose.yml'
+    dockerComposeFileArgs: '_RAZZLE_GOOGLE_ANALYTICS_ID=UA-102484926-13'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'build --build-arg=RAZZLE_GOOGLE_ANALYTICS_ID=$_RAZZLE_GOOGLE_ANALYTICS_ID'
+
+  
