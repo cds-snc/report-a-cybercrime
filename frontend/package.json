@@ -18,7 +18,9 @@
     "compile": "lingui compile",
     "clean": "lingui extract --clean",
     "upgrade-interactive": "npm-check --update",
-    "check-translations": "lingui extract && node utils/checkTranslations.js"
+    "check-translations": "lingui extract && node utils/checkTranslations.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -59,7 +61,8 @@
     "react-helmet-async": "^1.0.2",
     "react-stepper-horizontal": "^1.0.11",
     "recharts": "^1.6.2",
-    "styled-system": "^5.0.12"
+    "styled-system": "^5.0.12",
+    "snyk": "^1.193.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -134,5 +137,6 @@
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
       "^.+\\.svg$": "<rootDir>/src/images/svgTransform.js"
     }
-  }
+  },
+  "snyk": true
 }
