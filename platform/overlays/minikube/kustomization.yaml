@@ -1,11 +1,15 @@
 bases:
-  - ../../base
+- ../../base
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 patchesStrategicMerge:
-  - arango-claim.yaml
-  - traefik-ingress-controller-deployment.yaml
-  - traefik-ingress-controller-service.yaml
+- arango-claim.yaml
+- traefik-ingress-controller-deployment.yaml
+- traefik-ingress-controller-service.yaml
 images:
-  - name: cybercrime-frontend
-    newName: gcr.io/report-a-cybercrime-alpha/frontend-dev
+- name: cybercrime-frontend
+  newName: gcr.io/report-a-cybercrime-alpha/frontend-dev
+resources:
+- arango-secrets.yaml
+- cybercrime-api-secrets.yaml
+- minio-secrets.yaml
