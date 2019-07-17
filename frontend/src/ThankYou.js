@@ -30,8 +30,8 @@ export const ThankYou = () => (
     </P>
     <P>
       <Trans>
-        If your report becomes a police investigation, a local police officer
-        may be in touch to get more information.
+        If your report becomes an investigation, a local police officer may be
+        in touch to get more information.
       </Trans>
     </P>
     <H2 fontSize={[4, null, 5]}>
