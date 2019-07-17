@@ -24,14 +24,14 @@ export const ThankYou = () => (
     </P>
     <P>
       <Trans>
-        An analyst will assess the information, combine it with other reports,
-        and decide whether the report can become a police investigation.
+        An analyst will assess the information and combine it with other reports
+        to help protect others.
       </Trans>
     </P>
     <P>
       <Trans>
-        If your report becomes an investigation, a local police officer may be
-        in touch to get more information.
+        If your report becomes a police investigation, a local police officer
+        may be in touch to get more information.
       </Trans>
     </P>
     <H2 fontSize={[4, null, 5]}>
