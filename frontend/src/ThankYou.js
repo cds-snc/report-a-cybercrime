@@ -15,7 +15,7 @@ export const ThankYou = () => (
   <Layout>
     <TrackPageViews />
     <H1>
-      <Trans>Thank you for reporting.</Trans>
+      <Trans>Thank you for reporting</Trans>
     </H1>
     <P fontSize={[4, null, 5]}>
       <Trans>
@@ -23,15 +23,12 @@ export const ThankYou = () => (
       </Trans>
     </P>
     <P>
-      <Trans>
-        NC3 has received your report. An analyst will now assess the information
-        and combine it with other reports to help protect others.
-      </Trans>
+      <Trans>NC3 has received your report.</Trans>
     </P>
     <P>
       <Trans>
-        If your report becomes an investigation, a local police officer may be
-        in touch to get more information.
+        An analyst will now assess the information and combine it with other
+        reports to help protect others or help police catch scammers.
       </Trans>
     </P>
     <H2 fontSize={[4, null, 5]}>
