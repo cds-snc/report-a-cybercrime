@@ -15,17 +15,17 @@ export const ThankYou = () => (
   <Layout>
     <TrackPageViews />
     <H1>
-      <Trans>Thank you for reporting</Trans>
+      <Trans>Thank you for reporting.</Trans>
     </H1>
     <P fontSize={[4, null, 5]}>
       <Trans>
-        <strong>NC3 has received your report.</strong>
+        <strong>You're not the only one.</strong>
       </Trans>
     </P>
     <P>
       <Trans>
-        An analyst will assess the information and combine it with other reports
-        to help protect others.
+        NC3 has received your report. An analyst will now assess the information
+        and combine it with other reports to help protect others.
       </Trans>
     </P>
     <P>
