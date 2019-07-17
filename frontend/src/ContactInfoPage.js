@@ -39,8 +39,8 @@ export const ContactInfoPage = () => (
     </H1>
     <P>
       <Trans>
-        A local police officer may need to follow up for more information, if
-        your report becomes an investigation.
+        A local police officer may need to follow up for more information,
+        should your report becomes an investigation.
       </Trans>
     </P>
     <TrackPageViews />
