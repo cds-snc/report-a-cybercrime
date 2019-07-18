@@ -70,9 +70,8 @@ export class FileUploadPage extends Component {
         <P>
           <Trans>
             {' '}
-            Supporting files could include copies of emails, text messages, and
-            receipts. Any documentation you collect can help police find the
-            scammer.
+            Supporting files could include copies of emails, conversations, and
+            receipts. Any documentation could serve as evidence for police.
           </Trans>
         </P>
         <Container
