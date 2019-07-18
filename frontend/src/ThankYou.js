@@ -19,7 +19,9 @@ export const ThankYou = () => (
     </H1>
     <P fontSize={[4, null, 5]}>
       <Trans>
-        <strong>You're not the only one being affected by this scam.</strong>
+        <strong>
+          You&apos;re not the only one being affected by this scam.
+        </strong>
       </Trans>
     </P>
     <P>
