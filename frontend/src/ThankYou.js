@@ -19,19 +19,18 @@ export const ThankYou = () => (
     </H1>
     <P fontSize={[4, null, 5]}>
       <Trans>
-        <strong>NC3 has received your report.</strong>
+        <strong>
+          You&apos;re not the only one being affected by this scam.
+        </strong>
       </Trans>
     </P>
     <P>
-      <Trans>
-        An analyst will assess the information, combine it with other reports,
-        and decide whether the report can become a police investigation.
-      </Trans>
+      <Trans>NC3 has received your report.</Trans>
     </P>
     <P>
       <Trans>
-        If your report becomes an investigation, a local police officer may be
-        in touch to get more information.
+        An analyst will now assess the information and combine it with other
+        reports to help protect others or help police catch scammers.
       </Trans>
     </P>
     <H2 fontSize={[4, null, 5]}>
