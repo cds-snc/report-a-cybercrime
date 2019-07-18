@@ -1,0 +1,140 @@
+---
+# The service account, cluster roles, and cluster role binding are
+# only needed for Kubernetes with role-based access control (RBAC).
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: flux
+  labels:
+    name: flux
+  name: flux
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  namespace: flux
+  labels:
+    name: flux
+  name: flux
+rules:
+  - apiGroups: ['*']
+    resources: ['*']
+    verbs: ['*']
+  - nonResourceURLs: ['*']
+    verbs: ['*']
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  namespace: flux
+  labels:
+    name: flux
+  name: flux
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: flux
+subjects:
+  - kind: ServiceAccount
+    name: flux
+    namespace: flux
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: flux
+  name: flux
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: flux
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        prometheus.io.port: "3031" # tell prometheus to scrape /metrics endpoint's port.
+      labels:
+        name: flux
+    spec:
+      serviceAccountName: flux
+      volumes:
+      - name: git-key
+        secret:
+          secretName: flux-git-deploy
+          defaultMode: 0400 # when mounted read-only, we won't be able to chmod
+      - name: git-keygen
+        emptyDir:
+          medium: Memory
+      containers:
+      - name: flux
+        image: docker.io/weaveworks/flux:1.13.0
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+        ports:
+        - containerPort: 3030 # informational
+        volumeMounts:
+        - name: git-key
+          mountPath: /etc/fluxd/ssh # to match location given in image's /etc/ssh/config
+          readOnly: true # this will be the case perforce in K8s >=1.10
+        - name: git-keygen
+          mountPath: /var/fluxd/keygen # to match location given in image's /etc/ssh/config
+        args:
+        - --memcached-service=
+        - --ssh-keygen-dir=/var/fluxd/keygen
+        - --manifest-generation
+        - --git-url=git@github.com:cds-snc/report-a-cybercrime.git
+        - --git-branch=master
+        - --git-ci-skip
+        - --git-path=platform
+        - --listen-metrics=:3031
+---
+# memcached deployment used by Flux to cache
+# container image metadata.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memcached
+  namespace: flux
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: memcached
+  template:
+    metadata:
+      labels:
+        name: memcached
+    spec:
+      containers:
+      - name: memcached
+        image: memcached:1.5.15
+        imagePullPolicy: IfNotPresent
+        args:
+        - -m 512   # Maximum memory to use, in megabytes
+        - -I 5m    # Maximum size for one item
+        - -p 11211 # Default port
+        # - -vv    # Uncomment to get logs of each request and response.
+        ports:
+        - name: clients
+          containerPort: 11211
+        securityContext:
+          runAsUser: 11211
+          runAsGroup: 11211
+          allowPrivilegeEscalation: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: memcached
+  namespace: flux
+spec:
+  ports:
+    - name: memcached
+      port: 11211
+  selector:
+    name: memcached

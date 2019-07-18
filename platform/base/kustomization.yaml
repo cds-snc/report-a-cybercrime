@@ -9,13 +9,10 @@ resources:
 - arango-claim.yaml
 - arangodb-deployment.yaml
 - arangodb-service.yaml
-- arango-secrets.yaml
-- cybercrime-api-namespace.yaml
 - cybercrime-api-deployment.yaml
-- cybercrime-api-secrets.yaml
 - cybercrime-api-service.yaml
+- cybercrime-api-namespace.yaml
 - minio-deployment.yaml
-- minio-secrets.yaml
 - minio-service.yaml
 - cybercrime-api-ingress.yaml
 - cybercrime-frontend-deployment.yaml
