@@ -70,7 +70,7 @@ export class FileUploadPage extends Component {
         <P>
           <Trans>
             {' '}
-            Supporting files could include copies of emails, text messages, and
+            Supporting files could include copies of emails, conversations, and
             receipts. Any documentation could serve as evidence for police.
           </Trans>
         </P>
