@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
 const BaseButton = styled('button', {
   shouldForwardProp: prop => cleanProps(prop),
 })`
-  font-family: ${({ theme }) => theme.fontSans};
+  font-family: ${({ theme }) => theme.fontBold};
   margin: 0;
   border: 0;
   ${fontSize};
