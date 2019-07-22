@@ -29,6 +29,12 @@ const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
 `
 
+const Fieldset = styled('fieldset')`
+  margin: 0;
+  padding: 0;
+  border: none;
+`
+
 const validate = () => {
   return {}
 }
@@ -131,32 +137,32 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               />
             </div>
 
-            <label htmlFor="suspectLanguage">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Language of communications</Trans>
-              </Text>
-            </label>
-            <div>
-              <I18n>
-                {({ i18n }) =>
-                  languages.map(key => {
-                    return (
-                      <CheckboxStyle key={key}>
-                        <Field
-                          name="suspectLanguage"
-                          id="suspectLanguage"
-                          component={CheckboxAdapter}
-                          type="checkbox"
-                          value={key}
-                          label={i18n._(key)}
-                        />
-                      </CheckboxStyle>
-                    )
-                  })
-                }
-              </I18n>
-            </div>
-
+            <Fieldset>
+              <legend>
+                <Text marginTop={[4, null, 5]}>
+                  <Trans>Language of communications</Trans>
+                </Text>
+              </legend>
+              <div>
+                <I18n>
+                  {({ i18n }) =>
+                    languages.map(key => {
+                      return (
+                        <CheckboxStyle key={key}>
+                          <Field
+                            name="suspectLanguage"
+                            component={CheckboxAdapter}
+                            type="checkbox"
+                            value={key}
+                            label={i18n._(key)}
+                          />
+                        </CheckboxStyle>
+                      )
+                    })
+                  }
+                </I18n>
+              </div>
+            </Fieldset>
             {values.suspectLanguage &&
             values.suspectLanguage.indexOf('Other language') > -1 ? (
               <React.Fragment>

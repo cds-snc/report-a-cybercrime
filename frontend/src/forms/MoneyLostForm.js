@@ -40,6 +40,12 @@ const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
 `
 
+const Fieldset = styled('fieldset')`
+  margin: 0;
+  padding: 0;
+  border: none;
+`
+
 const validate = () => {
   return {}
 }
@@ -67,29 +73,30 @@ export const MoneyLostForm = ({ onSubmit }) => (
               />
             </div>
 
-            <label htmlFor="lostCurrency">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Currency</Trans>
-              </Text>
-            </label>
-            <I18n>
-              {({ i18n }) =>
-                currencies.map(key => {
-                  return (
-                    <CheckboxStyle key={key}>
-                      <Field
-                        name="lostCurrency"
-                        id="lostCurrency"
-                        component={RadioButtonAdapter}
-                        type="radio"
-                        value={key}
-                        label={i18n._(key)}
-                      />
-                    </CheckboxStyle>
-                  )
-                })
-              }
-            </I18n>
+            <Fieldset>
+              <legend>
+                <Text marginTop={[4, null, 5]}>
+                  <Trans>Currency</Trans>
+                </Text>
+              </legend>
+              <I18n>
+                {({ i18n }) =>
+                  currencies.map(key => {
+                    return (
+                      <CheckboxStyle key={key}>
+                        <Field
+                          name="lostCurrency"
+                          component={RadioButtonAdapter}
+                          type="radio"
+                          value={key}
+                          label={i18n._(key)}
+                        />
+                      </CheckboxStyle>
+                    )
+                  })
+                }
+              </I18n>
+            </Fieldset>
 
             {values.lostCurrency &&
             values.lostCurrency.indexOf('Other currency') > -1 ? (
