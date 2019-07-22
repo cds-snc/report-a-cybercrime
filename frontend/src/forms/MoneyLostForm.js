@@ -120,32 +120,33 @@ export const MoneyLostForm = ({ onSubmit }) => (
               ''
             )}
 
-            <label htmlFor="lostMethodsOfPayment">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>What method of payment was used?</Trans>
-              </Text>
-              <br></br>
-            </label>
-            <div>
-              <I18n>
-                {({ i18n }) =>
-                  methodsOfPayment.map(key => {
-                    return (
-                      <CheckboxStyle key={key}>
-                        <Field
-                          name="lostMethodsOfPayment"
-                          id="lostMethodsOfPayment"
-                          component={CheckboxAdapter}
-                          type="checkbox"
-                          value={key}
-                          label={i18n._(key)}
-                        />
-                      </CheckboxStyle>
-                    )
-                  })
-                }
-              </I18n>
-            </div>
+            <Fieldset>
+              <legend>
+                <Text marginTop={[4, null, 5]}>
+                  <Trans>What method of payment was used?</Trans>
+                </Text>
+                <br></br>
+              </legend>
+              <div>
+                <I18n>
+                  {({ i18n }) =>
+                    methodsOfPayment.map(key => {
+                      return (
+                        <CheckboxStyle key={key}>
+                          <Field
+                            name="lostMethodsOfPayment"
+                            component={CheckboxAdapter}
+                            type="checkbox"
+                            value={key}
+                            label={i18n._(key)}
+                          />
+                        </CheckboxStyle>
+                      )
+                    })
+                  }
+                </I18n>
+              </div>
+            </Fieldset>
 
             {values.lostMethodsOfPayment &&
             values.lostMethodsOfPayment.indexOf('Other method') > -1 ? (
