@@ -24,7 +24,7 @@ export const MoneyLostPage = () => (
       flexDirection="row"
       marginBottom="20px"
     >
-      <Steps activeStep={1} steps={[{ href: '/scaminfo' }, {}, {}, {}, {}]} />
+      <Steps activeStep={1} steps={[{}, {}, {}, {}, {}]} />
     </Container>
     <H1>
       <Trans>Tell us about the money lost</Trans>

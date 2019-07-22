@@ -397,16 +397,7 @@ export const ConfirmationPage = () => (
       flexDirection="row"
       marginBottom="20px"
     >
-      <Steps
-        activeStep={4}
-        steps={[
-          { href: '/scaminfo' },
-          { href: '/moneylost' },
-          { href: '/suspectinfo' },
-          { href: 'uploadfiles' },
-          { href: 'contactinfo' },
-        ]}
-      />
+      <Steps activeStep={4} steps={[{}, {}, {}, {}, {}]} />
     </Container>
     <H1>
       <Trans>Confirm report information</Trans>

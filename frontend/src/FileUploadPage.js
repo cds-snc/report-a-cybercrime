@@ -53,16 +53,7 @@ export class FileUploadPage extends Component {
           flexDirection="row"
           marginBottom="20px"
         >
-          <Steps
-            activeStep={3}
-            steps={[
-              { href: '/scaminfo' },
-              { href: '/moneylost' },
-              { href: '/suspectinfo' },
-              {},
-              {},
-            ]}
-          />
+          <Steps activeStep={3} steps={[{}, {}, {}, {}, {}]} />
         </Container>
         <H1 marginBottom="70px">
           <Trans>Attach supporting files</Trans>

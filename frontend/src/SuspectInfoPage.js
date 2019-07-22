@@ -23,10 +23,7 @@ export const SuspectInfoPage = () => (
       flexDirection="row"
       marginBottom="20px"
     >
-      <Steps
-        activeStep={2}
-        steps={[{ href: '/scaminfo' }, { href: '/moneylost' }, {}, {}, {}]}
-      />
+      <Steps activeStep={2} steps={[{}, {}, {}, {}, {}]} />
     </Container>
     <H1>
       <Trans>Add scammer details</Trans>
