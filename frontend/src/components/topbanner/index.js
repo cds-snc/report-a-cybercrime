@@ -14,39 +14,37 @@ export const TopBanner = props => {
   return (
     <Query query={GET_LANGUAGE_QUERY}>
       {({ data: { language } }) => (
-        <header>
-          <Container
-            bg={bg}
-            display="flex"
-            flexDirection="row"
-            width={1}
-            height={[60, null, 60]}
-            alignItems="center"
-            data-testid="background-color"
-          >
-            <Container ml={3} width={[250, null, 300]}>
-              <img
-                src={language === 'en' ? rcmpbrandingeng : rcmpbrandingfre}
-                width="300px"
-                alt={
-                  language === 'en'
-                    ? 'Royal Canadian Mounted Police'
-                    : 'Gendarmerie royale du Canada'
-                }
-              />
-            </Container>
-            <Container
-              flex="1 1 auto"
-              mr={3}
-              css={css`
-                text-align: right;
-              `}
-            >
-              {language === 'en' ? null : <LanguageSwitcher language="en" />}
-              {language === 'fr' ? null : <LanguageSwitcher language="fr" />}
-            </Container>
+        <Container
+          bg={bg}
+          display="flex"
+          flexDirection="row"
+          width={1}
+          height={[60, null, 60]}
+          alignItems="center"
+          data-testid="background-color"
+        >
+          <Container ml={3} width={[250, null, 300]}>
+            <img
+              src={language === 'en' ? rcmpbrandingeng : rcmpbrandingfre}
+              width="300px"
+              alt={
+                language === 'en'
+                  ? 'Royal Canadian Mounted Police'
+                  : 'Gendarmerie royale du Canada'
+              }
+            />
           </Container>
-        </header>
+          <Container
+            flex="1 1 auto"
+            mr={3}
+            css={css`
+              text-align: right;
+            `}
+          >
+            {language === 'en' ? null : <LanguageSwitcher language="en" />}
+            {language === 'fr' ? null : <LanguageSwitcher language="fr" />}
+          </Container>
+        </Container>
       )}
     </Query>
   )

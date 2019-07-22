@@ -84,9 +84,10 @@ const App = () => (
                 `}
               />
               <ThemeProvider theme={theme}>
-                <WarningBanner />
-                <TopBanner lang={language} bg="black" />
-
+                <header>
+                  <WarningBanner />
+                  <TopBanner lang={language} bg="black" />
+                </header>
                 <Content>
                   <Home />
                 </Content>
