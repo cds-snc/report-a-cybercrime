@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
@@ -9,27 +9,22 @@ import { Container } from './components/container'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
 
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
-export const Suspectinfo = () => (
+export const LoseMoney = () => (
   <Layout>
     <TrackPageViews />
-    <Container css={topBarContainer}>
-      <Steps activeStep={2} />
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
+      <Steps activeStep={1} steps={[{ href: '/scaminfo' }, {}, {}, {}, {}]} />
     </Container>
     <H1>
-      <Trans>Add scammer details</Trans>
+      <Trans>Tell us if money was lost</Trans>
     </H1>
     <P>
-      <Trans>
-        Do you have any information about the scammer or who might be
-        responsible?
-      </Trans>
+      <Trans>Did you lose money as a result of the scam?</Trans>
     </P>
 
     <Container
@@ -42,14 +37,14 @@ export const Suspectinfo = () => (
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/suspectinfo"
+        to="/moneylost"
       >
         <Trans>Yes</Trans>
       </ButtonLink>
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/uploadfilesquestion"
+        to="/suspectinfoquestion"
       >
         <Trans>No</Trans>
       </ButtonLink>

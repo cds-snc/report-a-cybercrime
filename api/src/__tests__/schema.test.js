@@ -11,7 +11,7 @@ let db, drop, truncate, reports, dbfunctions
 describe('Query Type', () => {
   describe('Query.stats', () => {
     it('exists', () => {
-      let Query = schema.getType('Query')
+      const Query = schema.getType('Query')
       expect(Query.getFields()).toHaveProperty('stats')
     })
   })
@@ -29,17 +29,17 @@ describe('Query Type', () => {
     })
 
     it('returns the total number of reports', async () => {
-      let query = `
+      const query = `
         query {
           stats {
             reportCount
           }
         }
       `
-      let context = {
+      const context = {
         db: await dbinit(db),
       }
-      let response = await graphql(schema, query, {}, context)
+      const response = await graphql(schema, query, {}, context)
       expect(response).toEqual({
         data: {
           stats: {

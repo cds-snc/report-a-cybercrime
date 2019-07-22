@@ -9,31 +9,31 @@ const unionBy = require('lodash.unionby')
 const dbinit = async db => {
   return {
     saveReport: async report => {
-      let query = aql`
+      const query = aql`
         INSERT ${report} IN reports
         RETURN NEW
   `
-      let results = await db.query(query)
+      const results = await db.query(query)
       return results.next()
     },
     countReports: async () => {
-      let query = aql`
+      const query = aql`
         RETURN COUNT(reports)
       `
-      let results = await db.query(query)
+      const results = await db.query(query)
       return results.next()
     },
 
     saveFileReport: async fileData => {
-      let query = aql`
+      const query = aql`
         INSERT ${fileData} IN files
         RETURN NEW
       `
-      let results = await db.query(query)
+      const results = await db.query(query)
       return results.next()
     },
     summariseReportsBetween: async ({ identifier, startDate, endDate }) => {
-      let query = aql`
+      const query = aql`
         FOR report IN reports
           FILTER DATE_FORMAT(report.createdAt, "%yyyy-%mm-%dd") >= ${startDate} AND
           DATE_FORMAT(report.createdAt, "%yyyy-%mm-%dd") <= ${endDate}
@@ -45,9 +45,9 @@ const dbinit = async db => {
               total: count
             }
       `
-      let results = await db.query(query)
-      let summaries = await results.all()
-      let dates = generateDateObjects(startDate, endDate, { total: 0 })
+      const results = await db.query(query)
+      const summaries = await results.all()
+      const dates = generateDateObjects(startDate, endDate, { total: 0 })
       return sortByDateAttribute(uniqueArray(unionBy(summaries, dates, 'date')))
     },
     getFiles: async ceName => {
@@ -63,12 +63,12 @@ const dbinit = async db => {
           RETURN file
         `
       }
-      let results = await db.query(query)
+      const results = await db.query(query)
       const finalResults = await results.all()
       return finalResults
     },
     summariseByDay: async identifier => {
-      let query = aql`
+      const query = aql`
       FOR report IN reports
       FILTER report.identifier == ${identifier}
       COLLECT day = DATE_FORMAT(report.createdAt, "%yyyy-%mm-%dd")
@@ -78,7 +78,7 @@ const dbinit = async db => {
         total: count
       }
       `
-      let results = await db.query(query)
+      const results = await db.query(query)
       return results.all()
     },
   }

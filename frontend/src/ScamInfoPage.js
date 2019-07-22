@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
@@ -10,30 +10,30 @@ import { Container } from './components/container'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
 
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
 const submitAndNavigate = (client, data) => {
-  client.writeData({ data })
+  client.writeData({ data: { scamInfo: JSON.stringify(data) } })
   navigate('/moneylostquestion')
 }
 
 export const ScamInfoPage = () => (
   <Layout>
-    <Container css={topBarContainer}>
-      <Steps activeStep={0} />
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
+      <Steps activeStep={0} steps={[{}, {}, {}, {}, {}]} />
     </Container>
     <H1>
       <Trans>Describe the scam</Trans>
     </H1>
     <P>
-      Getting an understanding of how the scam took place could help link your
-      report to other similar reports and build a stronger case for an
-      investigation.
+      <Trans>
+        Provide as many details as possible so that your report can be linked to
+        other similar reports. Any information about where, when, and how the
+        scam took place is useful.
+      </Trans>
     </P>
     <TrackPageViews />
     <ScamInfoForm onSubmit={submitAndNavigate} />

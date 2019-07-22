@@ -33,7 +33,7 @@ describe('dbinit', () => {
       it('lets you query the number of reports via a stats type', async () => {
         await reports.save({ foo: 'I am a fake report' })
 
-        let count = await dbfunctions.countReports()
+        const count = await dbfunctions.countReports()
 
         expect(count).toEqual(1)
       })
@@ -41,18 +41,18 @@ describe('dbinit', () => {
 
     describe('saveReport', () => {
       it('saves a report to the reports collection', async () => {
-        let _savedReport = await dbfunctions.saveReport({
+        const _savedReport = await dbfunctions.saveReport({
           foo: 'I am a fake report',
         })
 
-        let { count } = await reports.count()
+        const { count } = await reports.count()
         expect(count).toEqual(1)
       })
     })
 
     describe('summariseByDay', () => {
       it('returns reports grouped by date', async () => {
-        let phone = '613-986-5383'
+        const phone = '613-986-5383'
 
         await dbfunctions.saveReport({
           identifier: phone,
@@ -69,7 +69,7 @@ describe('dbinit', () => {
           createdAt: '2019-04-02T18:47:32.384Z',
         })
 
-        let count = await dbfunctions.summariseByDay(phone)
+        const count = await dbfunctions.summariseByDay(phone)
 
         expect(count).toEqual([
           { date: '2019-04-02', total: 2 },
@@ -80,9 +80,9 @@ describe('dbinit', () => {
 
     describe('summariseReportsWithin', () => {
       it('returns report counts within a date range', async () => {
-        let identifier = '555-555-5555'
-        let startDate = '2019-04-01'
-        let endDate = '2019-04-03'
+        const identifier = '555-555-5555'
+        const startDate = '2019-04-01'
+        const endDate = '2019-04-03'
 
         await dbfunctions.saveReport({
           identifier,
@@ -99,7 +99,7 @@ describe('dbinit', () => {
           createdAt: '2019-04-03T19:47:32.384Z',
         })
 
-        let summary = await dbfunctions.summariseReportsBetween({
+        const summary = await dbfunctions.summariseReportsBetween({
           identifier,
           startDate,
           endDate,

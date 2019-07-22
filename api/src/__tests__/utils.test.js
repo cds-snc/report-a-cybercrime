@@ -17,10 +17,10 @@ describe('Utils', () => {
 
   describe('generateDateObjects', () => {
     it('generates on object per day within a range', async () => {
-      let startDate = '2019-04-01'
-      let endDate = '2019-04-03'
+      const startDate = '2019-04-01'
+      const endDate = '2019-04-03'
 
-      let dates = generateDateObjects(startDate, endDate)
+      const dates = generateDateObjects(startDate, endDate)
       expect(dates).toEqual([
         { date: '2019-04-01' },
         { date: '2019-04-02' },
@@ -29,10 +29,10 @@ describe('Utils', () => {
     })
 
     it('adds additional props if passed', async () => {
-      let startDate = '2019-04-01'
-      let endDate = '2019-04-03'
+      const startDate = '2019-04-01'
+      const endDate = '2019-04-03'
 
-      let dates = generateDateObjects(startDate, endDate, { foo: 'bar' })
+      const dates = generateDateObjects(startDate, endDate, { foo: 'bar' })
       expect(dates).toEqual([
         { date: '2019-04-01', foo: 'bar' },
         { date: '2019-04-02', foo: 'bar' },
@@ -49,7 +49,7 @@ describe('Utils', () => {
 
   describe('makeTestDatabase', () => {
     it('creates a test database and returns useful functions', async () => {
-      let response = await makeTestDatabase({
+      const response = await makeTestDatabase({
         dbname: dbNameFromFile(__filename),
         user,
         password,

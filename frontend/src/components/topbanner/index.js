@@ -20,7 +20,7 @@ export const TopBanner = props => {
             display="flex"
             flexDirection="row"
             width={1}
-            height={[50, null, 60]}
+            height={[60, null, 60]}
             alignItems="center"
             data-testid="background-color"
           >

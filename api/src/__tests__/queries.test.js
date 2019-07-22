@@ -29,13 +29,13 @@ describe('Queries', () => {
 
     describe('reportCount', () => {
       it('lets you query the number of reports via a stats type', async () => {
-        let reports = await db.collection('reports')
+        const reports = await db.collection('reports')
         await reports.save({ foo: 'I am a fake report' })
-        let app = await Server({
+        const app = await Server({
           db: await dbinit(db),
         })
 
-        let response = await request(app)
+        const response = await request(app)
           .post('/graphql')
           .set('Content-Type', 'application/json; charset=utf-8')
           .send({
@@ -48,7 +48,7 @@ describe('Queries', () => {
             `,
           })
 
-        let {
+        const {
           data: {
             stats: { reportCount },
           },

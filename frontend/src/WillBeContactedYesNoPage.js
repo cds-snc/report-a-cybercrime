@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
@@ -9,25 +9,32 @@ import { Container } from './components/container'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
 
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
-export const FilesToUpload = () => (
+export const Willbecontacted = () => (
   <Layout>
-    <Container css={topBarContainer}>
-      <Steps activeStep={3} />
-    </Container>
     <TrackPageViews />
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
+      <Steps
+        activeStep={4}
+        steps={[
+          { href: '/scaminfo' },
+          { href: '/moneylost' },
+          { href: '/suspectinfo' },
+          { href: 'uploadfiles' },
+          {},
+        ]}
+      />
+    </Container>
     <H1>
-      <Trans>Upload supporting files</Trans>
+      <Trans>Leave your contact information</Trans>
     </H1>
     <P>
       <Trans>
-        Do you have any documents, images, screenshots, or receipts?
+        Would you like to be contacted, should the police need more information?
       </Trans>
     </P>
 
@@ -41,14 +48,14 @@ export const FilesToUpload = () => (
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/uploadfiles"
+        to="/contactinfo"
       >
         <Trans>Yes</Trans>
       </ButtonLink>
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/contactinfoquestion"
+        to="/confirmation"
       >
         <Trans>No</Trans>
       </ButtonLink>

@@ -12,7 +12,7 @@ import { Checkbox } from '../components/checkbox'
 import { RadioButton } from '../components/radio-button'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
-import { ButtonLink } from '../components/button-link'
+import { Link } from '../components/link'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
@@ -22,17 +22,18 @@ const RadioButtonAdapter = finalFormAdapter(RadioButton)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
 const methodsOfPayment = [
-  i18nMark('credit card'),
-  i18nMark('cash'),
-  i18nMark('gift card'),
-  i18nMark('other'),
+  i18nMark('Cash'),
+  i18nMark('Credit card'),
+  i18nMark('E-transfer'),
+  i18nMark('Gift card'),
+  i18nMark('Other method'),
 ]
 
 const currencies = [
   i18nMark('Canadian dollar'),
-  i18nMark('US dollar'),
-  i18nMark('Euros'),
-  i18nMark('other'),
+  i18nMark('U.S. dollar'),
+  i18nMark('Euro'),
+  i18nMark('Other currency'),
 ]
 
 const CheckboxStyle = styled('label')`
@@ -91,11 +92,11 @@ export const MoneyLostForm = ({ onSubmit }) => (
             </I18n>
 
             {values.lostCurrency &&
-            values.lostCurrency.indexOf('other') > -1 ? (
+            values.lostCurrency.indexOf('Other currency') > -1 ? (
               <React.Fragment>
                 <label htmlFor="lostOtherCurrency">
                   <Text>
-                    <Trans>Other</Trans>
+                    <Trans>Other currency</Trans>
                   </Text>
                 </label>
                 <div>
@@ -140,11 +141,11 @@ export const MoneyLostForm = ({ onSubmit }) => (
             </div>
 
             {values.lostMethodsOfPayment &&
-            values.lostMethodsOfPayment.indexOf('other') > -1 ? (
+            values.lostMethodsOfPayment.indexOf('Other method') > -1 ? (
               <React.Fragment>
                 <label htmlFor="lostOtherMethodOfPayment">
                   <Text>
-                    <Trans>Other</Trans>
+                    <Trans>Other method</Trans>
                   </Text>
                 </label>
                 <div>
@@ -171,7 +172,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               `}
             >
               <Button type="submit">
-                <Trans>Next</Trans>
+                <Trans>Continue</Trans>
               </Button>
             </Container>
 
@@ -184,9 +185,9 @@ export const MoneyLostForm = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <ButtonLink type="button" color="black">
-                <Trans>Cancel Report</Trans>
-              </ButtonLink>
+              <Link type="button" color="black" to="/" textAlign="center">
+                <Trans>Cancel report</Trans>
+              </Link>
             </Container>
           </form>
         )}

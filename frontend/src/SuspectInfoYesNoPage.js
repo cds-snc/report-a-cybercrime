@@ -1,31 +1,36 @@
 /**@jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { ButtonLink } from './components/link'
 import { TrackPageViews } from './TrackPageViews'
 import { Container } from './components/container'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
 
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
-export const Willbecontacted = () => (
+export const Suspectinfo = () => (
   <Layout>
     <TrackPageViews />
-    <Container css={topBarContainer}>
-      <Steps activeStep={4} />
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
+      <Steps
+        activeStep={2}
+        steps={[{ href: '/scaminfo' }, { href: '/moneylost' }, {}, {}, {}]}
+      />
     </Container>
     <H1>
-      <Trans>
-        If the police need more information, would you like to be contacted
-      </Trans>
+      <Trans>Add scammer details</Trans>
     </H1>
+    <P>
+      <Trans>
+        Do you have any information about who might be responsible for the scam?
+      </Trans>
+    </P>
 
     <Container
       display="flex"
@@ -37,14 +42,14 @@ export const Willbecontacted = () => (
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/contactinfo"
+        to="/suspectinfo"
       >
         <Trans>Yes</Trans>
       </ButtonLink>
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/confirmation"
+        to="/uploadfilesquestion"
       >
         <Trans>No</Trans>
       </ButtonLink>

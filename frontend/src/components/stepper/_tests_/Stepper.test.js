@@ -15,7 +15,7 @@ describe('<Steps />', () => {
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
-            <Steps activeStep="2">
+            <Steps activeStep={2}>
               <div>foo</div>
               <div>foo 2</div>
             </Steps>
@@ -23,5 +23,20 @@ describe('<Steps />', () => {
         </MockedProvider>
       </ThemeProvider>,
     )
+  })
+
+  it('Uses the step prop appropriately  ', () => {
+    const steps = [{ title: 'test step' }, { title: 'another step' }]
+    const { getAllByText } = render(
+      <ThemeProvider theme={theme}>
+        <MockedProvider mocks={[]} addTypename={false}>
+          <I18nProvider language={'en'} catalogs={catalogs}>
+            <Steps steps={steps} activeStep={1}></Steps>
+          </I18nProvider>
+        </MockedProvider>
+      </ThemeProvider>,
+    )
+    const test = getAllByText(/test step/)
+    expect(test).toHaveLength(1)
   })
 })

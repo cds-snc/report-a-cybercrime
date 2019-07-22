@@ -9,13 +9,10 @@ resources:
 - arango-claim.yaml
 - arangodb-deployment.yaml
 - arangodb-service.yaml
-- arango-secrets.yaml
-- cybercrime-api-namespace.yaml
 - cybercrime-api-deployment.yaml
-- cybercrime-api-secrets.yaml
 - cybercrime-api-service.yaml
+- cybercrime-api-namespace.yaml
 - minio-deployment.yaml
-- minio-secrets.yaml
 - minio-service.yaml
 - cybercrime-api-ingress.yaml
 - cybercrime-frontend-deployment.yaml
@@ -26,6 +23,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: gcr.io/report-a-cybercrime-alpha/api
-  newTag: master-7b5110a
+  newTag: master-4240bb3
 - name: gcr.io/report-a-cybercrime-alpha/frontend
-  newTag: master-edc742c
+  newTag: master-752fa4d

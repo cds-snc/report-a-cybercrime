@@ -1,27 +1,19 @@
 /**@jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
+import { I18n } from '@lingui/react'
 import { ApolloConsumer } from 'react-apollo'
 import { Container } from './components/container'
 import { Text } from './components/text'
 import { H1, H2 } from './components/header'
 import { Button } from './components/button'
-import { ButtonLink } from './components/button-link'
+import { Link } from './components/link'
 import { FileUpload } from './components/file-upload'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
-
 import { Steps } from './components/stepper'
-
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
 import { P } from './components/paragraph'
 
 export class FileUploadPage extends Component {
@@ -55,21 +47,40 @@ export class FileUploadPage extends Component {
     return (
       <Layout>
         <TrackPageViews />
-        <Container css={topBarContainer}>
-          <Steps activeStep={3} />
+        <Container
+          display="flex"
+          width="90%"
+          flexDirection="row"
+          marginBottom="20px"
+        >
+          <Steps
+            activeStep={3}
+            steps={[
+              { href: '/scaminfo' },
+              { href: '/moneylost' },
+              { href: '/suspectinfo' },
+              {},
+              {},
+            ]}
+          />
         </Container>
         <H1 marginBottom="70px">
-          <Trans>Upload supporting files</Trans>
+          <Trans>Attach supporting files</Trans>
         </H1>
+        <P>
+          <Trans>
+            {' '}
+            Supporting files could include copies of emails, conversations, and
+            receipts. Any documentation could serve as evidence for police.
+          </Trans>
+        </P>
         <Container
           width="300px"
           marginTop={[2, null, 5]}
           marginBottom={[2, null, 5]}
-          css={css`
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-          `}
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
         >
           <FileUpload
             onChange={this.onChange}
@@ -79,19 +90,19 @@ export class FileUploadPage extends Component {
             <Trans>Attach file</Trans>
           </FileUpload>
         </Container>
-        <P>
-          <Trans>
-            {' '}
-            Supporting files could include copies of emails, text messages, and
-            receipts. Any documentation could serve as evidence for police.
-          </Trans>
-        </P>
-
         <hr />
 
-        <H2 fontSize={[3, null, 5]}>
-          {files.length} <Trans>files attached</Trans>
-        </H2>
+        <I18n>
+          {({ i18n }) => (
+            <H2 fontSize={[3, null, 5]}>
+              {i18n.plural({
+                value: files.length,
+                one: '# file attached',
+                other: '# files attached',
+              })}
+            </H2>
+          )}
+        </I18n>
 
         <Container>
           {files.map((f, index) => (
@@ -99,11 +110,9 @@ export class FileUploadPage extends Component {
               width="300px"
               marginBottom={[2, null, 3]}
               key={index}
-              css={css`
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-              `}
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
             >
               <Text>{f.name}</Text>
               <Button
@@ -113,7 +122,7 @@ export class FileUploadPage extends Component {
                 type="button"
                 onClick={() => this.removeFile(index)}
               >
-                <Trans>Remove</Trans>
+                <Trans>Remove file</Trans>
               </Button>
             </Container>
           ))}
@@ -125,29 +134,25 @@ export class FileUploadPage extends Component {
               <Container
                 width="300px"
                 marginTop={[7, null, 8]}
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-between;
-                `}
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
               >
                 <Button onClick={() => this.submitAndNavigate(client)}>
-                  <Trans>Next</Trans>
+                  <Trans>Continue</Trans>
                 </Button>
               </Container>
 
               <Container
                 width="300px"
                 marginTop={[2, null, 3]}
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-between;
-                `}
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
               >
-                <ButtonLink type="button" color="black">
-                  <Trans>Cancel Report</Trans>
-                </ButtonLink>
+                <Link type="button" color="black" to="/" textAlign="center">
+                  <Trans>Cancel report</Trans>
+                </Link>
               </Container>
             </Container>
           )}

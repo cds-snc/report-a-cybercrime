@@ -28,10 +28,6 @@ const App = () => (
                 console.log(i18n) return (
                 <title lang={language}>{i18n._('Report a scam')}</title>
                 )
-                <link
-                  href="https://fonts.googleapis.com/css?family=Roboto"
-                  rel="stylesheet"
-                />
                 <link rel="manifest" href="/manifest.json" />
                 <meta
                   name="viewport"
@@ -76,6 +72,14 @@ const App = () => (
                     display: flex;
                     flex-direction: column;
                     height: 100%;
+                  }
+                  @font-face {
+                    font-family: 'robotoregular';
+                    src: url('fonts/roboto-regular-webfont.woff2')
+                        format('woff2'),
+                      url('fonts/roboto-regular-webfont.woff') format('woff');
+                    font-weight: normal;
+                    font-style: normal;
                   }
                 `}
               />

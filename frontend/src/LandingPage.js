@@ -4,8 +4,11 @@ import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
 import { H1, H2 } from './components/header'
 import { ButtonLink } from './components/link'
-import { TrackPageViews } from './TrackPageViews'
+import { Ul } from './components/unordered-list'
+import { Li } from './components/list-item'
+import { Text } from './components/text'
 import { Layout } from './components/layout'
+import { TrackPageViews } from './TrackPageViews'
 
 export const LandingPage = () => (
   <Layout>
@@ -28,26 +31,25 @@ export const LandingPage = () => (
     <H2 fontSize={[4, null, 5]}>
       <Trans>You will be asked to:</Trans>
     </H2>
-    <P>
-      <ul fontSize={[8, null, 8]}>
-        <li>
+
+    <Text>
+      <Ul fontSize={[8, null, 8]}>
+        <Li>
           <Trans>Describe what happened</Trans>
-        </li>
-        <li>
-          <Trans>Specify whether money was lost</Trans>
-        </li>
-        <li>
-          <Trans>Add scammer details</Trans>
-        </li>
-        <li>
-          <Trans>Attach supporting files</Trans>
-        </li>
-      </ul>
-    </P>
-    <P>
-      <ButtonLink color="black" mb={[3, null, 5]} to="scaminfo">
-        <Trans>Report now</Trans>
-      </ButtonLink>
-    </P>
+        </Li>
+        <Li>
+          <Trans>Tell us how much money was lost</Trans>
+        </Li>
+        <Li>
+          <Trans>Add details about the scammer</Trans>
+        </Li>
+        <Li>
+          <Trans>Attach any supporting files</Trans>
+        </Li>
+      </Ul>
+    </Text>
+    <ButtonLink color="black" mb={[3, null, 5]} to="scaminfo">
+      <Trans>Report now</Trans>
+    </ButtonLink>
   </Layout>
 )

@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
@@ -9,24 +9,33 @@ import { Container } from './components/container'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
 
-const topBarContainer = css`
-  display: flex;
-  width: 90%;
-  flex-direction: row;
-  margin-bottom: 20px;
-`
-
-export const LoseMoney = () => (
+export const FilesToUpload = () => (
   <Layout>
-    <TrackPageViews />
-    <Container css={topBarContainer}>
-      <Steps activeStep={1} />
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
+      <Steps
+        activeStep={3}
+        steps={[
+          { href: '/scaminfo' },
+          { href: '/moneylost' },
+          { href: '/suspectinfo' },
+          {},
+          {},
+        ]}
+      />
     </Container>
+    <TrackPageViews />
     <H1>
-      <Trans>Specify money lost</Trans>
+      <Trans>Attach supporting files</Trans>
     </H1>
     <P>
-      <Trans>Did you lose money as a result of the scam?</Trans>
+      <Trans>
+        Do you have any documents, images, screenshots, or receipts?
+      </Trans>
     </P>
 
     <Container
@@ -39,14 +48,14 @@ export const LoseMoney = () => (
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/moneylost"
+        to="/uploadfiles"
       >
         <Trans>Yes</Trans>
       </ButtonLink>
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/suspectinfoquestion"
+        to="/contactinfoquestion"
       >
         <Trans>No</Trans>
       </ButtonLink>

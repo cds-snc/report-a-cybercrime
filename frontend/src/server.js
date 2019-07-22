@@ -34,15 +34,15 @@ server
       languages: ['en', 'fr'],
     }),
   )
-  .get('/assets', (req, res) => {
+  .get('/assets', (_req, res) => {
     res.status(200).send(JSON.stringify(assets))
   })
-  .get('/monitoring/alive', (req, res) => {
+  .get('/monitoring/alive', (_req, res) => {
     res.status(200).send('yes')
   })
   .use('/public', express.static(__dirname + '/public'))
   .use('/static', express.static('static'))
-  .get('/monitoring/ready', (req, res) => {
+  .get('/monitoring/ready', (_req, res) => {
     res.status(200).send('yes')
   })
   .get('/*', async (req, res) => {
@@ -52,33 +52,11 @@ server
     cache.writeData({
       data: {
         language: req.language,
-
-        howWereYouContacted: [],
-        otherMethodOfContact: '',
-        whenWereYouContacted: '',
-        scamDetails: '',
-
-        lostAmount: '',
-        lostCurrency: '',
-        lostOtherCurrency: '',
-        lostMethodsOfPayment: [],
-        lostOtherMethodOfPayment: '',
-
-        suspectName: '',
-        suspectAddress: '',
-        suspectLanguage: [],
-        otherSuspectLanguage: '',
-        suspectPhone: '',
-        suspectEmail: '',
-        suspectWebsite: '',
-        suspectIP: '',
-
+        scamInfo: JSON.stringify({}),
+        lostMoney: JSON.stringify({}),
+        suspectInfo: JSON.stringify({}),
         files: [],
-
-        userIsTheVictim: '',
-        contactInfoName: '',
-        contactInfoEmail: '',
-        contactInfoPhone: '',
+        contactInfo: JSON.stringify({}),
       },
     })
 
