@@ -7,8 +7,13 @@ patchesStrategicMerge:
   - traefik-ingress-controller-deployment.yaml
   - traefik-ingress-controller-service.yaml
   - cybercrime-frontend-deployment.yaml
+  - minio-deployment.yaml
 images:
   - name: cybercrime-frontend
     newName: gcr.io/report-a-cybercrime-alpha/frontend-dev
   - name: gcr.io/report-a-cybercrime-alpha/frontend
   - name: gcr.io/report-a-cybercrime-alpha/api
+resources:
+  - arango-secrets.yaml
+  - cybercrime-api-secrets.yaml
+  - minio-secrets.yaml
