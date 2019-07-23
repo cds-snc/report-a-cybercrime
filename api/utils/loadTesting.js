@@ -10,7 +10,7 @@ const checkForReportCount = r => {
 }
 
 export default function() {
-  var url = 'https://report-a-cybercrime.cds-snc.ca/graphql'
+  var url = 'https://www.report-a-cybercrime.alpha.rcmp-grc.gc.ca/graphql'
   var payload = JSON.stringify({ query: '{ stats { reportCount } }' })
   var params = { headers: { 'Content-Type': 'application/json' } }
   var res = http.post(url, payload, params)
@@ -20,5 +20,4 @@ export default function() {
     'transaction time OK': r => r.timings.duration < 1000,
     'api call successful': r => checkForReportCount(r),
   })
-  sleep(1)
 }
