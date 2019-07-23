@@ -14,4 +14,4 @@ workflow "Test a11y" {
 
 action "docker://cdssnc/a11y-multiple-page-checker:latest" {
   uses = "docker://cdssnc/a11y-multiple-page-checker:latest"
-} 
+}
