@@ -2,10 +2,10 @@
   "urls": [
     "",
     "scaminfo",
-    "suspectinfoquestion",
-    "suspectinfo",
     "moneylostquestion",
     "moneylost",
+    "suspectinfoquestion",
+    "suspectinfo",
     "uploadfilesquestion",
     "uploadfiles",
     "contactinfoquestion",
