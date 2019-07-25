@@ -1,4 +1,4 @@
-import { check, fail } from 'k6'
+import { check, fail, sleep } from 'k6'
 import http from 'k6/http'
 
 const loadTestingUrl = `${__ENV.LOAD_TESTING_BASE_URL}`
@@ -25,4 +25,5 @@ export default function() {
     'transaction time OK': r => r.timings.duration < 1000,
     'api call successful': r => checkForReportCount(r),
   })
+  sleep(1)
 }
