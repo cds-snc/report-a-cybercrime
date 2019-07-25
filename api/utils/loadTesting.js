@@ -1,5 +1,10 @@
+import { check, fail } from 'k6'
 import http from 'k6/http'
-import { check } from 'k6'
+
+const loadTestingUrl = `${__ENV.LOAD_TESTING_BASE_URL}`
+if (loadTestingUrl === 'undefined') {
+  fail('ERROR: Environment variable LOAD_TESTING_BASE_URL not defined')
+}
 
 const checkForReportCount = r => {
   try {
@@ -10,7 +15,7 @@ const checkForReportCount = r => {
 }
 
 export default function() {
-  var url = 'https://www.report-a-cybercrime.alpha.rcmp-grc.gc.ca/graphql'
+  var url = `${loadTestingUrl}/graphql`
   var payload = JSON.stringify({ query: '{ stats { reportCount } }' })
   var params = { headers: { 'Content-Type': 'application/json' } }
   var res = http.post(url, payload, params)
