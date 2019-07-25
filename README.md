@@ -116,7 +116,13 @@ Thank you for your interest! :tada:
 
 There are simple scripts to load test the frontend and api. They use the [k6](https://docs.k6.io) package, which must first be installed (see (https://docs.k6.io/docs/installation)
 
-To run the tests, set the environment variable `LOAD_TESTING_BASE_URL` to the base url of the website (for example, `https://report-a-cybercrime.alpha.rcmp-grc.gc.ca`) and then run
+To run the tests, set the environment variable `LOAD_TESTING_BASE_URL` to the base url of the website, for example
+
+```
+export LOAD_TESTING_BASE_URL=https://report-a-cybercrime.alpha.rcmp-grc.gc.ca
+```
+
+and then run
 
 ```
 k6 run -vu 150 -d10s frontend/utils/loadTesting.js
