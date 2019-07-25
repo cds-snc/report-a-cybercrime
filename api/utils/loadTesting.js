@@ -21,7 +21,7 @@ export default function() {
   var res = http.post(url, payload, params)
 
   check(res, {
-    'status was 200': r => r.status == 200,
+    'status was 200': r => r.status === 200,
     'transaction time OK': r => r.timings.duration < 1000,
     'api call successful': r => checkForReportCount(r),
   })
