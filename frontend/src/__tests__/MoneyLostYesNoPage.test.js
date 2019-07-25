@@ -2,17 +2,17 @@ import React from 'react'
 import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
+import { LoseMoney } from '../MoneyLostYesNoPage'
 import theme from '../theme'
-import { FilesToUpload } from '../FilesToUpload'
 
-describe('<FilesToUpload />', () => {
+describe('<LoseMoney />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
     render(
       <ThemeProvider theme={theme}>
         <ApolloProvider client={{}}>
-          <FilesToUpload />
+          <LoseMoney />
         </ApolloProvider>
       </ThemeProvider>,
     )

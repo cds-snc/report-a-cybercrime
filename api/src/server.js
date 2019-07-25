@@ -5,7 +5,7 @@ const { graphqlUploadExpress } = require('graphql-upload')
 const cors = require('cors')
 
 const Server = async context => {
-  let app = express()
+  const app = express()
 
   app.use(
     '/',

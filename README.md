@@ -111,3 +111,23 @@ to walk through the frontend, add data, and view it using the API or database
 interface.
 
 Thank you for your interest! :tada:
+
+### Load testing
+
+There are simple scripts to load test the frontend and api. They use the [k6](https://docs.k6.io) package, which must first be installed (see (https://docs.k6.io/docs/installation)
+
+To run the tests, set the environment variable `LOAD_TESTING_BASE_URL` to the base url of the website, for example
+
+```
+export LOAD_TESTING_BASE_URL=https://report-a-cybercrime.alpha.rcmp-grc.gc.ca
+```
+
+and then run
+
+```
+k6 run -vu 150 -d10s frontend/utils/loadTesting.js
+k6 run -vu 150 -d10s api/utils/loadTesting.js
+```
+
+- the `http_req_duration` line shows how long the requests took (from sending request to receiving response)
+- the `iterations` line shows the number of requests per second (should be approximately 100/s bor both)

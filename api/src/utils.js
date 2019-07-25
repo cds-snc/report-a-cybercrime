@@ -50,16 +50,16 @@ const makeTestDatabase = async ({
   const _info = await conn.createDatabase(dbname, [{ user }])
 
   // Create wrapper instance for our new database
-  let testdb = new Database({ url, databaseName: dbname })
+  const testdb = new Database({ url, databaseName: dbname })
   // Switch to it
   testdb.useDatabase(dbname)
   testdb.useBasicAuth(user, password)
 
   // Create the collections we were asked for
-  let cols = await Promise.all(
+  const cols = await Promise.all(
     collections.map(async c => {
       // Make a collection instance to put stuff in.
-      let col = testdb.collection(c)
+      const col = testdb.collection(c)
       // Make sure the instance has a real collection backing it.
       return col.create()
     }),

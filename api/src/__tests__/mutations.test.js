@@ -29,11 +29,11 @@ describe('Mutations', () => {
 
   describe('submitReport', () => {
     it('accepts report data and returns a report ID', async () => {
-      let app = await Server({
+      const app = await Server({
         db: await dbinit(db),
       })
 
-      let response = await request(app)
+      const response = await request(app)
         .post('/graphql')
         .set('Content-Type', 'application/json; charset=utf-8')
         .send({
@@ -45,7 +45,7 @@ describe('Mutations', () => {
             }
           `,
         })
-      let { data } = response.body
+      const { data } = response.body
       expect(data).toEqual({
         submitReport: {
           reportID: 'mocked uuid',
@@ -57,14 +57,14 @@ describe('Mutations', () => {
       it('accepts a file', async () => {
         const putMock = jest.fn()
 
-        let app = await Server({
+        const app = await Server({
           db: await dbinit(db),
           minio: { client: { putObject: putMock }, bucket: 'kittens' },
         })
 
         // This is constructed according to the file uploading spec:
         // https://github.com/jaydenseric/graphql-multipart-request-spec
-        let response = await request(app)
+        const response = await request(app)
           .post('/graphql')
           .field(
             'operations',
