@@ -9,10 +9,11 @@ import { ScamInfoForm } from './forms/ScamInfoForm'
 import { Container } from './components/container'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
+import { getDoneForms } from './utils/queriesAndMutations'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scamInfo: JSON.stringify(data) } })
-  navigate('/moneylostquestion')
+  navigate(getDoneForms(client) ? '/confirmation' : '/moneylostquestion')
 }
 
 export const ScamInfoPage = () => (

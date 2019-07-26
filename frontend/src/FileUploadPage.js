@@ -1,5 +1,6 @@
 /**@jsx jsx */
 import { jsx } from '@emotion/core'
+import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
@@ -15,12 +16,13 @@ import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { Steps } from './components/stepper'
 import { P } from './components/paragraph'
+import { getDoneForms, getFiles } from './utils/queriesAndMutations'
 
-export class FileUploadPage extends Component {
+class FileUploadInternal extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      files: [],
+      files: getFiles(props.client).map(name => ({ name })),
     }
   }
 
@@ -38,7 +40,7 @@ export class FileUploadPage extends Component {
     const files = this.state.files.map(file => file.name)
     const data = { files }
     client.writeData({ data }) // TODO: actually upload files
-    navigate('/contactinfoquestion')
+    navigate(getDoneForms(client) ? '/confirmation' : '/contactinfoquestion')
   }
 
   render() {
@@ -161,3 +163,13 @@ export class FileUploadPage extends Component {
     )
   }
 }
+
+FileUploadInternal.propTypes = {
+  client: PropTypes.object.isRequired,
+}
+
+export const FileUploadPage = () => (
+  <ApolloConsumer>
+    {client => <FileUploadInternal client={client} />}
+  </ApolloConsumer>
+)

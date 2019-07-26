@@ -5,17 +5,19 @@ import { ThemeProvider } from 'emotion-theming'
 import { ConfirmationPage } from '../ConfirmationPage'
 import theme from '../theme'
 
+const client = {
+  readQuery: () => ({
+    scamInfo: JSON.stringify({}),
+    lostMoney: JSON.stringify({}),
+    suspectInfo: JSON.stringify({}),
+    files: [],
+    contactInfo: JSON.stringify({}),
+  }),
+  writeData: jest.fn(),
+}
+
 describe('<ConfirmationPage />', () => {
   afterEach(cleanup)
-  const client = {
-    readQuery: () => ({
-      scamInfo: JSON.stringify({}),
-      lostMoney: JSON.stringify({}),
-      suspectInfo: JSON.stringify({}),
-      files: [],
-      contactInfo: JSON.stringify({}),
-    }),
-  }
 
   it('renders', () => {
     render(
