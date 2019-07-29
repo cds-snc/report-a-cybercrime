@@ -360,7 +360,7 @@
             <!---->
             <cafc-complaint public-complaint="vm.publicComplaint"
               ng-if="vm.publicComplaint.completionStepName !== &#39;SUBMITTED&#39;">
-              <form name="complaintForm" novalidate="" id="complaint-form"
+              <form name="complaintForm" novalidate="" id="complaint-form" method="POST" action="/submit"
                 class="ng-pristine ng-invalid ng-invalid-radio-required">
                 <!---->
                 <!---->
