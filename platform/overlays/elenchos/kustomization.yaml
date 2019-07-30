@@ -17,3 +17,4 @@ resources:
   - arango-secrets.yaml
   - cybercrime-api-secrets.yaml
   - minio-secrets.yaml
+  - elenchos-secret.yaml
