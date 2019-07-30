@@ -74,11 +74,10 @@ const App = () => (
                     height: 100%;
                   }
                   @font-face {
-                    font-family: 'robotoregular';
-                    src: url('fonts/roboto-regular-webfont.woff2')
-                        format('woff2'),
-                      url('fonts/roboto-regular-webfont.woff') format('woff');
-                    font-weight: normal;
+                    font-family: 'robotobold';
+                    src: url('fonts/roboto-bold.woff2') format('woff2'),
+                      url('fonts/roboto-bold.woff') format('woff');
+                    font-weight: bold;
                     font-style: normal;
                   }
                 `}

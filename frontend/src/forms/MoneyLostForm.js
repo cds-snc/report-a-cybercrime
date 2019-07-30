@@ -16,6 +16,7 @@ import { Link } from '../components/link'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
+import { getLostMoney } from '../utils/queriesAndMutations'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const RadioButtonAdapter = finalFormAdapter(RadioButton)
@@ -48,6 +49,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
   <ApolloConsumer>
     {client => (
       <Form
+        initialValues={getLostMoney(client)}
         onSubmit={data => onSubmit(client, data)}
         validate={validate}
         render={({ handleSubmit, values }) => (
