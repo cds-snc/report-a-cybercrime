@@ -98,10 +98,10 @@ describe('<Input />', () => {
           id="test"
           position="absolute"
           zIndex="1"
-          top="1"
-          right="2"
-          bottom="3"
-          left="4"
+          top="1px"
+          right="2px"
+          bottom="3px"
+          left="4px"
         />{' '}
       </form>,
     )
@@ -109,9 +109,9 @@ describe('<Input />', () => {
     const test = getByLabelText(/Test/)
     expect(test).toHaveStyleRule('position', 'absolute')
     expect(test).toHaveStyleRule('z-index', '1')
-    expect(test).toHaveStyleRule('top', '1')
-    expect(test).toHaveStyleRule('right', '2')
-    expect(test).toHaveStyleRule('bottom', '3')
-    expect(test).toHaveStyleRule('left', '4')
+    expect(test).toHaveStyleRule('top', '1px')
+    expect(test).toHaveStyleRule('right', '2px')
+    expect(test).toHaveStyleRule('bottom', '3px')
+    expect(test).toHaveStyleRule('left', '4px')
   })
 })
