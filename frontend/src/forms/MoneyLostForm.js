@@ -41,6 +41,12 @@ const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
 `
 
+const Fieldset = styled('fieldset')`
+  margin: 0;
+  padding: 0;
+  border: none;
+`
+
 const validate = () => {
   return {}
 }
@@ -69,29 +75,30 @@ export const MoneyLostForm = ({ onSubmit }) => (
               />
             </div>
 
-            <label htmlFor="lostCurrency">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Currency</Trans>
-              </Text>
-            </label>
-            <I18n>
-              {({ i18n }) =>
-                currencies.map(key => {
-                  return (
-                    <CheckboxStyle key={key}>
-                      <Field
-                        name="lostCurrency"
-                        id="lostCurrency"
-                        component={RadioButtonAdapter}
-                        type="radio"
-                        value={key}
-                        label={i18n._(key)}
-                      />
-                    </CheckboxStyle>
-                  )
-                })
-              }
-            </I18n>
+            <Fieldset>
+              <legend>
+                <Text marginTop={[4, null, 5]}>
+                  <Trans>Currency</Trans>
+                </Text>
+              </legend>
+              <I18n>
+                {({ i18n }) =>
+                  currencies.map(key => {
+                    return (
+                      <CheckboxStyle key={key}>
+                        <Field
+                          name="lostCurrency"
+                          component={RadioButtonAdapter}
+                          type="radio"
+                          value={key}
+                          label={i18n._(key)}
+                        />
+                      </CheckboxStyle>
+                    )
+                  })
+                }
+              </I18n>
+            </Fieldset>
 
             {values.lostCurrency &&
             values.lostCurrency.indexOf('Other currency') > -1 ? (
@@ -115,32 +122,33 @@ export const MoneyLostForm = ({ onSubmit }) => (
               ''
             )}
 
-            <label htmlFor="lostMethodsOfPayment">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>What method of payment was used?</Trans>
-              </Text>
-              <br></br>
-            </label>
-            <div>
-              <I18n>
-                {({ i18n }) =>
-                  methodsOfPayment.map(key => {
-                    return (
-                      <CheckboxStyle key={key}>
-                        <Field
-                          name="lostMethodsOfPayment"
-                          id="lostMethodsOfPayment"
-                          component={CheckboxAdapter}
-                          type="checkbox"
-                          value={key}
-                          label={i18n._(key)}
-                        />
-                      </CheckboxStyle>
-                    )
-                  })
-                }
-              </I18n>
-            </div>
+            <Fieldset>
+              <legend>
+                <Text marginTop={[4, null, 5]}>
+                  <Trans>What method of payment was used?</Trans>
+                </Text>
+                <br></br>
+              </legend>
+              <div>
+                <I18n>
+                  {({ i18n }) =>
+                    methodsOfPayment.map(key => {
+                      return (
+                        <CheckboxStyle key={key}>
+                          <Field
+                            name="lostMethodsOfPayment"
+                            component={CheckboxAdapter}
+                            type="checkbox"
+                            value={key}
+                            label={i18n._(key)}
+                          />
+                        </CheckboxStyle>
+                      )
+                    })
+                  }
+                </I18n>
+              </div>
+            </Fieldset>
 
             {values.lostMethodsOfPayment &&
             values.lostMethodsOfPayment.indexOf('Other method') > -1 ? (
