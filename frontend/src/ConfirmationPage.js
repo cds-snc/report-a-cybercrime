@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
+import { I18n } from '@lingui/react'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import { H1, H2 } from './components/header'
 import { Container } from './components/container'
@@ -39,9 +40,21 @@ const scamEventSummary = client => {
     <React.Fragment>
       <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
         <Trans>Scam event</Trans>{' '}
-        <Link type="button" color="black" to="/scaminfo" textAlign="center">
-          <Trans>Edit</Trans>
-        </Link>
+        <I18n>
+          {({ i18n }) => {
+            return (
+              <Link
+                aria-label={i18n._('Edit scam event')}
+                type="button"
+                color="black"
+                to="/scaminfo"
+                textAlign="center"
+              >
+                <Trans>Edit</Trans>
+              </Link>
+            )
+          }}
+        </I18n>
       </H2>
       {scamDetails ? (
         <Text>
@@ -95,9 +108,21 @@ const lostMoneySummary = client => {
         marginBottom={[1, null, 1]}
       >
         <Trans>Money lost</Trans>{' '}
-        <Link type="button" color="black" to="/moneylost" textAlign="center">
-          <Trans>Edit</Trans>
-        </Link>
+        <I18n>
+          {({ i18n }) => {
+            return (
+              <Link
+                aria-label={i18n._('Edit money lost')}
+                type="button"
+                color="black"
+                to="/moneylost"
+                textAlign="center"
+              >
+                <Trans>Edit</Trans>
+              </Link>
+            )
+          }}
+        </I18n>
       </H2>
       {lostAmount ? (
         <Text>
@@ -154,9 +179,21 @@ const suspectInfoSummary = client => {
         marginBottom={[1, null, 1]}
       >
         <Trans>Scammer details</Trans>{' '}
-        <Link type="button" color="black" to="/suspectinfo" textAlign="center">
-          <Trans>Edit</Trans>
-        </Link>
+        <I18n>
+          {({ i18n }) => {
+            return (
+              <Link
+                aria-label={i18n._('Edit scammer details')}
+                type="button"
+                color="black"
+                to="/suspectinfo"
+                textAlign="center"
+              >
+                <Trans>Edit</Trans>
+              </Link>
+            )
+          }}
+        </I18n>
       </H2>
 
       {suspectName ? (
@@ -235,9 +272,21 @@ const fileUploadSummary = client => {
         marginBottom={[1, null, 1]}
       >
         <Trans>Files attached</Trans>{' '}
-        <Link type="button" color="black" to="/uploadfiles" textAlign="center">
-          <Trans>Edit</Trans>
-        </Link>
+        <I18n>
+          {({ i18n }) => {
+            return (
+              <Link
+                aria-label={i18n._('Edit files attached')}
+                type="button"
+                color="black"
+                to="/uploadfiles"
+                textAlign="center"
+              >
+                <Trans>Edit</Trans>
+              </Link>
+            )
+          }}
+        </I18n>
       </H2>
       {files.length ? (
         <Text>
@@ -266,9 +315,21 @@ const contactInfoSummary = client => {
         marginBottom={[1, null, 1]}
       >
         <Trans>Contact information</Trans>{' '}
-        <Link type="button" color="black" to="/contactinfo" textAlign="center">
-          <Trans>Edit</Trans>
-        </Link>
+        <I18n>
+          {({ i18n }) => {
+            return (
+              <Link
+                aria-label={i18n._('Edit contact info')}
+                type="button"
+                color="black"
+                to="/contactinfo"
+                textAlign="center"
+              >
+                <Trans>Edit</Trans>
+              </Link>
+            )
+          }}
+        </I18n>
       </H2>
 
       {contactInfoName ? (
