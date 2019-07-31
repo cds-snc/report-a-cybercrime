@@ -9,10 +9,11 @@ import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { SuspectInfoForm } from './forms/SuspectInfoForm'
 import { Layout } from './components/layout'
+import { getDoneForms } from './utils/queriesAndMutations'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { suspectInfo: JSON.stringify(data) } })
-  navigate('/uploadfilesquestion')
+  navigate(getDoneForms(client) ? '/confirmation' : '/uploadfilesquestion')
 }
 
 export const SuspectInfoPage = () => (

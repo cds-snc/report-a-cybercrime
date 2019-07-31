@@ -10,10 +10,11 @@ import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { MoneyLostForm } from './forms/MoneyLostForm'
 import { Layout } from './components/layout'
+import { getDoneForms } from './utils/queriesAndMutations'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { lostMoney: JSON.stringify(data) } })
-  navigate('/suspectinfoquestion')
+  navigate(getDoneForms(client) ? '/confirmation' : '/suspectinfoquestion')
 }
 
 export const MoneyLostPage = () => (

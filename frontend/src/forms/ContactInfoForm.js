@@ -14,6 +14,7 @@ import { RadioButton } from '../components/radio-button'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
+import { getContactInfo } from '../utils/queriesAndMutations'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 const RadioButtonAdapter = finalFormAdapter(RadioButton)
@@ -40,6 +41,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
   <ApolloConsumer>
     {client => (
       <Form
+        initialValues={getContactInfo(client)}
         onSubmit={data => onSubmit(client, data)}
         validate={validate}
         render={({ handleSubmit }) => (

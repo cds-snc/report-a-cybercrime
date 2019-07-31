@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
+import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
 import { H1, H2 } from './components/header'
@@ -16,6 +17,21 @@ export const LandingPage = () => (
     <H1>
       <Trans>Report a scam</Trans>
     </H1>
+    <ApolloConsumer>
+      {client =>
+        client.writeData({
+          data: {
+            doneForms: false,
+            scamInfo: JSON.stringify({}),
+            lostMoney: JSON.stringify({}),
+            suspectInfo: JSON.stringify({}),
+            files: [],
+            contactInfo: JSON.stringify({}),
+          },
+        })
+      }
+    </ApolloConsumer>
+
     <P>
       <Trans>
         Tell the RCMP's National Cybercrime Coordination Unit (NC3) about a
