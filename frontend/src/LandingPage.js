@@ -70,23 +70,21 @@ export const LandingPage = () => (
     <I18n>
       {({ i18n }) => {
         return (
-          <Accordion>
-            <Text label={i18n._('You will be asked to:')}>
-              <Ul fontSize={[8, null, 8]}>
-                <Li>
-                  <Trans>Describe what happened</Trans>
-                </Li>
-                <Li>
-                  <Trans>Tell us how much money was lost</Trans>
-                </Li>
-                <Li>
-                  <Trans>Add details about the scammer</Trans>
-                </Li>
-                <Li>
-                  <Trans>Attach any supporting files</Trans>
-                </Li>
-              </Ul>
-            </Text>
+          <Accordion label={i18n._('You will be asked to:')}>
+            <Ul fontSize={[8, null, 8]}>
+              <Li>
+                <Trans>Describe what happened</Trans>
+              </Li>
+              <Li>
+                <Trans>Tell us how much money was lost</Trans>
+              </Li>
+              <Li>
+                <Trans>Add details about the scammer</Trans>
+              </Li>
+              <Li>
+                <Trans>Attach any supporting files</Trans>
+              </Li>
+            </Ul>
           </Accordion>
         )
       }}

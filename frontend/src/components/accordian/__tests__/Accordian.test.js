@@ -7,8 +7,8 @@ describe('<Accordion />', () => {
 
   it('renders', () => {
     render(
-      <Accordion>
-        <div label="test label">test contents</div>
+      <Accordion label="test label">
+        <div>test contents</div>
       </Accordion>,
     )
   })
