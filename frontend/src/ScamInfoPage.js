@@ -15,6 +15,10 @@ const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scamInfo: JSON.stringify(data) } })
   navigate(getDoneForms(client) ? '/confirmation' : '/moneylostquestion')
 }
+const saveData = (client, data) => {
+  client.writeData({ data: { scamInfo: JSON.stringify(data) } })
+  navigate(getDoneForms(client) ? '/confirmation' : '/moneylostquestion')
+}
 
 export const ScamInfoPage = () => (
   <Layout>
@@ -37,6 +41,7 @@ export const ScamInfoPage = () => (
       </Trans>
     </P>
     <TrackPageViews />
+    {/* <ScamInfoForm rerender={saveData} /> */}
     <ScamInfoForm onSubmit={submitAndNavigate} />
   </Layout>
 )

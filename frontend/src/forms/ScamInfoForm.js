@@ -1,3 +1,4 @@
+
 /** @jsx jsx */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
@@ -15,6 +16,7 @@ import { Link } from '../components/link'
 import { Text } from '../components/text'
 import { DateSelector } from '../components/date-picker'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
+import {getScamInfo} from '../utils/queriesAndMutations'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
@@ -35,21 +37,21 @@ const validate = () => {
   return {}
 }
 export class ScamInfoForm extends Component {
-  state = {
-    startDate: new Date(),
+  constructor(props){
+    super(props);
+    this.startDate=new Date();
+   
+    
   }
 
-  handleChange = date => {
-    this.setState({
-      startDate: date,
-    })
+  handleChange = (date) => {
+    this.startDate=date 
+    
   }
-
+ 
   localOnSubmit = (client, data) => {
     const { onSubmit } = this.props
-    // data.whenWereYouContacted = `${this.state.startDate}`.substr(0, 15)
-
-    data.whenWereYouContacted = this.state.startDate.toISOString().slice(0, 10)
+    data.whenWereYouContacted = this.startDate.toISOString().slice(0, 10)
 
     onSubmit(client, data)
   }
@@ -59,8 +61,9 @@ export class ScamInfoForm extends Component {
       <ApolloConsumer>
         {client => (
           <Form
-            // initialValues={getScamInfo(client)}
+            initialValues={getScamInfo(client)}
             onSubmit={data => this.localOnSubmit(client, data)}
+            
             validate={validate}
             render={({
               handleSubmit,
@@ -99,7 +102,7 @@ export class ScamInfoForm extends Component {
                         id="whenWereYouContacted"
                         component={DateSelectorAdapter}
                         locale={i18n._('en')}
-                        selected={this.state.startDate}
+                        selected={this.startDate}
                         onChange={this.handleChange}
                         height="25px"
                         width="300px"
@@ -201,6 +204,8 @@ export class ScamInfoForm extends Component {
   }
 }
 
+
 ScamInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  
 }
