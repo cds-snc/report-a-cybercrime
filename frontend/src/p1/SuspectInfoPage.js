@@ -13,7 +13,7 @@ import { getDoneForms } from '../utils/queriesAndMutations'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { suspectInfo: JSON.stringify(data) } })
-  navigate(getDoneForms(client) ? '/confirmation' : '/uploadfilesquestion')
+  navigate(getDoneForms(client) ? 'confirmation' : 'uploadfilesquestion')
 }
 
 export const SuspectInfoPage = () => (

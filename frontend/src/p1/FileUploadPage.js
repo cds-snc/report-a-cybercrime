@@ -40,7 +40,7 @@ class FileUploadInternal extends Component {
     const files = this.state.files.map(file => file.name)
     const data = { files }
     client.writeData({ data }) // TODO: actually upload files
-    navigate(getDoneForms(client) ? '/confirmation' : '/contactinfoquestion')
+    navigate(getDoneForms(client) ? 'confirmation' : 'contactinfoquestion')
   }
 
   render() {
@@ -143,7 +143,7 @@ class FileUploadInternal extends Component {
                 flexDirection="column"
                 justifyContent="space-between"
               >
-                <Link type="button" color="black" to="/" textAlign="center">
+                <Link type="button" color="black" to="" textAlign="center">
                   <Trans>Cancel report</Trans>
                 </Link>
               </Container>

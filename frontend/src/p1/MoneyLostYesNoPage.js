@@ -37,14 +37,14 @@ export const LoseMoney = () => (
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/moneylost"
+        to="../moneylost"
       >
         <Trans>Yes</Trans>
       </ButtonLink>
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/suspectinfoquestion"
+        to="../suspectinfoquestion"
       >
         <Trans>No</Trans>
       </ButtonLink>

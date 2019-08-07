@@ -14,7 +14,7 @@ import { getDoneForms } from '../utils/queriesAndMutations'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { lostMoney: JSON.stringify(data) } })
-  navigate(getDoneForms(client) ? '/confirmation' : '/suspectinfoquestion')
+  navigate(getDoneForms(client) ? 'confirmation' : 'suspectinfoquestion')
 }
 
 export const MoneyLostPage = () => (

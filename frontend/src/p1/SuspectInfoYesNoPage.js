@@ -39,14 +39,14 @@ export const Suspectinfo = () => (
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/suspectinfo"
+        to="suspectinfo"
       >
         <Trans>Yes</Trans>
       </ButtonLink>
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="/uploadfilesquestion"
+        to="uploadfilesquestion"
       >
         <Trans>No</Trans>
       </ButtonLink>

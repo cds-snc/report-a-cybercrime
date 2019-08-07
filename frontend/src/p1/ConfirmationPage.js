@@ -439,7 +439,7 @@ const submit = (client, submitReport) => {
     },
   }
   submitReport({ variables: data })
-  navigate('/thankyou')
+  navigate('thankyou')
 }
 
 export const ConfirmationPage = () => {
@@ -505,7 +505,7 @@ export const ConfirmationPage = () => {
         flex-direction="column"
         justify-content="space-between"
       >
-        <Link type="button" color="black" to="/" textAlign="center">
+        <Link type="button" color="black" to="/p1" textAlign="center">
           <Trans>Cancel report</Trans>
         </Link>
       </Container>

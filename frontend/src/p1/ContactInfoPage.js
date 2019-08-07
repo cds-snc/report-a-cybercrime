@@ -12,7 +12,7 @@ import { Layout } from '../components/layout'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { contactInfo: JSON.stringify(data) } })
-  navigate('/confirmation')
+  navigate('confirmation')
 }
 
 export const ContactInfoPage = () => (
