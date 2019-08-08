@@ -39,9 +39,7 @@ const validate = () => {
 export class ScamInfoForm extends Component {
   constructor(props){
     super(props);
-    this.startDate=new Date();
-   
-    
+    this.startDate=new Date(); 
   }
 
   handleChange = (date) => {
@@ -203,7 +201,6 @@ export class ScamInfoForm extends Component {
     )
   }
 }
-
 
 ScamInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
