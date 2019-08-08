@@ -143,7 +143,7 @@ class FileUploadInternal extends Component {
                 flexDirection="column"
                 justifyContent="space-between"
               >
-                <Link type="button" color="black" to="" textAlign="center">
+                <Link type="button" color="black" to="/p1" textAlign="center">
                   <Trans>Cancel report</Trans>
                 </Link>
               </Container>

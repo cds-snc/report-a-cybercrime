@@ -81,7 +81,7 @@ export const ThankYou = () => (
       flexDirection="column"
       justifyContent="space-between"
     >
-      <ButtonLink type="submit" to="" textAlign="center">
+      <ButtonLink type="submit" to="/p1" textAlign="center">
         <Trans> Report another scam</Trans>
       </ButtonLink>
     </Container>

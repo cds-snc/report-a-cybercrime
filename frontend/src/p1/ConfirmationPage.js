@@ -47,7 +47,7 @@ const scamEventSummary = client => {
                 aria-label={i18n._('Edit scam event')}
                 type="button"
                 color="black"
-                to="/scaminfo"
+                to="/p1/scaminfo"
                 textAlign="center"
               >
                 <Trans>Edit</Trans>
@@ -115,7 +115,7 @@ const lostMoneySummary = client => {
                 aria-label={i18n._('Edit money lost')}
                 type="button"
                 color="black"
-                to="/moneylost"
+                to="/p1/moneylost"
                 textAlign="center"
               >
                 <Trans>Edit</Trans>
@@ -186,7 +186,7 @@ const suspectInfoSummary = client => {
                 aria-label={i18n._('Edit scammer details')}
                 type="button"
                 color="black"
-                to="/suspectinfo"
+                to="/p1/suspectinfo"
                 textAlign="center"
               >
                 <Trans>Edit</Trans>
@@ -279,7 +279,7 @@ const fileUploadSummary = client => {
                 aria-label={i18n._('Edit files attached')}
                 type="button"
                 color="black"
-                to="/uploadfiles"
+                to="/p1/uploadfiles"
                 textAlign="center"
               >
                 <Trans>Edit</Trans>
@@ -322,7 +322,7 @@ const contactInfoSummary = client => {
                 aria-label={i18n._('Edit contact info')}
                 type="button"
                 color="black"
-                to="/contactinfo"
+                to="/p1/contactinfo"
                 textAlign="center"
               >
                 <Trans>Edit</Trans>

@@ -39,14 +39,14 @@ export const FilesToUpload = () => (
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="uploadfiles"
+        to="/p1/uploadfiles"
       >
         <Trans>Yes</Trans>
       </ButtonLink>
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="contactinfoquestion"
+        to="/p1/contactinfoquestion"
       >
         <Trans>No</Trans>
       </ButtonLink>

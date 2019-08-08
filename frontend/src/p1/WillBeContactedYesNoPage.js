@@ -39,14 +39,14 @@ export const Willbecontacted = () => (
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="contactinfo"
+        to="/p1/contactinfo"
       >
         <Trans>Yes</Trans>
       </ButtonLink>
       <ButtonLink
         width={['40px', null, '50px']}
         textAlign="center"
-        to="confirmation"
+        to="/p1/confirmation"
       >
         <Trans>No</Trans>
       </ButtonLink>
