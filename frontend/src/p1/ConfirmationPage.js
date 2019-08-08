@@ -418,6 +418,7 @@ const submit = (client, submitReport) => {
   contactInfoPhone = randomizeString(contactInfoPhone)
 
   const data = {
+    source: 'p1',
     scamInfo,
     lostMoney,
     suspectInfo: {
