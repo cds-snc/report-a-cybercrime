@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: cybercrime-api
+  labels:
+    app: minio-deployment
+  name: minio-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: minio-deployment
+    spec:
+      volumes:
+        - name: minio-secrets
+          secret:
+            secretName: minio-secrets
+      containers:
+        - image: minio/minio
+          volumeMounts:
+            - name: minio-secrets
+              mountPath: /gcs
+              readOnly: true
+          name: minio
+          args: ["server", "/data/minio/"]
+          env:
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secrets
+                  key: MINIO_ACCESS_KEY
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secrets
+                  key: MINIO_SECRET_KEY
+          resources: {}
+status: {}
