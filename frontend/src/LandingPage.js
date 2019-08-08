@@ -15,7 +15,7 @@ export const LandingPage = () => (
   <Layout>
     <TrackPageViews />
     <H1>
-      <Trans>Report a scam</Trans>
+      <Trans>Report an Azure scam</Trans>
     </H1>
     <ApolloConsumer>
       {client =>
