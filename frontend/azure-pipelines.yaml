@@ -18,6 +18,7 @@ steps:
       workingDir: 'frontend'
 
   - script: |
+      cd frontend
       npm run compile
       npm run coverage
       npm run lint
