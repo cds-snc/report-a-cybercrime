@@ -11,7 +11,9 @@ import {
   flexBasis,
   flexDirection,
   width,
+  maxWidth,
   height,
+  maxHeight,
   color,
   borders,
   borderColor,
@@ -41,7 +43,9 @@ export const Container = styled('div', {
   ${flexBasis}
   ${flexDirection}
   ${width}
+  ${maxWidth}
   ${height}
+  ${maxHeight}
   ${color}
   ${display}
   ${space}
@@ -72,3 +76,13 @@ export const Content = props => (
 Content.propTypes = {
   children: PropTypes.any,
 }
+
+export const InfoCard = props => (
+  <Container
+    border="2px solid black"
+    borderRadius="5px"
+    padding="10px"
+    backgroundColor="infoCard"
+    {...props}
+  />
+)

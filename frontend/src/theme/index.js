@@ -33,6 +33,7 @@ const colors = {
   purple: '#4c2c92',
   yellow: '#ffbf47',
   focusColor: '#ffbf47',
+  infoCard: '#e8e8e8',
   crimson: '#dc143c',
   green: '#008000',
 }
