@@ -11,6 +11,9 @@ trigger:
       - api
       - frontend/manifests
 
+pool:
+      vmImage: 'ubuntu-16.04'
+
 steps:
   - task: Npm@1
     inputs:
