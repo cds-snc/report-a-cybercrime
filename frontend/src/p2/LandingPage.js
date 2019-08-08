@@ -7,7 +7,7 @@ import { H1, H2 } from '../components/header'
 import { ButtonLink } from '../components/link'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
-import { Text } from '../components/text'
+import { InfoCard } from '../components/container'
 import { Layout } from '../components/layout'
 import { TrackPageViews } from '../TrackPageViews'
 
@@ -59,28 +59,30 @@ export const LandingPage = () => (
       </Li>
     </Ul>
 
-    <H2 fontSize={[4, null, 5]}>
-      <Trans>How the police can help</Trans>
-    </H2>
+    <InfoCard>
+      <H2 fontSize={[4, null, 5]}>
+        <Trans>How the police can help</Trans>
+      </H2>
 
-    <P>
-      <Trans>
-        Police can stop these crimes by catching the scammers responsible.
-      </Trans>
-    </P>
-    <P>
-      <Trans>
-        The RCMP’s new National Cybercrime Coordination Unit helps police across
-        Canada by analyzing your reports, connecting similar information, and
-        improving investigations across the country.
-      </Trans>
-    </P>
-    <P>
-      <Trans>
-        Your report is confidential and will only be accessed by the RCMP and
-        other police partners.
-      </Trans>
-    </P>
+      <P>
+        <Trans>
+          Police can stop these crimes by catching the scammers responsible.
+        </Trans>
+      </P>
+      <P>
+        <Trans>
+          The RCMP’s new National Cybercrime Coordination Unit helps police
+          across Canada by analyzing your reports, connecting similar
+          information, and improving investigations across the country.
+        </Trans>
+      </P>
+      <P>
+        <Trans>
+          Your report is confidential and will only be accessed by the RCMP and
+          other police partners.
+        </Trans>
+      </P>
+    </InfoCard>
 
     <ButtonLink color="black" mb={[3, null, 5]} to="scaminfo">
       <Trans>Report now</Trans>

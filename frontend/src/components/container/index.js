@@ -76,3 +76,13 @@ export const Content = props => (
 Content.propTypes = {
   children: PropTypes.any,
 }
+
+export const InfoCard = props => (
+  <Container
+    border="2px solid black"
+    borderRadius="5px"
+    padding="10px"
+    backgroundColor="infoCard"
+    {...props}
+  />
+)
