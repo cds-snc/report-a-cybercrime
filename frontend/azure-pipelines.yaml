@@ -11,6 +11,9 @@ trigger:
       - api
       - frontend/manifests
 
+pool:
+  vmImage: 'ubuntu-16.04'
+
 steps:
   - task: Npm@1
     inputs:
@@ -18,6 +21,7 @@ steps:
       workingDir: 'frontend'
 
   - script: |
+      cd frontend
       npm run compile
       npm run coverage
       npm run lint
