@@ -16,6 +16,7 @@ import { ThankYou } from './p1/ThankYou'
 import { Willbecontacted } from './p1/WillBeContactedYesNoPage'
 import { LandingPage } from './p1/LandingPage'
 import { FilesToUpload } from './p1/FileUploadYesNoPage'
+import { LandingPage as P2LandingPage } from './p2/LandingPage'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -31,6 +32,7 @@ export const Home = () => (
     <Screen>
       <Router>
         <PageNotFound default />
+
         <LandingPage path="/p1" />
         <ScamInfoPage path="/p1/scaminfo" />
         <Suspectinfo path="/p1/suspectinfoquestion" />
@@ -43,6 +45,8 @@ export const Home = () => (
         <ContactInfoPage path="/p1/contactinfo" />
         <ConfirmationPage path="/p1/confirmation" />
         <ThankYou path="/p1/thankyou" />
+
+        <P2LandingPage path="/p2" />
       </Router>
     </Screen>
   </Root>
