@@ -1,28 +1,28 @@
 resources:
-- traefik-ingress-controller-clusterrolebinding.yaml
-- traefik-ingress-controller-clusterrole.yaml
-- traefik-ingress-controller-deployment.yaml
-- traefik-ingress-controller-service-account.yaml
-- traefik-ingress-controller-service.yaml
-- sealed-secrets-controller-deployment.yaml
-- sealed-secrets-crd.yaml
-- arango-claim.yaml
-- arangodb-deployment.yaml
-- arangodb-service.yaml
-- cybercrime-api-deployment.yaml
-- cybercrime-api-service.yaml
-- cybercrime-api-namespace.yaml
-- minio-deployment.yaml
-- minio-service.yaml
-- cybercrime-api-ingress.yaml
-- cybercrime-frontend-deployment.yaml
-- cybercrime-frontend-ingress.yaml
-- cybercrime-frontend-namespace.yaml
-- cybercrime-frontend-service.yaml
+  - traefik-ingress-controller-clusterrolebinding.yaml
+  - traefik-ingress-controller-clusterrole.yaml
+  - traefik-ingress-controller-deployment.yaml
+  - traefik-ingress-controller-service-account.yaml
+  - traefik-ingress-controller-service.yaml
+  - sealed-secrets-controller-deployment.yaml
+  - sealed-secrets-crd.yaml
+  - arango-claim.yaml
+  - arangodb-deployment.yaml
+  - arangodb-service.yaml
+  - cybercrime-api-deployment.yaml
+  - cybercrime-api-service.yaml
+  - cybercrime-api-namespace.yaml
+  - minio-deployment.yaml
+  - minio-service.yaml
+  - cybercrime-api-ingress.yaml
+  - cybercrime-frontend-deployment.yaml
+  - cybercrime-frontend-ingress.yaml
+  - cybercrime-frontend-namespace.yaml
+  - cybercrime-frontend-service.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
-- name: gcr.io/report-a-cybercrime-alpha/api
-  newTag: master-a5a8bd6
-- name: gcr.io/report-a-cybercrime-alpha/frontend
-  newTag: master-cb3a090
+  - name: acrrcmpcybercrime.azurecr.io/api
+    newTag: master-a5a8bd6
+  - name: acrrcmpcybercrime.azurecr.io/frontend
+    newTag: master-cb3a090

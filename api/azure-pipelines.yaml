@@ -1,0 +1,41 @@
+# api pipeline
+#
+
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - api
+    exclude:
+      - frontend
+      - api/manifests
+
+jobs:
+  - job: rundock
+    pool:
+      vmImage: 'ubuntu-16.04'
+    steps:
+      - task: Npm@1
+        inputs:
+          command: 'install'
+          workingDir: 'api'
+
+      - script: |
+          docker network create rcmp-azure
+          docker run -e ARANGO_ROOT_PASSWORD=$(_DB_PASSWORD) -d -p 8529:8529 --network rcmp-azure --name arangodb arangodb 
+          docker run --network rcmp-azure keithiancolbourne/wait-for arangodb:8529
+          docker run --network rcmp-azure -v `pwd`/api:/api --workdir /api -e MINIO_BUCKET_NAME=$(_MINIO_BUCKET_NAME) -e MINIO_SECRET_KEY=$(_MINIO_SECRET_KEY) -e MINIO_ACCESS_KEY=$(_MINIO_ACCESS_KEY) -e DB_PASSWORD=$(_DB_PASSWORD) -e DB_USER=$(_DB_USER) -e DB_NAME=$(_DB_NAME) -e DB_URL=$(_DB_URL) -e TEST_DB_URL=$(_TEST_DB_URL) -e HUSKY_SKIP_INSTALL=true --entrypoint npm node:12-alpine ci
+          docker run --network rcmp-azure -v `pwd`/api:/api --workdir /api -e MINIO_BUCKET_NAME=$(_MINIO_BUCKET_NAME) -e MINIO_SECRET_KEY=$(_MINIO_SECRET_KEY) -e MINIO_ACCESS_KEY=$(_MINIO_ACCESS_KEY) -e DB_PASSWORD=$(_DB_PASSWORD) -e DB_USER=$(_DB_USER) -e DB_NAME=$(_DB_NAME) -e DB_URL=$(_DB_URL) -e TEST_DB_URL=$(_TEST_DB_URL) --entrypoint npm node:12-alpine run lint
+          docker run --network rcmp-azure -v `pwd`/api:/api --workdir /api -e MINIO_BUCKET_NAME=$(_MINIO_BUCKET_NAME) -e MINIO_SECRET_KEY=$(_MINIO_SECRET_KEY) -e MINIO_ACCESS_KEY=$(_MINIO_ACCESS_KEY) -e DB_PASSWORD=$(_DB_PASSWORD) -e DB_USER=$(_DB_USER) -e DB_NAME=$(_DB_NAME) -e DB_URL=$(_DB_URL) -e TEST_DB_URL=$(_TEST_DB_URL) --entrypoint npm node:12-alpine run coverage 
+
+      - task: Docker@2
+        inputs:
+          containerRegistry: 'scACR'
+          repository: 'api'
+          command: 'buildAndPush'
+          Dockerfile: 'api/Dockerfile'
+          tags: |
+            $(Build.SourceBranchName)
+            latest
