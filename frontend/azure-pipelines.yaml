@@ -1,0 +1,45 @@
+#frontend pipeline
+
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - frontend
+    exclude:
+      - api
+      - frontend/manifests
+
+steps:
+  - task: Npm@1
+    inputs:
+      command: 'install'
+      workingDir: 'frontend'
+
+  - script: |
+      npm run compile
+      npm run coverage
+      npm run lint
+      npm run check-translations
+    displayName: 'Run npm scripts'
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'scACR'
+      repository: 'frontend'
+      command: 'build'
+      Dockerfile: 'frontend/Dockerfile'
+      tags: |
+        $(Build.SourceBranchName)
+        latest
+      arguments: --build-arg RAZZLE_GOOGLE_ANALYTICS_ID=$(_RAZZLE_GOOGLE_ANALYTICS_ID)
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'scACR'
+      repository: 'frontend'
+      command: 'push'
+      tags: |
+        $(Build.SourceBranchName)
+        latest
