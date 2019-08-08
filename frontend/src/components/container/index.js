@@ -11,7 +11,9 @@ import {
   flexBasis,
   flexDirection,
   width,
+  maxWidth,
   height,
+  maxHeight,
   color,
   borders,
   borderColor,
@@ -41,7 +43,9 @@ export const Container = styled('div', {
   ${flexBasis}
   ${flexDirection}
   ${width}
+  ${maxWidth}
   ${height}
+  ${maxHeight}
   ${color}
   ${display}
   ${space}
