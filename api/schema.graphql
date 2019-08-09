@@ -31,6 +31,9 @@ type Mutation {
 
   """Submit report to database"""
   submitReport(
+    """protptype that submitted the data"""
+    source: String
+
     """details about the scam"""
     scamInfo: scamInfoInput
 

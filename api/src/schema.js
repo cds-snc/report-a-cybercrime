@@ -135,6 +135,10 @@ const mutation = new GraphQLObjectType({
       description: 'Submit report to database',
       type: ReportSummary,
       args: {
+        source: {
+          type: GraphQLString,
+          description: 'protptype that submitted the data',
+        },
         scamInfo: {
           type: ScamInfoInput,
           description: 'details about the scam',
@@ -158,11 +162,12 @@ const mutation = new GraphQLObjectType({
       },
       resolve: async (
         _root,
-        { scamInfo, lostMoney, suspectInfo, files, contactInfo },
+        { source, scamInfo, lostMoney, suspectInfo, files, contactInfo },
         { db },
         _info,
       ) => {
         await db.saveReport({
+          source,
           scamInfo,
           lostMoney,
           suspectInfo,

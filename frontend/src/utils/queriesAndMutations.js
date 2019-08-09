@@ -42,6 +42,7 @@ export const FLAG_IDENTIFIER_MUTATION = gql`
 
 export const SUBMIT_REPORT_MUTATION = gql`
   mutation submitReport(
+    $source: String!
     $scamInfo: scamInfoInput!
     $lostMoney: lostMoneyInput!
     $suspectInfo: suspectInfoInput!
@@ -49,6 +50,7 @@ export const SUBMIT_REPORT_MUTATION = gql`
     $contactInfo: contactInfoInput!
   ) {
     submitReport(
+      source: $source
       scamInfo: $scamInfo
       lostMoney: $lostMoney
       suspectInfo: $suspectInfo
