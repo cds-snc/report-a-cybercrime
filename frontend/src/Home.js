@@ -34,6 +34,7 @@ export const Home = () => (
       <Router>
         <PageNotFound default />
         <RootLandingPage path="/" />
+
         <LandingPage path="/p1" />
         <ScamInfoPage path="/p1/scaminfo" />
         <Suspectinfo path="/p1/suspectinfoquestion" />

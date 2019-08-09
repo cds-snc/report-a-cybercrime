@@ -6,10 +6,9 @@ import { Container } from './components/container'
 import { Layout } from './components/layout'
 
 export const RootLandingPage = () => (
-  <Layout>
+  <Layout maxWidth={['300px', null, '400px']}>
     <Container
       display="flex"
-      maxWidth={['200px', null, '300px']}
       flexDirection="row"
       justifyContent="space-between"
     >
