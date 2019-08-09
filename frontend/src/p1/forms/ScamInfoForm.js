@@ -42,22 +42,18 @@ const validate = () => {
   return {}
 }
 export class ScamInfoForm extends Component {
-  state = {
-    startDate: new Date(),
+  constructor(props) {
+    super(props)
+    this.startDate = new Date()
   }
 
   handleChange = date => {
-    this.setState({
-      startDate: date,
-    })
+    this.startDate = date
   }
 
   localOnSubmit = (client, data) => {
     const { onSubmit } = this.props
-    // data.whenWereYouContacted = `${this.state.startDate}`.substr(0, 15)
-
-    data.whenWereYouContacted = this.state.startDate.toISOString().slice(0, 10)
-
+    data.whenWereYouContacted = this.startDate.toISOString().slice(0, 10)
     onSubmit(client, data)
   }
 
@@ -106,7 +102,7 @@ export class ScamInfoForm extends Component {
                         id="whenWereYouContacted"
                         component={DateSelectorAdapter}
                         locale={i18n._('en')}
-                        selected={this.state.startDate}
+                        selected={this.startDate}
                         onChange={this.handleChange}
                         height="25px"
                         width="300px"

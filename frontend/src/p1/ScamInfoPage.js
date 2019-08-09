@@ -16,6 +16,7 @@ const submitAndNavigate = (client, data) => {
   navigate(getDoneForms(client) ? 'confirmation' : 'moneylostquestion')
 }
 
+
 export const ScamInfoPage = () => (
   <Layout>
     <Container
