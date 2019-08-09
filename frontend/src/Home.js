@@ -4,6 +4,7 @@ import { Trans } from '@lingui/macro'
 import styled from '@emotion/styled'
 import { PhaseBanner } from './components/phase-banner'
 import { PageNotFound } from './PageNotFound'
+import { RootLandingPage } from './RootLandingPage'
 import { FileUploadPage } from './p1/FileUploadPage'
 import { Suspectinfo } from './p1/SuspectInfoYesNoPage'
 import { ScamInfoPage } from './p1/ScamInfoPage'
@@ -32,7 +33,7 @@ export const Home = () => (
     <Screen>
       <Router>
         <PageNotFound default />
-
+        <RootLandingPage path="/" />
         <LandingPage path="/p1" />
         <ScamInfoPage path="/p1/scaminfo" />
         <Suspectinfo path="/p1/suspectinfoquestion" />
