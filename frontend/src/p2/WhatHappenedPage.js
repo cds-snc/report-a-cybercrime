@@ -21,16 +21,15 @@ export const WhatHappenedPage = () => (
     <H1>
       <Trans>Describe what happened</Trans>
     </H1>
-
     <P marginBottom="20px">
       <Trans>We know this can be hard to talk about.</Trans>
     </P>
-
     <P fontSize={[4, null, 5]} fontWeight="bold">
       <Trans>What happened is not your fault</Trans>
     </P>
-
-    <P>Scammers use sophisticated techniques to trick people.</P>
+    <P>
+      <Trans>Scammers use sophisticated techniques to trick people.</Trans>
+    </P>
     <Ul>
       <Li>
         <Trans>What did the scammer do to make it convincing?</Trans>
