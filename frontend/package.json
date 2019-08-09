@@ -59,7 +59,7 @@
     "react-helmet-async": "^1.0.2",
     "react-stepper-horizontal": "^1.0.11",
     "recharts": "^1.6.2",
-    "styled-system": "^5.0.16"
+    "styled-system": "^5.0.18"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
