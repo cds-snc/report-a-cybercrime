@@ -18,6 +18,7 @@ import { Willbecontacted } from './p1/WillBeContactedYesNoPage'
 import { LandingPage } from './p1/LandingPage'
 import { FilesToUpload } from './p1/FileUploadYesNoPage'
 import { LandingPage as P2LandingPage } from './p2/LandingPage'
+import { WhatHappenedPage as P2WhatHappenedPage } from './p2/WhatHappenedPage'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -49,6 +50,7 @@ export const Home = () => (
         <ThankYou path="/p1/thankyou" />
 
         <P2LandingPage path="/p2" />
+        <P2WhatHappenedPage path="/p2/whatHappened" />
       </Router>
     </Screen>
   </Root>

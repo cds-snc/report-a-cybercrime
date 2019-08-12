@@ -30,7 +30,7 @@
     "@babel/runtime": "^7.5.5",
     "@cdssnc/logdriver": "0.0.2",
     "@emotion/core": "^10.0.15",
-    "@emotion/styled": "^10.0.14",
+    "@emotion/styled": "^10.0.15",
     "@lingui/react": "^2.8.3",
     "@reach/component-component": "^0.1.3",
     "@reach/router": "^1.2.1",
