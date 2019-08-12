@@ -17,15 +17,10 @@ import { ThankYou } from './p1/ThankYou'
 import { Willbecontacted } from './p1/WillBeContactedYesNoPage'
 import { LandingPage } from './p1/LandingPage'
 import { FilesToUpload } from './p1/FileUploadYesNoPage'
-<<<<<<< Updated upstream
 import { LandingPage as P2LandingPage } from './p2/LandingPage'
-<<<<<<< HEAD
 import { WhatHappenedPage as P2WhatHappenedPage } from './p2/WhatHappenedPage'
-=======
-=======
-import {TimeFramePage}  from './p2/TimeFramePage'
->>>>>>> Stashed changes
->>>>>>> unfinished p2 timeframe page
+import {TimeFramePage as P2TimeFramePage} from './p2/TimeFramePage'
+
 
 const Root = styled('div')`
   margin: 20pt;
@@ -55,16 +50,12 @@ export const Home = () => (
         <ContactInfoPage path="/p1/contactinfo" />
         <ConfirmationPage path="/p1/confirmation" />
         <ThankYou path="/p1/thankyou" />
-<<<<<<< Updated upstream
-
         <P2LandingPage path="/p2" />
-<<<<<<< HEAD
         <P2WhatHappenedPage path="/p2/whatHappened" />
-=======
-=======
-        <TimeFramePage path="/p2/timeframe" />
->>>>>>> Stashed changes
->>>>>>> unfinished p2 timeframe page
+        
+
+        <P2TimeFramePage path="/p2/timeframe" />
+
       </Router>
     </Screen>
   </Root>
