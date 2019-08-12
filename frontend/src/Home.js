@@ -11,7 +11,7 @@ import { ScamInfoPage } from './p1/ScamInfoPage'
 import { MoneyLostPage } from './p1/MoneyLostPage'
 import { ConfirmationPage } from './p1/ConfirmationPage'
 import { SuspectInfoPage } from './p1/SuspectInfoPage'
-import { ContactInfoPage } from './p1/ContactInfoPage'
+import { ContactInfoPage } from './p2/ContactInfoPage'
 import { LoseMoney } from './p1/MoneyLostYesNoPage'
 import { ThankYou } from './p1/ThankYou'
 import { Willbecontacted } from './p1/WillBeContactedYesNoPage'
@@ -45,7 +45,7 @@ export const Home = () => (
         <FilesToUpload path="/p1/uploadfilesquestion" />
         <FileUploadPage path="/p1/uploadfiles" />
         <Willbecontacted path="/p1/contactinfoquestion" />
-        <ContactInfoPage path="/p1/contactinfo" />
+        <ContactInfoPage path="/p2/contactinfo" />
         <ConfirmationPage path="/p1/confirmation" />
         <ThankYou path="/p1/thankyou" />
 
