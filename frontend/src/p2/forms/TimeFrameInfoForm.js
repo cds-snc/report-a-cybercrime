@@ -1,29 +1,29 @@
-import React from 'react'
-
+/** @jsx jsx */
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
-
-import { Trans } from '@lingui/macro'
+import { ApolloConsumer } from 'react-apollo'
 import { I18n, i18nMark } from '@lingui/react'
+import { Trans } from '@lingui/macro'
+
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
+import { Container } from '../../components/container'
 import { TextArea } from '../../components/text-area'
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
 import { Text } from '../../components/text'
-import { ApolloConsumer } from 'react-apollo'
+import { DateSelector } from '../../components/date-picker'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
-import { Container } from '../../components/container'
-import { getSuspectInfo } from '../../utils/queriesAndMutations'
+import { getScamInfo } from '../../utils/queriesAndMutations'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
-const TextAreaAdapter = finalFormAdapter(TextArea)
 
-const languages = [
-  i18nMark('English'),
-  i18nMark('French'),
-  i18nMark('Other language'),
+const DateSelectorAdapter = finalFormAdapter(DateSelector)
+
+const ifYouKnow = [
+  i18nMark('I do not know')
 ]
 
 const CheckboxStyle = styled('label')`
@@ -39,190 +39,173 @@ const Fieldset = styled('fieldset')`
 const validate = () => {
   return {}
 }
+export class TimeFrameInfoForm extends Component {
+  constructor(props) {
+    super(props)
+    this.startDate = new Date()
+  }
 
-export const TimeFrameInfoForm = ({ onSubmit }) => (
-  <ApolloConsumer>
-    {client => (
-      <Form
-        initialValues={getSuspectInfo(client)}
-        onSubmit={data => onSubmit(client, data)}
-        validate={validate}
-        render={({ handleSubmit, values }) => (
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="suspectName">
-              <Text>
-                <Trans>Name</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectName"
-                id="suspectName"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
+  handleChange = date => {
+    this.startDate = date
+  }
 
-            <label htmlFor="suspectEmail">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Email address</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectEmail"
-                id="suspectEmail"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
+  localOnSubmit = (client, data) => {
+    const { onSubmit } = this.props
+    data.whenDidItStarted = this.startDate.toISOString().slice(0, 10)
+    data.whenLastInteraction = this.startDate.toISOString().slice(0,10)
+    onSubmit(client, data)
+  }
 
-            <label htmlFor="suspectPhone">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Phone number</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectPhone"
-                id="suspectPhone"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
+  render() {
+    return (
+      <ApolloConsumer>
+        {client => (
+          <Form
+            initialValues={getScamInfo(client)}
+            onSubmit={data => this.localOnSubmit(client, data)}
+            validate={validate}
+            render={({
+              handleSubmit,
+              values,
+            
+            }) => (
+              <form onSubmit={handleSubmit}>
+               
 
-            <label htmlFor="suspectWebsite">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Website link</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectWebsite"
-                id="suspectWebsite"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
-
-            <label htmlFor="suspectAddress">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Mailing address</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectAddress"
-                id="suspectAddress"
-                component={TextAreaAdapter}
-                height="100px"
-                width="300px"
-              />
-            </div>
-
-            <label htmlFor="suspectIP">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>IP address</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="suspectIP"
-                id="suspectIP"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
-
-            <Fieldset>
-              <legend>
-                <Text marginTop={[4, null, 5]}>
-                  <Trans>Language of communications</Trans>
-                </Text>
-              </legend>
-              <div>
-                <I18n>
-                  {({ i18n }) =>
-                    languages.map(key => {
-                      return (
-                        <CheckboxStyle key={key}>
-                          <Field
-                            name="suspectLanguage"
-                            component={CheckboxAdapter}
-                            type="checkbox"
-                            value={key}
-                            label={i18n._(key)}
-                          />
-                        </CheckboxStyle>
-                      )
-                    })
-                  }
-                </I18n>
-              </div>
-            </Fieldset>
-
-            {values.suspectLanguage &&
-            values.suspectLanguage.indexOf('Other language') > -1 ? (
-              <React.Fragment>
-                <label htmlFor="otherSuspectLanguage">
-                  <Text>
-                    <Trans>Other language</Trans>
+                <label htmlFor="whenDidItStarted">
+                  <Text marginTop={[5, null, 6]}>
+                    <Trans>When did it start?</Trans>
                   </Text>
                 </label>
                 <div>
-                  <Field
-                    name="otherSuspectLanguage"
-                    id="otherSuspectLanguage"
-                    component={TextAreaAdapter}
-                    height="25px"
-                    width="300px"
-                  />
+                  <I18n>
+                    {({ i18n }) => (
+                      <Field
+                        name="whenDidItStarted"
+                        id="whenDidItStarted"
+                        component={DateSelectorAdapter}
+                        locale={i18n._('en')}
+                        selected={this.startDate}
+                        onChange={this.handleChange}
+                        height="25px"
+                        width="300px"
+                      />
+                    )}
+                  </I18n>
                 </div>
-              </React.Fragment>
-            ) : (
-              ''
+
+                <Fieldset>
+                  
+                  <div>
+                    <I18n>
+                      {({ i18n }) =>
+                        ifYouKnow.map(key => {
+                          return (
+                            <CheckboxStyle key={key}>
+                              <Field
+                                name="IfYouKnow"
+                                component={CheckboxAdapter}
+                                type="checkbox"
+                                value={key}
+                                label={i18n._(key)}
+                              />
+                            </CheckboxStyle>
+                          )
+                        })
+                      }
+                    </I18n>
+                  </div>
+                </Fieldset>
+
+                <label htmlFor="whenLastInteraction">
+                  <Text marginTop={[5, null, 6]}>
+                    <Trans>When was your last interaction?</Trans>
+                  </Text>
+                </label>
+                <div>
+                  <I18n>
+                    {({ i18n }) => (
+                      <Field
+                        name="whenLastInteraction"
+                        id="whenLastInteraction"
+                        component={DateSelectorAdapter}
+                        locale={i18n._('en')}
+                        selected={this.startDate}
+                        onChange={this.handleChange}
+                        height="25px"
+                        width="300px"
+                      />
+                    )}
+                  </I18n>
+                </div>
+
+
+                <Fieldset>
+                  
+                  <div>
+                    <I18n>
+                      {({ i18n }) =>
+                        ifYouKnow.map(key => {
+                          return (
+                            <CheckboxStyle key={key}>
+                              <Field
+                                name="ifYouKnow"
+                                component={CheckboxAdapter}
+                                type="checkbox"
+                                value={key}
+                                label={i18n._(key)}
+                              />
+                            </CheckboxStyle>
+                          )
+                        })
+                      }
+                    </I18n>
+                  </div>
+                </Fieldset>
+
+               
+                
+                <Container
+                  width="305px"
+                  marginTop={[1, null, 1]}
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                  `}
+                >
+                  <Button type="submit">
+                    <Trans>Continue</Trans>
+                  </Button>
+                </Container>
+
+                <Container
+                  width="300px"
+                  marginTop={[1, null, 1]}
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                  `}
+                >
+                  <Link
+                    type="button"
+                    color="black"
+                    to="/p1/"
+                    textAlign="center"
+                  >
+                    <Trans>Cancel report</Trans>
+                  </Link>
+                </Container>
+              </form>
             )}
-
-            <Container
-              width="305px"
-              marginTop={[3, null, 4]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Button type="submit">
-                <Trans>Continue</Trans>
-              </Button>
-            </Container>
-
-            <Container
-              width="300px"
-              marginTop={[2, null, 3]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Link type="button" color="black" to="/p2" textAlign="center">
-                <Trans>Cancel report</Trans>
-              </Link>
-            </Container>
-          </form>
+          />
         )}
-      />
-    )}
-  </ApolloConsumer>
-)
+      </ApolloConsumer>
+    )
+  }
+}
 
 TimeFrameInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
-

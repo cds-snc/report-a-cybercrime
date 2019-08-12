@@ -1,47 +1,48 @@
 /* eslint-disable react/no-unescaped-entities */
+import {jsx} from '@emotion/core'
+import {navigate} from '@reach/router'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { P } from '../components/paragraph'
-import { H1 } from '../components/header'
+import { H2,H4 } from '../components/header'
 import { ButtonLink } from '../components/link'
+import { Container } from '../components/container'
 import { Layout } from '../components/layout'
 import { TimeFrameInfoForm} from './forms/TimeFrameInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
+import {getDoneForms} from '../utils/queriesAndMutations'
+import { BREAKPOINTS } from '../theme';
 
 const submitAndNavigate = (client, data) => {
-    client.writeData({ data: { timeframe: JSON.stringify(data) } })
-    navigate(getDoneForms(client) ? 'whathappened' : 'landingpage')
+    client.writeData({ data: { scamInfo: JSON.stringify(data) } })
+    navigate(getDoneForms(client) ? 'confirmation' : 'moneylostquestion')
   }
 
-export const TimeFramePage = () => (
+export const TimeFramePage  = () => (
   <Layout>
       
-    <Container
+    {/* <Container
       display="flex"
       width="90%"
       flexDirection="row"
       marginBottom="20px"
     >
       <Steps activeStep={1} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
-
+    </Container> */}
+    <H2>Set the time frame</H2>
+    <P  >
+        <Trans>Let’s start at the beginning.</Trans> </P>
     
-    <H1>
-      <Trans>When did this event occur?</Trans>
-    </H1>
-    <P>
-      <Trans>
-        We are asking because time frame help us to track the suspect  in the future if the case
-         become investigative.
-      </Trans>
-    </P>
+    <p>
+
+      <Trans>Tell police  when this took place.</Trans>
+    </p>
+    
     
     <TrackPageViews />
     <TimeFrameInfoForm onSubmit={submitAndNavigate} />
 
-    <ButtonLink color="black" mb={[3, null, 5]} to="/p1/landingpage">
-      <Trans>Continue</Trans>
-    </ButtonLink>
+    
   </Layout>
 )
 
