@@ -191,7 +191,7 @@ export class TimeFrameInfoForm extends Component {
                   <Link
                     type="button"
                     color="black"
-                    to="/p1/"
+                    to="/p2/"
                     textAlign="center"
                   >
                     <Trans>Cancel report</Trans>
