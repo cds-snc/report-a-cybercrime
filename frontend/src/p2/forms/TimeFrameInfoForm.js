@@ -16,7 +16,7 @@ import { Link } from '../../components/link'
 import { Text } from '../../components/text'
 import { DateSelector } from '../../components/date-picker'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
-i
+
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 
