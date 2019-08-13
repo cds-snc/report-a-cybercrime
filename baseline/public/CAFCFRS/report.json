@@ -1,0 +1,133 @@
+{
+  "anonymousSubmission": null,
+  "complaintDetailComments": null,
+  "completionStepName": null,
+  "completionStepNumber": null,
+  "createdDate": 1565134161812,
+  "crimeType": null,
+  "filer": {
+    "addresses": [
+      {
+        "city": null,
+        "country": null,
+        "internationalProvinceState": null,
+        "poBox": null,
+        "postalCode": null,
+        "provinceState": null,
+        "streetAddress": null,
+        "streetName": null,
+        "streetNum": null,
+        "streetUnit": null
+      }
+    ],
+    "businessName": null,
+    "businessOrganizationType": null,
+    "emails": [{ "address": null }],
+    "g1": null,
+    "g2": null,
+    "languagePreferred": null,
+    "languagesSpoken": [],
+    "otherName": null,
+    "phoneNumbers": [
+      {
+        "cleanNumber": null,
+        "extension": null,
+        "number": null,
+        "phoneType": null
+      }
+    ],
+    "surname": null,
+    "willingToBeContacted": null,
+    "isAnonymous": null,
+    "isVictim": null,
+    "relationshipToVictim": null
+  },
+  "id": 374147,
+  "lastModDate": 1565134161837,
+  "occurrenceDate": null,
+  "paymentMethods": [],
+  "personalInfoUsedFor": [],
+  "publicFileAttachments": [],
+  "publicUser": {
+    "id": 193245,
+    "isAcceptedDisclaimer": true,
+    "isAuthenticated": null,
+    "publicComplaint": null
+  },
+  "referenceNumber": "2019-40811",
+  "started": false,
+  "subcrimeType": null,
+  "submissionType": null,
+  "summaryComments": null,
+  "suspectInfoUsedTypes": [],
+  "suspects": [
+    {
+      "addresses": [],
+      "ageRange": null,
+      "businessName": null,
+      "businessOrganizationType": null,
+      "emails": [],
+      "g1": null,
+      "g2": null,
+      "gender": null,
+      "ipAddresses": [],
+      "languages": [],
+      "orderIndicator": null,
+      "phoneNumbers": [],
+      "surname": null,
+      "websites": []
+    }
+  ],
+  "totalAmountLost": 0.0,
+  "totalAmountLostCurrency": null,
+  "totalAmountPromised": 0.0,
+  "totalAmountPromisedCurrency": null,
+  "totalAmountRequested": 0.0,
+  "totalAmountRequestedCurrency": null,
+  "victim": {
+    "addresses": [
+      {
+        "city": null,
+        "country": null,
+        "internationalProvinceState": null,
+        "poBox": null,
+        "postalCode": null,
+        "provinceState": null,
+        "streetAddress": null,
+        "streetName": null,
+        "streetNum": null,
+        "streetUnit": null
+      }
+    ],
+    "businessName": null,
+    "businessOrganizationType": null,
+    "emails": [{ "address": null }],
+    "g1": null,
+    "g2": null,
+    "languagePreferred": null,
+    "languagesSpoken": [],
+    "otherName": null,
+    "phoneNumbers": [
+      {
+        "cleanNumber": null,
+        "extension": null,
+        "number": null,
+        "phoneType": null
+      },
+      {
+        "cleanNumber": null,
+        "extension": null,
+        "number": null,
+        "phoneType": null
+      }
+    ],
+    "surname": null,
+    "willingToBeContacted": null,
+    "ageRange": null,
+    "dob": null,
+    "gender": null,
+    "isAnonymous": null,
+    "isBusiness": null
+  },
+  "suspectVictimContactType": null
+}
