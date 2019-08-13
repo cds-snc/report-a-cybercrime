@@ -20,6 +20,7 @@ import { FilesToUpload } from './p1/FileUploadYesNoPage'
 import { LandingPage as P2LandingPage } from './p2/LandingPage'
 import { WhatHappenedPage as P2WhatHappenedPage } from './p2/WhatHappenedPage'
 import { ScammerDetailsPage as P2ScammerDetailsPage } from './p2/ScammerDetailsPage'
+import { NextSteps as P2NextSteps } from './p2/NextSteps'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -53,6 +54,7 @@ export const Home = () => (
         <P2LandingPage path="/p2" />
         <P2WhatHappenedPage path="/p2/whatHappened" />
         <P2ScammerDetailsPage path="/p2/scammerDetails" />
+        <P2NextSteps path="/p2/nextsteps" />
       </Router>
     </Screen>
   </Root>
