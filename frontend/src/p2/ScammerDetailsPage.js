@@ -11,8 +11,8 @@ import { getDoneForms } from '../utils/queriesAndMutations'
 
 const submitAndNavigate = (client, data) => {
   console.log({ data })
-  client.writeData({ data: { scamInfo: JSON.stringify(data) } })
-  navigate(getDoneForms(client) ? 'confirmation' : 'moneylostquestion')
+  client.writeData({ data: { scammerDetails: JSON.stringify(data) } })
+  navigate(getDoneForms(client) ? 'confirmation' : 'impactStatement')
 }
 
 export const ScammerDetailsPage = () => {
