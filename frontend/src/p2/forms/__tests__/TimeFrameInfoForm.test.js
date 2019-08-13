@@ -41,7 +41,7 @@ describe('<TimeFrameInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('What happened?')
+    const inputNode = getByLabelText('whenDidItStart')
     const nextButton = getByText(/Continue/i)
 
     fillIn(inputNode, { with: 'lost money' })

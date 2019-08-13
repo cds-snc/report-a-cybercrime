@@ -3,7 +3,7 @@ import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { WhatHappenedPage } from '../WhatHappenedPage'
+import { TimeFramePage} from '../TimeFramePage'
 import theme from '../../theme'
 import en from '../../../locale/en/messages.js'
 

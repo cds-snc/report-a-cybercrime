@@ -1,17 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
-import {jsx} from '@emotion/core'
+
 import {navigate} from '@reach/router'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { P } from '../components/paragraph'
-import { H2,H4 } from '../components/header'
-import { ButtonLink } from '../components/link'
-import { Container } from '../components/container'
+import { H2 } from '../components/header'
+// import { ButtonLink } from '../components/link'
+// import { Container } from '../components/container'
 import { Layout } from '../components/layout'
 import { TimeFrameInfoForm} from './forms/TimeFrameInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
 import {getDoneForms} from '../utils/queriesAndMutations'
-import { BREAKPOINTS } from '../theme';
+
 
 const submitAndNavigate = (client, data) => {
     client.writeData({ data: { scamInfo: JSON.stringify(data) } })

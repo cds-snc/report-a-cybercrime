@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { Component } from 'react'
+import  { Component } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
@@ -10,7 +10,7 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
 import { Container } from '../../components/container'
-import { TextArea } from '../../components/text-area'
+
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
 import { Text } from '../../components/text'
