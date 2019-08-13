@@ -34,6 +34,7 @@ cache.writeData({
     suspectInfo: JSON.stringify({}),
     files: [],
     contactInfo: JSON.stringify({}),
+    whatHappened: JSON.stringify({}),
   },
 })
 

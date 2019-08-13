@@ -27,6 +27,7 @@ export const LandingPage = () => (
             suspectInfo: JSON.stringify({}),
             files: [],
             contactInfo: JSON.stringify({}),
+            whatHappened: JSON.stringify({}),
           },
         })
       }

@@ -29,8 +29,8 @@ export const WhatHappenedForm = props => (
             </label>
             <div>
               <Field
-                name="scamDetails"
-                id="scamDetails"
+                name="whatHappened"
+                id="whatHappened"
                 component={TextAreaAdapter}
                 height="200px"
               />
