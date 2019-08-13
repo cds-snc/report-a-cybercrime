@@ -20,6 +20,7 @@ import { FilesToUpload } from './p1/FileUploadYesNoPage'
 import { LandingPage as P2LandingPage } from './p2/LandingPage'
 import { WhatHappenedPage as P2WhatHappenedPage } from './p2/WhatHappenedPage'
 import {TimeFramePage as P2TimeFramePage} from './p2/TimeFramePage'
+import {ImpactStatementPage as P2ImpactStatementPage} from './p2/ImpactStatementPage'
 
 
 const Root = styled('div')`
@@ -29,6 +30,7 @@ const Screen = styled('div')`
   margin-top: 30pt;
 `
 export const Home = () => (
+  
   <Root>
     <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
       <Trans>This site will change as we test ideas.</Trans>
@@ -52,9 +54,8 @@ export const Home = () => (
         <ThankYou path="/p1/thankyou" />
         <P2LandingPage path="/p2" />
         <P2WhatHappenedPage path="/p2/whatHappened" />
-        
-
         <P2TimeFramePage path="/p2/timeframe" />
+        <P2ImpactStatementPage path="/p2/impactstatement"/>
 
       </Router>
     </Screen>
