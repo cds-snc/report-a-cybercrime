@@ -10,9 +10,8 @@ import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
 
 const submitAndNavigate = (client, data) => {
-  console.log({ data })
   client.writeData({ data: { scammerDetails: JSON.stringify(data) } })
-  navigate(getDoneForms(client) ? 'confirmation' : 'impactStatement')
+  navigate(getDoneForms(client) ? 'confirmation' : 'impactstatement')
 }
 
 export const ScammerDetailsPage = () => {

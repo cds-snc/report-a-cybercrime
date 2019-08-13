@@ -2,7 +2,7 @@ const fs = require('fs')
 const readline = require('readline')
 
 console.log(
-  'This outputs the lines of locale/fr/messages.json that require a translation. You can paster the lines into your favourite tranlation site, then paste in the results, and get lines to append to the messages.json file',
+  'This outputs the lines of locale/fr/messages.json that require a translation. You can paste the lines into your favourite tranlation site, then paste the results into this script, and get lines to append to the messages.json file',
 )
 
 const rl = readline.createInterface({
@@ -28,9 +28,6 @@ var stdin = readline.createInterface({
 
 index = 0
 stdin.on('line', function(translation) {
-  if (index == 0) {
-    console.log('')
-  }
   console.log(`"${lines[index]}": "${translation}",`)
   index++
 })

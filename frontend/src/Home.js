@@ -52,8 +52,8 @@ export const Home = () => (
         <ThankYou path="/p1/thankyou" />
 
         <P2LandingPage path="/p2" />
-        <P2WhatHappenedPage path="/p2/whatHappened" />
-        <P2ScammerDetailsPage path="/p2/scammerDetails" />
+        <P2WhatHappenedPage path="/p2/whathappened" />
+        <P2ScammerDetailsPage path="/p2/scammerdetails" />
         <P2NextSteps path="/p2/nextsteps" />
       </Router>
     </Screen>
