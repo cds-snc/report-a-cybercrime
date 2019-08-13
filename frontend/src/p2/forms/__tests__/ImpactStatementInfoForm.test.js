@@ -41,7 +41,7 @@ describe('<ImpactStatementInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('When did it start?')
+    const inputNode = getByLabelText('howWereYouAffected')
     const nextButton = getByText(/Continue/i)
 
     fillIn(inputNode, { with: 'lost money' })
