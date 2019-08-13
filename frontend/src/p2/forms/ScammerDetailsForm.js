@@ -16,39 +16,46 @@ import { Ul } from '../../components/unordered-list'
 import { Li } from '../../components/list-item'
 import { FileUpload } from '../../components/file-upload'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
-import { getScamInfo } from '../../utils/queriesAndMutations'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
 export const ScammerDetailsForm = props => {
   const [files, setFiles] = useState([])
+  const [fileDescriptions, setFileDescriptions] = useState([])
+  const [scammerDetails, setScammerDetails] = useState('')
 
   const onChange = e => {
-    if (e.target.files && e.target.files[0]) {
+    if (e.target.id === 'scammerDetails') {
+      setScammerDetails(e.target.value)
+    } else if (e.target.id.indexOf('file-description') > -1) {
+      const index = Number(e.target.id.substring(17))
+      let newFileDescriptions = JSON.parse(JSON.stringify(fileDescriptions))
+      newFileDescriptions[index] = e.target.value
+      setFileDescriptions(newFileDescriptions)
+    } else if (e.target.files && e.target.files[0]) {
       setFiles(files.concat(e.target.files[0]))
+      setFileDescriptions(fileDescriptions.concat(''))
     }
   }
 
   const removeFile = index => {
-    let newFiles = files.filter((file, fileIndex) => index != fileIndex)
+    let newFiles = files.filter((_, fileIndex) => index != fileIndex)
+    let newFileDescriptions = fileDescriptions.filter(
+      (_, fileIndex) => index != fileIndex,
+    )
     setFiles(newFiles)
+    setFileDescriptions(newFileDescriptions)
   }
 
-  const localSubmit = (client, data) => {
-    data.files = files
-    data.file_descriptions = []
-    files.forEach((file, index) => {
-      data.file_descriptions.push(data[`file-description-${index}`])
-      delete data[`file-description-${index}`]
-    })
+  const localSubmit = client => {
+    const data = { scammerDetails, files, fileDescriptions }
     props.onSubmit(client, data)
   }
   return (
     <ApolloConsumer>
       {client => (
         <Form
-          initialValues={getScamInfo(client)}
-          onSubmit={data => localSubmit(client, data)}
+          onSubmit={() => localSubmit(client)}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <H2 fontSize={[4, null, 5]} marginTop="40px">
@@ -78,6 +85,7 @@ export const ScammerDetailsForm = props => {
               </label>
               <div>
                 <Field
+                  input={{ value: scammerDetails, onChange }}
                   name="scammerDetails"
                   id="scammerDetails"
                   component={TextAreaAdapter}
@@ -139,6 +147,7 @@ export const ScammerDetailsForm = props => {
                     </label>
                     <div>
                       <Field
+                        input={{ value: fileDescriptions[index], onChange }}
                         name={`file-description-${index}`}
                         id={`file-description-${index}`}
                         component={TextAreaAdapter}
