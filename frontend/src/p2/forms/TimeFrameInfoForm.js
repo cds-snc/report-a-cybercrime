@@ -61,12 +61,12 @@ export class TimeFrameInfoForm extends Component {
       <ApolloConsumer>
         {client => (
           <Form
-            initialValues={getScamInfo(client)}
+            // initialValues={getScamInfo(client)}
             onSubmit={data => this.localOnSubmit(client, data)}
             validate={validate}
             render={({
               handleSubmit,
-              values,
+              // values,
             
             }) => (
               <form onSubmit={handleSubmit}>
