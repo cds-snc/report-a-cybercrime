@@ -12,7 +12,6 @@ import { Container } from '../../components/container'
 import { H3,H4 } from '../../components/header'
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
-import { Text } from '../../components/text'
 import { TextArea } from '../../components/text-area'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 
@@ -47,7 +46,7 @@ export const ImpactStatementInfoForm = props => (
         {client => (
           <Form
             
-            onSubmit={data => this.localOnSubmit(client, data)}
+            onSubmit={data => props.onSubmit(client, data)}
             validate={validate}
             render={({
               handleSubmit,
@@ -56,9 +55,9 @@ export const ImpactStatementInfoForm = props => (
               <form onSubmit={handleSubmit}>
                
                 <label htmlFor="howWereYouAffected">
-                  <Text marginTop={[5, null, 6]}>
+                  <H4 marginTop={[5, null, 6]}>
                     <H4><Trans>Select all that apply:</Trans></H4>
-                  </Text>
+                  </H4>
                 </label>
                 
                 <Fieldset>

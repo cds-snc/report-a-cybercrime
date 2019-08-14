@@ -41,10 +41,8 @@ describe('<ImpactStatementInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('Select all that apply:')
     const nextButton = getByText(/Continue/i)
 
-    fillIn(inputNode, { with: 'lost money' })
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 
