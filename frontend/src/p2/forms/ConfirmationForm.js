@@ -25,7 +25,7 @@ export const ConfirmationForm = props => {
   const onChange = (e, client) => {
     setTellUsMore(e.target.value)
     client.writeData({
-      data: { tellUsMoreData: JSON.stringify({ tellUsMore: e.target.value }) },
+      data: { tellUsMore: JSON.stringify({ tellUsMore: e.target.value }) },
     })
   }
 
@@ -40,7 +40,7 @@ export const ConfirmationForm = props => {
             {submitReport => (
               <Form
                 initialValues={getTellUsMore(client)}
-                onSubmit={data => props.onSubmit(client, submitReport, data)}
+                onSubmit={() => props.onSubmit(client, submitReport)}
                 render={({ handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
                     <label htmlFor="tellUsMore">
@@ -57,7 +57,9 @@ export const ConfirmationForm = props => {
                     <div>
                       <Field
                         input={{
-                          value: getTellUsMore(client).tellUsMore,
+                          value: tellUsMore
+                            ? tellUsMore
+                            : getTellUsMore(client).tellUsMore,
                           onChange: e => onChange(e, client),
                         }}
                         name="tellUsMore"

@@ -59,7 +59,7 @@ server
         files: [],
         contactInfo: JSON.stringify({}),
         whatHappened: JSON.stringify({}),
-        tellUsMoreData: JSON.stringify({ tellUsMore: 'more info' }),
+        tellUsMore: JSON.stringify({}),
       },
     })
 
