@@ -3,8 +3,8 @@
 import {navigate} from '@reach/router'
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import { P } from '../components/paragraph'
-import { H2 } from '../components/header'
+
+import { H2,H4 } from '../components/header'
 // import { ButtonLink } from '../components/link'
 // import { Container } from '../components/container'
 import { Layout } from '../components/layout'
@@ -29,14 +29,10 @@ export const TimeFramePage  = () => (
     >
       <Steps activeStep={1} steps={[{}, {}, {}, {}, {}]} />
     </Container> */}
-    <H2>Set the time frame</H2>
-    <P  >
-        <Trans>Let’s start at the beginning.</Trans> </P>
+    <H2>When did the scam take place</H2>
+    <H4 >
+        <Trans>It is okay if you don't know.</Trans> </H4>
     
-    <p>
-
-      <Trans>Tell police  when this took place.</Trans>
-    </p>
     
     
     <TrackPageViews />
