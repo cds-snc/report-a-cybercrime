@@ -13,6 +13,7 @@ import { Link } from '../components/link'
 import { TrackPageViews } from '../TrackPageViews'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
+import { P } from '../components/paragraph'
 import {
   SUBMIT_REPORT_MUTATION,
   getWhatHappened,
@@ -37,7 +38,7 @@ const whatHappenedSummary = client => {
   return (
     <React.Fragment>
       <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
-        <Trans>What happened</Trans>{' '}
+        <Trans>Scam</Trans>{' '}
         <I18n>
           {({ i18n }) => (
             <EditButton
@@ -47,7 +48,16 @@ const whatHappenedSummary = client => {
           )}
         </I18n>
       </H2>
-      {whatHappened ? <Text>{whatHappened}</Text> : null}
+      {whatHappened ? (
+        <Text>{whatHappened}</Text>
+      ) : (
+        <Text>
+          <Trans>
+            Knowing what made this illegal is critical for police to be able to
+            investigate.
+          </Trans>
+        </Text>
+      )}
     </React.Fragment>
   )
 }
@@ -66,6 +76,7 @@ const submit = (client, submitReport) => {
 export const ConfirmationPage = () => {
   return (
     <Layout>
+      <TrackPageViews />
       <Container
         display="flex"
         width="90%"
@@ -75,15 +86,19 @@ export const ConfirmationPage = () => {
         <Steps activeStep={4} steps={[{}, {}, {}, {}, {}]} />
       </Container>
       <H1>
-        <Trans>Confirm report information</Trans>
+        <Trans>Review your report</Trans>
       </H1>
-      <TrackPageViews />
+      <P>
+        <Trans>
+          The more detail you give, the more likely it will be investigated.
+        </Trans>
+      </P>
+
       <ApolloConsumer>
         {client => {
           client.writeData({
             data: { doneForms: true },
           })
-
           return <React.Fragment>{whatHappenedSummary(client)}</React.Fragment>
         }}
       </ApolloConsumer>
