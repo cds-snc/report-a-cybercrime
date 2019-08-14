@@ -3,7 +3,6 @@ import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { ApolloConsumer, Mutation } from 'react-apollo'
-import { useMutation } from '@apollo/react-hooks'
 import { H1 } from '../components/header'
 import { Container } from '../components/container'
 import { Button } from '../components/button'
@@ -19,14 +18,17 @@ import {
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
 
-const submit = (client, submitReport) => {
+const submit = (client, submitReport, data) => {
   let whatHappened = getWhatHappened(client)
 
-  const data = {
+  const augmentedData = {
+    ...data,
     source: 'p2',
     whatHappened,
   }
-  submitReport({ variables: data })
+
+  console.log(augmentedData)
+  submitReport({ variables: augmentedData })
   navigate('thankyou')
 }
 
