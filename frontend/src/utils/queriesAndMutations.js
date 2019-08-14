@@ -231,3 +231,18 @@ export const getScammerDetails = client => {
     fileDescriptions: fileDescriptions ? fileDescriptions : [],
   }
 }
+
+export const getTellUsMore = client => {
+  const { queryResults } = client.readQuery({
+    query: gql`
+      query readCache {
+        tellUsMore
+      }
+    `,
+  })
+  let { tellUsMore } = JSON.parse(queryResults)
+
+  return {
+    tellUsMore: tellUsMore ? tellUsMore : '',
+  }
+}
