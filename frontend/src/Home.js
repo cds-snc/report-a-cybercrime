@@ -21,6 +21,7 @@ import { LandingPage as P2LandingPage } from './p2/LandingPage'
 import { WhatHappenedPage as P2WhatHappenedPage } from './p2/WhatHappenedPage'
 import {TimeFramePage as P2TimeFramePage} from './p2/TimeFramePage'
 
+import { NextSteps as P2NextSteps } from './p2/NextSteps'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -51,10 +52,12 @@ export const Home = () => (
         <ConfirmationPage path="/p1/confirmation" />
         <ThankYou path="/p1/thankyou" />
         <P2LandingPage path="/p2" />
-        <P2WhatHappenedPage path="/p2/whatHappened" />
+       <P2WhatHappenedPage path="/p2/whatHappened" />
         
 
         <P2TimeFramePage path="/p2/timeframe" />
+        <P2WhatHappenedPage path="/p2/whathappened" />
+        <P2NextSteps path="/p2/nextsteps" />
 
       </Router>
     </Screen>
