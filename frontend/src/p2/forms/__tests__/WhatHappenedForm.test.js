@@ -13,13 +13,10 @@ const catalogs = { en }
 
 const client = {
   readQuery: () => ({
-    scamInfo: JSON.stringify({}),
+    whatHappened: JSON.stringify({}),
   }),
   writeData: jest.fn(),
 }
-
-const fillIn = (element, { with: value }) =>
-  fireEvent.change(element, { target: { value } })
 
 const clickOn = element => fireEvent.click(element)
 
@@ -29,7 +26,7 @@ describe('<WhatHappenedForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByLabelText, getByText } = render(
+    const { getByText } = render(
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -41,10 +38,8 @@ describe('<WhatHappenedForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('What happened?')
     const nextButton = getByText(/Continue/i)
 
-    fillIn(inputNode, { with: 'lost money' })
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 

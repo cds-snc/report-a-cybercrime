@@ -24,7 +24,7 @@ const EditButton = props => (
   </Link>
 )
 
-const timeFrameSummary = client => {
+const timeFrameSummary = () => {
   let timeFrame
   return (
     <React.Fragment>
@@ -83,7 +83,7 @@ const whatHappenedSummary = client => {
   )
 }
 
-const scammerSummary = client => {
+const scammerSummary = () => {
   let scammerInfo
   return (
     <React.Fragment>
@@ -112,7 +112,7 @@ const scammerSummary = client => {
   )
 }
 
-const impactSummary = client => {
+const impactSummary = () => {
   let impact
   return (
     <React.Fragment>
@@ -138,7 +138,7 @@ const impactSummary = client => {
   )
 }
 
-const contactSummary = client => {
+const contactSummary = () => {
   let contact
   return (
     <React.Fragment>
