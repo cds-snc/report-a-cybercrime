@@ -233,16 +233,13 @@ export const getScammerDetails = client => {
 }
 
 export const getTellUsMore = client => {
-  const { queryResults } = client.readQuery({
+  const { tellUsMoreData } = client.readQuery({
     query: gql`
       query readCache {
-        tellUsMore
+        tellUsMoreData
       }
     `,
   })
-  let { tellUsMore } = JSON.parse(queryResults)
-
-  return {
-    tellUsMore: tellUsMore ? tellUsMore : '',
-  }
+  const data = JSON.parse(tellUsMoreData)
+  return data ? data : ''
 }

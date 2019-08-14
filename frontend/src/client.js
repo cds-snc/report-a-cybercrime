@@ -35,6 +35,7 @@ cache.writeData({
     files: [],
     contactInfo: JSON.stringify({}),
     whatHappened: JSON.stringify({}),
+    tellUsMoreData: JSON.stringify({ tellUsMore: 'more info' }),
   },
 })
 

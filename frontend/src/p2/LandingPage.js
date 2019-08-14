@@ -28,6 +28,7 @@ export const LandingPage = () => (
             files: [],
             contactInfo: JSON.stringify({}),
             whatHappened: JSON.stringify({}),
+            tellUsMoreData: JSON.stringify({}),
           },
         })
       }

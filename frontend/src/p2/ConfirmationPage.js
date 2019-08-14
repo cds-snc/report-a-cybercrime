@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { ApolloConsumer, Mutation } from 'react-apollo'
+import { useMutation } from '@apollo/react-hooks'
 import { H1 } from '../components/header'
 import { Container } from '../components/container'
 import { Button } from '../components/button'
@@ -16,6 +17,7 @@ import {
   getWhatHappened,
 } from '../utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
+import { ConfirmationForm } from './forms/ConfirmationForm'
 
 const submit = (client, submitReport) => {
   let whatHappened = getWhatHappened(client)
@@ -50,6 +52,8 @@ export const ConfirmationPage = () => {
       </P>
 
       <ConfirmationSummary />
+
+      <ConfirmationForm onSubmit={submit} />
 
       <Container
         maxWidth="305px"

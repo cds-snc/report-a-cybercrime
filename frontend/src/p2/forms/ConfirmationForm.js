@@ -10,6 +10,7 @@ import { TextArea } from '../../components/text-area'
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
 import { Text } from '../../components/text'
+import { H2 } from '../../components/header'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getTellUsMore } from '../../utils/queriesAndMutations'
 
@@ -17,7 +18,7 @@ const TextAreaAdapter = finalFormAdapter(TextArea)
 
 export const ConfirmationForm = props => (
   <React.Fragment>
-    <H2>
+    <H2 marginTop={[4, null, 5]}>
       <Trans>Tell us more</Trans>
     </H2>
     <ApolloConsumer>
@@ -28,7 +29,7 @@ export const ConfirmationForm = props => (
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <label htmlFor="tellUsMore">
-                <Text marginTop={[5, null, 6]}>
+                <Text marginTop={[1, null, 2]} marginBottom={[1, null, 2]}>
                   <Trans>
                     Is there information you’d like to add that didn’t fit
                     anywhere else?
@@ -54,7 +55,7 @@ export const ConfirmationForm = props => (
                 `}
               >
                 <Button type="submit">
-                  <Trans>Continue</Trans>
+                  <Trans>Submit Report</Trans>
                 </Button>
               </Container>
 
