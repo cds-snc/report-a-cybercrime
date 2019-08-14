@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import { css, jsx } from '@emotion/core'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import { Trans } from '@lingui/macro'
@@ -20,6 +20,15 @@ import {
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
 export const ConfirmationForm = props => {
+  const [tellUsMore, setTellUsMore] = useState('')
+
+  const onChange = (e, client) => {
+    setTellUsMore(e.target.value)
+    client.writeData({
+      data: { tellUsMoreData: JSON.stringify({ tellUsMore: e.target.value }) },
+    })
+  }
+
   return (
     <React.Fragment>
       <H2 marginTop={[4, null, 5]}>
@@ -47,6 +56,10 @@ export const ConfirmationForm = props => {
                     </label>
                     <div>
                       <Field
+                        input={{
+                          value: getTellUsMore(client).tellUsMore,
+                          onChange: e => onChange(e, client),
+                        }}
                         name="tellUsMore"
                         id="tellUsMore"
                         component={TextAreaAdapter}
