@@ -10,6 +10,7 @@ import en from '../../../locale/en/messages.js'
 const client = {
   readQuery: () => ({
     whatHappened: JSON.stringify({}),
+    timeFrame: JSON.stringify({}),
   }),
   writeData: jest.fn(),
 }

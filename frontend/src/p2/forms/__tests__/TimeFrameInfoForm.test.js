@@ -13,7 +13,7 @@ const catalogs = { en }
 
 const client = {
   readQuery: () => ({
-    scamInfo: JSON.stringify({}),
+    timeFrame: JSON.stringify({}),
   }),
   writeData: jest.fn(),
 }
@@ -42,7 +42,9 @@ describe('<TimeFrameInfoForm />', () => {
     )
 
     const inputNode = getByLabelText('When did it start?')
-    const inputFinal = getByLabelText('When was your last interaction with the scammer?')
+    const inputFinal = getByLabelText(
+      'When was your last interaction with the scammer?',
+    )
     const nextButton = getByText(/Continue/i)
 
     fillIn(inputNode, { with: 'lost money' })
@@ -53,4 +55,3 @@ describe('<TimeFrameInfoForm />', () => {
     expect(submitMock).toHaveBeenCalledTimes(1)
   })
 })
-

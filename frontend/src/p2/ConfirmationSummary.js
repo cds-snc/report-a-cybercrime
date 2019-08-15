@@ -7,7 +7,7 @@ import { ApolloConsumer } from 'react-apollo'
 import { H2 } from '../components/header'
 import { Text } from '../components/text'
 import { Link } from '../components/link'
-import { getWhatHappened } from '../utils/queriesAndMutations'
+import { getTimeFrame, getWhatHappened } from '../utils/queriesAndMutations'
 
 const SectionHeader = props => (
   <H2
@@ -24,8 +24,8 @@ const EditButton = props => (
   </Link>
 )
 
-const timeFrameSummary = () => {
-  let timeFrame
+const timeFrameSummary = client => {
+  let { whenDidItStart, whenWasLastInteraction } = getTimeFrame(client)
   return (
     <React.Fragment>
       <SectionHeader>
@@ -39,8 +39,12 @@ const timeFrameSummary = () => {
           )}
         </I18n>
       </SectionHeader>
-      {timeFrame ? (
-        <Text>{timeFrame}</Text>
+      {whenDidItStart ? (
+        <Text>
+          <Trans>
+            {whenDidItStart} to {whenWasLastInteraction}
+          </Trans>
+        </Text>
       ) : (
         <Text>
           <Trans>

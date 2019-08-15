@@ -8,18 +8,22 @@ import { TrackPageViews } from '../TrackPageViews'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
 import { P } from '../components/paragraph'
-import { getWhatHappened, getTellUsMore } from '../utils/queriesAndMutations'
+import {
+  getTimeFrame,
+  getWhatHappened,
+  getTellUsMore,
+} from '../utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
 
 const submit = (client, submitReport) => {
-  let whatHappened = getWhatHappened(client)
-  let tellUsMore = getTellUsMore(client)
   const data = {
     source: 'p2',
-    whatHappened,
-    tellUsMore,
+    timeFrame: getTimeFrame(client),
+    whatHappened: getWhatHappened(client),
+    tellUsMore: getTellUsMore(client),
   }
+  console.log(data)
   submitReport({ variables: data }) // currently fails, need new mutation
   navigate('nextsteps')
 }

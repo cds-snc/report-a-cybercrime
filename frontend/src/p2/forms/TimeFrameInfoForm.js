@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import  { Component } from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
@@ -15,8 +15,7 @@ import { Link } from '../../components/link'
 
 import { DateSelector } from '../../components/date-picker'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
-import { getScamInfo } from '../../utils/queriesAndMutations'
-
+import { getTimeFrame } from '../../utils/queriesAndMutations'
 
 const DateSelectorAdapter = finalFormAdapter(DateSelector)
 
@@ -28,12 +27,10 @@ export class TimeFrameInfoForm extends Component {
     super(props)
     this.startDate = new Date()
     this.endDate = new Date()
-    
   }
 
   handleChange = date => {
     this.startDate = date
-    
   }
   handleChangeDate = date => {
     this.endDate = date
@@ -42,23 +39,20 @@ export class TimeFrameInfoForm extends Component {
   localOnSubmit = (client, data) => {
     const { onSubmit } = this.props
     data.whenDidItStart = this.startDate.toISOString().slice(0, 10)
-    data.whenWasLastInteraction = this.endDate.toISOString().slice(0,10)
+    data.whenWasLastInteraction = this.endDate.toISOString().slice(0, 10)
     onSubmit(client, data)
   }
-  
+
   render() {
     return (
       <ApolloConsumer>
         {client => (
           <Form
-            initialValues={getScamInfo(client)}
+            initialValues={getTimeFrame(client)}
             onSubmit={data => this.localOnSubmit(client, data)}
             validate={validate}
-            render={({
-              handleSubmit,
-            }) => (
+            render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-                    
                 <label htmlFor="whenDidItStart">
                   <H4 marginTop={[5, null, 6]}>
                     <Trans>When did it start?</Trans>
@@ -83,7 +77,9 @@ export class TimeFrameInfoForm extends Component {
 
                 <label htmlFor="whenWasLastInteraction">
                   <H4 marginTop={[5, null, 6]}>
-                    <Trans>When was your last interaction with the scammer?</Trans>
+                    <Trans>
+                      When was your last interaction with the scammer?
+                    </Trans>
                   </H4>
                 </label>
                 <div>

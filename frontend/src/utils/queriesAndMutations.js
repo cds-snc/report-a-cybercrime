@@ -200,6 +200,25 @@ export const getContactInfo = client => {
 
 // P2 cache queries
 
+export const getTimeFrame = client => {
+  const queryResult = client.readQuery({
+    query: gql`
+      query readCache {
+        timeFrame
+      }
+    `,
+  })
+  const { whenDidItStart, whenWasLastInteraction } = JSON.parse(
+    queryResult.timeFrame,
+  )
+  return {
+    whenDidItStart: whenDidItStart ? whenDidItStart : '',
+    whenWasLastInteraction: whenWasLastInteraction
+      ? whenWasLastInteraction
+      : '',
+  }
+}
+
 export const getWhatHappened = client => {
   const queryResult = client.readQuery({
     query: gql`
