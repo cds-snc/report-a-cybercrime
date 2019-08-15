@@ -27,7 +27,6 @@
     }
   },
   "dependencies": {
-    "@apollo/react-hooks": "^3.0.0",
     "@babel/polyfill": "^7.4.4",
     "@babel/runtime": "^7.5.5",
     "@cdssnc/logdriver": "0.0.2",
