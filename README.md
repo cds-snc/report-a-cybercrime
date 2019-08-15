@@ -81,6 +81,13 @@ sure to also update it here.
 You can can also start the frontend or backend separately with `make api` or
 `make frontend`.
 
+### Build and test front-end
+
+If you cannot see the changes or access the front-end on your local machine (instead of docker). 
+You will need to run it using a local node server. You can do this with the following command 
+`npm run dev` in the frontend subdirectory. This will allow you to load the front-end with all
+your changes.
+
 ### Configure database
 
 Once your project is compiled and running (you will see several messages from

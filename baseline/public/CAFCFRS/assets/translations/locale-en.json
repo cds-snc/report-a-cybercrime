@@ -1,0 +1,459 @@
+{
+  "aria": {
+    "label": {
+      "governmentCanada": "Government of Canada",
+      "symbolCanada": "Symbol of the Government of Canada"
+    }
+  },
+  "image": {
+    "governmentCanada": "assets/assets/sig-en.svg"
+  },
+  "label": {
+    "about": "About",
+    "aboutSite": "About this site",
+    "button": {
+      "agree": "I Agree",
+      "continue": "Continue",
+      "create-new-complaint": "Create new complaint",
+      "disagree": "I Disagree",
+      "logout": "Log out"
+    },
+    "cafc": "CAFC Fraud Reporting System",
+    "canadaGovFooter": "Government of Canada footer",
+    "contactUs": "Contact us",
+    "disclaimer": {
+      "image-overlay-text": "<span class='color-attention'>FRAUD:</span> RECOGNIZE IT, REJECT IT, REPORT IT."
+    },
+    "errors": {
+      "acceptedFileType": "<span class='prefix'>Error:</span> {{label}} - Invalid file type. Only files with extensions .png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx, .pdf and .txt are accepted.",
+      "confirm": "<span class='prefix'>Error:</span> {{label}} - Must match \"{{labelConfirm}}\" field.",
+      "date": "<span class='prefix'>Error:</span> {{label}} - Must be a valid date.",
+      "dateInvalid": "<span class='prefix'>Error:</span> {{label}} - Must have a valid month and day.",
+      "email": "<span class='prefix'>Error:</span> {{label}} - Must be a valid email.",
+      "max": "<span class='prefix'>Error:</span> {{label}} - The date or number entered is out of range. Please enter a date or number at maximum of {{max}}.",
+      "maxlength": "<span class='prefix'>Error:</span> {{label}} - Maximum length of {{maxlength}} reached.",
+      "maxFiles": "<span class='prefix'>Error:</span> {{label}} - No more than 3 documents can be uploaded.",
+      "maxSize": "<span class='prefix'>Error:</span> {{label}} - The size of your document is greater than 4 MB. Please resize your document or break it up into multiple documents.",
+      "min": "<span class='prefix'>Error:</span> {{label}} - Must be a positive number.",
+      "number": "<span class='prefix'>Error:</span> {{label}} - This field must be a number.",
+      "required": "<span class='prefix'>Error:</span> {{label}} - This field is required."
+    },
+    "fields": {
+      "error": "Error",
+      "errors": {
+        "acceptedFileType": "Invalid file type.",
+        "confirm": "Must match \"{{labelConfirm}}\" field.",
+        "date": "The date entered is invalid. Please use the format of \"YYYY-MM-DD\".",
+        "dateInvalid": "The date entered is invalid. Please enter a valid month and day.",
+        "email": "Must be a valid email.",
+        "max": "The date or number entered is out of range.",
+        "maxlength": "Maximum length of {{maxlength}} reached.",
+        "maxFiles": "No more than 3 documents can be uploaded.",
+        "maxSize": "The size of your document is greater than 4 MB.",
+        "min": "This field's value cannot be less than {{min}}.",
+        "number": "Must be a number.",
+        "required": "This field is required."
+      }
+    },
+    "link": {
+      "next": "Next",
+      "previous": "Previous",
+      "submit": "Submit"
+    },
+    "news": "News",
+    "other": {
+      "language": "Français"
+    },
+    "page": {
+      "title": {
+        "disclaimer": "Legal Disclaimer of the CAFC",
+        "welcome": "Welcome to the CAFC Fraud Reporting System"
+      }
+    },
+    "reference": "Reference No.",
+    "stayConnected": "Stay connected",
+    "steps": {
+      "contact": "Contact Details"
+    },
+    "title": {
+      "disclaimer": "Legal Disclaimer",
+      "welcome": "Welcome to the CAFC Fraud Reporting System"
+    },
+    "version": "Version",
+    "versionNum": "2.0.3"
+  },
+  "link": {
+    "accessibility": {
+      "label": {
+        "aboutSite": "Skip to \"About this site\"",
+        "basicHTML": "Basic HTML Version",
+        "language": "Language selection",
+        "mainContent": "Skip to main content",
+        "searchMenu": "Search and menus",
+        "sectionMenu": "Skip to section menu",
+        "topicsMenu": "Topics menu"
+      }
+    },
+    "label": {
+      "aboutCafc": "About the CAFC",
+      "canada": "Canada.ca",
+      "departments": "Departments",
+      "economy": "Economy",
+      "facebook": "Facebook",
+      "health": "Health",
+      "jobs": "Jobs",
+      "mediaContacts": "Media contacts",
+      "reportIncident": "Report an incident",
+      "serviceCanada": "Service Canada",
+      "services": "Services",
+      "statisticalReports": "Statistical reports",
+      "termsConditions": "Terms and conditions",
+      "transparency": "Transparency",
+      "travel": "Travel",
+      "twitter": "Twitter"
+    },
+    "url": {
+      "aboutCafc": "http://www.antifraudcentre-centreantifraude.ca/about-ausujet/index-eng.htm",
+      "canada": "http://www.canada.ca/en/index.html",
+      "departments": "http://www.canada.ca/en/gov/dept/index.html",
+      "economy": "http://actionplan.gc.ca/en",
+      "facebook": "https://www.facebook.com/pages/Canadian-Anti-Fraud-Centre-Centre-antifraude-du-Canada/143784455661162",
+      "health": "http://healthycanadians.gc.ca",
+      "jobs": "http://www.jobbank.gc.ca",
+      "mediaContacts": "http://www.antifraudcentre-centreantifraude.ca/news-nouvelles/index-eng.htm",
+      "reportIncident": "http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-eng.htm",
+      "serviceCanada": "http://www.servicecanada.gc.ca/eng/home.shtml",
+      "services": "http://www.canada.ca/en/services/index.html",
+      "statisticalReports": "http://www.antifraudcentre-centreantifraude.ca/reports-rapports/index-eng.htm",
+      "termsConditions": "http://www.antifraudcentre-centreantifraude.ca/terms-avis/index-eng.htm",
+      "transparency": "http://www.rcmp-grc.gc.ca/en/transparency",
+      "travel": "http://travel.gc.ca",
+      "twitter": "https://twitter.com/canantifraud"
+    }
+  },
+  "text": {
+    "complaint": {
+      "stepDetails": "Step {{stepNum}} of {{maxStepNum}}: {{stepName}}"
+    },
+    "disclaimer": "The Canadian Anti-Fraud Centre (CAFC) is a joint partnership between the Royal Canadian Mounted Police (RCMP), the Competition Bureau (CB) of Canada and the Ontario Provincial Police (OPP). The CAFC is not an investigative body but is Canada's central repository for fraud information. If you have been the victim of a fraud or if you have received any direct threats as a result of a fraud or if you are having feelings of suicide you should report to your local police. The CAFC reviews and analysis the fraud data received on a priority basis to support law enforcement investigations and fraud prevention and awareness efforts. We will not be calling you back. If you have questions or concerns regarding a fraud you can reach us through our toll free number 888-495-8501.\n\nThe information collected by the CAFC is used to enhance the collection, analysis and sharing of information with other law enforcement agencies and partners. Your contribution helps law enforcement to more effectively investigate criminal groups throughout Canada and abroad. It is further used for criminal intelligence purposes and to support public education and awareness about fraud.\n\nThis information is being provided on a voluntary basis by you or your organization to the CAFC and its partners. The personal information you provide may be shared with other law enforcement agencies for the following purposes: investigations; prevention and educational awareness; research and trend analysis.\n\nBy completing this online report you agree to allow the CAFC to share your personal information with other law enforcement agencies and regulatory bodies for the purposes identified. By completing this online report you are also subject to laws of Canada and particular Section 140 of the *Criminal Code* of Canada – Public Mischief.",
+    "dropdowns": {
+      "selectOne": "Please select one...",
+      "selectOneOrMore": "Please select one or more..."
+    },
+    "errors": {
+      "invalidFile": "The file specified is not part of your complaint.",
+      "maxFiles": "No more than 3 documents can be uploaded.",
+      "maxFileSize": "Your document is greater than maximum allowed size.",
+      "noActiveComplaint": "No active complaint currently exists.",
+      "noAuthenticatedUser": "You are not authenticated.",
+      "referenceNumber": "A reference number could not be generated.",
+      "serverError": "An error on the server has occurred.",
+      "unsupportedFileType": "The file specified is not supported."
+    },
+    "receipt": {
+      "addressNo": "Address {{index}}",
+      "ageRange": "Age range",
+      "businessName": "Business name (type)",
+      "cafc": "Canadian Anti-Fraud Centre",
+      "complaintInformation": "Complaint Information",
+      "daytimePhone": "Daytime phone number and ext.",
+      "email": "E-mail",
+      "emailNo": "E-mail {{index}}",
+      "english": "English",
+      "eveningPhone": "Evening phone number and ext.",
+      "extension": "ext.",
+      "fileDescription": "File {{index}} Description",
+      "fileFilename": "File {{index}} Filename",
+      "filerInformation": "Filer Information",
+      "filesUploaded": "Files Uploaded",
+      "fraudType": "Fraud Type (sub-types)",
+      "french": "French",
+      "ipAddressNo": "IP Address {{index}}",
+      "languages": "Languages",
+      "languagesSpoken": "Other spoken languages",
+      "links": "(<a href='http://www.consumer.equifax.ca/home/en_ca' target='_blank'>Equifax Canada</a> at http://www.consumer.equifax.ca/home/en_ca, <a href='http://www.transunion.ca/sites/ca/home_en' target='_blank'>TransUnion</a> at http://www.transunion.ca/sites/ca/home_en), <a href='http://www.crtc.gc.ca/eng/home-accueil.htm' target='_blank'>Canadian Radio-television and Telecommunications Commission</a> at http://www.crtc.gc.ca/eng/home-accueil.htm, <a href='http://www.publicsafety.gc.ca/cnt/ntnl-scrt/cbr-scrt/ccirc-ccric-eng.aspx' target='_blank'>Canadian Cyber Incident Response Centre</a> at http://www.publicsafety.gc.ca/cnt/ntnl-scrt/cbr-scrt/ccirc-ccric-eng.aspx and <a href='http://www.servicecanada.gc.ca/eng/sc/sin/index.shtml' target='_blank'>Service Canada</a> at http://www.servicecanada.gc.ca/eng/sc/sin/index.shtml.",
+      "name": "Name",
+      "nextSteps": "Next steps you may take if applicable",
+      "no": "No",
+      "occurrenceDate": "Date of occurrence",
+      "oppFraudPrevention": "OPP fraud prevention",
+      "oppFraudPreventionUrl": "https://www.opp.ca/index.php?id=115&lng=en&entryid=573e164b8f94ac69670ca89a",
+      "paymentMethods": "Payment methods",
+      "personalInfoUsedFor": "Obtained with personal information",
+      "phoneNumberNo": "Phone number and ext. (type) {{index}}",
+      "preferredLanguage": "Preferred language",
+      "referenceNumber": "Complaint Reference no. {{referenceNum}} submitted on {{lastModDate}}",
+      "relationshipWithVictim": "Relationship with victim",
+      "suspectInfoUsedType": "Information used by suspect",
+      "suspectNo": "Suspect No. {{index}}",
+      "suspectVictimContactType": "Types of contact",
+      "title": "CAFC Fraud Reporting System Receipt",
+      "totalAmountLost": "Total money lost (type)",
+      "victimInformation": "Victim Information",
+      "websiteNo": "Website {{index}}",
+      "willingToBeContacted": "Willing to be contacted",
+      "yes": "Yes"
+    },
+    "submitted": {
+      "attention": {
+        "body": "Please be aware that the CAFC is not a criminal investigative agency, we are a central repository for fraud data. Our Operational Support Unit provides support to law enforcement agencies by analyzing fraud data submitted to the CAFC. If you are currently being victimized please contact your local police service immediately for assistance. If you're already a victim and wish to have a follow from the police, or require a file number for insurance purposes, you will need to contact your local police service to file a complaint.",
+        "title": "Attention"
+      },
+      "contacts": "Contacts",
+      "feedback": {
+        "body": "We appreciate you taking the time to provide your comments/feedback. We at the CAFC value your input however due to our limited resource capacity we may not be able to respond to every message. Rest assured however that each and every message will be read by CAFC management.\n\nFor comments/suggestions/feedback about the look and feel of the new website please send them to <a href=\"mailto:comments@antifraudcentre.ca\">comments@antifraudcentre.ca</a>",
+        "title": "Feedback"
+      },
+      "link": {
+        "abbr": {
+          "CCIRC": "Canadian Cyber Incident Response Centre",
+          "CRTC": "Canadian Radio-television and Telecommunications Commission"
+        },
+        "label": {
+          "CCIRC": "CCIRC",
+          "CRTC": "CRTC",
+          "competitionBureau": "Competition Bureau",
+          "equifaxCanada": "Equifax Canada",
+          "rcmpScams": "RCMP Scams page",
+          "serviceCanada": "Service Canada",
+          "transUnion": "TransUnion"
+        },
+        "url": {
+          "CCIRC": "http://www.publicsafety.gc.ca/cnt/ntnl-scrt/cbr-scrt/ccirc-ccric-eng.aspx",
+          "CRTC": "http://www.crtc.gc.ca/eng/home-accueil.htm",
+          "competitionBureau": "http://www.competitionbureau.gc.ca/eic/site/cb-bc.nsf/eng/h_00122.html",
+          "equifaxCanada": "http://www.consumer.equifax.ca/home/en_ca",
+          "rcmpScams": "http://www.rcmp-grc.gc.ca/scams-fraudes/index-eng.htm",
+          "serviceCanada": "http://www.servicecanada.gc.ca/eng/sc/sin/index.shtml",
+          "transUnion": "http://www.transunion.ca/sites/ca/home_en"
+        }
+      },
+      "nextSteps": {
+        "and": "and",
+        "body1": "If you, or someone for who you are filing, was the victim of fraud please contact your local police.",
+        "body2": "Additionally, there are a number of other agencies that may be able to assist. The following list is provided as a starting point: Financial institution, credit card company, insurance company, telephone company, Provincial Consumer Protection Agency, credit bureaus",
+        "title": "Next steps you may take if applicable"
+      },
+      "successHeader": "Complaint Submitted Successfully!",
+      "successPanel": {
+        "refNumber": "Complaint reference number: {{referenceNumber}}",
+        "recordAndPrint": "Please record the complaint reference number for your records in case you have to contact us in the future. <a href=\"receipt-recu\" target=\"_blank\">Click here for a printable version of your complaint</a>"
+      },
+      "thankYouForSubmitting": "Thank you for taking the time to provide your report to the CAFC. Your information is vital to law enforcement in the fight against fraud. It may provide the missing piece of information that leads to the arrest and conviction of a criminal and/or criminal organization, and help prevent others from becoming a victim.\n\nThe Canadian Anti-Fraud Centre Fraud Reporting System is the online reporting tool of The Canadian Anti-Fraud Centre, a partnership of the Royal Canadian Mounted Police, Competition Bureau Canada and the Ontario Provincial Police. The details of your circumstances have been added to a database for information purposes, and will be analyzed for correlation to other fraudulent activity. This may or may not result in a referral to a law enforcement agency having jurisdiction to investigate your allegations."
+    },
+    "steps": {
+      "error": {
+        "label": "The form could not be submitted because 1 error was found.",
+        "labelPlural": "The form could not be submitted because {{errors}} errors were found."
+      },
+      "general": {
+        "address": "Address",
+        "ageRange": "Age Range",
+        "answers": {
+          "no": "No",
+          "yes": "Yes"
+        },
+        "datePickerFormat": "YYYY-MM-DD",
+        "datePickerFormatDescription": "Four digits year, dash, two digits month, dash, two digits day",
+        "edit": "Edit",
+        "gender": "Gender",
+        "remove": "Remove",
+        "required": "required",
+        "reset": "Reset",
+        "save": "Save"
+      },
+      "info": "A complaint has been started with the reference number __{{referenceNumber}}__. Record this number in case you lose your internet connection and need to contact the CAFC to complete your complaint over the phone.",
+      "modals": {
+        "businessInformationLost": {
+          "question": "Previously saved information for the business will be lost if you click on Next or Previous. Are you sure you want to continue?",
+          "title": "Business Information Will Be Lost"
+        },
+        "discardChanges": {
+          "question": "Are you sure you want to discard your changes without saving?",
+          "title": "Discard Changes"
+        },
+        "filerInformationLost": {
+          "question": "Previously saved information for the filer will be lost if you click on Next or Previous. Are you sure you want to continue?",
+          "title": "Filer Information Will Be Lost"
+        },
+        "general": {
+          "no": "No",
+          "yes": "Yes"
+        },
+        "removeAddress": {
+          "question": "Are you sure you want to remove this address?",
+          "title": "Remove Address"
+        },
+        "removeEmail": {
+          "question": "Are you sure you want to remove this email?",
+          "title": "Remove Email"
+        },
+        "removeFile": {
+          "question": "Are you sure you want to remove this file?",
+          "title": "Remove File"
+        },
+        "removeIPAddress": {
+          "question": "Are you sure you want to remove this IP address?",
+          "title": "Remove IP Address"
+        },
+        "removePhoneNumber": {
+          "question": "Are you sure you want to remove this phone number?",
+          "title": "Remove Phone Number"
+        },
+        "removeSuspect": {
+          "question": "Are you sure you want to remove this suspect?",
+          "title": "Remove Suspect"
+        },
+        "removeWebsite": {
+          "question": "Are you sure you want to remove this website?",
+          "title": "Remove Website"
+        },
+        "startNewComplaint": {
+          "question": "Are you sure you want to start a new complaint?",
+          "title": "Create New Complaint"
+        },
+        "submitComplaint": {
+          "question": "You have selected to submit your complaint. This will end your editing of this complaint and you will be forwarded to the receipt page. Would you like to submit your complaint?",
+          "title": "Submit Complaint"
+        },
+        "victimInformationLost": {
+          "question": "Previously saved information for the victim will be lost if you click on Next or Previous. Are you sure you want to continue?",
+          "title": "Victim Information Will Be Lost"
+        }
+      },
+      "previousNext": "Once you have clicked on the \"Continue\" button, please navigate through the application using only the \"Previous\" and \"Next\" buttons that appear at the bottom of each screen and not your Internet browser's \"Back\" and \"Forward\" buttons.",
+      "step1": {
+        "body": "Optionally provide contact details for the victim and filer of this complaint. If you provide an email address you will recieve an automated email receipt upon submission.",
+        "forms": {
+          "addressInformation": {
+            "city": "City",
+            "country": "Country",
+            "internationalProvince": "International Province",
+            "poBox": "P.O. Box",
+            "postalZipCode": "Postal code/ZIP code",
+            "provinceState": "Province/State",
+            "streetName": "Street name",
+            "streetNo": "Street no.",
+            "suiteAptNo": "Suite/Apt. no."
+          },
+          "businessInformation": {
+            "businessDetails": "Business Details",
+            "businessName": "Business name",
+            "businessType": "Business type"
+          },
+          "contactInformation": {
+            "daytimePhone": "Daytime phone number",
+            "eveningPhone": "Evening phone number",
+            "extension": "Extension"
+          },
+          "emailInformation": {
+            "confirmEmail": "Confirm your e-mail address",
+            "email": "E-mail"
+          },
+          "filerInformation": {
+            "relationshipToVictim": "What is your relationship with the victim?"
+          },
+          "general": {
+            "contactInformation": "Contact Information",
+            "info": "By providing complete and detailed contact information it ensures that the CAFC and Police partner agencies can contact you in the future regarding this complaint.",
+            "languagePreferred": "What is your preferred language of communication?",
+            "questions": "Questions",
+            "willingToBeContacted": "Are you willing to be contacted by the CAFC?"
+          },
+          "nameInformation": {
+            "firstName": "First name",
+            "lastName": "Last name",
+            "middleName": "Middle name"
+          },
+          "victimInformation": {
+            "dateOfBirth": "Date of birth",
+            "languagesSpoken": "What other languages do you speak?",
+            "personalDetails": "Personal Details"
+          }
+        },
+        "questions": {
+          "businessAnonymous": "Does the business wish to remain anonymous?",
+          "filerAnonymous": "As the filer, do you wish to remain anonymous?",
+          "isVictim": "Are you the victim?",
+          "victimAnonymous": "Does the victim of this fraud wish to remain anonymous?",
+          "victimBusiness": "Is the victim of this fraud a business?"
+        },
+        "title": "Contact Details"
+      },
+      "step2": {
+        "body": "Using our Fraud Selection Tool, you will be able to review common fraud types and select the one you were a victim of. Following this, you may enter general details for this complaint such as dollar amount lost, date of occurrence, and a complaint summary.",
+        "characters": "Characters",
+        "charactersLeft": "Characters left.",
+        "complaintSummary": "Complaint summary",
+        "moneyLost": "Was money lost as a result of this fraud?",
+        "multipleSelectHint": "To select more than one item hold the CTRL key (Command key on Mac) while clicking.",
+        "occurrenceDate": "Approximately when did this fraud first occur?",
+        "paymentMethods": "Indicate payment methods involved with this fraud",
+        "personalInfoUsedFor": "What was obtained with your personal information?",
+        "summaryComments": "Please describe in your own words how this crime took place. Enter any extra information that you could not enter anywhere else.\n\nBe specific. Include date(s) of transaction(s), a description of any items that were not delivered or were counterfeited, any transaction numbers (from Ebay, Western Union, PayPal, etc.), and any other pertinent information that helps to explain how you were victimized. Also if you received anything by Mail, FedEx, or UPS, specifically describe the envelope, by the date, time, city and postal code shown on the stamp cancellation postmark.",
+        "suspectInfoUsedType": "What information was used by the suspect?",
+        "suspectVictimContactType": "How were you first contacted by the suspect?",
+        "totalAmountLost": "Total amount lost",
+        "totalAmountLostCurrency": "Total amount lost currency",
+        "totalAmountLostDescription": "Please enter the total amount of money actually lost due to this fraud (ex. 123.45)",
+        "title": "Fraud Type Selection"
+      },
+      "step3": {
+        "addresses": "Addresses",
+        "addSuspect": "Add Suspect",
+        "body": "Add details for up to 5 suspects including information such as name, phone numbers, addresses, etc.",
+        "email": {
+          "title": "Email",
+          "titlePlural": "Emails"
+        },
+        "info": "Provide any information about the individuals/business that victimized you. We support up to 5 separate suspects which may contain up to 2 addresses, 4 phone numbers, 2 email addresses, 1 website and 1 IP address.",
+        "ipAddress": {
+          "title": "IP Address",
+          "titlePlural": "IP Addresses"
+        },
+        "languagesSpoken": "Languages spoken",
+        "noAddressesToDisplay": "No addresses to display.",
+        "noEmailsToDisplay": "No emails to display.",
+        "noIpAddressesToDisplay": "No IP addresses to display.",
+        "noPhoneNumbersToDisplay": "No phone numbers to display.",
+        "noWebsitesToDisplay": "No websites to display.",
+        "phoneNumber": {
+          "extension": "Extension",
+          "phoneNumber": "Phone number",
+          "title": "Phone Number",
+          "titlePlural": "Phone Numbers",
+          "type": "Phone type"
+        },
+        "removeSuspect": "Remove Suspect",
+        "title": "Suspect Information",
+        "website": {
+          "title": "Website",
+          "titlePlural": "Websites"
+        }
+      },
+      "step4": {
+        "body": "Upload up to 3 files that are related to this complaint.",
+        "file": "File",
+        "info": "If you have any files related to this complaint that you believe may be important, you can upload them here. We accept up to 3 files with a maximum file size of 4 MB each. Supported file extensions include .png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx, .pdf and .txt.",
+        "noFileUploadsToDisplay": "No file uploads to display.",
+        "title": "File Upload",
+        "titlePlural": "File Uploads",
+        "upload": "Upload"
+      },
+      "step5": {
+        "title": "Complaint Submitted Successfully!"
+      },
+      "stepsInfo": "Filing a complaint is comprised of the following steps:",
+      "toastr": {
+        "complaintSaved": "Your complaint has been saved.",
+        "complaintSubmitted": "Your complaint has been submitted.",
+        "failedToGetCode": "Failed to get code after two attempts.",
+        "failedToGetCodes": "Failed to get codes after two attempts.",
+        "fileAttachmentCannotDelete": "Cannot delete the attachment.",
+        "fileAttachmentCannotSave": "Cannot save the attachment.",
+        "fileAttachmentRemoved": "Your attachment has been removed.",
+        "fileAttachmentUploaded": "Your attachment has been uploaded."
+      }
+    }
+  }
+}
