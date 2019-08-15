@@ -83,6 +83,8 @@ export const getDoneForms = client => {
   return doneForms
 }
 
+// P1 cache queries
+
 export const getScamInfo = client => {
   let { scamInfo } = client.readQuery({
     query: gql`
@@ -193,5 +195,54 @@ export const getContactInfo = client => {
     contactInfoName: contactInfoName ? contactInfoName : '',
     contactInfoEmail: contactInfoEmail ? contactInfoEmail : '',
     contactInfoPhone: contactInfoPhone ? contactInfoPhone : '',
+  }
+}
+
+// P2 cache queries
+
+export const getWhatHappened = client => {
+  const queryResult = client.readQuery({
+    query: gql`
+      query readCache {
+        whatHappened
+      }
+    `,
+  })
+  let { whatHappened } = JSON.parse(queryResult.whatHappened)
+
+  return {
+    whatHappened: whatHappened ? whatHappened : '',
+  }
+}
+
+export const getScammerDetails = client => {
+  const { queryResults } = client.readQuery({
+    query: gql`
+      query readCache {
+        scammerDetails
+      }
+    `,
+  })
+  let { scammerDetails, files, fileDescriptions } = JSON.parse(queryResults)
+
+  return {
+    scammerDetails: scammerDetails ? scammerDetails : '',
+    files: files ? files : [],
+    fileDescriptions: fileDescriptions ? fileDescriptions : [],
+  }
+}
+
+export const getTellUsMore = client => {
+  const queryResult = client.readQuery({
+    query: gql`
+      query readCache {
+        tellUsMore
+      }
+    `,
+  })
+  let { tellUsMore } = JSON.parse(queryResult.tellUsMore)
+
+  return {
+    tellUsMore: tellUsMore ? tellUsMore : '',
   }
 }

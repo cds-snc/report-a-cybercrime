@@ -3,7 +3,7 @@ import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { WhatHappenedPage } from '../WhatHappenedPage'
+import { ConfirmationSummary } from '../ConfirmationSummary'
 import theme from '../../theme'
 import en from '../../../locale/en/messages.js'
 
@@ -14,7 +14,7 @@ const client = {
   writeData: jest.fn(),
 }
 
-describe('<WhatHappenedPage />', () => {
+describe('<ConfirmationSummary />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
@@ -22,7 +22,7 @@ describe('<WhatHappenedPage />', () => {
       <ThemeProvider theme={theme}>
         <ApolloProvider client={client}>
           <I18nProvider language={'en'} catalogs={{ en }}>
-            <WhatHappenedPage />
+            <ConfirmationSummary />
           </I18nProvider>
         </ApolloProvider>
       </ThemeProvider>,

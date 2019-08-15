@@ -3,18 +3,22 @@ import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { WhatHappenedPage } from '../WhatHappenedPage'
+import { TimeFramePage} from '../TimeFramePage'
 import theme from '../../theme'
 import en from '../../../locale/en/messages.js'
 
 const client = {
   readQuery: () => ({
-    whatHappened: JSON.stringify({}),
+    scamInfo: JSON.stringify({}),
+    lostMoney: JSON.stringify({}),
+    suspectInfo: JSON.stringify({}),
+    files: [],
+    contactInfo: JSON.stringify({}),
   }),
   writeData: jest.fn(),
 }
 
-describe('<WhatHappenedPage />', () => {
+describe('<TimeFramePage />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
@@ -22,10 +26,11 @@ describe('<WhatHappenedPage />', () => {
       <ThemeProvider theme={theme}>
         <ApolloProvider client={client}>
           <I18nProvider language={'en'} catalogs={{ en }}>
-            <WhatHappenedPage />
+            <TimeFramePage />
           </I18nProvider>
         </ApolloProvider>
       </ThemeProvider>,
     )
   })
 })
+
