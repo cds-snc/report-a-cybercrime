@@ -240,19 +240,6 @@
                               >&nbsp;</a
                             >
                           </li>
-                          <li class="no-sect">
-                            <a
-                              class="mb-item"
-                              role="menuitem"
-                              aria-setsize="{{vm.$storage.publicComplaint && vm.$storage.publicComplaint.started ? '2' : '1'}}"
-                              aria-posinset="{{vm.$storage.publicComplaint && vm.$storage.publicComplaint.started ? '2' : '1'}}"
-                              tabindex="0"
-                              href="#"
-                              ng-click="vm.logout()"
-                              translate="label.button.logout"
-                              >&nbsp;</a
-                            >
-                          </li>
                         </ul>
                       </nav>
                       <nav
@@ -563,7 +550,10 @@
           class="wb-menu visible-md visible-lg wb-init wb-menu-inited wb-navcurr-inited"
           typeof="SiteNavigationElement"
         >
-          <div class="pnl-strt container visible-md visible-lg nvbar">
+          <div
+            class="pnl-strt container visible-md visible-lg nvbar"
+            style="min-height: 2.4em;"
+          >
             <h2 translate="link.accessibility.label.topicsMenu">&nbsp;</h2>
             <div class="row">
               <ul class="list-inline menu" role="menubar">
@@ -585,13 +575,12 @@
                 <li>
                   <a
                     class="item"
+                    style="display:none;"
                     role="menuitem"
                     aria-setsize="{{vm.$storage.publicComplaint && vm.$storage.publicComplaint.started ? '2' : '1'}}"
                     aria-posinset="{{vm.$storage.publicComplaint && vm.$storage.publicComplaint.started ? '2' : '1'}}"
                     tabindex="0"
                     href="#"
-                    ng-click="vm.logout()"
-                    translate="label.button.logout"
                     >&nbsp;</a
                   >
                 </li>
