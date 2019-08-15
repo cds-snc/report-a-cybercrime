@@ -84,7 +84,7 @@ export const LandingPage = () => (
       </P>
     </InfoCard>
 
-    <ButtonLink color="black" mb={[3, null, 5]} to="/p2/whathappened">
+    <ButtonLink color="black" mb={[3, null, 5]} to="/p2/timeframe">
       <Trans>Report now</Trans>
     </ButtonLink>
   </Layout>
