@@ -11,7 +11,7 @@ import { ScamInfoPage } from './p1/ScamInfoPage'
 import { MoneyLostPage } from './p1/MoneyLostPage'
 import { ConfirmationPage } from './p1/ConfirmationPage'
 import { SuspectInfoPage } from './p1/SuspectInfoPage'
-import { ContactInfoPage as P2ContactInfoPage } from './p2/ContactInfoPage'
+import { ContactInfoPage } from './p1/ContactInfoPage'
 import { LoseMoney } from './p1/MoneyLostYesNoPage'
 import { ThankYou } from './p1/ThankYou'
 import { Willbecontacted } from './p1/WillBeContactedYesNoPage'
@@ -19,6 +19,7 @@ import { LandingPage } from './p1/LandingPage'
 import { FilesToUpload } from './p1/FileUploadYesNoPage'
 import { LandingPage as P2LandingPage } from './p2/LandingPage'
 import { WhatHappenedPage as P2WhatHappenedPage } from './p2/WhatHappenedPage'
+import { ContactInfoPage as P2ContactInfoPage } from './p2/ContactInfoPage'
 import { NextSteps as P2NextSteps } from './p2/NextSteps'
 
 const Root = styled('div')`
@@ -46,12 +47,13 @@ export const Home = () => (
         <FilesToUpload path="/p1/uploadfilesquestion" />
         <FileUploadPage path="/p1/uploadfiles" />
         <Willbecontacted path="/p1/contactinfoquestion" />
-        <P2ContactInfoPage path="/p2/contactinfo" />
+        <ContactInfoPage path="/p1/contactinfo" />
         <ConfirmationPage path="/p1/confirmation" />
         <ThankYou path="/p1/thankyou" />
 
         <P2LandingPage path="/p2" />
         <P2WhatHappenedPage path="/p2/whathappened" />
+        <P2ContactInfoPage path="/p2/contactinfo" />
         <P2NextSteps path="/p2/nextsteps" />
       </Router>
     </Screen>
