@@ -41,9 +41,9 @@ export const LandingPage = () => (
 
     <P>
       <Trans>
-        You are not alone. You can
+        You are not alone.
         <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-          talk to someone and get support.
+          Talk to someone and get support.
         </A>
       </Trans>
     </P>
