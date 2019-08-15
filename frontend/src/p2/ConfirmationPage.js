@@ -25,7 +25,6 @@ const submit = (client, submitReport) => {
     scammerDetails: getScammerDetails(client),
     tellUsMore: getTellUsMore(client),
   }
-  console.log(data)
   submitReport({ variables: data }) // currently fails, need new mutation
   navigate('nextsteps')
 }

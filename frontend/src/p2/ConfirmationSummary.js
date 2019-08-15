@@ -94,8 +94,6 @@ const whatHappenedSummary = client => {
 
 const scammerSummary = client => {
   const { scammerDetails, files, fileDescriptions } = getScammerDetails(client)
-  console.log({ scammerDetails, files, fileDescriptions })
-
   return (
     <React.Fragment>
       <SectionHeader>
