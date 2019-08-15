@@ -22,8 +22,14 @@ export const LandingPage = () => (
         client.writeData({
           data: {
             doneForms: false,
+            scamInfo: JSON.stringify({}),
+            lostMoney: JSON.stringify({}),
+            suspectInfo: JSON.stringify({}),
+            files: [],
+            contactInfo: JSON.stringify({}),
             timeFrame: JSON.stringify({}),
             whatHappened: JSON.stringify({}),
+            scammerDetails: JSON.stringify({}),
             tellUsMore: JSON.stringify({}),
           },
         })

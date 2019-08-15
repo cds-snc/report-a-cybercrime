@@ -11,6 +11,7 @@ import { P } from '../components/paragraph'
 import {
   getTimeFrame,
   getWhatHappened,
+  getScammerDetails,
   getTellUsMore,
 } from '../utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
@@ -21,6 +22,7 @@ const submit = (client, submitReport) => {
     source: 'p2',
     timeFrame: getTimeFrame(client),
     whatHappened: getWhatHappened(client),
+    scammerDetails: getScammerDetails(client),
     tellUsMore: getTellUsMore(client),
   }
   console.log(data)

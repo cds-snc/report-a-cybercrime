@@ -48,7 +48,11 @@ export const ScammerDetailsForm = props => {
   }
 
   const localSubmit = client => {
-    const data = { scammerDetails, files, fileDescriptions }
+    const data = {
+      scammerDetails,
+      files: files.map(f => f.name),
+      fileDescriptions,
+    }
     props.onSubmit(client, data)
   }
   return (

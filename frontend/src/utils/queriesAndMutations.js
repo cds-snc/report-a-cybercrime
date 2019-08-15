@@ -235,14 +235,16 @@ export const getWhatHappened = client => {
 }
 
 export const getScammerDetails = client => {
-  const { queryResults } = client.readQuery({
+  const queryResult = client.readQuery({
     query: gql`
       query readCache {
         scammerDetails
       }
     `,
   })
-  let { scammerDetails, files, fileDescriptions } = JSON.parse(queryResults)
+  let { scammerDetails, files, fileDescriptions } = JSON.parse(
+    queryResult.scammerDetails,
+  )
 
   return {
     scammerDetails: scammerDetails ? scammerDetails : '',

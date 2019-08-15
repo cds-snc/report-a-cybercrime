@@ -5,9 +5,14 @@ import { Trans } from '@lingui/macro'
 import { I18n } from '@lingui/react'
 import { ApolloConsumer } from 'react-apollo'
 import { H2 } from '../components/header'
-import { Text } from '../components/text'
+import { Text, StyledSpan } from '../components/text'
+import { Container } from '../components/container'
 import { Link } from '../components/link'
-import { getTimeFrame, getWhatHappened } from '../utils/queriesAndMutations'
+import {
+  getTimeFrame,
+  getWhatHappened,
+  getScammerDetails,
+} from '../utils/queriesAndMutations'
 
 const SectionHeader = props => (
   <H2
@@ -87,8 +92,10 @@ const whatHappenedSummary = client => {
   )
 }
 
-const scammerSummary = () => {
-  let scammerInfo
+const scammerSummary = client => {
+  const { scammerDetails, files, fileDescriptions } = getScammerDetails(client)
+  console.log({ scammerDetails, files, fileDescriptions })
+
   return (
     <React.Fragment>
       <SectionHeader>
@@ -97,13 +104,29 @@ const scammerSummary = () => {
           {({ i18n }) => (
             <EditButton
               aria-label={i18n._('Edit scammer information')}
-              to="/p2/scammerinfo"
+              to="/p2/scammerdetails"
             />
           )}
         </I18n>
       </SectionHeader>
-      {scammerInfo ? (
-        <Text>{scammerInfo}</Text>
+      {scammerDetails !== '' ||
+      files.length > 0 ||
+      fileDescriptions.length > 0 ? (
+        <React.Fragment>
+          <Text>{scammerDetails}</Text>
+          {files
+            ? files.map((file, index) => (
+                <Container key={index}>
+                  <StyledSpan fontSize={[2, null, 3]} fontWeight="bold">
+                    {file}:
+                  </StyledSpan>{' '}
+                  <StyledSpan fontSize={[2, null, 3]}>
+                    {fileDescriptions[index]}
+                  </StyledSpan>
+                </Container>
+              ))
+            : null}
+        </React.Fragment>
       ) : (
         <Text>
           <Trans>
