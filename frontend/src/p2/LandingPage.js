@@ -32,57 +32,78 @@ export const LandingPage = () => (
       }
     </ApolloConsumer>
 
-    <P fontSize={[4, null, 5]}>
-      <Trans>Scams can happen to anyone.</Trans>
-    </P>
     <P>
       <Trans>
-        They’re not always easy to spot, and new ones are invented every day.
+        Scams can happen to anyone. They’re not always easy to recognize, and
+        new ones are invented every day.
       </Trans>
     </P>
+
+    <P>
+      <Trans>
+        You are not alone.{' '}
+        <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
+          You can talk to someone and get support.
+        </A>
+      </Trans>
+    </P>
+
     <H2 fontSize={[4, null, 5]}>
       <Trans>Help protect others by reporting these crimes to police.</Trans>
     </H2>
 
-    <Ul>
-      <Li>
-        <Trans>Tell us when the scam took place</Trans>
-      </Li>
-      <Li>
-        <Trans>Describe what happened</Trans>
-      </Li>
-      <Li>
-        <Trans>Gather clues about the scammer</Trans>
-      </Li>
-      <Li>
-        <Trans>Let us know the impact the scam has had on you</Trans>
-      </Li>
-    </Ul>
-
     <InfoCard>
       <H2 fontSize={[4, null, 5]}>
-        <Trans>How the police can help</Trans>
+        <Trans>Help the police stop crimes by telling them what happened</Trans>
       </H2>
 
       <P>
         <Trans>
-          Police can stop these crimes by catching the scammers responsible.
+          Reporting a scam to the RCMP's new National Cybercrime Coordination
+          Unit helps police across Canada catch scammers.
         </Trans>
       </P>
       <P>
         <Trans>
-          The RCMP’s new National Cybercrime Coordination Unit helps police
-          across Canada by analyzing your reports, connecting similar
-          information, and improving investigations across the country.
+          Police will use your report either for intelligence or for
+          investigations. They will not be able to help you recover money or
+          resolve your situation.
         </Trans>
       </P>
       <P>
         <Trans>
-          Your report is confidential and will only be accessed by the RCMP and
-          other police partners.
+          You may also want to report to the website where the scam took place,
+          to your bank, if you lost money, and to the credit agencies,{' '}
+          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
+          <A href="https://www.transunion.ca/">TransUnion</A>, if you lost
+          personal information.
         </Trans>
       </P>
     </InfoCard>
+
+    <H2 fontSize={[4, null, 5]}>
+      <Trans>Gather all you can about the scam.</Trans>
+    </H2>
+
+    <P>
+      <Trans>Before you start, have this information ready:</Trans>
+    </P>
+    <Ul>
+      <Li>
+        <Trans>Details on when the scam took place</Trans>
+      </Li>
+      <Li>
+        <Trans>
+          Descriptions of what happened and what you know about the scammer
+        </Trans>
+      </Li>
+      <Li>
+        <Trans>Documents, screenshots, receipts and/or conversations</Trans>
+      </Li>
+      <Li>
+        <Trans>Information on how the scam impacted you</Trans>
+      </Li>
+    </Ul>
 
     <ButtonLink color="black" mb={[3, null, 5]} to="/p2/whathappened">
       <Trans>Report now</Trans>
