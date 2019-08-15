@@ -10,6 +10,7 @@ import { Li } from '../components/list-item'
 import { InfoCard } from '../components/container'
 import { Layout } from '../components/layout'
 import { TrackPageViews } from '../TrackPageViews'
+import { A, ButtonLink } from '../components/link'
 
 export const LandingPage = () => (
   <Layout>
@@ -41,7 +42,7 @@ export const LandingPage = () => (
 
     <P>
       <Trans>
-        You are not alone.{' '}
+        You are not alone.
         <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
           You can talk to someone and get support.
         </A>
