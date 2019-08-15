@@ -196,7 +196,7 @@
     },
     "submitted": {
       "attention": {
-        "body": "Please be aware that the we are not a criminal investigative agency, we are a central repository for fraud data. Our Operational Support Unit provides support to law enforcement agencies by analyzing fraud data submitted. If you are currently being victimized please contact your local police service immediately for assistance. If you're already a victim and wish to have a follow from the police, or require a file number for insurance purposes, you will need to contact your local police service to file a complaint.",
+        "body": "Please be aware that we are not a criminal investigative agency, we are a central repository for fraud data. Our Operational Support Unit provides support to law enforcement agencies by analyzing fraud data submitted. If you are currently being victimized please contact your local police service immediately for assistance. If you're already a victim and wish to have a follow from the police, or require a file number for insurance purposes, you will need to contact your local police service to file a complaint.",
         "title": "Attention"
       },
       "contacts": "Contacts",
