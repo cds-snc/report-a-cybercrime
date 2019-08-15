@@ -41,16 +41,18 @@ export const LandingPage = () => (
 
     <P>
       <Trans>
-        You are not alone.
+        You are not alone. You can
         <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-          You can talk to someone and get support.
+          talk to someone and get support.
         </A>
       </Trans>
     </P>
 
     <InfoCard>
       <H2 fontSize={[4, null, 5]}>
-        <Trans>Help the police stop crimes by telling them what happened</Trans>
+        <Trans>
+          Help the police stop these crimes by telling them what happened
+        </Trans>
       </H2>
 
       <P>
@@ -63,8 +65,8 @@ export const LandingPage = () => (
       <P>
         <Trans>
           Police will use your report either for intelligence or for
-          investigations. They will not be able to help you recover money or
-          resolve your situation.
+          investigations. They will not be able to help you resolve your
+          situation or recover money.
         </Trans>
       </P>
 
