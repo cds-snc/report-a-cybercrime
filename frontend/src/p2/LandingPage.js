@@ -48,10 +48,6 @@ export const LandingPage = () => (
       </Trans>
     </P>
 
-    <H2 fontSize={[4, null, 5]}>
-      <Trans>Help protect others by reporting these crimes to police.</Trans>
-    </H2>
-
     <InfoCard>
       <H2 fontSize={[4, null, 5]}>
         <Trans>Help the police stop crimes by telling them what happened</Trans>
@@ -59,10 +55,11 @@ export const LandingPage = () => (
 
       <P>
         <Trans>
-          Reporting a scam to the RCMP's new National Cybercrime Coordination
-          Unit helps police across Canada catch scammers.
+          The RCMP's new National Cybercrime Coordination Unit helps police
+          across Canada catch cybercriminals.
         </Trans>
       </P>
+
       <P>
         <Trans>
           Police will use your report either for intelligence or for
@@ -70,6 +67,7 @@ export const LandingPage = () => (
           resolve your situation.
         </Trans>
       </P>
+
       <P>
         <Trans>
           You may also want to report to the website where the scam took place,
@@ -81,7 +79,7 @@ export const LandingPage = () => (
       </P>
     </InfoCard>
 
-    <H2 fontSize={[4, null, 5]}>
+    <H2 fontSize={[4, null, 5]} marginTop={[4, null, 5]}>
       <Trans>Gather all you can about the scam.</Trans>
     </H2>
 
