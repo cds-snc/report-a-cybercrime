@@ -28,14 +28,10 @@ export const TimeFramePage  = () => (
       <Steps activeStep={1} steps={[{}, {}, {}, {}, {}]} />
     </Container> */}
     <H1>When did it happen?</H1>
-    <H4 >
+       <H4 >
         <Trans>It’s okay if you don’t know exactly when the scam took place.</Trans> 
         </H4>
     <TrackPageViews />
     <TimeFrameInfoForm onSubmit={submitAndNavigate} />
- 
   </Layout>
 )
-
-
- 
