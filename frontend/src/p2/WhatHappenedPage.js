@@ -22,23 +22,28 @@ export const WhatHappenedPage = () => (
       <Trans>Describe what happened</Trans>
     </H1>
     <P marginBottom="20px">
-      <Trans>We know this can be hard to talk about.</Trans>
-    </P>
-    <P fontSize={[4, null, 5]} fontWeight="bold">
-      <Trans>What happened is not your fault</Trans>
+      <Trans>
+        We know this can be hard to talk about. What happened is not your fault.
+      </Trans>
     </P>
     <P>
-      <Trans>Scammers use sophisticated techniques to trick people.</Trans>
+      <Trans>
+        Scammers use a number of techniques to get what they want. Tell us about
+        it to stop this from happening again.
+      </Trans>
+    </P>
+    <P>
+      <Trans>Think about things such as:</Trans>
     </P>
     <Ul>
       <Li>
-        <Trans>What did the scammer do to make it convincing?</Trans>
+        <Trans>What were you doing when something went wrong?</Trans>
       </Li>
       <Li>
-        <Trans>How did you realize something was wrong?</Trans>
+        <Trans>How did the scammer say or do that was misleading?</Trans>
       </Li>
       <Li>
-        <Trans>What did they say or do that was dishonest?</Trans>
+        <Trans>What made this suspicious or malicious?</Trans>
       </Li>
     </Ul>
     <TrackPageViews />
