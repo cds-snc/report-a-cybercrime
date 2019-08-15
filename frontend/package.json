@@ -18,7 +18,8 @@
     "compile": "lingui compile",
     "clean": "lingui extract --clean",
     "upgrade-interactive": "npm-check --update",
-    "check-translations": "lingui extract && node utils/checkTranslations.js"
+    "check-translations": "lingui extract && node utils/checkTranslations.js",
+    "lingui-helper": "node utils/linguiHelper.js"
   },
   "husky": {
     "hooks": {
