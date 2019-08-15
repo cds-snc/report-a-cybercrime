@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
 import { ApolloConsumer } from 'react-apollo'
-import { I18n, i18nMark } from '@lingui/react'
+import { I18n } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { H4 } from '../../components/header'

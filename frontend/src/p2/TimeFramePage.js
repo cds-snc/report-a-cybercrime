@@ -19,7 +19,6 @@ const submitAndNavigate = (client, data) => {
 
 export const TimeFramePage  = () => (
   <Layout>
-      
     {/* <Container
       display="flex"
       width="90%"
@@ -32,12 +31,9 @@ export const TimeFramePage  = () => (
     <H4 >
         <Trans>It’s okay if you don’t know exactly when the scam took place.</Trans> 
         </H4>
-    
-    
     <TrackPageViews />
     <TimeFrameInfoForm onSubmit={submitAndNavigate} />
-
-    
+ 
   </Layout>
 )
 
