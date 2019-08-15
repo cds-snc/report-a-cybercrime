@@ -10,7 +10,7 @@ import { Button } from '../../components/button'
 import { Link } from '../../components/link'
 import { Text } from '../../components/text'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
-import { getScamInfo } from '../../utils/queriesAndMutations'
+import { getWhatHappened } from '../../utils/queriesAndMutations'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
@@ -18,7 +18,7 @@ export const WhatHappenedForm = props => (
   <ApolloConsumer>
     {client => (
       <Form
-        initialValues={getScamInfo(client)}
+        initialValues={getWhatHappened(client)}
         onSubmit={data => props.onSubmit(client, data)}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
@@ -29,8 +29,8 @@ export const WhatHappenedForm = props => (
             </label>
             <div>
               <Field
-                name="scamDetails"
-                id="scamDetails"
+                name="whatHappened"
+                id="whatHappened"
                 component={TextAreaAdapter}
                 height="200px"
               />

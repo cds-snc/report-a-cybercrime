@@ -27,6 +27,8 @@ export const LandingPage = () => (
             suspectInfo: JSON.stringify({}),
             files: [],
             contactInfo: JSON.stringify({}),
+            whatHappened: JSON.stringify({}),
+            tellUsMore: JSON.stringify({}),
           },
         })
       }
@@ -105,7 +107,7 @@ export const LandingPage = () => (
       </Li>
     </Ul>
 
-    <ButtonLink color="black" mb={[3, null, 5]} to="/p2/whathappened">
+    <ButtonLink color="black" mb={[3, null, 5]} to="/p2/timeframe">
       <Trans>Report now</Trans>
     </ButtonLink>
   </Layout>
