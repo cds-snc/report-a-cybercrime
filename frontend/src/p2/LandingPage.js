@@ -4,13 +4,12 @@ import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { P } from '../components/paragraph'
 import { H1, H2 } from '../components/header'
-import { ButtonLink } from '../components/link'
+import { A, ButtonLink } from '../components/link'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
 import { InfoCard } from '../components/container'
 import { Layout } from '../components/layout'
 import { TrackPageViews } from '../TrackPageViews'
-import { A, ButtonLink } from '../components/link'
 
 export const LandingPage = () => (
   <Layout>
