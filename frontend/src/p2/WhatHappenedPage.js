@@ -28,13 +28,11 @@ export const WhatHappenedPage = () => (
       </Trans>
     </P>
     <P>
-      <Trans>Tell us what happened. Think about things such as:</Trans>
+      <Trans>Think about things such as:</Trans>
     </P>
     <Ul>
       <Li>
-        <Trans>
-          The device or website you were on when something went wrong
-        </Trans>
+        <Trans>The device or website you were on when it happened</Trans>
       </Li>
       <Li>
         <Trans>What the scammer said or did that was misleading</Trans>
