@@ -1,9 +1,251 @@
 const express = require('express')
+var bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
 const app = express()
 
 app.use(fileUpload())
-app.use(express.urlencoded())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+let emptyReport = {
+  anonymousSubmission: null,
+  complaintDetailComments: null,
+  completionStepName: null,
+  completionStepNumber: null,
+  createdDate: 1565973780685,
+  crimeType: null,
+  filer: {
+    addresses: [
+      {
+        city: null,
+        country: null,
+        internationalProvinceState: null,
+        poBox: null,
+        postalCode: null,
+        provinceState: null,
+        streetAddress: null,
+        streetName: null,
+        streetNum: null,
+        streetUnit: null,
+      },
+    ],
+    businessName: null,
+    businessOrganizationType: null,
+    emails: [{ address: null }],
+    g1: null,
+    g2: null,
+    languagePreferred: null,
+    languagesSpoken: [],
+    otherName: null,
+    phoneNumbers: [
+      { cleanNumber: null, extension: null, number: null, phoneType: null },
+    ],
+    surname: null,
+    willingToBeContacted: null,
+    isAnonymous: null,
+    isVictim: null,
+    relationshipToVictim: null,
+  },
+  id: 376163,
+  lastModDate: 1565973780716,
+  occurrenceDate: null,
+  paymentMethods: [],
+  personalInfoUsedFor: [],
+  publicFileAttachments: [],
+  publicUser: {
+    id: 195384,
+    isAcceptedDisclaimer: true,
+    isAuthenticated: null,
+    publicComplaint: null,
+  },
+  referenceNumber: '2019-42827',
+  started: true,
+  subcrimeType: null,
+  submissionType: null,
+  summaryComments: null,
+  suspectInfoUsedTypes: [],
+  suspects: [
+    {
+      addresses: [],
+      ageRange: null,
+      businessName: null,
+      businessOrganizationType: null,
+      emails: [],
+      g1: null,
+      g2: null,
+      gender: null,
+      ipAddresses: [],
+      languages: [],
+      orderIndicator: null,
+      phoneNumbers: [],
+      surname: null,
+      websites: [],
+    },
+  ],
+  totalAmountLost: 0.0,
+  totalAmountLostCurrency: null,
+  totalAmountPromised: 0.0,
+  totalAmountPromisedCurrency: null,
+  totalAmountRequested: 0.0,
+  totalAmountRequestedCurrency: null,
+  victim: {
+    addresses: [
+      {
+        city: null,
+        country: null,
+        internationalProvinceState: null,
+        poBox: null,
+        postalCode: null,
+        provinceState: null,
+        streetAddress: null,
+        streetName: null,
+        streetNum: null,
+        streetUnit: null,
+      },
+    ],
+    businessName: null,
+    businessOrganizationType: null,
+    emails: [{ address: null }],
+    g1: null,
+    g2: null,
+    languagePreferred: null,
+    languagesSpoken: [],
+    otherName: null,
+    phoneNumbers: [
+      { cleanNumber: null, extension: null, number: null, phoneType: null },
+      { cleanNumber: null, extension: null, number: null, phoneType: null },
+    ],
+    surname: null,
+    willingToBeContacted: null,
+    ageRange: null,
+    dob: null,
+    gender: null,
+    isAnonymous: null,
+    isBusiness: null,
+  },
+  suspectVictimContactType: null,
+}
+
+let report = {
+  anonymousSubmission: null,
+  complaintDetailComments: null,
+  completionStepName: null,
+  completionStepNumber: null,
+  createdDate: 1565199264515,
+  crimeType: null,
+  filer: {
+    addresses: [
+      {
+        city: null,
+        country: null,
+        internationalProvinceState: null,
+        poBox: null,
+        postalCode: null,
+        provinceState: null,
+        streetAddress: null,
+        streetName: null,
+        streetNum: null,
+        streetUnit: null,
+      },
+    ],
+    businessName: null,
+    businessOrganizationType: null,
+    emails: [{ address: null }],
+    g1: null,
+    g2: null,
+    languagePreferred: null,
+    languagesSpoken: [],
+    otherName: null,
+    phoneNumbers: [
+      { cleanNumber: null, extension: null, number: null, phoneType: null },
+    ],
+    surname: null,
+    willingToBeContacted: null,
+    isAnonymous: null,
+    isVictim: null,
+    relationshipToVictim: null,
+  },
+  id: 374325,
+  lastModDate: 1565199264583,
+  occurrenceDate: null,
+  paymentMethods: [],
+  personalInfoUsedFor: [],
+  publicFileAttachments: [],
+  publicUser: {
+    id: 193434,
+    isAcceptedDisclaimer: false,
+    isAuthenticated: null,
+    publicComplaint: null,
+  },
+  referenceNumber: '2019-40989',
+  started: false,
+  subcrimeType: null,
+  submissionType: null,
+  summaryComments: null,
+  suspectInfoUsedTypes: [],
+  suspects: [
+    {
+      addresses: [],
+      ageRange: null,
+      businessName: null,
+      businessOrganizationType: null,
+      emails: [],
+      g1: null,
+      g2: null,
+      gender: null,
+      ipAddresses: [],
+      languages: [],
+      orderIndicator: null,
+      phoneNumbers: [],
+      surname: null,
+      websites: [],
+    },
+  ],
+  totalAmountLost: 0.0,
+  totalAmountLostCurrency: null,
+  totalAmountPromised: 0.0,
+  totalAmountPromisedCurrency: null,
+  totalAmountRequested: 0.0,
+  totalAmountRequestedCurrency: null,
+  victim: {
+    addresses: [
+      {
+        city: null,
+        country: null,
+        internationalProvinceState: null,
+        poBox: null,
+        postalCode: null,
+        provinceState: null,
+        streetAddress: null,
+        streetName: null,
+        streetNum: null,
+        streetUnit: null,
+      },
+    ],
+    businessName: null,
+    businessOrganizationType: null,
+    emails: [{ address: null }],
+    g1: null,
+    g2: null,
+    languagePreferred: null,
+    languagesSpoken: [],
+    otherName: null,
+    phoneNumbers: [
+      { cleanNumber: null, extension: null, number: null, phoneType: null },
+      { cleanNumber: null, extension: null, number: null, phoneType: null },
+    ],
+    surname: null,
+    willingToBeContacted: null,
+    ageRange: null,
+    dob: null,
+    gender: null,
+    isAnonymous: null,
+    isBusiness: null,
+  },
+  suspectVictimContactType: null,
+}
+
+let acceptedDisclaimer = false
 
 var path = require('path')
 
@@ -11,258 +253,45 @@ const port = 3000
 
 app.use(express.static('public'))
 
-app.post('/submit', (req, res) => {
-  const youBusiness = req.body.youBusiness
-  console.log({ youBusiness })
-  res.send(JSON.stringify({ youBusiness }))
+app.post('/CAFCFRS/api/v1/disclaimer/accept', (req, res) => {
+  acceptedDisclaimer = true
+  res.status(204).send()
+})
+
+app.get('/CAFCFRS/api/v1/public-complaints/current', (req, res) => {
+  if (acceptedDisclaimer) {
+    res.send(report)
+  } else {
+    res
+      .status(400)
+      .json({ code: '400', message: 'You have no currently active complaint.' })
+  }
+})
+
+app.post('/CAFCFRS/api/v1/validate-session', (req, res) => {
+  // Everything is fine.
+  res.send('true')
 })
 
 app.post('/CAFCFRS/api/v1/public-complaints/submit', (req, res) => {
+  // print what we got
+  console.log('submitted: ', JSON.stringify(report))
+  // Reset the state:
+  report = emptyReport
   // This returns the form contents?
   res.json({})
 })
 
 app.post('/CAFCFRS/api/v1/public-complaints/start', (req, res) => {
-  res.json({
-    anonymousSubmission: null,
-    complaintDetailComments: null,
-    completionStepName: null,
-    completionStepNumber: null,
-    createdDate: 1565199264515,
-    crimeType: null,
-    filer: {
-      addresses: [
-        {
-          city: null,
-          country: null,
-          internationalProvinceState: null,
-          poBox: null,
-          postalCode: null,
-          provinceState: null,
-          streetAddress: null,
-          streetName: null,
-          streetNum: null,
-          streetUnit: null,
-        },
-      ],
-      businessName: null,
-      businessOrganizationType: null,
-      emails: [{ address: null }],
-      g1: null,
-      g2: null,
-      languagePreferred: null,
-      languagesSpoken: [],
-      otherName: null,
-      phoneNumbers: [
-        { cleanNumber: null, extension: null, number: null, phoneType: null },
-      ],
-      surname: null,
-      willingToBeContacted: null,
-      isAnonymous: null,
-      isVictim: null,
-      relationshipToVictim: null,
-    },
-    id: 374325,
-    lastModDate: 1565199264583,
-    occurrenceDate: null,
-    paymentMethods: [],
-    personalInfoUsedFor: [],
-    publicFileAttachments: [],
-    publicUser: {
-      id: 193434,
-      isAcceptedDisclaimer: true,
-      isAuthenticated: null,
-      publicComplaint: null,
-    },
-    referenceNumber: '2019-40989',
-    started: true,
-    subcrimeType: null,
-    submissionType: null,
-    summaryComments: null,
-    suspectInfoUsedTypes: [],
-    suspects: [
-      {
-        addresses: [],
-        ageRange: null,
-        businessName: null,
-        businessOrganizationType: null,
-        emails: [],
-        g1: null,
-        g2: null,
-        gender: null,
-        ipAddresses: [],
-        languages: [],
-        orderIndicator: null,
-        phoneNumbers: [],
-        surname: null,
-        websites: [],
-      },
-    ],
-    totalAmountLost: 0.0,
-    totalAmountLostCurrency: null,
-    totalAmountPromised: 0.0,
-    totalAmountPromisedCurrency: null,
-    totalAmountRequested: 0.0,
-    totalAmountRequestedCurrency: null,
-    victim: {
-      addresses: [
-        {
-          city: null,
-          country: null,
-          internationalProvinceState: null,
-          poBox: null,
-          postalCode: null,
-          provinceState: null,
-          streetAddress: null,
-          streetName: null,
-          streetNum: null,
-          streetUnit: null,
-        },
-      ],
-      businessName: null,
-      businessOrganizationType: null,
-      emails: [{ address: null }],
-      g1: null,
-      g2: null,
-      languagePreferred: null,
-      languagesSpoken: [],
-      otherName: null,
-      phoneNumbers: [
-        { cleanNumber: null, extension: null, number: null, phoneType: null },
-        { cleanNumber: null, extension: null, number: null, phoneType: null },
-      ],
-      surname: null,
-      willingToBeContacted: null,
-      ageRange: null,
-      dob: null,
-      gender: null,
-      isAnonymous: null,
-      isBusiness: null,
-    },
-    suspectVictimContactType: null,
-  })
+  report.started = true
+  report.createdDate = Date.now()
+  res.json(report)
 })
 
 app.post('/CAFCFRS/api/v1/public-complaints/:id', (req, res) => {
   console.log('id: ', req.params.id)
-  res.json({
-    anonymousSubmission: null,
-    complaintDetailComments: null,
-    completionStepName: 'CONTACT',
-    completionStepNumber: 1,
-    createdDate: 1565199636104,
-    crimeType: null,
-    filer: {
-      addresses: [
-        {
-          city: null,
-          country: null,
-          internationalProvinceState: null,
-          poBox: null,
-          postalCode: null,
-          provinceState: null,
-          streetAddress: null,
-          streetName: null,
-          streetNum: null,
-          streetUnit: null,
-        },
-      ],
-      businessName: null,
-      businessOrganizationType: null,
-      emails: [{ address: null }],
-      g1: null,
-      g2: null,
-      languagePreferred: null,
-      languagesSpoken: [],
-      otherName: null,
-      phoneNumbers: [
-        { cleanNumber: null, extension: null, number: null, phoneType: null },
-      ],
-      surname: null,
-      willingToBeContacted: null,
-      isAnonymous: null,
-      isVictim: null,
-      relationshipToVictim: null,
-    },
-    id: req.params.id,
-    lastModDate: 1565200586151,
-    occurrenceDate: null,
-    paymentMethods: [],
-    personalInfoUsedFor: [],
-    publicFileAttachments: [],
-    publicUser: {
-      id: 193434,
-      isAcceptedDisclaimer: true,
-      isAuthenticated: null,
-      publicComplaint: null,
-    },
-    referenceNumber: '2019-40994',
-    started: true,
-    subcrimeType: null,
-    submissionType: null,
-    summaryComments: null,
-    suspectInfoUsedTypes: [],
-    suspects: [
-      {
-        addresses: [],
-        ageRange: null,
-        businessName: null,
-        businessOrganizationType: null,
-        emails: [],
-        g1: null,
-        g2: null,
-        gender: null,
-        ipAddresses: [],
-        languages: [],
-        orderIndicator: null,
-        phoneNumbers: [],
-        surname: null,
-        websites: [],
-      },
-    ],
-    totalAmountLost: 0,
-    totalAmountLostCurrency: null,
-    totalAmountPromised: 0,
-    totalAmountPromisedCurrency: null,
-    totalAmountRequested: 0,
-    totalAmountRequestedCurrency: null,
-    victim: {
-      addresses: [
-        {
-          city: null,
-          country: null,
-          internationalProvinceState: null,
-          poBox: null,
-          postalCode: null,
-          provinceState: null,
-          streetAddress: null,
-          streetName: null,
-          streetNum: null,
-          streetUnit: null,
-        },
-      ],
-      businessName: null,
-      businessOrganizationType: null,
-      emails: [{ address: null }],
-      g1: null,
-      g2: null,
-      languagePreferred: null,
-      languagesSpoken: [],
-      otherName: null,
-      phoneNumbers: [
-        { cleanNumber: null, extension: null, number: null, phoneType: null },
-        { cleanNumber: null, extension: null, number: null, phoneType: null },
-      ],
-      surname: null,
-      willingToBeContacted: null,
-      ageRange: null,
-      dob: null,
-      gender: null,
-      isAnonymous: null,
-      isBusiness: false,
-    },
-    suspectVictimContactType: null,
-  })
+  report = req.body
+  res.json(report)
 })
 
 app.get('/CAFCFRS/api/v1/age-ranges', (req, res) => {
@@ -7568,18 +7597,6 @@ app.get('/CAFCFRS/api/v1/crime-types', (req, res) => {
         "Je ne trouve pas de crime correspondant dans cette liste ou j'hésite.",
     },
   ])
-})
-
-app.get('/CAFCFRS/api/v1/public-complaints/current', (req, res) => {
-  // JSON seems to be sent as plain text here
-  res.send(
-    '{"anonymousSubmission":null,"complaintDetailComments":null,"completionStepName":null,"completionStepNumber":null,"createdDate":1565134161812,"crimeType":null,"filer":{"addresses":[{"city":null,"country":null,"internationalProvinceState":null,"poBox":null,"postalCode":null,"provinceState":null,"streetAddress":null,"streetName":null,"streetNum":null,"streetUnit":null}],"businessName":null,"businessOrganizationType":null,"emails":[{"address":null}],"g1":null,"g2":null,"languagePreferred":null,"languagesSpoken":[],"otherName":null,"phoneNumbers":[{"cleanNumber":null,"extension":null,"number":null,"phoneType":null}],"surname":null,"willingToBeContacted":null,"isAnonymous":null,"isVictim":null,"relationshipToVictim":null},"id":374147,"lastModDate":1565134161837,"occurrenceDate":null,"paymentMethods":[],"personalInfoUsedFor":[],"publicFileAttachments":[],"publicUser":{"id":193245,"isAcceptedDisclaimer":true,"isAuthenticated":null,"publicComplaint":null},"referenceNumber":"2019-40811","started":false,"subcrimeType":null,"submissionType":null,"summaryComments":null,"suspectInfoUsedTypes":[],"suspects":[{"addresses":[],"ageRange":null,"businessName":null,"businessOrganizationType":null,"emails":[],"g1":null,"g2":null,"gender":null,"ipAddresses":[],"languages":[],"orderIndicator":null,"phoneNumbers":[],"surname":null,"websites":[]}],"totalAmountLost":0.00,"totalAmountLostCurrency":null,"totalAmountPromised":0.00,"totalAmountPromisedCurrency":null,"totalAmountRequested":0.00,"totalAmountRequestedCurrency":null,"victim":{"addresses":[{"city":null,"country":null,"internationalProvinceState":null,"poBox":null,"postalCode":null,"provinceState":null,"streetAddress":null,"streetName":null,"streetNum":null,"streetUnit":null}],"businessName":null,"businessOrganizationType":null,"emails":[{"address":null}],"g1":null,"g2":null,"languagePreferred":null,"languagesSpoken":[],"otherName":null,"phoneNumbers":[{"cleanNumber":null,"extension":null,"number":null,"phoneType":null},{"cleanNumber":null,"extension":null,"number":null,"phoneType":null}],"surname":null,"willingToBeContacted":null,"ageRange":null,"dob":null,"gender":null,"isAnonymous":null,"isBusiness":null},"suspectVictimContactType":null}',
-  )
-})
-
-app.post('/CAFCFRS/api/v1/validate-session', (req, res) => {
-  //
-  res.send('true')
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
