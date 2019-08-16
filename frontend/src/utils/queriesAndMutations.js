@@ -253,6 +253,25 @@ export const getScammerDetails = client => {
   }
 }
 
+export const getP2ContactInfo = client => {
+  const queryResult = client.readQuery({
+    query: gql`
+      query readCache {
+        contactInfo
+      }
+    `,
+  })
+  let { fullName, email, phone, postalCode } = JSON.parse(
+    queryResult.contactInfo,
+  )
+  return {
+    fullName: fullName ? fullName : '',
+    email: email ? email : '',
+    phone: phone ? phone : '',
+    postalCode: postalCode ? postalCode : '',
+  }
+}
+
 export const getTellUsMore = client => {
   const queryResult = client.readQuery({
     query: gql`

@@ -13,6 +13,7 @@ import {
   getWhatHappened,
   getScammerDetails,
   getTellUsMore,
+  getP2ContactInfo,
 } from '../utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
@@ -23,6 +24,7 @@ const submit = (client, submitReport) => {
     timeFrame: getTimeFrame(client),
     whatHappened: getWhatHappened(client),
     scammerDetails: getScammerDetails(client),
+    contactInfo: getP2ContactInfo(client),
     tellUsMore: getTellUsMore(client),
   }
   submitReport({ variables: data }) // currently fails, need new mutation

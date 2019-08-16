@@ -12,6 +12,7 @@ import {
   getTimeFrame,
   getWhatHappened,
   getScammerDetails,
+  getP2ContactInfo,
 } from '../utils/queriesAndMutations'
 
 const SectionHeader = props => (
@@ -163,8 +164,8 @@ const impactSummary = () => {
   )
 }
 
-const contactSummary = () => {
-  let contact
+const contactSummary = client => {
+  const { fullName, email, phone, postalCode } = getP2ContactInfo(client)
   return (
     <React.Fragment>
       <SectionHeader>
@@ -173,13 +174,18 @@ const contactSummary = () => {
           {({ i18n }) => (
             <EditButton
               aria-label={i18n._('Edit contact information')}
-              to="/p2/contact"
+              to="/p2/contactinfo"
             />
           )}
         </I18n>
       </SectionHeader>
-      {contact ? (
-        <Text>{contact}</Text>
+      {(fullName + email + phone + postalCode).length > 0 ? (
+        <React.Fragment>
+          <Text>{fullName}</Text>
+          <Text>{email}</Text>
+          <Text>{phone}</Text>
+          <Text>{postalCode}</Text>
+        </React.Fragment>
       ) : (
         <Text>
           <Trans>This gives police a way to reach you, if needed.</Trans>
