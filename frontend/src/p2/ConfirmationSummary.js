@@ -32,7 +32,9 @@ const EditButton = props => (
 )
 
 const timeFrameSummary = client => {
-  let { whenDidItStart, whenWasLastInteraction } = getTimeFrame(client)
+  let { startDate, endDate } = getTimeFrame(client)
+  startDate = startDate.slice(0, 10)
+  endDate = endDate.slice(0, 10)
   return (
     <React.Fragment>
       <SectionHeader>
@@ -46,10 +48,10 @@ const timeFrameSummary = client => {
           )}
         </I18n>
       </SectionHeader>
-      {whenDidItStart ? (
+      {startDate ? (
         <Text>
           <Trans>
-            {whenDidItStart} to {whenWasLastInteraction}
+            {startDate} to {endDate}
           </Trans>
         </Text>
       ) : (

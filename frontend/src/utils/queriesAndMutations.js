@@ -208,14 +208,10 @@ export const getTimeFrame = client => {
       }
     `,
   })
-  const { whenDidItStart, whenWasLastInteraction } = JSON.parse(
-    queryResult.timeFrame,
-  )
+  const { startDate, endDate } = JSON.parse(queryResult.timeFrame)
   return {
-    whenDidItStart: whenDidItStart ? whenDidItStart : '',
-    whenWasLastInteraction: whenWasLastInteraction
-      ? whenWasLastInteraction
-      : '',
+    startDate: startDate ? startDate : new Date().toISOString(),
+    endDate: endDate ? endDate : new Date().toISOString(),
   }
 }
 
