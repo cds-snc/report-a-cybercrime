@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { navigate } from '@reach/router'
 import React from 'react'
 import { Trans } from '@lingui/macro'
@@ -11,8 +10,8 @@ import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 
 const submitAndNavigate = (client, data) => {
-  client.writeData({ data: { timeFrame: JSON.stringify(data) } })
-  navigate(getDoneForms(client) ? 'confirmation' : 'whathappened')
+  client.writeData({ data: { scamInfo: JSON.stringify(data) } })
+  navigate(getDoneForms(client) ? 'confirmation' : 'moneylostquestion')
 }
 
 export const TimeFramePage = () => (
@@ -30,7 +29,8 @@ export const TimeFramePage = () => (
     </H1>
     <H4>
       <Trans>
-        It’s okay if you don’t know exactly when the scam took place.
+        It’s okay if you don’t know exactly when the scam took place. Give your
+        best guess.
       </Trans>
     </H4>
     <TrackPageViews />
