@@ -300,3 +300,27 @@ export const getTellUsMore = client => {
     tellUsMore: tellUsMore ? tellUsMore : '',
   }
 }
+
+export const SUBMIT_P2_REPORT_MUTATION = gql`
+  mutation submitReport(
+    $source: String!
+    $timeFrame: timeFrame!
+    $whatHappened: whatHappened!
+    $impact: impact!
+    $scammerDetails: scammerDetails!
+    $contactInfo: P2contactInfoInput!
+    $tellUsMore: tellUsMore!
+  ) {
+    submitReport(
+      source: $source
+      timeFrame: $timeFrame
+      whatHappened: $whatHappened
+      impact: $impact
+      scammerDetails: $scammerDetails
+      contactInfo: $contactInfo
+      tellUsMore: $tellUsMore
+    ) {
+      reportID
+    }
+  }
+`

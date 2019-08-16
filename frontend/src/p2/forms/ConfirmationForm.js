@@ -14,7 +14,7 @@ import { H2 } from '../../components/header'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import {
   getTellUsMore,
-  SUBMIT_REPORT_MUTATION,
+  SUBMIT_P2_REPORT_MUTATION,
 } from '../../utils/queriesAndMutations'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
@@ -36,7 +36,7 @@ export const ConfirmationForm = props => {
       </H2>
       <ApolloConsumer>
         {client => (
-          <Mutation mutation={SUBMIT_REPORT_MUTATION}>
+          <Mutation mutation={SUBMIT_P2_REPORT_MUTATION}>
             {submitReport => (
               <Form
                 initialValues={getTellUsMore(client)}
