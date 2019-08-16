@@ -253,6 +253,24 @@ export const getScammerDetails = client => {
   }
 }
 
+export const getImpact = client => {
+  const queryResult = client.readQuery({
+    query: gql`
+      query readCache {
+        impact
+      }
+    `,
+  })
+  let { howWereYouAffected, otherImpact, damage } = JSON.parse(
+    queryResult.impact,
+  )
+  return {
+    howWereYouAffected: howWereYouAffected ? howWereYouAffected : [],
+    otherImpact: otherImpact ? otherImpact : '',
+    damage: damage ? damage : '',
+  }
+}
+
 export const getP2ContactInfo = client => {
   const queryResult = client.readQuery({
     query: gql`

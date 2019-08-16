@@ -12,6 +12,7 @@ const client = {
     timeFrame: JSON.stringify({}),
     whatHappened: JSON.stringify({}),
     scammerDetails: JSON.stringify({}),
+    impact: JSON.stringify({}),
     contactInfo: JSON.stringify({}),
   }),
   writeData: jest.fn(),

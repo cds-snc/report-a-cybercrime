@@ -13,6 +13,7 @@ import {
   getWhatHappened,
   getScammerDetails,
   getTellUsMore,
+  getImpact,
   getP2ContactInfo,
 } from '../utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
@@ -23,6 +24,7 @@ const submit = (client, submitReport) => {
     source: 'p2',
     timeFrame: getTimeFrame(client),
     whatHappened: getWhatHappened(client),
+    impact: getImpact(client),
     scammerDetails: getScammerDetails(client),
     contactInfo: getP2ContactInfo(client),
     tellUsMore: getTellUsMore(client),

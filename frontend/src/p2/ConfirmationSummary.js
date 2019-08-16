@@ -12,6 +12,7 @@ import {
   getTimeFrame,
   getWhatHappened,
   getScammerDetails,
+  getImpact,
   getP2ContactInfo,
 } from '../utils/queriesAndMutations'
 
@@ -138,8 +139,14 @@ const scammerSummary = client => {
   )
 }
 
-const impactSummary = () => {
-  let impact
+const impactSummary = client => {
+  let { howWereYouAffected, otherImpact, damage } = getImpact(client)
+  if (howWereYouAffected.indexOf('Other impact') > -1) {
+    howWereYouAffected = howWereYouAffected.filter(
+      impact => impact != 'Other impact',
+    )
+    howWereYouAffected.push(otherImpact)
+  }
   return (
     <React.Fragment>
       <SectionHeader>
@@ -150,8 +157,11 @@ const impactSummary = () => {
           )}
         </I18n>
       </SectionHeader>
-      {impact ? (
-        <Text>{impact}</Text>
+      {howWereYouAffected.length > 0 || damage != '' ? (
+        <React.Fragment>
+          <Text>{howWereYouAffected.join(', ')}</Text>
+          <Text>{damage}</Text>
+        </React.Fragment>
       ) : (
         <Text>
           <Trans>
