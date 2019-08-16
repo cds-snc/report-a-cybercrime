@@ -1,7 +1,8 @@
 import { navigate } from '@reach/router'
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import { H1, H4 } from '../components/header'
+import { H1 } from '../components/header'
+import { P } from '../components/paragraph'
 import { Layout } from '../components/layout'
 import { TimeFrameInfoForm } from './forms/TimeFrameInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
@@ -27,12 +28,12 @@ export const TimeFramePage = () => (
     <H1>
       <Trans>When did it happen?</Trans>
     </H1>
-    <H4>
+    <P>
       <Trans>
         It’s okay if you don’t know exactly when the scam took place. Give your
         best guess.
       </Trans>
-    </H4>
+    </P>
     <TrackPageViews />
     <TimeFrameInfoForm onSubmit={submitAndNavigate} />
   </Layout>
