@@ -182,13 +182,11 @@
   "The RCMP's new National Cybercrime Coordination Unit helps police across Canada catch cybercriminals.": "Le Groupe national de coordination contre la cybercriminalité (GNCC) aide les services de police dans l’ensemble du Canada à saisir les cybercriminels.",
   "The RCMP’s new National Cybercrime Coordination Unit helps police across Canada by analyzing your reports, connecting similar information, and improving investigations across the country.": "Le nouveau Groupe national de coordination de la lutte contre la cybercriminalité de la GRC aide la police canadienne en analysant vos rapports, en reliant des renseignements semblables et en améliorant les enquêtes partout au pays",
   "The more detail you give, the more likely it will be investigated.": "Plus vous donnez de détails, plus il y a de chances qu'elle fasse l'objet d'une enquête.",
+  "The device or website you were on when it happened": "L'appareil ou le site web sur lequel vous étiez quand cela a eu lieu",
   "They’re not always easy to spot, and new ones are invented every day.": "Ils ne sont pas toujours faciles à repérer et de nouveaux sont inventés tous les jours.",
-<<<<<<< HEAD
   "Things will get better": "Les choses iront mieux. Vous faites la bonne chose en signalant.",
   "This gives police a way to reach you, if needed.": "Cela permet à la police de vous joindre, au besoin.",
-=======
   "Think about things such as:": "Pensez à inclure des choses telles que :",
->>>>>>> English review
   "This site will change as we test ideas.": "Ce site évoluera au fur et à mesure que nous testons des idées.",
   "Timeframe": "Calendrier",
   "U.S. dollar": "Dollar américain",
@@ -204,6 +202,7 @@
   "Warning! This is a prototype. It won't actually submit your report to the RCMP.": "Attention! Ce site est un prototype. Votre rapport ne sera pas réellement soumise à la GRC.",
   "We know this can be hard to talk about.": "Nous savons que cela peut être difficile d'en parler.",
   "We know this can be hard to talk about. What happened is not your fault.": "C’est difficile de parler de ce qui s’est passé. Ce qui s’est passé n’est pas de votre faute.",
+  "We know this can be hard to talk about. What happened is not your fault. Scammers use a number of techniques to get what they want.": "",
   "We probably won't be able to recover the money, but understanding the impact of the scam can help build a case.": "Nous ne pourrons probablement pas récupérer l'argent, mais comprendre les répercussions de la fraude pourrait nous aider à monter un dossier.",
   "We want to find out who is behind this scam": "Nous voulons savoir qui est derrière cette arnaque",
   "Website": "Sur un site web",
@@ -223,6 +222,8 @@
   "What personal information was compromised?": "Quels renseignements personnels ont été compromis ?",
   "What was affected?": "Qu'est-ce qui a été touché?",
   "What was affected? Select all that apply:": "Qu'est-ce qui a été touché ? Sélectionnez tout ce qui s'applique :",
+  "What the scammer said or did that was misleading": "Ce que le fraudeur a dit ou a fait pour tenter de vous égarer",
+  "What was suspicious or malicious about the situation": "Ce que la situation avait de louche ou de malintentionné",
   "What were you doing when something went wrong?": "Ce que vous faisiez quand la situation a mal tourné",
   "When did it happen?": "Quand la fraude a-t-elle eu lieu?",
   "When did it start?": "Quand est-ce que ça a commencé?",
