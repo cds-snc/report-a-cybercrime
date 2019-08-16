@@ -37,10 +37,10 @@ export const ConfirmationForm = props => {
       <ApolloConsumer>
         {client => (
           <Mutation mutation={SUBMIT_P2_REPORT_MUTATION}>
-            {submitReport => (
+            {submitReportP2 => (
               <Form
                 initialValues={getTellUsMore(client)}
-                onSubmit={() => props.onSubmit(client, submitReport)}
+                onSubmit={() => props.onSubmit(client, submitReportP2)}
                 render={({ handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
                     <label htmlFor="tellUsMore">

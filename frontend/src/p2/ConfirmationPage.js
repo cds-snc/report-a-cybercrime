@@ -19,7 +19,7 @@ import {
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
 
-const submit = (client, submitReport) => {
+const submit = (client, submitReportP2) => {
   const data = {
     source: 'p2',
     timeFrame: getTimeFrame(client),
@@ -29,7 +29,7 @@ const submit = (client, submitReport) => {
     contactInfo: getP2ContactInfo(client),
     tellUsMore: getTellUsMore(client),
   }
-  submitReport({ variables: data }) // currently fails, need new mutation
+  submitReportP2({ variables: data }) // currently fails, need new mutation
   navigate('nextsteps')
 }
 

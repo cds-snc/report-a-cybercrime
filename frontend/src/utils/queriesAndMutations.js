@@ -302,7 +302,7 @@ export const getTellUsMore = client => {
 }
 
 export const SUBMIT_P2_REPORT_MUTATION = gql`
-  mutation submitReport(
+  mutation submitReportP2(
     $source: String!
     $timeFrame: timeFrame!
     $whatHappened: whatHappened!
@@ -311,7 +311,7 @@ export const SUBMIT_P2_REPORT_MUTATION = gql`
     $contactInfo: P2contactInfoInput!
     $tellUsMore: tellUsMore!
   ) {
-    submitReport(
+    submitReportP2(
       source: $source
       timeFrame: $timeFrame
       whatHappened: $whatHappened
