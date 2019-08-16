@@ -19,6 +19,7 @@ import { LandingPage } from './p1/LandingPage'
 import { FilesToUpload } from './p1/FileUploadYesNoPage'
 import { LandingPage as P2LandingPage } from './p2/LandingPage'
 import { WhatHappenedPage as P2WhatHappenedPage } from './p2/WhatHappenedPage'
+import { ContactInfoPage as P2ContactInfoPage } from './p2/ContactInfoPage'
 import { ScammerDetailsPage as P2ScammerDetailsPage } from './p2/ScammerDetailsPage'
 import { ConfirmationPage as P2ConfirmationPage } from './p2/ConfirmationPage'
 import { NextSteps as P2NextSteps } from './p2/NextSteps'
@@ -56,6 +57,7 @@ export const Home = () => (
 
         <P2LandingPage path="/p2" />
         <P2WhatHappenedPage path="/p2/whathappened" />
+        <P2ContactInfoPage path="/p2/contactinfo" />
         <P2ScammerDetailsPage path="/p2/scammerdetails" />
         <P2ConfirmationPage path="/p2/confirmation" />
         <P2NextSteps path="/p2/nextsteps" />
