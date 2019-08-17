@@ -34,7 +34,10 @@ cache.writeData({
     suspectInfo: JSON.stringify({}),
     files: [],
     contactInfo: JSON.stringify({}),
+    timeFrame: JSON.stringify({}),
     whatHappened: JSON.stringify({}),
+    scammerDetails: JSON.stringify({}),
+    impact: JSON.stringify({}),
     tellUsMore: JSON.stringify({}),
   },
 })

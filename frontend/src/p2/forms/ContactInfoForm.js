@@ -11,7 +11,7 @@ import { Link } from '../../components/link'
 import { Text } from '../../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
-import { getContactInfo } from '../../utils/queriesAndMutations'
+import { getP2ContactInfo } from '../../utils/queriesAndMutations'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
@@ -23,65 +23,65 @@ export const ContactInfoForm = ({ onSubmit }) => (
   <ApolloConsumer>
     {client => (
       <Form
-        initialValues={getContactInfo(client)}
+        initialValues={getP2ContactInfo(client)}
         onSubmit={data => onSubmit(client, data)}
         validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="contactInfoFullname">
+            <label htmlFor="fullName">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Full name</Trans>
               </Text>
             </label>
             <div>
               <Field
-                name="contactInfoFullname"
-                id="contactInfoFullname"
+                name="fullName"
+                id="fullName"
                 component={TextAreaAdapter}
                 height="25px"
                 width="300px"
               />
             </div>
 
-            <label htmlFor="contactInfoEmail">
+            <label htmlFor="email">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Email address</Trans>
               </Text>
             </label>
             <div>
               <Field
-                name="contactInfoEmail"
-                id="contactInfoEmail"
+                name="email"
+                id="email"
                 component={TextAreaAdapter}
                 height="25px"
                 width="300px"
               />
             </div>
 
-            <label htmlFor="contactInfoPhone">
+            <label htmlFor="phone">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Phone number</Trans>
               </Text>
             </label>
             <div>
               <Field
-                name="contactInfoPhone"
-                id="contactInfoPhone"
+                name="phone"
+                id="phone"
                 component={TextAreaAdapter}
                 height="25px"
                 width="300px"
               />
             </div>
 
-            <label htmlFor="contactInfoPostalcode">
+            <label htmlFor="postalCode">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Postal code</Trans>
               </Text>
             </label>
             <div>
               <Field
-                name="contactInfoPostalcode"
-                id="contactInfoPostalcode"
+                name="postalCode"
+                id="postalCode"
                 component={TextAreaAdapter}
                 height="25px"
                 width="300px"

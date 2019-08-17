@@ -262,7 +262,7 @@
         "reset": "Reset",
         "save": "Save"
       },
-      "info": "A complaint has been started with the reference number __{{referenceNumber}}__. Record this number in case you lose your internet connection and need to contact the CAFC to complete your complaint over the phone.",
+      "info": "A complaint has been started with the reference number __{{referenceNumber}}__. Record this number in case you lose your internet connection and need to contact us to complete your complaint over the phone.",
       "modals": {
         "businessInformationLost": {
           "question": "Previously saved information for the business will be lost if you click on Next or Previous. Are you sure you want to continue?",
@@ -355,10 +355,10 @@
           },
           "general": {
             "contactInformation": "Contact Information",
-            "info": "By providing complete and detailed contact information it ensures that the CAFC and Police partner agencies can contact you in the future regarding this complaint.",
+            "info": "By providing complete and detailed contact information it ensures that Police partner agencies can contact you in the future regarding this complaint.",
             "languagePreferred": "What is your preferred language of communication?",
             "questions": "Questions",
-            "willingToBeContacted": "Are you willing to be contacted by the CAFC?"
+            "willingToBeContacted": "Are you willing to be contacted for a followup?"
           },
           "nameInformation": {
             "firstName": "First name",

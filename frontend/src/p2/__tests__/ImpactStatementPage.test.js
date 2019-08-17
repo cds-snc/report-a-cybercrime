@@ -3,17 +3,13 @@ import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { ImpactStatementPage} from '../ImpactStatementPage'
+import { ImpactStatementPage } from '../ImpactStatementPage'
 import theme from '../../theme'
 import en from '../../../locale/en/messages.js'
 
 const client = {
   readQuery: () => ({
-    scamInfo: JSON.stringify({}),
-    lostMoney: JSON.stringify({}),
-    suspectInfo: JSON.stringify({}),
-    files: [],
-    contactInfo: JSON.stringify({}),
+    impact: JSON.stringify({}),
   }),
   writeData: jest.fn(),
 }
@@ -33,4 +29,3 @@ describe('<ImpactStatementPage />', () => {
     )
   })
 })
-

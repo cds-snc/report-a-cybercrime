@@ -13,7 +13,7 @@ const catalogs = { en }
 
 const client = {
   readQuery: () => ({
-    scamInfo: JSON.stringify({}),
+    scammerDetails: JSON.stringify({}),
   }),
   writeData: jest.fn(),
 }

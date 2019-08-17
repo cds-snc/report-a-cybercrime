@@ -13,7 +13,7 @@ const catalogs = { en }
 
 const client = {
   readQuery: () => ({
-    scamInfo: JSON.stringify({}),
+    impact: JSON.stringify({}),
   }),
   writeData: jest.fn(),
 }
@@ -29,7 +29,7 @@ describe('<ImpactStatementInfoForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const {  getByText } = render(
+    const { getByText } = render(
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -49,4 +49,3 @@ describe('<ImpactStatementInfoForm />', () => {
     expect(submitMock).toHaveBeenCalledTimes(1)
   })
 })
-

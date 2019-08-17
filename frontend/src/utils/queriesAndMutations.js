@@ -200,6 +200,21 @@ export const getContactInfo = client => {
 
 // P2 cache queries
 
+export const getTimeFrame = client => {
+  const queryResult = client.readQuery({
+    query: gql`
+      query readCache {
+        timeFrame
+      }
+    `,
+  })
+  const { startDate, endDate } = JSON.parse(queryResult.timeFrame)
+  return {
+    startDate: startDate ? startDate : new Date().toISOString(),
+    endDate: endDate ? endDate : new Date().toISOString(),
+  }
+}
+
 export const getWhatHappened = client => {
   const queryResult = client.readQuery({
     query: gql`
@@ -216,19 +231,58 @@ export const getWhatHappened = client => {
 }
 
 export const getScammerDetails = client => {
-  const { queryResults } = client.readQuery({
+  const queryResult = client.readQuery({
     query: gql`
       query readCache {
         scammerDetails
       }
     `,
   })
-  let { scammerDetails, files, fileDescriptions } = JSON.parse(queryResults)
+  let { scammerDetails, files, fileDescriptions } = JSON.parse(
+    queryResult.scammerDetails,
+  )
 
   return {
     scammerDetails: scammerDetails ? scammerDetails : '',
     files: files ? files : [],
     fileDescriptions: fileDescriptions ? fileDescriptions : [],
+  }
+}
+
+export const getImpact = client => {
+  const queryResult = client.readQuery({
+    query: gql`
+      query readCache {
+        impact
+      }
+    `,
+  })
+  let { howWereYouAffected, otherImpact, damage } = JSON.parse(
+    queryResult.impact,
+  )
+  return {
+    howWereYouAffected: howWereYouAffected ? howWereYouAffected : [],
+    otherImpact: otherImpact ? otherImpact : '',
+    damage: damage ? damage : '',
+  }
+}
+
+export const getP2ContactInfo = client => {
+  const queryResult = client.readQuery({
+    query: gql`
+      query readCache {
+        contactInfo
+      }
+    `,
+  })
+  let { fullName, email, phone, postalCode } = JSON.parse(
+    queryResult.contactInfo,
+  )
+  return {
+    fullName: fullName ? fullName : '',
+    email: email ? email : '',
+    phone: phone ? phone : '',
+    postalCode: postalCode ? postalCode : '',
   }
 }
 
@@ -246,3 +300,27 @@ export const getTellUsMore = client => {
     tellUsMore: tellUsMore ? tellUsMore : '',
   }
 }
+
+export const SUBMIT_P2_REPORT_MUTATION = gql`
+  mutation submitReportP2(
+    $source: String!
+    $timeFrame: timeFrame!
+    $whatHappened: whatHappened!
+    $impact: impact!
+    $scammerDetails: scammerDetails!
+    $contactInfo: P2contactInfoInput!
+    $tellUsMore: tellUsMore!
+  ) {
+    submitReportP2(
+      source: $source
+      timeFrame: $timeFrame
+      whatHappened: $whatHappened
+      impact: $impact
+      scammerDetails: $scammerDetails
+      contactInfo: $contactInfo
+      tellUsMore: $tellUsMore
+    ) {
+      reportID
+    }
+  }
+`
