@@ -12,6 +12,15 @@ const { SuspectInfoInput } = require('./SuspectInfoInput')
 const { ContactInfoInput } = require('./ContactInfoInput')
 const { Stats } = require('./Stats')
 const { FileUploadResult } = require('./FileUploadResult')
+const {
+  TimeFrameInput,
+  WhatHappenedInput,
+  ScammerDetailsInput,
+  ImpactInput,
+  P2ContactInfoInput,
+  TellUsMoreInput,
+} = require('./GraphqlTypes')
+
 const { createHash } = require('crypto')
 const uuidv4 = require('uuid/v4')
 
@@ -132,7 +141,7 @@ const mutation = new GraphQLObjectType({
     },
 
     submitReport: {
-      description: 'Submit report to database',
+      description: 'Submit P1 report to database',
       type: ReportSummary,
       args: {
         source: {
@@ -173,6 +182,69 @@ const mutation = new GraphQLObjectType({
           suspectInfo,
           files,
           contactInfo,
+          createdAt: new Date().toISOString(),
+        })
+        return {
+          reportID: uuidv4(),
+        }
+      },
+    },
+
+    submitReportP2: {
+      description: 'Submit P2 report to database',
+      type: ReportSummary,
+      args: {
+        source: {
+          type: GraphQLString,
+          description: 'protptype that submitted the data',
+        },
+        timeFrame: {
+          type: TimeFrameInput,
+          description: 'when did the scam occur',
+        },
+        whatHappened: {
+          type: WhatHappenedInput,
+          description: 'scam details',
+        },
+        scammerDetails: {
+          type: ScammerDetailsInput,
+          description: 'details about the suspect',
+        },
+        impact: {
+          type: ImpactInput,
+          description: 'impact of the scam',
+        },
+        contactInfo: {
+          type: P2ContactInfoInput,
+          description: 'contact info of the reporter',
+        },
+        tellUsMore: {
+          type: TellUsMoreInput,
+          description: 'information not captured in the forms',
+        },
+      },
+      resolve: async (
+        _root,
+        {
+          source,
+          timeFrame,
+          whatHappened,
+          scammerDetails,
+          impact,
+          contactInfo,
+          tellUsMore,
+        },
+        { db },
+        _info,
+      ) => {
+        await db.saveReport({
+          source,
+          timeFrame,
+          whatHappened,
+          scammerDetails,
+          impact,
+          contactInfo,
+          tellUsMore,
           createdAt: new Date().toISOString(),
         })
         return {

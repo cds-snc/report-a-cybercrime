@@ -11,6 +11,12 @@ type fileUploadResult {
   md5: String
 }
 
+input impact {
+  howWereYouAffected: [String]
+  otherImpact: String
+  damage: String
+}
+
 input lostMoneyInput {
   lostAmount: String
   lostCurrency: String
@@ -29,7 +35,7 @@ type Mutation {
     fileDescription: String
   ): fileUploadResult
 
-  """Submit report to database"""
+  """Submit P1 report to database"""
   submitReport(
     """protptype that submitted the data"""
     source: String
@@ -49,6 +55,37 @@ type Mutation {
     """contact details about the user"""
     contactInfo: contactInfoInput
   ): reportSummary
+
+  """Submit P2 report to database"""
+  submitReportP2(
+    """protptype that submitted the data"""
+    source: String
+
+    """when did the scam occur"""
+    timeFrame: timeFrame
+
+    """scam details"""
+    whatHappened: whatHappened
+
+    """details about the suspect"""
+    scammerDetails: scammerDetails
+
+    """impact of the scam"""
+    impact: impact
+
+    """contact info of the reporter"""
+    contactInfo: p2ContactInfo
+
+    """information not captured in the forms"""
+    tellUsMore: tellUsMore
+  ): reportSummary
+}
+
+input p2ContactInfo {
+  fullName: String
+  email: String
+  phone: String
+  postalCode: String
 }
 
 type Query {
@@ -67,6 +104,12 @@ input scamInfoInput {
   scamDetails: String
 }
 
+input scammerDetails {
+  scammerDetails: String
+  files: [String]
+  fileDescriptions: [String]
+}
+
 type Stats {
   """The total number of reports submitted."""
   reportCount: Int
@@ -83,6 +126,19 @@ input suspectInfoInput {
   suspectIP: String
 }
 
+input tellUsMore {
+  tellUsMore: String
+}
+
+input timeFrame {
+  startDate: String
+  endDate: String
+}
+
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
+
+input whatHappened {
+  whatHappened: String
+}
 
