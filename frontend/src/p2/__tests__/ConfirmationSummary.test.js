@@ -9,7 +9,11 @@ import en from '../../../locale/en/messages.js'
 
 const client = {
   readQuery: () => ({
+    timeFrame: JSON.stringify({}),
     whatHappened: JSON.stringify({}),
+    scammerDetails: JSON.stringify({}),
+    impact: JSON.stringify({}),
+    contactInfo: JSON.stringify({}),
   }),
   writeData: jest.fn(),
 }

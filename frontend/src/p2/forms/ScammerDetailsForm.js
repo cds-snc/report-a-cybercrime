@@ -16,13 +16,18 @@ import { Ul } from '../../components/unordered-list'
 import { Li } from '../../components/list-item'
 import { FileUpload } from '../../components/file-upload'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
+import { getScammerDetails } from '../../utils/queriesAndMutations'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
-export const ScammerDetailsForm = props => {
-  const [files, setFiles] = useState([])
-  const [fileDescriptions, setFileDescriptions] = useState([])
-  const [scammerDetails, setScammerDetails] = useState('')
+export const ScammerDetailsFormWrapped = props => {
+  const { client } = props
+  const cached = getScammerDetails(client)
+  const [files, setFiles] = useState(cached.files.map(file => ({ name: file })))
+  const [fileDescriptions, setFileDescriptions] = useState(
+    cached.fileDescriptions,
+  )
+  const [scammerDetails, setScammerDetails] = useState(cached.scammerDetails)
 
   const onChange = e => {
     if (e.target.id === 'scammerDetails') {
@@ -48,7 +53,11 @@ export const ScammerDetailsForm = props => {
   }
 
   const localSubmit = client => {
-    const data = { scammerDetails, files, fileDescriptions }
+    const data = {
+      scammerDetails,
+      files: files.map(f => f.name),
+      fileDescriptions,
+    }
     props.onSubmit(client, data)
   }
   return (
@@ -202,6 +211,13 @@ export const ScammerDetailsForm = props => {
   )
 }
 
-ScammerDetailsForm.propTypes = {
+ScammerDetailsFormWrapped.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  client: PropTypes.any.isRequired,
 }
+
+export const ScammerDetailsForm = props => (
+  <ApolloConsumer>
+    {client => <ScammerDetailsFormWrapped client={client} {...props} />}
+  </ApolloConsumer>
+)
