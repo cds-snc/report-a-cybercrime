@@ -62,8 +62,11 @@ export const LandingPage = () => (
 
       <P>
         <Trans>
-          The RCMP's new National Cybercrime Coordination Unit helps police
-          across Canada catch cybercriminals.
+          The RCMP's new{' '}
+          <A href="http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3">
+            National Cybercrime Coordination Unit
+          </A>{' '}
+          helps police across Canada catch cybercriminals.
         </Trans>
       </P>
 
