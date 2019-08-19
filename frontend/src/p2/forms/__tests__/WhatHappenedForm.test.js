@@ -18,6 +18,9 @@ const client = {
   writeData: jest.fn(),
 }
 
+const fillIn = (element, { with: value }) =>
+  fireEvent.change(element, { target: { value } })
+
 const clickOn = element => fireEvent.click(element)
 
 describe('<WhatHappenedForm />', () => {
@@ -26,7 +29,7 @@ describe('<WhatHappenedForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByText } = render(
+    const { getByLabelText, getByText } = render(
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -38,11 +41,18 @@ describe('<WhatHappenedForm />', () => {
       </ThemeProvider>,
     )
 
+    // find the form element by it's label:
+    const inputNode = getByLabelText('What happened?')
+    // find the next button so we can trigger a form submission
     const nextButton = getByText(/Continue/i)
-
+    // Enter text into the form field
+    fillIn(inputNode, { with: 'lost money' })
+    // Click the next button to trigger the form submission
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 
+    // We expect that sequence of events to have caused our onSubmit mock to get
+    // exectuted.
     expect(submitMock).toHaveBeenCalledTimes(1)
   })
 })
