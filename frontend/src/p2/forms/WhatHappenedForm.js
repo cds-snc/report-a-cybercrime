@@ -22,19 +22,17 @@ export const WhatHappenedForm = props => (
         onSubmit={data => props.onSubmit(client, data)}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="scamDetails">
+            <label htmlFor="whatHappened">
               <Text marginTop={[5, null, 6]}>
                 <Trans>What happened?</Trans>
               </Text>
-            </label>
-            <div>
               <Field
                 name="whatHappened"
                 id="whatHappened"
                 component={TextAreaAdapter}
                 height="200px"
               />
-            </div>
+            </label>
 
             <Container
               width="305px"
