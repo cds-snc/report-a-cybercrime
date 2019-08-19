@@ -1,12 +1,15 @@
 bases:
-  - ../../base
+- ../../base
 patchesStrategicMerge:
-  - traefik-ingress-controller-deployment.yaml
-  - cybercrime-api-ingress.yaml
-  - arango-claim.yaml
-  - cybercrime-frontend-ingress.yaml
-  - traefik-ingress-controller-service.yaml
+- traefik-ingress-controller-deployment.yaml
+- cybercrime-api-ingress.yaml
+- arango-claim.yaml
+- cybercrime-frontend-ingress.yaml
+- traefik-ingress-controller-service.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - azure-storageclass.yaml
+- azure-storageclass.yaml
+- arango-secrets.yaml
+- cybercrime-api-secrets.yaml
+- minio-secrets.yaml
