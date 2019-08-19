@@ -40,8 +40,7 @@ describe('<ScammerDetailsForm />', () => {
         </MockedProvider>
       </ThemeProvider>,
     )
-
-    const inputNode = getByLabelText('Scammer Details')
+    const inputNode = getByLabelText('Tell us about the scammer')
     const nextButton = getByText(/Continue/i)
 
     fillIn(inputNode, { with: 'lost money' })
