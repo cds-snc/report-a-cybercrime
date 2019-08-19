@@ -11,8 +11,6 @@ import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
 
 const submitAndNavigate = (client, data) => {
-  console.log(data)
-
   client.writeData({ data: { impact: JSON.stringify(data) } })
   navigate(getDoneForms(client) ? 'confirmation' : 'contactinfo')
 }

@@ -308,7 +308,7 @@ export const SUBMIT_P2_REPORT_MUTATION = gql`
     $whatHappened: whatHappened!
     $impact: impact!
     $scammerDetails: scammerDetails!
-    $contactInfo: P2contactInfoInput!
+    $contactInfo: P2ContactInfoInput!
     $tellUsMore: tellUsMore!
   ) {
     submitReportP2(

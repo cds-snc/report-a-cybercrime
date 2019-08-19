@@ -74,14 +74,14 @@ type Mutation {
     impact: impact
 
     """contact info of the reporter"""
-    contactInfo: p2ContactInfo
+    contactInfo: P2ContactInfoInput
 
     """information not captured in the forms"""
     tellUsMore: tellUsMore
   ): reportSummary
 }
 
-input p2ContactInfo {
+input P2ContactInfoInput {
   fullName: String
   email: String
   phone: String
