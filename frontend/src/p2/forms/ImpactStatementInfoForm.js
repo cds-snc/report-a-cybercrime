@@ -9,6 +9,7 @@ import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
 import { Container } from '../../components/container'
 import { H2 } from '../../components/header'
+import { P } from '../components/paragraph'
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
 import { TextArea } from '../../components/text-area'
@@ -22,11 +23,11 @@ const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
 const howWereYouAffected = [
-  i18nMark('Account hacked'),
+  i18nMark('Device or account hacked'),
   i18nMark('Information stolen'),
   i18nMark('Money lost'),
   i18nMark('Reputation damaged'),
-  i18nMark('Safety harmed or threatened'),
+  i18nMark('Safety threatened'),
   i18nMark('Wellbeing affected'),
   i18nMark('Other impact'),
 ]
@@ -55,8 +56,11 @@ export const ImpactStatementInfoForm = props => (
             <Fieldset>
               <Label htmlFor="howWereYouAffected">
                 <H2 fontSize={[4, null, 5]} marginTop={[3, null, 4]}>
-                  <Trans>What was affected? Select all that apply:</Trans>
+                  <Trans>What was affected? </Trans>
                 </H2>
+                <P>
+                  <Trans>Select all that apply:</Trans>
+                </P>
               </Label>
 
               <div>
@@ -96,11 +100,11 @@ export const ImpactStatementInfoForm = props => (
 
             <br />
             <H2 fontSize={[4, null, 5]} marginTop={[3, null, 4]}>
-              <Trans>Describe the extent of the damage.</Trans>
+              <Trans>Describe how you were affected</Trans>
             </H2>
             <Ul>
               <Li>
-                <Trans>What did you lose?</Trans>
+                <Trans>What was lost or damaged?</Trans>
               </Li>
               <Li>
                 <Trans>What personal information was compromised?</Trans>
