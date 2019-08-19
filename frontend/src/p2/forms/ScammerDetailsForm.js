@@ -12,6 +12,7 @@ import { Button } from '../../components/button'
 import { Link } from '../../components/link'
 import { Text } from '../../components/text'
 import { H2, H3 } from '../../components/header'
+import { P } from '../../components/paragraph'
 import { Ul } from '../../components/unordered-list'
 import { Li } from '../../components/list-item'
 import { FileUpload } from '../../components/file-upload'
@@ -69,27 +70,32 @@ export const ScammerDetailsFormWrapped = props => {
             <form onSubmit={handleSubmit}>
               <H2 fontSize={[4, null, 5]} marginTop="40px">
                 <Trans>
-                  Share any clues that could help identify the scammer
+                  Share details that could help identify the scammer
                 </Trans>
               </H2>
+              <P>
+                <Trans>Think about including things such as:</Trans>
+              </P>
               <Ul>
                 <Li>
-                  <Trans>What do you know about them?</Trans>
-                </Li>
-                <Li>
-                  <Trans>How did they contact you?</Trans>
+                  <Trans>How they contacted you and who they claim to be</Trans>
                 </Li>
                 <Li>
                   <Trans>
-                    Do you know their name, username, email address, or website
-                    link?
+                    Their usernames, email address, or website links
+                  </Trans>
+                </Li>
+                <Li>
+                  <Trans>
+                    Any other details about your interaction or transaction with
+                    the scammer
                   </Trans>
                 </Li>
               </Ul>
 
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
-                  <Trans>Scammer Details</Trans>
+                  <Trans>Tell us about the scammer</Trans>
                 </Text>
               </label>
               <div>
@@ -103,12 +109,15 @@ export const ScammerDetailsFormWrapped = props => {
               </div>
 
               <H2 fontSize={[4, null, 5]} marginTop="40px">
-                <Trans>Share files that could help find this scammer</Trans>
+                <Trans>Share files to show what the scammer did</Trans>
               </H2>
+              <P>
+                <Trans>Think about including things such as:</Trans>
+              </P>
               <Ul>
                 <Li>
                   <Trans>
-                    Do you have any screenshots, receipts, or conversations?
+                    Screenshots, conversations, bank statements, and receipts
                   </Trans>
                 </Li>
               </Ul>
@@ -151,7 +160,7 @@ export const ScammerDetailsFormWrapped = props => {
 
                     <label htmlFor={`file-description-${index}`}>
                       <Text>
-                        <Trans>File Description</Trans>
+                        <Trans>Describe what this file shows</Trans>
                       </Text>
                     </label>
                     <div>
