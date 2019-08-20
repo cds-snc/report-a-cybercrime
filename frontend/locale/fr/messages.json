@@ -180,5 +180,9 @@
   "en": "fr",
   "loading...": "chargement en cours...",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
-  "{startDate} to {endDate}": "{startDate} au {endDate}"
+  "{0} to {1}": "{0} au {1}",
+  "{startDate} to {endDate}": "{startDate} au {endDate}",
+  "{whenDidItStart} to {whenWasLastInteraction}": "{whenDidItStart} au {whenWasLastInteraction}",
+  "⇦ Back": "⇦ Retour",
+  "⇦Back": "⇦Retour"
 }
