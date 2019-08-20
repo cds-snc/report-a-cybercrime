@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx, css } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
@@ -11,7 +11,6 @@ import { ScammerDetailsForm } from './forms/ScammerDetailsForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
 import { ButtonLink } from '../components/link'
-import { css } from '@emotion/core'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scammerDetails: JSON.stringify(data) } })
