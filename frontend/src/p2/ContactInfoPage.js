@@ -9,6 +9,8 @@ import { Container } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from '../components/layout'
+import { ButtonLink } from '../components/link'
+import { css } from '@emotion/core'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { contactInfo: JSON.stringify(data) } })
@@ -26,6 +28,19 @@ export const ContactInfoPage = () => (
       <Steps activeStep={4} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
 
+    <Container
+      width="105px"
+      marginTop={[1, null, 1]}
+      css={css`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      `}
+    >
+      <ButtonLink type="button" color="black" to="/p2/impact" textAlign="left">
+        <Trans>&#8678; Back </Trans>
+      </ButtonLink>
+    </Container>
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>

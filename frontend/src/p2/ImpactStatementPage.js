@@ -11,6 +11,8 @@ import { Steps } from '../components/stepper'
 import { ImpactStatementInfoForm } from './forms/ImpactStatementInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { ButtonLink } from '../components/link'
+import { css } from '@emotion/core'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { impact: JSON.stringify(data) } })
@@ -27,6 +29,26 @@ export const ImpactStatementPage = () => (
     >
       <Steps activeStep={3} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
+
+    <Container
+      width="105px"
+      marginTop={[1, null, 1]}
+      css={css`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      `}
+    >
+      <ButtonLink
+        type="button"
+        color="black"
+        to="/p2/scammerdetails"
+        textAlign="left"
+      >
+        <Trans>&#8678; Back </Trans>
+      </ButtonLink>
+    </Container>
+
     <H1>
       <Trans>Impact caused by the scam</Trans>
     </H1>
