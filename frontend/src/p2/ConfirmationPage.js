@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx, css } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
@@ -19,7 +19,6 @@ import {
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
 import { ButtonLink } from '../components/link'
-import { css } from '@emotion/core'
 
 const submit = (client, submitReportP2) => {
   const data = {
