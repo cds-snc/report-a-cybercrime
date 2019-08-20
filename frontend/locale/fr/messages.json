@@ -231,5 +231,7 @@
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
   "{0} to {1}": "{0} au {1}",
   "{startDate} to {endDate}": "{startDate} au {endDate}",
-  "{whenDidItStart} to {whenWasLastInteraction}": "{whenDidItStart} au {whenWasLastInteraction}"
+  "{whenDidItStart} to {whenWasLastInteraction}": "{whenDidItStart} au {whenWasLastInteraction}",
+  "⇦ Back": "⇦ Retour",
+  "⇦Back": "⇦Retour"
 }
