@@ -51,7 +51,7 @@
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
     "razzle": "3.0.0",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-apollo": "^2.5.8",
     "react-datepicker": "^2.8.0",
     "react-dom": "^16.8.6",
