@@ -125,7 +125,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
             <Fieldset>
               <legend>
                 <Text marginTop={[4, null, 5]}>
-                  <Trans>What method of payment was used?</Trans>
+                  <Trans>How did you pay the scammer?</Trans>
                 </Text>
                 <br></br>
               </legend>
@@ -155,7 +155,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               <React.Fragment>
                 <label htmlFor="lostOtherMethodOfPayment">
                   <Text>
-                    <Trans>Other method</Trans>
+                    <Trans>Other method of payment</Trans>
                   </Text>
                 </label>
                 <div>
