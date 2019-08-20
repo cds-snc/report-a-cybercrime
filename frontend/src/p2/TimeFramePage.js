@@ -7,6 +7,8 @@ import { Layout } from '../components/layout'
 import { TimeFrameInfoForm } from './forms/TimeFrameInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { Container } from '../components/container'
+import { Steps } from '../components/stepper'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { timeFrame: JSON.stringify(data) } })
@@ -15,6 +17,14 @@ const submitAndNavigate = (client, data) => {
 
 export const TimeFramePage = () => (
   <Layout>
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
+      <Steps activeStep={0} steps={[{}, {}, {}, {}, {}, {}]} />
+    </Container>
     <H1>
       <Trans>When did it happen?</Trans>
     </H1>

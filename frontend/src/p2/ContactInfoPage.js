@@ -23,8 +23,9 @@ export const ContactInfoPage = () => (
       flexDirection="row"
       marginBottom="20px"
     >
-      <Steps activeStep={4} steps={[{}, {}, {}, {}, {}]} />
+      <Steps activeStep={4} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
+
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>

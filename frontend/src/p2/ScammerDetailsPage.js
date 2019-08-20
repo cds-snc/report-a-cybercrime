@@ -4,6 +4,8 @@ import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
+import { Container } from '../components/container'
+import { Steps } from '../components/stepper'
 import { TrackPageViews } from '../TrackPageViews'
 import { ScammerDetailsForm } from './forms/ScammerDetailsForm'
 import { Layout } from '../components/layout'
@@ -17,6 +19,14 @@ const submitAndNavigate = (client, data) => {
 export const ScammerDetailsPage = () => {
   return (
     <Layout>
+      <Container
+        display="flex"
+        width="90%"
+        flexDirection="row"
+        marginBottom="20px"
+      >
+        <Steps activeStep={2} steps={[{}, {}, {}, {}, {}, {}]} />
+      </Container>
       <H1>
         <Trans>About the scammer</Trans>
       </H1>
