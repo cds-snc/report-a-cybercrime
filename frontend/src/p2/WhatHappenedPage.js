@@ -12,6 +12,8 @@ import { TrackPageViews } from '../TrackPageViews'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { ButtonLink } from '../components/link'
+import { css } from '@emotion/core'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { whatHappened: JSON.stringify(data) } })
@@ -29,6 +31,24 @@ export const WhatHappenedPage = () => (
       <Steps activeStep={1} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
 
+    <Container
+      width="105px"
+      marginTop={[1, null, 1]}
+      css={css`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      `}
+    >
+      <ButtonLink
+        type="button"
+        color="black"
+        to="/p2/timeframe"
+        textAlign="left"
+      >
+        <Trans>&#8678;Back</Trans>
+      </ButtonLink>
+    </Container>
     <H1>
       <Trans>Describe what happened</Trans>
     </H1>

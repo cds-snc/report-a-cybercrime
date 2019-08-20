@@ -18,6 +18,8 @@ import {
 } from '../utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
+import { ButtonLink } from '../components/link'
+import { css } from '@emotion/core'
 
 const submit = (client, submitReportP2) => {
   const data = {
@@ -44,6 +46,25 @@ export const ConfirmationPage = () => {
         marginBottom="20px"
       >
         <Steps activeStep={5} steps={[{}, {}, {}, {}, {}, {}]} />
+      </Container>
+
+      <Container
+        width="105px"
+        marginTop={[1, null, 1]}
+        css={css`
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        `}
+      >
+        <ButtonLink
+          type="button"
+          color="black"
+          to="/p2/contactinfo"
+          textAlign="left"
+        >
+          <Trans>&#8678; Back </Trans>
+        </ButtonLink>
       </Container>
       <H1>
         <Trans>Review your report</Trans>

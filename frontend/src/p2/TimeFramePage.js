@@ -9,6 +9,8 @@ import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
 import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
+import { ButtonLink } from '../components/link'
+import { css } from '@emotion/core'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { timeFrame: JSON.stringify(data) } })
@@ -25,6 +27,25 @@ export const TimeFramePage = () => (
     >
       <Steps activeStep={0} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
+
+    <Container
+      width="105px"
+      marginTop={[1, null, 1]}
+      css={css`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      `}
+    >
+      <ButtonLink type="button" color="black" to="/p2" textAlign="left">
+        <Trans>&#8678; Back </Trans>
+      </ButtonLink>
+    </Container>
+
+    {/* <Link type="button" color="black" to="/p2/" textAlign="center">
+                <Trans>Cancel report</Trans>
+              </Link> */}
+
     <H1>
       <Trans>When did it happen?</Trans>
     </H1>
