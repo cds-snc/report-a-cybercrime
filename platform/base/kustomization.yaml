@@ -25,4 +25,4 @@ images:
 - name: gcr.io/report-a-cybercrime-alpha/api
   newTag: master-fca5248
 - name: gcr.io/report-a-cybercrime-alpha/frontend
-  newTag: master-82d8815
+  newTag: master-c5fe23c
