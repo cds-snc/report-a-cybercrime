@@ -43,7 +43,7 @@ export const ConfirmationPage = () => {
         flexDirection="row"
         marginBottom="20px"
       >
-        <Steps activeStep={4} steps={[{}, {}, {}, {}, {}]} />
+        <Steps activeStep={5} steps={[{}, {}, {}, {}, {}, {}]} />
       </Container>
       <H1>
         <Trans>Review your report</Trans>

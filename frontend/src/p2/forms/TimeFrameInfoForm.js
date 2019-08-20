@@ -116,7 +116,7 @@ class TimeFrameInfoFormWrapped extends Component {
                 justify-content: space-between;
               `}
             >
-              <Link type="button" color="black" to="/p1/" textAlign="center">
+              <Link type="button" color="black" to="/p2/" textAlign="center">
                 <Trans>Cancel report</Trans>
               </Link>
             </Container>

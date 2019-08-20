@@ -99,7 +99,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
             >
               <Button
                 type="submit"
-                onClick={() => navigate('/p1/confirmation')}
+                onClick={() => navigate('/p2/confirmation')}
               >
                 <Trans>Continue</Trans>
               </Button>
@@ -114,7 +114,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
                 justify-content: space-between;
               `}
             >
-              <Link type="button" color="black" to="/p1/" textAlign="center">
+              <Link type="button" color="black" to="/p2/" textAlign="center">
                 <Trans>Cancel report</Trans>
               </Link>
             </Container>
