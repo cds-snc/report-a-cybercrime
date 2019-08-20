@@ -23,7 +23,8 @@ import { ContactInfoPage as P2ContactInfoPage } from './p2/ContactInfoPage'
 import { ScammerDetailsPage as P2ScammerDetailsPage } from './p2/ScammerDetailsPage'
 import { ConfirmationPage as P2ConfirmationPage } from './p2/ConfirmationPage'
 import { NextSteps as P2NextSteps } from './p2/NextSteps'
-import { TimeFramePage as P2TimeFramePage} from './p2/TimeFramePage'
+import { TimeFramePage as P2TimeFramePage } from './p2/TimeFramePage'
+import { ImpactStatementPage as P2ImpactStatementPage } from './p2/ImpactStatementPage'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -61,6 +62,7 @@ export const Home = () => (
         <P2ConfirmationPage path="/p2/confirmation" />
         <P2NextSteps path="/p2/nextsteps" />
         <P2TimeFramePage path="/p2/timeframe" />
+        <P2ImpactStatementPage path="/p2/impact" />
       </Router>
     </Screen>
   </Root>

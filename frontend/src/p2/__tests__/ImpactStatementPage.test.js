@@ -3,22 +3,18 @@ import { render, cleanup } from '@testing-library/react'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { ConfirmationSummary } from '../ConfirmationSummary'
+import { ImpactStatementPage } from '../ImpactStatementPage'
 import theme from '../../theme'
 import en from '../../../locale/en/messages.js'
 
 const client = {
   readQuery: () => ({
-    timeFrame: JSON.stringify({}),
-    whatHappened: JSON.stringify({}),
-    scammerDetails: JSON.stringify({}),
     impact: JSON.stringify({}),
-    contactInfo: JSON.stringify({}),
   }),
   writeData: jest.fn(),
 }
 
-describe('<ConfirmationSummary />', () => {
+describe('<ImpactStatementPage />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
@@ -26,7 +22,7 @@ describe('<ConfirmationSummary />', () => {
       <ThemeProvider theme={theme}>
         <ApolloProvider client={client}>
           <I18nProvider language={'en'} catalogs={{ en }}>
-            <ConfirmationSummary />
+            <ImpactStatementPage />
           </I18nProvider>
         </ApolloProvider>
       </ThemeProvider>,

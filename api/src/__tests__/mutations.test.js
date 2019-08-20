@@ -94,4 +94,31 @@ describe('Mutations', () => {
       })
     })
   })
+
+  describe('submitReportP2', () => {
+    it('accepts report data and returns a report ID', async () => {
+      const app = await Server({
+        db: await dbinit(db),
+      })
+
+      const response = await request(app)
+        .post('/graphql')
+        .set('Content-Type', 'application/json; charset=utf-8')
+        .send({
+          query: `
+            mutation {
+              submitReportP2(whatHappened: {whatHappened: "robbed"}) {
+                reportID
+              }
+            }
+          `,
+        })
+      const { data } = response.body
+      expect(data).toEqual({
+        submitReportP2: {
+          reportID: 'mocked uuid',
+        },
+      })
+    })
+  })
 })

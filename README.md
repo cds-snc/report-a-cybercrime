@@ -1,4 +1,4 @@
-# Report a cybercrime / Signaler les crimes informatiques
+# Report a cybercrime / Signalez un crime informatique
 
 Exploring a service that makes it easier for Canadians and businesses to report
 when they encounter or are victims of a cybercrime and that helps police

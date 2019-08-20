@@ -5,9 +5,16 @@ import { Trans } from '@lingui/macro'
 import { I18n } from '@lingui/react'
 import { ApolloConsumer } from 'react-apollo'
 import { H2 } from '../components/header'
-import { Text } from '../components/text'
+import { Text, StyledSpan } from '../components/text'
+import { Container } from '../components/container'
 import { Link } from '../components/link'
-import { getWhatHappened } from '../utils/queriesAndMutations'
+import {
+  getTimeFrame,
+  getWhatHappened,
+  getScammerDetails,
+  getImpact,
+  getP2ContactInfo,
+} from '../utils/queriesAndMutations'
 
 const SectionHeader = props => (
   <H2
@@ -24,8 +31,10 @@ const EditButton = props => (
   </Link>
 )
 
-const timeFrameSummary = () => {
-  let timeFrame
+const timeFrameSummary = client => {
+  let { startDate, endDate } = getTimeFrame(client)
+  startDate = startDate.slice(0, 10)
+  endDate = endDate.slice(0, 10)
   return (
     <React.Fragment>
       <SectionHeader>
@@ -39,8 +48,12 @@ const timeFrameSummary = () => {
           )}
         </I18n>
       </SectionHeader>
-      {timeFrame ? (
-        <Text>{timeFrame}</Text>
+      {startDate ? (
+        <Text>
+          <Trans>
+            {startDate} to {endDate}
+          </Trans>
+        </Text>
       ) : (
         <Text>
           <Trans>
@@ -83,8 +96,8 @@ const whatHappenedSummary = client => {
   )
 }
 
-const scammerSummary = () => {
-  let scammerInfo
+const scammerSummary = client => {
+  const { scammerDetails, files, fileDescriptions } = getScammerDetails(client)
   return (
     <React.Fragment>
       <SectionHeader>
@@ -93,13 +106,29 @@ const scammerSummary = () => {
           {({ i18n }) => (
             <EditButton
               aria-label={i18n._('Edit scammer information')}
-              to="/p2/scammerinfo"
+              to="/p2/scammerdetails"
             />
           )}
         </I18n>
       </SectionHeader>
-      {scammerInfo ? (
-        <Text>{scammerInfo}</Text>
+      {scammerDetails !== '' ||
+      files.length > 0 ||
+      fileDescriptions.length > 0 ? (
+        <React.Fragment>
+          <Text>{scammerDetails}</Text>
+          {files
+            ? files.map((file, index) => (
+                <Container key={index}>
+                  <StyledSpan fontSize={[2, null, 3]} fontWeight="bold">
+                    {file}:
+                  </StyledSpan>{' '}
+                  <StyledSpan fontSize={[2, null, 3]}>
+                    {fileDescriptions[index]}
+                  </StyledSpan>
+                </Container>
+              ))
+            : null}
+        </React.Fragment>
       ) : (
         <Text>
           <Trans>
@@ -112,8 +141,14 @@ const scammerSummary = () => {
   )
 }
 
-const impactSummary = () => {
-  let impact
+const impactSummary = client => {
+  let { howWereYouAffected, otherImpact, damage } = getImpact(client)
+  if (howWereYouAffected.indexOf('Other impact') > -1) {
+    howWereYouAffected = howWereYouAffected.filter(
+      impact => impact != 'Other impact',
+    )
+    howWereYouAffected.push(otherImpact)
+  }
   return (
     <React.Fragment>
       <SectionHeader>
@@ -124,8 +159,11 @@ const impactSummary = () => {
           )}
         </I18n>
       </SectionHeader>
-      {impact ? (
-        <Text>{impact}</Text>
+      {howWereYouAffected.length > 0 || damage != '' ? (
+        <React.Fragment>
+          <Text>{howWereYouAffected.join(', ')}</Text>
+          <Text>{damage}</Text>
+        </React.Fragment>
       ) : (
         <Text>
           <Trans>
@@ -138,8 +176,8 @@ const impactSummary = () => {
   )
 }
 
-const contactSummary = () => {
-  let contact
+const contactSummary = client => {
+  const { fullName, email, phone, postalCode } = getP2ContactInfo(client)
   return (
     <React.Fragment>
       <SectionHeader>
@@ -148,13 +186,18 @@ const contactSummary = () => {
           {({ i18n }) => (
             <EditButton
               aria-label={i18n._('Edit contact information')}
-              to="/p2/contact"
+              to="/p2/contactinfo"
             />
           )}
         </I18n>
       </SectionHeader>
-      {contact ? (
-        <Text>{contact}</Text>
+      {(fullName + email + phone + postalCode).length > 0 ? (
+        <React.Fragment>
+          <Text>{fullName}</Text>
+          <Text>{email}</Text>
+          <Text>{phone}</Text>
+          <Text>{postalCode}</Text>
+        </React.Fragment>
       ) : (
         <Text>
           <Trans>This gives police a way to reach you, if needed.</Trans>
