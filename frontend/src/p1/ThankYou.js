@@ -4,7 +4,7 @@ import { Trans } from '@lingui/macro'
 import { ApolloConsumer } from 'react-apollo'
 import { H1, H2 } from '../components/header'
 import { P } from '../components/paragraph'
-import { A, ButtonLink } from '../components/link'
+import { A } from '../components/link'
 import { TrackPageViews } from '../TrackPageViews'
 import { Container } from '../components/container'
 import { Layout } from '../components/layout'
@@ -80,10 +80,6 @@ export const ThankYou = () => (
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
-    >
-      <ButtonLink type="submit" to="/p1" textAlign="center">
-        <Trans> Report another scam</Trans>
-      </ButtonLink>
-    </Container>
+    ></Container>
   </Layout>
 )
