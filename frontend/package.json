@@ -14,9 +14,8 @@
     "lint": "eslint 'src/**/*.js'",
     "start": "NODE_ENV=production node build/server.js",
     "add-locale": "lingui add-locale",
-    "extract": "lingui extract",
+    "extract": "lingui extract --clean",
     "compile": "lingui compile",
-    "clean": "lingui extract --clean",
     "upgrade-interactive": "npm-check --update",
     "check-translations": "lingui extract && node utils/checkTranslations.js",
     "lingui-helper": "node utils/linguiHelper.js"
