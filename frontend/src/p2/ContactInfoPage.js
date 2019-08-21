@@ -9,7 +9,7 @@ import { Container } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from '../components/layout'
-import { ButtonLink } from '../components/link'
+import { Link } from '../components/link'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { contactInfo: JSON.stringify(data) } })
@@ -36,9 +36,9 @@ export const ContactInfoPage = () => (
         justify-content: space-between;
       `}
     >
-      <ButtonLink type="button" color="black" to="/p2/impact" textAlign="left">
+      <Link type="button" color="black" to="/p2/impact" textAlign="left">
         <Trans>&#8678; Back </Trans>
-      </ButtonLink>
+      </Link>
     </Container>
     <H1>
       <Trans>Leave your contact information</Trans>

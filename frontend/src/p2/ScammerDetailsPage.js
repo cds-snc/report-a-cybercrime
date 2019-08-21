@@ -10,7 +10,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { ScammerDetailsForm } from './forms/ScammerDetailsForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
-import { ButtonLink } from '../components/link'
+import { Link } from '../components/link'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scammerDetails: JSON.stringify(data) } })
@@ -38,14 +38,14 @@ export const ScammerDetailsPage = () => {
           justify-content: space-between;
         `}
       >
-        <ButtonLink
+        <Link
           type="button"
           color="black"
           to="/p2/whathappened"
           textAlign="left"
         >
           <Trans>&#8678; Back </Trans>
-        </ButtonLink>
+        </Link>
       </Container>
       <H1>
         <Trans>About the scammer</Trans>

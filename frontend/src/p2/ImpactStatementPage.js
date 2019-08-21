@@ -11,7 +11,7 @@ import { Steps } from '../components/stepper'
 import { ImpactStatementInfoForm } from './forms/ImpactStatementInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
-import { ButtonLink } from '../components/link'
+import { Link } from '../components/link'
 import { css } from '@emotion/core'
 
 const submitAndNavigate = (client, data) => {
@@ -41,14 +41,14 @@ export const ImpactStatementPage = () => (
         justify-content: space-between;
       `}
     >
-      <ButtonLink
+      <Link
         type="button"
         color="black"
         to="/p2/scammerdetails"
         textAlign="left"
       >
         <Trans>&#8678; Back </Trans>
-      </ButtonLink>
+      </Link>
     </Container>
 
     <H1>
