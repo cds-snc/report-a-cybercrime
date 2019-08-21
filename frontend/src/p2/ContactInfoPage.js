@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
-import { H1, H2 } from '../components/header'
+import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { Steps } from '../components/stepper'
 import { Container } from '../components/container'
