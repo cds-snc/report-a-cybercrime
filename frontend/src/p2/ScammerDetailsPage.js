@@ -46,17 +46,14 @@ export const ScammerDetailsPage = () => {
         >
           <Trans>&#8678; Back </Trans>
         </Link>
-      </Container>
+
       <H1>
         <Trans>About the scammer</Trans>
       </H1>
       <P fontSize={[4, null, 5]} fontWeight="bold">
-        <Trans>We want to find out who is behind this scam</Trans>
-      </P>
-      <P>
         <Trans>
-          Scammers are hard to track down. Any clues you can gather helps police
-          find the person responsible and stop them.
+          Scammers often hide behind their screens. Any clues can help police
+          track down the scammers responsible for these crimes.
         </Trans>
       </P>
       <TrackPageViews />

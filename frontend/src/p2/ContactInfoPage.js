@@ -2,7 +2,7 @@
 import { jsx, css } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
-import { H1, H2 } from '../components/header'
+import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { Steps } from '../components/stepper'
 import { Container } from '../components/container'
@@ -25,6 +25,7 @@ export const ContactInfoPage = () => (
       marginBottom="20px"
     >
       <Steps activeStep={4} steps={[{}, {}, {}, {}, {}, {}]} />
+
     </Container>
 
     <Container
@@ -39,18 +40,18 @@ export const ContactInfoPage = () => (
       <Link type="button" color="black" to="/p2/impact" textAlign="left">
         <Trans>&#8678; Back </Trans>
       </Link>
+
+
     </Container>
+
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>
-    <H2>
-      <Trans>Things will get better</Trans>
-    </H2>
     <P>
       <Trans>
         Please provide your contact details so we can get in touch with you in
-        case we need to check any details with you in the future. We don’t get
-        in contact with everyone who submits a report.
+        case we need to check any information. We don’t follow up with everyone
+        who submits a report.
       </Trans>
     </P>
     <TrackPageViews />

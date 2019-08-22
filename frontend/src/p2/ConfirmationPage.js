@@ -45,6 +45,7 @@ export const ConfirmationPage = () => {
         marginBottom="20px"
       >
         <Steps activeStep={5} steps={[{}, {}, {}, {}, {}, {}]} />
+
       </Container>
 
       <Container
@@ -59,6 +60,8 @@ export const ConfirmationPage = () => {
         <Link type="button" color="black" to="/p2/contactinfo" textAlign="left">
           <Trans>&#8678; Back </Trans>
         </Link>
+
+
       </Container>
       <H1>
         <Trans>Review your report</Trans>

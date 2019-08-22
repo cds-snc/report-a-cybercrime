@@ -42,7 +42,7 @@ const ImpactInput = new GraphQLInputObjectType({
 module.exports.ImpactInput = ImpactInput
 
 const P2ContactInfoInput = new GraphQLInputObjectType({
-  name: 'p2ContactInfo',
+  name: 'P2ContactInfoInput',
   fields: () => ({
     fullName: { type: GraphQLString },
     email: { type: GraphQLString },

@@ -40,11 +40,10 @@ describe('<ScammerDetailsForm />', () => {
         </MockedProvider>
       </ThemeProvider>,
     )
-
-    const inputNode = getByLabelText('Scammer Details')
+    const inputNode = getByLabelText(/Tell us about the scammer/i)
     const nextButton = getByText(/Continue/i)
 
-    fillIn(inputNode, { with: 'lost money' })
+    fillIn(inputNode, { with: 'scammer is bad.' })
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 

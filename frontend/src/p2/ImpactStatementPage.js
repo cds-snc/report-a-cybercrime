@@ -15,8 +15,6 @@ import { Link } from '../components/link'
 import { css } from '@emotion/core'
 
 const submitAndNavigate = (client, data) => {
-  console.log(data)
-
   client.writeData({ data: { impact: JSON.stringify(data) } })
   navigate(getDoneForms(client) ? 'confirmation' : 'contactinfo')
 }
@@ -56,9 +54,8 @@ export const ImpactStatementPage = () => (
     </H1>
     <P>
       <Trans>
-        What happened is not okay. You are doing the right thing by reporting.
-        You are helping others not have to go through the same thing in the
-        future.
+        You are doing the right thing. By reporting, you're helping others not
+        have to go through the same thing in the future.
       </Trans>
     </P>
 
