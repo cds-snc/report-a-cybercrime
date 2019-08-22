@@ -15,7 +15,9 @@ export const NextSteps = () => (
       <Trans>Thank you for reporting</Trans>
     </H1>
     <P>
-      <Trans>We've sent you a confirmation email.</Trans>
+      <Trans>
+        We've sent you a confirmation email with a summary of your report.
+      </Trans>
     </P>
     <H3>
       <Trans>What happens next</Trans>
@@ -32,65 +34,65 @@ export const NextSteps = () => (
       </Li>
       <Li>
         <Trans>
-          Once there is enough information, police could launch an
-          investigation. Police don't always need to follow up, and may only get
-          in touch months later, if at all.
+          Once there's enough information, police could launch an investigation.
+          It's unlikely you'll hear from police directly, and they may only get
+          in touch months from now, if at all.
         </Trans>
       </Li>
       <Li>
         <Trans>
-          You can tell us more by reporting again and referencing the report
-          number #NC300234234.
+          You can tell us more by reporting again and referencing report number
+          #NC300234234.
         </Trans>
       </Li>
     </Ul>
     <H3>
-      <Trans>You can get support</Trans>
+      <Trans>You have other reporting options</Trans>
+    </H3>
+    <Ul>
+      <Li>
+        <Trans>
+          If it happened online, report directly to the website where the scam
+          took place.
+        </Trans>
+      </Li>
+      <Li>
+        <Trans>
+          If you lost money, report to the financial institution where you sent
+          money.
+        </Trans>
+      </Li>
+      <Li>
+        <Trans>
+          If your identity was stolen, report to the credit bureaus,{' '}
+          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
+          <A href="https://www.transunion.ca/">TransUnion</A>.
+        </Trans>
+      </Li>
+    </Ul>
+    <H3>
+      <Trans>You can get more support</Trans>
     </H3>
     <Ul>
       <Li>
         <Trans>
           <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-            Talk to someone and get support
+            Get assistance from Victim Services
           </A>
         </Trans>
       </Li>
       <Li>
         <Trans>
           <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-            Protect yourself in the future
+            Learn how to protect yourself in the future
           </A>
         </Trans>
       </Li>
       <Li>
         <Trans>
           <A href="http://www.antifraudcentre.ca/index-eng.htm">
-            Learn about trending scams
+            See what scams are trending
           </A>
-        </Trans>
-      </Li>
-      <Li>
-        <Trans>
-          <A href="http://www.rcmp-grc.gc.ca/cont/index-eng.htm">Contact us</A>
-        </Trans>
-      </Li>
-    </Ul>
-    <H3>
-      <Trans>You have other options for reporting</Trans>
-    </H3>
-    <Ul>
-      <Li>
-        <Trans>Report directly to the website where the scam took place.</Trans>
-      </Li>
-      <Li>
-        <Trans>Report to the financial institution where you sent money.</Trans>
-      </Li>
-      <Li>
-        <Trans>
-          Report to the credit bureaus,{' '}
-          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-          <A href="https://www.transunion.ca/">TransUnion</A>, if your identity
-          was stolen.
         </Trans>
       </Li>
     </Ul>

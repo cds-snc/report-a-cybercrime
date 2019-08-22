@@ -49,8 +49,8 @@ export const ConfirmationForm = props => {
                         marginBottom={[1, null, 2]}
                       >
                         <Trans>
-                          Is there information you’d like to add that didn’t fit
-                          anywhere else?
+                          The more detail you can give, the more police will
+                          have to go on.
                         </Trans>
                       </Text>
                     </label>

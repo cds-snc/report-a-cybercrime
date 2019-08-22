@@ -32,9 +32,9 @@ export const ContactInfoPage = () => (
     </H1>
     <P>
       <Trans>
-        Please provide your contact details so we can get in touch with you in
-        case we need to check any information. We don’t follow up with everyone
-        who submits a report.
+        We will use this to send you a confirmation email. Your information
+        could also be shared with police in case they need to check any details
+        when investigating.
       </Trans>
     </P>
     <TrackPageViews />

@@ -7,7 +7,6 @@ import { Container } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
-import { P } from '../components/paragraph'
 import {
   getTimeFrame,
   getWhatHappened,
@@ -50,11 +49,6 @@ export const ConfirmationPage = () => {
       <H1>
         <Trans>Review your report</Trans>
       </H1>
-      <P>
-        <Trans>
-          The more detail you give, the more likely it will be investigated.
-        </Trans>
-      </P>
       <ConfirmationSummary />
       <ConfirmationForm onSubmit={submit} />
     </Layout>

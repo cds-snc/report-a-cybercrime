@@ -40,7 +40,7 @@ export const WhatHappenedPage = () => (
       </Trans>
     </P>
     <P>
-      <Trans>Think about things such as:</Trans>
+      <Trans>Think about including things such as:</Trans>
     </P>
     <Ul>
       <Li>

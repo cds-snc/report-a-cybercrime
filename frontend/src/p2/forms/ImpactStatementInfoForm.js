@@ -13,8 +13,6 @@ import { P } from '../../components/paragraph'
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
 import { TextArea } from '../../components/text-area'
-import { Ul } from '../../components/unordered-list'
-import { Li } from '../../components/list-item'
 import { Label } from '../../components/label'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getImpact } from '../../utils/queriesAndMutations'
@@ -100,20 +98,8 @@ export const ImpactStatementInfoForm = props => (
 
             <br />
             <H2 fontSize={[4, null, 5]} marginTop={[3, null, 4]}>
-              <Trans>Describe how you were affected</Trans>
+              <Trans>Tell us more about the impact</Trans>
             </H2>
-            <Ul>
-              <Li>
-                <Trans>What was lost or damaged?</Trans>
-              </Li>
-              <Li>
-                <Trans>What personal information was compromised?</Trans>
-              </Li>
-              <Li>
-                <Trans>How much money was involved?</Trans>
-              </Li>
-            </Ul>
-
             <div>
               <Field
                 name="damage"

@@ -38,8 +38,8 @@ export const TimeFramePage = () => (
     </H1>
     <P>
       <Trans>
-        It’s okay if you don’t know exactly when the scam took place. Give your
-        best guess.
+        It’s okay if you don’t know exactly when the scam took place. You can
+        give your best guess or leave this blank.
       </Trans>
     </P>
     <TrackPageViews />
