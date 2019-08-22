@@ -4,6 +4,7 @@
   "<0>Protect yourself in the future</0>": "<0>Protégez-vous à l'avenir",
   "<0>Talk to someone and get support</0>": "Parlez à quelqu'un et obtenez de l'aide",
   "<0>You're not the only one being affected by this scam.</0>": "<0>Vous n'êtes pas la seule personne affectée par cette fraude.</0>",
+  "<0>◀</0> Back": "<0>◀</0> Retour",
   "A local police officer may need to follow up for more information, should your report becomes an investigation.": "Si votre rapport devient une investigation, la police pourrait faire un suivi afin d'obtenir plus de renseignements.",
   "ALPHA": "ALPHA",
   "About the scammer": "À propos du fraudeur",
@@ -180,9 +181,5 @@
   "en": "fr",
   "loading...": "chargement en cours...",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
-  "{0} to {1}": "{0} au {1}",
-  "{startDate} to {endDate}": "{startDate} au {endDate}",
-  "{whenDidItStart} to {whenWasLastInteraction}": "{whenDidItStart} au {whenWasLastInteraction}",
-  "⇦ Back": "⇦ Retour",
-  "⇦Back": "⇦Retour"
+  "{startDate} to {endDate}": "{startDate} au {endDate}"
 }
