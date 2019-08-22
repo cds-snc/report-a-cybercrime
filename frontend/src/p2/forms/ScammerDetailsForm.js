@@ -115,7 +115,7 @@ export const ScammerDetailsFormWrapped = props => {
                 </Li>
                 <Li>
                   <Trans>
-                    Conversations and meesages of what the scammer said
+                    Conversations and messages of what the scammer said
                   </Trans>
                 </Li>
                 <Li>

@@ -71,8 +71,8 @@ export const LandingPage = () => (
         <Trans>
           Police is focused on catching those responsible and will not be able
           to help you recover money. You should also report the scam to the
-          website where it took place, to your financial institution, and
-          tocredit agencies,{' '}
+          website where it took place, to your financial institution, and to
+          credit agencies,{' '}
           <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
           <A href="https://www.transunion.ca/">TransUnion</A>, if you lost money
           or personal information.
