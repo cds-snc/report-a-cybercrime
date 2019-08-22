@@ -100,20 +100,8 @@ export const ImpactStatementInfoForm = props => (
 
             <br />
             <H2 fontSize={[4, null, 5]} marginTop={[3, null, 4]}>
-              <Trans>Describe how you were affected</Trans>
+              <Trans>Tell us more about the impact</Trans>
             </H2>
-            <Ul>
-              <Li>
-                <Trans>What was lost or damaged?</Trans>
-              </Li>
-              <Li>
-                <Trans>What personal information was compromised?</Trans>
-              </Li>
-              <Li>
-                <Trans>How much money was involved?</Trans>
-              </Li>
-            </Ul>
-
             <div>
               <Field
                 name="damage"
