@@ -57,8 +57,8 @@ const timeFrameSummary = client => {
       ) : (
         <Text>
           <Trans>
-            When the scam took place is crucial information for police to be
-            able to investigate.
+            If you can, give us an idea of when the scam took place so that
+            police are able to investigate.
           </Trans>
         </Text>
       )}
@@ -87,7 +87,7 @@ const whatHappenedSummary = client => {
       ) : (
         <Text>
           <Trans>
-            Knowing what made this illegal is critical for police to be able to
+            If you can, tell us what you know so that police are be able to
             investigate.
           </Trans>
         </Text>
@@ -132,8 +132,8 @@ const scammerSummary = client => {
       ) : (
         <Text>
           <Trans>
-            Any clues about the scammer’s identity or proof from supporting
-            documents helps police.
+            If you can, share any details you know so that police can try to
+            identify suspects.
           </Trans>
         </Text>
       )}
@@ -167,8 +167,8 @@ const impactSummary = client => {
       ) : (
         <Text>
           <Trans>
-            Understanding the impact of these crimes helps us better support
-            people affected.
+            If you can, tell us how the scam impacted you so that we can better
+            support other people who are affected.
           </Trans>
         </Text>
       )}
@@ -200,7 +200,10 @@ const contactSummary = client => {
         </React.Fragment>
       ) : (
         <Text>
-          <Trans>This gives police a way to reach you, if needed.</Trans>
+          <Trans>
+            Please provide your contact details. This gives us a way to reach
+            you.
+          </Trans>
         </Text>
       )}
     </React.Fragment>
