@@ -50,11 +50,6 @@ export const ConfirmationPage = () => {
       <H1>
         <Trans>Review your report</Trans>
       </H1>
-      <P>
-        <Trans>
-          The more detail you give, the more likely it will be investigated.
-        </Trans>
-      </P>
       <ConfirmationSummary />
       <ConfirmationForm onSubmit={submit} />
     </Layout>
