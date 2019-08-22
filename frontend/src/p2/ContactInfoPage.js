@@ -9,7 +9,7 @@ import { Container } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from '../components/layout'
-import { Link } from '../components/link'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { contactInfo: JSON.stringify(data) } })
@@ -26,20 +26,7 @@ export const ContactInfoPage = () => (
     >
       <Steps activeStep={4} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
-
-    <Container
-      width="105px"
-      marginTop={[1, null, 1]}
-      css={css`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      `}
-    >
-      <Link type="button" color="black" to="/p2/impact" textAlign="left">
-        <Trans>&#9664; Back </Trans>
-      </Link>
-    </Container>
+    <BackButton route="/p2/impact" />
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>

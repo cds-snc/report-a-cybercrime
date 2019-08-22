@@ -10,7 +10,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { ScammerDetailsForm } from './forms/ScammerDetailsForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
-import { Link } from '../components/link'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scammerDetails: JSON.stringify(data) } })
@@ -28,25 +28,7 @@ export const ScammerDetailsPage = () => {
       >
         <Steps activeStep={2} steps={[{}, {}, {}, {}, {}, {}]} />
       </Container>
-
-      <Container
-        width="105px"
-        marginTop={[1, null, 1]}
-        css={css`
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        `}
-      >
-        <Link
-          type="button"
-          color="black"
-          to="/p2/whathappened"
-          textAlign="left"
-        >
-          <Trans>&#9664;Back</Trans>
-        </Link>
-      </Container>
+      <BackButton route="/p2/whathappened" />
       <H1>
         <Trans>About the scammer</Trans>
       </H1>

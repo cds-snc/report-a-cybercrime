@@ -12,7 +12,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
-import { Link } from '../components/link'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { whatHappened: JSON.stringify(data) } })
@@ -29,20 +29,7 @@ export const WhatHappenedPage = () => (
     >
       <Steps activeStep={1} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
-
-    <Container
-      width="105px"
-      marginTop={[1, null, 1]}
-      css={css`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      `}
-    >
-      <Link type="button" color="black" to="/p2/timeframe" textAlign="left">
-        <Trans>&#9664;Back</Trans>
-      </Link>
-    </Container>
+    <BackButton route="/p2/timeframe" />
     <H1>
       <Trans>Describe what happened</Trans>
     </H1>

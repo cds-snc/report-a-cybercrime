@@ -18,7 +18,7 @@ import {
 } from '../utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
-import { Link } from '../components/link'
+import { BackButton } from '../components/backbutton'
 
 const submit = (client, submitReportP2) => {
   const data = {
@@ -46,20 +46,7 @@ export const ConfirmationPage = () => {
       >
         <Steps activeStep={5} steps={[{}, {}, {}, {}, {}, {}]} />
       </Container>
-
-      <Container
-        width="105px"
-        marginTop={[1, null, 1]}
-        css={css`
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        `}
-      >
-        <Link type="button" color="black" to="/p2/contactinfo" textAlign="left">
-          <Trans>&#9664; Back </Trans>
-        </Link>
-      </Container>
+      <BackButton route="/p2/contactinfo" />
       <H1>
         <Trans>Review your report</Trans>
       </H1>
