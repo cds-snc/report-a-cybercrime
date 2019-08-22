@@ -12,7 +12,7 @@ import { Steps } from '../components/stepper'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scamInfo: JSON.stringify(data) } })
-  navigate(getDoneForms(client) ? 'confirmation' : 'scammerdetails')
+  navigate(getDoneForms(client) ? 'confirmation' : 'whathappened')
 }
 
 export const TimeFramePage = () => (
