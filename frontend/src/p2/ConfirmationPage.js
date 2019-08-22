@@ -7,7 +7,6 @@ import { Container } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
-import { P } from '../components/paragraph'
 import {
   getTimeFrame,
   getWhatHappened,
