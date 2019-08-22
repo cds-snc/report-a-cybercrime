@@ -32,10 +32,11 @@ export const ScammerDetailsPage = () => {
       <H1>
         <Trans>About the scammer</Trans>
       </H1>
-      <P fontSize={[4, null, 5]} fontWeight="bold">
+      <P>
         <Trans>
-          Scammers often hide behind their screens. Any clues can help police
-          track down the scammers responsible for these crimes.
+          It's often hard to tell who is behind a scam. Any clues about the
+          source of the scam can help police track down the person responsible
+          for these crimes.
         </Trans>
       </P>
       <TrackPageViews />
