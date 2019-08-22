@@ -18,7 +18,7 @@ import {
 } from '../utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
-import { ButtonLink } from '../components/link'
+import { Link } from '../components/link'
 
 const submit = (client, submitReportP2) => {
   const data = {
@@ -56,14 +56,9 @@ export const ConfirmationPage = () => {
           justify-content: space-between;
         `}
       >
-        <ButtonLink
-          type="button"
-          color="black"
-          to="/p2/contactinfo"
-          textAlign="left"
-        >
-          <Trans>&#8678; Back </Trans>
-        </ButtonLink>
+        <Link type="button" color="black" to="/p2/contactinfo" textAlign="left">
+          <Trans>&#9664; Back </Trans>
+        </Link>
       </Container>
       <H1>
         <Trans>Review your report</Trans>

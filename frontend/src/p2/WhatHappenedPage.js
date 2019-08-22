@@ -12,7 +12,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
-import { ButtonLink } from '../components/link'
+import { Link } from '../components/link'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { whatHappened: JSON.stringify(data) } })
@@ -39,14 +39,9 @@ export const WhatHappenedPage = () => (
         justify-content: space-between;
       `}
     >
-      <ButtonLink
-        type="button"
-        color="black"
-        to="/p2/timeframe"
-        textAlign="left"
-      >
-        <Trans>&#8678;Back</Trans>
-      </ButtonLink>
+      <Link type="button" color="black" to="/p2/timeframe" textAlign="left">
+        <Trans>&#9664;Back</Trans>
+      </Link>
     </Container>
     <H1>
       <Trans>Describe what happened</Trans>

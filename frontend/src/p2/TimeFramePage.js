@@ -9,7 +9,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
 import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
-import { ButtonLink } from '../components/link'
+import { Link } from '../components/link'
 import { css } from '@emotion/core'
 
 const submitAndNavigate = (client, data) => {
@@ -27,7 +27,6 @@ export const TimeFramePage = () => (
     >
       <Steps activeStep={0} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
-
     <Container
       width="105px"
       marginTop={[1, null, 1]}
@@ -37,9 +36,9 @@ export const TimeFramePage = () => (
         justify-content: space-between;
       `}
     >
-      <ButtonLink type="button" color="black" to="/p2" textAlign="left">
-        <Trans>&#8678; Back </Trans>
-      </ButtonLink>
+      <Link type="button" color="black" to="/p2" textAlign="left">
+        <Trans>&#9664; Back </Trans>
+      </Link>
     </Container>
 
     {/* <Link type="button" color="black" to="/p2/" textAlign="center">
