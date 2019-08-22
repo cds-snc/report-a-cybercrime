@@ -69,7 +69,7 @@ export const ScammerDetailsFormWrapped = props => {
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <H2 fontSize={[4, null, 5]} marginTop="40px">
-                <Trans>Share identifying details about the scammer</Trans>
+                <Trans>Share any identifying details about the scammer</Trans>
               </H2>
               <P>
                 <Trans>Think about including things such as:</Trans>
@@ -104,7 +104,7 @@ export const ScammerDetailsFormWrapped = props => {
               </div>
 
               <H2 fontSize={[4, null, 5]} marginTop="40px">
-                <Trans>Share files to show what happened</Trans>
+                <Trans>Share any files that show what happened</Trans>
               </H2>
               <P>
                 <Trans>Think about including things such as:</Trans>
