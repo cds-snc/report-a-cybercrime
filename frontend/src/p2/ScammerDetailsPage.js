@@ -10,6 +10,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { ScammerDetailsForm } from './forms/ScammerDetailsForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scammerDetails: JSON.stringify(data) } })
@@ -27,6 +28,7 @@ export const ScammerDetailsPage = () => {
       >
         <Steps activeStep={2} steps={[{}, {}, {}, {}, {}, {}]} />
       </Container>
+      <BackButton route="/p2/whathappened" />
       <H1>
         <Trans>About the scammer</Trans>
       </H1>

@@ -9,6 +9,7 @@ import { Container } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from '../components/layout'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { contactInfo: JSON.stringify(data) } })
@@ -25,7 +26,7 @@ export const ContactInfoPage = () => (
     >
       <Steps activeStep={4} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
-
+    <BackButton route="/p2/impact" />
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>

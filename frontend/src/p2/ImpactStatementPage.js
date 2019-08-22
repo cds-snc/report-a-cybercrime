@@ -11,6 +11,7 @@ import { Steps } from '../components/stepper'
 import { ImpactStatementInfoForm } from './forms/ImpactStatementInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { impact: JSON.stringify(data) } })
@@ -27,6 +28,8 @@ export const ImpactStatementPage = () => (
     >
       <Steps activeStep={3} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
+    <BackButton route="/p2/scammerdetails" />
+
     <H1>
       <Trans>Impact caused by the scam</Trans>
     </H1>

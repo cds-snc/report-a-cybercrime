@@ -18,6 +18,7 @@ import {
 } from '../utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
+import { BackButton } from '../components/backbutton'
 
 const submit = (client, submitReportP2) => {
   const data = {
@@ -45,6 +46,7 @@ export const ConfirmationPage = () => {
       >
         <Steps activeStep={5} steps={[{}, {}, {}, {}, {}, {}]} />
       </Container>
+      <BackButton route="/p2/contactinfo" />
       <H1>
         <Trans>Review your report</Trans>
       </H1>

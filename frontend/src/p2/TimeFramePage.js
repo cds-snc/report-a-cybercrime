@@ -8,6 +8,7 @@ import { TimeFrameInfoForm } from './forms/TimeFrameInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
 import { Container } from '../components/container'
+import { BackButton } from '../components/backbutton'
 import { Steps } from '../components/stepper'
 
 const submitAndNavigate = (client, data) => {
@@ -25,6 +26,13 @@ export const TimeFramePage = () => (
     >
       <Steps activeStep={0} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
+
+    <BackButton route="/p2" />
+
+    {/* <Link type="button" color="black" to="/p2/" textAlign="center">
+                <Trans>Cancel report</Trans>
+              </Link> */}
+
     <H1>
       <Trans>When did it happen?</Trans>
     </H1>
