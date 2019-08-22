@@ -46,7 +46,7 @@ export const LandingPage = () => (
 
     <P>
       <Trans>
-        You're not alone. You can&nbsp;
+        You're not alone. You can{' '}
         <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
           talk to someone and get support.
         </A>
@@ -63,18 +63,19 @@ export const LandingPage = () => (
           <A href="http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3">
             National Cybercrime Coordination Unit
           </A>{' '}
-          helps police across Canada catch cybercriminals.
+          helps police across Canada catch cybercriminals by providing
+          intelligence for investigations.
         </Trans>
       </P>
       <P>
         <Trans>
-          Police are focused on stopping these crimes. Unfortunately, they often
-          cannot get your money back. You should report the scam to the website
-          where it took place, and to your financial institution and credit
-          agencies,{' '}
+          Police is focused on catching those responsible and will not be able
+          to help you recover money. You should also report the scam to the
+          website where it took place, to your financial institution, and
+          tocredit agencies,{' '}
           <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-          <A href="https://www.transunion.ca/">TransUnion</A>, if you lost
-          money.
+          <A href="https://www.transunion.ca/">TransUnion</A>, if you lost money
+          or personal information.
         </Trans>
       </P>
     </InfoCard>
@@ -99,7 +100,7 @@ export const LandingPage = () => (
         <Trans>Documents, screenshots, receipts, and conversations</Trans>
       </Li>
       <Li>
-        <Trans>Information on how the scam impacted you</Trans>
+        <Trans>Information on how the scam has impacted you</Trans>
       </Li>
     </Ul>
 
