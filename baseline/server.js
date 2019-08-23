@@ -1,6 +1,7 @@
 const express = require('express')
 var bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
+var rfc6902 = require('rfc6902')
 const app = express()
 
 app.use(fileUpload())
@@ -290,7 +291,9 @@ app.post('/CAFCFRS/api/v1/public-complaints/start', (req, res) => {
 
 app.post('/CAFCFRS/api/v1/public-complaints/:id', (req, res) => {
   console.log('id: ', req.params.id)
-  report = req.body
+  //report = req.body
+  const patch = rfc6902.createPatch(report, req.body)
+  rfc6902.applyPatch(report, patch)
   res.json(report)
 })
 
