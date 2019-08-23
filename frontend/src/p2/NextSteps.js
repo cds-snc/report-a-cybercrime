@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
@@ -9,6 +9,8 @@ import { Li } from '../components/list-item'
 import { InfoCard } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Layout } from '../components/layout'
+import { Button } from '../components/button'
+import { Container } from '../components/container'
 
 export const NextSteps = () => (
   <Layout>
@@ -94,5 +96,18 @@ export const NextSteps = () => (
       </Li>
     </Ul>
     <TrackPageViews />
+    <Container
+      width="305px"
+      marginTop={[1, null, 1]}
+      css={css`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      `}
+    >
+      <Button type="button" to="/p2/" textAlign="center">
+        <Trans>Report another scam</Trans>
+      </Button>
+    </Container>
   </Layout>
 )
