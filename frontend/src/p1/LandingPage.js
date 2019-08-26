@@ -33,14 +33,13 @@ export const LandingPage = () => (
     </ApolloConsumer>
 
     <P>
-      <Trans>
-        Tell the RCMP's National Cybercrime Coordination Unit about a scam.
-      </Trans>
+      <Trans>Tell the Royal Canadian Mounted Police (RCMP) about a scam.</Trans>
     </P>
     <P>
       <Trans>
-        The National Cybercrime Coordination Unit will analyze your report and
-        work with police across Canada to stop this from happening again.
+        The RCMP's National Cybercrime Coordination Unit will analyze your
+        report and work with police across Canada to stop this from happening
+        again.
       </Trans>
     </P>
     <H2 fontSize={[4, null, 5]}>
