@@ -1,8 +1,16 @@
 const express = require('express')
 var bodyParser = require('body-parser')
+const { Database, aql } = require('arangojs')
 const fileUpload = require('express-fileupload')
 var rfc6902 = require('rfc6902')
 const app = express()
+
+const { DB_URL: url, DB_PASSWORD: dbpass } = process.env
+
+const db = new Database({ url })
+db.useDatabase('cybercrime')
+db.useBasicAuth('root', dbpass)
+const cybercrimeReports = db.collection('reports')
 
 app.use(fileUpload())
 app.use(bodyParser.json())
@@ -274,9 +282,9 @@ app.post('/CAFCFRS/api/v1/validate-session', (req, res) => {
   res.send('true')
 })
 
-app.post('/CAFCFRS/api/v1/public-complaints/submit', (req, res) => {
-  // print what we got
-  console.log('submitted: ', JSON.stringify(report))
+app.post('/CAFCFRS/api/v1/public-complaints/submit', async (req, res) => {
+  // save what we got
+  await cybercrimeReports.save(report)
   // Reset the state:
   report = emptyReport
   // This returns the form contents?
