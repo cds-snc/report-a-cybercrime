@@ -55,13 +55,19 @@ export const LandingPage = () => (
           <Trans>Tell us how much money was lost</Trans>
         </Li>
         <Li>
-          <Trans>Add details about the scammer</Trans>
+          <Trans>Add clues about the suspect</Trans>
         </Li>
         <Li>
           <Trans>Attach any supporting files</Trans>
         </Li>
       </Ul>
     </Text>
+    <P>
+      <Trans>
+        No information is mandatory. The more you can tell us, the more police
+        will have to go on.
+      </Trans>
+    </P>
     <ButtonLink color="black" mb={[3, null, 5]} to="scaminfo">
       <Trans>Report now</Trans>
     </ButtonLink>
