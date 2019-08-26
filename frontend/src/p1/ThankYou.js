@@ -49,7 +49,7 @@ export const ThankYou = () => (
     <P>
       <Trans>
         An analyst will now assess the information and combine it with other
-        reports to help protect others or help police catch scammers.
+        reports to help police catch scammers.
       </Trans>
     </P>
     <H2 fontSize={[4, null, 5]}>
