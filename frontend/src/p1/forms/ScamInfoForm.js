@@ -53,7 +53,12 @@ export class ScamInfoForm extends Component {
 
   localOnSubmit = (client, data) => {
     const { onSubmit } = this.props
-    data.whenWereYouContacted = this.startDate.toISOString().slice(0, 10)
+
+    if (this.startDate != null && this.startDate.length > 0) {
+      data.whenWereYouContacted = this.startDate.toISOString().slice(0, 10)
+    } else {
+      data.whenWereYouContacted = ''
+    }
     onSubmit(client, data)
   }
 

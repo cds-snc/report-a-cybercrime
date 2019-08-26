@@ -26,3 +26,4 @@ images:
     newTag: master-fca5248
   - name: acrrcmpcybercrime.azurecr.io/frontend
     newTag: master-f6f0331
+

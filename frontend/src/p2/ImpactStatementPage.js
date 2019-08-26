@@ -11,6 +11,7 @@ import { Steps } from '../components/stepper'
 import { ImpactStatementInfoForm } from './forms/ImpactStatementInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { impact: JSON.stringify(data) } })
@@ -27,14 +28,15 @@ export const ImpactStatementPage = () => (
     >
       <Steps activeStep={3} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
+    <BackButton route="/p2/scammerdetails" />
+
     <H1>
       <Trans>Impact caused by the scam</Trans>
     </H1>
     <P>
       <Trans>
-        What happened is not okay. You are doing the right thing by reporting.
-        You are helping others not have to go through the same thing in the
-        future.
+        You are not the only one going through this. Tell us more about how it's
+        impacted you so that others don't have to go through the same thing.
       </Trans>
     </P>
 

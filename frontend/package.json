@@ -14,9 +14,8 @@
     "lint": "eslint 'src/**/*.js'",
     "start": "NODE_ENV=production node build/server.js",
     "add-locale": "lingui add-locale",
-    "extract": "lingui extract",
+    "extract": "lingui extract --clean",
     "compile": "lingui compile",
-    "clean": "lingui extract --clean",
     "upgrade-interactive": "npm-check --update",
     "check-translations": "lingui extract && node utils/checkTranslations.js",
     "lingui-helper": "node utils/linguiHelper.js"
@@ -93,6 +92,7 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^3.0.0",
+    "is-react": "^1.3.3",
     "jest": "^24.8.0",
     "jest-dom": "^3.5.0",
     "jest-emotion": "^10.0.14",

@@ -10,6 +10,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { ScammerDetailsForm } from './forms/ScammerDetailsForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scammerDetails: JSON.stringify(data) } })
@@ -27,13 +28,15 @@ export const ScammerDetailsPage = () => {
       >
         <Steps activeStep={2} steps={[{}, {}, {}, {}, {}, {}]} />
       </Container>
+      <BackButton route="/p2/whathappened" />
       <H1>
         <Trans>About the scammer</Trans>
       </H1>
-      <P fontSize={[4, null, 5]} fontWeight="bold">
+      <P>
         <Trans>
-          Scammers often hide behind their screens. Any clues can help police
-          track down the scammers responsible for these crimes.
+          It's often hard to tell who is behind a scam. Any clues about the
+          source of the scam can help police track down the person responsible
+          for these crimes.
         </Trans>
       </P>
       <TrackPageViews />

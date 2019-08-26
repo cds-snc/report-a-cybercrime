@@ -34,14 +34,13 @@ export const LandingPage = () => (
 
     <P>
       <Trans>
-        Tell the RCMP's National Cybercrime Coordination Unit (NC3) about a
-        scam.
+        Tell the RCMP's National Cybercrime Coordination Unit about a scam.
       </Trans>
     </P>
     <P>
       <Trans>
-        NC3 will analyze your report and work with police across Canada to stop
-        this from happening again.
+        The National Cybercrime Coordination Unit will analyze your report and
+        work with police across Canada to stop this from happening again.
       </Trans>
     </P>
     <H2 fontSize={[4, null, 5]}>

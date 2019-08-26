@@ -25,6 +25,7 @@
   "rules": {
     "no-unused-vars": [2, { "args": "all", "argsIgnorePattern": "^_" }],
     "react-hooks/rules-of-hooks": "error",
+    "react/no-unescaped-entities": 0,
     "react-hooks/exhaustive-deps": "warn",
     "jsx-a11y/label-has-associated-control": [
       2,
