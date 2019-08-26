@@ -2,13 +2,14 @@
 import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
-import { H1, H2 } from '../components/header'
+import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { Steps } from '../components/stepper'
 import { Container } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from '../components/layout'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { contactInfo: JSON.stringify(data) } })
@@ -25,18 +26,15 @@ export const ContactInfoPage = () => (
     >
       <Steps activeStep={4} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
-
+    <BackButton route="/p2/impact" />
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>
-    <H2>
-      <Trans>Things will get better</Trans>
-    </H2>
     <P>
       <Trans>
-        Please provide your contact details so we can get in touch with you in
-        case we need to check any details with you in the future. We don’t get
-        in contact with everyone who submits a report.
+        We will use this to send you a confirmation email. Your information
+        could also be shared with police in case they need to check any details
+        when investigating.
       </Trans>
     </P>
     <TrackPageViews />

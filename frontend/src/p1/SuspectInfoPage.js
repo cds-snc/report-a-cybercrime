@@ -27,12 +27,12 @@ export const SuspectInfoPage = () => (
       <Steps activeStep={2} steps={[{}, {}, {}, {}, {}]} />
     </Container>
     <H1>
-      <Trans>Add scammer details</Trans>
+      <Trans>Add suspect clues</Trans>
     </H1>
     <P>
       <Trans>
-        Any clues about who might be responsible or who they claim to be can
-        help police identify suspects.
+        Any information that was used by the scammer can help police identify
+        suspects.
       </Trans>
     </P>
     <TrackPageViews />

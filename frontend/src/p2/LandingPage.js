@@ -46,51 +46,42 @@ export const LandingPage = () => (
 
     <P>
       <Trans>
-        You are not alone.
+        You're not alone. You can{' '}
         <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-          Talk to someone and get support.
+          talk to someone and get support.
         </A>
       </Trans>
     </P>
 
     <InfoCard>
       <H2 fontSize={[4, null, 5]}>
-        <Trans>
-          Help the police stop these crimes by telling them what happened
-        </Trans>
+        <Trans>Help stop these crimes by reporting to police</Trans>
       </H2>
-
       <P>
         <Trans>
           The RCMP's new{' '}
           <A href="http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3">
             National Cybercrime Coordination Unit
           </A>{' '}
-          helps police across Canada catch cybercriminals.
+          helps police across Canada catch cybercriminals by providing
+          intelligence for investigations.
         </Trans>
       </P>
-
       <P>
         <Trans>
-          Police will use your report either for intelligence or for
-          investigations. They will not be able to help you resolve your
-          situation or recover money.
-        </Trans>
-      </P>
-
-      <P>
-        <Trans>
-          You may also want to report to the website where the scam took place,
-          to your bank, if you lost money, and to the credit agencies,{' '}
+          Police is focused on catching those responsible and will not be able
+          to help you recover money. You should also report the scam to the
+          website where it took place, to your financial institution, and to
+          credit agencies,{' '}
           <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-          <A href="https://www.transunion.ca/">TransUnion</A>, if you lost
-          personal information.
+          <A href="https://www.transunion.ca/">TransUnion</A>, if you lost money
+          or personal information.
         </Trans>
       </P>
     </InfoCard>
 
     <H2 fontSize={[4, null, 5]} marginTop={[4, null, 5]}>
-      <Trans>Gather all you can about the scam.</Trans>
+      <Trans>Gather all you can about the scam</Trans>
     </H2>
 
     <P>
@@ -106,10 +97,10 @@ export const LandingPage = () => (
         </Trans>
       </Li>
       <Li>
-        <Trans>Documents, screenshots, receipts and/or conversations</Trans>
+        <Trans>Documents, screenshots, receipts, and conversations</Trans>
       </Li>
       <Li>
-        <Trans>Information on how the scam impacted you</Trans>
+        <Trans>Information on how the scam has impacted you</Trans>
       </Li>
     </Ul>
 

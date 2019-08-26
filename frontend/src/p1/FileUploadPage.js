@@ -57,15 +57,17 @@ class FileUploadInternal extends Component {
         >
           <Steps activeStep={3} steps={[{}, {}, {}, {}, {}]} />
         </Container>
-        <H1 marginBottom="70px">
+        <H1>
           <Trans>Attach supporting files</Trans>
         </H1>
         <P>
           <Trans>
-            {' '}
-            Supporting files could include copies of emails, conversations, and
-            receipts. Any documentation could serve as evidence for police.
+            Files could include copies of emails, conversations, recordings,
+            receipts, or any other evidence that shows what happened.
           </Trans>
+        </P>
+        <P>
+          <Trans>Please attach one file at a time.</Trans>
         </P>
         <Container
           width="300px"
@@ -80,9 +82,12 @@ class FileUploadInternal extends Component {
             paddingLeft="15px"
             paddingRight="15px"
           >
-            <Trans>Attach file</Trans>
+            <Trans>Add file</Trans>
           </FileUpload>
         </Container>
+        <P>
+          <Trans> </Trans>
+        </P>
         <hr />
 
         <I18n>

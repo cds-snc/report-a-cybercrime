@@ -33,15 +33,13 @@ export const LandingPage = () => (
     </ApolloConsumer>
 
     <P>
-      <Trans>
-        Tell the RCMP's National Cybercrime Coordination Unit (NC3) about a
-        scam.
-      </Trans>
+      <Trans>Tell the Royal Canadian Mounted Police (RCMP) about a scam.</Trans>
     </P>
     <P>
       <Trans>
-        NC3 will analyze your report and work with police across Canada to stop
-        this from happening again.
+        The RCMP's National Cybercrime Coordination Unit will analyze your
+        report and work with police across Canada to stop this from happening
+        again.
       </Trans>
     </P>
     <H2 fontSize={[4, null, 5]}>
@@ -57,13 +55,19 @@ export const LandingPage = () => (
           <Trans>Tell us how much money was lost</Trans>
         </Li>
         <Li>
-          <Trans>Add details about the scammer</Trans>
+          <Trans>Add clues about the suspect</Trans>
         </Li>
         <Li>
           <Trans>Attach any supporting files</Trans>
         </Li>
       </Ul>
     </Text>
+    <P>
+      <Trans>
+        No information is mandatory. The more you can tell us, the more police
+        will have to go on.
+      </Trans>
+    </P>
     <ButtonLink color="black" mb={[3, null, 5]} to="scaminfo">
       <Trans>Report now</Trans>
     </ButtonLink>

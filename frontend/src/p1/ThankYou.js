@@ -41,12 +41,15 @@ export const ThankYou = () => (
       </Trans>
     </P>
     <P>
-      <Trans>NC3 has received your report.</Trans>
+      <Trans>
+        The RCMP&apos;s National Cybercrime Coordination Unit has received your
+        report.
+      </Trans>
     </P>
     <P>
       <Trans>
         An analyst will now assess the information and combine it with other
-        reports to help protect others or help police catch scammers.
+        reports to help police catch scammers.
       </Trans>
     </P>
     <H2 fontSize={[4, null, 5]}>

@@ -69,26 +69,21 @@ export const ScammerDetailsFormWrapped = props => {
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <H2 fontSize={[4, null, 5]} marginTop="40px">
-                <Trans>
-                  Share details that could help identify the scammer
-                </Trans>
+                <Trans>Share any identifying details about the scammer</Trans>
               </H2>
               <P>
                 <Trans>Think about including things such as:</Trans>
               </P>
               <Ul>
                 <Li>
-                  <Trans>How they contacted you and who they claim to be</Trans>
+                  <Trans>Who the scammer claimed to be</Trans>
+                </Li>
+                <Li>
+                  <Trans>Details about your interaction or transactions</Trans>
                 </Li>
                 <Li>
                   <Trans>
-                    Their usernames, email address, or website links
-                  </Trans>
-                </Li>
-                <Li>
-                  <Trans>
-                    Any other details about your interaction or transaction with
-                    the scammer
+                    Email addresses, phone numbers, or website links
                   </Trans>
                 </Li>
               </Ul>
@@ -109,15 +104,23 @@ export const ScammerDetailsFormWrapped = props => {
               </div>
 
               <H2 fontSize={[4, null, 5]} marginTop="40px">
-                <Trans>Share files to show what the scammer did</Trans>
+                <Trans>Share any files that show what happened</Trans>
               </H2>
               <P>
                 <Trans>Think about including things such as:</Trans>
               </P>
               <Ul>
                 <Li>
+                  <Trans>Screenshots or photos of what the scammer did</Trans>
+                </Li>
+                <Li>
                   <Trans>
-                    Screenshots, conversations, bank statements, and receipts
+                    Conversations and messages of what the scammer said
+                  </Trans>
+                </Li>
+                <Li>
+                  <Trans>
+                    Bank statements and receipts that show what was lost
                   </Trans>
                 </Li>
               </Ul>

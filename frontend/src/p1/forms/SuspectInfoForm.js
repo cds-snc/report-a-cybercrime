@@ -51,7 +51,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="suspectName">
               <Text>
-                <Trans>Name</Trans>
+                <Trans>Name of individual or organization</Trans>
               </Text>
             </label>
             <div>

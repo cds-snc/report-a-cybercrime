@@ -12,6 +12,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { whatHappened: JSON.stringify(data) } })
@@ -28,7 +29,7 @@ export const WhatHappenedPage = () => (
     >
       <Steps activeStep={1} steps={[{}, {}, {}, {}, {}, {}]} />
     </Container>
-
+    <BackButton route="/p2/timeframe" />
     <H1>
       <Trans>Describe what happened</Trans>
     </H1>
@@ -39,7 +40,7 @@ export const WhatHappenedPage = () => (
       </Trans>
     </P>
     <P>
-      <Trans>Think about things such as:</Trans>
+      <Trans>Think about including things such as:</Trans>
     </P>
     <Ul>
       <Li>
