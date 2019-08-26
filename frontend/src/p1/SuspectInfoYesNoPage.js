@@ -21,11 +21,12 @@ export const Suspectinfo = () => (
       <Steps activeStep={2} steps={[{}, {}, {}, {}, {}]} />
     </Container>
     <H1>
-      <Trans>Add scammer details</Trans>
+      <Trans>Add suspect clues</Trans>
     </H1>
     <P>
       <Trans>
-        Do you have any information about who might be responsible for the scam?
+        Do you have any information about where the scam came from or how the
+        scammer contacted you?
       </Trans>
     </P>
 
