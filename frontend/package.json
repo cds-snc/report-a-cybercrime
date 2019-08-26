@@ -45,7 +45,7 @@
     "emotion-theming": "^10.0.14",
     "express": "^4.17.1",
     "express-request-language": "^1.1.15",
-    "final-form": "^4.18.3",
+    "final-form": "^4.18.4",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
