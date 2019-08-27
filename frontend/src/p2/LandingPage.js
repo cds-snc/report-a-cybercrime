@@ -39,56 +39,64 @@ export const LandingPage = () => (
 
     <P>
       <Trans>
-        Scams can happen to anyone. They’re not always easy to recognize, and
-        new ones are invented every day. You're not alone.
+        Scams can happen to anyone. They’re not always easy to recognize and new
+        ones are invented every day.
       </Trans>
     </P>
-
+    <P>
+      <Trans>
+        The RCMP's new{' '}
+        <A href="http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3">
+          National Cybercrime Coordination Unit
+        </A>{' '}
+        works with police across Canada to stop these crimes by catching
+        cybercriminals.
+      </Trans>
+    </P>
     <InfoCard>
       <H2 fontSize={[4, null, 5]}>
-        <Trans>Help stop these crimes by reporting to police</Trans>
+        <Trans>Before you start, gather what you can about the scam</Trans>
       </H2>
-      <P>
-        <Trans>
-          The RCMP's new{' '}
-          <A href="http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3">
-            National Cybercrime Coordination Unit
-          </A>{' '}
-          works with police across Canada to coordinate investigations into
-          online scams.
-        </Trans>
-      </P>
-      <P>
-        <Trans>
-          This unit will analyze your report and link it to similar reports so
-          that police have more information to catch cybercriminals.
-        </Trans>
-      </P>
+      <Ul>
+        <Li>
+          <Trans>Dates when it took place</Trans>
+        </Li>
+        <Li>
+          <Trans>Descriptions of what happened</Trans>
+        </Li>
+        <Li>
+          <Trans>Details on where it came from</Trans>
+        </Li>
+        <Li>
+          <Trans>Documents, screenshots, or receipts</Trans>
+        </Li>
+      </Ul>
     </InfoCard>
-
-    <H2 fontSize={[4, null, 5]} marginTop={[4, null, 5]}>
-      <Trans>Gather all you can about the scam</Trans>
-    </H2>
-    <Ul>
-      <Li>
-        <Trans>Dates when the scam took place</Trans>
-      </Li>
-      <Li>
-        <Trans>Descriptions of what happened</Trans>
-      </Li>
-      <Li>
-        <Trans>Details on where the scam came from</Trans>
-      </Li>
-      <Li>
-        <Trans>Documents, screenshots, receipts, or conversations</Trans>
-      </Li>
-    </Ul>
-    <P>
-      Police are focused on investigations and will not be able to help you
-      recover money.
-    </P>
     <ButtonLink color="black" mb={[3, null, 5]} to="/p2/timeframe">
       <Trans>Report now</Trans>
     </ButtonLink>
+    <H2 fontSize={[4, null, 5]}>
+      <Trans>You may also want to:</Trans>
+    </H2>
+    <P>
+      <Ul>
+        <Li>
+          <Trans>Report directly to the place where the scam happened.</Trans>
+        </Li>
+        <Li>
+          <Trans>
+            Report to your financial institution, if you lost money.
+          </Trans>
+        </Li>
+        <Li>
+          <Trans>
+            Report to the credit bureaus,{' '}
+            <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
+            <A href="https://www.transunion.ca/">TransUnion</A>, if your
+            identity was stolen.
+          </Trans>
+        </Li>
+      </Ul>
+    </P>
   </Layout>
 )
