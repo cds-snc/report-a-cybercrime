@@ -69,28 +69,30 @@ export const ScammerDetailsFormWrapped = props => {
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <H2 fontSize={[4, null, 5]} marginTop="40px">
-                <Trans>Share any identifying details about the scammer</Trans>
+                <Trans>Share identifying information</Trans>
               </H2>
               <P>
-                <Trans>Think about including things such as:</Trans>
+                <Trans>
+                  Include whatever you know about where the scam came from:
+                </Trans>
               </P>
               <Ul>
                 <Li>
                   <Trans>Who the scammer claimed to be</Trans>
                 </Li>
                 <Li>
-                  <Trans>Details about your interaction or transactions</Trans>
-                </Li>
-                <Li>
                   <Trans>
                     Email addresses, phone numbers, or website links
                   </Trans>
+                </Li>
+                <Li>
+                  <Trans>Details about your interactions or transactions</Trans>
                 </Li>
               </Ul>
 
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
-                  <Trans>Tell us about the scammer</Trans>
+                  <Trans>What do you know about the suspected scammer?</Trans>
                 </Text>
               </label>
               <div>
@@ -104,24 +106,23 @@ export const ScammerDetailsFormWrapped = props => {
               </div>
 
               <H2 fontSize={[4, null, 5]} marginTop="40px">
-                <Trans>Share any files that show what happened</Trans>
+                <Trans>Share files</Trans>
               </H2>
               <P>
-                <Trans>Think about including things such as:</Trans>
+                <Trans>
+                  Include whatever documents you have that shows what the
+                  suspect did:
+                </Trans>
               </P>
               <Ul>
                 <Li>
-                  <Trans>Screenshots or photos of what the scammer did</Trans>
+                  <Trans>Screenshots and photos</Trans>
                 </Li>
                 <Li>
-                  <Trans>
-                    Conversations and messages of what the scammer said
-                  </Trans>
+                  <Trans>Conversations and messages</Trans>
                 </Li>
                 <Li>
-                  <Trans>
-                    Bank statements and receipts that show what was lost
-                  </Trans>
+                  <Trans>Bank statements and receipts</Trans>
                 </Li>
               </Ul>
 
@@ -138,7 +139,7 @@ export const ScammerDetailsFormWrapped = props => {
                   paddingLeft="15px"
                   paddingRight="15px"
                 >
-                  <Trans>Attach file</Trans>
+                  <Trans>Add file</Trans>
                 </FileUpload>
               </Container>
 
