@@ -89,6 +89,6 @@ export const LandingPage = () => (
       </Li>
     </Ul>
 
-    <ButtonsContainer buttonLink={true} cancel={false} />
+    <ButtonsContainer buttonLink={true} cancel={false} landing={true} />
   </Layout>
 )

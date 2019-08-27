@@ -70,7 +70,7 @@ export const ConfirmationForm = props => {
                     <ButtonsContainer
                       buttonLink={false}
                       cancel={true}
-                      buttonTitle="Submit Report"
+                      submit={true}
                     />
                   </form>
                 )}

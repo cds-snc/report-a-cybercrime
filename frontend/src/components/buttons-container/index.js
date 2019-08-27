@@ -7,8 +7,8 @@ import { Link, ButtonLink } from '../link'
 import PropTypes from 'prop-types'
 
 export const ButtonsContainer = ({
-  buttonTitle = 'Continue',
-  buttonLinkTitle = 'Report Now',
+  submit = false,
+  landing = false,
   cancel = true,
   buttonLink = true,
   route = '/p2/timeframe',
@@ -28,13 +28,21 @@ export const ButtonsContainer = ({
     {buttonLink === false ? (
       <Container mt="1rem">
         <Button type="submit">
-          <Trans>{buttonTitle}</Trans>
+          {submit === true ? (
+            <Trans>Submit report</Trans>
+          ) : (
+            <Trans>Continue</Trans>
+          )}
         </Button>
       </Container>
     ) : (
       <div name="buttonlink-container">
         <ButtonLink color="black" mb={[3, null, 5]} to={route}>
-          <Trans>{buttonLinkTitle}</Trans>
+          {landing === true ? (
+            <Trans>Report Now</Trans>
+          ) : (
+            <Trans>Report another scam</Trans>
+          )}
         </ButtonLink>
       </div>
     )}
@@ -54,5 +62,6 @@ ButtonsContainer.propTypes = {
   cancel: PropTypes.bool.isRequired,
   buttonTitle: PropTypes.string,
   route: PropTypes.string,
-  buttonLinkTitle: PropTypes.string,
+  landing: PropTypes.bool,
+  submit: PropTypes.bool,
 }
