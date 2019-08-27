@@ -35,9 +35,8 @@ export const ImpactStatementPage = () => (
     </H1>
     <P>
       <Trans>
-        You are not the only one going through this. Tell us more about how you
-        have been impacted so that others don't have to go through the same
-        thing.
+        You are not alone. Tell us how you were impacted so that others don't
+        have to go through the same thing.
       </Trans>
     </P>
 
