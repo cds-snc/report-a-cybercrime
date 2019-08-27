@@ -3,13 +3,12 @@ import { css, jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
-import { A } from '../components/link'
+import { A, Link } from '../components/link'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
 import { InfoCard } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Layout } from '../components/layout'
-import { Button } from '../components/button'
 import { Container } from '../components/container'
 
 export const NextSteps = () => (
@@ -105,9 +104,9 @@ export const NextSteps = () => (
         justify-content: space-between;
       `}
     >
-      <Button type="button" to="/p2/" textAlign="center">
-        <Trans>Report another scam</Trans>
-      </Button>
+      <Link type="button" to="/p2/" textAlign="center">
+        <Trans>Report again</Trans>
+      </Link>
     </Container>
   </Layout>
 )
