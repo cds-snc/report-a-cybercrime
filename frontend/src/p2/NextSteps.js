@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
-import { A, Link } from '../components/link'
+import { A } from '../components/link'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
 import { InfoCard } from '../components/container'

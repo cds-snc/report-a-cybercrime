@@ -1,14 +1,10 @@
 /** @jsx jsx */
 import { Container } from '../container'
 import { css, jsx } from '@emotion/core'
-import { BREAKPOINTS } from '../../theme'
 import { Button } from '../button'
 import { Trans } from '@lingui/macro'
-import { Link } from '../link'
+import { Link, ButtonLink } from '../link'
 import PropTypes from 'prop-types'
-import { ButtonLink } from '../link'
-
-const mq = BREAKPOINTS.map(bp => `@media (min-width: ${bp})`)
 
 export const ButtonsContainer = ({
   buttonTitle = 'Continue',
@@ -53,23 +49,10 @@ export const ButtonsContainer = ({
   </Container>
 )
 
-export const ButtonContainerCancel = props => (
-  <Container
-    mt="1rem"
-    mb="4rem"
-    display={['flex', 'block', 'flex']}
-    alignItems="center"
-    css={css`
-      button {
-        padding: 0.45rem 1.5rem;
-      }
-    `}
-  >
-    {props.children}
-  </Container>
-)
-
 ButtonsContainer.propTypes = {
   buttonLink: PropTypes.bool.isRequired,
   cancel: PropTypes.bool.isRequired,
+  buttonTitle: PropTypes.string,
+  route: PropTypes.string,
+  buttonLinkTitle: PropTypes.string,
 }
