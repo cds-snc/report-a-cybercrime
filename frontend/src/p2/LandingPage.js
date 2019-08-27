@@ -40,13 +40,7 @@ export const LandingPage = () => (
     <P>
       <Trans>
         Scams can happen to anyone. They’re not always easy to recognize, and
-        new ones are invented every day.
-      </Trans>
-    </P>
-
-    <P>
-      <Trans>
-        You're not alone. You can{' '}
+        new ones are invented every day. You're not alone. You can{' '}
         <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
           talk to someone and get support.
         </A>
@@ -63,19 +57,8 @@ export const LandingPage = () => (
           <A href="http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3">
             National Cybercrime Coordination Unit
           </A>{' '}
-          helps police across Canada catch cybercriminals by providing
-          intelligence for investigations.
-        </Trans>
-      </P>
-      <P>
-        <Trans>
-          Police is focused on catching those responsible and will not be able
-          to help you recover money. You should also report the scam to the
-          website where it took place, to your financial institution, and to
-          credit agencies,{' '}
-          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-          <A href="https://www.transunion.ca/">TransUnion</A>, if you lost money
-          or personal information.
+          provides intelligence to police across Canada to help catch
+          cybercriminals by providing intelligence for investigations.
         </Trans>
       </P>
     </InfoCard>
@@ -99,7 +82,6 @@ export const LandingPage = () => (
         <Trans>Information on how the scam has impacted you</Trans>
       </Li>
     </Ul>
-
     <ButtonLink color="black" mb={[3, null, 5]} to="/p2/timeframe">
       <Trans>Report now</Trans>
     </ButtonLink>
