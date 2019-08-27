@@ -87,8 +87,8 @@ const whatHappenedSummary = client => {
       ) : (
         <Text>
           <Trans>
-            If you can, tell us what you know so that police are be able to
-            investigate.
+            Tell us about your experience so we can stop it from happening
+            again.
           </Trans>
         </Text>
       )}
@@ -132,8 +132,8 @@ const scammerSummary = client => {
       ) : (
         <Text>
           <Trans>
-            If you can, share any details you know so that police can try to
-            identify suspects.
+            Share any details you may know so that police can try to identify
+            suspects.
           </Trans>
         </Text>
       )}
@@ -167,8 +167,8 @@ const impactSummary = client => {
       ) : (
         <Text>
           <Trans>
-            If you can, tell us how the scam impacted you so that we can better
-            support other people who are affected.
+            Tell us how the scam impacted you so that we can better support
+            other people who are affected.
           </Trans>
         </Text>
       )}
@@ -201,8 +201,8 @@ const contactSummary = client => {
       ) : (
         <Text>
           <Trans>
-            Please provide your contact details. This gives us a way to reach
-            you.
+            Provide your contact details so that we can send you a confirmation
+            of report.
           </Trans>
         </Text>
       )}
