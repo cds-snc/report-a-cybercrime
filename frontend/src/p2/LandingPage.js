@@ -45,17 +45,13 @@ export const LandingPage = () => (
     </P>
     <P>
       <Trans>
-        The RCMP's new{' '}
-        <A href="http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3">
-          National Cybercrime Coordination Unit
-        </A>{' '}
-        works with police across Canada to stop these crimes by catching
-        cybercriminals.
+        The RCMP's new National Cybercrime Coordination Unit works with police
+        across Canada to stop these crimes by catching cybercriminals.
       </Trans>
     </P>
     <InfoCard>
       <H2 fontSize={[4, null, 5]}>
-        <Trans>Before you start, gather what you can about the scam</Trans>
+        <Trans>Before you start, gather what you can about the scam:</Trans>
       </H2>
       <Ul>
         <Li>
