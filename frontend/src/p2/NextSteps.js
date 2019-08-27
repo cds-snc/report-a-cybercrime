@@ -31,36 +31,20 @@ export const NextSteps = () => (
       </Li>
       <Li>
         <Trans>
-          The RCMP's{' '}
-          <A href="http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3">
-            National Cybercrime Coordination Unit
-          </A>{' '}
-          will analyze your report and link it with others that are similar to
-          help police investigations.
+          The RCMP's National Cybercrime Coordination Unit will analyze your
+          report and link it with others that are similar to help police
+          investigate scams.
         </Trans>
-      </Li>
-    </Ul>
-    <H3>
-      <Trans>You have other reporting options</Trans>
-    </H3>
-    <Ul>
-      <Li>
-        <Trans>Report directly to the place where the scam happened.</Trans>
-      </Li>
-      <Li>
-        <Trans>Report to your financial institution, if you lost money.</Trans>
       </Li>
       <Li>
         <Trans>
-          Report to the credit bureaus,{' '}
-          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-          <A href="https://www.transunion.ca/">TransUnion</A>, if your identity
-          was stolen.
+          Someone may follow up with you to check report details. We don't get
+          in touch with everyone who submits a report.
         </Trans>
       </Li>
     </Ul>
     <H3>
-      <Trans>You can get support</Trans>
+      <Trans>Where to get support</Trans>
     </H3>
     <Ul>
       <Li>
@@ -82,6 +66,25 @@ export const NextSteps = () => (
           <A href="http://www.antifraudcentre.ca/index-eng.htm">
             See what scams are trending
           </A>
+        </Trans>
+      </Li>
+    </Ul>
+    <H3>
+      <Trans>What else you can do</Trans>
+    </H3>
+    <Ul>
+      <Li>
+        <Trans>Report directly to the place where the scam happened.</Trans>
+      </Li>
+      <Li>
+        <Trans>Report to your financial institution, if you lost money.</Trans>
+      </Li>
+      <Li>
+        <Trans>
+          Report to the credit bureaus,{' '}
+          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
+          <A href="https://www.transunion.ca/">TransUnion</A>, if your identity
+          was stolen.
         </Trans>
       </Li>
     </Ul>
