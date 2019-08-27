@@ -40,10 +40,7 @@ export const LandingPage = () => (
     <P>
       <Trans>
         Scams can happen to anyone. They’re not always easy to recognize, and
-        new ones are invented every day. You're not alone. You can{' '}
-        <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-          talk to someone and get support.
-        </A>
+        new ones are invented every day. You're not alone.
       </Trans>
     </P>
 
@@ -57,8 +54,14 @@ export const LandingPage = () => (
           <A href="http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3">
             National Cybercrime Coordination Unit
           </A>{' '}
-          provides intelligence to police across Canada to help catch
-          cybercriminals by providing intelligence for investigations.
+          works with police across Canada to coordinate investigations into
+          online scams.
+        </Trans>
+      </P>
+      <P>
+        <Trans>
+          This unit will analyze your report and link it to similar reports so
+          that police have more information to catch cybercriminals.
         </Trans>
       </P>
     </InfoCard>
@@ -68,20 +71,19 @@ export const LandingPage = () => (
     </H2>
     <Ul>
       <Li>
-        <Trans>Details on when the scam took place</Trans>
+        <Trans>Dates when the scam took place</Trans>
       </Li>
       <Li>
-        <Trans>
-          Descriptions of what happened and what you know about the scammer
-        </Trans>
+        <Trans>Descriptions of what happened</Trans>
       </Li>
       <Li>
-        <Trans>Documents, screenshots, receipts, and conversations</Trans>
+        <Trans>Details on where the scam came from</Trans>
       </Li>
       <Li>
-        <Trans>Information on how the scam has impacted you</Trans>
+        <Trans>Documents, screenshots, receipts, or conversations</Trans>
       </Li>
     </Ul>
+    <P>Police will not be able to help you recover money.</P>
     <ButtonLink color="black" mb={[3, null, 5]} to="/p2/timeframe">
       <Trans>Report now</Trans>
     </ButtonLink>
