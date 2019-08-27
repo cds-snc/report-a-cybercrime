@@ -31,15 +31,13 @@ export const NextSteps = () => (
       </Li>
       <Li>
         <Trans>
-          The RCMP's National Cybercrime Coordination Unit will analyze your
-          report and link it with others that are similar to help police
-          investigate scams.
+          The RCMP will analyze your report and combine it with others that are
+          similar.
         </Trans>
       </Li>
       <Li>
         <Trans>
-          Someone could follow up with you to check some details. We don't get
-          in touch with everyone who submits a report.
+          An analyst could get in touch with you to check some details.
         </Trans>
       </Li>
     </Ul>
