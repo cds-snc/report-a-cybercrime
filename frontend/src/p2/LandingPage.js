@@ -83,10 +83,6 @@ export const LandingPage = () => (
     <H2 fontSize={[4, null, 5]} marginTop={[4, null, 5]}>
       <Trans>Gather all you can about the scam</Trans>
     </H2>
-
-    <P>
-      <Trans>Before you start, have this information ready:</Trans>
-    </P>
     <Ul>
       <Li>
         <Trans>Details on when the scam took place</Trans>
