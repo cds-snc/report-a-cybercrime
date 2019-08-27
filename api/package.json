@@ -28,7 +28,7 @@
     "graphql-custom-types": "^1.5.1",
     "graphql-upload": "^8.0.7",
     "lodash.unionby": "^4.8.0",
-    "minio": "^7.0.11",
+    "minio": "^7.0.12",
     "moment": "^2.24.0",
     "moment-range": "^4.0.2",
     "uuid": "^3.3.2"
