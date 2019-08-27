@@ -79,7 +79,7 @@ export const ConfirmationForm = props => {
                       `}
                     >
                       <Button type="submit">
-                        <Trans>Submit Report</Trans>
+                        <Trans>Submit report</Trans>
                       </Button>
                     </Container>
 
