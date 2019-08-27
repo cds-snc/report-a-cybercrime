@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: cybercrime-api
+  labels:
+    app: baseline
+  name: baseline
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: baseline
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: baseline
+    spec:
+      containers:
+      - image: gcr.io/report-a-cybercrime-alpha/baseline
+        name: baseline
+        resources: {}
+        env:
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: cybercrime-api-secrets
+                key: DB_USER
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: cybercrime-api-secrets
+                key: DB_NAME
+          - name: DB_URL
+            valueFrom:
+              secretKeyRef:
+                name: cybercrime-api-secrets
+                key: DB_URL
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: cybercrime-api-secrets
+                key: DB_PASSWORD
+status: {}
