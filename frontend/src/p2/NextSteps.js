@@ -38,7 +38,7 @@ export const NextSteps = () => (
       </Li>
       <Li>
         <Trans>
-          Someone may follow up with you to check report details. We don't get
+          Someone could follow up with you to check some details. We don't get
           in touch with everyone who submits a report.
         </Trans>
       </Li>
