@@ -44,7 +44,7 @@ export const NextSteps = () => (
       </Li>
     </Ul>
     <H3>
-      <Trans>Where to get support</Trans>
+      <Trans>Where you can get support</Trans>
     </H3>
     <Ul>
       <Li>
