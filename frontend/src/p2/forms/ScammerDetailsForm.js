@@ -73,7 +73,7 @@ export const ScammerDetailsFormWrapped = props => {
               </H2>
               <P>
                 <Trans>
-                  Include whatever you know about where the scam came from:
+                  Include what you know about where the scam came from:
                 </Trans>
               </P>
               <Ul>
@@ -82,7 +82,7 @@ export const ScammerDetailsFormWrapped = props => {
                 </Li>
                 <Li>
                   <Trans>
-                    Email addresses, phone numbers, or website links
+                    Their username, email address, phone number, or website
                   </Trans>
                 </Li>
                 <Li>
@@ -110,21 +110,10 @@ export const ScammerDetailsFormWrapped = props => {
               </H2>
               <P>
                 <Trans>
-                  Include whatever documents you have that shows what the
-                  suspect did:
+                  Attach screenshots, photos, conversations, messages, bank
+                  statements, or receipts related to the scam.
                 </Trans>
               </P>
-              <Ul>
-                <Li>
-                  <Trans>Screenshots and photos</Trans>
-                </Li>
-                <Li>
-                  <Trans>Conversations and messages</Trans>
-                </Li>
-                <Li>
-                  <Trans>Bank statements and receipts</Trans>
-                </Li>
-              </Ul>
 
               <Container
                 width="300px"
