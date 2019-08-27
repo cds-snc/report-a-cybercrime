@@ -9,7 +9,7 @@ import { Li } from '../components/list-item'
 import { InfoCard } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Layout } from '../components/layout'
-import { Container } from '../components/container'
+import { ButtonsContainer } from '../components/buttons-container'
 
 export const NextSteps = () => (
   <Layout>
@@ -95,18 +95,10 @@ export const NextSteps = () => (
       </Li>
     </Ul>
     <TrackPageViews />
-    <Container
-      width="305px"
-      marginTop={[1, null, 1]}
-      css={css`
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      `}
-    >
-      <Link type="button" to="/p2/" textAlign="center">
-        <Trans>Reporting again</Trans>
-      </Link>
-    </Container>
+    <ButtonsContainer
+      buttonLink={true}
+      buttonLinkTitle="Report another instance"
+      cancel="false"
+    />{' '}
   </Layout>
 )

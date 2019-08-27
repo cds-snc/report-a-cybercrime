@@ -6,7 +6,8 @@ import { ApolloConsumer } from 'react-apollo'
 import { I18n } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { P } from '../../components/paragraph'
+import { H4 } from '../../components/header'
+import { ButtonsContainer } from '../../components/buttons-container'
 import { Container } from '../../components/container'
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
@@ -105,33 +106,7 @@ class TimeFrameInfoFormWrapped extends Component {
                 )}
               </I18n>
             </div>
-            <Container
-              width="305px"
-              marginTop={[1, null, 1]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Button type="submit">
-                <Trans>Continue</Trans>
-              </Button>
-            </Container>
-
-            <Container
-              width="300px"
-              marginTop={[1, null, 1]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Link type="button" color="black" to="/p2/" textAlign="center">
-                <Trans>Cancel report</Trans>
-              </Link>
-            </Container>
+            <ButtonsContainer cancel={true} buttonLink={false} />
           </form>
         )}
       />

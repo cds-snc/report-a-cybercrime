@@ -4,7 +4,7 @@ import { navigate } from '@reach/router'
 import { css, jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { Container } from '../../components/container'
+import { ButtonsContainer } from '../../components/buttons-container'
 import { TextArea } from '../../components/text-area'
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
@@ -79,36 +79,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
               />
             </div>
 
-            <Container
-              width="305px"
-              marginTop={[3, null, 4]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Button
-                type="submit"
-                onClick={() => navigate('/p2/confirmation')}
-              >
-                <Trans>Continue</Trans>
-              </Button>
-            </Container>
-
-            <Container
-              width="300px"
-              marginTop={[2, null, 3]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Link type="button" color="black" to="/p2/" textAlign="center">
-                <Trans>Cancel report</Trans>
-              </Link>
-            </Container>
+            <ButtonsContainer buttonLink={false} cancel={true} />
           </form>
         )}
       />

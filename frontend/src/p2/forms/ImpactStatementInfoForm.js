@@ -8,6 +8,8 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
 import { Container } from '../../components/container'
+import { ButtonsContainer } from '../../components/buttons-container'
+import { H2 } from '../../components/header'
 import { P } from '../../components/paragraph'
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
@@ -109,33 +111,7 @@ export const ImpactStatementInfoForm = props => (
               />
             </div>
 
-            <Container
-              width="305px"
-              marginTop={[1, null, 1]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Button type="submit">
-                <Trans>Continue</Trans>
-              </Button>
-            </Container>
-
-            <Container
-              width="300px"
-              marginTop={[1, null, 1]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Link type="button" color="black" to="/p2" textAlign="center">
-                <Trans>Cancel report</Trans>
-              </Link>
-            </Container>
+            <ButtonsContainer buttonLink={false} cancel={true} />
           </form>
         )}
       />

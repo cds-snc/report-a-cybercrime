@@ -36,6 +36,7 @@ const colors = {
   infoCard: '#e8e8e8',
   crimson: '#dc143c',
   green: '#008000',
+  darkGreen: '#00692f',
 }
 
 const theme = {
@@ -83,6 +84,9 @@ const theme = {
       backgroundColor: colors.green,
       '&:focus': {
         outline: `3px solid ${colors.focusColor}`,
+      },
+      '&:hover': {
+        backgroundColor: colors.darkGreen,
       },
     },
 

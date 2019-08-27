@@ -10,6 +10,7 @@ import { Li } from '../components/list-item'
 import { InfoCard } from '../components/container'
 import { Layout } from '../components/layout'
 import { TrackPageViews } from '../TrackPageViews'
+import { ButtonsContainer } from '../components/buttons-container'
 
 export const LandingPage = () => (
   <Layout>
@@ -71,33 +72,23 @@ export const LandingPage = () => (
         across Canada catch cybercriminals.
       </Trans>
     </P>
-    <ButtonLink color="black" mb={[3, null, 5]} to="/p2/timeframe">
-      <Trans>Report now</Trans>
-    </ButtonLink>
-    <P>
-      <Trans>
-        <strong>You may also want to:</strong>
-      </Trans>
-    </P>
-    <P>
-      <Ul>
-        <Li>
-          <Trans>Report directly to the place where the scam happened.</Trans>
-        </Li>
-        <Li>
-          <Trans>
-            Report to your financial institution, if you lost money.
-          </Trans>
-        </Li>
-        <Li>
-          <Trans>
-            Report to the credit bureaus,{' '}
-            <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-            <A href="https://www.transunion.ca/">TransUnion</A>, if your
-            identity was stolen.
-          </Trans>
-        </Li>
-      </Ul>
-    </P>
+    <Ul>
+      <Li>
+        <Trans>Details on when the scam took place</Trans>
+      </Li>
+      <Li>
+        <Trans>
+          Descriptions of what happened and what you know about the scammer
+        </Trans>
+      </Li>
+      <Li>
+        <Trans>Documents, screenshots, receipts, and conversations</Trans>
+      </Li>
+      <Li>
+        <Trans>Information on how the scam has impacted you</Trans>
+      </Li>
+    </Ul>
+
+    <ButtonsContainer buttonLink={true} cancel={false} />
   </Layout>
 )

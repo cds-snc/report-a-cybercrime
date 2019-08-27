@@ -11,8 +11,11 @@ import { Link } from '../../components/link'
 import { Text } from '../../components/text'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getWhatHappened } from '../../utils/queriesAndMutations'
+import { BREAKPOINTS } from '../../theme'
+import { ButtonsContainer } from '../../components/buttons-container'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
+const mq = BREAKPOINTS.map(bp => `@media (min-width: ${bp})`)
 
 export const WhatHappenedForm = props => (
   <ApolloConsumer>
@@ -35,34 +38,7 @@ export const WhatHappenedForm = props => (
                 height="200px"
               />
             </label>
-
-            <Container
-              width="305px"
-              marginTop={[1, null, 1]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Button type="submit">
-                <Trans>Continue</Trans>
-              </Button>
-            </Container>
-
-            <Container
-              width="300px"
-              marginTop={[1, null, 1]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Link type="button" color="black" to="/p2" textAlign="center">
-                <Trans>Cancel report</Trans>
-              </Link>
-            </Container>
+            <ButtonsContainer buttonLink={false} cancel={true} />
           </form>
         )}
       />
