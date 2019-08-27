@@ -105,7 +105,7 @@ export const NextSteps = () => (
       `}
     >
       <Link type="button" to="/p2/" textAlign="center">
-        <Trans>Report again</Trans>
+        <Trans>Reporting again</Trans>
       </Link>
     </Container>
   </Layout>
