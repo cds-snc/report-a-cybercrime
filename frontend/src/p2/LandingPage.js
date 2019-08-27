@@ -83,7 +83,10 @@ export const LandingPage = () => (
         <Trans>Documents, screenshots, receipts, or conversations</Trans>
       </Li>
     </Ul>
-    <P>Police will not be able to help you recover money.</P>
+    <P>
+      Police are focused on investigations and will not be able to help you
+      recover money.
+    </P>
     <ButtonLink color="black" mb={[3, null, 5]} to="/p2/timeframe">
       <Trans>Report now</Trans>
     </ButtonLink>
