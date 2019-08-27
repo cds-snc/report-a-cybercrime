@@ -33,13 +33,6 @@ export const ThankYou = () => (
     <H1>
       <Trans>Thank you for reporting</Trans>
     </H1>
-    <P fontSize={[4, null, 5]}>
-      <Trans>
-        <strong>
-          You&apos;re not the only one being affected by this scam.
-        </strong>
-      </Trans>
-    </P>
     <P>
       <Trans>
         The RCMP&apos;s National Cybercrime Coordination Unit has received your
