@@ -40,16 +40,16 @@ export const WhatHappenedPage = () => (
       </Trans>
     </P>
     <P>
-      <Trans>Think about including things such as:</Trans>
+      <Trans>
+        <strong>Include things such as:</strong>
+      </Trans>
     </P>
     <Ul>
       <Li>
-        <Trans>Where you were (ex: app, website, device, location, etc.)</Trans>
+        <Trans>Where you were (ex: website, device, location)</Trans>
       </Li>
       <Li>
-        <Trans>
-          What the scammer did (ex: promise, threaten, or steal, etc.)
-        </Trans>
+        <Trans>What the scammer did (ex: promise, threaten, steal)</Trans>
       </Li>
     </Ul>
     <TrackPageViews />
