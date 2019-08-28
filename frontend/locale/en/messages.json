@@ -122,12 +122,9 @@
   "Prototype 2": "Prototype 2",
   "Provide your contact details so that we can send you a confirmation of report.": "Provide your contact details so that we can send you a confirmation of report.",
   "Remove file": "Remove file",
-  "Report Now": "Report Now",
+  "Report Now ❯": "Report Now ❯",
   "Report a scam": "Report a scam",
-  "Report another scam": "Report another scam",
-  "Report directly to the place where the scam happened.": "Report directly to the place where the scam happened.",
   "Report directly to the website where the scam took place.": "Report directly to the website where the scam took place.",
-  "Report now": "Report now",
   "Report to the credit bureaus, <0>Equifax</0> and <1>TransUnion</1>, if your identity was stolen.": "Report to the credit bureaus, <0>Equifax</0> and <1>TransUnion</1>, if your identity was stolen.",
   "Report to the financial institution where you sent money.": "Report to the financial institution where you sent money.",
   "Reputation damaged": "Reputation damaged",
@@ -176,5 +173,6 @@
   "en": "en",
   "loading...": "loading...",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}",
-  "{startDate} to {endDate}": "{startDate} to {endDate}"
+  "{startDate} to {endDate}": "{startDate} to {endDate}",
+  "❮   Report another scam": "❮   Report another scam"
 }

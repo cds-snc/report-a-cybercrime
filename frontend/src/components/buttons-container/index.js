@@ -4,11 +4,7 @@ import { css, jsx } from '@emotion/core'
 import { Button } from '../button'
 import { Trans } from '@lingui/macro'
 import { Link, ButtonLink } from '../link'
-import { InMemoryCache } from 'apollo-cache-inmemory'
 import PropTypes from 'prop-types'
-import { getLanguage } from '../../client'
-
-const cache = new InMemoryCache()
 
 export const ButtonsContainer = ({
   submit = false,
@@ -55,29 +51,7 @@ export const ButtonsContainer = ({
             <Trans>Report Now ❯</Trans>
           </ButtonLink>
         ) : (
-          <ButtonLink
-            onClick={() => {
-              cache.writeData({
-                data: {
-                  language: getLanguage(),
-                  doneForms: false,
-                  scamInfo: JSON.stringify({}),
-                  lostMoney: JSON.stringify({}),
-                  suspectInfo: JSON.stringify({}),
-                  files: [],
-                  contactInfo: JSON.stringify({}),
-                  timeFrame: JSON.stringify({}),
-                  whatHappened: JSON.stringify({}),
-                  scammerDetails: JSON.stringify({}),
-                  impact: JSON.stringify({}),
-                  tellUsMore: JSON.stringify({}),
-                },
-              })
-            }}
-            color="black"
-            mb={[3, null, 5]}
-            to={route}
-          >
+          <ButtonLink color="black" mb={[3, null, 5]} to={route}>
             <Trans> ❮ &nbsp; Report another scam</Trans>
           </ButtonLink>
         )}

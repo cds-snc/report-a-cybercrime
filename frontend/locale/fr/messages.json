@@ -123,10 +123,8 @@
   "Provide your contact details so that we can send you a confirmation of report.": "Indiquez vos coordonnées pour que nous puissions vous envoyer une confirmation du signalement.",
   "Remove file": "Supprimer le fichier",
   "Report a scam": "Signalez une fraude",
-  "Report another scam": "Signalez une autre fraude",
   "Report directly to the website where the scam took place.": "Signaler la fraude directement sur le site web où elle a eu lieu.",
-  "Report now": "Signaler maintenant",
-  "Report to the credit bureaus, <0>Equifax</0> and <1>TransUnion</1>, if your identity was stolen.": "En cas de vol d'identité, signaler l'incident aux agences d'évaluation du crédit, à savoir <0>Equifax</0> et <1>TransUnion</1>.",
+  "Report to the credit bureaus, <0>Equifax</0> and <1>TransUnion</1>, if your identity was stolen.": "Signaler la fraude aux agences d'évaluation du crédit, <0>Equifax</0> and <1>TransUnion</1>, si votre identité a été volée.",
   "Report to the financial institution where you sent money.": "Signaler la fraude à l'institution bancaire où vous avez envoyé l'argent.",
   "Reputation damaged": "Réputation compromise",
   "Review your report": "Révisez votre rapport",
@@ -174,5 +172,6 @@
   "en": "fr",
   "loading...": "chargement en cours...",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
-  "{startDate} to {endDate}": "{startDate} au {endDate}"
+  "{startDate} to {endDate}": "{startDate} au {endDate}",
+  "❮   Report another scam": "❮   Rapporter une autre fraude"
 }
