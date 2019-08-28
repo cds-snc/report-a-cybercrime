@@ -115,17 +115,20 @@ export const ScammerDetailsFormWrapped = props => {
               </P>
 
               <Container
-                width="300px"
                 marginTop={[2, null, 5]}
-                marginBottom={[2, null, 5]}
+                marginBottom={[2, 5, 5]}
                 display="flex"
                 flexDirection="row"
-                justifyContent="center"
+                justifyContent={['flex-start', 'center', 'flex-start']}
+                textAlign="center"
               >
                 <FileUpload
                   onChange={onChange}
-                  paddingLeft="15px"
-                  paddingRight="15px"
+                  width={['auto', '100%', 'auto']}
+                  paddingLeft="1.5rem"
+                  paddingRight="1.5rem"
+                  paddingBottom="0.6rem"
+                  paddingTop="0.65rem"
                 >
                   <Trans>Add file</Trans>
                 </FileUpload>
