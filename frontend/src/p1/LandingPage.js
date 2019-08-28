@@ -38,8 +38,8 @@ export const LandingPage = () => (
     <P>
       <Trans>
         The RCMP's National Cybercrime Coordination Unit will analyze your
-        report and work with police across Canada to stop this from happening
-        again.
+        report and link it to other similar reports to help police across Canada
+        investigate.
       </Trans>
     </P>
     <H2 fontSize={[4, null, 5]}>
@@ -64,8 +64,8 @@ export const LandingPage = () => (
     </Text>
     <P>
       <Trans>
-        No information is mandatory. The more you can tell us, the more police
-        will have to go on.
+        The more detail you can provide, the more police can learn to stop this
+        from happening again.
       </Trans>
     </P>
     <ButtonLink color="black" mb={[3, null, 5]} to="scaminfo">
