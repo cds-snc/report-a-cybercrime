@@ -4,7 +4,11 @@ import { css, jsx } from '@emotion/core'
 import { Button } from '../button'
 import { Trans } from '@lingui/macro'
 import { Link, ButtonLink } from '../link'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 import PropTypes from 'prop-types'
+import { getLanguage } from '../../client'
+
+const cache = new InMemoryCache()
 
 export const ButtonsContainer = ({
   submit = false,
@@ -12,6 +16,7 @@ export const ButtonsContainer = ({
   cancel = true,
   buttonLink = true,
   route = '',
+  cancelRoute = '/p2/',
 }) => (
   <Container
     mt="1rem"
@@ -45,19 +50,43 @@ export const ButtonsContainer = ({
       </Container>
     ) : (
       <Container name="buttonlink-container">
-        <ButtonLink color="black" mb={[3, null, 5]} to={route}>
-          {landing === true ? (
+        {landing === true ? (
+          <ButtonLink color="black" mb={[3, null, 5]} to={route}>
             <Trans>Report Now ❯</Trans>
-          ) : (
+          </ButtonLink>
+        ) : (
+          <ButtonLink
+            onClick={() => {
+              cache.writeData({
+                data: {
+                  language: getLanguage(),
+                  doneForms: false,
+                  scamInfo: JSON.stringify({}),
+                  lostMoney: JSON.stringify({}),
+                  suspectInfo: JSON.stringify({}),
+                  files: [],
+                  contactInfo: JSON.stringify({}),
+                  timeFrame: JSON.stringify({}),
+                  whatHappened: JSON.stringify({}),
+                  scammerDetails: JSON.stringify({}),
+                  impact: JSON.stringify({}),
+                  tellUsMore: JSON.stringify({}),
+                },
+              })
+            }}
+            color="black"
+            mb={[3, null, 5]}
+            to={route}
+          >
             <Trans> ❮ &nbsp; Report another scam</Trans>
-          )}
-        </ButtonLink>
+          </ButtonLink>
+        )}
       </Container>
     )}
 
     {cancel === true ? (
       <Container mt="1.9rem" ml={['3rem', '0', '3rem']}>
-        <Link type="button" color="black" to="/p2/" textAlign="center">
+        <Link type="button" color="black" to={cancelRoute} textAlign="center">
           <Trans>Cancel report</Trans>
         </Link>
       </Container>
@@ -65,7 +94,7 @@ export const ButtonsContainer = ({
   </Container>
 )
 
-export const ButtonsContainerLanding = ({}) => (
+export const ButtonsContainerLanding = () => (
   <Container
     mt="1rem"
     mb="4rem"
@@ -100,11 +129,55 @@ export const ButtonsContainerLanding = ({}) => (
   </Container>
 )
 
+export const ButtonsContainerYesNo = ({ yesRoute = '', noRoute = '' }) => (
+  <Container
+    mt="1rem"
+    mb="4rem"
+    display={['flex', 'block', 'flex']}
+    alignItems="center"
+    css={css`
+      button,
+      div[name='buttonlink-container'] a {
+        padding: 0.7rem 2.5rem;
+        text-align: center;
+      }
+
+      div[name='buttonlink-container'] a:first-of-type {
+        margin-right: 1rem;
+      }
+
+      @media (max-width: 640px) {
+        div[name='buttonlink-container'] a {
+          padding: 0.7rem 0;
+          width: 100%;
+        }
+      }
+    `}
+  >
+    <Container name="buttonlink-container">
+      <ButtonLink textAlign="center" to={yesRoute}>
+        <Trans>Yes</Trans>
+      </ButtonLink>
+    </Container>
+    <Container name="buttonlink-container">
+      <ButtonLink textAlign="center" to={noRoute}>
+        <Trans>No</Trans>
+      </ButtonLink>
+    </Container>
+  </Container>
+)
+
 ButtonsContainer.propTypes = {
   buttonLink: PropTypes.bool.isRequired,
   cancel: PropTypes.bool.isRequired,
+  cancelRoute: PropTypes.string,
   buttonTitle: PropTypes.string,
   route: PropTypes.string,
   landing: PropTypes.bool,
   submit: PropTypes.bool,
+}
+
+ButtonsContainerYesNo.propTypes = {
+  yesRoute: PropTypes.string.isRequired,
+  noRoute: PropTypes.string.isRequired,
 }

@@ -3,11 +3,11 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
-import { ButtonLink } from '../components/link'
 import { TrackPageViews } from '../TrackPageViews'
 import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
+import { ButtonsContainerYesNo } from '../components/buttons-container'
 
 export const Willbecontacted = () => (
   <Layout>
@@ -29,27 +29,9 @@ export const Willbecontacted = () => (
       </Trans>
     </P>
 
-    <Container
-      display="flex"
-      maxWidth={['200px', null, '300px']}
-      flexDirection="row"
-      justifyContent="space-between"
-      marginBottom=""
-    >
-      <ButtonLink
-        width={['40px', null, '50px']}
-        textAlign="center"
-        to="/p1/contactinfo"
-      >
-        <Trans>Yes</Trans>
-      </ButtonLink>
-      <ButtonLink
-        width={['40px', null, '50px']}
-        textAlign="center"
-        to="/p1/confirmation"
-      >
-        <Trans>No</Trans>
-      </ButtonLink>
-    </Container>
+    <ButtonsContainerYesNo
+      yesRoute="/p1/contactinfo"
+      noRoute="/p1/confirmation"
+    />
   </Layout>
 )

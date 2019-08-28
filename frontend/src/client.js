@@ -16,7 +16,7 @@ const typeDefs = gql`
   }
 `
 
-const getLanguage = () => {
+export const getLanguage = () => {
   if (navigator.language.match(/^en/)) return 'en'
   if (navigator.language.match(/^fr/)) return 'fr'
   if (navigator.languages.filter(l => l.match(/^en/)).length > 0) return 'en'

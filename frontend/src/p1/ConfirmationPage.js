@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import React from 'react'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
@@ -477,38 +477,50 @@ export const ConfirmationPage = () => {
       </ApolloConsumer>
 
       <Container
-        maxWidth="305px"
-        marginTop={[3, null, 4]}
-        display="flex"
-        flex-direction="column"
-        justify-content="space-between"
+        mt="1rem"
+        mb="4rem"
+        display={['flex', 'block', 'flex']}
+        alignItems="center"
+        css={css`
+          button,
+          div[name='buttonlink-container'] a {
+            padding: 0.7rem 1.5rem;
+            width: 100%;
+            text-align: center;
+          }
+
+          @media (max-width: 640px) {
+            div[name='buttonlink-container'] a {
+              padding: 0.7rem 0;
+            }
+          }
+        `}
       >
         <ApolloConsumer>
           {client => (
             <Mutation mutation={SUBMIT_REPORT_MUTATION}>
               {submitReport => (
-                <Button
-                  type="submit"
-                  onClick={() => submit(client, submitReport)}
-                >
-                  <Trans>Submit report</Trans>
-                </Button>
+                <Container name="buttonlink-container" mt="1rem">
+                  <Button
+                    type="submit"
+                    onClick={() => submit(client, submitReport)}
+                  >
+                    <Trans>Submit report &nbsp; ❯</Trans>
+                  </Button>
+                </Container>
               )}
             </Mutation>
           )}
         </ApolloConsumer>
-      </Container>
-
-      <Container
-        maxWidth="300px"
-        marginTop={[2, null, 3]}
-        display="flex"
-        flex-direction="column"
-        justify-content="space-between"
-      >
-        <Link type="button" color="black" to="/p1" textAlign="center">
-          <Trans>Cancel report</Trans>
-        </Link>
+        <Container
+          name="buttonlink-container"
+          mt="1.9rem"
+          ml={['3rem', '0', '3rem']}
+        >
+          <Link type="button" color="black" to="/p1" textAlign="center">
+            <Trans>Cancel report</Trans>
+          </Link>
+        </Container>
       </Container>
     </Layout>
   )

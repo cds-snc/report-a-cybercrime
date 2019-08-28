@@ -18,7 +18,7 @@ import { Li } from '../../components/list-item'
 import { FileUpload } from '../../components/file-upload'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getScammerDetails } from '../../utils/queriesAndMutations'
-import paperclip from '../../images/paperclip.svg'
+import upload from '../../images/upload.svg'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
@@ -139,7 +139,7 @@ export const ScammerDetailsFormWrapped = props => {
                     }
                   `}
                 >
-                  <img src={paperclip} />
+                  <img alt="upload icon" src={upload} />
                   <span>
                     <Trans>Attach file</Trans>
                   </span>

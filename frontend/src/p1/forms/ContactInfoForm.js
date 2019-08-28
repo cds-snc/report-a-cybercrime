@@ -123,34 +123,43 @@ export const ContactInfoForm = ({ onSubmit }) => (
             </Fieldset>
 
             <Container
-              width="305px"
-              marginTop={[3, null, 4]}
+              mt="1rem"
+              mb="4rem"
+              display={['flex', 'block', 'flex']}
+              alignItems="center"
               css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Button
-                type="submit"
-                onClick={() => navigate('/p1/confirmation')}
-              >
-                <Trans>Continue</Trans>
-              </Button>
-            </Container>
+                button,
+                div[name='buttonlink-container'] a {
+                  padding: 0.7rem 1.5rem;
+                  width: 100%;
+                  text-align: center;
+                }
 
-            <Container
-              width="300px"
-              marginTop={[2, null, 3]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+                @media (max-width: 640px) {
+                  div[name='buttonlink-container'] a {
+                    padding: 0.7rem 0;
+                  }
+                }
               `}
             >
-              <Link type="button" color="black" to="/p1/" textAlign="center">
-                <Trans>Cancel report</Trans>
-              </Link>
+              <Container name="buttonlink-container" mt="1rem">
+                <Button
+                  onClick={() => navigate('/p1/confirmation')}
+                  type="submit"
+                >
+                  <Trans>Continue</Trans>
+                </Button>
+              </Container>
+
+              <Container
+                name="buttonlink-container"
+                mt="1.9rem"
+                ml={['3rem', '0', '3rem']}
+              >
+                <Link type="button" color="black" to="/p1/" textAlign="center">
+                  <Trans>Cancel report</Trans>
+                </Link>
+              </Container>
             </Container>
           </form>
         )}
