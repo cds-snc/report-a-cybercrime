@@ -95,10 +95,6 @@ export const NextSteps = () => (
       </Li>
     </Ul>
     <TrackPageViews />
-    <ButtonsContainer
-      buttonLink={true}
-      buttonLinkTitle="Report another instance"
-      cancel="false"
-    />{' '}
+    <ButtonsContainer buttonLink={true} cancel="false" />
   </Layout>
 )

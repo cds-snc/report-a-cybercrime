@@ -22,6 +22,14 @@ export const ButtonsContainer = ({
       button,
       div[name='buttonlink-container'] a {
         padding: 0.7rem 1.5rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      @media (max-width: 640px) {
+        div[name='buttonlink-container'] a {
+          padding: 0.7rem 0;
+        }
       }
     `}
   >
@@ -36,7 +44,7 @@ export const ButtonsContainer = ({
         </Button>
       </Container>
     ) : (
-      <div name="buttonlink-container">
+      <Container name="buttonlink-container">
         <ButtonLink color="black" mb={[3, null, 5]} to={route}>
           {landing === true ? (
             <Trans>Report Now</Trans>
@@ -44,7 +52,7 @@ export const ButtonsContainer = ({
             <Trans>Report another scam</Trans>
           )}
         </ButtonLink>
-      </div>
+      </Container>
     )}
 
     {cancel === true ? (
