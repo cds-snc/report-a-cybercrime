@@ -33,13 +33,6 @@ export const ImpactStatementPage = () => (
     <H1>
       <Trans>Impact caused by the scam</Trans>
     </H1>
-    <P>
-      <Trans>
-        You are not alone. Tell us how you were impacted so that others don't
-        have to go through the same thing.
-      </Trans>
-    </P>
-
     <TrackPageViews />
     <ImpactStatementInfoForm onSubmit={submitAndNavigate} />
   </Layout>
