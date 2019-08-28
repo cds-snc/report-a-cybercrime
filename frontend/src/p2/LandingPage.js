@@ -43,16 +43,12 @@ export const LandingPage = () => (
         ones are invented every day.
       </Trans>
     </P>
-    <P>
-      <Trans>
-        The RCMP's new National Cybercrime Coordination Unit works with police
-        across Canada to stop these crimes by catching cybercriminals.
-      </Trans>
-    </P>
     <InfoCard>
-      <H2 fontSize={[4, null, 5]}>
-        <Trans>Before you start, gather what you can about the scam:</Trans>
-      </H2>
+      <P>
+        <Trans>
+          <strong>Before you start, gather what you can about the scam:</strong>
+        </Trans>
+      </P>
       <Ul>
         <Li>
           <Trans>Dates when it took place</Trans>
@@ -68,12 +64,21 @@ export const LandingPage = () => (
         </Li>
       </Ul>
     </InfoCard>
+    <br></br>
+    <P>
+      <Trans>
+        Your report helps the RCMP learn about scams and helps police across
+        Canada catch cybercriminals.
+      </Trans>
+    </P>
     <ButtonLink color="black" mb={[3, null, 5]} to="/p2/timeframe">
       <Trans>Report now</Trans>
     </ButtonLink>
-    <H2 fontSize={[4, null, 5]}>
-      <Trans>You may also want to:</Trans>
-    </H2>
+    <P>
+      <Trans>
+        <strong>You may also want to:</strong>
+      </Trans>
+    </P>
     <P>
       <Ul>
         <Li>
