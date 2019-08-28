@@ -19,15 +19,47 @@ import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
 import { BackButton } from '../components/backbutton'
 
+const randLetter = () => {
+  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  return letters[Math.floor(Math.random() * letters.length)]
+}
+const randDigit = () => Math.floor(Math.random() * 10)
+
+const randomizeString = s =>
+  s
+    ? s
+        .replace(/[a-z]/g, () => randLetter())
+        .replace(/[A-Z]/g, () => randLetter().toUpperCase())
+        .replace(/[0-9]/g, () => randDigit())
+    : s
+
 const submit = (client, submitReportP2) => {
+  let timeFrame = getTimeFrame(client)
+  let whatHappened = getWhatHappened(client)
+  let scammerDetails = getScammerDetails(client)
+  let impact = getImpact(client)
+  let p2ContactInfo = getP2ContactInfo(client)
+  let tellUsMore = getTellUsMore(client)
+
+  let { fullName, email, phone, postalCode } = p2ContactInfo
+  fullName = randomizeString(fullName)
+  email = randomizeString(email)
+  phone = randomizeString(phone)
+  postalCode = randomizeString(postalCode)
+
   const data = {
-    source: 'p2',
-    timeFrame: getTimeFrame(client),
-    whatHappened: getWhatHappened(client),
-    impact: getImpact(client),
-    scammerDetails: getScammerDetails(client),
-    contactInfo: getP2ContactInfo(client),
-    tellUsMore: getTellUsMore(client),
+    source: 'p1',
+    timeFrame,
+    whatHappened,
+    impact,
+    scammerDetails,
+    contactInfo: {
+      fullName,
+      email,
+      phone,
+      postalCode,
+    },
+    tellUsMore,
   }
   submitReportP2({ variables: data }) // currently fails, need new mutation
   navigate('nextsteps')
