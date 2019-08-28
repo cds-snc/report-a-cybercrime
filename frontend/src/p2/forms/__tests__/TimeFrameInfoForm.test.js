@@ -41,10 +41,8 @@ describe('<TimeFrameInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('When did it start?')
-    const inputFinal = getByLabelText(
-      'When was your last interaction with the scammer?',
-    )
+    const inputNode = getByLabelText('Approximate start date')
+    const inputFinal = getByLabelText('Approximate end date')
     const nextButton = getByText(/Continue/i)
 
     fillIn(inputNode, { with: 'lost money' })

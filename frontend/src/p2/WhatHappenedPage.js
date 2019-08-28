@@ -35,8 +35,8 @@ export const WhatHappenedPage = () => (
     </H1>
     <P>
       <Trans>
-        We know this can be hard to talk about. What happened is not your fault.
-        Scammers use a number of techniques to get what they want.
+        What happened is not your fault. Scammers use a number of techniques to
+        get what they want.
       </Trans>
     </P>
     <P>
@@ -44,13 +44,12 @@ export const WhatHappenedPage = () => (
     </P>
     <Ul>
       <Li>
-        <Trans>The device or website you were on when it happened</Trans>
+        <Trans>Where you were (ex: app, website, device, location, etc.)</Trans>
       </Li>
       <Li>
-        <Trans>What the scammer said or did that was misleading</Trans>
-      </Li>
-      <Li>
-        <Trans>What was suspicious or malicious about the situation</Trans>
+        <Trans>
+          What the scammer did (ex: promise, threaten, or steal, etc.)
+        </Trans>
       </Li>
     </Ul>
     <TrackPageViews />

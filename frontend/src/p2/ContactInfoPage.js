@@ -32,9 +32,8 @@ export const ContactInfoPage = () => (
     </H1>
     <P>
       <Trans>
-        We will use this to send you a confirmation email. Your information
-        could also be shared with police in case they need to check any details
-        when investigating.
+        We will use this to send you a confirmation email and to link your
+        report to other reports in your area.
       </Trans>
     </P>
     <TrackPageViews />

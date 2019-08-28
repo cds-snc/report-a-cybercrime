@@ -58,21 +58,6 @@ export const ContactInfoForm = ({ onSubmit }) => (
               />
             </div>
 
-            <label htmlFor="phone">
-              <Text marginTop={[4, null, 5]}>
-                <Trans>Phone number</Trans>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="phone"
-                id="phone"
-                component={TextAreaAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
-
             <label htmlFor="postalCode">
               <Text marginTop={[4, null, 5]}>
                 <Trans>Postal code</Trans>

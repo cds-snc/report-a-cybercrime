@@ -62,7 +62,7 @@ class TimeFrameInfoFormWrapped extends Component {
           <form onSubmit={handleSubmit}>
             <label htmlFor="whenDidItStart">
               <H4 marginTop={[5, null, 6]}>
-                <Trans>When did it start?</Trans>
+                <Trans>Approximate start date</Trans>
               </H4>
             </label>
             <div>
@@ -84,7 +84,7 @@ class TimeFrameInfoFormWrapped extends Component {
 
             <label htmlFor="whenWasLastInteraction">
               <H4 marginTop={[5, null, 6]}>
-                <Trans>When was your last interaction with the scammer?</Trans>
+                <Trans>Approximate end date</Trans>
               </H4>
             </label>
             <div>

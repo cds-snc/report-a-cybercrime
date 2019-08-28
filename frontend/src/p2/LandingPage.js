@@ -39,73 +39,60 @@ export const LandingPage = () => (
 
     <P>
       <Trans>
-        Scams can happen to anyone. They’re not always easy to recognize, and
-        new ones are invented every day.
+        Scams can happen to anyone. They’re not always easy to recognize and new
+        ones are invented every day.
       </Trans>
     </P>
-
     <P>
       <Trans>
-        You're not alone. You can{' '}
-        <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-          talk to someone and get support.
-        </A>
+        The RCMP's new National Cybercrime Coordination Unit works with police
+        across Canada to stop these crimes by catching cybercriminals.
       </Trans>
     </P>
-
     <InfoCard>
       <H2 fontSize={[4, null, 5]}>
-        <Trans>Help stop these crimes by reporting to police</Trans>
+        <Trans>Before you start, gather what you can about the scam:</Trans>
       </H2>
-      <P>
-        <Trans>
-          The RCMP's new{' '}
-          <A href="http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3">
-            National Cybercrime Coordination Unit
-          </A>{' '}
-          helps police across Canada catch cybercriminals by providing
-          intelligence for investigations.
-        </Trans>
-      </P>
-      <P>
-        <Trans>
-          Police is focused on catching those responsible and will not be able
-          to help you recover money. You should also report the scam to the
-          website where it took place, to your financial institution, and to
-          credit agencies,{' '}
-          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-          <A href="https://www.transunion.ca/">TransUnion</A>, if you lost money
-          or personal information.
-        </Trans>
-      </P>
+      <Ul>
+        <Li>
+          <Trans>Dates when it took place</Trans>
+        </Li>
+        <Li>
+          <Trans>Descriptions of what happened</Trans>
+        </Li>
+        <Li>
+          <Trans>Details on where it came from</Trans>
+        </Li>
+        <Li>
+          <Trans>Documents, screenshots, or receipts</Trans>
+        </Li>
+      </Ul>
     </InfoCard>
-
-    <H2 fontSize={[4, null, 5]} marginTop={[4, null, 5]}>
-      <Trans>Gather all you can about the scam</Trans>
-    </H2>
-
-    <P>
-      <Trans>Before you start, have this information ready:</Trans>
-    </P>
-    <Ul>
-      <Li>
-        <Trans>Details on when the scam took place</Trans>
-      </Li>
-      <Li>
-        <Trans>
-          Descriptions of what happened and what you know about the scammer
-        </Trans>
-      </Li>
-      <Li>
-        <Trans>Documents, screenshots, receipts, and conversations</Trans>
-      </Li>
-      <Li>
-        <Trans>Information on how the scam has impacted you</Trans>
-      </Li>
-    </Ul>
-
     <ButtonLink color="black" mb={[3, null, 5]} to="/p2/timeframe">
       <Trans>Report now</Trans>
     </ButtonLink>
+    <H2 fontSize={[4, null, 5]}>
+      <Trans>You may also want to:</Trans>
+    </H2>
+    <P>
+      <Ul>
+        <Li>
+          <Trans>Report directly to the place where the scam happened.</Trans>
+        </Li>
+        <Li>
+          <Trans>
+            Report to your financial institution, if you lost money.
+          </Trans>
+        </Li>
+        <Li>
+          <Trans>
+            Report to the credit bureaus,{' '}
+            <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
+            <A href="https://www.transunion.ca/">TransUnion</A>, if your
+            identity was stolen.
+          </Trans>
+        </Li>
+      </Ul>
+    </P>
   </Layout>
 )
