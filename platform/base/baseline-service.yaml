@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: cybercrime-api
+  creationTimestamp: null
+  labels:
+    app: baseline
+  name: baseline
+spec:
+  ports:
+  - name: "3000"
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: baseline
+  type: ClusterIP
+status:
+  loadBalancer: {}

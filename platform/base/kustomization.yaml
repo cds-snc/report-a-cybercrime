@@ -19,6 +19,9 @@ resources:
 - cybercrime-frontend-ingress.yaml
 - cybercrime-frontend-namespace.yaml
 - cybercrime-frontend-service.yaml
+- baseline-deployment.yaml
+- baseline-ingress.yaml
+- baseline-service.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:

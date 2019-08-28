@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: cybercrime-api
+  name: baseline-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/content-type-nosniff: "true"
+    ingress.kubernetes.io/browser-xss-filter: "true"
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: baseline
+              servicePort: 3000
+            path: /CAFCFRS
+    - http:
+        paths:
+          - backend:
+              serviceName: baseline
+              servicePort: 3000
+            path: /wet-boew
+    - http:
+        paths:
+          - backend:
+              serviceName: baseline
+              servicePort: 3000
+            path: /assets
