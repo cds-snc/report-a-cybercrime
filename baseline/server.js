@@ -3,6 +3,7 @@ var bodyParser = require('body-parser')
 const { Database, aql } = require('arangojs')
 const fileUpload = require('express-fileupload')
 var rfc6902 = require('rfc6902')
+const { randomizeString } = require('./randomizeString')
 const app = express()
 
 const { DB_URL: url, DB_PASSWORD: dbpass } = process.env
@@ -283,6 +284,38 @@ app.post('/CAFCFRS/api/v1/validate-session', (req, res) => {
 })
 
 app.post('/CAFCFRS/api/v1/public-complaints/submit', async (req, res) => {
+  // 😬
+  report.filer.g1 = randomizeString(report.filer.g1)
+  report.filer.surname = randomizeString(report.filer.surname)
+  report.victim.g1 = randomizeString(report.victim.g1)
+  report.victim.surname = randomizeString(report.victim.surname)
+  report.victim.emails = report.victim.emails.map(e =>
+    randomizeString(e.address),
+  )
+  report.filer.emails = report.filer.emails.map(e => randomizeString(e.address))
+  report.victim.phoneNumbers = report.victim.phoneNumbers.map(n =>
+    randomizeString(n.number),
+  )
+  report.filer.phoneNumbers = report.filer.phoneNumbers.map(n =>
+    randomizeString(n.number),
+  )
+  report.suspects = report.suspects.map(suspect => {
+    suspect.businessName = randomizeString(suspect.businessName)
+    suspect.emails = suspect.emails.map(e => randomizeString(e.address))
+    suspect.g1 = randomizeString(suspect.g1)
+    suspect.ipAddresses = suspect.ipAddresses.map(ip => {
+      ip.ipAddress = randomizeString(ip.ipAddress)
+      return ip
+    })
+    suspect.phoneNumbers = suspect.phoneNumbers.map(p =>
+      randomizeString(p.number),
+    )
+    suspect.surname = randomizeString(suspect.surname)
+
+    return suspect
+  })
+
+  console.log(JSON.stringify(report))
   // save what we got
   await cybercrimeReports.save(report)
   // Reset the state:
