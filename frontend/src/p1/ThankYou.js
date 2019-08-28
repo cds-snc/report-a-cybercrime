@@ -1,7 +1,6 @@
 /**@jsx jsx */
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { ApolloConsumer } from 'react-apollo'
 import { H1, H2 } from '../components/header'
 import { P } from '../components/paragraph'
 import { A, ButtonLink } from '../components/link'
@@ -15,21 +14,6 @@ import { Text } from '../components/text'
 export const ThankYou = () => (
   <Layout>
     <TrackPageViews />
-    <ApolloConsumer>
-      {client =>
-        client.writeData({
-          data: {
-            doneForms: false,
-            scamInfo: JSON.stringify({}),
-            lostMoney: JSON.stringify({}),
-            suspectInfo: JSON.stringify({}),
-            files: [],
-            contactInfo: JSON.stringify({}),
-          },
-        })
-      }
-    </ApolloConsumer>
-
     <H1>
       <Trans>Thank you for reporting</Trans>
     </H1>
