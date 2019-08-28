@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { I18n } from '@lingui/react'
@@ -18,6 +18,7 @@ import { Li } from '../../components/list-item'
 import { FileUpload } from '../../components/file-upload'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getScammerDetails } from '../../utils/queriesAndMutations'
+import paperclip from '../../images/paperclip.svg'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
@@ -128,9 +129,20 @@ export const ScammerDetailsFormWrapped = props => {
                   paddingLeft="1.5rem"
                   paddingRight="1.5rem"
                   paddingBottom="0.6rem"
-                  paddingTop="0.65rem"
+                  paddingTop="0.6rem"
+                  css={css`
+                    display: flex;
+                    justify-content: center;
+                    img {
+                      width: 1rem;
+                      margin-right: 0.6rem;
+                    }
+                  `}
                 >
-                  <Trans>Add file</Trans>
+                  <img src={paperclip} />
+                  <span>
+                    <Trans>Attach file</Trans>
+                  </span>
                 </FileUpload>
               </Container>
 

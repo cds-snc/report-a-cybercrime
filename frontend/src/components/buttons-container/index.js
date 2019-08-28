@@ -11,7 +11,7 @@ export const ButtonsContainer = ({
   landing = false,
   cancel = true,
   buttonLink = true,
-  route = '/p2/timeframe',
+  route = '',
 }) => (
   <Container
     mt="1rem"
@@ -37,7 +37,7 @@ export const ButtonsContainer = ({
       <Container mt="1rem">
         <Button type="submit">
           {submit === true ? (
-            <Trans>Submit report</Trans>
+            <Trans>Submit report &nbsp; ❯</Trans>
           ) : (
             <Trans>Continue</Trans>
           )}
@@ -47,9 +47,9 @@ export const ButtonsContainer = ({
       <Container name="buttonlink-container">
         <ButtonLink color="black" mb={[3, null, 5]} to={route}>
           {landing === true ? (
-            <Trans>Report Now</Trans>
+            <Trans>Report Now ❯</Trans>
           ) : (
-            <Trans>Report another scam</Trans>
+            <Trans> ❮ &nbsp; Report another scam</Trans>
           )}
         </ButtonLink>
       </Container>
@@ -62,6 +62,41 @@ export const ButtonsContainer = ({
         </Link>
       </Container>
     ) : null}
+  </Container>
+)
+
+export const ButtonsContainerLanding = ({}) => (
+  <Container
+    mt="1rem"
+    mb="4rem"
+    display={['flex', 'block', 'flex']}
+    justifyContent="space-between"
+    alignItems="center"
+    css={css`
+      button,
+      div[name='buttonlink-container'] a {
+        padding: 0.7rem 1.5rem;
+        text-align: center;
+      }
+
+      @media (max-width: 640px) {
+        div[name='buttonlink-container'] a {
+          padding: 0.7rem 0;
+          width: 100%;
+        }
+      }
+    `}
+  >
+    <Container name="buttonlink-container">
+      <ButtonLink textAlign="center" to="/p1">
+        <Trans>Prototype 1</Trans>
+      </ButtonLink>
+    </Container>
+    <Container name="buttonlink-container">
+      <ButtonLink textAlign="center" to="/p2">
+        <Trans>Prototype 2</Trans>
+      </ButtonLink>
+    </Container>
   </Container>
 )
 

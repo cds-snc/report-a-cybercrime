@@ -80,6 +80,7 @@ const theme = {
       },
     },
     button: {
+      cursor: 'pointer',
       color: colors.white,
       backgroundColor: colors.green,
       '&:focus': {

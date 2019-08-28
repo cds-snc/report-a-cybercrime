@@ -95,6 +95,6 @@ export const NextSteps = () => (
       </Li>
     </Ul>
     <TrackPageViews />
-    <ButtonsContainer buttonLink={true} cancel="false" />
+    <ButtonsContainer buttonLink={true} cancel="false" route="/p2/timeframe" />
   </Layout>
 )
