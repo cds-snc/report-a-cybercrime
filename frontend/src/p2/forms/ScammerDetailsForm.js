@@ -68,12 +68,11 @@ export const ScammerDetailsFormWrapped = props => {
           onSubmit={() => localSubmit(client)}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <H2 fontSize={[4, null, 5]} marginTop="40px">
-                <Trans>Share identifying information</Trans>
-              </H2>
               <P>
                 <Trans>
-                  Include what you know about where the scam came from:
+                  <strong>
+                    Include what you know about where the scam came from:
+                  </strong>
                 </Trans>
               </P>
               <Ul>
@@ -82,17 +81,18 @@ export const ScammerDetailsFormWrapped = props => {
                 </Li>
                 <Li>
                   <Trans>
-                    Their username, email address, phone number, or website
+                    The username, email address, phone number, or website they
+                    used
                   </Trans>
                 </Li>
                 <Li>
-                  <Trans>Details about your interactions or transactions</Trans>
+                  <Trans>Where they requested money be sent to</Trans>
                 </Li>
               </Ul>
 
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
-                  <Trans>About the suspected scammer</Trans>
+                  <Trans>Add suspect clues</Trans>
                 </Text>
               </label>
               <div>
@@ -104,14 +104,11 @@ export const ScammerDetailsFormWrapped = props => {
                   height="200px"
                 />
               </div>
-
-              <H2 fontSize={[4, null, 5]} marginTop="40px">
-                <Trans>Share files</Trans>
-              </H2>
+              <br></br>
               <P>
                 <Trans>
-                  Attach screenshots, photos, conversations, messages, bank
-                  statements, or receipts related to the scam.
+                  Attach documents such as screenshots, photos, conversations,
+                  messages, bank statements, or receipts.
                 </Trans>
               </P>
 
