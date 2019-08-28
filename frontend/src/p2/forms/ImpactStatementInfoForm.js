@@ -53,11 +53,10 @@ export const ImpactStatementInfoForm = props => (
           <form onSubmit={handleSubmit}>
             <Fieldset>
               <Label htmlFor="howWereYouAffected">
-                <H2 fontSize={[4, null, 5]} marginTop={[3, null, 4]}>
-                  <Trans>What was affected? </Trans>
-                </H2>
                 <P>
-                  <Trans>Select all that apply:</Trans>
+                  <Trans>
+                    <strong>How were you affected?</strong>
+                  </Trans>
                 </P>
               </Label>
 
@@ -97,15 +96,17 @@ export const ImpactStatementInfoForm = props => (
             )}
 
             <br />
-            <H2 fontSize={[4, null, 5]} marginTop={[3, null, 4]}>
-              <Trans>Tell us more about the impact</Trans>
-            </H2>
+            <P>
+              <Trans>
+                <strong>Tell us more about what was affected.</strong>
+              </Trans>
+            </P>
             <div>
               <Field
                 name="damage"
                 id="damage"
                 component={TextAreaAdapter}
-                height="200px"
+                height="100px"
               />
             </div>
 
