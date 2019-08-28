@@ -287,6 +287,7 @@ app.post('/CAFCFRS/api/v1/public-complaints/submit', async (req, res) => {
   await cybercrimeReports.save(report)
   // Reset the state:
   report = emptyReport
+  acceptedDisclaimer = false
   // This returns the form contents?
   res.json({})
 })
@@ -297,9 +298,14 @@ app.post('/CAFCFRS/api/v1/public-complaints/start', (req, res) => {
   res.json(report)
 })
 
+app.post('/CAFCFRS/api/v1/public-complaints/start-new', (req, res) => {
+  // Reset the state:
+  report = emptyReport
+  acceptedDisclaimer = false
+  res.status(204).send()
+})
+
 app.post('/CAFCFRS/api/v1/public-complaints/:id', (req, res) => {
-  console.log('id: ', req.params.id)
-  //report = req.body
   const patch = rfc6902.createPatch(report, req.body)
   rfc6902.applyPatch(report, patch)
   res.json(report)
@@ -3483,15 +3489,6 @@ app.get('/CAFCFRS/api/v1/languages', (req, res) => {
       descriptionFrench: 'Vietnamien',
     },
   ])
-})
-
-app.post('/CAFCFRS/api/v1/public-complaints/start-new', (req, res) => {
-  res.status(204).send()
-})
-
-app.post('/CAFCFRS/api/v1/disclaimer/accept', (req, res) => {
-  // report.publicUser.isAcceptedDisclaimer = true
-  res.status(204).send()
 })
 
 app.get('/CAFCFRS/api/v1/personal-info-used-fors', (req, res) => {
