@@ -31,10 +31,7 @@ export const MoneyLostPage = () => (
       <Trans>Tell us about the money lost</Trans>
     </H1>
     <P>
-      <Trans>
-        We will not be able to recover your money, but understanding the impact
-        of the scam can help build a case.
-      </Trans>
+      <Trans>Understanding the impact of the scam can help build a case.</Trans>
     </P>
     <TrackPageViews />
     <MoneyLostForm onSubmit={submitAndNavigate} />
