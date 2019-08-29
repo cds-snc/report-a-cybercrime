@@ -51,7 +51,9 @@ export const SuspectInfoForm = ({ onSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="suspectName">
               <Text>
-                <Trans>Name of individual or organization</Trans>
+                <Trans>
+                  <strong>Name</strong>
+                </Trans>
               </Text>
             </label>
             <div>
@@ -66,7 +68,9 @@ export const SuspectInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="suspectEmail">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Email address</Trans>
+                <Trans>
+                  <strong>Email address</strong>
+                </Trans>
               </Text>
             </label>
             <div>
@@ -81,7 +85,9 @@ export const SuspectInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="suspectPhone">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Phone number</Trans>
+                <Trans>
+                  <strong>Phone number</strong>
+                </Trans>
               </Text>
             </label>
             <div>
@@ -96,7 +102,9 @@ export const SuspectInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="suspectWebsite">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Website link</Trans>
+                <Trans>
+                  <strong>Website link</strong>
+                </Trans>
               </Text>
             </label>
             <div>
@@ -111,7 +119,9 @@ export const SuspectInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="suspectAddress">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Mailing address</Trans>
+                <Trans>
+                  <strong>Mailing address</strong>
+                </Trans>
               </Text>
             </label>
             <div>
@@ -126,7 +136,9 @@ export const SuspectInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="suspectIP">
               <Text marginTop={[4, null, 5]}>
-                <Trans>IP address</Trans>
+                <Trans>
+                  <strong>IP address</strong>
+                </Trans>
               </Text>
             </label>
             <div>
@@ -142,7 +154,9 @@ export const SuspectInfoForm = ({ onSubmit }) => (
             <Fieldset>
               <legend>
                 <Text marginTop={[4, null, 5]}>
-                  <Trans>Language of communications</Trans>
+                  <Trans>
+                    <strong>Language of communications</strong>
+                  </Trans>
                 </Text>
               </legend>
               <div>
