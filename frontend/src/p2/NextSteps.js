@@ -6,6 +6,7 @@ import { P } from '../components/paragraph'
 import { A } from '../components/link'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
+import { InfoCard } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Layout } from '../components/layout'
 
@@ -20,51 +21,56 @@ export const NextSteps = () => (
         for your records or to add more information later.
       </Trans>
     </P>
-    <H3>
-      <Trans>What happens next</Trans>
-    </H3>
-    <Ul>
-      <Li>
+    <InfoCard>
+      <P>
         <Trans>
-          You will receive a confirmation email with a summary of your report.
+          <strong>What happens next</strong>
         </Trans>
-      </Li>
-      <Li>
+      </P>
+      <P>
+        <Trans></Trans>
+      </P>
+      <P>
         <Trans>
           The RCMP will analyze your report and combine it with others that are
-          similar.
+          similar to help police across Canada track down cybercriminals.
         </Trans>
-      </Li>
-    </Ul>
-    <H3>
-      <Trans>Where you can get support</Trans>
-    </H3>
-    <Ul>
-      <Li>
+      </P>
+      <P>
         <Trans>
-          <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-            Get assistance from Victim Services
-          </A>
+          <strong>Where you can get support</strong>
         </Trans>
-      </Li>
-      <Li>
-        <Trans>
-          <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-            Learn how to protect yourself in the future
-          </A>
-        </Trans>
-      </Li>
-      <Li>
-        <Trans>
-          <A href="http://www.antifraudcentre.ca/index-eng.htm">
-            See what scams are trending
-          </A>
-        </Trans>
-      </Li>
-    </Ul>
-    <H3>
-      <Trans>What else you can do</Trans>
-    </H3>
+      </P>
+      <Ul>
+        <Li>
+          <Trans>
+            <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
+              Get help from Victim Services
+            </A>
+          </Trans>
+        </Li>
+        <Li>
+          <Trans>
+            <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
+              Learn how to protect yourself next time
+            </A>
+          </Trans>
+        </Li>
+        <Li>
+          <Trans>
+            <A href="http://www.antifraudcentre.ca/index-eng.htm">
+              See what scams are trending
+            </A>
+          </Trans>
+        </Li>
+      </Ul>
+    </InfoCard>
+    <br></br>
+    <P>
+      <Trans>
+        <strong>What else you can do</strong>
+      </Trans>
+    </P>
     <Ul>
       <Li>
         <Trans>Report directly to the place where the scam happened.</Trans>
