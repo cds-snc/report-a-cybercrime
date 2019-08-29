@@ -5,12 +5,17 @@ import { jsx, css } from '@emotion/core'
 const phasebanner = css`
   background-color: #f4f4f4;
   font-family: robotoregular, sans-serif;
-  padding: 1rem 0.9rem;
+  padding: 1.2rem 0.9rem;
 
   span:first-of-type {
     padding: 2px 4px;
     border: 2px solid;
     font-size: 0.7rem;
+    margin-right: 0.6rem;
+  }
+
+  span:last-of-type {
+    font-size: 0.85rem;
     margin-right: 0.6rem;
   }
 `
