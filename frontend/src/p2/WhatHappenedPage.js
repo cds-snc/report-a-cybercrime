@@ -46,10 +46,10 @@ export const WhatHappenedPage = () => (
     </P>
     <Ul>
       <Li>
-        <Trans>Where you were (ex: website, device, location)</Trans>
+        <Trans>What app, website, or device you were using</Trans>
       </Li>
       <Li>
-        <Trans>What the scammer did (ex: promise, threaten, steal)</Trans>
+        <Trans>What the scammer promised, threatened, or stole</Trans>
       </Li>
     </Ul>
     <TrackPageViews />
