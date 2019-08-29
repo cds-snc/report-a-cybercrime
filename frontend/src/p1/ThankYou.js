@@ -1,15 +1,12 @@
 /**@jsx jsx */
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { H1, H2 } from '../components/header'
+import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
-import { A, ButtonLink } from '../components/link'
+import { ButtonLink } from '../components/link'
 import { TrackPageViews } from '../TrackPageViews'
 import { Container } from '../components/container'
 import { Layout } from '../components/layout'
-import { Ul } from '../components/unordered-list'
-import { Li } from '../components/list-item'
-import { Text } from '../components/text'
 
 export const ThankYou = () => (
   <Layout>
@@ -29,9 +26,6 @@ export const ThankYou = () => (
         reports to help police catch scammers.
       </Trans>
     </P>
-    <H2 fontSize={[4, null, 5]}>
-      <Trans>You may also want to:</Trans>
-    </H2>
     <Container
       width="305px"
       marginTop={[1, null, 1]}
