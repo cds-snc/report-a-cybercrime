@@ -41,7 +41,7 @@ export const WhatHappenedPage = () => (
     </P>
     <P>
       <Trans>
-        <strong>Include things such as:</strong>
+        <strong>Think about including things such as:</strong>
       </Trans>
     </P>
     <Ul>
