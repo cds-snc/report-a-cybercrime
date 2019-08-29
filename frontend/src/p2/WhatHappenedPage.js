@@ -49,7 +49,10 @@ export const WhatHappenedPage = () => (
         <Trans>What app, website, or device you were using</Trans>
       </Li>
       <Li>
-        <Trans>What the scammer promised, threatened, or stole</Trans>
+        <Trans>How the scammer contacted you</Trans>
+      </Li>
+      <Li>
+        <Trans>What they promised, threatened, or stole</Trans>
       </Li>
     </Ul>
     <TrackPageViews />
