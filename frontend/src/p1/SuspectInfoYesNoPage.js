@@ -8,6 +8,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
+import { BackButton } from '../components/backbutton'
 
 export const Suspectinfo = () => (
   <Layout>
@@ -20,6 +21,7 @@ export const Suspectinfo = () => (
     >
       <Steps activeStep={2} steps={[{}, {}, {}, {}, {}]} />
     </Container>
+    <BackButton route="/p1/moneylostquestion" />
     <H1>
       <Trans>Add suspect clues</Trans>
     </H1>

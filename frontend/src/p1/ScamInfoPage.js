@@ -10,6 +10,7 @@ import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scamInfo: JSON.stringify(data) } })
@@ -26,6 +27,7 @@ export const ScamInfoPage = () => (
     >
       <Steps activeStep={0} steps={[{}, {}, {}, {}, {}]} />
     </Container>
+    <BackButton route="/p1" />
     <H1>
       <Trans>Describe the scam</Trans>
     </H1>

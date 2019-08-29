@@ -7,10 +7,15 @@ import { A } from '../components/link'
 import { TrackPageViews } from '../TrackPageViews'
 import { ButtonsContainer } from '../components/buttons-container'
 import { Layout } from '../components/layout'
+import { Ul } from '../components/unordered-list'
+import { Li } from '../components/list-item'
+import { Text } from '../components/text'
+import { BackButton } from '../components/backbutton'
 
 export const ThankYou = () => (
   <Layout>
     <TrackPageViews />
+    <BackButton route="/p1/confirmation" />
     <H1>
       <Trans>Thank you for reporting</Trans>
     </H1>

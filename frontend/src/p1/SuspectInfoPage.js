@@ -10,6 +10,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { SuspectInfoForm } from './forms/SuspectInfoForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { suspectInfo: JSON.stringify(data) } })
@@ -26,6 +27,7 @@ export const SuspectInfoPage = () => (
     >
       <Steps activeStep={2} steps={[{}, {}, {}, {}, {}]} />
     </Container>
+    <BackButton route="/p1/suspectinfoquestion" />
     <H1>
       <Trans>Add suspect clues</Trans>
     </H1>

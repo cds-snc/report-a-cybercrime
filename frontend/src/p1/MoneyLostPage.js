@@ -11,6 +11,7 @@ import { TrackPageViews } from '../TrackPageViews'
 import { MoneyLostForm } from './forms/MoneyLostForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { lostMoney: JSON.stringify(data) } })
@@ -27,6 +28,7 @@ export const MoneyLostPage = () => (
     >
       <Steps activeStep={1} steps={[{}, {}, {}, {}, {}]} />
     </Container>
+    <BackButton route="/p1/moneylostquestion" />
     <H1>
       <Trans>Tell us about the money lost</Trans>
     </H1>

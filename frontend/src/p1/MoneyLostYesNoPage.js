@@ -8,6 +8,7 @@ import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
 import { ButtonsContainerYesNo } from '../components/buttons-container'
+import { BackButton } from '../components/backbutton'
 
 export const LoseMoney = () => (
   <Layout>
@@ -20,6 +21,7 @@ export const LoseMoney = () => (
     >
       <Steps activeStep={1} steps={[{}, {}, {}, {}, {}]} />
     </Container>
+    <BackButton route="/p1/scaminfo" />
     <H1>
       <Trans>Tell us if money was lost</Trans>
     </H1>

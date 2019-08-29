@@ -8,6 +8,7 @@ import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
 import { ButtonsContainerYesNo } from '../components/buttons-container'
+import { BackButton } from '../components/backbutton'
 
 export const FilesToUpload = () => (
   <Layout>
@@ -20,6 +21,7 @@ export const FilesToUpload = () => (
       <Steps activeStep={3} steps={[{}, {}, {}, {}, {}]} />
     </Container>
     <TrackPageViews />
+    <BackButton route="/p1/suspectinfoquestion" />
     <H1>
       <Trans>Attach supporting files</Trans>
     </H1>

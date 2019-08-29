@@ -21,6 +21,7 @@ import {
   getFiles,
   getContactInfo,
 } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const scamEventSummary = client => {
   let {
@@ -454,6 +455,7 @@ export const ConfirmationPage = () => {
       >
         <Steps activeStep={4} steps={[{}, {}, {}, {}, {}]} />
       </Container>
+      <BackButton route="/p1/contactinfoquestion" />
       <H1>
         <Trans>Confirm report information</Trans>
       </H1>

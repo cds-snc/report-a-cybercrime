@@ -8,6 +8,7 @@ import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
 import { ButtonsContainerYesNo } from '../components/buttons-container'
+import { BackButton } from '../components/backbutton'
 
 export const Willbecontacted = () => (
   <Layout>
@@ -20,6 +21,7 @@ export const Willbecontacted = () => (
     >
       <Steps activeStep={4} steps={[{}, {}, {}, {}, {}]} />
     </Container>
+    <BackButton route="/p1/uploadfilesquestion" />
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>

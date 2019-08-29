@@ -18,6 +18,7 @@ import { Steps } from '../components/stepper'
 import { P } from '../components/paragraph'
 import { getDoneForms, getFiles } from '../utils/queriesAndMutations'
 import upload from '../images/upload.svg'
+import { BackButton } from '../components/backbutton'
 
 class FileUploadInternal extends Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class FileUploadInternal extends Component {
         >
           <Steps activeStep={3} steps={[{}, {}, {}, {}, {}]} />
         </Container>
+        <BackButton route="/p1/uploadfilesquestion" />
         <H1>
           <Trans>Attach supporting files</Trans>
         </H1>
