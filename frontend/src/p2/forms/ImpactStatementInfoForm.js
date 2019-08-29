@@ -105,7 +105,7 @@ export const ImpactStatementInfoForm = props => (
                 name="damage"
                 id="damage"
                 component={TextAreaAdapter}
-                height="100px"
+                height="75px"
               />
             </div>
 
