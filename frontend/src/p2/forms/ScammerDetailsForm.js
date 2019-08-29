@@ -11,7 +11,7 @@ import { TextArea } from '../../components/text-area'
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
 import { Text } from '../../components/text'
-import { H2, H3 } from '../../components/header'
+import { H3 } from '../../components/header'
 import { P } from '../../components/paragraph'
 import { Ul } from '../../components/unordered-list'
 import { Li } from '../../components/list-item'
@@ -77,16 +77,16 @@ export const ScammerDetailsFormWrapped = props => {
               </P>
               <Ul>
                 <Li>
-                  <Trans>Who the scammer claimed to be</Trans>
-                </Li>
-                <Li>
                   <Trans>
-                    The username, email address, phone number, or website they
-                    used
+                    Who the scammer claimed to be and where they requested money
+                    be sent
                   </Trans>
                 </Li>
                 <Li>
-                  <Trans>Where they requested money be sent to</Trans>
+                  <Trans>
+                    The usernames, email addresses, phone numbers, or websites
+                    they used
+                  </Trans>
                 </Li>
               </Ul>
 
