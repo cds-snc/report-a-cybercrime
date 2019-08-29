@@ -22,8 +22,8 @@ export const ThankYou = () => (
     </P>
     <P>
       <Trans>
-        An analyst will now assess the information and combine it with other
-        reports to help police catch scammers.
+        An analyst will assess the information and combine it with other reports
+        to help police catch scammers.
       </Trans>
     </P>
     <Container
