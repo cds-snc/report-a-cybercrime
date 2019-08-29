@@ -35,11 +35,6 @@ export const NextSteps = () => (
           similar.
         </Trans>
       </Li>
-      <Li>
-        <Trans>
-          An analyst could get in touch with you to check some details.
-        </Trans>
-      </Li>
     </Ul>
     <H3>
       <Trans>Where you can get support</Trans>
