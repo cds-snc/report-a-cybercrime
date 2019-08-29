@@ -68,7 +68,7 @@ export const NextSteps = () => (
     <br></br>
     <P>
       <Trans>
-        <strong>What else you can do</strong>
+        <strong>You have other reporting options</strong>
       </Trans>
     </P>
     <Ul>
