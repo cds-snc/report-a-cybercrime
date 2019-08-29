@@ -150,29 +150,29 @@ const impactSummary = client => {
     howWereYouAffected.push(otherImpact)
   }
   return (
-    <React.Fragment>
-      <SectionHeader>
-        <Trans>Impact</Trans>{' '}
-        <I18n>
-          {({ i18n }) => (
+    <I18n>
+      {({ i18n }) => (
+        <>
+          <SectionHeader>
+            <Trans>Impact</Trans>{' '}
             <EditButton aria-label={i18n._('Edit impact')} to="/p2/impact" />
+          </SectionHeader>
+          {howWereYouAffected.length > 0 || damage != '' ? (
+            <>
+              <Text>{howWereYouAffected.map(i => i18n._(i)).join(', ')}</Text>
+              <Text>{damage}</Text>
+            </>
+          ) : (
+            <Text>
+              <Trans>
+                Tell us how the scam impacted you so that we can better support
+                other people who are affected.
+              </Trans>
+            </Text>
           )}
-        </I18n>
-      </SectionHeader>
-      {howWereYouAffected.length > 0 || damage != '' ? (
-        <React.Fragment>
-          <Text>{howWereYouAffected.join(', ')}</Text>
-          <Text>{damage}</Text>
-        </React.Fragment>
-      ) : (
-        <Text>
-          <Trans>
-            Tell us how the scam impacted you so that we can better support
-            other people who are affected.
-          </Trans>
-        </Text>
+        </>
       )}
-    </React.Fragment>
+    </I18n>
   )
 }
 
