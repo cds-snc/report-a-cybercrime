@@ -24,7 +24,7 @@ export const LoseMoney = () => (
       <Trans>Tell us if money was lost</Trans>
     </H1>
     <P>
-      <Trans>Did you lose money as a result of the scam?</Trans>
+      <Trans>Did the scam involve a request for money?</Trans>
     </P>
 
     <Container
