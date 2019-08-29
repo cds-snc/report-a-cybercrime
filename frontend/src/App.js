@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet-async'
 import { Trans } from '@lingui/macro'
 import { GET_LANGUAGE_QUERY } from './utils/queriesAndMutations'
 import { TopBanner } from './components/topbanner'
+import { PhaseBanner } from './components/phase-banner'
 import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
 import { FooterLink } from './components/link'
@@ -85,6 +86,9 @@ const App = () => (
               <ThemeProvider theme={theme}>
                 <header>
                   <WarningBanner />
+                  <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
+                    <Trans>This site will change as we test ideas.</Trans>
+                  </PhaseBanner>
                   <TopBanner lang={language} bg="black" />
                 </header>
                 <Content>

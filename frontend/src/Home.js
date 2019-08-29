@@ -1,6 +1,5 @@
 import React from 'react'
 import { Router } from '@reach/router'
-import { Trans } from '@lingui/macro'
 import styled from '@emotion/styled'
 import { PhaseBanner } from './components/phase-banner'
 import { PageNotFound } from './PageNotFound'
@@ -34,9 +33,6 @@ const Screen = styled('div')`
 `
 export const Home = () => (
   <Root>
-    <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
-      <Trans>This site will change as we test ideas.</Trans>
-    </PhaseBanner>
     <Screen>
       <Router>
         <PageNotFound default />
