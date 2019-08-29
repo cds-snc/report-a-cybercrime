@@ -206,6 +206,7 @@ const contactSummary = client => {
           </Trans>
         </Text>
       )}
+      <br></br>
     </React.Fragment>
   )
 }
