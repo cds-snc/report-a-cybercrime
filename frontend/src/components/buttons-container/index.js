@@ -5,6 +5,7 @@ import { Button } from '../button'
 import { Trans } from '@lingui/macro'
 import { Link, ButtonLink } from '../link'
 import PropTypes from 'prop-types'
+import { ApolloConsumer } from 'react-apollo'
 
 export const ButtonsContainer = ({
   submit = false,

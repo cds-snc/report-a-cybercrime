@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
-import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { P } from '../components/paragraph'
 import { H1 } from '../components/header'
@@ -17,26 +16,6 @@ export const LandingPage = () => (
     <H1>
       <Trans>Report a scam</Trans>
     </H1>
-    <ApolloConsumer>
-      {client =>
-        client.writeData({
-          data: {
-            doneForms: false,
-            scamInfo: JSON.stringify({}),
-            lostMoney: JSON.stringify({}),
-            suspectInfo: JSON.stringify({}),
-            files: [],
-            contactInfo: JSON.stringify({}),
-            timeFrame: JSON.stringify({}),
-            whatHappened: JSON.stringify({}),
-            scammerDetails: JSON.stringify({}),
-            impact: JSON.stringify({}),
-            tellUsMore: JSON.stringify({}),
-          },
-        })
-      }
-    </ApolloConsumer>
-
     <P>
       <Trans>
         Scams can happen to anyone. They’re not always easy to recognize and new
