@@ -58,7 +58,7 @@ const timeFrameSummary = client => {
         <Text>
           <Trans>
             If you can, give us an idea of when the scam took place so that
-            police are able to investigate.
+            police are able to look into it.
           </Trans>
         </Text>
       )}

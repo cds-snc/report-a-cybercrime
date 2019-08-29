@@ -32,28 +32,6 @@ export const ThankYou = () => (
     <H2 fontSize={[4, null, 5]}>
       <Trans>You may also want to:</Trans>
     </H2>
-    <Text>
-      <Ul>
-        <Li>
-          <Trans>
-            Report directly to the website where the scam took place.
-          </Trans>
-        </Li>
-        <Li>
-          <Trans>
-            Report to the financial institution where you sent money.
-          </Trans>
-        </Li>
-        <Li>
-          <Trans>
-            Report to the credit bureaus,{' '}
-            <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-            <A href="https://www.transunion.ca/">TransUnion</A>, if your
-            identity was stolen.
-          </Trans>
-        </Li>
-      </Ul>
-    </Text>
     <Container
       width="305px"
       marginTop={[1, null, 1]}
