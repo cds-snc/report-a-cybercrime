@@ -51,15 +51,15 @@ export const NextSteps = () => (
         </Li>
         <Li>
           <Trans>
-            <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-              Learn how to protect yourself next time
+            <A href="http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm">
+              Protect yourself in the future
             </A>
           </Trans>
         </Li>
         <Li>
           <Trans>
             <A href="http://www.antifraudcentre.ca/index-eng.htm">
-              See what scams are trending
+              Stay on top of trending scams
             </A>
           </Trans>
         </Li>
