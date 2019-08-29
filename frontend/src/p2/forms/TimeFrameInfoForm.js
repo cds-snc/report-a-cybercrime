@@ -6,12 +6,10 @@ import { ApolloConsumer } from 'react-apollo'
 import { I18n } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { H4 } from '../../components/header'
+import { P } from '../../components/paragraph'
 import { Container } from '../../components/container'
-
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
-
 import { DateSelector } from '../../components/date-picker'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getTimeFrame } from '../../utils/queriesAndMutations'
@@ -61,9 +59,11 @@ class TimeFrameInfoFormWrapped extends Component {
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="whenDidItStart">
-              <H4 marginTop={[5, null, 6]}>
-                <Trans>Approximate start date</Trans>
-              </H4>
+              <P marginTop={[5, null, 6]}>
+                <Trans>
+                  <strong>Approximate start</strong>
+                </Trans>
+              </P>
             </label>
             <div>
               <I18n>
@@ -83,9 +83,11 @@ class TimeFrameInfoFormWrapped extends Component {
             </div>
 
             <label htmlFor="whenWasLastInteraction">
-              <H4 marginTop={[5, null, 6]}>
-                <Trans>Approximate end date</Trans>
-              </H4>
+              <P marginTop={[5, null, 6]}>
+                <Trans>
+                  <strong>Approximate end</strong>
+                </Trans>
+              </P>
             </label>
             <div>
               <I18n>

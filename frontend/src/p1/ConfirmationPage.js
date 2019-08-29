@@ -178,7 +178,7 @@ const suspectInfoSummary = client => {
         marginTop={[3, null, 4]}
         marginBottom={[1, null, 1]}
       >
-        <Trans>Scammer details</Trans>{' '}
+        <Trans>Suspect clues</Trans>{' '}
         <I18n>
           {({ i18n }) => {
             return (

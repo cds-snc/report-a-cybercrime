@@ -40,7 +40,7 @@ describe('<SuspectInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('Name of individual or organization')
+    const inputNode = getByLabelText('Name')
     const nextButton = getByText(/Continue/i)
 
     fillIn(inputNode, { with: 'Malory' })

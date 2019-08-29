@@ -81,7 +81,9 @@ export class ScamInfoForm extends Component {
               <form onSubmit={handleSubmit}>
                 <label htmlFor="scamDetails">
                   <Text marginTop={[5, null, 6]}>
-                    <Trans>What happened?</Trans>
+                    <Trans>
+                      <strong>What happened?</strong>
+                    </Trans>
                   </Text>
                 </label>
                 <div>
@@ -96,7 +98,9 @@ export class ScamInfoForm extends Component {
 
                 <label htmlFor="whenWereYouContacted">
                   <Text marginTop={[5, null, 6]}>
-                    <Trans>When did it happen?</Trans>
+                    <Trans>
+                      <strong>When did it start?</strong>
+                    </Trans>
                   </Text>
                 </label>
                 <div>
@@ -119,7 +123,9 @@ export class ScamInfoForm extends Component {
                 <Fieldset>
                   <legend>
                     <Text marginTop={[5, null, 6]}>
-                      <Trans>How did it start?</Trans>
+                      <Trans>
+                        <strong>How did it start?</strong>
+                      </Trans>
                     </Text>
                   </legend>
                   <div>

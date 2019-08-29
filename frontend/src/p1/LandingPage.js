@@ -3,7 +3,7 @@ import React from 'react'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { P } from '../components/paragraph'
-import { H1, H2 } from '../components/header'
+import { H1 } from '../components/header'
 import { ButtonLink } from '../components/link'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
@@ -33,18 +33,17 @@ export const LandingPage = () => (
     </ApolloConsumer>
 
     <P>
-      <Trans>Tell the Royal Canadian Mounted Police (RCMP) about a scam.</Trans>
-    </P>
-    <P>
       <Trans>
-        The RCMP's National Cybercrime Coordination Unit will analyze your
-        report and work with police across Canada to stop this from happening
-        again.
+        Tell the RCMP's National Cybercrime Coordination Unit about a scam to
+        help police across Canada investigate.
       </Trans>
     </P>
-    <H2 fontSize={[4, null, 5]}>
-      <Trans>You will be asked to:</Trans>
-    </H2>
+
+    <P>
+      <Trans>
+        <strong>You will be asked to:</strong>
+      </Trans>
+    </P>
 
     <Text>
       <Ul fontSize={[8, null, 8]}>
@@ -64,8 +63,8 @@ export const LandingPage = () => (
     </Text>
     <P>
       <Trans>
-        No information is mandatory. The more you can tell us, the more police
-        will have to go on.
+        The more detail you can provide, the more police can learn to stop this
+        from happening again.
       </Trans>
     </P>
     <ButtonLink color="black" mb={[3, null, 5]} to="scaminfo">

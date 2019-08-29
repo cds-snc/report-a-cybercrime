@@ -16,7 +16,6 @@ const submitAndNavigate = (client, data) => {
   navigate(getDoneForms(client) ? 'confirmation' : 'moneylostquestion')
 }
 
-
 export const ScamInfoPage = () => (
   <Layout>
     <Container
@@ -32,9 +31,8 @@ export const ScamInfoPage = () => (
     </H1>
     <P>
       <Trans>
-        Provide as many details as possible so that your report can be linked to
-        other similar reports. Any information about where, when, and how the
-        scam took place is useful.
+        Any information about where, when, and how the scam took place is
+        helpful for police.
       </Trans>
     </P>
     <TrackPageViews />

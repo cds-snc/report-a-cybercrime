@@ -62,7 +62,9 @@ export const MoneyLostForm = ({ onSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="lostAmount">
               <Text marginTop={[4, null, 5]}>
-                <Trans>Amount</Trans>
+                <Trans>
+                  <strong>Amount</strong>
+                </Trans>
               </Text>
             </label>
             <div>
@@ -78,7 +80,9 @@ export const MoneyLostForm = ({ onSubmit }) => (
             <Fieldset>
               <legend>
                 <Text marginTop={[4, null, 5]}>
-                  <Trans>Currency</Trans>
+                  <Trans>
+                    <strong>Currency</strong>
+                  </Trans>
                 </Text>
               </legend>
               <I18n>
@@ -125,9 +129,10 @@ export const MoneyLostForm = ({ onSubmit }) => (
             <Fieldset>
               <legend>
                 <Text marginTop={[4, null, 5]}>
-                  <Trans>How did you pay the scammer?</Trans>
+                  <Trans>
+                    <strong>How did you pay the scammer?</strong>
+                  </Trans>
                 </Text>
-                <br></br>
               </legend>
               <div>
                 <I18n>

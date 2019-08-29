@@ -62,8 +62,8 @@ class FileUploadInternal extends Component {
         </H1>
         <P>
           <Trans>
-            Files could include copies of emails, conversations, recordings,
-            receipts, or any other evidence that shows what happened.
+            Include any messages, conversations, receipts, or other evidence
+            that shows what happened.
           </Trans>
         </P>
         <P>

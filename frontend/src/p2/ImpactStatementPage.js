@@ -4,7 +4,6 @@ import { navigate } from '@reach/router'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
-import { P } from '../components/paragraph'
 import { Layout } from '../components/layout'
 import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
@@ -33,13 +32,6 @@ export const ImpactStatementPage = () => (
     <H1>
       <Trans>Impact caused by the scam</Trans>
     </H1>
-    <P>
-      <Trans>
-        You are not alone. Tell us how you were impacted so that others don't
-        have to go through the same thing.
-      </Trans>
-    </P>
-
     <TrackPageViews />
     <ImpactStatementInfoForm onSubmit={submitAndNavigate} />
   </Layout>
