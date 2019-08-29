@@ -10,9 +10,29 @@ import { InfoCard } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Layout } from '../components/layout'
 import { ButtonsContainer } from '../components/buttons-container'
+import { ApolloConsumer } from 'react-apollo'
 
 export const NextSteps = () => (
   <Layout>
+    <ApolloConsumer>
+      {client =>
+        client.writeData({
+          data: {
+            doneForms: false,
+            scamInfo: JSON.stringify({}),
+            lostMoney: JSON.stringify({}),
+            suspectInfo: JSON.stringify({}),
+            files: [],
+            contactInfo: JSON.stringify({}),
+            timeFrame: JSON.stringify({}),
+            whatHappened: JSON.stringify({}),
+            scammerDetails: JSON.stringify({}),
+            impact: JSON.stringify({}),
+            tellUsMore: JSON.stringify({}),
+          },
+        })
+      }
+    </ApolloConsumer>
     <H1>
       <Trans>Thank you for reporting</Trans>
     </H1>
