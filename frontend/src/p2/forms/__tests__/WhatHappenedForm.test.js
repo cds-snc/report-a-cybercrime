@@ -42,7 +42,7 @@ describe('<WhatHappenedForm />', () => {
     )
 
     // find the form element by it's label:
-    const inputNode = getByLabelText('What happened?')
+    const inputNode = getByLabelText('Tell us what happened')
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/Continue/i)
     // Enter text into the form field
