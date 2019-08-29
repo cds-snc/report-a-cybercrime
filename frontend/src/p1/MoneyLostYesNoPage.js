@@ -3,11 +3,11 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
-import { ButtonLink } from '../components/link'
 import { TrackPageViews } from '../TrackPageViews'
 import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
+import { ButtonsContainerYesNo } from '../components/buttons-container'
 
 export const LoseMoney = () => (
   <Layout>
@@ -27,27 +27,9 @@ export const LoseMoney = () => (
       <Trans>Did the scam involve a request for money?</Trans>
     </P>
 
-    <Container
-      display="flex"
-      maxWidth={['200px', null, '300px']}
-      flexDirection="row"
-      justifyContent="space-between"
-      marginBottom=""
-    >
-      <ButtonLink
-        width={['40px', null, '50px']}
-        textAlign="center"
-        to="../moneylost"
-      >
-        <Trans>Yes</Trans>
-      </ButtonLink>
-      <ButtonLink
-        width={['40px', null, '50px']}
-        textAlign="center"
-        to="../suspectinfoquestion"
-      >
-        <Trans>No</Trans>
-      </ButtonLink>
-    </Container>
+    <ButtonsContainerYesNo
+      yesRoute="../moneylost"
+      noRoute="../suspectinfoquestion"
+    />
   </Layout>
 )

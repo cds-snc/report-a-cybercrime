@@ -3,9 +3,9 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from '../components/header'
 import { P } from '../components/paragraph'
-import { A, ButtonLink } from '../components/link'
+import { A } from '../components/link'
 import { TrackPageViews } from '../TrackPageViews'
-import { Container } from '../components/container'
+import { ButtonsContainer } from '../components/buttons-container'
 import { Layout } from '../components/layout'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
@@ -54,16 +54,6 @@ export const ThankYou = () => (
         </Li>
       </Ul>
     </Text>
-    <Container
-      width="305px"
-      marginTop={[1, null, 1]}
-      display="flex"
-      flexDirection="column"
-      justifyContent="space-between"
-    >
-      <ButtonLink type="submit" to="/p1" textAlign="center">
-        <Trans> Report another scam</Trans>
-      </ButtonLink>
-    </Container>
+    <ButtonsContainer buttonLink={true} cancel={false} route="/p1/scaminfo" />
   </Layout>
 )

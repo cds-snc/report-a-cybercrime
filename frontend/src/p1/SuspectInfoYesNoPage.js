@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
-import { ButtonLink } from '../components/link'
+import { ButtonsContainerYesNo } from '../components/buttons-container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
@@ -30,27 +30,9 @@ export const Suspectinfo = () => (
       </Trans>
     </P>
 
-    <Container
-      display="flex"
-      maxWidth={['200px', null, '300px']}
-      flexDirection="row"
-      justifyContent="space-between"
-      marginBottom=""
-    >
-      <ButtonLink
-        width={['40px', null, '50px']}
-        textAlign="center"
-        to="/p1/suspectinfo"
-      >
-        <Trans>Yes</Trans>
-      </ButtonLink>
-      <ButtonLink
-        width={['40px', null, '50px']}
-        textAlign="center"
-        to="/p1/uploadfilesquestion"
-      >
-        <Trans>No</Trans>
-      </ButtonLink>
-    </Container>
+    <ButtonsContainerYesNo
+      yesRoute="/p1/suspectinfo"
+      noRoute="/p1/uploadfilesquestion"
+    />
   </Layout>
 )

@@ -1,16 +1,14 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { Container } from '../../components/container'
 import { TextArea } from '../../components/text-area'
-import { Button } from '../../components/button'
-import { Link } from '../../components/link'
 import { Text } from '../../components/text'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getWhatHappened } from '../../utils/queriesAndMutations'
+import { ButtonsContainer } from '../../components/buttons-container'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
@@ -35,34 +33,7 @@ export const WhatHappenedForm = props => (
                 height="200px"
               />
             </label>
-
-            <Container
-              width="305px"
-              marginTop={[1, null, 1]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Button type="submit">
-                <Trans>Continue</Trans>
-              </Button>
-            </Container>
-
-            <Container
-              width="300px"
-              marginTop={[1, null, 1]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Link type="button" color="black" to="/p2" textAlign="center">
-                <Trans>Cancel report</Trans>
-              </Link>
-            </Container>
+            <ButtonsContainer buttonLink={false} cancel={true} />
           </form>
         )}
       />
