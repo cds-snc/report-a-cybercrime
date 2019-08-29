@@ -67,8 +67,8 @@ export const LandingPage = () => (
     <br></br>
     <P>
       <Trans>
-        Your report helps the RCMP learn about scams and helps police across
-        Canada catch cybercriminals.
+        Your report helps the RCMP learn about these crimes and helps police
+        across Canada catch cybercriminals.
       </Trans>
     </P>
     <ButtonLink color="black" mb={[3, null, 5]} to="/p2/timeframe">

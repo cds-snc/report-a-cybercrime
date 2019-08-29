@@ -31,9 +31,9 @@ export const ConfirmationForm = props => {
 
   return (
     <React.Fragment>
-      <H2 marginTop={[4, null, 5]}>
-        <Trans>Tell us more</Trans>
-      </H2>
+      <hr />
+      <br></br>
+      <H2>Tell us more</H2>
       <ApolloConsumer>
         {client => (
           <Mutation mutation={SUBMIT_P2_REPORT_MUTATION}>
@@ -49,8 +49,8 @@ export const ConfirmationForm = props => {
                         marginBottom={[1, null, 2]}
                       >
                         <Trans>
-                          The more detail you can give, the more police will
-                          have to go on.
+                          Is there any information you'd like to add that didn't
+                          fit elsewhere?
                         </Trans>
                       </Text>
                     </label>
@@ -65,7 +65,7 @@ export const ConfirmationForm = props => {
                         name="tellUsMore"
                         id="tellUsMore"
                         component={TextAreaAdapter}
-                        height="200px"
+                        height="75px"
                       />
                     </div>
 

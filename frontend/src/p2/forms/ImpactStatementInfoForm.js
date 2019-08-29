@@ -97,7 +97,7 @@ export const ImpactStatementInfoForm = props => (
             <br />
             <P>
               <Trans>
-                <strong>Tell us more about what was affected.</strong>
+                <strong>Tell us more about what was lost or damaged.</strong>
               </Trans>
             </P>
             <div>
@@ -105,7 +105,7 @@ export const ImpactStatementInfoForm = props => (
                 name="damage"
                 id="damage"
                 component={TextAreaAdapter}
-                height="100px"
+                height="75px"
               />
             </div>
 

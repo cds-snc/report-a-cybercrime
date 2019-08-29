@@ -13,8 +13,13 @@ import { Layout } from '../components/layout'
 export const NextSteps = () => (
   <Layout>
     <H1>
-      <Trans>Thank you for reporting this scam</Trans>
+      <Trans>Thank you for reporting</Trans>
     </H1>
+    <P>
+      <Trans>
+        <strong>We've sent you a confirmation email.</strong>
+      </Trans>
+    </P>
     <P>
       <Trans>
         Your reference number is <strong>#NC300234234</strong>. Keep this number
@@ -33,33 +38,34 @@ export const NextSteps = () => (
       <P>
         <Trans>
           The RCMP will analyze your report and combine it with others that are
-          similar to help police across Canada track down cybercriminals.
+          similar to help police across Canada track down cybercriminals. Police
+          does not follow up with everyone who submits a report.
         </Trans>
       </P>
       <P>
         <Trans>
-          <strong>Where you can get support</strong>
+          <strong>Where you can get help</strong>
         </Trans>
       </P>
       <Ul>
         <Li>
           <Trans>
             <A href="http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm">
-              Get help from Victim Services
+              Talk to someone and get support
             </A>
           </Trans>
         </Li>
         <Li>
           <Trans>
             <A href="http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm">
-              Protect yourself in the future
+              Find tips to protect yourself in the future
             </A>
           </Trans>
         </Li>
         <Li>
           <Trans>
             <A href="http://www.antifraudcentre.ca/index-eng.htm">
-              Stay on top of trending scams
+              Follow what scams are trending
             </A>
           </Trans>
         </Li>
