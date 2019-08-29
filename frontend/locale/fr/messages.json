@@ -175,5 +175,5 @@
   "loading...": "chargement en cours...",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
   "{startDate} to {endDate}": "{startDate} au {endDate}",
-  "❮   Report another scam": "❮   Rapporter une autre fraude"
+  "❮   Report another scam": "❮   Signaler une autre fraude"
 }
