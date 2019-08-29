@@ -10,7 +10,6 @@ import { getDoneForms } from '../utils/queriesAndMutations'
 import { Container } from '../components/container'
 import { BackButton } from '../components/backbutton'
 import { Steps } from '../components/stepper'
-import { ApolloConsumer } from 'react-apollo'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scamInfo: JSON.stringify(data) } })
@@ -19,25 +18,6 @@ const submitAndNavigate = (client, data) => {
 
 export const TimeFramePage = () => (
   <Layout>
-    <ApolloConsumer>
-      {client =>
-        client.writeData({
-          data: {
-            doneForms: false,
-            scamInfo: JSON.stringify({}),
-            lostMoney: JSON.stringify({}),
-            suspectInfo: JSON.stringify({}),
-            files: [],
-            contactInfo: JSON.stringify({}),
-            timeFrame: JSON.stringify({}),
-            whatHappened: JSON.stringify({}),
-            scammerDetails: JSON.stringify({}),
-            impact: JSON.stringify({}),
-            tellUsMore: JSON.stringify({}),
-          },
-        })
-      }
-    </ApolloConsumer>
     <Container
       display="flex"
       width="90%"

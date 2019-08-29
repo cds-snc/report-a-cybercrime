@@ -88,6 +88,11 @@ export const LandingPage = () => (
       </Li>
     </Ul>
 
-    <ButtonsContainer buttonLink={true} cancel={false} />
+    <ButtonsContainer
+      landing={true}
+      buttonLink={true}
+      cancel={false}
+      route="/p2/timeframe"
+    />
   </Layout>
 )
