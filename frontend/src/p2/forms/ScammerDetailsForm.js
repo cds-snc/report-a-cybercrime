@@ -92,7 +92,9 @@ export const ScammerDetailsFormWrapped = props => {
 
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
-                  <Trans>Add suspect clues</Trans>
+                  <Trans>
+                    <strong>Add suspect clues</strong>
+                  </Trans>
                 </Text>
               </label>
               <div>
