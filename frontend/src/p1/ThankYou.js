@@ -5,7 +5,7 @@ import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { ButtonLink } from '../components/link'
 import { TrackPageViews } from '../TrackPageViews'
-import { Container } from '../components/container'
+import { ButtonsContainer } from '../components/buttons-container'
 import { Layout } from '../components/layout'
 
 export const ThankYou = () => (
@@ -26,16 +26,6 @@ export const ThankYou = () => (
         to help police catch scammers.
       </Trans>
     </P>
-    <Container
-      width="305px"
-      marginTop={[1, null, 1]}
-      display="flex"
-      flexDirection="column"
-      justifyContent="space-between"
-    >
-      <ButtonLink type="submit" to="/p1" textAlign="center">
-        <Trans> Report another scam</Trans>
-      </ButtonLink>
-    </Container>
+    <ButtonsContainer buttonLink={true} cancel={false} route="/p1/scaminfo" />
   </Layout>
 )

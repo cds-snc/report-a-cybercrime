@@ -7,9 +7,9 @@ import { Trans } from '@lingui/macro'
 import { I18n } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { Container } from '../../components/container'
+import { ButtonsContainer } from '../../components/buttons-container'
 import { TextArea } from '../../components/text-area'
 import { Button } from '../../components/button'
-import { Link } from '../../components/link'
 import { Text } from '../../components/text'
 import { H3 } from '../../components/header'
 import { P } from '../../components/paragraph'
@@ -18,6 +18,7 @@ import { Li } from '../../components/list-item'
 import { FileUpload } from '../../components/file-upload'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getScammerDetails } from '../../utils/queriesAndMutations'
+import upload from '../../images/upload.svg'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
@@ -115,19 +116,33 @@ export const ScammerDetailsFormWrapped = props => {
               </P>
 
               <Container
-                width="300px"
                 marginTop={[2, null, 5]}
-                marginBottom={[2, null, 5]}
+                marginBottom={[2, 5, 5]}
                 display="flex"
                 flexDirection="row"
-                justifyContent="center"
+                justifyContent={['flex-start', 'center', 'flex-start']}
+                textAlign="center"
               >
                 <FileUpload
                   onChange={onChange}
-                  paddingLeft="15px"
-                  paddingRight="15px"
+                  width={['auto', '100%', 'auto']}
+                  paddingLeft="1.5rem"
+                  paddingRight="1.5rem"
+                  paddingBottom="0.6rem"
+                  paddingTop="0.6rem"
+                  css={css`
+                    display: flex;
+                    justify-content: center;
+                    img {
+                      width: 1rem;
+                      margin-right: 0.6rem;
+                    }
+                  `}
                 >
-                  <Trans>Add file</Trans>
+                  <img alt="upload icon" src={upload} />
+                  <span>
+                    <Trans>Attach file</Trans>
+                  </span>
                 </FileUpload>
               </Container>
 
@@ -176,34 +191,7 @@ export const ScammerDetailsFormWrapped = props => {
                   </React.Fragment>
                 ))}
               </Container>
-
-              <Container
-                width="305px"
-                marginTop={[1, null, 1]}
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-between;
-                `}
-              >
-                <Button type="submit">
-                  <Trans>Continue</Trans>
-                </Button>
-              </Container>
-
-              <Container
-                width="300px"
-                marginTop={[1, null, 1]}
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-between;
-                `}
-              >
-                <Link type="button" color="black" to="/p2" textAlign="center">
-                  <Trans>Cancel report</Trans>
-                </Link>
-              </Container>
+              <ButtonsContainer buttonLink={false} cancel={true} />
             </form>
           )}
         />

@@ -1,17 +1,15 @@
 /** @jsx jsx */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { ApolloConsumer } from 'react-apollo'
 import { I18n, i18nMark } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
-import { Container } from '../../components/container'
+import { ButtonsContainer } from '../../components/buttons-container'
 import { TextArea } from '../../components/text-area'
-import { Button } from '../../components/button'
-import { Link } from '../../components/link'
 import { Text } from '../../components/text'
 import { DateSelector } from '../../components/date-picker'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
@@ -53,8 +51,8 @@ export class ScamInfoForm extends Component {
 
   localOnSubmit = (client, data) => {
     const { onSubmit } = this.props
-
-    if (this.startDate != null && this.startDate.length > 0) {
+    // data.whenWereYouContacted = this.startDate.toISOString().slice(0, 10)
+    if (this.startDate != null) {
       data.whenWereYouContacted = this.startDate.toISOString().slice(0, 10)
     } else {
       data.whenWereYouContacted = ''
@@ -180,38 +178,11 @@ export class ScamInfoForm extends Component {
                     </Text>
                   )}
                 </Text>
-                <Container
-                  width="305px"
-                  marginTop={[1, null, 1]}
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                  `}
-                >
-                  <Button type="submit">
-                    <Trans>Continue</Trans>
-                  </Button>
-                </Container>
-
-                <Container
-                  width="300px"
-                  marginTop={[1, null, 1]}
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                  `}
-                >
-                  <Link
-                    type="button"
-                    color="black"
-                    to="/p1/"
-                    textAlign="center"
-                  >
-                    <Trans>Cancel report</Trans>
-                  </Link>
-                </Container>
+                <ButtonsContainer
+                  buttonLink={false}
+                  cancel={true}
+                  cancelRoute="/p1/"
+                />
               </form>
             )}
           />

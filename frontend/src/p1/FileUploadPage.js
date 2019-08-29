@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import { jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
@@ -17,6 +17,7 @@ import { Layout } from '../components/layout'
 import { Steps } from '../components/stepper'
 import { P } from '../components/paragraph'
 import { getDoneForms, getFiles } from '../utils/queriesAndMutations'
+import upload from '../images/upload.svg'
 
 class FileUploadInternal extends Component {
   constructor(props) {
@@ -70,19 +71,33 @@ class FileUploadInternal extends Component {
           <Trans>Please attach one file at a time.</Trans>
         </P>
         <Container
-          width="300px"
           marginTop={[2, null, 5]}
-          marginBottom={[2, null, 5]}
+          marginBottom={[2, 5, 5]}
           display="flex"
           flexDirection="row"
-          justifyContent="center"
+          justifyContent={['flex-start', 'center', 'flex-start']}
+          textAlign="center"
         >
           <FileUpload
             onChange={this.onChange}
-            paddingLeft="15px"
-            paddingRight="15px"
+            width={['auto', '100%', 'auto']}
+            paddingLeft="1.5rem"
+            paddingRight="1.5rem"
+            paddingBottom="0.6rem"
+            paddingTop="0.6rem"
+            css={css`
+              display: flex;
+              justify-content: center;
+              img {
+                width: 1rem;
+                margin-right: 0.6rem;
+              }
+            `}
           >
-            <Trans>Add file</Trans>
+            <img alt="upload icon" src={upload} />
+            <span>
+              <Trans>Attach file</Trans>
+            </span>
           </FileUpload>
         </Container>
         <P>
@@ -105,14 +120,12 @@ class FileUploadInternal extends Component {
         <Container>
           {files.map((f, index) => (
             <Container
-              width="300px"
               marginBottom={[2, null, 3]}
               key={index}
               display="flex"
               flexDirection="row"
-              justifyContent="space-between"
+              alignItems="center"
             >
-              <Text>{f.name}</Text>
               <Button
                 float="right"
                 marginTop={0}
@@ -122,6 +135,8 @@ class FileUploadInternal extends Component {
               >
                 <Trans>Remove file</Trans>
               </Button>
+
+              <Text marginLeft="3rem">{f.name}</Text>
             </Container>
           ))}
         </Container>
@@ -130,27 +145,44 @@ class FileUploadInternal extends Component {
           {client => (
             <Container>
               <Container
-                width="300px"
-                marginTop={[7, null, 8]}
-                display="flex"
-                flexDirection="column"
-                justifyContent="space-between"
-              >
-                <Button onClick={() => this.submitAndNavigate(client)}>
-                  <Trans>Continue</Trans>
-                </Button>
-              </Container>
+                mt="1rem"
+                mb="4rem"
+                display={['flex', 'block', 'flex']}
+                alignItems="center"
+                css={css`
+                  button,
+                  div[name='buttonlink-container'] a {
+                    padding: 0.7rem 1.5rem;
+                    width: 100%;
+                    text-align: center;
+                  }
 
-              <Container
-                width="300px"
-                marginTop={[2, null, 3]}
-                display="flex"
-                flexDirection="column"
-                justifyContent="space-between"
+                  @media (max-width: 640px) {
+                    div[name='buttonlink-container'] a {
+                      padding: 0.7rem 0;
+                    }
+                  }
+                `}
               >
-                <Link type="button" color="black" to="/p1" textAlign="center">
-                  <Trans>Cancel report</Trans>
-                </Link>
+                <Container mt="1rem">
+                  <Button
+                    onClick={() => this.submitAndNavigate(client)}
+                    type="submit"
+                  >
+                    <Trans>Continue</Trans>
+                  </Button>
+                </Container>
+
+                <Container mt="1.9rem" ml={['3rem', '0', '3rem']}>
+                  <Link
+                    type="button"
+                    color="black"
+                    to="/p1/"
+                    textAlign="center"
+                  >
+                    <Trans>Cancel report</Trans>
+                  </Link>
+                </Container>
               </Container>
             </Container>
           )}

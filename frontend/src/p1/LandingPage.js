@@ -4,9 +4,9 @@ import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { P } from '../components/paragraph'
 import { H1 } from '../components/header'
-import { ButtonLink } from '../components/link'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
+import { ButtonsContainer } from '../components/buttons-container'
 import { Text } from '../components/text'
 import { Layout } from '../components/layout'
 import { TrackPageViews } from '../TrackPageViews'
@@ -61,14 +61,11 @@ export const LandingPage = () => (
         </Li>
       </Ul>
     </Text>
-    <P>
-      <Trans>
-        The more detail you can provide, the more police can learn to stop this
-        from happening again.
-      </Trans>
-    </P>
-    <ButtonLink color="black" mb={[3, null, 5]} to="scaminfo">
-      <Trans>Report now</Trans>
-    </ButtonLink>
+    <ButtonsContainer
+      buttonLink={true}
+      cancel={false}
+      landing={true}
+      route="/p1/scaminfo"
+    />
   </Layout>
 )
