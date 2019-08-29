@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { H1, H2 } from '../components/header'
+import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { A } from '../components/link'
 import { Ul } from '../components/unordered-list'
