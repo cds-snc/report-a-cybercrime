@@ -51,74 +51,81 @@ class TimeFrameInfoFormWrapped extends Component {
   render() {
     return (
       <ApolloConsumer>
-        <Form
-          onSubmit={data => this.localOnSubmit(this.props.client, data)}
-          validate={validate}
-          render={({ handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="whenDidItStart">
-                <P marginTop={[5, null, 6]}>
-                  <Trans>
-                    <strong>Approximate start</strong>
-                  </Trans>
-                </P>
-              </label>
-              <div>
-                <Field
-                  name="whenDidItStart"
-                  id="whenDidItStart"
-                  component={DateSelectorAdapter}
-                  height="25px"
-                  width="300px"
-                />
-              </div>
+        {client => (
+          <Form
+            onSubmit={data => this.localOnSubmit(this.props.client, data)}
+            validate={validate}
+            render={({ handleSubmit }) => (
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="whenDidItStart">
+                  <P marginTop={[5, null, 6]}>
+                    <Trans>
+                      <strong>Approximate start</strong>
+                    </Trans>
+                  </P>
+                </label>
+                <div>
+                  <Field
+                    name="whenDidItStart"
+                    id="whenDidItStart"
+                    component={DateSelectorAdapter}
+                    height="25px"
+                    width="300px"
+                  />
+                </div>
 
-              <label htmlFor="whenWasLastInteraction">
-                <P marginTop={[5, null, 6]}>
-                  <Trans>
-                    <strong>Approximate end</strong>
-                  </Trans>
-                </P>
-              </label>
-              <div>
-                <Field
-                  name="whenWasLastInteraction"
-                  id="whenWasLastInteraction"
-                  component={DateSelectorAdapter}
-                  height="25px"
-                  width="300px"
-                />
-              </div>
-              <Container
-                width="305px"
-                marginTop={[1, null, 1]}
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-between;
-                `}
-              >
-                <Button type="submit">
-                  <Trans>Continue</Trans>
-                </Button>
-              </Container>
+                <label htmlFor="whenWasLastInteraction">
+                  <P marginTop={[5, null, 6]}>
+                    <Trans>
+                      <strong>Approximate end</strong>
+                    </Trans>
+                  </P>
+                </label>
+                <div>
+                  <Field
+                    name="whenWasLastInteraction"
+                    id="whenWasLastInteraction"
+                    component={DateSelectorAdapter}
+                    height="25px"
+                    width="300px"
+                  />
+                </div>
+                <Container
+                  width="305px"
+                  marginTop={[1, null, 1]}
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                  `}
+                >
+                  <Button type="submit">
+                    <Trans>Continue</Trans>
+                  </Button>
+                </Container>
 
-              <Container
-                width="300px"
-                marginTop={[1, null, 1]}
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-between;
-                `}
-              >
-                <Link type="button" color="black" to="/p2/" textAlign="center">
-                  <Trans>Cancel report</Trans>
-                </Link>
-              </Container>
-            </form>
-          )}
-        />
+                <Container
+                  width="300px"
+                  marginTop={[1, null, 1]}
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                  `}
+                >
+                  <Link
+                    type="button"
+                    color="black"
+                    to="/p2/"
+                    textAlign="center"
+                  >
+                    <Trans>Cancel report</Trans>
+                  </Link>
+                </Container>
+              </form>
+            )}
+          />
+        )}
       </ApolloConsumer>
     )
   }
