@@ -96,10 +96,7 @@ export const LandingPage = () => (
       </Li>
       <Li>
         <Trans>
-          Report to the credit bureaus,{' '}
-          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
-          <A href="https://www.transunion.ca/">TransUnion</A>, if your identity
-          was stolen.
+          Report to the credit bureaus, if your identity was stolen.
         </Trans>
       </Li>
     </Ul>
