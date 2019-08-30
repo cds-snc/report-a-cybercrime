@@ -38,13 +38,13 @@ export const NextSteps = () => (
     </H1>
     <P>
       <Trans>
-        <strong>We've sent you a confirmation email.</strong>
+        <strong>We've sent you an email with a summary of your report.</strong>
       </Trans>
     </P>
     <P>
       <Trans>
-        Your reference number is <strong>#NC300234234</strong>. Keep this number
-        for your records or to add more information later.
+        Your reference number is <strong>#NC300234234</strong>. Keep this for
+        your records or to add more information later.
       </Trans>
     </P>
     <InfoCard>
@@ -59,8 +59,7 @@ export const NextSteps = () => (
       <P>
         <Trans>
           The RCMP will analyze your report and combine it with others that are
-          similar to help police across Canada track down cybercriminals. Police
-          does not follow up with everyone who submits a report.
+          similar to help police across Canada track down cybercriminals.
         </Trans>
       </P>
       <P>
