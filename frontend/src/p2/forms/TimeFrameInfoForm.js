@@ -3,7 +3,6 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
-import { I18n } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { P } from '../../components/paragraph'
@@ -12,7 +11,6 @@ import { Button } from '../../components/button'
 import { Link } from '../../components/link'
 import { DateSelector } from '../../components/date-picker'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
-import { getTimeFrame } from '../../utils/queriesAndMutations'
 
 const DateSelectorAdapter = finalFormAdapter(DateSelector)
 
@@ -53,81 +51,74 @@ class TimeFrameInfoFormWrapped extends Component {
   render() {
     return (
       <ApolloConsumer>
-        {client => (
-          <Form
-            onSubmit={data => this.localOnSubmit(this.props.client, data)}
-            validate={validate}
-            render={({ handleSubmit, values }) => (
-              <form onSubmit={handleSubmit}>
-                <label htmlFor="whenDidItStart">
-                  <P marginTop={[5, null, 6]}>
-                    <Trans>
-                      <strong>Approximate start</strong>
-                    </Trans>
-                  </P>
-                </label>
-                <div>
-                  <Field
-                    name="whenDidItStart"
-                    id="whenDidItStart"
-                    component={DateSelectorAdapter}
-                    height="25px"
-                    width="300px"
-                  />
-                </div>
-
-                <label htmlFor="whenWasLastInteraction">
-                  <P marginTop={[5, null, 6]}>
-                    <Trans>
-                      <strong>Approximate end</strong>
-                    </Trans>
-                  </P>
-                </label>
-                <div>
-                  <Field
-                    name="whenWasLastInteraction"
-                    id="whenWasLastInteraction"
-                    component={DateSelectorAdapter}
-                    height="25px"
-                    width="300px"
-                  />
-                </div>
-                <Container
-                  width="305px"
-                  marginTop={[1, null, 1]}
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                  `}
-                >
-                  <Button type="submit">
-                    <Trans>Continue</Trans>
-                  </Button>
-                </Container>
-
-                <Container
+        <Form
+          onSubmit={data => this.localOnSubmit(this.props.client, data)}
+          validate={validate}
+          render={({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="whenDidItStart">
+                <P marginTop={[5, null, 6]}>
+                  <Trans>
+                    <strong>Approximate start</strong>
+                  </Trans>
+                </P>
+              </label>
+              <div>
+                <Field
+                  name="whenDidItStart"
+                  id="whenDidItStart"
+                  component={DateSelectorAdapter}
+                  height="25px"
                   width="300px"
-                  marginTop={[1, null, 1]}
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                  `}
-                >
-                  <Link
-                    type="button"
-                    color="black"
-                    to="/p2/"
-                    textAlign="center"
-                  >
-                    <Trans>Cancel report</Trans>
-                  </Link>
-                </Container>
-              </form>
-            )}
-          />
-        )}
+                />
+              </div>
+
+              <label htmlFor="whenWasLastInteraction">
+                <P marginTop={[5, null, 6]}>
+                  <Trans>
+                    <strong>Approximate end</strong>
+                  </Trans>
+                </P>
+              </label>
+              <div>
+                <Field
+                  name="whenWasLastInteraction"
+                  id="whenWasLastInteraction"
+                  component={DateSelectorAdapter}
+                  height="25px"
+                  width="300px"
+                />
+              </div>
+              <Container
+                width="305px"
+                marginTop={[1, null, 1]}
+                css={css`
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                `}
+              >
+                <Button type="submit">
+                  <Trans>Continue</Trans>
+                </Button>
+              </Container>
+
+              <Container
+                width="300px"
+                marginTop={[1, null, 1]}
+                css={css`
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                `}
+              >
+                <Link type="button" color="black" to="/p2/" textAlign="center">
+                  <Trans>Cancel report</Trans>
+                </Link>
+              </Container>
+            </form>
+          )}
+        />
       </ApolloConsumer>
     )
   }
