@@ -96,9 +96,7 @@ export const ImpactStatementInfoForm = props => (
             <br />
             <P>
               <Trans>
-                <strong>
-                  Tell us more about what was affected, lost, or damaged.
-                </strong>
+                <strong>Tell us more about what was lost or affected.</strong>
               </Trans>
             </P>
             <div>
