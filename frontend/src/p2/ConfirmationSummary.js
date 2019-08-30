@@ -101,7 +101,7 @@ const scammerSummary = client => {
   return (
     <React.Fragment>
       <SectionHeader>
-        <Trans>Scammer</Trans>{' '}
+        <Trans>Suspect</Trans>{' '}
         <I18n>
           {({ i18n }) => (
             <EditButton
