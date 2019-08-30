@@ -28,11 +28,6 @@ export const ContactInfoPage = () => (
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>
-    <P>
-      <Trans>
-        A local police officer could follow up if more information is needed.
-      </Trans>
-    </P>
     <TrackPageViews />
     <ContactInfoForm onSubmit={submitAndNavigate} />
   </Layout>
