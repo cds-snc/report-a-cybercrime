@@ -31,7 +31,9 @@ export const ConfirmationForm = props => {
     <React.Fragment>
       <hr />
       <br></br>
-      <H2>Tell us more</H2>
+      <H2>
+        <Trans>Tell us more</Trans>
+      </H2>
       <ApolloConsumer>
         {client => (
           <Mutation mutation={SUBMIT_P2_REPORT_MUTATION}>
