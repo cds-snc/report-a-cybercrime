@@ -7,7 +7,6 @@ import { Layout } from '../components/layout'
 import { TimeFrameInfoForm } from './forms/TimeFrameInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
-import { Container } from '../components/container'
 import { BackButton } from '../components/backbutton'
 import { Steps } from '../components/stepper'
 

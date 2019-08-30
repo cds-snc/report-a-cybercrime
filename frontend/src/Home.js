@@ -1,7 +1,6 @@
 import React from 'react'
 import { Router } from '@reach/router'
 import styled from '@emotion/styled'
-import { PhaseBanner } from './components/phase-banner'
 import { PageNotFound } from './PageNotFound'
 import { RootLandingPage } from './RootLandingPage'
 import { FileUploadPage } from './p1/FileUploadPage'

@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import PropTypes from 'prop-types'
 import { jsx, css } from '@emotion/core'
 
 const phasebanner = css`

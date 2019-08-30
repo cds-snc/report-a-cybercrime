@@ -48,7 +48,7 @@ export const ButtonsContainer = ({
       <Container name="buttonlink-container">
         {landing === true ? (
           <ButtonLink color="black" mb={[3, null, 5]} to={route}>
-            <Trans>Report Now ❯</Trans>
+            <Trans>Report now ❯</Trans>
           </ButtonLink>
         ) : (
           <ButtonLink color="black" mb={[3, null, 5]} to={route}>
