@@ -30,12 +30,12 @@ export const ScammerDetailsPage = () => {
       </Container>
       <BackButton route="/p2/whathappened" />
       <H1>
-        <Trans>About the suspected scammer</Trans>
+        <Trans>About the suspect</Trans>
       </H1>
       <P>
         <Trans>
           Any clues about the source of the scam can help police track down the
-          person responsible.
+          scammer.
         </Trans>
       </P>
       <TrackPageViews />
