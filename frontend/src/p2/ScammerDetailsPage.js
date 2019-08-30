@@ -35,7 +35,7 @@ export const ScammerDetailsPage = () => {
       <P>
         <Trans>
           Any clues about the source of the scam can help police track down the
-          person responsible for these crimes.
+          person responsible.
         </Trans>
       </P>
       <TrackPageViews />
