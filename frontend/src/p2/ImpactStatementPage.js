@@ -35,8 +35,8 @@ export const ImpactStatementPage = () => (
     </H1>
     <P>
       <Trans>
-        We know it can be difficult to talk about. You're not alone. Help
-        protect others from having to go through this too.
+        You're not the only one affected by this scam. Help protect others by
+        telling us how the scam affected you.
       </Trans>
     </P>
     <TrackPageViews />
