@@ -22,9 +22,8 @@ const validate = () => {
 class TimeFrameInfoFormWrapped extends Component {
   constructor(props) {
     super(props)
-    const { startDate, endDate } = getTimeFrame(props.client)
-    this.startDate = new Date(startDate)
-    this.endDate = new Date(endDate)
+    this.startDate = new Date()
+    this.endDate = new Date()
   }
 
   handleChange = date => {
@@ -36,13 +35,13 @@ class TimeFrameInfoFormWrapped extends Component {
 
   localOnSubmit = (client, data) => {
     const { onSubmit } = this.props
-    if (this.startDate != null && this.startDate.length > 0) {
+    if (this.startDate != null) {
       data.startDate = this.startDate.toISOString()
     } else {
       data.startDate = ''
     }
 
-    if (this.endDate != null && this.endDate.length > 0) {
+    if (this.endDate != null) {
       data.endDate = this.endDate.toISOString()
     } else {
       data.endDate = ''
@@ -53,88 +52,83 @@ class TimeFrameInfoFormWrapped extends Component {
 
   render() {
     return (
-      <Form
-        onSubmit={data => this.localOnSubmit(this.props.client, data)}
-        validate={validate}
-        render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="whenDidItStart">
-              <P marginTop={[5, null, 6]}>
-                <Trans>
-                  <strong>Approximate start</strong>
-                </Trans>
-              </P>
-            </label>
-            <div>
-              <I18n>
-                {({ i18n }) => (
+      <ApolloConsumer>
+        {client => (
+          <Form
+            onSubmit={data => this.localOnSubmit(this.props.client, data)}
+            validate={validate}
+            render={({ handleSubmit, values }) => (
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="whenDidItStart">
+                  <P marginTop={[5, null, 6]}>
+                    <Trans>
+                      <strong>Approximate start</strong>
+                    </Trans>
+                  </P>
+                </label>
+                <div>
                   <Field
                     name="whenDidItStart"
                     id="whenDidItStart"
                     component={DateSelectorAdapter}
-                    locale={i18n._('en')}
-                    selected={this.startDate}
-                    onChange={this.handleChange}
                     height="25px"
                     width="300px"
                   />
-                )}
-              </I18n>
-            </div>
+                </div>
 
-            <label htmlFor="whenWasLastInteraction">
-              <P marginTop={[5, null, 6]}>
-                <Trans>
-                  <strong>Approximate end</strong>
-                </Trans>
-              </P>
-            </label>
-            <div>
-              <I18n>
-                {({ i18n }) => (
+                <label htmlFor="whenWasLastInteraction">
+                  <P marginTop={[5, null, 6]}>
+                    <Trans>
+                      <strong>Approximate end</strong>
+                    </Trans>
+                  </P>
+                </label>
+                <div>
                   <Field
                     name="whenWasLastInteraction"
                     id="whenWasLastInteraction"
                     component={DateSelectorAdapter}
-                    locale={i18n._('en')}
-                    selected={this.endDate}
-                    onChange={this.handleChangeDate}
                     height="25px"
                     width="300px"
                   />
-                )}
-              </I18n>
-            </div>
-            <Container
-              width="305px"
-              marginTop={[1, null, 1]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Button type="submit">
-                <Trans>Continue</Trans>
-              </Button>
-            </Container>
+                </div>
+                <Container
+                  width="305px"
+                  marginTop={[1, null, 1]}
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                  `}
+                >
+                  <Button type="submit">
+                    <Trans>Continue</Trans>
+                  </Button>
+                </Container>
 
-            <Container
-              width="300px"
-              marginTop={[1, null, 1]}
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              `}
-            >
-              <Link type="button" color="black" to="/p2/" textAlign="center">
-                <Trans>Cancel report</Trans>
-              </Link>
-            </Container>
-          </form>
+                <Container
+                  width="300px"
+                  marginTop={[1, null, 1]}
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                  `}
+                >
+                  <Link
+                    type="button"
+                    color="black"
+                    to="/p2/"
+                    textAlign="center"
+                  >
+                    <Trans>Cancel report</Trans>
+                  </Link>
+                </Container>
+              </form>
+            )}
+          />
         )}
-      />
+      </ApolloConsumer>
     )
   }
 }
