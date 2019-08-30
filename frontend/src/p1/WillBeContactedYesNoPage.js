@@ -13,15 +13,8 @@ import { BackButton } from '../components/backbutton'
 export const Willbecontacted = () => (
   <Layout>
     <TrackPageViews />
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={4} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
     <BackButton route="/p1/uploadfilesquestion" />
+    <Steps activeStep={5} totalSteps={6} />
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>

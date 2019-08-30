@@ -19,15 +19,8 @@ const submitAndNavigate = (client, data) => {
 
 export const SuspectInfoPage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={2} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
     <BackButton route="/p1/suspectinfoquestion" />
+    <Steps activeStep={3} totalSteps={6} />
     <H1>
       <Trans>Add suspect clues</Trans>
     </H1>

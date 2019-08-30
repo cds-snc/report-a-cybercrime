@@ -18,15 +18,8 @@ const submitAndNavigate = (client, data) => {
 
 export const ContactInfoPage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={4} steps={[{}, {}, {}, {}, {}, {}]} />
-    </Container>
     <BackButton route="/p2/impact" />
+    <Steps activeStep={5} totalSteps={6} />
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>

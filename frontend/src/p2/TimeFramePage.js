@@ -18,16 +18,8 @@ const submitAndNavigate = (client, data) => {
 
 export const TimeFramePage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={0} steps={[{}, {}, {}, {}, {}, {}]} />
-    </Container>
-
     <BackButton route="/p2" />
+    <Steps activeStep={1} totalSteps={6} />
 
     {/* <Link type="button" color="black" to="/p2/" textAlign="center">
                 <Trans>Cancel report</Trans>

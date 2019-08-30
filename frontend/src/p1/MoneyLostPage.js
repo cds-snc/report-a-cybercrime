@@ -20,15 +20,8 @@ const submitAndNavigate = (client, data) => {
 
 export const MoneyLostPage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={1} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
     <BackButton route="/p1/moneylostquestion" />
+    <Steps activeStep={2} totalSteps={6} />
     <H1>
       <Trans>Tell us about the money lost</Trans>
     </H1>

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 export const BackButton = ({ route = '' }) => (
   <div
     css={css`
-      margin-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
 
       a {
         text-decoration: none;

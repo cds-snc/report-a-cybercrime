@@ -13,15 +13,8 @@ import { BackButton } from '../components/backbutton'
 export const LoseMoney = () => (
   <Layout>
     <TrackPageViews />
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={1} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
     <BackButton route="/p1/scaminfo" />
+    <Steps activeStep={2} totalSteps={6} />
     <H1>
       <Trans>Tell us if money was lost</Trans>
     </H1>

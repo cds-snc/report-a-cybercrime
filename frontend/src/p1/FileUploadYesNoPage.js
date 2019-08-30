@@ -12,16 +12,9 @@ import { BackButton } from '../components/backbutton'
 
 export const FilesToUpload = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={3} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
     <TrackPageViews />
     <BackButton route="/p1/suspectinfoquestion" />
+    <Steps activeStep={4} totalSteps={6} />
     <H1>
       <Trans>Attach supporting files</Trans>
     </H1>

@@ -20,15 +20,8 @@ const submitAndNavigate = (client, data) => {
 export const ScammerDetailsPage = () => {
   return (
     <Layout>
-      <Container
-        display="flex"
-        width="90%"
-        flexDirection="row"
-        marginBottom="20px"
-      >
-        <Steps activeStep={2} steps={[{}, {}, {}, {}, {}, {}]} />
-      </Container>
       <BackButton route="/p2/whathappened" />
+      <Steps activeStep={3} totalSteps={6} />
       <H1>
         <Trans>About the suspect</Trans>
       </H1>

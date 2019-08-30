@@ -86,10 +86,10 @@ const App = () => (
               <ThemeProvider theme={theme}>
                 <header>
                   <WarningBanner />
-                  <TopBanner lang={language} bg="black" />
                   <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
                     <Trans>This site will change as we test ideas.</Trans>
                   </PhaseBanner>
+                  <TopBanner lang={language} bg="black" />
                 </header>
                 <Content>
                   <Home />

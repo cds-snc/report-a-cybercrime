@@ -7,7 +7,7 @@ export const H1 = props => (
     as="h1"
     fontSize={[5, null, 7]}
     lineHeight={[5, null, 7]}
-    mb={4}
+    mb="2rem"
     fontWeight="bold"
     {...props}
   >

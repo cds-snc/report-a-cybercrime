@@ -19,15 +19,8 @@ const submitAndNavigate = (client, data) => {
 
 export const ScamInfoPage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={0} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
     <BackButton route="/p1" />
+    <Steps activeStep={1} totalSteps={6} />
     <H1>
       <Trans>Describe the scam</Trans>
     </H1>

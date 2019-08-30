@@ -29,7 +29,7 @@ const Root = styled('div')`
   margin: 20pt;
 `
 const Screen = styled('div')`
-  margin-top: 30pt;
+  margin-top: 0;
 `
 export const Home = () => (
   <Root>

@@ -69,15 +69,8 @@ export const ConfirmationPage = () => {
   return (
     <Layout>
       <TrackPageViews />
-      <Container
-        display="flex"
-        width="90%"
-        flexDirection="row"
-        marginBottom="20px"
-      >
-        <Steps activeStep={5} steps={[{}, {}, {}, {}, {}, {}]} />
-      </Container>
       <BackButton route="/p2/contactinfo" />
+      <Steps activeStep={6} totalSteps={6} />
       <H1>
         <Trans>Review your report</Trans>
       </H1>
