@@ -48,7 +48,7 @@ export const LandingPage = () => (
     <Text>
       <Ul fontSize={[8, null, 8]}>
         <Li>
-          <Trans>Describe what happened</Trans>
+          <Trans>Describe the scam</Trans>
         </Li>
         <Li>
           <Trans>Tell us how much money was lost</Trans>

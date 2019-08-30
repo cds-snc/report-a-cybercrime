@@ -71,23 +71,6 @@ export const LandingPage = () => (
         across Canada catch cybercriminals.
       </Trans>
     </P>
-    <Ul>
-      <Li>
-        <Trans>Details on when the scam took place</Trans>
-      </Li>
-      <Li>
-        <Trans>
-          Descriptions of what happened and what you know about the scammer
-        </Trans>
-      </Li>
-      <Li>
-        <Trans>Documents, screenshots, receipts, and conversations</Trans>
-      </Li>
-      <Li>
-        <Trans>Information on how the scam has impacted you</Trans>
-      </Li>
-    </Ul>
-
     <ButtonsContainer
       landing={true}
       buttonLink={true}

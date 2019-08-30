@@ -78,19 +78,22 @@ export const ScammerDetailsFormWrapped = props => {
               </P>
               <Ul>
                 <Li>
+                  <Trans>Who the scammer claimed to be</Trans>
+                </Li>{' '}
+                <Li>
+                  <Trans>Where they requested things be sent</Trans>
+                </Li>
+                <Li>
                   <Trans>
-                    Who the scammer claimed to be and where they requested money
-                    be sent
+                    Which email address, phone number, or website they used
                   </Trans>
                 </Li>
                 <Li>
                   <Trans>
-                    The usernames, email addresses, phone numbers, or websites
-                    they used
+                    Any screenshots, messages, bank statements, and receipts
                   </Trans>
                 </Li>
               </Ul>
-
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
                   <Trans>
@@ -108,13 +111,6 @@ export const ScammerDetailsFormWrapped = props => {
                 />
               </div>
               <br></br>
-              <P>
-                <Trans>
-                  Attach documents such as screenshots, photos, conversations,
-                  messages, bank statements, or receipts.
-                </Trans>
-              </P>
-
               <Container
                 marginTop={[2, null, 5]}
                 marginBottom={[2, 5, 5]}
@@ -145,7 +141,6 @@ export const ScammerDetailsFormWrapped = props => {
                   </span>
                 </FileUpload>
               </Container>
-
               <I18n>
                 {({ i18n }) => (
                   <H3>

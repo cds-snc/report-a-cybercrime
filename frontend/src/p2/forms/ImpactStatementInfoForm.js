@@ -53,7 +53,7 @@ export const ImpactStatementInfoForm = props => (
               <Label htmlFor="howWereYouAffected">
                 <P>
                   <Trans>
-                    <strong>How were you affected?</strong>
+                    <strong>What was the impact of the scam?</strong>
                   </Trans>
                 </P>
               </Label>
@@ -96,7 +96,7 @@ export const ImpactStatementInfoForm = props => (
             <br />
             <P>
               <Trans>
-                <strong>Tell us more about what was lost or damaged.</strong>
+                <strong>Tell us more about what was lost or affected.</strong>
               </Trans>
             </P>
             <div>
