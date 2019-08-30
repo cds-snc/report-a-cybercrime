@@ -77,5 +77,31 @@ export const LandingPage = () => (
       cancel={false}
       route="/p2/timeframe"
     />
+    <P>
+      <Trans>
+        Police will not be able to fix your problem or get your money back.
+      </Trans>
+    </P>
+    <P>
+      <Trans>
+        <strong>You may also want to:</strong>
+      </Trans>
+    </P>
+    <Ul>
+      <Li>
+        <Trans>Report directly to the place where the scam happened.</Trans>
+      </Li>
+      <Li>
+        <Trans>Report to your financial institution, if you lost money.</Trans>
+      </Li>
+      <Li>
+        <Trans>
+          Report to the credit bureaus,{' '}
+          <A href="https://www.consumer.equifax.ca/personal/">Equifax</A> and{' '}
+          <A href="https://www.transunion.ca/">TransUnion</A>, if your identity
+          was stolen.
+        </Trans>
+      </Li>
+    </Ul>
   </Layout>
 )
