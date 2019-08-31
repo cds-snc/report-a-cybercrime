@@ -33,7 +33,11 @@ export const WhatHappenedForm = props => (
                 height="200px"
               />
             </label>
-            <ButtonsContainer buttonLink={false} cancel={true} />
+            <ButtonsContainer
+              buttonLink={false}
+              cancel={true}
+              nextPage="Scammer details"
+            />
           </form>
         )}
       />

@@ -13,6 +13,7 @@ export const ButtonsContainer = ({
   buttonLink = true,
   route = '',
   cancelRoute = '/p2/',
+  nextPage = '',
 }) => (
   <Container
     mt="1rem"
@@ -40,7 +41,7 @@ export const ButtonsContainer = ({
           {submit === true ? (
             <Trans>Submit report &nbsp; ❯</Trans>
           ) : (
-            <Trans>Continue</Trans>
+            <Trans>Next - {nextPage}</Trans>
           )}
         </Button>
       </Container>

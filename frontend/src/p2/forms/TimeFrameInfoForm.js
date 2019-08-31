@@ -103,7 +103,11 @@ class TimeFrameInfoFormWrapped extends Component {
                 )}
               </I18n>
             </div>
-            <ButtonsContainer cancel={true} buttonLink={false} />
+            <ButtonsContainer
+              cancel={true}
+              buttonLink={false}
+              nextPage="What happened"
+            />
           </form>
         )}
       />
