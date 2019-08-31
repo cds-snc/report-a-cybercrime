@@ -150,6 +150,7 @@ ButtonsContainer.propTypes = {
   route: PropTypes.string,
   landing: PropTypes.bool,
   submit: PropTypes.bool,
+  nextPage: PropTypes.string,
 }
 
 ButtonsContainerYesNo.propTypes = {

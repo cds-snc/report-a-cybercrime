@@ -28,13 +28,13 @@ describe('<ButtonsContainer />', () => {
     )
   })
 
-  it('properly renders continue button with cancel button beside', () => {
+  it('properly renders next button with cancel button beside', () => {
     const { getAllByText } = render(
       <ThemeProvider theme={theme}>
         <ButtonsContainer buttonLink={false} cancel={true} cancelRoute="/p1/" />
       </ThemeProvider>,
     )
-    expect(getAllByText(/Continue/)).toHaveLength(1)
+    expect(getAllByText(/Next/)).toHaveLength(1)
     expect(getAllByText(/Cancel/)).toHaveLength(1)
     expect(document.querySelector('a').getAttribute('href')).toBe('/p1/')
     expect(document.querySelector('button').getAttribute('type')).toBe('submit')

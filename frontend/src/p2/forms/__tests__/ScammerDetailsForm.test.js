@@ -41,7 +41,7 @@ describe('<ScammerDetailsForm />', () => {
       </ThemeProvider>,
     )
     const inputNode = getByLabelText(/Add suspect clues/i)
-    const nextButton = getByText(/Continue/i)
+    const nextButton = getByText(/Next - Impact of scam/i)
 
     fillIn(inputNode, { with: 'scammer is bad.' })
     clickOn(nextButton)
