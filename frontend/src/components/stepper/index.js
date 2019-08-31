@@ -3,6 +3,7 @@ import { css, jsx } from '@emotion/core'
 import { Container } from '../container'
 import PropTypes from 'prop-types'
 import { Text } from '../text'
+import { Trans } from '@lingui/macro'
 
 export const Steps = ({ activeStep, totalSteps }) => (
   <Container
@@ -17,8 +18,11 @@ export const Steps = ({ activeStep, totalSteps }) => (
     flexDirection="row"
     marginBottom="10px"
   >
+    {' '}
     <Text>
-      Step {activeStep} out of {totalSteps}
+      <Trans>
+        Step {activeStep} out of {totalSteps}
+      </Trans>
     </Text>
   </Container>
 )

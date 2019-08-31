@@ -41,7 +41,7 @@ describe('<ImpactStatementInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const nextButton = getByText(/Next - Contact information/i)
+    const nextButton = getByText(/Next: Contact info/i)
 
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve

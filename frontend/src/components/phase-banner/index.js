@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import { Trans } from '@lingui/macro'
 
 const phasebanner = css`
   background-color: #f4f4f4;
@@ -22,6 +23,8 @@ const phasebanner = css`
 export const PhaseBanner = () => (
   <div css={phasebanner}>
     <span>ALPHA</span>
-    <span>This site will change as we test ideas.</span>
+    <span>
+      <Trans>This site will change as we test ideas.</Trans>
+    </span>
   </div>
 )

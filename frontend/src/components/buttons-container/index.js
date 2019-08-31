@@ -41,8 +41,24 @@ export const ButtonsContainer = ({
           {submit === true ? (
             <Trans>Submit report &nbsp; ❯</Trans>
           ) : (
-            <Trans>Next - {nextPage}</Trans>
+            <Trans>Next</Trans>
           )}
+
+          {nextPage === 'Scammer details' ? (
+            <Trans>: Scammer Details</Trans>
+          ) : nextPage === 'Money lost' ? (
+            <Trans>: Money lost</Trans>
+          ) : nextPage === 'Impact of scam' ? (
+            <Trans>: Impact of scam</Trans>
+          ) : nextPage === 'What happened' ? (
+            <Trans>: What happened</Trans>
+          ) : nextPage === 'Supporting files' ? (
+            <Trans>: Supporting files</Trans>
+          ) : nextPage === 'Contact info' ? (
+            <Trans>: Contact info</Trans>
+          ) : nextPage === 'Confirm information' ? (
+            <Trans>: Confirm information</Trans>
+          ) : null}
         </Button>
       </Container>
     ) : (

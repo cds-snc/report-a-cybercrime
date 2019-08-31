@@ -111,7 +111,7 @@ export const ImpactStatementInfoForm = props => (
             <ButtonsContainer
               buttonLink={false}
               cancel={true}
-              nextPage="Contact information"
+              nextPage="Contact info"
             />
           </form>
         )}

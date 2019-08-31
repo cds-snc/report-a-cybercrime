@@ -41,7 +41,7 @@ describe('<SuspectInfoForm />', () => {
     )
 
     const inputNode = getByLabelText('Name')
-    const nextButton = getByText(/Next - Supporting files/i)
+    const nextButton = getByText(/Next: Supporting files/i)
 
     fillIn(inputNode, { with: 'Malory' })
     clickOn(nextButton)

@@ -42,7 +42,7 @@ describe('<ContactInfoForm />', () => {
     )
 
     const inputNode = getByLabelText('Full name')
-    const nextButton = getByText(/Next - Confirm information/i)
+    const nextButton = getByText(/Next: Confirm information/i)
 
     fillIn(inputNode, { with: 'Mallory' })
     clickOn(nextButton)
