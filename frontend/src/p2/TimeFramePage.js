@@ -17,7 +17,9 @@ const submitAndNavigate = (client, data) => {
 
 export const TimeFramePage = () => (
   <Layout>
-    <BackButton route="/p2" />
+    <BackButton route="/p2">
+      <Trans>Landing page</Trans>
+    </BackButton>
     <Steps activeStep={1} totalSteps={6} />
 
     {/* <Link type="button" color="black" to="/p2/" textAlign="center">

@@ -4,7 +4,7 @@ import { Link } from '../link'
 import { Trans } from '@lingui/macro'
 import PropTypes from 'prop-types'
 
-export const BackButton = ({ route = '' }) => (
+export const BackButton = ({ route = '', children }) => (
   <div
     css={css`
       margin-bottom: 2.5rem;
@@ -22,7 +22,7 @@ export const BackButton = ({ route = '' }) => (
   >
     <Link type="button" to={route} textAlign="left">
       <Trans>
-        <span>&#9664;</span> Back{' '}
+        <span>&#9664;</span> <span>Back to</span> <span>{children}</span>
       </Trans>
     </Link>
   </div>

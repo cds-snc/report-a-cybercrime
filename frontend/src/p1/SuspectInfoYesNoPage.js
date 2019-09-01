@@ -12,7 +12,9 @@ import { BackButton } from '../components/backbutton'
 export const Suspectinfo = () => (
   <Layout>
     <TrackPageViews />
-    <BackButton route="/p1/moneylostquestion" />
+    <BackButton route="/p1/moneylostquestion">
+      <Trans>Money lost question</Trans>
+    </BackButton>
     <Steps activeStep={3} totalSteps={6} />
     <H1>
       <Trans>Add suspect clues</Trans>

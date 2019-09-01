@@ -68,7 +68,9 @@ export const ConfirmationPage = () => {
   return (
     <Layout>
       <TrackPageViews />
-      <BackButton route="/p2/contactinfo" />
+      <BackButton route="/p2/contactinfo">
+        <Trans>Contact info</Trans>
+      </BackButton>
       <Steps activeStep={6} totalSteps={6} />
       <H1>
         <Trans>Review your report</Trans>

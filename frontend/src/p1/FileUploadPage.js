@@ -51,7 +51,9 @@ class FileUploadInternal extends Component {
     return (
       <Layout>
         <TrackPageViews />
-        <BackButton route="/p1/uploadfilesquestion" />
+        <BackButton route="/p1/uploadfilesquestion">
+          <Trans>Upload files quesiton</Trans>
+        </BackButton>
         <Steps activeStep={4} totalSteps={6} />
         <H1>
           <Trans>Attach supporting files</Trans>

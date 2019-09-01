@@ -447,7 +447,9 @@ const submit = (client, submitReport) => {
 export const ConfirmationPage = () => {
   return (
     <Layout>
-      <BackButton route="/p1/contactinfoquestion" />
+      <BackButton route="/p1/contactinfoquestion">
+        <Trans>Contact info question</Trans>
+      </BackButton>
       <Steps activeStep={6} totalSteps={6} />
       <H1>
         <Trans>Confirm report information</Trans>
