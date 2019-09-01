@@ -30,4 +30,5 @@ export const BackButton = ({ route = '', children }) => (
 
 BackButton.propTypes = {
   route: PropTypes.string,
+  children: PropTypes.any,
 }
