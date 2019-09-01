@@ -90,7 +90,6 @@ const theme = {
         backgroundColor: colors.darkGreen,
       },
     },
-
     footerLink: {
       color: '#FFF',
       '&:focus': {

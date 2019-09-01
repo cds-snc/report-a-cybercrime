@@ -15,7 +15,13 @@ export const BackButton = ({ route = '', children }) => (
         padding-bottom: 3px;
 
         span {
-          font-size: 0.9rem;
+          font-size: 19px;
+        }
+
+        span:first-of-type {
+          font-size: 12px;
+          position: relative;
+          bottom: 3px;
         }
       }
     `}

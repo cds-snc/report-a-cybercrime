@@ -8,10 +8,10 @@ const phasebanner = css`
   padding: 1.2rem 0.9rem;
 
   span:first-of-type {
-    padding: 2px 4px;
+    padding: 2px 8px;
     border: 2px solid;
-    font-size: 0.7rem;
-    margin-right: 0.6rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
   }
 
   span:last-of-type {
