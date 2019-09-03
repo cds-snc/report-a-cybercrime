@@ -10,6 +10,7 @@ import { Checkbox } from '../../components/checkbox'
 import { Container } from '../../components/container'
 import { ButtonsContainer } from '../../components/buttons-container'
 import { P } from '../../components/paragraph'
+import { Text } from '../../components/text'
 import { TextArea } from '../../components/text-area'
 import { Label } from '../../components/label'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
@@ -93,12 +94,17 @@ export const ImpactStatementInfoForm = props => (
               ''
             )}
 
-            <br />
-            <P>
+            <Text marginTop={[5, null, 6]}>
               <Trans>
                 <strong>Tell us more about what was lost or affected.</strong>
               </Trans>
-            </P>
+            </Text>
+            <Text fontSize={(1, null, 2)}>
+              <Trans>
+                For example: amount of money involved, type of information
+                stolen
+              </Trans>
+            </Text>
             <div>
               <Field
                 name="damage"

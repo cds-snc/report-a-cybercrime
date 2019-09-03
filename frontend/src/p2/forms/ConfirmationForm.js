@@ -8,7 +8,6 @@ import { Form, Field } from 'react-final-form'
 import { ButtonsContainer } from '../../components/buttons-container'
 import { TextArea } from '../../components/text-area'
 import { Text } from '../../components/text'
-import { H2 } from '../../components/header'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import {
   getTellUsMore,
@@ -30,10 +29,11 @@ export const ConfirmationForm = props => {
   return (
     <React.Fragment>
       <hr />
-      <br></br>
-      <H2>
-        <Trans>Tell us more</Trans>
-      </H2>
+      <Text marginTop={[5, null, 6]}>
+        <Trans>
+          <strong>Tell us more</strong>
+        </Trans>
+      </Text>
       <ApolloConsumer>
         {client => (
           <Mutation mutation={SUBMIT_P2_REPORT_MUTATION}>
@@ -44,10 +44,7 @@ export const ConfirmationForm = props => {
                 render={({ handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
                     <label htmlFor="tellUsMore">
-                      <Text
-                        marginTop={[1, null, 2]}
-                        marginBottom={[1, null, 2]}
-                      >
+                      <Text fontSize={(1, null, 2)}>
                         <Trans>
                           Is there any information you'd like to add that didn't
                           fit elsewhere?
