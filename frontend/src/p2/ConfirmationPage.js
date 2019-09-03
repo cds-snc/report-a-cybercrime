@@ -47,7 +47,7 @@ const submit = (client, submitReportP2) => {
   postalCode = randomizeString(postalCode)
 
   const data = {
-    source: 'p1',
+    source: 'p2',
     timeFrame,
     whatHappened,
     impact,
