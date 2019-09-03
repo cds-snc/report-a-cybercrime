@@ -186,7 +186,11 @@ export const ScammerDetailsFormWrapped = props => {
                   </React.Fragment>
                 ))}
               </Container>
-              <ButtonsContainer buttonLink={false} cancel={true} />
+              <ButtonsContainer
+                buttonLink={false}
+                cancel={true}
+                nextPage="Impact of scam"
+              />
             </form>
           )}
         />

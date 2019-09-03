@@ -4,13 +4,13 @@ import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
-import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { P } from '../components/paragraph'
 import { TrackPageViews } from '../TrackPageViews'
 import { MoneyLostForm } from './forms/MoneyLostForm'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { lostMoney: JSON.stringify(data) } })
@@ -19,14 +19,10 @@ const submitAndNavigate = (client, data) => {
 
 export const MoneyLostPage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={1} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
+    <BackButton route="/p1/moneylostquestion">
+      <Trans>Money lost question</Trans>
+    </BackButton>
+    <Steps activeStep={2} totalSteps={6} />
     <H1>
       <Trans>Tell us about the money lost</Trans>
     </H1>

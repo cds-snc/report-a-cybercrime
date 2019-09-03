@@ -6,7 +6,6 @@ import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { Layout } from '../components/layout'
-import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { ImpactStatementInfoForm } from './forms/ImpactStatementInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
@@ -20,16 +19,10 @@ const submitAndNavigate = (client, data) => {
 
 export const ImpactStatementPage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={3} steps={[{}, {}, {}, {}, {}, {}]} />
-    </Container>
-    <BackButton route="/p2/scammerdetails" />
-
+    <BackButton route="/p2/scammerdetails">
+      <Trans>Scammer details</Trans>
+    </BackButton>
+    <Steps activeStep={4} totalSteps={6} />
     <H1>
       <Trans>Impact caused by the scam</Trans>
     </H1>

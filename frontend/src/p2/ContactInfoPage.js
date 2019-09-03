@@ -5,7 +5,6 @@ import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { Steps } from '../components/stepper'
-import { Container } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from '../components/layout'
@@ -18,15 +17,10 @@ const submitAndNavigate = (client, data) => {
 
 export const ContactInfoPage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={4} steps={[{}, {}, {}, {}, {}, {}]} />
-    </Container>
-    <BackButton route="/p2/impact" />
+    <BackButton route="/p2/impact">
+      <Trans>Impact of scam</Trans>
+    </BackButton>
+    <Steps activeStep={5} totalSteps={6} />
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>

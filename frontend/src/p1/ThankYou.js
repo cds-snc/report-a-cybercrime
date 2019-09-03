@@ -4,13 +4,32 @@ import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { A } from '../components/link'
+import { ApolloConsumer } from 'react-apollo'
 import { TrackPageViews } from '../TrackPageViews'
 import { ButtonsContainer } from '../components/buttons-container'
 import { Layout } from '../components/layout'
+import { BackButton } from '../components/backbutton'
 
 export const ThankYou = () => (
   <Layout>
+    <ApolloConsumer>
+      {client =>
+        client.writeData({
+          data: {
+            doneForms: false,
+            scamInfo: JSON.stringify({}),
+            lostMoney: JSON.stringify({}),
+            suspectInfo: JSON.stringify({}),
+            files: [],
+            contactInfo: JSON.stringify({}),
+          },
+        })
+      }
+    </ApolloConsumer>
     <TrackPageViews />
+    <BackButton route="/p1/confirmation">
+      <Trans>Confirm info</Trans>
+    </BackButton>
     <H1>
       <Trans>Thank you for reporting</Trans>
     </H1>

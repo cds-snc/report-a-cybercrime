@@ -1,8 +1,6 @@
 import React from 'react'
 import { Router } from '@reach/router'
-import { Trans } from '@lingui/macro'
 import styled from '@emotion/styled'
-import { PhaseBanner } from './components/phase-banner'
 import { PageNotFound } from './PageNotFound'
 import { RootLandingPage } from './RootLandingPage'
 import { FileUploadPage } from './p1/FileUploadPage'
@@ -30,13 +28,10 @@ const Root = styled('div')`
   margin: 20pt;
 `
 const Screen = styled('div')`
-  margin-top: 30pt;
+  margin-top: 0;
 `
 export const Home = () => (
   <Root>
-    <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
-      <Trans>This site will change as we test ideas.</Trans>
-    </PhaseBanner>
     <Screen>
       <Router>
         <PageNotFound default />

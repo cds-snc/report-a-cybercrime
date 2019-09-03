@@ -18,6 +18,7 @@ import { Steps } from '../components/stepper'
 import { P } from '../components/paragraph'
 import { getDoneForms, getFiles } from '../utils/queriesAndMutations'
 import upload from '../images/upload.svg'
+import { BackButton } from '../components/backbutton'
 
 class FileUploadInternal extends Component {
   constructor(props) {
@@ -50,14 +51,10 @@ class FileUploadInternal extends Component {
     return (
       <Layout>
         <TrackPageViews />
-        <Container
-          display="flex"
-          width="90%"
-          flexDirection="row"
-          marginBottom="20px"
-        >
-          <Steps activeStep={3} steps={[{}, {}, {}, {}, {}]} />
-        </Container>
+        <BackButton route="/p1/uploadfilesquestion">
+          <Trans>Upload files quesiton</Trans>
+        </BackButton>
+        <Steps activeStep={4} totalSteps={6} />
         <H1>
           <Trans>Attach supporting files</Trans>
         </H1>
@@ -169,7 +166,7 @@ class FileUploadInternal extends Component {
                     onClick={() => this.submitAndNavigate(client)}
                     type="submit"
                   >
-                    <Trans>Continue</Trans>
+                    <Trans>Next: Contact Info</Trans>
                   </Button>
                 </Container>
 

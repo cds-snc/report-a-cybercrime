@@ -5,21 +5,17 @@ import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { ButtonsContainerYesNo } from '../components/buttons-container'
 import { TrackPageViews } from '../TrackPageViews'
-import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
+import { BackButton } from '../components/backbutton'
 
 export const Suspectinfo = () => (
   <Layout>
     <TrackPageViews />
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={2} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
+    <BackButton route="/p1/moneylostquestion">
+      <Trans>Money lost question</Trans>
+    </BackButton>
+    <Steps activeStep={3} totalSteps={6} />
     <H1>
       <Trans>Add suspect clues</Trans>
     </H1>

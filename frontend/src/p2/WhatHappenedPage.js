@@ -6,7 +6,6 @@ import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
-import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { TrackPageViews } from '../TrackPageViews'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
@@ -21,15 +20,10 @@ const submitAndNavigate = (client, data) => {
 
 export const WhatHappenedPage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={1} steps={[{}, {}, {}, {}, {}, {}]} />
-    </Container>
-    <BackButton route="/p2/timeframe" />
+    <BackButton route="/p2/timeframe">
+      <Trans>Timeframe</Trans>
+    </BackButton>
+    <Steps activeStep={2} totalSteps={6} />
     <H1>
       <Trans>Describe what happened</Trans>
     </H1>

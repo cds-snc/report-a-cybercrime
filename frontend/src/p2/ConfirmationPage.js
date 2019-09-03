@@ -3,7 +3,6 @@ import { jsx } from '@emotion/core'
 import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
-import { Container } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
@@ -69,15 +68,10 @@ export const ConfirmationPage = () => {
   return (
     <Layout>
       <TrackPageViews />
-      <Container
-        display="flex"
-        width="90%"
-        flexDirection="row"
-        marginBottom="20px"
-      >
-        <Steps activeStep={5} steps={[{}, {}, {}, {}, {}, {}]} />
-      </Container>
-      <BackButton route="/p2/contactinfo" />
+      <BackButton route="/p2/contactinfo">
+        <Trans>Contact info</Trans>
+      </BackButton>
+      <Steps activeStep={6} totalSteps={6} />
       <H1>
         <Trans>Review your report</Trans>
       </H1>

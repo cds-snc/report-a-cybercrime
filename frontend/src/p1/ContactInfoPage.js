@@ -4,10 +4,10 @@ import { navigate } from '@reach/router'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { Steps } from '../components/stepper'
-import { Container } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from '../components/layout'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { contactInfo: JSON.stringify(data) } })
@@ -16,14 +16,10 @@ const submitAndNavigate = (client, data) => {
 
 export const ContactInfoPage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={4} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
+    <BackButton route="/p1/contactinfoquestion">
+      <Trans>Contact info question</Trans>
+    </BackButton>
+    <Steps activeStep={5} totalSteps={6} />
     <H1>
       <Trans>Leave your contact information</Trans>
     </H1>

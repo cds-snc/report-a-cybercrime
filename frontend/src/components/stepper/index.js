@@ -1,21 +1,33 @@
 /**@jsx jsx */
-import { jsx } from '@emotion/core'
-import Stepper from 'react-stepper-horizontal'
+import { css, jsx } from '@emotion/core'
+import { Container } from '../container'
 import PropTypes from 'prop-types'
 import { Text } from '../text'
+import { Trans } from '@lingui/macro'
 
-export const Steps = ({ activeStep, steps, ...props }) => (
-  <Text width="100%">
-    <Stepper steps={steps} activeStep={activeStep} {...props} />
-  </Text>
+export const Steps = ({ activeStep, totalSteps }) => (
+  <Container
+    css={css`
+      span {
+        font-weight: 500;
+        font-size: 24px;
+        color: #6f777b;
+      }
+    `}
+    display="flex"
+    flexDirection="row"
+    marginBottom="10px"
+  >
+    {' '}
+    <Text>
+      <Trans>
+        Step {activeStep} out of {totalSteps}
+      </Trans>
+    </Text>
+  </Container>
 )
 
-Steps.defaultProps = {
-  steps: [{ title: '' }],
-}
 Steps.propTypes = {
-  steps: PropTypes.array,
-  activeStep: PropTypes.number,
-  lang: PropTypes.string,
-  children: PropTypes.any,
+  totalSteps: PropTypes.number.isRequired,
+  activeStep: PropTypes.number.isRequired,
 }

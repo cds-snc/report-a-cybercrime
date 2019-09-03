@@ -182,6 +182,7 @@ export class ScamInfoForm extends Component {
                   buttonLink={false}
                   cancel={true}
                   cancelRoute="/p1/"
+                  nextPage="Money lost"
                 />
               </form>
             )}

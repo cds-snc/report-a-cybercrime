@@ -6,10 +6,10 @@ import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { TrackPageViews } from '../TrackPageViews'
 import { ScamInfoForm } from './forms/ScamInfoForm'
-import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { BackButton } from '../components/backbutton'
 
 const submitAndNavigate = (client, data) => {
   client.writeData({ data: { scamInfo: JSON.stringify(data) } })
@@ -18,14 +18,10 @@ const submitAndNavigate = (client, data) => {
 
 export const ScamInfoPage = () => (
   <Layout>
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={0} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
+    <BackButton route="/p1">
+      <Trans>Landing page</Trans>
+    </BackButton>
+    <Steps activeStep={1} totalSteps={6} />
     <H1>
       <Trans>Describe the scam</Trans>
     </H1>

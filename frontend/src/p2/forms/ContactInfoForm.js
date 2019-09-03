@@ -76,7 +76,11 @@ export const ContactInfoForm = ({ onSubmit }) => (
               />
             </div>
 
-            <ButtonsContainer buttonLink={false} cancel={true} />
+            <ButtonsContainer
+              buttonLink={false}
+              cancel={true}
+              nextPage="Confirm information"
+            />
           </form>
         )}
       />

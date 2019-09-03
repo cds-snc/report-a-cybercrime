@@ -108,7 +108,11 @@ export const ImpactStatementInfoForm = props => (
               />
             </div>
 
-            <ButtonsContainer buttonLink={false} cancel={true} />
+            <ButtonsContainer
+              buttonLink={false}
+              cancel={true}
+              nextPage="Contact info"
+            />
           </form>
         )}
       />

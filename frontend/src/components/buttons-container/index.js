@@ -13,6 +13,7 @@ export const ButtonsContainer = ({
   buttonLink = true,
   route = '',
   cancelRoute = '/p2/',
+  nextPage = '',
 }) => (
   <Container
     mt="1rem"
@@ -40,15 +41,31 @@ export const ButtonsContainer = ({
           {submit === true ? (
             <Trans>Submit report &nbsp; ❯</Trans>
           ) : (
-            <Trans>Continue</Trans>
+            <Trans>Next</Trans>
           )}
+
+          {nextPage === 'Scammer details' ? (
+            <Trans>: Scammer Details</Trans>
+          ) : nextPage === 'Money lost' ? (
+            <Trans>: Money lost</Trans>
+          ) : nextPage === 'Impact of scam' ? (
+            <Trans>: Impact of scam</Trans>
+          ) : nextPage === 'What happened' ? (
+            <Trans>: What happened</Trans>
+          ) : nextPage === 'Supporting files' ? (
+            <Trans>: Supporting files</Trans>
+          ) : nextPage === 'Contact info' ? (
+            <Trans>: Contact info</Trans>
+          ) : nextPage === 'Confirm information' ? (
+            <Trans>: Confirm information</Trans>
+          ) : null}
         </Button>
       </Container>
     ) : (
       <Container name="buttonlink-container">
         {landing === true ? (
           <ButtonLink color="black" mb={[3, null, 5]} to={route}>
-            <Trans>Report Now ❯</Trans>
+            <Trans>Report now ❯</Trans>
           </ButtonLink>
         ) : (
           <ButtonLink color="black" mb={[3, null, 5]} to={route}>
@@ -149,6 +166,7 @@ ButtonsContainer.propTypes = {
   route: PropTypes.string,
   landing: PropTypes.bool,
   submit: PropTypes.bool,
+  nextPage: PropTypes.string,
 }
 
 ButtonsContainerYesNo.propTypes = {

@@ -204,6 +204,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               buttonLink={false}
               cancel={true}
               cancelRoute="/p1/"
+              nextPage="Supporting files"
             />
           </form>
         )}

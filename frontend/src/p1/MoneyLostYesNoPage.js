@@ -4,22 +4,18 @@ import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
 import { P } from '../components/paragraph'
 import { TrackPageViews } from '../TrackPageViews'
-import { Container } from '../components/container'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
 import { ButtonsContainerYesNo } from '../components/buttons-container'
+import { BackButton } from '../components/backbutton'
 
 export const LoseMoney = () => (
   <Layout>
     <TrackPageViews />
-    <Container
-      display="flex"
-      width="90%"
-      flexDirection="row"
-      marginBottom="20px"
-    >
-      <Steps activeStep={1} steps={[{}, {}, {}, {}, {}]} />
-    </Container>
+    <BackButton route="/p1/scaminfo">
+      <Trans>Scam info</Trans>
+    </BackButton>
+    <Steps activeStep={2} totalSteps={6} />
     <H1>
       <Trans>Tell us if money was lost</Trans>
     </H1>

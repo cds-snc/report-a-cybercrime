@@ -179,6 +179,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               buttonLink={false}
               cancel={true}
               cancelRoute="/p1/"
+              nextPage="Scammer details"
             />
           </form>
         )}
