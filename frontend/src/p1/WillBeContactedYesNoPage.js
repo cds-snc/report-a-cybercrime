@@ -13,7 +13,7 @@ export const Willbecontacted = () => (
   <Layout>
     <TrackPageViews />
     <BackButton route="/p1/uploadfilesquestion">
-      <Trans>Upload files question</Trans>
+      <Trans>supporting files</Trans>
     </BackButton>
     <Steps activeStep={5} totalSteps={6} />
     <H1>

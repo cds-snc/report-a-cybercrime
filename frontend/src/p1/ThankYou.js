@@ -28,7 +28,7 @@ export const ThankYou = () => (
     </ApolloConsumer>
     <TrackPageViews />
     <BackButton route="/p1/confirmation">
-      <Trans>Confirm info</Trans>
+      <Trans>confirmation</Trans>
     </BackButton>
     <H1>
       <Trans>Thank you for reporting</Trans>

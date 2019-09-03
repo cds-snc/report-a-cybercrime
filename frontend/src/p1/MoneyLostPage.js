@@ -20,7 +20,7 @@ const submitAndNavigate = (client, data) => {
 export const MoneyLostPage = () => (
   <Layout>
     <BackButton route="/p1/moneylostquestion">
-      <Trans>Money lost question</Trans>
+      <Trans>previous page</Trans>
     </BackButton>
     <Steps activeStep={2} totalSteps={6} />
     <H1>
