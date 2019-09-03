@@ -24,7 +24,7 @@ export const ScammerDetailsPage = () => {
       </BackButton>
       <Steps activeStep={3} totalSteps={6} />
       <H1>
-        <Trans>About the suspect</Trans>
+        <Trans>Add suspect clues</Trans>
       </H1>
       <P>
         <Trans>
