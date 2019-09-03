@@ -17,7 +17,7 @@ const submitAndNavigate = (client, data) => {
 export const ContactInfoPage = () => (
   <Layout>
     <BackButton route="/p1/contactinfoquestion">
-      <Trans>Contact info question</Trans>
+      <Trans>previous page</Trans>
     </BackButton>
     <Steps activeStep={5} totalSteps={6} />
     <H1>

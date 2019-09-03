@@ -19,7 +19,7 @@ const submitAndNavigate = (client, data) => {
 export const ScamInfoPage = () => (
   <Layout>
     <BackButton route="/p1">
-      <Trans>Landing page</Trans>
+      <Trans>start page</Trans>
     </BackButton>
     <Steps activeStep={1} totalSteps={6} />
     <H1>

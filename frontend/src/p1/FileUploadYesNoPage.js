@@ -13,7 +13,7 @@ export const FilesToUpload = () => (
   <Layout>
     <TrackPageViews />
     <BackButton route="/p1/suspectinfoquestion">
-      <Trans>Suspect info question</Trans>
+      <Trans>suspect clues</Trans>
     </BackButton>
     <Steps activeStep={4} totalSteps={6} />
     <H1>

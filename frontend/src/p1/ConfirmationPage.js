@@ -448,7 +448,7 @@ export const ConfirmationPage = () => {
   return (
     <Layout>
       <BackButton route="/p1/contactinfoquestion">
-        <Trans>Contact info question</Trans>
+        <Trans>contact information</Trans>
       </BackButton>
       <Steps activeStep={6} totalSteps={6} />
       <H1>

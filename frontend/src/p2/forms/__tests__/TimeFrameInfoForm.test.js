@@ -43,7 +43,7 @@ describe('<TimeFrameInfoForm />', () => {
 
     const inputNode = getByLabelText('Approximate start')
     const inputFinal = getByLabelText('Approximate end')
-    const nextButton = getByText(/Next: What happened/i)
+    const nextButton = getByText(/Next/i)
 
     fillIn(inputNode, { with: 'lost money' })
     fillIn(inputFinal, { with: 'lost money' })
