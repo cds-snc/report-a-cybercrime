@@ -20,7 +20,7 @@ const submitAndNavigate = (client, data) => {
 export const ImpactStatementPage = () => (
   <Layout>
     <BackButton route="/p2/scammerdetails">
-      <Trans>Scammer details</Trans>
+      <Trans>the suspect</Trans>
     </BackButton>
     <Steps activeStep={4} totalSteps={6} />
     <H1>

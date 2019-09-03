@@ -20,7 +20,7 @@ export const ScammerDetailsPage = () => {
   return (
     <Layout>
       <BackButton route="/p2/whathappened">
-        <Trans>What happened</Trans>
+        <Trans>the scam</Trans>
       </BackButton>
       <Steps activeStep={3} totalSteps={6} />
       <H1>
