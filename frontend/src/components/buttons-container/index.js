@@ -55,7 +55,7 @@ export const ButtonsContainer = ({
           ) : nextPage === 'Supporting files' ? (
             <Trans>: Attach supporting files</Trans>
           ) : nextPage === 'Contact info' ? (
-            <Trans>: Leave contact information</Trans>
+            <Trans>: Leave your contact information</Trans>
           ) : nextPage === 'Confirm information' ? (
             <Trans>: Confirm report information</Trans>
           ) : null}
