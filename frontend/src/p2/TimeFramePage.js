@@ -7,20 +7,27 @@ import { Layout } from '../components/layout'
 import { TimeFrameInfoForm } from './forms/TimeFrameInfoForm'
 import { TrackPageViews } from '../TrackPageViews'
 import { getDoneForms } from '../utils/queriesAndMutations'
+import { Container } from '../components/container'
 import { BackButton } from '../components/backbutton'
 import { Steps } from '../components/stepper'
 
 const submitAndNavigate = (client, data) => {
-  client.writeData({ data: { scamInfo: JSON.stringify(data) } })
+  client.writeData({ data: { timeFrame: JSON.stringify(data) } })
   navigate(getDoneForms(client) ? 'confirmation' : 'whathappened')
 }
 
 export const TimeFramePage = () => (
   <Layout>
-    <BackButton route="/p2">
-      <Trans>Landing page</Trans>
-    </BackButton>
-    <Steps activeStep={1} totalSteps={6} />
+    <Container
+      display="flex"
+      width="90%"
+      flexDirection="row"
+      marginBottom="20px"
+    >
+      <Steps activeStep={0} steps={[{}, {}, {}, {}, {}, {}]} />
+    </Container>
+
+    <BackButton route="/p2" />
 
     {/* <Link type="button" color="black" to="/p2/" textAlign="center">
                 <Trans>Cancel report</Trans>
