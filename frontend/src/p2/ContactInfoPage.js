@@ -18,7 +18,7 @@ const submitAndNavigate = (client, data) => {
 export const ContactInfoPage = () => (
   <Layout>
     <BackButton route="/p2/impact">
-      <Trans>Impact of scam</Trans>
+      <Trans>the impact</Trans>
     </BackButton>
     <Steps activeStep={5} totalSteps={6} />
     <H1>

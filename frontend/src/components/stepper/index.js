@@ -21,7 +21,7 @@ export const Steps = ({ activeStep, totalSteps }) => (
     {' '}
     <Text>
       <Trans>
-        Step {activeStep} out of {totalSteps}
+        Step {activeStep} of {totalSteps}
       </Trans>
     </Text>
   </Container>

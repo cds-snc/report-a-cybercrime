@@ -23,7 +23,7 @@ export const ScamInfoPage = () => (
     </BackButton>
     <Steps activeStep={1} totalSteps={6} />
     <H1>
-      <Trans>Describe the scam</Trans>
+      <Trans>Describe what happened</Trans>
     </H1>
     <P>
       <Trans>
