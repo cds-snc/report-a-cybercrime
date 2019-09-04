@@ -17,15 +17,8 @@ export const Suspectinfo = () => (
     </BackButton>
     <Steps activeStep={3} totalSteps={6} />
     <H1>
-      <Trans>Add suspect clues</Trans>
+      <Trans>Do you have any information on where the scam came from?</Trans>
     </H1>
-    <P>
-      <Trans>
-        Do you have any information about where the scam came from or how the
-        scammer contacted you?
-      </Trans>
-    </P>
-
     <ButtonsContainerYesNo
       yesRoute="/p1/suspectinfo"
       noRoute="/p1/uploadfilesquestion"
