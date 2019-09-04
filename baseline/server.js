@@ -1,4 +1,5 @@
 const express = require('express')
+const ejs = require('ejs')
 var bodyParser = require('body-parser')
 const { Database, aql } = require('arangojs')
 const fileUpload = require('express-fileupload')
@@ -13,6 +14,7 @@ db.useDatabase('cybercrime')
 db.useBasicAuth('root', dbpass)
 const cybercrimeReports = db.collection('reports')
 
+app.set('view engine', 'ejs')
 app.use(fileUpload())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -256,12 +258,63 @@ let report = {
 }
 
 let acceptedDisclaimer = false
+let currentLanguage = 'en'
 
 var path = require('path')
 
 const port = 3000
 
 app.use(express.static('public'))
+
+app.get('/CAFCFRS', (req, res) => {
+  res.render('index', { lang: currentLanguage })
+})
+
+app.get(
+  [
+    '/CAFCFRS/victimBusiness-victimeEntreprise',
+    '/CAFCFRS/businessInformation-informationEntreprise',
+    '/CAFCFRS/filerInformation-informationAuteur',
+  ],
+  (req, res) => {
+    if (report.completionStepName !== 'FILE_UPLOAD') {
+      report.completionStepName = 'CONTACT'
+      report.completionStepNumber = 1
+    }
+    res.render('index', { lang: currentLanguage })
+  },
+)
+
+app.get('/CAFCFRS/fraudInformation-informationFraude', (req, res) => {
+  if (report.completionStepName !== 'FILE_UPLOAD') {
+    report.completionStepName = 'FRAUD_SELECTION'
+    report.completionStepNumber = 2
+  }
+  res.render('index', { lang: currentLanguage })
+})
+
+app.get('/CAFCFRS/businessInformation-informationEntreprise', (req, res) => {
+  if (report.completionStepName !== 'FILE_UPLOAD') {
+    report.completionStepName = 'SUSPECT'
+    report.completionStepNumber = 3
+  }
+  res.render('index', { lang: currentLanguage })
+})
+
+app.get('/CAFCFRS/fileUpload-telechargeFichier', (req, res) => {
+  report.completionStepName = 'FILE_UPLOAD'
+  report.completionStepNumber = 4
+  res.render('index', { lang: currentLanguage })
+})
+
+app.post('/CAFCFRS/api/v1/locale/:lang', (req, res) => {
+  if (req.params.lang == 'fr') {
+    currentLanguage = 'fr'
+  } else {
+    currentLanguage = 'en'
+  }
+  res.status(204).send()
+})
 
 app.post('/CAFCFRS/api/v1/disclaimer/accept', (req, res) => {
   acceptedDisclaimer = true
@@ -315,7 +368,6 @@ app.post('/CAFCFRS/api/v1/public-complaints/submit', async (req, res) => {
     return suspect
   })
 
-  console.log(JSON.stringify(report))
   // save what we got
   await cybercrimeReports.save(report)
   // Reset the state:

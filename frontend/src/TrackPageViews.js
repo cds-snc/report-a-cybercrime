@@ -12,7 +12,7 @@ ReactGA.set({ anonymizeIp: true })
 
 const logPageView = path => {
   if (typeof window === 'object') {
-    ReactGA.ga('send', 'event', 'pageview', path)
+    ReactGA.pageview(path)
   }
 }
 

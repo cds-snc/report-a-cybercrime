@@ -35,7 +35,7 @@ export const NextSteps = () => (
       }
     </ApolloConsumer>
     <BackButton route="/p2/contactinfo">
-      <Trans>Confirm info</Trans>
+      <Trans>the confirmation</Trans>
     </BackButton>
     <H1>
       <Trans>Thank you for reporting</Trans>

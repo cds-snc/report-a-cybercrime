@@ -12,7 +12,7 @@
   dir="ltr"
   data-ng-app="ca.gc.rcmp.cafc.frs"
   data-ng-strict-di="true"
-  lang="en"
+  lang=<%= lang %>
 >
   <!--<![endif]-->
   <head>
@@ -38,7 +38,7 @@
       title="scheme"
       content="French subject terms / Termes de sujet en français"
     />
-    <meta name="dcterms.language" title="ISO639-2" content="en" />
+    <meta name="dcterms.language" title="ISO639-2" content=<%= lang %> />
     <meta name="_csrf" content="4b53110b-8ee6-4794-a8fc-5217b881743a" />
     <meta name="_csrf_header" content="X-CSRF-TOKEN" />
     <!--[if gte IE 9 | !IE]><!-->
@@ -47,7 +47,7 @@
       rel="icon"
       type="image/x-icon"
       crossorigin="use-credentials"
-      href="wet-boew/WET4_theme-gcwu-fegc/theme-gcwu-fegc/assets/favicon.ico"
+      href="/wet-boew/WET4_theme-gcwu-fegc/theme-gcwu-fegc/assets/favicon.ico"
     />
 
     <link
