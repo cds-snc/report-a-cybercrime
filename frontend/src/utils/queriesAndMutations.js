@@ -83,6 +83,21 @@ export const getDoneForms = client => {
   return doneForms
 }
 
+export const getSurveyInfo = client => {
+  const { surveyInfo } = client.readQuery({
+    query: gql`
+      query readCache {
+        surveyInfo
+      }
+    `,
+  })
+  const { surveyID, ResponseID } = JSON.parse(surveyInfo)
+  return {
+    surveyID: surveyID ? surveyID : '',
+    ResponseID: ResponseID ? ResponseID : '',
+  }
+}
+
 // P1 cache queries
 
 export const getScamInfo = client => {
@@ -309,6 +324,7 @@ export const SUBMIT_P2_REPORT_MUTATION = gql`
     $impact: impact!
     $scammerDetails: scammerDetails!
     $contactInfo: P2ContactInfoInput!
+    $surveyInfo: surveyInfo!
   ) {
     submitReportP2(
       source: $source
@@ -317,6 +333,7 @@ export const SUBMIT_P2_REPORT_MUTATION = gql`
       impact: $impact
       scammerDetails: $scammerDetails
       contactInfo: $contactInfo
+      surveyInfo: $surveyInfo
     ) {
       reportID
     }
