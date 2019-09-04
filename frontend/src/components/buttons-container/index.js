@@ -53,7 +53,7 @@ export const ButtonsContainer = ({
           ) : nextPage === 'What happened' ? (
             <Trans>: What happened</Trans>
           ) : nextPage === 'Supporting files' ? (
-            <Trans>: Attach files</Trans>
+            <Trans>: Add files</Trans>
           ) : nextPage === 'Contact info' ? (
             <Trans>: Your contact information</Trans>
           ) : nextPage === 'Confirm information' ? (
