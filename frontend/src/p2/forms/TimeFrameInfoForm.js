@@ -34,13 +34,13 @@ class TimeFrameInfoFormWrapped extends Component {
 
   localOnSubmit = (client, data) => {
     const { onSubmit } = this.props
-    if (this.startDate != null && this.startDate.length > 0) {
+    if (this.startDate != null) {
       data.startDate = this.startDate.toISOString()
     } else {
       data.startDate = ''
     }
 
-    if (this.endDate != null && this.endDate.length > 0) {
+    if (this.endDate != null) {
       data.endDate = this.endDate.toISOString()
     } else {
       data.endDate = ''
