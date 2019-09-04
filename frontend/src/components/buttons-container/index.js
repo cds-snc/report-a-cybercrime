@@ -55,9 +55,9 @@ export const ButtonsContainer = ({
           ) : nextPage === 'Supporting files' ? (
             <Trans>: Add files</Trans>
           ) : nextPage === 'Contact info' ? (
-            <Trans>: Your contact information</Trans>
+            <Trans>: Contact information</Trans>
           ) : nextPage === 'Confirm information' ? (
-            <Trans>: Confirm report</Trans>
+            <Trans>: Review report</Trans>
           ) : null}
         </Button>
       </Container>
