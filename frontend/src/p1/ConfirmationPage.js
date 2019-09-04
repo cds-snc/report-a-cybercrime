@@ -20,6 +20,7 @@ import {
   getSuspectInfo,
   getFiles,
   getContactInfo,
+  getSurveyInfo,
 } from '../utils/queriesAndMutations'
 import { BackButton } from '../components/backbutton'
 
@@ -382,6 +383,7 @@ const submit = (client, submitReport) => {
   let suspectInfo = getSuspectInfo(client)
   let files = getFiles(client)
   let contactInfo = getContactInfo(client)
+  const surveyInfo = getSurveyInfo(client)
 
   let {
     suspectName,
@@ -431,6 +433,7 @@ const submit = (client, submitReport) => {
       contactInfoEmail,
       contactInfoPhone,
     },
+    surveyInfo,
   }
   submitReport({ variables: data })
   navigate('thankyou')
