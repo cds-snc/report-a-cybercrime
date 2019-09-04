@@ -42,30 +42,11 @@ export const NextSteps = () => (
     </H1>
     <P>
       <Trans>
-        <strong>We've sent you an email with a summary of your report.</strong>
-      </Trans>
-    </P>
-    <P>
-      <Trans>
-        Your reference number is <strong>#NC300234234</strong>. Keep this for
-        your records or to add more information later.
+        We've sent you an email with a summary of your report. Your reference
+        number is <strong>#NC300234234</strong>.
       </Trans>
     </P>
     <InfoCard>
-      <P>
-        <Trans>
-          <strong>What happens next</strong>
-        </Trans>
-      </P>
-      <P>
-        <Trans></Trans>
-      </P>
-      <P>
-        <Trans>
-          The RCMP will analyze your report and combine it with others that are
-          similar to help police across Canada track down cybercriminals.
-        </Trans>
-      </P>
       <P>
         <Trans>
           <strong>Where you can get help</strong>
@@ -94,6 +75,20 @@ export const NextSteps = () => (
           </Trans>
         </Li>
       </Ul>
+      <P>
+        <Trans>
+          <strong>What happens next</strong>
+        </Trans>
+      </P>
+      <P>
+        <Trans></Trans>
+      </P>
+      <P>
+        <Trans>
+          The RCMP will analyze your report and combine it with others that are
+          similar to help police across Canada track down cybercriminals.
+        </Trans>
+      </P>
     </InfoCard>
     <br></br>
     <P>

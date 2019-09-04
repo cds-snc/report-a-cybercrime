@@ -113,7 +113,6 @@ class FileUploadInternal extends Component {
             </H2>
           )}
         </I18n>
-
         <Container>
           {files.map((f, index) => (
             <Container
