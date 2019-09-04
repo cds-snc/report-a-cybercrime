@@ -35,14 +35,12 @@ export const LandingPage = () => (
     <P>
       <Trans>
         Tell the RCMP's National Cybercrime Coordination Unit about a scam to
-        help police across Canada investigate.
+        help police across Canada investigate these crimes.
       </Trans>
     </P>
 
     <P>
-      <Trans>
-        <strong>You will be asked to:</strong>
-      </Trans>
+      <Trans>You will be asked to:</Trans>
     </P>
 
     <Text>

@@ -17,7 +17,7 @@ export const Willbecontacted = () => (
     </BackButton>
     <Steps activeStep={5} totalSteps={6} />
     <H1>
-      <Trans>Leave your contact information</Trans>
+      <Trans>Your contact information</Trans>
     </H1>
     <P>
       <Trans>

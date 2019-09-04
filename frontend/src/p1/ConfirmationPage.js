@@ -351,7 +351,7 @@ const contactInfoSummary = client => {
           {userIsTheVictim ? (
             <Text>
               <strong>
-                <Trans>Victim</Trans>:{' '}
+                <Trans>Did the scam happened to you</Trans>:{' '}
               </strong>
               {i18n._(userIsTheVictim)}
             </Text>

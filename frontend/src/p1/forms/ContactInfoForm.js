@@ -147,7 +147,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
                   onClick={() => navigate('/p1/confirmation')}
                   type="submit"
                 >
-                  <Trans>Next: Confirm report</Trans>
+                  <Trans>Next: Review report</Trans>
                 </Button>
               </Container>
 
