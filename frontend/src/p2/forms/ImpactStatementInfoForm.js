@@ -80,20 +80,6 @@ export const ImpactStatementInfoForm = props => (
               </div>
             </Fieldset>
 
-            {values.howWereYouAffected &&
-            values.howWereYouAffected.indexOf('Other impact') > -1 ? (
-              <Container marginTop={[2, null, 3]}>
-                <Field
-                  name="otherImpact"
-                  id="otherImpact"
-                  component={TextAreaAdapter}
-                  height="50px"
-                />
-              </Container>
-            ) : (
-              ''
-            )}
-
             <Text marginTop={[5, null, 6]}>
               <Trans>
                 <strong>Tell us more about what was lost or affected.</strong>
@@ -102,7 +88,7 @@ export const ImpactStatementInfoForm = props => (
             <Text fontSize={(1, null, 2)}>
               <Trans>
                 For example: amount of money involved, type of information
-                stolen
+                stolen, other impact
               </Trans>
             </Text>
             <div>
