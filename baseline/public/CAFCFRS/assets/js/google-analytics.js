@@ -18,5 +18,5 @@
   'ga',
 )
 
-ga('create', 'UA-28339016-2', 'auto')
+ga('create', 'UA-102484926-13', 'auto')
 ga('send', 'pageview')

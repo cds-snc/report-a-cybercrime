@@ -23,8 +23,11 @@ export const WhatHappenedForm = props => (
             <label htmlFor="whatHappened">
               <Text marginTop={[5, null, 6]}>
                 <Trans>
-                  <strong>Tell us what happened</strong>
+                  <strong>What happened?</strong>
                 </Trans>
+              </Text>
+              <Text fontSize={(1, null, 2)}>
+                <Trans>Tell us about it in your own words.</Trans>
               </Text>
               <Field
                 name="whatHappened"

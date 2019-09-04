@@ -324,7 +324,6 @@ export const SUBMIT_P2_REPORT_MUTATION = gql`
     $impact: impact!
     $scammerDetails: scammerDetails!
     $contactInfo: P2ContactInfoInput!
-    $tellUsMore: tellUsMore!
     $surveyInfo: surveyInfo!
   ) {
     submitReportP2(
@@ -334,7 +333,6 @@ export const SUBMIT_P2_REPORT_MUTATION = gql`
       impact: $impact
       scammerDetails: $scammerDetails
       contactInfo: $contactInfo
-      tellUsMore: $tellUsMore
       surveyInfo: $surveyInfo
     ) {
       reportID

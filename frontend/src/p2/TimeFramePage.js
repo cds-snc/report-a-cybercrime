@@ -11,7 +11,7 @@ import { BackButton } from '../components/backbutton'
 import { Steps } from '../components/stepper'
 
 const submitAndNavigate = (client, data) => {
-  client.writeData({ data: { scamInfo: JSON.stringify(data) } })
+  client.writeData({ data: { timeFrame: JSON.stringify(data) } })
   navigate(getDoneForms(client) ? 'confirmation' : 'whathappened')
 }
 
@@ -21,10 +21,6 @@ export const TimeFramePage = () => (
       <Trans>the start page</Trans>
     </BackButton>
     <Steps activeStep={1} totalSteps={6} />
-
-    {/* <Link type="button" color="black" to="/p2/" textAlign="center">
-                <Trans>Cancel report</Trans>
-              </Link> */}
 
     <H1>
       <Trans>When did the scam happen?</Trans>

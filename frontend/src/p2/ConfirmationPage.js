@@ -10,7 +10,6 @@ import {
   getTimeFrame,
   getWhatHappened,
   getScammerDetails,
-  getTellUsMore,
   getImpact,
   getP2ContactInfo,
   getSurveyInfo,
@@ -39,7 +38,6 @@ const submit = (client, submitReportP2) => {
   let scammerDetails = getScammerDetails(client)
   let impact = getImpact(client)
   let p2ContactInfo = getP2ContactInfo(client)
-  let tellUsMore = getTellUsMore(client)
   const surveyInfo = getSurveyInfo(client)
 
   let { fullName, email, phone, postalCode } = p2ContactInfo
@@ -60,7 +58,6 @@ const submit = (client, submitReportP2) => {
       phone,
       postalCode,
     },
-    tellUsMore,
     surveyInfo,
   }
 

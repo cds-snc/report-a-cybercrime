@@ -7,9 +7,9 @@ import { I18n, i18nMark } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
-import { Container } from '../../components/container'
 import { ButtonsContainer } from '../../components/buttons-container'
 import { P } from '../../components/paragraph'
+import { Text } from '../../components/text'
 import { TextArea } from '../../components/text-area'
 import { Label } from '../../components/label'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
@@ -47,7 +47,7 @@ export const ImpactStatementInfoForm = props => (
         initialValues={getImpact(client)}
         onSubmit={data => props.onSubmit(client, data)}
         validate={validate}
-        render={({ handleSubmit, values }) => (
+        render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Fieldset>
               <Label htmlFor="howWereYouAffected">
@@ -79,26 +79,17 @@ export const ImpactStatementInfoForm = props => (
               </div>
             </Fieldset>
 
-            {values.howWereYouAffected &&
-            values.howWereYouAffected.indexOf('Other impact') > -1 ? (
-              <Container marginTop={[2, null, 3]}>
-                <Field
-                  name="otherImpact"
-                  id="otherImpact"
-                  component={TextAreaAdapter}
-                  height="50px"
-                />
-              </Container>
-            ) : (
-              ''
-            )}
-
-            <br />
-            <P>
+            <Text marginTop={[5, null, 6]}>
               <Trans>
-                <strong>Tell us more about what was lost or affected.</strong>
+                <strong>Tell us more about how it impacted you.</strong>
               </Trans>
-            </P>
+            </Text>
+            <Text fontSize={(1, null, 2)}>
+              <Trans>
+                For example: the amount of money, the information taken, what
+                else was affected
+              </Trans>
+            </Text>
             <div>
               <Field
                 name="damage"

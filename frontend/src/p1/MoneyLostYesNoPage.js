@@ -13,7 +13,7 @@ export const LoseMoney = () => (
   <Layout>
     <TrackPageViews />
     <BackButton route="/p1/scaminfo">
-      <Trans>scam event</Trans>
+      <Trans>what happened</Trans>
     </BackButton>
     <Steps activeStep={2} totalSteps={6} />
     <H1>

@@ -308,7 +308,6 @@ app.get('/CAFCFRS/fileUpload-telechargeFichier', (req, res) => {
 })
 
 app.post('/CAFCFRS/api/v1/locale/:lang', (req, res) => {
-  console.log(`changed language to ${req.params.lang}`)
   if (req.params.lang == 'fr') {
     currentLanguage = 'fr'
   } else {

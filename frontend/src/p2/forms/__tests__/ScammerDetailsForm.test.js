@@ -18,9 +18,6 @@ const client = {
   writeData: jest.fn(),
 }
 
-const fillIn = (element, { with: value }) =>
-  fireEvent.change(element, { target: { value } })
-
 const clickOn = element => fireEvent.click(element)
 
 describe('<ScammerDetailsForm />', () => {
@@ -29,7 +26,7 @@ describe('<ScammerDetailsForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByLabelText, getByText } = render(
+    const { getByText } = render(
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -40,10 +37,8 @@ describe('<ScammerDetailsForm />', () => {
         </MockedProvider>
       </ThemeProvider>,
     )
-    const inputNode = getByLabelText(/About the suspect/i)
     const nextButton = getByText(/Next/i)
 
-    fillIn(inputNode, { with: 'scammer is bad.' })
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 

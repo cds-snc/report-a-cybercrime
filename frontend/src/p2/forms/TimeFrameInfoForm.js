@@ -6,7 +6,7 @@ import { ApolloConsumer } from 'react-apollo'
 import { I18n } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { P } from '../../components/paragraph'
+import { Text } from '../../components/text'
 import { ButtonsContainer } from '../../components/buttons-container'
 import { DateSelector } from '../../components/date-picker'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
@@ -34,13 +34,13 @@ class TimeFrameInfoFormWrapped extends Component {
 
   localOnSubmit = (client, data) => {
     const { onSubmit } = this.props
-    if (this.startDate != null && this.startDate.length > 0) {
+    if (this.startDate != null) {
       data.startDate = this.startDate.toISOString()
     } else {
       data.startDate = ''
     }
 
-    if (this.endDate != null && this.endDate.length > 0) {
+    if (this.endDate != null) {
       data.endDate = this.endDate.toISOString()
     } else {
       data.endDate = ''
@@ -57,11 +57,14 @@ class TimeFrameInfoFormWrapped extends Component {
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="whenDidItStart">
-              <P marginTop={[5, null, 6]}>
+              <Text marginTop={[5, null, 6]}>
                 <Trans>
                   <strong>Approximate start</strong>
                 </Trans>
-              </P>
+              </Text>
+              <Text fontSize={(1, null, 2)}>
+                <Trans>MM/DD/YYYY</Trans>
+              </Text>
             </label>
             <div>
               <I18n>
@@ -81,11 +84,14 @@ class TimeFrameInfoFormWrapped extends Component {
             </div>
 
             <label htmlFor="whenWasLastInteraction">
-              <P marginTop={[5, null, 6]}>
+              <Text marginTop={[5, null, 6]}>
                 <Trans>
                   <strong>Approximate end</strong>
                 </Trans>
-              </P>
+              </Text>
+              <Text fontSize={(1, null, 2)}>
+                <Trans>MM/DD/YYYY</Trans>
+              </Text>
             </label>
             <div>
               <I18n>
