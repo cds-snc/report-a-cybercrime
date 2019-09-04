@@ -166,7 +166,7 @@ class FileUploadInternal extends Component {
                     onClick={() => this.submitAndNavigate(client)}
                     type="submit"
                   >
-                    <Trans>Next: Leave your contact information</Trans>
+                    <Trans>Next: Your contact information</Trans>
                   </Button>
                 </Container>
 
