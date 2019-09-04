@@ -1,39 +1,18 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React from 'react'
 import { jsx } from '@emotion/core'
 import { ApolloConsumer, Mutation } from 'react-apollo'
-import { Trans } from '@lingui/macro'
-import { Form, Field } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { ButtonsContainer } from '../../components/buttons-container'
-import { TextArea } from '../../components/text-area'
-import { Text } from '../../components/text'
-import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import {
   getTellUsMore,
   SUBMIT_P2_REPORT_MUTATION,
 } from '../../utils/queriesAndMutations'
 
-const TextAreaAdapter = finalFormAdapter(TextArea)
-
 export const ConfirmationForm = props => {
-  const [tellUsMore, setTellUsMore] = useState('')
-
-  const onChange = (e, client) => {
-    setTellUsMore(e.target.value)
-    client.writeData({
-      data: { tellUsMore: JSON.stringify({ tellUsMore: e.target.value }) },
-    })
-  }
-
   return (
     <React.Fragment>
-      <hr />
-      <Text marginTop={[5, null, 6]}>
-        <Trans>
-          <strong>Tell us more</strong>
-        </Trans>
-      </Text>
       <ApolloConsumer>
         {client => (
           <Mutation mutation={SUBMIT_P2_REPORT_MUTATION}>
@@ -43,29 +22,6 @@ export const ConfirmationForm = props => {
                 onSubmit={() => props.onSubmit(client, submitReportP2)}
                 render={({ handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
-                    <label htmlFor="tellUsMore">
-                      <Text fontSize={(1, null, 2)}>
-                        <Trans>
-                          Is there any information you'd like to add that didn't
-                          fit elsewhere?
-                        </Trans>
-                      </Text>
-                    </label>
-                    <div>
-                      <Field
-                        input={{
-                          value: tellUsMore
-                            ? tellUsMore
-                            : getTellUsMore(client).tellUsMore,
-                          onChange: e => onChange(e, client),
-                        }}
-                        name="tellUsMore"
-                        id="tellUsMore"
-                        component={TextAreaAdapter}
-                        height="75px"
-                      />
-                    </div>
-
                     <ButtonsContainer
                       buttonLink={false}
                       cancel={true}
