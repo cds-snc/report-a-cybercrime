@@ -71,6 +71,11 @@ export const LandingPage = () => (
         across Canada catch cybercriminals.
       </Trans>
     </P>
+    <P>
+      <Trans>
+        The police will not be able to fix the problem or recover money lost.
+      </Trans>
+    </P>
     <ButtonsContainer
       landing={true}
       buttonLink={true}

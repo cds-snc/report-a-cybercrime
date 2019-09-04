@@ -113,7 +113,6 @@ class FileUploadInternal extends Component {
             </H2>
           )}
         </I18n>
-
         <Container>
           {files.map((f, index) => (
             <Container
@@ -166,7 +165,7 @@ class FileUploadInternal extends Component {
                     onClick={() => this.submitAndNavigate(client)}
                     type="submit"
                   >
-                    <Trans>Next: Leave your contact information</Trans>
+                    <Trans>Next: Your contact information</Trans>
                   </Button>
                 </Container>
 

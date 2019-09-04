@@ -40,7 +40,7 @@ const scamEventSummary = client => {
   return (
     <React.Fragment>
       <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
-        <Trans>Scam event</Trans>{' '}
+        <Trans>What happened</Trans>{' '}
         <I18n>
           {({ i18n }) => {
             return (
@@ -179,7 +179,7 @@ const suspectInfoSummary = client => {
         marginTop={[3, null, 4]}
         marginBottom={[1, null, 1]}
       >
-        <Trans>Suspect clues</Trans>{' '}
+        <Trans>About the suspect</Trans>{' '}
         <I18n>
           {({ i18n }) => {
             return (

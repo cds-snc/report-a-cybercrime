@@ -18,9 +18,6 @@ const client = {
   writeData: jest.fn(),
 }
 
-const fillIn = (element, { with: value }) =>
-  fireEvent.change(element, { target: { value } })
-
 const clickOn = element => fireEvent.click(element)
 
 describe('<TimeFrameInfoForm />', () => {
@@ -29,7 +26,7 @@ describe('<TimeFrameInfoForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByLabelText, getByText } = render(
+    const { getByText } = render(
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -41,12 +38,7 @@ describe('<TimeFrameInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('Approximate start')
-    const inputFinal = getByLabelText('Approximate end')
     const nextButton = getByText(/Next/i)
-
-    fillIn(inputNode, { with: 'lost money' })
-    fillIn(inputFinal, { with: 'lost money' })
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 

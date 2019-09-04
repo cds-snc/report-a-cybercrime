@@ -21,7 +21,7 @@ const submitAndNavigate = (client, data) => {
 export const WhatHappenedPage = () => (
   <Layout>
     <BackButton route="/p2/timeframe">
-      <Trans>Timeframe</Trans>
+      <Trans>the timeframe</Trans>
     </BackButton>
     <Steps activeStep={2} totalSteps={6} />
     <H1>
