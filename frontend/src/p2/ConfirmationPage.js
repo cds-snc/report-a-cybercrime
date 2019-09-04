@@ -13,6 +13,7 @@ import {
   getTellUsMore,
   getImpact,
   getP2ContactInfo,
+  getSurveyInfo,
 } from '../utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
@@ -39,6 +40,7 @@ const submit = (client, submitReportP2) => {
   let impact = getImpact(client)
   let p2ContactInfo = getP2ContactInfo(client)
   let tellUsMore = getTellUsMore(client)
+  const surveyInfo = getSurveyInfo(client)
 
   let { fullName, email, phone, postalCode } = p2ContactInfo
   fullName = randomizeString(fullName)
@@ -48,6 +50,7 @@ const submit = (client, submitReportP2) => {
 
   const data = {
     source: 'p2',
+    surveyInfo,
     timeFrame,
     whatHappened,
     impact,
@@ -60,6 +63,9 @@ const submit = (client, submitReportP2) => {
     },
     tellUsMore,
   }
+
+  console.log({ data })
+
   submitReportP2({ variables: data }) // currently fails, need new mutation
   navigate('nextsteps')
 }
