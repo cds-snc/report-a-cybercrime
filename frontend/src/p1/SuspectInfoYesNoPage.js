@@ -2,7 +2,6 @@
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
-import { P } from '../components/paragraph'
 import { ButtonsContainerYesNo } from '../components/buttons-container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Steps } from '../components/stepper'
