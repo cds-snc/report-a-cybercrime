@@ -18,7 +18,7 @@
       "disagree": "Je n'accepte pas",
       "logout": "Fermer la session"
     },
-    "cafc": "Système de signalement des fraudes du CAFC",
+    "cafc": "Système de signalement des fraudes",
     "canadaGovFooter": "Pied de page du gouvernement du Canada",
     "contactUs": "Contactez-nous",
     "disclaimer": {
@@ -66,15 +66,15 @@
     },
     "page": {
       "title": {
-        "disclaimer": "Dégagement de responsabilité du CAFC",
-        "welcome": "Bienvenue au Système de signalement des fraudes du CAFC"
+        "disclaimer": "Dégagement de responsabilité",
+        "welcome": "Bienvenue au Système de signalement des fraudes"
       }
     },
     "reference": "N° de référence",
     "stayConnected": "Restez branchés",
     "title": {
       "disclaimer": "Dégagement de responsabilité",
-      "welcome": "Bienvenue au Système de signalement des fraudes du CAFC"
+      "welcome": "Bienvenue au Système de signalement des fraudes"
     },
     "version": "Version",
     "versionNum": "2.0.3"
@@ -132,7 +132,7 @@
     "complaint": {
       "stepDetails": "Étape {{stepNum}} de {{maxStepNum}}: {{stepName}}"
     },
-    "disclaimer": "Le Centre antifraude du Canada (CAFC) découle d'un partenariat entre la Gendarmerie royale du Canada (GRC), le Bureau de la concurrence Canada (BC) et la Police provinciale de l'Ontario (OPP). Le CAFC n'est pas un organisme d'enquête; il constitue le dépôt central canadien des données sur la fraude. Nous ne vous rappellerons pas. Si vous avez des questions ou des préoccupations concernant une fraude, vous pouvez nous joindre à notre numéro sans frais, au 888-495-8501.\n\n**Si vous avez été victime d'une fraude ou avez reçu directement des menaces des suites d'une fraude, vous devez le signaler à votre service de police. Si vous êtes en crise en raison de problèmes de santé mentale et avez besoin d'une aide d'urgence, rendez-vous à l'urgence ou composez le 911.**\n\nLes données recueillies par le CAFC alimentent la collecte, l'analyse et l'échange de renseignements avec divers partenaires et organismes d'application de loi. Le signalement que vous produisez est utile aux enquêtes de police sur les groupes criminalisés actifs au Canada et à l'étranger. Ces données servent en outre à des fins de renseignement ainsi qu'à la sensibilisation et à l'information de la population en matière de fraude.\n\nC'est vous ou votre employeur qui, à titre volontaire, communiquez ces données au CAFC et à ses partenaires. Les renseignements personnels que vous fournissez peuvent être transmis à d'autres organismes d'application de la loi à des fins d'enquête, de prévention et de sensibilisation ou de recherche et d'analyse des tendances.\n\nLorsque vous remplissez le formulaire de signalement en ligne, vous consentez à ce que le CAFC transmette vos renseignements personnels à des organismes d'application de la loi et de réglementation aux fins susmentionnées. De plus, le fait de remplir ce formulaire vous assujettit aux lois du Canada, en particulier, à l'article 140 (méfait public) du *Code criminel* du Canada.",
+    "disclaimer": "Le Système de signalement des fraudes découle d'un partenariat entre la Gendarmerie royale du Canada (GRC), le Bureau de la concurrence Canada (BC) et la Police provinciale de l'Ontario (OPP). Le Système de signalement des fraudes n'est pas un organisme d'enquête; il constitue le dépôt central canadien des données sur la fraude. Nous ne vous rappellerons pas. Si vous avez des questions ou des préoccupations concernant une fraude, vous pouvez nous joindre à notre numéro sans frais, au 888-495-8501.\n\n**Si vous avez été victime d'une fraude ou avez reçu directement des menaces des suites d'une fraude, vous devez le signaler à votre service de police. Si vous êtes en crise en raison de problèmes de santé mentale et avez besoin d'une aide d'urgence, rendez-vous à l'urgence ou composez le 911.**\n\nLes données recueillies par le Système de signalement des fraudes alimentent la collecte, l'analyse et l'échange de renseignements avec divers partenaires et organismes d'application de loi. Le signalement que vous produisez est utile aux enquêtes de police sur les groupes criminalisés actifs au Canada et à l'étranger. Ces données servent en outre à des fins de renseignement ainsi qu'à la sensibilisation et à l'information de la population en matière de fraude.\n\nC'est vous ou votre employeur qui, à titre volontaire, communiquez ces données au Système de signalement des fraudes et à ses partenaires. Les renseignements personnels que vous fournissez peuvent être transmis à d'autres organismes d'application de la loi à des fins d'enquête, de prévention et de sensibilisation ou de recherche et d'analyse des tendances.\n\nLorsque vous remplissez le formulaire de signalement en ligne, vous consentez à ce que le Système de signalement des fraudes transmette vos renseignements personnels à des organismes d'application de la loi et de réglementation aux fins susmentionnées. De plus, le fait de remplir ce formulaire vous assujettit aux lois du Canada, en particulier, à l'article 140 (méfait public) du *Code criminel* du Canada.",
     "dropdowns": {
       "selectOne": "Veuillez sélectionner une option...",
       "selectOneOrMore": "Veuillez sélectionner une ou plusieurs options..."
@@ -151,7 +151,7 @@
       "addressNo": "Adresse {{index}}",
       "ageRange": "Plage d'âge",
       "businessName": "Nom de l'entreprise (type)",
-      "cafc": "Centre antifraude du Canada",
+      "cafc": "Système de signalement des fraudes",
       "complaintInformation": "Information sur la plainte",
       "daytimePhone": "Numéro de téléphone (jour) et poste",
       "email": "Courriel",
@@ -184,7 +184,7 @@
       "suspectInfoUsedType": "Information utilisée par le suspect",
       "suspectNo": "Suspect N° {{index}}",
       "suspectVictimContactType": "Types de contact",
-      "title": "Reçu du Système de signalement des fraudes du CAFC",
+      "title": "Reçu du Système de signalement des fraudes",
       "totalAmountLost": "Montant total de la perte (type)",
       "victimInformation": "Information sur la victime",
       "websiteNo": "Site web {{index}}",
@@ -193,12 +193,12 @@
     },
     "submitted": {
       "attention": {
-        "body": "Veuillez noter que le CAFC n'est pas un organisme d’enquête, c’est un dépôt central de données sur les fraudes. Notre unité de soutien opérationnel fournit un soutien aux organismes d'application de la loi en analysant les données sur les fraudes envoyées au CAFC. Si vous êtes victime d'une fraude à l’heure actuelle, veuillez immédiatement communiquer avec votre service de police local. Si vous avez été victime d'une fraude et souhaitez effectuer un suivi auprès de la police, ou si vous avez besoin d'un numéro de dossier à des fins d'assurance, vous devez déposer plainte auprès de votre service de police local.",
+        "body": "Veuillez noter que le Système de signalement des fraudes n'est pas un organisme d’enquête, c’est un dépôt central de données sur les fraudes. Notre unité de soutien opérationnel fournit un soutien aux organismes d'application de la loi en analysant les données sur les fraudes envoyées au Système de signalement des fraudes. Si vous êtes victime d'une fraude à l’heure actuelle, veuillez immédiatement communiquer avec votre service de police local. Si vous avez été victime d'une fraude et souhaitez effectuer un suivi auprès de la police, ou si vous avez besoin d'un numéro de dossier à des fins d'assurance, vous devez déposer plainte auprès de votre service de police local.",
         "title": "Attention"
       },
       "contacts": "Coordonnées",
       "feedback": {
-        "body": "Merci d'avoir pris le temps de nous faire part de vos commentaires. Votre contribution est très importante pour l'équipe du CAFC, mais les messages étant nombreux et nos ressources limitées, nous ne sommes pas en mesure de répondre à toutes les communications que nous recevons. Sachez cependant que chaque message sera lu par les responsables du CAFC. Veuillez envoyer tout commentaire, suggestion ou observation concernant notre nouveau site à l’adresse <a href=\"mailTo:commentaires@centreantifraude.ca\">commentaires@centreantifraude.ca</a>",
+        "body": "Merci d'avoir pris le temps de nous faire part de vos commentaires. Votre contribution est très importante pour l'équipe du Système de signalement des fraudes, mais les messages étant nombreux et nos ressources limitées, nous ne sommes pas en mesure de répondre à toutes les communications que nous recevons. Sachez cependant que chaque message sera lu par les responsables du Système de signalement des fraudes. Veuillez envoyer tout commentaire, suggestion ou observation concernant notre nouveau site à l’adresse <a href=\"mailTo:commentaires@centreantifraude.ca\">commentaires@centreantifraude.ca</a>",
         "title": "Commentaires"
       },
       "link": {
@@ -236,7 +236,7 @@
         "refNumber": "Numéro de référence de la plainte : {{referenceNumber}}",
         "recordAndPrint": "Veuillez conserver le numéro de référence de la plainte dans vos dossiers, pour le cas où vous auriez besoin de communiquer avec nous. <a href=\"receipt-recu\" target=\"_blank\">Version imprimable de votre plainte</a>"
       },
-      "thankYouForSubmitting": "Merci d'avoir signalé une fraude au CAFC. Les renseignements que vous avez fournis sont indispensables à la police pour lutter contre la fraude. Ils pourraient contenir l'élément manquant qui mènera à l'arrestation ou à la condamnation d'un criminel ou d'une organisation criminelle, et empêchera d'autres personnes de devenir victimes d'un crime semblable.\n\nLe Système de signalement des fraudes du Centre antifraude du Canada est l’outil de signalement en ligne du Centre antifraude du Canada, le fruit d’un partenariat entre la Gendarmerie royale du Canada, le Bureau de la concurrence du Canada et la Police provinciale de l'Ontario. Les détails de votre situation ont été ajoutés à une base de données à des fins d'information, et ils seront analysés afin d’établir s’il y a une corrélation avec d'autres activités frauduleuses. Cela peut ou non donner lieu à un renvoi à un organisme d’application de la loi ayant la compétence d’enquêter sur vos allégations."
+      "thankYouForSubmitting": "Merci d'avoir signalé une fraude au Système de signalement des fraudes. Les renseignements que vous avez fournis sont indispensables à la police pour lutter contre la fraude. Ils pourraient contenir l'élément manquant qui mènera à l'arrestation ou à la condamnation d'un criminel ou d'une organisation criminelle, et empêchera d'autres personnes de devenir victimes d'un crime semblable.\n\nLe Système de signalement des fraudes du Centre antifraude du Canada est l’outil de signalement en ligne du Centre antifraude du Canada, le fruit d’un partenariat entre la Gendarmerie royale du Canada, le Bureau de la concurrence du Canada et la Police provinciale de l'Ontario. Les détails de votre situation ont été ajoutés à une base de données à des fins d'information, et ils seront analysés afin d’établir s’il y a une corrélation avec d'autres activités frauduleuses. Cela peut ou non donner lieu à un renvoi à un organisme d’application de la loi ayant la compétence d’enquêter sur vos allégations."
     },
     "steps": {
       "error": {
@@ -259,7 +259,7 @@
         "reset": "Réinitialiser",
         "save": "Sauvegardez"
       },
-      "info": "Un dossier de plainte a été ouvert avec le numéro __{{referenceNumber}}__. Notez ce numéro de référence pour le cas où votre connexion Internet serait interrompue et vous auriez besoin de communiquer avec le CAFC pour terminer votre plainte par téléphone.",
+      "info": "Un dossier de plainte a été ouvert avec le numéro __{{referenceNumber}}__. Notez ce numéro de référence pour le cas où votre connexion Internet serait interrompue et vous auriez besoin de communiquer avec le Système de signalement des fraudes pour terminer votre plainte par téléphone.",
       "modals": {
         "businessInformationLost": {
           "question": "Les informations précédémment enregistrées pour l'entreprise seront perdues si voues cliquez sur Continuer ou Retourner. Êtes-vous sur de vouloir continuer?",
@@ -352,10 +352,10 @@
           },
           "general": {
             "contactInformation": "Coordonnées",
-            "info": "Assurez-vous de fournir vos coordonnées complètes pour que le CAFC et les services de police partenaires puissent communiquer avec vous relativement à cette plainte.",
+            "info": "Assurez-vous de fournir vos coordonnées complètes pour que le Système de signalement des fraudes et les services de police partenaires puissent communiquer avec vous relativement à cette plainte.",
             "languagePreferred": "Language de communication préférée",
             "questions": "Questions",
-            "willingToBeContacted": "Acceptez-vous que le CAFC communique avec vous?"
+            "willingToBeContacted": "Acceptez-vous que le nous communiquons avec vous?"
           },
           "nameInformation": {
             "firstName": "Prénom",
