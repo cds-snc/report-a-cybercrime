@@ -10,7 +10,6 @@ import {
   getTimeFrame,
   getWhatHappened,
   getScammerDetails,
-  getTellUsMore,
   getImpact,
   getP2ContactInfo,
 } from '../utils/queriesAndMutations'
@@ -38,7 +37,6 @@ const submit = (client, submitReportP2) => {
   let scammerDetails = getScammerDetails(client)
   let impact = getImpact(client)
   let p2ContactInfo = getP2ContactInfo(client)
-  let tellUsMore = getTellUsMore(client)
 
   let { fullName, email, phone, postalCode } = p2ContactInfo
   fullName = randomizeString(fullName)
@@ -58,7 +56,6 @@ const submit = (client, submitReportP2) => {
       phone,
       postalCode,
     },
-    tellUsMore,
   }
   submitReportP2({ variables: data }) // currently fails, need new mutation
   navigate('nextsteps')
