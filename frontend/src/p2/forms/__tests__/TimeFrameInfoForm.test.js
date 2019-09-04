@@ -41,12 +41,7 @@ describe('<TimeFrameInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('Approximate start')
-    const inputFinal = getByLabelText('Approximate end')
     const nextButton = getByText(/Next/i)
-
-    fillIn(inputNode, { with: 'lost money' })
-    fillIn(inputFinal, { with: 'lost money' })
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 

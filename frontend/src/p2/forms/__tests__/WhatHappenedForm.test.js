@@ -41,12 +41,8 @@ describe('<WhatHappenedForm />', () => {
       </ThemeProvider>,
     )
 
-    // find the form element by it's label:
-    const inputNode = getByLabelText('Tell us what happened')
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/Next/i)
-    // Enter text into the form field
-    fillIn(inputNode, { with: 'lost money' })
     // Click the next button to trigger the form submission
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
