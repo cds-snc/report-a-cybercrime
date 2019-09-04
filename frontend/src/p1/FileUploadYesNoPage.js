@@ -17,14 +17,10 @@ export const FilesToUpload = () => (
     </BackButton>
     <Steps activeStep={4} totalSteps={6} />
     <H1>
-      <Trans>Attach supporting files</Trans>
-    </H1>
-    <P>
       <Trans>
         Do you have any documents, images, screenshots, or receipts?
       </Trans>
-    </P>
-
+    </H1>
     <ButtonsContainerYesNo
       yesRoute="/p1/uploadfiles"
       noRoute="/p1/contactinfoquestion"
