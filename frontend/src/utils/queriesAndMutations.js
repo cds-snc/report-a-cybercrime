@@ -84,14 +84,18 @@ export const getDoneForms = client => {
 }
 
 export const getSurveyInfo = client => {
-  const queryResult = client.readQuery({
+  const { surveyInfo } = client.readQuery({
     query: gql`
       query readCache {
         surveyInfo
       }
     `,
   })
-  return JSON.parse(queryResult.surveyInfo)
+  const { surveyID, ResponseID } = JSON.parse(surveyInfo)
+  return {
+    surveyID: surveyID ? surveyID : '',
+    ResponseID: ResponseID ? ResponseID : '',
+  }
 }
 
 // P1 cache queries
