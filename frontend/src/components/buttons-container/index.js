@@ -47,9 +47,9 @@ export const ButtonsContainer = ({
           {nextPage === 'Scammer details' ? (
             <Trans>: Suspect clues</Trans>
           ) : nextPage === 'Money lost' ? (
-            <Trans>: Tell us about money lost</Trans>
+            <Trans>: Money involved</Trans>
           ) : nextPage === 'Impact of scam' ? (
-            <Trans>: Impact</Trans>
+            <Trans>: Impact of the scam</Trans>
           ) : nextPage === 'What happened' ? (
             <Trans>: What happened</Trans>
           ) : nextPage === 'Supporting files' ? (
