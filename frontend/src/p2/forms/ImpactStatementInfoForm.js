@@ -7,7 +7,6 @@ import { I18n, i18nMark } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
-import { Container } from '../../components/container'
 import { ButtonsContainer } from '../../components/buttons-container'
 import { P } from '../../components/paragraph'
 import { Text } from '../../components/text'
@@ -82,13 +81,13 @@ export const ImpactStatementInfoForm = props => (
 
             <Text marginTop={[5, null, 6]}>
               <Trans>
-                <strong>Tell us more about what was lost or affected.</strong>
+                <strong>Tell us more about how it impacted you.</strong>
               </Trans>
             </Text>
             <Text fontSize={(1, null, 2)}>
               <Trans>
-                For example: amount of money involved, type of information
-                stolen, other impact
+                Example: the amount of money, the information taken, what else
+                was affected
               </Trans>
             </Text>
             <div>
