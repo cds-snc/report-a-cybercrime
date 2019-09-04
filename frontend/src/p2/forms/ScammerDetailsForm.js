@@ -71,9 +71,7 @@ export const ScammerDetailsFormWrapped = props => {
             <form onSubmit={handleSubmit}>
               <P>
                 <Trans>
-                  <strong>
-                    Include what you know about where the scam came from:
-                  </strong>
+                  <strong>Think about including things such as:</strong>
                 </Trans>
               </P>
               <Ul>
@@ -84,24 +82,22 @@ export const ScammerDetailsFormWrapped = props => {
                   <Trans>Where they requested things be sent</Trans>
                 </Li>
                 <Li>
-                  <Trans>
-                    Which email address, phone number, or website they used
-                  </Trans>
+                  <Trans>What language did they use to communicate</Trans>
                 </Li>
                 <Li>
-                  <Trans>
-                    Any screenshots, messages, bank statements, and receipts
-                  </Trans>
+                  <Trans>Any screenshots, messages, or receipts</Trans>
                 </Li>
               </Ul>
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
                   <Trans>
-                    <strong>Tell us what you know about the suspect</strong>
+                    <strong>
+                      What do you know about where the scam came from?
+                    </strong>
                   </Trans>
                   <Text fontSize={(1, null, 2)}>
                     <Trans>
-                      For example: suspect@email.com, @username, 1-888-111-1111
+                      For example: email address, phone number, website link
                     </Trans>
                   </Text>
                 </Text>
