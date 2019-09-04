@@ -78,6 +78,9 @@ type Mutation {
 
     """information not captured in the forms"""
     tellUsMore: tellUsMore
+
+    """quantitative testing survey info"""
+    surveyInfo: surveyInfo
   ): reportSummary
 }
 
@@ -113,6 +116,11 @@ input scammerDetails {
 type Stats {
   """The total number of reports submitted."""
   reportCount: Int
+}
+
+input surveyInfo {
+  surveyID: String
+  ResponseID: String
 }
 
 input suspectInfoInput {

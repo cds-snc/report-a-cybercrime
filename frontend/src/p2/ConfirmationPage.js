@@ -50,7 +50,6 @@ const submit = (client, submitReportP2) => {
 
   const data = {
     source: 'p2',
-    surveyInfo,
     timeFrame,
     whatHappened,
     impact,
@@ -62,11 +61,10 @@ const submit = (client, submitReportP2) => {
       postalCode,
     },
     tellUsMore,
+    surveyInfo,
   }
 
-  console.log({ data })
-
-  submitReportP2({ variables: data }) // currently fails, need new mutation
+  submitReportP2({ variables: data })
   navigate('nextsteps')
 }
 
