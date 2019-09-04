@@ -47,7 +47,7 @@ export const ImpactStatementInfoForm = props => (
         initialValues={getImpact(client)}
         onSubmit={data => props.onSubmit(client, data)}
         validate={validate}
-        render={({ handleSubmit, values }) => (
+        render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Fieldset>
               <Label htmlFor="howWereYouAffected">
@@ -86,8 +86,8 @@ export const ImpactStatementInfoForm = props => (
             </Text>
             <Text fontSize={(1, null, 2)}>
               <Trans>
-                Example: the amount of money, the information taken, what else
-                was affected
+                For example: the amount of money, the information taken, what
+                else was affected
               </Trans>
             </Text>
             <div>
