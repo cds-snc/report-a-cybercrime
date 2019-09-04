@@ -35,54 +35,53 @@ const scamEventSummary = client => {
     howWereYouContacted = howWereYouContacted.concat(otherMethodOfContact)
   }
   howWereYouContacted = howWereYouContacted
-    ? howWereYouContacted.filter(s => s !== 'other').join(', ')
+    ? howWereYouContacted.filter(s => s !== 'other')
     : ''
   return (
-    <React.Fragment>
-      <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
-        <Trans>What happened</Trans>{' '}
-        <I18n>
-          {({ i18n }) => {
-            return (
-              <Link
-                aria-label={i18n._('Edit scam event')}
-                type="button"
-                color="black"
-                to="/p1/scaminfo"
-                textAlign="center"
-              >
-                <Trans>Edit</Trans>
-              </Link>
+    <I18n>
+      {({ i18n }) => (
+        <React.Fragment>
+          <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
+            <Trans>What happened</Trans> return (
+            <Link
+              aria-label={i18n._('Edit scam event')}
+              type="button"
+              color="black"
+              to="/p1/scaminfo"
+              textAlign="center"
+            >
+              <Trans>Edit</Trans>
+            </Link>
             )
-          }}
-        </I18n>
-      </H2>
-      {scamDetails ? (
-        <Text>
-          <strong>
-            <Trans>Description</Trans>:{' '}
-          </strong>
-          {scamDetails}
-        </Text>
-      ) : null}
+          </H2>
+          {scamDetails ? (
+            <Text>
+              <strong>
+                <Trans>Description</Trans>:{' '}
+              </strong>
+              {scamDetails}
+            </Text>
+          ) : null}
 
-      {whenWereYouContacted ? (
-        <Text>
-          <strong>
-            <Trans>Date </Trans>:{' '}
-          </strong>
-          {whenWereYouContacted}
-        </Text>
-      ) : null}
-      {howWereYouContacted ? (
-        <Text>
-          <strong>
-            <Trans>Contacted by</Trans>:{' '}
-          </strong>
-          {howWereYouContacted}
-        </Text>
-      ) : null}
-    </React.Fragment>
+          {whenWereYouContacted ? (
+            <Text>
+              <strong>
+                <Trans>Date </Trans>:{' '}
+              </strong>
+              {whenWereYouContacted}
+            </Text>
+          ) : null}
+          {howWereYouContacted ? (
+            <Text>
+              <strong>
+                <Trans>Contacted by</Trans>:{' '}
+              </strong>
+              {howWereYouContacted.map(i => i18n._(i)).join(', ')}
+            </Text>
+          ) : null}
+        </React.Fragment>
+      )}
+    </I18n>
   )
 }
 
@@ -98,58 +97,55 @@ const lostMoneySummary = client => {
   if (lostOtherMethodOfPayment) {
     lostMethodsOfPayment = lostMethodsOfPayment.concat(lostOtherMethodOfPayment)
   }
-  lostMethodsOfPayment = lostMethodsOfPayment
-    .filter(s => s !== 'other')
-    .join(', ')
+  lostMethodsOfPayment = lostMethodsOfPayment.filter(s => s !== 'other')
   return (
-    <React.Fragment>
-      <H2
-        fontSize={[3, null, 4]}
-        marginTop={[3, null, 4]}
-        marginBottom={[1, null, 1]}
-      >
-        <Trans>Money lost</Trans>{' '}
-        <I18n>
-          {({ i18n }) => {
-            return (
-              <Link
-                aria-label={i18n._('Edit money lost')}
-                type="button"
-                color="black"
-                to="/p1/moneylost"
-                textAlign="center"
-              >
-                <Trans>Edit</Trans>
-              </Link>
+    <I18n>
+      {({ i18n }) => (
+        <React.Fragment>
+          <H2
+            fontSize={[3, null, 4]}
+            marginTop={[3, null, 4]}
+            marginBottom={[1, null, 1]}
+          >
+            <Trans>Money lost</Trans>{' '}
+            <Link
+              aria-label={i18n._('Edit money lost')}
+              type="button"
+              color="black"
+              to="/p1/moneylost"
+              textAlign="center"
+            >
+              <Trans>Edit</Trans>
+            </Link>
             )
-          }}
-        </I18n>
-      </H2>
-      {lostAmount ? (
-        <Text>
-          <strong>
-            <Trans>Amount</Trans>:{' '}
-          </strong>
-          {lostAmount}
-        </Text>
-      ) : null}
-      {lostCurrency || lostOtherCurrency ? (
-        <Text>
-          <strong>
-            <Trans>Currency</Trans>:{' '}
-          </strong>
-          {lostOtherCurrency ? lostOtherCurrency : lostCurrency}
-        </Text>
-      ) : null}
-      {lostMethodsOfPayment ? (
-        <Text>
-          <strong>
-            <Trans>Payment method</Trans>:{' '}
-          </strong>
-          {lostMethodsOfPayment}
-        </Text>
-      ) : null}
-    </React.Fragment>
+          </H2>
+          {lostAmount ? (
+            <Text>
+              <strong>
+                <Trans>Amount</Trans>:{' '}
+              </strong>
+              {lostAmount}
+            </Text>
+          ) : null}
+          {lostCurrency || lostOtherCurrency ? (
+            <Text>
+              <strong>
+                <Trans>Currency</Trans>:{' '}
+              </strong>
+              {lostOtherCurrency ? lostOtherCurrency : i18n._(lostCurrency)}
+            </Text>
+          ) : null}
+          {lostMethodsOfPayment ? (
+            <Text>
+              <strong>
+                <Trans>Payment method</Trans>:{' '}
+              </strong>
+              {lostMethodsOfPayment.map(i => i18n._(i)).join(', ')}
+            </Text>
+          ) : null}
+        </React.Fragment>
+      )}
+    </I18n>
   )
 }
 
@@ -168,97 +164,94 @@ const suspectInfoSummary = client => {
   if (otherSuspectLanguage) {
     suspectLanguage = suspectLanguage.concat(otherSuspectLanguage)
   }
-  suspectLanguage = suspectLanguage
-    .filter(s => s !== 'Other language')
-    .join(', ')
+  suspectLanguage = suspectLanguage.filter(s => s !== 'Other language')
 
   return (
-    <React.Fragment>
-      <H2
-        fontSize={[3, null, 4]}
-        marginTop={[3, null, 4]}
-        marginBottom={[1, null, 1]}
-      >
-        <Trans>About the suspect</Trans>{' '}
-        <I18n>
-          {({ i18n }) => {
-            return (
-              <Link
-                aria-label={i18n._('Edit scammer details')}
-                type="button"
-                color="black"
-                to="/p1/suspectinfo"
-                textAlign="center"
-              >
-                <Trans>Edit</Trans>
-              </Link>
+    <I18n>
+      {({ i18n }) => (
+        <React.Fragment>
+          <H2
+            fontSize={[3, null, 4]}
+            marginTop={[3, null, 4]}
+            marginBottom={[1, null, 1]}
+          >
+            <Trans>About the suspect</Trans>{' '}
+            <Link
+              aria-label={i18n._('Edit scammer details')}
+              type="button"
+              color="black"
+              to="/p1/suspectinfo"
+              textAlign="center"
+            >
+              <Trans>Edit</Trans>
+            </Link>
             )
-          }}
-        </I18n>
-      </H2>
+          </H2>
 
-      {suspectName ? (
-        <Text>
-          <strong>
-            <Trans>Name</Trans>:{' '}
-          </strong>
-          {suspectName}
-        </Text>
-      ) : null}
+          {suspectName ? (
+            <Text>
+              <strong>
+                <Trans>Name</Trans>:{' '}
+              </strong>
+              {suspectName}
+            </Text>
+          ) : null}
 
-      {suspectEmail ? (
-        <Text>
-          <strong>
-            <Trans>Email address</Trans>:{' '}
-          </strong>
-          {suspectEmail}
-        </Text>
-      ) : null}
+          {suspectEmail ? (
+            <Text>
+              <strong>
+                <Trans>Email address</Trans>:{' '}
+              </strong>
+              {suspectEmail}
+            </Text>
+          ) : null}
 
-      {suspectPhone ? (
-        <Text>
-          <strong>
-            <Trans>Phone number</Trans>:{' '}
-          </strong>
-          {suspectPhone}
-        </Text>
-      ) : null}
+          {suspectPhone ? (
+            <Text>
+              <strong>
+                <Trans>Phone number</Trans>:{' '}
+              </strong>
+              {suspectPhone}
+            </Text>
+          ) : null}
 
-      {suspectWebsite ? (
-        <Text>
-          <strong>
-            <Trans>Website</Trans>:{' '}
-          </strong>
-          {suspectWebsite}
-        </Text>
-      ) : null}
+          {suspectWebsite ? (
+            <Text>
+              <strong>
+                <Trans>Website</Trans>:{' '}
+              </strong>
+              {suspectWebsite}
+            </Text>
+          ) : null}
 
-      {suspectAddress ? (
-        <Text>
-          <strong>
-            {' '}
-            <Trans>Mailing address</Trans>:{' '}
-          </strong>
-          {suspectAddress}
-        </Text>
-      ) : null}
-      {suspectIP ? (
-        <Text>
-          <strong>
-            <Trans>IP address</Trans>:{' '}
-          </strong>
-          {suspectIP}
-        </Text>
-      ) : null}
-      {suspectLanguage ? (
-        <Text>
-          <strong>
-            <Trans>Language of correspondence</Trans>:{' '}
-          </strong>
-          {suspectLanguage}
-        </Text>
-      ) : null}
-    </React.Fragment>
+          {suspectAddress ? (
+            <Text>
+              <strong>
+                {' '}
+                <Trans>Mailing address</Trans>:{' '}
+              </strong>
+              {suspectAddress}
+            </Text>
+          ) : null}
+          {suspectIP ? (
+            <Text>
+              <strong>
+                <Trans>IP address</Trans>:{' '}
+              </strong>
+              {suspectIP}
+            </Text>
+          ) : null}
+          {suspectLanguage ? (
+            <Text>
+              <strong>
+                <Trans>Language of correspondence</Trans>:{' '}
+              </strong>
+              {suspectLanguage.map(i => i18n._(i)).join(', ')}
+            </Text>
+          ) : null}
+        </React.Fragment>
+      )}
+    </I18n>
   )
 }
 
@@ -309,64 +302,63 @@ const contactInfoSummary = client => {
   } = getContactInfo(client)
 
   return (
-    <React.Fragment>
-      <H2
-        fontSize={[3, null, 4]}
-        marginTop={[3, null, 4]}
-        marginBottom={[1, null, 1]}
-      >
-        <Trans>Contact information</Trans>{' '}
-        <I18n>
-          {({ i18n }) => {
-            return (
-              <Link
-                aria-label={i18n._('Edit contact info')}
-                type="button"
-                color="black"
-                to="/p1/contactinfo"
-                textAlign="center"
-              >
-                <Trans>Edit</Trans>
-              </Link>
+    <I18n>
+      {({ i18n }) => (
+        <React.Fragment>
+          <H2
+            fontSize={[3, null, 4]}
+            marginTop={[3, null, 4]}
+            marginBottom={[1, null, 1]}
+          >
+            <Trans>Contact information</Trans>{' '}
+            <Link
+              aria-label={i18n._('Edit contact info')}
+              type="button"
+              color="black"
+              to="/p1/contactinfo"
+              textAlign="center"
+            >
+              <Trans>Edit</Trans>
+            </Link>
             )
-          }}
-        </I18n>
-      </H2>
+          </H2>
 
-      {contactInfoName ? (
-        <Text>
-          <strong>
-            <Trans>Name</Trans>:{' '}
-          </strong>
-          {contactInfoName}
-        </Text>
-      ) : null}
+          {contactInfoName ? (
+            <Text>
+              <strong>
+                <Trans>Name</Trans>:{' '}
+              </strong>
+              {contactInfoName}
+            </Text>
+          ) : null}
 
-      {contactInfoEmail ? (
-        <Text>
-          <strong>
-            <Trans>Email</Trans>:{' '}
-          </strong>
-          {contactInfoEmail}
-        </Text>
-      ) : null}
-      {contactInfoPhone ? (
-        <Text>
-          <strong>
-            <Trans>Phone number</Trans>:{' '}
-          </strong>
-          {contactInfoPhone}
-        </Text>
-      ) : null}
-      {userIsTheVictim ? (
-        <Text>
-          <strong>
-            <Trans>Victim</Trans>:{' '}
-          </strong>
-          {userIsTheVictim}
-        </Text>
-      ) : null}
-    </React.Fragment>
+          {contactInfoEmail ? (
+            <Text>
+              <strong>
+                <Trans>Email</Trans>:{' '}
+              </strong>
+              {contactInfoEmail}
+            </Text>
+          ) : null}
+          {contactInfoPhone ? (
+            <Text>
+              <strong>
+                <Trans>Phone number</Trans>:{' '}
+              </strong>
+              {contactInfoPhone}
+            </Text>
+          ) : null}
+          {userIsTheVictim ? (
+            <Text>
+              <strong>
+                <Trans>Victim</Trans>:{' '}
+              </strong>
+              {i18n._(userIsTheVictim)}
+            </Text>
+          ) : null}
+        </React.Fragment>
+      )}
+    </I18n>
   )
 }
 
