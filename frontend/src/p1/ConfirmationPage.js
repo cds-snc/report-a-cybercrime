@@ -440,7 +440,7 @@ export const ConfirmationPage = () => {
       </BackButton>
       <Steps activeStep={6} totalSteps={6} />
       <H1>
-        <Trans>Confirm report information</Trans>
+        <Trans>Review report information</Trans>
       </H1>
       <TrackPageViews />
       <ApolloConsumer>
