@@ -39,7 +39,7 @@ const ScrollToTop = ({ children, location }) => {
 export const Home = () => (
   <Root>
     <Screen>
-      <Router>
+      <Router primary={false}>
         <ScrollToTop default>
           <PageNotFound default />
           <RootLandingPage path="/" />
