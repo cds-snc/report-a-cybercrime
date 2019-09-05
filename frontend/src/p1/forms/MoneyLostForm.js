@@ -9,7 +9,7 @@ import { I18n, i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
 import { RadioButton } from '../../components/radio-button'
-import { TextArea } from '../../components/text-area'
+import { TextInput } from '../../components/TextInput'
 import { Text } from '../../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
@@ -18,7 +18,7 @@ import { ButtonsContainer } from '../../components/buttons-container'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const RadioButtonAdapter = finalFormAdapter(RadioButton)
-const TextAreaAdapter = finalFormAdapter(TextArea)
+const TextInputAdapter = finalFormAdapter(TextInput)
 
 const methodsOfPayment = [
   i18nMark('Cash'),
@@ -61,7 +61,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
             <label htmlFor="lostAmount">
               <Text marginTop={[4, null, 5]}>
                 <Trans>
-                  <strong>Amount</strong>
+                  <strong>Amount of money</strong>
                 </Trans>
               </Text>
             </label>
@@ -69,7 +69,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
               <Field
                 name="lostAmount"
                 id="lostAmount"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="200px"
               />
@@ -114,7 +114,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
                   <Field
                     name="lostOtherCurrency"
                     id="lostOtherCurrency"
-                    component={TextAreaAdapter}
+                    component={TextInputAdapter}
                     height="25px"
                     width="200px"
                   />
@@ -165,7 +165,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
                   <Field
                     name="lostOtherMethodOfPayment"
                     id="lostOtherMethodOfPayment"
-                    component={TextAreaAdapter}
+                    component={TextInputAdapter}
                     height="25px"
                     width="200px"
                   />

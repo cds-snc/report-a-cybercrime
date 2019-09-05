@@ -1,5 +1,5 @@
 const FONT_SIZES = [
-  '12px',
+  '12rem',
   '14px',
   '16px',
   '19px',
@@ -92,6 +92,13 @@ const theme = {
     },
     footerLink: {
       color: '#FFF',
+      '&:focus': {
+        outline: `3px solid ${colors.focusColor}`,
+      },
+    },
+
+    inputField: {
+      color: colors.black,
       '&:focus': {
         outline: `3px solid ${colors.focusColor}`,
       },

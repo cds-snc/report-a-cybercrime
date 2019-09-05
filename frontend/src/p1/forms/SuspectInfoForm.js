@@ -8,15 +8,15 @@ import { Trans } from '@lingui/macro'
 import { I18n, i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
-import { TextArea } from '../../components/text-area'
 import { ButtonsContainer } from '../../components/buttons-container'
 import { Text } from '../../components/text'
+import { TextInput } from '../../components/TextInput'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getSuspectInfo } from '../../utils/queriesAndMutations'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
-const TextAreaAdapter = finalFormAdapter(TextArea)
+const TextInputAdapter = finalFormAdapter(TextInput)
 
 const languages = [
   i18nMark('English'),
@@ -58,7 +58,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               <Field
                 name="suspectName"
                 id="suspectName"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
@@ -75,7 +75,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               <Field
                 name="suspectEmail"
                 id="suspectEmail"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
@@ -92,7 +92,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               <Field
                 name="suspectPhone"
                 id="suspectPhone"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
@@ -109,7 +109,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               <Field
                 name="suspectWebsite"
                 id="suspectWebsite"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
@@ -126,8 +126,8 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               <Field
                 name="suspectAddress"
                 id="suspectAddress"
-                component={TextAreaAdapter}
-                height="100px"
+                component={TextInputAdapter}
+                height="25px"
                 width="300px"
               />
             </div>
@@ -143,7 +143,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
               <Field
                 name="suspectIP"
                 id="suspectIP"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
@@ -190,7 +190,7 @@ export const SuspectInfoForm = ({ onSubmit }) => (
                   <Field
                     name="otherSuspectLanguage"
                     id="otherSuspectLanguage"
-                    component={TextAreaAdapter}
+                    component={TextInputAdapter}
                     height="25px"
                     width="300px"
                   />

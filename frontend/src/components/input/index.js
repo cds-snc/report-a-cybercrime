@@ -1,8 +1,12 @@
 import styled from '@emotion/styled'
 import { cleanProps } from '../../utils/cleanProps'
 import {
+  fontSize,
+  fontWeight,
   height,
   width,
+  color,
+  colorStyle,
   space,
   borders,
   borderColor,
@@ -18,6 +22,8 @@ import {
 export const Input = styled('input', {
   shouldForwardProp: prop => cleanProps(prop),
 })`
+  ${fontSize};
+  ${fontWeight};
   ${height};
   ${width};
   ${space};
@@ -25,6 +31,8 @@ export const Input = styled('input', {
   ${borderColor};
   ${display};
   ${position};
+  ${colorStyle};
+  ${color};
   ${top};
   ${right};
   ${bottom};

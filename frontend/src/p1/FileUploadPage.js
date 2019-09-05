@@ -96,7 +96,7 @@ class FileUploadInternal extends Component {
           >
             <img alt="upload icon" src={upload} />
             <span>
-              <Trans>Attach file</Trans>
+              <Trans>Add file</Trans>
             </span>
           </FileUpload>
         </Container>
@@ -182,7 +182,7 @@ class FileUploadInternal extends Component {
                     onClick={() => this.submitAndNavigate(client)}
                     type="submit"
                   >
-                    <Trans>Next: Your contact information</Trans>
+                    <Trans>Next: Contact information</Trans>
                   </Button>
                 </Container>
 

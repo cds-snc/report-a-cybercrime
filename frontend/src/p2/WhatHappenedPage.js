@@ -34,13 +34,11 @@ export const WhatHappenedPage = () => (
       </Trans>
     </P>
     <P>
-      <Trans>
-        <strong>Think about including things such as:</strong>
-      </Trans>
+      <Trans>Think about including things such as:</Trans>
     </P>
     <Ul>
       <Li>
-        <Trans>What app, website, or device you were using</Trans>
+        <Trans>Which app, website, or device you were using</Trans>
       </Li>
       <Li>
         <Trans>How the scammer contacted you</Trans>

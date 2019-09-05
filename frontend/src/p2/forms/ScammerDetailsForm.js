@@ -70,19 +70,17 @@ export const ScammerDetailsFormWrapped = props => {
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <P>
-                <Trans>
-                  <strong>Think about including things such as:</strong>
-                </Trans>
+                <Trans>Think about including things such as:</Trans>
               </P>
               <Ul>
                 <Li>
                   <Trans>Who the scammer claimed to be</Trans>
                 </Li>{' '}
                 <Li>
-                  <Trans>Where they requested things be sent</Trans>
+                  <Trans>Where they asked you to send things</Trans>
                 </Li>
                 <Li>
-                  <Trans>What language did they use to communicate</Trans>
+                  <Trans>What language they used to communicate</Trans>
                 </Li>
                 <Li>
                   <Trans>Any screenshots, messages, or receipts</Trans>
@@ -97,7 +95,8 @@ export const ScammerDetailsFormWrapped = props => {
                   </Trans>
                   <Text fontSize={(1, null, 2)}>
                     <Trans>
-                      For example: email address, phone number, website link
+                      Remember to include any email addresses, phone numbers, or
+                      website links
                     </Trans>
                   </Text>
                 </Text>
@@ -108,7 +107,8 @@ export const ScammerDetailsFormWrapped = props => {
                   name="scammerDetails"
                   id="scammerDetails"
                   component={TextAreaAdapter}
-                  height="200px"
+                  height="100px"
+                  width="100%"
                 />
               </div>
               <br></br>
@@ -138,7 +138,7 @@ export const ScammerDetailsFormWrapped = props => {
                 >
                   <img alt="upload icon" src={upload} />
                   <span>
-                    <Trans>Attach file</Trans>
+                    <Trans>Add file</Trans>
                   </span>
                 </FileUpload>
               </Container>
