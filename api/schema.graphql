@@ -54,6 +54,9 @@ type Mutation {
 
     """contact details about the user"""
     contactInfo: contactInfoInput
+
+    """quantitative testing survey info"""
+    surveyInfo: surveyInfo
   ): reportSummary
 
   """Submit P2 report to database"""

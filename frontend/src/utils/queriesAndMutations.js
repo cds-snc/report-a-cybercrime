@@ -48,6 +48,7 @@ export const SUBMIT_REPORT_MUTATION = gql`
     $suspectInfo: suspectInfoInput!
     $files: [String]!
     $contactInfo: contactInfoInput!
+    $surveyInfo: surveyInfo!
   ) {
     submitReport(
       source: $source
@@ -56,6 +57,7 @@ export const SUBMIT_REPORT_MUTATION = gql`
       suspectInfo: $suspectInfo
       files: $files
       contactInfo: $contactInfo
+      surveyInfo: $surveyInfo
     ) {
       reportID
     }
