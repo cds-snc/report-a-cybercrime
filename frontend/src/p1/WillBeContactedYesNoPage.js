@@ -17,8 +17,7 @@ export const Willbecontacted = () => (
     <Steps activeStep={5} totalSteps={6} />
     <H1>
       <Trans>
-        Would you like to leave your contact information in case a follow-up is
-        needed?
+        Would you like to be contacted, should the police need more information?
       </Trans>
     </H1>
 
