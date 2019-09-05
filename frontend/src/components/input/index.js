@@ -5,6 +5,8 @@ import {
   fontWeight,
   height,
   width,
+  color,
+  colorStyle,
   space,
   borders,
   borderColor,
@@ -29,6 +31,8 @@ export const Input = styled('input', {
   ${borderColor};
   ${display};
   ${position};
+  ${colorStyle};
+  ${color};
   ${top};
   ${right};
   ${bottom};
