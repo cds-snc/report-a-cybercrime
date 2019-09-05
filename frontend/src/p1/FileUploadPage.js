@@ -1,8 +1,5 @@
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core'
-// import {  Field } from 'react-final-form'
-// import { finalFormAdapter } from '../utils/finalFormAdapter'
-// import { TextArea } from '../components/text-area'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import { navigate } from '@reach/router'
