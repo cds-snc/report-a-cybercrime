@@ -8,7 +8,6 @@ import { ApolloConsumer } from 'react-apollo'
 import { TrackPageViews } from '../TrackPageViews'
 import { ButtonsContainer } from '../components/buttons-container'
 import { Layout } from '../components/layout'
-import { BackButton } from '../components/backbutton'
 
 export const ThankYou = () => (
   <Layout>
