@@ -36,7 +36,10 @@ export const LandingPage = props => {
               scammerDetails: JSON.stringify({}),
               impact: JSON.stringify({}),
               tellUsMore: JSON.stringify({}),
-              surveyInfo: JSON.stringify({ surveyID, ResponseID }),
+              surveyInfo: JSON.stringify({
+                surveyID: surveyID ? surveyID : '',
+                ResponseID: ResponseID ? ResponseID : '',
+              }),
             },
           })
         }

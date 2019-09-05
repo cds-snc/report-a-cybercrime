@@ -227,7 +227,7 @@ export const getTimeFrame = client => {
   })
   const { startDate, endDate } = JSON.parse(queryResult.timeFrame)
   return {
-    startDate: startDate ? startDate : 'Steve',
+    startDate: startDate ? startDate : '',
     endDate: endDate ? endDate : '',
   }
 }
