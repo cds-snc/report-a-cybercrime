@@ -19,4 +19,13 @@
 )
 
 ga('create', 'UA-102484926-13', 'auto')
-ga('send', 'pageview')
+;(function(history) {
+  const pushState = history.pushState
+  history.pushState = function(state) {
+    if (typeof history.onpushstate == 'function') {
+      history.onpushstate({ state: state })
+    }
+    ga('send', 'pageview', arguments[arguments.length - 1])
+    return pushState.apply(history, arguments)
+  }
+})(window.history)

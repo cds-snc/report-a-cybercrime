@@ -7,16 +7,16 @@ import { Trans } from '@lingui/macro'
 import { I18n, i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { Container } from '../../components/container'
-import { TextArea } from '../../components/text-area'
 import { Button } from '../../components/button'
 import { Link } from '../../components/link'
 import { RadioButton } from '../../components/radio-button'
 import { Text } from '../../components/text'
+import { TextInput } from '../../components/TextInput'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getContactInfo } from '../../utils/queriesAndMutations'
 
-const TextAreaAdapter = finalFormAdapter(TextArea)
+const TextInputAdapter = finalFormAdapter(TextInput)
 const RadioButtonAdapter = finalFormAdapter(RadioButton)
 
 const CheckboxStyle = styled('label')`
@@ -57,7 +57,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
               <Field
                 name="contactInfoName"
                 id="contactInfoName"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
@@ -74,7 +74,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
               <Field
                 name="contactInfoEmail"
                 id="contactInfoEmail"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
@@ -91,7 +91,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
               <Field
                 name="contactInfoPhone"
                 id="contactInfoPhone"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
@@ -147,7 +147,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
                   onClick={() => navigate('/p1/confirmation')}
                   type="submit"
                 >
-                  <Trans>Next: Confirm report</Trans>
+                  <Trans>Next: Review report</Trans>
                 </Button>
               </Container>
 

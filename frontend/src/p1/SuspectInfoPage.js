@@ -23,7 +23,7 @@ export const SuspectInfoPage = () => (
     </BackButton>
     <Steps activeStep={3} totalSteps={6} />
     <H1>
-      <Trans>Add suspect clues</Trans>
+      <Trans>Add clues about the suspect</Trans>
     </H1>
     <P>
       <Trans>
