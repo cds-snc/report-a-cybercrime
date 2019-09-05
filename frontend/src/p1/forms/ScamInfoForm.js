@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { ApolloConsumer } from 'react-apollo'
 import { I18n, i18nMark } from '@lingui/react'
@@ -86,6 +86,15 @@ export class ScamInfoForm extends Component {
                     </Trans>
                   </Text>
                 </label>
+                <Text
+                  css={css`
+                    color: gray;
+                  `}
+                  mt="6px"
+                  mb="8px"
+                >
+                  <Trans>For example: April 28, 2019</Trans>
+                </Text>
                 <div>
                   <Field
                     name="whenWereYouContacted"

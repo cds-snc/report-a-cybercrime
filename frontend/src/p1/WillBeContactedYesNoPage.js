@@ -24,6 +24,7 @@ export const Willbecontacted = () => (
     <ButtonsContainerYesNo
       yesRoute="/p1/contactinfo"
       noRoute="/p1/confirmation"
+      marginB="6em"
     />
   </Layout>
 )

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -34,8 +34,14 @@ class TimeFrameInfoFormWrapped extends Component {
                       <strong>Approximate start</strong>
                     </Trans>
                   </Text>
-                  <Text fontSize={(1, null, 2)}>
-                    <Trans>MM/DD/YYYY</Trans>
+                  <Text
+                    css={css`
+                      color: gray;
+                    `}
+                    mt="6px"
+                    mb="8px"
+                  >
+                    <Trans>For example: 2019-04-28</Trans>
                   </Text>
                 </label>
                 <div>
@@ -54,8 +60,14 @@ class TimeFrameInfoFormWrapped extends Component {
                       <strong>Approximate end</strong>
                     </Trans>
                   </Text>
-                  <Text fontSize={(1, null, 2)}>
-                    <Trans>MM/DD/YYYY</Trans>
+                  <Text
+                    css={css`
+                      color: gray;
+                    `}
+                    mt="6px"
+                    mb="8px"
+                  >
+                    <Trans>For example: 2019-04-28</Trans>
                   </Text>
                 </label>
                 <div>

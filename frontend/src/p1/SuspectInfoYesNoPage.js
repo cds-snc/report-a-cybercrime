@@ -21,6 +21,7 @@ export const Suspectinfo = () => (
     <ButtonsContainerYesNo
       yesRoute="/p1/suspectinfo"
       noRoute="/p1/uploadfilesquestion"
+      marginB="6em"
     />
   </Layout>
 )
