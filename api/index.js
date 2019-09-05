@@ -1,7 +1,6 @@
 const { Server } = require('./src/server')
 const { db } = require('./src/db')
 const { dbinit } = require('./src/dbinit')
-const { Logger } = require('@cdssnc/logdriver')
 const Minio = require('minio')
 
 const {
@@ -28,7 +27,7 @@ const port = process.env.PORT || 3000
       await minioClient.makeBucket(MINIO_BUCKET_NAME)
     }
   } catch (error) {
-    Logger.error(`Error connecting to Minio: ${error}`)
+    console.error(`Error connecting to Minio: ${error}`)
     return 1
   }
 
@@ -41,8 +40,8 @@ const port = process.env.PORT || 3000
     .then(server => {
       server.listen({ port }, () =>
         // eslint-disable-next-line no-console
-        Logger.info(`🚀 API listening on port ${port}`),
+        console.info(`🚀 API listening on port ${port}`),
       )
     })
-    .catch(Logger.error)
+    .catch(console.error)
 })()

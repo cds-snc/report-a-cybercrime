@@ -1,5 +1,5 @@
 const FONT_SIZES = [
-  '12px',
+  '12rem',
   '14px',
   '16px',
   '19px',

@@ -70,7 +70,7 @@ export const NextSteps = () => (
         <Li>
           <Trans>
             <A href="http://www.antifraudcentre.ca/index-eng.htm">
-              Follow what scams are trending
+              Discover the latest scams to look out for
             </A>
           </Trans>
         </Li>
@@ -86,7 +86,7 @@ export const NextSteps = () => (
       <P>
         <Trans>
           The RCMP will analyze your report and combine it with others that are
-          similar to help police across Canada track down cybercriminals.
+          similar, to help police across Canada track down cybercriminals.
         </Trans>
       </P>
     </InfoCard>

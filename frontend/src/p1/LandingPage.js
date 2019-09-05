@@ -31,7 +31,10 @@ export const LandingPage = props => {
               suspectInfo: JSON.stringify({}),
               files: [],
               contactInfo: JSON.stringify({}),
-              surveyInfo: JSON.stringify({ surveyID, ResponseID }),
+              surveyInfo: JSON.stringify({
+                surveyID: surveyID ? surveyID : '',
+                ResponseID: ResponseID ? ResponseID : '',
+              }),
             },
           })
         }

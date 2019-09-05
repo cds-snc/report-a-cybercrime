@@ -11,13 +11,11 @@ import { Checkbox } from '../../components/checkbox'
 import { ButtonsContainer } from '../../components/buttons-container'
 import { TextArea } from '../../components/text-area'
 import { Text } from '../../components/text'
-import { DateSelector } from '../../components/date-picker'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getScamInfo } from '../../utils/queriesAndMutations'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
-const DateSelectorAdapter = finalFormAdapter(DateSelector)
 
 const howContacted = [
   i18nMark('Telephone'),
@@ -40,23 +38,8 @@ const validate = () => {
   return {}
 }
 export class ScamInfoForm extends Component {
-  constructor(props) {
-    super(props)
-    this.startDate = new Date()
-  }
-
-  handleChange = date => {
-    this.startDate = date
-  }
-
   localOnSubmit = (client, data) => {
     const { onSubmit } = this.props
-    // data.whenWereYouContacted = this.startDate.toISOString().slice(0, 10)
-    if (this.startDate != null) {
-      data.whenWereYouContacted = this.startDate.toISOString().slice(0, 10)
-    } else {
-      data.whenWereYouContacted = ''
-    }
     onSubmit(client, data)
   }
 
@@ -102,20 +85,13 @@ export class ScamInfoForm extends Component {
                   </Text>
                 </label>
                 <div>
-                  <I18n>
-                    {({ i18n }) => (
-                      <Field
-                        name="whenWereYouContacted"
-                        id="whenWereYouContacted"
-                        component={DateSelectorAdapter}
-                        locale={i18n._('en')}
-                        selected={this.startDate}
-                        onChange={this.handleChange}
-                        height="25px"
-                        width="300px"
-                      />
-                    )}
-                  </I18n>
+                  <Field
+                    name="whenWereYouContacted"
+                    id="whenWereYouContacted"
+                    component={TextAreaAdapter}
+                    height="25px"
+                    width="300px"
+                  />
                 </div>
 
                 <Fieldset>

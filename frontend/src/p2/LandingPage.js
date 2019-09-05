@@ -36,7 +36,10 @@ export const LandingPage = props => {
               scammerDetails: JSON.stringify({}),
               impact: JSON.stringify({}),
               tellUsMore: JSON.stringify({}),
-              surveyInfo: JSON.stringify({ surveyID, ResponseID }),
+              surveyInfo: JSON.stringify({
+                surveyID: surveyID ? surveyID : '',
+                ResponseID: ResponseID ? ResponseID : '',
+              }),
             },
           })
         }
@@ -50,11 +53,7 @@ export const LandingPage = props => {
       </P>
       <InfoCard>
         <P>
-          <Trans>
-            <strong>
-              Before you start, gather what you can about the scam:
-            </strong>
-          </Trans>
+          <Trans>Before you start, gather what you can about the scam:</Trans>
         </P>
         <Ul>
           <Li>

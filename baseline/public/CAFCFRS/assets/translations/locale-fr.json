@@ -110,29 +110,29 @@
       "twitter": "Twitter"
     },
     "url": {
-      "aboutCafc": "http://www.antifraudcentre-centreantifraude.ca/about-ausujet/index-fra.htm",
+      "aboutCafc": "",
       "canada": "http://www.canada.ca/fr/index.html",
       "departments": "http://www.canada.ca/fr/gouv/min/index.html",
       "economy": "http://plandaction.gc.ca/fr",
-      "facebook": "https://www.facebook.com/pages/Canadian-Anti-Fraud-Centre-Centre-antifraude-du-Canada/143784455661162",
+      "facebook": "",
       "health": "http://canadiensensante.gc.ca",
       "jobs": "http://www.guichetemplois.gc.ca",
-      "mediaContacts": "http://www.antifraudcentre-centreantifraude.ca/news-nouvelles/index-fra.htm",
-      "reportIncident": "http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-fra.htm",
+      "mediaContacts": "",
+      "reportIncident": "",
       "serviceCanada": "http://www.servicecanada.gc.ca/fra/accueil.shtml",
       "services": "http://www.canada.ca/fr/services/index.html",
-      "statisticalReports": "http://www.antifraudcentre-centreantifraude.ca/reports-rapports/index-fra.htm",
-      "termsConditions": "http://www.antifraudcentre-centreantifraude.ca/terms-avis/index-fra.htm",
+      "statisticalReports": "",
+      "termsConditions": "",
       "transparency": "http://www.rcmp-grc.gc.ca/fr/transparence",
       "travel": "http://voyage.gc.ca",
-      "twitter": "https://twitter.com/canantifraud"
+      "twitter": ""
     }
   },
   "text": {
     "complaint": {
       "stepDetails": "Étape {{stepNum}} de {{maxStepNum}}: {{stepName}}"
     },
-    "disclaimer": "Le Système de signalement des fraudes découle d'un partenariat entre la Gendarmerie royale du Canada (GRC), le Bureau de la concurrence Canada (BC) et la Police provinciale de l'Ontario (OPP). Le Système de signalement des fraudes n'est pas un organisme d'enquête; il constitue le dépôt central canadien des données sur la fraude. Nous ne vous rappellerons pas. Si vous avez des questions ou des préoccupations concernant une fraude, vous pouvez nous joindre à notre numéro sans frais, au 888-495-8501.\n\n**Si vous avez été victime d'une fraude ou avez reçu directement des menaces des suites d'une fraude, vous devez le signaler à votre service de police. Si vous êtes en crise en raison de problèmes de santé mentale et avez besoin d'une aide d'urgence, rendez-vous à l'urgence ou composez le 911.**\n\nLes données recueillies par le Système de signalement des fraudes alimentent la collecte, l'analyse et l'échange de renseignements avec divers partenaires et organismes d'application de loi. Le signalement que vous produisez est utile aux enquêtes de police sur les groupes criminalisés actifs au Canada et à l'étranger. Ces données servent en outre à des fins de renseignement ainsi qu'à la sensibilisation et à l'information de la population en matière de fraude.\n\nC'est vous ou votre employeur qui, à titre volontaire, communiquez ces données au Système de signalement des fraudes et à ses partenaires. Les renseignements personnels que vous fournissez peuvent être transmis à d'autres organismes d'application de la loi à des fins d'enquête, de prévention et de sensibilisation ou de recherche et d'analyse des tendances.\n\nLorsque vous remplissez le formulaire de signalement en ligne, vous consentez à ce que le Système de signalement des fraudes transmette vos renseignements personnels à des organismes d'application de la loi et de réglementation aux fins susmentionnées. De plus, le fait de remplir ce formulaire vous assujettit aux lois du Canada, en particulier, à l'article 140 (méfait public) du *Code criminel* du Canada.",
+    "disclaimer": "Le Système de signalement des fraudes découle d'un partenariat entre la Gendarmerie royale du Canada (GRC), le Bureau de la concurrence Canada (BC) et la Police provinciale de l'Ontario (OPP). Le Système de signalement des fraudes n'est pas un organisme d'enquête; il constitue le dépôt central canadien des données sur la fraude. Nous ne vous rappellerons pas. Si vous avez des questions ou des préoccupations concernant une fraude, vous pouvez nous joindre à notre numéro sans frais.\n\n**Si vous avez été victime d'une fraude ou avez reçu directement des menaces des suites d'une fraude, vous devez le signaler à votre service de police. Si vous êtes en crise en raison de problèmes de santé mentale et avez besoin d'une aide d'urgence, rendez-vous à l'urgence ou composez le 911.**\n\nLes données recueillies par le Système de signalement des fraudes alimentent la collecte, l'analyse et l'échange de renseignements avec divers partenaires et organismes d'application de loi. Le signalement que vous produisez est utile aux enquêtes de police sur les groupes criminalisés actifs au Canada et à l'étranger. Ces données servent en outre à des fins de renseignement ainsi qu'à la sensibilisation et à l'information de la population en matière de fraude.\n\nC'est vous ou votre employeur qui, à titre volontaire, communiquez ces données au Système de signalement des fraudes et à ses partenaires. Les renseignements personnels que vous fournissez peuvent être transmis à d'autres organismes d'application de la loi à des fins d'enquête, de prévention et de sensibilisation ou de recherche et d'analyse des tendances.\n\nLorsque vous remplissez le formulaire de signalement en ligne, vous consentez à ce que le Système de signalement des fraudes transmette vos renseignements personnels à des organismes d'application de la loi et de réglementation aux fins susmentionnées. De plus, le fait de remplir ce formulaire vous assujettit aux lois du Canada, en particulier, à l'article 140 (méfait public) du *Code criminel* du Canada.",
     "dropdowns": {
       "selectOne": "Veuillez sélectionner une option...",
       "selectOneOrMore": "Veuillez sélectionner une ou plusieurs options..."
@@ -198,7 +198,7 @@
       },
       "contacts": "Coordonnées",
       "feedback": {
-        "body": "Merci d'avoir pris le temps de nous faire part de vos commentaires. Votre contribution est très importante pour l'équipe du Système de signalement des fraudes, mais les messages étant nombreux et nos ressources limitées, nous ne sommes pas en mesure de répondre à toutes les communications que nous recevons. Sachez cependant que chaque message sera lu par les responsables du Système de signalement des fraudes. Veuillez envoyer tout commentaire, suggestion ou observation concernant notre nouveau site à l’adresse <a href=\"mailTo:commentaires@centreantifraude.ca\">commentaires@centreantifraude.ca</a>",
+        "body": "Merci d'avoir pris le temps de nous faire part de vos commentaires. Votre contribution est très importante pour l'équipe du Système de signalement des fraudes, mais les messages étant nombreux et nos ressources limitées, nous ne sommes pas en mesure de répondre à toutes les communications que nous recevons. Sachez cependant que chaque message sera lu par les responsables du Système de signalement des fraudes. Veuillez envoyer tout commentaire, suggestion ou observation concernant notre nouveau site par courriel.",
         "title": "Commentaires"
       },
       "link": {
