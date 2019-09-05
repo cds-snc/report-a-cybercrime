@@ -21,6 +21,7 @@ export const FilesToUpload = () => (
     <ButtonsContainerYesNo
       yesRoute="/p1/uploadfiles"
       noRoute="/p1/contactinfoquestion"
+      marginB="9.1em"
     />
   </Layout>
 )

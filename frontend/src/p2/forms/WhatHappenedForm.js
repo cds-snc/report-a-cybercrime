@@ -26,7 +26,7 @@ export const WhatHappenedForm = props => (
                   <strong>What happened?</strong>
                 </Trans>
               </Text>
-              <Text fontSize={(1, null, 2)}>
+              <Text mt="6px" mb="8px" fontSize="16px">
                 <Trans>Tell us about it in your own words.</Trans>
               </Text>
               <Field
