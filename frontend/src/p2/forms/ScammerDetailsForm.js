@@ -109,6 +109,7 @@ export const ScammerDetailsFormWrapped = props => {
                   id="scammerDetails"
                   component={TextAreaAdapter}
                   height="200px"
+                  width="100%"
                 />
               </div>
               <br></br>

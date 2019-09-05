@@ -34,6 +34,7 @@ export const WhatHappenedForm = props => (
                 id="whatHappened"
                 component={TextAreaAdapter}
                 height="200px"
+                width="100%"
               />
             </label>
             <ButtonsContainer
