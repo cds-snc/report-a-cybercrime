@@ -50,11 +50,7 @@ export const LandingPage = props => {
       </P>
       <InfoCard>
         <P>
-          <Trans>
-            <strong>
-              Before you start, gather what you can about the scam:
-            </strong>
-          </Trans>
+          <Trans>Before you start, gather what you can about the scam:</Trans>
         </P>
         <Ul>
           <Li>
