@@ -15,7 +15,7 @@ import { Query } from 'react-apollo'
 
 export const ThankYou = () => (
   <I18n>
-    {({ i18n }) => {
+    {({}) => {
       return (
         <Query query={GET_LANGUAGE_QUERY}>
           {({ data: { language } }) => (
