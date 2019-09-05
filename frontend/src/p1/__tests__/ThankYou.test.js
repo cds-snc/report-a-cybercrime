@@ -8,10 +8,6 @@ import en from '../../../locale/en/messages.js'
 import theme from '../../theme'
 import { GET_LANGUAGE_QUERY } from '../../utils/queriesAndMutations'
 
-const client = {
-  writeData: jest.fn(),
-}
-
 let mocks = [
   {
     request: { query: GET_LANGUAGE_QUERY },
