@@ -84,7 +84,7 @@ export const ImpactStatementInfoForm = props => (
                 <strong>Tell us more about how it impacted you.</strong>
               </Trans>
             </Text>
-            <Text fontSize={(1, null, 2)}>
+            <Text mt="6px" mb="8px" fontSize="16px">
               <Trans>
                 For example: the amount of money, the information taken, what
                 else was affected

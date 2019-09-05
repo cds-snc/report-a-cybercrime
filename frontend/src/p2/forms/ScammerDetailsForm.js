@@ -93,7 +93,7 @@ export const ScammerDetailsFormWrapped = props => {
                       What do you know about where the scam came from?
                     </strong>
                   </Trans>
-                  <Text fontSize={(1, null, 2)}>
+                  <Text mt="6px" mb="8px" fontSize="16px">
                     <Trans>
                       Remember to include any email addresses, phone numbers, or
                       website links

@@ -120,7 +120,11 @@ export const ButtonsContainerLanding = () => (
   </Container>
 )
 
-export const ButtonsContainerYesNo = ({ yesRoute = '', noRoute = '' }) => (
+export const ButtonsContainerYesNo = ({
+  yesRoute = '',
+  noRoute = '',
+  marginB = '10em',
+}) => (
   <Container
     mt="1rem"
     mb="4rem"
@@ -143,6 +147,8 @@ export const ButtonsContainerYesNo = ({ yesRoute = '', noRoute = '' }) => (
           width: 100%;
         }
       }
+
+      margin-bottom: ${marginB};
     `}
   >
     <Container name="buttonlink-container">
@@ -172,4 +178,5 @@ ButtonsContainer.propTypes = {
 ButtonsContainerYesNo.propTypes = {
   yesRoute: PropTypes.string.isRequired,
   noRoute: PropTypes.string.isRequired,
+  marginB: PropTypes.string,
 }
