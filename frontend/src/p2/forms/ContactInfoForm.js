@@ -4,13 +4,13 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { ButtonsContainer } from '../../components/buttons-container'
-import { TextArea } from '../../components/text-area'
+import { TextInput } from '../../components/TextInput'
 import { Text } from '../../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getP2ContactInfo } from '../../utils/queriesAndMutations'
 
-const TextAreaAdapter = finalFormAdapter(TextArea)
+const TextInputAdapter = finalFormAdapter(TextInput)
 
 const validate = () => {
   return {}
@@ -36,7 +36,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
               <Field
                 name="fullName"
                 id="fullName"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
@@ -53,7 +53,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
               <Field
                 name="email"
                 id="email"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
@@ -70,7 +70,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
               <Field
                 name="postalCode"
                 id="postalCode"
-                component={TextAreaAdapter}
+                component={TextInputAdapter}
                 height="25px"
                 width="300px"
               />
