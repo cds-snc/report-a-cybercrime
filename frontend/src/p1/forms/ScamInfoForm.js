@@ -74,7 +74,7 @@ export class ScamInfoForm extends Component {
                     name="scamDetails"
                     id="scamDetails"
                     component={TextAreaAdapter}
-                    height="200px"
+                    height="100px"
                     width="100%"
                   />
                 </div>
