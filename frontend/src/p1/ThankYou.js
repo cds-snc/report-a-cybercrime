@@ -7,7 +7,6 @@ import { P } from '../components/paragraph'
 import { A } from '../components/link'
 import { ApolloConsumer, Query } from 'react-apollo'
 import { TrackPageViews } from '../TrackPageViews'
-import { ButtonsContainer } from '../components/buttons-container'
 import { Layout } from '../components/layout'
 import { BackButton } from '../components/backbutton'
 import { GET_LANGUAGE_QUERY } from '../utils/queriesAndMutations'
@@ -62,11 +61,6 @@ export const ThankYou = () => (
                   this number for your records or to add more information later.
                 </Trans>
               </P>
-              <ButtonsContainer
-                buttonLink={true}
-                cancel={false}
-                route="/p1/scaminfo"
-              />
             </Layout>
           )}
         </Query>

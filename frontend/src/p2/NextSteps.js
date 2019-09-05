@@ -10,7 +10,6 @@ import { Li } from '../components/list-item'
 import { InfoCard } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Layout } from '../components/layout'
-import { ButtonsContainer } from '../components/buttons-container'
 import { ApolloConsumer, Query } from 'react-apollo'
 import { BackButton } from '../components/backbutton'
 import { GET_LANGUAGE_QUERY } from '../utils/queriesAndMutations'
@@ -154,11 +153,6 @@ export const NextSteps = () => (
                 </Li>
               </Ul>
               <TrackPageViews />
-              <ButtonsContainer
-                buttonLink={true}
-                cancel={false}
-                route="/p2/timeframe"
-              />
             </Layout>
           )}
         </Query>
