@@ -138,7 +138,7 @@ export const ScammerDetailsFormWrapped = props => {
                 >
                   <img alt="upload icon" src={upload} />
                   <span>
-                    <Trans>Attach file</Trans>
+                    <Trans>Add file</Trans>
                   </span>
                 </FileUpload>
               </Container>
