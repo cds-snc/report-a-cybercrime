@@ -42,7 +42,7 @@ const scamEventSummary = client => {
       {({ i18n }) => (
         <React.Fragment>
           <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
-            <Trans>What happened</Trans> return (
+            <Trans>What happened</Trans>{' '}
             <Link
               aria-label={i18n._('Edit scam event')}
               type="button"
@@ -52,7 +52,6 @@ const scamEventSummary = client => {
             >
               <Trans>Edit</Trans>
             </Link>
-            )
           </H2>
           {scamDetails ? (
             <Text>
@@ -117,7 +116,6 @@ const lostMoneySummary = client => {
             >
               <Trans>Edit</Trans>
             </Link>
-            )
           </H2>
           {lostAmount ? (
             <Text>
@@ -185,7 +183,6 @@ const suspectInfoSummary = client => {
             >
               <Trans>Edit</Trans>
             </Link>
-            )
           </H2>
 
           {suspectName ? (
@@ -320,7 +317,6 @@ const contactInfoSummary = client => {
             >
               <Trans>Edit</Trans>
             </Link>
-            )
           </H2>
 
           {contactInfoName ? (
