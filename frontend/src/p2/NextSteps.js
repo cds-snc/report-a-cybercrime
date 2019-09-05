@@ -70,7 +70,7 @@ export const NextSteps = () => (
         <Li>
           <Trans>
             <A href="http://www.antifraudcentre.ca/index-eng.htm">
-              Learn more about the latest scams to look out for
+              Discover the latest scams to look out for
             </A>
           </Trans>
         </Li>
