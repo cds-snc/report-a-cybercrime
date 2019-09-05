@@ -202,7 +202,7 @@ const contactSummary = client => {
         <Text>
           <Trans>
             Provide your contact details so that we can send you a confirmation
-            of report.
+            of your report.
           </Trans>
         </Text>
       )}

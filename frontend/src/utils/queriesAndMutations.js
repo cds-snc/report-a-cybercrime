@@ -48,6 +48,7 @@ export const SUBMIT_REPORT_MUTATION = gql`
     $suspectInfo: suspectInfoInput!
     $files: [String]!
     $contactInfo: contactInfoInput!
+    $surveyInfo: surveyInfo!
   ) {
     submitReport(
       source: $source
@@ -56,6 +57,7 @@ export const SUBMIT_REPORT_MUTATION = gql`
       suspectInfo: $suspectInfo
       files: $files
       contactInfo: $contactInfo
+      surveyInfo: $surveyInfo
     ) {
       reportID
     }
@@ -81,6 +83,21 @@ export const getDoneForms = client => {
     `,
   })
   return doneForms
+}
+
+export const getSurveyInfo = client => {
+  const { surveyInfo } = client.readQuery({
+    query: gql`
+      query readCache {
+        surveyInfo
+      }
+    `,
+  })
+  const { surveyID, ResponseID } = JSON.parse(surveyInfo)
+  return {
+    surveyID: surveyID ? surveyID : '',
+    ResponseID: ResponseID ? ResponseID : '',
+  }
 }
 
 // P1 cache queries
@@ -210,8 +227,8 @@ export const getTimeFrame = client => {
   })
   const { startDate, endDate } = JSON.parse(queryResult.timeFrame)
   return {
-    startDate: startDate ? startDate : new Date().toISOString(),
-    endDate: endDate ? endDate : new Date().toISOString(),
+    startDate: startDate ? startDate : '',
+    endDate: endDate ? endDate : '',
   }
 }
 
@@ -309,7 +326,7 @@ export const SUBMIT_P2_REPORT_MUTATION = gql`
     $impact: impact!
     $scammerDetails: scammerDetails!
     $contactInfo: P2ContactInfoInput!
-    $tellUsMore: tellUsMore!
+    $surveyInfo: surveyInfo!
   ) {
     submitReportP2(
       source: $source
@@ -318,7 +335,7 @@ export const SUBMIT_P2_REPORT_MUTATION = gql`
       impact: $impact
       scammerDetails: $scammerDetails
       contactInfo: $contactInfo
-      tellUsMore: $tellUsMore
+      surveyInfo: $surveyInfo
     ) {
       reportID
     }

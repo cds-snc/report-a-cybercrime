@@ -19,6 +19,7 @@ const {
   ImpactInput,
   P2ContactInfoInput,
   TellUsMoreInput,
+  SurveyInfoInput,
 } = require('./GraphqlTypes')
 
 const { createHash } = require('crypto')
@@ -168,10 +169,22 @@ const mutation = new GraphQLObjectType({
           type: ContactInfoInput,
           description: 'contact details about the user',
         },
+        surveyInfo: {
+          type: SurveyInfoInput,
+          description: 'quantitative testing survey info',
+        },
       },
       resolve: async (
         _root,
-        { source, scamInfo, lostMoney, suspectInfo, files, contactInfo },
+        {
+          source,
+          scamInfo,
+          lostMoney,
+          suspectInfo,
+          files,
+          contactInfo,
+          surveyInfo,
+        },
         { db },
         _info,
       ) => {
@@ -182,6 +195,7 @@ const mutation = new GraphQLObjectType({
           suspectInfo,
           files,
           contactInfo,
+          surveyInfo,
           createdAt: new Date().toISOString(),
         })
         return {
@@ -222,6 +236,10 @@ const mutation = new GraphQLObjectType({
           type: TellUsMoreInput,
           description: 'information not captured in the forms',
         },
+        surveyInfo: {
+          type: SurveyInfoInput,
+          description: 'quantitative testing survey info',
+        },
       },
       resolve: async (
         _root,
@@ -233,6 +251,7 @@ const mutation = new GraphQLObjectType({
           impact,
           contactInfo,
           tellUsMore,
+          surveyInfo,
         },
         { db },
         _info,
@@ -245,6 +264,7 @@ const mutation = new GraphQLObjectType({
           impact,
           contactInfo,
           tellUsMore,
+          surveyInfo,
           createdAt: new Date().toISOString(),
         })
         return {

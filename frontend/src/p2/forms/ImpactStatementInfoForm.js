@@ -25,7 +25,7 @@ const howWereYouAffected = [
   i18nMark('Reputation damaged'),
   i18nMark('Safety threatened'),
   i18nMark('Wellbeing affected'),
-  i18nMark('Other impact'),
+  i18nMark('No impact'),
 ]
 
 const CheckboxStyle = styled('label')`
@@ -95,7 +95,8 @@ export const ImpactStatementInfoForm = props => (
                 name="damage"
                 id="damage"
                 component={TextAreaAdapter}
-                height="75px"
+                height="200px"
+                width="100%"
               />
             </div>
 
