@@ -39,6 +39,7 @@ cache.writeData({
     scammerDetails: JSON.stringify({}),
     impact: JSON.stringify({}),
     tellUsMore: JSON.stringify({}),
+    surveyInfo: JSON.stringify({}),
   },
 })
 
