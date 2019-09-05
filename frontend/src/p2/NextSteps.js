@@ -11,7 +11,6 @@ import { TrackPageViews } from '../TrackPageViews'
 import { Layout } from '../components/layout'
 import { ButtonsContainer } from '../components/buttons-container'
 import { ApolloConsumer } from 'react-apollo'
-import { BackButton } from '../components/backbutton'
 
 export const NextSteps = () => (
   <Layout>
@@ -34,9 +33,6 @@ export const NextSteps = () => (
         })
       }
     </ApolloConsumer>
-    <BackButton route="/p2/confirmation">
-      <Trans>the confirmation</Trans>
-    </BackButton>
     <H1>
       <Trans>Thank you for reporting</Trans>
     </H1>
