@@ -59,3 +59,12 @@ const TellUsMoreInput = new GraphQLInputObjectType({
   }),
 })
 module.exports.TellUsMoreInput = TellUsMoreInput
+
+const SurveyInfoInput = new GraphQLInputObjectType({
+  name: 'surveyInfo',
+  fields: () => ({
+    surveyID: { type: GraphQLString },
+    ResponseID: { type: GraphQLString },
+  }),
+})
+module.exports.SurveyInfoInput = SurveyInfoInput

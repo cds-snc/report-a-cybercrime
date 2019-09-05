@@ -26,7 +26,7 @@ describe('<LandingPage />', () => {
       <ThemeProvider theme={theme}>
         <ApolloProvider client={client}>
           <I18nProvider language={'en'} catalogs={{ en }}>
-            <LandingPage />
+            <LandingPage location={{ search: undefined }} />
           </I18nProvider>
         </ApolloProvider>
       </ThemeProvider>,

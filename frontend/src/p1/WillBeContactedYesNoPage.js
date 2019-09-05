@@ -2,7 +2,6 @@
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
-import { P } from '../components/paragraph'
 import { TrackPageViews } from '../TrackPageViews'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
@@ -17,13 +16,10 @@ export const Willbecontacted = () => (
     </BackButton>
     <Steps activeStep={5} totalSteps={6} />
     <H1>
-      <Trans>Leave your contact information</Trans>
-    </H1>
-    <P>
       <Trans>
         Would you like to be contacted, should the police need more information?
       </Trans>
-    </P>
+    </H1>
 
     <ButtonsContainerYesNo
       yesRoute="/p1/contactinfo"

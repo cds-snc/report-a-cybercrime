@@ -41,7 +41,7 @@ describe('<MoneyLostForm /> form', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('Amount')
+    const inputNode = getByLabelText('Amount of money')
     const nextButton = getByText(/Next/i)
 
     fillIn(inputNode, { with: '$10,000' })

@@ -2,7 +2,6 @@
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1 } from '../components/header'
-import { P } from '../components/paragraph'
 import { TrackPageViews } from '../TrackPageViews'
 import { Steps } from '../components/stepper'
 import { Layout } from '../components/layout'
@@ -17,11 +16,8 @@ export const LoseMoney = () => (
     </BackButton>
     <Steps activeStep={2} totalSteps={6} />
     <H1>
-      <Trans>Tell us if money was lost</Trans>
+      <Trans>Did you lose any money as part of this scam?</Trans>
     </H1>
-    <P>
-      <Trans>Did the scam involve a request for money?</Trans>
-    </P>
 
     <ButtonsContainerYesNo
       yesRoute="../moneylost"

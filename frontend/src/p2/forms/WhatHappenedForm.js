@@ -33,7 +33,8 @@ export const WhatHappenedForm = props => (
                 name="whatHappened"
                 id="whatHappened"
                 component={TextAreaAdapter}
-                height="200px"
+                height="100px"
+                width="100%"
               />
             </label>
             <ButtonsContainer

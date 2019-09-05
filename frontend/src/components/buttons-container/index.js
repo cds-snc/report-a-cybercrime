@@ -45,19 +45,19 @@ export const ButtonsContainer = ({
           )}
 
           {nextPage === 'Scammer details' ? (
-            <Trans>: Suspect clues</Trans>
+            <Trans>: Clues about the suspect</Trans>
           ) : nextPage === 'Money lost' ? (
-            <Trans>: Tell us about money lost</Trans>
+            <Trans>: Money lost</Trans>
           ) : nextPage === 'Impact of scam' ? (
-            <Trans>: Impact</Trans>
+            <Trans>: Impact of the scam</Trans>
           ) : nextPage === 'What happened' ? (
             <Trans>: What happened</Trans>
           ) : nextPage === 'Supporting files' ? (
-            <Trans>: Attach files</Trans>
+            <Trans>: Add files</Trans>
           ) : nextPage === 'Contact info' ? (
-            <Trans>: Your contact information</Trans>
+            <Trans>: Contact information</Trans>
           ) : nextPage === 'Confirm information' ? (
-            <Trans>: Confirm report</Trans>
+            <Trans>: Review report</Trans>
           ) : null}
         </Button>
       </Container>
