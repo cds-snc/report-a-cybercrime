@@ -30,34 +30,42 @@ const Root = styled('div')`
 const Screen = styled('div')`
   margin-top: 0;
 `
+
+const ScrollToTop = ({ children, location }) => {
+  React.useEffect(() => window.scrollTo(0, 60), [location.pathname])
+  return children
+}
+
 export const Home = () => (
   <Root>
     <Screen>
-      <Router>
-        <PageNotFound default />
-        <RootLandingPage path="/" />
+      <Router primary={false}>
+        <ScrollToTop default>
+          <PageNotFound default />
+          <RootLandingPage path="/" />
 
-        <LandingPage path="/p1" />
-        <ScamInfoPage path="/p1/scaminfo" />
-        <Suspectinfo path="/p1/suspectinfoquestion" />
-        <SuspectInfoPage path="/p1/suspectinfo" />
-        <LoseMoney path="/p1/moneylostquestion" />
-        <MoneyLostPage path="/p1/moneylost" />
-        <FilesToUpload path="/p1/uploadfilesquestion" />
-        <FileUploadPage path="/p1/uploadfiles" />
-        <Willbecontacted path="/p1/contactinfoquestion" />
-        <ContactInfoPage path="/p1/contactinfo" />
-        <ConfirmationPage path="/p1/confirmation" />
-        <ThankYou path="/p1/thankyou" />
+          <LandingPage path="/p1" />
+          <ScamInfoPage path="/p1/scaminfo" />
+          <Suspectinfo path="/p1/suspectinfoquestion" />
+          <SuspectInfoPage path="/p1/suspectinfo" />
+          <LoseMoney path="/p1/moneylostquestion" />
+          <MoneyLostPage path="/p1/moneylost" />
+          <FilesToUpload path="/p1/uploadfilesquestion" />
+          <FileUploadPage path="/p1/uploadfiles" />
+          <Willbecontacted path="/p1/contactinfoquestion" />
+          <ContactInfoPage path="/p1/contactinfo" />
+          <ConfirmationPage path="/p1/confirmation" />
+          <ThankYou path="/p1/thankyou" />
 
-        <P2LandingPage path="/p2" />
-        <P2WhatHappenedPage path="/p2/whathappened" />
-        <P2ContactInfoPage path="/p2/contactinfo" />
-        <P2ScammerDetailsPage path="/p2/scammerdetails" />
-        <P2ConfirmationPage path="/p2/confirmation" />
-        <P2NextSteps path="/p2/nextsteps" />
-        <P2TimeFramePage path="/p2/timeframe" />
-        <P2ImpactStatementPage path="/p2/impact" />
+          <P2LandingPage path="/p2" />
+          <P2WhatHappenedPage path="/p2/whathappened" />
+          <P2ContactInfoPage path="/p2/contactinfo" />
+          <P2ScammerDetailsPage path="/p2/scammerdetails" />
+          <P2ConfirmationPage path="/p2/confirmation" />
+          <P2NextSteps path="/p2/nextsteps" />
+          <P2TimeFramePage path="/p2/timeframe" />
+          <P2ImpactStatementPage path="/p2/impact" />
+        </ScrollToTop>
       </Router>
     </Screen>
   </Root>
