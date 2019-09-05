@@ -25,7 +25,7 @@ const howWereYouAffected = [
   i18nMark('Reputation damaged'),
   i18nMark('Safety threatened'),
   i18nMark('Wellbeing affected'),
-  i18nMark('Other impact'),
+  i18nMark('No impact'),
 ]
 
 const CheckboxStyle = styled('label')`

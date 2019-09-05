@@ -43,7 +43,7 @@ const scamEventSummary = client => {
       {({ i18n }) => (
         <React.Fragment>
           <H2 fontSize={[3, null, 4]} marginBottom={[1, null, 1]}>
-            <Trans>What happened</Trans> return (
+            <Trans>What happened</Trans>{' '}
             <Link
               aria-label={i18n._('Edit scam event')}
               type="button"
@@ -53,7 +53,6 @@ const scamEventSummary = client => {
             >
               <Trans>Edit</Trans>
             </Link>
-            )
           </H2>
           {scamDetails ? (
             <Text>
@@ -118,7 +117,6 @@ const lostMoneySummary = client => {
             >
               <Trans>Edit</Trans>
             </Link>
-            )
           </H2>
           {lostAmount ? (
             <Text>
@@ -186,7 +184,6 @@ const suspectInfoSummary = client => {
             >
               <Trans>Edit</Trans>
             </Link>
-            )
           </H2>
 
           {suspectName ? (
@@ -321,7 +318,6 @@ const contactInfoSummary = client => {
             >
               <Trans>Edit</Trans>
             </Link>
-            )
           </H2>
 
           {contactInfoName ? (
@@ -447,7 +443,7 @@ export const ConfirmationPage = () => {
       </BackButton>
       <Steps activeStep={6} totalSteps={6} />
       <H1>
-        <Trans>Confirm report information</Trans>
+        <Trans>Review report information</Trans>
       </H1>
       <TrackPageViews />
       <ApolloConsumer>
