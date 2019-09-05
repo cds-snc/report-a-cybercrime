@@ -18,7 +18,7 @@ import { GET_LANGUAGE_QUERY } from '../utils/queriesAndMutations'
 
 export const NextSteps = () => (
   <I18n>
-    {({}) => {
+    {() => {
       return (
         <Query query={GET_LANGUAGE_QUERY}>
           {({ data: { language } }) => (
