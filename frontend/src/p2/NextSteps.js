@@ -131,11 +131,26 @@ export const NextSteps = () => (
                 <Li>
                   <Trans>
                     Report to the credit bureaus,{' '}
-                    <A href="https://www.consumer.equifax.ca/personal/">
+                    <A
+                      href={
+                        language === 'en'
+                          ? 'https://www.consumer.equifax.ca/personal/'
+                          : 'https://www.consumer.equifax.ca/personnel/'
+                      }
+                    >
                       Equifax
                     </A>{' '}
-                    and <A href="https://www.transunion.ca/">TransUnion</A>, if
-                    your identity was stolen.
+                    and{' '}
+                    <A
+                      href={
+                        language === 'en'
+                          ? 'https://www.transunion.ca/'
+                          : 'https://www.transunion.ca/fr'
+                      }
+                    >
+                      TransUnion
+                    </A>
+                    , if your identity was stolen.
                   </Trans>
                 </Li>
               </Ul>
