@@ -12,7 +12,7 @@ import { BackButton } from '../components/backbutton'
 export const Suspectinfo = () => (
   <Layout>
     <TrackPageViews />
-    <BackButton route="/p1/moneylostquestion">
+    <BackButton route="/p1/moneylost">
       <Trans>money lost</Trans>
     </BackButton>
     <Steps activeStep={3} totalSteps={6} />
