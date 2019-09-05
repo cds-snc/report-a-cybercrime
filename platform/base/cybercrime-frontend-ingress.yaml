@@ -5,7 +5,6 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     ingress.kubernetes.io/content-type-nosniff: "true"
-    ingress.kubernetes.io/frame-deny: "true"
     ingress.kubernetes.io/browser-xss-filter: "true"
   name: cybercrime-frontend-ingress
 spec:
