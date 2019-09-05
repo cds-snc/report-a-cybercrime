@@ -61,7 +61,7 @@ export const MoneyLostForm = ({ onSubmit }) => (
             <label htmlFor="lostAmount">
               <Text marginTop={[4, null, 5]}>
                 <Trans>
-                  <strong>Amount</strong>
+                  <strong>Amount of money</strong>
                 </Trans>
               </Text>
             </label>

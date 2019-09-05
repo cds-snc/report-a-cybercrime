@@ -6,7 +6,7 @@
   ": Money lost": " : Argent perdu",
   ": Review report": " : Révision du rapport",
   ": What happened": " : description de la fraude",
-  "<0>Amount</0>": "<0>Montant d'argent</0>",
+  "<0>Amount of money</0>": "<0>Montant d'argent</0>",
   "<0>Approximate end</0>": "<0>Date de fin approximative</0>",
   "<0>Approximate start</0>": "<0>Date de début approximative</0>",
   "<0>Currency</0>": "<0>Devise</0>",
