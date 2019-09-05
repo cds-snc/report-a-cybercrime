@@ -10,12 +10,14 @@ import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
 import { ButtonsContainer } from '../../components/buttons-container'
 import { TextArea } from '../../components/text-area'
+import { TextInput } from '../../components/TextInput'
 import { Text } from '../../components/text'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getScamInfo } from '../../utils/queriesAndMutations'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
+const TextInputAdapter = finalFormAdapter(TextInput)
 
 const howContacted = [
   i18nMark('Telephone'),
@@ -88,7 +90,7 @@ export class ScamInfoForm extends Component {
                   <Field
                     name="whenWereYouContacted"
                     id="whenWereYouContacted"
-                    component={TextAreaAdapter}
+                    component={TextInputAdapter}
                     height="25px"
                     width="300px"
                   />

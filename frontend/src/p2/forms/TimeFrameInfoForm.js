@@ -7,11 +7,11 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Text } from '../../components/text'
 import { ButtonsContainer } from '../../components/buttons-container'
-import { TextArea } from '../../components/text-area'
+import { TextInput } from '../../components/TextInput'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getTimeFrame } from '../../utils/queriesAndMutations'
 
-const TextAreaAdapter = finalFormAdapter(TextArea)
+const TextInputAdapter = finalFormAdapter(TextInput)
 
 class TimeFrameInfoFormWrapped extends Component {
   localOnSubmit = (client, data) => {
@@ -42,7 +42,7 @@ class TimeFrameInfoFormWrapped extends Component {
                   <Field
                     name="startDate"
                     id="startDate"
-                    component={TextAreaAdapter}
+                    component={TextInputAdapter}
                     height="25px"
                     width="300px"
                   />
@@ -62,7 +62,7 @@ class TimeFrameInfoFormWrapped extends Component {
                   <Field
                     name="endDate"
                     id="endDate"
-                    component={TextAreaAdapter}
+                    component={TextInputAdapter}
                     height="25px"
                     width="300px"
                   />
