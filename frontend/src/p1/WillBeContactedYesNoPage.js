@@ -11,7 +11,7 @@ import { BackButton } from '../components/backbutton'
 export const Willbecontacted = () => (
   <Layout>
     <TrackPageViews />
-    <BackButton route="/p1/uploadfilesquestion">
+    <BackButton route="/p1/uploadfiles">
       <Trans>supporting files</Trans>
     </BackButton>
     <Steps activeStep={5} totalSteps={6} />

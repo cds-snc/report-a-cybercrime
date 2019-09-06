@@ -11,7 +11,6 @@ import { InfoCard } from '../components/container'
 import { TrackPageViews } from '../TrackPageViews'
 import { Layout } from '../components/layout'
 import { ApolloConsumer, Query } from 'react-apollo'
-import { BackButton } from '../components/backbutton'
 import { GET_LANGUAGE_QUERY } from '../utils/queriesAndMutations'
 
 export const NextSteps = () => (
@@ -40,9 +39,6 @@ export const NextSteps = () => (
                   })
                 }
               </ApolloConsumer>
-              <BackButton route="/p2/contactinfo">
-                <Trans>the confirmation</Trans>
-              </BackButton>
               <H1>
                 <Trans>Thank you for reporting</Trans>
               </H1>

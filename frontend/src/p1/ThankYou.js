@@ -8,7 +8,6 @@ import { A } from '../components/link'
 import { ApolloConsumer, Query } from 'react-apollo'
 import { TrackPageViews } from '../TrackPageViews'
 import { Layout } from '../components/layout'
-import { BackButton } from '../components/backbutton'
 import { GET_LANGUAGE_QUERY } from '../utils/queriesAndMutations'
 
 export const ThankYou = () => (
@@ -33,9 +32,7 @@ export const ThankYou = () => (
                 }
               </ApolloConsumer>
               <TrackPageViews />
-              <BackButton route="/p1/confirmation">
-                <Trans>confirmation</Trans>
-              </BackButton>
+
               <H1>
                 <Trans>Thank you for reporting</Trans>
               </H1>

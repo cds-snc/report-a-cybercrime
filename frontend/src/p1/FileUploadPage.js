@@ -8,7 +8,7 @@ import { I18n } from '@lingui/react'
 import { ApolloConsumer } from 'react-apollo'
 import { Container } from '../components/container'
 import { Text } from '../components/text'
-import { H1, H2 } from '../components/header'
+import { H1, H2, H5 } from '../components/header'
 import { Button } from '../components/button'
 import { Link } from '../components/link'
 import { FileUpload } from '../components/file-upload'
@@ -116,14 +116,30 @@ class FileUploadInternal extends Component {
         <Container>
           {files.map((f, index) => (
             <Container
+              width={['auto', '100%', 'auto']}
               marginBottom={[2, null, 3]}
               key={index}
               display="flex"
-              flexDirection="row"
-              alignItems="center"
+              flexDirection="column"
+              alignItems="left"
             >
+              <Text marginLeft="0rem">{f.name}</Text>
+              <form>
+                <br />
+
+                <p>
+                  <H5>Describe what this file shows</H5>
+                  <textarea width="50px " height="100px">
+                    {' '}
+                  </textarea>
+                </p>
+
+                <br />
+              </form>
+
               <Button
-                float="right"
+                // float="right"
+
                 marginTop={0}
                 backgroundColor="crimson"
                 type="button"
@@ -131,8 +147,6 @@ class FileUploadInternal extends Component {
               >
                 <Trans>Remove file</Trans>
               </Button>
-
-              <Text marginLeft="3rem">{f.name}</Text>
             </Container>
           ))}
         </Container>
