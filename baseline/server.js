@@ -1,3 +1,5 @@
+const v8 = require('v8')
+const cookieParser = require('cookie-parser')
 const express = require('express')
 const ejs = require('ejs')
 var bodyParser = require('body-parser')
@@ -15,9 +17,21 @@ db.useBasicAuth('root', dbpass)
 const cybercrimeReports = db.collection('reports')
 
 app.set('view engine', 'ejs')
+app.use(cookieParser())
 app.use(fileUpload())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+
+const createReferenceNumber = () =>
+  `2019-${Math.floor(10000 + Math.random() * 90000)}`
+
+const createID = () => Math.floor(100000 + Math.random() * 900000)
+
+const structuredClone = obj => {
+  return v8.deserialize(v8.serialize(obj))
+}
+
+let reports = {}
 
 let emptyReport = {
   anonymousSubmission: null,
@@ -136,129 +150,8 @@ let emptyReport = {
     isBusiness: null,
   },
   suspectVictimContactType: null,
+  currentLanguage: 'en',
 }
-
-let report = {
-  anonymousSubmission: null,
-  complaintDetailComments: null,
-  completionStepName: null,
-  completionStepNumber: null,
-  createdDate: 1565199264515,
-  crimeType: null,
-  filer: {
-    addresses: [
-      {
-        city: null,
-        country: null,
-        internationalProvinceState: null,
-        poBox: null,
-        postalCode: null,
-        provinceState: null,
-        streetAddress: null,
-        streetName: null,
-        streetNum: null,
-        streetUnit: null,
-      },
-    ],
-    businessName: null,
-    businessOrganizationType: null,
-    emails: [{ address: null }],
-    g1: null,
-    g2: null,
-    languagePreferred: null,
-    languagesSpoken: [],
-    otherName: null,
-    phoneNumbers: [
-      { cleanNumber: null, extension: null, number: null, phoneType: null },
-    ],
-    surname: null,
-    willingToBeContacted: null,
-    isAnonymous: null,
-    isVictim: null,
-    relationshipToVictim: null,
-  },
-  id: 374325,
-  lastModDate: 1565199264583,
-  occurrenceDate: null,
-  paymentMethods: [],
-  personalInfoUsedFor: [],
-  publicFileAttachments: [],
-  publicUser: {
-    id: 193434,
-    isAcceptedDisclaimer: false,
-    isAuthenticated: null,
-    publicComplaint: null,
-  },
-  referenceNumber: '2019-40989',
-  started: false,
-  subcrimeType: null,
-  submissionType: null,
-  summaryComments: null,
-  suspectInfoUsedTypes: [],
-  suspects: [
-    {
-      addresses: [],
-      ageRange: null,
-      businessName: null,
-      businessOrganizationType: null,
-      emails: [],
-      g1: null,
-      g2: null,
-      gender: null,
-      ipAddresses: [],
-      languages: [],
-      orderIndicator: null,
-      phoneNumbers: [],
-      surname: null,
-      websites: [],
-    },
-  ],
-  totalAmountLost: 0.0,
-  totalAmountLostCurrency: null,
-  totalAmountPromised: 0.0,
-  totalAmountPromisedCurrency: null,
-  totalAmountRequested: 0.0,
-  totalAmountRequestedCurrency: null,
-  victim: {
-    addresses: [
-      {
-        city: null,
-        country: null,
-        internationalProvinceState: null,
-        poBox: null,
-        postalCode: null,
-        provinceState: null,
-        streetAddress: null,
-        streetName: null,
-        streetNum: null,
-        streetUnit: null,
-      },
-    ],
-    businessName: null,
-    businessOrganizationType: null,
-    emails: [{ address: null }],
-    g1: null,
-    g2: null,
-    languagePreferred: null,
-    languagesSpoken: [],
-    otherName: null,
-    phoneNumbers: [
-      { cleanNumber: null, extension: null, number: null, phoneType: null },
-      { cleanNumber: null, extension: null, number: null, phoneType: null },
-    ],
-    surname: null,
-    willingToBeContacted: null,
-    ageRange: null,
-    dob: null,
-    gender: null,
-    isAnonymous: null,
-    isBusiness: null,
-  },
-  suspectVictimContactType: null,
-}
-
-let acceptedDisclaimer = false
-let currentLanguage = 'en'
 
 var path = require('path')
 
@@ -266,8 +159,32 @@ const port = 3000
 
 app.use(express.static('public'))
 
+app.get('/', (req, res) => {
+  if (req.query.ResponseID) {
+    res.cookie('responseid', req.query.ResponseID)
+  }
+  res.redirect('/CAFCFRS')
+})
+
 app.get('/CAFCFRS', (req, res) => {
-  res.render('index', { lang: currentLanguage })
+  let id = createID()
+  let referenceNumber = createReferenceNumber()
+  res.cookie('reportID', id)
+  res.cookie('referenceNumber', referenceNumber)
+  reports[id] = structuredClone(emptyReport)
+  reports[id].createdDate = Date.now()
+  reports[id].referenceNumber = referenceNumber
+  reports[id].publicUser.isAcceptedDisclaimer = false
+  reports[id].started = false
+  reports[id].id = id
+  reports[id].source = 'cafc'
+  if (req.query.ResponseID) {
+    reports[id].responseid = req.query.ResponseID
+  }
+  if (req.cookies.responseid) {
+    reports[id].responseid = req.cookies.responseid
+  }
+  res.render('index', { lang: reports[id].currentLanguage })
 })
 
 app.get(
@@ -275,55 +192,57 @@ app.get(
     '/CAFCFRS/victimBusiness-victimeEntreprise',
     '/CAFCFRS/businessInformation-informationEntreprise',
     '/CAFCFRS/filerInformation-informationAuteur',
+    '/CAFCFRS/filerVictim-victimeAuteur',
+    '/CAFCFRS/victimInformation-informationVictime',
   ],
   (req, res) => {
-    if (report.completionStepName !== 'FILE_UPLOAD') {
-      report.completionStepName = 'CONTACT'
-      report.completionStepNumber = 1
+    if (reports[req.cookies.reportID].completionStepName !== 'FILE_UPLOAD') {
+      reports[req.cookies.reportID].completionStepName = 'CONTACT'
+      reports[req.cookies.reportID].completionStepNumber = 1
     }
-    res.render('index', { lang: currentLanguage })
+    res.render('index', { lang: reports[req.cookies.reportID].currentLanguage })
   },
 )
 
 app.get('/CAFCFRS/fraudInformation-informationFraude', (req, res) => {
-  if (report.completionStepName !== 'FILE_UPLOAD') {
-    report.completionStepName = 'FRAUD_SELECTION'
-    report.completionStepNumber = 2
+  if (reports[req.cookies.reportID].completionStepName !== 'FILE_UPLOAD') {
+    reports[req.cookies.reportID].completionStepName = 'FRAUD_SELECTION'
+    reports[req.cookies.reportID].completionStepNumber = 2
   }
-  res.render('index', { lang: currentLanguage })
+  res.render('index', { lang: reports[req.cookies.reportID].currentLanguage })
 })
 
 app.get('/CAFCFRS/businessInformation-informationEntreprise', (req, res) => {
-  if (report.completionStepName !== 'FILE_UPLOAD') {
-    report.completionStepName = 'SUSPECT'
-    report.completionStepNumber = 3
+  if (reports[req.cookies.reportID].completionStepName !== 'FILE_UPLOAD') {
+    reports[req.cookies.reportID].completionStepName = 'SUSPECT'
+    reports[req.cookies.reportID].completionStepNumber = 3
   }
-  res.render('index', { lang: currentLanguage })
+  res.render('index', { lang: reports[req.cookies.reportID].currentLanguage })
 })
 
 app.get('/CAFCFRS/fileUpload-telechargeFichier', (req, res) => {
-  report.completionStepName = 'FILE_UPLOAD'
-  report.completionStepNumber = 4
-  res.render('index', { lang: currentLanguage })
+  reports[req.cookies.reportID].completionStepName = 'FILE_UPLOAD'
+  reports[req.cookies.reportID].completionStepNumber = 4
+  res.render('index', { lang: reports[req.cookies.reportID].currentLanguage })
 })
 
 app.post('/CAFCFRS/api/v1/locale/:lang', (req, res) => {
   if (req.params.lang == 'fr') {
-    currentLanguage = 'fr'
+    reports[req.cookies.reportID].currentLanguage = 'fr'
   } else {
-    currentLanguage = 'en'
+    reports[req.cookies.reportID].currentLanguage = 'en'
   }
   res.status(204).send()
 })
 
 app.post('/CAFCFRS/api/v1/disclaimer/accept', (req, res) => {
-  acceptedDisclaimer = true
+  reports[req.cookies.reportID].publicUser.isAcceptedDisclaimer = true
   res.status(204).send()
 })
 
 app.get('/CAFCFRS/api/v1/public-complaints/current', (req, res) => {
-  if (acceptedDisclaimer) {
-    res.send(report)
+  if (reports[req.cookies.reportID].publicUser.isAcceptedDisclaimer) {
+    res.send(reports[req.cookies.reportID])
   } else {
     res
       .status(400)
@@ -338,21 +257,33 @@ app.post('/CAFCFRS/api/v1/validate-session', (req, res) => {
 
 app.post('/CAFCFRS/api/v1/public-complaints/submit', async (req, res) => {
   // 😬
-  report.filer.g1 = randomizeString(report.filer.g1)
-  report.filer.surname = randomizeString(report.filer.surname)
-  report.victim.g1 = randomizeString(report.victim.g1)
-  report.victim.surname = randomizeString(report.victim.surname)
-  report.victim.emails = report.victim.emails.map(e =>
-    randomizeString(e.address),
+  reports[req.cookies.reportID].filer.g1 = randomizeString(
+    reports[req.cookies.reportID].filer.g1,
   )
-  report.filer.emails = report.filer.emails.map(e => randomizeString(e.address))
-  report.victim.phoneNumbers = report.victim.phoneNumbers.map(n =>
-    randomizeString(n.number),
+  reports[req.cookies.reportID].filer.surname = randomizeString(
+    reports[req.cookies.reportID].filer.surname,
   )
-  report.filer.phoneNumbers = report.filer.phoneNumbers.map(n =>
-    randomizeString(n.number),
+  reports[req.cookies.reportID].victim.g1 = randomizeString(
+    reports[req.cookies.reportID].victim.g1,
   )
-  report.suspects = report.suspects.map(suspect => {
+  reports[req.cookies.reportID].victim.surname = randomizeString(
+    reports[req.cookies.reportID].victim.surname,
+  )
+  reports[req.cookies.reportID].victim.emails = reports[
+    req.cookies.reportID
+  ].victim.emails.map(e => randomizeString(e.address))
+  reports[req.cookies.reportID].filer.emails = reports[
+    req.cookies.reportID
+  ].filer.emails.map(e => randomizeString(e.address))
+  reports[req.cookies.reportID].victim.phoneNumbers = reports[
+    req.cookies.reportID
+  ].victim.phoneNumbers.map(n => randomizeString(n.number))
+  reports[req.cookies.reportID].filer.phoneNumbers = reports[
+    req.cookies.reportID
+  ].filer.phoneNumbers.map(n => randomizeString(n.number))
+  reports[req.cookies.reportID].suspects = reports[
+    req.cookies.reportID
+  ].suspects.map(suspect => {
     suspect.businessName = randomizeString(suspect.businessName)
     suspect.emails = suspect.emails.map(e => randomizeString(e.address))
     suspect.g1 = randomizeString(suspect.g1)
@@ -369,31 +300,33 @@ app.post('/CAFCFRS/api/v1/public-complaints/submit', async (req, res) => {
   })
 
   // save what we got
-  await cybercrimeReports.save(report)
+  await cybercrimeReports.save(reports[req.cookies.reportID])
   // Reset the state:
-  report = emptyReport
-  acceptedDisclaimer = false
+  reports[req.cookies.reportID] = {}
+  res.clearCookie(req.cookies.reportID)
+  res.clearCookie(req.cookies.referenceNumber)
   // This returns the form contents?
   res.json({})
 })
 
 app.post('/CAFCFRS/api/v1/public-complaints/start', (req, res) => {
-  report.started = true
-  report.createdDate = Date.now()
-  res.json(report)
+  reports[req.cookies.reportID].started = true
+  res.json(reports[req.cookies.reportID])
 })
 
 app.post('/CAFCFRS/api/v1/public-complaints/start-new', (req, res) => {
   // Reset the state:
-  report = emptyReport
-  acceptedDisclaimer = false
+  reports[req.cookies.reportID] = structuredClone(emptyReport)
+  reports[req.cookies.reportID].publicUser.isAcceptedDisclaimer = false
+  res.clearCookie('reportID')
+  res.clearCookie('referenceNumber')
   res.status(204).send()
 })
 
 app.post('/CAFCFRS/api/v1/public-complaints/:id', (req, res) => {
-  const patch = rfc6902.createPatch(report, req.body)
-  rfc6902.applyPatch(report, patch)
-  res.json(report)
+  const patch = rfc6902.createPatch(reports[req.cookies.reportID], req.body)
+  rfc6902.applyPatch(reports[req.cookies.reportID], patch)
+  res.json(reports[req.cookies.reportID])
 })
 
 app.get('/CAFCFRS/api/v1/age-ranges', (req, res) => {
