@@ -23,6 +23,9 @@ let mocks = [
     result: { data: { stats: { reportCount: 555 } } },
   },
 ]
+
+window.scrollTo = jest.fn()
+
 describe('<Home/>', () => {
   afterEach(cleanup)
 
