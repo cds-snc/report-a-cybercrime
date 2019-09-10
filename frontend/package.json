@@ -39,7 +39,7 @@
     "apollo-client": "^2.6.4",
     "apollo-link-error": "^1.1.12",
     "apollo-link-http": "^1.5.16",
-    "apollo-upload-client": "^10.0.1",
+    "apollo-upload-client": "^11.0.0",
     "babel-plugin-macros": "^2.6.1",
     "emotion": "^10.0.17",
     "emotion-server": "^10.0.17",
