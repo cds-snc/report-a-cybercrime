@@ -7,6 +7,23 @@ const cors = require('cors')
 const Server = async context => {
   const app = express()
 
+  app.get('/alive', (_req, res) => {
+    res.send('yes')
+  })
+
+  app.get('/ready', async (_req, res) => {
+    try {
+      const version = await context.db.version()
+      if (version) {
+        res.send('yes')
+      } else {
+        res.status(500).json({ error: 'Unable to connect to ArangoDB' })
+      }
+    } catch (error) {
+      res.status(500).json({ error: error.toString() })
+    }
+  })
+
   app.use(
     '/',
     cors(),
@@ -31,6 +48,7 @@ const Server = async context => {
       context,
     }),
   )
+
   return app
 }
 
