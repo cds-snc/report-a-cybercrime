@@ -29,7 +29,7 @@ describe('<MoneyLostForm /> form', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByLabelText, getByText } = render(
+    const { getByLabelText, getByRole } = render(
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -42,7 +42,7 @@ describe('<MoneyLostForm /> form', () => {
     )
 
     const inputNode = getByLabelText('Amount of money')
-    const nextButton = getByText(/Next/i)
+    const nextButton = getByRole('button')
 
     fillIn(inputNode, { with: '$10,000' })
     clickOn(nextButton)

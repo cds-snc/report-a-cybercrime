@@ -29,7 +29,7 @@ describe('<ScamInfoForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByLabelText, getByText } = render(
+    const { getByLabelText, getByRole } = render(
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -42,7 +42,7 @@ describe('<ScamInfoForm />', () => {
     )
 
     const inputNode = getByLabelText('When did it start?')
-    const nextButton = getByText(/Next/i)
+    const nextButton = getByRole('button')
 
     fillIn(inputNode, { with: 'in person' })
     clickOn(nextButton)

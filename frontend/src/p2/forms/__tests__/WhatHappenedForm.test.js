@@ -26,7 +26,7 @@ describe('<WhatHappenedForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByText } = render(
+    const { getByRole } = render(
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -39,7 +39,7 @@ describe('<WhatHappenedForm />', () => {
     )
 
     // find the next button so we can trigger a form submission
-    const nextButton = getByText(/Next/i)
+    const nextButton = getByRole('button')
     // Click the next button to trigger the form submission
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
