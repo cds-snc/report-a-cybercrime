@@ -26,7 +26,7 @@ describe('<ScammerDetailsForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByText } = render(
+    const { getByRole } = render(
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -37,7 +37,7 @@ describe('<ScammerDetailsForm />', () => {
         </MockedProvider>
       </ThemeProvider>,
     )
-    const nextButton = getByText(/Next/i)
+    const nextButton = getByRole('button')
 
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve

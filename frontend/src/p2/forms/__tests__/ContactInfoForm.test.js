@@ -29,7 +29,7 @@ describe('<ContactInfoForm />', () => {
   it.only('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByLabelText, getByText } = render(
+    const { getAllByRole, getByRole } = render(
       <ThemeProvider theme={theme}>
         <MockedProvider mocks={[]} addTypename={false}>
           <I18nProvider language={'en'} catalogs={catalogs}>
@@ -41,8 +41,8 @@ describe('<ContactInfoForm />', () => {
       </ThemeProvider>,
     )
 
-    const inputNode = getByLabelText('Full name')
-    const nextButton = getByText(/Next/i)
+    const inputNode = getAllByRole('textbox')[0]
+    const nextButton = getByRole('button')
 
     fillIn(inputNode, { with: 'Mallory' })
     clickOn(nextButton)
