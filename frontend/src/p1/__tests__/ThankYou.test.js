@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, cleanup } from '@testing-library/react'
-import { MockedProvider } from 'react-apollo/test-utils'
+import { MockedProvider } from '@apollo/react-testing'
 import { ThemeProvider } from 'emotion-theming'
 import { ThankYou } from '../ThankYou'
 import { I18nProvider } from '@lingui/react'

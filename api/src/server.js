@@ -7,7 +7,7 @@ const cors = require('cors')
 const Server = async context => {
   const app = express()
 
-  app.use(
+  app.disable('x-powered-by').use(
     '/',
     cors(),
     graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 1 }),

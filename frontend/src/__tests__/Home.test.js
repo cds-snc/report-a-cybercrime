@@ -10,7 +10,7 @@ import {
   GET_STATS_QUERY,
 } from '../utils/queriesAndMutations'
 import { render, cleanup } from '@testing-library/react'
-import { MockedProvider } from 'react-apollo/test-utils'
+import { MockedProvider } from '@apollo/react-testing'
 import { Home } from '../Home'
 
 let mocks = [

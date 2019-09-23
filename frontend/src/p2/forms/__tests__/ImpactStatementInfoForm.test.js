@@ -1,7 +1,7 @@
 import React from 'react'
 import wait from 'waait'
 import { render, fireEvent, cleanup } from '@testing-library/react'
-import { MockedProvider } from 'react-apollo/test-utils'
+import { MockedProvider } from '@apollo/react-testing'
 import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
