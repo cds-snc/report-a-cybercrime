@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -26,7 +26,13 @@ export const WhatHappenedForm = props => (
                   <strong>What happened?</strong>
                 </Trans>
               </Text>
-              <Text mt="6px" mb="8px" fontSize="16px">
+              <Text
+                css={css`
+                  color: gray;
+                `}
+                mt="6px"
+                mb="8px"
+              >
                 <Trans>Tell us about it in your own words.</Trans>
               </Text>
               <Field

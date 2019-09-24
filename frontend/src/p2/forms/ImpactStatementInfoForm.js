@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { ApolloConsumer } from 'react-apollo'
 import { I18n, i18nMark } from '@lingui/react'
@@ -84,7 +84,13 @@ export const ImpactStatementInfoForm = props => (
                 <strong>Tell us more about how it impacted you.</strong>
               </Trans>
             </Text>
-            <Text mt="6px" mb="8px" fontSize="16px">
+            <Text
+              css={css`
+                color: gray;
+              `}
+              mt="6px"
+              mb="8px"
+            >
               <Trans>
                 For example: the amount of money, the information taken, what
                 else was affected
