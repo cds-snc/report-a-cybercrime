@@ -19,7 +19,7 @@ export const LandingPage = props => {
     <Layout>
       <TrackPageViews />
       <H1>
-        <Trans>Report a scam</Trans> scammmmmerz
+        <Trans>Report a scam</Trans> test
       </H1>
       <ApolloConsumer>
         {client =>
