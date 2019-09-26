@@ -36,7 +36,7 @@ steps:
       Dockerfile: 'frontend/Dockerfile'
       tags: |
         $(Build.SourceBranchName)
-        $(Build.SourceBranchName)$(_dash)$(Build.SourceVersion)
+        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
         latest
       arguments: --build-arg RAZZLE_GOOGLE_ANALYTICS_ID=$(_RAZZLE_GOOGLE_ANALYTICS_ID)
 
