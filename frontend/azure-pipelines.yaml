@@ -47,5 +47,5 @@ steps:
       command: 'push'
       tags: |
         $(Build.SourceBranchName)
-        $(Build.SourceBranchName)$(_dash)$(Build.SourceVersion)
+        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
         latest
