@@ -38,5 +38,5 @@ jobs:
           Dockerfile: 'api/Dockerfile'
           tags: |
             $(Build.SourceBranchName)
-            $(Build.SourceBranchName-Build.BuildId)
+            $(Build.SourceBranchName-Build.SourceVersion)
             latest
