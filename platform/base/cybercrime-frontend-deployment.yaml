@@ -26,7 +26,7 @@ spec:
         app: cybercrime-frontend
     spec:
       containers:
-        - image: acrrcmpcybercrime.azurecr.io/frontend:latest
+        - image: acrrcmpcybercrime.azurecr.io/frontend
           imagePullPolicy: Always
           name: cybercrime-frontend
           env:
