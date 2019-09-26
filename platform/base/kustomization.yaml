@@ -28,4 +28,4 @@ images:
 - name: acrrcmpcybercrime.azurecr.io/api
   newTag: master-5cfdae4303148a25b8976802d50cf0761f6923a2
 - name: acrrcmpcybercrime.azurecr.io/frontend
-  newTag: master-8e3641aa2890be1f07a60f57ef3a5fff78cdc833
+  newTag: master-b4dd99db25bbdf88412726070206eff0eb84dd9d
