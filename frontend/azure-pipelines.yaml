@@ -8,8 +8,8 @@ trigger:
     include:
       - frontend
     exclude:
-      - api
-      - frontend/manifests
+      - api/*
+      - frontend/manifests/*
 
 pool:
   vmImage: 'ubuntu-16.04'
