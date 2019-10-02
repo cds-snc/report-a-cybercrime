@@ -1,4 +1,4 @@
-FROM node:11-alpine
+FROM node:12.9-alpine
 LABEL maintainer="mike.williamson@cds-snc.ca"
 
 ENV NODE_ENV production
