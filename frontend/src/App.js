@@ -40,6 +40,11 @@ const App = () => (
                   href="/apple-touch-icon.png"
                 />
                 <script>
+                  const appInsights = require("applicationinsights");
+                  appInsights.setup("d9e72e14-a4f8-467c-bd8b-b4e3a6f0c229");
+                  appInsights.start();
+                </script>
+                <script>
                   {`
               window.__APOLLO_STATE__=${JSON.stringify({
                 language,
