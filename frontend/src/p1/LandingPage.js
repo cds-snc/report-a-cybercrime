@@ -42,7 +42,7 @@ export const LandingPage = props => {
 
       <P>
         <Trans>
-          Tell the RCMP's National Cybercrime Coordination Unit about a scam to
+          Tell the RCMP's Nationall Cybercrime Coordination Unit about a scam to
           help police across Canada investigate these crimes.
         </Trans>
       </P>
