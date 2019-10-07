@@ -19,3 +19,4 @@ images:
     newTag: merge-c89a5153e3c60e0bb316475e76777196373cfc35
   - name: acrrcmpcybercrime.azurecr.io/frontend
     newTag: merge-c89a5153e3c60e0bb316475e76777196373cfc35
+
