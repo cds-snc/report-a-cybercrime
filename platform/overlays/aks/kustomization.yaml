@@ -16,6 +16,8 @@ resources:
   - minio-secrets.yaml
 images:
   - name: acrrcmpcybercrime.azurecr.io/api
-    newTag: master-5cfdae4303148a25b8976802d50cf0761f6923a2
+    newTag: master-784df720a9318ddee040658e769b070d9f2c9135
   - name: acrrcmpcybercrime.azurecr.io/frontend
-    newTag: master-93fd3daa3e2c2313b1a68482c30abc57359e9778
+    newTag: master-5cfdae4303148a25b8976802d50cf0761f6923a2
+ 
+    
