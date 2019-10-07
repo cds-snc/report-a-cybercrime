@@ -78,6 +78,8 @@ spec:
         ports:
         - containerPort: 3030 # informational
         volumeMounts:
+        - name: acr-auth
+          mountPath: /etc/kubernetes/azure.json
         - name: git-key
           mountPath: /etc/fluxd/ssh # to match location given in image's /etc/ssh/config
           readOnly: true # this will be the case perforce in K8s >=1.10
@@ -92,6 +94,13 @@ spec:
         - --git-ci-skip
         - --git-path=platform
         - --listen-metrics=:3031
+        volumes:
+        - name: flux-aks-volume
+            secret:
+              secretName: acr-auth
+              items:
+              - key: .dockerconfigjson
+                path: /etc/kubernetes/azure.json
 ---
 # memcached deployment used by Flux to cache
 # container image metadata.
