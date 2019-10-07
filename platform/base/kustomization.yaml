@@ -1,31 +1,31 @@
 resources:
-  - traefik-ingress-controller-clusterrolebinding.yaml
-  - traefik-ingress-controller-clusterrole.yaml
-  - traefik-ingress-controller-deployment.yaml
-  - traefik-ingress-controller-service-account.yaml
-  - traefik-ingress-controller-service.yaml
-  - sealed-secrets-controller-deployment.yaml
-  - sealed-secrets-crd.yaml
-  - arango-claim.yaml
-  - arangodb-deployment.yaml
-  - arangodb-service.yaml
-  - cybercrime-api-deployment.yaml
-  - cybercrime-api-service.yaml
-  - cybercrime-api-namespace.yaml
-  - minio-deployment.yaml
-  - minio-service.yaml
-  - cybercrime-api-ingress.yaml
-  - cybercrime-frontend-deployment.yaml
-  - cybercrime-frontend-ingress.yaml
-  - cybercrime-frontend-namespace.yaml
-  - cybercrime-frontend-service.yaml
-  - baseline-deployment.yaml
-  - baseline-ingress.yaml
-  - baseline-service.yaml
+- traefik-ingress-controller-clusterrolebinding.yaml
+- traefik-ingress-controller-clusterrole.yaml
+- traefik-ingress-controller-deployment.yaml
+- traefik-ingress-controller-service-account.yaml
+- traefik-ingress-controller-service.yaml
+- sealed-secrets-controller-deployment.yaml
+- sealed-secrets-crd.yaml
+- arango-claim.yaml
+- arangodb-deployment.yaml
+- arangodb-service.yaml
+- cybercrime-api-deployment.yaml
+- cybercrime-api-service.yaml
+- cybercrime-api-namespace.yaml
+- minio-deployment.yaml
+- minio-service.yaml
+- cybercrime-api-ingress.yaml
+- cybercrime-frontend-deployment.yaml
+- cybercrime-frontend-ingress.yaml
+- cybercrime-frontend-namespace.yaml
+- cybercrime-frontend-service.yaml
+- baseline-deployment.yaml
+- baseline-ingress.yaml
+- baseline-service.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
-  - name: acrrcmpcybercrime.azurecr.io/api
-    newTag: master-784df720a9318ddee040658e769b070d9f2c9135
-  - name: acrrcmpcybercrime.azurecr.io/frontend
-    newTag: master-aea56a3c15b16d0e6bfc20bc2942272184b094b1
+- name: acrrcmpcybercrime.azurecr.io/api
+  newTag: master-5cfdae4303148a25b8976802d50cf0761f6923a2
+- name: acrrcmpcybercrime.azurecr.io/frontend
+  newTag: master-93fd3daa3e2c2313b1a68482c30abc57359e9778
