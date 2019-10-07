@@ -24,8 +24,3 @@ resources:
   - baseline-service.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-images:
-  - name: acrrcmpcybercrime.azurecr.io/api
-    newTag: master-784df720a9318ddee040658e769b070d9f2c9135
-  - name: acrrcmpcybercrime.azurecr.io/frontend
-    newTag: master-aea56a3c15b16d0e6bfc20bc2942272184b094b1
