@@ -47,7 +47,6 @@ export const LandingPage = props => {
         </Trans>
         ...
       </P>
-
       <P>
         <Trans>You will be asked to:</Trans>
       </P>
