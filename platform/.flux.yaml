@@ -5,4 +5,4 @@ commandUpdated:
   updaters:
     - containerImage:
         command: >-
-          cd base && kustomize edit set image "$FLUX_IMG:$FLUX_TAG"
+          cd overlays/aks && kustomize edit set image "$FLUX_IMG:$FLUX_TAG"
