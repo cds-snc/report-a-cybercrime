@@ -1,6 +1,18 @@
 {
   "urls": [
     "",
+    "p1",
+    "p1/scaminfo",
+    "p1/suspectinfoquestion",
+    "p1/suspectinfo",
+    "/p1/moneylostquestion",
+    "/p1/moneylost",
+    "/p1/uploadfilesquestion",
+    "p1/uploadfiles",
+    "p1/contactinfoquestion",
+    "p1/contactinfo",
+    "p1/confirmation",
+    "p1/thankyou",
     "p2",
     "p2/whathappened",
     "p2/contactinfo",
