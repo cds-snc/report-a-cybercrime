@@ -26,13 +26,7 @@ export const WhatHappenedForm = props => (
                   <strong>What happened?</strong>
                 </Trans>
               </Text>
-              <Text
-                css={css`
-                  color: gray;
-                `}
-                mt="6px"
-                mb="8px"
-              >
+              <Text color="darkGray" mt="6px" mb="8px">
                 <Trans>Tell us about it in your own words.</Trans>
               </Text>
               <Field

@@ -93,13 +93,7 @@ export const ScammerDetailsFormWrapped = props => {
                       What do you know about where the scam came from?
                     </strong>
                   </Trans>
-                  <Text
-                    css={css`
-                      color: gray;
-                    `}
-                    mt="6px"
-                    mb="8px"
-                  >
+                  <Text color="darkGray" mt="6px" mb="8px">
                     <Trans>
                       Remember to include any email addresses, phone numbers, or
                       website links
