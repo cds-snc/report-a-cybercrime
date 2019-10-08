@@ -11,7 +11,7 @@ import { ButtonsContainer } from '../../components/buttons-container'
 import { TextArea } from '../../components/text-area'
 import { Button } from '../../components/button'
 import { Text } from '../../components/text'
-import { H3 } from '../../components/header'
+import { H2, H3 } from '../../components/header'
 import { P } from '../../components/paragraph'
 import { Ul } from '../../components/unordered-list'
 import { Li } from '../../components/list-item'
@@ -144,13 +144,13 @@ export const ScammerDetailsFormWrapped = props => {
               </Container>
               <I18n>
                 {({ i18n }) => (
-                  <H3>
+                  <H2 fontSize={[4, null, 5]} lineHeight={[4, null, 5]}>
                     {i18n.plural({
                       value: files.length,
                       one: '# file attached',
                       other: '# files attached',
                     })}
-                  </H3>
+                  </H2>
                 )}
               </I18n>
 
