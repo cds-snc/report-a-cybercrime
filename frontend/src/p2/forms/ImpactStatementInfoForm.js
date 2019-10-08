@@ -50,13 +50,13 @@ export const ImpactStatementInfoForm = props => (
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Fieldset>
-              <Label htmlFor="howWereYouAffected">
-                <P>
+              <legend>
+                <Text marginTop={[5, null, 6]}>
                   <Trans>
                     <strong>What was the impact of the scam?</strong>
                   </Trans>
-                </P>
-              </Label>
+                </Text>
+              </legend>
 
               <div>
                 <I18n>
@@ -79,17 +79,20 @@ export const ImpactStatementInfoForm = props => (
               </div>
             </Fieldset>
 
-            <Text marginTop={[5, null, 6]}>
-              <Trans>
-                <strong>Tell us more about how it impacted you.</strong>
-              </Trans>
-            </Text>
-            <Text color="darkGray" mt="6px" mb="8px">
-              <Trans>
-                For example: the amount of money, the information taken, what
-                else was affected
-              </Trans>
-            </Text>
+            <label htmlFor="damage">
+              <Text marginTop={[5, null, 6]}>
+                <Trans>
+                  <strong>Tell us more about how it impacted you.</strong>
+                </Trans>
+                <Text color="darkGray" mt="6px" mb="8px">
+                  <Trans>
+                    For example: the amount of money, the information taken,
+                    what else was affected
+                  </Trans>
+                </Text>
+              </Text>
+            </label>
+
             <div>
               <Field
                 name="damage"
