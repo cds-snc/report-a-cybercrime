@@ -51,6 +51,7 @@ export const handle = async path => {
         data.violations.forEach(v => {
           console.log(`-- ${v.help}`);
           console.log(`   ${v.helpUrl}`);
+          console.log(`   html: ${v.html}`);
         });
         issues.push(data.violations);
       }
