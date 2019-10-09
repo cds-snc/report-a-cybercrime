@@ -51,7 +51,7 @@ export const handle = async path => {
         data.violations.forEach(v => {
           console.log(`-- ${v.help}`);
           console.log(`   ${v.helpUrl}`);
-          console.log(`   html: ${v.html}`);
+          console.log(JSON.stringify(v, null, 2));
         });
         issues.push(data.violations);
       }
