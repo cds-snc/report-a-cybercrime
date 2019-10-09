@@ -59,6 +59,7 @@ export const handle = async path => {
         // response errored on the server side
         console.log("\n/" + result.page + ": ERROR");
         console.log(data.error);
+        issues.push(data.error);
       }
     });
 
