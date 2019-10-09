@@ -5,5 +5,6 @@ jobs:
     name: a11y
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: a11y-multiple-page-checker
         uses: ./.github/actions/a11y-scanner
