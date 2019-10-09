@@ -47,11 +47,10 @@ export const handle = async path => {
     results.map(result => {
       let data = result.data;
       if (data && data.violations && data.violations.length >= 1) {
-        console.log(
-          "Violations on page: /" + result.page + ": " + data.violations.length
-        );
+        console.log("\n/" + result.page + ": " + data.violations.length);
         data.violations.forEach(v => {
-          console.log("- " + JSON.stringify(v));
+          console.log(`-- ${v.help}`);
+          console.log(`   ${v.helpUrl}`);
         });
         issues.push(data.violations);
       }
