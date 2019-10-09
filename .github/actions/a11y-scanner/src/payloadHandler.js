@@ -39,7 +39,7 @@ export const handle = async path => {
             return { page: page, data: data };
           })
           .catch(err => {
-            return { page: page, data: {error: err}};
+            return { page: page, data: {errorMessage: err}};
           });
       })
     );
@@ -55,7 +55,7 @@ export const handle = async path => {
         });
         issues.push(data.violations);
       }
-      if (data.error) {
+      else if (data.errorMessage) {
         // response errored on the server side
         console.log("\n/" + result.page + ": ERROR");
         console.log(data.error);
