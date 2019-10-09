@@ -28,7 +28,7 @@ export const handle = async path => {
 
     // iterate through urls in config and send out async requests in batches to avoid memory overload
     // wait for all to return, and return results
-    const results = [];
+    let results = [];
     let ind = 0;
 
     while (ind < visit.length) {
@@ -51,7 +51,7 @@ export const handle = async path => {
       results = results.concat(slicedResults);
       ind += 3;
     }
-    
+
     let issues = [];
     results.map(result => {
       let data = result.data;
