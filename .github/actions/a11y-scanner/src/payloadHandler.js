@@ -26,32 +26,23 @@ export const handle = async path => {
     const visit = JSON.parse(config).urls;
     console.log("visit:" + visit);
 
-    // iterate through urls in config and send out async requests in batches to avoid memory overload
+    // iterate through urls in config and send out async requests for each one
     // wait for all to return, and return results
-    let results = [];
-    let ind = 0;
-
-    while (ind < visit.length) {
-      let slicedVisit = visit.slice(ind, ind + 3);
-      let slicedResults = await Promise.all(
-        slicedVisit.map(page => {
-          console.log("Fetching from: " + baseUrl + page);
-          return fetch(baseUrl + page)
-            .then(function(response) {
-              return response.json();
-            })
-            .then(function(data) {
-              return { page: page, data: data };
-            })
-            .catch(err => {
-              throw new Error("Error: " + JSON.stringify(err));
-            });
-        })
-      );
-      results = results.concat(slicedResults);
-      ind += 3;
-    }
-
+    const results = await Promise.all(
+      visit.map(page => {
+        console.log("Fetching from: " + baseUrl + page);
+        return fetch(baseUrl + page)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            return { page: page, data: data };
+          })
+          .catch(err => {
+            throw new Error("Error: " + JSON.stringify(err));
+          });
+      })
+    );
     let issues = [];
     results.map(result => {
       let data = result.data;
@@ -60,7 +51,7 @@ export const handle = async path => {
         data.violations.forEach(v => {
           console.log(`-- ${v.help}`);
           console.log(`   ${v.helpUrl}`);
-          console.log(`   html: ${v.nodes.html}`);
+          console.log(`   html: ${v.html}`);
         });
         issues.push(data.violations);
       }
