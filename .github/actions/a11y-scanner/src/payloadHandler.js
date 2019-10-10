@@ -51,7 +51,7 @@ export const handle = async path => {
         data.violations.forEach(v => {
           console.log(`-- ${v.impact}: ${v.help}`);
           console.log(`   ${v.helpUrl}`);
-          console.log(`   ${v.nodes.html}`);
+          console.log(`   ${v.nodes}`);
         });
         issues.push(data.violations);
       } else if (data.errorMessage) {
