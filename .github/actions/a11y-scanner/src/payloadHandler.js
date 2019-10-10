@@ -39,7 +39,7 @@ export const handle = async path => {
             return { page: page, data: data };
           })
           .catch(err => {
-            return { page: page, data: {errorMessage: err}};
+            return { page: page, data: { errorMessage: err } };
           });
       })
     );
@@ -49,13 +49,12 @@ export const handle = async path => {
       if (data && data.violations && data.violations.length >= 1) {
         console.log("\n/" + result.page + ": " + data.violations.length);
         data.violations.forEach(v => {
-          console.log(`-- ${v.help}`);
+          console.log(`-- ${v.impact}: ${v.help}`);
           console.log(`   ${v.helpUrl}`);
-          console.log(JSON.stringify(v, null, 2));
+          console.log(`   ${v.nodes.html}`);
         });
         issues.push(data.violations);
-      }
-      else if (data.errorMessage) {
+      } else if (data.errorMessage) {
         // response errored on the server side
         console.log("\n/" + result.page + ": ERROR");
         console.log(data.error);
