@@ -80,11 +80,19 @@ spec:
           ports:
             - containerPort: 3030 # informational
           volumeMounts:
+            - name: acr-auth
+              mountPath: /etc/kubernetes/azure.json
+              readOnly: true
             - name: git-key
               mountPath: /etc/fluxd/ssh # to match location given in image's /etc/ssh/config
               readOnly: true # this will be the case perforce in K8s >=1.10
             - name: git-keygen
               mountPath: /var/fluxd/keygen # to match location given in image's /etc/ssh/config
+          volumes:
+            - name: acr-auth
+              hostPath:
+                path: /etc/kubernetes/azure.json
+                type: ""
           args:
             - --memcached-service=
             - --ssh-keygen-dir=/var/fluxd/keygen
@@ -116,8 +124,6 @@ spec:
         - name: memcached
           image: memcached:1.5.15
           imagePullPolicy: IfNotPresent
-          imagePullSecrets:
-            - name: acr-auth
           args:
             - -m 512 # Maximum memory to use, in megabytes
             - -I 5m # Maximum size for one item
