@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
-    "@babel/runtime": "^7.6.0",
+    "@babel/runtime": "^7.6.2",
     "@cdssnc/logdriver": "0.0.2",
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
