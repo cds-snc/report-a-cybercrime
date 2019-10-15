@@ -37,6 +37,7 @@ const colors = {
   crimson: '#dc143c',
   green: '#008000',
   darkGreen: '#00692f',
+  darkGray: '#767676',
 }
 
 const theme = {

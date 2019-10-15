@@ -86,13 +86,7 @@ export class ScamInfoForm extends Component {
                     </Trans>
                   </Text>
                 </label>
-                <Text
-                  css={css`
-                    color: gray;
-                  `}
-                  mt="6px"
-                  mb="8px"
-                >
+                <Text color="darkGray" mt="6px" mb="8px">
                   <Trans>For example: April 28, 2019</Trans>
                 </Text>
                 <div>

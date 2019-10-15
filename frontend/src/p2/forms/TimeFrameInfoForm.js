@@ -34,13 +34,7 @@ class TimeFrameInfoFormWrapped extends Component {
                       <strong>Approximate start</strong>
                     </Trans>
                   </Text>
-                  <Text
-                    css={css`
-                      color: gray;
-                    `}
-                    mt="6px"
-                    mb="8px"
-                  >
+                  <Text color="darkGray" mt="6px" mb="8px">
                     <Trans>For example: 2019-04-28</Trans>
                   </Text>
                 </label>
@@ -60,13 +54,7 @@ class TimeFrameInfoFormWrapped extends Component {
                       <strong>Approximate end</strong>
                     </Trans>
                   </Text>
-                  <Text
-                    css={css`
-                      color: gray;
-                    `}
-                    mt="6px"
-                    mb="8px"
-                  >
+                  <Text color="darkGray" mt="6px" mb="8px">
                     <Trans>For example: 2019-04-28</Trans>
                   </Text>
                 </label>
