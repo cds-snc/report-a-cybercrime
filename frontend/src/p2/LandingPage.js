@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
+import { navigate } from '@reach/router'
 import PropTypes from 'prop-types'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
@@ -9,9 +10,9 @@ import { H1 } from '../components/header'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
 import { InfoCard } from '../components/container'
+import { ButtonsContainer } from '../components/buttons-container'
 import { Layout } from '../components/layout'
 import { TrackPageViews } from '../TrackPageViews'
-import { ButtonsContainer } from '../components/buttons-container'
 
 export const LandingPage = props => {
   const { surveyID, ResponseID } = queryString.parse(props.location.search)
@@ -77,12 +78,15 @@ export const LandingPage = props => {
           across Canada catch cybercriminals.
         </Trans>
       </P>
+
       <ButtonsContainer
-        landing={true}
-        buttonLink={true}
         cancel={false}
-        route="/p2/timeframe"
-      />
+        buttonLink={false}
+        nextPage="Report now"
+        onClick={() => navigate('/p2/timeframe')}
+      >
+        <Trans>Report now ❯</Trans>
+      </ButtonsContainer>
     </Layout>
   )
 }
