@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import { navigate } from '@reach/router'
-import { css } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
@@ -10,10 +9,10 @@ import { P } from '../components/paragraph'
 import { H1 } from '../components/header'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
-import { Container, InfoCard } from '../components/container'
+import { InfoCard } from '../components/container'
+import { ButtonsContainer } from '../components/buttons-container'
 import { Layout } from '../components/layout'
 import { TrackPageViews } from '../TrackPageViews'
-import { Button } from '../components/button'
 
 export const LandingPage = props => {
   const { surveyID, ResponseID } = queryString.parse(props.location.search)
@@ -80,15 +79,14 @@ export const LandingPage = props => {
         </Trans>
       </P>
 
-      <Button
-        mt="1rem"
-        mb="4rem"
-        paddingX={[5, null, 7]}
-        paddingY={[1, null, 2]}
+      <ButtonsContainer
+        cancel={false}
+        buttonLink={false}
+        nextPage="Report now"
         onClick={() => navigate('/p2/timeframe')}
       >
         <Trans>Report now ❯</Trans>
-      </Button>
+      </ButtonsContainer>
     </Layout>
   )
 }

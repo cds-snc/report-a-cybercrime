@@ -14,6 +14,7 @@ export const ButtonsContainer = ({
   route = '',
   cancelRoute = '/p2/',
   nextPage = '',
+  onClick = () => {},
 }) => (
   <Container
     mt="1rem"
@@ -37,9 +38,11 @@ export const ButtonsContainer = ({
   >
     {buttonLink === false ? (
       <Container mt="1rem">
-        <Button type="submit">
+        <Button type="submit" onClick={onClick}>
           {submit === true ? (
             <Trans>Submit report &nbsp; ❯</Trans>
+          ) : nextPage === 'Report now' ? (
+            ''
           ) : (
             <Trans>Next</Trans>
           )}
@@ -48,6 +51,8 @@ export const ButtonsContainer = ({
             <Trans>: Clues about the suspect</Trans>
           ) : nextPage === 'Money lost' ? (
             <Trans>: Money lost</Trans>
+          ) : nextPage === 'Report now' ? (
+            <Trans>Report now ❯</Trans>
           ) : nextPage === 'Impact of scam' ? (
             <Trans>: Impact of the scam</Trans>
           ) : nextPage === 'What happened' ? (
@@ -173,6 +178,7 @@ ButtonsContainer.propTypes = {
   landing: PropTypes.bool,
   submit: PropTypes.bool,
   nextPage: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
 ButtonsContainerYesNo.propTypes = {
