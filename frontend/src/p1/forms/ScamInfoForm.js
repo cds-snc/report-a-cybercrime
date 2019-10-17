@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { ApolloConsumer } from 'react-apollo'
 import { I18n, i18nMark } from '@lingui/react'

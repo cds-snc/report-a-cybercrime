@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import { ApolloConsumer } from 'react-apollo'
 import { I18n, i18nMark } from '@lingui/react'
@@ -8,10 +8,8 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../../components/checkbox'
 import { ButtonsContainer } from '../../components/buttons-container'
-import { P } from '../../components/paragraph'
 import { Text } from '../../components/text'
 import { TextArea } from '../../components/text-area'
-import { Label } from '../../components/label'
 import { finalFormAdapter } from '../../utils/finalFormAdapter'
 import { getImpact } from '../../utils/queriesAndMutations'
 
