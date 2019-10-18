@@ -1,5 +1,3 @@
-bases:
-- ../../base
 patchesStrategicMerge:
 - traefik-ingress-controller-deployment.yaml
 - traefik-ingress-controller-service.yaml
@@ -15,6 +13,7 @@ resources:
 - cybercrime-api-secrets.yaml
 - minio-secrets.yaml
 - flux.yaml
+- ../../base
 images:
 - name: acrrcmpcybercrime.azurecr.io/api
   newName: gcr.io/report-a-cybercrime-alpha/api
@@ -22,5 +21,7 @@ images:
 - name: acrrcmpcybercrime.azurecr.io/frontend
   newName: gcr.io/report-a-cybercrime-alpha/frontend
   newTag: master-62e12de
+- name: gcr.io/report-a-cybercrime-alpha/frontend
+  newTag: master-f876235
 - name: traefik
   newTag: "1.7"
