@@ -22,6 +22,6 @@ images:
   newName: gcr.io/report-a-cybercrime-alpha/frontend
   newTag: master-62e12de
 - name: gcr.io/report-a-cybercrime-alpha/frontend
-  newTag: master-392048e
+  newTag: master-60e4ab9
 - name: traefik
   newTag: "1.7"
