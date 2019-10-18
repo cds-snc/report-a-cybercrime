@@ -4,5 +4,8 @@ metadata:
   name: traefik-ingress-service
   namespace: kube-system
 spec:
-  selector:
-    k8s-app: traefik-ingress-lb
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
