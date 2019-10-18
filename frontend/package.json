@@ -55,7 +55,7 @@
     "razzle": "3.0.0",
     "react": "^16.10.1",
     "react-apollo": "^2.5.8",
-    "react-dom": "^16.9.0",
+    "react-dom": "^16.10.1",
     "react-final-form": "^6.3.0",
     "react-ga": "^2.6.0",
     "react-helmet-async": "^1.0.3",
