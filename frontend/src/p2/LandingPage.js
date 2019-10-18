@@ -50,6 +50,7 @@ export const LandingPage = props => {
           Scams can happen to anyone. They’re not always easy to recognize and
           new ones are invented every day.
         </Trans>
+        GITOPS TEST
       </P>
       <InfoCard>
         <P>
