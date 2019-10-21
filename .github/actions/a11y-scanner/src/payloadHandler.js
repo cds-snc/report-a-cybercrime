@@ -49,10 +49,15 @@ export const handle = async path => {
       if (data && data.violations && data.violations.length >= 1) {
         console.log("\n/" + result.page + ": " + data.violations.length);
         data.violations.forEach(v => {
+          const json = JSON.stringify(v.nodes, null, 2);
+          let html = "unknown";
+          try {
+            html = /"html": "(.*)",\n/.exec(json)[1];
+          } catch {}
           console.log(`-- ${v.impact}: ${v.help}`);
           console.log(`   ${v.helpUrl}`);
-          console.log(`   html: ${v.nodes[5]}`);
-          console.log(`   ${JSON.stringify(v.nodes, null, 2)}`);
+          console.log(`   html: ${html}`);
+          console.log(`   ${json}`);
         });
         issues.push(data.violations);
       } else if (data.errorMessage) {
