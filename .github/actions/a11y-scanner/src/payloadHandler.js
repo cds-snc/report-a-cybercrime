@@ -57,7 +57,6 @@ export const handle = async path => {
           console.log(`-- ${v.impact}: ${v.help}`);
           console.log(`   ${v.helpUrl}`);
           console.log(`   html: ${html}`);
-          console.log(`   ${json}`);
         });
         issues.push(data.violations);
       } else if (data.errorMessage) {
