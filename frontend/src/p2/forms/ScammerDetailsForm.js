@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
-import { I18n } from '@lingui/react'
+import { I18n, i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { Container } from '../../components/container'
 import { ButtonsContainer } from '../../components/buttons-container'
@@ -30,6 +30,9 @@ export const ScammerDetailsFormWrapped = props => {
     cached.fileDescriptions,
   )
   const [scammerDetails, setScammerDetails] = useState(cached.scammerDetails)
+  const [status, setStatus] = useState('')
+  i18nMark('fileUpload.removed')
+  i18nMark('fileUpload.added')
 
   const onChange = e => {
     if (e.target.id === 'scammerDetails') {
@@ -40,6 +43,7 @@ export const ScammerDetailsFormWrapped = props => {
       newFileDescriptions[index] = e.target.value
       setFileDescriptions(newFileDescriptions)
     } else if (e.target.files && e.target.files[0]) {
+      setStatus('fileUpload.added')
       setFiles(files.concat(e.target.files[0]))
       setFileDescriptions(fileDescriptions.concat(''))
     }
@@ -52,6 +56,7 @@ export const ScammerDetailsFormWrapped = props => {
     )
     setFiles(newFiles)
     setFileDescriptions(newFileDescriptions)
+    setStatus('fileUpload.removed')
   }
 
   const localSubmit = client => {
@@ -144,13 +149,17 @@ export const ScammerDetailsFormWrapped = props => {
               </Container>
               <I18n>
                 {({ i18n }) => (
-                  <H2 fontSize={[4, null, 5]} lineHeight={[4, null, 5]}>
-                    {i18n.plural({
-                      value: files.length,
-                      one: '# file attached',
-                      other: '# files attached',
-                    })}
-                  </H2>
+                  <React.Fragment>
+                    <H2 fontSize={[4, null, 5]} lineHeight={[4, null, 5]}>
+                      {i18n.plural({
+                        value: files.length,
+                        one: '# file attached',
+                        other: '# files attached',
+                      })}
+                    </H2>
+
+                    <Text id="status">{i18n._(status)}</Text>
+                  </React.Fragment>
                 )}
               </I18n>
 
