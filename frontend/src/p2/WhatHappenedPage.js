@@ -25,26 +25,26 @@ export const WhatHappenedPage = () => (
     </BackButton>
     <Steps activeStep={2} totalSteps={6} />
     <H1>
-      <Trans>Describe what happened</Trans>
+      <Trans id="whatHappend.title">Describe what happened</Trans>
     </H1>
     <P>
-      <Trans>
+      <Trans id="whatHappend.intro1">
         What happened is not your fault. Scammers use a number of techniques to
         get what they want.
       </Trans>
     </P>
     <P>
-      <Trans>Think about including things such as:</Trans>
+      <Trans id="whatHappend.intro2">Think about including things such as:</Trans>
     </P>
     <Ul>
       <Li>
-        <Trans>Which app, website, or device you were using</Trans>
+        <Trans id="whatHappend.intro3">Which app, website, or device you were using</Trans>
       </Li>
       <Li>
-        <Trans>How the scammer contacted you</Trans>
+        <Trans id="whatHappend.intro4">How the scammer contacted you</Trans>
       </Li>
       <Li>
-        <Trans>What they promised, threatened, or stole</Trans>
+        <Trans id="whatHappend.intro5">What they promised, threatened, or stole</Trans>
       </Li>
     </Ul>
     <TrackPageViews />
