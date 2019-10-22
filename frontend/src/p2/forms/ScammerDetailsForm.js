@@ -165,7 +165,7 @@ export const ScammerDetailsFormWrapped = props => {
 
                     {status ? (
                       <Text
-                        tabindex={0}
+                        tabindex={-1}
                         id="status"
                         css={css`
                           :focus {
