@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
@@ -33,6 +33,11 @@ export const ScammerDetailsFormWrapped = props => {
   const [status, setStatus] = useState('')
   i18nMark('fileUpload.removed')
   i18nMark('fileUpload.added')
+  useEffect(() => {
+    if (status) {
+      document.getElementById('status').focus()
+    }
+  }, [status])
 
   const onChange = e => {
     if (e.target.id === 'scammerDetails') {
@@ -158,7 +163,19 @@ export const ScammerDetailsFormWrapped = props => {
                       })}
                     </H2>
 
-                    <Text id="status">{i18n._(status)}</Text>
+                    {status ? (
+                      <Text
+                        tabindex={0}
+                        id="status"
+                        css={css`
+                          :focus {
+                            outline: 0px solid transparent;
+                          }
+                        `}
+                      >
+                        {i18n._(status)}
+                      </Text>
+                    ) : null}
                   </React.Fragment>
                 )}
               </I18n>
