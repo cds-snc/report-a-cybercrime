@@ -21,30 +21,30 @@ const submitAndNavigate = (client, data) => {
 export const WhatHappenedPage = () => (
   <Layout>
     <BackButton route="/p2/timeframe">
-      <Trans>the timeframe</Trans>
+      <Trans id="whatHappendPage.backButton">the timeframe</Trans>
     </BackButton>
     <Steps activeStep={2} totalSteps={6} />
     <H1>
-      <Trans>Describe what happened</Trans>
+      <Trans id="whatHappendPage.title">Describe what happened</Trans>
     </H1>
     <P>
-      <Trans>
+      <Trans id="whatHappendPage.intro1">
         What happened is not your fault. Scammers use a number of techniques to
         get what they want.
       </Trans>
     </P>
     <P>
-      <Trans>Think about including things such as:</Trans>
+      <Trans id="whatHappendPage.details1">Think about including things such as:</Trans>
     </P>
     <Ul>
       <Li>
-        <Trans>Which app, website, or device you were using</Trans>
+        <Trans id="whatHappendPage.details2">Which app, website, or device you were using</Trans>
       </Li>
       <Li>
-        <Trans>How the scammer contacted you</Trans>
+        <Trans id="whatHappendPage.details3">How the scammer contacted you</Trans>
       </Li>
       <Li>
-        <Trans>What they promised, threatened, or stole</Trans>
+        <Trans id="whatHappendPage.details4">What they promised, threatened, or stole</Trans>
       </Li>
     </Ul>
     <TrackPageViews />
