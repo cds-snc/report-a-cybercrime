@@ -20,7 +20,7 @@ export const LandingPage = props => {
     <Layout>
       <TrackPageViews />
       <H1>
-        <Trans>Report a scam</Trans>
+        <Trans id="landingPage.title">Report a scam</Trans>
       </H1>
       <ApolloConsumer>
         {client =>
@@ -47,33 +47,42 @@ export const LandingPage = props => {
       </ApolloConsumer>
 
       <P>
-        <Trans>
+        <Trans id="landingPage.intro">
           Scams can happen to anyone. They’re not always easy to recognize and
           new ones are invented every day.
         </Trans>
+        ..
       </P>
       <InfoCard>
         <P>
-          <Trans>Before you start, gather what you can about the scam:</Trans>
+          <Trans id="landingPage.required0">
+            Before you start, gather what you can about the scam:
+          </Trans>
         </P>
         <Ul>
           <Li>
-            <Trans>Dates when it took place</Trans>
+            <Trans id="landingPage.required1">Dates when it took place</Trans>
           </Li>
           <Li>
-            <Trans>Descriptions of what happened</Trans>
+            <Trans id="landingPage.required2">
+              Descriptions of what happened
+            </Trans>
           </Li>
           <Li>
-            <Trans>Details on where it came from</Trans>
+            <Trans id="landingPage.required3">
+              Details on where it came from
+            </Trans>
           </Li>
           <Li>
-            <Trans>Documents, screenshots, or receipts</Trans>
+            <Trans id="landingPage.required4">
+              Documents, screenshots, or receipts
+            </Trans>
           </Li>
         </Ul>
       </InfoCard>
       <br></br>
       <P>
-        <Trans>
+        <Trans id="landingPage.summary">
           Your report helps the RCMP learn about these crimes and helps police
           across Canada catch cybercriminals.
         </Trans>
@@ -85,7 +94,7 @@ export const LandingPage = props => {
         nextPage="Report now"
         onClick={() => navigate('/p2/timeframe')}
       >
-        <Trans>Report now ❯</Trans>
+        <Trans id="landingPage.nextButton">Report now ❯</Trans>
       </ButtonsContainer>
     </Layout>
   )
