@@ -1,29 +1,23 @@
 patchesStrategicMerge:
-- traefik-ingress-controller-deployment.yaml
-- traefik-ingress-controller-service.yaml
-- cybercrime-api-ingress.yaml
-- arango-claim.yaml
-- cybercrime-frontend-ingress.yaml
+  - traefik-ingress-controller-deployment.yaml
+  - traefik-ingress-controller-service.yaml
+  - cybercrime-api-ingress.yaml
+  - arango-claim.yaml
+  - cybercrime-frontend-ingress.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- certs-claim.yaml
-- azure-storageclass.yaml
-- arango-secrets.yaml
-- cybercrime-api-secrets.yaml
-- minio-secrets.yaml
-- flux.yaml
-- ../../base
+  - certs-claim.yaml
+  - azure-storageclass.yaml
+  - arango-secrets.yaml
+  - cybercrime-api-secrets.yaml
+  - minio-secrets.yaml
+  - flux.yaml
+  - ../../base
 images:
-- name: acrrcmpcybercrime.azurecr.io/api
-  newName: gcr.io/report-a-cybercrime-alpha/api
-  newTag: master-3a3e8c3
-- name: acrrcmpcybercrime.azurecr.io/frontend
-  newName: gcr.io/report-a-cybercrime-alpha/frontend
-  newTag: master-62e12de
-- name: gcr.io/report-a-cybercrime-alpha/api
-  newTag: master-f70131e
-- name: gcr.io/report-a-cybercrime-alpha/frontend
-  newTag: master-bf9dc2d
-- name: traefik
-  newTag: "1.7"
+  - name: acrrcmpcybercrime.azurecr.io/api
+    newTag: mmaster-784df720a9318ddee040658e769b070d9f2c9135
+  - name: acrrcmpcybercrime.azurecr.io/frontend
+    newTag: master-aea56a3c15b16d0e6bfc20bc2942272184b094b1
+  - name: traefik
+    newTag: "1.7"
