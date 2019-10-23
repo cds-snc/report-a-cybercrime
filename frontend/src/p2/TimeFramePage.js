@@ -18,15 +18,15 @@ const submitAndNavigate = (client, data) => {
 export const TimeFramePage = () => (
   <Layout>
     <BackButton route="/p2">
-      <Trans>the start page</Trans>
+      <Trans id="timeFramePage.backButton">the start page</Trans>
     </BackButton>
     <Steps activeStep={1} totalSteps={6} />
 
     <H1>
-      <Trans>When did the scam happen?</Trans>
+      <Trans id="timeFramePage.title">When did the scam happen?</Trans>
     </H1>
     <P>
-      <Trans>
+      <Trans id="timeFramePage.intro">
         It’s okay if you don’t know exactly when it took place. You can give
         your best guess or leave this blank.
       </Trans>
