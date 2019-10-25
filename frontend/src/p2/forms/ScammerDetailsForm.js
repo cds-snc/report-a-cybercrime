@@ -88,11 +88,9 @@ export const ScammerDetailsFormWrapped = props => {
               </Ul>
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
-                  <Trans >
-                    <strong id ="scammerDetailPage.summary">
+                <strong ><Trans id ="scammerDetailPage.summary"> 
                       What do you know about where the scam came from?
-                    </strong>
-                  </Trans>
+                  </Trans></strong>
                   <Text color="darkGray" mt="6px" mb="8px">
                     <Trans id="scammerDetailPage.hint">
                       Remember to include any email addresses, phone numbers, or
