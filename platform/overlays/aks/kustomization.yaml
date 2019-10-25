@@ -14,13 +14,11 @@ resources:
 - cybercrime-api-secrets.yaml
 - minio-secrets.yaml
 - flux.yaml
-bases:
 - ../../base
 images:
 - name: acrrcmpcybercrime.azurecr.io/api
-  newTag: master-784df720a9318ddee040658e769b070d9f2c9135
+  newTag: master-f70131ecac0629b21b5ffbcf20fdff0d4fe1f3e6
 - name: acrrcmpcybercrime.azurecr.io/frontend
-  newTag: master-aea56a3c15b16d0e6bfc20bc2942272184b094b1
+  newTag: master-d6a30426fd7bb1db1618890d86ebd8ec44c5acda
 - name: traefik
   newTag: "1.7"
-
