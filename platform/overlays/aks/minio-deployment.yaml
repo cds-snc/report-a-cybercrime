@@ -24,6 +24,7 @@ spec:
       containers:
         - image: minio/minio
           name: minio
+          args: ["gateway", "azure"]
           env:
             - name: MINIO_ACCESS_KEY
               valueFrom:
