@@ -50,7 +50,7 @@ export const LandingPage = props => {
         <Trans id="landingPage.intro">
           Scams can happen to anyone. They’re not always easy to recognize and
           new ones are invented every day.
-        </Trans>..
+        </Trans>
       </P>
       <InfoCard>
         <P>
