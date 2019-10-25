@@ -4,4 +4,4 @@ node_modules
 .idea
 build-sizes.json
 data
-**/.env.*
+**/.env
