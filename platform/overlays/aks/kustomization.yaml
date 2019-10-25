@@ -23,3 +23,4 @@ images:
   newTag: master-aea56a3c15b16d0e6bfc20bc2942272184b094b1
 - name: traefik
   newTag: "1.7"
+
