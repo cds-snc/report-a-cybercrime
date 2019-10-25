@@ -30,8 +30,8 @@ class TimeFrameInfoFormWrapped extends Component {
               <form onSubmit={handleSubmit}>
                 <label htmlFor="startDate">
                   <Text marginTop={[5, null, 6]}>
-                    <Trans id="timeFramePage.startDate">
-                      <strong>Approximate start</strong>
+                    <Trans >
+                      <strong id="timeFramePage.startDate">Approximate start</strong>
                     </Trans>
                   </Text>
                   <Text color="darkGray" mt="6px" mb="8px">
@@ -50,8 +50,8 @@ class TimeFrameInfoFormWrapped extends Component {
 
                 <label htmlFor="endDate">
                   <Text marginTop={[5, null, 6]}>
-                    <Trans id="timeFramePage.endDate">
-                      <strong>Approximate end</strong>
+                    <Trans >
+                      <strong id="timeFramePage.endDate">Approximate end</strong>
                     </Trans>
                   </Text>
                   <Text color="darkGray" mt="6px" mb="8px">
