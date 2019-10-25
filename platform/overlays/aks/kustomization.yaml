@@ -15,9 +15,9 @@ resources:
   - flux.yaml
   - ../../base
 images:
-  - name: acrrcmpcybercrime.azurecr.io/api
+  - name: acrrcmpcybercrime.azurecr.io/api:latest
     newTag: master-784df720a9318ddee040658e769b070d9f2c9135
-  - name: acrrcmpcybercrime.azurecr.io/frontend
+  - name: acrrcmpcybercrime.azurecr.io/frontend:latest
     newTag: master-aea56a3c15b16d0e6bfc20bc2942272184b094b1
   - name: traefik
     newTag: "1.7"
