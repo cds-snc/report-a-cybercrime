@@ -86,11 +86,11 @@ spec:
                   name: minio-secrets
                   key: MINIO_SECRET_KEY
             - name: MINIO_BUCKET_NAME
-              value: report-a-cybercrime-alpha-uploads
+              value: reports
           resources: {}
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  status: {}
+status: {}
