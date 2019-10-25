@@ -32,7 +32,25 @@ const randomizeString = s =>
         .replace(/[0-9]/g, () => randDigit())
     : s
 
-const submit = (client, submitReportP2) => {
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrer: 'no-referrer', // no-referrer, *client
+    body: JSON.stringify(data), // body data type must match "Content-Type" header
+  })
+  return await response // parses JSON response into native JavaScript objects
+}
+
+const submit = async (client, submitReportP2) => {
   let timeFrame = getTimeFrame(client)
   let whatHappened = getWhatHappened(client)
   let scammerDetails = getScammerDetails(client)
@@ -59,6 +77,13 @@ const submit = (client, submitReportP2) => {
       postalCode,
     },
     surveyInfo,
+  }
+
+  try {
+    const results = await postData('/submit', data)
+    console.log(`POST status: ${results.statusText}`)
+  } catch (error) {
+    console.error(error)
   }
 
   submitReportP2({ variables: data })

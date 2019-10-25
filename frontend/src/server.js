@@ -42,8 +42,14 @@ server
   })
   .use('/public', express.static(__dirname + '/public'))
   .use('/static', express.static('static'))
+  .use(express.json())
   .get('/monitoring/ready', (_req, res) => {
     res.status(200).send('yes')
+  })
+  .post('/submit', (req, res) => {
+    const data = req.body
+    console.log(data)
+    res.send('POST response!')
   })
   .get('/*', async (req, res) => {
     const cache = new InMemoryCache()
