@@ -88,8 +88,8 @@ export const ScammerDetailsFormWrapped = props => {
               </Ul>
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
-                  <Trans id ="scammerDetailPage.summary">
-                    <strong>
+                  <Trans >
+                    <strong id ="scammerDetailPage.summary">
                       What do you know about where the scam came from?
                     </strong>
                   </Trans>
