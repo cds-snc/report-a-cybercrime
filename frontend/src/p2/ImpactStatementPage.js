@@ -20,14 +20,14 @@ const submitAndNavigate = (client, data) => {
 export const ImpactStatementPage = () => (
   <Layout>
     <BackButton route="/p2/scammerdetails">
-      <Trans>the suspect</Trans>
+      <Trans id="impactPage.backButton">the suspect</Trans>
     </BackButton>
     <Steps activeStep={4} totalSteps={6} />
     <H1>
-      <Trans>Impact caused by the scam</Trans>
+      <Trans id="impactPage.title">Impact caused by the scam</Trans>
     </H1>
     <P>
-      <Trans>
+      <Trans id="impactPage.intro">
         You're not the only one affected by this scam. Help protect others by
         telling us how the scam affected you.
       </Trans>
