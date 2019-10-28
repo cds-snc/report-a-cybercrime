@@ -17,7 +17,7 @@ resources:
 - ../../base
 images:
 - name: acrrcmpcybercrime.azurecr.io/api
-  newTag: master-f32826f5b85738553dea221cde277457c191dfe5
+  newTag: master-a36585967cbebc5172900481caff1090cf2021e6
 - name: acrrcmpcybercrime.azurecr.io/frontend
   newTag: master-99b2c13b2c197a21cf516a0d8d0b20c7c0eef87d
 - name: traefik
