@@ -34,17 +34,25 @@ export const WhatHappenedPage = () => (
       </Trans>
     </P>
     <P>
-      <Trans id="whatHappendPage.details1">Think about including things such as:</Trans>
+      <Trans id="whatHappendPage.details1">
+        Think about including things such as:
+      </Trans>
     </P>
     <Ul>
       <Li>
-        <Trans id="whatHappendPage.details2">Which app, website, or device you were using</Trans>
+        <Trans id="whatHappendPage.details2">
+          Which app, website, or device you were using
+        </Trans>
       </Li>
       <Li>
-        <Trans id="whatHappendPage.details3">How the scammer contacted you</Trans>
+        <Trans id="whatHappendPage.details3">
+          How the scammer contacted you
+        </Trans>
       </Li>
       <Li>
-        <Trans id="whatHappendPage.details4">What they promised, threatened, or stole</Trans>
+        <Trans id="whatHappendPage.details4">
+          What they promised, threatened, or stole
+        </Trans>
       </Li>
     </Ul>
     <TrackPageViews />
