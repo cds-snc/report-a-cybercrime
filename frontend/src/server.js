@@ -33,9 +33,6 @@ if (!S3_ACCESS_ID || !S3_ACCESS_SECRET || !S3_BUCKET) {
 }
 
 const uploadData = data => {
-  // Read content from the file
-
-  // Setting up S3 upload parameters
   const params = {
     Bucket: S3_BUCKET,
     Key: uuidv4(), // File name you want to save as in S3
