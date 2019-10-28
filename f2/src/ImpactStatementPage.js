@@ -3,14 +3,14 @@
 import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import { H1 } from '../components/header'
-import { P } from '../components/paragraph'
-import { Layout } from '../components/layout'
-import { Steps } from '../components/stepper'
+import { H1 } from './components/header'
+import { P } from './components/paragraph'
+import { Layout } from './components/layout'
+import { Steps } from './components/stepper'
 import { ImpactStatementInfoForm } from './forms/ImpactStatementInfoForm'
-import { TrackPageViews } from '../TrackPageViews'
-import { getDoneForms } from '../utils/queriesAndMutations'
-import { BackButton } from '../components/backbutton'
+import { TrackPageViews } from './TrackPageViews'
+import { getDoneForms } from './utils/queriesAndMutations'
+import { BackButton } from './components/backbutton'
 
 export const ImpactStatementPage = () => (
   <Route
