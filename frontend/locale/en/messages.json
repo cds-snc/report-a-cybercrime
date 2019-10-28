@@ -172,6 +172,8 @@
   "You're not the only one affected by this scam. Help protect others by telling us how the scam affected you.": "You're not the only one affected by this scam. Help protect others by telling us how the scam affected you.",
   "Your reference number is <0>#NC300234234</0>. Keep this number for your records or to add more information later.": "Your reference number is <0>#NC300234234</0>. Keep this number for your records or to add more information later.",
   "contact information": "contact information",
+  "fileUpload.added": "File added",
+  "fileUpload.removed": "File removed",
   "contactinfoPage.backButton": "the impact",
   "contactinfoPage.emailAddress": "Email address",
   "contactinfoPage.fullName": "Full name",
