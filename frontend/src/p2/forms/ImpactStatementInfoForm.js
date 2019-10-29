@@ -50,9 +50,9 @@ export const ImpactStatementInfoForm = props => (
             <Fieldset>
               <legend>
                 <Text marginTop={[5, null, 6]}>
-                  <Trans>
-                    <strong>What was the impact of the scam?</strong>
-                  </Trans>
+                <strong><Trans id="impactPage.detail">
+                    What was the impact of the scam?
+                  </Trans></strong>
                 </Text>
               </legend>
 
@@ -79,11 +79,11 @@ export const ImpactStatementInfoForm = props => (
 
             <label htmlFor="damage">
               <Text marginTop={[5, null, 6]}>
-                <Trans>
-                  <strong>Tell us more about how it impacted you.</strong>
-                </Trans>
+              <strong><Trans id="impactPage.summary">
+                  Tell us more about how it impacted you.
+                </Trans></strong>
                 <Text color="darkGray" mt="6px" mb="8px">
-                  <Trans>
+                  <Trans id="impactPage.example">
                     For example: the amount of money, the information taken,
                     what else was affected
                   </Trans>
