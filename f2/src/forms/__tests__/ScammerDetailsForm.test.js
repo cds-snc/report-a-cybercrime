@@ -7,8 +7,8 @@ import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { ScammerDetailsForm } from '../ScammerDetailsForm'
-import en from '../../../locales/en.js'
-import theme from '../../../theme'
+import en from '../../locales/en.js'
+import theme from '../../theme'
 
 i18n.load('en', { en })
 i18n.activate('en')

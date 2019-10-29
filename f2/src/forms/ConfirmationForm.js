@@ -4,11 +4,11 @@ import React from 'react'
 import { jsx } from '@emotion/core'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import { Form } from 'react-final-form'
-import { ButtonsContainer } from '../../components/buttons-container'
+import { ButtonsContainer } from '../components/buttons-container'
 import {
   getTellUsMore,
   SUBMIT_P2_REPORT_MUTATION,
-} from '../../utils/queriesAndMutations'
+} from '../utils/queriesAndMutations'
 
 export const ConfirmationForm = props => {
   return (

@@ -2,14 +2,14 @@ import React from 'react'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import styled from '@emotion/styled'
 import { PageNotFound } from './PageNotFound'
-import { LandingPage as P2LandingPage } from './p2/LandingPage'
-import { WhatHappenedPage as P2WhatHappenedPage } from './p2/WhatHappenedPage'
-import { ContactInfoPage as P2ContactInfoPage } from './p2/ContactInfoPage'
-import { ScammerDetailsPage as P2ScammerDetailsPage } from './p2/ScammerDetailsPage'
-import { ConfirmationPage as P2ConfirmationPage } from './p2/ConfirmationPage'
-import { NextSteps as P2NextSteps } from './p2/NextSteps'
-import { TimeFramePage as P2TimeFramePage } from './p2/TimeFramePage'
-import { ImpactStatementPage as P2ImpactStatementPage } from './p2/ImpactStatementPage'
+import { LandingPage } from './LandingPage'
+import { WhatHappenedPage } from './WhatHappenedPage'
+import { ContactInfoPage } from './ContactInfoPage'
+import { ScammerDetailsPage } from './ScammerDetailsPage'
+import { ConfirmationPage } from './ConfirmationPage'
+import { NextSteps } from './NextSteps'
+import { TimeFramePage } from './TimeFramePage'
+import { ImpactStatementPage } from './ImpactStatementPage'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -24,28 +24,28 @@ export const Home = () => (
       <Router>
         <Switch>
           <Route exact path="/">
-            <P2LandingPage />
+            <LandingPage />
           </Route>
           <Route path="/whathappened">
-            <P2WhatHappenedPage />
+            <WhatHappenedPage />
           </Route>
           <Route path="/contactinfo">
-            <P2ContactInfoPage />
+            <ContactInfoPage />
           </Route>
           <Route path="/scammerdetails">
-            <P2ScammerDetailsPage />
+            <ScammerDetailsPage />
           </Route>
           <Route path="/confirmation">
-            <P2ConfirmationPage />
+            <ConfirmationPage />
           </Route>
           <Route path="/nextsteps">
-            <P2NextSteps />
+            <NextSteps />
           </Route>
           <Route path="/timeframe">
-            <P2TimeFramePage />
+            <TimeFramePage />
           </Route>
           <Route path="/impact">
-            <P2ImpactStatementPage />
+            <ImpactStatementPage />
           </Route>
           <Route>
             <PageNotFound />

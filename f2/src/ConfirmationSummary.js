@@ -4,17 +4,17 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { ApolloConsumer } from 'react-apollo'
-import { H2 } from '../components/header'
-import { Text, StyledSpan } from '../components/text'
-import { Container } from '../components/container'
-import { Link } from '../components/link'
+import { H2 } from './components/header'
+import { Text, StyledSpan } from './components/text'
+import { Container } from './components/container'
+import { Link } from './components/link'
 import {
   getTimeFrame,
   getWhatHappened,
   getScammerDetails,
   getImpact,
   getP2ContactInfo,
-} from '../utils/queriesAndMutations'
+} from './utils/queriesAndMutations'
 
 const SectionHeader = props => (
   <H2

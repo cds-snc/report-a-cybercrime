@@ -4,11 +4,11 @@ import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { TextArea } from '../../components/text-area'
-import { Text } from '../../components/text'
-import { finalFormAdapter } from '../../utils/finalFormAdapter'
-import { getWhatHappened } from '../../utils/queriesAndMutations'
-import { ButtonsContainer } from '../../components/buttons-container'
+import { TextArea } from '../components/text-area'
+import { Text } from '../components/text'
+import { finalFormAdapter } from '../utils/finalFormAdapter'
+import { getWhatHappened } from '../utils/queriesAndMutations'
+import { ButtonsContainer } from '../components/buttons-container'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 

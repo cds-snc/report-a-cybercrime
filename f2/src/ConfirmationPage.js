@@ -2,10 +2,10 @@
 import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
-import { H1 } from '../components/header'
-import { TrackPageViews } from '../TrackPageViews'
-import { Steps } from '../components/stepper'
-import { Layout } from '../components/layout'
+import { H1 } from './components/header'
+import { TrackPageViews } from './TrackPageViews'
+import { Steps } from './components/stepper'
+import { Layout } from './components/layout'
 import {
   getTimeFrame,
   getWhatHappened,
@@ -13,10 +13,10 @@ import {
   getImpact,
   getP2ContactInfo,
   getSurveyInfo,
-} from '../utils/queriesAndMutations'
+} from './utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
-import { BackButton } from '../components/backbutton'
+import { BackButton } from './components/backbutton'
 
 const randLetter = () => {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')

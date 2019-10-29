@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { ButtonsContainer } from '../../components/buttons-container'
-import { TextInput } from '../../components/TextInput'
-import { Text } from '../../components/text'
+import { ButtonsContainer } from '../components/buttons-container'
+import { TextInput } from '../components/TextInput'
+import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
-import { finalFormAdapter } from '../../utils/finalFormAdapter'
-import { getP2ContactInfo } from '../../utils/queriesAndMutations'
+import { finalFormAdapter } from '../utils/finalFormAdapter'
+import { getP2ContactInfo } from '../utils/queriesAndMutations'
 
 const TextInputAdapter = finalFormAdapter(TextInput)
 

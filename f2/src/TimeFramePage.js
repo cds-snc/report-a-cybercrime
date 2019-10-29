@@ -1,14 +1,14 @@
 import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import { H1 } from '../components/header'
-import { P } from '../components/paragraph'
-import { Layout } from '../components/layout'
+import { H1 } from './components/header'
+import { P } from './components/paragraph'
+import { Layout } from './components/layout'
 import { TimeFrameInfoForm } from './forms/TimeFrameInfoForm'
-import { TrackPageViews } from '../TrackPageViews'
-import { getDoneForms } from '../utils/queriesAndMutations'
-import { BackButton } from '../components/backbutton'
-import { Steps } from '../components/stepper'
+import { TrackPageViews } from './TrackPageViews'
+import { getDoneForms } from './utils/queriesAndMutations'
+import { BackButton } from './components/backbutton'
+import { Steps } from './components/stepper'
 
 export const TimeFramePage = () => (
   <Route

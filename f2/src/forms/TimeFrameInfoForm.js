@@ -5,11 +5,11 @@ import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { Text } from '../../components/text'
-import { ButtonsContainer } from '../../components/buttons-container'
-import { TextInput } from '../../components/TextInput'
-import { finalFormAdapter } from '../../utils/finalFormAdapter'
-import { getTimeFrame } from '../../utils/queriesAndMutations'
+import { Text } from '../components/text'
+import { ButtonsContainer } from '../components/buttons-container'
+import { TextInput } from '../components/TextInput'
+import { finalFormAdapter } from '../utils/finalFormAdapter'
+import { getTimeFrame } from '../utils/queriesAndMutations'
 
 const TextInputAdapter = finalFormAdapter(TextInput)
 
