@@ -72,7 +72,7 @@ services:
       - "3000"
       - "3001:3001"
     build:
-      context: ./frontend
+      context: ./f2
       dockerfile: Dockerfile
     labels:
       - "traefik.backend=frontend"
@@ -80,8 +80,8 @@ services:
       - "traefik.frontend.entryPoints=http"
       - "traefik.port=3000"
     volumes:
-      - ./frontend:/app
-    command: npm run dev
+      - ./f2:/app
+    command: npm start
 volumes:
   arangodata:
   miniodata:
