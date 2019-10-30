@@ -275,7 +275,6 @@ const mutation = new GraphQLObjectType({
           sendConfirmation(contactInfo.email)
           contactInfo.email = randomizeString(contactInfo.email)
         }
-
         await db.saveReport({
           source,
           timeFrame,
@@ -287,7 +286,6 @@ const mutation = new GraphQLObjectType({
           surveyInfo,
           createdAt: new Date().toISOString(),
         })
-
         return {
           reportID: uuidv4(),
         }
