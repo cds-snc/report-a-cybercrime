@@ -32,6 +32,9 @@ services:
       - arangodata:/var/lib/arangodb3
   api:
     environment:
+      - NOTIFY_API_KEY
+      - NOTIFY_API_BASE_URL
+      - NOTIFY_CONFIRMATION_TEMPLATE_ID
       - PORT=$API_PORT
       - DB_NAME
       - DB_URL

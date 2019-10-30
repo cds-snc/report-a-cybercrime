@@ -24,6 +24,7 @@ const {
 
 const { createHash } = require('crypto')
 const uuidv4 = require('uuid/v4')
+const { sendConfirmation } = require('./notifyUtils')
 
 // eslint-disable-next-line
 const streamToString = stream =>
@@ -267,6 +268,10 @@ const mutation = new GraphQLObjectType({
           surveyInfo,
           createdAt: new Date().toISOString(),
         })
+
+        if (contactInfo.email) {
+          sendConfirmation(contactInfo.email)
+        }
         return {
           reportID: uuidv4(),
         }

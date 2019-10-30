@@ -30,6 +30,7 @@
     "minio": "^7.0.12",
     "moment": "^2.24.0",
     "moment-range": "^4.0.2",
+    "notifications-node-client": "^4.6.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
