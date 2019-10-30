@@ -28,12 +28,8 @@
     '<0>What do you know about where the scam came from?</0>':
       '<0>What do you know about where the scam came from?</0>',
     '<0>What happened?</0>': '<0>What happened?</0>',
-    '<0>What happens next</0>': '<0>What happens next</0>',
     '<0>What was the impact of the scam?</0>':
       '<0>What was the impact of the scam?</0>',
-    '<0>Where you can get help</0>': '<0>Where you can get help</0>',
-    '<0>You have other reporting options</0>':
-      '<0>You have other reporting options</0>',
     ALPHA: 'ALPHA',
     'Add file': 'Add file',
     'Add suspect clues': 'Add suspect clues',
@@ -53,9 +49,6 @@
     'Documents, screenshots, or receipts':
       'Documents, screenshots, or receipts',
     Edit: 'Edit',
-    'Find tips to protect yourself in the future':
-      'Find tips to protect yourself in the future',
-    'Follow what scams are trending': 'Follow what scams are trending',
     'For example: 2019-04-28': 'For example: 2019-04-28',
     'For example: the amount of money, the information taken, what else was affected':
       'For example: the amount of money, the information taken, what else was affected',
@@ -78,14 +71,8 @@
     'Remember to include any email addresses, phone numbers, or website links':
       'Remember to include any email addresses, phone numbers, or website links',
     'Remove file': 'Remove file',
-    'Report a scam': 'Signaler une fraude',
-    'Report directly to the place where the scam happened.':
-      'Report directly to the place where the scam happened.',
+    'Report a scam': 'Report a scam',
     'Report now \u276F': 'Report now \u276F',
-    'Report to the credit bureaus, <0>Equifax</0> and <1>TransUnion</1>, if your identity was stolen.':
-      'Report to the credit bureaus, <0>Equifax</0> and <1>TransUnion</1>, if your identity was stolen.',
-    'Report to your financial institution, if you lost money.':
-      'Report to your financial institution, if you lost money.',
     'Review your report': 'Review your report',
     Scam: 'Scam',
     'Scams can happen to anyone. They\u2019re not always easy to recognize and new ones are invented every day.':
@@ -102,7 +89,6 @@
     ],
     'Submit report &nbsp; \u276F': 'Submit report &nbsp; \u276F',
     Suspect: 'Suspect',
-    'Talk to someone and get support': 'Talk to someone and get support',
     'Tell us about it in your own words.':
       'Tell us about it in your own words.',
     'Tell us about your experience so we can stop it from happening again.':
@@ -110,9 +96,6 @@
     'Tell us how the scam impacted you so that we can better support other people who are affected.':
       'Tell us how the scam impacted you so that we can better support other people who are affected.',
     'Terms and Conditions': 'Terms and Conditions',
-    'Thank you for reporting': 'Thank you for reporting',
-    'The RCMP will analyze your report and combine it with others that are similar to help police across Canada track down cybercriminals.':
-      'The RCMP will analyze your report and combine it with others that are similar to help police across Canada track down cybercriminals.',
     'Think about including things such as:':
       'Think about including things such as:',
     'This site will change as we test ideas.':
@@ -122,8 +105,6 @@
       "Warning! This is a prototype. It won't actually submit your report to the RCMP.",
     'We will use this to send you a confirmation email and to link your report to other reports in your area.':
       'We will use this to send you a confirmation email and to link your report to other reports in your area.',
-    "We've sent you an email with a summary of your report. Your reference number is <0>#NC300234234</0>.":
-      "We've sent you an email with a summary of your report. Your reference number is <0>#NC300234234</0>.",
     'What happened is not your fault. Scammers use a number of techniques to get what they want.':
       'What happened is not your fault. Scammers use a number of techniques to get what they want.',
     'What language they used to communicate':
@@ -141,6 +122,25 @@
       "You're not the only one affected by this scam. Help protect others by telling us how the scam affected you.",
     'Your report helps the RCMP learn about these crimes and helps police across Canada catch cybercriminals.':
       'Your report helps the RCMP learn about these crimes and helps police across Canada catch cybercriminals.',
+    'nextStepsPage.helpResource': "O\xF9 pouvez-vous obtenir de l'aide?",
+    'nextStepsPage.helpResource1': "Parler \xE0 quelqu'un et obtenir de l'aide",
+    'nextStepsPage.helpResource2':
+      'Trouvez des astuces pour vous prot\xE9ger dans le futur',
+    'nextStepsPage.helpResource3': 'Suivez les tendances des arnaques',
+    'nextStepsPage.nextStepDetail':
+      "La GRC analysera votre rapport et le combinera avec d'autres documents semblables pour aider la police \xE0 travers le Canada \xE0 traquer les cybercriminels.",
+    'nextStepsPage.nextStepSummary': "Qu'est-ce qui se passe ensuite",
+    'nextStepsPage.otherReportOption': "Vous avez d'autres options de rapport",
+    'nextStepsPage.otherReportOption1':
+      "Rendez-vous directement \xE0 l'endroit o\xF9 l'escroquerie s'est produite.",
+    'nextStepsPage.otherReportOption2':
+      "Pr\xE9sentez-vous \xE0 votre institution financi\xE8re si vous avez perdu de l'argent.",
+    'nextStepsPage.otherReportOption3':
+      'Signaler aux bureaux de cr\xE9dit, <0> Equifax </0> et <1> TransUnion </1>, si votre identit\xE9 a \xE9t\xE9 vol\xE9e',
+    'nextStepsPage.referenceNumber': '# NC300234234',
+    'nextStepsPage.summary':
+      'Nous vous avons envoy\xE9 un courrier \xE9lectronique avec un r\xE9sum\xE9 de votre rapport. Votre num\xE9ro de r\xE9f\xE9rence est <0>#NC300234234</0>.',
+    'nextStepsPage.title': "Merci d'avoir signal\xE9",
     'the impact': 'the impact',
     'the scam': 'the scam',
     'the start page': 'the start page',
