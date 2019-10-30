@@ -24,7 +24,7 @@ const {
 
 const { createHash } = require('crypto')
 const uuidv4 = require('uuid/v4')
-const { sendConfirmation } = require('./notifyUtils')
+const { notifyIsSetup, sendConfirmation } = require('./notifyUtils')
 
 const randLetter = () => {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
@@ -271,7 +271,7 @@ const mutation = new GraphQLObjectType({
         { db },
         _info,
       ) => {
-        if (contactInfo.email) {
+        if (notifyIsSetup && contactInfo.email) {
           sendConfirmation(contactInfo.email)
           contactInfo.email = randomizeString(contactInfo.email)
         }
