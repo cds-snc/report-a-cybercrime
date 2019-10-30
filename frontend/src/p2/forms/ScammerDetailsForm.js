@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
-import { I18n } from '@lingui/react'
+import { I18n, i18nMark } from '@lingui/react'
 import { Form, Field } from 'react-final-form'
 import { Container } from '../../components/container'
 import { ButtonsContainer } from '../../components/buttons-container'
@@ -30,6 +30,14 @@ export const ScammerDetailsFormWrapped = props => {
     cached.fileDescriptions,
   )
   const [scammerDetails, setScammerDetails] = useState(cached.scammerDetails)
+  const [status, setStatus] = useState('')
+  i18nMark('fileUpload.removed')
+  i18nMark('fileUpload.added')
+  useEffect(() => {
+    if (status) {
+      document.getElementById('status').focus()
+    }
+  }, [status])
 
   const onChange = e => {
     if (e.target.id === 'scammerDetails') {
@@ -40,6 +48,7 @@ export const ScammerDetailsFormWrapped = props => {
       newFileDescriptions[index] = e.target.value
       setFileDescriptions(newFileDescriptions)
     } else if (e.target.files && e.target.files[0]) {
+      setStatus('fileUpload.added')
       setFiles(files.concat(e.target.files[0]))
       setFileDescriptions(fileDescriptions.concat(''))
     }
@@ -52,6 +61,7 @@ export const ScammerDetailsFormWrapped = props => {
     )
     setFiles(newFiles)
     setFileDescriptions(newFileDescriptions)
+    setStatus('fileUpload.removed')
   }
 
   const localSubmit = client => {
@@ -70,31 +80,29 @@ export const ScammerDetailsFormWrapped = props => {
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <P>
-                <Trans>Think about including things such as:</Trans>
+                <Trans id="scammerDetail.details">Think about including things such as:</Trans>
               </P>
               <Ul>
                 <Li>
-                  <Trans>Who the scammer claimed to be</Trans>
+                  <Trans id="scammerDetail.detail1">Who the scammer claimed to be</Trans>
                 </Li>{' '}
                 <Li>
-                  <Trans>Where they asked you to send things</Trans>
+                  <Trans id="scammerDetail.detail2">Where they asked you to send things</Trans>
                 </Li>
                 <Li>
-                  <Trans>What language they used to communicate</Trans>
+                  <Trans id="scammerDetail.detail3">What language they used to communicate</Trans>
                 </Li>
                 <Li>
-                  <Trans>Any screenshots, messages, or receipts</Trans>
+                  <Trans id="scammerDetail.detail4">Any screenshots, messages, or receipts</Trans>
                 </Li>
               </Ul>
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
-                  <Trans>
-                    <strong>
+                <strong><Trans id="scammerDetail.summary">       
                       What do you know about where the scam came from?
-                    </strong>
-                  </Trans>
+                  </Trans></strong>
                   <Text color="darkGray" mt="6px" mb="8px">
-                    <Trans>
+                    <Trans id="scammerDetail.reminder">
                       Remember to include any email addresses, phone numbers, or
                       website links
                     </Trans>
@@ -138,19 +146,35 @@ export const ScammerDetailsFormWrapped = props => {
                 >
                   <img alt="upload icon" src={upload} />
                   <span>
-                    <Trans>Add file</Trans>
+                    <Trans id="scammerDetail.addFileButtom">Add file</Trans>
                   </span>
                 </FileUpload>
               </Container>
               <I18n>
                 {({ i18n }) => (
-                  <H2 fontSize={[4, null, 5]} lineHeight={[4, null, 5]}>
-                    {i18n.plural({
-                      value: files.length,
-                      one: '# file attached',
-                      other: '# files attached',
-                    })}
-                  </H2>
+                  <React.Fragment>
+                    <H2 fontSize={[4, null, 5]} lineHeight={[4, null, 5]}>
+                      {i18n.plural({
+                        value: files.length,
+                        one: '# file attached',
+                        other: '# files attached',
+                      })}
+                    </H2>
+
+                    {status ? (
+                      <Text
+                        tabindex={-1}
+                        id="status"
+                        css={css`
+                          :focus {
+                            outline: 0px solid transparent;
+                          }
+                        `}
+                      >
+                        {i18n._(status)}
+                      </Text>
+                    ) : null}
+                  </React.Fragment>
                 )}
               </I18n>
 
@@ -163,7 +187,7 @@ export const ScammerDetailsFormWrapped = props => {
 
                     <label htmlFor={`file-description-${index}`}>
                       <Text>
-                        <Trans>Describe what this file shows</Trans>
+                        <Trans id="scammerDetail.fileDescription">Describe what this file shows</Trans>
                       </Text>
                     </label>
                     <div>
@@ -182,7 +206,7 @@ export const ScammerDetailsFormWrapped = props => {
                       type="button"
                       onClick={() => removeFile(index)}
                     >
-                      <Trans>Remove file</Trans>
+                      <Trans id="scammerDetail.removeFileButton">Remove file</Trans>
                     </Button>
                   </React.Fragment>
                 ))}

@@ -38,7 +38,7 @@ const timeFrameSummary = client => {
   return (
     <React.Fragment>
       <SectionHeader>
-        <Trans>Timeframe</Trans>{' '}
+        <Trans id="confirmationPage.timeFrameTitle">Timeframe</Trans>{' '}
         <I18n>
           {({ i18n }) => (
             <EditButton
@@ -56,7 +56,7 @@ const timeFrameSummary = client => {
         </Text>
       ) : (
         <Text>
-          <Trans>
+          <Trans id="confirmationPage.timeFrameIntro">
             If you can, give us an idea of when the scam took place so that
             police are able to look into it.
           </Trans>
@@ -72,7 +72,7 @@ const whatHappenedSummary = client => {
   return (
     <React.Fragment>
       <SectionHeader>
-        <Trans>Scam</Trans>{' '}
+        <Trans id="confirmationPage.scamTitle">Scam</Trans>{' '}
         <I18n>
           {({ i18n }) => (
             <EditButton
@@ -86,7 +86,7 @@ const whatHappenedSummary = client => {
         <Text>{whatHappened}</Text>
       ) : (
         <Text>
-          <Trans>
+          <Trans id="confirmationPage.scamIntro">
             Tell us about your experience so we can stop it from happening
             again.
           </Trans>
@@ -101,7 +101,7 @@ const scammerSummary = client => {
   return (
     <React.Fragment>
       <SectionHeader>
-        <Trans>Suspect</Trans>{' '}
+        <Trans id="confirmationPage.suspectTitle">Suspect</Trans>{' '}
         <I18n>
           {({ i18n }) => (
             <EditButton
@@ -131,7 +131,7 @@ const scammerSummary = client => {
         </React.Fragment>
       ) : (
         <Text>
-          <Trans>
+          <Trans id="confirmationPage.suspectIntro">
             Share any details you may know so that police can try to identify
             suspects.
           </Trans>
@@ -154,7 +154,7 @@ const impactSummary = client => {
       {({ i18n }) => (
         <>
           <SectionHeader>
-            <Trans>Impact</Trans>{' '}
+            <Trans id="confirmationPage.ImpactTitle">Impact</Trans>{' '}
             <EditButton aria-label={i18n._('Edit impact')} to="/p2/impact" />
           </SectionHeader>
           {howWereYouAffected.length > 0 || damage != '' ? (
@@ -164,7 +164,7 @@ const impactSummary = client => {
             </>
           ) : (
             <Text>
-              <Trans>
+              <Trans id="confirmationPage.impactIntro">
                 Tell us how the scam impacted you so that we can better support
                 other people who are affected.
               </Trans>
@@ -181,7 +181,7 @@ const contactSummary = client => {
   return (
     <React.Fragment>
       <SectionHeader>
-        <Trans>Contact</Trans>{' '}
+        <Trans id="confirmationPage.contactTitle">Contact</Trans>{' '}
         <I18n>
           {({ i18n }) => (
             <EditButton
@@ -200,7 +200,7 @@ const contactSummary = client => {
         </React.Fragment>
       ) : (
         <Text>
-          <Trans>
+          <Trans id="confirmationPage.contactIntro">
             Provide your contact details so that we can send you a confirmation
             of your report.
           </Trans>

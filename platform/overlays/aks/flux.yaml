@@ -65,6 +65,10 @@ spec:
       - name: git-keygen
         emptyDir:
           medium: Memory
+      - name: acr-credentials
+        hostPath:
+            path: /etc/kubernetes/azure.json
+            type: ""
       containers:
       - name: flux
         image: docker.io/fluxcd/flux:1.15.0
@@ -88,6 +92,8 @@ spec:
           initialDelaySeconds: 5
           timeoutSeconds: 5
         volumeMounts:
+        - name: acr-credentials
+          mountPath: /etc/kubernetes/azure.json
         - name: git-key
           mountPath: /etc/fluxd/ssh # to match location given in image's /etc/ssh/config
           readOnly: true # this will be the case perforce in K8s >=1.10

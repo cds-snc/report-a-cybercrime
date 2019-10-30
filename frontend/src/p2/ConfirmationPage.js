@@ -98,7 +98,7 @@ export const ConfirmationPage = () => {
       </BackButton>
       <Steps activeStep={6} totalSteps={6} />
       <H1>
-        <Trans>Review your report</Trans>
+        <Trans id="confirmationPage.title">Review your report</Trans>
       </H1>
       <ConfirmationSummary />
       <ConfirmationForm onSubmit={submit} />

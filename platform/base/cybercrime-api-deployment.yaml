@@ -10,15 +10,15 @@ metadata:
     flux.weave.works/tag.cybercrime-api: glob:master-*
   name: cybercrime-api
 spec:
-  replicas: 1
+  replicas: 2
   revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: cybercrime-api
   strategy:
     rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
+      maxSurge: 1
+      maxUnavailable: 50%
     type: RollingUpdate
   template:
     metadata:
@@ -54,6 +54,14 @@ spec:
         - image: acrrcmpcybercrime.azurecr.io/api
           imagePullPolicy: Always
           name: cybercrime-api
+          livenessProbe:
+            httpGet:
+              path: /alive
+              port: 3000
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 3000
           env:
             - name: DB_USER
               valueFrom:
@@ -86,11 +94,11 @@ spec:
                   name: minio-secrets
                   key: MINIO_SECRET_KEY
             - name: MINIO_BUCKET_NAME
-              value: report-a-cybercrime-alpha-uploads
+              value: reports
           resources: {}
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  status: {}
+status: {}

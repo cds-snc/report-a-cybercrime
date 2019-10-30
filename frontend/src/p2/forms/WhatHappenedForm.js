@@ -27,7 +27,9 @@ export const WhatHappenedForm = props => (
                 </Trans>
               </Text>
               <Text color="darkGray" mt="6px" mb="8px">
-                <Trans id="whatHappendPage.hint">Tell us about it in your own words.</Trans>
+                <Trans id="whatHappendPage.hint">
+                  Tell us about it in your own words.
+                </Trans>
               </Text>
               <Field
                 name="whatHappened"

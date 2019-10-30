@@ -1,0 +1,6 @@
+.git
+node_modules
+**/*.swp
+**/*.tsx~
+**/*.swn
+**/*.swo

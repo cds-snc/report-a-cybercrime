@@ -18,14 +18,14 @@ const submitAndNavigate = (client, data) => {
 export const ContactInfoPage = () => (
   <Layout>
     <BackButton route="/p2/impact">
-      <Trans>the impact</Trans>
+      <Trans id="contactinfoPage.backButton">the impact</Trans>
     </BackButton>
     <Steps activeStep={5} totalSteps={6} />
     <H1>
-      <Trans>Leave your contact information</Trans>
+      <Trans id="contactinfoPage.title">Leave your contact information</Trans>
     </H1>
     <P>
-      <Trans>
+      <Trans id="contactinfoPage.intro">
         We will use this to send you a confirmation email and to link your
         report to other reports in your area.
       </Trans>
