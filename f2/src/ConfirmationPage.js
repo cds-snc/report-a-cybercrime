@@ -42,7 +42,6 @@ const prepFormData = (client, submitReportP2) => {
 
   let { fullName, email, phone, postalCode } = p2ContactInfo
   fullName = randomizeString(fullName)
-  email = randomizeString(email)
   phone = randomizeString(phone)
   postalCode = randomizeString(postalCode)
 
