@@ -14,7 +14,7 @@ notifyEnvVars.forEach(k => {
   if (!process.env[`${k}`]) {
     notifyIsSetup = false
     console.warn(
-      `WARNING: Notify environment variable ${k} is missing. Feedback will be disabled and emailing links will probably not work.`,
+      `WARNING: Notify environment variable ${k} is missing. Emailing links will probably not work.`,
     )
   }
 })
@@ -24,18 +24,17 @@ const notifyClient =
     ? new NotifyClient(baseUrl, key)
     : false
 
-const sendNotification = async (templateId, email, options) => {
-  if (!templateId || !email) {
+const sendConfirmation = async email => {
+  const templateId = process.env.NOTIFY_CONFIRMATION_TEMPLATE_ID
+  if (!email || !templateId) {
     console.warn(
       'WARNING: no Notify template ID or email was passed, mail not sent',
     )
     return false
   }
-  console.log(` sending notification to: ${email}`)
-  console.log({ options })
-
   try {
-    const response = notifyClient.sendEmail(templateId, email, options)
+    const response = notifyClient.sendEmail(templateId, email, {})
+    console.log('Email sent!')
     return response.body
   } catch (err) {
     console.log(err.message)
@@ -43,12 +42,6 @@ const sendNotification = async (templateId, email, options) => {
   }
 }
 
-const sendConfirmation = async email => {
-  sendNotification({
-    email: email,
-    templateId: process.env.NOTIFY_CONFIRMATION_TEMPLATE_ID,
-  })
-}
 module.exports = {
   notifyIsSetup,
   sendConfirmation,
