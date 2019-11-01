@@ -8,7 +8,7 @@ import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { TimeFrameInfoForm } from '../TimeFrameInfoForm'
-import en from '../../locales/en.js'
+import en from '../../locales/en.json'
 import theme from '../../theme'
 
 i18n.load('en', { en })
