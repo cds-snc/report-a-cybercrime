@@ -33,6 +33,7 @@
     "test": "react-scripts test --watchAll=false",
     "dbg": "react-scripts --inspect-brk test --watchAll=false --runInBand",
     "eject": "react-scripts eject",
+    "lint": "eslint 'src/**/*.js'",
     "add-locale": "lingui add-locale",
     "extract": "lingui extract",
     "compile": "lingui compile"

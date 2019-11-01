@@ -12,8 +12,6 @@ import en from '../locales/en.js'
 i18n.load('en', { en })
 i18n.activate('en')
 
-const catalogs = { en }
-
 const client = {
   readQuery: () => ({
     contactInfo: JSON.stringify({}),
