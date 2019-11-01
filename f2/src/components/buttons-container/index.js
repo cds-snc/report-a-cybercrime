@@ -6,6 +6,9 @@ import { Trans } from '@lingui/macro'
 import { Link, ButtonLink } from '../link'
 import PropTypes from 'prop-types'
 
+import { Button as GrommetButton, grommet, Text } from 'grommet'
+import { FormNext, FormPrevious } from 'grommet-icons'
+
 export const ButtonsContainer = ({
   submit = false,
   landing = false,
@@ -37,40 +40,67 @@ export const ButtonsContainer = ({
   >
     {buttonLink === false ? (
       <Container mt="1rem">
-        <Button type="submit">
-          {submit === true ? (
-            <Trans>Submit report &nbsp; ❯</Trans>
-          ) : (
-            <Trans>Next</Trans>
-          )}
+        <GrommetButton
+          color="accent-1"
+          icon={<FormNext />}
+          label={
+            <Text size="large">
+              {submit === true ? (
+                <Trans>Submit report &nbsp; ❯</Trans>
+              ) : (
+                <Trans>Next</Trans>
+              )}
 
-          {nextPage === 'Scammer details' ? (
-            <Trans>: Clues about the suspect</Trans>
-          ) : nextPage === 'Money lost' ? (
-            <Trans>: Money lost</Trans>
-          ) : nextPage === 'Impact of scam' ? (
-            <Trans>: Impact of the scam</Trans>
-          ) : nextPage === 'What happened' ? (
-            <Trans>: What happened</Trans>
-          ) : nextPage === 'Supporting files' ? (
-            <Trans>: Add files</Trans>
-          ) : nextPage === 'Contact info' ? (
-            <Trans>: Contact information</Trans>
-          ) : nextPage === 'Confirm information' ? (
-            <Trans>: Review report</Trans>
-          ) : null}
-        </Button>
+              {nextPage === 'Scammer details' ? (
+                <Trans>: Clues about the suspect</Trans>
+              ) : nextPage === 'Money lost' ? (
+                <Trans>: Money lost</Trans>
+              ) : nextPage === 'Impact of scam' ? (
+                <Trans>: Impact of the scam</Trans>
+              ) : nextPage === 'What happened' ? (
+                <Trans>: What happened</Trans>
+              ) : nextPage === 'Supporting files' ? (
+                <Trans>: Add files</Trans>
+              ) : nextPage === 'Contact info' ? (
+                <Trans>: Contact information</Trans>
+              ) : nextPage === 'Confirm information' ? (
+                <Trans>: Review report</Trans>
+              ) : null}
+            </Text>
+          }
+          primary
+          reverse
+          type="submit"
+        />
       </Container>
     ) : (
       <Container name="buttonlink-container">
         {landing === true ? (
-          <ButtonLink color="black" mb={[3, null, 5]} to={route}>
-            <Trans>Report now ❯</Trans>
-          </ButtonLink>
+          <GrommetButton
+            color="accent-1"
+            href={route}
+            icon={<FormNext />}
+            label={
+              <Text size="large">
+                <Trans>Report now</Trans>
+              </Text>
+            }
+            primary
+            reverse
+          />
         ) : (
-          <ButtonLink color="black" mb={[3, null, 5]} to={route}>
-            <Trans> ❮ &nbsp; Report another scam</Trans>
-          </ButtonLink>
+          <GrommetButton
+            color="accent-1"
+            href={route}
+            icon={<FormNext />}
+            label={
+              <Text size="large">
+                <Trans>Report another scam</Trans>
+              </Text>
+            }
+            primary
+            reverse
+          />
         )}
       </Container>
     )}

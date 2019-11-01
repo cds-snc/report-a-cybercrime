@@ -1,3 +1,6 @@
+import { deepMerge } from 'grommet/utils'
+import { canada } from './grommet'
+
 const FONT_SIZES = [
   '12rem',
   '14px',
@@ -98,9 +101,11 @@ const theme = {
     },
 
     inputField: {
+      border: `2px solid ${colors.black}`,
       color: colors.black,
       '&:focus': {
         outline: `3px solid ${colors.focusColor}`,
+        outlineOffset: '0px',
       },
     },
 
@@ -114,3 +119,12 @@ const theme = {
 }
 
 export default theme
+
+export const canada2 = deepMerge(canada, {
+  textInput: {
+    extend: () => `
+      background: #c9c19f;
+      border: 2px solid ${colors.black};    
+    `,
+  },
+})

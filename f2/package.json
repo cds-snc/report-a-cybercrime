@@ -17,7 +17,10 @@
     "final-form": "^4.18.5",
     "graphql": "^14.5.7",
     "graphql-tag": "^2.10.1",
+    "grommet": "^2.7.11",
+    "grommet-icons": "^4.3.0",
     "isomorphic-unfetch": "^3.0.0",
+    "polished": "^3.4.2",
     "react": "^16.10.2",
     "react-apollo": "^2.5.8",
     "react-dom": "^16.10.2",
@@ -25,6 +28,7 @@
     "react-ga": "^2.6.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "styled-components": "^4.4.1",
     "styled-system": "^5.1.2"
   },
   "scripts": {

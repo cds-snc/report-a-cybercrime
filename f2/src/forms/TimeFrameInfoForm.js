@@ -1,17 +1,14 @@
 /** @jsx jsx */
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
-import { Form, Field } from 'react-final-form'
-import { Text } from '../components/text'
+import { Form } from 'react-final-form'
 import { ButtonsContainer } from '../components/buttons-container'
-import { TextInput } from '../components/TextInput'
-import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getTimeFrame } from '../utils/queriesAndMutations'
-
-const TextInputAdapter = finalFormAdapter(TextInput)
+import { Text, FormField } from 'grommet'
+import { TextInput } from '../components/TextInput'
 
 class TimeFrameInfoFormWrapped extends Component {
   localOnSubmit = (client, data) => {
@@ -28,57 +25,38 @@ class TimeFrameInfoFormWrapped extends Component {
             onSubmit={data => this.localOnSubmit(this.props.client, data)}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-                <label htmlFor="startDate">
-                  <Text marginTop={[5, null, 6]}>
-                    <Trans>
-                      <strong>Approximate start</strong>
-                    </Trans>
-                  </Text>
-                  <Text
-                    css={css`
-                      color: gray;
-                    `}
-                    mt="6px"
-                    mb="8px"
-                  >
-                    <Trans>For example: 2019-04-28</Trans>
-                  </Text>
-                </label>
-                <div>
-                  <Field
-                    name="startDate"
-                    id="startDate"
-                    component={TextInputAdapter}
-                    height="25px"
-                    width="300px"
-                  />
-                </div>
+                <FormField
+                  label={
+                    <Text weight="bold">
+                      <Trans>Approximate start</Trans>
+                    </Text>
+                  }
+                  htmlFor="startDate"
+                  help={
+                    <Text>
+                      <Trans>For example: 2019-04-28</Trans>
+                    </Text>
+                  }
+                >
+                  <TextInput id="startDate" name="startDate" />
+                </FormField>
 
-                <label htmlFor="endDate">
-                  <Text marginTop={[5, null, 6]}>
-                    <Trans>
-                      <strong>Approximate end</strong>
-                    </Trans>
-                  </Text>
-                  <Text
-                    css={css`
-                      color: gray;
-                    `}
-                    mt="6px"
-                    mb="8px"
-                  >
-                    <Trans>For example: 2019-04-28</Trans>
-                  </Text>
-                </label>
-                <div>
-                  <Field
-                    name="endDate"
-                    id="endDate"
-                    component={TextInputAdapter}
-                    height="25px"
-                    width="300px"
-                  />
-                </div>
+                <FormField
+                  label={
+                    <Text weight="bold">
+                      <Trans>Approximate end</Trans>
+                    </Text>
+                  }
+                  htmlFor="endDate"
+                  help={
+                    <Text>
+                      <Trans>For example: 2019-04-28</Trans>
+                    </Text>
+                  }
+                >
+                  <TextInput id="endDate" name="endDate" />
+                </FormField>
+
                 <ButtonsContainer
                   cancel={true}
                   buttonLink={false}
