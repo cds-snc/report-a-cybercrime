@@ -6,7 +6,7 @@ import { ThemeProvider } from 'emotion-theming'
 import { MemoryRouter } from 'react-router-dom'
 import theme from '../../../theme'
 import { BackButton } from '../'
-import en from '../../../locales/en.js'
+import en from '../../../locales/en.json'
 
 i18n.load('en', { en })
 i18n.activate('en')

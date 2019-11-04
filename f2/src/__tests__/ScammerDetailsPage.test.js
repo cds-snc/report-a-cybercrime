@@ -7,7 +7,7 @@ import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { ScammerDetailsPage } from '../ScammerDetailsPage'
 import theme from '../theme'
-import en from '../locales/en.js'
+import en from '../locales/en.json'
 
 const i18n = setupI18n({ catalogs: { en } })
 
