@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
-import { i18nMark } from '@lingui/react'
 import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Form, Field } from 'react-final-form'
@@ -32,8 +31,6 @@ export const ScammerDetailsFormWrapped = props => {
   )
   const [scammerDetails, setScammerDetails] = useState(cached.scammerDetails)
   const [status, setStatus] = useState('')
-  // i18nMark('fileUpload.removed')
-  // i18nMark('fileUpload.added')
   useEffect(() => {
     if (status) {
       document.getElementById('status').focus()
