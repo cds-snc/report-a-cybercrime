@@ -15,18 +15,15 @@ export const TimeFramePage = () => (
     render={({ history }) => (
       <Layout>
         <BackButton route="/">
-          <Trans id="timeFramePage.backButton">the start page</Trans>
+          <Trans id="timeFramePage.backButton" />
         </BackButton>
         <Steps activeStep={1} totalSteps={6} />
 
         <H1>
-          <Trans id="timeFramePage.title">When did the scam happen?</Trans>
+          <Trans id="timeFramePage.title" />
         </H1>
         <P>
-          <Trans id="timeFramePage.intro">
-            It’s okay if you don’t know exactly when it took place. You can give
-            your best guess or leave this blank.
-          </Trans>
+          <Trans id="timeFramePage.intro" />
         </P>
         <TrackPageViews />
         <TimeFrameInfoForm
