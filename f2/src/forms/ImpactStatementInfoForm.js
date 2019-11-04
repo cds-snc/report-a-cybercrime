@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { ApolloConsumer } from 'react-apollo'
 import { useLingui } from '@lingui/react'
@@ -8,10 +7,8 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Checkbox } from '../components/checkbox'
 import { ButtonsContainer } from '../components/buttons-container'
-import { P } from '../components/paragraph'
 import { Text } from '../components/text'
 import { TextArea } from '../components/text-area'
-import { Label } from '../components/label'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getImpact } from '../utils/queriesAndMutations'
 
@@ -35,13 +32,13 @@ export const ImpactStatementInfoForm = props => {
   const { i18n } = useLingui()
 
   const howWereYouAffected = [
-    i18n._('Device or account hacked'),
-    i18n._('Information stolen'),
-    i18n._('Money lost'),
-    i18n._('Reputation damaged'),
-    i18n._('Safety threatened'),
-    i18n._('Wellbeing affected'),
-    i18n._('No impact'),
+    'impactPage.affected1',
+    'impactPage.affected2',
+    'impactPage.affected3',
+    'impactPage.affected4',
+    'impactPage.affected5',
+    'impactPage.affected6',
+    'impactPage.affected7',
   ]
   return (
     <ApolloConsumer>
@@ -53,13 +50,15 @@ export const ImpactStatementInfoForm = props => {
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <Fieldset>
-                <Label htmlFor="howWereYouAffected">
-                  <P>
-                    <Trans>
-                      <strong>What was the impact of the scam?</strong>
-                    </Trans>
-                  </P>
-                </Label>
+                <legend>
+                  <Text marginTop={[5, null, 6]}>
+                    <strong>
+                      <Trans id="impactPage.detail">
+                        What was the impact of the scam?
+                      </Trans>
+                    </strong>
+                  </Text>
+                </legend>
 
                 <div>
                   {howWereYouAffected.map(key => {
@@ -78,23 +77,21 @@ export const ImpactStatementInfoForm = props => {
                 </div>
               </Fieldset>
 
-              <Text marginTop={[5, null, 6]}>
-                <Trans>
-                  <strong>Tell us more about how it impacted you.</strong>
-                </Trans>
-              </Text>
-              <Text
-                css={css`
-                  color: gray;
-                `}
-                mt="6px"
-                mb="8px"
-              >
-                <Trans>
-                  For example: the amount of money, the information taken, what
-                  else was affected
-                </Trans>
-              </Text>
+              <label htmlFor="damage">
+                <Text marginTop={[5, null, 6]}>
+                  <strong>
+                    <Trans id="impactPage.summary">
+                      Tell us more about how it impacted you.
+                    </Trans>
+                  </strong>
+                  <Text color="darkGray" mt="6px" mb="8px">
+                    <Trans id="impactPage.example">
+                      For example: the amount of money, the information taken,
+                      what else was affected
+                    </Trans>
+                  </Text>
+                </Text>
+              </label>
               <div>
                 <Field
                   name="damage"
