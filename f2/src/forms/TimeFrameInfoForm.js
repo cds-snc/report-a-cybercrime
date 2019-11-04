@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -30,18 +30,16 @@ class TimeFrameInfoFormWrapped extends Component {
               <form onSubmit={handleSubmit}>
                 <label htmlFor="startDate">
                   <Text marginTop={[5, null, 6]}>
-                    <Trans>
-                      <strong>Approximate start</strong>
-                    </Trans>
+                    <strong>
+                      <Trans id="timeFramePage.startDate">
+                        Approximate start
+                      </Trans>
+                    </strong>
                   </Text>
-                  <Text
-                    css={css`
-                      color: gray;
-                    `}
-                    mt="6px"
-                    mb="8px"
-                  >
-                    <Trans>For example: 2019-04-28</Trans>
+                  <Text color="darkGray" mt="6px" mb="8px">
+                    <Trans id="timeFramePage.startDateExample">
+                      For example: 2019-04-28
+                    </Trans>
                   </Text>
                 </label>
                 <div>
@@ -56,18 +54,14 @@ class TimeFrameInfoFormWrapped extends Component {
 
                 <label htmlFor="endDate">
                   <Text marginTop={[5, null, 6]}>
-                    <Trans>
-                      <strong>Approximate end</strong>
-                    </Trans>
+                    <strong>
+                      <Trans id="timeFramePage.endDate">Approximate end</Trans>
+                    </strong>
                   </Text>
-                  <Text
-                    css={css`
-                      color: gray;
-                    `}
-                    mt="6px"
-                    mb="8px"
-                  >
-                    <Trans>For example: 2019-04-28</Trans>
+                  <Text color="darkGray" mt="6px" mb="8px">
+                    <Trans id="timeFramePage.endDateExample">
+                      For example: 2019-04-28
+                    </Trans>
                   </Text>
                 </label>
                 <div>
