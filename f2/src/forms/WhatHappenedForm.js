@@ -22,14 +22,12 @@ export const WhatHappenedForm = props => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="whatHappened">
               <Text marginTop={[5, null, 6]}>
-                <Trans id="whatHappendPage.summary">
-                  <strong>What happened?</strong>
-                </Trans>
+                <strong>
+                  <Trans id="whatHappendPage.summary" />
+                </strong>
               </Text>
               <Text color="darkGray" mt="6px" mb="8px">
-                <Trans id="whatHappendPage.hint">
-                  Tell us about it in your own words.
-                </Trans>
+                <Trans id="whatHappendPage.hint" />
               </Text>
               <Field
                 name="whatHappened"
