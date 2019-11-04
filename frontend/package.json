@@ -30,7 +30,7 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
     "@cdssnc/logdriver": "0.0.2",
-    "@emotion/core": "^10.0.21",
+    "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.17",
     "@lingui/react": "^2.8.3",
     "@reach/component-component": "^0.4.0",
