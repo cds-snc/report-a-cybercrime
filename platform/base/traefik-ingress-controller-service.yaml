@@ -6,7 +6,3 @@ metadata:
 spec:
   selector:
     k8s-app: traefik-ingress-lb
-  ports:
-    - name: http
-      port: 80
-      protocol: TCP

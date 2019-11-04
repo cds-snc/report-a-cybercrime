@@ -9,13 +9,46 @@ import { HelmetProvider } from 'react-helmet-async'
 import express from 'express'
 import requestLanguage from 'express-request-language'
 import { ServerLocation } from '@reach/router'
+const AWS = require('aws-sdk')
+const uuidv4 = require('uuid/v4')
 import App from './App'
 
 let assets, publicDir
 
 const {
+  S3_ACCESS_ID,
+  S3_ACCESS_SECRET,
+  S3_BUCKET,
   RAZZLE_SERVER_SIDE_API_URI, // Razzle strips env vars that are not prefixed
 } = process.env
+
+let s3
+if (!S3_ACCESS_ID || !S3_ACCESS_SECRET || !S3_BUCKET) {
+  console.log('\nWARNING: Missing S3 config. will not upload to S3\n')
+} else {
+  s3 = new AWS.S3({
+    accessKeyId: S3_ACCESS_ID,
+    secretAccessKey: S3_ACCESS_SECRET,
+  })
+}
+
+const uploadData = data => {
+  const params = {
+    Bucket: S3_BUCKET,
+    Key: uuidv4(), // File name you want to save as in S3
+    Body: JSON.stringify(data, null, 4),
+  }
+
+  // Uploading files to the bucket
+  if (s3) {
+    s3.upload(params, function(err, data) {
+      if (err) {
+        throw err
+      }
+      console.log(`File uploaded successfully. ${data.Location}`)
+    })
+  }
+}
 
 if (process.env.NODE_ENV === 'test') {
   assets = { client: { css: {} } }
@@ -42,8 +75,14 @@ server
   })
   .use('/public', express.static(__dirname + '/public'))
   .use('/static', express.static('static'))
+  .use(express.json())
   .get('/monitoring/ready', (_req, res) => {
     res.status(200).send('yes')
+  })
+  .post('/submit', (req, res) => {
+    const data = req.body
+    uploadData(data)
+    res.send('POST response')
   })
   .get('/*', async (req, res) => {
     const cache = new InMemoryCache()

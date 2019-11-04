@@ -21,9 +21,6 @@ spec:
       containers:
         - image: traefik
           name: traefik-ingress-lb
-          ports:
-            - name: http
-              containerPort: 80
           securityContext:
             capabilities:
               add:

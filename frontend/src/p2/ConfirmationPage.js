@@ -32,7 +32,24 @@ const randomizeString = s =>
         .replace(/[0-9]/g, () => randDigit())
     : s
 
-const submit = (client, submitReportP2) => {
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+    referrer: 'no-referrer',
+    body: JSON.stringify(data),
+  })
+  return await response
+}
+
+const submit = async (client, submitReportP2) => {
   let timeFrame = getTimeFrame(client)
   let whatHappened = getWhatHappened(client)
   let scammerDetails = getScammerDetails(client)
@@ -61,6 +78,13 @@ const submit = (client, submitReportP2) => {
     surveyInfo,
   }
 
+  try {
+    const results = await postData('/submit', data)
+    console.log(`POST status: ${results.statusText}`)
+  } catch (error) {
+    console.error(error)
+  }
+
   submitReportP2({ variables: data })
   navigate('nextsteps')
 }
@@ -74,7 +98,7 @@ export const ConfirmationPage = () => {
       </BackButton>
       <Steps activeStep={6} totalSteps={6} />
       <H1>
-        <Trans>Review your report</Trans>
+        <Trans id="confirmationPage.title">Review your report</Trans>
       </H1>
       <ConfirmationSummary />
       <ConfirmationForm onSubmit={submit} />

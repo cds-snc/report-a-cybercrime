@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { jsx, css } from '@emotion/core'
 import { Query } from 'react-apollo'
 import { Container } from '../container'
+import { A } from '../link'
 import { LanguageSwitcher } from '../../LanguageSwitcher'
 import { GET_LANGUAGE_QUERY } from '../../utils/queriesAndMutations'
 import rcmpbrandingeng from '../../images/rcmpbrandingeng.svg'
@@ -24,15 +25,24 @@ export const TopBanner = props => {
           data-testid="background-color"
         >
           <Container ml={3} width={[250, null, 300]}>
-            <img
-              src={language === 'en' ? rcmpbrandingeng : rcmpbrandingfre}
-              width="300px"
-              alt={
-                language === 'en'
-                  ? 'Royal Canadian Mounted Police'
-                  : 'Gendarmerie royale du Canada'
+            <A
+              colors="footerLink"
+              href={
+                language === 'fr'
+                  ? 'http://www.rcmp-grc.gc.ca/fr'
+                  : 'http://www.rcmp-grc.gc.ca/en'
               }
-            />
+            >
+              <img
+                src={language === 'fr' ? rcmpbrandingfre : rcmpbrandingeng}
+                width="300px"
+                alt={
+                  language === 'fr'
+                    ? 'Gendarmerie royale du Canada'
+                    : 'Royal Canadian Mounted Police'
+                }
+              />
+            </A>
           </Container>
           <Container
             flex="1 1 auto"

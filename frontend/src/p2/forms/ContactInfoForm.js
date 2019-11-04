@@ -27,9 +27,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="fullName">
               <Text marginTop={[4, null, 5]}>
-                <Trans>
-                  <strong>Full name</strong>
-                </Trans>
+                <strong>
+                  <Trans id="contactinfoPage.fullName">Full name</Trans>
+                </strong>
               </Text>
             </label>
             <div>
@@ -44,9 +44,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="email">
               <Text marginTop={[4, null, 5]}>
-                <Trans>
-                  <strong>Email address</strong>
-                </Trans>
+                <strong>
+                  <Trans id="contactinfoPage.emailAddress">Email address</Trans>
+                </strong>
               </Text>
             </label>
             <div>
@@ -61,9 +61,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="postalCode">
               <Text marginTop={[4, null, 5]}>
-                <Trans>
-                  <strong>Postal code</strong>
-                </Trans>
+                <strong>
+                  <Trans id="contactinfoPage.postCode">Postal code</Trans>
+                </strong>
               </Text>
             </label>
             <div>

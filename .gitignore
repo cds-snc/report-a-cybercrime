@@ -4,3 +4,6 @@ node_modules
 .idea
 build-sizes.json
 data
+**/.env
+f2/build
+**/locales/*.js

@@ -40,19 +40,21 @@ export const NextSteps = () => (
                 }
               </ApolloConsumer>
               <H1>
-                <Trans>Thank you for reporting</Trans>
+                <Trans id="nextStepsPage.title">Thank you for reporting</Trans>
               </H1>
               <P>
-                <Trans>
+                <Trans id="nextStepsPage.summary">
                   We've sent you an email with a summary of your report. Your
-                  reference number is <strong>#NC300234234</strong>.
+                  reference number is <strong>#NC300234234</strong>
                 </Trans>
               </P>
               <InfoCard>
                 <P>
-                  <Trans>
-                    <strong>Where you can get help</strong>
-                  </Trans>
+                  <strong>
+                    <Trans id="nextStepsPage.helpResource">
+                      Where you can get help
+                    </Trans>
+                  </strong>
                 </P>
                 <Ul>
                   <Li>
@@ -63,7 +65,9 @@ export const NextSteps = () => (
                           : 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-fra.htm'
                       }
                     >
-                      <Trans>Talk to someone and get support</Trans>
+                      <Trans id="nextStepsPage.helpResource1">
+                        Talk to someone and get support
+                      </Trans>
                     </A>
                   </Li>
                   <Li>
@@ -74,7 +78,9 @@ export const NextSteps = () => (
                           : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
                       }
                     >
-                      <Trans>Find tips to protect yourself in the future</Trans>
+                      <Trans id="nextStepsPage.helpResource2">
+                        Find tips to protect yourself in the future
+                      </Trans>
                     </A>
                   </Li>
                   <Li>
@@ -85,20 +91,24 @@ export const NextSteps = () => (
                           : 'http://www.antifraudcentre.ca/index-fra.htm'
                       }
                     >
-                      <Trans>Follow what scams are trending</Trans>
+                      <Trans id="nextStepsPage.helpResource3">
+                        Follow what scams are trending
+                      </Trans>
                     </A>
                   </Li>
                 </Ul>
                 <P>
-                  <Trans>
-                    <strong>What happens next</strong>
-                  </Trans>
+                  <strong>
+                    <Trans id="nextStepsPage.nextStepSummary">
+                      What happens next
+                    </Trans>
+                  </strong>
                 </P>
                 <P>
                   <Trans></Trans>
                 </P>
                 <P>
-                  <Trans>
+                  <Trans id="nextStepsPage.nextStepDetail">
                     The RCMP will analyze your report and combine it with others
                     that are similar to help police across Canada track down
                     cybercriminals.
@@ -107,23 +117,25 @@ export const NextSteps = () => (
               </InfoCard>
               <br></br>
               <P>
-                <Trans>
-                  <strong>You have other reporting options</strong>
-                </Trans>
+                <strong>
+                  <Trans id="nextStepsPage.otherReportOption">
+                    You have other reporting options
+                  </Trans>
+                </strong>
               </P>
               <Ul>
                 <Li>
-                  <Trans>
+                  <Trans id="nextStepsPage.otherReportOption1">
                     Report directly to the place where the scam happened.
                   </Trans>
                 </Li>
                 <Li>
-                  <Trans>
+                  <Trans id="nextStepsPage.otherReportOption2">
                     Report to your financial institution, if you lost money.
                   </Trans>
                 </Li>
                 <Li>
-                  <Trans>
+                  <Trans id="nextStepsPage.otherReportOption3">
                     Report to the credit bureaus,{' '}
                     <A
                       href={
