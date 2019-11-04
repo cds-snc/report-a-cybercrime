@@ -18,27 +18,38 @@ export const WhatHappenedPage = () => (
     render={({ history }) => (
       <Layout>
         <BackButton route="/timeframe">
-          <Trans id="whatHappendPage.backButton" />
+          <Trans id="whatHappendPage.backButton">the timeframe</Trans>
         </BackButton>
         <Steps activeStep={2} totalSteps={6} />
         <H1>
-          <Trans id="whatHappendPage.title" />
+          <Trans id="whatHappendPage.title">Describe what happened</Trans>
         </H1>
         <P>
-          <Trans id="whatHappendPage.intro1" />
+          <Trans id="whatHappendPage.intro1">
+            What happened is not your fault. Scammers use a number of techniques
+            to get what they want.
+          </Trans>
         </P>
         <P>
-          <Trans id="whatHappendPage.details1" />
+          <Trans id="whatHappendPage.details1">
+            Think about including things such as:
+          </Trans>
         </P>
         <Ul>
           <Li>
-            <Trans id="whatHappendPage.details2" />
+            <Trans id="whatHappendPage.details2">
+              Which app, website, or device you were using
+            </Trans>
           </Li>
           <Li>
-            <Trans id="whatHappendPage.details3" />
+            <Trans id="whatHappendPage.details3">
+              How the scammer contacted you
+            </Trans>
           </Li>
           <Li>
-            <Trans id="whatHappendPage.details4" />
+            <Trans id="whatHappendPage.details4">
+              What they promised, threatened, or stole
+            </Trans>
           </Li>
         </Ul>
         <TrackPageViews />
