@@ -37,6 +37,8 @@ export const ScammerDetailsFormWrapped = props => {
     }
   }, [status])
   const { i18n } = useLingui()
+  i18n._('fileUpload.removed')
+  i18n._('fileUpload.added')
 
   const onChange = e => {
     if (e.target.id === 'scammerDetails') {
@@ -167,8 +169,6 @@ export const ScammerDetailsFormWrapped = props => {
                   {i18n._(status)}
                 </Text>
               ) : null}
-
-              {/* Here */}
 
               <Container>
                 {files.map((f, index) => (
