@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -22,18 +22,12 @@ export const WhatHappenedForm = props => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="whatHappened">
               <Text marginTop={[5, null, 6]}>
-                <Trans>
-                  <strong>What happened?</strong>
-                </Trans>
+                <strong>
+                  <Trans id="whatHappendPage.summary" />
+                </strong>
               </Text>
-              <Text
-                css={css`
-                  color: gray;
-                `}
-                mt="6px"
-                mb="8px"
-              >
-                <Trans>Tell us about it in your own words.</Trans>
+              <Text color="darkGray" mt="6px" mb="8px">
+                <Trans id="whatHappendPage.hint" />
               </Text>
               <Field
                 name="whatHappened"
