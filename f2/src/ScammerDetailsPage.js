@@ -16,17 +16,14 @@ export const ScammerDetailsPage = () => (
     render={({ history }) => (
       <Layout>
         <BackButton route="/whathappened">
-          <Trans id="scammerDetail.backButton">the scam</Trans>
+          <Trans id="scammerDetail.backButton" />
         </BackButton>
         <Steps activeStep={3} totalSteps={6} />
         <H1>
-          <Trans id="scammerDetail.title">Add suspect clues</Trans>
+          <Trans id="scammerDetail.title" />
         </H1>
         <P>
-          <Trans id="scammerDetail.intro">
-            Any clues about the source of the scam can help police track down
-            the scammer.
-          </Trans>
+          <Trans id="scammerDetail.intro" />
         </P>
         <TrackPageViews />
         <ScammerDetailsForm

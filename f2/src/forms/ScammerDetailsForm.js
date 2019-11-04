@@ -79,44 +79,29 @@ export const ScammerDetailsFormWrapped = props => {
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <P>
-                <Trans id="scammerDetail.details">
-                  Think about including things such as:
-                </Trans>
+                <Trans id="scammerDetail.details" />
               </P>
               <Ul>
                 <Li>
-                  <Trans id="scammerDetail.detail1">
-                    Who the scammer claimed to be
-                  </Trans>
+                  <Trans id="scammerDetail.detail1" />
                 </Li>{' '}
                 <Li>
-                  <Trans id="scammerDetail.detail2">
-                    Where they asked you to send things
-                  </Trans>
+                  <Trans id="scammerDetail.detail2" />
                 </Li>
                 <Li>
-                  <Trans id="scammerDetail.detail3">
-                    What language they used to communicate
-                  </Trans>
+                  <Trans id="scammerDetail.detail3" />
                 </Li>
                 <Li>
-                  <Trans id="scammerDetail.detail4">
-                    Any screenshots, messages, or receipts
-                  </Trans>
+                  <Trans id="scammerDetail.detail4" />
                 </Li>
               </Ul>
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
                   <strong>
-                    <Trans id="scammerDetail.summary">
-                      What do you know about where the scam came from?
-                    </Trans>
+                    <Trans id="scammerDetail.summary" />
                   </strong>
                   <Text color="darkGray" mt="6px" mb="8px">
-                    <Trans id="scammerDetail.reminder">
-                      Remember to include any email addresses, phone numbers, or
-                      website links
-                    </Trans>
+                    <Trans id="scammerDetail.reminder" />
                   </Text>
                 </Text>
               </label>
@@ -157,7 +142,7 @@ export const ScammerDetailsFormWrapped = props => {
                 >
                   <img alt="upload icon" src={upload} />
                   <span>
-                    <Trans id="scammerDetail.addFileButtom">Add file</Trans>
+                    <Trans id="scammerDetail.addFileButtom" />
                   </span>
                 </FileUpload>
               </Container>
@@ -194,9 +179,7 @@ export const ScammerDetailsFormWrapped = props => {
 
                     <label htmlFor={`file-description-${index}`}>
                       <Text>
-                        <Trans id="scammerDetail.fileDescription">
-                          Describe what this file shows
-                        </Trans>
+                        <Trans id="scammerDetail.fileDescription" />
                       </Text>
                     </label>
                     <div>
@@ -215,9 +198,7 @@ export const ScammerDetailsFormWrapped = props => {
                       type="button"
                       onClick={() => removeFile(index)}
                     >
-                      <Trans id="scammerDetail.removeFileButton">
-                        Remove file
-                      </Trans>
+                      <Trans id="scammerDetail.removeFileButton" />
                     </Button>
                   </React.Fragment>
                 ))}
