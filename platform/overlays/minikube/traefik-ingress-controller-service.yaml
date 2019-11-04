@@ -9,3 +9,6 @@ spec:
     - name: admin
       port: 8080
       protocol: TCP
+    - name: http
+      port: 80
+      protocol: TCP

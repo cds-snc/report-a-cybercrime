@@ -1,19 +1,25 @@
 SHELL ?= /usr/bin/bash
 
-.PHONY: setup
-setup:
-	docker-compose build
-
 .PHONY: dev
 dev:
-	docker-compose up
+	skaffold dev --port-forward --kube-context=minikube
 
-.PHONY: api
-api:
-	docker-compose up api minio arangodb
-
-.PHONY: frontend
-frontend:
-	docker-compose up frontend
+.PHONY: secrets
+secrets:
+	cat << API > platform/overlays/minikube/.env.api
+	DB_NAME=
+	DB_URL=http://arangodb:8529
+	DB_USER=
+	DB_PASSWORD=
+	API
+	cat << ARANGO > platform/overlays/minikube/.env.arangodb
+	ARANGO_PASSWORD=
+	ARANGO
+	cat << MINIO > platform/overlays/minikube/.env.minio
+	MINIO_ACCESS_KEY=
+	MINIO_SECRET_KEY=
+	MINIO_BUCKET_NAME=
+	MINIO
+	ls -a1 platform/overlays/minikube/.env.*
 
 .ONESHELL:

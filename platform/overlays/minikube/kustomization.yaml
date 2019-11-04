@@ -8,9 +8,22 @@ patchesStrategicMerge:
   - traefik-ingress-controller-service.yaml
   - minio-deployment.yaml
 images:
-  - name: cybercrime-frontend
-    newName: gcr.io/report-a-cybercrime-alpha/frontend-dev
-resources:
-  - arango-secrets.yaml
-  - cybercrime-api-secrets.yaml
-  - minio-secrets.yaml
+- name: acrrcmpcybercrime.azurecr.io/frontend
+  newName: cybercrime-frontend
+- name: acrrcmpcybercrime.azurecr.io/api
+  newName: cybercrime-api
+- name: traefik
+  newTag: "1.7"
+secretGenerator:
+- envs:
+  - .env.arangodb
+  name: arango-secrets
+  namespace: cybercrime-api
+- envs:
+  - .env.api
+  name: cybercrime-api-secrets
+  namespace: cybercrime-api
+- envs:
+  - .env.minio
+  name: minio-secrets
+  namespace: cybercrime-api
