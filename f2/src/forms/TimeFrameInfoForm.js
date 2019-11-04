@@ -6,7 +6,7 @@ import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Text } from '../components/text'
-import { ButtonsContainer } from '../components/buttons-container'
+import { NextAndCancel } from '../components/buttons-container'
 import { TextInput } from '../components/TextInput'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getTimeFrame } from '../utils/queriesAndMutations'
@@ -79,11 +79,9 @@ class TimeFrameInfoFormWrapped extends Component {
                     width="300px"
                   />
                 </div>
-                <ButtonsContainer
-                  cancel={true}
-                  buttonLink={false}
-                  nextPage="What happened"
-                />
+                <NextAndCancel>
+                  <Trans>Next: What happened</Trans>
+                </NextAndCancel>
               </form>
             )}
           />
