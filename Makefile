@@ -7,9 +7,9 @@ dev:
 .PHONY: secrets
 secrets:
 	cat << API > platform/overlays/minikube/.env.api
-	DB_NAME=
+	DB_NAME=cybercrime
 	DB_URL=http://arangodb:8529
-	DB_USER=
+	DB_USER=root
 	DB_PASSWORD=
 	API
 	cat << ARANGO > platform/overlays/minikube/.env.arangodb

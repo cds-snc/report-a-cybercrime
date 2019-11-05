@@ -53,6 +53,8 @@ Running `make secrets` will create the files you need in the `platform/overlays/
 
 Take a moment and fill in the values.
 
+On a Mac you will probably need to install and use a version of `make` from this decade. Run `brew install make` and then try `gmake secrets` if you have any problems.
+
 ## Running it
 
 With the prerequisites installed and the secrets created in the `platform/overlays/minikube` folder, all that's left is to start minikube, and then the app itself.
