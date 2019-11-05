@@ -17,7 +17,7 @@ export const LandingPage = props => {
     <Layout>
       <TrackPageViews />
       <H1>
-        <Trans>Report a scam</Trans>
+        <Trans id="landingPage.title" />
       </H1>
       <ApolloConsumer>
         {client =>
@@ -40,36 +40,30 @@ export const LandingPage = props => {
       </ApolloConsumer>
 
       <P>
-        <Trans>
-          Scams can happen to anyone. They’re not always easy to recognize and
-          new ones are invented every day.
-        </Trans>
+        <Trans id="landingPage.intro" />
       </P>
       <InfoCard>
         <P>
-          <Trans>Before you start, gather what you can about the scam:</Trans>
+          <Trans id="landingPage.required0" />
         </P>
         <Ul>
           <Li>
-            <Trans>Dates when it took place</Trans>
+            <Trans id="landingPage.required1" />
           </Li>
           <Li>
-            <Trans>Descriptions of what happened</Trans>
+            <Trans id="landingPage.required2" />
           </Li>
           <Li>
-            <Trans>Details on where it came from</Trans>
+            <Trans id="landingPage.required3" />
           </Li>
           <Li>
-            <Trans>Documents, screenshots, or receipts</Trans>
+            <Trans id="landingPage.required4" />
           </Li>
         </Ul>
       </InfoCard>
       <br></br>
       <P>
-        <Trans>
-          Your report helps the RCMP learn about these crimes and helps police
-          across Canada catch cybercriminals.
-        </Trans>
+        <Trans id="landingPage.summary" />
       </P>
       <ButtonsContainer
         landing={true}
