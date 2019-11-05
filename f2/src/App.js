@@ -63,7 +63,7 @@ const App = () => {
                 : 'https://numerique.canada.ca/transparence/confidentialite/'
             }
           >
-            <Trans>Privacy</Trans>
+            <Trans id="banner.footerPrivacy" />
           </FooterLink>
           <FooterLink
             href={
@@ -72,7 +72,7 @@ const App = () => {
                 : 'https://numerique.canada.ca/transparence/avis/'
             }
           >
-            <Trans>Terms and Conditions</Trans>
+            <Trans id="banner.footerTermsAndConditions" />
           </FooterLink>
         </Footer>
       </ThemeProvider>
