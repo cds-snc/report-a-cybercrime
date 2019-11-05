@@ -159,6 +159,7 @@
   "scammerDetail.removeFileButton": "Effacer le fichier",
   "scammerDetail.summary": "Que savez-vous sur l'origine de l'arnaque",
   "scammerDetail.title": "Ajouter des indices suspects",
+  "stepper": "Étape {activeStep} de {totalSteps}",
   "the impact": "",
   "the scam": "",
   "the start page": "",

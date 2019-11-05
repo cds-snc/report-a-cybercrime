@@ -158,6 +158,7 @@
   "scammerDetail.removeFileButton": "Remove file",
   "scammerDetail.summary": "What do you know about where the scam came from?",
   "scammerDetail.title": "Add suspect clues",
+  "stepper": "Step {activeStep} of {totalSteps}",
   "the impact": "the impact",
   "the scam": "the scam",
   "the start page": "the start page",
