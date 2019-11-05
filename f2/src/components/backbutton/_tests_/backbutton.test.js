@@ -19,14 +19,12 @@ describe('<Button />', () => {
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={theme}>
           <I18nProvider i18n={i18n}>
-            <BackButton route="/p2/confirmation" />
+            <BackButton route="/future">Back to the future</BackButton>
           </I18nProvider>
         </ThemeProvider>
       </MemoryRouter>,
     )
     expect(getAllByText(/Back/)).toHaveLength(1)
-    expect(document.querySelector('a').getAttribute('href')).toBe(
-      '/p2/confirmation',
-    )
+    expect(document.querySelector('a').getAttribute('href')).toBe('/future')
   })
 })
