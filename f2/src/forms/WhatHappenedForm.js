@@ -6,9 +6,9 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { TextArea } from '../components/text-area'
 import { Text } from '../components/text'
+import { NextAndCancelButtons } from '../components/buttons-container'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getWhatHappened } from '../utils/queriesAndMutations'
-import { ButtonsContainer } from '../components/buttons-container'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
@@ -37,11 +37,11 @@ export const WhatHappenedForm = props => (
                 width="100%"
               />
             </label>
-            <ButtonsContainer
-              buttonLink={false}
-              cancel={true}
-              nextPage="Scammer details"
-            />
+            <NextAndCancelButtons>
+              <Trans id="whatHappenedPage.nextButton">
+                Next: Scammer details
+              </Trans>
+            </NextAndCancelButtons>
           </form>
         )}
       />

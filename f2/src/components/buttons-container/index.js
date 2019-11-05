@@ -6,7 +6,7 @@ import { Trans } from '@lingui/macro'
 import { Link, ButtonLink } from '../link'
 import PropTypes from 'prop-types'
 
-export const SubmitAndCancelButtons = ({ cancelRoute = '/', ...props }) => (
+export const NextAndCancelButtons = ({ cancelRoute = '/', ...props }) => (
   <Container
     mt="1rem"
     mb="4rem"
@@ -33,13 +33,13 @@ export const SubmitAndCancelButtons = ({ cancelRoute = '/', ...props }) => (
 
     <Container mt="1.9rem" ml={['3rem', '0', '3rem']}>
       <Link type="button" color="black" to={cancelRoute} textAlign="center">
-        <Trans>Cancel report</Trans>
+        <Trans id="button.cancelReport">Cancel report</Trans>
       </Link>
     </Container>
   </Container>
 )
 
-SubmitAndCancelButtons.propTypes = {
+NextAndCancelButtons.propTypes = {
   cancelRoute: PropTypes.string,
   children: PropTypes.any,
 }
