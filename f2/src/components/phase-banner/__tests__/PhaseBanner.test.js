@@ -17,7 +17,7 @@ describe('<PhaseBanner />', () => {
     const { getAllByText } = render(
       <ThemeProvider theme={theme}>
         <I18nProvider i18n={i18n}>
-          <PhaseBanner />
+          <PhaseBanner phase="ALPHA" />
         </I18nProvider>
       </ThemeProvider>,
     )

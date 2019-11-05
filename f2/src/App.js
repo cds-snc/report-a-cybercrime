@@ -45,8 +45,8 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <header>
           <WarningBanner />
-          <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
-            <Trans>This site will change as we test ideas.</Trans>
+          <PhaseBanner phase={<Trans id="banner.phase" />}>
+            <Trans id="banner.phaseText" />
           </PhaseBanner>
           <TopBanner lang={i18n.locale} bg="black" />
         </header>
@@ -63,7 +63,7 @@ const App = () => {
                 : 'https://numerique.canada.ca/transparence/confidentialite/'
             }
           >
-            <Trans>Privacy</Trans>
+            <Trans id="banner.footerPrivacy" />
           </FooterLink>
           <FooterLink
             href={
@@ -72,7 +72,7 @@ const App = () => {
                 : 'https://numerique.canada.ca/transparence/avis/'
             }
           >
-            <Trans>Terms and Conditions</Trans>
+            <Trans id="banner.footerTermsAndConditions" />
           </FooterLink>
         </Footer>
       </ThemeProvider>
