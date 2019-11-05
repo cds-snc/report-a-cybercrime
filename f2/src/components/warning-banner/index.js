@@ -23,10 +23,7 @@ export const WarningBanner = props => {
       height={[50, null, 60]}
     >
       <Text paddingLeft="10px" paddingRight="10px" textAlign="center">
-        <Trans>
-          Warning! This is a prototype. It won't actually submit your report to
-          the RCMP.
-        </Trans>
+        <Trans id="banner.warning" />
       </Text>
     </Container>
   )

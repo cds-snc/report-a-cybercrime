@@ -52,7 +52,10 @@ const TimeFrameSummary = ({ client }) => {
       </SectionHeader>
       {startDate ? (
         <Text>
-          <Trans id="confirmationPage.timeFrameDateRange" />
+          <Trans
+            id="confirmationPage.timeFrameDateRange"
+            values={{ startDate, endDate }}
+          />
         </Text>
       ) : (
         <Text>

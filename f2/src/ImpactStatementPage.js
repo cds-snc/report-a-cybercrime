@@ -17,17 +17,14 @@ export const ImpactStatementPage = () => (
     render={({ history }) => (
       <Layout>
         <BackButton route="/scammerdetails">
-          <Trans>the suspect</Trans>
+          <Trans id="impactPage.backButton" />
         </BackButton>
         <Steps activeStep={4} totalSteps={6} />
         <H1>
-          <Trans>Impact caused by the scam</Trans>
+          <Trans id="impactPage.title" />
         </H1>
         <P>
-          <Trans>
-            You're not the only one affected by this scam. Help protect others
-            by telling us how the scam affected you.
-          </Trans>
+          <Trans id="impactPage.intro" />
         </P>
         <TrackPageViews />
         <ImpactStatementInfoForm
