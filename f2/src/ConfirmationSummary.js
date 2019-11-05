@@ -35,7 +35,7 @@ const EditButton = ({ path, label }) => {
       to={path}
       aria-label={i18n._(label)}
     >
-      <Trans>Edit</Trans>
+      <Trans id="button.edit">Edit</Trans>
     </Link>
   )
 }
@@ -47,18 +47,18 @@ const TimeFrameSummary = ({ client }) => {
   return (
     <React.Fragment>
       <SectionHeader>
-        <Trans>Timeframe</Trans>{' '}
+        <Trans id="confirmationPage.timeFrameTitle">Timeframe</Trans>{' '}
         <EditButton label={'Edit timeframe'} path="/timeframe" />
       </SectionHeader>
       {startDate ? (
         <Text>
-          <Trans>
+          <Trans id="confirmationPage.timeFrameDateRange">
             {startDate} to {endDate}
           </Trans>
         </Text>
       ) : (
         <Text>
-          <Trans>
+          <Trans id="confirmationPage.timeFrameIntro">
             If you can, give us an idea of when the scam took place so that
             police are able to look into it.
           </Trans>
@@ -74,14 +74,14 @@ const WhatHappenedSummary = ({ client }) => {
   return (
     <React.Fragment>
       <SectionHeader>
-        <Trans>Scam</Trans>{' '}
+        <Trans id="confirmationPage.scamTitle">Scam</Trans>{' '}
         <EditButton label={'Edit what happened'} path="/whathappened" />
       </SectionHeader>
       {whatHappened ? (
         <Text>{whatHappened}</Text>
       ) : (
         <Text>
-          <Trans>
+          <Trans id="confirmationPage.scamIntro">
             Tell us about your experience so we can stop it from happening
             again.
           </Trans>
@@ -96,7 +96,7 @@ const ScammerSummary = ({ client }) => {
   return (
     <React.Fragment>
       <SectionHeader>
-        <Trans>Suspect</Trans>{' '}
+        <Trans id="confirmationPage.suspectTitle">Suspect</Trans>{' '}
         <EditButton label={'Edit scammer information'} path="/scammerdetails" />
       </SectionHeader>
       {scammerDetails !== '' ||
@@ -119,7 +119,7 @@ const ScammerSummary = ({ client }) => {
         </React.Fragment>
       ) : (
         <Text>
-          <Trans>
+          <Trans id="confirmationPage.suspectIntro">
             Share any details you may know so that police can try to identify
             suspects.
           </Trans>
@@ -141,7 +141,7 @@ const ImpactSummary = ({ client }) => {
   return (
     <>
       <SectionHeader>
-        <Trans>Impact</Trans>{' '}
+        <Trans id="confirmationPage.ImpactTitle">Impact</Trans>{' '}
         <EditButton label={'Edit impact'} path="/impact" />
       </SectionHeader>
       {howWereYouAffected.length > 0 || damage !== '' ? (
@@ -151,7 +151,7 @@ const ImpactSummary = ({ client }) => {
         </>
       ) : (
         <Text>
-          <Trans>
+          <Trans id="confirmationPage.impactIntro">
             Tell us how the scam impacted you so that we can better support
             other people who are affected.
           </Trans>
@@ -166,7 +166,7 @@ const ContactSummary = ({ client }) => {
   return (
     <React.Fragment>
       <SectionHeader>
-        <Trans>Contact</Trans>{' '}
+        <Trans id="confirmationPage.contactTitle">Contact</Trans>{' '}
         <EditButton label={'Edit contact information'} path="/contactinfo" />
       </SectionHeader>
       {(fullName + email + phone + postalCode).length > 0 ? (
@@ -178,7 +178,7 @@ const ContactSummary = ({ client }) => {
         </React.Fragment>
       ) : (
         <Text>
-          <Trans>
+          <Trans id="confirmationPage.contactIntro">
             Provide your contact details so that we can send you a confirmation
             of your report.
           </Trans>
