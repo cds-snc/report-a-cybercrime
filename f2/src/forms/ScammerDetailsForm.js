@@ -1,6 +1,7 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useLingui } from '@lingui/react'
 import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Form, Field } from 'react-final-form'
@@ -10,7 +11,7 @@ import { ButtonsContainer } from '../components/buttons-container'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { Text } from '../components/text'
-import { H3 } from '../components/header'
+import { H2, H3 } from '../components/header'
 import { P } from '../components/paragraph'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
@@ -29,6 +30,15 @@ export const ScammerDetailsFormWrapped = props => {
     cached.fileDescriptions,
   )
   const [scammerDetails, setScammerDetails] = useState(cached.scammerDetails)
+  const [status, setStatus] = useState('')
+  useEffect(() => {
+    if (status) {
+      document.getElementById('status').focus()
+    }
+  }, [status])
+  const { i18n } = useLingui()
+  i18n._('fileUpload.removed')
+  i18n._('fileUpload.added')
 
   const onChange = e => {
     if (e.target.id === 'scammerDetails') {
@@ -39,6 +49,7 @@ export const ScammerDetailsFormWrapped = props => {
       newFileDescriptions[index] = e.target.value
       setFileDescriptions(newFileDescriptions)
     } else if (e.target.files && e.target.files[0]) {
+      setStatus('fileUpload.added')
       setFiles(files.concat(e.target.files[0]))
       setFileDescriptions(fileDescriptions.concat(''))
     }
@@ -51,6 +62,7 @@ export const ScammerDetailsFormWrapped = props => {
     )
     setFiles(newFiles)
     setFileDescriptions(newFileDescriptions)
+    setStatus('fileUpload.removed')
   }
 
   const localSubmit = client => {
@@ -69,40 +81,29 @@ export const ScammerDetailsFormWrapped = props => {
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <P>
-                <Trans>Think about including things such as:</Trans>
+                <Trans id="scammerDetail.details" />
               </P>
               <Ul>
                 <Li>
-                  <Trans>Who the scammer claimed to be</Trans>
+                  <Trans id="scammerDetail.detail1" />
                 </Li>{' '}
                 <Li>
-                  <Trans>Where they asked you to send things</Trans>
+                  <Trans id="scammerDetail.detail2" />
                 </Li>
                 <Li>
-                  <Trans>What language they used to communicate</Trans>
+                  <Trans id="scammerDetail.detail3" />
                 </Li>
                 <Li>
-                  <Trans>Any screenshots, messages, or receipts</Trans>
+                  <Trans id="scammerDetail.detail4" />
                 </Li>
               </Ul>
               <label htmlFor="scammerDetails">
                 <Text marginTop={[5, null, 6]}>
-                  <Trans>
-                    <strong>
-                      What do you know about where the scam came from?
-                    </strong>
-                  </Trans>
-                  <Text
-                    css={css`
-                      color: gray;
-                    `}
-                    mt="6px"
-                    mb="8px"
-                  >
-                    <Trans>
-                      Remember to include any email addresses, phone numbers, or
-                      website links
-                    </Trans>
+                  <strong>
+                    <Trans id="scammerDetail.summary" />
+                  </strong>
+                  <Text color="darkGray" mt="6px" mb="8px">
+                    <Trans id="scammerDetail.reminder" />
                   </Text>
                 </Text>
               </label>
@@ -143,16 +144,31 @@ export const ScammerDetailsFormWrapped = props => {
                 >
                   <img alt="upload icon" src={upload} />
                   <span>
-                    <Trans>Add file</Trans>
+                    <Trans id="scammerDetail.addFileButtom" />
                   </span>
                 </FileUpload>
               </Container>
-              <H3>
+
+              <H2 fontSize={[4, null, 5]} lineHeight={[4, null, 5]}>
                 {plural(files.length, {
                   one: '# file attached',
                   other: '# files attached',
                 })}
-              </H3>
+              </H2>
+
+              {status ? (
+                <Text
+                  tabIndex={-1}
+                  id="status"
+                  css={css`
+                    :focus {
+                      outline: 0px solid transparent;
+                    }
+                  `}
+                >
+                  {i18n._(status)}
+                </Text>
+              ) : null}
 
               <Container>
                 {files.map((f, index) => (
@@ -163,7 +179,7 @@ export const ScammerDetailsFormWrapped = props => {
 
                     <label htmlFor={`file-description-${index}`}>
                       <Text>
-                        <Trans>Describe what this file shows</Trans>
+                        <Trans id="scammerDetail.fileDescription" />
                       </Text>
                     </label>
                     <div>
@@ -182,7 +198,7 @@ export const ScammerDetailsFormWrapped = props => {
                       type="button"
                       onClick={() => removeFile(index)}
                     >
-                      <Trans>Remove file</Trans>
+                      <Trans id="scammerDetail.removeFileButton" />
                     </Button>
                   </React.Fragment>
                 ))}
