@@ -15,17 +15,14 @@ export const ContactInfoPage = () => (
     render={({ history }) => (
       <Layout>
         <BackButton route="/impact">
-          <Trans>the impact</Trans>
+          <Trans id="contactinfoPage.backButton" />
         </BackButton>
         <Steps activeStep={5} totalSteps={6} />
         <H1>
-          <Trans>Leave your contact information</Trans>
+          <Trans id="contactinfoPage.title" />
         </H1>
         <P>
-          <Trans>
-            We will use this to send you a confirmation email and to link your
-            report to other reports in your area.
-          </Trans>
+          <Trans id="contactinfoPage.intro" />
         </P>
         <TrackPageViews />
         <ContactInfoForm

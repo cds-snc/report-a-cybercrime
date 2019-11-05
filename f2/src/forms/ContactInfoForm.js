@@ -12,24 +12,19 @@ import { getP2ContactInfo } from '../utils/queriesAndMutations'
 
 const TextInputAdapter = finalFormAdapter(TextInput)
 
-const validate = () => {
-  return {}
-}
-
 export const ContactInfoForm = ({ onSubmit }) => (
   <ApolloConsumer>
     {client => (
       <Form
         initialValues={getP2ContactInfo(client)}
         onSubmit={data => onSubmit(client, data)}
-        validate={validate}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <label htmlFor="fullName">
               <Text marginTop={[4, null, 5]}>
-                <Trans>
-                  <strong>Full name</strong>
-                </Trans>
+                <strong>
+                  <Trans id="contactinfoPage.fullName" />
+                </strong>
               </Text>
             </label>
             <div>
@@ -44,9 +39,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="email">
               <Text marginTop={[4, null, 5]}>
-                <Trans>
-                  <strong>Email address</strong>
-                </Trans>
+                <strong>
+                  <Trans id="contactinfoPage.emailAddress" />
+                </strong>
               </Text>
             </label>
             <div>
@@ -61,9 +56,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
 
             <label htmlFor="postalCode">
               <Text marginTop={[4, null, 5]}>
-                <Trans>
-                  <strong>Postal code</strong>
-                </Trans>
+                <strong>
+                  <Trans id="contactinfoPage.postCode" />
+                </strong>
               </Text>
             </label>
             <div>
