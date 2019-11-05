@@ -27,8 +27,9 @@ export const BackButton = ({ route = '', children }) => (
     `}
   >
     <Link type="button" to={route} textAlign="left">
+      <span>◀</span>&nbsp;
       <Trans>
-        <span>&#9664;</span> <span>Back to</span> <span>{children}</span>
+        <span>{children}</span>
       </Trans>
     </Link>
   </div>
