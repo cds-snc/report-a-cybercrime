@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
-import { Trans } from '@lingui/macro'
+import PropTypes from 'prop-types'
 
 const phasebanner = css`
   background-color: #f4f4f4;
@@ -20,11 +20,14 @@ const phasebanner = css`
   }
 `
 
-export const PhaseBanner = () => (
+export const PhaseBanner = props => (
   <div css={phasebanner}>
-    <span>ALPHA</span>
-    <span>
-      <Trans>This site will change as we test ideas.</Trans>
-    </span>
+    <span>{props.phase}</span>
+    <span>{props.children}</span>
   </div>
 )
+
+PhaseBanner.propTypes = {
+  phase: PropTypes.node.isRequired,
+  children: PropTypes.node,
+}
