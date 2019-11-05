@@ -45,8 +45,8 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <header>
           <WarningBanner />
-          <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
-            <Trans>This site will change as we test ideas.</Trans>
+          <PhaseBanner phase={<Trans id="banner.phase" />}>
+            <Trans id="banner.phaseText" />
           </PhaseBanner>
           <TopBanner lang={i18n.locale} bg="black" />
         </header>
