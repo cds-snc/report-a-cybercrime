@@ -5,7 +5,7 @@ import { Trans } from '@lingui/macro'
 import { jsx } from '@emotion/core'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/buttons-container'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import {
   getTellUsMore,
   SUBMIT_P2_REPORT_MUTATION,
@@ -24,9 +24,7 @@ export const ConfirmationForm = props => {
                 render={({ handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
                     <NextAndCancelButtons>
-                      <Trans id="confirmationPage.nextButton">
-                        Submit report ❯
-                      </Trans>
+                      <Trans id="confirmationPage.nextButton" />
                     </NextAndCancelButtons>
                   </form>
                 )}
