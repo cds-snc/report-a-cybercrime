@@ -1,5 +1,3 @@
-bases:
-- ../../base
 patchesStrategicMerge:
 - traefik-ingress-controller-deployment.yaml
 - traefik-ingress-controller-service.yaml
@@ -20,10 +18,11 @@ resources:
 - flux.yaml
 - sealed-secrets-controller-deployment.yaml
 - sealed-secrets-crd.yaml
+- ../../base
 images:
 - name: acrrcmpcybercrime.azurecr.io/api
   newTag: master-27336d3a24d64b33bb9a040dee60acf56df26379
 - name: acrrcmpcybercrime.azurecr.io/frontend
-  newTag: master-89055e755744b3a121e2a4eaf8559c979f5f9330
+  newTag: master-42f71f7d5722ee3f5361cb438e38a6238dfde396
 - name: traefik
   newTag: "1.7"
