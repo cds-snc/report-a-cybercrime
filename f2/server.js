@@ -11,31 +11,41 @@ const dbKey = process.env.COSMOSDB_KEY
 
 const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
 
+const uploadData = data => {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err
+    var dbo = db.db('cybercrime')
+    dbo.collection('reports').insertOne(data, function(err, res) {
+      if (err) throw err
+      console.log('1 document inserted')
+      db.close()
+    })
+  })
+}
+
 MongoClient.connect(url, function(err, db) {
   if (err) throw err
   console.log('Connected to db!')
   db.close()
 })
 
-app.use(express.static(path.join(__dirname, 'build')))
+app
+  .use(express.static(path.join(__dirname, 'build')))
+  .use(bodyParser.json())
 
-app.get('/ping', function(req, res) {
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err
-    var dbo = db.db('mydb')
-    var myobj = { got: 'ping', sent: 'pong' }
-    dbo.collection('customers').insertOne(myobj, function(err, res) {
-      if (err) throw err
-      console.log('1 document inserted')
-      db.close()
-    })
+  .get('/ping', function(_req, res) {
+    uploadData({ ping: 'ping' })
+    return res.send('pong')
   })
-  return res.send('pong')
-})
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
+  .post('/submit', (req, res) => {
+    uploadData(req.body)
+    res.send('POST response')
+  })
+
+  .get('/*', function(_req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
 
 const port = process.env.PORT || 3000
 console.log(`Listening at port ${port}`)

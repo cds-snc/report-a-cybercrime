@@ -32,6 +32,23 @@ const randomizeString = s =>
         .replace(/[0-9]/g, () => randDigit())
     : s
 
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+    referrer: 'no-referrer',
+    body: JSON.stringify(data),
+  })
+  return await response
+}
+
 const prepFormData = (client, submitReportP2) => {
   let timeFrame = getTimeFrame(client)
   let whatHappened = getWhatHappened(client)
@@ -61,6 +78,20 @@ const prepFormData = (client, submitReportP2) => {
   }
 }
 
+const submitToServer = async data => {
+  try {
+    const results = await postData('/submit', data)
+    console.log(`POST status: ${results.statusText}`)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+// const submit = async (client, submitReportP2, history) => {
+//   submitReportP2({ variables: data })
+//   history.push('/nextsteps')
+// }
+
 export const ConfirmationPage = () => (
   <Route
     render={({ history }) => (
@@ -77,6 +108,7 @@ export const ConfirmationPage = () => (
         <ConfirmationForm
           onSubmit={(client, submitReportP2) => {
             let data = prepFormData(client)
+            submitToServer(data)
             submitReportP2({ variables: data })
             history.push('/nextsteps')
           }}
