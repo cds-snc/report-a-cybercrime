@@ -1,3 +1,5 @@
+bases:
+- ../../base
 patchesStrategicMerge:
 - traefik-ingress-controller-deployment.yaml
 - traefik-ingress-controller-service.yaml
@@ -5,6 +7,8 @@ patchesStrategicMerge:
 - arango-claim.yaml
 - cybercrime-frontend-ingress.yaml
 - minio-deployment.yaml
+- cybercrime-frontend-deployment.yaml
+- cybercrime-api-deployment.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
@@ -14,7 +18,8 @@ resources:
 - cybercrime-api-secrets.yaml
 - minio-secrets.yaml
 - flux.yaml
-- ../../base
+- sealed-secrets-controller-deployment.yaml
+- sealed-secrets-crd.yaml
 images:
 - name: acrrcmpcybercrime.azurecr.io/api
   newTag: master-27336d3a24d64b33bb9a040dee60acf56df26379
