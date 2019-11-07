@@ -15,7 +15,7 @@ import { Content } from './components/container'
 const App = () => {
   const { i18n } = useLingui()
   return (
-    <main>
+    <React.Fragment>
       <Global
         styles={css`
           html,
@@ -76,7 +76,7 @@ const App = () => {
           </FooterLink>
         </Footer>
       </ThemeProvider>
-    </main>
+    </React.Fragment>
   )
 }
 
