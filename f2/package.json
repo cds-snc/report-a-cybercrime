@@ -18,6 +18,7 @@
     "graphql": "^14.5.7",
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
+    "npm-check": "^5.9.0",
     "react": "^16.10.2",
     "react-apollo": "^2.5.8",
     "react-dom": "^16.10.2",
@@ -37,7 +38,8 @@
     "lint": "eslint 'src/**/*.js'",
     "add-locale": "lingui add-locale",
     "extract": "lingui extract",
-    "compile": "lingui compile"
+    "compile": "lingui compile",
+    "upgrade-interactive": "npm-check --update"
   },
   "eslintConfig": {
     "extends": "react-app"
