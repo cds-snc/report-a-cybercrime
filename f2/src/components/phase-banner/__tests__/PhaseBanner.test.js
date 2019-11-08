@@ -5,7 +5,7 @@ import { ThemeProvider } from 'emotion-theming'
 import theme from '../../../theme'
 import { render, cleanup } from '@testing-library/react'
 import { PhaseBanner } from '../'
-import en from '../../../locales/en.js'
+import en from '../../../locales/en.json'
 
 i18n.load('en', { en })
 i18n.activate('en')
@@ -17,7 +17,7 @@ describe('<PhaseBanner />', () => {
     const { getAllByText } = render(
       <ThemeProvider theme={theme}>
         <I18nProvider i18n={i18n}>
-          <PhaseBanner />
+          <PhaseBanner phase="ALPHA" />
         </I18nProvider>
       </ThemeProvider>,
     )

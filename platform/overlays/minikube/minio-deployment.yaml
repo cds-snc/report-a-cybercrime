@@ -18,15 +18,15 @@ spec:
         app: minio-deployment
     spec:
       volumes:
-        - name: minio-secrets
-          secret:
-            secretName: minio-secrets
+      - name: data-folder
+        hostPath:
+          path: '/data/minio'
       containers:
         - image: minio/minio
           volumeMounts:
-            - name: minio-secrets
-              mountPath: /gcs
-              readOnly: true
+            - name: data-folder
+              mountPath: '/tmp/minio'
+              readOnly: false
           name: minio
           args: ["server", "/data/minio/"]
           env:

@@ -4,8 +4,6 @@ resources:
   - traefik-ingress-controller-deployment.yaml
   - traefik-ingress-controller-service-account.yaml
   - traefik-ingress-controller-service.yaml
-  - sealed-secrets-controller-deployment.yaml
-  - sealed-secrets-crd.yaml
   - arango-claim.yaml
   - arangodb-deployment.yaml
   - arangodb-service.yaml

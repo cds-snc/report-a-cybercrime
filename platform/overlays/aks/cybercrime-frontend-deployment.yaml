@@ -4,6 +4,9 @@ kind: Deployment
 metadata:
   labels:
     app: cybercrime-frontend
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.cybercrime-frontend: glob:master-*
   name: cybercrime-frontend
   namespace: cybercrime-frontend
 spec:
@@ -24,7 +27,7 @@ spec:
     spec:
       containers:
         - image: acrrcmpcybercrime.azurecr.io/frontend
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           name: cybercrime-frontend
           env:
             - name: PORT

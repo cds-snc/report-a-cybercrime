@@ -31,7 +31,7 @@ export const BREAKPOINTS = ['320px', '641px', '769px']
 const colors = {
   white: '#FFF',
   black: '#000',
-  blue: '#005ea5',
+  blue: '#003a66',
   lightBlue: '#2b8cc4',
   purple: '#4c2c92',
   yellow: '#ffbf47',
@@ -40,6 +40,7 @@ const colors = {
   crimson: '#dc143c',
   green: '#008000',
   darkGreen: '#00692f',
+  darkGray: '#767676',
 }
 
 const theme = {

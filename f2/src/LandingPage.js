@@ -18,7 +18,7 @@ export const LandingPage = props => {
     <Layout>
       <TrackPageViews />
       <H1>
-        <Trans>Report a scam</Trans>
+        <Trans id="landingPage.title" />
       </H1>
       <ApolloConsumer>
         {client =>
@@ -40,44 +40,38 @@ export const LandingPage = props => {
         }
       </ApolloConsumer>
       <Stack spacing={2}>
-        <Text>
-          <Trans>
-            Scams can happen to anyone. They’re not always easy to recognize and
-            new ones are invented every day.
-          </Trans>
-        </Text>
+        <P>
+          <Trans id="landingPage.intro" />
+        </P>
         <InfoCard>
-          <Text>
-            <Trans>Before you start, gather what you can about the scam:</Trans>
-          </Text>
-          <List styleType="disc" pl={0}>
+          <P>
+            <Trans id="landingPage.required0" />
+          </P>
+          <List>
             <ListItem>
-              <Trans>Dates when it took place</Trans>
+              <Trans id="landingPage.required1" />
             </ListItem>
             <ListItem>
-              <Trans>Descriptions of what happened</Trans>
+              <Trans id="landingPage.required2" />
             </ListItem>
             <ListItem>
-              <Trans>Details on where it came from</Trans>
+              <Trans id="landingPage.required3" />
             </ListItem>
             <ListItem>
-              <Trans>Documents, screenshots, or receipts</Trans>
+              <Trans id="landingPage.required4" />
             </ListItem>
           </List>
         </InfoCard>
-        <Text>
-          <Trans>
-            Your report helps the RCMP learn about these crimes and helps police
-            across Canada catch cybercriminals.
-          </Trans>
-        </Text>
+        <P>
+          <Trans id="landingPage.summary" />
+        </P>
+        <ButtonsContainer
+          landing={true}
+          buttonLink={true}
+          cancel={false}
+          route="timeframe"
+        />
       </Stack>
-      <ButtonsContainer
-        landing={true}
-        buttonLink={true}
-        cancel={false}
-        route="timeframe"
-      />
     </Layout>
   )
 }

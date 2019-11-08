@@ -17,8 +17,7 @@ import {
   CSSReset,
 } from '@chakra-ui/core'
 import canada from './theme/canada'
-
-console.log(canada)
+import { SkipLink } from './components/skip-link'
 
 const App = () => {
   const { i18n } = useLingui()
@@ -27,14 +26,19 @@ const App = () => {
       <ChakraThemeProvider theme={canada}>
         <CSSReset />
         <header>
-          <WarningBanner />
-          <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
-            <Trans>This site will change as we test ideas.</Trans>
+          <SkipLink invisible href="#main">
+            <Trans id="SkipLink.text" />
+          </SkipLink>
+          <WarningBanner>
+            <Trans id=" banner.warning" />
+          </WarningBanner>
+          <PhaseBanner phase={<Trans id="banner.phase" />}>
+            <Trans id="banner.phaseText" />
           </PhaseBanner>
           <TopBanner lang={i18n.locale} bg="black" />
         </header>
 
-        <Flex>
+        <Flex id="main">
           <Home />
         </Flex>
 
@@ -47,7 +51,7 @@ const App = () => {
                 : 'https://numerique.canada.ca/transparence/confidentialite/'
             }
           >
-            <Trans>Privacy</Trans>
+            <Trans id="banner.footerPrivacy" />
           </Link>
           <Link
             color="white"
@@ -58,7 +62,7 @@ const App = () => {
                 : 'https://numerique.canada.ca/transparence/avis/'
             }
           >
-            <Trans>Terms and Conditions</Trans>
+            <Trans id="banner.footerTermsAndConditions" />
           </Link>
         </Footer>
       </ChakraThemeProvider>

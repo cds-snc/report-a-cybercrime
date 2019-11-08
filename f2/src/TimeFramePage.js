@@ -9,29 +9,25 @@ import { TrackPageViews } from './TrackPageViews'
 import { getDoneForms } from './utils/queriesAndMutations'
 import { BackButton } from './components/backbutton'
 import { Steps } from './components/stepper'
-import { Text, Stack } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 
 export const TimeFramePage = () => (
   <Route
     render={({ history }) => (
       <Layout>
         <BackButton route="/">
-          <Trans>the start page</Trans>
+          <Trans id="timeFramePage.backButton" />
         </BackButton>
         <Stack spacing={2}>
           <Steps activeStep={1} totalSteps={6} />
           <H1>
-            <Trans>When did the scam happen?</Trans>
+            <Trans id="timeFramePage.title" />
           </H1>
-          <Text>
-            <Trans>
-              It’s okay if you don’t know exactly when it took place. You can
-              give your best guess or leave this blank.
-            </Trans>
-          </Text>
-          <TrackPageViews />
+          <P>
+            <Trans id="timeFramePage.intro" />
+          </P>
         </Stack>
-
+        <TrackPageViews />
         <TimeFrameInfoForm
           onSubmit={(client, data) => {
             client.writeData({ data: { timeFrame: JSON.stringify(data) } })

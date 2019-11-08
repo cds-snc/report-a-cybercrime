@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -29,10 +29,10 @@ class TimeFrameInfoFormWrapped extends Component {
               <form onSubmit={handleSubmit}>
                 <FormControl>
                   <FormLabel htmlFor="startDate">
-                    <Trans>Approximate start</Trans>
+                    <Trans id="timeFramePage.startDate" />
                   </FormLabel>
                   <FormHelperText id="startDateExample" mb={2} mt={0}>
-                    <Trans>For example: 2019-04-28</Trans>
+                    <Trans id="timeFramePage.startDateExample" />
                   </FormHelperText>
                   <Input
                     name="startDate"
@@ -43,10 +43,10 @@ class TimeFrameInfoFormWrapped extends Component {
 
                 <FormControl>
                   <FormLabel htmlFor="startDate">
-                    <Trans>Approximate start</Trans>
+                    <Trans id="timeFramePage.endDate" />
                   </FormLabel>
                   <FormHelperText id="endDateExample">
-                    <Trans>For example: 2019-04-28</Trans>
+                    <Trans id="timeFramePage.endDateExample" />
                   </FormHelperText>
                   <Input
                     name="endDate"

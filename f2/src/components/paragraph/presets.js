@@ -5,7 +5,7 @@ import { Text } from '@chakra-ui/core'
 export const P = props => (
   <Text
     fontSize={['md', null, 'lg', null]}
-    lineHeight={1.2}
+    lineHeight={1.25}
     mb={4}
     color="red"
     {...props}
@@ -21,7 +21,7 @@ P.propTypes = {
 export const Lead = props => (
   <Text
     fontSize={['lg', null, 'xl', null]}
-    lineHeight={1.2}
+    lineHeight={1.25}
     mb={4}
     color="black"
     {...props}

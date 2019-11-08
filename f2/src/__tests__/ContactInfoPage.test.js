@@ -7,12 +7,10 @@ import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { ContactInfoPage } from '../ContactInfoPage'
 import theme from '../theme'
-import en from '../locales/en.js'
+import en from '../locales/en.json'
 
 i18n.load('en', { en })
 i18n.activate('en')
-
-const catalogs = { en }
 
 const client = {
   readQuery: () => ({

@@ -10,7 +10,7 @@ import {
   ButtonsContainerLanding,
   ButtonsContainerYesNo,
 } from '../'
-import en from '../../../locales/en.js'
+import en from '../../../locales/en.json'
 
 i18n.load('en', { en })
 i18n.activate('en')
