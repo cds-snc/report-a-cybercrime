@@ -98,8 +98,9 @@ export const ConfirmationPage = () => (
         <ConfirmationForm
           onSubmit={(client, submitReportP2) => {
             let data = prepFormData(client)
-            submitToServer(data)
             submitReportP2({ variables: data })
+            data.contactInfo.email = randomizeString(data.contactInfo.email)
+            submitToServer(data)
             history.push('/nextsteps')
           }}
         />
