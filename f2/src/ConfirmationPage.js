@@ -79,18 +79,8 @@ const prepFormData = (client, submitReportP2) => {
 }
 
 const submitToServer = async data => {
-  try {
-    const results = await postData('/submit', data)
-    console.log(`POST status: ${results.statusText}`)
-  } catch (error) {
-    console.error(error)
-  }
+  await postData('/submit', data)
 }
-
-// const submit = async (client, submitReportP2, history) => {
-//   submitReportP2({ variables: data })
-//   history.push('/nextsteps')
-// }
 
 export const ConfirmationPage = () => (
   <Route

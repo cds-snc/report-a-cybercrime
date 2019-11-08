@@ -9,38 +9,59 @@ const MongoClient = require('mongodb').MongoClient
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
 
-const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
-
-const uploadData = data => {
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err
-    var dbo = db.db('cybercrime')
-    dbo.collection('reports').insertOne(data, function(err, res) {
-      if (err) throw err
-      console.log('1 document inserted')
-      db.close()
-    })
-  })
+let cosmosDbConfigured = dbName && dbKey
+if (!cosmosDbConfigured) {
+  console.warn(
+    'Warning: CosmosDB not configured. Data will not be saved to CosmosDB database. Please set the environment variables COSMOSDB_NAME and COSMOSDB_KEY',
+  )
 }
 
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err
-  console.log('Connected to db!')
-  db.close()
-})
+const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
+
+const uploadData = (req, res) => {
+  const data = req.body
+  if (cosmosDbConfigured) {
+    MongoClient.connect(url, function(err, db) {
+      if (err) {
+        console.warn(`ERROR in MongoClient.connect: ${err}`)
+        res.statusCode = 502
+        res.statusMessage = 'Error saving to CosmosDB'
+        res.send(res.statusMessage)
+      } else {
+        var dbo = db.db('cybercrime')
+        dbo.collection('reports').insertOne(data, function(err, result) {
+          if (err) {
+            console.log({ data })
+
+            console.warn(`ERROR in insertOne: ${err}`)
+            res.statusCode = 502
+            res.statusMessage = 'Error saving to CosmosDB'
+            res.send(res.statusMessage)
+          } else {
+            db.close()
+            console.log('Report saved to CosmosDB')
+            res.send('Report saved to CosmosDB')
+          }
+        })
+      }
+    })
+  } else {
+    res.statusCode = 500
+    res.statusMessage = 'CosmosDB not configured'
+    res.send('CosmosDB not configured')
+  }
+}
 
 app
   .use(express.static(path.join(__dirname, 'build')))
   .use(bodyParser.json())
 
   .get('/ping', function(_req, res) {
-    uploadData({ ping: 'ping' })
     return res.send('pong')
   })
 
   .post('/submit', (req, res) => {
-    uploadData(req.body)
-    res.send('POST response')
+    uploadData(req, res)
   })
 
   .get('/*', function(_req, res) {
