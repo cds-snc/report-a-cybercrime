@@ -6,11 +6,12 @@ import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
 import { H1 } from './components/header'
 import { Ul } from './components/unordered-list'
-import { Li } from './components/list-item'
+import { Li, ListItem } from './components/list-item'
 import { InfoCard } from './components/container'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { ButtonsContainer } from './components/buttons-container'
+import { Text, Stack, List, Box } from '@chakra-ui/core'
 
 export const LandingPage = props => {
   return (
@@ -38,39 +39,39 @@ export const LandingPage = props => {
           })
         }
       </ApolloConsumer>
-
-      <P>
-        <Trans>
-          Scams can happen to anyone. They’re not always easy to recognize and
-          new ones are invented every day.
-        </Trans>
-      </P>
-      <InfoCard>
-        <P>
-          <Trans>Before you start, gather what you can about the scam:</Trans>
-        </P>
-        <Ul>
-          <Li>
-            <Trans>Dates when it took place</Trans>
-          </Li>
-          <Li>
-            <Trans>Descriptions of what happened</Trans>
-          </Li>
-          <Li>
-            <Trans>Details on where it came from</Trans>
-          </Li>
-          <Li>
-            <Trans>Documents, screenshots, or receipts</Trans>
-          </Li>
-        </Ul>
-      </InfoCard>
-      <br></br>
-      <P>
-        <Trans>
-          Your report helps the RCMP learn about these crimes and helps police
-          across Canada catch cybercriminals.
-        </Trans>
-      </P>
+      <Stack spacing={2}>
+        <Text>
+          <Trans>
+            Scams can happen to anyone. They’re not always easy to recognize and
+            new ones are invented every day.
+          </Trans>
+        </Text>
+        <InfoCard>
+          <Text>
+            <Trans>Before you start, gather what you can about the scam:</Trans>
+          </Text>
+          <List styleType="disc" pl={0}>
+            <ListItem>
+              <Trans>Dates when it took place</Trans>
+            </ListItem>
+            <ListItem>
+              <Trans>Descriptions of what happened</Trans>
+            </ListItem>
+            <ListItem>
+              <Trans>Details on where it came from</Trans>
+            </ListItem>
+            <ListItem>
+              <Trans>Documents, screenshots, or receipts</Trans>
+            </ListItem>
+          </List>
+        </InfoCard>
+        <Text>
+          <Trans>
+            Your report helps the RCMP learn about these crimes and helps police
+            across Canada catch cybercriminals.
+          </Trans>
+        </Text>
+      </Stack>
       <ButtonsContainer
         landing={true}
         buttonLink={true}

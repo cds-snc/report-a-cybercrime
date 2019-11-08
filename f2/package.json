@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/core": "^0.4.1",
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
     "@lingui/react": "^3.0.0-7",

@@ -1,3 +1,6 @@
+import { theme as chakraTheme } from '@chakra-ui/core'
+import { mergeDeep } from 'apollo-utilities'
+
 const FONT_SIZES = [
   '12rem',
   '14px',
@@ -92,13 +95,6 @@ const theme = {
     },
     footerLink: {
       color: '#FFF',
-      '&:focus': {
-        outline: `3px solid ${colors.focusColor}`,
-      },
-    },
-
-    inputField: {
-      color: colors.black,
       '&:focus': {
         outline: `3px solid ${colors.focusColor}`,
       },

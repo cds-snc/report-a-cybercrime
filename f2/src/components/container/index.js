@@ -31,6 +31,7 @@ import {
   zIndex,
 } from 'styled-system'
 import { cleanProps } from '../../utils/cleanProps'
+import { Box } from '@chakra-ui/core'
 
 export const Container = styled('div', {
   shouldForwardProp: prop => cleanProps(prop),
@@ -61,28 +62,14 @@ export const Container = styled('div', {
   ${right}
   ${zIndex}
 `
-export const Content = props => (
-  <main
-    css={css`
-      flex: 1 0 auto;
-    `}
-  >
-    <Container m="auto" width={[9 / 10, null, 4 / 5]} {...props}>
-      {props.children}
-    </Container>
-  </main>
-)
-
-Content.propTypes = {
-  children: PropTypes.any,
-}
 
 export const InfoCard = props => (
-  <Container
-    border="2px solid black"
-    borderRadius="5px"
-    padding="10px"
-    backgroundColor="infoCard"
+  <Box
+    rounded="lg"
+    border="2px"
+    borderColor="blackAlpha.900"
+    p={[3, null, 6]}
+    bg="blackAlpha.100"
     {...props}
-  />
+  ></Box>
 )

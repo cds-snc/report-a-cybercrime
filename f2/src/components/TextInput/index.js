@@ -1,9 +1,5 @@
-import { Input } from '../input'
 import { withProps } from 'recompose'
 import theme from '../../theme'
+import { Input } from '@chakra-ui/core'
 
-export const TextInput = withProps({
-  type: 'text',
-  colors: 'inputField',
-  fontSize: theme.fontSizes,
-})(Input)
+export const TextInput = withProps({})(Input)

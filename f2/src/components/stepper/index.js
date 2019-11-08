@@ -2,29 +2,16 @@
 import { css, jsx } from '@emotion/core'
 import { Container } from '../container'
 import PropTypes from 'prop-types'
-import { Text } from '../text'
+import { Text } from '@chakra-ui/core'
 import { Trans } from '@lingui/macro'
+import { graphqlSync } from 'graphql'
 
 export const Steps = ({ activeStep, totalSteps }) => (
-  <Container
-    css={css`
-      span {
-        font-weight: 500;
-        font-size: 24px;
-        color: #6f777b;
-      }
-    `}
-    display="flex"
-    flexDirection="row"
-    marginBottom="10px"
-  >
-    {' '}
-    <Text>
-      <Trans>
-        Step {activeStep} of {totalSteps}
-      </Trans>
-    </Text>
-  </Container>
+  <Text fontSize={['xl', null, '2xl', null]} color="gray.500">
+    <Trans>
+      Step {activeStep} of {totalSteps}
+    </Trans>
+  </Text>
 )
 
 Steps.propTypes = {

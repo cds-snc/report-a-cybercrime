@@ -5,13 +5,12 @@ import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { Text } from '../components/text'
 import { ButtonsContainer } from '../components/buttons-container'
-import { TextInput } from '../components/TextInput'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getTimeFrame } from '../utils/queriesAndMutations'
+import { Input, FormControl, FormLabel, FormHelperText } from '@chakra-ui/core'
 
-const TextInputAdapter = finalFormAdapter(TextInput)
+const TextInputAdapter = finalFormAdapter(Input)
 
 class TimeFrameInfoFormWrapped extends Component {
   localOnSubmit = (client, data) => {
@@ -28,57 +27,34 @@ class TimeFrameInfoFormWrapped extends Component {
             onSubmit={data => this.localOnSubmit(this.props.client, data)}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-                <label htmlFor="startDate">
-                  <Text marginTop={[5, null, 6]}>
-                    <Trans>
-                      <strong>Approximate start</strong>
-                    </Trans>
-                  </Text>
-                  <Text
-                    css={css`
-                      color: gray;
-                    `}
-                    mt="6px"
-                    mb="8px"
-                  >
+                <FormControl>
+                  <FormLabel htmlFor="startDate">
+                    <Trans>Approximate start</Trans>
+                  </FormLabel>
+                  <FormHelperText id="startDateExample" mb={2} mt={0}>
                     <Trans>For example: 2019-04-28</Trans>
-                  </Text>
-                </label>
-                <div>
-                  <Field
+                  </FormHelperText>
+                  <Input
                     name="startDate"
                     id="startDate"
-                    component={TextInputAdapter}
-                    height="25px"
-                    width="300px"
+                    aria-describedby="startDateExample"
                   />
-                </div>
+                </FormControl>
 
-                <label htmlFor="endDate">
-                  <Text marginTop={[5, null, 6]}>
-                    <Trans>
-                      <strong>Approximate end</strong>
-                    </Trans>
-                  </Text>
-                  <Text
-                    css={css`
-                      color: gray;
-                    `}
-                    mt="6px"
-                    mb="8px"
-                  >
+                <FormControl>
+                  <FormLabel htmlFor="startDate">
+                    <Trans>Approximate start</Trans>
+                  </FormLabel>
+                  <FormHelperText id="endDateExample">
                     <Trans>For example: 2019-04-28</Trans>
-                  </Text>
-                </label>
-                <div>
-                  <Field
+                  </FormHelperText>
+                  <Input
                     name="endDate"
                     id="endDate"
-                    component={TextInputAdapter}
-                    height="25px"
-                    width="300px"
+                    aria-describedby="endDateExample"
                   />
-                </div>
+                </FormControl>
+
                 <ButtonsContainer
                   cancel={true}
                   buttonLink={false}
