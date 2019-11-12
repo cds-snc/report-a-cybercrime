@@ -11,6 +11,7 @@ const makeInvisible = css`
   z-index: -999;
   :focus,
   :active {
+    background-color: white;
     left: auto;
     top: auto;
     height: auto;
@@ -19,7 +20,7 @@ const makeInvisible = css`
   }
 `
 export const SkipLink = ({ invisible, ...rest }) => (
-  <A css={invisible ? makeInvisible : null} {...rest} />
+  <A backgroundColor="white" css={invisible ? makeInvisible : null} {...rest} />
 )
 
 SkipLink.defaultProps = {
