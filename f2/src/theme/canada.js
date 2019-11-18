@@ -34,8 +34,8 @@ const fonts = {
 
 // Final Theme output
 const canada = {
-  fonts,
   radii,
+  fonts,
   colors,
 }
 

@@ -6,6 +6,7 @@ export const P = props => (
   <Text
     fontSize={['md', null, 'lg', null]}
     lineHeight={1.25}
+    fontFamily="body"
     mb={4}
     color="red"
     {...props}
@@ -22,6 +23,7 @@ export const Lead = props => (
   <Text
     fontSize={['lg', null, 'xl', null]}
     lineHeight={1.25}
+    fontFamily="body"
     mb={4}
     color="black"
     {...props}
