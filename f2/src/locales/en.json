@@ -6,7 +6,7 @@
   ": Money lost": ": Money lost",
   ": Review report": ": Review report",
   ": What happened": ": What happened",
-  "<0>&#9664;</0> <1>Back to</1> <2>{children}</2>": "<0>&#9664;</0> <1>Back to</1> <2>{children}</2>",
+  "<0>◀</0> <1>Back to</1> <2>{children}</2>": "<0>&#9664;</0> <1>Back to</1> <2>{children}</2>",
   "Cancel report": "Cancel report",
   "Next": "Next",
   "No": "No",
