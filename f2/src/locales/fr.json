@@ -6,7 +6,7 @@
   ": Money lost": " : Argent perdu",
   ": Review report": " : Révision du rapport",
   ": What happened": " : Description de la fraude",
-  "<0>◀</0> <1>Back to</1> <2>{children}</2>": "Retourner",
+  "<0>&#9664;</0> <1>Back to</1> <2>{children}</2>": "<0>&#9664;</0> <1>Retourner</1> <2>{children}</2>",
   "Cancel report": "Annuler le rapport",
   "Next": "Étape suivante",
   "No": "Non",
@@ -111,5 +111,6 @@
   "your contact information": "vos coordonnées",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
   "{startDate} to {endDate}": "{startDate} au {endDate}",
+  "◀ <1>Back to</1> <2>{children}</2>": "◀ Retourner {children}",
   "❮ &nbsp; Report another scam": "❮ Signaler une autre fraude"
 }
