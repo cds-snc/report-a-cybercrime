@@ -4,14 +4,11 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
-import { Form, Field } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { ButtonsContainer } from '../components/buttons-container'
-import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getTimeFrame } from '../utils/queriesAndMutations'
 import { Input, FormControl, FormLabel, Stack } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
-
-const TextInputAdapter = finalFormAdapter(Input)
 
 class TimeFrameInfoFormWrapped extends Component {
   localOnSubmit = (client, data) => {

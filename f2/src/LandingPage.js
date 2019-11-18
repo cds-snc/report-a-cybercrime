@@ -5,13 +5,12 @@ import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
 import { H1 } from './components/header'
-import { Ul } from './components/unordered-list'
-import { Li, ListItem } from './components/list-item'
+import { ListItem } from './components/list-item'
 import { InfoCard } from './components/container'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { ButtonsContainer } from './components/buttons-container'
-import { Text, Stack, List, Box } from '@chakra-ui/core'
+import { Stack, List } from '@chakra-ui/core'
 
 export const LandingPage = props => {
   return (

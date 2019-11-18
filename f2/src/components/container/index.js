@@ -1,7 +1,6 @@
 /** @jsx jsx **/
 import styled from '@emotion/styled'
-import { jsx, css } from '@emotion/core'
-import PropTypes from 'prop-types'
+import { jsx } from '@emotion/core'
 
 import {
   alignItems,

@@ -1,6 +1,3 @@
-import { theme as chakraTheme } from '@chakra-ui/core'
-import { mergeDeep } from 'apollo-utilities'
-
 const FONT_SIZES = [
   '12rem',
   '14px',
