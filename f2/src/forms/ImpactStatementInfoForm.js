@@ -11,18 +11,16 @@ import { Text } from '../components/text'
 import { TextArea } from '../components/text-area'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getImpact } from '../utils/queriesAndMutations'
+import {
+  CheckboxGroup,
+  FormControl,
+  FormLabel,
+  Textarea,
+} from '@chakra-ui/core'
+import { FormHelperText } from '../components/FormHelperText'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
-
-const CheckboxStyle = styled('label')`
-  margin-bottom: 8pt;
-`
-const Fieldset = styled('fieldset')`
-  margin: 0;
-  padding: 0;
-  border: none;
-`
 
 const validate = () => {
   return {}
@@ -49,51 +47,30 @@ export const ImpactStatementInfoForm = props => {
           validate={validate}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <Fieldset>
-                <legend>
-                  <Text marginTop={[5, null, 6]}>
-                    <strong>
-                      <Trans id="impactPage.detail" />
-                    </strong>
-                  </Text>
-                </legend>
-
-                <div>
+              <FormControl as="fieldset">
+                <FormLabel as="legend" htmlFor="howWereYouAffected">
+                  <Trans id="impactPage.detail" />
+                </FormLabel>
+                <CheckboxGroup>
                   {howWereYouAffected.map(key => {
                     return (
-                      <CheckboxStyle key={key}>
-                        <Field
-                          name="howWereYouAffected"
-                          component={CheckboxAdapter}
-                          type="checkbox"
-                          value={key}
-                          label={i18n._(key)}
-                        />
-                      </CheckboxStyle>
+                      <CheckboxAdapter value={key}>
+                        <Trans id={key}></Trans>
+                      </CheckboxAdapter>
                     )
                   })}
-                </div>
-              </Fieldset>
+                </CheckboxGroup>
+              </FormControl>
 
-              <label htmlFor="damage">
-                <Text marginTop={[5, null, 6]}>
-                  <strong>
-                    <Trans id="impactPage.summary" />
-                  </strong>
-                  <Text color="darkGray" mt="6px" mb="8px">
-                    <Trans id="impactPage.example" />
-                  </Text>
-                </Text>
-              </label>
-              <div>
-                <Field
-                  name="damage"
-                  id="damage"
-                  component={TextAreaAdapter}
-                  height="50px"
-                  width="100%"
-                />
-              </div>
+              <FormControl>
+                <FormLabel>
+                  <Trans id="impactPage.summary" />
+                </FormLabel>
+                <FormHelperText variant="above">
+                  <Trans id="impactPage.example" />
+                </FormHelperText>
+                <TextAreaAdapter id="damage" name="damage" />
+              </FormControl>
 
               <ButtonsContainer
                 buttonLink={false}

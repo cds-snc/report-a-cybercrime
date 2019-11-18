@@ -26,8 +26,10 @@ const colors = {
 }
 
 const fonts = {
-  heading: 'Helvetica, Arial, sans-serif',
-  body: 'Helvetica, Arial, sans-serif',
+  heading: '"Helvetica", sans-serif',
+  body: '"Helvetica", sans-serif',
+  mono:
+    'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
 }
 
 // Final Theme output
@@ -38,3 +40,5 @@ const canada = {
 }
 
 export default mergeDeep(chakraTheme, canada)
+
+console.log(mergeDeep(chakraTheme, canada))

@@ -8,7 +8,8 @@ import { Form, Field } from 'react-final-form'
 import { ButtonsContainer } from '../components/buttons-container'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getTimeFrame } from '../utils/queriesAndMutations'
-import { Input, FormControl, FormLabel, FormHelperText } from '@chakra-ui/core'
+import { Input, FormControl, FormLabel, Stack } from '@chakra-ui/core'
+import { FormHelperText } from '../components/FormHelperText'
 
 const TextInputAdapter = finalFormAdapter(Input)
 
@@ -27,39 +28,42 @@ class TimeFrameInfoFormWrapped extends Component {
             onSubmit={data => this.localOnSubmit(this.props.client, data)}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-                <FormControl>
-                  <FormLabel htmlFor="startDate">
-                    <Trans id="timeFramePage.startDate" />
-                  </FormLabel>
-                  <FormHelperText id="startDateExample" mb={2} mt={0}>
-                    <Trans id="timeFramePage.startDateExample" />
-                  </FormHelperText>
-                  <Input
-                    name="startDate"
-                    id="startDate"
-                    aria-describedby="startDateExample"
-                  />
-                </FormControl>
+                <Stack spacing={8}>
+                  <FormControl>
+                    <FormLabel htmlFor="startDate">
+                      <Trans id="timeFramePage.startDate" />
+                    </FormLabel>
+                    <FormHelperText id="startDateExample" variant="above">
+                      <Trans id="timeFramePage.startDateExample" />
+                    </FormHelperText>
+                    <Input
+                      variant="outline"
+                      name="startDate"
+                      id="startDate"
+                      aria-describedby="startDateExample"
+                    />
+                  </FormControl>
 
-                <FormControl>
-                  <FormLabel htmlFor="startDate">
-                    <Trans id="timeFramePage.endDate" />
-                  </FormLabel>
-                  <FormHelperText id="endDateExample">
-                    <Trans id="timeFramePage.endDateExample" />
-                  </FormHelperText>
-                  <Input
-                    name="endDate"
-                    id="endDate"
-                    aria-describedby="endDateExample"
-                  />
-                </FormControl>
+                  <FormControl>
+                    <FormLabel htmlFor="startDate">
+                      <Trans id="timeFramePage.endDate" />
+                    </FormLabel>
+                    <FormHelperText id="endDateExample" variant="above">
+                      <Trans id="timeFramePage.endDateExample" />
+                    </FormHelperText>
+                    <Input
+                      name="endDate"
+                      id="endDate"
+                      aria-describedby="endDateExample"
+                    />
+                  </FormControl>
 
-                <ButtonsContainer
-                  cancel={true}
-                  buttonLink={false}
-                  nextPage="What happened"
-                />
+                  <ButtonsContainer
+                    cancel={true}
+                    buttonLink={false}
+                    nextPage="What happened"
+                  />
+                </Stack>
               </form>
             )}
           />
