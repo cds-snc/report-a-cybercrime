@@ -15,6 +15,7 @@ import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
 import { FooterLink } from './components/link'
 import { Content } from './components/container'
+import { SkipLink } from './components/skip-link'
 
 const App = () => (
   <I18n>
@@ -90,13 +91,17 @@ const App = () => (
               />
               <ThemeProvider theme={theme}>
                 <header>
+                  <SkipLink invisible href="#main">
+                    <Trans>Skip to main content</Trans>
+                  </SkipLink>
+
                   <WarningBanner />
                   <PhaseBanner phase={<Trans>ALPHA</Trans>} phaseColor="purple">
                     <Trans>This site will change as we test ideas.</Trans>
                   </PhaseBanner>
                   <TopBanner lang={language} bg="black" />
                 </header>
-                <Content>
+                <Content id="main">
                   <Home />
                 </Content>
 

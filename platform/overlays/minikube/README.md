@@ -1,93 +1,65 @@
-# Minikube
+# Local development
 
-On Unix systems, starting minikube looks something like the following.
+This application is built in the Cloud Native style, which the [CNCF](https://www.cncf.io) [used to](https://web.archive.org/web/20180401091110/https://www.cncf.io/about/charter/) simply define as:
+
+* Container packaged
+* Dynamically managed
+* Micro-services oriented
+
+ This architectural approach optimizes for composabilty (allowing new services to be built by combining existing ones), resiliance and replaceabilty (each individual service is small enough to be rewritten in a couple of weeks). To ensure this benefits are realized by key projects in the Government of Canada, this architecture is also [a requirement](https://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=15249#claC.2.3.10) for projects going through the GCEARB.
+
+While a system decomposed into microservice has great organizational benefits, those benefits can only be claimed when developers adopt these tools and practices. This means that developer experience needs to be a key concern.
+
+To that end, this project combines three key projects to create a modern developer workflow: [Minikube](https://minikube.sigs.k8s.io) and [Skaffold](https://skaffold.dev) and [Kustomize]().
+
+## Minikube
+
+Kubernetes is the orchestrator that gives the "Dynamically managed" part of the Cloud Native definition above. Minikube lets you run Kubernetes locally. Install Minikube on a Mac with [homebrew](https://brew.sh):
 
 ```sh
-minikube start
+brew install minikube
 ```
 
-If you have problems on your system you might have to add appropriate options.
+You will also need the `kubectl` command to talk to Kubernetes instances like the one that minikube creates for you.
+
+```sh
+brew install kubernetes-cli
+```
+
+## Skaffold
+
+Skaffold runs your application in Kubernetes and updates it as you make code changes. You can also install it via homebrew:
+
+```sh
+brew install skaffold
+```
+
+## Kustomize
+
+Kustomize lets you create variations on your Kubernetes configuration using patches instead of programming in templates. It can also be installed via homebrew:
+
+```sh
+brew install kustomize
+```
+
+# How it all comes together
+
+The basic idea: Minikube creates a virtual machine and runs Kubernetes inside. Skaffold generates the config needed to run your application using Kustomise and puts it inside Kubernetes using kubectl. From there it watches your files for changes and loads the changes files into Kubernetes as you work.
 
 ## Secrets
 
-Secrets (for example, database keys) are currently managed using [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets).
-Sealed Secrets works by having a controller running inside the cluster decrypt secrets using a secret key.
-This secret key needs to be added to the cluster before the Sealed Secrets controller starts so that it picks it up and to successfully decrypt the secrets.
-The minikube overlay contains all the secrets for the project encrypted with a key generated specifically for development.
+Like most applications this application needs a few secrets to run.
+Running `make secrets` will create the files you need in the `platform/overlays/minikube` folder.
 
-Before deploying the app to the cluster you need to create a private / public keypair, deploy the private key to the cluster, and encrypt the required secrets with the public key.
+Take a moment and fill in the values.
 
-### Generate and deploy keys
+On a Mac you will probably need to install and use a version of `make` from this decade. Run `brew install make` and then try `gmake secrets` if you have any problems.
 
-```sh
-openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout minikubePrivate.key   \
--out minikubePublic.crt -subj "/CN=report-a-cybercrime"
+## Running it
 
-kubectl -n kube-system create secret tls sealed-secrets-key                       \
---key=minikubePrivate.key --cert=minikubePublic.crt --namespace=kube-system
+With the prerequisites installed and the secrets created in the `platform/overlays/minikube` folder, all that's left is to start minikube, and then the app itself.
+
+```bash
+minikube start
+make dev
 ```
-
-### Encrypt secrets
-
-With those keys created, you can now use them to encrypt secrets to be included in that overlay:
-
-```sh
-kubectl create secret generic arango-secrets              \
---from-literal=ARANGO_PASSWORD=$ARANGO_PASSWORD           \
---namespace=cybercrime-api --dry-run -o yaml              \
-| kubeseal --cert=minikubePublic.crt --format yaml -      \
-> platform/overlays/minikube/arango-secrets.yaml
-
-kubectl create secret generic cybercrime-api-secrets      \
---from-literal=DB_NAME=$DB_NAME                           \
---from-literal=DB_URL=$DB_URL                             \
---from-literal=DB_USER=$DB_USER                           \
---from-literal=DB_PASSWORD=$DB_PASSWORD                   \
---namespace=cybercrime-api --dry-run -o yaml              \
-| kubeseal --cert=minikubePublic.crt --format yaml -      \
-> platform/overlays/minikube/cybercrime-api-secrets.yaml
-
-kubectl create secret generic minio-secrets               \
---from-literal=MINIO_ACCESS_KEY=$MINIO_ACCESS_KEY         \
---from-literal=MINIO_SECRET_KEY=$MINIO_SECRET_KEY         \
---from-literal=MINIO_BUCKET_NAME=$MINIO_BUCKET_NAME       \
---namespace=cybercrime-api --dry-run -o yaml              \
-| kubeseal --cert=minikubePublic.crt --format=yaml -      \
-> platform/overlays/minikube/minio-secrets.yaml
-```
-
-## Deploy
-
-You are now ready to deploy the code to the cluster.
-
-```sh
-kubectl apply -k platform/overlays/minikube
-```
-
-To monitor the pods as they come up use
-
-```
-watch kubectl get pods --all-namespaces
-```
-
-It will likely take 5-10 minutes for the system to stabalize. When all pods are running you can connect to the frontend by getting the url using
-
-```
-minikube ip
-```
-
-and the port via
-
-```
-kubectl get service --namespace=kube-system traefik-ingress-service
-```
-
-To connect to the arango database to verify that the app is working,
-
-```
-kubectl port-forward -n cybercrime-api arangodb-6ff497f798-j4tzz 8529:8529
-```
-
-Note that the pod name will differ, but will start with `arangodb-`. You can now navigate your browser to `http://localhost:8529` to access the database. Use the username and password from your environment variables `DB_USR` and `DB_PASSWORD`.
-
-Open the database "cybercrime" and the collection "reports". Go through the app and submit a report. Refresh your arango tab and the data should show in the database. Note that currently we are anonymizing personal information (names, phone numbers, addresses, ip addresses) before sending it to the database.

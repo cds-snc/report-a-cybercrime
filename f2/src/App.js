@@ -11,11 +11,12 @@ import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
 import { FooterLink } from './components/link'
 import { Content } from './components/container'
+import { SkipLink } from './components/skip-link'
 
 const App = () => {
   const { i18n } = useLingui()
   return (
-    <main>
+    <React.Fragment>
       <Global
         styles={css`
           html,
@@ -44,6 +45,9 @@ const App = () => {
       />
       <ThemeProvider theme={theme}>
         <header>
+          <SkipLink invisible href="#main">
+            <Trans id="SkipLink.text" />
+          </SkipLink>
           <WarningBanner />
           <PhaseBanner phase={<Trans id="banner.phase" />}>
             <Trans id="banner.phaseText" />
@@ -51,7 +55,7 @@ const App = () => {
           <TopBanner lang={i18n.locale} bg="black" />
         </header>
 
-        <Content>
+        <Content id="main">
           <Home />
         </Content>
 
@@ -76,7 +80,7 @@ const App = () => {
           </FooterLink>
         </Footer>
       </ThemeProvider>
-    </main>
+    </React.Fragment>
   )
 }
 

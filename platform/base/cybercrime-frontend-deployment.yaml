@@ -4,9 +4,6 @@ kind: Deployment
 metadata:
   labels:
     app: cybercrime-frontend
-  annotations:
-    flux.weave.works/automated: "true"
-    flux.weave.works/tag.cybercrime-frontend: glob:master-*
   name: cybercrime-frontend
   namespace: cybercrime-frontend
 spec:
@@ -15,11 +12,6 @@ spec:
   selector:
     matchLabels:
       app: cybercrime-frontend
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -27,7 +19,6 @@ spec:
     spec:
       containers:
         - image: acrrcmpcybercrime.azurecr.io/frontend
-          imagePullPolicy: Always
           name: cybercrime-frontend
           env:
             - name: PORT
@@ -37,21 +28,3 @@ spec:
             - name: RAZZLE_GOOGLE_ANALYTICS_ID
               value: "UA-130179934-1"
           resources: {}
-          livenessProbe:
-            httpGet:
-              path: /monitoring/alive
-              port: 3000
-            initialDelaySeconds: 5
-            periodSeconds: 5
-          readinessProbe:
-            httpGet:
-              path: /monitoring/ready
-              port: 3000
-            initialDelaySeconds: 5
-            periodSeconds: 5
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
-status: {}
