@@ -1,22 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
 import { ApolloConsumer } from 'react-apollo'
-import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, Field } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { Checkbox } from '../components/checkbox'
 import { ButtonsContainer } from '../components/buttons-container'
-import { Text } from '../components/text'
 import { TextArea } from '../components/text-area'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getImpact } from '../utils/queriesAndMutations'
-import {
-  CheckboxGroup,
-  FormControl,
-  FormLabel,
-  Textarea,
-} from '@chakra-ui/core'
+import { CheckboxGroup, FormControl, FormLabel } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
@@ -27,8 +19,6 @@ const validate = () => {
 }
 
 export const ImpactStatementInfoForm = props => {
-  const { i18n } = useLingui()
-
   const howWereYouAffected = [
     'impactPage.affected1',
     'impactPage.affected2',

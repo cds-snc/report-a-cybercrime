@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Alert, AlertIcon, AlertDescription } from '@chakra-ui/core'
 
 export const WarningBanner = props => {
-  const { bg, status, message } = props
+  const { status, message } = props
 
   return (
     <Alert status={status}>

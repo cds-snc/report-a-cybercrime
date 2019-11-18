@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { Container } from '../container'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { Button, Box } from '@chakra-ui/core'
 import { Trans } from '@lingui/macro'
 import { Link, Link as ButtonLink, Flex } from '@chakra-ui/core'
