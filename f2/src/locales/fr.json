@@ -65,7 +65,7 @@
   "nextStepsPage.otherReportOption": "Vous avez d'autres options de signalement",
   "nextStepsPage.otherReportOption1": "Signaler l'incident directement à l'endroit où la fraude a eu lieu.",
   "nextStepsPage.otherReportOption2": "Signaler l'incident à votre institution financière si vous avez fait parvenir de l'argent au fraudeur.",
-  "nextStepsPage.otherReportOption3": "Signaler la fraude aux agences d'évaluation du crédit, à savoir <0> Equifax </0> et <1> TransUnion </1>, en cas de vol d'identité.",
+  "nextStepsPage.otherReportOption3": "Signaler la fraude aux agences d'évaluation du crédit, à savoir <0> Equifax </0> et <1>TransUnion</1>, en cas de vol d'identité.",
   "nextStepsPage.summary": "Nous vous avons envoyé un courriel avec un résumé de votre rapport. Votre numéro de référence est le <0>#NC300234234</0>.",
   "nextStepsPage.title": "Merci de votre signalement",
   "scammerDetail.addFileButtom": "Ajouter un fichier",
