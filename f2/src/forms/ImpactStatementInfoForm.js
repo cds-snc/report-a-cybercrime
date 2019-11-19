@@ -5,8 +5,8 @@ import { ApolloConsumer } from 'react-apollo'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
-import { ButtonsContainer } from '../components/buttons-container'
 import { Text } from '../components/text'
 import { TextArea } from '../components/text-area'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
@@ -94,12 +94,11 @@ export const ImpactStatementInfoForm = props => {
                   width="100%"
                 />
               </div>
-
-              <ButtonsContainer
-                buttonLink={false}
-                cancel={true}
-                nextPage="Contact info"
-              />
+              <NextAndCancelButtons>
+                <Trans id="impactPage.nextButton">
+                  Next: Contact information
+                </Trans>
+              </NextAndCancelButtons>
             </form>
           )}
         />

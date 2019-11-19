@@ -20,9 +20,7 @@ export const Steps = ({ activeStep, totalSteps }) => (
   >
     {' '}
     <Text>
-      <Trans>
-        Step {activeStep} of {totalSteps}
-      </Trans>
+      <Trans id="stepper" values={{ activeStep, totalSteps }} />
     </Text>
   </Container>
 )
