@@ -7,7 +7,6 @@ import { ApolloConsumer } from 'react-apollo'
 import { Form, Field } from 'react-final-form'
 import { Container } from '../components/container'
 import { plural, Trans } from '@lingui/macro'
-import { ButtonsContainer } from '../components/buttons-container'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { Text } from '../components/text'
@@ -15,6 +14,7 @@ import { H2, H3 } from '../components/header'
 import { P } from '../components/paragraph'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getScammerDetails } from '../utils/queriesAndMutations'
@@ -203,11 +203,11 @@ export const ScammerDetailsFormWrapped = props => {
                   </React.Fragment>
                 ))}
               </Container>
-              <ButtonsContainer
-                buttonLink={false}
-                cancel={true}
-                nextPage="Impact of scam"
-              />
+              <NextAndCancelButtons>
+                <Trans id="scammerDetail.nextButton">
+                  Next: Impact of scam
+                </Trans>
+              </NextAndCancelButtons>
             </form>
           )}
         />
