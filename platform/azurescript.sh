@@ -8,7 +8,7 @@
   8 az aks get-credentials --resource-group CDSExperiment  --name CDSExperiemntCluster
   9 #Create a container registry
  10 az acr create --resource-group CDSExperiment  --name CDSContainerRegistry001 --sku Basic
- 11 #change directory to baseline folder
+ 11 #change directory to baseline foldergti
  12 cd ../projects/report-a-cybercrime/baseline
  13 #docker  build an image  tagged “cdsimage” in local
  14 docker build -t cdscontainerregistry001.azurecr.io/cdsimage .
@@ -25,4 +25,4 @@
  25 #get key from the new storage account
 26 accountkey=`az storage account keys list --account-name mycdsstorageaccount --resource-group CDSExperiment | jq 'first(.[].    value)' | tr -d \"`
  27 # Create an azure storage container (if directly use account-key, need double quote the key, container name all lowercase)
- 28 az storage container create -n cdsstoragecontainer --account-name mycdsstorageaccount  --account-key $accountkey 
+ 28 az storage container create -n cdsstoragecontainer --account-name mycdsstorageaccount  --account-key $accountkey git s
