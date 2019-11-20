@@ -4,7 +4,7 @@ import { Button } from '../button'
 import { Trans } from '@lingui/macro'
 import { Link } from '../link'
 import PropTypes from 'prop-types'
-import { Flex } from '@chakra-ui/core'
+import { Flex, Box } from '@chakra-ui/core'
 
 export const NextAndCancelButtons = ({ cancelRoute = '/', ...props }) => (
   <Flex direction="row" align="center">

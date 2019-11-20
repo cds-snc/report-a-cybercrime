@@ -45,14 +45,16 @@ export const NextSteps = () => (
               <P>
                 <Trans id="nextStepsPage.summary">
                   We've sent you an email with a summary of your report. Your
-                  reference number is  <strong>#NC300234234</strong>
-                  </Trans>
+                  reference number is <strong>#NC300234234</strong>
+                </Trans>
               </P>
               <InfoCard>
                 <P>
-                <strong><Trans id="nextStepsPage.helpResource">
-                    Where you can get help
-                  </Trans></strong>
+                  <strong>
+                    <Trans id="nextStepsPage.helpResource">
+                      Where you can get help
+                    </Trans>
+                  </strong>
                 </P>
                 <Ul>
                   <Li>
@@ -63,7 +65,9 @@ export const NextSteps = () => (
                           : 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-fra.htm'
                       }
                     >
-                      <Trans id="nextStepsPage.helpResource1">Talk to someone and get support</Trans>
+                      <Trans id="nextStepsPage.helpResource1">
+                        Talk to someone and get support
+                      </Trans>
                     </A>
                   </Li>
                   <Li>
@@ -74,7 +78,9 @@ export const NextSteps = () => (
                           : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
                       }
                     >
-                      <Trans id="nextStepsPage.helpResource2">Find tips to protect yourself in the future</Trans>
+                      <Trans id="nextStepsPage.helpResource2">
+                        Find tips to protect yourself in the future
+                      </Trans>
                     </A>
                   </Li>
                   <Li>
@@ -85,14 +91,18 @@ export const NextSteps = () => (
                           : 'http://www.antifraudcentre.ca/index-fra.htm'
                       }
                     >
-                      <Trans id="nextStepsPage.helpResource3">Follow what scams are trending</Trans>
+                      <Trans id="nextStepsPage.helpResource3">
+                        Follow what scams are trending
+                      </Trans>
                     </A>
                   </Li>
                 </Ul>
                 <P>
-                <strong><Trans id="nextStepsPage.nextStepSummary">
-                    What happens next
-                  </Trans></strong>
+                  <strong>
+                    <Trans id="nextStepsPage.nextStepSummary">
+                      What happens next
+                    </Trans>
+                  </strong>
                 </P>
                 <P>
                   <Trans></Trans>
@@ -107,9 +117,11 @@ export const NextSteps = () => (
               </InfoCard>
               <br></br>
               <P>
-              <strong><Trans id="nextStepsPage.otherReportOption">
-                  You have other reporting options
-                </Trans></strong>
+                <strong>
+                  <Trans id="nextStepsPage.otherReportOption">
+                    You have other reporting options
+                  </Trans>
+                </strong>
               </P>
               <Ul>
                 <Li>
@@ -123,7 +135,7 @@ export const NextSteps = () => (
                   </Trans>
                 </Li>
                 <Li>
-                  <Trans id="nextStepsPage.otherReportOption3"> 
+                  <Trans id="nextStepsPage.otherReportOption3">
                     Report to the credit bureaus,{' '}
                     <A
                       href={

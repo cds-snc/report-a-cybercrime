@@ -6,9 +6,7 @@ import { Trans } from '@lingui/macro'
 
 export const Steps = ({ activeStep, totalSteps }) => (
   <Text fontSize={['xl', null, '2xl', null]} color="gray.500">
-    <Trans>
-      Step {activeStep} of {totalSteps}
-    </Trans>
+    <Trans id="stepper" values={{ activeStep, totalSteps }} />
   </Text>
 )
 

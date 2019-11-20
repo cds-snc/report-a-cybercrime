@@ -1,24 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from '@emotion/styled'
 import { ApolloConsumer } from 'react-apollo'
+import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
+import { Form, Field } from 'react-final-form'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
-import { ButtonsContainer } from '../components/buttons-container'
+import { Text } from '../components/text'
 import { TextArea } from '../components/text-area'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getImpact } from '../utils/queriesAndMutations'
-import { CheckboxGroup, FormControl, FormLabel } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
 const TextAreaAdapter = finalFormAdapter(TextArea)
+
+const CheckboxStyle = styled('label')`
+  margin-bottom: 8pt;
+`
+const Fieldset = styled('fieldset')`
+  margin: 0;
+  padding: 0;
+  border: none;
+`
 
 const validate = () => {
   return {}
 }
 
 export const ImpactStatementInfoForm = props => {
+  const { i18n } = useLingui()
+
   const howWereYouAffected = [
     'impactPage.affected1',
     'impactPage.affected2',
@@ -37,36 +49,56 @@ export const ImpactStatementInfoForm = props => {
           validate={validate}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <FormControl as="fieldset">
-                <FormLabel as="legend" htmlFor="howWereYouAffected">
-                  <Trans id="impactPage.detail" />
-                </FormLabel>
-                <CheckboxGroup>
+              <Fieldset>
+                <legend>
+                  <Text marginTop={[5, null, 6]}>
+                    <strong>
+                      <Trans id="impactPage.detail" />
+                    </strong>
+                  </Text>
+                </legend>
+
+                <div>
                   {howWereYouAffected.map(key => {
                     return (
-                      <CheckboxAdapter value={key}>
-                        <Trans id={key}></Trans>
-                      </CheckboxAdapter>
+                      <CheckboxStyle key={key}>
+                        <Field
+                          name="howWereYouAffected"
+                          component={CheckboxAdapter}
+                          type="checkbox"
+                          value={key}
+                          label={i18n._(key)}
+                        />
+                      </CheckboxStyle>
                     )
                   })}
-                </CheckboxGroup>
-              </FormControl>
+                </div>
+              </Fieldset>
 
-              <FormControl>
-                <FormLabel>
-                  <Trans id="impactPage.summary" />
-                </FormLabel>
-                <FormHelperText variant="above">
-                  <Trans id="impactPage.example" />
-                </FormHelperText>
-                <TextAreaAdapter id="damage" name="damage" />
-              </FormControl>
-
-              <ButtonsContainer
-                buttonLink={false}
-                cancel={true}
-                nextPage="Contact info"
-              />
+              <label htmlFor="damage">
+                <Text marginTop={[5, null, 6]}>
+                  <strong>
+                    <Trans id="impactPage.summary" />
+                  </strong>
+                  <Text color="darkGray" mt="6px" mb="8px">
+                    <Trans id="impactPage.example" />
+                  </Text>
+                </Text>
+              </label>
+              <div>
+                <Field
+                  name="damage"
+                  id="damage"
+                  component={TextAreaAdapter}
+                  height="50px"
+                  width="100%"
+                />
+              </div>
+              <NextAndCancelButtons>
+                <Trans id="impactPage.nextButton">
+                  Next: Contact information
+                </Trans>
+              </NextAndCancelButtons>
             </form>
           )}
         />

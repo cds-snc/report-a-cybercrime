@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { ButtonsContainer } from '../components/buttons-container'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
@@ -71,11 +71,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
               />
             </div>
 
-            <ButtonsContainer
-              buttonLink={false}
-              cancel={true}
-              nextPage="Confirm information"
-            />
+            <NextAndCancelButtons>
+              <Trans id="contactinfoPage.nextButton" />
+            </NextAndCancelButtons>
           </form>
         )}
       />

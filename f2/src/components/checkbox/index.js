@@ -11,6 +11,7 @@ export const Checkbox = ({ label, ...props }) => {
         return (
           <ChakraCheckbox {...props} id={id}>
             {props.children}
+            {label}
           </ChakraCheckbox>
         )
       }}
