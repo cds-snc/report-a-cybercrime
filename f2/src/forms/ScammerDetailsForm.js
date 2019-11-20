@@ -19,6 +19,7 @@ import { FileUpload } from '../components/file-upload'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getScammerDetails } from '../utils/queriesAndMutations'
 import upload from '../images/upload.svg'
+import { Box, Flex, Stack, FormControl, FormLabel } from '@chakra-ui/core'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
@@ -126,30 +127,14 @@ export const ScammerDetailsFormWrapped = props => {
                 justifyContent={['flex-start', 'center', 'flex-start']}
                 textAlign="center"
               >
-                <FileUpload
-                  onChange={onChange}
-                  width={['auto', '100%', 'auto']}
-                  paddingLeft="1.5rem"
-                  paddingRight="1.5rem"
-                  paddingBottom="0.6rem"
-                  paddingTop="0.6rem"
-                  css={css`
-                    display: flex;
-                    justify-content: center;
-                    img {
-                      width: 1rem;
-                      margin-right: 0.6rem;
-                    }
-                  `}
-                >
-                  <img alt="upload icon" src={upload} />
-                  <span>
+                <FileUpload onChange={onChange}>
+                  <Button leftIcon="attachment" as="div">
                     <Trans id="scammerDetail.addFileButtom" />
-                  </span>
+                  </Button>
                 </FileUpload>
               </Container>
 
-              <H2 fontSize={[4, null, 5]} lineHeight={[4, null, 5]}>
+              <H2>
                 {plural(files.length, {
                   one: '# file attached',
                   other: '# files attached',
@@ -173,33 +158,30 @@ export const ScammerDetailsFormWrapped = props => {
               <Container>
                 {files.map((f, index) => (
                   <React.Fragment key={index}>
-                    <H3 marginTop={[4, null, 5]} fontSize={[2, null, 4]}>
-                      {f.name}
-                    </H3>
+                    <Stack spacing={4} mb={4}>
+                      <H3>{f.name}</H3>
+                      <FormControl>
+                        <FormLabel htmlFor={`file-description-${index}`}>
+                          <Trans id="scammerDetail.fileDescription" />
+                        </FormLabel>
+                        <Field
+                          input={{ value: fileDescriptions[index], onChange }}
+                          name={`file-description-${index}`}
+                          id={`file-description-${index}`}
+                          component={TextAreaAdapter}
+                          height="50px"
+                        />
+                      </FormControl>
 
-                    <label htmlFor={`file-description-${index}`}>
-                      <Text>
-                        <Trans id="scammerDetail.fileDescription" />
-                      </Text>
-                    </label>
-                    <div>
-                      <Field
-                        input={{ value: fileDescriptions[index], onChange }}
-                        name={`file-description-${index}`}
-                        id={`file-description-${index}`}
-                        component={TextAreaAdapter}
-                        height="50px"
-                      />
-                    </div>
-
-                    <Button
-                      float="right"
-                      backgroundColor="crimson"
-                      type="button"
-                      onClick={() => removeFile(index)}
-                    >
-                      <Trans id="scammerDetail.removeFileButton" />
-                    </Button>
+                      <Button
+                        mr="auto"
+                        variantColor="red"
+                        type="button"
+                        onClick={() => removeFile(index)}
+                      >
+                        <Trans id="scammerDetail.removeFileButton" />
+                      </Button>
+                    </Stack>
                   </React.Fragment>
                 ))}
               </Container>

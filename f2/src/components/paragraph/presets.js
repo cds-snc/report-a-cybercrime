@@ -8,7 +8,7 @@ export const P = props => (
     lineHeight={1.25}
     fontFamily="body"
     mb={4}
-    color="red"
+    color="black"
     {...props}
   >
     {props.children}

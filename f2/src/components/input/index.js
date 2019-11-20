@@ -1,41 +1,9 @@
-import styled from '@emotion/styled'
-import { cleanProps } from '../../utils/cleanProps'
-import {
-  fontSize,
-  fontWeight,
-  height,
-  width,
-  color,
-  colorStyle,
-  space,
-  borders,
-  borderColor,
-  display,
-  position,
-  top,
-  right,
-  bottom,
-  left,
-  zIndex,
-} from 'styled-system'
+/** @jsx jsx **/
+import { jsx } from '@emotion/core'
+import PropTypes from 'prop-types'
+import { Input as ChakraInput } from '@chakra-ui/core'
 
-export const Input = styled('input', {
-  shouldForwardProp: prop => cleanProps(prop),
-})`
-  ${fontSize};
-  ${fontWeight};
-  ${height};
-  ${width};
-  ${space};
-  ${borders};
-  ${borderColor};
-  ${display};
-  ${position};
-  ${colorStyle};
-  ${color};
-  ${top};
-  ${right};
-  ${bottom};
-  ${left};
-  ${zIndex};
-`
+export const Input = props => <ChakraInput {...props}></ChakraInput>
+Input.propTypes = {
+  children: PropTypes.any,
+}

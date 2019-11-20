@@ -16,25 +16,10 @@ import {
   getP2ContactInfo,
 } from './utils/queriesAndMutations'
 
-const SectionHeader = props => (
-  <H2
-    fontSize={[3, null, 4]}
-    marginTop={[2, null, 3]}
-    marginBottom={[1, null, 1]}
-    {...props}
-  />
-)
-
 const EditButton = ({ path, label }) => {
   const { i18n } = useLingui()
   return (
-    <Link
-      type="button"
-      color="black"
-      textAlign="center"
-      to={path}
-      aria-label={i18n._(label)}
-    >
+    <Link type="button" textAlign="center" to={path} aria-label={i18n._(label)}>
       <Trans id="button.edit" />
     </Link>
   )
@@ -46,10 +31,10 @@ const TimeFrameSummary = ({ client }) => {
   endDate = endDate.slice(0, 10)
   return (
     <React.Fragment>
-      <SectionHeader>
+      <H2>
         <Trans id="confirmationPage.timeFrameTitle" />{' '}
         <EditButton label={'Edit timeframe'} path="/timeframe" />
-      </SectionHeader>
+      </H2>
       {startDate ? (
         <Text>
           <Trans
@@ -71,10 +56,10 @@ const WhatHappenedSummary = ({ client }) => {
 
   return (
     <React.Fragment>
-      <SectionHeader>
+      <H2>
         <Trans id="confirmationPage.scamTitle" />{' '}
         <EditButton label={'Edit what happened'} path="/whathappened" />
-      </SectionHeader>
+      </H2>
       {whatHappened ? (
         <Text>{whatHappened}</Text>
       ) : (
@@ -90,10 +75,10 @@ const ScammerSummary = ({ client }) => {
   const { scammerDetails, files, fileDescriptions } = getScammerDetails(client)
   return (
     <React.Fragment>
-      <SectionHeader>
+      <H2>
         <Trans id="confirmationPage.suspectTitle" />{' '}
         <EditButton label={'Edit scammer information'} path="/scammerdetails" />
-      </SectionHeader>
+      </H2>
       {scammerDetails !== '' ||
       files.length > 0 ||
       fileDescriptions.length > 0 ? (
@@ -102,12 +87,8 @@ const ScammerSummary = ({ client }) => {
           {files
             ? files.map((file, index) => (
                 <Container key={index}>
-                  <StyledSpan fontSize={[2, null, 3]} fontWeight="bold">
-                    {file}:
-                  </StyledSpan>{' '}
-                  <StyledSpan fontSize={[2, null, 3]}>
-                    {fileDescriptions[index]}
-                  </StyledSpan>
+                  <StyledSpan fontWeight="bold">{file}:</StyledSpan>{' '}
+                  <StyledSpan>{fileDescriptions[index]}</StyledSpan>
                 </Container>
               ))
             : null}
@@ -132,10 +113,10 @@ const ImpactSummary = ({ client }) => {
   }
   return (
     <>
-      <SectionHeader>
+      <H2>
         <Trans id="confirmationPage.ImpactTitle" />{' '}
         <EditButton label={'Edit impact'} path="/impact" />
-      </SectionHeader>
+      </H2>
       {howWereYouAffected.length > 0 || damage !== '' ? (
         <>
           <Text>{howWereYouAffected.map(i => i18n._(i)).join(', ')}</Text>
@@ -154,10 +135,10 @@ const ContactSummary = ({ client }) => {
   const { fullName, email, phone, postalCode } = getP2ContactInfo(client)
   return (
     <React.Fragment>
-      <SectionHeader>
+      <H2>
         <Trans id="confirmationPage.contactTitle" />{' '}
         <EditButton label={'Edit contact information'} path="/contactinfo" />
-      </SectionHeader>
+      </H2>
       {(fullName + email + phone + postalCode).length > 0 ? (
         <React.Fragment>
           <Text>{fullName}</Text>

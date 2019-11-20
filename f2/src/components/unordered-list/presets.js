@@ -1,28 +1,13 @@
-import PropTypes from 'prop-types'
-import { UnorderedList } from '.'
 /** @jsx jsx **/
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
+import PropTypes from 'prop-types'
+import { List } from '@chakra-ui/core'
 
 export const Ul = props => {
-  const { listStyleType, ...rest } = props
-  var paddingValue
-
-  if (listStyleType === 'none') paddingValue = 0
-  else paddingValue = [5, null, 6]
-
   return (
-    <UnorderedList
-      fontSize={[2, null, 3]}
-      lineHeight={[2, null, 3]}
-      pl={paddingValue}
-      mb={4}
-      css={css`
-        list-style-type: ${listStyleType};
-      `}
-      {...rest}
-    >
+    <List as="ol" styleType="decimal" {...props}>
       {props.children}
-    </UnorderedList>
+    </List>
   )
 }
 
