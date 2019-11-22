@@ -53,7 +53,7 @@
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
-    "query-string": "^6.8.3",
+    "query-string": "^6.9.0",
     "razzle": "3.0.0",
     "react": "^16.11.0",
     "react-apollo": "^2.5.8",
