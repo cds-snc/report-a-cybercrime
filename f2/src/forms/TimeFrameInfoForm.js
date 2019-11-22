@@ -10,6 +10,14 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getTimeFrame } from '../utils/queriesAndMutations'
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Stack,
+  Box,
+} from '@chakra-ui/core'
 
 const TextInputAdapter = finalFormAdapter(TextInput)
 
@@ -28,50 +36,49 @@ class TimeFrameInfoFormWrapped extends Component {
             onSubmit={data => this.localOnSubmit(this.props.client, data)}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-                <label htmlFor="startDate">
-                  <Text marginTop={[5, null, 6]}>
-                    <strong>
-                      <Trans id="timeFramePage.startDate" />
-                    </strong>
-                  </Text>
-                  <Text color="darkGray" mt="6px" mb="8px">
-                    <Trans id="timeFramePage.startDateExample" />
-                  </Text>
-                </label>
-                <div>
-                  <Field
-                    name="startDate"
-                    id="startDate"
-                    component={TextInputAdapter}
-                    height="25px"
-                    width="300px"
-                  />
-                </div>
+                <Stack spacing={6} shouldWrapChildren>
+                  <Field name="startDate">
+                    {props => (
+                      <FormControl>
+                        <FormLabel htmlFor="startDate">
+                          <Trans id="timeFramePage.startDate" />
+                        </FormLabel>
+                        <TextInput
+                          id="startDate"
+                          name={props.input.name}
+                          value={props.input.value}
+                          onChange={props.input.onChange}
+                        />
+                        <FormHelperText>
+                          <Trans id="timeFramePage.startDateExample" />
+                        </FormHelperText>
+                      </FormControl>
+                    )}
+                  </Field>
 
-                <label htmlFor="endDate">
-                  <Text marginTop={[5, null, 6]}>
-                    <strong>
-                      <Trans id="timeFramePage.endDate" />
-                    </strong>
-                  </Text>
-                  <Text color="darkGray" mt="6px" mb="8px">
-                    <Trans id="timeFramePage.endDateExample" />
-                  </Text>
-                </label>
-                <div>
-                  <Field
-                    name="endDate"
-                    id="endDate"
-                    component={TextInputAdapter}
-                    height="25px"
-                    width="300px"
-                  />
-                </div>
-                <NextAndCancelButtons>
-                  <Trans id="timeframePage.nextButton">
-                    Next: What happened
-                  </Trans>
-                </NextAndCancelButtons>
+                  <Field name="endDate">
+                    {props => (
+                      <FormControl>
+                        <FormLabel htmlFor="endDate">
+                          <Trans id="timeFramePage.endDate" />
+                        </FormLabel>
+                        <TextInput
+                          id="endDate"
+                          name={props.input.name}
+                          value={props.input.value}
+                          onChange={props.input.onChange}
+                        />
+                        <FormHelperText>
+                          <Trans id="timeFramePage.endDateExample" />
+                        </FormHelperText>
+                      </FormControl>
+                    )}
+                  </Field>
+
+                  <NextAndCancelButtons>
+                    <Trans id="timeframePage.nextButton" />
+                  </NextAndCancelButtons>
+                </Stack>
               </form>
             )}
           />

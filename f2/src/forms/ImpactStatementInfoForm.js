@@ -4,24 +4,49 @@ import styled from '@emotion/styled'
 import { ApolloConsumer } from 'react-apollo'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, Field } from 'react-final-form'
+import { Form, Field, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
 import { Text } from '../components/text'
 import { TextArea } from '../components/text-area'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getImpact } from '../utils/queriesAndMutations'
+import {
+  FormControl,
+  CheckboxGroup,
+  FormLabel,
+  Code,
+  Box,
+  Stack,
+} from '@chakra-ui/core'
+import { FormHelperText } from '../components/FormHelperText'
 
 const CheckboxAdapter = finalFormAdapter(Checkbox)
-const TextAreaAdapter = finalFormAdapter(TextArea)
+
+const Control = ({ name, ...rest }) => {
+  const {
+    meta: { error, touched },
+  } = useField(name, { subscription: { touched: true, error: true } })
+  return <FormControl {...rest} isInvalid={error && touched} />
+}
+
+const CheckboxArrayControl = ({ name, value, children }) => {
+  const {
+    input: { checked, ...input },
+    meta: { error, touched },
+  } = useField(name, {
+    type: 'checkbox', // important for RFF to manage the checked prop
+    value, // important for RFF to manage list of strings
+  })
+  return (
+    <Checkbox {...input} isChecked={checked} isInvalid={error && touched}>
+      {children}
+    </Checkbox>
+  )
+}
 
 const CheckboxStyle = styled('label')`
   margin-bottom: 8pt;
-`
-const Fieldset = styled('fieldset')`
-  margin: 0;
-  padding: 0;
-  border: none;
 `
 
 const validate = () => {
@@ -47,59 +72,57 @@ export const ImpactStatementInfoForm = props => {
           initialValues={getImpact(client)}
           onSubmit={data => props.onSubmit(client, data)}
           validate={validate}
-          render={({ handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
-              <Fieldset>
-                <legend>
-                  <Text marginTop={[5, null, 6]}>
-                    <strong>
-                      <Trans id="impactPage.detail" />
-                    </strong>
+          render={({ handleSubmit, values }) => (
+            <Box as="form" onSubmit={handleSubmit}>
+              <Control as="fieldset" name="howWereYouAffected">
+                <FormLabel as="legend" htmlFor="howWereYouAffected">
+                  <Text fontWeight="bold">
+                    <Trans id="impactPage.detail" />
                   </Text>
-                </legend>
-
-                <div>
+                </FormLabel>
+                <Stack spacing={2} shouldWrapChildren>
                   {howWereYouAffected.map(key => {
                     return (
-                      <CheckboxStyle key={key}>
-                        <Field
-                          name="howWereYouAffected"
-                          component={CheckboxAdapter}
-                          type="checkbox"
-                          value={key}
-                          label={i18n._(key)}
-                        />
-                      </CheckboxStyle>
+                      <CheckboxArrayControl
+                        name="howWereYouAffected"
+                        value={key}
+                      >
+                        {i18n._(key)}
+                      </CheckboxArrayControl>
                     )
                   })}
-                </div>
-              </Fieldset>
+                </Stack>
+              </Control>
 
-              <label htmlFor="damage">
-                <Text marginTop={[5, null, 6]}>
-                  <strong>
-                    <Trans id="impactPage.summary" />
-                  </strong>
-                  <Text color="darkGray" mt="6px" mb="8px">
-                    <Trans id="impactPage.example" />
-                  </Text>
-                </Text>
-              </label>
-              <div>
-                <Field
-                  name="damage"
-                  id="damage"
-                  component={TextAreaAdapter}
-                  height="50px"
-                  width="100%"
-                />
-              </div>
+              <Field name="damage">
+                {props => (
+                  <FormControl>
+                    <FormLabel>
+                      <Text fontWeight="bold">
+                        <Trans id="impactPage.summary" />
+                      </Text>
+                    </FormLabel>
+                    <FormHelperText variant="above">
+                      <Text color="blackAlpha.600">
+                        <Trans id="impactPage.reminder" />
+                      </Text>
+                    </FormHelperText>
+                    <TextArea
+                      id="damage"
+                      name={props.input.name}
+                      value={props.input.value}
+                      onChange={props.input.onChange}
+                    />
+                  </FormControl>
+                )}
+              </Field>
+
               <NextAndCancelButtons>
                 <Trans id="impactPage.nextButton">
                   Next: Contact information
                 </Trans>
               </NextAndCancelButtons>
-            </form>
+            </Box>
           )}
         />
       )}

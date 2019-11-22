@@ -19,7 +19,17 @@ import { FileUpload } from '../components/file-upload'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getScammerDetails } from '../utils/queriesAndMutations'
 import upload from '../images/upload.svg'
-import { Box, Flex, Stack, FormControl, FormLabel } from '@chakra-ui/core'
+import {
+  Box,
+  Flex,
+  Stack,
+  FormControl,
+  FormLabel,
+  useToast,
+  List,
+  ListItem,
+} from '@chakra-ui/core'
+import { FormHelperText } from '../components/FormHelperText'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
@@ -98,80 +108,94 @@ export const ScammerDetailsFormWrapped = props => {
                   <Trans id="scammerDetail.detail4" />
                 </Li>
               </Ul>
-              <label htmlFor="scammerDetails">
-                <Text marginTop={[5, null, 6]}>
-                  <strong>
-                    <Trans id="scammerDetail.summary" />
-                  </strong>
-                  <Text color="darkGray" mt="6px" mb="8px">
-                    <Trans id="scammerDetail.reminder" />
+              <Field name="scammerDetails">
+                {props => (
+                  <FormControl>
+                    <FormLabel>
+                      <Text fontWeight="bold">
+                        <Trans id="scammerDetail.summary" />
+                      </Text>
+                    </FormLabel>
+                    <FormHelperText variant="above">
+                      <Text color="blackAlpha.600">
+                        <Trans id="scammerDetail.reminder" />
+                      </Text>
+                    </FormHelperText>
+                    <TextArea
+                      id="scammerDetails"
+                      name={props.input.name}
+                      value={props.input.value}
+                      onChange={props.input.onChange}
+                    />
+                  </FormControl>
+                )}
+              </Field>
+
+              <Stack spacing={4} mt={4}>
+                <Box>
+                  <FileUpload onChange={onChange}>
+                    <Button leftIcon="attachment" as="div">
+                      <Trans id="scammerDetail.addFileButtom" />
+                    </Button>
+                  </FileUpload>
+                </Box>
+
+                <H2>
+                  {plural(files.length, {
+                    one: '# file attached',
+                    other: '# files attached',
+                  })}
+                </H2>
+
+                {status ? (
+                  <Text
+                    tabIndex={-1}
+                    id="status"
+                    css={css`
+                      :focus {
+                        outline: 0px solid transparent;
+                      }
+                    `}
+                  >
+                    {i18n._(status)}
                   </Text>
-                </Text>
-              </label>
-              <div>
-                <Field
-                  input={{ value: scammerDetails, onChange }}
-                  name="scammerDetails"
-                  id="scammerDetails"
-                  component={TextAreaAdapter}
-                  height="100px"
-                  width="100%"
-                />
-              </div>
-              <br></br>
-              <Container
-                marginTop={[2, null, 5]}
-                marginBottom={[2, 5, 5]}
-                display="flex"
-                flexDirection="row"
-                justifyContent={['flex-start', 'center', 'flex-start']}
-                textAlign="center"
-              >
-                <FileUpload onChange={onChange}>
-                  <Button leftIcon="attachment" as="div">
-                    <Trans id="scammerDetail.addFileButtom" />
-                  </Button>
-                </FileUpload>
-              </Container>
-
-              <H2>
-                {plural(files.length, {
-                  one: '# file attached',
-                  other: '# files attached',
-                })}
-              </H2>
-
-              {status ? (
-                <Text
-                  tabIndex={-1}
-                  id="status"
-                  css={css`
-                    :focus {
-                      outline: 0px solid transparent;
-                    }
-                  `}
-                >
-                  {i18n._(status)}
-                </Text>
-              ) : null}
+                ) : null}
+              </Stack>
 
               <Container>
                 {files.map((f, index) => (
                   <React.Fragment key={index}>
-                    <Stack spacing={4} mb={4}>
+                    <Stack
+                      spacing={4}
+                      mb={4}
+                      bg="gray.100"
+                      p={2}
+                      borderBottom="2px"
+                      borderColor="gray.300"
+                    >
                       <H3>{f.name}</H3>
-                      <FormControl>
-                        <FormLabel htmlFor={`file-description-${index}`}>
-                          <Trans id="scammerDetail.fileDescription" />
-                        </FormLabel>
+                      <Box>
                         <Field
-                          input={{ value: fileDescriptions[index], onChange }}
                           name={`file-description-${index}`}
-                          id={`file-description-${index}`}
-                          component={TextAreaAdapter}
-                          height="50px"
-                        />
-                      </FormControl>
+                          input={{ value: fileDescriptions[index], onChange }}
+                        >
+                          {props => (
+                            <FormControl>
+                              <FormLabel htmlFor={`file-description-${index}`}>
+                                <Text fontWeight="bold">
+                                  <Trans id="scammerDetail.fileDescription" />
+                                </Text>
+                              </FormLabel>
+                              <TextArea
+                                id={`file-description-${index}`}
+                                name={props.input.name}
+                                value={props.input.value}
+                                onChange={props.input.onChange}
+                              />
+                            </FormControl>
+                          )}
+                        </Field>
+                      </Box>
 
                       <Button
                         mr="auto"
@@ -185,6 +209,7 @@ export const ScammerDetailsFormWrapped = props => {
                   </React.Fragment>
                 ))}
               </Container>
+
               <NextAndCancelButtons>
                 <Trans id="scammerDetail.nextButton">
                   Next: Impact of scam

@@ -9,6 +9,7 @@ import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getP2ContactInfo } from '../utils/queriesAndMutations'
+import { Stack, FormControl, FormLabel } from '@chakra-ui/core'
 
 const TextInputAdapter = finalFormAdapter(TextInput)
 
@@ -19,62 +20,64 @@ export const ContactInfoForm = ({ onSubmit }) => (
         initialValues={getP2ContactInfo(client)}
         onSubmit={data => onSubmit(client, data)}
         render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="fullName">
-              <Text marginTop={[4, null, 5]}>
-                <strong>
-                  <Trans id="contactinfoPage.fullName" />
-                </strong>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="fullName"
-                id="fullName"
-                component={TextInputAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
+          <Stack
+            as="form"
+            onSubmit={handleSubmit}
+            shouldWrapChildren
+            spacing={4}
+          >
+            <Field name="fullName">
+              {props => (
+                <FormControl>
+                  <FormLabel htmlFor="fullName">
+                    <Trans id="contactinfoPage.fullName" />
+                  </FormLabel>
+                  <TextInput
+                    id="fullName"
+                    name={props.input.name}
+                    value={props.input.value}
+                    onChange={props.input.onChange}
+                  />
+                </FormControl>
+              )}
+            </Field>
 
-            <label htmlFor="email">
-              <Text marginTop={[4, null, 5]}>
-                <strong>
-                  <Trans id="contactinfoPage.emailAddress" />
-                </strong>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="email"
-                id="email"
-                component={TextInputAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
+            <Field name="email">
+              {props => (
+                <FormControl>
+                  <FormLabel htmlFor="email">
+                    <Trans id="contactinfoPage.emailAddress" />
+                  </FormLabel>
+                  <TextInput
+                    id="email"
+                    name={props.input.name}
+                    value={props.input.value}
+                    onChange={props.input.onChange}
+                  />
+                </FormControl>
+              )}
+            </Field>
 
-            <label htmlFor="postalCode">
-              <Text marginTop={[4, null, 5]}>
-                <strong>
-                  <Trans id="contactinfoPage.postCode" />
-                </strong>
-              </Text>
-            </label>
-            <div>
-              <Field
-                name="postalCode"
-                id="postalCode"
-                component={TextInputAdapter}
-                height="25px"
-                width="300px"
-              />
-            </div>
+            <Field name="postalCode">
+              {props => (
+                <FormControl>
+                  <FormLabel htmlFor="postalCode">
+                    <Trans id="contactinfoPage.postCode" />
+                  </FormLabel>
+                  <TextInput
+                    id="postalCode"
+                    name={props.input.name}
+                    value={props.input.value}
+                    onChange={props.input.onChange}
+                  />
+                </FormControl>
+              )}
+            </Field>
 
             <NextAndCancelButtons>
               <Trans id="contactinfoPage.nextButton" />
             </NextAndCancelButtons>
-          </form>
+          </Stack>
         )}
       />
     )}
