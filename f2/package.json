@@ -38,7 +38,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.js'",
     "add-locale": "lingui add-locale",
-    "extract": "lingui extract",
+    "extract": "lingui extract --clean",
     "compile": "lingui compile",
     "upgrade-interactive": "npm-check --update"
   },
