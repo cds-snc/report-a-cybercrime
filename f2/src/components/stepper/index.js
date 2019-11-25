@@ -5,7 +5,7 @@ import { Text } from '@chakra-ui/core'
 import { Trans } from '@lingui/macro'
 
 export const Steps = ({ activeStep, totalSteps }) => (
-  <Text fontSize={['xl', null, '2xl', null]} color="gray.500">
+  <Text fontSize={['xl', null, '2xl', null]} color="blackAlpha.600">
     <Trans id="stepper" values={{ activeStep, totalSteps }} />
   </Text>
 )

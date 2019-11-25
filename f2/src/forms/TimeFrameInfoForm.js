@@ -41,7 +41,9 @@ class TimeFrameInfoFormWrapped extends Component {
                     {props => (
                       <FormControl>
                         <FormLabel htmlFor="startDate">
-                          <Trans id="timeFramePage.startDate" />
+                          <Text fontWeight="bold">
+                            <Trans id="timeFramePage.startDate" />
+                          </Text>
                         </FormLabel>
                         <TextInput
                           id="startDate"
@@ -50,7 +52,9 @@ class TimeFrameInfoFormWrapped extends Component {
                           onChange={props.input.onChange}
                         />
                         <FormHelperText>
-                          <Trans id="timeFramePage.startDateExample" />
+                          <Text color="blackAlpha.600">
+                            <Trans id="timeFramePage.startDateExample" />
+                          </Text>
                         </FormHelperText>
                       </FormControl>
                     )}
@@ -60,7 +64,9 @@ class TimeFrameInfoFormWrapped extends Component {
                     {props => (
                       <FormControl>
                         <FormLabel htmlFor="endDate">
-                          <Trans id="timeFramePage.endDate" />
+                          <Text fontWeight="bold">
+                            <Trans id="timeFramePage.endDate" />
+                          </Text>
                         </FormLabel>
                         <TextInput
                           id="endDate"
@@ -69,7 +75,9 @@ class TimeFrameInfoFormWrapped extends Component {
                           onChange={props.input.onChange}
                         />
                         <FormHelperText>
-                          <Trans id="timeFramePage.endDateExample" />
+                          <Text color="blackAlpha.600">
+                            <Trans id="timeFramePage.endDateExample" />
+                          </Text>
                         </FormHelperText>
                       </FormControl>
                     )}

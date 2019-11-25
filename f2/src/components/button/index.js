@@ -5,7 +5,15 @@ import { Button as ChakraButton } from '@chakra-ui/core'
 export const Button = props => {
   const { variantColor } = props
 
-  return <ChakraButton variantColor={variantColor} {...props}></ChakraButton>
+  return (
+    <ChakraButton
+      variantColor={variantColor}
+      _hover={{
+        boxShadow: 'outlineHover',
+      }}
+      {...props}
+    />
+  )
 }
 
 Button.propTypes = {

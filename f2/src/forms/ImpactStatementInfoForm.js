@@ -104,7 +104,7 @@ export const ImpactStatementInfoForm = props => {
                     </FormLabel>
                     <FormHelperText variant="above">
                       <Text color="blackAlpha.600">
-                        <Trans id="impactPage.reminder" />
+                        <Trans id="impactPage.example" />
                       </Text>
                     </FormHelperText>
                     <TextArea

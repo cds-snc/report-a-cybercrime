@@ -30,7 +30,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="fullName">
-                    <Trans id="contactinfoPage.fullName" />
+                    <Text fontWeight="bold">
+                      <Trans id="contactinfoPage.fullName" />
+                    </Text>
                   </FormLabel>
                   <TextInput
                     id="fullName"
@@ -46,7 +48,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="email">
-                    <Trans id="contactinfoPage.emailAddress" />
+                    <Text fontWeight="bold">
+                      <Trans id="contactinfoPage.emailAddress" />
+                    </Text>
                   </FormLabel>
                   <TextInput
                     id="email"
@@ -62,7 +66,9 @@ export const ContactInfoForm = ({ onSubmit }) => (
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="postalCode">
-                    <Trans id="contactinfoPage.postCode" />
+                    <Text fontWeight="bold">
+                      <Trans id="contactinfoPage.postCode" />
+                    </Text>
                   </FormLabel>
                   <TextInput
                     id="postalCode"
