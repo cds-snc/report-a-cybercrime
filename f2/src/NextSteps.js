@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { H1 } from './components/header'
+import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { A } from './components/link'
 import { Ul } from './components/unordered-list'
@@ -11,6 +11,8 @@ import { InfoCard } from './components/container'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { ApolloConsumer } from 'react-apollo'
+import { Text } from './components/text'
+import { Tag, Stack } from '@chakra-ui/core'
 
 export const NextSteps = () => {
   const { i18n } = useLingui()
@@ -35,122 +37,97 @@ export const NextSteps = () => {
           })
         }
       </ApolloConsumer>
-      <H1>
-        <Trans id="nextStepsPage.title">Thank you for reporting</Trans>
-      </H1>
-      <P>
-        <Trans id="nextStepsPage.summary">
-          We've sent you an email with a summary of your report. Your reference
-          number is <strong>#NC300234234</strong>
-        </Trans>
-      </P>
-      <InfoCard>
-        <P>
-          <strong>
-            <Trans id="nextStepsPage.helpResource">
-              Where you can get help
-            </Trans>
-          </strong>
-        </P>
-        <Ul>
-          <Li>
-            <A
-              href={
-                i18n.locale === 'en'
-                  ? 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm'
-                  : 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-fra.htm'
-              }
-            >
-              <Trans id="nextStepsPage.helpResource1">
-                Talk to someone and get support
-              </Trans>
-            </A>
-          </Li>
-          <Li>
-            <A
-              href={
-                i18n.locale === 'en'
-                  ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
-                  : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
-              }
-            >
-              <Trans id="nextStepsPage.helpResource2">
-                Find tips to protect yourself in the future
-              </Trans>
-            </A>
-          </Li>
-          <Li>
-            <A
-              href={
-                i18n.locale === 'en'
-                  ? 'http://www.antifraudcentre.ca/index-eng.htm'
-                  : 'http://www.antifraudcentre.ca/index-fra.htm'
-              }
-            >
-              <Trans id="nextStepsPage.helpResource3">
-                Follow what scams are trending
-              </Trans>
-            </A>
-          </Li>
-        </Ul>
-        <P>
-          <strong>
-            <Trans id="nextStepsPage.nextStepSummary">What happens next</Trans>
-          </strong>
-        </P>
-        <P>
-          <Trans id="nextStepsPage.nextStepDetail">
-            The RCMP will analyze your report and combine it with others that
-            are similar to help police across Canada track down cybercriminals.
-          </Trans>
-        </P>
-      </InfoCard>
-      <br></br>
-      <P>
-        <strong>
-          <Trans id="nextStepsPage.otherReportOption">
-            You have other reporting options
-          </Trans>
-        </strong>
-      </P>
-      <Ul>
-        <Li>
-          <Trans id="nextStepsPage.otherReportOption1">
-            Report directly to the place where the scam happened.
-          </Trans>
-        </Li>
-        <Li>
-          <Trans id="nextStepsPage.otherReportOption2">
-            Report to your financial institution, if you lost money.
-          </Trans>
-        </Li>
-        <Li>
-          <Trans id="nextStepsPage.otherReportOption3">
-            Report to the credit bureaus,{' '}
-            <A
-              href={
-                i18n.locale === 'en'
-                  ? 'https://www.consumer.equifax.ca/personal/'
-                  : 'https://www.consumer.equifax.ca/personnel/'
-              }
-            >
-              Equifax
-            </A>{' '}
-            and{' '}
-            <A
-              href={
-                i18n.locale === 'en'
-                  ? 'https://www.transunion.ca/'
-                  : 'https://www.transunion.ca/fr'
-              }
-            >
-              TransUnion
-            </A>
-            , if your identity was stolen.
-          </Trans>
-        </Li>
-      </Ul>
       <TrackPageViews />
+      <Stack spacing={10}>
+        <H1>
+          <Trans id="nextStepsPage.title" />
+        </H1>
+        <P>
+          <Trans id="nextStepsPage.summary">
+            <Text as="span" fontWeight="bold" />
+          </Trans>
+        </P>
+
+        <InfoCard>
+          <Stack spacing={4} shouldWrapChildren>
+            <H2>
+              <Trans id="nextStepsPage.helpResource" />
+            </H2>
+            <Ul>
+              <Li>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm'
+                      : 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-fra.htm'
+                  }
+                >
+                  <Trans id="nextStepsPage.helpResource1" />
+                </A>
+              </Li>
+              <Li>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
+                      : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
+                  }
+                >
+                  <Trans id="nextStepsPage.helpResource2" />
+                </A>
+              </Li>
+              <Li>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'http://www.antifraudcentre.ca/index-eng.htm'
+                      : 'http://www.antifraudcentre.ca/index-fra.htm'
+                  }
+                >
+                  <Trans id="nextStepsPage.helpResource3" />
+                </A>
+              </Li>
+            </Ul>
+            <H2>
+              <Trans id="nextStepsPage.nextStepSummary" />
+            </H2>
+            <P>
+              <Trans id="nextStepsPage.nextStepDetail" />
+            </P>
+          </Stack>
+        </InfoCard>
+        <Stack spacing={4}>
+          <H2>
+            <Trans id="nextStepsPage.otherReportOption" />
+          </H2>
+          <Ul>
+            <Li>
+              <Trans id="nextStepsPage.otherReportOption1" />
+            </Li>
+            <Li>
+              <Trans id="nextStepsPage.otherReportOption2" />
+            </Li>
+            <Li>
+              <Trans id="nextStepsPage.otherReportOption3">
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.consumer.equifax.ca/personal/'
+                      : 'https://www.consumer.equifax.ca/personnel/'
+                  }
+                />
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.transunion.ca/'
+                      : 'https://www.transunion.ca/fr'
+                  }
+                />
+              </Trans>
+            </Li>
+          </Ul>
+        </Stack>
+      </Stack>
     </Layout>
   )
 }

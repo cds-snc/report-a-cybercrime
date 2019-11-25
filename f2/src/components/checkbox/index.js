@@ -5,16 +5,55 @@ import { Input } from '../input'
 import { Container } from '../container'
 import { Text } from '../text'
 import { UniqueID } from '../unique-id'
-import { Checkbox as ChakraCheckbox } from '@chakra-ui/core'
+import {
+  Checkbox as ChakraCheckbox,
+  Box,
+  VisuallyHidden,
+  ControlBox,
+  Icon,
+  Flex,
+} from '@chakra-ui/core'
 
 export const Checkbox = ({ label, ...props }) => {
   return (
     <UniqueID>
       {id => {
         return (
-          <ChakraCheckbox {...props} id={id}>
-            <Text htmlFor={id}>{props.children}</Text>
-          </ChakraCheckbox>
+          <Box as="label" {...props} id={id}>
+            <Flex align="center">
+              <VisuallyHidden as="input" type="checkbox" />
+
+              <ControlBox
+                borderWidth="2px"
+                borderColor="black"
+                size="24px"
+                _hover={{
+                  boxShadow: 'outlineHover',
+                  borderColor: 'black',
+                }}
+                _checked={{
+                  bg: 'black',
+                  color: 'white',
+                  borderColor: 'black',
+                }}
+                _checkedAndHover={{
+                  boxShadow: 'outlineHover',
+                }}
+                _focus={{
+                  outline: 'none',
+                  bg: 'white',
+                  boxShadow: 'outline',
+                  borderColor: 'black',
+                }}
+              >
+                <Icon name="check" />
+              </ControlBox>
+
+              <Text ml={2} htmlFor={id}>
+                {props.children}
+              </Text>
+            </Flex>
+          </Box>
         )
       }}
     </UniqueID>

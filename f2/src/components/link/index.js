@@ -71,7 +71,7 @@ ButtonAnchor.propTypes = {
 }
 
 export const A = props => (
-  <ChakraLink color="blue.500" fontSize={['md', null, 'lg', null]} {...props}>
+  <ChakraLink color="blue.600" fontSize={['md', null, 'lg', null]} {...props}>
     {props.children}
   </ChakraLink>
 )

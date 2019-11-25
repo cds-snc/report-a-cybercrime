@@ -7,12 +7,12 @@ const shadows = {
 }
 
 // Chakra theming
-const radius = 0
+const radius = 1
 const radii = {
   none: '0',
   sm: `${radius * 0.125}rem`,
-  md: `${radius * 0.25} rem`,
-  lg: `${radius * 0.5} rem`,
+  md: `${radius * 0.25}rem`,
+  lg: `${radius * 0.5}rem`,
   full: '9999px',
 }
 const colors = {
@@ -44,5 +44,7 @@ const canada = {
   fonts,
   colors,
 }
+
+console.log(canada)
 
 export default mergeDeep(chakraTheme, canada)

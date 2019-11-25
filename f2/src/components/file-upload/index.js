@@ -6,7 +6,6 @@ import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 import { Label } from '../label'
 import { Input } from '../input'
 import { VisuallyHidden } from '@chakra-ui/core'
-require('./index.css')
 
 export const FileUpload = ({ onChange, accept, ...props }) => {
   return (

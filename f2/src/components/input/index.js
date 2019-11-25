@@ -7,6 +7,7 @@ export const Input = props => (
   <ChakraInput
     borderWidth="2px"
     borderColor="black"
+    maxW="300px"
     _hover={{
       boxShadow: 'outlineHover',
       borderColor: 'black',

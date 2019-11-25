@@ -7,7 +7,7 @@ export const Container = props => <Box {...props} />
 
 export const InfoCard = props => (
   <Box
-    rounded="lg"
+    rounded="none"
     border="2px"
     borderColor="blackAlpha.900"
     p={[3, null, 6]}

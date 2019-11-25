@@ -10,7 +10,7 @@ import { FormHelperText } from '../components/FormHelperText'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getWhatHappened } from '../utils/queriesAndMutations'
-import { FormControl, FormLabel } from '@chakra-ui/core'
+import { FormControl, FormLabel, Box, Stack } from '@chakra-ui/core'
 
 const TextAreaAdapter = finalFormAdapter(TextArea)
 
@@ -21,7 +21,12 @@ export const WhatHappenedForm = props => (
         initialValues={getWhatHappened(client)}
         onSubmit={data => props.onSubmit(client, data)}
         render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
+          <Stack
+            as="form"
+            onSubmit={handleSubmit}
+            spacing={6}
+            shouldWrapChildren
+          >
             <Field name="whatHappened">
               {props => (
                 <FormControl>
@@ -47,7 +52,7 @@ export const WhatHappenedForm = props => (
             <NextAndCancelButtons>
               <Trans id="whatHappenedPage.nextButton" />
             </NextAndCancelButtons>
-          </form>
+          </Stack>
         )}
       />
     )}

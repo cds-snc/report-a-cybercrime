@@ -35,59 +35,62 @@ class TimeFrameInfoFormWrapped extends Component {
             initialValues={getTimeFrame(client)}
             onSubmit={data => this.localOnSubmit(this.props.client, data)}
             render={({ handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
-                <Stack spacing={6} shouldWrapChildren>
-                  <Field name="startDate">
-                    {props => (
-                      <FormControl>
-                        <FormLabel htmlFor="startDate">
-                          <Text fontWeight="bold">
-                            <Trans id="timeFramePage.startDate" />
-                          </Text>
-                        </FormLabel>
-                        <TextInput
-                          id="startDate"
-                          name={props.input.name}
-                          value={props.input.value}
-                          onChange={props.input.onChange}
-                        />
-                        <FormHelperText>
-                          <Text color="blackAlpha.600">
-                            <Trans id="timeFramePage.startDateExample" />
-                          </Text>
-                        </FormHelperText>
-                      </FormControl>
-                    )}
-                  </Field>
+              <Stack
+                as="form"
+                onSubmit={handleSubmit}
+                spacing={6}
+                shouldWrapChildren
+              >
+                <Field name="startDate">
+                  {props => (
+                    <FormControl>
+                      <FormLabel htmlFor="startDate">
+                        <Text fontWeight="bold">
+                          <Trans id="timeFramePage.startDate" />
+                        </Text>
+                      </FormLabel>
+                      <TextInput
+                        id="startDate"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                      />
+                      <FormHelperText>
+                        <Text color="blackAlpha.600">
+                          <Trans id="timeFramePage.startDateExample" />
+                        </Text>
+                      </FormHelperText>
+                    </FormControl>
+                  )}
+                </Field>
 
-                  <Field name="endDate">
-                    {props => (
-                      <FormControl>
-                        <FormLabel htmlFor="endDate">
-                          <Text fontWeight="bold">
-                            <Trans id="timeFramePage.endDate" />
-                          </Text>
-                        </FormLabel>
-                        <TextInput
-                          id="endDate"
-                          name={props.input.name}
-                          value={props.input.value}
-                          onChange={props.input.onChange}
-                        />
-                        <FormHelperText>
-                          <Text color="blackAlpha.600">
-                            <Trans id="timeFramePage.endDateExample" />
-                          </Text>
-                        </FormHelperText>
-                      </FormControl>
-                    )}
-                  </Field>
+                <Field name="endDate">
+                  {props => (
+                    <FormControl>
+                      <FormLabel htmlFor="endDate">
+                        <Text fontWeight="bold">
+                          <Trans id="timeFramePage.endDate" />
+                        </Text>
+                      </FormLabel>
+                      <TextInput
+                        id="endDate"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                      />
+                      <FormHelperText>
+                        <Text color="blackAlpha.600">
+                          <Trans id="timeFramePage.endDateExample" />
+                        </Text>
+                      </FormHelperText>
+                    </FormControl>
+                  )}
+                </Field>
 
-                  <NextAndCancelButtons>
-                    <Trans id="timeframePage.nextButton" />
-                  </NextAndCancelButtons>
-                </Stack>
-              </form>
+                <NextAndCancelButtons>
+                  <Trans id="timeframePage.nextButton" />
+                </NextAndCancelButtons>
+              </Stack>
             )}
           />
         )}

@@ -10,6 +10,7 @@ import {
   getTellUsMore,
   SUBMIT_P2_REPORT_MUTATION,
 } from '../utils/queriesAndMutations'
+import { Box } from '@chakra-ui/core'
 
 export const ConfirmationForm = props => {
   return (
@@ -22,11 +23,11 @@ export const ConfirmationForm = props => {
                 initialValues={getTellUsMore(client)}
                 onSubmit={() => props.onSubmit(client, submitReportP2)}
                 render={({ handleSubmit }) => (
-                  <form onSubmit={handleSubmit}>
+                  <Box as="form" onSubmit={handleSubmit}>
                     <NextAndCancelButtons>
                       <Trans id="confirmationPage.nextButton" />
                     </NextAndCancelButtons>
-                  </form>
+                  </Box>
                 )}
               />
             )}

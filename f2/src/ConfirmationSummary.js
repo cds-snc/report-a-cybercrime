@@ -15,6 +15,7 @@ import {
   getImpact,
   getP2ContactInfo,
 } from './utils/queriesAndMutations'
+import { Stack } from '@chakra-ui/core'
 
 const EditButton = ({ path, label }) => {
   const { i18n } = useLingui()
@@ -151,7 +152,6 @@ const ContactSummary = ({ client }) => {
           <Trans id="confirmationPage.contactIntro" />
         </Text>
       )}
-      <br></br>
     </React.Fragment>
   )
 }
@@ -164,11 +164,13 @@ export const ConfirmationSummary = () => (
       })
       return (
         <React.Fragment>
-          <TimeFrameSummary client={client} />
-          <WhatHappenedSummary client={client} />
-          <ScammerSummary client={client} />
-          <ImpactSummary client={client} />
-          <ContactSummary client={client} />
+          <Stack spacing={4} shouldWrapChildren>
+            <TimeFrameSummary client={client} />
+            <WhatHappenedSummary client={client} />
+            <ScammerSummary client={client} />
+            <ImpactSummary client={client} />
+            <ContactSummary client={client} />
+          </Stack>
         </React.Fragment>
       )
     }}

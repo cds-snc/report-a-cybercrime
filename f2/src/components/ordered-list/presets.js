@@ -1,33 +1,26 @@
 import React from 'react'
-import { OrderedList } from '.'
+import { List } from '@chakra-ui/core'
 import PropTypes from 'prop-types'
-import { css } from '@emotion/core'
 
 export const Ol = props => {
   const { listStyleType, ...rest } = props
-  var paddingValue
-
-  if (listStyleType === 'none') paddingValue = 0
-  else paddingValue = [5, null, 6]
 
   return (
-    <OrderedList
-      fontSize={[1, null, 2]}
-      lineHeight={[1, null, 2]}
-      pl={paddingValue}
-      mb={4}
-      css={css`
-        list-style-type: ${listStyleType};
-      `}
+    <List
+      as="ol"
+      stylePos="outside"
+      styleType={listStyleType}
+      ml={4}
+      spacing={2}
       {...rest}
     >
       {props.children}
-    </OrderedList>
+    </List>
   )
 }
 
 Ol.defaultProps = {
-  listStyleType: 'number',
+  listStyleType: 'decimal',
 }
 
 Ol.propTypes = {

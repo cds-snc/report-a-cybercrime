@@ -21,8 +21,6 @@ import {
 } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 
-const CheckboxAdapter = finalFormAdapter(Checkbox)
-
 const Control = ({ name, ...rest }) => {
   const {
     meta: { error, touched },
@@ -44,10 +42,6 @@ const CheckboxArrayControl = ({ name, value, children }) => {
     </Checkbox>
   )
 }
-
-const CheckboxStyle = styled('label')`
-  margin-bottom: 8pt;
-`
 
 const validate = () => {
   return {}
@@ -73,14 +67,19 @@ export const ImpactStatementInfoForm = props => {
           onSubmit={data => props.onSubmit(client, data)}
           validate={validate}
           render={({ handleSubmit, values }) => (
-            <Box as="form" onSubmit={handleSubmit}>
+            <Stack
+              as="form"
+              onSubmit={handleSubmit}
+              shouldWrapChildren
+              spacing={6}
+            >
               <Control as="fieldset" name="howWereYouAffected">
-                <FormLabel as="legend" htmlFor="howWereYouAffected">
+                <FormLabel as="legend" htmlFor="howWereYouAffected" mb={2}>
                   <Text fontWeight="bold">
                     <Trans id="impactPage.detail" />
                   </Text>
                 </FormLabel>
-                <Stack spacing={2} shouldWrapChildren>
+                <Stack spacing={4} shouldWrapChildren>
                   {howWereYouAffected.map(key => {
                     return (
                       <CheckboxArrayControl
@@ -122,7 +121,7 @@ export const ImpactStatementInfoForm = props => {
                   Next: Contact information
                 </Trans>
               </NextAndCancelButtons>
-            </Box>
+            </Stack>
           )}
         />
       )}

@@ -7,13 +7,17 @@ import { Link as RoutedLink } from 'react-router-dom'
 import { Text } from '../text'
 
 export const BackButton = ({ route = '', children }) => (
-  <Link as={RoutedLink} to={route} textAlign="left">
-    <Text>
-      <Trans>
-        <Icon name="chevron-left" />
-        {children}
-      </Trans>
-    </Text>
+  <Link
+    as={RoutedLink}
+    to={route}
+    textAlign="left"
+    fontFamily="body"
+    fontSize="lg"
+  >
+    <Trans>
+      <Icon name="chevron-left" />
+      {children}
+    </Trans>
   </Link>
 )
 

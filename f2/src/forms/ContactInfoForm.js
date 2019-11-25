@@ -24,7 +24,7 @@ export const ContactInfoForm = ({ onSubmit }) => (
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
-            spacing={4}
+            spacing={6}
           >
             <Field name="fullName">
               {props => (

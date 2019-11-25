@@ -15,22 +15,25 @@ export const TimeFramePage = () => (
   <Route
     render={({ history }) => (
       <Layout>
-        <Stack spacing={6}>
-          <Box>
-            <BackButton route="/">
-              <Trans id="timeFramePage.backButton" />
-            </BackButton>
-          </Box>
-          <Stack spacing={3}>
+        <TrackPageViews />
+
+        <Stack spacing={10} shouldWrapChildren>
+          <BackButton route="/">
+            <Trans id="timeFramePage.backButton" />
+          </BackButton>
+
+          <Stack spacing={4}>
             <Steps activeStep={1} totalSteps={6} />
+
             <H1>
               <Trans id="timeFramePage.title" />
             </H1>
-            <P>
-              <Trans id="timeFramePage.intro" />
-            </P>
           </Stack>
-          <TrackPageViews />
+
+          <P>
+            <Trans id="timeFramePage.intro" />
+          </P>
+
           <TimeFrameInfoForm
             onSubmit={(client, data) => {
               client.writeData({ data: { timeFrame: JSON.stringify(data) } })

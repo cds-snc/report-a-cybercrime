@@ -5,7 +5,7 @@ import { useLingui } from '@lingui/react'
 import { css, jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Form, Field } from 'react-final-form'
-import { Container } from '../components/container'
+import { Container, InfoCard } from '../components/container'
 import { plural, Trans } from '@lingui/macro'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
@@ -28,6 +28,7 @@ import {
   useToast,
   List,
   ListItem,
+  PseudoBox,
 } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 
@@ -90,24 +91,12 @@ export const ScammerDetailsFormWrapped = props => {
         <Form
           onSubmit={() => localSubmit(client)}
           render={({ handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
-              <P>
-                <Trans id="scammerDetail.details" />
-              </P>
-              <Ul>
-                <Li>
-                  <Trans id="scammerDetail.detail1" />
-                </Li>{' '}
-                <Li>
-                  <Trans id="scammerDetail.detail2" />
-                </Li>
-                <Li>
-                  <Trans id="scammerDetail.detail3" />
-                </Li>
-                <Li>
-                  <Trans id="scammerDetail.detail4" />
-                </Li>
-              </Ul>
+            <Stack
+              as="form"
+              onSubmit={handleSubmit}
+              spacing={6}
+              shouldWrapChildren
+            >
               <Field name="scammerDetails">
                 {props => (
                   <FormControl>
@@ -131,7 +120,7 @@ export const ScammerDetailsFormWrapped = props => {
                 )}
               </Field>
 
-              <Stack spacing={4} mt={4}>
+              <Stack spacing={4}>
                 <Box>
                   <FileUpload onChange={onChange}>
                     <Button leftIcon="attachment" as="div">
@@ -148,64 +137,63 @@ export const ScammerDetailsFormWrapped = props => {
                 </H2>
 
                 {status ? (
-                  <Text
+                  <PseudoBox
+                    as="Text"
                     tabIndex={-1}
                     id="status"
-                    css={css`
-                      :focus {
-                        outline: 0px solid transparent;
-                      }
-                    `}
+                    _focus={{
+                      outline: 'none',
+                      bg: 'white',
+                      boxShadow: 'outline',
+                      borderColor: 'black',
+                    }}
                   >
                     {i18n._(status)}
-                  </Text>
+                  </PseudoBox>
                 ) : null}
               </Stack>
 
               <Container>
                 {files.map((f, index) => (
                   <React.Fragment key={index}>
-                    <Stack
-                      spacing={4}
-                      mb={4}
-                      bg="gray.100"
-                      p={2}
-                      borderBottom="2px"
-                      borderColor="gray.300"
-                    >
-                      <H3>{f.name}</H3>
-                      <Box>
-                        <Field
-                          name={`file-description-${index}`}
-                          input={{ value: fileDescriptions[index], onChange }}
-                        >
-                          {props => (
-                            <FormControl>
-                              <FormLabel htmlFor={`file-description-${index}`}>
-                                <Text fontWeight="bold">
-                                  <Trans id="scammerDetail.fileDescription" />
-                                </Text>
-                              </FormLabel>
-                              <TextArea
-                                id={`file-description-${index}`}
-                                name={props.input.name}
-                                value={props.input.value}
-                                onChange={props.input.onChange}
-                              />
-                            </FormControl>
-                          )}
-                        </Field>
-                      </Box>
+                    <InfoCard mb={4}>
+                      <Stack spacing={4}>
+                        <H3>{f.name}</H3>
+                        <Box>
+                          <Field
+                            name={`file-description-${index}`}
+                            input={{ value: fileDescriptions[index], onChange }}
+                          >
+                            {props => (
+                              <FormControl>
+                                <FormLabel
+                                  htmlFor={`file-description-${index}`}
+                                >
+                                  <Text fontWeight="bold">
+                                    <Trans id="scammerDetail.fileDescription" />
+                                  </Text>
+                                </FormLabel>
+                                <TextArea
+                                  id={`file-description-${index}`}
+                                  name={props.input.name}
+                                  value={props.input.value}
+                                  onChange={props.input.onChange}
+                                />
+                              </FormControl>
+                            )}
+                          </Field>
+                        </Box>
 
-                      <Button
-                        mr="auto"
-                        variantColor="red"
-                        type="button"
-                        onClick={() => removeFile(index)}
-                      >
-                        <Trans id="scammerDetail.removeFileButton" />
-                      </Button>
-                    </Stack>
+                        <Button
+                          mr="auto"
+                          variantColor="red"
+                          type="button"
+                          onClick={() => removeFile(index)}
+                        >
+                          <Trans id="scammerDetail.removeFileButton" />
+                        </Button>
+                      </Stack>
+                    </InfoCard>
                   </React.Fragment>
                 ))}
               </Container>
@@ -215,7 +203,7 @@ export const ScammerDetailsFormWrapped = props => {
                   Next: Impact of scam
                 </Trans>
               </NextAndCancelButtons>
-            </form>
+            </Stack>
           )}
         />
       )}

@@ -7,7 +7,6 @@ export const Li = props => (
     fontSize={['md', null, 'lg', null]}
     lineHeight={1.25}
     fontFamily="body"
-    mb={2}
     color="black"
     {...props}
   >

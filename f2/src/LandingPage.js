@@ -39,49 +39,50 @@ export const LandingPage = props => {
               })
             }
           </ApolloConsumer>
+          <Stack spacing={10} shouldWrapChildren>
+            <H1>
+              <Trans id="landingPage.title" />
+            </H1>
 
-          <H1 mb={10}>
-            <Trans id="landingPage.title" />
-          </H1>
-
-          <Stack spacing={4} mb={10}>
-            <P>
-              <Trans id="landingPage.intro" />
-            </P>
-
-            <InfoCard>
+            <Stack spacing={4}>
               <P>
-                <Trans id="landingPage.required0" />
+                <Trans id="landingPage.intro" />
               </P>
-              <Ul>
-                <Li>
-                  <Trans id="landingPage.required1" />
-                </Li>
-                <Li>
-                  <Trans id="landingPage.required2" />
-                </Li>
-                <Li>
-                  <Trans id="landingPage.required3" />
-                </Li>
-                <Li>
-                  <Trans id="landingPage.required4" />
-                </Li>
-              </Ul>
-            </InfoCard>
 
-            <P>
-              <Trans id="landingPage.summary" />
-            </P>
+              <InfoCard>
+                <P>
+                  <Trans id="landingPage.required0" />
+                </P>
+                <Ul>
+                  <Li>
+                    <Trans id="landingPage.required1" />
+                  </Li>
+                  <Li>
+                    <Trans id="landingPage.required2" />
+                  </Li>
+                  <Li>
+                    <Trans id="landingPage.required3" />
+                  </Li>
+                  <Li>
+                    <Trans id="landingPage.required4" />
+                  </Li>
+                </Ul>
+              </InfoCard>
+
+              <P>
+                <Trans id="landingPage.summary" />
+              </P>
+            </Stack>
+
+            <Button
+              rightIcon="chevron-right"
+              onClick={() => {
+                history.push('/timeframe')
+              }}
+            >
+              <Trans id="landingPage.nextButton" />
+            </Button>
           </Stack>
-
-          <Button
-            rightIcon="chevron-right"
-            onClick={() => {
-              history.push('/timeframe')
-            }}
-          >
-            <Trans id="landingPage.nextButton" />
-          </Button>
         </Layout>
       )}
     />
