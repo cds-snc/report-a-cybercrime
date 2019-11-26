@@ -5,6 +5,7 @@ import { Input as ChakraInput } from '@chakra-ui/core'
 
 export const Input = props => (
   <ChakraInput
+    rounded="none"
     borderWidth="2px"
     borderColor="black"
     maxW="300px"

@@ -5,9 +5,9 @@ import { Flex, Tag } from '@chakra-ui/core'
 import { Text } from '../text'
 
 export const PhaseBanner = props => (
-  <Flex align="center" p={4} bg="purple.50">
-    <Tag variantColor="purple">{props.phase}</Tag>
-    <Text color="purple.900" ml={4}>
+  <Flex align="center" p={4} bg="green.50">
+    <Tag variantColor="green">{props.phase}</Tag>
+    <Text color="green.900" ml={4}>
       {props.children}
     </Text>
   </Flex>

@@ -6,6 +6,7 @@ import { Textarea as ChakraTextarea } from '@chakra-ui/core'
 
 export const TextArea = props => (
   <ChakraTextarea
+    rounded="none"
     borderWidth="2px"
     borderColor="black"
     _hover={{

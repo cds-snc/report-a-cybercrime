@@ -7,6 +7,7 @@ export const Button = props => {
 
   return (
     <ChakraButton
+      rounded="none"
       variantColor={variantColor}
       _hover={{
         boxShadow: 'outlineHover',
