@@ -100,7 +100,7 @@ export const ScammerDetailsFormWrapped = props => {
               <Field name="scammerDetails">
                 {props => (
                   <FormControl>
-                    <FormLabel>
+                    <FormLabel htmlFor="scammerDetails">
                       <Text fontWeight="bold">
                         <Trans id="scammerDetail.summary" />
                       </Text>
@@ -110,6 +110,7 @@ export const ScammerDetailsFormWrapped = props => {
                         <Trans id="scammerDetail.reminder" />
                       </Text>
                     </FormHelperText>
+
                     <TextArea
                       id="scammerDetails"
                       name={props.input.name}

@@ -96,7 +96,7 @@ export const ImpactStatementInfoForm = props => {
               <Field name="damage">
                 {props => (
                   <FormControl>
-                    <FormLabel>
+                    <FormLabel htmlFor="damage">
                       <Text fontWeight="bold">
                         <Trans id="impactPage.summary" />
                       </Text>
