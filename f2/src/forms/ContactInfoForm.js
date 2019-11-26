@@ -7,11 +7,8 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
-import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getP2ContactInfo } from '../utils/queriesAndMutations'
 import { Stack, FormControl, FormLabel } from '@chakra-ui/core'
-
-const TextInputAdapter = finalFormAdapter(TextInput)
 
 export const ContactInfoForm = ({ onSubmit }) => (
   <ApolloConsumer>

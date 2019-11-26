@@ -2,7 +2,7 @@
 /** @jsx jsx **/
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
-import { Flex, Alert, AlertIcon, AlertDescription } from '@chakra-ui/core'
+import { Alert, AlertIcon, AlertDescription } from '@chakra-ui/core'
 import { Text } from '../text'
 
 export const WarningBanner = props => {

@@ -12,7 +12,7 @@ import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { ApolloConsumer } from 'react-apollo'
 import { Text } from './components/text'
-import { Tag, Stack } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 
 export const NextSteps = () => {
   const { i18n } = useLingui()

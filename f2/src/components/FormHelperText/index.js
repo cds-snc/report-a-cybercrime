@@ -19,3 +19,7 @@ export const FormHelperText = styled(ChakraFormHelperText)(
     },
   }),
 )
+
+FormHelperText.defaultProps = {
+  as: 'div',
+}

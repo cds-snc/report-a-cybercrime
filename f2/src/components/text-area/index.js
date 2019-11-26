@@ -1,7 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import { withProps } from 'recompose'
 import { Textarea as ChakraTextarea } from '@chakra-ui/core'
 
 export const TextArea = props => (

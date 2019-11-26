@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Form, Field } from 'react-final-form'
 import { Container, InfoCard } from '../components/container'
@@ -11,28 +11,11 @@ import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { Text } from '../components/text'
 import { H2, H3 } from '../components/header'
-import { P } from '../components/paragraph'
-import { Ul } from '../components/unordered-list'
-import { Li } from '../components/list-item'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
-import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getScammerDetails } from '../utils/queriesAndMutations'
-import upload from '../images/upload.svg'
-import {
-  Box,
-  Flex,
-  Stack,
-  FormControl,
-  FormLabel,
-  useToast,
-  List,
-  ListItem,
-  PseudoBox,
-} from '@chakra-ui/core'
+import { Box, Stack, FormControl, FormLabel, PseudoBox } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
-
-const TextAreaAdapter = finalFormAdapter(TextArea)
 
 export const ScammerDetailsFormWrapped = props => {
   const { client } = props

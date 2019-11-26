@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
 import { ApolloConsumer } from 'react-apollo'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
@@ -9,16 +8,8 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
 import { Text } from '../components/text'
 import { TextArea } from '../components/text-area'
-import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getImpact } from '../utils/queriesAndMutations'
-import {
-  FormControl,
-  CheckboxGroup,
-  FormLabel,
-  Code,
-  Box,
-  Stack,
-} from '@chakra-ui/core'
+import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 
 const Control = ({ name, ...rest }) => {

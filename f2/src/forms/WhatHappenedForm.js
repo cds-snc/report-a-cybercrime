@@ -8,11 +8,8 @@ import { TextArea } from '../components/text-area'
 import { Text } from '../components/text'
 import { FormHelperText } from '../components/FormHelperText'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getWhatHappened } from '../utils/queriesAndMutations'
-import { FormControl, FormLabel, Box, Stack } from '@chakra-ui/core'
-
-const TextAreaAdapter = finalFormAdapter(TextArea)
+import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
 
 export const WhatHappenedForm = props => (
   <ApolloConsumer>
@@ -36,7 +33,7 @@ export const WhatHappenedForm = props => (
                     </Text>
                   </FormLabel>
                   <FormHelperText variant="above">
-                    <Text color="blackAlpha.600">
+                    <Text as="span" color="blackAlpha.600">
                       <Trans id="whatHappendPage.hint" />
                     </Text>
                   </FormHelperText>

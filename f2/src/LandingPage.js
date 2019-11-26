@@ -12,7 +12,7 @@ import { Li } from './components/list-item'
 import { InfoCard } from './components/container'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
-import { Stack, Box } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 
 export const LandingPage = props => {
   return (

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 import { Label } from '../label'
-import { Input } from '../input'
 import { VisuallyHidden } from '@chakra-ui/core'
 
 export const FileUpload = ({ onChange, accept, ...props }) => {
@@ -12,7 +11,6 @@ export const FileUpload = ({ onChange, accept, ...props }) => {
     <React.Fragment>
       <VisuallyHidden
         as="input"
-        type="file"
         type="file"
         id="uploader"
         name="uploader"

@@ -8,18 +8,9 @@ import { Form, Field } from 'react-final-form'
 import { Text } from '../components/text'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
-import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getTimeFrame } from '../utils/queriesAndMutations'
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Stack,
-  Box,
-} from '@chakra-ui/core'
-
-const TextInputAdapter = finalFormAdapter(TextInput)
+import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
+import { FormHelperText } from '../components/FormHelperText'
 
 class TimeFrameInfoFormWrapped extends Component {
   localOnSubmit = (client, data) => {

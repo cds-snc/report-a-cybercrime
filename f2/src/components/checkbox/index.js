@@ -1,18 +1,9 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
-import { Input } from '../input'
-import { Container } from '../container'
 import { Text } from '../text'
 import { UniqueID } from '../unique-id'
-import {
-  Checkbox as ChakraCheckbox,
-  Box,
-  VisuallyHidden,
-  ControlBox,
-  Icon,
-  Flex,
-} from '@chakra-ui/core'
+import { Box, VisuallyHidden, ControlBox, Icon, Flex } from '@chakra-ui/core'
 
 export const Checkbox = ({ label, ...props }) => {
   return (
