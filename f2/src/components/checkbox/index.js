@@ -54,6 +54,5 @@ export const Checkbox = ({ label, ...props }) => {
 Checkbox.defaultProps = {}
 
 Checkbox.propTypes = {
-  label: PropTypes.node.isRequired,
   children: PropTypes.any,
 }

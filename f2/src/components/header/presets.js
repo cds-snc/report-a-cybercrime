@@ -1,9 +1,9 @@
 import React from 'react'
-import { Heading } from '@chakra-ui/core'
+import { Heading as Header } from '@chakra-ui/core'
 import PropTypes from 'prop-types'
 
 export const H1 = props => (
-  <Heading
+  <Header
     as="h1"
     fontSize={['4xl', null, '5xl', null]}
     fontFamily="heading"
@@ -11,7 +11,7 @@ export const H1 = props => (
     {...props}
   >
     {props.children}
-  </Heading>
+  </Header>
 )
 
 H1.propTypes = {
@@ -19,7 +19,7 @@ H1.propTypes = {
 }
 
 export const H2 = props => (
-  <Heading
+  <Header
     as="h2"
     fontSize={['3xl', null, null, '4xl']}
     fontFamily="heading"
@@ -27,7 +27,7 @@ export const H2 = props => (
     {...props}
   >
     {props.children}
-  </Heading>
+  </Header>
 )
 
 H2.propTypes = {
@@ -35,7 +35,7 @@ H2.propTypes = {
 }
 
 export const H3 = props => (
-  <Heading
+  <Header
     as="h3"
     fontSize={['2xl', null, null, '3xl']}
     fontFamily="heading"
@@ -43,7 +43,7 @@ export const H3 = props => (
     {...props}
   >
     {props.children}
-  </Heading>
+  </Header>
 )
 
 H3.propTypes = {
@@ -51,7 +51,7 @@ H3.propTypes = {
 }
 
 export const H4 = props => (
-  <Heading
+  <Header
     as="h4"
     fontSize={['xl', null, null, '2xl']}
     fontFamily="heading"
@@ -60,7 +60,7 @@ export const H4 = props => (
     {...props}
   >
     {props.children}
-  </Heading>
+  </Header>
 )
 
 H4.propTypes = {
@@ -68,7 +68,7 @@ H4.propTypes = {
 }
 
 export const H5 = props => (
-  <Heading
+  <Header
     as="h5"
     fontSize={['lg', null, null, 'xl']}
     fontFamily="heading"
@@ -77,7 +77,7 @@ export const H5 = props => (
     {...props}
   >
     {props.children}
-  </Heading>
+  </Header>
 )
 
 H5.propTypes = {
@@ -85,7 +85,7 @@ H5.propTypes = {
 }
 
 export const H6 = props => (
-  <Heading
+  <Header
     as="h6"
     fontSize={['lg', null, null, 'xl']}
     fontFamily="heading"
@@ -94,7 +94,7 @@ export const H6 = props => (
     {...props}
   >
     {props.children}
-  </Heading>
+  </Header>
 )
 
 H6.propTypes = {

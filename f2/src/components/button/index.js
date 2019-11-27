@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button as ChakraButton } from '@chakra-ui/core'
+import { Button as ChakraButton, Box } from '@chakra-ui/core'
 
-export const Button = props => {
-  const { variantColor } = props
-
-  return (
+export const Button = ({ variants, variantColor, ...props }) => (
+  <Box>
     <ChakraButton
       rounded="none"
       variantColor={variantColor}
@@ -14,8 +12,8 @@ export const Button = props => {
       }}
       {...props}
     />
-  )
-}
+  </Box>
+)
 
 Button.propTypes = {
   children: PropTypes.node,

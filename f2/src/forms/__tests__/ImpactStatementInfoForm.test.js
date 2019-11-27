@@ -9,7 +9,7 @@ import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { ImpactStatementInfoForm } from '../ImpactStatementInfoForm'
 import en from '../../locales/en.json'
-import theme from '../../theme'
+import canada from '../../theme/canada'
 
 i18n.load('en', { en })
 i18n.activate('en')
@@ -34,7 +34,7 @@ describe('<ImpactStatementInfoForm />', () => {
 
     const { getByRole } = render(
       <MemoryRouter initialEntries={['/']}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={canada}>
           <MockedProvider mocks={[]} addTypename={false}>
             <I18nProvider i18n={i18n}>
               <ApolloProvider client={client}>

@@ -3,7 +3,7 @@ import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { render, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
-import theme from '../../../theme'
+import canada from '../../../theme/canada'
 import { MemoryRouter } from 'react-router-dom'
 import { NextAndCancelButtons } from '../'
 import en from '../../../locales/en.json'
@@ -17,7 +17,7 @@ describe('<NextAndCancelButtons />', () => {
   it('properly renders next button with cancel button beside', () => {
     const { getAllByText } = render(
       <MemoryRouter initialEntries={['/']}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
             <NextAndCancelButtons>
               Next: Confirm information

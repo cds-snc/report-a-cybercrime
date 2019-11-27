@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { LandingPage } from '../LandingPage'
-import theme from '../theme'
+import canada from '../theme/canada'
 import en from '../locales/en.json'
 
 i18n.load('en', { en })
@@ -29,7 +29,7 @@ describe('<LandingPage />', () => {
   it('renders', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={canada}>
           <ApolloProvider client={client}>
             <I18nProvider i18n={i18n}>
               <LandingPage location={{ search: undefined }} />
