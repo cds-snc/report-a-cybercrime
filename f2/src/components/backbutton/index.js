@@ -13,10 +13,8 @@ export const BackButton = ({ route = '', children }) => (
     fontFamily="body"
     fontSize="lg"
   >
-    <Trans>
-      <Icon name="chevron-left" />
-      {children}
-    </Trans>
+    <Icon name="chevron-left" />
+    {children}
   </Link>
 )
 
