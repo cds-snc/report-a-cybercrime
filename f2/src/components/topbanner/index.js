@@ -1,46 +1,32 @@
 /** @jsx jsx **/
 import PropTypes from 'prop-types'
 import { LocaleSwitcher } from '../../LocaleSwitcher'
-import { jsx, css } from '@emotion/core'
-import { Container } from '../container'
+import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import rcmpbrandingeng from '../../images/rcmpbrandingeng.svg'
 import rcmpbrandingfre from '../../images/rcmpbrandingfre.svg'
+import { Flex, Box, Image } from '@chakra-ui/core'
 
 export const TopBanner = props => {
-  const { bg } = props
   const { i18n } = useLingui()
 
   return (
-    <Container
-      bg={bg}
-      display="flex"
-      flexDirection="row"
-      height={[60, null, 60]}
-      alignItems="center"
-      data-testid="background-color"
-    >
-      <Container ml={3} width={[250, null, 300]}>
-        <img
+    <Flex align="center" {...props}>
+      <Box p={4} width={[250, null, 300]}>
+        <Image
           src={i18n.locale === 'en' ? rcmpbrandingeng : rcmpbrandingfre}
-          width="300px"
+          width="100%"
           alt={
             i18n.locale === 'en'
               ? 'Royal Canadian Mounted Police'
               : 'Gendarmerie royale du Canada'
           }
         />
-      </Container>
-      <Container
-        flex="1 1 auto"
-        mr={3}
-        css={css`
-          text-align: right;
-        `}
-      >
-        <LocaleSwitcher />
-      </Container>
-    </Container>
+      </Box>
+      <Box p={4} ml="auto">
+        <LocaleSwitcher color="white" />
+      </Box>
+    </Flex>
   )
 }
 
