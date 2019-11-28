@@ -19,14 +19,16 @@ const Control = ({ name, ...rest }) => {
   return <FormControl {...rest} isInvalid={error && touched} />
 }
 
-const CheckboxArrayControl = ({ name, value, children }) => {
+const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
   const {
     input: { checked, ...input },
     meta: { error, touched },
   } = useField(name, {
     type: 'checkbox', // important for RFF to manage the checked prop
     value, // important for RFF to manage list of strings
+    defaultIsChecked,
   })
+
   return (
     <Checkbox {...input} isChecked={checked} isInvalid={error && touched}>
       {children}
@@ -74,8 +76,12 @@ export const ImpactStatementInfoForm = props => {
                   {howWereYouAffected.map(key => {
                     return (
                       <CheckboxArrayControl
+                        key={key}
                         name="howWereYouAffected"
                         value={key}
+                        isChecked={getImpact(
+                          client,
+                        ).howWereYouAffected.includes(key)}
                       >
                         {i18n._(key)}
                       </CheckboxArrayControl>

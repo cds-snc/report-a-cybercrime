@@ -5,14 +5,18 @@ import { Text } from '../text'
 import { UniqueID } from '../unique-id'
 import { Box, VisuallyHidden, ControlBox, Icon, Flex } from '@chakra-ui/core'
 
-export const Checkbox = ({ label, ...props }) => {
+export const Checkbox = ({ label, isChecked, ...props }) => {
   return (
     <UniqueID>
       {id => {
         return (
           <Box as="label" {...props} id={id}>
             <Flex align="center">
-              <VisuallyHidden as="input" type="checkbox" />
+              <VisuallyHidden
+                as="input"
+                type="checkbox"
+                defaultChecked={isChecked ? 'true' : ''}
+              />
 
               <ControlBox
                 borderWidth="2px"
