@@ -2,15 +2,15 @@ FROM node:12.9-alpine AS build-env
 WORKDIR /app
 COPY . .
 
-ARG RAZZLE_GOOGLE_ANALYTICS_ID
-ENV RAZZLE_GOOGLE_ANALYTICS_ID $RAZZLE_GOOGLE_ANALYTICS_ID
+ARG GOOGLE_ANALYTICS_ID
+ENV GOOGLE_ANALYTICS_ID $GOOGLE_ANALYTICS_ID
 ENV HUSKY_SKIP_INSTALL true
 
 RUN npm ci
 RUN npm run build
 
 FROM node:12.9-alpine
-LABEL maintainer="mike.williamson@cds-snc.ca"
+LABEL maintainer="stephen.astels@cds-snc.ca"
 USER node
 
 ENV NODE_ENV production
