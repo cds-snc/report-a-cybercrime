@@ -35,13 +35,13 @@
     "styled-system": "^5.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "prod": "npm run build && node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "watch": "react-scripts test",
     "dbg": "react-scripts --inspect-brk test --watchAll=false --runInBand",
     "eject": "react-scripts eject",
-    "dev": "node server.js",
+    "dev": "react-scripts start",
     "lint": "eslint 'src/**/*.js'",
     "add-locale": "lingui add-locale",
     "extract": "lingui extract --clean",
