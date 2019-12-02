@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'emotion-theming'
 import canada from '../../../theme/canada'
-import { ListItem, Li } from '..'
+import { Li } from '..'
 
 //these are just the same base tests as govuk package
 
