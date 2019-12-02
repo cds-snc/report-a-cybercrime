@@ -50,7 +50,7 @@ async function postData(url = '', data = {}) {
   return await response
 }
 
-const prepFormData = (client, submitReportP2) => {
+const prepFormData = client => {
   let timeFrame = getTimeFrame(client)
   let whatHappened = getWhatHappened(client)
   let scammerDetails = getScammerDetails(client)
@@ -64,7 +64,6 @@ const prepFormData = (client, submitReportP2) => {
   postalCode = randomizeString(postalCode)
 
   return {
-    source: 'p2',
     timeFrame,
     whatHappened,
     impact,
@@ -102,8 +101,6 @@ export const ConfirmationPage = () => (
           <ConfirmationForm
             onSubmit={(client, submitReportP2) => {
               let data = prepFormData(client)
-              submitReportP2({ variables: data })
-              data.contactInfo.email = randomizeString(data.contactInfo.email)
               submitToServer(data)
               history.push('/nextsteps')
             }}

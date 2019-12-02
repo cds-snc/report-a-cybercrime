@@ -18,8 +18,25 @@ if (!cosmosDbConfigured) {
 
 const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
 
+const randLetter = () => {
+  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  return letters[Math.floor(Math.random() * letters.length)]
+}
+const randDigit = () => Math.floor(Math.random() * 10)
+
+const randomizeString = s =>
+  s
+    ? s
+        .replace(/[a-z]/g, () => randLetter())
+        .replace(/[A-Z]/g, () => randLetter().toUpperCase())
+        .replace(/[0-9]/g, () => randDigit())
+    : s
+
 const uploadData = (req, res) => {
   const data = req.body
+  data.submissionTime = new Date().toISOString()
+  data.contactInfo.email = randomizeString(data.contactInfo.email)
+
   if (cosmosDbConfigured) {
     MongoClient.connect(url, function(err, db) {
       if (err) {
@@ -32,7 +49,6 @@ const uploadData = (req, res) => {
         dbo.collection('reports').insertOne(data, function(err, result) {
           if (err) {
             console.log({ data })
-
             console.warn(`ERROR in insertOne: ${err}`)
             res.statusCode = 502
             res.statusMessage = 'Error saving to CosmosDB'
