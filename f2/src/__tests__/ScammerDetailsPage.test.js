@@ -6,7 +6,7 @@ import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { ScammerDetailsPage } from '../ScammerDetailsPage'
-import theme from '../theme'
+import canada from '../theme/canada'
 import en from '../locales/en.json'
 
 const i18n = setupI18n({ catalogs: { en } })
@@ -24,7 +24,7 @@ describe('<ScammerDetailsPage />', () => {
   it('renders', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={canada}>
           <ApolloProvider client={client}>
             <I18nProvider i18n={i18n}>
               <ScammerDetailsPage />

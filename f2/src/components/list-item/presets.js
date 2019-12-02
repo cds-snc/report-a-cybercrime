@@ -1,13 +1,13 @@
 import React from 'react'
-import { ListItem } from '.'
+import { ListItem } from '@chakra-ui/core'
 import PropTypes from 'prop-types'
 
 export const Li = props => (
   <ListItem
-    fontSize={[2, null, 3]}
-    lineHeight={[2, null, 3]}
-    mb={[0, null, 1]}
-    fontWeight="normal"
+    fontSize={['md', null, 'lg', null]}
+    lineHeight={1.25}
+    fontFamily="body"
+    color="black"
     {...props}
   >
     {props.children}

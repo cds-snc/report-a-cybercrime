@@ -1,86 +1,61 @@
 import React from 'react'
 import { useLingui } from '@lingui/react'
-import { Global, css } from '@emotion/core'
-import { ThemeProvider } from 'emotion-theming'
-import theme from './theme'
 import { Home } from './Home'
 import { Trans } from '@lingui/macro'
 import { TopBanner } from './components/topbanner'
 import { PhaseBanner } from './components/phase-banner'
 import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
-import { FooterLink } from './components/link'
-import { Content } from './components/container'
+import { ThemeProvider, Flex, Link, CSSReset } from '@chakra-ui/core'
+import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 
 const App = () => {
   const { i18n } = useLingui()
   return (
-    <React.Fragment>
-      <Global
-        styles={css`
-          html,
-          body {
-            height: 100%;
-          }
+    <ThemeProvider theme={canada}>
+      <CSSReset />
+      <header>
+        <SkipLink invisible href="#main">
+          <Trans id="SkipLink.text" />
+        </SkipLink>
+        <WarningBanner>
+          <Trans id="banner.warning" />
+        </WarningBanner>
+        <PhaseBanner phase={<Trans id="banner.phase" />}>
+          <Trans id="banner.phaseText" />
+        </PhaseBanner>
+        <TopBanner lang={i18n.locale} bg="black" />
+      </header>
 
-          body {
-            margin: 0;
-            padding: 0;
-          }
+      <Flex id="main" justify="center" fontFamily="body">
+        <Home />
+      </Flex>
 
-          #root {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+      <Footer bg="black">
+        <Link
+          color="white"
+          href={
+            i18n.locale === 'en'
+              ? 'https://digital.canada.ca/legal/privacy/'
+              : 'https://numerique.canada.ca/transparence/confidentialite/'
           }
-          @font-face {
-            font-family: 'robotobold';
-            src: url('fonts/roboto-bold.woff2') format('woff2'),
-              url('fonts/roboto-bold.woff') format('woff');
-            font-weight: bold;
-            font-style: normal;
+        >
+          <Trans id="banner.footerPrivacy" />
+        </Link>
+        <Link
+          color="white"
+          ml={4}
+          href={
+            i18n.locale === 'en'
+              ? 'https://digital.canada.ca/legal/terms/'
+              : 'https://numerique.canada.ca/transparence/avis/'
           }
-        `}
-      />
-      <ThemeProvider theme={theme}>
-        <header>
-          <SkipLink invisible href="#main">
-            <Trans id="SkipLink.text" />
-          </SkipLink>
-          <WarningBanner />
-          <PhaseBanner phase={<Trans id="banner.phase" />}>
-            <Trans id="banner.phaseText" />
-          </PhaseBanner>
-          <TopBanner lang={i18n.locale} bg="black" />
-        </header>
-
-        <Content id="main">
-          <Home />
-        </Content>
-
-        <Footer bg="black">
-          <FooterLink
-            href={
-              i18n.locale === 'en'
-                ? 'https://digital.canada.ca/legal/privacy/'
-                : 'https://numerique.canada.ca/transparence/confidentialite/'
-            }
-          >
-            <Trans id="banner.footerPrivacy" />
-          </FooterLink>
-          <FooterLink
-            href={
-              i18n.locale === 'en'
-                ? 'https://digital.canada.ca/legal/terms/'
-                : 'https://numerique.canada.ca/transparence/avis/'
-            }
-          >
-            <Trans id="banner.footerTermsAndConditions" />
-          </FooterLink>
-        </Footer>
-      </ThemeProvider>
-    </React.Fragment>
+        >
+          <Trans id="banner.footerTermsAndConditions" />
+        </Link>
+      </Footer>
+    </ThemeProvider>
   )
 }
 
