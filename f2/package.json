@@ -42,7 +42,7 @@
     "dbg": "react-scripts --inspect-brk test --watchAll=false --runInBand",
     "eject": "react-scripts eject",
     "dev": "react-scripts start",
-    "lint": "eslint 'src/**/*.js'",
+    "lint": "eslint --max-warnings=0 'src/**/*.js'",
     "add-locale": "lingui add-locale",
     "extract": "lingui extract --clean",
     "compile": "lingui compile",
