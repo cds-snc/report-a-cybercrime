@@ -1,21 +1,21 @@
-apiVersion: skaffold/v1beta17
+apiVersion: skaffold/v1
 kind: Config
 metadata:
   name: report-a-cybercrime
 build:
   artifacts:
-  - image: cybercrime-frontend
-    context: f2
-    docker:
-      dockerfile: Dockerfile.dev
-    sync:
-      infer:
-       - '**/*.js'
-  - image: cybercrime-api
-    context: api
-    sync:
-      infer:
-       - '**/*.js'
+    - image: cybercrime-frontend
+      context: f2
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        infer:
+          - "**/*.js"
+    - image: cybercrime-api
+      context: api
+      sync:
+        infer:
+          - "**/*.js"
 deploy:
   kustomize:
     path: platform/overlays/minikube

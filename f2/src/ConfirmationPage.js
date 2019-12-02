@@ -17,6 +17,7 @@ import {
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
 import { BackButton } from './components/backbutton'
+import { Stack } from '@chakra-ui/core'
 
 const randLetter = () => {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
@@ -87,23 +88,27 @@ export const ConfirmationPage = () => (
     render={({ history }) => (
       <Layout>
         <TrackPageViews />
-        <BackButton route="/contactinfo">
-          <Trans>your contact information</Trans>
-        </BackButton>
-        <Steps activeStep={6} totalSteps={6} />
-        <H1>
-          <Trans id="confirmationPage.title" />
-        </H1>
-        <ConfirmationSummary />
-        <ConfirmationForm
-          onSubmit={(client, submitReportP2) => {
-            let data = prepFormData(client)
-            submitReportP2({ variables: data })
-            data.contactInfo.email = randomizeString(data.contactInfo.email)
-            submitToServer(data)
-            history.push('/nextsteps')
-          }}
-        />
+        <Stack spacing={10} shouldWrapChildren>
+          <BackButton route="/contactinfo">
+            <Trans id="confirmationPage.backButton" />
+          </BackButton>
+          <Stack spacing={4} shouldWrapChildren>
+            <Steps activeStep={6} totalSteps={6} />
+            <H1>
+              <Trans id="confirmationPage.title" />
+            </H1>
+          </Stack>
+          <ConfirmationSummary />
+          <ConfirmationForm
+            onSubmit={(client, submitReportP2) => {
+              let data = prepFormData(client)
+              submitReportP2({ variables: data })
+              data.contactInfo.email = randomizeString(data.contactInfo.email)
+              submitToServer(data)
+              history.push('/nextsteps')
+            }}
+          />
+        </Stack>
       </Layout>
     )}
   />

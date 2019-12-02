@@ -1,14 +1,16 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Trans } from '@lingui/macro'
 import { jsx } from '@emotion/core'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import { Form } from 'react-final-form'
-import { ButtonsContainer } from '../components/buttons-container'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import {
   getTellUsMore,
   SUBMIT_P2_REPORT_MUTATION,
 } from '../utils/queriesAndMutations'
+import { Box } from '@chakra-ui/core'
 
 export const ConfirmationForm = props => {
   return (
@@ -21,13 +23,11 @@ export const ConfirmationForm = props => {
                 initialValues={getTellUsMore(client)}
                 onSubmit={() => props.onSubmit(client, submitReportP2)}
                 render={({ handleSubmit }) => (
-                  <form onSubmit={handleSubmit}>
-                    <ButtonsContainer
-                      buttonLink={false}
-                      cancel={true}
-                      submit={true}
-                    />
-                  </form>
+                  <Box as="form" onSubmit={handleSubmit}>
+                    <NextAndCancelButtons>
+                      <Trans id="confirmationPage.nextButton" />
+                    </NextAndCancelButtons>
+                  </Box>
                 )}
               />
             )}

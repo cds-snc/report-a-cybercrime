@@ -34,7 +34,7 @@ describe('<Steps />', () => {
         </MockedProvider>
       </ThemeProvider>,
     )
-    const test = getAllByText(/Step 1 of 6/)
+    const test = getAllByText(/stepper/)
     expect(test).toHaveLength(1)
   })
 })

@@ -1,37 +1,20 @@
 /** @jsx jsx **/
-import { jsx, css } from '@emotion/core'
-import { Link } from '../link'
-import { Trans } from '@lingui/macro'
+import { jsx } from '@emotion/core'
+import { Link, Icon } from '@chakra-ui/core'
 import PropTypes from 'prop-types'
+import { Link as RoutedLink } from 'react-router-dom'
 
 export const BackButton = ({ route = '', children }) => (
-  <div
-    css={css`
-      margin-bottom: 2.5rem;
-
-      a {
-        text-decoration: none;
-        border-bottom: 1px solid;
-        padding-bottom: 3px;
-
-        span {
-          font-size: 19px;
-        }
-
-        span:first-of-type {
-          font-size: 12px;
-          position: relative;
-          bottom: 3px;
-        }
-      }
-    `}
+  <Link
+    as={RoutedLink}
+    to={route}
+    textAlign="left"
+    fontFamily="body"
+    fontSize="lg"
   >
-    <Link type="button" to={route} textAlign="left">
-      <Trans>
-        <span>&#9664;</span> <span>Back to</span> <span>{children}</span>
-      </Trans>
-    </Link>
-  </div>
+    <Icon name="chevron-left" />
+    {children}
+  </Link>
 )
 
 BackButton.propTypes = {

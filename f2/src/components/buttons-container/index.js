@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { Container } from '../container'
-import { css, jsx } from '@emotion/core'
-import { Button } from '../button'
+import { jsx } from '@emotion/core'
+import { Button, Box } from '@chakra-ui/core'
 import { Trans } from '@lingui/macro'
-import { Link, ButtonLink } from '../link'
+import { Link, Link as ButtonLink, Flex } from '@chakra-ui/core'
 import PropTypes from 'prop-types'
+import { Link as Routed } from 'react-router-dom'
 
 export const ButtonsContainer = ({
   submit = false,
@@ -15,98 +16,72 @@ export const ButtonsContainer = ({
   cancelRoute = '/',
   nextPage = '',
 }) => (
-  <Container
-    mt="1rem"
-    mb="4rem"
-    display={['flex', 'block', 'flex']}
-    alignItems="center"
-    css={css`
-      button,
-      div[name='buttonlink-container'] a {
-        padding: 0.7rem 1.5rem;
-        width: 100%;
-        text-align: center;
-      }
-
-      @media (max-width: 640px) {
-        div[name='buttonlink-container'] a {
-          padding: 0.7rem 0;
-        }
-      }
-    `}
-  >
+  <Flex direction="row" align="center">
     {buttonLink === false ? (
-      <Container mt="1rem">
-        <Button type="submit">
-          {submit === true ? (
-            <Trans>Submit report &nbsp; ❯</Trans>
-          ) : (
-            <Trans>Next</Trans>
-          )}
-
-          {nextPage === 'Scammer details' ? (
-            <Trans>: Clues about the suspect</Trans>
-          ) : nextPage === 'Money lost' ? (
-            <Trans>: Money lost</Trans>
-          ) : nextPage === 'Impact of scam' ? (
-            <Trans>: Impact of the scam</Trans>
-          ) : nextPage === 'What happened' ? (
-            <Trans>: What happened</Trans>
-          ) : nextPage === 'Supporting files' ? (
-            <Trans>: Add files</Trans>
-          ) : nextPage === 'Contact info' ? (
-            <Trans>: Contact information</Trans>
-          ) : nextPage === 'Confirm information' ? (
-            <Trans>: Review report</Trans>
-          ) : null}
-        </Button>
-      </Container>
-    ) : (
-      <Container name="buttonlink-container">
-        {landing === true ? (
-          <ButtonLink color="black" mb={[3, null, 5]} to={route}>
-            <Trans>Report now ❯</Trans>
-          </ButtonLink>
+      <Button
+        type="submit"
+        rightIcon="chevron-right"
+        variantColor="green"
+        to={route}
+      >
+        {submit === true ? (
+          <Trans>Submit report &nbsp; ❯</Trans>
         ) : (
-          <ButtonLink color="black" mb={[3, null, 5]} to={route}>
-            <Trans> ❮ &nbsp; Report another scam</Trans>
-          </ButtonLink>
+          <Trans>Next</Trans>
         )}
-      </Container>
+
+        {nextPage === 'Scammer details' ? (
+          <Trans>: Clues about the suspect</Trans>
+        ) : nextPage === 'Money lost' ? (
+          <Trans>: Money lost</Trans>
+        ) : nextPage === 'Impact of scam' ? (
+          <Trans>: Impact of the scam</Trans>
+        ) : nextPage === 'What happened' ? (
+          <Trans>: What happened</Trans>
+        ) : nextPage === 'Supporting files' ? (
+          <Trans>: Add files</Trans>
+        ) : nextPage === 'Contact info' ? (
+          <Trans>: Contact information</Trans>
+        ) : nextPage === 'Confirm information' ? (
+          <Trans>: Review report</Trans>
+        ) : null}
+      </Button>
+    ) : (
+      <Box name="buttonlink-container">
+        {landing === true ? (
+          <Button
+            as={Routed}
+            rightIcon="chevron-right"
+            variantColor="green"
+            to={route}
+          >
+            <Trans>Report now</Trans>
+          </Button>
+        ) : (
+          <Button
+            as={Routed}
+            leftIcon="chevron-left"
+            variantColor="green"
+            to={route}
+          >
+            <Trans>Report another scam</Trans>
+          </Button>
+        )}
+      </Box>
     )}
 
     {cancel === true ? (
-      <Container mt="1.9rem" ml={['3rem', '0', '3rem']}>
+      <Box ml={4}>
         <Link type="button" color="black" to={cancelRoute} textAlign="center">
           <Trans>Cancel report</Trans>
         </Link>
-      </Container>
+      </Box>
     ) : null}
-  </Container>
+  </Flex>
 )
 
 export const ButtonsContainerLanding = () => (
-  <Container
-    mt="1rem"
-    mb="4rem"
-    display={['flex', 'block', 'flex']}
-    justifyContent="space-between"
-    alignItems="center"
-    css={css`
-      button,
-      div[name='buttonlink-container'] a {
-        padding: 0.7rem 1.5rem;
-        text-align: center;
-      }
-
-      @media (max-width: 640px) {
-        div[name='buttonlink-container'] a {
-          padding: 0.7rem 0;
-          width: 100%;
-        }
-      }
-    `}
-  >
+  <Container>
     <Container name="buttonlink-container">
       <ButtonLink textAlign="center" to="/p1">
         <Trans>Prototype 1</Trans>
@@ -125,32 +100,7 @@ export const ButtonsContainerYesNo = ({
   noRoute = '',
   marginB = '10em',
 }) => (
-  <Container
-    mt="1rem"
-    mb="4rem"
-    display={['flex', 'block', 'flex']}
-    alignItems="center"
-    css={css`
-      button,
-      div[name='buttonlink-container'] a {
-        padding: 0.7rem 2.5rem;
-        text-align: center;
-      }
-
-      div[name='buttonlink-container'] a:first-of-type {
-        margin-right: 1rem;
-      }
-
-      @media (max-width: 640px) {
-        div[name='buttonlink-container'] a {
-          padding: 0.7rem 0;
-          width: 100%;
-        }
-      }
-
-      margin-bottom: ${marginB};
-    `}
-  >
+  <Container>
     <Container name="buttonlink-container">
       <ButtonLink textAlign="center" to={yesRoute}>
         <Trans>Yes</Trans>

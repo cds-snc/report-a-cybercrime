@@ -2,25 +2,20 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { ApolloConsumer } from 'react-apollo'
 import { Form, Field } from 'react-final-form'
-import { Container } from '../components/container'
+import { Container, InfoCard } from '../components/container'
 import { plural, Trans } from '@lingui/macro'
-import { ButtonsContainer } from '../components/buttons-container'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { Text } from '../components/text'
 import { H2, H3 } from '../components/header'
-import { P } from '../components/paragraph'
-import { Ul } from '../components/unordered-list'
-import { Li } from '../components/list-item'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
-import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getScammerDetails } from '../utils/queriesAndMutations'
-import upload from '../images/upload.svg'
-
-const TextAreaAdapter = finalFormAdapter(TextArea)
+import { Box, Stack, FormControl, FormLabel, PseudoBox } from '@chakra-ui/core'
+import { FormHelperText } from '../components/FormHelperText'
 
 export const ScammerDetailsFormWrapped = props => {
   const { client } = props
@@ -79,136 +74,120 @@ export const ScammerDetailsFormWrapped = props => {
         <Form
           onSubmit={() => localSubmit(client)}
           render={({ handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
-              <P>
-                <Trans id="scammerDetail.details" />
-              </P>
-              <Ul>
-                <Li>
-                  <Trans id="scammerDetail.detail1" />
-                </Li>{' '}
-                <Li>
-                  <Trans id="scammerDetail.detail2" />
-                </Li>
-                <Li>
-                  <Trans id="scammerDetail.detail3" />
-                </Li>
-                <Li>
-                  <Trans id="scammerDetail.detail4" />
-                </Li>
-              </Ul>
-              <label htmlFor="scammerDetails">
-                <Text marginTop={[5, null, 6]}>
-                  <strong>
-                    <Trans id="scammerDetail.summary" />
-                  </strong>
-                  <Text color="darkGray" mt="6px" mb="8px">
-                    <Trans id="scammerDetail.reminder" />
-                  </Text>
-                </Text>
-              </label>
-              <div>
-                <Field
-                  input={{ value: scammerDetails, onChange }}
-                  name="scammerDetails"
-                  id="scammerDetails"
-                  component={TextAreaAdapter}
-                  height="100px"
-                  width="100%"
-                />
-              </div>
-              <br></br>
-              <Container
-                marginTop={[2, null, 5]}
-                marginBottom={[2, 5, 5]}
-                display="flex"
-                flexDirection="row"
-                justifyContent={['flex-start', 'center', 'flex-start']}
-                textAlign="center"
-              >
-                <FileUpload
-                  onChange={onChange}
-                  width={['auto', '100%', 'auto']}
-                  paddingLeft="1.5rem"
-                  paddingRight="1.5rem"
-                  paddingBottom="0.6rem"
-                  paddingTop="0.6rem"
-                  css={css`
-                    display: flex;
-                    justify-content: center;
-                    img {
-                      width: 1rem;
-                      margin-right: 0.6rem;
-                    }
-                  `}
-                >
-                  <img alt="upload icon" src={upload} />
-                  <span>
-                    <Trans id="scammerDetail.addFileButtom" />
-                  </span>
-                </FileUpload>
-              </Container>
+            <Stack
+              as="form"
+              onSubmit={handleSubmit}
+              spacing={6}
+              shouldWrapChildren
+            >
+              <Field name="scammerDetails">
+                {props => (
+                  <FormControl>
+                    <FormLabel htmlFor="scammerDetails">
+                      <Text fontWeight="bold">
+                        <Trans id="scammerDetail.summary" />
+                      </Text>
+                    </FormLabel>
+                    <FormHelperText variant="above">
+                      <Text color="blackAlpha.600">
+                        <Trans id="scammerDetail.reminder" />
+                      </Text>
+                    </FormHelperText>
 
-              <H2 fontSize={[4, null, 5]} lineHeight={[4, null, 5]}>
-                {plural(files.length, {
-                  one: '# file attached',
-                  other: '# files attached',
-                })}
-              </H2>
+                    <TextArea
+                      id="scammerDetails"
+                      name={props.input.name}
+                      value={props.input.value}
+                      onChange={props.input.onChange}
+                    />
+                  </FormControl>
+                )}
+              </Field>
 
-              {status ? (
-                <Text
-                  tabIndex={-1}
-                  id="status"
-                  css={css`
-                    :focus {
-                      outline: 0px solid transparent;
-                    }
-                  `}
-                >
-                  {i18n._(status)}
-                </Text>
-              ) : null}
+              <Stack spacing={4}>
+                <Box>
+                  <FileUpload onChange={onChange}>
+                    <Button leftIcon="attachment" as="div">
+                      <Trans id="scammerDetail.addFileButtom" />
+                    </Button>
+                  </FileUpload>
+                </Box>
+
+                <H2>
+                  {plural(files.length, {
+                    one: '# file attached',
+                    other: '# files attached',
+                  })}
+                </H2>
+
+                {status ? (
+                  <PseudoBox
+                    as="Text"
+                    tabIndex={-1}
+                    id="status"
+                    _focus={{
+                      outline: 'none',
+                      bg: 'white',
+                      boxShadow: 'outline',
+                      borderColor: 'black',
+                    }}
+                  >
+                    {i18n._(status)}
+                  </PseudoBox>
+                ) : null}
+              </Stack>
 
               <Container>
                 {files.map((f, index) => (
                   <React.Fragment key={index}>
-                    <H3 marginTop={[4, null, 5]} fontSize={[2, null, 4]}>
-                      {f.name}
-                    </H3>
+                    <InfoCard mb={4}>
+                      <Stack spacing={4}>
+                        <H3>{f.name}</H3>
+                        <Box>
+                          <Field
+                            name={`file-description-${index}`}
+                            input={{ value: fileDescriptions[index], onChange }}
+                          >
+                            {props => (
+                              <FormControl>
+                                <FormLabel
+                                  htmlFor={`file-description-${index}`}
+                                >
+                                  <Text fontWeight="bold">
+                                    <Trans id="scammerDetail.fileDescription" />
+                                  </Text>
+                                </FormLabel>
+                                <TextArea
+                                  id={`file-description-${index}`}
+                                  name={props.input.name}
+                                  value={props.input.value}
+                                  onChange={props.input.onChange}
+                                />
+                              </FormControl>
+                            )}
+                          </Field>
+                        </Box>
 
-                    <label htmlFor={`file-description-${index}`}>
-                      <Text>
-                        <Trans id="scammerDetail.fileDescription" />
-                      </Text>
-                    </label>
-                    <div>
-                      <Field
-                        input={{ value: fileDescriptions[index], onChange }}
-                        name={`file-description-${index}`}
-                        id={`file-description-${index}`}
-                        component={TextAreaAdapter}
-                        height="50px"
-                      />
-                    </div>
-
-                    <Button
-                      float="right"
-                      backgroundColor="crimson"
-                      type="button"
-                      onClick={() => removeFile(index)}
-                    >
-                      <Trans id="scammerDetail.removeFileButton" />
-                    </Button>
+                        <Button
+                          mr="auto"
+                          variantColor="red"
+                          type="button"
+                          onClick={() => removeFile(index)}
+                        >
+                          <Trans id="scammerDetail.removeFileButton" />
+                        </Button>
+                      </Stack>
+                    </InfoCard>
                   </React.Fragment>
                 ))}
               </Container>
-              <ButtonsContainer
-                buttonLink={false}
-                cancel={true}
-                nextPage="Impact of scam"
-              />
-            </form>
+
+              <NextAndCancelButtons>
+                <Trans id="scammerDetail.nextButton">
+                  Next: Impact of scam
+                </Trans>
+              </NextAndCancelButtons>
+            </Stack>
           )}
         />
       )}

@@ -1,28 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'emotion-theming'
-import theme from '../../../theme'
-import { Paragraph, P, Lead } from '..'
+import canada from '../../../theme/canada'
+import { P, Lead } from '..'
 
-describe('Paragraph', () => {
+describe('<Paragraph />', () => {
   const example = 'example'
-  const wrapper = (
-    <ThemeProvider theme={theme}>
-      <Paragraph color="black">{example}</Paragraph>
-    </ThemeProvider>
-  )
 
-  it('Renders a Paragraph component, P and Lead presets without crashing', () => {
+  it('Renders P and Lead presets without crashing', () => {
     const div = document.createElement('div')
-    ReactDOM.render(wrapper, div)
     ReactDOM.render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={canada}>
         <P>{example}</P>
       </ThemeProvider>,
       div,
     )
     ReactDOM.render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={canada}>
         <Lead>{example}</Lead>
       </ThemeProvider>,
       div,

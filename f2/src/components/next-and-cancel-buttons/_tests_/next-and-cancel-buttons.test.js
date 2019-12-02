@@ -3,28 +3,32 @@ import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { render, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
-import { MemoryRouter } from 'react-router-dom'
 import canada from '../../../theme/canada'
-import { BackButton } from '../'
+import { MemoryRouter } from 'react-router-dom'
+import { NextAndCancelButtons } from '../'
 import en from '../../../locales/en.json'
 
 i18n.load('en', { en })
 i18n.activate('en')
 
-describe('<Button />', () => {
+describe('<NextAndCancelButtons />', () => {
   afterEach(cleanup)
 
-  it('properly renders child components', () => {
+  it('properly renders next button with cancel button beside', () => {
     const { getAllByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
-            <BackButton route="/future">Back to the future</BackButton>
+            <NextAndCancelButtons>
+              Next: Confirm information
+            </NextAndCancelButtons>
           </I18nProvider>
         </ThemeProvider>
       </MemoryRouter>,
     )
-    expect(getAllByText(/Back/)).toHaveLength(1)
-    expect(document.querySelector('a').getAttribute('href')).toBe('/future')
+    expect(getAllByText(/Next/)).toHaveLength(1)
+    expect(getAllByText(/button.cancelReport/)).toHaveLength(1)
+    expect(document.querySelector('a').getAttribute('href')).toBe('/')
+    expect(document.querySelector('button').getAttribute('type')).toBe('submit')
   })
 })

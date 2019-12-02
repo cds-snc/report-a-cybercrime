@@ -6,12 +6,11 @@ import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Text } from '../components/text'
-import { ButtonsContainer } from '../components/buttons-container'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
-import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getTimeFrame } from '../utils/queriesAndMutations'
-
-const TextInputAdapter = finalFormAdapter(TextInput)
+import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
+import { FormHelperText } from '../components/FormHelperText'
 
 class TimeFrameInfoFormWrapped extends Component {
   localOnSubmit = (client, data) => {
@@ -27,52 +26,62 @@ class TimeFrameInfoFormWrapped extends Component {
             initialValues={getTimeFrame(client)}
             onSubmit={data => this.localOnSubmit(this.props.client, data)}
             render={({ handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
-                <label htmlFor="startDate">
-                  <Text marginTop={[5, null, 6]}>
-                    <strong>
-                      <Trans id="timeFramePage.startDate" />
-                    </strong>
-                  </Text>
-                  <Text color="darkGray" mt="6px" mb="8px">
-                    <Trans id="timeFramePage.startDateExample" />
-                  </Text>
-                </label>
-                <div>
-                  <Field
-                    name="startDate"
-                    id="startDate"
-                    component={TextInputAdapter}
-                    height="25px"
-                    width="300px"
-                  />
-                </div>
+              <Stack
+                as="form"
+                onSubmit={handleSubmit}
+                spacing={6}
+                shouldWrapChildren
+              >
+                <Field name="startDate">
+                  {props => (
+                    <FormControl>
+                      <FormLabel htmlFor="startDate">
+                        <Text fontWeight="bold">
+                          <Trans id="timeFramePage.startDate" />
+                        </Text>
+                      </FormLabel>
+                      <TextInput
+                        id="startDate"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                      />
+                      <FormHelperText>
+                        <Text color="blackAlpha.600">
+                          <Trans id="timeFramePage.startDateExample" />
+                        </Text>
+                      </FormHelperText>
+                    </FormControl>
+                  )}
+                </Field>
 
-                <label htmlFor="endDate">
-                  <Text marginTop={[5, null, 6]}>
-                    <strong>
-                      <Trans id="timeFramePage.endDate" />
-                    </strong>
-                  </Text>
-                  <Text color="darkGray" mt="6px" mb="8px">
-                    <Trans id="timeFramePage.endDateExample" />
-                  </Text>
-                </label>
-                <div>
-                  <Field
-                    name="endDate"
-                    id="endDate"
-                    component={TextInputAdapter}
-                    height="25px"
-                    width="300px"
-                  />
-                </div>
-                <ButtonsContainer
-                  cancel={true}
-                  buttonLink={false}
-                  nextPage="What happened"
-                />
-              </form>
+                <Field name="endDate">
+                  {props => (
+                    <FormControl>
+                      <FormLabel htmlFor="endDate">
+                        <Text fontWeight="bold">
+                          <Trans id="timeFramePage.endDate" />
+                        </Text>
+                      </FormLabel>
+                      <TextInput
+                        id="endDate"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                      />
+                      <FormHelperText>
+                        <Text color="blackAlpha.600">
+                          <Trans id="timeFramePage.endDateExample" />
+                        </Text>
+                      </FormHelperText>
+                    </FormControl>
+                  )}
+                </Field>
+
+                <NextAndCancelButtons>
+                  <Trans id="timeframePage.nextButton" />
+                </NextAndCancelButtons>
+              </Stack>
             )}
           />
         )}
