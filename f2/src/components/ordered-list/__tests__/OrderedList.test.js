@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'emotion-theming'
 import theme from '../../../theme'
-import { OrderedList, Ol } from '..'
+import { Ol } from '..'
 
 describe('Ordered List', () => {
   const example = 'example'
