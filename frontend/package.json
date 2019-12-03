@@ -58,7 +58,7 @@
     "react": "^16.12.0",
     "react-apollo": "^2.5.8",
     "react-dom": "^16.11.0",
-    "react-final-form": "^6.3.0",
+    "react-final-form": "^6.3.3",
     "react-ga": "^2.6.0",
     "react-helmet-async": "^1.0.4",
     "react-stepper-horizontal": "^1.0.11",
