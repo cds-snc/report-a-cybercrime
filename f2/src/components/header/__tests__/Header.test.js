@@ -1,87 +1,13 @@
 import React from 'react'
-import { ThemeProvider } from 'emotion-theming'
-import { render, cleanup } from '@testing-library/react'
+import { cleanup } from '@testing-library/react'
 import { mount } from 'enzyme'
-import { Header, H1, H2, H3, H4, H5, H6 } from '../'
+import { H1, H2, H3, H4, H5, H6 } from '../'
 
 describe('<Header />', () => {
   afterEach(cleanup)
 
-  it('Properly render child components', () => {
-    const { getAllByText } = render(<Header as="h1">foo</Header>)
-
-    const test = getAllByText(/foo/)
-    expect(test).toHaveLength(1)
-  })
-
-  it('Properly handles font size props', () => {
-    const { getByText } = render(
-      <ThemeProvider theme={{ fontSizes: ['14px'] }}>
-        <Header fontSize={0} as="h1">
-          foo
-        </Header>
-      </ThemeProvider>,
-    )
-
-    const test = getByText('foo')
-    expect(test).toHaveStyleRule('font-size', '14px')
-  })
-
-  it('Properly handles line height props', () => {
-    const { getByText } = render(
-      <ThemeProvider theme={{ lineHeights: ['1'] }}>
-        <Header lineHeight={0} as="h1">
-          foo
-        </Header>
-      </ThemeProvider>,
-    )
-
-    const test = getByText('foo')
-    expect(test).toHaveStyleRule('line-height', '1')
-  })
-
-  it('Properly handles space props', () => {
-    const { getByText } = render(
-      <ThemeProvider theme={{ space: ['5px', '10px'] }}>
-        <Header p={0} ml={1} as="h1">
-          foo
-        </Header>
-      </ThemeProvider>,
-    )
-
-    const test = getByText('foo')
-    expect(test).toHaveStyleRule('padding', '5px')
-    expect(test).toHaveStyleRule('margin-left', '10px')
-  })
-
-  it('Properly handles color props', () => {
-    const { getByText } = render(
-      <ThemeProvider theme={{ colors: { blue: '#005ea5' } }}>
-        <Header color="blue" as="h1">
-          foo
-        </Header>
-      </ThemeProvider>,
-    )
-
-    const test = getByText('foo')
-    expect(test).toHaveStyleRule('color', '#005ea5')
-  })
-
-  it('Properly handles font weight', () => {
-    const { getByText } = render(
-      <Header fontWeight="bold" as="h1">
-        foo
-      </Header>,
-    )
-
-    const test = getByText('foo')
-    expect(test).toHaveStyleRule('font-weight', 'bold')
-  })
-
-  it("The 'is' prop sets correct header tag", () => {
-    let wrapper = mount(<Header as="h1" />).find('h1')
-    expect(wrapper.is('h1')).toBeTruthy()
-  })
+  //Importing this component from Chakra, we assume it has passed some tests already
+  //We are testing our presets
 
   it('H1 preset renders as h1', () => {
     let wrapper = mount(<H1 />).find('h1')

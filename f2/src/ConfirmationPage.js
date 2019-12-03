@@ -17,6 +17,7 @@ import {
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
 import { BackButton } from './components/backbutton'
+import { Stack } from '@chakra-ui/core'
 
 const randLetter = () => {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
@@ -32,7 +33,24 @@ const randomizeString = s =>
         .replace(/[0-9]/g, () => randDigit())
     : s
 
-const prepFormData = (client, submitReportP2) => {
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+    referrer: 'no-referrer',
+    body: JSON.stringify(data),
+  })
+  return await response
+}
+
+const prepFormData = client => {
   let timeFrame = getTimeFrame(client)
   let whatHappened = getWhatHappened(client)
   let scammerDetails = getScammerDetails(client)
@@ -46,7 +64,6 @@ const prepFormData = (client, submitReportP2) => {
   postalCode = randomizeString(postalCode)
 
   return {
-    source: 'p2',
     timeFrame,
     whatHappened,
     impact,
@@ -61,26 +78,34 @@ const prepFormData = (client, submitReportP2) => {
   }
 }
 
+const submitToServer = async data => {
+  await postData('/submit', data)
+}
+
 export const ConfirmationPage = () => (
   <Route
     render={({ history }) => (
       <Layout>
         <TrackPageViews />
-        <BackButton route="/contactinfo">
-          <Trans id="confirmationPage.backButton" />
-        </BackButton>
-        <Steps activeStep={6} totalSteps={6} />
-        <H1>
-          <Trans id="confirmationPage.title" />
-        </H1>
-        <ConfirmationSummary />
-        <ConfirmationForm
-          onSubmit={(client, submitReportP2) => {
-            let data = prepFormData(client)
-            submitReportP2({ variables: data })
-            history.push('/nextsteps')
-          }}
-        />
+        <Stack spacing={10} shouldWrapChildren>
+          <BackButton route="/contactinfo">
+            <Trans id="confirmationPage.backButton" />
+          </BackButton>
+          <Stack spacing={4} shouldWrapChildren>
+            <Steps activeStep={6} totalSteps={6} />
+            <H1>
+              <Trans id="confirmationPage.title" />
+            </H1>
+          </Stack>
+          <ConfirmationSummary />
+          <ConfirmationForm
+            onSubmit={(client, submitReportP2) => {
+              let data = prepFormData(client)
+              submitToServer(data)
+              history.push('/nextsteps')
+            }}
+          />
+        </Stack>
       </Layout>
     )}
   />

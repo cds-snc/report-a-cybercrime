@@ -1,30 +1,16 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
-
-const phasebanner = css`
-  background-color: #f4f4f4;
-  font-family: robotoregular, sans-serif;
-  padding: 1.2rem 0.9rem;
-
-  span:first-of-type {
-    padding: 2px 8px;
-    border: 2px solid;
-    font-size: 0.8rem;
-    margin-right: 0.5rem;
-  }
-
-  span:last-of-type {
-    font-size: 0.85rem;
-    margin-right: 0.6rem;
-  }
-`
+import { Flex, Tag } from '@chakra-ui/core'
+import { Text } from '../text'
 
 export const PhaseBanner = props => (
-  <div css={phasebanner}>
-    <span>{props.phase}</span>
-    <span>{props.children}</span>
-  </div>
+  <Flex align="center" p={4} bg="green.50">
+    <Tag variantColor="green">{props.phase}</Tag>
+    <Text color="green.900" ml={4}>
+      {props.children}
+    </Text>
+  </Flex>
 )
 
 PhaseBanner.propTypes = {

@@ -1,9 +1,4 @@
-import { Input } from '../input'
 import { withProps } from 'recompose'
-import theme from '../../theme'
+import { Input } from '../input'
 
-export const TextInput = withProps({
-  type: 'text',
-  colors: 'inputField',
-  fontSize: theme.fontSizes,
-})(Input)
+export const TextInput = withProps({})(Input)

@@ -4,7 +4,7 @@ import { I18nProvider } from '@lingui/react'
 import { render, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
 import { MemoryRouter } from 'react-router-dom'
-import theme from '../../../theme'
+import canada from '../../../theme/canada'
 import { BackButton } from '../'
 import en from '../../../locales/en.json'
 
@@ -17,7 +17,7 @@ describe('<Button />', () => {
   it('properly renders child components', () => {
     const { getAllByText } = render(
       <MemoryRouter initialEntries={['/']}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
             <BackButton route="/future">Back to the future</BackButton>
           </I18nProvider>

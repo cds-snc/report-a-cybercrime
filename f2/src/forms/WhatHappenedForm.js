@@ -6,11 +6,10 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { TextArea } from '../components/text-area'
 import { Text } from '../components/text'
+import { FormHelperText } from '../components/FormHelperText'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { finalFormAdapter } from '../utils/finalFormAdapter'
 import { getWhatHappened } from '../utils/queriesAndMutations'
-
-const TextAreaAdapter = finalFormAdapter(TextArea)
+import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
 
 export const WhatHappenedForm = props => (
   <ApolloConsumer>
@@ -19,28 +18,38 @@ export const WhatHappenedForm = props => (
         initialValues={getWhatHappened(client)}
         onSubmit={data => props.onSubmit(client, data)}
         render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="whatHappened">
-              <Text marginTop={[5, null, 6]}>
-                <strong>
-                  <Trans id="whatHappendPage.summary" />
-                </strong>
-              </Text>
-              <Text color="darkGray" mt="6px" mb="8px">
-                <Trans id="whatHappendPage.hint" />
-              </Text>
-              <Field
-                name="whatHappened"
-                id="whatHappened"
-                component={TextAreaAdapter}
-                height="100px"
-                width="100%"
-              />
-            </label>
+          <Stack
+            as="form"
+            onSubmit={handleSubmit}
+            spacing={6}
+            shouldWrapChildren
+          >
+            <Field name="whatHappened">
+              {props => (
+                <FormControl>
+                  <FormLabel htmlFor="whatHappened">
+                    <Text fontWeight="bold">
+                      <Trans id="whatHappendPage.summary" />
+                    </Text>
+                  </FormLabel>
+                  <FormHelperText variant="above">
+                    <Text as="span" color="blackAlpha.600">
+                      <Trans id="whatHappendPage.hint" />
+                    </Text>
+                  </FormHelperText>
+                  <TextArea
+                    id="whatHappened"
+                    name={props.input.name}
+                    value={props.input.value}
+                    onChange={props.input.onChange}
+                  />
+                </FormControl>
+              )}
+            </Field>
             <NextAndCancelButtons>
               <Trans id="whatHappenedPage.nextButton" />
             </NextAndCancelButtons>
-          </form>
+          </Stack>
         )}
       />
     )}

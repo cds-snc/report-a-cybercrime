@@ -23,6 +23,6 @@ images:
 - name: acrrcmpcybercrime.azurecr.io/api
   newTag: master-627ca1d183f818dc7e620777ca1d792e8421544c
 - name: acrrcmpcybercrime.azurecr.io/frontend
-  newTag: master-d04ba94a1fd16b18b92b38a18bf077ef963e5475
+  newTag: master-2e6451ed1b6c78f454131ebab295a0f9fe70fdc3
 - name: traefik
   newTag: "1.7"

@@ -8,7 +8,7 @@ import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { ScammerDetailsForm } from '../ScammerDetailsForm'
 import en from '../../locales/en.json'
-import theme from '../../theme'
+import canada from '../../theme/canada'
 
 i18n.load('en', { en })
 i18n.activate('en')
@@ -30,7 +30,7 @@ describe('<ScammerDetailsForm />', () => {
 
     const { getByRole } = render(
       <MemoryRouter initialEntries={['/']}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
             <ApolloProvider client={client}>
               <ScammerDetailsForm onSubmit={submitMock} />
