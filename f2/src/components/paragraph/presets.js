@@ -1,17 +1,18 @@
 import React from 'react'
-import { Paragraph } from '.'
 import PropTypes from 'prop-types'
+import { Text } from '@chakra-ui/core'
 
 export const P = props => (
-  <Paragraph
-    fontSize={[2, null, 3]}
-    lineHeight={[2, null, 3]}
+  <Text
+    fontSize={['md', null, 'lg', null]}
+    lineHeight={1.25}
+    fontFamily="body"
     mb={4}
     color="black"
     {...props}
   >
     {props.children}
-  </Paragraph>
+  </Text>
 )
 
 P.propTypes = {
@@ -19,15 +20,16 @@ P.propTypes = {
 }
 
 export const Lead = props => (
-  <Paragraph
-    fontSize={[3, null, 4]}
-    lineHeight={[3, null, 4]}
+  <Text
+    fontSize={['lg', null, 'xl', null]}
+    lineHeight={1.25}
+    fontFamily="body"
     mb={4}
     color="black"
     {...props}
   >
     {props.children}
-  </Paragraph>
+  </Text>
 )
 
 Lead.propTypes = {

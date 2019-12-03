@@ -1,17 +1,17 @@
 import React from 'react'
-import { StyledSpan } from '.'
+import { Text as ChakraText } from '@chakra-ui/core'
 import PropTypes from 'prop-types'
 
 export const Text = props => (
-  <StyledSpan
-    display="block"
-    fontSize={[2, null, 3]}
-    lineHeight={[2, null, 3]}
+  <ChakraText
+    fontSize={['md', null, 'lg', null]}
+    lineHeight={1.25}
+    fontFamily="body"
     color="black"
     {...props}
   >
     {props.children}
-  </StyledSpan>
+  </ChakraText>
 )
 
 Text.propTypes = {

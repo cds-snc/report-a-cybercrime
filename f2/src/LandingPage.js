@@ -12,6 +12,7 @@ import { Li } from './components/list-item'
 import { InfoCard } from './components/container'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
+import { Stack } from '@chakra-ui/core'
 
 export const LandingPage = props => {
   return (
@@ -19,9 +20,6 @@ export const LandingPage = props => {
       render={({ history }) => (
         <Layout>
           <TrackPageViews />
-          <H1>
-            <Trans id="landingPage.title" />
-          </H1>
           <ApolloConsumer>
             {client =>
               client.writeData({
@@ -41,45 +39,50 @@ export const LandingPage = props => {
               })
             }
           </ApolloConsumer>
+          <Stack spacing={10} shouldWrapChildren>
+            <H1>
+              <Trans id="landingPage.title" />
+            </H1>
 
-          <P>
-            <Trans id="landingPage.intro" />
-          </P>
-          <InfoCard>
-            <P>
-              <Trans id="landingPage.required0" />
-            </P>
-            <Ul>
-              <Li>
-                <Trans id="landingPage.required1" />
-              </Li>
-              <Li>
-                <Trans id="landingPage.required2" />
-              </Li>
-              <Li>
-                <Trans id="landingPage.required3" />
-              </Li>
-              <Li>
-                <Trans id="landingPage.required4" />
-              </Li>
-            </Ul>
-          </InfoCard>
-          <br></br>
-          <P>
-            <Trans id="landingPage.summary" />
-          </P>
+            <Stack spacing={4}>
+              <P>
+                <Trans id="landingPage.intro" />
+              </P>
 
-          <Button
-            color="white"
-            px={7}
-            py={2}
-            mb={[3, null, 5]}
-            onClick={() => {
-              history.push('/timeframe')
-            }}
-          >
-            <Trans id="landingPage.nextButton" />
-          </Button>
+              <InfoCard>
+                <P>
+                  <Trans id="landingPage.required0" />
+                </P>
+                <Ul>
+                  <Li>
+                    <Trans id="landingPage.required1" />
+                  </Li>
+                  <Li>
+                    <Trans id="landingPage.required2" />
+                  </Li>
+                  <Li>
+                    <Trans id="landingPage.required3" />
+                  </Li>
+                  <Li>
+                    <Trans id="landingPage.required4" />
+                  </Li>
+                </Ul>
+              </InfoCard>
+
+              <P>
+                <Trans id="landingPage.summary" />
+              </P>
+            </Stack>
+
+            <Button
+              rightIcon="chevron-right"
+              onClick={() => {
+                history.push('/timeframe')
+              }}
+            >
+              <Trans id="landingPage.nextButton" />
+            </Button>
+          </Stack>
         </Layout>
       )}
     />

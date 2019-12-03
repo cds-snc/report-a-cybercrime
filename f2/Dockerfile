@@ -1,9 +1,21 @@
-FROM node:12-alpine
+FROM node:12.9-alpine AS build-env
+WORKDIR /app
+COPY . .
 
+ARG GOOGLE_ANALYTICS_ID
+ENV GOOGLE_ANALYTICS_ID $GOOGLE_ANALYTICS_ID
+ENV HUSKY_SKIP_INSTALL true
+
+RUN npm ci
+RUN npm run build
+
+FROM node:12.9-alpine
+LABEL maintainer="stephen.astels@cds-snc.ca"
+USER node
+
+ENV NODE_ENV production
+
+COPY --from=build-env --chown=node /app /app
 WORKDIR /app
 EXPOSE 3000
-CMD ["npm", "run", "start"]
-
-COPY package* ./
-RUN npm ci
-COPY . .
+CMD ["node",  "server.js"]

@@ -1,34 +1,17 @@
 import PropTypes from 'prop-types'
 /** @jsx jsx **/
 import { jsx, css } from '@emotion/core'
-import { Container } from '../container'
 import WordMark from '../wordmark'
-import { Ul } from '../unordered-list'
+import { Box, Flex, List } from '@chakra-ui/core'
 
 export const Footer = props => {
   const { bg } = props
 
   return (
-    <footer>
-      <Container
-        bg={bg}
-        display="flex"
-        flexDirection="row"
-        width={1}
-        height={55}
-        alignItems="center"
-        data-testid="background-color"
-        m="auto auto 0 auto"
-        css={css`
-          flex-shrink: 0;
-        `}
-      >
-        <Container flex="1 1 auto">
-          <Ul listStyleType="none" mb={0}>
-            {props.children}
-          </Ul>
-        </Container>
-        <Container mr={3} width={['4em', null, '6em']}>
+    <Box as="footer" bg={bg} p={[4, 6, 10]}>
+      <Flex align="center" direction="row">
+        <List px={0}>{props.children}</List>
+        <Box w="150px" ml="auto">
           <WordMark
             width="100%"
             flag="#fff"
@@ -37,9 +20,9 @@ export const Footer = props => {
               display: block;
             `}
           />
-        </Container>
-      </Container>
-    </footer>
+        </Box>
+      </Flex>
+    </Box>
   )
 }
 
