@@ -15,46 +15,48 @@ const App = () => {
   return (
     <ThemeProvider theme={canada}>
       <CSSReset />
-      <header>
-        <SkipLink invisible href="#main">
-          <Trans id="SkipLink.text" />
-        </SkipLink>
-        <WarningBanner>
-          <Trans id="banner.warning" />
-        </WarningBanner>
-        <PhaseBanner phase={<Trans id="banner.phase" />}>
-          <Trans id="banner.phaseText" />
-        </PhaseBanner>
-        <TopBanner lang={i18n.locale} bg="black" />
-      </header>
+      <Flex direction="column" minHeight="100vh">
+        <header>
+          <SkipLink invisible href="#main">
+            <Trans id="SkipLink.text" />
+          </SkipLink>
+          <WarningBanner>
+            <Trans id="banner.warning" />
+          </WarningBanner>
+          <PhaseBanner phase={<Trans id="banner.phase" />}>
+            <Trans id="banner.phaseText" />
+          </PhaseBanner>
+          <TopBanner lang={i18n.locale} bg="black" />
+        </header>
 
-      <Flex id="main" justify="center" fontFamily="body">
-        <Home />
+        <Flex id="main" justify="center" fontFamily="body" flex={1}>
+          <Home />
+        </Flex>
+
+        <Footer height="1000px" bg="black">
+          <Link
+            color="white"
+            href={
+              i18n.locale === 'en'
+                ? 'https://digital.canada.ca/legal/privacy/'
+                : 'https://numerique.canada.ca/transparence/confidentialite/'
+            }
+          >
+            <Trans id="banner.footerPrivacy" />
+          </Link>
+          <Link
+            color="white"
+            ml={4}
+            href={
+              i18n.locale === 'en'
+                ? 'https://digital.canada.ca/legal/terms/'
+                : 'https://numerique.canada.ca/transparence/avis/'
+            }
+          >
+            <Trans id="banner.footerTermsAndConditions" />
+          </Link>
+        </Footer>
       </Flex>
-
-      <Footer bg="black">
-        <Link
-          color="white"
-          href={
-            i18n.locale === 'en'
-              ? 'https://digital.canada.ca/legal/privacy/'
-              : 'https://numerique.canada.ca/transparence/confidentialite/'
-          }
-        >
-          <Trans id="banner.footerPrivacy" />
-        </Link>
-        <Link
-          color="white"
-          ml={4}
-          href={
-            i18n.locale === 'en'
-              ? 'https://digital.canada.ca/legal/terms/'
-              : 'https://numerique.canada.ca/transparence/avis/'
-          }
-        >
-          <Trans id="banner.footerTermsAndConditions" />
-        </Link>
-      </Footer>
     </ThemeProvider>
   )
 }
