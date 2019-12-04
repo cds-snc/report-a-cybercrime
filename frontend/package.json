@@ -33,7 +33,7 @@
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "@lingui/react": "^2.8.3",
-    "@reach/component-component": "^0.6.1",
+    "@reach/component-component": "^0.6.2",
     "@reach/router": "^1.2.1",
     "@testing-library/jest-dom": "^4.2.4",
     "apollo-cache-inmemory": "^1.6.3",
