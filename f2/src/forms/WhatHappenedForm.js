@@ -38,7 +38,7 @@ export const WhatHappenedForm = props => (
                     </Text>
                   </FormHelperText>
                   <TextArea
-                    id="whatHappened"
+                    id="whatHappened:textarea"
                     name={props.input.name}
                     value={props.input.value}
                     onChange={props.input.onChange}
