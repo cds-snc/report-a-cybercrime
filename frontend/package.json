@@ -35,7 +35,7 @@
     "@lingui/react": "^2.8.3",
     "@reach/component-component": "^0.6.1",
     "@reach/router": "^1.2.1",
-    "@testing-library/jest-dom": "^4.2.3",
+    "@testing-library/jest-dom": "^4.2.4",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link-error": "^1.1.12",
