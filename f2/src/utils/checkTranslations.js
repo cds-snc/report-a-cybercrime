@@ -6,3 +6,5 @@ fs.readFile('locale/fr/messages.json', function(err, data) {
     throw new Error('Missing Translation!')
   }
 })
+
+
