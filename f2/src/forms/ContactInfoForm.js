@@ -9,6 +9,7 @@ import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { getP2ContactInfo } from '../utils/queriesAndMutations'
 import { Stack, FormControl, FormLabel } from '@chakra-ui/core'
+import { FormHelperText } from '../components/FormHelperText'
 
 export const ContactInfoForm = ({ onSubmit }) => (
   <ApolloConsumer>
@@ -31,6 +32,11 @@ export const ContactInfoForm = ({ onSubmit }) => (
                       <Trans id="contactinfoPage.fullName" />
                     </Text>
                   </FormLabel>
+                  <FormHelperText>
+                        <Text color="blackAlpha.600">
+                          <Trans id="contactinfoPage.fullNameExample" />
+                        </Text>
+                      </FormHelperText>
                   <TextInput
                     id="fullName"
                     name={props.input.name}
@@ -49,6 +55,11 @@ export const ContactInfoForm = ({ onSubmit }) => (
                       <Trans id="contactinfoPage.emailAddress" />
                     </Text>
                   </FormLabel>
+                  <FormHelperText>
+                        <Text color="blackAlpha.600">
+                          <Trans id="contactinfoPage.emailAddressExample" />
+                        </Text>
+                      </FormHelperText>
                   <TextInput
                     id="email"
                     name={props.input.name}
@@ -66,7 +77,11 @@ export const ContactInfoForm = ({ onSubmit }) => (
                     <Text fontWeight="bold">
                       <Trans id="contactinfoPage.postCode" />
                     </Text>
-                  </FormLabel>
+                  </FormLabel><FormHelperText>
+                        <Text color="blackAlpha.600">
+                          <Trans id="contactinfoPage.postCodeExample" />
+                        </Text>
+                      </FormHelperText>
                   <TextInput
                     id="postalCode"
                     name={props.input.name}
