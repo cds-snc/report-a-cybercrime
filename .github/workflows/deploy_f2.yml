@@ -27,7 +27,6 @@ jobs:
 
   deploy:
     name: Build container and deploy
-    working-directory: f2
     env:
       AZURE_CONTAINER_REGISTRY_SERVER: ${{ secrets.AZURE_CONTAINER_REGISTRY_SERVER }}
       IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
@@ -36,6 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Build the Docker image
+        working-directory: f2
         run: docker build -t base --build-arg GITHUB_SHA_ARG=${{ github.sha }} .
       - name: Tag :latest
         run: docker tag base $AZURE_CONTAINER_REGISTRY_SERVER/${IMAGE_NAME}:latest
