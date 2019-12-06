@@ -1,0 +1,29 @@
+name: deploy_f2
+
+on: [push]
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node-version }}
+      - uses: azure/docker-login@v1
+          with:
+            login-server: ${{ REGISTRY_NAME }}.azurecr.io
+            username: ${{ secrets.REGISTRY_USERNAME }}
+            password: ${{ secrets.REGISTRY_PASSWORD }}
+        
+        - run: |
+            docker build . -t ${{ REGISTRY_NAME }}.azurecr.io/${{ IMAGE_NAME }}:${{ github.sha }}
+            docker push ${{ REGISTRY_NAME }}.azurecr.io/${{ IMAGE_NAME }}:${{ github.sha }}
+        
