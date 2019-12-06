@@ -18,11 +18,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - uses: azure/docker-login@v1
         with:
-          login-server: ${{ REGISTRY_NAME }}.azurecr.io
+          login-server: ${{ secrets.REGISTRY_NAME }}.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - name: docker build and push
         working-directory: f2
         run: |
-          docker build . -t ${{ REGISTRY_NAME }}.azurecr.io/${{ IMAGE_NAME }}:${{ github.sha }}
-          docker push ${{ REGISTRY_NAME }}.azurecr.io/${{ IMAGE_NAME }}:${{ github.sha }}
+          docker build . -t ${{ secrets.REGISTRY_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:${{ github.sha }}
+          docker push ${{ secrets.REGISTRY_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:${{ github.sha }}
