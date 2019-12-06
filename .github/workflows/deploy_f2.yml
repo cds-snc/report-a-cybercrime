@@ -21,6 +21,8 @@ jobs:
           login-server: ${{ REGISTRY_NAME }}.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
+      - name: docker build and push
+        working-directory: f2
         run: |
           docker build . -t ${{ REGISTRY_NAME }}.azurecr.io/${{ IMAGE_NAME }}:${{ github.sha }}
           docker push ${{ REGISTRY_NAME }}.azurecr.io/${{ IMAGE_NAME }}:${{ github.sha }}
