@@ -36,13 +36,13 @@ jobs:
       - name: Build the Docker image
         run: docker build -t base --build-arg GITHUB_SHA_ARG=${{ github.sha }} .
       - name: Tag :latest
-        run: docker tag base $AZURE_CONTAINER_REGISTRY_SERVER/${{ IMAGE_NAME }}:latest
+        run: docker tag base $AZURE_CONTAINER_REGISTRY_SERVER/${IMAGE_NAME}:latest
       - name: Tag :$GITHUB_SHA
-        run: docker tag base $AZURE_CONTAINER_REGISTRY_SERVER/${{ IMAGE_NAME }}:${{ github.sha }}
+        run: docker tag base $AZURE_CONTAINER_REGISTRY_SERVER/${IMAGE_NAME}:${{ github.sha }}
       - name: Login into Azure Container Registry
         env:
           AZURE_CONTAINER_REGISTRY_USERNAME: ${{ secrets.AZURE_CONTAINER_REGISTRY_USERNAME }}
           AZURE_CONTAINER_REGISTRY_PASSWORD: ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}
         run: docker login -u $AZURE_CONTAINER_REGISTRY_USERNAME -p $AZURE_CONTAINER_REGISTRY_PASSWORD $AZURE_CONTAINER_REGISTRY_SERVER
       - name: Push container to Azure Container Registry
-        run: docker push $AZURE_CONTAINER_REGISTRY_SERVER/${{ IMAGE_NAME }}
+        run: docker push $AZURE_CONTAINER_REGISTRY_SERVER/${IMAGE_NAME}
