@@ -41,7 +41,6 @@ export const LandingPage = props => {
           </ApolloConsumer>
           <Stack spacing={10} shouldWrapChildren>
             <H1>
-              TEST LANDING PAGE:
               <Trans id="landingPage.title" />
             </H1>
 
