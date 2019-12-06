@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: npm install, build, and test
+        working-directory: f2
         run: |
           npm install
           npm run build --if-present
@@ -26,6 +27,7 @@ jobs:
 
   deploy:
     name: Build container and deploy
+    working-directory: f2
     env:
       AZURE_CONTAINER_REGISTRY_SERVER: ${{ secrets.AZURE_CONTAINER_REGISTRY_SERVER }}
       IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
