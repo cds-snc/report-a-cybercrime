@@ -8,10 +8,10 @@ export const Footer = props => {
   const { bg } = props
 
   return (
-    <Box as="footer" bg={bg} p={[4, 6, 10]}>
+    <Box as="footer" bg={bg} p={[3, 3, 4]}>
       <Flex align="center" direction="row">
         <List px={0}>{props.children}</List>
-        <Box w="150px" ml="auto">
+        <Box w="100px" ml="auto">
           <WordMark
             width="100%"
             flag="#fff"
