@@ -23,9 +23,9 @@ export const ImpactStatementPage = () => (
             <Trans id="impactPage.backButton" />
           </BackButton>
 
-          <Stack spacing={4}>
+          <Stack spacing={4} role="heading" aria-level="1">
             <Steps activeStep={4} totalSteps={6} />
-            <H1>
+            <H1 as="span">
               <Trans id="impactPage.title" />
             </H1>
           </Stack>
