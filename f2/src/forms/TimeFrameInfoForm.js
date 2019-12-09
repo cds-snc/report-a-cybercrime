@@ -6,13 +6,11 @@ import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { Text } from '../components/text'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
 import { getTimeFrame } from '../utils/queriesAndMutations'
 import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
-import { Button } from '../components/button'
-import { Link } from '../components/link'
-import { Flex, Box } from '@chakra-ui/core'
 
 class TimeFrameInfoFormWrapped extends Component {
   localOnSubmit = (client, data) => {
@@ -80,16 +78,9 @@ class TimeFrameInfoFormWrapped extends Component {
                   )}
                 </Field>
 
-                <Flex direction="row" align="center">
-                  <Button type="submit" rightIcon="chevron-right">
-                    <Trans id="timeframePage.nextButton" />
-                  </Button>
-                  <Box ml={4}>
-                    <Link type="button" color="black" to="/" textAlign="center">
-                      <Trans id="button.cancelReport" />
-                    </Link>
-                  </Box>
-                </Flex>
+                <NextAndCancelButtons>
+                  <Trans id="timeframePage.nextButton" />
+                </NextAndCancelButtons>
               </Stack>
             )}
           />
