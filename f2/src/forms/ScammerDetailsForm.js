@@ -32,8 +32,6 @@ export const ScammerDetailsFormWrapped = props => {
     }
   }, [status])
   const { i18n } = useLingui()
-  i18n._('fileUpload.removed')
-  i18n._('fileUpload.added')
 
   const onChange = e => {
     if (e.target.id === 'scammerDetails') {
@@ -69,129 +67,139 @@ export const ScammerDetailsFormWrapped = props => {
     props.onSubmit(client, data)
   }
   return (
-    <ApolloConsumer>
-      {client => (
-        <Form
-          onSubmit={() => localSubmit(client)}
-          render={({ handleSubmit }) => (
-            <Stack
-              as="form"
-              onSubmit={handleSubmit}
-              spacing={6}
-              shouldWrapChildren
-            >
-              <Field name="scammerDetails">
-                {props => (
-                  <FormControl>
-                    <FormLabel htmlFor="scammerDetails">
-                      <Text fontWeight="bold">
-                        <Trans id="scammerDetail.summary" />
-                      </Text>
-                    </FormLabel>
-                    <FormHelperText variant="above">
-                      <Text color="blackAlpha.600">
-                        <Trans id="scammerDetail.reminder" />
-                      </Text>
-                    </FormHelperText>
+    <React.Fragment>
+      {false ? ( // mark ids for lingui
+        <div>
+          <Trans id="fileUpload.removed" /> <Trans id="fileUpload.added" />
+        </div>
+      ) : null}
+      <ApolloConsumer>
+        {client => (
+          <Form
+            onSubmit={() => localSubmit(client)}
+            render={({ handleSubmit }) => (
+              <Stack
+                as="form"
+                onSubmit={handleSubmit}
+                spacing={6}
+                shouldWrapChildren
+              >
+                <Field name="scammerDetails">
+                  {props => (
+                    <FormControl>
+                      <FormLabel htmlFor="scammerDetails">
+                        <Text fontWeight="bold">
+                          <Trans id="scammerDetail.summary" />
+                        </Text>
+                      </FormLabel>
+                      <FormHelperText variant="above">
+                        <Text color="blackAlpha.600">
+                          <Trans id="scammerDetail.reminder" />
+                        </Text>
+                      </FormHelperText>
 
-                    <TextArea
-                      id="scammerDetails"
-                      name={props.input.name}
-                      value={props.input.value}
-                      onChange={props.input.onChange}
-                    />
-                  </FormControl>
-                )}
-              </Field>
+                      <TextArea
+                        id="scammerDetails"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                      />
+                    </FormControl>
+                  )}
+                </Field>
 
-              <Stack spacing={4}>
-                <Box>
-                  <FileUpload onChange={onChange}>
-                    <Button leftIcon="attachment" as="div">
-                      <Trans id="scammerDetail.addFileButtom" />
-                    </Button>
-                  </FileUpload>
-                </Box>
+                <Stack spacing={4}>
+                  <Box>
+                    <FileUpload onChange={onChange}>
+                      <Button leftIcon="attachment" as="div">
+                        <Trans id="scammerDetail.addFileButtom" />
+                      </Button>
+                    </FileUpload>
+                  </Box>
 
-                <H2>
-                  {plural(files.length, {
-                    one: '# file attached',
-                    other: '# files attached',
-                  })}
-                </H2>
+                  <H2>
+                    {plural(files.length, {
+                      one: '# file attached',
+                      other: '# files attached',
+                    })}
+                  </H2>
 
-                {status ? (
-                  <PseudoBox
-                    as="Text"
-                    tabIndex={-1}
-                    id="status"
-                    _focus={{
-                      outline: 'none',
-                      bg: 'white',
-                      boxShadow: 'outline',
-                      borderColor: 'black',
-                    }}
-                  >
-                    {i18n._(status)}
-                  </PseudoBox>
-                ) : null}
-              </Stack>
+                  {status ? (
+                    <PseudoBox
+                      as="Text"
+                      tabIndex={-1}
+                      id="status"
+                      _focus={{
+                        outline: 'none',
+                        bg: 'white',
+                        boxShadow: 'outline',
+                        borderColor: 'black',
+                      }}
+                    >
+                      {i18n._(status)}
+                    </PseudoBox>
+                  ) : null}
+                </Stack>
 
-              <Container>
-                {files.map((f, index) => (
-                  <React.Fragment key={index}>
-                    <InfoCard mb={4}>
-                      <Stack spacing={4}>
-                        <H3>{f.name}</H3>
-                        <Box>
-                          <Field
-                            name={`file-description-${index}`}
-                            input={{ value: fileDescriptions[index], onChange }}
+                <Container>
+                  {files.map((f, index) => (
+                    <React.Fragment key={index}>
+                      <InfoCard mb={4}>
+                        <Stack spacing={4}>
+                          <H3>{f.name}</H3>
+                          <Box>
+                            <Field
+                              name={`file-description-${index}`}
+                              input={{
+                                value: fileDescriptions[index],
+                                onChange,
+                              }}
+                            >
+                              {props => (
+                                <FormControl>
+                                  <FormLabel
+                                    htmlFor={`file-description-${index}`}
+                                  >
+                                    <Text fontWeight="bold">
+                                      <Trans id="scammerDetail.fileDescription" />
+                                    </Text>
+                                  </FormLabel>
+                                  <TextArea
+                                    id={`file-description-${index}`}
+                                    name={props.input.name}
+                                    value={props.input.value}
+                                    onChange={props.input.onChange}
+                                  />
+                                </FormControl>
+                              )}
+                            </Field>
+                          </Box>
+
+                          <Button
+                            mr="auto"
+                            variantColor="red"
+                            type="button"
+                            onClick={() => removeFile(index)}
                           >
-                            {props => (
-                              <FormControl>
-                                <FormLabel
-                                  htmlFor={`file-description-${index}`}
-                                >
-                                  <Text fontWeight="bold">
-                                    <Trans id="scammerDetail.fileDescription" />
-                                  </Text>
-                                </FormLabel>
-                                <TextArea
-                                  id={`file-description-${index}`}
-                                  name={props.input.name}
-                                  value={props.input.value}
-                                  onChange={props.input.onChange}
-                                />
-                              </FormControl>
-                            )}
-                          </Field>
-                        </Box>
+                            <Trans id="scammerDetail.removeFileButton" />
+                          </Button>
+                        </Stack>
+                      </InfoCard>
+                    </React.Fragment>
+                  ))}
+                </Container>
 
-                        <Button
-                          mr="auto"
-                          variantColor="red"
-                          type="button"
-                          onClick={() => removeFile(index)}
-                        >
-                          <Trans id="scammerDetail.removeFileButton" />
-                        </Button>
-                      </Stack>
-                    </InfoCard>
-                  </React.Fragment>
-                ))}
-              </Container>
-
-              <NextAndCancelButtons>
-                <Trans id="scammerDetail.nextButton">
-                  Next: Impact of scam
-                </Trans>
-              </NextAndCancelButtons>
-            </Stack>
-          )}
-        />
-      )}
-    </ApolloConsumer>
+                <NextAndCancelButtons>
+                  <Trans id="scammerDetail.nextButton">
+                    Next: Impact of scam
+                  </Trans>
+                </NextAndCancelButtons>
+              </Stack>
+            )}
+          />
+        )}
+      </ApolloConsumer>
+    </React.Fragment>
   )
 }
 
