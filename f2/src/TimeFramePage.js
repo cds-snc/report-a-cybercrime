@@ -9,7 +9,7 @@ import { TrackPageViews } from './TrackPageViews'
 import { getDoneForms } from './utils/queriesAndMutations'
 import { BackButton } from './components/backbutton'
 import { Steps } from './components/stepper'
-import { Stack, VisuallyHidden } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 
 export const TimeFramePage = () => (
   <Route
