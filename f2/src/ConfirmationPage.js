@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
+import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { TrackPageViews } from './TrackPageViews'
