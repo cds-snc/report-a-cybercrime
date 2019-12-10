@@ -1,5 +1,4 @@
 {
-  "<0>{children}</0>": "<0>{children}</0>",
   "Page not found": "Page not found",
   "SkipLink.text": "Skip to main content",
   "Sorry, the page you were trying to view does not exist.": "Sorry, the page you were trying to view does not exist.",
@@ -85,10 +84,10 @@
   "stepper": "Step {activeStep} of {totalSteps}",
   "timeFramePage.backButton": "Back to the start page",
   "timeFramePage.endDate": "Approximate end",
-  "timeFramePage.endDateExample": "For example: 2019-04-28",
+  "timeFramePage.endDateExample": "Format: month-day-year,For example: 04-28-2019",
   "timeFramePage.intro": "It’s okay if you don’t know exactly when it took place. You can give your best guess or leave this blank.",
   "timeFramePage.startDate": "Approximate start",
-  "timeFramePage.startDateExample": "For example: 2019-04-28",
+  "timeFramePage.startDateExample": "Format: month-day-year, For example: 04-28-2019",
   "timeFramePage.title": "When did the scam happen?",
   "timeframePage.nextButton": "Next: What happened",
   "whatHappendPage.backButton": "Back to the timeframe",

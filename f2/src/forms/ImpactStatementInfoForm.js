@@ -53,76 +53,90 @@ export const ImpactStatementInfoForm = props => {
     'impactPage.affected7',
   ]
   return (
-    <ApolloConsumer>
-      {client => (
-        <Form
-          initialValues={getImpact(client)}
-          onSubmit={data => props.onSubmit(client, data)}
-          validate={validate}
-          render={({ handleSubmit, values }) => (
-            <Stack
-              as="form"
-              onSubmit={handleSubmit}
-              shouldWrapChildren
-              spacing={6}
-            >
-              <Control as="fieldset" name="howWereYouAffected">
-                <FormLabel as="legend" htmlFor="howWereYouAffected" mb={2}>
-                  <Text fontWeight="bold">
-                    <Trans id="impactPage.detail" />
-                  </Text>
-                </FormLabel>
-                <Stack spacing={4} shouldWrapChildren>
-                  {howWereYouAffected.map(key => {
-                    return (
-                      <CheckboxArrayControl
-                        key={key}
-                        name="howWereYouAffected"
-                        value={key}
-                        isChecked={getImpact(
-                          client,
-                        ).howWereYouAffected.includes(key)}
-                      >
-                        {i18n._(key)}
-                      </CheckboxArrayControl>
-                    )
-                  })}
-                </Stack>
-              </Control>
+    <React.Fragment>
+      {false ? ( // mark ids for lingui
+        <div>
+          <Trans id="impactPage.affected1" />
+          <Trans id="impactPage.affected2" />
+          <Trans id="impactPage.affected3" />
+          <Trans id="impactPage.affected4" />
+          <Trans id="impactPage.affected5" />
+          <Trans id="impactPage.affected6" />
+          <Trans id="impactPage.affected7" />
+        </div>
+      ) : null}
 
-              <Field name="damage">
-                {props => (
-                  <FormControl>
-                    <FormLabel htmlFor="damage">
-                      <Text fontWeight="bold">
-                        <Trans id="impactPage.summary" />
-                      </Text>
-                    </FormLabel>
-                    <FormHelperText variant="above">
-                      <Text color="blackAlpha.600">
-                        <Trans id="impactPage.example" />
-                      </Text>
-                    </FormHelperText>
-                    <TextArea
-                      id="damage"
-                      name={props.input.name}
-                      value={props.input.value}
-                      onChange={props.input.onChange}
-                    />
-                  </FormControl>
-                )}
-              </Field>
+      <ApolloConsumer>
+        {client => (
+          <Form
+            initialValues={getImpact(client)}
+            onSubmit={data => props.onSubmit(client, data)}
+            validate={validate}
+            render={({ handleSubmit, values }) => (
+              <Stack
+                as="form"
+                onSubmit={handleSubmit}
+                shouldWrapChildren
+                spacing={6}
+              >
+                <Control as="fieldset" name="howWereYouAffected">
+                  <FormLabel as="legend" htmlFor="howWereYouAffected" mb={2}>
+                    <Text fontWeight="bold">
+                      <Trans id="impactPage.detail" />
+                    </Text>
+                  </FormLabel>
+                  <Stack spacing={4} shouldWrapChildren>
+                    {howWereYouAffected.map(key => {
+                      return (
+                        <CheckboxArrayControl
+                          key={key}
+                          name="howWereYouAffected"
+                          value={key}
+                          isChecked={getImpact(
+                            client,
+                          ).howWereYouAffected.includes(key)}
+                        >
+                          {i18n._(key)}
+                        </CheckboxArrayControl>
+                      )
+                    })}
+                  </Stack>
+                </Control>
 
-              <NextAndCancelButtons>
-                <Trans id="impactPage.nextButton">
-                  Next: Contact information
-                </Trans>
-              </NextAndCancelButtons>
-            </Stack>
-          )}
-        />
-      )}
-    </ApolloConsumer>
+                <Field name="damage">
+                  {props => (
+                    <FormControl>
+                      <FormLabel htmlFor="damage">
+                        <Text fontWeight="bold">
+                          <Trans id="impactPage.summary" />
+                        </Text>
+                      </FormLabel>
+                      <FormHelperText variant="above">
+                        <Text color="blackAlpha.600">
+                          <Trans id="impactPage.example" />
+                        </Text>
+                      </FormHelperText>
+                      <TextArea
+                        id="damage"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                      />
+                    </FormControl>
+                  )}
+                </Field>
+
+                <NextAndCancelButtons>
+                  <Trans id="impactPage.nextButton">
+                    Next: Contact information
+                  </Trans>
+                </NextAndCancelButtons>
+              </Stack>
+            )}
+          />
+        )}
+      </ApolloConsumer>
+    </React.Fragment>
   )
 }
 

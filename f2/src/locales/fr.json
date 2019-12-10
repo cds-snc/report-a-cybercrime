@@ -1,5 +1,4 @@
 {
-  "<0>{children}</0>": "<0>{children}</0>",
   "Page not found": "Page introuvable",
   "SkipLink.text": "Aller au contenu principal",
   "Sorry, the page you were trying to view does not exist.": "Désolé, la page que vous essayiez de voir n'existe pas.",
@@ -85,10 +84,10 @@
   "stepper": "Étape {activeStep} de {totalSteps}",
   "timeFramePage.backButton": "Retourner à la première page",
   "timeFramePage.endDate": "Date de fin approximative",
-  "timeFramePage.endDateExample": "par exemple : 2019-04-28",
+  "timeFramePage.endDateExample": "Format: mois-jour-année, par exemple: 04-28-2019",
   "timeFramePage.intro": "Ce n’est pas grave si vous ne connaissez pas le moment exacte de la fraude. Vous pouvez donner une approximation ou laisser le champ vide.",
   "timeFramePage.startDate": "Date de début approximative",
-  "timeFramePage.startDateExample": "par exemple : 2019-04-28",
+  "timeFramePage.startDateExample": "Format: mois-jour-année, par exemple: 04-28-2019",
   "timeFramePage.title": "Quand la fraude a-t-elle eu lieu?",
   "timeframePage.nextButton": "Étape suivante : Description de la fraude",
   "whatHappendPage.backButton": "Retourner aux dates de la fraude",
