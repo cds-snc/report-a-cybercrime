@@ -1,5 +1,4 @@
 {
-  "<0>{children}</0>": "<0>{children}</0>",
   "Page not found": "Page not found",
   "SkipLink.text": "Skip to main content",
   "Sorry, the page you were trying to view does not exist.": "Sorry, the page you were trying to view does not exist.",
@@ -83,7 +82,7 @@
   "scammerDetail.summary": "What do you know about where the scam came from?",
   "scammerDetail.title": "Add suspect clues",
   "stepper": "Step {activeStep} of {totalSteps}",
-  "timeFramePage.backButton": "Back to the start page", 
+  "timeFramePage.backButton": "Back to the start page",
   "timeFramePage.endDate": "Approximate end",
   "timeFramePage.endDateExample": "Format: month-day-year,For example: 04-28-2019",
   "timeFramePage.intro": "It’s okay if you don’t know exactly when it took place. You can give your best guess or leave this blank.",
