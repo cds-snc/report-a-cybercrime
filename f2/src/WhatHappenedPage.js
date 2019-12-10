@@ -24,10 +24,9 @@ export const WhatHappenedPage = () => (
             <Trans id="whatHappendPage.backButton" />
           </BackButton>
 
-          <Stack spacing={4}>
+          <Stack spacing={4} role="heading" aria-level="1">
             <Steps activeStep={2} totalSteps={6} />
-
-            <H1>
+            <H1 as="span">
               <Trans id="whatHappendPage.title" />
             </H1>
           </Stack>

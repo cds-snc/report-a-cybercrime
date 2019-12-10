@@ -24,10 +24,9 @@ export const ScammerDetailsPage = () => (
             <Trans id="scammerDetail.backButton" />
           </BackButton>
 
-          <Stack spacing={4}>
+          <Stack spacing={4} role="heading" aria-level="1">
             <Steps activeStep={3} totalSteps={6} />
-
-            <H1>
+            <H1 as="span">
               <Trans id="scammerDetail.title" />
             </H1>
           </Stack>
