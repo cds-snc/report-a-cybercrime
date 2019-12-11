@@ -8,133 +8,60 @@ Explorer la possibilité de mettre en place un service permettant aux Canadiens
 et aux entreprises de signaler plus aisément les crimes informatiques et
 facilitant le travail d'analyse et d'enquête de la police.
 
-## Run the project locally
+## Installation
 
-We recommend running the project locally using
-[Docker](https://docs.docker.com/install), and
-[docker-compose](https://docs.docker.com/compose/install/). [Find out how to
-install Docker on your
-machine](https://www.docker.com/products/docker-desktop). To run only one
-service in the project, check out the individual project readmes in the
-folders.
+Requires node.
+
+```
+cd f2
+npm install
+```
+
+## Running locally
+
+Note that you must be in the `f2` directory to run the code.
 
 ### Set up the environment
 
-Like all [12 factor](https://12factor.net) apps, config is stored in the
-environment. To run the app locally, you will need to define some environmental
-variables. This would look like pasting the following into your `~/.bashrc`
-(for most Linux systems), or `~/.bash_profile` (for the Mac).
+To run with a database connection and Google Analytics enabled you will need to define some environmental
+variables, either in your terminal or in `f2/.env`.
 
 ```sh
-# Currently this is assumed to exist:
-export DB_NAME=cybercrime
-# Docker compose (or K8s) defines this DNS name.
-# The API uses it to talk to the database
-export DB_URL=http://arangodb:8529
-# The database to use to run tests against
-# (same credentials are assumed):
-export TEST_DB_URL=http://localhost:8529
-# Credentials to log into the ArangoDB admin UI
-# Available on localhost:8529
-export DB_USER=root
-export DB_PASSWORD=yourpassword
-
-# Minio credentials for the API, and Minio itself.
-# These can also be used to log into the MINIO admin UI
-# Available on localhost:9000
-export MINIO_ACCESS_KEY=atleastthreecharacters
-export MINIO_SECRET_KEY=atleasteightcharacters
-# Whatever you want to name the bucket to save files into:
-export MINIO_BUCKET_NAME=reports
-
-# ENV vars for the frontend.
-# These are prefixed with RAZZLE so Razzle will see them in the build step
-# Start Razzle on this port
-# (don't change this, hot module loading is set up on 3001)
-export RAZZLE_PORT=3000
-export RAZZLE_GOOGLE_ANALYTICS_ID=UA-XXXXXXXXX-X
-# URL internal to Docker/K8s that data should be fetched from during SSR:
-export RAZZLE_SERVER_SIDE_API_URI=http://api:3002/graphql
-
-export API_PORT=3002
+export COSMOSDB_NAME=...
+export COSMOSDB_KEY=...
+export GOOGLE_ANALYTICS_ID=UA-XXXXXXXXX-X
 ```
 
-You will know that your environment is set up correctly if you can see those
-variables in the output of the `env` command.
-
-### Install modules
-
-The approach we currently use for running locally requires you to install the required modules manually. From the root folder of the project run
+### Run with create-react-app
 
 ```
-cd frontend && npm install && cd ..
-cd api && npm install && cd ..
+npm run dev
 ```
 
 ### Run project with Docker
 
-With those environmental vars defined, navigate to the root project folder and
-run `make dev`. This will begin the process of downloading and starting up all
-the project containers. If you changed your password in the last step, make
-sure to also update it here.
-
-You can can also start the frontend or backend separately with `make api` or
-`make frontend`.
-
-### Build and test front-end
-
-If you cannot see the changes or access the front-end on your local machine (instead of docker). 
-You will need to run it using a local node server. You can do this with the following command 
-`npm run dev` in the frontend subdirectory. This will allow you to load the front-end with all
-your changes.
-
-### Configure database
-
-Once your project is compiled and running (you will see several messages from
-frontend_1, api_1 etc), navigate to `http://localhost:8529`. You should see the
-login page for the [ArangoDB](https://www.arangodb.com/) web interface. Log in
-with the DB_USER and DB_PASSWORD you defined in your environment.
-
-If this is your first time running the project, you will need to create the
-cybercrime database and a collection for reports. Click 'Select DB:\_system' to
-log into the web interface. In the left hand navigation bar, click 'Databases',
-then 'Add Database' and name it 'cybercrime'. If you click 'DB: \_SYSTEM' on
-the top right of the page, or log out and log back in, you'll be taken back to
-the log in screen where you can select your newly created cybercrime database
-from the drop down menu. Do this!
-
-Once you have successfully logged into the cybercrime database, select
-'Collections' in the left hand navigation bar, then 'Add Collection' and name
-it 'reports'.
-
-Once you've created you cybercrime database with a reports collection, you're
-ready to explore the project!
-
-### Explore the project
-
-ArangoDB will be on `localhost:8529`, the application frontend on
-`localhost:3000`, and the API on `localhost:3000/graphql`. You should be able
-to walk through the frontend, add data, and view it using the API or database
-interface.
-
-Thank you for your interest! :tada:
+```
+docker build -t rac .
+docker run -p 3000:3000 rac
+```
 
 ### Load testing
 
-There are simple scripts to load test the frontend and api. They use the [k6](https://docs.k6.io) package, which must first be installed (see (https://docs.k6.io/docs/installation)
+There are simple scripts to load test the frontend. They use the [k6](https://docs.k6.io) package, which must first be installed (see (https://docs.k6.io/docs/installation)
 
-To run the tests, set the environment variable `LOAD_TESTING_BASE_URL` to the base url of the website, for example
+To run the tests, set the environment variable `LOAD_TESTING_BASE_URL` to the url of the website, for example
 
 ```
-export LOAD_TESTING_BASE_URL=https://report-a-cybercrime.alpha.rcmp-grc.gc.ca
+LOAD_TESTING_BASE_URL=https://report-a-scam.azurewebsites.net
 ```
 
 and then run
 
 ```
-k6 run -vu 150 -d10s frontend/utils/loadTesting.js
-k6 run -vu 150 -d10s api/utils/loadTesting.js
+k6 run -vu 150 -d10s f2/utils/loadTesting.js
 ```
+
+Notes:
 
 - the `http_req_duration` line shows how long the requests took (from sending request to receiving response)
 - the `iterations` line shows the number of requests per second (should be approximately 100/s bor both)
