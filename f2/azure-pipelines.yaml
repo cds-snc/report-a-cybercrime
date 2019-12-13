@@ -22,7 +22,7 @@ steps:
     inputs:
       command: 'install'
       workingDir: 'f2'
-# Test npm compile and run in Azure pipeline
+# Test npm compile and other npm scripts in Azure pipeline
   - script: |
       cd f2
       npm run compile
