@@ -6,4 +6,4 @@ import { matchers } from 'jest-emotion'
 expect.extend(matchers)
 
 configure({ adapter: new Adapter() })
-process.env.RAZZLE_GOOGLE_ANALYTICS_ID = 'UA-something'
+process.env.GOOGLE_ANALYTICS_ID = 'UA-something'
