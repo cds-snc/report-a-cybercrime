@@ -1,5 +1,6 @@
 #ncfrs pipeline
 
+# Trigger pipeline on changes to master in repos
 trigger:
   branches:
     include:
@@ -11,22 +12,24 @@ trigger:
       - api/*
       - f2/manifests/*
 
+# Use an Ubuntu VM to run Azure pipeline
 pool:
   vmImage: 'ubuntu-16.04'
 
+# Run NPM install to install depedencies on VM
 steps:
   - task: Npm@1
     inputs:
       command: 'install'
       workingDir: 'f2'
-
+# Test npm compile and run in Azure pipeline
   - script: |
       cd f2
       npm run compile
       npm run test
       npm run lint
     displayName: 'Run npm scripts'
-
+# Build and push container to container registry. App Service is configured to serve latest build of container.
   - task: Docker@2
     inputs:
       containerRegistry: 'scACR-F2'
