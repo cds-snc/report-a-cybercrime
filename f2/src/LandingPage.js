@@ -77,7 +77,7 @@ export const LandingPage = props => {
             <Button
               rightIcon="chevron-right"
               onClick={() => {
-                history.push('/timeframe')
+                history.push('/norm')
               }}
             >
               <Trans id="landingPage.nextButton" />
