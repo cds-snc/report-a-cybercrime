@@ -103,5 +103,6 @@
   "whatHappendPage.summary": "Que s'est-il passé?",
   "whatHappendPage.title": "Décrivez ce qui s'est passé",
   "whatHappenedPage.nextButton": "Étape suivante : Renseignements sur le suspect",
-  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
+  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
+  "normPage.title": "Oui!"
 }

@@ -103,5 +103,6 @@
   "whatHappendPage.summary": "What happened?",
   "whatHappendPage.title": "Describe what happened",
   "whatHappenedPage.nextButton": "Next: Scammer details",
-  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
+  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}",
+  "normPage.title": "Norm's Page!"
 }

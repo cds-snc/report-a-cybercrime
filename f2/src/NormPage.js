@@ -1,32 +1,40 @@
-import { Route } from 'react-router-dom'
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
+import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
-import { H1 } from './components/header'
-import { P } from './components/paragraph'
-import { Layout } from './components/layout'
-import { TimeFrameInfoForm } from './forms/TimeFrameInfoForm'
-import { TrackPageViews } from './TrackPageViews'
-import { getDoneForms } from './utils/queriesAndMutations'
-import { BackButton } from './components/backbutton'
-import { Steps } from './components/stepper'
-import { Stack } from '@chakra-ui/core'
 import { Button } from './components/button'
+import { H1 } from './components/header'
+import { Layout } from './components/layout'
+import { TrackPageViews } from './TrackPageViews'
+import { Stack } from '@chakra-ui/core'
 
-export const NormPage = () => (
-  <Route
-    render={({ history }) => (
-      <Layout>
-        <TrackPageViews />
-        <em>This is my page</em>
-        <Button
-        rightIcon="chevron-right"
+export const NormPage = props => {
+  return (
+    <Route
+      render={({ history }) => (
+        <Layout>
+          <TrackPageViews />
+          <Stack spacing={10} shouldWrapChildren>
+            <H1>
+              <Trans id="normPage.title" />
+            </H1>
+
+            <Button
+              rightIcon="chevron-right"
               onClick={() => {
-                history.push('/norm')
+                history.push('/timeframe')
               }}
             >
               <Trans id="landingPage.nextButton" />
             </Button>
-      </Layout>
-    )}
-  />
-)
+          </Stack>
+        </Layout>
+      )}
+    />
+  )
+}
+
+NormPage.propTypes = {
+  location: PropTypes.object,
+}
