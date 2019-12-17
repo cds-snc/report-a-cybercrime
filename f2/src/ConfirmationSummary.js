@@ -3,7 +3,6 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { ApolloConsumer } from 'react-apollo'
 import { H2 } from './components/header'
 import { Text, StyledSpan } from './components/text'
 import { Container } from './components/container'
@@ -69,7 +68,7 @@ const WhatHappenedSummary = () => {
   )
 }
 
-const ScammerSummary = ({ client }) => {
+const ScammerSummary = () => {
   const [data] = useStateValue()
   const scammerDetailsForm = data.formData.scammerDetails
   const scammerDetails = scammerDetailsForm
@@ -173,23 +172,14 @@ export const ConfirmationSummary = () => {
   }
 
   return (
-    <ApolloConsumer>
-      {client => {
-        client.writeData({
-          data: { doneForms: true },
-        })
-        return (
-          <React.Fragment>
-            <Stack spacing={4} shouldWrapChildren>
-              <TimeFrameSummary />
-              <WhatHappenedSummary />
-              <ScammerSummary client={client} />
-              <ImpactSummary />
-              <ContactSummary client={client} />
-            </Stack>
-          </React.Fragment>
-        )
-      }}
-    </ApolloConsumer>
+    <React.Fragment>
+      <Stack spacing={4} shouldWrapChildren>
+        <TimeFrameSummary />
+        <WhatHappenedSummary />
+        <ScammerSummary />
+        <ImpactSummary />
+        <ContactSummary />
+      </Stack>
+    </React.Fragment>
   )
 }
