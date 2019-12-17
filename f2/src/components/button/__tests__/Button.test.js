@@ -4,8 +4,6 @@ import { ThemeProvider } from 'emotion-theming'
 import canada from '../../../theme/canada'
 import { Button } from '../'
 
-import chroma from 'chroma-js'
-
 describe('<Button />', () => {
   afterEach(cleanup)
 
