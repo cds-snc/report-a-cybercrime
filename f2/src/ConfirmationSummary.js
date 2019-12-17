@@ -8,7 +8,7 @@ import { H2 } from './components/header'
 import { Text, StyledSpan } from './components/text'
 import { Container } from './components/container'
 import { Link } from './components/link'
-import { getImpact, getP2ContactInfo } from './utils/queriesAndMutations'
+import { getP2ContactInfo } from './utils/queriesAndMutations'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
@@ -110,15 +110,14 @@ const ScammerSummary = ({ client }) => {
   )
 }
 
-const ImpactSummary = ({ client }) => {
+const ImpactSummary = () => {
   const { i18n } = useLingui()
-  let { howWereYouAffected, otherImpact, damage } = getImpact(client)
-  if (howWereYouAffected.indexOf('Other impact') > -1) {
-    howWereYouAffected = howWereYouAffected.filter(
-      impact => impact !== 'Other impact',
-    )
-    howWereYouAffected.push(otherImpact)
-  }
+
+  const [data] = useStateValue()
+  const { impact } = data.formData
+  const howWereYouAffected = impact ? impact.howWereYouAffected : []
+  const damage = impact ? impact.damage : ''
+
   return (
     <>
       <H2>
@@ -179,10 +178,10 @@ export const ConfirmationSummary = () => {
         return (
           <React.Fragment>
             <Stack spacing={4} shouldWrapChildren>
-              <TimeFrameSummary client={client} />
-              <WhatHappenedSummary client={client} />
+              <TimeFrameSummary />
+              <WhatHappenedSummary />
               <ScammerSummary client={client} />
-              <ImpactSummary client={client} />
+              <ImpactSummary />
               <ContactSummary client={client} />
             </Stack>
           </React.Fragment>
