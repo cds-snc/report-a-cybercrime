@@ -9,12 +9,18 @@ import { Footer } from './components/footer'
 import { ThemeProvider, Flex, Link, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
+import { Global, css } from '@emotion/core'
 
 const App = () => {
   const { i18n } = useLingui()
   return (
     <ThemeProvider theme={canada}>
       <CSSReset />
+      <Global
+        styles={css`
+          @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
+        `}
+      />
       <header>
         <SkipLink invisible href="#main">
           <Trans id="SkipLink.text" />

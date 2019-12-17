@@ -3,7 +3,7 @@ import { mergeDeep } from 'apollo-utilities'
 
 const shadows = {
   outline: '0 0 0 3px #ffbf47',
-  outlineHover: '0 0 0 2px #CBD5E0',
+  outlineHover: '0 0 0 4px #CBD5E0',
 }
 
 // Chakra theming
@@ -28,21 +28,52 @@ const colors = {
     800: '#183C1F',
     900: '#102715',
   },
+  yellow: {
+    50: '#FFFDF0',
+    100: '#FEF1BF',
+    200: '#FADE89',
+    300: '#F6C95E',
+    400: '#ECB64B',
+    500: '#D6962E',
+    600: '#B7761F',
+    700: '#975A16',
+    800: '#744210',
+    900: '#5F370E',
+  },
 }
 
 const fonts = {
-  heading: '"Helvetica", sans-serif',
-  body: '"Helvetica", sans-serif',
+  heading: '"Noto Sans", sans-serif',
+  body: '"Noto Sans", sans-serif',
   mono:
-    'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
+    'Noto Mono,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
+}
+
+const fontSizes = {
+  xs: '0.75rem',
+  sm: '0.875rem',
+  md: '1rem',
+  lg: '1.125rem',
+  xl: '1.25rem',
+  '2xl': '1.5rem',
+  '3xl': '1.875rem',
+  '4xl': '2.25rem',
+  '5xl': '3rem',
+  '6xl': '4rem',
+}
+
+const borders = {
+  '3px': '3px solid',
 }
 
 // Final Theme output
 const canada = {
   shadows,
   //radii,
+  fontSizes,
   fonts,
   colors,
+  borders,
 }
 
 export default mergeDeep(chakraTheme, canada)

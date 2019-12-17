@@ -8,7 +8,7 @@ export const Footer = props => {
   const { bg } = props
 
   return (
-    <Box as="footer" bg={bg} p={[4, 6, 10]}>
+    <Box as="footer" bg={bg} p={[4, 6, 10]} fontFamily="body">
       <Flex align="center" direction="row">
         <List px={0}>{props.children}</List>
         <Box w="150px" ml="auto">

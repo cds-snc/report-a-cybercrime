@@ -6,14 +6,12 @@ import { Alert, AlertIcon, AlertDescription } from '@chakra-ui/core'
 import { Text } from '../text'
 
 export const WarningBanner = props => {
-  const { status, message } = props
+  const { status, message, bg } = props
 
   return (
-    <Alert p={4} status={status}>
-      <AlertIcon mt={0} />
-      <AlertDescription>
-        <Text>{message}</Text>
-      </AlertDescription>
+    <Alert p={4} status={status} bg={`${bg}.400`} fontFamily="body">
+      <AlertIcon mt={0} color="black" />
+      <AlertDescription color="black">{message}</AlertDescription>
     </Alert>
   )
 }
