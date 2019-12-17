@@ -9,13 +9,13 @@ import { Text, StyledSpan } from './components/text'
 import { Container } from './components/container'
 import { Link } from './components/link'
 import {
-  getTimeFrame,
-  getWhatHappened,
   getScammerDetails,
   getImpact,
   getP2ContactInfo,
 } from './utils/queriesAndMutations'
 import { Stack } from '@chakra-ui/core'
+
+import { useStateValue } from './utils/state'
 
 const EditButton = ({ path, label }) => {
   const { i18n } = useLingui()
@@ -26,12 +26,14 @@ const EditButton = ({ path, label }) => {
   )
 }
 
-const TimeFrameSummary = ({ client }) => {
-  let { startDate, endDate } = getTimeFrame(client)
-  startDate = startDate.slice(0, 10)
-  endDate = endDate.slice(0, 10)
+const TimeFrameSummary = () => {
+  const [data] = useStateValue()
+  const { timeFrame } = data.formData
+  const startDate = timeFrame ? timeFrame.startDate.slice(0, 10) : ''
+  const endDate = timeFrame ? timeFrame.endDate.slice(0, 10) : ''
   return (
     <React.Fragment>
+      data: {JSON.stringify(data)}
       <H2>
         <Trans id="confirmationPage.timeFrameTitle" />{' '}
         <EditButton label={'Edit timeframe'} path="/timeframe" />
@@ -52,8 +54,9 @@ const TimeFrameSummary = ({ client }) => {
   )
 }
 
-const WhatHappenedSummary = ({ client }) => {
-  let { whatHappened } = getWhatHappened(client)
+const WhatHappenedSummary = () => {
+  const [data] = useStateValue()
+  const { whatHappened } = data.formData
 
   return (
     <React.Fragment>
@@ -62,7 +65,7 @@ const WhatHappenedSummary = ({ client }) => {
         <EditButton label={'Edit what happened'} path="/whathappened" />
       </H2>
       {whatHappened ? (
-        <Text>{whatHappened}</Text>
+        <Text>{whatHappened.whatHappened}</Text>
       ) : (
         <Text>
           <Trans id="confirmationPage.scamIntro" />
@@ -73,7 +76,16 @@ const WhatHappenedSummary = ({ client }) => {
 }
 
 const ScammerSummary = ({ client }) => {
-  const { scammerDetails, files, fileDescriptions } = getScammerDetails(client)
+  const [data] = useStateValue()
+  const scammerDetailsForm = data.formData.scammerDetails
+  const scammerDetails = scammerDetailsForm
+    ? scammerDetailsForm.scammerDetails
+    : ''
+  const files = scammerDetailsForm ? scammerDetailsForm.files : []
+  const fileDescriptions = scammerDetailsForm
+    ? scammerDetailsForm.fileDescriptions
+    : []
+
   return (
     <React.Fragment>
       <H2>

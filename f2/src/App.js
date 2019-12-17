@@ -9,54 +9,75 @@ import { Footer } from './components/footer'
 import { ThemeProvider, Flex, Link, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
+import { StateProvider } from './utils/state'
 
 const App = () => {
   const { i18n } = useLingui()
+  const initialState = {
+    formData: { whichSteve: 'Astels' },
+  }
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'saveFormData':
+        return {
+          ...state,
+          formData: {
+            ...state.formData,
+            ...action.data,
+          },
+        }
+      default:
+        return state
+    }
+  }
   return (
     <ThemeProvider theme={canada}>
-      <CSSReset />
-      <Flex direction="column" minHeight="100vh">
-        <header>
-          <SkipLink invisible href="#main">
-            <Trans id="SkipLink.text" />
-          </SkipLink>
-          <WarningBanner>
-            <Trans id="banner.warning" />
-          </WarningBanner>
-          <PhaseBanner phase={<Trans id="banner.phase" />}>
-            <Trans id="banner.phaseText" />
-          </PhaseBanner>
-          <TopBanner lang={i18n.locale} bg="black" />
-        </header>
+      <StateProvider initialState={initialState} reducer={reducer}>
+        <CSSReset />
+        <Flex direction="column" minHeight="100vh">
+          <header>
+            <SkipLink invisible href="#main">
+              <Trans id="SkipLink.text" />
+            </SkipLink>
+            <WarningBanner>
+              <Trans id="banner.warning" />
+            </WarningBanner>
+            <PhaseBanner phase={<Trans id="banner.phase" />}>
+              <Trans id="banner.phaseText" />
+            </PhaseBanner>
+            <TopBanner lang={i18n.locale} bg="black" />
+          </header>
 
-        <Flex id="main" justify="center" fontFamily="body" flex={1}>
-          <Home />
+          <Flex id="main" justify="center" fontFamily="body" flex={1}>
+            <Home />
+          </Flex>
+
+          <Footer height="1000px" bg="black">
+            <Link
+              color="white"
+              href={
+                i18n.locale === 'en'
+                  ? 'https://digital.canada.ca/legal/privacy/'
+                  : 'https://numerique.canada.ca/transparence/confidentialite/'
+              }
+            >
+              <Trans id="banner.footerPrivacy" />
+            </Link>
+            <Link
+              color="white"
+              ml={4}
+              href={
+                i18n.locale === 'en'
+                  ? 'https://digital.canada.ca/legal/terms/'
+                  : 'https://numerique.canada.ca/transparence/avis/'
+              }
+            >
+              <Trans id="banner.footerTermsAndConditions" />
+            </Link>
+          </Footer>
         </Flex>
-
-        <Footer height="1000px" bg="black">
-          <Link
-            color="white"
-            href={
-              i18n.locale === 'en'
-                ? 'https://digital.canada.ca/legal/privacy/'
-                : 'https://numerique.canada.ca/transparence/confidentialite/'
-            }
-          >
-            <Trans id="banner.footerPrivacy" />
-          </Link>
-          <Link
-            color="white"
-            ml={4}
-            href={
-              i18n.locale === 'en'
-                ? 'https://digital.canada.ca/legal/terms/'
-                : 'https://numerique.canada.ca/transparence/avis/'
-            }
-          >
-            <Trans id="banner.footerTermsAndConditions" />
-          </Link>
-        </Footer>
-      </Flex>
+      </StateProvider>
     </ThemeProvider>
   )
 }
