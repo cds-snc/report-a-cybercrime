@@ -8,6 +8,7 @@ import { Form, Field } from 'react-final-form'
 import { Text } from '../components/text'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
+
 import { getTimeFrame } from '../utils/queriesAndMutations'
 import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
@@ -40,17 +41,17 @@ class TimeFrameInfoFormWrapped extends Component {
                           <Trans id="timeFramePage.startDate" />
                         </Text>
                       </FormLabel>
+                      <FormHelperText>
+                        <Text color="blackAlpha.600">
+                          <Trans id="timeFramePage.startDateExample" />
+                        </Text>
+                      </FormHelperText>
                       <TextInput
                         id="startDate"
                         name={props.input.name}
                         value={props.input.value}
                         onChange={props.input.onChange}
                       />
-                      <FormHelperText>
-                        <Text color="blackAlpha.600">
-                          <Trans id="timeFramePage.startDateExample" />
-                        </Text>
-                      </FormHelperText>
                     </FormControl>
                   )}
                 </Field>
@@ -63,17 +64,17 @@ class TimeFrameInfoFormWrapped extends Component {
                           <Trans id="timeFramePage.endDate" />
                         </Text>
                       </FormLabel>
-                      <TextInput
-                        id="endDate"
-                        name={props.input.name}
-                        value={props.input.value}
-                        onChange={props.input.onChange}
-                      />
                       <FormHelperText>
                         <Text color="blackAlpha.600">
                           <Trans id="timeFramePage.endDateExample" />
                         </Text>
                       </FormHelperText>
+                      <TextInput
+                        id="endDate"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                      />  
                     </FormControl>
                   )}
                 </Field>

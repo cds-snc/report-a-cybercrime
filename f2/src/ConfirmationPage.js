@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
+import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { TrackPageViews } from './TrackPageViews'
@@ -91,9 +92,9 @@ export const ConfirmationPage = () => (
           <BackButton route="/contactinfo">
             <Trans id="confirmationPage.backButton" />
           </BackButton>
-          <Stack spacing={4} shouldWrapChildren>
+          <Stack spacing={4} role="heading" aria-level="1" shouldWrapChildren>
             <Steps activeStep={6} totalSteps={6} />
-            <H1>
+            <H1 as="span">
               <Trans id="confirmationPage.title" />
             </H1>
           </Stack>

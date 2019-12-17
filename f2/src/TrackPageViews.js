@@ -3,7 +3,7 @@ import ReactGA from 'react-ga'
 import Component from '@reach/component-component'
 import { Route } from 'react-router-dom'
 
-const GA = process.env.RAZZLE_GOOGLE_ANALYTICS_ID
+const GA = process.env.GOOGLE_ANALYTICS_ID
 
 ReactGA.initialize(GA, {
   testMode: process.env.NODE_ENV === 'production' ? false : true,

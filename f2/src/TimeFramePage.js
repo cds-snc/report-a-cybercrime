@@ -22,11 +22,10 @@ export const TimeFramePage = () => (
             <Trans id="timeFramePage.backButton" />
           </BackButton>
 
-          <Stack spacing={4}>
+          <Stack spacing={4} role="heading" aria-level="1">
             <Steps activeStep={1} totalSteps={6} />
-
-            <H1>
-              <Trans id="timeFramePage.title" />
+              <H1 as="span">
+              <Trans  id="timeFramePage.title" />
             </H1>
           </Stack>
 

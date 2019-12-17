@@ -1,0 +1,39 @@
+#ncfrs pipeline
+
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - f2
+    exclude:
+      - api/*
+      - f2/manifests/*
+
+pool:
+  vmImage: 'ubuntu-16.04'
+
+steps:
+  - task: Npm@1
+    inputs:
+      command: 'install'
+      workingDir: 'f2'
+
+  - script: |
+      cd f2
+      npm run compile
+      npm run test
+      npm run lint
+    displayName: 'Run npm scripts'
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'scACR-F2'
+      repository: 'f2'
+      command: 'buildAndPush'
+      Dockerfile: 'f2/Dockerfile'
+      tags: |
+        $(Build.SourceBranchName)
+        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
+        latest
