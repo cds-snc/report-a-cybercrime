@@ -7,7 +7,6 @@ import { TextArea } from '../components/text-area'
 import { Text } from '../components/text'
 import { FormHelperText } from '../components/FormHelperText'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { getWhatHappened } from '../utils/queriesAndMutations'
 import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 

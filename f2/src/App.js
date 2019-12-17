@@ -28,7 +28,8 @@ const App = () => {
             ...action.data,
           },
         }
-      case 'saveDoneForm':
+      case 'saveDoneForms':
+        console.log(`saving! ${action.data}`)
         return {
           ...state,
           doneForms: action.data,

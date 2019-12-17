@@ -167,7 +167,7 @@ export const ConfirmationSummary = () => {
   const [data, dispatch] = useStateValue()
 
   if (!data.doneForms) {
-    dispatch('saveDoneForms', true)
+    dispatch({ type: 'saveDoneForms', data: true })
   }
 
   return (
