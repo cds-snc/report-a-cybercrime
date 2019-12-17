@@ -35,7 +35,7 @@ const App = () => {
           <TopBanner lang={i18n.locale} bg="black" />
         </header>
 
-        <Flex id="main" justify="center" fontFamily="body" flex={1}>
+        <Flex id="main" justify="center" fontFamily="body" flex={1} bg="gray.50">
           <Home />
         </Flex>
 

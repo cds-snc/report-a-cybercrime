@@ -28,14 +28,10 @@ export const WhatHappenedForm = props => (
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="whatHappened">
-                    <Text fontWeight="bold">
-                      <Trans id="whatHappendPage.summary" />
-                    </Text>
+                    <Trans id="whatHappendPage.summary" />
                   </FormLabel>
-                  <FormHelperText variant="above">
-                    <Text as="span" color="blackAlpha.600">
-                      <Trans id="whatHappendPage.hint" />
-                    </Text>
+                  <FormHelperText>
+                    <Trans id="whatHappendPage.hint" />
                   </FormHelperText>
                   <TextArea
                     id="whatHappened"

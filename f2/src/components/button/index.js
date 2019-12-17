@@ -10,6 +10,8 @@ export const Button = ({ variants, variantColor, ...props }) => (
       size="lg"
       rounded="none"
       variantColor={variantColor}
+      borderBottomWidth="3px"
+      borderBottomColor={`${variantColor}.700`}
       _hover={{
         boxShadow: 'outlineHover',
       }}

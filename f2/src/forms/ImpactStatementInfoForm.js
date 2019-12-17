@@ -9,8 +9,9 @@ import { Checkbox } from '../components/checkbox'
 import { Text } from '../components/text'
 import { TextArea } from '../components/text-area'
 import { getImpact } from '../utils/queriesAndMutations'
-import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
+import { FormControl, Stack } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
+import { FormLabel } from '../components/FormLabel'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -81,9 +82,7 @@ export const ImpactStatementInfoForm = props => {
               >
                 <Control as="fieldset" name="howWereYouAffected">
                   <FormLabel as="legend" htmlFor="howWereYouAffected" mb={2}>
-                    <Text fontWeight="bold">
-                      <Trans id="impactPage.detail" />
-                    </Text>
+                    <Trans id="impactPage.detail" />
                   </FormLabel>
                   <Stack spacing={4} shouldWrapChildren>
                     {howWereYouAffected.map(key => {
@@ -107,14 +106,10 @@ export const ImpactStatementInfoForm = props => {
                   {props => (
                     <FormControl>
                       <FormLabel htmlFor="damage">
-                        <Text fontWeight="bold">
-                          <Trans id="impactPage.summary" />
-                        </Text>
+                        <Trans id="impactPage.summary" />
                       </FormLabel>
-                      <FormHelperText variant="above">
-                        <Text color="blackAlpha.600">
-                          <Trans id="impactPage.example" />
-                        </Text>
+                      <FormHelperText>
+                        <Trans id="impactPage.example" />
                       </FormHelperText>
                       <TextArea
                         id="damage"

@@ -8,8 +8,9 @@ import { TextInput } from '../components/TextInput'
 import { Text } from '../components/text'
 import { ApolloConsumer } from 'react-apollo'
 import { getP2ContactInfo } from '../utils/queriesAndMutations'
-import { Stack, FormControl, FormLabel } from '@chakra-ui/core'
+import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
+import { FormLabel } from '../components/FormLabel'
 
 export const ContactInfoForm = ({ onSubmit }) => (
   <ApolloConsumer>
@@ -28,15 +29,13 @@ export const ContactInfoForm = ({ onSubmit }) => (
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="fullName">
-                    <Text fontWeight="bold">
-                      <Trans id="contactinfoPage.fullName" />
-                    </Text>
+                    <Trans id="contactinfoPage.fullName" />
                   </FormLabel>
                   <FormHelperText>
-                        <Text color="blackAlpha.600">
-                          <Trans id="contactinfoPage.fullNameExample" />
-                        </Text>
-                      </FormHelperText>
+                    <Trans id="contactinfoPage.fullNameExample">
+                      <VisuallyHidden as="span" />
+                    </Trans>
+                  </FormHelperText>
                   <TextInput
                     id="fullName"
                     name={props.input.name}
@@ -51,15 +50,13 @@ export const ContactInfoForm = ({ onSubmit }) => (
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="email">
-                    <Text fontWeight="bold">
-                      <Trans id="contactinfoPage.emailAddress" />
-                    </Text>
+                    <Trans id="contactinfoPage.emailAddress" />
                   </FormLabel>
                   <FormHelperText>
-                        <Text color="blackAlpha.600">
-                          <Trans id="contactinfoPage.emailAddressExample" />
-                        </Text>
-                      </FormHelperText>
+                    <Trans id="contactinfoPage.emailAddressExample">
+                      <VisuallyHidden as="span" />
+                    </Trans>
+                  </FormHelperText>
                   <TextInput
                     id="email"
                     name={props.input.name}
@@ -74,15 +71,11 @@ export const ContactInfoForm = ({ onSubmit }) => (
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="postalCode">
-                    <Text fontWeight="bold">
-                      <Trans id="contactinfoPage.postCode" />
-                    </Text>
+                    <Trans id="contactinfoPage.postCode" />
                   </FormLabel>
                   <FormHelperText>
-                        <Text color="blackAlpha.600">
-                          <Trans id="contactinfoPage.postCodeExample" />
-                        </Text>
-                      </FormHelperText>
+                    <Trans id="contactinfoPage.postCodeExample" />
+                  </FormHelperText>
                   <TextInput
                     id="postalCode"
                     name={props.input.name}
