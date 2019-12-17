@@ -1,6 +1,5 @@
 import React from 'react'
 import { Footer } from '../'
-import canada from '../../../theme/canada'
 import { render, cleanup } from '@testing-library/react'
 
 describe('<Footer />', () => {
