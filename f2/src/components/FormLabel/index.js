@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { FormLabel as ChakraFormLabel } from '@chakra-ui/core'
-import { variant } from 'styled-system'
 
 export const FormLabel = styled(ChakraFormLabel)()
 
