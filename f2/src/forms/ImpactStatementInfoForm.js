@@ -8,9 +8,10 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
 import { TextArea } from '../components/text-area'
 import { getImpact } from '../utils/queriesAndMutations'
-import { FormControl, Stack } from '@chakra-ui/core'
+import { FormControl, Stack, Box } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
+import { ConditionalForm } from '../components/container'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -85,17 +86,23 @@ export const ImpactStatementInfoForm = props => {
                   </FormLabel>
                   <Stack spacing={4} shouldWrapChildren>
                     {howWereYouAffected.map(key => {
+                      const checked = getImpact(
+                        client,
+                      ).howWereYouAffected.includes(key)
                       return (
-                        <CheckboxArrayControl
-                          key={key}
-                          name="howWereYouAffected"
-                          value={key}
-                          isChecked={getImpact(
-                            client,
-                          ).howWereYouAffected.includes(key)}
-                        >
-                          {i18n._(key)}
-                        </CheckboxArrayControl>
+                        <Box>
+                          <CheckboxArrayControl
+                            key={key}
+                            name="howWereYouAffected"
+                            value={key}
+                            isChecked={checked}
+                          >
+                            {i18n._(key)}
+                          </CheckboxArrayControl>
+                          <ConditionalForm show={checked}>
+                            Conditional form
+                          </ConditionalForm>
+                        </Box>
                       )
                     })}
                   </Stack>
@@ -130,7 +137,7 @@ export const ImpactStatementInfoForm = props => {
           />
         )}
       </ApolloConsumer>
-    </React.Fragment>
+    </React.Fragment >
   )
 }
 

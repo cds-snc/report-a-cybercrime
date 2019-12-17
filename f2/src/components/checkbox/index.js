@@ -21,7 +21,7 @@ export const Checkbox = ({ label, isChecked, ...props }) => {
               <ControlBox
                 borderWidth="2px"
                 borderColor="black"
-                size="40px"
+                size={10}
                 _hover={{
                   boxShadow: 'outlineHover',
                   borderColor: 'black',
