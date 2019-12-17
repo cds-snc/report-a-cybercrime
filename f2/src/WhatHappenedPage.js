@@ -10,13 +10,13 @@ import { Steps } from './components/stepper'
 import { TrackPageViews } from './TrackPageViews'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
 import { Layout } from './components/layout'
-import { getDoneForms } from './utils/queriesAndMutations'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
 export const WhatHappenedPage = () => {
-  const [{}, dispatch] = useStateValue()
+  const [data, dispatch] = useStateValue()
+  const { doneForms } = data
 
   return (
     <Route
@@ -57,11 +57,9 @@ export const WhatHappenedPage = () => {
             </Stack>
 
             <WhatHappenedForm
-              onSubmit={(client, data) => {
+              onSubmit={data => {
                 dispatch({ type: 'saveFormData', data: { whatHappened: data } })
-                history.push(
-                  getDoneForms(client) ? '/confirmation' : '/scammerdetails',
-                )
+                history.push(doneForms ? '/confirmation' : '/scammerdetails')
               }}
             />
           </Stack>

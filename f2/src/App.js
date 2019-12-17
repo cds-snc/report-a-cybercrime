@@ -14,7 +14,7 @@ import { StateProvider } from './utils/state'
 const App = () => {
   const { i18n } = useLingui()
   const initialState = {
-    doneForm: false,
+    doneForms: false,
     formData: {},
   }
 
@@ -28,8 +28,11 @@ const App = () => {
             ...action.data,
           },
         }
-      case 'getDoneForm':
-        return state.doneForm
+      case 'saveDoneForm':
+        return {
+          ...state,
+          doneForms: action.data,
+        }
       default:
         return state
     }

@@ -163,23 +163,31 @@ const ContactSummary = ({ client }) => {
   )
 }
 
-export const ConfirmationSummary = () => (
-  <ApolloConsumer>
-    {client => {
-      client.writeData({
-        data: { doneForms: true },
-      })
-      return (
-        <React.Fragment>
-          <Stack spacing={4} shouldWrapChildren>
-            <TimeFrameSummary client={client} />
-            <WhatHappenedSummary client={client} />
-            <ScammerSummary client={client} />
-            <ImpactSummary client={client} />
-            <ContactSummary client={client} />
-          </Stack>
-        </React.Fragment>
-      )
-    }}
-  </ApolloConsumer>
-)
+export const ConfirmationSummary = () => {
+  const [data, dispatch] = useStateValue()
+
+  if (!data.doneForms) {
+    dispatch('saveDoneForms', true)
+  }
+
+  return (
+    <ApolloConsumer>
+      {client => {
+        client.writeData({
+          data: { doneForms: true },
+        })
+        return (
+          <React.Fragment>
+            <Stack spacing={4} shouldWrapChildren>
+              <TimeFrameSummary client={client} />
+              <WhatHappenedSummary client={client} />
+              <ScammerSummary client={client} />
+              <ImpactSummary client={client} />
+              <ContactSummary client={client} />
+            </Stack>
+          </React.Fragment>
+        )
+      }}
+    </ApolloConsumer>
+  )
+}

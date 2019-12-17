@@ -13,7 +13,7 @@ import { useStateValue } from './utils/state'
 
 export const TimeFramePage = () => {
   const [data, dispatch] = useStateValue()
-  const { doneForm } = data
+  const { doneForms } = data
 
   return (
     <Route
@@ -40,7 +40,7 @@ export const TimeFramePage = () => {
             <TimeFrameInfoForm
               onSubmit={data => {
                 dispatch({ type: 'saveFormData', data: { timeFrame: data } })
-                history.push(doneForm ? '/confirmation' : '/confirmation')
+                history.push(doneForms ? '/confirmation' : '/whathappened')
               }}
             />
           </Stack>
