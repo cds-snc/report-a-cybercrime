@@ -8,7 +8,6 @@ import { H2 } from './components/header'
 import { Text, StyledSpan } from './components/text'
 import { Container } from './components/container'
 import { Link } from './components/link'
-import { getP2ContactInfo } from './utils/queriesAndMutations'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
@@ -138,19 +137,23 @@ const ImpactSummary = () => {
   )
 }
 
-const ContactSummary = ({ client }) => {
-  const { fullName, email, phone, postalCode } = getP2ContactInfo(client)
+const ContactSummary = () => {
+  const [data] = useStateValue()
+  const { contactInfo } = data.formData
+  const fullName = contactInfo ? contactInfo.fullName : ''
+  const email = contactInfo ? contactInfo.email : ''
+  const postalCode = contactInfo ? contactInfo.postalCode : ''
+
   return (
     <React.Fragment>
       <H2>
         <Trans id="confirmationPage.contactTitle" />{' '}
         <EditButton label={'Edit contact information'} path="/contactinfo" />
       </H2>
-      {(fullName + email + phone + postalCode).length > 0 ? (
+      {(fullName + email + postalCode).length > 0 ? (
         <React.Fragment>
           <Text>{fullName}</Text>
           <Text>{email}</Text>
-          <Text>{phone}</Text>
           <Text>{postalCode}</Text>
         </React.Fragment>
       ) : (
