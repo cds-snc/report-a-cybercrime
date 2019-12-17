@@ -10,13 +10,13 @@ import { Steps } from './components/stepper'
 import { TrackPageViews } from './TrackPageViews'
 import { ScammerDetailsForm } from './forms/ScammerDetailsForm'
 import { Layout } from './components/layout'
-import { getDoneForms } from './utils/queriesAndMutations'
 import { BackButton } from './components/backbutton'
 import { Stack, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
 export const ScammerDetailsPage = () => {
-  const [{}, dispatch] = useStateValue()
+  const [data, dispatch] = useStateValue()
+  const { doneForms } = data
 
   return (
     <Route
@@ -58,13 +58,12 @@ export const ScammerDetailsPage = () => {
             </Box>
 
             <ScammerDetailsForm
-              onSubmit={(client, data) => {
-                console.log(data)
+              onSubmit={data => {
                 dispatch({
                   type: 'saveFormData',
                   data: { scammerDetails: data },
                 })
-                history.push(getDoneForms(client) ? '/confirmation' : '/impact')
+                history.push(doneForms ? '/confirmation' : '/impact')
               }}
             />
           </Stack>

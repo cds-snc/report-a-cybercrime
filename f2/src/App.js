@@ -29,7 +29,6 @@ const App = () => {
           },
         }
       case 'saveDoneForms':
-        console.log(`saving! ${action.data}`)
         return {
           ...state,
           doneForms: action.data,
