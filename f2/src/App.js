@@ -14,7 +14,8 @@ import { StateProvider } from './utils/state'
 const App = () => {
   const { i18n } = useLingui()
   const initialState = {
-    formData: { whichSteve: 'Astels' },
+    doneForm: false,
+    formData: {},
   }
 
   const reducer = (state, action) => {
@@ -27,6 +28,8 @@ const App = () => {
             ...action.data,
           },
         }
+      case 'getDoneForm':
+        return state.doneForm
       default:
         return state
     }

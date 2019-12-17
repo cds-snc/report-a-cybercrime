@@ -8,13 +8,8 @@ import { H2 } from './components/header'
 import { Text, StyledSpan } from './components/text'
 import { Container } from './components/container'
 import { Link } from './components/link'
-import {
-  getScammerDetails,
-  getImpact,
-  getP2ContactInfo,
-} from './utils/queriesAndMutations'
+import { getImpact, getP2ContactInfo } from './utils/queriesAndMutations'
 import { Stack } from '@chakra-ui/core'
-
 import { useStateValue } from './utils/state'
 
 const EditButton = ({ path, label }) => {

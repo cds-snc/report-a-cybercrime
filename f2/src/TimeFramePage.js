@@ -6,14 +6,14 @@ import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { TimeFrameInfoForm } from './forms/TimeFrameInfoForm'
 import { TrackPageViews } from './TrackPageViews'
-import { getDoneForms } from './utils/queriesAndMutations'
 import { BackButton } from './components/backbutton'
 import { Steps } from './components/stepper'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
 export const TimeFramePage = () => {
-  const [{}, dispatch] = useStateValue()
+  const [data, dispatch] = useStateValue()
+  const { doneForm } = data
 
   return (
     <Route
@@ -38,11 +38,9 @@ export const TimeFramePage = () => {
             </P>
 
             <TimeFrameInfoForm
-              onSubmit={(client, data) => {
+              onSubmit={data => {
                 dispatch({ type: 'saveFormData', data: { timeFrame: data } })
-                history.push(
-                  getDoneForms(client) ? '/confirmation' : '/confirmation',
-                )
+                history.push(doneForm ? '/confirmation' : '/confirmation')
               }}
             />
           </Stack>
