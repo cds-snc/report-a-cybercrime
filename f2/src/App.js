@@ -28,6 +28,11 @@ const App = () => {
             ...action.data,
           },
         }
+      case 'deleteFormData':
+        return {
+          ...state,
+          formData: {},
+        }
       case 'saveDoneForms':
         return {
           ...state,
