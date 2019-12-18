@@ -7,6 +7,8 @@ const shadows = {
   outlineLeft: '-2px 0 0 0 #CBD5E0, 2px 0 0 0 inset #CBD5E0',
 }
 
+
+
 // Chakra theming
 //const radius = 1
 //const radii = {
@@ -67,6 +69,14 @@ const borders = {
   '3px': '3px solid',
 }
 
+const borderWidths = {
+  "0": "0",
+  "1": "0.25rem",
+  "2": "0.5rem",
+  "3": "0.75rem",
+  "4": "1rem",
+}
+
 const space = {
   "7": "1.75rem",
 }
@@ -80,6 +90,7 @@ const canada = {
   colors,
   borders,
   space,
+  borderWidths,
 }
 
 export default mergeDeep(chakraTheme, canada)

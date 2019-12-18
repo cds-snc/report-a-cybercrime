@@ -86,27 +86,27 @@ export const ImpactStatementInfoForm = props => {
                   </FormLabel>
                   <Stack spacing={4} shouldWrapChildren>
                     {howWereYouAffected.map(key => {
-                      const checked = getImpact(
-                        client,
-                      ).howWereYouAffected.includes(key)
                       return (
-                        <Box>
+                        <Box key={key}>
                           <CheckboxArrayControl
-                            key={key}
+
                             name="howWereYouAffected"
                             value={key}
-                            isChecked={checked}
+                            isChecked={getImpact(client).howWereYouAffected.includes(key)}
                           >
                             {i18n._(key)}
                           </CheckboxArrayControl>
-                          <ConditionalForm show={checked}>
-                            Conditional form
-                          </ConditionalForm>
+                          {values.howWereYouAffected.includes(key) && (
+                            <ConditionalForm>
+                              Conditional form for {key}
+                            </ConditionalForm>
+                          )}
                         </Box>
                       )
                     })}
                   </Stack>
                 </Control>
+
 
                 <Field name="damage">
                   {props => (
