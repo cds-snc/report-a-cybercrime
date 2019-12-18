@@ -26,7 +26,6 @@ const TimeFrameSummary = () => {
   const endDate = timeFrame ? timeFrame.endDate.slice(0, 10) : ''
   return (
     <React.Fragment>
-      data: {JSON.stringify(data)}
       <H2>
         <Trans id="confirmationPage.timeFrameTitle" />{' '}
         <EditButton label={'Edit timeframe'} path="/timeframe" />

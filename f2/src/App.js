@@ -9,39 +9,11 @@ import { Footer } from './components/footer'
 import { ThemeProvider, Flex, Link, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
-import { StateProvider } from './utils/state'
+import { StateProvider, initialState, reducer } from './utils/state'
 
 const App = () => {
   const { i18n } = useLingui()
-  const initialState = {
-    doneForms: false,
-    formData: {},
-  }
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case 'saveFormData':
-        return {
-          ...state,
-          formData: {
-            ...state.formData,
-            ...action.data,
-          },
-        }
-      case 'deleteFormData':
-        return {
-          ...state,
-          formData: {},
-        }
-      case 'saveDoneForms':
-        return {
-          ...state,
-          doneForms: action.data,
-        }
-      default:
-        return state
-    }
-  }
   return (
     <ThemeProvider theme={canada}>
       <StateProvider initialState={initialState} reducer={reducer}>
