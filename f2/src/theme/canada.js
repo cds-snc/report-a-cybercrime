@@ -1,5 +1,4 @@
 import { theme as chakraTheme } from '@chakra-ui/core'
-import { mergeDeep } from 'apollo-utilities'
 
 const shadows = {
   outline: '0 0 0 3px #ffbf47',
@@ -39,10 +38,19 @@ const fonts = {
 
 // Final Theme output
 const canada = {
-  shadows,
-  //radii,
-  fonts,
-  colors,
+  ...chakraTheme,
+  shadows: {
+    ...chakraTheme.shadows,
+    ...shadows,
+  },
+  fonts: {
+    ...chakraTheme.fonts,
+    ...fonts,
+  },
+  colors: {
+    ...chakraTheme.colors,
+    ...colors,
+  },
 }
 
-export default mergeDeep(chakraTheme, canada)
+export default canada

@@ -3,7 +3,6 @@ import wait from 'waait'
 import { i18n } from '@lingui/core'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { MockedProvider } from 'react-apollo/test-utils'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { WhatHappenedForm } from '../WhatHappenedForm'
@@ -25,13 +24,11 @@ describe('<WhatHappenedForm />', () => {
     const { getByRole } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
-          <MockedProvider mocks={[]} addTypename={false}>
-            <I18nProvider i18n={i18n}>
-              <StateProvider initialState={initialState} reducer={reducer}>
-                <WhatHappenedForm onSubmit={submitMock} />
-              </StateProvider>
-            </I18nProvider>
-          </MockedProvider>
+          <I18nProvider i18n={i18n}>
+            <StateProvider initialState={initialState} reducer={reducer}>
+              <WhatHappenedForm onSubmit={submitMock} />
+            </StateProvider>
+          </I18nProvider>
         </ThemeProvider>
       </MemoryRouter>,
     )
