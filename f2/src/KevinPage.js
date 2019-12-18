@@ -7,14 +7,11 @@ import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
 import { Button } from './components/button'
 import { H1 } from './components/header'
-import { Ul } from './components/unordered-list'
-import { Li } from './components/list-item'
-import { InfoCard } from './components/container'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { Stack } from '@chakra-ui/core'
 
-export const LandingPage = props => {
+export const KevinPage = props => {
   return (
     <Route
       render={({ history }) => (
@@ -41,43 +38,17 @@ export const LandingPage = props => {
           </ApolloConsumer>
           <Stack spacing={10} shouldWrapChildren>
             <H1>
-              <Trans id="landingPage.title" />
+              <Trans id="kevinPage.title" />
             </H1>
 
             <Stack spacing={4}>
-              <P>
-                <Trans id="landingPage.intro" />
-              </P>
-
-              <InfoCard>
-                <P>
-                  <Trans id="landingPage.required0" />
-                </P>
-                <Ul>
-                  <Li>
-                    <Trans id="landingPage.required1" />
-                  </Li>
-                  <Li>
-                    <Trans id="landingPage.required2" />
-                  </Li>
-                  <Li>
-                    <Trans id="landingPage.required3" />
-                  </Li>
-                  <Li>
-                    <Trans id="landingPage.required4" />
-                  </Li>
-                </Ul>
-              </InfoCard>
-
-              <P>
-                <Trans id="landingPage.summary" />
-              </P>
+              
             </Stack>
 
             <Button
               rightIcon="chevron-right"
               onClick={() => {
-                history.push('/kevinpage')
+                history.push('/timeframe')
               }}
             >
               <Trans id="landingPage.nextButton" />
@@ -89,6 +60,6 @@ export const LandingPage = props => {
   )
 }
 
-LandingPage.propTypes = {
+KevinPage.propTypes = {
   location: PropTypes.object,
 }

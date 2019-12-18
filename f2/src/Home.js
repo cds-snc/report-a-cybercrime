@@ -10,6 +10,7 @@ import { ConfirmationPage } from './ConfirmationPage'
 import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
 import { ImpactStatementPage } from './ImpactStatementPage'
+import { KevinPage } from './KevinPage'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -25,6 +26,9 @@ export const Home = () => (
         <Switch>
           <Route exact path="/">
             <LandingPage />
+          </Route>
+          <Route exact path="/kevinpage">
+            <KevinPage />
           </Route>
           <Route path="/whathappened">
             <WhatHappenedPage />
