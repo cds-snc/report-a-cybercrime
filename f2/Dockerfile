@@ -1,4 +1,4 @@
-FROM node:12.9-alpine AS build-env
+FROM node:12.14-alpine AS build-env
 WORKDIR /app
 COPY . .
 
@@ -9,7 +9,7 @@ ENV HUSKY_SKIP_INSTALL true
 RUN npm ci
 RUN npm run build
 
-FROM node:12.9-alpine
+FROM node:12.14-alpine
 LABEL maintainer="stephen.astels@cds-snc.ca"
 USER node
 
