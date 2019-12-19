@@ -21,5 +21,10 @@ export const FormHelperText = styled(ChakraFormHelperText)(
 )
 
 FormHelperText.defaultProps = {
+  variant: 'above',
   as: 'div',
+  fontSize: 'md',
+  color: 'black',
+  fontFamily: 'body',
+  lineHeight: 1,
 }

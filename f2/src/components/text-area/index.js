@@ -5,8 +5,10 @@ import { Textarea as ChakraTextarea } from '@chakra-ui/core'
 export const TextArea = props => (
   <ChakraTextarea
     rounded="none"
+    padding={3}
     borderWidth="2px"
     borderColor="black"
+    transition="0"
     _hover={{
       boxShadow: 'outlineHover',
       borderColor: 'black',
@@ -16,6 +18,7 @@ export const TextArea = props => (
       bg: 'white',
       boxShadow: 'outline',
       borderColor: 'black',
+      border: '3px',
     }}
     {...props}
   >
