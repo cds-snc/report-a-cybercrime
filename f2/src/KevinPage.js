@@ -10,55 +10,42 @@ import { H1 } from './components/header'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { Stack } from '@chakra-ui/core'
+import { Steps } from './components/stepper'
+import { getDoneForms } from './utils/queriesAndMutations'
+import { KevinInfoForm } from './forms/KevinInfoForm'
 
-export const KevinPage = props => {
-  return (
+
+export const KevinPage = () => (
+
     <Route
       render={({ history }) => (
         <Layout>
           <TrackPageViews />
-          <ApolloConsumer>
-            {client =>
-              client.writeData({
-                data: {
-                  doneForms: false,
-                  scamInfo: JSON.stringify({}),
-                  lostMoney: JSON.stringify({}),
-                  suspectInfo: JSON.stringify({}),
-                  files: [],
-                  contactInfo: JSON.stringify({}),
-                  timeFrame: JSON.stringify({}),
-                  whatHappened: JSON.stringify({}),
-                  scammerDetails: JSON.stringify({}),
-                  impact: JSON.stringify({}),
-                  tellUsMore: JSON.stringify({}),
-                },
-              })
-            }
-          </ApolloConsumer>
+          
           <Stack spacing={10} shouldWrapChildren>
+           
+            <Stack spacing={4} role="heading" aria-level="1">
+            <Steps activeStep={1} totalSteps={6} />
             <H1>
               <Trans id="kevinPage.title" />
             </H1>
+          </Stack>
 
-            <Stack spacing={4}>
-              
-            </Stack>
+          <KevinInfoForm
+            onSubmit={(client, data) => {
+              client.writeData({ data: { timeFrame: JSON.stringify(data) } })
+              history.push(
+                getDoneForms(client) ? '/confirmation' : '/whathappened',
+              )
+            }}
+          />
 
-            <Button
-              rightIcon="chevron-right"
-              onClick={() => {
-                history.push('/timeframe')
-              }}
-            >
-              <Trans id="landingPage.nextButton" />
-            </Button>
+            
           </Stack>
         </Layout>
       )}
     />
-  )
-}
+)
 
 KevinPage.propTypes = {
   location: PropTypes.object,
