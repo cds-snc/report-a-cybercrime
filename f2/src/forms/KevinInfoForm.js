@@ -12,6 +12,7 @@ import { TextInput } from '../components/TextInput'
 import { getTimeFrame } from '../utils/queriesAndMutations'
 import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
+import { TextArea } from '../components/text-area'
 
 class KevinInfoFormWrapped extends Component {
   localOnSubmit = (client, data) => {
@@ -33,21 +34,21 @@ class KevinInfoFormWrapped extends Component {
                 spacing={6}
                 shouldWrapChildren
               >
-                <Field name="input">
+                <Field name="oneLineInput">
                   {props => (
                     <FormControl>
-                      <FormLabel htmlFor="input">
+                      <FormLabel htmlFor="oneLineInput">
                         <Text fontWeight="bold">
-                          <Trans id="kevinPage.input" />
+                          <Trans id="kevinPage.oneLineInput" />
                         </Text>
                       </FormLabel>
                       <FormHelperText>
                         <Text color="blackAlpha.600">
-                          <Trans id="kevinPage.input" />
+                          <Trans id="kevinPage.oneLineInput" />
                         </Text>
                       </FormHelperText>
                       <TextInput
-                        id="startDate"
+                        id="oneLineInput"
                         name={props.input.name}
                         value={props.input.value}
                         onChange={props.input.onChange}
@@ -55,6 +56,29 @@ class KevinInfoFormWrapped extends Component {
                     </FormControl>
                   )}
                 </Field>
+
+                <Field name="textArea">
+              {props => (
+                <FormControl>
+                  <FormLabel htmlFor="textArea">
+                    <Text fontWeight="bold">
+                      <Trans id="kevinPage.textArea" />
+                    </Text>
+                  </FormLabel>
+                  <FormHelperText variant="above">
+                    <Text as="span" color="blackAlpha.600">
+                      <Trans id="kevinPage.textArea" />
+                    </Text>
+                  </FormHelperText>
+                  <TextArea
+                    id="textArea"
+                    name={props.input.name}
+                    value={props.input.value}
+                    onChange={props.input.onChange}
+                  />
+                </FormControl>
+              )}
+            </Field>
 
                 
 
