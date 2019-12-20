@@ -1,10 +1,10 @@
  export PROJECT_NAME=rcmpcybercrime
- export RG_NAME=RCMPCDSCybercrimeRG
- export ACR_NAME=cybercrimeacr
+ export RG_NAME=MpSCCDSCybercrimeRG
+ export ACR_NAME=MpSCCDSCybercrimeacr
  export IMAGE_NAME=cybercrimeimage
- export DB_NAME=cybercrimedb
- export PLAN_NAME=cybercrimeplan
- export APP_NAME=reportascam
+ export DB_NAME=mpsccdscybercrimecosdb
+ export PLAN_NAME=MpSCCDSCybercrimeazappplan
+ export APP_NAME=MpSCCDSCybercrimeazapp
  # Set up Azure
  ## Resource group
  az group create --name $RG_NAME --location canadacentral
