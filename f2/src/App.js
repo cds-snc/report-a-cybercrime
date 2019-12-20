@@ -4,7 +4,6 @@ import { Home } from './Home'
 import { Trans } from '@lingui/macro'
 import { TopBanner } from './components/topbanner'
 import { PhaseBanner } from './components/phase-banner'
-import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
 import { ThemeProvider, Flex, Link, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
@@ -25,7 +24,7 @@ const App = () => {
         <header>
           <SkipLink invisible href="#main"> 
             <u><Trans id="SkipLink.text" /></u>
-          </SkipLink>
+          </SkipLink>git
           
           <PhaseBanner phase={<Trans id="banner.phase" />}>
            <u><b>

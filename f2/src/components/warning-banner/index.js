@@ -3,7 +3,7 @@
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { Alert, AlertIcon, AlertDescription } from '@chakra-ui/core'
-import { Trans } from '@lingui/macro'
+
 
 export const WarningBanner = props => {
   const { status, message, bg } = props
