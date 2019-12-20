@@ -24,7 +24,7 @@ const App = () => {
         <header>
           <SkipLink invisible href="#main"> 
             <Trans id="SkipLink.text" />
-          </SkipLink>git
+          </SkipLink>
           
           <PhaseBanner phase={<Trans id="banner.phase" />}>
            <u><b>
