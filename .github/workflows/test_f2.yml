@@ -1,4 +1,4 @@
-name: f2
+name: test_f2
 
 on: [push]
 
