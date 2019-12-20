@@ -9,10 +9,10 @@ import { Button } from './components/button'
 import { H1 } from './components/header'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
-import { InfoCard } from './components/container'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { Stack } from '@chakra-ui/core'
+import { WarningBanner } from './components/warning-banner'
 
 export const LandingPage = props => {
   return (
@@ -43,13 +43,10 @@ export const LandingPage = props => {
             <H1>
               <Trans id="landingPage.title" />
             </H1>
-
             <Stack spacing={4}>
               <P>
                 <Trans id="landingPage.intro" />
               </P>
-
-              <InfoCard>
                 <P>
                   <Trans id="landingPage.required0" />
                 </P>
@@ -66,14 +63,8 @@ export const LandingPage = props => {
                   <Li>
                     <Trans id="landingPage.required4" />
                   </Li>
-                </Ul>
-              </InfoCard>
-
-              <P>
-                <Trans id="landingPage.summary" />
-              </P>
+                </Ul> 
             </Stack>
-
             <Button
               rightIcon="chevron-right"
               onClick={() => {
@@ -82,6 +73,9 @@ export const LandingPage = props => {
             >
               <Trans id="landingPage.nextButton" />
             </Button>
+            <WarningBanner>
+            <Trans id="banner.warning" />
+          </WarningBanner>
           </Stack>
         </Layout>
       )}

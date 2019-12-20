@@ -23,14 +23,13 @@ const App = () => {
       />
       <Flex direction="column" minHeight="100vh">
         <header>
-          <SkipLink invisible href="#main">
-            <Trans id="SkipLink.text" />
+          <SkipLink invisible href="#main"> 
+            <u><Trans id="SkipLink.text" /></u>
           </SkipLink>
-          <WarningBanner>
-            <Trans id="banner.warning" />
-          </WarningBanner>
+          
           <PhaseBanner phase={<Trans id="banner.phase" />}>
-            <Trans id="banner.phaseText" />
+           <u><b>
+             <Trans style="color:dark blue" id="banner.phaseText" /></b></u>
           </PhaseBanner>
           <TopBanner lang={i18n.locale} bg="black" />
         </header>
