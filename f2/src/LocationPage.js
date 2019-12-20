@@ -30,7 +30,7 @@ export const LocationPage = () => (
                     </Stack>
 
                     <P>
-                        <Trans id="timeFramePage.intro" />
+                        <Trans id="locationPage.intro" />
                     </P>
 
                     <TimeFrameInfoForm

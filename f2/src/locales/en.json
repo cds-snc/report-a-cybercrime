@@ -104,5 +104,6 @@
   "whatHappendPage.title": "Describe what happened",
   "whatHappenedPage.nextButton": "Next: Scammer details",
   "locationPage.title": "Your location",
+  "locationPage.intro": "We use your location to link your report to other reports in your area.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }
