@@ -23,7 +23,7 @@ const App = () => {
       <Flex direction="column" minHeight="100vh">
         <header>
           <SkipLink invisible href="#main"> 
-            <u><Trans id="SkipLink.text" /></u>
+            <Trans id="SkipLink.text" />
           </SkipLink>git
           
           <PhaseBanner phase={<Trans id="banner.phase" />}>
