@@ -105,5 +105,7 @@
   "whatHappenedPage.nextButton": "Étape suivante : Renseignements sur le suspect",
   "locationPage.title": "Ton emplacement",
   "locationPage.intro": "Nous utilisons votre position pour lier votre rapport à d'autres rapports dans votre région.",
+  "locationinfoPage.postalCode": "Entrez votre code postal",
+  "locationinfoPage.postalCodeExample": "Par exemple: K1A 0R2",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 }

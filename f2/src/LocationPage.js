@@ -4,7 +4,7 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
-import { TimeFrameInfoForm } from './forms/TimeFrameInfoForm'
+import { LocationInfoForm } from './forms/LocationInfoForm'
 import { TrackPageViews } from './TrackPageViews'
 import { getDoneForms } from './utils/queriesAndMutations'
 import { BackButton } from './components/backbutton'
@@ -33,7 +33,7 @@ export const LocationPage = () => (
                         <Trans id="locationPage.intro" />
                     </P>
 
-                    <TimeFrameInfoForm
+                    <LocationInfoForm
                         onSubmit={(client, data) => {
                             client.writeData({ data: { timeFrame: JSON.stringify(data) } })
                             history.push(

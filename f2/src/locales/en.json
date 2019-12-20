@@ -105,5 +105,7 @@
   "whatHappenedPage.nextButton": "Next: Scammer details",
   "locationPage.title": "Your location",
   "locationPage.intro": "We use your location to link your report to other reports in your area.",
+  "locationinfoPage.postalCode": "Enter your postal code",
+  "locationinfoPage.postalCodeExample": "For example: K1A 0R2",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }
