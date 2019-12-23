@@ -46,14 +46,14 @@ export const LocationInfoForm = ({ onSubmit }) => (
                             )}
                         </Field>
 
-                        <Field name="postalCode">
+                        <Field name="cityTown">
                             {props => (
                                 <FormControl>
-                                    <FormLabel htmlFor="postalCode">
-                                        <Trans id="contactinfoPage.postCode" />
+                                    <FormLabel htmlFor="cityTown">
+                                        <Trans id="locationinfoPage.cityTown" />
                                     </FormLabel>
                                     <FormHelperText>
-                                        <Trans id="contactinfoPage.postCodeExample" />
+                                        <Trans id="locationinfoPage.cityTownExample" />
                                     </FormHelperText>
                                     <TextInput
                                         id="postalCode"

@@ -19,7 +19,7 @@ export const LocationPage = () => (
 
                 <Stack spacing={10} shouldWrapChildren>
                     <BackButton route="/">
-                        <Trans id="timeFramePage.backButton" />
+                        <Trans id="locationPage.backButton" />
                     </BackButton>
 
                     <Stack spacing={4} role="heading" aria-level="1">
