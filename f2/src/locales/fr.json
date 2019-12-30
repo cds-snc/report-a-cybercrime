@@ -98,10 +98,11 @@
   "whatHappendPage.details2": "L'application, le site Web ou l'appareil que vous utilisiez",
   "whatHappendPage.details3": "La façon dont le fraudeur a communiqué avec vous",
   "whatHappendPage.details4": "Ce que le fraudeur a promis, a volé ou a menacé de faire",
-  "whatHappendPage.hint": "Racontez-nous l'histoire dans vos propres mots",
-  "whatHappendPage.intro1": "Ce qui s'est passé n'est pas de votre faute. Les fraudeurs utilisent plusieurs techniques pour obtenir ce qu'ils veulent.",
-  "whatHappendPage.summary": "Que s'est-il passé?",
-  "whatHappendPage.title": "Décrivez ce qui s'est passé",
+  "whatHappendPage.hint": "Commencez au début. N'oubliez pas d'inclure ce qu'ils ont demandé, promis, volé ou menacé de faire.",
+  "whatHappendPage.intro1": "Ce qui s'est passé n'est pas de ta faute. Ces crimes ne sont pas toujours faciles à reconnaître et de nouveaux sont inventés chaque jour.",
+  "whatHappendPage.summary": "Décrivez ce qui s'est passé",
+  "whatHappendPage.title": "Qu'est-il arrivé?",
   "whatHappenedPage.nextButton": "Étape suivante : Renseignements sur le suspect",
+  "whatHappendPage.nextStep": "Ensuite, on vous demandera qui pourrait être impliqué.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 }

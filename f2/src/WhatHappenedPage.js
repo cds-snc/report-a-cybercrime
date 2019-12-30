@@ -4,8 +4,6 @@ import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
-import { Ul } from './components/unordered-list'
-import { Li } from './components/list-item'
 import { Steps } from './components/stepper'
 import { TrackPageViews } from './TrackPageViews'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
@@ -34,22 +32,6 @@ export const WhatHappenedPage = () => (
             <P>
               <Trans id="whatHappendPage.intro1" />
             </P>
-
-            <P>
-              <Trans id="whatHappendPage.details1" />
-            </P>
-
-            <Ul>
-              <Li>
-                <Trans id="whatHappendPage.details2" />
-              </Li>
-              <Li>
-                <Trans id="whatHappendPage.details3" />
-              </Li>
-              <Li>
-                <Trans id="whatHappendPage.details4" />
-              </Li>
-            </Ul>
           </Stack>
 
           <WhatHappenedForm

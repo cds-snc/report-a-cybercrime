@@ -9,6 +9,7 @@ import { FormHelperText } from '../components/FormHelperText'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { getWhatHappened } from '../utils/queriesAndMutations'
 import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
+import { P } from '../components/paragraph'
 
 export const WhatHappenedForm = props => (
   <ApolloConsumer>
@@ -41,6 +42,9 @@ export const WhatHappenedForm = props => (
                 </FormControl>
               )}
             </Field>
+            <P>
+              <Trans id="whatHappendPage.nextStep" />
+            </P>
             <NextAndCancelButtons>
               <Trans id="whatHappenedPage.nextButton" />
             </NextAndCancelButtons>
