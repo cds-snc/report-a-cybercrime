@@ -110,5 +110,6 @@
   "locationinfoPage.cityTown": "Enter your city or town",
   "locationinfoPage.cityTownExample": "For example: Montreal",
   "locationPage.backButton": "Back to the start page",
+  "locationinfoPage.nextPage": "Next, you will be asked for your contact details.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }

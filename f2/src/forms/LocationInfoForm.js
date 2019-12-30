@@ -10,6 +10,7 @@ import { getP2ContactInfo } from '../utils/queriesAndMutations'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
+import { P } from '../components/paragraph'
 
 export const LocationInfoForm = ({ onSubmit }) => (
     <ApolloConsumer>
@@ -64,6 +65,9 @@ export const LocationInfoForm = ({ onSubmit }) => (
                                 </FormControl>
                             )}
                         </Field>
+                        <P>
+                            <Trans id="locationinfoPage.nextPage" />
+                        </P>
 
                         <NextAndCancelButtons>
                             <Trans id="contactinfoPage.nextButton" />
