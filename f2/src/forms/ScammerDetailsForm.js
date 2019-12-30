@@ -9,13 +9,13 @@ import { Container, InfoCard } from '../components/container'
 import { plural, Trans } from '@lingui/macro'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
-import { Text } from '../components/text'
 import { H2, H3 } from '../components/header'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
 import { getScammerDetails } from '../utils/queriesAndMutations'
-import { Box, Stack, FormControl, FormLabel, PseudoBox } from '@chakra-ui/core'
+import { Box, Stack, FormControl, PseudoBox } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
+import { FormLabel } from '../components/FormLabel'
 
 export const ScammerDetailsFormWrapped = props => {
   const { client } = props
@@ -88,14 +88,10 @@ export const ScammerDetailsFormWrapped = props => {
                   {props => (
                     <FormControl>
                       <FormLabel htmlFor="scammerDetails">
-                        <Text fontWeight="bold">
-                          <Trans id="scammerDetail.summary" />
-                        </Text>
+                        <Trans id="scammerDetail.summary" />
                       </FormLabel>
-                      <FormHelperText variant="above">
-                        <Text color="blackAlpha.600">
-                          <Trans id="scammerDetail.reminder" />
-                        </Text>
+                      <FormHelperText>
+                        <Trans id="scammerDetail.reminder" />
                       </FormHelperText>
 
                       <TextArea
@@ -111,7 +107,7 @@ export const ScammerDetailsFormWrapped = props => {
                 <Stack spacing={4}>
                   <Box>
                     <FileUpload onChange={onChange}>
-                      <Button leftIcon="attachment" as="div">
+                      <Button leftIcon="attachment" as="div" variantColor="blue">
                         <Trans id="scammerDetail.addFileButtom" />
                       </Button>
                     </FileUpload>
@@ -160,9 +156,7 @@ export const ScammerDetailsFormWrapped = props => {
                                   <FormLabel
                                     htmlFor={`file-description-${index}`}
                                   >
-                                    <Text fontWeight="bold">
-                                      <Trans id="scammerDetail.fileDescription" />
-                                    </Text>
+                                    <Trans id="scammerDetail.fileDescription" />
                                   </FormLabel>
                                   <TextArea
                                     id={`file-description-${index}`}

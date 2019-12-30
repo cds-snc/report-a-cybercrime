@@ -11,7 +11,7 @@ export const TopBanner = props => {
   const { i18n } = useLingui()
 
   return (
-    <Flex align="center" {...props}>
+    <Flex align="center" {...props} fontFamily="body">
       <Box p={4} width={[250, null, 300]}>
         <Image
           src={i18n.locale === 'en' ? rcmpbrandingeng : rcmpbrandingfre}
