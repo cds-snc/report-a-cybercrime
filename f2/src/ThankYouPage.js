@@ -136,23 +136,23 @@ export const ThankYouPage = () => {
 
           </Ul>
         
-          <InfoCard borderColor="transparent" bg="green.100" p={[1, null, 2]} > 
+          <InfoCard borderColor="transparent" bg="green.100" p={1} > 
             <IconButton bg="green.100" icon="check" marginRight="4px"/>
               <Trans id="thankYouPage.safelyCloseWindow"> 
               </Trans>
           </InfoCard>
 
-          <Link >
+          <Link color="blue.600">
               <Trans id="thankYouPage.createNewReport"/>
           </Link>
 
-          <InfoCard borderColor="transparent" bg="blue.300" p={[1, null, 2]} > 
+          <InfoCard borderColor="transparent" bg="blue.300" p={0.5}> 
             
-              <P color="white">
-              <IconButton color="white" bg="blue.300" icon="chat" marginRight="4px"/>
-              <Trans id="thankYouPage.feedback"> 
+              <P color="white" fontSize="med">
+                <IconButton color="white" bg="blue.300" icon="chat" marginRight="2px" />
+                <Trans id="thankYouPage.feedback"> 
                 <Text as="span" color="white"/>
-              </Trans>
+                 </Trans>
               </P>
               
           </InfoCard>
