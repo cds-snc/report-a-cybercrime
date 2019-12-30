@@ -10,7 +10,7 @@ import { ConfirmationPage } from './ConfirmationPage'
 import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
 import { ImpactStatementPage } from './ImpactStatementPage'
-
+import { InformationPage } from './InformationPage'
 const Root = styled('div')`
   margin: 20pt;
 `
@@ -46,6 +46,9 @@ export const Home = () => (
           </Route>
           <Route path="/impact">
             <ImpactStatementPage />
+          </Route>
+          <Route path="/information">
+            <InformationPage />
           </Route>
           <Route>
             <PageNotFound />
