@@ -10,6 +10,7 @@ import { ScammerDetailsPage } from './ScammerDetailsPage'
 import { ConfirmationPage } from './ConfirmationPage'
 import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
+import { SuspectCluesPage } from './SuspectCluesPage'
 import { ImpactStatementPage } from './ImpactStatementPage'
 
 const Root = styled('div')`
@@ -29,6 +30,9 @@ export const Home = () => (
           </Route>
           <Route exact path ="/thankYouPage">
             <ThankYouPage/>
+          </Route>
+          <Route exact path ="/suspectCluesPage">
+            <SuspectCluesPage/>
           </Route>
           <Route path="/whathappened">
             <WhatHappenedPage />
