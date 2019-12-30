@@ -56,7 +56,7 @@ export const WhatHappenedPage = () => (
             onSubmit={(client, data) => {
               client.writeData({ data: { whatHappened: JSON.stringify(data) } })
               history.push(
-                getDoneForms(client) ? '/confirmation' : '/scammerdetails',
+                getDoneForms(client) ? '/confirmation' : '/suspectCluesPage',
               )
             }}
           />
