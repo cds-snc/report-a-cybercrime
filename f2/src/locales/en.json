@@ -103,5 +103,22 @@
   "whatHappendPage.summary": "What happened?",
   "whatHappendPage.title": "Describe what happened",
   "whatHappenedPage.nextButton": "Next: Scammer details",
-  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
+  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}",
+  "thankYouPage.helpResource": "Where you can get help:",
+  "thankYouPage.helpResource1": "Talk to someone and get support.",
+  "thankYouPage.helpResource2": "Find tips to protect yourself in the future.",
+  "thankYouPage.helpResource3": "Follow what scams are trending.",
+  "thankYouPage.nextStepDetail": "The RCMP will analyze your report and combine it with others that are similar to help police across Canada track down cybercriminals.",
+  "thankYouPage.nextStepSummary": "What happens next",
+  "thankYouPage.otherReportOption": "You have other reporting options:",
+  "thankYouPage.otherReportOption1": "Report directly to the place where the scam happened.",
+  "thankYouPage.otherReportOption2": "Report directly to your local police service.",
+  "thankYouPage.otherReportOption3": "Report to your financial institution, if you lost money.",
+  "thankYouPage.otherReportOption4": "Report to the credit bureaus, <0>Equifax</0> and <1>TransUnion</1>, if your identity was stolen.",
+  "thankYouPage.summary": "We've sent you an email with a summary of your report.",
+  "thankYouPage.referenceNumber": "Your reference number is <0>{reference}</0>",
+  "thankYouPage.safelyCloseWindow": "You can safely close this window",
+  "thankYouPage.createNewReport": "Create a new report",
+  "thankYouPage.feedback": "Have feedback?",
+  "thankYouPage.title": "Thank you for reporting"
 }

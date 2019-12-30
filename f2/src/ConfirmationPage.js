@@ -103,7 +103,7 @@ export const ConfirmationPage = () => (
             onSubmit={(client, submitReportP2) => {
               let data = prepFormData(client)
               submitToServer(data)
-              history.push('/nextsteps')
+              history.push('/thankYouPage')
             }}
           />
         </Stack>

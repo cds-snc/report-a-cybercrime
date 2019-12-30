@@ -3,6 +3,7 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import styled from '@emotion/styled'
 import { PageNotFound } from './PageNotFound'
 import { LandingPage } from './LandingPage'
+import { ThankYouPage } from './ThankYouPage'
 import { WhatHappenedPage } from './WhatHappenedPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { ScammerDetailsPage } from './ScammerDetailsPage'
@@ -26,6 +27,9 @@ export const Home = () => (
           <Route exact path="/">
             <LandingPage />
           </Route>
+          <Route exact path ="/thankYouPage">
+            <ThankYouPage/>
+          </Route>
           <Route path="/whathappened">
             <WhatHappenedPage />
           </Route>
@@ -41,12 +45,15 @@ export const Home = () => (
           <Route path="/nextsteps">
             <NextSteps />
           </Route>
+          <Route path="/nextsteps">
+            <NextSteps />
+          </Route>
           <Route path="/timeframe">
             <TimeFramePage />
           </Route>
           <Route path="/impact">
             <ImpactStatementPage />
-          </Route>
+        </Route>
           <Route>
             <PageNotFound />
           </Route>
