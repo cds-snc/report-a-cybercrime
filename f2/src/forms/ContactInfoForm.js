@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
+import { P } from '../components/paragraph'
 import { TextInput } from '../components/TextInput'
 import { ApolloConsumer } from 'react-apollo'
 import { getP2ContactInfo } from '../utils/queriesAndMutations'
@@ -24,35 +25,14 @@ export const ContactInfoForm = ({ onSubmit }) => (
             shouldWrapChildren
             spacing={6}
           >
-            <Field name="fullName">
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="fullName">
-                    <Trans id="contactinfoPage.fullName" />
-                  </FormLabel>
-                  <FormHelperText>
-                    <Trans id="contactinfoPage.fullNameExample">
-                      <VisuallyHidden as="span" />
-                    </Trans>
-                  </FormHelperText>
-                  <TextInput
-                    id="fullName"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-
             <Field name="email">
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="email">
-                    <Trans id="contactinfoPage.emailAddress" />
+                    <Trans id="contactinfoPage.emailAddress" /> <span style={{fontWeight: 'normal'}}><Trans id="label.optional" /></span>
                   </FormLabel>
                   <FormHelperText>
-                    <Trans id="contactinfoPage.emailAddressExample">
+                    <Trans id="contactinfoPage.emailAddressHelperText">
                       <VisuallyHidden as="span" />
                     </Trans>
                   </FormHelperText>
@@ -65,26 +45,13 @@ export const ContactInfoForm = ({ onSubmit }) => (
                 </FormControl>
               )}
             </Field>
+            <P>
+              <Trans id="contactinfoPage.rcmpFollowup"/>
+            </P>
 
-            <Field name="postalCode">
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="postalCode">
-                    <Trans id="contactinfoPage.postCode" />
-                  </FormLabel>
-                  <FormHelperText>
-                    <Trans id="contactinfoPage.postCodeExample" />
-                  </FormHelperText>
-                  <TextInput
-                    id="postalCode"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-
+            <P>
+              <Trans id="contactinfoPage.nextInfo"/>
+            </P>
             <NextAndCancelButtons>
               <Trans id="contactinfoPage.nextButton" />
             </NextAndCancelButtons>
