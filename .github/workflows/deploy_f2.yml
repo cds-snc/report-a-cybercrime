@@ -1,0 +1,53 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install, build, and test
+        working-directory: f2
+        run: |
+          npm install
+          npm run build --if-present
+          npm test
+        env:
+          CI: true
+
+  deploy:
+    name: Build container and deploy
+    env:
+      AZURE_CONTAINER_REGISTRY_SERVER: ${{ secrets.AZURE_CONTAINER_REGISTRY_SERVER }}
+      IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@master
+      - name: Build the Docker image
+        working-directory: f2
+        run: docker build -t base --build-arg GITHUB_SHA_ARG=${{ github.sha }} .
+      - name: Tag :latest
+        run: docker tag base $AZURE_CONTAINER_REGISTRY_SERVER/${IMAGE_NAME}:latest
+      - name: Tag :$GITHUB_SHA
+        run: docker tag base $AZURE_CONTAINER_REGISTRY_SERVER/${IMAGE_NAME}:${{ github.sha }}
+      - name: Login into Azure Container Registry
+        env:
+          AZURE_CONTAINER_REGISTRY_USERNAME: ${{ secrets.AZURE_CONTAINER_REGISTRY_USERNAME }}
+          AZURE_CONTAINER_REGISTRY_PASSWORD: ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}
+        run: docker login -u $AZURE_CONTAINER_REGISTRY_USERNAME -p $AZURE_CONTAINER_REGISTRY_PASSWORD $AZURE_CONTAINER_REGISTRY_SERVER
+      - name: Push container to Azure Container Registry
+        run: docker push $AZURE_CONTAINER_REGISTRY_SERVER/${IMAGE_NAME}
