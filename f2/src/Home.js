@@ -27,6 +27,9 @@ export const Home = () => (
           <Route exact path="/">
             <LandingPage />
           </Route>
+          <Route path="/moneylost">
+            <MoneyLostPage />
+          </Route>
           <Route path="/whathappened">
             <WhatHappenedPage />
           </Route>
