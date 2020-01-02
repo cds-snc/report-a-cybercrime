@@ -53,6 +53,7 @@ export const Home = () => (
 
           <Route path="/information">
             <InformationPage />
+          </Route>
           <Route path="/location">
             <LocationPage />
           </Route>
