@@ -231,21 +231,6 @@ export const getTimeFrame = client => {
     endDate: endDate ? endDate : '',
   }
 }
-// p3 cache queries
-export const getMoneyLost = client => {
-  const queryResult = client.readQuery({
-    query: gql`
-      query readCache {
-        MoneyLost
-      }
-    `,
-  })
-  const { startDate, endDate } = JSON.parse(queryResult.timeFrame)
-  return {
-    startDate: startDate ? startDate : '',
-    endDate: endDate ? endDate : '',
-  }
-}
 
 //p2 cache queries
 
