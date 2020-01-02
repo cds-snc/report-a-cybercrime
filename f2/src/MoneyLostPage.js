@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+
 import { Layout } from './components/layout'
 import { MoneyLostInfoForm } from './forms/MoneyLostInfoForm'
 import { TrackPageViews } from './TrackPageViews'
