@@ -302,6 +302,28 @@ export const getP2ContactInfo = client => {
     postalCode: postalCode ? postalCode : '',
   }
 }
+//
+export const getMoneyLost = client => {
+  const queryResult = client.readQuery({
+    query: gql`
+      query readCache {
+        contactInfo
+      }
+    `,
+  })
+  let { demandedMoney, moneyTaken, methodPayment, transactionDate,tellUsMore } = JSON.parse(
+    queryResult.contactInfo,
+  )
+  return {
+    demandedMoney: demandedMoney ? demandedMoney : '',
+    moneyTaken: moneyTaken ? moneyTaken : '',
+    methodPayment: methodPayment ? methodPayment : '',
+    transactionDate: transactionDate ? transactionDate : '',
+    tellUsMore: tellUsMore ? tellUsMore : '',
+  }
+}
+
+//
 
 export const getTellUsMore = client => {
   const queryResult = client.readQuery({

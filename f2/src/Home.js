@@ -10,6 +10,7 @@ import { ConfirmationPage } from './ConfirmationPage'
 import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
 import { ImpactStatementPage } from './ImpactStatementPage'
+import { MoneyLostPage } from './MoneyLostPage'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -29,6 +30,11 @@ export const Home = () => (
           <Route path="/whathappened">
             <WhatHappenedPage />
           </Route>
+
+          <Route path="/moneylost">
+            <MoneyLostPage />
+          </Route>
+
           <Route path="/contactinfo">
             <ContactInfoPage />
           </Route>
