@@ -30,11 +30,9 @@ export const Home = () => (
           <Route path="/whathappened">
             <WhatHappenedPage />
           </Route>
-
           <Route path="/moneylost">
             <MoneyLostPage />
           </Route>
-
           <Route path="/contactinfo">
             <ContactInfoPage />
           </Route>

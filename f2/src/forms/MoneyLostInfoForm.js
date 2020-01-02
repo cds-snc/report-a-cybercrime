@@ -52,7 +52,7 @@ class MoneyLostInfoFormWrapped extends Component {
                     </FormControl>
                   )}
                 </Field>
-
+                
                 <Field name="moneyTaken">
                   {props => (
                     <FormControl>
