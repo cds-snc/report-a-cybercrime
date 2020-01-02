@@ -7,17 +7,17 @@ const shadows = {
   outlineLeft: '-2px 0 0 0 #CBD5E0, 2px 0 0 0 inset #CBD5E0',
 }
 
+/*
+const radius = 1
+const radii = {
+  none: '0',
+  sm: `${radius * 0.125}rem`,
+  md: `${radius * 0.25} rem`,
+  lg: `${radius * 0.5} rem`,
+  full: '9999px',
+}
+/**/
 
-
-// Chakra theming
-//const radius = 1
-//const radii = {
-//  none: '0',
-//  sm: `${ radius * 0.125}rem`,
-//  md: `${ radius * 0.25 } rem`,
-//  lg: `${ radius * 0.5 } rem`,
-//  full: '9999px',
-//}
 const colors = {
   green: {
     50: '#F2FFF0',
@@ -81,7 +81,29 @@ const space = {
   "7": "1.75rem",
 }
 
-// Final Theme output
+const variants = {
+  forms: {
+    input: {
+      autoComplete: "off",
+      rounded: "none",
+      borderWidth: "2px",
+      borderColor: "black",
+      transition: "0",
+      _hover: {
+        boxShadow: 'outlineHover',
+        borderColor: 'black',
+      },
+      _focus: {
+        outline: 'none',
+        bg: 'white',
+        boxShadow: 'outline',
+        borderColor: 'black',
+        border: '3px',
+      }
+    }
+  },
+}
+
 const canada = {
   shadows,
   //radii,
@@ -91,6 +113,7 @@ const canada = {
   borders,
   space,
   borderWidths,
+  variants,
 }
 
 export default mergeDeep(chakraTheme, canada)

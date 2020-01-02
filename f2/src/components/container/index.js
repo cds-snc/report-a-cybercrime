@@ -10,8 +10,8 @@ export const InfoCard = props => (
   <Box
     rounded="none"
     border="2px"
-    borderColor="blackAlpha.400"
-    p={[3, null, 6]}
+    borderColor="gray.400"
+    p={[3, null, 5]}
     bg="white"
     {...props}
   ></Box>
