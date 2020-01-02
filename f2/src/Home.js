@@ -11,6 +11,9 @@ import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
 import { ImpactStatementPage } from './ImpactStatementPage'
 import { InformationPage } from './InformationPage'
+import { LocationPage } from './LocationPage'
+
+
 const Root = styled('div')`
   margin: 20pt;
 `
@@ -47,8 +50,11 @@ export const Home = () => (
           <Route path="/impact">
             <ImpactStatementPage />
           </Route>
+
           <Route path="/information">
             <InformationPage />
+          <Route path="/location">
+            <LocationPage />
           </Route>
           <Route>
             <PageNotFound />
