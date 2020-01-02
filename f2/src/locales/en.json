@@ -70,7 +70,6 @@
   "landingPage.required4": "Documents, screenshots, or receipts",
   "landingPage.summary": "Your report helps the RCMP learn about these crimes and helps police across Canada catch cybercriminals.",
   "landingPage.title": "Report a scam",
-<<<<<<< Updated upstream
   "moneyLostPage.backButton": "Back to how you were affected",
   "moneyLostPage.demandedMoney": "Amount of money demanded",
   "moneyLostPage.demandedMoneyExample": "For example:$1200 CAD",
@@ -84,12 +83,6 @@
   "moneyLostPage.title": "Money or finances",
   "moneyLostPage.transactionDate": "Transaction dates",
   "moneyLostPage.transactionDateExample": "for example: November 28, 2019",
-=======
-  "moneyLostPage.demandedMoney": "moneyLostPage.demandedMoney",
-  "moneyLostPage.demandedMoneyExample": "moneyLostPage.demandedMoneyExample",
-  "moneyLostPage.moneyTaken": "moneyLostPage.moneyTaken",
-  "moneyLostPage.moneyTakenExample": "moneyLostPage.moneyTakenExample",
->>>>>>> Stashed changes
   "nextStepsPage.helpResource": "Where you can get help",
   "nextStepsPage.helpResource1": "Talk to someone and get support",
   "nextStepsPage.helpResource2": "Find tips to protect yourself in the future",

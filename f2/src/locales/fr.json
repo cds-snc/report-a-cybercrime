@@ -61,7 +61,6 @@
   "landingPage.required4": "Documents, captures d'écrans ou reçus",
   "landingPage.summary": "Votre signalement aide la GRC à en apprendre plus sur ces crimes. Il aidera aussi les services de police partout au Canada à trouver les cybercriminels.",
   "landingPage.title": "Signalez une fraude",
-<<<<<<< Updated upstream
   "moneyLostPage.backButton": "Retour à la façon dont vous avez été affecté",
   "moneyLostPage.demandedMoney": "Montant demandé",
   "moneyLostPage.demandedMoneyExample": "Par exemple: 1200 $ CAD",
@@ -75,12 +74,6 @@
   "moneyLostPage.title": "Argent ou finances",
   "moneyLostPage.transactionDate": "Dates de transaction",
   "moneyLostPage.transactionDateExample": "par exemple: 28 novembre 2019",
-=======
-  "moneyLostPage.demandedMoney": "",
-  "moneyLostPage.demandedMoneyExample": "",
-  "moneyLostPage.moneyTaken": "",
-  "moneyLostPage.moneyTakenExample": "",
->>>>>>> Stashed changes
   "nextStepsPage.helpResource": "Obtenez de l'aide :",
   "nextStepsPage.helpResource1": "Parlez à quelqu'un et obtenez du soutien",
   "nextStepsPage.helpResource2": "Trouvez des conseils pour vous protéger à l'avenir",
