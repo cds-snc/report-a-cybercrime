@@ -10,7 +10,6 @@ import { ScammerDetailsPage } from './ScammerDetailsPage'
 import { ConfirmationPage } from './ConfirmationPage'
 import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
-import { SuspectCluesPage } from './SuspectCluesPage'
 import { ImpactStatementPage } from './ImpactStatementPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
@@ -34,9 +33,6 @@ export const Home = () => (
           </Route>
           <Route exact path ="/thankYouPage">
             <ThankYouPage/>
-          </Route>
-          <Route exact path ="/suspectCluesPage">
-            <SuspectCluesPage/>
           </Route>
           <Route path="/whathappened">
             <WhatHappenedPage />
