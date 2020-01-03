@@ -4,7 +4,6 @@ import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
-import { Steps } from './components/stepper'
 import { TrackPageViews } from './TrackPageViews'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
 import { Layout } from './components/layout'
@@ -23,7 +22,6 @@ export const WhatHappenedPage = () => (
           </BackButton>
 
           <Stack spacing={4} role="heading" aria-level="1">
-            <Steps activeStep={2} totalSteps={6} />
             <H1 as="span">
               <Trans id="whatHappendPage.title" />
             </H1>
