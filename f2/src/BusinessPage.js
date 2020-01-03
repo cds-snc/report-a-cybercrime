@@ -21,7 +21,6 @@ export const BusinessPage = () => (
                     </BackButton>
 
                     <Stack spacing={4} role="heading" aria-level="1">
-                        <Steps activeStep={5} totalSteps={6} />
                         <H1 as="span">
                             <Trans id="businessPage.title" />
                         </H1>
