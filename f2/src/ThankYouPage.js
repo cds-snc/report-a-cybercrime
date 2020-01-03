@@ -12,7 +12,7 @@ import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { ApolloConsumer } from 'react-apollo'
 import { Text } from './components/text'
-import { Stack, IconButton, Link, Icon} from '@chakra-ui/core'
+import { Stack, IconButton, Link} from '@chakra-ui/core'
 import {Link as Route} from "react-router-dom";
 
 export const ThankYouPage = () => {
