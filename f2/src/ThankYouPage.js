@@ -12,7 +12,8 @@ import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { ApolloConsumer } from 'react-apollo'
 import { Text } from './components/text'
-import { Stack, IconButton, Link} from '@chakra-ui/core'
+import { Stack, IconButton, Link, Icon} from '@chakra-ui/core'
+import {Link as Route} from "react-router-dom";
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
@@ -142,8 +143,9 @@ export const ThankYouPage = () => {
               </Trans>
           </InfoCard>
 
-          <Link color="blue.600">
+          <Link as={Route} to="/" color="blue.600" > 
               <Trans id="thankYouPage.createNewReport"/>
+              <IconButton bg="white" icon="chevron-right"/>
           </Link>
 
           <InfoCard borderColor="transparent" bg="blue.300" p={0.5}> 
