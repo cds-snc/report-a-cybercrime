@@ -10,7 +10,7 @@
  az group create --name $RG_NAME --location canadacentral
  az configure --defaults group=$RG_NAME location=canadacentral    # set default resource group
  ## Container registry
- az acr create --name $ACR_NAME --sku standard --admin-enabled true
+ az acr create --name $ACR_NAME --sku standard
  ## Database
  az cosmosdb create --name $DB_NAME --kind MongoDB
  # Deploy code
