@@ -78,12 +78,10 @@ export const LandingPage = props => {
               rightIcon="chevron-right"
               onClick={() => {
                 history.push('/timeframe')
-                history.push('/TimeFrame')
-
-              }}
-            >
+              }}>
               <Trans id="landingPage.nextButton" />
             </Button>
+
           </Stack>
         </Layout>
       )}
