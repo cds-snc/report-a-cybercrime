@@ -17,7 +17,7 @@ export const WhatHappenedPage = () => (
       <Layout>
         <TrackPageViews />
         <Stack spacing={10} shouldWrapChildren>
-          <BackButton route="/timeframe">
+          <BackButton route="/impact">
             <Trans id="whatHappendPage.backButton" />
           </BackButton>
 
