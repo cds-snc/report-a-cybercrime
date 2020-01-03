@@ -3,10 +3,9 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
 import { Steps } from './components/stepper'
 import { TrackPageViews } from './TrackPageViews'
-import { BusinessForm } from './forms/BusinessForm'
+import { BusinessInfoForm } from './forms/BusinessInfoForm'
 import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
@@ -28,10 +27,10 @@ export const BusinessPage = () => (
                         </H1>
                     </Stack>
 
-                    <BusinessForm
+                    <BusinessInfoForm
                         onSubmit={(client, data) => {
                             client.writeData({ data: { business: JSON.stringify(data) } })
-                            history.push('/confirmation')
+                            history.push('/whatHappened')
                         }}
                     />
                 </Stack>

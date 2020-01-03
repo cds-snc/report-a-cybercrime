@@ -10,8 +10,9 @@ import { getP2ContactInfo } from '../utils/queriesAndMutations'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
+import { P } from '../components/paragraph'
 
-export const BusinessForm = ({ onSubmit }) => (
+export const BusinessInfoForm = ({ onSubmit }) => (
     <ApolloConsumer>
         {client => (
             <Form
@@ -44,9 +45,12 @@ export const BusinessForm = ({ onSubmit }) => (
                                 </FormControl>
                             )}
                         </Field>
+                        <P>
+                            <Trans id="businessInfoPage.nextPage" />
+                        </P>
 
                         <NextAndCancelButtons>
-                            <Trans id="contactinfoPage.nextButton" />
+                            <Trans id="businessInfoPage.nextButton" />
                         </NextAndCancelButtons>
                     </Stack>
                 )}
@@ -55,6 +59,6 @@ export const BusinessForm = ({ onSubmit }) => (
     </ApolloConsumer>
 )
 
-BusinessForm.propTypes = {
+BusinessInfoForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
 }
