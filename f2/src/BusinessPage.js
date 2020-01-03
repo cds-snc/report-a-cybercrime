@@ -3,7 +3,6 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { Steps } from './components/stepper'
 import { TrackPageViews } from './TrackPageViews'
 import { BusinessInfoForm } from './forms/BusinessInfoForm'
 import { Layout } from './components/layout'
@@ -17,7 +16,7 @@ export const BusinessPage = () => (
                 <TrackPageViews />
                 <Stack spacing={10} shouldWrapChildren>
                     <BackButton route="/impact">
-                        <Trans id="contactinfoPage.backButton" />
+                        <Trans id="businessInfoPage.backButton" />
                     </BackButton>
 
                     <Stack spacing={4} role="heading" aria-level="1">

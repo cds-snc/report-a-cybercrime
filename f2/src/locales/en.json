@@ -108,5 +108,6 @@
   "businessPage.title": "Business assets",
   "businessInfoPage.nextPage": "Next, you will be asked about what happened.",
   "businessInfoPage.nextButton": "Continue",
+  "businessInfoPage.backButton": "Back to how you were affected",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }
