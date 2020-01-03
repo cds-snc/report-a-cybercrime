@@ -146,7 +146,7 @@
   "thankYouPage.safelyCloseWindow": "You can safely close this window",
   "thankYouPage.createNewReport": "Create a new report",
   "thankYouPage.feedback": "Have feedback?",
-  "thankYouPage.title": "Thank you for reporting"
+  "thankYouPage.title": "Thank you for reporting",
   "locationPage.title": "Your location",
   "locationPage.intro": "We use your location to link your report to other reports in your area.",
   "locationinfoPage.postalCode": "Enter your postal code",
