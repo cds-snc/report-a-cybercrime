@@ -102,7 +102,7 @@
   "whatHappendPage.intro1": "What happened is not your fault. These crimes are not always easy to recognize and new ones are invented every day.",
   "whatHappendPage.summary": "Describe what happened",
   "whatHappendPage.title": "What happened?",
-  "whatHappenedPage.nextButton": "Next: Scammer details",
+  "whatHappenedPage.nextButton": "Continue",
   "whatHappendPage.nextStep": "Next, you will be asked about who could be involved.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }
