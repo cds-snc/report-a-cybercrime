@@ -103,5 +103,8 @@
   "whatHappendPage.summary": "What happened?",
   "whatHappendPage.title": "Describe what happened",
   "whatHappenedPage.nextButton": "Next: Scammer details",
+  "businessPage.business": "Describe how your business could be affected",
+  "businessPage.businessExample": "For example: reputation, systems, clients",
+  "businessPage.title": "Business assets",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }
