@@ -4,42 +4,32 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { P } from '../components/paragraph'
-import { TextInput } from '../components/TextInput'
+import { TextArea } from '../components/text-area'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
-import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
+import { P } from '../components/paragraph'
 
-export const ContactInfoForm = ({ onSubmit }) => {
-  const [data] = useStateValue()
-  const contactInfo = {
-    email: '',
-    ...data.formData.contactInfo,
-  }
-
+export const BusinessInfoForm = ({ onSubmit }) => {
   return (
     <Form
-      initialValues={contactInfo}
+      initialValues={{}}
       onSubmit={onSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-          <Field name="email">
+          <Field name="business">
             {props => (
               <FormControl>
-                <FormLabel htmlFor="email">
-                  <Trans id="contactinfoPage.emailAddress" />{' '}
-                  <span style={{ fontWeight: 'normal' }}>
-                    <Trans id="label.optional" />
-                  </span>
+                <FormLabel htmlFor="business">
+                  <Trans id="businessPage.business" />
                 </FormLabel>
                 <FormHelperText>
-                  <Trans id="contactinfoPage.emailAddressHelperText">
+                  <Trans id="businessPage.businessExample">
                     <VisuallyHidden as="span" />
                   </Trans>
                 </FormHelperText>
-                <TextInput
-                  id="email"
+                <TextArea
+                  id="business"
                   name={props.input.name}
                   value={props.input.value}
                   onChange={props.input.onChange}
@@ -48,14 +38,11 @@ export const ContactInfoForm = ({ onSubmit }) => {
             )}
           </Field>
           <P>
-            <Trans id="contactinfoPage.rcmpFollowup" />
+            <Trans id="businessInfoPage.nextPage" />
           </P>
 
-          <P>
-            <Trans id="contactinfoPage.nextInfo" />
-          </P>
           <NextAndCancelButtons>
-            <Trans id="contactinfoPage.nextButton" />
+            <Trans id="businessInfoPage.nextButton" />
           </NextAndCancelButtons>
         </Stack>
       )}
@@ -63,6 +50,6 @@ export const ContactInfoForm = ({ onSubmit }) => {
   )
 }
 
-ContactInfoForm.propTypes = {
+BusinessInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
