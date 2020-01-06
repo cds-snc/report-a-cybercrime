@@ -6,9 +6,10 @@ import { Form, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
 import { Text } from '../components/text'
-import { Stack, FormControl, FormLabel } from '@chakra-ui/core'
+import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
+import { FormLabel } from '../components/FormLabel'
 
 export const ContactInfoForm = ({ onSubmit }) => {
   const [data] = useStateValue()
@@ -29,14 +30,12 @@ export const ContactInfoForm = ({ onSubmit }) => {
             {props => (
               <FormControl>
                 <FormLabel htmlFor="fullName">
-                  <Text fontWeight="bold">
-                    <Trans id="contactinfoPage.fullName" />
-                  </Text>
+                  <Trans id="contactinfoPage.fullName" />
                 </FormLabel>
                 <FormHelperText>
-                  <Text color="blackAlpha.600">
-                    <Trans id="contactinfoPage.fullNameExample" />
-                  </Text>
+                  <Trans id="contactinfoPage.fullNameExample">
+                    <VisuallyHidden as="span" />
+                  </Trans>
                 </FormHelperText>
                 <TextInput
                   id="fullName"
@@ -47,19 +46,16 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-
           <Field name="email">
             {props => (
               <FormControl>
                 <FormLabel htmlFor="email">
-                  <Text fontWeight="bold">
-                    <Trans id="contactinfoPage.emailAddress" />
-                  </Text>
+                  <Trans id="contactinfoPage.emailAddress" />
                 </FormLabel>
                 <FormHelperText>
-                  <Text color="blackAlpha.600">
-                    <Trans id="contactinfoPage.emailAddressExample" />
-                  </Text>
+                  <Trans id="contactinfoPage.emailAddressExample">
+                    <VisuallyHidden as="span" />
+                  </Trans>
                 </FormHelperText>
                 <TextInput
                   id="email"
@@ -70,7 +66,24 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-
+          <Field name="postalCode">
+            {props => (
+              <FormControl>
+                <FormLabel htmlFor="postalCode">
+                  <Trans id="contactinfoPage.postCode" />
+                </FormLabel>
+                <FormHelperText>
+                  <Trans id="contactinfoPage.postCodeExample" />
+                </FormHelperText>
+                <TextInput
+                  id="postalCode"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
           <Field name="postalCode">
             {props => (
               <FormControl>
@@ -93,7 +106,6 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-
           <NextAndCancelButtons>
             <Trans id="contactinfoPage.nextButton" />
           </NextAndCancelButtons>

@@ -5,11 +5,12 @@ import { Trans } from '@lingui/macro'
 import { Form, Field, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
-import { Text } from '../components/text'
 import { TextArea } from '../components/text-area'
-import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
+import { FormControl, Stack, Box } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
+import { FormLabel } from '../components/FormLabel'
+import { ConditionalForm } from '../components/container'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -85,21 +86,25 @@ export const ImpactStatementInfoForm = props => {
           >
             <Control as="fieldset" name="howWereYouAffected">
               <FormLabel as="legend" htmlFor="howWereYouAffected" mb={2}>
-                <Text fontWeight="bold">
-                  <Trans id="impactPage.detail" />
-                </Text>
+                <Trans id="impactPage.detail" />
               </FormLabel>
               <Stack spacing={4} shouldWrapChildren>
                 {howWereYouAffected.map(key => {
                   return (
-                    <CheckboxArrayControl
-                      key={key}
-                      name="howWereYouAffected"
-                      value={key}
-                      isChecked={impact.howWereYouAffected.includes(key)}
-                    >
-                      {i18n._(key)}
-                    </CheckboxArrayControl>
+                    <Box key={key}>
+                      <CheckboxArrayControl
+                        name="howWereYouAffected"
+                        value={key}
+                        isChecked={impact.howWereYouAffected.includes(key)}
+                      >
+                        {i18n._(key)}
+                      </CheckboxArrayControl>
+                      {values.howWereYouAffected.includes(key) && (
+                        <ConditionalForm>
+                          Conditional form for {key}
+                        </ConditionalForm>
+                      )}
+                    </Box>
                   )
                 })}
               </Stack>
@@ -109,14 +114,10 @@ export const ImpactStatementInfoForm = props => {
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="damage">
-                    <Text fontWeight="bold">
-                      <Trans id="impactPage.summary" />
-                    </Text>
+                    <Trans id="impactPage.summary" />
                   </FormLabel>
-                  <FormHelperText variant="above">
-                    <Text color="blackAlpha.600">
-                      <Trans id="impactPage.example" />
-                    </Text>
+                  <FormHelperText>
+                    <Trans id="impactPage.example" />
                   </FormHelperText>
                   <TextArea
                     id="damage"
@@ -127,7 +128,6 @@ export const ImpactStatementInfoForm = props => {
                 </FormControl>
               )}
             </Field>
-
             <NextAndCancelButtons>
               <Trans id="impactPage.nextButton">
                 Next: Contact information

@@ -4,7 +4,6 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { TextArea } from '../components/text-area'
-import { Text } from '../components/text'
 import { FormHelperText } from '../components/FormHelperText'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
@@ -28,14 +27,10 @@ export const WhatHappenedForm = props => {
             {props => (
               <FormControl>
                 <FormLabel htmlFor="whatHappened">
-                  <Text fontWeight="bold">
-                    <Trans id="whatHappendPage.summary" />
-                  </Text>
+                  <Trans id="whatHappendPage.summary" />
                 </FormLabel>
-                <FormHelperText variant="above">
-                  <Text as="span" color="blackAlpha.600">
-                    <Trans id="whatHappendPage.hint" />
-                  </Text>
+                <FormHelperText>
+                  <Trans id="whatHappendPage.hint" />
                 </FormHelperText>
                 <TextArea
                   id="whatHappened"
