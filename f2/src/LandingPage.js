@@ -2,7 +2,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
 import { Button } from './components/button'
@@ -20,25 +19,7 @@ export const LandingPage = props => {
       render={({ history }) => (
         <Layout>
           <TrackPageViews />
-          <ApolloConsumer>
-            {client =>
-              client.writeData({
-                data: {
-                  doneForms: false,
-                  scamInfo: JSON.stringify({}),
-                  lostMoney: JSON.stringify({}),
-                  suspectInfo: JSON.stringify({}),
-                  files: [],
-                  contactInfo: JSON.stringify({}),
-                  timeFrame: JSON.stringify({}),
-                  whatHappened: JSON.stringify({}),
-                  scammerDetails: JSON.stringify({}),
-                  impact: JSON.stringify({}),
-                  tellUsMore: JSON.stringify({}),
-                },
-              })
-            }
-          </ApolloConsumer>
+
           <Stack spacing={10} shouldWrapChildren>
             <H1>
               <Trans id="landingPage.title" />

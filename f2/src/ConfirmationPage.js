@@ -7,18 +7,11 @@ import { H1 } from './components/header'
 import { TrackPageViews } from './TrackPageViews'
 import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
-import {
-  getTimeFrame,
-  getWhatHappened,
-  getScammerDetails,
-  getImpact,
-  getP2ContactInfo,
-  getSurveyInfo,
-} from './utils/queriesAndMutations'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
+import { useStateValue } from './utils/state'
 
 const randLetter = () => {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
@@ -51,63 +44,58 @@ async function postData(url = '', data = {}) {
   return await response
 }
 
-const prepFormData = client => {
-  let timeFrame = getTimeFrame(client)
-  let whatHappened = getWhatHappened(client)
-  let scammerDetails = getScammerDetails(client)
-  let impact = getImpact(client)
-  let p2ContactInfo = getP2ContactInfo(client)
-  const surveyInfo = getSurveyInfo(client)
-
-  let { fullName, email, phone, postalCode } = p2ContactInfo
+const prepFormData = formData => {
+  let contactInfo = formData.contactInfo ? formData.contactInfo : {}
+  let { fullName, email, postalCode } = contactInfo
   fullName = randomizeString(fullName)
-  phone = randomizeString(phone)
+  email = randomizeString(email)
   postalCode = randomizeString(postalCode)
 
   return {
-    timeFrame,
-    whatHappened,
-    impact,
-    scammerDetails,
+    ...formData,
     contactInfo: {
       fullName,
       email,
-      phone,
       postalCode,
     },
-    surveyInfo,
   }
 }
 
 const submitToServer = async data => {
+  console.log({ data })
   await postData('/submit', data)
 }
 
-export const ConfirmationPage = () => (
-  <Route
-    render={({ history }) => (
-      <Layout>
-        <TrackPageViews />
-        <Stack spacing={10} shouldWrapChildren>
-          <BackButton route="/contactinfo">
-            <Trans id="confirmationPage.backButton" />
-          </BackButton>
-          <Stack spacing={4} role="heading" aria-level="1" shouldWrapChildren>
-            <Steps activeStep={6} totalSteps={6} />
-            <H1 as="span">
-              <Trans id="confirmationPage.title" />
-            </H1>
+export const ConfirmationPage = () => {
+  const [{ formData }, dispatch] = useStateValue()
+
+  return (
+    <Route
+      render={({ history }) => (
+        <Layout>
+          <TrackPageViews />
+          <Stack spacing={10} shouldWrapChildren>
+            <BackButton route="/contactinfo">
+              <Trans id="confirmationPage.backButton" />
+            </BackButton>
+            <Stack spacing={4} role="heading" aria-level="1" shouldWrapChildren>
+              <Steps activeStep={6} totalSteps={6} />
+              <H1 as="span">
+                <Trans id="confirmationPage.title" />
+              </H1>
+            </Stack>
+            <ConfirmationSummary />
+            <ConfirmationForm
+              onSubmit={() => {
+                let data = prepFormData(formData)
+                submitToServer(data)
+                dispatch({ type: 'deleteFormData', data: {} })
+                history.push('/thankYouPage')
+              }}
+            />
           </Stack>
-          <ConfirmationSummary />
-          <ConfirmationForm
-            onSubmit={(client, submitReportP2) => {
-              let data = prepFormData(client)
-              submitToServer(data)
-              history.push('/thankYouPage')
-            }}
-          />
-        </Stack>
-      </Layout>
-    )}
-  />
-)
+        </Layout>
+      )}
+    />
+  )
+}

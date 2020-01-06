@@ -11,10 +11,10 @@ import { ConfirmationPage } from './ConfirmationPage'
 import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
 import { ImpactStatementPage } from './ImpactStatementPage'
+import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
-
 
 const Root = styled('div')`
   margin: 20pt;
@@ -31,8 +31,8 @@ export const Home = () => (
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route exact path ="/thankYouPage">
-            <ThankYouPage/>
+          <Route exact path="/thankYouPage">
+            <ThankYouPage />
           </Route>
           <Route path="/whathappened">
             <WhatHappenedPage />
@@ -49,14 +49,14 @@ export const Home = () => (
           <Route path="/nextsteps">
             <NextSteps />
           </Route>
-          <Route path="/nextsteps">
-            <NextSteps />
-          </Route>
           <Route path="/timeframe">
             <TimeFramePage />
           </Route>
           <Route path="/impact">
             <ImpactStatementPage />
+          </Route>
+          <Route path="/business">
+            <BusinessPage />
           </Route>
           <Route path="/information">
             <InformationPage />
@@ -65,7 +65,7 @@ export const Home = () => (
             <LocationPage />
           </Route>
           <Route path="/devices">
-            <DevicesPage/>
+            <DevicesPage />
           </Route>
           <Route>
             <PageNotFound />
