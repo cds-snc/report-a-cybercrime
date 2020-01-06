@@ -3,22 +3,15 @@ import wait from 'waait'
 import { i18n } from '@lingui/core'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { ScammerDetailsForm } from '../ScammerDetailsForm'
 import en from '../../locales/en.json'
 import canada from '../../theme/canada'
+import { StateProvider, initialState, reducer } from '../../utils/state'
 
 i18n.load('en', { en })
 i18n.activate('en')
-
-const client = {
-  readQuery: () => ({
-    scammerDetails: JSON.stringify({}),
-  }),
-  writeData: jest.fn(),
-}
 
 const clickOn = element => fireEvent.click(element)
 
@@ -32,9 +25,9 @@ describe('<ScammerDetailsForm />', () => {
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
-            <ApolloProvider client={client}>
+            <StateProvider initialState={initialState} reducer={reducer}>
               <ScammerDetailsForm onSubmit={submitMock} />
-            </ApolloProvider>
+            </StateProvider>
           </I18nProvider>
         </ThemeProvider>
       </MemoryRouter>,

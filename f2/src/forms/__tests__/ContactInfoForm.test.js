@@ -3,23 +3,15 @@ import { i18n } from '@lingui/core'
 import { MemoryRouter } from 'react-router-dom'
 import wait from 'waait'
 import { render, fireEvent, cleanup } from '@testing-library/react'
-import { MockedProvider } from 'react-apollo/test-utils'
-import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { ContactInfoForm } from '../ContactInfoForm'
 import en from '../../locales/en.json'
 import canada from '../../theme/canada'
+import { StateProvider, initialState, reducer } from '../../utils/state'
 
 i18n.load('en', { en })
 i18n.activate('en')
-
-const client = {
-  readQuery: () => ({
-    contactInfo: JSON.stringify({}),
-  }),
-  writeData: jest.fn(),
-}
 
 const fillIn = (element, { with: value }) =>
   fireEvent.change(element, { target: { value } })
@@ -35,13 +27,11 @@ describe('<ContactInfoForm />', () => {
     const { getAllByRole, getByRole } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
-          <MockedProvider mocks={[]} addTypename={false}>
-            <I18nProvider i18n={i18n}>
-              <ApolloProvider client={client}>
-                <ContactInfoForm onSubmit={submitMock} />
-              </ApolloProvider>
-            </I18nProvider>
-          </MockedProvider>
+          <I18nProvider i18n={i18n}>
+            <StateProvider initialState={initialState} reducer={reducer}>
+              <ContactInfoForm onSubmit={submitMock} />
+            </StateProvider>
+          </I18nProvider>
         </ThemeProvider>
       </MemoryRouter>,
     )

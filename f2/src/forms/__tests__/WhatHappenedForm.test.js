@@ -3,23 +3,15 @@ import wait from 'waait'
 import { i18n } from '@lingui/core'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { MockedProvider } from 'react-apollo/test-utils'
-import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { WhatHappenedForm } from '../WhatHappenedForm'
 import en from '../../locales/en.json'
 import canada from '../../theme/canada'
+import { StateProvider, initialState, reducer } from '../../utils/state'
 
 i18n.load('en', { en })
 i18n.activate('en')
-
-const client = {
-  readQuery: () => ({
-    whatHappened: JSON.stringify({}),
-  }),
-  writeData: jest.fn(),
-}
 
 const clickOn = element => fireEvent.click(element)
 
@@ -32,13 +24,11 @@ describe('<WhatHappenedForm />', () => {
     const { getByRole } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
-          <MockedProvider mocks={[]} addTypename={false}>
-            <I18nProvider i18n={i18n}>
-              <ApolloProvider client={client}>
-                <WhatHappenedForm onSubmit={submitMock} />
-              </ApolloProvider>
-            </I18nProvider>
-          </MockedProvider>
+          <I18nProvider i18n={i18n}>
+            <StateProvider initialState={initialState} reducer={reducer}>
+              <WhatHappenedForm onSubmit={submitMock} />
+            </StateProvider>
+          </I18nProvider>
         </ThemeProvider>
       </MemoryRouter>,
     )
