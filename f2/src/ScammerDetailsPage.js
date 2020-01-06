@@ -10,59 +10,65 @@ import { Steps } from './components/stepper'
 import { TrackPageViews } from './TrackPageViews'
 import { ScammerDetailsForm } from './forms/ScammerDetailsForm'
 import { Layout } from './components/layout'
-import { getDoneForms } from './utils/queriesAndMutations'
 import { BackButton } from './components/backbutton'
 import { Stack, Box } from '@chakra-ui/core'
+import { useStateValue } from './utils/state'
 
-export const ScammerDetailsPage = () => (
-  <Route
-    render={({ history }) => (
-      <Layout>
-        <TrackPageViews />
-        <Stack spacing={10} shouldWrapChildren>
-          <BackButton route="/whathappened">
-            <Trans id="scammerDetail.backButton" />
-          </BackButton>
+export const ScammerDetailsPage = () => {
+  const [data, dispatch] = useStateValue()
+  const { doneForms } = data
 
-          <Stack spacing={4} role="heading" aria-level="1">
-            <Steps activeStep={3} totalSteps={6} />
-            <H1 as="span">
-              <Trans id="scammerDetail.title" />
-            </H1>
+  return (
+    <Route
+      render={({ history }) => (
+        <Layout>
+          <TrackPageViews />
+          <Stack spacing={10} shouldWrapChildren>
+            <BackButton route="/whathappened">
+              <Trans id="scammerDetail.backButton" />
+            </BackButton>
+
+            <Stack spacing={4} role="heading" aria-level="1">
+              <Steps activeStep={3} totalSteps={6} />
+              <H1 as="span">
+                <Trans id="scammerDetail.title" />
+              </H1>
+            </Stack>
+            <Box>
+              <P>
+                <Trans id="scammerDetail.intro" />
+              </P>
+              <P>
+                <Trans id="scammerDetail.details" />
+              </P>
+              <Ul>
+                <Li>
+                  <Trans id="scammerDetail.detail1" />
+                </Li>{' '}
+                <Li>
+                  <Trans id="scammerDetail.detail2" />
+                </Li>
+                <Li>
+                  <Trans id="scammerDetail.detail3" />
+                </Li>
+                <Li>
+                  <Trans id="scammerDetail.detail4" />
+                </Li>
+              </Ul>
+            </Box>
+
+            <ScammerDetailsForm
+              onSubmit={data => {
+                dispatch({
+                  type: 'saveFormData',
+                  data: { scammerDetails: data },
+                })
+                history.push(doneForms ? '/confirmation' : '/impact')
+              }}
+            />
           </Stack>
-          <Box>
-            <P>
-              <Trans id="scammerDetail.intro" />
-            </P>
-            <P>
-              <Trans id="scammerDetail.details" />
-            </P>
-            <Ul>
-              <Li>
-                <Trans id="scammerDetail.detail1" />
-              </Li>{' '}
-              <Li>
-                <Trans id="scammerDetail.detail2" />
-              </Li>
-              <Li>
-                <Trans id="scammerDetail.detail3" />
-              </Li>
-              <Li>
-                <Trans id="scammerDetail.detail4" />
-              </Li>
-            </Ul>
-          </Box>
-
-          <ScammerDetailsForm
-            onSubmit={(client, data) => {
-              client.writeData({
-                data: { scammerDetails: JSON.stringify(data) },
-              })
-              history.push(getDoneForms(client) ? '/confirmation' : '/impact')
-            }}
-          />
-        </Stack>
-      </Layout>
-    )}
-  />
-)
+        </Layout>
+      )}
+    />
+  )
+}

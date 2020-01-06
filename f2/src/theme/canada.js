@@ -1,13 +1,10 @@
 import { theme as chakraTheme } from '@chakra-ui/core'
-import { mergeDeep } from 'apollo-utilities'
 
 const shadows = {
   outline: '0 0 0 3px #ffbf47',
   outlineHover: '0 0 0 4px #CBD5E0',
   outlineLeft: '-2px 0 0 0 #CBD5E0, 2px 0 0 0 inset #CBD5E0',
 }
-
-
 
 // Chakra theming
 //const radius = 1
@@ -70,27 +67,45 @@ const borders = {
 }
 
 const borderWidths = {
-  "0": "0",
-  "1": "0.25rem",
-  "2": "0.5rem",
-  "3": "0.75rem",
-  "4": "1rem",
+  '0': '0',
+  '1': '0.25rem',
+  '2': '0.5rem',
+  '3': '0.75rem',
+  '4': '1rem',
 }
 
 const space = {
-  "7": "1.75rem",
+  '7': '1.75rem',
 }
 
 // Final Theme output
 const canada = {
-  shadows,
-  //radii,
+  ...chakraTheme,
+  shadows: {
+    ...chakraTheme.shadows,
+    ...shadows,
+  },
   fontSizes,
-  fonts,
-  colors,
-  borders,
-  space,
-  borderWidths,
+  fonts: {
+    ...chakraTheme.fonts,
+    ...fonts,
+  },
+  colors: {
+    ...chakraTheme.colors,
+    ...colors,
+  },
+  borders: {
+    ...chakraTheme.borders,
+    ...borders,
+  },
+  borderWidths: {
+    ...chakraTheme.borderWidths,
+    ...borderWidths,
+  },
+  space: {
+    ...chakraTheme.space,
+    ...space,
+  },
 }
 
-export default mergeDeep(chakraTheme, canada)
+export default canada
