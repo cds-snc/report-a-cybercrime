@@ -2,21 +2,14 @@ import React from 'react'
 import { render, cleanup } from '@testing-library/react'
 import { setupI18n } from '@lingui/core'
 import { MemoryRouter } from 'react-router-dom'
-import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
 import { ScammerDetailsPage } from '../ScammerDetailsPage'
 import canada from '../theme/canada'
 import en from '../locales/en.json'
+import { StateProvider, initialState, reducer } from '../utils/state'
 
 const i18n = setupI18n({ catalogs: { en } })
-
-const client = {
-  readQuery: () => ({
-    scammerDetails: JSON.stringify({}),
-  }),
-  writeData: jest.fn(),
-}
 
 describe('<ScammerDetailsPage />', () => {
   afterEach(cleanup)
@@ -25,11 +18,11 @@ describe('<ScammerDetailsPage />', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
-          <ApolloProvider client={client}>
+          <StateProvider initialState={initialState} reducer={reducer}>
             <I18nProvider i18n={i18n}>
               <ScammerDetailsPage />
             </I18nProvider>
-          </ApolloProvider>
+          </StateProvider>
         </ThemeProvider>
       </MemoryRouter>,
     )

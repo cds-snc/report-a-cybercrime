@@ -10,7 +10,6 @@ import { Li } from './components/list-item'
 import { InfoCard } from './components/container'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
-import { ApolloConsumer } from 'react-apollo'
 import { Text } from './components/text'
 import { Stack } from '@chakra-ui/core'
 
@@ -18,25 +17,6 @@ export const NextSteps = () => {
   const { i18n } = useLingui()
   return (
     <Layout>
-      <ApolloConsumer>
-        {client =>
-          client.writeData({
-            data: {
-              doneForms: false,
-              scamInfo: JSON.stringify({}),
-              lostMoney: JSON.stringify({}),
-              suspectInfo: JSON.stringify({}),
-              files: [],
-              contactInfo: JSON.stringify({}),
-              timeFrame: JSON.stringify({}),
-              whatHappened: JSON.stringify({}),
-              scammerDetails: JSON.stringify({}),
-              impact: JSON.stringify({}),
-              tellUsMore: JSON.stringify({}),
-            },
-          })
-        }
-      </ApolloConsumer>
       <TrackPageViews />
       <Stack spacing={10}>
         <H1>

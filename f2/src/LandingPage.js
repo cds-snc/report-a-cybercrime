@@ -2,7 +2,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { ApolloConsumer } from 'react-apollo'
 import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
 import { Button } from './components/button'
@@ -20,25 +19,7 @@ export const LandingPage = props => {
       render={({ history }) => (
         <Layout>
           <TrackPageViews />
-          <ApolloConsumer>
-            {client =>
-              client.writeData({
-                data: {
-                  doneForms: false,
-                  scamInfo: JSON.stringify({}),
-                  lostMoney: JSON.stringify({}),
-                  suspectInfo: JSON.stringify({}),
-                  files: [],
-                  contactInfo: JSON.stringify({}),
-                  timeFrame: JSON.stringify({}),
-                  whatHappened: JSON.stringify({}),
-                  scammerDetails: JSON.stringify({}),
-                  impact: JSON.stringify({}),
-                  tellUsMore: JSON.stringify({}),
-                },
-              })
-            }
-          </ApolloConsumer>
+
           <Stack spacing={10} shouldWrapChildren>
             <H1>
               <Trans id="landingPage.title" />
@@ -47,23 +28,23 @@ export const LandingPage = props => {
               <P>
                 <Trans id="landingPage.intro" />
               </P>
-                <P>
-                  <Trans id="landingPage.required0" />
-                </P>
-                <Ul>
-                  <Li>
-                    <Trans id="landingPage.required1" />
-                  </Li>
-                  <Li>
-                    <Trans id="landingPage.required2" />
-                  </Li>
-                  <Li>
-                    <Trans id="landingPage.required3" />
-                  </Li>
-                  <Li>
-                    <Trans id="landingPage.required4" />
-                  </Li>
-                </Ul> 
+              <P>
+                <Trans id="landingPage.required0" />
+              </P>
+              <Ul>
+                <Li>
+                  <Trans id="landingPage.required1" />
+                </Li>
+                <Li>
+                  <Trans id="landingPage.required2" />
+                </Li>
+                <Li>
+                  <Trans id="landingPage.required3" />
+                </Li>
+                <Li>
+                  <Trans id="landingPage.required4" />
+                </Li>
+              </Ul>
             </Stack>
             <Button
               rightIcon="chevron-right"
@@ -74,8 +55,8 @@ export const LandingPage = props => {
               <Trans id="landingPage.nextButton" />
             </Button>
             <WarningBanner>
-            <Trans id="banner.warning" />
-          </WarningBanner>
+              <Trans id="landingPage.warning" />
+            </WarningBanner>
           </Stack>
         </Layout>
       )}

@@ -4,7 +4,6 @@ import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { Alert, AlertIcon, AlertDescription } from '@chakra-ui/core'
 
-
 export const WarningBanner = props => {
   const { status, message, bg } = props
 
@@ -23,6 +22,6 @@ WarningBanner.propTypes = {
 WarningBanner.defaultProps = {
   bg: 'yellow',
   status: 'warning',
-   message:
-   "You are trying a new version of this form. If you prefer, you can report through the old Fraud Reporting System or call 1-888-495-8501.",
+  message:
+    "Warning! This is a prototype. It won't actually submit your report to the RCMP.",
 }
