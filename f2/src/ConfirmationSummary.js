@@ -3,19 +3,12 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { ApolloConsumer } from 'react-apollo'
 import { H2 } from './components/header'
 import { Text, StyledSpan } from './components/text'
 import { Container } from './components/container'
 import { Link } from './components/link'
-import {
-  getTimeFrame,
-  getWhatHappened,
-  getScammerDetails,
-  getImpact,
-  getP2ContactInfo,
-} from './utils/queriesAndMutations'
 import { Stack } from '@chakra-ui/core'
+import { useStateValue } from './utils/state'
 
 const EditButton = ({ path, label }) => {
   const { i18n } = useLingui()
@@ -26,10 +19,11 @@ const EditButton = ({ path, label }) => {
   )
 }
 
-const TimeFrameSummary = ({ client }) => {
-  let { startDate, endDate } = getTimeFrame(client)
-  startDate = startDate.slice(0, 10)
-  endDate = endDate.slice(0, 10)
+const TimeFrameSummary = () => {
+  const [data] = useStateValue()
+  const { timeFrame } = data.formData
+  const startDate = timeFrame ? timeFrame.startDate.slice(0, 10) : ''
+  const endDate = timeFrame ? timeFrame.endDate.slice(0, 10) : ''
   return (
     <React.Fragment>
       <H2>
@@ -52,8 +46,9 @@ const TimeFrameSummary = ({ client }) => {
   )
 }
 
-const WhatHappenedSummary = ({ client }) => {
-  let { whatHappened } = getWhatHappened(client)
+const WhatHappenedSummary = () => {
+  const [data] = useStateValue()
+  const { whatHappened } = data.formData
 
   return (
     <React.Fragment>
@@ -62,7 +57,7 @@ const WhatHappenedSummary = ({ client }) => {
         <EditButton label={'Edit what happened'} path="/whathappened" />
       </H2>
       {whatHappened ? (
-        <Text>{whatHappened}</Text>
+        <Text>{whatHappened.whatHappened}</Text>
       ) : (
         <Text>
           <Trans id="confirmationPage.scamIntro" />
@@ -72,8 +67,17 @@ const WhatHappenedSummary = ({ client }) => {
   )
 }
 
-const ScammerSummary = ({ client }) => {
-  const { scammerDetails, files, fileDescriptions } = getScammerDetails(client)
+const ScammerSummary = () => {
+  const [data] = useStateValue()
+  const scammerDetailsForm = data.formData.scammerDetails
+  const scammerDetails = scammerDetailsForm
+    ? scammerDetailsForm.scammerDetails
+    : ''
+  const files = scammerDetailsForm ? scammerDetailsForm.files : []
+  const fileDescriptions = scammerDetailsForm
+    ? scammerDetailsForm.fileDescriptions
+    : []
+
   return (
     <React.Fragment>
       <H2>
@@ -103,15 +107,14 @@ const ScammerSummary = ({ client }) => {
   )
 }
 
-const ImpactSummary = ({ client }) => {
+const ImpactSummary = () => {
   const { i18n } = useLingui()
-  let { howWereYouAffected, otherImpact, damage } = getImpact(client)
-  if (howWereYouAffected.indexOf('Other impact') > -1) {
-    howWereYouAffected = howWereYouAffected.filter(
-      impact => impact !== 'Other impact',
-    )
-    howWereYouAffected.push(otherImpact)
-  }
+
+  const [data] = useStateValue()
+  const { impact } = data.formData
+  const howWereYouAffected = impact ? impact.howWereYouAffected : []
+  const damage = impact ? impact.damage : ''
+
   return (
     <>
       <H2>
@@ -132,19 +135,23 @@ const ImpactSummary = ({ client }) => {
   )
 }
 
-const ContactSummary = ({ client }) => {
-  const { fullName, email, phone, postalCode } = getP2ContactInfo(client)
+const ContactSummary = () => {
+  const [data] = useStateValue()
+  const { contactInfo } = data.formData
+  const fullName = contactInfo ? contactInfo.fullName : ''
+  const email = contactInfo ? contactInfo.email : ''
+  const postalCode = contactInfo ? contactInfo.postalCode : ''
+
   return (
     <React.Fragment>
       <H2>
         <Trans id="confirmationPage.contactTitle" />{' '}
         <EditButton label={'Edit contact information'} path="/contactinfo" />
       </H2>
-      {(fullName + email + phone + postalCode).length > 0 ? (
+      {(fullName + email + postalCode).length > 0 ? (
         <React.Fragment>
           <Text>{fullName}</Text>
           <Text>{email}</Text>
-          <Text>{phone}</Text>
           <Text>{postalCode}</Text>
         </React.Fragment>
       ) : (
@@ -156,23 +163,22 @@ const ContactSummary = ({ client }) => {
   )
 }
 
-export const ConfirmationSummary = () => (
-  <ApolloConsumer>
-    {client => {
-      client.writeData({
-        data: { doneForms: true },
-      })
-      return (
-        <React.Fragment>
-          <Stack spacing={4} shouldWrapChildren>
-            <TimeFrameSummary client={client} />
-            <WhatHappenedSummary client={client} />
-            <ScammerSummary client={client} />
-            <ImpactSummary client={client} />
-            <ContactSummary client={client} />
-          </Stack>
-        </React.Fragment>
-      )
-    }}
-  </ApolloConsumer>
-)
+export const ConfirmationSummary = () => {
+  const [data, dispatch] = useStateValue()
+
+  if (!data.doneForms) {
+    dispatch({ type: 'saveDoneForms', data: true })
+  }
+
+  return (
+    <React.Fragment>
+      <Stack spacing={4} shouldWrapChildren>
+        <TimeFrameSummary />
+        <WhatHappenedSummary />
+        <ScammerSummary />
+        <ImpactSummary />
+        <ContactSummary />
+      </Stack>
+    </React.Fragment>
+  )
+}

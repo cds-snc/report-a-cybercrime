@@ -1,5 +1,4 @@
 import React from 'react'
-import { MockedProvider } from 'react-apollo/test-utils'
 import { ThemeProvider } from 'emotion-theming'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
@@ -15,11 +14,9 @@ describe('<Steps />', () => {
   it('Render without crashing - 2 steps', () => {
     render(
       <ThemeProvider theme={theme}>
-        <MockedProvider mocks={[]} addTypename={false}>
-          <I18nProvider i18n={i18n}>
-            <Steps activeStep={2} totalSteps={6} />
-          </I18nProvider>
-        </MockedProvider>
+        <I18nProvider i18n={i18n}>
+          <Steps activeStep={2} totalSteps={6} />
+        </I18nProvider>
       </ThemeProvider>,
     )
   })
@@ -27,11 +24,9 @@ describe('<Steps />', () => {
   it('Uses step props correctly', () => {
     const { getAllByText } = render(
       <ThemeProvider theme={theme}>
-        <MockedProvider mocks={[]} addTypename={false}>
-          <I18nProvider i18n={i18n}>
-            <Steps activeStep={1} totalSteps={6}></Steps>
-          </I18nProvider>
-        </MockedProvider>
+        <I18nProvider i18n={i18n}>
+          <Steps activeStep={1} totalSteps={6}></Steps>
+        </I18nProvider>
       </ThemeProvider>,
     )
     const test = getAllByText(/stepper/)

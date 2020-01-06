@@ -11,9 +11,10 @@ import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
 import { ImpactStatementPage } from './ImpactStatementPage'
 import { MoneyLostPage } from './MoneyLostPage'
+import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
-
+import { DevicesPage } from './DevicesPage'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -29,9 +30,6 @@ export const Home = () => (
         <Switch>
           <Route exact path="/">
             <LandingPage />
-          </Route>
-          <Route path="/moneylost">
-            <MoneyLostPage />
           </Route>
           <Route path="/whathappened">
             <WhatHappenedPage />
@@ -57,12 +55,17 @@ export const Home = () => (
           <Route path="/impact">
             <ImpactStatementPage />
           </Route>
-
+          <Route path="/business">
+            <BusinessPage />
+          </Route>
           <Route path="/information">
             <InformationPage />
           </Route>
           <Route path="/location">
             <LocationPage />
+          </Route>
+          <Route path="/devices">
+            <DevicesPage />
           </Route>
           <Route>
             <PageNotFound />
