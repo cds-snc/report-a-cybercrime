@@ -3,37 +3,23 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { jsx } from '@emotion/core'
-import { ApolloConsumer, Mutation } from 'react-apollo'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import {
-  getTellUsMore,
-  SUBMIT_P2_REPORT_MUTATION,
-} from '../utils/queriesAndMutations'
 import { Box } from '@chakra-ui/core'
 
 export const ConfirmationForm = props => {
   return (
     <React.Fragment>
-      <ApolloConsumer>
-        {client => (
-          <Mutation mutation={SUBMIT_P2_REPORT_MUTATION}>
-            {submitReportP2 => (
-              <Form
-                initialValues={getTellUsMore(client)}
-                onSubmit={() => props.onSubmit(client, submitReportP2)}
-                render={({ handleSubmit }) => (
-                  <Box as="form" onSubmit={handleSubmit}>
-                    <NextAndCancelButtons>
-                      <Trans id="confirmationPage.nextButton" />
-                    </NextAndCancelButtons>
-                  </Box>
-                )}
-              />
-            )}
-          </Mutation>
+      <Form
+        onSubmit={props.onSubmit}
+        render={({ handleSubmit }) => (
+          <Box as="form" onSubmit={handleSubmit}>
+            <NextAndCancelButtons>
+              <Trans id="confirmationPage.nextButton" />
+            </NextAndCancelButtons>
+          </Box>
         )}
-      </ApolloConsumer>
+      />
     </React.Fragment>
   )
 }

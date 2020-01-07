@@ -7,41 +7,44 @@ import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
 import { Layout } from './components/layout'
-import { getDoneForms } from './utils/queriesAndMutations'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
+import { useStateValue } from './utils/state'
 
-export const WhatHappenedPage = () => (
-  <Route
-    render={({ history }) => (
-      <Layout>
-        <TrackPageViews />
-        <Stack spacing={10} shouldWrapChildren>
-          <BackButton route="/impact">
-            <Trans id="whatHappendPage.backButton" />
-          </BackButton>
+export const WhatHappenedPage = () => {
+  const [data, dispatch] = useStateValue()
+  const { doneForms } = data
 
-          <Stack spacing={4} role="heading" aria-level="1">
-            <H1 as="span">
-              <Trans id="whatHappendPage.title" />
-            </H1>
+  return (
+    <Route
+      render={({ history }) => (
+        <Layout>
+          <TrackPageViews />
+          <Stack spacing={10} shouldWrapChildren>
+            <BackButton route="/impact">
+              <Trans id="whatHappendPage.backButton" />
+            </BackButton>
+
+            <Stack spacing={4} role="heading" aria-level="1">
+              <H1 as="span">
+                <Trans id="whatHappendPage.title" />
+              </H1>
+            </Stack>
+            <Stack spacing={4}>
+              <P>
+                <Trans id="whatHappendPage.intro1" />
+              </P>
+            </Stack>
+
+            <WhatHappenedForm
+              onSubmit={data => {
+                dispatch({ type: 'saveFormData', data: { whatHappened: data } })
+                history.push(doneForms ? '/confirmation' : '/scammerdetails')
+              }}
+            />
           </Stack>
-          <Stack spacing={4}>
-            <P>
-              <Trans id="whatHappendPage.intro1" />
-            </P>
-          </Stack>
-
-          <WhatHappenedForm
-            onSubmit={(client, data) => {
-              client.writeData({ data: { whatHappened: JSON.stringify(data) } })
-              history.push(
-                getDoneForms(client) ? '/confirmation' : '/scammerdetails',
-              )
-            }}
-          />
-        </Stack>
-      </Layout>
-    )}
-  />
-)
+        </Layout>
+      )}
+    />
+  )
+}

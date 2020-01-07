@@ -3,38 +3,33 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
-import { TextArea } from '../components/text-area'
-import { FormHelperText } from '../components/FormHelperText'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
+import { TextArea } from '../components/text-area'
+import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
+import { FormHelperText } from '../components/FormHelperText'
+import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
-import { useStateValue } from '../utils/state'
 
-export const WhatHappenedForm = props => {
-  const [data] = useStateValue()
-
-  const whatHappened = {
-    whatHappened: '',
-    ...data.formData.whatHappened,
-  }
-
+export const BusinessInfoForm = ({ onSubmit }) => {
   return (
     <Form
-      initialValues={whatHappened}
-      onSubmit={props.onSubmit}
+      initialValues={{}}
+      onSubmit={onSubmit}
       render={({ handleSubmit }) => (
-        <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
-          <Field name="whatHappened">
+        <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
+          <Field name="business">
             {props => (
               <FormControl>
-                <FormLabel htmlFor="whatHappened">
-                  <Trans id="whatHappendPage.summary" />
+                <FormLabel htmlFor="business">
+                  <Trans id="businessPage.business" />
                 </FormLabel>
                 <FormHelperText>
-                  <Trans id="whatHappendPage.hint" />
+                  <Trans id="businessPage.businessExample">
+                    <VisuallyHidden as="span" />
+                  </Trans>
                 </FormHelperText>
                 <TextArea
-                  id="whatHappened"
+                  id="business"
                   name={props.input.name}
                   value={props.input.value}
                   onChange={props.input.onChange}
@@ -43,10 +38,11 @@ export const WhatHappenedForm = props => {
             )}
           </Field>
           <P>
-            <Trans id="whatHappendPage.nextStep" />
+            <Trans id="businessInfoPage.nextPage" />
           </P>
+
           <NextAndCancelButtons>
-            <Trans id="whatHappenedPage.nextButton" />
+            <Trans id="businessInfoPage.nextButton" />
           </NextAndCancelButtons>
         </Stack>
       )}
@@ -54,6 +50,6 @@ export const WhatHappenedForm = props => {
   )
 }
 
-WhatHappenedForm.propTypes = {
+BusinessInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
