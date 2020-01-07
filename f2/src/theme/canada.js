@@ -1,5 +1,4 @@
 import { theme as chakraTheme } from '@chakra-ui/core'
-import { mergeDeep } from 'apollo-utilities'
 
 const shadows = {
   outline: '0 0 0 3px #ffbf47',
@@ -70,25 +69,25 @@ const borders = {
 }
 
 const borderWidths = {
-  "0": "0",
-  "1": "0.25rem",
-  "2": "0.5rem",
-  "3": "0.75rem",
-  "4": "1rem",
+  '0': '0',
+  '1': '0.25rem',
+  '2': '0.5rem',
+  '3': '0.75rem',
+  '4': '1rem',
 }
 
 const space = {
-  "7": "1.75rem",
+  '7': '1.75rem',
 }
 
 const variants = {
   forms: {
     input: {
-      autoComplete: "off",
-      rounded: "none",
-      borderWidth: "2px",
-      borderColor: "black",
-      transition: "0",
+      autoComplete: 'off',
+      rounded: 'none',
+      borderWidth: '2px',
+      borderColor: 'black',
+      transition: '0',
       _hover: {
         boxShadow: 'outlineHover',
         borderColor: 'black',
@@ -99,21 +98,39 @@ const variants = {
         boxShadow: 'outline',
         borderColor: 'black',
         border: '3px',
-      }
-    }
+      },
+    },
   },
 }
 
 const canada = {
-  shadows,
-  //radii,
+  ...chakraTheme,
+  shadows: {
+    ...chakraTheme.shadows,
+    ...shadows,
+  },
   fontSizes,
-  fonts,
-  colors,
-  borders,
-  space,
-  borderWidths,
+  fonts: {
+    ...chakraTheme.fonts,
+    ...fonts,
+  },
+  colors: {
+    ...chakraTheme.colors,
+    ...colors,
+  },
+  borders: {
+    ...chakraTheme.borders,
+    ...borders,
+  },
+  borderWidths: {
+    ...chakraTheme.borderWidths,
+    ...borderWidths,
+  },
+  space: {
+    ...chakraTheme.space,
+    ...space,
+  },
   variants,
 }
 
-export default mergeDeep(chakraTheme, canada)
+export default canada

@@ -11,7 +11,7 @@ export const InfoCard = props => (
     rounded="none"
     border="2px"
     borderColor="gray.400"
-    p={[3, null, 5]}
+    p={[3, null, 6]}
     bg="white"
     {...props}
   ></Box>
