@@ -14,6 +14,7 @@ import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
+import { EvidencePage } from './EvidencePage'
 
 
 const Root = styled('div')`
@@ -62,7 +63,10 @@ export const Home = () => (
             <LocationPage />
           </Route>
           <Route path="/devices">
-            <DevicesPage/>
+            <DevicesPage />
+          </Route>
+          <Route path="/evidence">
+            <EvidencePage />
           </Route>
           <Route>
             <PageNotFound />

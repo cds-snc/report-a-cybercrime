@@ -69,7 +69,6 @@
   "informationPage.tellUsMore": "Tell us more",
   "informationPage.nextButton": "Continue",
   "informationPage.nextStep": "Next, you will be asked about what happened.",
-
   "landingPage.nextButton": "Report now",
   "landingPage.required0": "Before you start, gather any evidence about the crime or scam:",
   "landingPage.required1": "Description of what happened",
@@ -137,5 +136,11 @@
   "locationinfoPage.cityTownExample": "For example: Montreal",
   "locationPage.backButton": "Back to the start page",
   "locationinfoPage.nextPage": "Next, you will be asked for your contact details.",
+  "evidencePage.title": "Supporting evidence",
+  "evidencePage.intro": "It’s okay if you didn’t keep any documentation of the event. You can skip to the next section.",
+  "evidencePage.details": "Think about including things such as:",
+  "evidencePage.detail1": "Screenshots of webpages, conversations, or email threads.",
+  "evidencePage.detail2": "Images of receipts, transations, or packing slips.",
+  "evidencePage.detail3": "Recording of the demands made by the suspect.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }
