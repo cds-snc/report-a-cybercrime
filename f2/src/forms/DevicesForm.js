@@ -5,30 +5,31 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
+import { TextArea } from '../components/text-area'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
 
-export const LocationInfoForm = ({ onSubmit }) => (
+export const DevicesForm = ({ onSubmit }) => (
   <Form
     initialValues={{}}
     onSubmit={onSubmit}
     render={({ handleSubmit }) => (
       <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-        <Field name="postalCode">
+        <Field name="deviceOrAccount">
           {props => (
             <FormControl>
-              <FormLabel htmlFor="postalCode">
-                <Trans id="locationinfoPage.postalCode" />
+              <FormLabel htmlFor="deviceOrAccount">
+                <Trans id="devicePage.deviceOrAccount" />
               </FormLabel>
               <FormHelperText>
-                <Trans id="locationinfoPage.postalCodeExample">
+                <Trans id="devicePage.deviceOrAccountExample">
                   <VisuallyHidden as="span" />
                 </Trans>
               </FormHelperText>
               <TextInput
-                id="email"
+                id="deviceOrAccount"
                 name={props.input.name}
                 value={props.input.value}
                 onChange={props.input.onChange}
@@ -37,17 +38,14 @@ export const LocationInfoForm = ({ onSubmit }) => (
           )}
         </Field>
 
-        <Field name="cityTown">
+        <Field name="devicesTellUsMore">
           {props => (
             <FormControl>
-              <FormLabel htmlFor="cityTown">
-                <Trans id="locationinfoPage.cityTown" />
+              <FormLabel htmlFor="devicesTellUsMore">
+                <Trans id="devicePage.devicesTellUsMore" />
               </FormLabel>
-              <FormHelperText>
-                <Trans id="locationinfoPage.cityTownExample" />
-              </FormHelperText>
-              <TextInput
-                id="postalCode"
+              <TextArea
+                id="devicesTellUsMore"
                 name={props.input.name}
                 value={props.input.value}
                 onChange={props.input.onChange}
@@ -56,17 +54,17 @@ export const LocationInfoForm = ({ onSubmit }) => (
           )}
         </Field>
         <P>
-          <Trans id="locationinfoPage.nextPage" />
+          <Trans id="devicePage.nextPage" />
         </P>
 
         <NextAndCancelButtons>
-          <Trans id="contactinfoPage.nextButton" />
+          <Trans id="devicePage.nextButton" />
         </NextAndCancelButtons>
       </Stack>
     )}
   />
 )
 
-LocationInfoForm.propTypes = {
+DevicesForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
