@@ -25,33 +25,33 @@ export const WhatHappenedPage = () => {
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/timeframe">
-              <Trans id="whatHappendPage.backButton" />
+              <Trans id="whatHappenedPage.backButton" />
             </BackButton>
 
             <Stack spacing={4} role="heading" aria-level="1">
               <Steps activeStep={2} totalSteps={6} />
               <H1 as="span">
-                <Trans id="whatHappendPage.title" />
+                <Trans id="whatHappenedPage.title" />
               </H1>
             </Stack>
             <Stack spacing={4}>
               <P>
-                <Trans id="whatHappendPage.intro1" />
+                <Trans id="whatHappenedPage.intro1" />
               </P>
 
               <P>
-                <Trans id="whatHappendPage.details1" />
+                <Trans id="whatHappenedPage.details1" />
               </P>
 
               <Ul>
                 <Li>
-                  <Trans id="whatHappendPage.details2" />
+                  <Trans id="whatHappenedPage.details2" />
                 </Li>
                 <Li>
-                  <Trans id="whatHappendPage.details3" />
+                  <Trans id="whatHappenedPage.details3" />
                 </Li>
                 <Li>
-                  <Trans id="whatHappendPage.details4" />
+                  <Trans id="whatHappenedPage.details4" />
                 </Li>
               </Ul>
             </Stack>
