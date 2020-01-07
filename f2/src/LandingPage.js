@@ -11,7 +11,7 @@ import { Li } from './components/list-item'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { Stack } from '@chakra-ui/core'
-import { WarningBanner } from './components/warning-banner'
+
 
 export const LandingPage = props => {
   return (
