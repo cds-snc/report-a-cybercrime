@@ -1,6 +1,5 @@
 import React from 'react'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
-import styled from '@emotion/styled'
 import { PageNotFound } from './PageNotFound'
 import { LandingPage } from './LandingPage'
 import { WhatHappenedPage } from './WhatHappenedPage'
@@ -14,61 +13,52 @@ import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
-
-
-const Root = styled('div')`
-  margin: 20pt;
-`
-const Screen = styled('div')`
-  margin-top: 0;
-`
+import { Box } from '@chakra-ui/core'
 
 export const Home = () => (
-  <Root>
-    <Screen>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route path="/whathappened">
-            <WhatHappenedPage />
-          </Route>
-          <Route path="/contactinfo">
-            <ContactInfoPage />
-          </Route>
-          <Route path="/scammerdetails">
-            <ScammerDetailsPage />
-          </Route>
-          <Route path="/confirmation">
-            <ConfirmationPage />
-          </Route>
-          <Route path="/nextsteps">
-            <NextSteps />
-          </Route>
-          <Route path="/timeframe">
-            <TimeFramePage />
-          </Route>
-          <Route path="/impact">
-            <ImpactStatementPage />
-          </Route>
-          <Route path="/business">
-            <BusinessPage />
-          </Route>
-          <Route path="/information">
-            <InformationPage />
-          </Route>
-          <Route path="/location">
-            <LocationPage />
-          </Route>
-          <Route path="/devices">
-            <DevicesPage/>
-          </Route>
-          <Route>
-            <PageNotFound />
-          </Route>
-        </Switch>
-      </Router>
-    </Screen>
-  </Root>
+  <Box maxW={{ sm: 540, md: 768, lg: 960, xl: 1200 }} px={4} width="100%">
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route path="/whathappened">
+          <WhatHappenedPage />
+        </Route>
+        <Route path="/contactinfo">
+          <ContactInfoPage />
+        </Route>
+        <Route path="/scammerdetails">
+          <ScammerDetailsPage />
+        </Route>
+        <Route path="/confirmation">
+          <ConfirmationPage />
+        </Route>
+        <Route path="/nextsteps">
+          <NextSteps />
+        </Route>
+        <Route path="/timeframe">
+          <TimeFramePage />
+        </Route>
+        <Route path="/impact">
+          <ImpactStatementPage />
+        </Route>
+        <Route path="/business">
+          <BusinessPage />
+        </Route>
+        <Route path="/information">
+          <InformationPage />
+        </Route>
+        <Route path="/location">
+          <LocationPage />
+        </Route>
+        <Route path="/devices">
+          <DevicesPage />
+        </Route>
+        <Route>
+          <PageNotFound />
+        </Route>
+      </Switch>
+    </Router>
+  </Box>
 )
