@@ -52,6 +52,9 @@ export const Home = () => (
           <Route path="/impact">
             <ImpactStatementPage />
           </Route>
+          <Route path="/moneylost">
+            <MoneyLostPage />
+          </Route>
           <Route path="/business">
             <BusinessPage />
           </Route>
