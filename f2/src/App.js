@@ -10,11 +10,7 @@ import { Footer } from './components/footer'
 import { ThemeProvider, Flex, Link, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
-<<<<<<< HEAD
-import { Global, css } from '@emotion/core'
-=======
 import { StateProvider, initialState, reducer } from './utils/state'
->>>>>>> master
 
 const App = () => {
   const { i18n } = useLingui()

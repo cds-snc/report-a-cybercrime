@@ -3,28 +3,10 @@ import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { Input as ChakraInput, useTheme } from '@chakra-ui/core'
 
-export const Input = props => (
-  <ChakraInput
-    autoComplete="off"
-    rounded="none"
-    borderWidth="2px"
-    borderColor="black"
-    maxW="300px"
-    transition="0"
-    _hover={{
-      boxShadow: 'outlineHover',
-      borderColor: 'black',
-    }}
-    _focus={{
-      outline: 'none',
-      bg: 'white',
-      boxShadow: 'outline',
-      borderColor: 'black',
-      border: '3px',
-    }}
-    {...props}
-  />
-)
+export const Input = props => {
+  const theme = useTheme()
+  return <ChakraInput maxW="300px" {...theme.variants.forms.input} {...props} />
+}
 
 Input.propTypes = {
   children: PropTypes.any,
