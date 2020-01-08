@@ -3,6 +3,7 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import styled from '@emotion/styled'
 import { PageNotFound } from './PageNotFound'
 import { LandingPage } from './LandingPage'
+import { ThankYouPage } from './ThankYouPage'
 import { WhatHappenedPage } from './WhatHappenedPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { ScammerDetailsPage } from './ScammerDetailsPage'
@@ -14,7 +15,6 @@ import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
-
 
 const Root = styled('div')`
   margin: 20pt;
@@ -30,6 +30,9 @@ export const Home = () => (
         <Switch>
           <Route exact path="/">
             <LandingPage />
+          </Route>
+          <Route exact path="/thankYouPage">
+            <ThankYouPage />
           </Route>
           <Route path="/whathappened">
             <WhatHappenedPage />
@@ -62,7 +65,7 @@ export const Home = () => (
             <LocationPage />
           </Route>
           <Route path="/devices">
-            <DevicesPage/>
+            <DevicesPage />
           </Route>
           <Route>
             <PageNotFound />

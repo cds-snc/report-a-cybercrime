@@ -21,25 +21,28 @@ export const WhatHappenedPage = () => {
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/impact">
-              <Trans id="whatHappendPage.backButton" />
+
+            <BackButton route="/timeframe">
+              <Trans id="whatHappenedPage.backButton" />
+
             </BackButton>
 
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
-                <Trans id="whatHappendPage.title" />
+                <Trans id="whatHappenedPage.title" />
               </H1>
             </Stack>
             <Stack spacing={4}>
               <P>
-                <Trans id="whatHappendPage.intro1" />
+                <Trans id="whatHappenedPage.intro1" />
               </P>
+    
             </Stack>
 
             <WhatHappenedForm
               onSubmit={data => {
                 dispatch({ type: 'saveFormData', data: { whatHappened: data } })
-                history.push(doneForms ? '/confirmation' : '/scammerdetails')
+                history.push(doneForms ? '/confirmation' : '/suspectCluesPage')
               }}
             />
           </Stack>
