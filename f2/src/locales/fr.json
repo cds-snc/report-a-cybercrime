@@ -138,5 +138,7 @@
   "evidencePage.title": "Preuve à l'appui",
   "evidencePage.intro": "Ce n'est pas grave si vous ne conservez aucune documentation de l'événement. Vous pouvez passer à la section suivante.",
   "evidencePage.details": "Pensez à inclure des détails tels que :",
+  "evidencePage.addFileButtom": "Ajouter un fichier",
+  "evidencePage.removeFileButton": "Supprimer le fichier",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 }

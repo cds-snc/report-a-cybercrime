@@ -6,9 +6,8 @@ import { H1 } from './components/header'
 import { P } from './components/paragraph'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
-import { Steps } from './components/stepper'
 import { TrackPageViews } from './TrackPageViews'
-import { ScammerDetailsForm } from './forms/ScammerDetailsForm'
+import { EvidenceInfoForm } from './forms/EvidenceInfoForm'
 import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack, Box } from '@chakra-ui/core'
@@ -53,7 +52,7 @@ export const EvidencePage = () => {
                             </Ul>
                         </Box>
 
-                        <ScammerDetailsForm
+                        <EvidenceInfoForm
                             onSubmit={data => {
                                 dispatch({
                                     type: 'saveFormData',

@@ -142,5 +142,8 @@
   "evidencePage.detail1": "Screenshots of webpages, conversations, or email threads.",
   "evidencePage.detail2": "Images of receipts, transations, or packing slips.",
   "evidencePage.detail3": "Recording of the demands made by the suspect.",
+  "evidencePage.fileDescription": "Describe what this file shows",
+  "evidencePage.addFileButtom": "Add file",
+  "evidencePage.removeFileButton": "Remove file",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }

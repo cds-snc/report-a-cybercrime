@@ -12,11 +12,10 @@ import { H2, H3 } from '../components/header'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
 import { Box, Stack, FormControl, PseudoBox } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 
-export const ScammerDetailsForm = props => {
+export const EvidenceInfoForm = props => {
     const [data] = useStateValue()
     const cached = {
         scammerDetails: '',
@@ -88,31 +87,11 @@ export const ScammerDetailsForm = props => {
                         spacing={6}
                         shouldWrapChildren
                     >
-                        <Field name="scammerDetails">
-                            {props => (
-                                <FormControl>
-                                    <FormLabel htmlFor="scammerDetails">
-                                        <Trans id="scammerDetail.summary" />
-                                    </FormLabel>
-                                    <FormHelperText>
-                                        <Trans id="scammerDetail.reminder" />
-                                    </FormHelperText>
-
-                                    <TextArea
-                                        id="scammerDetails"
-                                        name={props.input.name}
-                                        value={props.input.value}
-                                        onChange={props.input.onChange}
-                                    />
-                                </FormControl>
-                            )}
-                        </Field>
-
                         <Stack spacing={4}>
                             <Box>
                                 <FileUpload onChange={onChange}>
                                     <Button leftIcon="attachment" as="div" variantColor="blue">
-                                        <Trans id="scammerDetail.addFileButtom" />
+                                        <Trans id="evidencePage.addFileButtom" />
                                     </Button>
                                 </FileUpload>
                             </Box>
@@ -158,7 +137,7 @@ export const ScammerDetailsForm = props => {
                                                     {props => (
                                                         <FormControl>
                                                             <FormLabel htmlFor={`file-description-${index}`}>
-                                                                <Trans id="scammerDetail.fileDescription" />
+                                                                <Trans id="evidencePage.fileDescription" />
                                                             </FormLabel>
                                                             <TextArea
                                                                 id={`file-description-${index}`}
@@ -177,7 +156,7 @@ export const ScammerDetailsForm = props => {
                                                 type="button"
                                                 onClick={() => removeFile(index)}
                                             >
-                                                <Trans id="scammerDetail.removeFileButton" />
+                                                <Trans id="evidencePage.removeFileButton" />
                                             </Button>
                                         </Stack>
                                     </InfoCard>
@@ -195,6 +174,6 @@ export const ScammerDetailsForm = props => {
     )
 }
 
-ScammerDetailsForm.propTypes = {
+EvidenceInfoForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
 }
