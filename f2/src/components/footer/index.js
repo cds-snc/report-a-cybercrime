@@ -11,9 +11,10 @@ export const Footer = props => {
     <Box as="footer" bg={bg} p={[3, 3, 4]} fontFamily="body">
       <Flex align="center" direction="row">
         <List px={0}>{props.children}</List>
-        <Box w="100px" ml="auto">
+        <Box ml="auto">
           <WordMark
-            width="100%"
+            width="143px"
+            height="34px"
             flag="#fff"
             text="#fff"
             css={css`
