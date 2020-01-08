@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-
 import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
@@ -31,7 +29,6 @@ export const WhatWasAffectedPage = () => {
                 <Trans id="whatWasAffectedPage.title" />
               </H1>
             </Stack>
-
             <P>
               <Trans id="whatWasAffectedPage.intro" />
             </P>
