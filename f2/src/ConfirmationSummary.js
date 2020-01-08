@@ -7,7 +7,7 @@ import { H2, H1 } from './components/header'
 import { Text, StyledSpan } from './components/text'
 import { Container } from './components/container'
 import { Link } from './components/link'
-import { Stack, Grid } from '@chakra-ui/core'
+import { Stack, Grid, Flex } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
 const EditButton = ({ path, label }) => {
@@ -171,25 +171,28 @@ export const ConfirmationSummary = () => {
 
   return (
     <React.Fragment>
-      <Stack spacing={4} shouldWrapChildren>
-        <Stack>
-          <H1>Section title</H1>
-          <Link to="#">Edit</Link>
-          <Text>Sentence</Text>
-          <Grid
-            templateColumns={{
-              sm: 'repeat(4, 1fr)',
-              md: 'repeat(8, 1fr)',
-              lg: 'repeat(12, 1fr)',
-              xl: 'repeat(12, 1fr)',
-            }}
-            gap={4}
-          >
-            <Text fontWeight="bold" gridColumn="span 4">
-              Question
-            </Text>
-            <Text gridColumn="span 4">Answer</Text>
-          </Grid>
+      <Stack spacing={12} shouldWrapChildren>
+        <Stack spacing={4} borderBottom="2px" pb={4}>
+          <Flex align="baseline">
+            <H2 fontWeight="600" fontSize="2xl">
+              Section title
+            </H2>
+            <Link to="#" fontSize="lg" ml={4}>
+              Edit
+            </Link>
+          </Flex>
+
+          <Text>Sentence composed with checkbox or radio answers</Text>
+          <Stack as="dl">
+            <Flex>
+              <Text as="dt" fontWeight="bold" w="40%">
+                Question
+              </Text>
+              <Text as="dd" w="60%">
+                Answer
+              </Text>
+            </Flex>
+          </Stack>
         </Stack>
         <TimeFrameSummary />
         <WhatHappenedSummary />
