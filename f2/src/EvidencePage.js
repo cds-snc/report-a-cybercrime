@@ -24,7 +24,7 @@ export const EvidencePage = () => {
                     <TrackPageViews />
                     <Stack spacing={10} shouldWrapChildren>
                         <BackButton route="/whathappened">
-                            <Trans id="scammerDetail.backButton" />
+                            <Trans id="evidencePage.backButton" />
                         </BackButton>
 
                         <Stack spacing={4} role="heading" aria-level="1">

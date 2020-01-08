@@ -18,7 +18,6 @@ import { FormLabel } from '../components/FormLabel'
 export const EvidenceInfoForm = props => {
     const [data] = useStateValue()
     const cached = {
-        scammerDetails: '',
         files: [],
         fileDescriptions: [],
         ...data.formData.scammerDetails,
@@ -28,7 +27,6 @@ export const EvidenceInfoForm = props => {
     const [fileDescriptions, setFileDescriptions] = useState(
         cached.fileDescriptions,
     )
-    const [scammerDetails, setScammerDetails] = useState(cached.scammerDetails)
     const [status, setStatus] = useState('')
     useEffect(() => {
         if (status) {
@@ -38,9 +36,7 @@ export const EvidenceInfoForm = props => {
     const { i18n } = useLingui()
 
     const onChange = e => {
-        if (e.target.id === 'scammerDetails') {
-            setScammerDetails(e.target.value)
-        } else if (e.target.id.indexOf('file-description') > -1) {
+        if (e.target.id.indexOf('file-description') > -1) {
             const index = Number(e.target.id.substring(17))
             let newFileDescriptions = JSON.parse(JSON.stringify(fileDescriptions))
             newFileDescriptions[index] = e.target.value
@@ -64,7 +60,6 @@ export const EvidenceInfoForm = props => {
 
     const localSubmit = () => {
         const data = {
-            scammerDetails,
             files: files.map(f => f.name),
             fileDescriptions,
         }
@@ -165,7 +160,7 @@ export const EvidenceInfoForm = props => {
                         </Container>
 
                         <NextAndCancelButtons>
-                            <Trans id="scammerDetail.nextButton">Next: Impact of scam</Trans>
+                            <Trans id="evidencePage.nextButton">Next: Impact of scam</Trans>
                         </NextAndCancelButtons>
                     </Stack>
                 )}

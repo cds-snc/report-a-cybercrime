@@ -138,7 +138,12 @@
   "evidencePage.title": "Preuve à l'appui",
   "evidencePage.intro": "Ce n'est pas grave si vous ne conservez aucune documentation de l'événement. Vous pouvez passer à la section suivante.",
   "evidencePage.details": "Pensez à inclure des détails tels que :",
+  "evidencePage.detail1": "Captures d'écran de pages Web, conversations ou fils de discussion.",
+  "evidencePage.detail2": "Images de reçus, de transactions ou de bons de livraison.",
+  "evidencePage.detail3": "Enregistrement des demandes formulées par le suspect.",
   "evidencePage.addFileButtom": "Ajouter un fichier",
   "evidencePage.removeFileButton": "Supprimer le fichier",
+  "evidencePage.nextButton": "continuer",
+  "evidencePage.backButton": "Retour à qui pourrait être impliqué",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 }

@@ -145,5 +145,7 @@
   "evidencePage.fileDescription": "Describe what this file shows",
   "evidencePage.addFileButtom": "Add file",
   "evidencePage.removeFileButton": "Remove file",
+  "evidencePage.nextButton": "Continue",
+  "evidencePage.backButton": "Back to who could be involved",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }
