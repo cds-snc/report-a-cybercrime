@@ -16,49 +16,47 @@ import { DevicesPage } from './DevicesPage'
 import { Box } from '@chakra-ui/core'
 
 export const Home = () => (
-  <Box maxW={{ sm: 540, md: 768, lg: 960, xl: 1200 }} px={4} width="100%">
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <LandingPage />
-        </Route>
-        <Route path="/whathappened">
-          <WhatHappenedPage />
-        </Route>
-        <Route path="/contactinfo">
-          <ContactInfoPage />
-        </Route>
-        <Route path="/scammerdetails">
-          <ScammerDetailsPage />
-        </Route>
-        <Route path="/confirmation">
-          <ConfirmationPage />
-        </Route>
-        <Route path="/nextsteps">
-          <NextSteps />
-        </Route>
-        <Route path="/timeframe">
-          <TimeFramePage />
-        </Route>
-        <Route path="/impact">
-          <ImpactStatementPage />
-        </Route>
-        <Route path="/business">
-          <BusinessPage />
-        </Route>
-        <Route path="/information">
-          <InformationPage />
-        </Route>
-        <Route path="/location">
-          <LocationPage />
-        </Route>
-        <Route path="/devices">
-          <DevicesPage />
-        </Route>
-        <Route>
-          <PageNotFound />
-        </Route>
-      </Switch>
-    </Router>
-  </Box>
+  <Router>
+    <Switch>
+      <Route exact path="/">
+        <LandingPage />
+      </Route>
+      <Route path="/whathappened">
+        <WhatHappenedPage />
+      </Route>
+      <Route path="/contactinfo">
+        <ContactInfoPage />
+      </Route>
+      <Route path="/scammerdetails">
+        <ScammerDetailsPage />
+      </Route>
+      <Route path="/confirmation">
+        <ConfirmationPage />
+      </Route>
+      <Route path="/nextsteps">
+        <NextSteps />
+      </Route>
+      <Route path="/timeframe">
+        <TimeFramePage />
+      </Route>
+      <Route path="/impact">
+        <ImpactStatementPage />
+      </Route>
+      <Route path="/business">
+        <BusinessPage />
+      </Route>
+      <Route path="/information">
+        <InformationPage />
+      </Route>
+      <Route path="/location">
+        <LocationPage />
+      </Route>
+      <Route path="/devices">
+        <DevicesPage />
+      </Route>
+      <Route>
+        <PageNotFound />
+      </Route>
+    </Switch>
+  </Router>
 )

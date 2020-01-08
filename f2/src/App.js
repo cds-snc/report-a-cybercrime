@@ -24,7 +24,7 @@ const App = () => {
             @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
           `}
         />
-        <Flex direction="column" minHeight="100vh">
+        <Flex direction="column" minHeight="100vh" bg="gray.50">
           <header>
             <SkipLink invisible href="#main">
               <Trans id="SkipLink.text" />
@@ -40,10 +40,12 @@ const App = () => {
 
           <Flex
             id="main"
-            justify="center"
             fontFamily="body"
             flex="1 0 auto"
-            bg="gray.50"
+            mx="auto"
+            px={2}
+            maxW={{ sm: 540, md: 768, lg: 960, xl: 1200 }}
+            width="100%"
           >
             <Home />
           </Flex>
