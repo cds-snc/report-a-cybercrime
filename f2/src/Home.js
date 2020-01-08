@@ -13,7 +13,6 @@ import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
-import { Box } from '@chakra-ui/core'
 
 export const Home = () => (
   <Router>

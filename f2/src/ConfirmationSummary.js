@@ -3,11 +3,11 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { H2, H1 } from './components/header'
+import { H2 } from './components/header'
 import { Text, StyledSpan } from './components/text'
 import { Container } from './components/container'
 import { Link } from './components/link'
-import { Stack, Grid, Flex } from '@chakra-ui/core'
+import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
 const EditButton = ({ path, label }) => {
