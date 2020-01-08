@@ -90,7 +90,7 @@ export const ConfirmationPage = () => {
                 let data = prepFormData(formData)
                 submitToServer(data)
                 dispatch({ type: 'deleteFormData', data: {} })
-                history.push('/nextsteps')
+                history.push('/thankYouPage')
               }}
             />
           </Stack>
