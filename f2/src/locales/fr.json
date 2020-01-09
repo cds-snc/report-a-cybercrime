@@ -1,8 +1,8 @@
 {
   "Page not found": "Page introuvable",
-  "PrivacyConsentPage.backButton": "Retour à la page d'accueil",
-  "PrivacyConsentPage.intro": "La nouvelle unité nationale de coordination de la GRC de la GRC évaluera votre rapport.",
-  "PrivacyConsentPage.title": "Votre vie privée",
+  "privacyConsentPage.backButton": "Retour à la page d'accueil",
+  "privacyConsentPage.intro": "La nouvelle unité nationale de coordination de la GRC de la GRC évaluera votre rapport.",
+  "privacyConsentPage.title": "Votre vie privée",
   "SkipLink.text": "Aller au contenu principal",
   "Sorry, the page you were trying to view does not exist.": "Désolé, la page que vous essayiez de voir n'existe pas.",
   "banner.footerPrivacy": "Confidentialité",

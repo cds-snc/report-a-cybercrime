@@ -1,8 +1,8 @@
 {
   "Page not found": "Page not found",
-  "PrivacyConsentPage.backButton": "Back to the start page",
-  "PrivacyConsentPage.intro": "The RCMP's new national Cybercrime Coordination Unit will assess your report.",
-  "PrivacyConsentPage.title": "Your privacy",
+  "privacyConsentPage.backButton": "Back to the start page",
+  "privacyConsentPage.intro": "The RCMP's new national Cybercrime Coordination Unit will assess your report.",
+  "privacyConsentPage.title": "Your privacy",
   "SkipLink.text": "Skip to main content",
   "Sorry, the page you were trying to view does not exist.": "Sorry, the page you were trying to view does not exist.",
   "banner.footerPrivacy": "Privacy",

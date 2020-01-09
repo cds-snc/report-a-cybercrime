@@ -21,18 +21,17 @@ export const PrivacyConsentPage = () => {
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/">
-              <Trans id="PrivacyConsentPage.backButton" />
+              <Trans id="privacyConsentPage.backButton" />
             </BackButton>
 
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
-                <Trans id="PrivacyConsentPage.title" />
+                <Trans id="privacyConsentPage.title" />
               </H1>
             </Stack>
             <P>
-              <Trans id="PrivacyConsentPage.intro" />
+              <Trans id="privacyConsentPage.intro" />
             </P>
-W
             <PrivacyConsentInfoForm
               onSubmit={data => {
                 dispatch({
