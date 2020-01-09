@@ -39,6 +39,14 @@ const validate = () => {
   return {}
 }
 
+export const whatWasAffectedPages = [
+  { key: 'whatWasAffectedForm.financial', url: 'money' },
+  { key: 'whatWasAffectedForm.personal_information', url: 'information' },
+  { key: 'whatWasAffectedForm.devices', url: 'devices' },
+  { key: 'whatWasAffectedForm.business_assets', url: 'business' },
+  { key: 'whatWasAffectedForm.other', url: '' },
+]
+
 export const WhatWasAffectedForm = props => {
   const { i18n } = useLingui()
 
@@ -48,13 +56,8 @@ export const WhatWasAffectedForm = props => {
     ...data.formData.whatWasAffected,
   }
 
-  const affectedOptions = [
-    'whatWasAffectedForm.financial',
-    'whatWasAffectedForm.personal_information',
-    'whatWasAffectedForm.devices',
-    'whatWasAffectedForm.business_assets',
-    'whatWasAffectedForm.other',
-  ]
+  const affectedOptions = whatWasAffectedPages.map(page => page.key)
+
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
