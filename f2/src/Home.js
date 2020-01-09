@@ -11,6 +11,7 @@ import { ConfirmationPage } from './ConfirmationPage'
 import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
 import { ImpactStatementPage } from './ImpactStatementPage'
+import { MoneyLostPage } from './MoneyLostPage'
 import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
@@ -55,6 +56,9 @@ export const Home = () => (
           </Route>
           <Route path="/impact">
             <ImpactStatementPage />
+          </Route>
+          <Route path="/moneylost">
+            <MoneyLostPage />
           </Route>
           <Route path="/business">
             <BusinessPage />
