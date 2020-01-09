@@ -28,7 +28,6 @@ export const BusinessPage = () => {
                                 <Trans id="businessPage.title" />
                             </H1>
                         </Stack>
-
                         <BusinessInfoForm
                             onSubmit={data => {
                                 dispatch({ type: 'saveFormData', data: { business: data } })
