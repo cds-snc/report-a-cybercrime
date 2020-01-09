@@ -24,7 +24,7 @@ export const BusinessInfoForm = props => {
   }
   return (
     <Form
-      initialValues={{}}
+      initialValues={businessInfo}
       onSubmit={data => localOnSubmit(data)}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
