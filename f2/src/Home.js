@@ -19,6 +19,10 @@ import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
 import { PrivacyConsentPage } from './PrivacyConsentPage'
 import { WhatWasAffectedPage } from './WhatWasAffected'
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6deb4f01fe358c13410602ef036550482d5166ca
 
 const Root = styled('div')`
   margin: 20pt;
@@ -79,7 +83,10 @@ export const Home = () => (
           </Route>
           <Route path="/privacyconsent">
             <PrivacyConsentPage />
+<<<<<<< HEAD
             </Route>
+=======
+>>>>>>> 6deb4f01fe358c13410602ef036550482d5166ca
           <Route path="/whatwasaffected">
             <WhatWasAffectedPage />
           </Route>
