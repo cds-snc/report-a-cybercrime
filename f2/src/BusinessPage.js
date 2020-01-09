@@ -30,7 +30,7 @@ export const BusinessPage = () => {
                         </Stack>
                         <BusinessInfoForm
                             onSubmit={data => {
-                                dispatch({ type: 'saveFormData', data: { business: data } })
+                                dispatch({ type: 'saveFormData', data: { businessInfo: data } })
                                 history.push(doneForms ? '/confirmation' : '/whathappened')
                             }}
                         />
