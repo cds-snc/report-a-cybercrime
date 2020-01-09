@@ -144,8 +144,9 @@
   "evidencePage.detail3": "Recording of the demands made by the suspect.",
   "evidencePage.fileDescription": "Describe what this file shows",
   "evidencePage.addFileButtom": "Add file",
-  "evidencePage.removeFileButton": "Remove file",
+  "evidencePage.removeFileButton": "Delete file",
   "evidencePage.nextButton": "Continue",
   "evidencePage.backButton": "Back to who could be involved",
+  "evidencePage.nextPage": "Next, you will be asked for your location.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }

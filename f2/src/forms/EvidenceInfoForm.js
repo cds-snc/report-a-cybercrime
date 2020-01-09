@@ -14,6 +14,7 @@ import { FileUpload } from '../components/file-upload'
 import { Box, Stack, FormControl, PseudoBox } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
+import { P } from '../components/paragraph'
 
 export const EvidenceInfoForm = props => {
     const [data] = useStateValue()
@@ -158,9 +159,11 @@ export const EvidenceInfoForm = props => {
                                 </React.Fragment>
                             ))}
                         </Container>
-
+                        <P>
+                            <Trans id="evidencePage.nextPage" />
+                        </P>
                         <NextAndCancelButtons>
-                            <Trans id="evidencePage.nextButton">Next: Impact of scam</Trans>
+                            <Trans id="evidencePage.nextButton" />
                         </NextAndCancelButtons>
                     </Stack>
                 )}

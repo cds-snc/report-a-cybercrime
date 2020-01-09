@@ -145,5 +145,6 @@
   "evidencePage.removeFileButton": "Supprimer le fichier",
   "evidencePage.nextButton": "continuer",
   "evidencePage.backButton": "Retour à qui pourrait être impliqué",
+  "evidencePage.nextPage": "Ensuite, il vous sera demandé votre emplacement.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 }

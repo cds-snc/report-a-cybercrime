@@ -54,10 +54,7 @@ export const EvidencePage = () => {
 
                         <EvidenceInfoForm
                             onSubmit={data => {
-                                dispatch({
-                                    type: 'saveFormData',
-                                    data: { scammerDetails: data },
-                                })
+                                dispatch({ type: 'saveFormData', data: { evidence: data } })
                                 history.push(doneForms ? '/confirmation' : '/impact')
                             }}
                         />
