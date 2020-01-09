@@ -5,13 +5,17 @@ import { H1 } from './components/header'
 import { Layout } from './components/layout'
 import { MoneyLostInfoForm } from './forms/MoneyLostInfoForm'
 import { TrackPageViews } from './TrackPageViews'
-import { getDoneForms } from './utils/queriesAndMutations'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
+import { useStateValue } from './utils/state'
 
-export const MoneyLostPage = () => (
+export const MoneyLostPage = () => {
+  const [data, dispatch] = useStateValue()
+  const { doneForms } = data
+  return (
   <Route
-    render={({ history }) => (
+  render={({ history }) => (
+    
       <Layout>
         <TrackPageViews />
 
@@ -24,16 +28,16 @@ export const MoneyLostPage = () => (
               <Trans  id="moneyLostPage.title" />
             </H1>
           </Stack>
+
           <MoneyLostInfoForm
-            onSubmit={(client, data) => {
-              client.writeData({ data: { moneylost: JSON.stringify(data) } })
-              history.push(
-                getDoneForms(client) ? '/confirmation' : '/whathappened',
-              )
-            }}
+            onSubmit={ data => {
+              dispatch({ type: 'saveFormData', data: { moneyLost: data } })
+                history.push(doneForms ? '/confirmation' : '/whathappened')
+              }}       
           />
         </Stack>
       </Layout>
     )}
   />
 )
+ }
