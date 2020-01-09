@@ -7,6 +7,7 @@ import { TextArea } from '../components/text-area'
 import { FormHelperText } from '../components/FormHelperText'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
+import { P } from '../components/paragraph'
 import { useStateValue } from '../utils/state'
 
 export const WhatHappenedForm = props => {
@@ -20,17 +21,17 @@ export const WhatHappenedForm = props => {
   return (
     <Form
       initialValues={whatHappened}
-      onSubmit={data => props.onSubmit(data)}
+      onSubmit={props.onSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
           <Field name="whatHappened">
             {props => (
               <FormControl>
                 <FormLabel htmlFor="whatHappened">
-                  <Trans id="whatHappendPage.summary" />
+                  <Trans id="whatHappenedPage.summary" />
                 </FormLabel>
                 <FormHelperText>
-                  <Trans id="whatHappendPage.hint" />
+                  <Trans id="whatHappenedPage.hint" />
                 </FormHelperText>
                 <TextArea
                   id="whatHappened"
@@ -41,6 +42,9 @@ export const WhatHappenedForm = props => {
               </FormControl>
             )}
           </Field>
+          <P>
+            <Trans id="whatHappendPage.nextStep" />
+          </P>
           <NextAndCancelButtons>
             <Trans id="whatHappenedPage.nextButton" />
           </NextAndCancelButtons>
