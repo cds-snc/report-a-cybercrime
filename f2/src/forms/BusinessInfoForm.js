@@ -17,11 +17,10 @@ export const BusinessInfoForm = props => {
   }
 
   const [data] = useStateValue()
-  let { timeFrame } = data.formData
-  timeFrame = {
-    startDate: '',
-    endDate: '',
-    ...timeFrame,
+  let { businessInfo } = data.formData
+  businessInfo = {
+    business: '',
+    ...businessInfo,
   }
   return (
     <Form
