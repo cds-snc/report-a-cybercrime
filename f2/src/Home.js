@@ -17,6 +17,7 @@ import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
+import { WhatWasAffectedPage } from './WhatWasAffected'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -74,6 +75,9 @@ export const Home = () => (
           </Route>
           <Route path="/devices">
             <DevicesPage />
+          </Route>
+          <Route path="/whatwasaffected">
+            <WhatWasAffectedPage />
           </Route>
           <Route>
             <PageNotFound />
