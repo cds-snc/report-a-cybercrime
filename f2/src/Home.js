@@ -6,6 +6,7 @@ import { LandingPage } from './LandingPage'
 import { ThankYouPage } from './ThankYouPage'
 import { WhatHappenedPage } from './WhatHappenedPage'
 import { ContactInfoPage } from './ContactInfoPage'
+import { SuspectCluesPage } from './SuspectCluesPage'
 import { ScammerDetailsPage } from './ScammerDetailsPage'
 import { ConfirmationPage } from './ConfirmationPage'
 import { NextSteps } from './NextSteps'
@@ -17,6 +18,7 @@ import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
 import { PrivacyConsentPage } from './PrivacyConsentPage'
+import { WhatWasAffectedPage } from './WhatWasAffected'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -41,6 +43,9 @@ export const Home = () => (
           </Route>
           <Route path="/contactinfo">
             <ContactInfoPage />
+          </Route>
+          <Route path="/suspectCluesPage">
+            <SuspectCluesPage />
           </Route>
           <Route path="/scammerdetails">
             <ScammerDetailsPage />
@@ -74,6 +79,9 @@ export const Home = () => (
           </Route>
           <Route path="/privacyconsent">
             <PrivacyConsentPage />
+            </Route>
+          <Route path="/whatwasaffected">
+            <WhatWasAffectedPage />
           </Route>
           <Route>
             <PageNotFound />
