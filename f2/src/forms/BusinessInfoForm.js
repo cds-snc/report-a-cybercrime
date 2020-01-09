@@ -9,12 +9,24 @@ import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
+import { useStateValue } from '../utils/state'
 
-export const BusinessInfoForm = ({ onSubmit }) => {
+export const BusinessInfoForm = props => {
+  const localOnSubmit = data => {
+    props.onSubmit(data)
+  }
+
+  const [data] = useStateValue()
+  let { timeFrame } = data.formData
+  timeFrame = {
+    startDate: '',
+    endDate: '',
+    ...timeFrame,
+  }
   return (
     <Form
       initialValues={{}}
-      onSubmit={onSubmit}
+      onSubmit={data => localOnSubmit(data)}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
           <Field name="business">
