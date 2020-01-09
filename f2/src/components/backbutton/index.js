@@ -11,6 +11,7 @@ export const BackButton = ({ route = '', children }) => (
     textAlign="left"
     fontFamily="body"
     fontSize="lg"
+    color="blue.600"
   >
     <Icon name="chevron-left" />
     {children}
