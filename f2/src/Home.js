@@ -17,6 +17,7 @@ import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
+import { EvidencePage } from './EvidencePage'
 import { PrivacyConsentPage } from './PrivacyConsentPage'
 import { WhatWasAffectedPage } from './WhatWasAffected'
 
@@ -77,6 +78,9 @@ export const Home = () => (
           </Route>
           <Route path="/devices">
             <DevicesPage />
+          </Route>
+          <Route path="/evidence">
+            <EvidencePage />
           </Route>
           <Route path="/privacyconsent">
             <PrivacyConsentPage />
