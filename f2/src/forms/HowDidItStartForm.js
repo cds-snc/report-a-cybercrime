@@ -46,8 +46,7 @@ export const HowDidItStartForm = props => {
   const [data] = useStateValue()
   const channel = {
     howDidTheyReachYou: [],
-    damage: '',
-    ...data.formData.channel,
+    ...data.formData.channel
   }
   var questionsList =[
    { name:"email", channel:"howDidTheyReachYou.email", label: "howDidTheyReachYouLabel.question1", hint: "howDidTheyReachYouLabel.hint1" },
@@ -59,16 +58,19 @@ export const HowDidItStartForm = props => {
 
   return (
     <React.Fragment>
-      {false ? (
-        <div>
-          <Trans id="howDidTheyReachYou.email" />
-          <Trans id="howDidTheyReachYou.phone" />
-          <Trans id="howDidTheyReachYou.online" />
-          <Trans id="howDidTheyReachYou.app" />
-          <Trans id="howDidTheyReachYou.others" />
-        </div>
-      ) : null}
 
+    {/*
+          {false ? (
+            <div>
+              //TODO: mark the proper ids for lingui
+              <Trans id="howDidTheyReachYou.email" />
+              <Trans id="howDidTheyReachYou.phone" />
+              <Trans id="howDidTheyReachYou.online" />
+              <Trans id="howDidTheyReachYou.app" />
+              <Trans id="howDidTheyReachYou.others" />
+            </div>
+          ) : null}
+    */}
       <Form
         initialValues={channel}
         onSubmit={data => props.onSubmit(data)}
