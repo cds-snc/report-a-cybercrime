@@ -20,7 +20,7 @@ export const ContactInfoPage = () => {
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/impact">
+            <BackButton route="/location">
               <Trans id="contactinfoPage.backButton" />
             </BackButton>
 

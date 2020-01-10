@@ -24,7 +24,7 @@ export const MoneyLostPage = () => {
           <TrackPageViews />
 
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/">
+            <BackButton route="/whatwasaffected">
               <Trans id="moneyLostPage.backButton" />
             </BackButton>
             <Stack spacing={4} role="heading" aria-level="1">

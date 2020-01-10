@@ -26,23 +26,49 @@ export const Home = () => (
       <Route exact path="/">
         <LandingPage />
       </Route>
-      <Route exact path="/thankYouPage">
-        <ThankYouPage />
+      <Route path="/privacyconsent">
+        <PrivacyConsentPage />
+      </Route>
+      <Route path="/whatwasaffected">
+        <WhatWasAffectedPage />
+      </Route>
+      <Route path="/moneylost">
+        <MoneyLostPage />
+      </Route>
+      <Route path="/information">
+        <InformationPage />
+      </Route>
+      <Route path="/devices">
+        <DevicesPage />
+      </Route>
+      <Route path="/business">
+        <BusinessPage />
       </Route>
       <Route path="/whathappened">
         <WhatHappenedPage />
       </Route>
+      <Route path="/suspectclues">
+        <SuspectCluesPage />
+      </Route>
+      <Route path="/evidence">
+        <EvidencePage />
+      </Route>
+      <Route path="/location">
+        <LocationPage />
+      </Route>
       <Route path="/contactinfo">
         <ContactInfoPage />
       </Route>
-      <Route path="/suspectCluesPage">
-        <SuspectCluesPage />
-      </Route>
-      <Route path="/scammerdetails">
-        <ScammerDetailsPage />
-      </Route>
       <Route path="/confirmation">
         <ConfirmationPage />
+      </Route>
+      <Route exact path="/thankYouPage">
+        <ThankYouPage />
+      </Route>
+
+      {/* not needed anymore */}
+      <Route path="/scammerdetails">
+        <ScammerDetailsPage />
       </Route>
       <Route path="/nextsteps">
         <NextSteps />
@@ -53,30 +79,7 @@ export const Home = () => (
       <Route path="/impact">
         <ImpactStatementPage />
       </Route>
-      <Route path="/moneylost">
-        <MoneyLostPage />
-      </Route>
-      <Route path="/business">
-        <BusinessPage />
-      </Route>
-      <Route path="/information">
-        <InformationPage />
-      </Route>
-      <Route path="/location">
-        <LocationPage />
-      </Route>
-      <Route path="/devices">
-        <DevicesPage />
-      </Route>
-      <Route path="/evidence">
-        <EvidencePage />
-      </Route>
-      <Route path="/privacyconsent">
-        <PrivacyConsentPage />
-      </Route>
-      <Route path="/whatwasaffected">
-        <WhatWasAffectedPage />
-      </Route>
+
       <Route>
         <PageNotFound />
       </Route>
