@@ -1,18 +1,17 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
+import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
-import { TrackPageViews } from './TrackPageViews'
-import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from './components/layout'
+import { PrivacyConsentInfoForm } from './forms/PrivacyConsentInfoForm'
+import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
-export const ContactInfoPage = () => {
-  const [, dispatch] = useStateValue()
+export const PrivacyConsentPage = () => {
+  const [state, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
 
   return (
     <Route
@@ -20,24 +19,25 @@ export const ContactInfoPage = () => {
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/location">
-              <Trans id="contactinfoPage.backButton" />
+            <BackButton route="/">
+              <Trans id="privacyConsentPage.backButton" />
             </BackButton>
 
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
-                <Trans id="contactinfoPage.title" />
+                <Trans id="privacyConsentPage.title" />
               </H1>
             </Stack>
-
             <P>
-              <Trans id="contactinfoPage.intro" />
+              <Trans id="privacyConsentPage.intro" />
             </P>
-
-            <ContactInfoForm
+            <PrivacyConsentInfoForm
               onSubmit={data => {
-                dispatch({ type: 'saveFormData', data: { contactInfo: data } })
-                history.push('/confirmation')
+                dispatch({
+                  type: 'saveFormData',
+                  data: { consent: data },
+                })
+                history.push('/whatwasaffected') // TODO: change this to /howdiditstart when that page is done
               }}
             />
           </Stack>

@@ -18,6 +18,9 @@ import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
+import { EvidencePage } from './EvidencePage'
+import { PrivacyConsentPage } from './PrivacyConsentPage'
+import { WhatWasAffectedPage } from './WhatWasAffected'
 
 const Root = styled('div')`
   margin: 20pt;
@@ -34,26 +37,52 @@ export const Home = () => (
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route exact path="/thankYouPage">
-            <ThankYouPage />
+          <Route path="/privacyconsent">
+            <PrivacyConsentPage />
+          </Route>
+          <Route path="/whatwasaffected">
+            <WhatWasAffectedPage />
+          </Route>
+          <Route path="/moneylost">
+            <MoneyLostPage />
+          </Route>
+          <Route path="/information">
+            <InformationPage />
+          </Route>
+          <Route path="/devices">
+            <DevicesPage />
+          </Route>
+          <Route path="/business">
+            <BusinessPage />
           </Route>
           <Route path="/whathappened">
             <WhatHappenedPage />
           </Route>
+          <Route path="/suspectclues">
+            <SuspectCluesPage />
+          </Route>
+          <Route path="/evidence">
+            <EvidencePage />
+          </Route>
+          <Route path="/location">
+            <LocationPage />
+          </Route>
           <Route path="/contactinfo">
             <ContactInfoPage />
           </Route>
-          <Route path="/suspectCluesPage">
-            <SuspectCluesPage />
+          <Route path="/confirmation">
+            <ConfirmationPage />
           </Route>
+          <Route exact path="/thankYouPage">
+            <ThankYouPage />
+          </Route>
+
+          {/* not needed anymore */}
           <Route path="/scammerdetails">
             <ScammerDetailsPage />
           </Route>
           <Route path="/howdiditstart">
             <HowDidItStartPage />
-          </Route>
-          <Route path="/confirmation">
-            <ConfirmationPage />
           </Route>
           <Route path="/nextsteps">
             <NextSteps />
@@ -64,21 +93,7 @@ export const Home = () => (
           <Route path="/impact">
             <ImpactStatementPage />
           </Route>
-          <Route path="/moneylost">
-            <MoneyLostPage />
-          </Route>
-          <Route path="/business">
-            <BusinessPage />
-          </Route>
-          <Route path="/information">
-            <InformationPage />
-          </Route>
-          <Route path="/location">
-            <LocationPage />
-          </Route>
-          <Route path="/devices">
-            <DevicesPage />
-          </Route>
+
           <Route>
             <PageNotFound />
           </Route>

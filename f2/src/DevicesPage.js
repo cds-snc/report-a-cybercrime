@@ -15,7 +15,7 @@ export const DevicesPage = () => (
         <TrackPageViews />
 
         <Stack spacing={10} shouldWrapChildren>
-          <BackButton route="/">
+          <BackButton route="/whatwasaffected">
             <Trans id="devicePage.backButton" />
           </BackButton>
 

@@ -4,13 +4,14 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
-import { LocationInfoForm } from './forms/LocationInfoForm'
+import { WhatWasAffectedForm } from './forms/WhatWasAffectedForm'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 
-export const LocationPage = () => {
+export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
 
@@ -19,26 +20,34 @@ export const LocationPage = () => {
       render={({ history }) => (
         <Layout>
           <TrackPageViews />
-
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/evidence">
-              <Trans id="locationPage.backButton" />
+            <BackButton route="/privacyconsent">
+              <Trans id="whatWasAffectedPage.backButton" />
             </BackButton>
 
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
-                <Trans id="locationPage.title" />
+                <Trans id="whatWasAffectedPage.title" />
               </H1>
             </Stack>
-
             <P>
-              <Trans id="locationPage.intro" />
+              <Trans id="whatWasAffectedPage.intro" />
             </P>
 
-            <LocationInfoForm
+            <WhatWasAffectedForm
               onSubmit={data => {
-                dispatch({ type: 'saveFormData', data: { location: data } })
-                history.push(doneForms ? '/confirmation' : '/contactinfo')
+                dispatch({
+                  type: 'saveFormData',
+                  data: { whatWasAffected: data },
+                })
+                history.push(
+                  doneForms
+                    ? '/confirmation'
+                    : nextWhatWasAffectedUrl(
+                        data.affectedOptions,
+                        'whatwasaffected',
+                      ),
+                )
               }}
             />
           </Stack>

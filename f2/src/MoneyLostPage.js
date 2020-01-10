@@ -8,10 +8,14 @@ import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 
 export const MoneyLostPage = () => {
-  const [data, dispatch] = useStateValue()
-  const { doneForms } = data
+  const [state, dispatch] = useStateValue()
+  const { doneForms, formData } = state
+  const affectedOptions = formData.whatWasAffected
+    ? formData.whatWasAffected.affectedOptions
+    : []
 
   return (
     <Route
@@ -20,7 +24,7 @@ export const MoneyLostPage = () => {
           <TrackPageViews />
 
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/">
+            <BackButton route="/whatwasaffected">
               <Trans id="moneyLostPage.backButton" />
             </BackButton>
             <Stack spacing={4} role="heading" aria-level="1">
@@ -34,7 +38,11 @@ export const MoneyLostPage = () => {
                   type: 'saveFormData',
                   data: { moneyLost: data },
                 })
-                history.push(doneForms ? '/confirmation' : '/whathappened')
+                history.push(
+                  doneForms
+                    ? '/confirmation'
+                    : nextWhatWasAffectedUrl(affectedOptions, 'moneylost'),
+                )
               }}
             />
           </Stack>

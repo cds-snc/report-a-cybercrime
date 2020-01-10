@@ -42,7 +42,7 @@ const App = () => {
             id="main"
             justify="center"
             fontFamily="body"
-            flex={1}
+            flex="1 0 auto"
             bg="gray.50"
           >
             <Home />
