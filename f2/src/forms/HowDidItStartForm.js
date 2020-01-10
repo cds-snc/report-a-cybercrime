@@ -48,6 +48,7 @@ export const HowDidItStartForm = props => {
     howDidTheyReachYou: [],
     ...data.formData.channel
   }
+  //TODO: Move this form data to some sort of a schema file instead?
   var questionsList =[
    { name:"email", channel:"howDidTheyReachYou.email", label: "howDidTheyReachYouLabel.question1", hint: "howDidTheyReachYouLabel.hint1" },
    { name:"phone", channel:"howDidTheyReachYou.phone", label: "howDidTheyReachYouLabel.question2", hint: "howDidTheyReachYouLabel.hint2" },
