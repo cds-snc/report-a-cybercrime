@@ -21,7 +21,7 @@ export const WhatWasAffectedPage = () => {
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/howdiditstart">
+            <BackButton route="/privacyconsent">
               <Trans id="whatWasAffectedPage.backButton" />
             </BackButton>
 

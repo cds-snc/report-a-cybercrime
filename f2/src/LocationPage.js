@@ -21,7 +21,7 @@ export const LocationPage = () => {
           <TrackPageViews />
 
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/">
+            <BackButton route="/evidence">
               <Trans id="locationPage.backButton" />
             </BackButton>
 

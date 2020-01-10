@@ -23,7 +23,7 @@ export const EvidencePage = () => {
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/whathappened">
+            <BackButton route="/suspectclues">
               <Trans id="evidencePage.backButton" />
             </BackButton>
 
