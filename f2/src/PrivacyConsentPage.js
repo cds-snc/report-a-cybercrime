@@ -11,7 +11,7 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
 export const PrivacyConsentPage = () => {
-  const [state, dispatch] = useStateValue()
+  const [state, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
 
   return (
     <Route
