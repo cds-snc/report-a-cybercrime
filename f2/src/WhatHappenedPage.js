@@ -21,10 +21,8 @@ export const WhatHappenedPage = () => {
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-
-            <BackButton route="/timeframe">
+            <BackButton route="/whatwasaffected">
               <Trans id="whatHappenedPage.backButton" />
-
             </BackButton>
 
             <Stack spacing={4} role="heading" aria-level="1">
@@ -36,13 +34,12 @@ export const WhatHappenedPage = () => {
               <P>
                 <Trans id="whatHappenedPage.intro1" />
               </P>
-    
             </Stack>
 
             <WhatHappenedForm
               onSubmit={data => {
                 dispatch({ type: 'saveFormData', data: { whatHappened: data } })
-                history.push(doneForms ? '/confirmation' : '/suspectCluesPage')
+                history.push(doneForms ? '/confirmation' : '/suspectclues')
               }}
             />
           </Stack>

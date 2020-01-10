@@ -24,7 +24,7 @@ export const BusinessPage = () => {
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/impact">
+            <BackButton route="/whatwasaffected">
               <Trans id="businessInfoPage.backButton" />
             </BackButton>
 
