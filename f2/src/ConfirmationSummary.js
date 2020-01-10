@@ -4,11 +4,12 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { H2 } from './components/header'
-import { Text, StyledSpan } from './components/text'
-import { Container } from './components/container'
+import { Text } from './components/text'
 import { Link } from './components/link'
-import { Stack, Flex } from '@chakra-ui/core'
+import { Stack, Flex, Code, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { DescriptionListItem } from './components/DescriptionListItem'
+import { useIntl } from 'react-intl'
 
 const EditButton = ({ path, label }) => {
   const { i18n } = useLingui()
@@ -68,97 +69,144 @@ const WhatHappenedSummary = () => {
 
 const ScammerSummary = () => {
   const [data] = useStateValue()
-  const scammerDetailsForm = data.formData.scammerDetails
-  const scammerDetails = scammerDetailsForm
-    ? scammerDetailsForm.scammerDetails
-    : ''
-  const files = scammerDetailsForm ? scammerDetailsForm.files : []
-  const fileDescriptions = scammerDetailsForm
-    ? scammerDetailsForm.fileDescriptions
-    : []
+
+  //FIXME: Something is wrong with the scammer details text area. Check again with new form
+  const scammer = {
+    scammerDetails: '',
+    files: ['test', 'testagain'],
+    fileDescriptions: ['testDesc', 'test-a-g-ain'],
+    ...data.formData.scammerDetails,
+  }
+
+  console.log()
 
   return (
-    <React.Fragment>
-      <H2>
-        <Trans id="confirmationPage.suspectTitle" />{' '}
-        <EditButton label={'Edit scammer information'} path="/scammerdetails" />
-      </H2>
-      {scammerDetails !== '' ||
-      files.length > 0 ||
-      fileDescriptions.length > 0 ? (
-        <React.Fragment>
-          <Text>{scammerDetails}</Text>
-          {files
-            ? files.map((file, index) => (
-                <Container key={index}>
-                  <StyledSpan fontWeight="bold">{file}:</StyledSpan>{' '}
-                  <StyledSpan>{fileDescriptions[index]}</StyledSpan>
-                </Container>
-              ))
-            : null}
-        </React.Fragment>
+    <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Flex align="baseline">
+        <H2>
+          <Trans id="confirmationPage.suspectTitle" />
+        </H2>
+        <Link to="/scammerdetails" ml={4}>
+          <Trans id="button.edit" />
+        </Link>
+      </Flex>
+      {scammer.scammerDetails !== '' ||
+      scammer.files.length > 0 ||
+      scammer.fileDescriptions.length > 0 ? (
+        <Stack as="dl" spacing={4} shouldWrapChildren>
+          <DescriptionListItem
+            descriptionTitle="scammerDetail.summary"
+            description={scammer.scammerDetails}
+          />
+          {scammer.files ? (
+            <Stack as="dl" spacing={4} shouldWrapChildren>
+              {scammer.files.map((file, index) => (
+                <Flex key={index} pb={4}>
+                  <Text pr={4}>{index + 1}.</Text>
+                  <Box>
+                    <Text as="dt" fontWeight="bold">
+                      {file}
+                    </Text>
+                    <Text as="dd">{scammer.fileDescriptions[index]}</Text>
+                  </Box>
+                </Flex>
+              ))}
+            </Stack>
+          ) : null}
+        </Stack>
       ) : (
         <Text>
           <Trans id="confirmationPage.suspectIntro" />
         </Text>
       )}
-    </React.Fragment>
+    </Stack>
   )
 }
 
 const ImpactSummary = () => {
   const { i18n } = useLingui()
+  const intl = useIntl()
 
   const [data] = useStateValue()
-  const { impact } = data.formData
-  const howWereYouAffected = impact ? impact.howWereYouAffected : []
-  const damage = impact ? impact.damage : ''
+  const impact = {
+    howWereYouAffected: [],
+    damage: '',
+    ...data.formData.impact,
+  }
 
   return (
-    <>
-      <H2>
-        <Trans id="confirmationPage.ImpactTitle" />{' '}
-        <EditButton label={'Edit impact'} path="/impact" />
-      </H2>
-      {howWereYouAffected.length > 0 || damage !== '' ? (
-        <>
-          <Text>{howWereYouAffected.map(i => i18n._(i)).join(', ')}</Text>
-          <Text>{damage}</Text>
-        </>
+    <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Flex align="baseline">
+        <H2>
+          <Trans id="confirmationPage.ImpactTitle" />
+        </H2>
+        <Link to="/impact" ml={4}>
+          <Trans id="button.edit" />
+        </Link>
+      </Flex>
+      {impact.howWereYouAffected.length > 0 || impact.damage !== '' ? (
+        <Stack as="dl" spacing={4} shouldWrapChildren>
+          <DescriptionListItem
+            descriptionTitle="impactPage.summary"
+            description={impact.damage}
+          />
+          <DescriptionListItem
+            descriptionTitle="impactPage.detail"
+            description={intl.formatList(
+              impact.howWereYouAffected.map(i => i18n._(i)),
+              { type: 'conjunction' },
+            )}
+          />
+        </Stack>
       ) : (
         <Text>
           <Trans id="confirmationPage.impactIntro" />
         </Text>
       )}
-    </>
+    </Stack>
   )
 }
 
 const ContactSummary = () => {
   const [data] = useStateValue()
-  const { contactInfo } = data.formData
-  const fullName = contactInfo ? contactInfo.fullName : ''
-  const email = contactInfo ? contactInfo.email : ''
-  const postalCode = contactInfo ? contactInfo.postalCode : ''
+  const contactInfo = {
+    fullName: '',
+    email: '',
+    postalCode: '',
+    ...data.formData.contactInfo,
+  }
 
   return (
-    <React.Fragment>
-      <H2>
-        <Trans id="confirmationPage.contactTitle" />{' '}
-        <EditButton label={'Edit contact information'} path="/contactinfo" />
-      </H2>
-      {(fullName + email + postalCode).length > 0 ? (
-        <React.Fragment>
-          <Text>{fullName}</Text>
-          <Text>{email}</Text>
-          <Text>{postalCode}</Text>
-        </React.Fragment>
+    <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Flex align="baseline">
+        <H2>
+          <Trans id="confirmationPage.contactTitle" />
+        </H2>
+        <Link to="/contactinfo" ml={4}>
+          <Trans id="button.edit" />
+        </Link>
+      </Flex>
+      {contactInfo.fullName + contactInfo.email + contactInfo.postalCode ? (
+        <Stack as="dl" spacing={4} shouldWrapChildren>
+          <DescriptionListItem
+            descriptionTitle="contactinfoPage.fullName"
+            description={contactInfo.fullName}
+          />
+          <DescriptionListItem
+            descriptionTitle="contactinfoPage.emailAddress"
+            description={contactInfo.email}
+          />
+          <DescriptionListItem
+            descriptionTitle="contactinfoPage.postCode"
+            description={contactInfo.postalCode}
+          />
+        </Stack>
       ) : (
         <Text>
           <Trans id="confirmationPage.contactIntro" />
         </Text>
       )}
-    </React.Fragment>
+    </Stack>
   )
 }
 
@@ -172,28 +220,7 @@ export const ConfirmationSummary = () => {
   return (
     <React.Fragment>
       <Stack spacing={12} shouldWrapChildren>
-        <Stack spacing={4} borderBottom="2px" pb={4}>
-          <Flex align="baseline">
-            <H2 fontWeight="600" fontSize="2xl">
-              Section title
-            </H2>
-            <Link to="#" fontSize="lg" ml={4}>
-              Edit
-            </Link>
-          </Flex>
-
-          <Text>Sentence composed with checkbox or radio answers</Text>
-          <Stack as="dl">
-            <Flex>
-              <Text as="dt" fontWeight="bold" w="40%">
-                Question
-              </Text>
-              <Text as="dd" w="60%">
-                Answer
-              </Text>
-            </Flex>
-          </Stack>
-        </Stack>
+        <Code>{JSON.stringify(data)}</Code>
         <TimeFrameSummary />
         <WhatHappenedSummary />
         <ScammerSummary />

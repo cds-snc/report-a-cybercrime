@@ -11,71 +11,74 @@ import { ThemeProvider, Flex, Link, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 import { StateProvider, initialState, reducer } from './utils/state'
+import { IntlProvider } from 'react-intl'
 
 const App = () => {
   const { i18n } = useLingui()
 
   return (
-    <ThemeProvider theme={canada}>
-      <StateProvider initialState={initialState} reducer={reducer}>
-        <CSSReset />
-        <Global
-          styles={css`
-            @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
-          `}
-        />
-        <Flex direction="column" minHeight="100vh" bg="gray.50">
-          <header>
-            <SkipLink invisible href="#main">
-              <Trans id="SkipLink.text" />
-            </SkipLink>
-            <WarningBanner>
-              <Trans id="banner.warning" />
-            </WarningBanner>
-            <PhaseBanner phase={<Trans id="banner.phase" />}>
-              <Trans id="banner.phaseText" />
-            </PhaseBanner>
-            <TopBanner lang={i18n.locale} bg="black" />
-          </header>
+    <IntlProvider locale={i18n.locale}>
+      <ThemeProvider theme={canada}>
+        <StateProvider initialState={initialState} reducer={reducer}>
+          <CSSReset />
+          <Global
+            styles={css`
+              @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
+            `}
+          />
+          <Flex direction="column" minHeight="100vh" bg="gray.50">
+            <header>
+              <SkipLink invisible href="#main">
+                <Trans id="SkipLink.text" />
+              </SkipLink>
+              <WarningBanner>
+                <Trans id="banner.warning" />
+              </WarningBanner>
+              <PhaseBanner phase={<Trans id="banner.phase" />}>
+                <Trans id="banner.phaseText" />
+              </PhaseBanner>
+              <TopBanner lang={i18n.locale} bg="black" />
+            </header>
 
-          <Flex
-            id="main"
-            fontFamily="body"
-            flex="1 0 auto"
-            mx="auto"
-            px={2}
-            maxW={{ sm: 540, md: 768, lg: 960, xl: 1200 }}
-            width="100%"
-          >
-            <Home />
+            <Flex
+              id="main"
+              fontFamily="body"
+              flex="1 0 auto"
+              mx="auto"
+              px={2}
+              maxW={{ sm: 540, md: 768, lg: 960, xl: 1200 }}
+              width="100%"
+            >
+              <Home />
+            </Flex>
+
+            <Footer height="1000px" bg="black">
+              <Link
+                color="white"
+                href={
+                  i18n.locale === 'en'
+                    ? 'https://digital.canada.ca/legal/privacy/'
+                    : 'https://numerique.canada.ca/transparence/confidentialite/'
+                }
+              >
+                <Trans id="banner.footerPrivacy" />
+              </Link>
+              <Link
+                color="white"
+                ml={4}
+                href={
+                  i18n.locale === 'en'
+                    ? 'https://digital.canada.ca/legal/terms/'
+                    : 'https://numerique.canada.ca/transparence/avis/'
+                }
+              >
+                <Trans id="banner.footerTermsAndConditions" />
+              </Link>
+            </Footer>
           </Flex>
-
-          <Footer height="1000px" bg="black">
-            <Link
-              color="white"
-              href={
-                i18n.locale === 'en'
-                  ? 'https://digital.canada.ca/legal/privacy/'
-                  : 'https://numerique.canada.ca/transparence/confidentialite/'
-              }
-            >
-              <Trans id="banner.footerPrivacy" />
-            </Link>
-            <Link
-              color="white"
-              ml={4}
-              href={
-                i18n.locale === 'en'
-                  ? 'https://digital.canada.ca/legal/terms/'
-                  : 'https://numerique.canada.ca/transparence/avis/'
-              }
-            >
-              <Trans id="banner.footerTermsAndConditions" />
-            </Link>
-          </Footer>
-        </Flex>
-      </StateProvider>
-    </ThemeProvider>
+        </StateProvider>
+      </ThemeProvider>
+    </IntlProvider>
   )
 }
 
