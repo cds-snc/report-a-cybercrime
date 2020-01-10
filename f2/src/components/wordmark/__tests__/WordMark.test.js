@@ -37,11 +37,11 @@ describe('<WordMark />', () => {
     expect(test.getAttribute('width')).toBe('1000%')
   })
 
-  it('defaults to width of 10em', () => {
+  it('defaults to width of 143px', () => {
     const { getByRole } = render(<WordMark />)
 
     const test = getByRole('img')
-    expect(test.getAttribute('width')).toBe('10em')
+    expect(test.getAttribute('width')).toBe('143px')
   })
 
   it('allows the flag colour to be set', () => {

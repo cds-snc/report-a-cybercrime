@@ -2,17 +2,23 @@ import React from 'react'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import { PageNotFound } from './PageNotFound'
 import { LandingPage } from './LandingPage'
+import { ThankYouPage } from './ThankYouPage'
 import { WhatHappenedPage } from './WhatHappenedPage'
 import { ContactInfoPage } from './ContactInfoPage'
+import { SuspectCluesPage } from './SuspectCluesPage'
 import { ScammerDetailsPage } from './ScammerDetailsPage'
 import { ConfirmationPage } from './ConfirmationPage'
 import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
 import { ImpactStatementPage } from './ImpactStatementPage'
+import { MoneyLostPage } from './MoneyLostPage'
 import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
 import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
+import { EvidencePage } from './EvidencePage'
+import { PrivacyConsentPage } from './PrivacyConsentPage'
+import { WhatWasAffectedPage } from './WhatWasAffected'
 
 export const Home = () => (
   <Router>
@@ -20,11 +26,17 @@ export const Home = () => (
       <Route exact path="/">
         <LandingPage />
       </Route>
+      <Route exact path="/thankYouPage">
+        <ThankYouPage />
+      </Route>
       <Route path="/whathappened">
         <WhatHappenedPage />
       </Route>
       <Route path="/contactinfo">
         <ContactInfoPage />
+      </Route>
+      <Route path="/suspectCluesPage">
+        <SuspectCluesPage />
       </Route>
       <Route path="/scammerdetails">
         <ScammerDetailsPage />
@@ -41,6 +53,9 @@ export const Home = () => (
       <Route path="/impact">
         <ImpactStatementPage />
       </Route>
+      <Route path="/moneylost">
+        <MoneyLostPage />
+      </Route>
       <Route path="/business">
         <BusinessPage />
       </Route>
@@ -52,6 +67,15 @@ export const Home = () => (
       </Route>
       <Route path="/devices">
         <DevicesPage />
+      </Route>
+      <Route path="/evidence">
+        <EvidencePage />
+      </Route>
+      <Route path="/privacyconsent">
+        <PrivacyConsentPage />
+      </Route>
+      <Route path="/whatwasaffected">
+        <WhatWasAffectedPage />
       </Route>
       <Route>
         <PageNotFound />

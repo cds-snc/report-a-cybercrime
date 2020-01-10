@@ -9,15 +9,26 @@ import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
+import { useStateValue } from '../utils/state'
 
-export const LocationInfoForm = ({ onSubmit }) => (
+export const LocationInfoForm = props => {
+
+  const [data] = useStateValue()
+  const location = {
+    location: '',
+    ...data.formData.location,
+  }
+
+  return (
   <Form
-    initialValues={{}}
-    onSubmit={onSubmit}
+    initialValues={location}
+    onSubmit={props.onSubmit}
     render={({ handleSubmit }) => (
       <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
+        
         <Field name="postalCode">
           {props => (
+
             <FormControl>
               <FormLabel htmlFor="postalCode">
                 <Trans id="locationinfoPage.postalCode" />
@@ -66,6 +77,7 @@ export const LocationInfoForm = ({ onSubmit }) => (
     )}
   />
 )
+}
 
 LocationInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,

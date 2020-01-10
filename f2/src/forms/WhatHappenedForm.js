@@ -20,17 +20,17 @@ export const WhatHappenedForm = props => {
   return (
     <Form
       initialValues={whatHappened}
-      onSubmit={data => props.onSubmit(data)}
+      onSubmit={props.onSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
           <Field name="whatHappened">
             {props => (
               <FormControl>
                 <FormLabel htmlFor="whatHappened">
-                  <Trans id="whatHappendPage.summary" />
+                  <Trans id="whatHappenedPage.summary" />
                 </FormLabel>
                 <FormHelperText>
-                  <Trans id="whatHappendPage.hint" />
+                  <Trans id="whatHappenedPage.hint" />
                 </FormHelperText>
                 <TextArea
                   id="whatHappened"
