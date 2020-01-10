@@ -9,6 +9,7 @@ import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
@@ -39,7 +40,14 @@ export const WhatWasAffectedPage = () => {
                   type: 'saveFormData',
                   data: { whatWasAffected: data },
                 })
-                history.push(doneForms ? '/confirmation' : '/contactinfo')
+                history.push(
+                  doneForms
+                    ? '/confirmation'
+                    : nextWhatWasAffectedUrl(
+                        data.affectedOptions,
+                        'whatwasaffected',
+                      ),
+                )
               }}
             />
           </Stack>

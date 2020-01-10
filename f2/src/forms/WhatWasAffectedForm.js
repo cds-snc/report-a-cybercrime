@@ -40,7 +40,7 @@ const validate = () => {
 }
 
 export const whatWasAffectedPages = [
-  { key: 'whatWasAffectedForm.financial', url: 'money' },
+  { key: 'whatWasAffectedForm.financial', url: 'moneylost' },
   { key: 'whatWasAffectedForm.personal_information', url: 'information' },
   { key: 'whatWasAffectedForm.devices', url: 'devices' },
   { key: 'whatWasAffectedForm.business_assets', url: 'business' },

@@ -9,34 +9,43 @@ import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 
 export const BusinessPage = () => {
-    const [data, dispatch] = useStateValue()
-    const { doneForms } = data
-    return (
-        < Route
-            render={({ history }) => (
-                <Layout>
-                    <TrackPageViews />
-                    <Stack spacing={10} shouldWrapChildren>
-                        <BackButton route="/impact">
-                            <Trans id="businessInfoPage.backButton" />
-                        </BackButton>
+  const [state, dispatch] = useStateValue()
+  const { doneForms, formData } = state
+  const affectedOptions = formData.whatWasAffected
+    ? formData.whatWasAffected.affectedOptions
+    : []
 
-                        <Stack spacing={4} role="heading" aria-level="1">
-                            <H1 as="span">
-                                <Trans id="businessPage.title" />
-                            </H1>
-                        </Stack>
-                        <BusinessInfoForm
-                            onSubmit={data => {
-                                dispatch({ type: 'saveFormData', data: { businessInfo: data } })
-                                history.push(doneForms ? '/confirmation' : '/whathappened')
-                            }}
-                        />
-                    </Stack>
-                </Layout>
-            )}
-        />
-    )
+  return (
+    <Route
+      render={({ history }) => (
+        <Layout>
+          <TrackPageViews />
+          <Stack spacing={10} shouldWrapChildren>
+            <BackButton route="/impact">
+              <Trans id="businessInfoPage.backButton" />
+            </BackButton>
+
+            <Stack spacing={4} role="heading" aria-level="1">
+              <H1 as="span">
+                <Trans id="businessPage.title" />
+              </H1>
+            </Stack>
+            <BusinessInfoForm
+              onSubmit={data => {
+                dispatch({ type: 'saveFormData', data: { businessInfo: data } })
+                history.push(
+                  doneForms
+                    ? '/confirmation'
+                    : nextWhatWasAffectedUrl(affectedOptions, 'business'),
+                )
+              }}
+            />
+          </Stack>
+        </Layout>
+      )}
+    />
+  )
 }

@@ -1,6 +1,8 @@
 import { whatWasAffectedPages } from '../forms/WhatWasAffectedForm'
 
 export const nextWhatWasAffectedUrl = (optionsSelected, currentPage) => {
+  console.log(optionsSelected)
+
   let pages = whatWasAffectedPages.filter(
     page => page.url !== '' && optionsSelected.indexOf(page.key) > -1,
   )
