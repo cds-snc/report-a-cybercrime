@@ -2,47 +2,43 @@ import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { Layout } from './components/layout'
-import { MoneyLostInfoForm } from './forms/MoneyLostInfoForm'
+import { PrivacyConsentInfoForm } from './forms/PrivacyConsentInfoForm'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 
-export const MoneyLostPage = () => {
-  const [state, dispatch] = useStateValue()
-  const { doneForms, formData } = state
-  const affectedOptions = formData.whatWasAffected
-    ? formData.whatWasAffected.affectedOptions
-    : []
+export const PrivacyConsentPage = () => {
+  const [data, dispatch] = useStateValue()
+  const { doneForms } = data
 
   return (
     <Route
       render={({ history }) => (
         <Layout>
           <TrackPageViews />
-
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/">
-              <Trans id="moneyLostPage.backButton" />
+              <Trans id="privacyConsentPage.backButton" />
             </BackButton>
+
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
-                <Trans id="moneyLostPage.title" />
+                <Trans id="privacyConsentPage.title" />
               </H1>
             </Stack>
-            <MoneyLostInfoForm
+            <P>
+              <Trans id="privacyConsentPage.intro" />
+            </P>
+            <PrivacyConsentInfoForm
               onSubmit={data => {
                 dispatch({
                   type: 'saveFormData',
-                  data: { moneyLost: data },
+                  data: { whatWasAffected: data },
                 })
-                history.push(
-                  doneForms
-                    ? '/confirmation'
-                    : nextWhatWasAffectedUrl(affectedOptions, 'moneylost'),
-                )
+                history.push(doneForms ? '/confirmation' : '/contactinfo')
               }}
             />
           </Stack>

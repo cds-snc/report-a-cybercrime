@@ -2,46 +2,51 @@ import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { Layout } from './components/layout'
-import { MoneyLostInfoForm } from './forms/MoneyLostInfoForm'
+import { WhatWasAffectedForm } from './forms/WhatWasAffectedForm'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 
-export const MoneyLostPage = () => {
-  const [state, dispatch] = useStateValue()
-  const { doneForms, formData } = state
-  const affectedOptions = formData.whatWasAffected
-    ? formData.whatWasAffected.affectedOptions
-    : []
+export const WhatWasAffectedPage = () => {
+  const [data, dispatch] = useStateValue()
+  const { doneForms } = data
 
   return (
     <Route
       render={({ history }) => (
         <Layout>
           <TrackPageViews />
-
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/">
-              <Trans id="moneyLostPage.backButton" />
+            <BackButton route="/howdiditstart">
+              <Trans id="whatWasAffectedPage.backButton" />
             </BackButton>
+
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
-                <Trans id="moneyLostPage.title" />
+                <Trans id="whatWasAffectedPage.title" />
               </H1>
             </Stack>
-            <MoneyLostInfoForm
+            <P>
+              <Trans id="whatWasAffectedPage.intro" />
+            </P>
+
+            <WhatWasAffectedForm
               onSubmit={data => {
                 dispatch({
                   type: 'saveFormData',
-                  data: { moneyLost: data },
+                  data: { whatWasAffected: data },
                 })
                 history.push(
                   doneForms
                     ? '/confirmation'
-                    : nextWhatWasAffectedUrl(affectedOptions, 'moneylost'),
+                    : nextWhatWasAffectedUrl(
+                        data.affectedOptions,
+                        'whatwasaffected',
+                      ),
                 )
               }}
             />
