@@ -7,8 +7,13 @@ import { DevicesForm } from './forms/DevicesForm'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
+import { useStateValue } from './utils/state'
 
-export const DevicesPage = () => (
+export const DevicesPage = () => {
+  const [data, dispatch] = useStateValue()
+  const { doneForms } = data
+
+  return (
   <Route
     render={({ history }) => (
       <Layout>
@@ -26,9 +31,12 @@ export const DevicesPage = () => (
           </Stack>
 
           <DevicesForm
-            onSubmit={(client, data) => {
-              client.writeData({ data: { timeFrame: JSON.stringify(data) } })
-              history.push(false ? '/confirmation' : '/whathappened')
+             onSubmit={data => {
+              dispatch({
+                type: 'saveFormData',
+                data: { whatWasAffected: data },
+              })
+              history.push(doneForms ? '/confirmation' : '/contactinfo')
             }}
           />
         </Stack>
@@ -36,3 +44,4 @@ export const DevicesPage = () => (
     )}
   />
 )
+}
