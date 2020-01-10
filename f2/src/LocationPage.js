@@ -7,10 +7,15 @@ import { Layout } from './components/layout'
 import { LocationInfoForm } from './forms/LocationInfoForm'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
-import { Steps } from './components/stepper'
 import { Stack } from '@chakra-ui/core'
+import { useStateValue } from './utils/state'
 
-export const LocationPage = () => (
+export const LocationPage = () => {
+   const [data, dispatch] = useStateValue()
+   const { doneForms } = data
+
+   return (
+
   <Route
     render={({ history }) => (
       <Layout>
@@ -22,7 +27,6 @@ export const LocationPage = () => (
           </BackButton>
 
           <Stack spacing={4} role="heading" aria-level="1">
-            <Steps activeStep={1} totalSteps={6} />
             <H1 as="span">
               <Trans id="locationPage.title" />
             </H1>
@@ -33,9 +37,9 @@ export const LocationPage = () => (
           </P>
 
           <LocationInfoForm
-            onSubmit={(client, data) => {
-              client.writeData({ data: { timeFrame: JSON.stringify(data) } })
-              history.push(false ? '/confirmation' : '/whathappened')
+            onSubmit={data => {
+              dispatch({ type:'saveFormData', data: { location:data }})
+              history.push(doneForms ? '/confirmation' : '/whathappened')
             }}
           />
         </Stack>
@@ -43,3 +47,4 @@ export const LocationPage = () => (
     )}
   />
 )
+}
