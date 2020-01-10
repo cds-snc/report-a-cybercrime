@@ -34,7 +34,7 @@ export const DevicesPage = () => {
              onSubmit={data => {
               dispatch({
                 type: 'saveFormData',
-                data: { whatWasAffected: data },
+                data: { devicesInfo: data },
               })
               history.push(doneForms ? '/confirmation' : '/contactinfo')
             }}
