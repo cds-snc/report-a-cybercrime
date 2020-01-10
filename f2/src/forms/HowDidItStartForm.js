@@ -2,10 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, useField } from 'react-final-form'
+import { Form, Field, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
 import { FormControl, Stack, Box } from '@chakra-ui/core'
+import { FormHelperText } from '../components/FormHelperText'
+import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 import { ConditionalForm } from '../components/container'
@@ -45,16 +47,16 @@ export const HowDidItStartForm = props => {
   const channel = {
     howDidTheyReachYou: [],
     damage: '',
-    ...data.formData.impact,
+    ...data.formData.channel,
   }
+  var questionsList =[
+   { name:"email", channel:"howDidTheyReachYou.email", label: "howDidTheyReachYouLabel.question1", hint: "howDidTheyReachYouLabel.hint1" },
+   { name:"phone", channel:"howDidTheyReachYou.phone", label: "howDidTheyReachYouLabel.question2", hint: "howDidTheyReachYouLabel.hint2" },
+   { name:"online", channel:"howDidTheyReachYou.online", label: "howDidTheyReachYouLabel.question3", hint: "howDidTheyReachYouLabel.hint3" },
+   { name:"application", channel:"howDidTheyReachYou.app", label: "howDidTheyReachYouLabel.question4", hint: "howDidTheyReachYouLabel.hint4" },
+   { name:"others", channel:"howDidTheyReachYou.others", label: "howDidTheyReachYouLabel.question5", hint: "howDidTheyReachYouLabel.hint5"}
+  ];
 
-  const howDidTheyReachYou = [
-    'howDidTheyReachYou.email',
-    'howDidTheyReachYou.phone',
-    'howDidTheyReachYou.online',
-    'howDidTheyReachYou.app',
-    'howDidTheyReachYou.others',
-  ]
   return (
     <React.Fragment>
       {false ? (
@@ -78,24 +80,42 @@ export const HowDidItStartForm = props => {
             shouldWrapChildren
             spacing={6}
           >
-            <Control as="fieldset" name="howDidItStart">
-              <FormLabel as="legend" htmlFor="howDidItStart" mb={2}>
+            <Control as="fieldset" name="howDidTheyReachYou">
+              <FormLabel as="legend" htmlFor="howDidTheyReachYou" mb={2}>
                 <Trans id="howDidTheyReachYou.question" />
               </FormLabel>
               <Stack spacing={4} shouldWrapChildren>
-                {howDidTheyReachYou.map(key => {
+
+                {questionsList.map((question) => {
                   return (
-                    <Box key={key}>
+                    <Box question={question.channel}>
                       <CheckboxArrayControl
-                        name="howDidItStart"
-                        value={key}
-                        isChecked={channel.howDidTheyReachYou.includes(key)}
+                        name="howDidTheyReachYou"
+                        value={question.channel}
+                        isChecked={channel.howDidTheyReachYou.includes(question.channel)}
                       >
-                        {i18n._(key)}
+                        {i18n._(question.channel)}
                       </CheckboxArrayControl>
-                      {values.howDidTheyReachYou.includes(key) && (
+                      {values.howDidTheyReachYou.includes(question.channel) && (
                         <ConditionalForm>
-                          Conditional form for {key}
+                          <Field name={question.name}>
+                          {props => (
+                            <FormControl>
+                              <FormLabel htmlFor={question.name}>
+                                <Trans id={question.label} />
+                              </FormLabel>
+                              <FormHelperText>
+                                <Trans id={question.hint} />
+                              </FormHelperText>
+                              <TextArea
+                                id={question.hint}
+                                name={props.input.name}
+                                value={props.input.value}
+                                onChange={props.input.onChange}
+                              />
+                            </FormControl>
+                          )}
+                        </Field>
                         </ConditionalForm>
                       )}
                     </Box>
