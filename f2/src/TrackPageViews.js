@@ -5,6 +5,8 @@ import { Route } from 'react-router-dom'
 
 const GA = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
 
+// debug dumps info the the console
+// testMode doesn't connect to Google, but allows us to perform automated testing of the tracker in our code
 ReactGA.initialize(GA, {
   debug: false,
   testMode: process.env.NODE_ENV !== 'production',
