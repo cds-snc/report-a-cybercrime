@@ -11,8 +11,7 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
 export const PrivacyConsentPage = () => {
-  const [data, dispatch] = useStateValue()
-  const { doneForms } = data
+  const [state, dispatch] = useStateValue()
 
   return (
     <Route
@@ -36,9 +35,9 @@ export const PrivacyConsentPage = () => {
               onSubmit={data => {
                 dispatch({
                   type: 'saveFormData',
-                  data: { whatWasAffected: data },
+                  data: { consent: data },
                 })
-                history.push(doneForms ? '/confirmation' : '/contactinfo')
+                history.push('/whatwasaffected') // TODO: change this to /howdiditstart when that page is done
               }}
             />
           </Stack>

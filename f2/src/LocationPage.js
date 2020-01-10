@@ -11,40 +11,39 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
 export const LocationPage = () => {
-   const [data, dispatch] = useStateValue()
-   const { doneForms } = data
+  const [data, dispatch] = useStateValue()
+  const { doneForms } = data
 
-   return (
+  return (
+    <Route
+      render={({ history }) => (
+        <Layout>
+          <TrackPageViews />
 
-  <Route
-    render={({ history }) => (
-      <Layout>
-        <TrackPageViews />
+          <Stack spacing={10} shouldWrapChildren>
+            <BackButton route="/">
+              <Trans id="locationPage.backButton" />
+            </BackButton>
 
-        <Stack spacing={10} shouldWrapChildren>
-          <BackButton route="/">
-            <Trans id="locationPage.backButton" />
-          </BackButton>
+            <Stack spacing={4} role="heading" aria-level="1">
+              <H1 as="span">
+                <Trans id="locationPage.title" />
+              </H1>
+            </Stack>
 
-          <Stack spacing={4} role="heading" aria-level="1">
-            <H1 as="span">
-              <Trans id="locationPage.title" />
-            </H1>
+            <P>
+              <Trans id="locationPage.intro" />
+            </P>
+
+            <LocationInfoForm
+              onSubmit={data => {
+                dispatch({ type: 'saveFormData', data: { location: data } })
+                history.push(doneForms ? '/confirmation' : '/contactinfo')
+              }}
+            />
           </Stack>
-
-          <P>
-            <Trans id="locationPage.intro" />
-          </P>
-
-          <LocationInfoForm
-            onSubmit={data => {
-              dispatch({ type:'saveFormData', data: { location:data }})
-              history.push(doneForms ? '/confirmation' : '/whathappened')
-            }}
-          />
-        </Stack>
-      </Layout>
-    )}
-  />
-)
+        </Layout>
+      )}
+    />
+  )
 }
