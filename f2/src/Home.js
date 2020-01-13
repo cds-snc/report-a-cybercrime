@@ -8,6 +8,7 @@ import { WhatHappenedPage } from './WhatHappenedPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { SuspectCluesPage } from './SuspectCluesPage'
 import { ScammerDetailsPage } from './ScammerDetailsPage'
+import { HowDidItStartPage } from './HowDidItStartPage'
 import { ConfirmationPage } from './ConfirmationPage'
 import { NextSteps } from './NextSteps'
 import { TimeFramePage } from './TimeFramePage'
@@ -79,6 +80,9 @@ export const Home = () => (
           {/* not needed anymore */}
           <Route path="/scammerdetails">
             <ScammerDetailsPage />
+          </Route>
+          <Route path="/howdiditstart">
+            <HowDidItStartPage />
           </Route>
           <Route path="/nextsteps">
             <NextSteps />
