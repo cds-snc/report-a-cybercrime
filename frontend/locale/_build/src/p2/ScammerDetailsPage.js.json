@@ -1,0 +1,29 @@
+{
+  "scammerDetail.backButton": {
+    "defaults": "the scam",
+    "origin": [
+      [
+        "src/p2/ScammerDetailsPage.js",
+        23
+      ]
+    ]
+  },
+  "scammerDetail.title": {
+    "defaults": "Add suspect clues",
+    "origin": [
+      [
+        "src/p2/ScammerDetailsPage.js",
+        27
+      ]
+    ]
+  },
+  "scammerDetail.intro": {
+    "defaults": "Any clues about the source of the scam can help police track down the scammer.",
+    "origin": [
+      [
+        "src/p2/ScammerDetailsPage.js",
+        30
+      ]
+    ]
+  }
+}

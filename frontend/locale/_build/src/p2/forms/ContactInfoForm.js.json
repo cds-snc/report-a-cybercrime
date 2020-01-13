@@ -1,0 +1,29 @@
+{
+  "contactinfoPage.fullName": {
+    "defaults": "Full name",
+    "origin": [
+      [
+        "src/p2/forms/ContactInfoForm.js",
+        31
+      ]
+    ]
+  },
+  "contactinfoPage.emailAddress": {
+    "defaults": "Email address",
+    "origin": [
+      [
+        "src/p2/forms/ContactInfoForm.js",
+        48
+      ]
+    ]
+  },
+  "contactinfoPage.postCode": {
+    "defaults": "Postal code",
+    "origin": [
+      [
+        "src/p2/forms/ContactInfoForm.js",
+        65
+      ]
+    ]
+  }
+}

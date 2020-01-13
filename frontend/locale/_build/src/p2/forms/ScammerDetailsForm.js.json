@@ -1,0 +1,116 @@
+{
+  "fileUpload.removed": {
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        34
+      ]
+    ]
+  },
+  "fileUpload.added": {
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        35
+      ]
+    ]
+  },
+  "scammerDetail.details": {
+    "defaults": "Think about including things such as:",
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        83
+      ]
+    ]
+  },
+  "scammerDetail.detail1": {
+    "defaults": "Who the scammer claimed to be",
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        89
+      ]
+    ]
+  },
+  "scammerDetail.detail2": {
+    "defaults": "Where they asked you to send things",
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        94
+      ]
+    ]
+  },
+  "scammerDetail.detail3": {
+    "defaults": "What language they used to communicate",
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        99
+      ]
+    ]
+  },
+  "scammerDetail.detail4": {
+    "defaults": "Any screenshots, messages, or receipts",
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        104
+      ]
+    ]
+  },
+  "scammerDetail.summary": {
+    "defaults": "What do you know about where the scam came from?",
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        112
+      ]
+    ]
+  },
+  "scammerDetail.reminder": {
+    "defaults": "Remember to include any email addresses, phone numbers, or website links",
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        117
+      ]
+    ]
+  },
+  "scammerDetail.addFileButtom": {
+    "defaults": "Add file",
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        161
+      ]
+    ]
+  },
+  "{0, plural, one {# file attached} other {# files attached}}": {
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        169
+      ]
+    ]
+  },
+  "scammerDetail.fileDescription": {
+    "defaults": "Describe what this file shows",
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        202
+      ]
+    ]
+  },
+  "scammerDetail.removeFileButton": {
+    "defaults": "Remove file",
+    "origin": [
+      [
+        "src/p2/forms/ScammerDetailsForm.js",
+        223
+      ]
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "Device or account hacked": {
+    "origin": [
+      [
+        "src/p2/forms/ImpactStatementInfoForm.js",
+        20
+      ]
+    ]
+  },
+  "Information stolen": {
+    "origin": [
+      [
+        "src/p2/forms/ImpactStatementInfoForm.js",
+        21
+      ]
+    ]
+  },
+  "Money lost": {
+    "origin": [
+      [
+        "src/p2/forms/ImpactStatementInfoForm.js",
+        22
+      ]
+    ]
+  },
+  "Reputation damaged": {
+    "origin": [
+      [
+        "src/p2/forms/ImpactStatementInfoForm.js",
+        23
+      ]
+    ]
+  },
+  "Safety threatened": {
+    "origin": [
+      [
+        "src/p2/forms/ImpactStatementInfoForm.js",
+        24
+      ]
+    ]
+  },
+  "Wellbeing affected": {
+    "origin": [
+      [
+        "src/p2/forms/ImpactStatementInfoForm.js",
+        25
+      ]
+    ]
+  },
+  "No impact": {
+    "origin": [
+      [
+        "src/p2/forms/ImpactStatementInfoForm.js",
+        26
+      ]
+    ]
+  },
+  "impactPage.detail": {
+    "defaults": "What was the impact of the scam?",
+    "origin": [
+      [
+        "src/p2/forms/ImpactStatementInfoForm.js",
+        54
+      ]
+    ]
+  },
+  "impactPage.summary": {
+    "defaults": "Tell us more about how it impacted you.",
+    "origin": [
+      [
+        "src/p2/forms/ImpactStatementInfoForm.js",
+        85
+      ]
+    ]
+  },
+  "impactPage.example": {
+    "defaults": "For example: the amount of money, the information taken, what else was affected",
+    "origin": [
+      [
+        "src/p2/forms/ImpactStatementInfoForm.js",
+        90
+      ]
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "Warning! This is a prototype. It won't actually submit your report to the RCMP.": {
+    "origin": [
+      [
+        "src/components/warning-banner/index.js",
+        26
+      ]
+    ]
+  }
+}

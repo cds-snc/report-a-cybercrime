@@ -1,0 +1,29 @@
+{
+  "impactPage.backButton": {
+    "defaults": "the suspect",
+    "origin": [
+      [
+        "src/p2/ImpactStatementPage.js",
+        23
+      ]
+    ]
+  },
+  "impactPage.title": {
+    "defaults": "Impact caused by the scam",
+    "origin": [
+      [
+        "src/p2/ImpactStatementPage.js",
+        27
+      ]
+    ]
+  },
+  "impactPage.intro": {
+    "defaults": "You're not the only one affected by this scam. Help protect others by telling us how the scam affected you.",
+    "origin": [
+      [
+        "src/p2/ImpactStatementPage.js",
+        30
+      ]
+    ]
+  }
+}

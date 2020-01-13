@@ -1,0 +1,29 @@
+{
+  "contactinfoPage.backButton": {
+    "defaults": "the impact",
+    "origin": [
+      [
+        "src/p2/ContactInfoPage.js",
+        21
+      ]
+    ]
+  },
+  "contactinfoPage.title": {
+    "defaults": "Leave your contact information",
+    "origin": [
+      [
+        "src/p2/ContactInfoPage.js",
+        25
+      ]
+    ]
+  },
+  "contactinfoPage.intro": {
+    "defaults": "We will use this to send you a confirmation email and to link your report to other reports in your area.",
+    "origin": [
+      [
+        "src/p2/ContactInfoPage.js",
+        28
+      ]
+    ]
+  }
+}

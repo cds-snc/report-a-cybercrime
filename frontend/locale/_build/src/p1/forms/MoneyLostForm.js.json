@@ -1,0 +1,110 @@
+{
+  "Cash": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        24
+      ]
+    ]
+  },
+  "Credit card": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        25
+      ]
+    ]
+  },
+  "E-transfer": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        26
+      ]
+    ]
+  },
+  "Gift card": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        27
+      ]
+    ]
+  },
+  "Other method": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        28
+      ]
+    ]
+  },
+  "Canadian dollar": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        32
+      ]
+    ]
+  },
+  "U.S. dollar": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        33
+      ]
+    ]
+  },
+  "Euro": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        34
+      ]
+    ]
+  },
+  "Other currency": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        35
+      ],
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        110
+      ]
+    ]
+  },
+  "<0>Amount of money</0>": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        63
+      ]
+    ]
+  },
+  "<0>Currency</0>": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        81
+      ]
+    ]
+  },
+  "<0>How did you pay the scammer?</0>": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        130
+      ]
+    ]
+  },
+  "Other method of payment": {
+    "origin": [
+      [
+        "src/p1/forms/MoneyLostForm.js",
+        161
+      ]
+    ]
+  }
+}

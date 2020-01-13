@@ -1,0 +1,18 @@
+{
+  "suspect clues": {
+    "origin": [
+      [
+        "src/p1/FileUploadYesNoPage.js",
+        15
+      ]
+    ]
+  },
+  "Do you have documents, screenshots, or receipts?": {
+    "origin": [
+      [
+        "src/p1/FileUploadYesNoPage.js",
+        19
+      ]
+    ]
+  }
+}

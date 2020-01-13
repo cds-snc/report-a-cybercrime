@@ -1,0 +1,50 @@
+{
+  "Report a scam": {
+    "origin": [
+      [
+        "src/App.js",
+        31
+      ]
+    ]
+  },
+  "Skip to main content": {
+    "origin": [
+      [
+        "src/App.js",
+        95
+      ]
+    ]
+  },
+  "ALPHA": {
+    "origin": [
+      [
+        "src/App.js",
+        99
+      ]
+    ]
+  },
+  "This site will change as we test ideas.": {
+    "origin": [
+      [
+        "src/App.js",
+        100
+      ]
+    ]
+  },
+  "Privacy": {
+    "origin": [
+      [
+        "src/App.js",
+        116
+      ]
+    ]
+  },
+  "Terms and Conditions": {
+    "origin": [
+      [
+        "src/App.js",
+        125
+      ]
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "Step {activeStep} of {totalSteps}": {
+    "origin": [
+      [
+        "src/components/stepper/index.js",
+        23
+      ]
+    ]
+  }
+}

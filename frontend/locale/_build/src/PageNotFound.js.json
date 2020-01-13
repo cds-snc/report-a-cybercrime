@@ -1,0 +1,18 @@
+{
+  "Page not found": {
+    "origin": [
+      [
+        "src/PageNotFound.js",
+        15
+      ]
+    ]
+  },
+  "Sorry, the page you were trying to view does not exist.": {
+    "origin": [
+      [
+        "src/PageNotFound.js",
+        18
+      ]
+    ]
+  }
+}

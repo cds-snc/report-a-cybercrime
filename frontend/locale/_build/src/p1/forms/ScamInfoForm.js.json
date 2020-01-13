@@ -1,0 +1,78 @@
+{
+  "Telephone": {
+    "origin": [
+      [
+        "src/p1/forms/ScamInfoForm.js",
+        23
+      ]
+    ]
+  },
+  "Email": {
+    "origin": [
+      [
+        "src/p1/forms/ScamInfoForm.js",
+        24
+      ]
+    ]
+  },
+  "Website": {
+    "origin": [
+      [
+        "src/p1/forms/ScamInfoForm.js",
+        25
+      ]
+    ]
+  },
+  "Other": {
+    "origin": [
+      [
+        "src/p1/forms/ScamInfoForm.js",
+        26
+      ],
+      [
+        "src/p1/forms/ScamInfoForm.js",
+        136
+      ]
+    ]
+  },
+  "<0>What happened?</0>": {
+    "origin": [
+      [
+        "src/p1/forms/ScamInfoForm.js",
+        67
+      ]
+    ]
+  },
+  "<0>When did it start?</0>": {
+    "origin": [
+      [
+        "src/p1/forms/ScamInfoForm.js",
+        84
+      ]
+    ]
+  },
+  "For example: April 28, 2019": {
+    "origin": [
+      [
+        "src/p1/forms/ScamInfoForm.js",
+        90
+      ]
+    ]
+  },
+  "<0>How did it start?</0>": {
+    "origin": [
+      [
+        "src/p1/forms/ScamInfoForm.js",
+        105
+      ]
+    ]
+  },
+  "Please fill out all fields": {
+    "origin": [
+      [
+        "src/p1/forms/ScamInfoForm.js",
+        158
+      ]
+    ]
+  }
+}

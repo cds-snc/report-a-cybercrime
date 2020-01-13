@@ -1,0 +1,134 @@
+{
+  "Submit report   ❯": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        43
+      ]
+    ]
+  },
+  "Next": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        47
+      ]
+    ]
+  },
+  ": Clues about the suspect": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        51
+      ]
+    ]
+  },
+  ": Money lost": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        53
+      ]
+    ]
+  },
+  "Report now ❯": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        55
+      ],
+      [
+        "src/components/buttons-container/index.js",
+        73
+      ]
+    ]
+  },
+  ": Impact of the scam": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        57
+      ]
+    ]
+  },
+  ": What happened": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        59
+      ]
+    ]
+  },
+  ": Add files": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        61
+      ]
+    ]
+  },
+  ": Contact information": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        63
+      ]
+    ]
+  },
+  ": Review report": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        65
+      ]
+    ]
+  },
+  "❮   Report another scam": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        77
+      ]
+    ]
+  },
+  "Cancel report": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        86
+      ]
+    ]
+  },
+  "Prototype 1": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        117
+      ]
+    ]
+  },
+  "Prototype 2": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        122
+      ]
+    ]
+  },
+  "Yes": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        161
+      ]
+    ]
+  },
+  "No": {
+    "origin": [
+      [
+        "src/components/buttons-container/index.js",
+        166
+      ]
+    ]
+  }
+}

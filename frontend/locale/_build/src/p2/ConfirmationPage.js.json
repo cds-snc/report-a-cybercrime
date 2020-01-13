@@ -1,0 +1,19 @@
+{
+  "your contact information": {
+    "origin": [
+      [
+        "src/p2/ConfirmationPage.js",
+        97
+      ]
+    ]
+  },
+  "confirmationPage.title": {
+    "defaults": "Review your report",
+    "origin": [
+      [
+        "src/p2/ConfirmationPage.js",
+        101
+      ]
+    ]
+  }
+}

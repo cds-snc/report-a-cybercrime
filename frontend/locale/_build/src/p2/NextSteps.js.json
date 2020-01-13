@@ -1,0 +1,110 @@
+{
+  "nextStepsPage.title": {
+    "defaults": "Thank you for reporting",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        43
+      ]
+    ]
+  },
+  "nextStepsPage.summary": {
+    "defaults": "We've sent you an email with a summary of your report. Your reference number is <0>#NC300234234</0>",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        46
+      ]
+    ]
+  },
+  "nextStepsPage.helpResource": {
+    "defaults": "Where you can get help",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        54
+      ]
+    ]
+  },
+  "nextStepsPage.helpResource1": {
+    "defaults": "Talk to someone and get support",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        68
+      ]
+    ]
+  },
+  "nextStepsPage.helpResource2": {
+    "defaults": "Find tips to protect yourself in the future",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        81
+      ]
+    ]
+  },
+  "nextStepsPage.helpResource3": {
+    "defaults": "Follow what scams are trending",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        94
+      ]
+    ]
+  },
+  "nextStepsPage.nextStepSummary": {
+    "defaults": "What happens next",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        102
+      ]
+    ]
+  },
+  "nextStepsPage.nextStepDetail": {
+    "defaults": "The RCMP will analyze your report and combine it with others that are similar to help police across Canada track down cybercriminals.",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        111
+      ]
+    ]
+  },
+  "nextStepsPage.otherReportOption": {
+    "defaults": "You have other reporting options",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        121
+      ]
+    ]
+  },
+  "nextStepsPage.otherReportOption1": {
+    "defaults": "Report directly to the place where the scam happened.",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        128
+      ]
+    ]
+  },
+  "nextStepsPage.otherReportOption2": {
+    "defaults": "Report to your financial institution, if you lost money.",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        133
+      ]
+    ]
+  },
+  "nextStepsPage.otherReportOption3": {
+    "defaults": "Report to the credit bureaus, <0>Equifax</0> and <1>TransUnion</1>, if your identity was stolen.",
+    "origin": [
+      [
+        "src/p2/NextSteps.js",
+        138
+      ]
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "previous page": {
+    "origin": [
+      [
+        "src/p1/FileUploadPage.js",
+        55
+      ]
+    ]
+  },
+  "Attach supporting files": {
+    "origin": [
+      [
+        "src/p1/FileUploadPage.js",
+        59
+      ]
+    ]
+  },
+  "Include any messages, conversations, receipts, or other evidence that shows what happened.": {
+    "origin": [
+      [
+        "src/p1/FileUploadPage.js",
+        62
+      ]
+    ]
+  },
+  "Please attach one file at a time.": {
+    "origin": [
+      [
+        "src/p1/FileUploadPage.js",
+        68
+      ]
+    ]
+  },
+  "Add file": {
+    "origin": [
+      [
+        "src/p1/FileUploadPage.js",
+        96
+      ]
+    ]
+  },
+  "{0, plural, one {# file attached} other {# files attached}}": {
+    "origin": [
+      [
+        "src/p1/FileUploadPage.js",
+        108
+      ]
+    ]
+  },
+  "Remove file": {
+    "origin": [
+      [
+        "src/p1/FileUploadPage.js",
+        148
+      ]
+    ]
+  },
+  "Next: Contact information": {
+    "origin": [
+      [
+        "src/p1/FileUploadPage.js",
+        182
+      ]
+    ]
+  },
+  "Cancel report": {
+    "origin": [
+      [
+        "src/p1/FileUploadPage.js",
+        193
+      ]
+    ]
+  }
+}

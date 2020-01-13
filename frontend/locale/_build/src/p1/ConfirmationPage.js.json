@@ -1,0 +1,274 @@
+{
+  "What happened": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        46
+      ]
+    ]
+  },
+  "Edit scam event": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        48
+      ]
+    ]
+  },
+  "Edit": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        54
+      ],
+      [
+        "src/p1/ConfirmationPage.js",
+        118
+      ],
+      [
+        "src/p1/ConfirmationPage.js",
+        185
+      ],
+      [
+        "src/p1/ConfirmationPage.js",
+        277
+      ],
+      [
+        "src/p1/ConfirmationPage.js",
+        319
+      ]
+    ]
+  },
+  "Description": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        60
+      ]
+    ]
+  },
+  "Date": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        69
+      ]
+    ]
+  },
+  "Contacted by": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        77
+      ]
+    ]
+  },
+  "Money lost": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        110
+      ]
+    ]
+  },
+  "Edit money lost": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        112
+      ]
+    ]
+  },
+  "Amount": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        124
+      ]
+    ]
+  },
+  "Currency": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        132
+      ]
+    ]
+  },
+  "Payment method": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        140
+      ]
+    ]
+  },
+  "About the suspect": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        177
+      ]
+    ]
+  },
+  "Edit scammer details": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        179
+      ]
+    ]
+  },
+  "Name": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        192
+      ],
+      [
+        "src/p1/ConfirmationPage.js",
+        326
+      ]
+    ]
+  },
+  "Email address": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        201
+      ]
+    ]
+  },
+  "Phone number": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        210
+      ],
+      [
+        "src/p1/ConfirmationPage.js",
+        343
+      ]
+    ]
+  },
+  "Website": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        219
+      ]
+    ]
+  },
+  "Mailing address": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        229
+      ]
+    ]
+  },
+  "IP address": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        237
+      ]
+    ]
+  },
+  "Language of correspondence": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        245
+      ]
+    ]
+  },
+  "Files attached": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        266
+      ]
+    ]
+  },
+  "Edit files attached": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        271
+      ]
+    ]
+  },
+  "File name": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        286
+      ]
+    ]
+  },
+  "Contact information": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        311
+      ]
+    ]
+  },
+  "Edit contact info": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        313
+      ]
+    ]
+  },
+  "Email": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        335
+      ]
+    ]
+  },
+  "Did the scam happened to you": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        351
+      ]
+    ]
+  },
+  "contact information": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        442
+      ]
+    ]
+  },
+  "Review report information": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        446
+      ]
+    ]
+  },
+  "Submit report   ❯": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        496
+      ]
+    ]
+  },
+  "Cancel report": {
+    "origin": [
+      [
+        "src/p1/ConfirmationPage.js",
+        509
+      ]
+    ]
+  }
+}
