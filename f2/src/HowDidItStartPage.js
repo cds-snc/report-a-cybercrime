@@ -38,7 +38,7 @@ export const HowDidItStartPage = () => {
 
             <HowDidItStartForm
               onSubmit={data => {
-                dispatch({ type: 'saveFormData', data: { whatHappened: data } })
+                dispatch({ type: 'saveFormData', data: { howdiditstart: data } })
                 history.push(doneForms ? '/confirmation' : '/WhatWasAffectedPage')
               }}
             />
