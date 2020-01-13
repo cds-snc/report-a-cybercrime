@@ -3,210 +3,70 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { H2 } from './components/header'
-import { Text } from './components/text'
 import { Link } from './components/link'
-import { Stack, Flex, Code, Box } from '@chakra-ui/core'
+import { Stack, Code } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { DescriptionListItem } from './components/DescriptionListItem'
-import { useIntl } from 'react-intl'
+//
+import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
+import { ContactInfoSummary } from './summary/ContactInfoSummary'
+import { DevicesSummary } from './summary/DevicesSummary'
+import { EvidenceInfoSummary } from './summary/EvidenceInfoSummary'
+import { InformationSummary } from './summary/InformationSummary'
+import { LocationInfoSummary } from './summary/LocationInfoSummary'
+import { MoneyLostInfoSummary } from './summary/MoneyLostInfoSummary'
+import { SuspectCluesSummary } from './summary/SuspectCluesSummary'
+import { WhatHappenedSummary } from './summary/WhatHappenedSummary'
+import { WhatWasAffectedSummary } from './summary/WhatWasAffectedSummary'
 
-const EditButton = ({ path, label }) => {
+export const testdata = {
+  doneForms: true,
+  formData: {
+    consent: { consentOptions: ['privacyConsentInfoForm.yes'] },
+    whatWasAffected: {
+      affectedOptions: [
+        'whatWasAffectedForm.financial',
+        'whatWasAffectedForm.personal_information',
+        'whatWasAffectedForm.devices',
+        'whatWasAffectedForm.business_assets',
+        'whatWasAffectedForm.other',
+      ],
+    },
+    moneyLost: {
+      demandedMoney: 'moneylost1',
+      moneyTaken: 'moneylost2',
+      methodPayment: 'moneylost3',
+      transactionDate: 'moneylost4',
+      tellUsMore: 'moneylost5',
+    },
+    personalInformation: {
+      typeOfInfoReq: '1',
+      typeOfInfoObtained: '2',
+      tellUsMore: '3',
+    },
+    devices: { deviceOrAccount: '4', devicesTellUsMore: '5' },
+    businessInfo: { business: 'business assets text area' },
+    whatHappened: { whatHappened: 'what happened summary text area' },
+    suspectClues: {
+      suspectClues: '',
+      suspectClues1: 'suspectclues1',
+      suspectClues2: 'suspectclues2',
+      suspectClues3: 'suspectclues3',
+    },
+    evidence: {
+      files: ['nodejs travel expenses_Page_4_Image_0001.jpg', 'file.jpg'],
+      fileDescriptions: ['file', 'other-file'],
+    },
+    location: { location: '', postalCode: 'location1', cityTown: 'location2' },
+    contactInfo: { email: 'email' },
+  },
+}
+
+export const EditButton = ({ path, label }) => {
   const { i18n } = useLingui()
   return (
-    <Link type="button" textAlign="center" to={path} aria-label={i18n._(label)}>
+    <Link to={path} aria-label={i18n._(label)} ml={4}>
       <Trans id="button.edit" />
     </Link>
-  )
-}
-const TimeFrameSummary = () => {
-  const [data] = useStateValue()
-  const { timeFrame } = data.formData
-  const startDate = timeFrame ? timeFrame.startDate.slice(0, 10) : ''
-  const endDate = timeFrame ? timeFrame.endDate.slice(0, 10) : ''
-  return (
-    <React.Fragment>
-      <H2>
-        <Trans id="confirmationPage.timeFrameTitle" />{' '}
-        <EditButton label={'Edit timeframe'} path="/timeframe" />
-      </H2>
-      {startDate ? (
-        <Text>
-          <Trans
-            id="confirmationPage.timeFrameDateRange"
-            values={{ startDate, endDate }}
-          />
-        </Text>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.timeFrameIntro" />
-        </Text>
-      )}
-    </React.Fragment>
-  )
-}
-
-const WhatHappenedSummary = () => {
-  const [data] = useStateValue()
-  const { whatHappened } = data.formData
-
-  return (
-    <React.Fragment>
-      <H2>
-        <Trans id="confirmationPage.scamTitle" />{' '}
-        <EditButton label={'Edit what happened'} path="/whathappened" />
-      </H2>
-      {whatHappened ? (
-        <Text>{whatHappened.whatHappened}</Text>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.scamIntro" />
-        </Text>
-      )}
-    </React.Fragment>
-  )
-}
-
-const ScammerSummary = () => {
-  const [data] = useStateValue()
-
-  //FIXME: Something is wrong with the scammer details text area. Check again with new form
-  const scammer = {
-    scammerDetails: '',
-    files: ['test', 'testagain'],
-    fileDescriptions: ['testDesc', 'test-a-g-ain'],
-    ...data.formData.scammerDetails,
-  }
-
-  console.log()
-
-  return (
-    <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
-      <Flex align="baseline">
-        <H2>
-          <Trans id="confirmationPage.suspectTitle" />
-        </H2>
-        <Link to="/scammerdetails" ml={4}>
-          <Trans id="button.edit" />
-        </Link>
-      </Flex>
-      {scammer.scammerDetails !== '' ||
-      scammer.files.length > 0 ||
-      scammer.fileDescriptions.length > 0 ? (
-        <Stack as="dl" spacing={4} shouldWrapChildren>
-          <DescriptionListItem
-            descriptionTitle="scammerDetail.summary"
-            description={scammer.scammerDetails}
-          />
-          {scammer.files ? (
-            <Stack as="dl" spacing={4} shouldWrapChildren>
-              {scammer.files.map((file, index) => (
-                <Flex key={index} pb={4}>
-                  <Text pr={4}>{index + 1}.</Text>
-                  <Box>
-                    <Text as="dt" fontWeight="bold">
-                      {file}
-                    </Text>
-                    <Text as="dd">{scammer.fileDescriptions[index]}</Text>
-                  </Box>
-                </Flex>
-              ))}
-            </Stack>
-          ) : null}
-        </Stack>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.suspectIntro" />
-        </Text>
-      )}
-    </Stack>
-  )
-}
-
-const ImpactSummary = () => {
-  const { i18n } = useLingui()
-  const intl = useIntl()
-
-  const [data] = useStateValue()
-  const impact = {
-    howWereYouAffected: [],
-    damage: '',
-    ...data.formData.impact,
-  }
-
-  return (
-    <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
-      <Flex align="baseline">
-        <H2>
-          <Trans id="confirmationPage.ImpactTitle" />
-        </H2>
-        <Link to="/impact" ml={4}>
-          <Trans id="button.edit" />
-        </Link>
-      </Flex>
-      {impact.howWereYouAffected.length > 0 || impact.damage !== '' ? (
-        <Stack as="dl" spacing={4} shouldWrapChildren>
-          <DescriptionListItem
-            descriptionTitle="impactPage.summary"
-            description={impact.damage}
-          />
-          <DescriptionListItem
-            descriptionTitle="impactPage.detail"
-            description={intl.formatList(
-              impact.howWereYouAffected.map(i => i18n._(i)),
-              { type: 'conjunction' },
-            )}
-          />
-        </Stack>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.impactIntro" />
-        </Text>
-      )}
-    </Stack>
-  )
-}
-
-const ContactSummary = () => {
-  const [data] = useStateValue()
-  const contactInfo = {
-    fullName: '',
-    email: '',
-    postalCode: '',
-    ...data.formData.contactInfo,
-  }
-
-  return (
-    <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
-      <Flex align="baseline">
-        <H2>
-          <Trans id="confirmationPage.contactTitle" />
-        </H2>
-        <Link to="/contactinfo" ml={4}>
-          <Trans id="button.edit" />
-        </Link>
-      </Flex>
-      {contactInfo.fullName + contactInfo.email + contactInfo.postalCode ? (
-        <Stack as="dl" spacing={4} shouldWrapChildren>
-          <DescriptionListItem
-            descriptionTitle="contactinfoPage.fullName"
-            description={contactInfo.fullName}
-          />
-          <DescriptionListItem
-            descriptionTitle="contactinfoPage.emailAddress"
-            description={contactInfo.email}
-          />
-          <DescriptionListItem
-            descriptionTitle="contactinfoPage.postCode"
-            description={contactInfo.postalCode}
-          />
-        </Stack>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.contactIntro" />
-        </Text>
-      )}
-    </Stack>
   )
 }
 
@@ -221,11 +81,16 @@ export const ConfirmationSummary = () => {
     <React.Fragment>
       <Stack spacing={12} shouldWrapChildren>
         <Code>{JSON.stringify(data)}</Code>
-        <TimeFrameSummary />
+        <WhatWasAffectedSummary />
+        <MoneyLostInfoSummary />
+        <InformationSummary />
+        <DevicesSummary />
+        <BusinessInfoSummary />
         <WhatHappenedSummary />
-        <ScammerSummary />
-        <ImpactSummary />
-        <ContactSummary />
+        <SuspectCluesSummary />
+        <EvidenceInfoSummary />
+        <LocationInfoSummary />
+        <ContactInfoSummary />
       </Stack>
     </React.Fragment>
   )
