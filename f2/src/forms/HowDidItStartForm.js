@@ -208,11 +208,11 @@ export const HowDidItStartForm = props => {
               </Stack>
             </Control>
             <P>
-              <Trans id="businessInfoPage.nextPage" />
+              <Trans id="whatWasAffectedForm.nextPage" />
             </P>
 
             <NextAndCancelButtons>
-              <Trans id="howDidItStartPage.nextButton" />
+              <Trans id="whatWasAffectedForm.nextButton" />
             </NextAndCancelButtons>
           </Stack>
         )}
