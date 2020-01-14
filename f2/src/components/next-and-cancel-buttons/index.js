@@ -8,7 +8,7 @@ import { P } from '../paragraph'
 import { Link as ReactRouterLink } from 'react-router-dom'
 
 export const NextAndCancelButtons = ({ cancelRoute = '/', ...props }) => (
-  <Flex direction="row" align="center" wrap="wrap" mb={4} mt={10}>
+  <Flex direction="row" align="center" wrap="wrap" mb={10} mt={10}>
     <P w="100%">{props.next}</P>
     <Button type="submit">
       {props.button}
