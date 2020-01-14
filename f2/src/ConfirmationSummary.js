@@ -7,6 +7,7 @@ import { Link } from './components/link'
 import { Stack, Code } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 //
+import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
 import { DevicesSummary } from './summary/DevicesSummary'
@@ -81,6 +82,7 @@ export const ConfirmationSummary = () => {
     <React.Fragment>
       <Stack spacing={12} shouldWrapChildren>
         <Code>{JSON.stringify(data)}</Code>
+        <HowDidItStartSummary />
         <WhatWasAffectedSummary />
         <MoneyLostInfoSummary />
         <InformationSummary />
