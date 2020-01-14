@@ -111,13 +111,10 @@ export const MoneyLostInfoForm = props => {
             )}
           </Field>
 
-          <P>
-            <Trans id="moneyLostPage.nextStepDetail" />
-          </P>
-
-          <NextAndCancelButtons>
-            <Trans id="moneyLostPage.nextButton" />
-          </NextAndCancelButtons>
+          <NextAndCancelButtons
+            next={<Trans id="moneyLostPage.nextStepDetail" />}
+            button={<Trans id="moneyLostPage.nextButton" />}
+          />
         </Stack>
       )}
     />

@@ -46,21 +46,45 @@ export const HowDidItStartForm = props => {
   const [data] = useStateValue()
   const channel = {
     howDidTheyReachYou: [],
-    ...data.formData.channel
+    ...data.formData.channel,
   }
   //TODO: Move this form data to some sort of a schema file instead?
-  var questionsList =[
-   { name:"email", channel:"howDidTheyReachYou.email", label: "howDidTheyReachYouLabel.question1", hint: "howDidTheyReachYouLabel.hint1" },
-   { name:"phone", channel:"howDidTheyReachYou.phone", label: "howDidTheyReachYouLabel.question2", hint: "howDidTheyReachYouLabel.hint2" },
-   { name:"online", channel:"howDidTheyReachYou.online", label: "howDidTheyReachYouLabel.question3", hint: "howDidTheyReachYouLabel.hint3" },
-   { name:"application", channel:"howDidTheyReachYou.app", label: "howDidTheyReachYouLabel.question4", hint: "howDidTheyReachYouLabel.hint4" },
-   { name:"others", channel:"howDidTheyReachYou.others", label: "howDidTheyReachYouLabel.question5", hint: "howDidTheyReachYouLabel.hint5"}
-  ];
+  var questionsList = [
+    {
+      name: 'email',
+      channel: 'howDidTheyReachYou.email',
+      label: 'howDidTheyReachYouLabel.question1',
+      hint: 'howDidTheyReachYouLabel.hint1',
+    },
+    {
+      name: 'phone',
+      channel: 'howDidTheyReachYou.phone',
+      label: 'howDidTheyReachYouLabel.question2',
+      hint: 'howDidTheyReachYouLabel.hint2',
+    },
+    {
+      name: 'online',
+      channel: 'howDidTheyReachYou.online',
+      label: 'howDidTheyReachYouLabel.question3',
+      hint: 'howDidTheyReachYouLabel.hint3',
+    },
+    {
+      name: 'application',
+      channel: 'howDidTheyReachYou.app',
+      label: 'howDidTheyReachYouLabel.question4',
+      hint: 'howDidTheyReachYouLabel.hint4',
+    },
+    {
+      name: 'others',
+      channel: 'howDidTheyReachYou.others',
+      label: 'howDidTheyReachYouLabel.question5',
+      hint: 'howDidTheyReachYouLabel.hint5',
+    },
+  ]
 
   return (
     <React.Fragment>
-
-    {/*
+      {/*
           {false ? (
             <div>
               //TODO: mark the proper ids for lingui
@@ -88,37 +112,38 @@ export const HowDidItStartForm = props => {
                 <Trans id="howDidTheyReachYou.question" />
               </FormLabel>
               <Stack spacing={4} shouldWrapChildren>
-
-                {questionsList.map((question) => {
+                {questionsList.map(question => {
                   return (
                     <Box question={question.channel}>
                       <CheckboxArrayControl
                         name="howDidTheyReachYou"
                         value={question.channel}
-                        isChecked={channel.howDidTheyReachYou.includes(question.channel)}
+                        isChecked={channel.howDidTheyReachYou.includes(
+                          question.channel,
+                        )}
                       >
                         {i18n._(question.channel)}
                       </CheckboxArrayControl>
                       {values.howDidTheyReachYou.includes(question.channel) && (
                         <ConditionalForm>
                           <Field name={question.name}>
-                          {props => (
-                            <FormControl>
-                              <FormLabel htmlFor={question.name}>
-                                <Trans id={question.label} />
-                              </FormLabel>
-                              <FormHelperText>
-                                <Trans id={question.hint} />
-                              </FormHelperText>
-                              <TextArea
-                                id={question.hint}
-                                name={props.input.name}
-                                value={props.input.value}
-                                onChange={props.input.onChange}
-                              />
-                            </FormControl>
-                          )}
-                        </Field>
+                            {props => (
+                              <FormControl>
+                                <FormLabel htmlFor={question.name}>
+                                  <Trans id={question.label} />
+                                </FormLabel>
+                                <FormHelperText>
+                                  <Trans id={question.hint} />
+                                </FormHelperText>
+                                <TextArea
+                                  id={question.hint}
+                                  name={props.input.name}
+                                  value={props.input.value}
+                                  onChange={props.input.onChange}
+                                />
+                              </FormControl>
+                            )}
+                          </Field>
                         </ConditionalForm>
                       )}
                     </Box>
@@ -127,11 +152,10 @@ export const HowDidItStartForm = props => {
               </Stack>
             </Control>
 
-            <NextAndCancelButtons>
-              <Trans id="howDidItStartPage.nextButton">
-                Next: ??
-              </Trans>
-            </NextAndCancelButtons>
+            <NextAndCancelButtons
+              next={<Trans id="howDidItStartPage.nextPage" />}
+              button={<Trans id="howDidItStartPage.nextButton" />}
+            />
           </Stack>
         )}
       />

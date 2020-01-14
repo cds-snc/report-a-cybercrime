@@ -72,12 +72,10 @@ export const InformationForm = ({ onSubmit }) => (
             </FormControl>
           )}
         </Field>
-        <P>
-          <Trans id="informationPage.nextStep" />
-        </P>
-        <NextAndCancelButtons>
-          <Trans id="informationPage.nextButton" />
-        </NextAndCancelButtons>
+        <NextAndCancelButtons
+          next={<Trans id="informationPage.nextStep" />}
+          button={<Trans id="informationPage.nextButton" />}
+        />
       </Stack>
     )}
   />

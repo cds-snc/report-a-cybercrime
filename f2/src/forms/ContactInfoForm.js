@@ -4,7 +4,6 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { P } from '../components/paragraph'
 import { TextInput } from '../components/TextInput'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
@@ -47,16 +46,11 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-          <P>
-            <Trans id="contactinfoPage.rcmpFollowup" />
-          </P>
 
-          <P>
-            <Trans id="contactinfoPage.nextInfo" />
-          </P>
-          <NextAndCancelButtons>
-            <Trans id="contactinfoPage.nextButton" />
-          </NextAndCancelButtons>
+          <NextAndCancelButtons
+            next={<Trans id="contactinfoPage.rcmpFollowup" />}
+            button={<Trans id="contactinfoPage.nextButton" />}
+          />
         </Stack>
       )}
     />

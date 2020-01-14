@@ -12,7 +12,6 @@ import { P } from '../components/paragraph'
 import { useStateValue } from '../utils/state'
 
 export const LocationInfoForm = props => {
-
   const [data] = useStateValue()
   const location = {
     location: '',
@@ -20,63 +19,59 @@ export const LocationInfoForm = props => {
   }
 
   return (
-  <Form
-    initialValues={location}
-    onSubmit={props.onSubmit}
-    render={({ handleSubmit }) => (
-      <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-        
-        <Field name="postalCode">
-          {props => (
+    <Form
+      initialValues={location}
+      onSubmit={props.onSubmit}
+      render={({ handleSubmit }) => (
+        <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
+          <Field name="postalCode">
+            {props => (
+              <FormControl>
+                <FormLabel htmlFor="postalCode">
+                  <Trans id="locationinfoPage.postalCode" />
+                </FormLabel>
+                <FormHelperText>
+                  <Trans id="locationinfoPage.postalCodeExample">
+                    <VisuallyHidden as="span" />
+                  </Trans>
+                </FormHelperText>
+                <TextInput
+                  id="email"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
 
-            <FormControl>
-              <FormLabel htmlFor="postalCode">
-                <Trans id="locationinfoPage.postalCode" />
-              </FormLabel>
-              <FormHelperText>
-                <Trans id="locationinfoPage.postalCodeExample">
-                  <VisuallyHidden as="span" />
-                </Trans>
-              </FormHelperText>
-              <TextInput
-                id="email"
-                name={props.input.name}
-                value={props.input.value}
-                onChange={props.input.onChange}
-              />
-            </FormControl>
-          )}
-        </Field>
+          <Field name="cityTown">
+            {props => (
+              <FormControl>
+                <FormLabel htmlFor="cityTown">
+                  <Trans id="locationinfoPage.cityTown" />
+                </FormLabel>
+                <FormHelperText>
+                  <Trans id="locationinfoPage.cityTownExample" />
+                </FormHelperText>
+                <TextInput
+                  id="postalCode"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
 
-        <Field name="cityTown">
-          {props => (
-            <FormControl>
-              <FormLabel htmlFor="cityTown">
-                <Trans id="locationinfoPage.cityTown" />
-              </FormLabel>
-              <FormHelperText>
-                <Trans id="locationinfoPage.cityTownExample" />
-              </FormHelperText>
-              <TextInput
-                id="postalCode"
-                name={props.input.name}
-                value={props.input.value}
-                onChange={props.input.onChange}
-              />
-            </FormControl>
-          )}
-        </Field>
-        <P>
-          <Trans id="locationinfoPage.nextPage" />
-        </P>
-
-        <NextAndCancelButtons>
-          <Trans id="contactinfoPage.nextButton" />
-        </NextAndCancelButtons>
-      </Stack>
-    )}
-  />
-)
+          <NextAndCancelButtons
+            next={<Trans id="locationinfoPage.nextPage" />}
+            button={<Trans id="locationinfoPage.nextButton" />}
+          />
+        </Stack>
+      )}
+    />
+  )
 }
 
 LocationInfoForm.propTypes = {

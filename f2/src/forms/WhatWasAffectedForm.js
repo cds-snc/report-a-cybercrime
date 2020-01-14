@@ -107,13 +107,10 @@ export const WhatWasAffectedForm = props => {
                 })}
               </Stack>
             </Control>
-
-            <P>
-              <Trans id="whatWasAffectedForm.nextPage" />
-            </P>
-            <NextAndCancelButtons>
-              <Trans id="whatWasAffectedForm.nextButton" />
-            </NextAndCancelButtons>
+            <NextAndCancelButtons
+              next={<Trans id="whatWasAffectedForm.nextPage" />}
+              button={<Trans id="whatWasAffectedForm.nextButton" />}
+            />
           </Stack>
         )}
       />
