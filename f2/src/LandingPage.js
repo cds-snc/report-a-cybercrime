@@ -43,6 +43,9 @@ export const LandingPage = props => {
                 <Li>
                   <Trans id="landingPage.required4" />
                 </Li>
+                <Li>
+                  <Trans id="landingPage.required5" />
+                </Li>
               </Ul>
             </Stack>
             <Button
