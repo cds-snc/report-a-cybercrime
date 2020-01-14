@@ -147,7 +147,7 @@ export const HowDidItStartForm = props => {
 
                 {questionsList.map((question) => {
                   return (
-                    <Box question={question.channel}>
+                    <Box key={question.channel}>
                       <CheckboxArrayControl
                         name="howDidTheyReachYou"
                         value={question.channel}
