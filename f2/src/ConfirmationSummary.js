@@ -3,163 +3,70 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { H2 } from './components/header'
-import { Text, StyledSpan } from './components/text'
-import { Container } from './components/container'
 import { Link } from './components/link'
-import { Stack } from '@chakra-ui/core'
+import { Stack, Code } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+//
+import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
+import { ContactInfoSummary } from './summary/ContactInfoSummary'
+import { DevicesSummary } from './summary/DevicesSummary'
+import { EvidenceInfoSummary } from './summary/EvidenceInfoSummary'
+import { InformationSummary } from './summary/InformationSummary'
+import { LocationInfoSummary } from './summary/LocationInfoSummary'
+import { MoneyLostInfoSummary } from './summary/MoneyLostInfoSummary'
+import { SuspectCluesSummary } from './summary/SuspectCluesSummary'
+import { WhatHappenedSummary } from './summary/WhatHappenedSummary'
+import { WhatWasAffectedSummary } from './summary/WhatWasAffectedSummary'
 
-const EditButton = ({ path, label }) => {
+export const testdata = {
+  doneForms: true,
+  formData: {
+    consent: { consentOptions: ['privacyConsentInfoForm.yes'] },
+    whatWasAffected: {
+      affectedOptions: [
+        'whatWasAffectedForm.financial',
+        'whatWasAffectedForm.personal_information',
+        'whatWasAffectedForm.devices',
+        'whatWasAffectedForm.business_assets',
+        'whatWasAffectedForm.other',
+      ],
+    },
+    moneyLost: {
+      demandedMoney: 'moneylost1',
+      moneyTaken: 'moneylost2',
+      methodPayment: 'moneylost3',
+      transactionDate: 'moneylost4',
+      tellUsMore: 'moneylost5',
+    },
+    personalInformation: {
+      typeOfInfoReq: '1',
+      typeOfInfoObtained: '2',
+      tellUsMore: '3',
+    },
+    devices: { deviceOrAccount: '4', devicesTellUsMore: '5' },
+    businessInfo: { business: 'business assets text area' },
+    whatHappened: { whatHappened: 'what happened summary text area' },
+    suspectClues: {
+      suspectClues: '',
+      suspectClues1: 'suspectclues1',
+      suspectClues2: 'suspectclues2',
+      suspectClues3: 'suspectclues3',
+    },
+    evidence: {
+      files: ['nodejs travel expenses_Page_4_Image_0001.jpg', 'file.jpg'],
+      fileDescriptions: ['file', 'other-file'],
+    },
+    location: { location: '', postalCode: 'location1', cityTown: 'location2' },
+    contactInfo: { email: 'email' },
+  },
+}
+
+export const EditButton = ({ path, label }) => {
   const { i18n } = useLingui()
   return (
-    <Link type="button" textAlign="center" to={path} aria-label={i18n._(label)}>
+    <Link to={path} aria-label={i18n._(label)} ml={4}>
       <Trans id="button.edit" />
     </Link>
-  )
-}
-
-const TimeFrameSummary = () => {
-  const [data] = useStateValue()
-  const { timeFrame } = data.formData
-  const startDate = timeFrame ? timeFrame.startDate.slice(0, 10) : ''
-  const endDate = timeFrame ? timeFrame.endDate.slice(0, 10) : ''
-  return (
-    <React.Fragment>
-      <H2>
-        <Trans id="confirmationPage.timeFrameTitle" />{' '}
-        <EditButton label={'Edit timeframe'} path="/timeframe" />
-      </H2>
-      {startDate ? (
-        <Text>
-          <Trans
-            id="confirmationPage.timeFrameDateRange"
-            values={{ startDate, endDate }}
-          />
-        </Text>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.timeFrameIntro" />
-        </Text>
-      )}
-    </React.Fragment>
-  )
-}
-
-const WhatHappenedSummary = () => {
-  const [data] = useStateValue()
-  const { whatHappened } = data.formData
-
-  return (
-    <React.Fragment>
-      <H2>
-        <Trans id="confirmationPage.scamTitle" />{' '}
-        <EditButton label={'Edit what happened'} path="/whathappened" />
-      </H2>
-      {whatHappened ? (
-        <Text>{whatHappened.whatHappened}</Text>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.scamIntro" />
-        </Text>
-      )}
-    </React.Fragment>
-  )
-}
-
-const ScammerSummary = () => {
-  const [data] = useStateValue()
-  const scammerDetailsForm = data.formData.scammerDetails
-  const scammerDetails = scammerDetailsForm
-    ? scammerDetailsForm.scammerDetails
-    : ''
-  const files = scammerDetailsForm ? scammerDetailsForm.files : []
-  const fileDescriptions = scammerDetailsForm
-    ? scammerDetailsForm.fileDescriptions
-    : []
-
-  return (
-    <React.Fragment>
-      <H2>
-        <Trans id="confirmationPage.suspectTitle" />{' '}
-        <EditButton label={'Edit scammer information'} path="/scammerdetails" />
-      </H2>
-      {scammerDetails !== '' ||
-      files.length > 0 ||
-      fileDescriptions.length > 0 ? (
-        <React.Fragment>
-          <Text>{scammerDetails}</Text>
-          {files
-            ? files.map((file, index) => (
-                <Container key={index}>
-                  <StyledSpan fontWeight="bold">{file}:</StyledSpan>{' '}
-                  <StyledSpan>{fileDescriptions[index]}</StyledSpan>
-                </Container>
-              ))
-            : null}
-        </React.Fragment>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.suspectIntro" />
-        </Text>
-      )}
-    </React.Fragment>
-  )
-}
-
-const ImpactSummary = () => {
-  const { i18n } = useLingui()
-
-  const [data] = useStateValue()
-  const { impact } = data.formData
-  const howWereYouAffected = impact ? impact.howWereYouAffected : []
-  const damage = impact ? impact.damage : ''
-
-  return (
-    <>
-      <H2>
-        <Trans id="confirmationPage.ImpactTitle" />{' '}
-        <EditButton label={'Edit impact'} path="/impact" />
-      </H2>
-      {howWereYouAffected.length > 0 || damage !== '' ? (
-        <>
-          <Text>{howWereYouAffected.map(i => i18n._(i)).join(', ')}</Text>
-          <Text>{damage}</Text>
-        </>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.impactIntro" />
-        </Text>
-      )}
-    </>
-  )
-}
-
-const ContactSummary = () => {
-  const [data] = useStateValue()
-  const { contactInfo } = data.formData
-  const fullName = contactInfo ? contactInfo.fullName : ''
-  const email = contactInfo ? contactInfo.email : ''
-  const postalCode = contactInfo ? contactInfo.postalCode : ''
-
-  return (
-    <React.Fragment>
-      <H2>
-        <Trans id="confirmationPage.contactTitle" />{' '}
-        <EditButton label={'Edit contact information'} path="/contactinfo" />
-      </H2>
-      {(fullName + email + postalCode).length > 0 ? (
-        <React.Fragment>
-          <Text>{fullName}</Text>
-          <Text>{email}</Text>
-          <Text>{postalCode}</Text>
-        </React.Fragment>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.contactIntro" />
-        </Text>
-      )}
-    </React.Fragment>
   )
 }
 
@@ -172,12 +79,18 @@ export const ConfirmationSummary = () => {
 
   return (
     <React.Fragment>
-      <Stack spacing={4} shouldWrapChildren>
-        <TimeFrameSummary />
+      <Stack spacing={12} shouldWrapChildren>
+        <Code>{JSON.stringify(data)}</Code>
+        <WhatWasAffectedSummary />
+        <MoneyLostInfoSummary />
+        <InformationSummary />
+        <DevicesSummary />
+        <BusinessInfoSummary />
         <WhatHappenedSummary />
-        <ScammerSummary />
-        <ImpactSummary />
-        <ContactSummary />
+        <SuspectCluesSummary />
+        <EvidenceInfoSummary />
+        <LocationInfoSummary />
+        <ContactInfoSummary />
       </Stack>
     </React.Fragment>
   )

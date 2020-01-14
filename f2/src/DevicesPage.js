@@ -7,32 +7,49 @@ import { DevicesForm } from './forms/DevicesForm'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
+import { useStateValue } from './utils/state'
+import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 
-export const DevicesPage = () => (
-  <Route
-    render={({ history }) => (
-      <Layout>
-        <TrackPageViews />
+export const DevicesPage = () => {
+  const [state, dispatch] = useStateValue()
+  const { doneForms, formData } = state
+  const affectedOptions = formData.whatWasAffected
+    ? formData.whatWasAffected.affectedOptions
+    : []
 
-        <Stack spacing={10} shouldWrapChildren>
-          <BackButton route="/">
-            <Trans id="devicePage.backButton" />
-          </BackButton>
+  return (
+    <Route
+      render={({ history }) => (
+        <Layout>
+          <TrackPageViews />
 
-          <Stack spacing={4} role="heading" aria-level="1">
-            <H1 as="span">
-              <Trans id="devicePage.title" />
-            </H1>
+          <Stack spacing={10} shouldWrapChildren>
+            <BackButton route="/whatwasaffected">
+              <Trans id="devicePage.backButton" />
+            </BackButton>
+
+            <Stack spacing={4} role="heading" aria-level="1">
+              <H1 as="span">
+                <Trans id="devicePage.title" />
+              </H1>
+            </Stack>
+
+            <DevicesForm
+              onSubmit={data => {
+                dispatch({
+                  type: 'saveFormData',
+                  data: { devicesInfo: data },
+                })
+                history.push(
+                  doneForms
+                    ? '/confirmation'
+                    : nextWhatWasAffectedUrl(affectedOptions, 'devices'),
+                )
+              }}
+            />
           </Stack>
-
-          <DevicesForm
-            onSubmit={(client, data) => {
-              client.writeData({ data: { timeFrame: JSON.stringify(data) } })
-              history.push(false ? '/confirmation' : '/whathappened')
-            }}
-          />
-        </Stack>
-      </Layout>
-    )}
-  />
-)
+        </Layout>
+      )}
+    />
+  )
+}

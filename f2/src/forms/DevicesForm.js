@@ -10,12 +10,24 @@ import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
+import { useStateValue } from '../utils/state'
 
-export const DevicesForm = ({ onSubmit }) => (
+export const DevicesForm = props => {
+  const localOnSubmit = data => {
+    props.onSubmit(data)
+  }
+
+  const [data] = useStateValue()
+  let { devicesInfo } = data.formData
+  devicesInfo = {
+    devices: '',
+    ...devicesInfo,
+  }
+  return (
   <Form
-    initialValues={{}}
-    onSubmit={onSubmit}
-    render={({ handleSubmit }) => (
+    initialValues={devicesInfo}
+    onSubmit={data => localOnSubmit(data)}
+      render={({ handleSubmit }) => (
       <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
         <Field name="deviceOrAccount">
           {props => (
@@ -64,7 +76,7 @@ export const DevicesForm = ({ onSubmit }) => (
     )}
   />
 )
-
+}
 DevicesForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }

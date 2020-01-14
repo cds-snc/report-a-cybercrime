@@ -12,7 +12,6 @@ import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { Stack } from '@chakra-ui/core'
 
-
 export const LandingPage = props => {
   return (
     <Route
@@ -49,8 +48,9 @@ export const LandingPage = props => {
             <Button
               rightIcon="chevron-right"
               onClick={() => {
-                history.push('/timeframe')
-              }}>
+                history.push('/privacyconsent')
+              }}
+            >
               <Trans id="landingPage.nextButton" />
             </Button>
           </Stack>

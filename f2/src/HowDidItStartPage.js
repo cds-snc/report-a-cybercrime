@@ -5,13 +5,13 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
-import { WhatHappenedForm } from './forms/WhatHappenedForm'
+import { HowDidItStartForm } from './forms/HowDidItStartForm'
 import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
-export const WhatHappenedPage = () => {
+export const HowDidItStartPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
 
@@ -21,25 +21,25 @@ export const WhatHappenedPage = () => {
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/whatwasaffected">
-              <Trans id="whatHappenedPage.backButton" />
+            <BackButton route="/privacyandconsent">
+              <Trans id="howDidItStartPage.backButton" />
             </BackButton>
 
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
-                <Trans id="whatHappenedPage.title" />
+                <Trans id="howDidItStartPage.title" />
               </H1>
             </Stack>
             <Stack spacing={4}>
               <P>
-                <Trans id="whatHappenedPage.intro1" />
+                <Trans id="howDidItStartPage.intro" />
               </P>
             </Stack>
 
-            <WhatHappenedForm
+            <HowDidItStartForm
               onSubmit={data => {
-                dispatch({ type: 'saveFormData', data: { whatHappened: data } })
-                history.push(doneForms ? '/confirmation' : '/suspectclues')
+                dispatch({ type: 'saveFormData', data: { howdiditstart: data } })
+                history.push(doneForms ? '/confirmation' : '/WhatWasAffectedPage')
               }}
             />
           </Stack>
