@@ -9,7 +9,6 @@ import { FormControl, Stack } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { TextArea } from '../components/text-area'
-import { P } from '../components/paragraph'
 
 export const MoneyLostInfoForm = props => {
   return (

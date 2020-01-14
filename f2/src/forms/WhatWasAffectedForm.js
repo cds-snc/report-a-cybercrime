@@ -9,7 +9,6 @@ import { FormControl, Stack, Box } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 
 const Control = ({ name, ...rest }) => {
   const {

@@ -14,7 +14,6 @@ import { FileUpload } from '../components/file-upload'
 import { Box, Stack, FormControl, PseudoBox } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 
 export const EvidenceInfoForm = props => {
   const [data] = useStateValue()
