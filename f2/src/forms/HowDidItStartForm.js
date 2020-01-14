@@ -103,11 +103,28 @@ export const HowDidItStartForm = props => {
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
+          <Trans id="howDidTheyReachYouLabel.question1" />
+          <Trans id="howDidTheyReachYouLabel.question2" />
+          <Trans id="howDidTheyReachYouLabel.question3" />
+          <Trans id="howDidTheyReachYouLabel.question4" />
+          <Trans id="howDidTheyReachYouLabel.question5" />
+          <Trans id="howDidTheyReachYouLabel.hint1" />
+          <Trans id="howDidTheyReachYouLabel.hint2" />
+          <Trans id="howDidTheyReachYouLabel.hint3" />
+          <Trans id="howDidTheyReachYouLabel.hint4" />
+          <Trans id="howDidTheyReachYouLabel.hint5" />
+          <Trans id="howDidTheyReachYou.email" />
+          <Trans id="howDidTheyReachYou.phone" />
+          <Trans id="howDidTheyReachYou.online" />
+          <Trans id="howDidTheyReachYou.app" />
+          <Trans id="howDidTheyReachYou.others" />
           <Trans id="whenDidItStart.today" />
           <Trans id="whenDidItStart.pastWeek" />
           <Trans id="whenDidItStart.pastMonth" />
           <Trans id="whenDidItStart.pastYear" />
           <Trans id="whenDidItStart.moreThanOneYear" />
+          <Trans id="howManyTimes.once" />
+          <Trans id="howManyTimes.severalTimes" />
         </div>
       ) : null}
 
