@@ -6,15 +6,6 @@ const shadows = {
   outlineLeft: '-2px 0 0 0 #CBD5E0, 2px 0 0 0 inset #CBD5E0',
 }
 
-// Chakra theming
-//const radius = 1
-//const radii = {
-//  none: '0',
-//  sm: `${ radius * 0.125}rem`,
-//  md: `${ radius * 0.25 } rem`,
-//  lg: `${ radius * 0.5 } rem`,
-//  full: '9999px',
-//}
 const colors = {
   green: {
     50: '#F2FFF0',

@@ -8,31 +8,48 @@ import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
+import { useStateValue } from './utils/state'
+import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 
-export const InformationPage = () => (
-  <Route
-    render={({ history }) => (
-      <Layout>
-        <TrackPageViews />
-        <Stack spacing={10} shouldWrapChildren>
-          <BackButton route="/whatwasaffected">
-            <Trans id="informationPage.backButton" />
-          </BackButton>
+export const InformationPage = () => {
+  const [state, dispatch] = useStateValue()
+  const { doneForms, formData } = state
+  const affectedOptions = formData.whatWasAffected
+    ? formData.whatWasAffected.affectedOptions
+    : []
 
-          <Stack spacing={4} role="heading" aria-level="1">
-            <H1 as="span">
-              <Trans id="informationPage.title" />
-            </H1>
+  return (
+    <Route
+      render={({ history }) => (
+        <Layout>
+          <TrackPageViews />
+          <Stack spacing={10} shouldWrapChildren>
+            <BackButton route="/whatwasaffected">
+              <Trans id="informationPage.backButton" />
+            </BackButton>
+
+            <Stack spacing={4} role="heading" aria-level="1">
+              <H1 as="span">
+                <Trans id="informationPage.title" />
+              </H1>
+            </Stack>
+
+            <InformationForm
+              onSubmit={data => {
+                dispatch({
+                  type: 'saveFormData',
+                  data: { personalInformation: data },
+                })
+                history.push(
+                  doneForms
+                    ? '/confirmation'
+                    : nextWhatWasAffectedUrl(affectedOptions, 'information'),
+                )
+              }}
+            />
           </Stack>
-
-          <InformationForm
-            onSubmit={(client, data) => {
-              client.writeData({ data: { contactInfo: JSON.stringify(data) } })
-              history.push('/confirmation')
-            }}
-          />
-        </Stack>
-      </Layout>
-    )}
-  />
-)
+        </Layout>
+      )}
+    />
+  )
+}
