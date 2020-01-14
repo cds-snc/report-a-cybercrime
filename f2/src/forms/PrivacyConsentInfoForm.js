@@ -6,7 +6,6 @@ import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
 import { FormControl, Stack, Box } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
 
