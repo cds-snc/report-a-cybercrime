@@ -8,40 +8,48 @@ import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 
 export const DevicesPage = () => {
-  const [data, dispatch] = useStateValue()
-  const { doneForms } = data
+  const [state, dispatch] = useStateValue()
+  const { doneForms, formData } = state
+  const affectedOptions = formData.whatWasAffected
+    ? formData.whatWasAffected.affectedOptions
+    : []
 
   return (
-  <Route
-    render={({ history }) => (
-      <Layout>
-        <TrackPageViews />
+    <Route
+      render={({ history }) => (
+        <Layout>
+          <TrackPageViews />
 
-        <Stack spacing={10} shouldWrapChildren>
-          <BackButton route="/whatwasaffected">
-            <Trans id="devicePage.backButton" />
-          </BackButton>
+          <Stack spacing={10} shouldWrapChildren>
+            <BackButton route="/whatwasaffected">
+              <Trans id="devicePage.backButton" />
+            </BackButton>
 
-          <Stack spacing={4} role="heading" aria-level="1">
-            <H1 as="span">
-              <Trans id="devicePage.title" />
-            </H1>
+            <Stack spacing={4} role="heading" aria-level="1">
+              <H1 as="span">
+                <Trans id="devicePage.title" />
+              </H1>
+            </Stack>
+
+            <DevicesForm
+              onSubmit={data => {
+                dispatch({
+                  type: 'saveFormData',
+                  data: { devicesInfo: data },
+                })
+                history.push(
+                  doneForms
+                    ? '/confirmation'
+                    : nextWhatWasAffectedUrl(affectedOptions, 'devices'),
+                )
+              }}
+            />
           </Stack>
-
-          <DevicesForm
-             onSubmit={data => {
-              dispatch({
-                type: 'saveFormData',
-                data: { devicesInfo: data },
-              })
-              history.push(doneForms ? '/confirmation' : '/contactinfo')
-            }}
-          />
-        </Stack>
-      </Layout>
-    )}
-  />
-)
+        </Layout>
+      )}
+    />
+  )
 }

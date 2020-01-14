@@ -126,7 +126,6 @@ export const ScammerDetailsForm = props => {
 
               {status ? (
                 <PseudoBox
-                  as="Text"
                   tabIndex={-1}
                   id="status"
                   _focus={{
