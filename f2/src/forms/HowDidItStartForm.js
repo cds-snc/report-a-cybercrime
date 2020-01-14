@@ -11,7 +11,6 @@ import { FormHelperText } from '../components/FormHelperText'
 import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 import { ConditionalForm } from '../components/container'
 
 const Control = ({ name, ...rest }) => {
