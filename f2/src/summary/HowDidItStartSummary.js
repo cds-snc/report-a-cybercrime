@@ -2,6 +2,7 @@
 import React from 'react'
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
+import { useIntl } from 'react-intl'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
@@ -13,6 +14,7 @@ import { Text } from '../components/text'
 export const HowDidItStartSummary = ({ onSubmit }) => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
+  const intl = useIntl()
 
   const howdiditstart = {
     ...testdata.formData.howdiditstart,
@@ -21,15 +23,18 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
 
   const overviewLine =
     i18n._('confirmationPage.howDidItStart.overviewPrefix') +
-    howdiditstart.howDidTheyReachYou
-      .map(key =>
-        key === 'howDidTheyReachYou.others'
-          ? howdiditstart.others
-          : i18n._(key).toLowerCase(),
+    intl
+      .formatList(
+        howdiditstart.howDidTheyReachYou.map(key =>
+          key === 'howDidTheyReachYou.others'
+            ? howdiditstart.others
+            : i18n._(key).toLowerCase(),
+        ),
+        { type: 'conjunction' },
       )
-      .join(', ')
       .replace('others') +
     '.'
+
   const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0
 
   return (
