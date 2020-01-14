@@ -58,6 +58,8 @@
   "fileUpload.removed": "File removed",
   "howDidItStartPage.backButton": "Back to privacy",
   "howDidItStartPage.intro": "Anyone can experience a computer crime or scam. Criminals use a number of techniques to get what they want.",
+  "howDidItStartPage.nextButton": "Continue",
+  "howDidItStartPage.nextPage": "Next you will be asked to provide more detail about what was affected.",
   "howDidItStartPage.title": "How did it start?",
   "howDidTheyReachYou.app": "howDidTheyReachYou.app",
   "howDidTheyReachYou.email": "By email",

@@ -58,6 +58,8 @@
   "fileUpload.removed": "Fichier supprimé",
   "howDidItStartPage.backButton": "",
   "howDidItStartPage.intro": "N’importe qui peut devenir victime d’un crime informatique ou d’une fraude. Les criminels utilisent plusieurs techniques pour obtenir ce qu’ils veulent.",
+  "howDidItStartPage.nextButton": "Continuer",
+  "howDidItStartPage.nextPage": "À la prochaine étape, nous vous demanderons quelles sont les répercussions.",
   "howDidItStartPage.title": "Comment le crime a-t-il commencé?",
   "howDidTheyReachYou.app": "Sur une application",
   "howDidTheyReachYou.email": "Par courriel",
