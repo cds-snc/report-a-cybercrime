@@ -39,7 +39,7 @@ export const HowDidItStartPage = () => {
             <HowDidItStartForm
               onSubmit={data => {
                 dispatch({ type: 'saveFormData', data: { howdiditstart: data } })
-                history.push(doneForms ? '/privacyconsent' : '/whatwasaffcted')
+                history.push(doneForms ? '/privacyconsent' : '/whatwasaffected')
               }}
             />
           </Stack>
