@@ -45,8 +45,6 @@ const App = () => {
               fontFamily="body"
               flex="1 0 auto"
               mx="auto"
-              px={2}
-              maxW={{ sm: 540, md: 768, lg: 960, xl: 1200 }}
               width="100%"
             >
               <Home />
