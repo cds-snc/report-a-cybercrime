@@ -15,17 +15,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
   const { i18n } = useLingui()
 
   const howdiditstart = {
-    howDidTheyReachYou: [
-      'howDidTheyReachYou.email',
-      'howDidTheyReachYou.phone',
-      'howDidTheyReachYou.app',
-      'howDidTheyReachYou.others',
-    ],
-    email: 'sastels@gmail.com',
-    phone: '111111',
-    online: '',
-    application: 'app',
-    others: 'other vector',
+    ...testdata.formData.howdiditstart,
     ...data.formData.howdiditstart,
   }
 
@@ -40,10 +30,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
       .join(', ')
       .replace('others') +
     '.'
-
-  console.log({ overviewLine })
-
-  const hasDataToDisplay = true
+  const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0
 
   return (
     <React.Fragment>
@@ -66,29 +53,34 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
           </H2>
           <EditButton path="/howdiditstart" label="Edit How Did It Start" />
         </Flex>
-        <Text>{overviewLine}</Text>
-        <Stack as="dl" spacing={4} shouldWrapChildren>
-          <DescriptionListItem
-            descriptionTitle="confirmationPage.howDidItStart.email"
-            description={howdiditstart.email}
-          />
-          <DescriptionListItem
-            descriptionTitle="confirmationPage.howDidItStart.phone"
-            description={howdiditstart.phone}
-          />
-          <DescriptionListItem
-            descriptionTitle="confirmationPage.howDidItStart.online"
-            description={howdiditstart.online}
-          />
-          <DescriptionListItem
-            descriptionTitle="confirmationPage.howDidItStart.application"
-            description={howdiditstart.application}
-          />
-          <DescriptionListItem
-            descriptionTitle="confirmationPage.howDidItStart.others"
-            description={howdiditstart.others}
-          />
-        </Stack>
+
+        {hasDataToDisplay ? (
+          <React.Fragment>
+            <Stack as="dl" spacing={4} shouldWrapChildren>
+              <Text>{overviewLine}</Text>
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.howDidItStart.email"
+                description={howdiditstart.email}
+              />
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.howDidItStart.phone"
+                description={howdiditstart.phone}
+              />
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.howDidItStart.online"
+                description={howdiditstart.online}
+              />
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.howDidItStart.application"
+                description={howdiditstart.application}
+              />
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.howDidItStart.others"
+                description={howdiditstart.others}
+              />
+            </Stack>
+          </React.Fragment>
+        ) : null}
       </Stack>
     </React.Fragment>
   )

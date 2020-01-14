@@ -23,6 +23,14 @@ export const testdata = {
   doneForms: true,
   formData: {
     consent: { consentOptions: ['privacyConsentInfoForm.yes'] },
+    howdiditstart: {
+      howDidTheyReachYou: [],
+      email: '',
+      phone: '',
+      online: '',
+      application: '',
+      others: '',
+    },
     whatWasAffected: {
       affectedOptions: [
         'whatWasAffectedForm.financial',
