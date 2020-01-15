@@ -10,7 +10,6 @@ import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/paragraph'
 
 export const DevicesForm = props => {
   const localOnSubmit = data => {
