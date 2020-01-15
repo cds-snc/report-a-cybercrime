@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, useField } from 'react-final-form'
+import { Form, useField, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
+import { Text } from '../components/text'
 import { FormControl, Stack, Box } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
@@ -28,15 +29,27 @@ const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
   })
 
   return (
-    <Checkbox {...input} isChecked={checked} isInvalid={error && touched}>
+    <Checkbox
+      {...input}
+      isChecked={checked}
+      validate={required}
+      isInvalid={error && touched}
+    >
       {children}
     </Checkbox>
   )
 }
 
-const validate = () => {
-  return {}
+const validate = values => {
+  console.log(values)
+  const errors = {}
+  if (values.consentOptions.length === 0) {
+    errors.consentOptions = 'Required'
+  }
+  return errors
 }
+
+const required = value => (value ? undefined : 'Required')
 
 export const PrivacyConsentInfoForm = props => {
   const { i18n } = useLingui()
@@ -47,21 +60,20 @@ export const PrivacyConsentInfoForm = props => {
     ...data.formData.whetherConsent,
   }
 
-  const consentOptions = [
-    'privacyConsentInfoForm.yes',
-  ]
+  let showWarning = false
+
+  const consentOptions = ['privacyConsentInfoForm.yes']
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
-          <Trans id="privacyConsentInfoForm.yes" />  
+          <Trans id="privacyConsentInfoForm.yes" />
         </div>
       ) : null}
 
       <Form
         initialValues={whetherConsent}
         onSubmit={props.onSubmit}
-        validate={validate}
         render={({ handleSubmit, values }) => (
           <Stack
             as="form"
@@ -69,20 +81,51 @@ export const PrivacyConsentInfoForm = props => {
             shouldWrapChildren
             spacing={6}
           >
+            <Field name="check one" validate={required}>
+              {({ input, meta }) => (
+                <div>
+                  <Checkbox {...input}>
+                    <label>Check 1</label>
+
+                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                  </Checkbox>
+                </div>
+              )}
+            </Field>
+
             <Control as="fieldset" name="consentOptions">
-              <FormHelperText>    
+              <FormHelperText>
                 <Trans id="privacyConsentInfoForm.optionsHelpText" />
-                </FormHelperText>
+              </FormHelperText>
               <Stack spacing={4} shouldWrapChildren>
                 {consentOptions.map(key => {
                   return (
                     <Box key={key}>
+                      <Field
+                        type="checkbox"
+                        name="consentOptions"
+                        value={key}
+                        isChecked={whetherConsent.consentOptions.includes(key)}
+                        validate={required}
+                      >
+                        {({ input, meta }) => (
+                          <div>
+                            <Checkbox {...input}>
+                              <label> {i18n._(key)}</label>
+
+                              {meta.error && meta.touched && (
+                                <span>{meta.error}</span>
+                              )}
+                            </Checkbox>
+                          </div>
+                        )}
+                      </Field>
+
                       <CheckboxArrayControl
                         name="consentOptions"
                         value={key}
-                        isChecked={whetherConsent.consentOptions.includes(
-                          key,
-                        )}
+                        isChecked={whetherConsent.consentOptions.includes(key)}
+                        validate={required}
                       >
                         {i18n._(key)}
                       </CheckboxArrayControl>
@@ -92,6 +135,11 @@ export const PrivacyConsentInfoForm = props => {
               </Stack>
             </Control>
 
+            {showWarning ? (
+              <Text>
+                <Trans id="privacyConsentInfoForm.warning" />
+              </Text>
+            ) : null}
             <P>
               <Trans id="privacyConsentInfoForm.nextPage" />
             </P>
@@ -108,5 +156,3 @@ export const PrivacyConsentInfoForm = props => {
 PrivacyConsentInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
- 
-      

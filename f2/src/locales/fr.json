@@ -154,6 +154,7 @@
   "privacyConsentInfoForm.nextButton": "continuer",
   "privacyConsentInfoForm.nextPage": "Ensuite, il vous sera demandé comment le crime ou la fraude informatique a commencé.",
   "privacyConsentInfoForm.optionsHelpText": "Certaines des informations que vous fournissez dans votre rapport peuvent également être partagées avec la police et d'autres partenaires pour aider à résoudre des crimes, éduquer le public et améliorer ce service.",
+  "privacyConsentInfoForm.warning": "",
   "privacyConsentInfoForm.yes": "J'accepte les termes de la déclaration de confidentialité.",
   "privacyConsentPage.backButton": "Retour à la page d'accueil",
   "privacyConsentPage.intro": "La nouvelle unité nationale de coordination de la GRC de la GRC évaluera votre rapport.",
