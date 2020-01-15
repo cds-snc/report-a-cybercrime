@@ -11,7 +11,7 @@ import { Button } from '../components/button'
 import { H2, H3 } from '../components/header'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
-import { Box, Stack, FormControl, PseudoBox } from '@chakra-ui/core'
+import { Box, Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 
@@ -91,7 +91,7 @@ export const EvidenceInfoForm = props => {
                 </FileUpload>
               </Box>
 
-              <H2>
+              <H2 fontSize="3xl">
                 {plural(files.length, {
                   one: '# file attached',
                   other: '# files attached',
@@ -99,19 +99,9 @@ export const EvidenceInfoForm = props => {
               </H2>
 
               {status ? (
-                <PseudoBox
-                  as="Text"
-                  tabIndex={-1}
-                  id="status"
-                  _focus={{
-                    outline: 'none',
-                    bg: 'white',
-                    boxShadow: 'outline',
-                    borderColor: 'black',
-                  }}
-                >
+                <VisuallyHidden tabIndex={-1} id="status">
                   {i18n._(status)}
-                </PseudoBox>
+                </VisuallyHidden>
               ) : null}
             </Stack>
 
@@ -120,7 +110,7 @@ export const EvidenceInfoForm = props => {
                 <React.Fragment key={index}>
                   <InfoCard mb={4}>
                     <Stack spacing={4}>
-                      <H3>{f.name}</H3>
+                      <H3 fontSize="2xl">{f.name}</H3>
                       <Box>
                         <Field
                           name={`file-description-${index}`}
