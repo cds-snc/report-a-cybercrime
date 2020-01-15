@@ -14,9 +14,9 @@ export const ConfirmationForm = props => {
         onSubmit={props.onSubmit}
         render={({ handleSubmit }) => (
           <Box as="form" onSubmit={handleSubmit}>
-            <NextAndCancelButtons>
-              <Trans id="confirmationPage.nextButton" />
-            </NextAndCancelButtons>
+            <NextAndCancelButtons
+              button={<Trans id="confirmationPage.nextButton" />}
+            />
           </Box>
         )}
       />

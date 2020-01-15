@@ -7,6 +7,7 @@ import { Link } from './components/link'
 import { Stack, Code } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 //
+import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
 import { DevicesSummary } from './summary/DevicesSummary'
@@ -22,6 +23,16 @@ export const testdata = {
   doneForms: true,
   formData: {
     consent: { consentOptions: ['privacyConsentInfoForm.yes'] },
+    howdiditstart: {
+      howDidTheyReachYou: [],
+      email: '',
+      phone: '',
+      online: '',
+      application: '',
+      others: '',
+      whenDidItStart: '',
+      howManyTimes: '',
+    },
     whatWasAffected: {
       affectedOptions: [
         'whatWasAffectedForm.financial',
@@ -57,7 +68,7 @@ export const testdata = {
       fileDescriptions: ['file', 'other-file'],
     },
     location: { location: '', postalCode: 'location1', cityTown: 'location2' },
-    contactInfo: { email: 'email' },
+    contactInfo: { email: '' },
   },
 }
 
@@ -81,6 +92,7 @@ export const ConfirmationSummary = () => {
     <React.Fragment>
       <Stack spacing={12} shouldWrapChildren>
         <Code>{JSON.stringify(data)}</Code>
+        <HowDidItStartSummary />
         <WhatWasAffectedSummary />
         <MoneyLostInfoSummary />
         <InformationSummary />

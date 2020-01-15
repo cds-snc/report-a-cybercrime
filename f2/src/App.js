@@ -45,7 +45,9 @@ const App = () => {
               fontFamily="body"
               flex="1 0 auto"
               mx="auto"
+              pt={10}
               width="100%"
+              bg="gray.50"
             >
               <Home />
             </Flex>

@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+import { Lead } from './components/paragraph'
 import { Layout } from './components/layout'
 import { LocationInfoForm } from './forms/LocationInfoForm'
 import { TrackPageViews } from './TrackPageViews'
@@ -31,9 +31,9 @@ export const LocationPage = () => {
               </H1>
             </Stack>
 
-            <P>
+            <Lead>
               <Trans id="locationPage.intro" />
-            </P>
+            </Lead>
 
             <LocationInfoForm
               onSubmit={data => {
