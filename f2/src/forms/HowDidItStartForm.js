@@ -169,6 +169,9 @@ export const HowDidItStartForm = props => {
               <FormLabel as="legend" htmlFor="howDidTheyReachYou" mb={2}>
                 <Trans id="howDidTheyReachYou.question" />
               </FormLabel>
+              <FormHelperText>
+                    <Trans id="howDidTheyReachYou.reminder" />
+                  </FormHelperText>
               <Stack spacing={4} shouldWrapChildren>
                 {questionsList.map(question => {
                   return (

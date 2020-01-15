@@ -70,6 +70,9 @@ export const PrivacyConsentInfoForm = props => {
             spacing={6}
           >
             <Control as="fieldset" name="consentOptions">
+              <P>    
+                <Trans id="privacyConsentInfoForm.optionsHelpText" />
+                </P>
               <Stack spacing={4} shouldWrapChildren>
                 {consentOptions.map(key => {
                   return (
