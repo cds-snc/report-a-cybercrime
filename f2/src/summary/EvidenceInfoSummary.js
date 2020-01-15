@@ -13,15 +13,15 @@ export const EvidenceInfoSummary = props => {
   const evidence = {
     files: [],
     fileDescriptions: [],
+    ...testdata.formData.evidence,
     ...data.formData.evidence,
-    ...testdata.formData.evidence, //Remove after done testing
   }
 
   return (
     <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
       <Flex align="baseline">
         <H2>
-          <Trans id="confirmationPage.evidenceTitle" />
+          <Trans id="confirmationPage.evidence.title" />
         </H2>
         <EditButton path="/evidence" label="Edit Evidence" />
       </Flex>
@@ -45,7 +45,7 @@ export const EvidenceInfoSummary = props => {
         </Stack>
       ) : (
         <Text>
-          <Trans id="confirmationPage.suspectIntro" />
+          <Trans id="confirmationPage.evidence.nag" />
         </Text>
       )}
     </Stack>
