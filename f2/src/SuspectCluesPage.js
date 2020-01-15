@@ -41,7 +41,7 @@ export const SuspectCluesPage = () => {
             <SuspectCluesForm
               onSubmit={data => {
                 dispatch({ type: 'saveFormData', data: { suspectClues: data } })
-                history.push(doneForms ? '/ confirmation' : '/evidence')
+                history.push(doneForms ? '/confirmation' : '/evidence')
               }}
             />
           </Stack>
