@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+import { Lead } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { ContactInfoForm } from './forms/ContactInfoForm'
 import { Layout } from './components/layout'
@@ -30,9 +30,9 @@ export const ContactInfoPage = () => {
               </H1>
             </Stack>
 
-            <P>
+            <Lead>
               <Trans id="contactinfoPage.intro" />
-            </P>
+            </Lead>
 
             <ContactInfoForm
               onSubmit={data => {

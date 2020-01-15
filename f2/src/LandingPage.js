@@ -11,8 +11,14 @@ import { Li } from './components/list-item'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { Stack, Icon } from '@chakra-ui/core'
+import { useStateValue } from './utils/state'
 
 export const LandingPage = props => {
+  const [state, dispatch] = useStateValue()
+  if (state.doneForms) {
+    dispatch({ type: 'saveDoneForms', data: false })
+  }
+
   return (
     <Route
       render={({ history }) => (
