@@ -56,6 +56,9 @@ export const DevicesForm = props => {
               <FormLabel htmlFor="devicesTellUsMore">
                 <Trans id="devicePage.devicesTellUsMore" />
               </FormLabel>
+              <FormHelperText>
+                  <Trans id="devicePage.tellUsMoreExample" />
+                </FormHelperText>
               <TextArea
                 id="devicesTellUsMore"
                 name={props.input.name}
