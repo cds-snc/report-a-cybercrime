@@ -1,36 +1,58 @@
 /** @jsx jsx */
+import React from 'react'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Stack, Flex, Code, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
+import { DescriptionListItem } from '../components/DescriptionListItem'
+import { Text } from '../components/text'
 
-export const LocationInfoSummary = props => {
+export const LocationInfoSummary = ({ onSubmit }) => {
   const [data] = useStateValue()
-
-  const locationInfo = {
-    ...data.formData.locationInfo,
-    ...testdata.formData.locationInfo, //Remove after done testing
+  const location = {
+    ...testdata.formData.location, //Remove after done testing
+    ...data.formData.location,
   }
 
-  return (
-    <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
-      <Flex align="baseline">
-        <H2>
-          <Trans id="confirmationPage.LocationInfoTitle" />
-        </H2>
-        <EditButton path="/location" label="Edit affected business assets" />
-      </Flex>
+  const hasInfoToDisplay =
+    location.postalCode.length > 0 || location.cityTown.length > 0
 
-      {locationInfo.length > 0 ? (
-        <Code>{JSON.stringify(locationInfo)}</Code>
-      ) : (
-        <Alert status="warning">
-          <AlertIcon />
-          Empty
-        </Alert>
-      )}
-    </Stack>
+  return (
+    <React.Fragment>
+      {false ? (
+        <div>
+          {/*: mark the proper ids for lingui */}
+          <Trans id="confirmationPage.location.postalCode" />
+          <Trans id="confirmationPage.location.cityTown" />
+        </div>
+      ) : null}
+
+      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+        <Flex align="baseline">
+          <H2>
+            <Trans id="confirmationPage.location.title" />
+          </H2>
+          <EditButton path="/location" label="Edit Location Information" />
+        </Flex>
+        {hasInfoToDisplay ? (
+          <Stack as="dl" spacing={4} shouldWrapChildren>
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.location.postalCode"
+              description={location.postalCode}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.location.cityTown"
+              description={location.cityTown}
+            />
+          </Stack>
+        ) : (
+          <Text>
+            <Trans id="confirmationPage.location.nag" />
+          </Text>
+        )}
+      </Stack>
+    </React.Fragment>
   )
 }

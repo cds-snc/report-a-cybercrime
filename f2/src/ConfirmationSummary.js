@@ -67,7 +67,7 @@ export const testdata = {
       files: ['nodejs travel expenses_Page_4_Image_0001.jpg', 'file.jpg'],
       fileDescriptions: ['file', 'other-file'],
     },
-    location: { location: '', postalCode: 'location1', cityTown: 'location2' },
+    location: { postalCode: '', cityTown: '' },
     contactInfo: { email: '' },
   },
 }
