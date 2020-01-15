@@ -8,11 +8,9 @@ import { TextInput } from '../components/TextInput'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 import { useStateValue } from '../utils/state'
 
 export const LocationInfoForm = props => {
-
   const [data] = useStateValue()
   const location = {
     location: '',
@@ -70,13 +68,14 @@ export const LocationInfoForm = props => {
           <Trans id="locationinfoPage.nextPage" />
         </P>
 
-        <NextAndCancelButtons>
-          <Trans id="contactinfoPage.nextButton" />
-        </NextAndCancelButtons>
-      </Stack>
-    )}
-  />
-)
+          <NextAndCancelButtons
+            next={<Trans id="locationinfoPage.nextPage" />}
+            button={<Trans id="locationinfoPage.nextButton" />}
+          />
+        </Stack>
+      )}
+    />
+  )
 }
 
 LocationInfoForm.propTypes = {
