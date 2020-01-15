@@ -6,8 +6,8 @@ import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
 import { FormControl, Stack, Box } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
+import { P } from '../components/paragraph'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -54,6 +54,9 @@ export const PrivacyConsentInfoForm = props => {
           <Trans id="privacyConsentInfoForm.yes" />
         </div>
       ) : null}
+      <P>
+        <Trans id="privacyConsentInfoForm.optionsHelpText" />
+      </P>
 
       <Form
         initialValues={whetherConsent}
@@ -67,9 +70,6 @@ export const PrivacyConsentInfoForm = props => {
             spacing={6}
           >
             <Control as="fieldset" name="consentOptions">
-              <FormHelperText>
-                <Trans id="privacyConsentInfoForm.optionsHelpText" />
-              </FormHelperText>
               <Stack spacing={4} shouldWrapChildren>
                 {consentOptions.map(key => {
                   return (

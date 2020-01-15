@@ -23,23 +23,24 @@ export const PrivacyConsentPage = () => {
               <Trans id="privacyConsentPage.backButton" />
             </BackButton>
 
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
-                <Trans id="privacyConsentPage.title" />
-              </H1>
+            <H1 as="span">
+              <Trans id="privacyConsentPage.title" />
+            </H1>
+
+            <Stack spacing={8} role="heading" aria-level="1">
+              <Lead>
+                <Trans id="privacyConsentPage.intro" />
+              </Lead>
+              <PrivacyConsentInfoForm
+                onSubmit={data => {
+                  dispatch({
+                    type: 'saveFormData',
+                    data: { consent: data },
+                  })
+                  history.push('/howdiditstart')
+                }}
+              />
             </Stack>
-            <Lead>
-              <Trans id="privacyConsentPage.intro" />
-            </Lead>
-            <PrivacyConsentInfoForm
-              onSubmit={data => {
-                dispatch({
-                  type: 'saveFormData',
-                  data: { consent: data },
-                })
-                history.push('/howdiditstart')
-              }}
-            />
           </Stack>
         </Layout>
       )}

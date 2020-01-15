@@ -67,9 +67,9 @@ export const HowDidItStartForm = props => {
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
-  const channel = {
+  const howdiditstart = {
     howDidTheyReachYou: [],
-    ...data.formData.channel,
+    ...data.formData.howdiditstart,
   }
   //TODO: Move this form data to some sort of a schema file instead?
   var questionsList = [
@@ -155,7 +155,7 @@ export const HowDidItStartForm = props => {
       ) : null}
 
       <Form
-        initialValues={channel}
+        initialValues={howdiditstart}
         onSubmit={data => props.onSubmit(data)}
         validate={validate}
         render={({ handleSubmit, values }) => (
@@ -176,7 +176,7 @@ export const HowDidItStartForm = props => {
                       <CheckboxArrayControl
                         name="howDidTheyReachYou"
                         value={question.channel}
-                        isChecked={channel.howDidTheyReachYou.includes(
+                        isChecked={howdiditstart.howDidTheyReachYou.includes(
                           question.channel,
                         )}
                       >
