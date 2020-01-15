@@ -2,6 +2,7 @@ import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { MoneyLostInfoForm } from './forms/MoneyLostInfoForm'
 import { TrackPageViews } from './TrackPageViews'
@@ -31,6 +32,11 @@ export const MoneyLostPage = () => {
               <H1 as="span">
                 <Trans id="moneyLostPage.title" />
               </H1>
+            </Stack>
+            <Stack spacing={4}>
+              <P>
+                <Trans id="moneyLostPage.intro" />
+              </P>
             </Stack>
             <MoneyLostInfoForm
               onSubmit={data => {
