@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { BusinessInfoForm } from './forms/BusinessInfoForm'
 import { Layout } from './components/layout'
@@ -32,6 +33,11 @@ export const BusinessPage = () => {
               <H1 as="span">
                 <Trans id="businessPage.title" />
               </H1>
+            </Stack>
+            <Stack spacing={4}>
+              <P>
+                <Trans id="businessPage.intro" />
+              </P>
             </Stack>
             <BusinessInfoForm
               onSubmit={data => {
