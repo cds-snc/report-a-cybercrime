@@ -34,13 +34,7 @@ export const testdata = {
       howManyTimes: '',
     },
     whatWasAffected: {
-      affectedOptions: [
-        'whatWasAffectedForm.financial',
-        'whatWasAffectedForm.personal_information',
-        'whatWasAffectedForm.devices',
-        'whatWasAffectedForm.business_assets',
-        'whatWasAffectedForm.other',
-      ],
+      affectedOptions: [],
     },
     moneyLost: {
       demandedMoney: 'moneylost1',
@@ -59,10 +53,9 @@ export const testdata = {
     whatHappened: { whatHappened: '' },
 
     suspectClues: {
-      suspectClues: '',
-      suspectClues1: 'suspectclues1',
-      suspectClues2: 'suspectclues2',
-      suspectClues3: 'suspectclues3',
+      suspectClues1: '',
+      suspectClues2: '',
+      suspectClues3: '',
     },
     evidence: {
       files: [],

@@ -38,7 +38,9 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-          <P mb={0}>Or</P>
+          <P mb={0}>
+            <Trans id="contactinfoPage.or" />{' '}
+          </P>
           <Field name="phone">
             {props => (
               <FormControl>
