@@ -19,7 +19,6 @@ export const DevicesForm = props => {
   const [data] = useStateValue()
   let { devicesInfo } = data.formData
   devicesInfo = {
-    devices: '',
     ...devicesInfo,
   }
   return (
