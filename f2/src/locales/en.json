@@ -24,7 +24,7 @@
   "confirmationPage.contactIntro": "Provide your contact details so that we can send you a confirmation of your report.",
   "confirmationPage.contactTitle": "Contact details",
   "confirmationPage.devicesTitle": "confirmationPage.devicesTitle",
-  "confirmationPage.evidenceTitle": "confirmationPage.evidenceTitle",
+  "confirmationPage.evidence.title": "Supporting evidence",
   "confirmationPage.howDidItStart.application": "Application",
   "confirmationPage.howDidItStart.email": "Suspect email",
   "confirmationPage.howDidItStart.online": "Suspect web site",
