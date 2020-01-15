@@ -47,7 +47,7 @@ export const LocationInfoForm = props => {
             </FormControl>
           )}
         </Field>
-
+<P>Or</P>
         <Field name="cityTown">
           {props => (
             <FormControl>

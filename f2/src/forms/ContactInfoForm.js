@@ -7,7 +7,6 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { P } from '../components/paragraph'
 import { TextInput } from '../components/TextInput'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 
@@ -29,15 +28,7 @@ export const ContactInfoForm = ({ onSubmit }) => {
               <FormControl>
                 <FormLabel htmlFor="email">
                   <Trans id="contactinfoPage.emailAddress" />{' '}
-                  <span style={{ fontWeight: 'normal' }}>
-                    <Trans id="label.optional" />
-                  </span>
                 </FormLabel>
-                <FormHelperText>
-                  <Trans id="contactinfoPage.emailAddressHelperText">
-                    <VisuallyHidden as="span" />
-                  </Trans>
-                </FormHelperText>
                 <TextInput
                   id="email"
                   name={props.input.name}
@@ -47,10 +38,22 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-          <P>
-            <Trans id="contactinfoPage.rcmpFollowup" />
-          </P>
-
+          <P>Or</P>
+          <Field name="phone">
+            {props => (
+              <FormControl>
+                <FormLabel htmlFor="phone">
+                  <Trans id="contactinfoPage.phoneNumber" />{' '}
+                </FormLabel>
+                <TextInput
+                  id="phone"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
           <P>
             <Trans id="contactinfoPage.nextInfo" />
           </P>
