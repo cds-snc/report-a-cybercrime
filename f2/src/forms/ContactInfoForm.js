@@ -9,6 +9,7 @@ import { TextInput } from '../components/TextInput'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
+import { P } from '../components/paragraph'
 
 export const ContactInfoForm = ({ onSubmit }) => {
   const [data] = useStateValue()
