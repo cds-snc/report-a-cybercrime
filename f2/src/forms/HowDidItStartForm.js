@@ -163,15 +163,15 @@ export const HowDidItStartForm = props => {
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
-            spacing={6}
+            spacing={12}
           >
             <Control as="fieldset" name="howDidTheyReachYou">
               <FormLabel as="legend" htmlFor="howDidTheyReachYou" mb={2}>
                 <Trans id="howDidTheyReachYou.question" />
               </FormLabel>
               <FormHelperText>
-                    <Trans id="howDidTheyReachYou.reminder" />
-                  </FormHelperText>
+                <Trans id="howDidTheyReachYou.reminder" />
+              </FormHelperText>
               <Stack spacing={4} shouldWrapChildren>
                 {questionsList.map(question => {
                   return (
