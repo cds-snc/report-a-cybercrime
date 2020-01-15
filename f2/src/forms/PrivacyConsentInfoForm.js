@@ -5,7 +5,7 @@ import { Trans } from '@lingui/macro'
 import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
-import { FormControl, Stack, Box } from '@chakra-ui/core'
+import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 
 const Control = ({ name, ...rest }) => {
@@ -46,6 +46,9 @@ export const PrivacyConsentInfoForm = props => {
   }
 
   const consentOptions = ['privacyConsentInfoForm.yes']
+
+  let showWarning = false
+
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -55,7 +58,14 @@ export const PrivacyConsentInfoForm = props => {
       ) : null}
       <Form
         initialValues={whetherConsent}
-        onSubmit={props.onSubmit}
+        onSubmit={values => {
+          console.log({ values })
+          if (values.consentOptions.length == 0) {
+            showWarning = true
+          } else {
+            props.onSubmit(values)
+          }
+        }}
         validate={validate}
         render={({ handleSubmit, values }) => (
           <Stack
@@ -79,6 +89,12 @@ export const PrivacyConsentInfoForm = props => {
                     </Box>
                   )
                 })}
+                {showWarning ? (
+                  <Alert status="warning">
+                    <AlertIcon />
+                    <Trans id="privacyConsentInfoForm.warning" />
+                  </Alert>
+                ) : null}
               </Stack>
             </Control>
 
