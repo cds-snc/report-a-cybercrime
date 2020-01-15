@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+import { Lead } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
 import { Layout } from './components/layout'
@@ -31,9 +31,9 @@ export const WhatHappenedPage = () => {
               </H1>
             </Stack>
             <Stack spacing={4}>
-              <P>
+              <Lead>
                 <Trans id="whatHappenedPage.intro1" />
-              </P>
+              </Lead>
             </Stack>
 
             <WhatHappenedForm

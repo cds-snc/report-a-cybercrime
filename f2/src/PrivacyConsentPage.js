@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+import { Lead } from './components/paragraph'
 import { Layout } from './components/layout'
 import { PrivacyConsentInfoForm } from './forms/PrivacyConsentInfoForm'
 import { TrackPageViews } from './TrackPageViews'
@@ -28,9 +28,9 @@ export const PrivacyConsentPage = () => {
                 <Trans id="privacyConsentPage.title" />
               </H1>
             </Stack>
-            <P>
+            <Lead>
               <Trans id="privacyConsentPage.intro" />
-            </P>
+            </Lead>
             <PrivacyConsentInfoForm
               onSubmit={data => {
                 dispatch({
