@@ -5,6 +5,8 @@ import { Stack, Flex, Code, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
+import { Text } from '../components/text'
+import { DescriptionListItem } from '../components/DescriptionListItem'
 
 export const MoneyLostInfoSummary = props => {
   const [data] = useStateValue()
@@ -23,14 +25,34 @@ export const MoneyLostInfoSummary = props => {
         <EditButton path="/moneylost" label="Edit affected money or finances" />
       </Flex>
 
-      {moneyLost.length > 0 ? (
-        <Code>{JSON.stringify(moneyLost)}</Code>
+      {moneyLost.demandedMoney + moneyLost.moneyTaken + moneyLost.methodPayment + moneyLost.transactionDate + moneyLost.tellUsMore ? (
+        <Stack as="dl" spacing={4} shouldWrapChildren>
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.moneyLost.demandedMoney"
+            description={moneyLost.demandedMoney}
+          />
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.moneyLost.moneyTaken"
+            description={moneyLost.moneyTaken}
+          />
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.moneyLost.methodPayment"
+            description={moneyLost.methodPayment}
+          />
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.moneyLost.transactionDate"
+            description={moneyLost.transactionDate}
+          />
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.moneyLost.tellUsMore"
+            description={moneyLost.tellUsMore}
+          />
+        </Stack>
       ) : (
-        <Alert status="warning">
-          <AlertIcon />
-          Empty
-        </Alert>
-      )}
+          <Text>
+            <Trans id="confirmationPage.moneyLostIntro" />
+          </Text>
+        )}
     </Stack>
   )
 }
