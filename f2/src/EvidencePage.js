@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+import { Lead } from './components/lead'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { TrackPageViews } from './TrackPageViews'
@@ -33,9 +33,9 @@ export const EvidencePage = () => {
               </H1>
             </Stack>
             <Box>
-              <P>
+              <Lead>
                 <Trans id="evidencePage.details" />
-              </P>
+              </Lead>
               <Ul>
                 <Li>
                   <Trans id="evidencePage.detail1" />
