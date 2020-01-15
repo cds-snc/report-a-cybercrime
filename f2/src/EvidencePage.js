@@ -34,11 +34,8 @@ export const EvidencePage = () => {
             </Stack>
             <Box>
               <Lead>
-                <Trans id="evidencePage.intro" />
-              </Lead>
-              <P>
                 <Trans id="evidencePage.details" />
-              </P>
+              </Lead>
               <Ul>
                 <Li>
                   <Trans id="evidencePage.detail1" />
@@ -51,6 +48,9 @@ export const EvidencePage = () => {
                 </Li>
               </Ul>
             </Box>
+            <P>
+                <Trans id="evidencePage.intro" />
+              </P>
 
             <EvidenceInfoForm
               onSubmit={data => {

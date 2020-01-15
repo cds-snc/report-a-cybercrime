@@ -99,6 +99,9 @@ export const MoneyLostInfoForm = props => {
                 <FormLabel htmlFor="tellUsMore">
                   <Trans id="moneyLostPage.tellUsMore" />
                 </FormLabel>
+                <FormHelperText>
+                  <Trans id="moneyLostPage.tellUsMoreExample" />
+                </FormHelperText>
 
                 <TextArea
                   id="tellUsMore"

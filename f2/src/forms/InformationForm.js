@@ -62,6 +62,9 @@ export const InformationForm = ({ onSubmit }) => (
               <FormLabel htmlFor="tellUsMore">
                 <Trans id="informationPage.tellUsMore" />
               </FormLabel>
+              <FormHelperText>
+                  <Trans id="informationPage.tellUsMoreExample" />
+                </FormHelperText>
               <TextArea
                 id="tellUsMore"
                 name={props.input.name}

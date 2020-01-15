@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { InformationForm } from './forms/InformationForm'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
@@ -32,6 +33,11 @@ export const InformationPage = () => {
               <H1 as="span">
                 <Trans id="informationPage.title" />
               </H1>
+            </Stack>
+            <Stack spacing={4}>
+              <P>
+                <Trans id="informationPage.intro" />
+              </P>
             </Stack>
 
             <InformationForm

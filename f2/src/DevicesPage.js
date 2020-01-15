@@ -2,6 +2,7 @@ import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { DevicesForm } from './forms/DevicesForm'
 import { TrackPageViews } from './TrackPageViews'
@@ -32,6 +33,11 @@ export const DevicesPage = () => {
               <H1 as="span">
                 <Trans id="devicePage.title" />
               </H1>
+            </Stack>
+            <Stack spacing={4}>
+              <P>
+                <Trans id="devicePage.intro" />
+              </P>
             </Stack>
 
             <DevicesForm
