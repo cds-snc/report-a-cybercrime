@@ -184,9 +184,10 @@ export const ScammerDetailsForm = props => {
               ))}
             </Container>
 
-            <NextAndCancelButtons>
-              <Trans id="scammerDetail.nextButton">Next: Impact of scam</Trans>
-            </NextAndCancelButtons>
+            <NextAndCancelButtons
+              next={<Trans id="scammerDetail.nextPage" />}
+              button={<Trans id="scammerDetail.nextButton" />}
+            />
           </Stack>
         )}
       />
