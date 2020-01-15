@@ -50,9 +50,9 @@ export const testdata = {
       tellUsMore: 'moneylost5',
     },
     personalInformation: {
-      typeOfInfoReq: '1',
-      typeOfInfoObtained: '2',
-      tellUsMore: '3',
+      typeOfInfoReq: '',
+      typeOfInfoObtained: '',
+      tellUsMore: '',
     },
     devices: { deviceOrAccount: '4', devicesTellUsMore: '5' },
     businessInfo: { business: 'business assets text area' },
