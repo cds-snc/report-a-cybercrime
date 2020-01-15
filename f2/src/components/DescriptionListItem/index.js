@@ -6,8 +6,6 @@ import { Text } from '../text'
 import { Trans } from '@lingui/macro'
 
 export const DescriptionListItem = ({ description, descriptionTitle }) => {
-  console.log(descriptionTitle, description.length)
-
   if (description.length === 0) {
     return null
   }
