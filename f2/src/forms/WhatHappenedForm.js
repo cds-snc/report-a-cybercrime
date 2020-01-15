@@ -41,9 +41,10 @@ export const WhatHappenedForm = props => {
               </FormControl>
             )}
           </Field>
-          <NextAndCancelButtons>
-            <Trans id="whatHappenedPage.nextButton" />
-          </NextAndCancelButtons>
+          <NextAndCancelButtons
+            next={<Trans id="whatHappenedPage.nextPage" />}
+            button={<Trans id="whatHappenedPage.nextButton" />}
+          />
         </Stack>
       )}
     />

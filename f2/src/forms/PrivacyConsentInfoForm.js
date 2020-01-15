@@ -8,7 +8,6 @@ import { Checkbox } from '../components/checkbox'
 import { FormControl, Stack, Box } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/paragraph'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -47,14 +46,12 @@ export const PrivacyConsentInfoForm = props => {
     ...data.formData.whetherConsent,
   }
 
-  const consentOptions = [
-    'privacyConsentInfoForm.yes',
-  ]
+  const consentOptions = ['privacyConsentInfoForm.yes']
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
-          <Trans id="privacyConsentInfoForm.yes" />  
+          <Trans id="privacyConsentInfoForm.yes" />
         </div>
       ) : null}
 
@@ -70,9 +67,9 @@ export const PrivacyConsentInfoForm = props => {
             spacing={6}
           >
             <Control as="fieldset" name="consentOptions">
-              <FormHelperText>    
+              <FormHelperText>
                 <Trans id="privacyConsentInfoForm.optionsHelpText" />
-                </FormHelperText>
+              </FormHelperText>
               <Stack spacing={4} shouldWrapChildren>
                 {consentOptions.map(key => {
                   return (
@@ -80,9 +77,7 @@ export const PrivacyConsentInfoForm = props => {
                       <CheckboxArrayControl
                         name="consentOptions"
                         value={key}
-                        isChecked={whetherConsent.consentOptions.includes(
-                          key,
-                        )}
+                        isChecked={whetherConsent.consentOptions.includes(key)}
                       >
                         {i18n._(key)}
                       </CheckboxArrayControl>
@@ -92,12 +87,10 @@ export const PrivacyConsentInfoForm = props => {
               </Stack>
             </Control>
 
-            <P>
-              <Trans id="privacyConsentInfoForm.nextPage" />
-            </P>
-            <NextAndCancelButtons>
-              <Trans id="privacyConsentInfoForm.nextButton" />
-            </NextAndCancelButtons>
+            <NextAndCancelButtons
+              next={<Trans id="privacyConsentInfoForm.nextPage" />}
+              button={<Trans id="privacyConsentInfoForm.nextButton" />}
+            />
           </Stack>
         )}
       />
@@ -108,5 +101,3 @@ export const PrivacyConsentInfoForm = props => {
 PrivacyConsentInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
- 
-      

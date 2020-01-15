@@ -10,7 +10,7 @@ import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
-import { Stack } from '@chakra-ui/core'
+import { Stack, Icon } from '@chakra-ui/core'
 
 export const LandingPage = props => {
   return (
@@ -49,12 +49,19 @@ export const LandingPage = props => {
               </Ul>
             </Stack>
             <Button
-              rightIcon="chevron-right"
+              mb={10}
               onClick={() => {
                 history.push('/privacyconsent')
               }}
             >
               <Trans id="landingPage.nextButton" />
+              <Icon
+                focusable="false"
+                ml={2}
+                mr={-2}
+                name="chevron-right"
+                size="28px"
+              />
             </Button>
           </Stack>
         </Layout>

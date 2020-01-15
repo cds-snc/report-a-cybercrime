@@ -11,7 +11,6 @@ import { FormHelperText } from '../components/FormHelperText'
 import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 import { ConditionalForm } from '../components/container'
 
 const Control = ({ name, ...rest }) => {
@@ -252,13 +251,10 @@ export const HowDidItStartForm = props => {
                 })}
               </Stack>
             </Control>
-            <P>
-              <Trans id="howDidItStartPage.nextPage" />
-            </P>
-
-            <NextAndCancelButtons>
-              <Trans id="howDidItStartPage.nextButton" />
-            </NextAndCancelButtons>
+            <NextAndCancelButtons
+              next={<Trans id="howDidItStartPage.nextPage" />}
+              button={<Trans id="howDidItStartPage.nextButton" />}
+            />
           </Stack>
         )}
       />
