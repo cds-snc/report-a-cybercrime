@@ -9,11 +9,23 @@ import { TextArea } from '../components/text-area'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
+import { useStateValue } from '../utils/state'
 
-export const InformationForm = ({ onSubmit }) => (
+export const InformationForm = props => {
+
+  const [data] = useStateValue ()
+  const information = {
+    typeOfInfoReq:'',
+    typeOfInfoObtained:'',
+    tellUsMore:'',
+...data.formData.personalInformation,
+  }
+
+  return (
+    
   <Form
-    initialValues={{}}
-    onSubmit={onSubmit}
+    initialValues={information}
+    onSubmit={props.onSubmit}
     render={({ handleSubmit }) => (
       <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
         <Field name="typeOfInfoReq">
@@ -62,6 +74,9 @@ export const InformationForm = ({ onSubmit }) => (
               <FormLabel htmlFor="tellUsMore">
                 <Trans id="informationPage.tellUsMore" />
               </FormLabel>
+              <FormHelperText>
+                  <Trans id="informationPage.tellUsMoreExample" />
+                </FormHelperText>
               <TextArea
                 id="tellUsMore"
                 name={props.input.name}
@@ -79,7 +94,7 @@ export const InformationForm = ({ onSubmit }) => (
     )}
   />
 )
-
+}
 InformationForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }

@@ -5,10 +5,10 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
-import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
+import { Stack, FormControl } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
+import { P } from '../components/paragraph'
 
 export const ContactInfoForm = ({ onSubmit }) => {
   const [data] = useStateValue()
@@ -28,15 +28,7 @@ export const ContactInfoForm = ({ onSubmit }) => {
               <FormControl>
                 <FormLabel htmlFor="email">
                   <Trans id="contactinfoPage.emailAddress" />{' '}
-                  <span style={{ fontWeight: 'normal' }}>
-                    <Trans id="label.optional" />
-                  </span>
                 </FormLabel>
-                <FormHelperText>
-                  <Trans id="contactinfoPage.emailAddressHelperText">
-                    <VisuallyHidden as="span" />
-                  </Trans>
-                </FormHelperText>
                 <TextInput
                   id="email"
                   name={props.input.name}
@@ -46,11 +38,28 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-
-          <NextAndCancelButtons
-            next={<Trans id="contactinfoPage.rcmpFollowup" />}
-            button={<Trans id="contactinfoPage.nextButton" />}
-          />
+          <P>Or</P>
+          <Field name="phone">
+            {props => (
+              <FormControl>
+                <FormLabel htmlFor="phone">
+                  <Trans id="contactinfoPage.phoneNumber" />{' '}
+                </FormLabel>
+                <TextInput
+                  id="phone"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
+          <P>
+            <Trans id="contactinfoPage.nextInfo" />
+          </P>
+          <NextAndCancelButtons>
+            <Trans id="contactinfoPage.nextButton" />
+          </NextAndCancelButtons>
         </Stack>
       )}
     />

@@ -10,6 +10,7 @@ import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
+import { P } from '../components/paragraph'
 
 export const DevicesForm = props => {
   const localOnSubmit = data => {
@@ -19,7 +20,6 @@ export const DevicesForm = props => {
   const [data] = useStateValue()
   let { devicesInfo } = data.formData
   devicesInfo = {
-    devices: '',
     ...devicesInfo,
   }
   return (
@@ -48,23 +48,27 @@ export const DevicesForm = props => {
               </FormControl>
             )}
           </Field>
-
-          <Field name="devicesTellUsMore">
-            {props => (
-              <FormControl>
-                <FormLabel htmlFor="devicesTellUsMore">
-                  <Trans id="devicePage.devicesTellUsMore" />
-                </FormLabel>
-                <TextArea
-                  id="devicesTellUsMore"
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
-                />
-              </FormControl>
-            )}
-          </Field>
-
+        <Field name="devicesTellUsMore">
+          {props => (
+            <FormControl>
+              <FormLabel htmlFor="devicesTellUsMore">
+                <Trans id="devicePage.devicesTellUsMore" />
+              </FormLabel>
+              <FormHelperText>
+                  <Trans id="devicePage.tellUsMoreExample" />
+                </FormHelperText>
+              <TextArea
+                id="devicesTellUsMore"
+                name={props.input.name}
+                value={props.input.value}
+                onChange={props.input.onChange}
+              />
+            </FormControl>
+          )}
+        </Field>
+        <P>
+          <Trans id="devicePage.nextPage" />
+        </P>
           <NextAndCancelButtons
             next={<Trans id="devicePage.nextPage" />}
             button={<Trans id="devicePage.nextButton" />}
