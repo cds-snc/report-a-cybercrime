@@ -49,11 +49,11 @@ export const BusinessInfoForm = props => {
             )}
           </Field>
           <P>
-            <Trans id="businessInfoPage.nextPage" />
+            <Trans id="whatWasAffected.nextPage" />
           </P>
 
           <NextAndCancelButtons>
-            <Trans id="businessInfoPage.nextButton" />
+            <Trans id="whatWasAffected.nextButton" />
           </NextAndCancelButtons>
         </Stack>
       )}
