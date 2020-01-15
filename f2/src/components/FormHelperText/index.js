@@ -26,5 +26,6 @@ FormHelperText.defaultProps = {
   fontSize: 'md',
   color: 'black',
   fontFamily: 'body',
-  lineHeight: 1,
+  lineHeight: 1.25,
+  maxW: '600px',
 }

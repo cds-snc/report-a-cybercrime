@@ -9,4 +9,5 @@ FormLabel.defaultProps = {
   fontFamily: 'body',
   pb: 1,
   lineHeight: 1,
+  maxW: '600px',
 }
