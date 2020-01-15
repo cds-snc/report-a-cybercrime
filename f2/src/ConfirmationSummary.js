@@ -6,7 +6,7 @@ import { useLingui } from '@lingui/react'
 import { Link } from './components/link'
 import { Stack, Code } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-//
+
 import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
@@ -55,7 +55,7 @@ export const testdata = {
       tellUsMore: '',
     },
     devices: { deviceOrAccount: '4', devicesTellUsMore: '5' },
-    businessInfo: { business: 'business assets text area' },
+    businessInfo: { business: '' },
     whatHappened: { whatHappened: 'what happened summary text area' },
     suspectClues: {
       suspectClues: '',
