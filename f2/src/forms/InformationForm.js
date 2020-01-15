@@ -9,7 +9,6 @@ import { TextArea } from '../components/text-area'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 import { useStateValue } from '../utils/state'
 
 export const InformationForm = props => {
