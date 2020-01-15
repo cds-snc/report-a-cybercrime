@@ -66,9 +66,6 @@ export const DevicesForm = props => {
             </FormControl>
           )}
         </Field>
-        <P>
-          <Trans id="devicePage.nextPage" />
-        </P>
           <NextAndCancelButtons
             next={<Trans id="devicePage.nextPage" />}
             button={<Trans id="devicePage.nextButton" />}
