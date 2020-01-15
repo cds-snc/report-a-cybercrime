@@ -38,7 +38,12 @@ const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
   )
 }
 
-const RadioButtonArrayControl = ({ name, value, defaultIsChecked, children }) => {
+const RadioButtonArrayControl = ({
+  name,
+  value,
+  defaultIsChecked,
+  children,
+}) => {
   const {
     input: { checked, ...input },
     meta: { error, touched },
@@ -63,18 +68,43 @@ export const HowDidItStartForm = props => {
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
-  const channel = {
+  const howdiditstart = {
     howDidTheyReachYou: [],
-    ...data.formData.channel
+    ...data.formData.howdiditstart,
   }
   //TODO: Move this form data to some sort of a schema file instead?
-  var questionsList =[
-   { name:"email", channel:"howDidTheyReachYou.email", label: "howDidTheyReachYouLabel.question1", hint: "howDidTheyReachYouLabel.hint1" },
-   { name:"phone", channel:"howDidTheyReachYou.phone", label: "howDidTheyReachYouLabel.question2", hint: "howDidTheyReachYouLabel.hint2" },
-   { name:"online", channel:"howDidTheyReachYou.online", label: "howDidTheyReachYouLabel.question3", hint: "howDidTheyReachYouLabel.hint3" },
-   { name:"application", channel:"howDidTheyReachYou.app", label: "howDidTheyReachYouLabel.question4", hint: "howDidTheyReachYouLabel.hint4" },
-   { name:"others", channel:"howDidTheyReachYou.others", label: "howDidTheyReachYouLabel.question5", hint: "howDidTheyReachYouLabel.hint5"}
-  ];
+  var questionsList = [
+    {
+      name: 'email',
+      channel: 'howDidTheyReachYou.email',
+      label: 'howDidTheyReachYouLabel.question1',
+      hint: 'howDidTheyReachYouLabel.hint1',
+    },
+    {
+      name: 'phone',
+      channel: 'howDidTheyReachYou.phone',
+      label: 'howDidTheyReachYouLabel.question2',
+      hint: 'howDidTheyReachYouLabel.hint2',
+    },
+    {
+      name: 'online',
+      channel: 'howDidTheyReachYou.online',
+      label: 'howDidTheyReachYouLabel.question3',
+      hint: 'howDidTheyReachYouLabel.hint3',
+    },
+    {
+      name: 'application',
+      channel: 'howDidTheyReachYou.app',
+      label: 'howDidTheyReachYouLabel.question4',
+      hint: 'howDidTheyReachYouLabel.hint4',
+    },
+    {
+      name: 'others',
+      channel: 'howDidTheyReachYou.others',
+      label: 'howDidTheyReachYouLabel.question5',
+      hint: 'howDidTheyReachYouLabel.hint5',
+    },
+  ]
 
   const timeline = {
     whenDidItStart: [],
@@ -94,10 +124,7 @@ export const HowDidItStartForm = props => {
     ...data.formData.timeline,
   }
 
-  const howManyTimes = [
-    'howManyTimes.once',
-    'howManyTimes.severalTimes',
-  ]
+  const howManyTimes = ['howManyTimes.once', 'howManyTimes.severalTimes']
 
   return (
     <React.Fragment>
@@ -129,7 +156,7 @@ export const HowDidItStartForm = props => {
       ) : null}
 
       <Form
-        initialValues={channel}
+        initialValues={howdiditstart}
         onSubmit={data => props.onSubmit(data)}
         validate={validate}
         render={({ handleSubmit, values }) => (
@@ -144,37 +171,38 @@ export const HowDidItStartForm = props => {
                 <Trans id="howDidTheyReachYou.question" />
               </FormLabel>
               <Stack spacing={4} shouldWrapChildren>
-
-                {questionsList.map((question) => {
+                {questionsList.map(question => {
                   return (
                     <Box key={question.channel}>
                       <CheckboxArrayControl
                         name="howDidTheyReachYou"
                         value={question.channel}
-                        isChecked={channel.howDidTheyReachYou.includes(question.channel)}
+                        isChecked={howdiditstart.howDidTheyReachYou.includes(
+                          question.channel,
+                        )}
                       >
                         {i18n._(question.channel)}
                       </CheckboxArrayControl>
                       {values.howDidTheyReachYou.includes(question.channel) && (
                         <ConditionalForm>
                           <Field name={question.name}>
-                          {props => (
-                            <FormControl>
-                              <FormLabel htmlFor={question.name}>
-                                <Trans id={question.label} />
-                              </FormLabel>
-                              <FormHelperText>
-                                <Trans id={question.hint} />
-                              </FormHelperText>
-                              <TextArea
-                                id={question.hint}
-                                name={props.input.name}
-                                value={props.input.value}
-                                onChange={props.input.onChange}
-                              />
-                            </FormControl>
-                          )}
-                        </Field>
+                            {props => (
+                              <FormControl>
+                                <FormLabel htmlFor={question.name}>
+                                  <Trans id={question.label} />
+                                </FormLabel>
+                                <FormHelperText>
+                                  <Trans id={question.hint} />
+                                </FormHelperText>
+                                <TextArea
+                                  id={question.hint}
+                                  name={props.input.name}
+                                  value={props.input.value}
+                                  onChange={props.input.onChange}
+                                />
+                              </FormControl>
+                            )}
+                          </Field>
                         </ConditionalForm>
                       )}
                     </Box>

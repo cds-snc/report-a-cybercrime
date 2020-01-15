@@ -30,6 +30,8 @@ export const testdata = {
       online: '',
       application: '',
       others: '',
+      whenDidItStart: '',
+      howManyTimes: '',
     },
     whatWasAffected: {
       affectedOptions: [

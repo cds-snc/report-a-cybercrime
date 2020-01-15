@@ -48,6 +48,8 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
           <Trans id="confirmationPage.howDidItStart.online" />
           <Trans id="confirmationPage.howDidItStart.application" />
           <Trans id="confirmationPage.howDidItStart.others" />
+          <Trans id="confirmationPage.whenDidItStart" />
+          <Trans id="confirmationPage.howManyTimes" />
         </div>
       ) : null}
 
@@ -82,6 +84,14 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
               <DescriptionListItem
                 descriptionTitle="confirmationPage.howDidItStart.others"
                 description={howdiditstart.others}
+              />
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.whenDidItStart"
+                description={i18n._(howdiditstart.whenDidItStart)}
+              />
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.howManyTimes"
+                description={i18n._(howdiditstart.howManyTimes)}
               />
             </Stack>
           </React.Fragment>
