@@ -23,8 +23,7 @@ export const InformationForm = props => {
   }
 
   return (
-
-
+    
   <Form
     initialValues={information}
     onSubmit={props.onSubmit}
@@ -85,12 +84,10 @@ export const InformationForm = props => {
             </FormControl>
           )}
         </Field>
-        <P>
-          <Trans id="informationPage.nextStep" />
-        </P>
-        <NextAndCancelButtons>
-          <Trans id="informationPage.nextButton" />
-        </NextAndCancelButtons>
+        <NextAndCancelButtons
+          next={<Trans id="informationPage.nextStep" />}
+          button={<Trans id="informationPage.nextButton" />}
+        />
       </Stack>
     )}
   />
