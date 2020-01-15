@@ -57,7 +57,7 @@ export const testdata = {
       fileDescriptions: ['file', 'other-file'],
     },
     location: { location: '', postalCode: 'location1', cityTown: 'location2' },
-    contactInfo: { email: 'email' },
+    contactInfo: { email: '' },
   },
 }
 
