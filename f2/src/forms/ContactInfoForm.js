@@ -38,7 +38,7 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-          <P>
+          <P mb={0}>
             <Trans id="contactinfoPage.or" />{' '}
           </P>
           <Field name="phone">
@@ -56,12 +56,10 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-          <P>
-            <Trans id="contactinfoPage.nextInfo" />
-          </P>
-          <NextAndCancelButtons>
-            <Trans id="contactinfoPage.nextButton" />
-          </NextAndCancelButtons>
+          <NextAndCancelButtons
+            next={<Trans id="contactinfoPage.nextInfo" />}
+            button={<Trans id="contactinfoPage.nextButton" />}
+          />
         </Stack>
       )}
     />
