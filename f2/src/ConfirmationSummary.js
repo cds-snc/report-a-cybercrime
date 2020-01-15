@@ -6,7 +6,7 @@ import { useLingui } from '@lingui/react'
 import { Link } from './components/link'
 import { Stack, Code } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-//
+
 import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
@@ -50,12 +50,12 @@ export const testdata = {
       tellUsMore: 'moneylost5',
     },
     personalInformation: {
-      typeOfInfoReq: '1',
-      typeOfInfoObtained: '2',
-      tellUsMore: '3',
+      typeOfInfoReq: '',
+      typeOfInfoObtained: '',
+      tellUsMore: '',
     },
     devicesInfo: { deviceOrAccount: '', devicesTellUsMore: '' },
-    businessInfo: { business: 'business assets text area' },
+    businessInfo: { business: '' },
     whatHappened: { whatHappened: 'what happened summary text area' },
     suspectClues: {
       suspectClues: '',
@@ -67,7 +67,7 @@ export const testdata = {
       files: ['nodejs travel expenses_Page_4_Image_0001.jpg', 'file.jpg'],
       fileDescriptions: ['file', 'other-file'],
     },
-    location: { location: '', postalCode: 'location1', cityTown: 'location2' },
+    location: { postalCode: '', cityTown: '' },
     contactInfo: { email: '' },
   },
 }
