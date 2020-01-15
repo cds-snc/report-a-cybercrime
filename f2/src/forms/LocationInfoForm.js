@@ -54,9 +54,6 @@ export const LocationInfoForm = props => {
               <FormLabel htmlFor="cityTown">
                 <Trans id="locationinfoPage.cityTown" />
               </FormLabel>
-              <FormHelperText>
-                <Trans id="locationinfoPage.cityTownExample" />
-              </FormHelperText>
               <TextInput
                 id="postalCode"
                 name={props.input.name}
@@ -66,10 +63,6 @@ export const LocationInfoForm = props => {
             </FormControl>
           )}
         </Field>
-        <P>
-          <Trans id="locationinfoPage.nextPage" />
-        </P>
-
           <NextAndCancelButtons
             next={<Trans id="locationinfoPage.nextPage" />}
             button={<Trans id="locationinfoPage.nextButton" />}
