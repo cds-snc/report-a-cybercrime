@@ -17,7 +17,7 @@ export const InformationForm = props => {
   const [data] = useStateValue ()
   const information = {
     information:'',
-    ... data.formData.information,
+... data.formData.information,
   }
 
   return (
