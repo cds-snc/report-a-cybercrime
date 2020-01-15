@@ -56,7 +56,8 @@ export const testdata = {
     },
     devices: { deviceOrAccount: '4', devicesTellUsMore: '5' },
     businessInfo: { business: '' },
-    whatHappened: { whatHappened: 'what happened summary text area' },
+    whatHappened: { whatHappened: '' },
+
     suspectClues: {
       suspectClues: '',
       suspectClues1: 'suspectclues1',
