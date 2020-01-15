@@ -17,6 +17,7 @@
   "confirmationPage.LocationInfoTitle": "confirmationPage.LocationInfoTitle",
   "confirmationPage.backButton": "Back to your contact information",
   "confirmationPage.businessInfoTitle": "confirmationPage.businessInfoTitle",
+  "confirmationPage.contactInfo.email": "Your email address",
   "confirmationPage.contactIntro": "Provide your contact details so that we can send you a confirmation of your report.",
   "confirmationPage.contactTitle": "Contact",
   "confirmationPage.devicesTitle": "confirmationPage.devicesTitle",
