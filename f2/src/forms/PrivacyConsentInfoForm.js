@@ -57,7 +57,7 @@ export const PrivacyConsentInfoForm = props => {
       <Form
         initialValues={whetherConsent}
         onSubmit={values => {
-          if (values.consentOptions.length == 0) {
+          if (values.consentOptions.length === 0) {
             showWarning = true
           } else {
             props.onSubmit(values)
