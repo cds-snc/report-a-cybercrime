@@ -4,7 +4,7 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Link } from './components/link'
-import { Stack, Code } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
 import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
@@ -91,7 +91,6 @@ export const ConfirmationSummary = () => {
   return (
     <React.Fragment>
       <Stack spacing={12} shouldWrapChildren>
-        <Code>{JSON.stringify(data)}</Code>
         <HowDidItStartSummary />
         <WhatWasAffectedSummary />
         <MoneyLostInfoSummary />

@@ -9,6 +9,7 @@ export const TextArea = props => (
     borderWidth="2px"
     borderColor="black"
     transition="0"
+    maxW="600px"
     _hover={{
       boxShadow: 'outlineHover',
       borderColor: 'black',
