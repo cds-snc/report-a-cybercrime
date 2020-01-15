@@ -15,10 +15,6 @@ export const DevicesSummary = props => {
     ...testdata.formData.devicesInfo,
     ...data.formData.devicesInfo,
   }
-  const hasDataToDisplay =
-    devices.deviceOrAccount.length > 0 || devices.devicesTellUsMore.length > 0
-
-  console.log({ devices })
 
   return (
     <React.Fragment>
