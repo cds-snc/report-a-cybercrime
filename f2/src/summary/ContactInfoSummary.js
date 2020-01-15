@@ -11,8 +11,8 @@ import { Text } from '../components/text'
 export const ContactInfoSummary = ({ onSubmit }) => {
   const [data] = useStateValue()
   const contactInfo = {
-    fullName: 'Steve',
-    email: 'sastels',
+    fullName: '',
+    email: '',
     postalCode: '',
     ...data.formData.contactInfo,
     ...testdata.formData.contactInfo, //Remove after done testing
