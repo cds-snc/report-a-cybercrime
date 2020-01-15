@@ -7,6 +7,7 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
 import { FormControl, Stack, Box } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { P } from '../components/paragraph'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -53,6 +54,9 @@ export const PrivacyConsentInfoForm = props => {
           <Trans id="privacyConsentInfoForm.yes" />
         </div>
       ) : null}
+      <P>
+        <Trans id="privacyConsentInfoForm.optionsHelpText" />
+      </P>
 
       <Form
         initialValues={whetherConsent}
