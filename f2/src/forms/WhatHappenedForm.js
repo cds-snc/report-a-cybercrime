@@ -8,6 +8,8 @@ import { FormHelperText } from '../components/FormHelperText'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FormControl, FormLabel, Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { P } from '../components/paragraph'
+
 
 export const WhatHappenedForm = props => {
   const [data] = useStateValue()
@@ -41,6 +43,9 @@ export const WhatHappenedForm = props => {
               </FormControl>
             )}
           </Field>
+          <P>
+              <Trans id="whatHappenedPage.nextPage" />
+            </P>
           <NextAndCancelButtons>
             <Trans id="whatHappenedPage.nextButton" />
           </NextAndCancelButtons>
