@@ -54,7 +54,7 @@ export const testdata = {
       typeOfInfoObtained: '',
       tellUsMore: '',
     },
-    devices: { deviceOrAccount: '4', devicesTellUsMore: '5' },
+    devicesInfo: { deviceOrAccount: '', devicesTellUsMore: '' },
     businessInfo: { business: '' },
     whatHappened: { whatHappened: '' },
 
