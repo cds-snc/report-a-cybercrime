@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+import { Lead } from './components/paragraph'
 import { Layout } from './components/layout'
 import { WhatWasAffectedForm } from './forms/WhatWasAffectedForm'
 import { TrackPageViews } from './TrackPageViews'
@@ -30,9 +30,9 @@ export const WhatWasAffectedPage = () => {
                 <Trans id="whatWasAffectedPage.title" />
               </H1>
             </Stack>
-            <P>
+            <Lead>
               <Trans id="whatWasAffectedPage.intro" />
-            </P>
+            </Lead>
 
             <WhatWasAffectedForm
               onSubmit={data => {
