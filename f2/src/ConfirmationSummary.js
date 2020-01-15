@@ -64,8 +64,8 @@ export const testdata = {
       suspectClues3: 'suspectclues3',
     },
     evidence: {
-      files: ['nodejs travel expenses_Page_4_Image_0001.jpg', 'file.jpg'],
-      fileDescriptions: ['file', 'other-file'],
+      files: [],
+      fileDescriptions: [],
     },
     location: { postalCode: '', cityTown: '' },
     contactInfo: { email: '' },
