@@ -8,38 +8,33 @@ import { FormHelperText } from '../components/FormHelperText'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FormControl, Stack } from '@chakra-ui/core'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 import { useStateValue } from '../utils/state'
 
 export const SuspectCluesForm = props => {
-	const [data] = useStateValue()
-	
-	const suspectClues = {
+  const [data] = useStateValue()
+
+  const suspectClues = {
     suspectClues: '',
     ...data.formData.suspectClues,
-	}
-	
-	return (
-	<Form
-	initialValues = {suspectClues}
-	onSubmit = {props.onSubmit}
-	render = {({ handleSubmit }) => (
-	
-	<Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
-         
+  }
+
+  return (
+    <Form
+      initialValues={suspectClues}
+      onSubmit={props.onSubmit}
+      render={({ handleSubmit }) => (
+        <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
           <Field name="suspectClues1">
             {props => (
-            
               <FormControl>
-              
                 <FormLabel htmlFor="suspectClues">
                   <Trans id="suspectClues.question1" />
                 </FormLabel>
-                
+
                 <FormHelperText>
                   <Trans id="suspectClues.question1Details" />
                 </FormHelperText>
-                
+
                 <TextArea
                   id="suspectClues1"
                   name={props.input.name}
@@ -49,20 +44,18 @@ export const SuspectCluesForm = props => {
               </FormControl>
             )}
           </Field>
-          
-           <Field name="suspectClues2">
+
+          <Field name="suspectClues2">
             {props => (
-            
               <FormControl>
-              
                 <FormLabel htmlFor="suspectClues">
                   <Trans id="suspectClues.question2" />
                 </FormLabel>
-                
+
                 <FormHelperText>
                   <Trans id="suspectClues.question2Details" />
                 </FormHelperText>
-                
+
                 <TextArea
                   id="suspectClues2"
                   name={props.input.name}
@@ -72,20 +65,18 @@ export const SuspectCluesForm = props => {
               </FormControl>
             )}
           </Field>
-          
-           <Field name="suspectClues3">
+
+          <Field name="suspectClues3">
             {props => (
-            
               <FormControl>
-              
                 <FormLabel htmlFor="suspectClues">
                   <Trans id="suspectClues.question3" />
                 </FormLabel>
-                
+
                 <FormHelperText>
                   <Trans id="suspectClues.question3Details" />
                 </FormHelperText>
-                
+
                 <TextArea
                   id="suspectClues3"
                   name={props.input.name}
@@ -95,16 +86,10 @@ export const SuspectCluesForm = props => {
               </FormControl>
             )}
           </Field>
-          
-          
-          <P>
-            <Trans id="suspectClues.whatComesNext" />
-          </P>
-          
-          <NextAndCancelButtons>
-            <Trans id="suspectClues.nextButton" />
-          </NextAndCancelButtons>
-          
+          <NextAndCancelButtons
+            next={<Trans id="suspectClues.whatComesNext" />}
+            button={<Trans id="suspectClues.nextButton" />}
+          />
         </Stack>
       )}
     />

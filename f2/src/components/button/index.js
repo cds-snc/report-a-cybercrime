@@ -2,16 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button as ChakraButton, Box } from '@chakra-ui/core'
 
-export const Button = ({ variants, variantColor, ...props }) => (
+export const Button = ({ variant, variants, variantColor, ...props }) => (
   <Box>
     <ChakraButton
-      fontSize={['lg', null, 'xl', null]}
+      fontSize={{ base: 'lg', md: 'xl' }}
       fontWeight="normal"
       size="lg"
       rounded="none"
       variantColor={variantColor}
-      borderBottomWidth="3px"
-      borderBottomColor={`${variantColor}.700`}
+      {...(variant === 'solid'
+        ? {
+            borderBottomWidth: '3px',
+            borderBottomColor: `${variantColor}.700`,
+          }
+        : '')}
       _hover={{
         boxShadow: 'outlineHover',
       }}
@@ -26,4 +30,5 @@ Button.propTypes = {
 
 Button.defaultProps = {
   variantColor: 'green',
+  variant: 'solid',
 }

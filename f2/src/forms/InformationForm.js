@@ -9,7 +9,6 @@ import { TextArea } from '../components/text-area'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 
 export const InformationForm = ({ onSubmit }) => (
   <Form
@@ -72,12 +71,10 @@ export const InformationForm = ({ onSubmit }) => (
             </FormControl>
           )}
         </Field>
-        <P>
-          <Trans id="informationPage.nextStep" />
-        </P>
-        <NextAndCancelButtons>
-          <Trans id="informationPage.nextButton" />
-        </NextAndCancelButtons>
+        <NextAndCancelButtons
+          next={<Trans id="informationPage.nextStep" />}
+          button={<Trans id="informationPage.nextButton" />}
+        />
       </Stack>
     )}
   />
