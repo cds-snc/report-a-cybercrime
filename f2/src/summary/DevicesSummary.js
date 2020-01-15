@@ -30,34 +30,30 @@ export const DevicesSummary = props => {
         </div>
       ) : null}
 
-      {hasDataToDisplay ? (
-        <React.Fragment>
-          <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
-            <Flex align="baseline">
-              <H2>
-                <Trans id="confirmationPage.devicesTitle" />
-              </H2>
-              <EditButton
-                path="/devices"
-                label="Edit affected devices or accounts"
-              />
-            </Flex>
+      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+        <Flex align="baseline">
+          <H2>
+            <Trans id="confirmationPage.devicesTitle" />
+          </H2>
+          <EditButton
+            path="/devices"
+            label="Edit affected devices or accounts"
+          />
+        </Flex>
 
-            <React.Fragment>
-              <Stack as="dl" spacing={4} shouldWrapChildren>
-                <DescriptionListItem
-                  descriptionTitle="confirmationPage.devices.deviceOrAccount"
-                  description={devices.deviceOrAccount}
-                />
-                <DescriptionListItem
-                  descriptionTitle="confirmationPage.devices.devicesTellUsMore"
-                  description={devices.devicesTellUsMore}
-                />
-              </Stack>
-            </React.Fragment>
+        <React.Fragment>
+          <Stack as="dl" spacing={4} shouldWrapChildren>
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.devices.deviceOrAccount"
+              description={devices.deviceOrAccount}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.devices.devicesTellUsMore"
+              description={devices.devicesTellUsMore}
+            />
           </Stack>
         </React.Fragment>
-      ) : null}
+      </Stack>
     </React.Fragment>
   )
 }
