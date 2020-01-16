@@ -9,11 +9,15 @@ import { FormControl, Stack } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { TextArea } from '../components/text-area'
+import { useStateValue } from '../utils/state'
 
 export const MoneyLostInfoForm = props => {
+  const [data] = useStateValue()
+  const moneyLost = data.formData.moneyLost
+
   return (
     <Form
-      initialValues={{}}
+      initialValues={moneyLost}
       onSubmit={props.onSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
