@@ -16,12 +16,16 @@ export const ContactInfoSummary = ({ onSubmit }) => {
     ...data.formData.contactInfo,
   }
 
+  const hasInfoToDisplay =
+    contactInfo.email.length > 0 || contactInfo.phone.length > 0
+
   return (
     <React.Fragment>
       {false ? (
         <div>
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.contactInfo.email" />
+          <Trans id="confirmationPage.contactInfo.phone" />
         </div>
       ) : null}
 
@@ -32,11 +36,15 @@ export const ContactInfoSummary = ({ onSubmit }) => {
           </H2>
           <EditButton path="/contactinfo" label="Edit Contact Info" />
         </Flex>
-        {contactInfo.email.length > 0 ? (
+        {hasInfoToDisplay ? (
           <Stack as="dl" spacing={4} shouldWrapChildren>
             <DescriptionListItem
               descriptionTitle="confirmationPage.contactInfo.email"
               description={contactInfo.email}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.contactInfo.phone"
+              description={contactInfo.phone}
             />
           </Stack>
         ) : (

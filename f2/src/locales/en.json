@@ -21,6 +21,7 @@
   "confirmationPage.businessInfo.business": "Description",
   "confirmationPage.businessInfo.title": "Business assets",
   "confirmationPage.contactInfo.email": "Your email address",
+  "confirmationPage.contactInfo.phone": "Your phone number",
   "confirmationPage.contactIntro": "Provide your contact details so that we can send you a confirmation of your report.",
   "confirmationPage.contactTitle": "Contact details",
   "confirmationPage.devices.deviceOrAccount": "Type of device or account",
