@@ -78,8 +78,8 @@ export const ConfirmationPage = () => {
             <BackButton route="/contactinfo">
               <Trans id="confirmationPage.backButton" />
             </BackButton>
+            <Steps activeStep={8} totalSteps={8} />
             <Stack spacing={4} role="heading" aria-level="1" shouldWrapChildren>
-              <Steps activeStep={8} totalSteps={8} />
               <H1 as="span">
                 <Trans id="confirmationPage.title" />
               </H1>
