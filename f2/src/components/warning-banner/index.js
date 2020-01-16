@@ -2,6 +2,7 @@
 /** @jsx jsx **/
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
+import { Trans } from '@lingui/macro'
 import { Alert, AlertIcon, AlertDescription } from '@chakra-ui/core'
 
 export const WarningBanner = props => {
@@ -10,7 +11,7 @@ export const WarningBanner = props => {
   return (
     <Alert p={4} status={status} bg={`${bg}.400`} fontFamily="body">
       <AlertIcon mt={0} color="black" />
-      <AlertDescription color="black">{message}</AlertDescription>
+      <AlertDescription color="black"><Trans id="banner.warning" /></AlertDescription>
     </Alert>
   )
 }
@@ -22,6 +23,4 @@ WarningBanner.propTypes = {
 WarningBanner.defaultProps = {
   bg: 'yellow',
   status: 'warning',
-  message:
-    "Warning! This is a prototype. It won't actually submit your report to the RCMP.",
 }
