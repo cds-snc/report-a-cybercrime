@@ -2,7 +2,7 @@
 import React from 'react'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Stack, Flex, Code, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
