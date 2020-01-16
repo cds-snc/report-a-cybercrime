@@ -5,9 +5,8 @@ import { Trans } from '@lingui/macro'
 import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
-import { FormControl, Stack, Box } from '@chakra-ui/core'
+import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/paragraph'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -45,8 +44,9 @@ export const PrivacyConsentInfoForm = props => {
     consentOptions: [],
     ...data.formData.whetherConsent,
   }
-
   const consentOptions = ['privacyConsentInfoForm.yes']
+  let showWarning = false
+
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -54,13 +54,15 @@ export const PrivacyConsentInfoForm = props => {
           <Trans id="privacyConsentInfoForm.yes" />
         </div>
       ) : null}
-      <P>
-        <Trans id="privacyConsentInfoForm.optionsHelpText" />
-      </P>
-
       <Form
         initialValues={whetherConsent}
-        onSubmit={props.onSubmit}
+        onSubmit={values => {
+          if (values.consentOptions.length === 0) {
+            showWarning = true
+          } else {
+            props.onSubmit(values)
+          }
+        }}
         validate={validate}
         render={({ handleSubmit, values }) => (
           <Stack
@@ -70,9 +72,6 @@ export const PrivacyConsentInfoForm = props => {
             spacing={6}
           >
             <Control as="fieldset" name="consentOptions">
-              <P>    
-                <Trans id="privacyConsentInfoForm.optionsHelpText" />
-                </P>
               <Stack spacing={4} shouldWrapChildren>
                 {consentOptions.map(key => {
                   return (
@@ -87,6 +86,12 @@ export const PrivacyConsentInfoForm = props => {
                     </Box>
                   )
                 })}
+                {showWarning ? (
+                  <Alert status="warning">
+                    <AlertIcon />
+                    <Trans id="privacyConsentInfoForm.warning" />
+                  </Alert>
+                ) : null}
               </Stack>
             </Control>
 
