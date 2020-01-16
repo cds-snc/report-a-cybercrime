@@ -8,7 +8,7 @@ import { Container, InfoCard } from '../components/container'
 import { plural, Trans } from '@lingui/macro'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
-import { H1 } from '../components/header'
+import { H2 } from '../components/header'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
 import { Box, Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
@@ -111,7 +111,7 @@ export const EvidenceInfoForm = props => {
                 <React.Fragment key={index}>
                   <InfoCard as="article" mb={4}>
                     <Stack spacing={4}>
-                      <H1 fontSize="2xl">{f.name}</H1>
+                      <H2 fontSize="2xl">{f.name}</H2>
                       <Box>
                         <Field
                           name={`file-description-${index}`}
