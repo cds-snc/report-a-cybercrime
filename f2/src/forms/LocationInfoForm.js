@@ -48,7 +48,7 @@ export const LocationInfoForm = props => {
           )}
         </Field>
 <P>
-  <Trans id="locationinfoPage.or" />
+  <Trans id="locationinfoPage.or"/>
 </P>
         <Field name="cityTown">
           {props => (
