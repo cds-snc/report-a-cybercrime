@@ -225,7 +225,7 @@
   "thankYouPage.otherReportOption2": "Signalez directement à votre service de police local si vous croyez être en danger immédiat.",
   "thankYouPage.otherReportOption3": "Signalez à votre institution financière si vous avez fait parvenir de l’argent à quelqu’un.",
   "thankYouPage.otherReportOption4": "Signalez aux deux agences d'évaluation du crédit, à savoir <0>Equifax</0> et <1>TransUnion</1>, en cas de vol d'identité.",
-  "thankYouPage.referenceNumber": "Votre numéro de référence est <0> {référence} </0>",
+  "thankYouPage.referenceNumber": "Votre numéro de référence est <0>{reference}</0>",
   "thankYouPage.safelyCloseWindow": "Vous pouvez fermer cette fenêtre en toute sécurité",
   "thankYouPage.summary": "Nous vous avons envoyé un e-mail avec un résumé de votre rapport.",
   "thankYouPage.title": "Merci de votre signalement",
