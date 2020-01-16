@@ -4,15 +4,6 @@
   "env": {
     "PROJECT_PATH": {
       "required": true
-    },
-    "S3_ACCESS_ID": {
-      "required": true
-    },
-    "S3_ACCESS_SECRET": {
-      "required": true
-    },
-    "S3_BUCKET": {
-      "required": true
     }
   },
   "formation": {
