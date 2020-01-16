@@ -23,6 +23,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
 
   const overviewLine =
     i18n._('confirmationPage.howDidItStart.overviewPrefix') +
+    ' ' +
     intl
       .formatList(
         howdiditstart.howDidTheyReachYou.map(key =>
