@@ -20,51 +20,56 @@ export const LocationInfoForm = props => {
   }
 
   return (
-  <Form
-    initialValues={location}
-    onSubmit={props.onSubmit}
-    render={({ handleSubmit }) => (
-      <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-        
-        <Field name="postalCode">
-          {props => (
+    <Form
+      initialValues={location}
+      onSubmit={props.onSubmit}
+      render={({ handleSubmit }) => (
+        <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
 
-            <FormControl>
-              <FormLabel htmlFor="postalCode">
-                <Trans id="locationinfoPage.postalCode" />
-              </FormLabel>
-              <FormHelperText>
-                <Trans id="locationinfoPage.postalCodeExample">
-                  <VisuallyHidden as="span" />
-                </Trans>
-              </FormHelperText>
-              <TextInput
-                id="email"
-                name={props.input.name}
-                value={props.input.value}
-                onChange={props.input.onChange}
-              />
-            </FormControl>
-          )}
-        </Field>
-<P>
-  <Trans id="locationinfoPage.or"/>
-</P>
-        <Field name="cityTown">
-          {props => (
-            <FormControl>
-              <FormLabel htmlFor="cityTown">
-                <Trans id="locationinfoPage.cityTown" />
-              </FormLabel>
-              <TextInput
-                id="postalCode"
-                name={props.input.name}
-                value={props.input.value}
-                onChange={props.input.onChange}
-              />
-            </FormControl>
-          )}
-        </Field>
+          <Field name="postalCode">
+            {props => (
+
+              <FormControl>
+                <FormLabel htmlFor="postalCode">
+                  <Trans id="locationinfoPage.postalCode" />
+                </FormLabel>
+                <FormHelperText>
+                  <Trans id="locationinfoPage.postalCodeExample">
+                    <VisuallyHidden as="span" />
+                  </Trans>
+                </FormHelperText>
+                <TextInput
+                  id="email"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
+          <P>
+            <Trans id="locationinfoPage.or" />
+          </P>
+          <Field name="cityTown">
+            {props => (
+              <FormControl>
+                <FormLabel htmlFor="cityTown">
+                  <Trans id="locationinfoPage.cityTown" />
+                </FormLabel>
+                <FormHelperText>
+                  <Trans id="locationinfoPage.cityTownExample">
+                    <VisuallyHidden as="span" />
+                  </Trans>
+                </FormHelperText>
+                <TextInput
+                  id="postalCode"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
           <NextAndCancelButtons
             next={<Trans id="locationinfoPage.nextPage" />}
             button={<Trans id="locationinfoPage.nextButton" />}
