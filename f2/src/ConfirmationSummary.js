@@ -32,11 +32,11 @@ export const testdata = {
       ],
     },
     moneyLost: {
-      demandedMoney: 'moneylost1',
-      moneyTaken: 'moneylost2',
-      methodPayment: 'moneylost3',
-      transactionDate: 'moneylost4',
-      tellUsMore: 'moneylost5',
+      demandedMoney: '',
+      moneyTaken: '',
+      methodPayment: '',
+      transactionDate: '',
+      tellUsMore: '',
     },
     personalInformation: {
       typeOfInfoReq: '1',
