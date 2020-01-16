@@ -70,6 +70,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "husky": "^4.0.10",
     "jest-emotion": "^10.0.17",
     "recompose": "^0.30.0",
     "waait": "^1.0.5"
