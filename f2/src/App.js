@@ -12,6 +12,8 @@ import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 import { StateProvider, initialState, reducer } from './utils/state'
 import { IntlProvider } from 'react-intl'
+import '@formatjs/intl-listformat/polyfill'
+import '@formatjs/intl-listformat/polyfill-locales'
 
 const App = () => {
   const { i18n } = useLingui()
