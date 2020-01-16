@@ -160,6 +160,7 @@
   "locationPage.intro": "Nous utiliserons cette information pour établir un lien entre votre rapport et d’autres rapports de votre région.",
   "locationPage.title": "Votre lieu",
   "locationinfoPage.cityTown": "Inscrivez votre ville ou municipalité.",
+  "locationinfoPage.cityTownExample": "Par exemple: Montréal",
   "locationinfoPage.nextButton": "Continuer",
   "locationinfoPage.nextPage": "À la prochaine étape, nous vous demanderons vos coordonnées.",
   "locationinfoPage.or": "Ou",

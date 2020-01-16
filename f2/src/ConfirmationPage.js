@@ -5,7 +5,6 @@ import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { TrackPageViews } from './TrackPageViews'
-import { Steps } from './components/stepper'
 import { Layout } from './components/layout'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
@@ -79,7 +78,6 @@ export const ConfirmationPage = () => {
               <Trans id="confirmationPage.backButton" />
             </BackButton>
             <Stack spacing={4} role="heading" aria-level="1" shouldWrapChildren>
-              <Steps activeStep={6} totalSteps={6} />
               <H1 as="span">
                 <Trans id="confirmationPage.title" />
               </H1>
