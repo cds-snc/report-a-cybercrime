@@ -26,9 +26,7 @@ export const LandingPage = props => {
           <TrackPageViews />
 
           <Stack spacing={10} shouldWrapChildren>
-            <H1>
-              <Trans id="landingPage.title" />
-            </H1>
+            <H1>Review app test!</H1>
             <Stack spacing={4}>
               <P>
                 <Trans id="landingPage.intro" />
