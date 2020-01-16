@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+import { Lead } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { HowDidItStartForm } from './forms/HowDidItStartForm'
 import { Layout } from './components/layout'
@@ -21,7 +21,7 @@ export const HowDidItStartPage = () => {
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/privacyandconsent">
+            <BackButton route="/privacyconsent">
               <Trans id="howDidItStartPage.backButton" />
             </BackButton>
 
@@ -31,15 +31,18 @@ export const HowDidItStartPage = () => {
               </H1>
             </Stack>
             <Stack spacing={4}>
-              <P>
+              <Lead>
                 <Trans id="howDidItStartPage.intro" />
-              </P>
+              </Lead>
             </Stack>
 
             <HowDidItStartForm
               onSubmit={data => {
-                dispatch({ type: 'saveFormData', data: { howdiditstart: data } })
-                history.push(doneForms ? '/confirmation' : '/WhatWasAffectedPage')
+                dispatch({
+                  type: 'saveFormData',
+                  data: { howdiditstart: data },
+                })
+                history.push(doneForms ? '/confirmation' : '/whatwasaffected')
               }}
             />
           </Stack>

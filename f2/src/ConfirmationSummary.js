@@ -4,9 +4,10 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Link } from './components/link'
-import { Stack, Code } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-//
+
+import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
 import { DevicesSummary } from './summary/DevicesSummary'
@@ -22,14 +23,18 @@ export const testdata = {
   doneForms: true,
   formData: {
     consent: { consentOptions: ['privacyConsentInfoForm.yes'] },
+    howdiditstart: {
+      howDidTheyReachYou: [],
+      email: '',
+      phone: '',
+      online: '',
+      application: '',
+      others: '',
+      whenDidItStart: '',
+      howManyTimes: '',
+    },
     whatWasAffected: {
-      affectedOptions: [
-        'whatWasAffectedForm.financial',
-        'whatWasAffectedForm.personal_information',
-        'whatWasAffectedForm.devices',
-        'whatWasAffectedForm.business_assets',
-        'whatWasAffectedForm.other',
-      ],
+      affectedOptions: [],
     },
     moneyLost: {
       demandedMoney: '',
@@ -39,25 +44,25 @@ export const testdata = {
       tellUsMore: '',
     },
     personalInformation: {
-      typeOfInfoReq: '1',
-      typeOfInfoObtained: '2',
-      tellUsMore: '3',
+      typeOfInfoReq: '',
+      typeOfInfoObtained: '',
+      tellUsMore: '',
     },
-    devices: { deviceOrAccount: '4', devicesTellUsMore: '5' },
-    businessInfo: { business: 'business assets text area' },
-    whatHappened: { whatHappened: 'what happened summary text area' },
+    devicesInfo: { deviceOrAccount: '', devicesTellUsMore: '' },
+    businessInfo: { business: '' },
+    whatHappened: { whatHappened: '' },
+
     suspectClues: {
-      suspectClues: '',
-      suspectClues1: 'suspectclues1',
-      suspectClues2: 'suspectclues2',
-      suspectClues3: 'suspectclues3',
+      suspectClues1: '',
+      suspectClues2: '',
+      suspectClues3: '',
     },
     evidence: {
-      files: ['nodejs travel expenses_Page_4_Image_0001.jpg', 'file.jpg'],
-      fileDescriptions: ['file', 'other-file'],
+      files: [],
+      fileDescriptions: [],
     },
-    location: { location: '', postalCode: 'location1', cityTown: 'location2' },
-    contactInfo: { email: 'email' },
+    location: { postalCode: '', cityTown: '' },
+    contactInfo: { email: '' },
   },
 }
 
@@ -80,7 +85,7 @@ export const ConfirmationSummary = () => {
   return (
     <React.Fragment>
       <Stack spacing={12} shouldWrapChildren>
-        <Code>{JSON.stringify(data)}</Code>
+        <HowDidItStartSummary />
         <WhatWasAffectedSummary />
         <MoneyLostInfoSummary />
         <InformationSummary />

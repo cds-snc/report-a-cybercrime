@@ -8,7 +8,6 @@ import { TextArea } from '../components/text-area'
 import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 import { useStateValue } from '../utils/state'
 
 export const BusinessInfoForm = props => {
@@ -48,13 +47,11 @@ export const BusinessInfoForm = props => {
               </FormControl>
             )}
           </Field>
-          <P>
-            <Trans id="businessInfoPage.nextPage" />
-          </P>
 
-          <NextAndCancelButtons>
-            <Trans id="businessInfoPage.nextButton" />
-          </NextAndCancelButtons>
+          <NextAndCancelButtons
+            next={<Trans id="businessInfoPage.nextPage" />}
+            button={<Trans id="businessInfoPage.nextButton" />}
+          />
         </Stack>
       )}
     />

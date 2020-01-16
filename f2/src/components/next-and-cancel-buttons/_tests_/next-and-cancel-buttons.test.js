@@ -19,9 +19,7 @@ describe('<NextAndCancelButtons />', () => {
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
-            <NextAndCancelButtons>
-              Next: Confirm information
-            </NextAndCancelButtons>
+            <NextAndCancelButtons button="Next: Confirm information" />
           </I18nProvider>
         </ThemeProvider>
       </MemoryRouter>,

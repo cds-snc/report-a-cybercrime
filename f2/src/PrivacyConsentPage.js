@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+import { Lead, P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { PrivacyConsentInfoForm } from './forms/PrivacyConsentInfoForm'
 import { TrackPageViews } from './TrackPageViews'
@@ -23,23 +23,27 @@ export const PrivacyConsentPage = () => {
               <Trans id="privacyConsentPage.backButton" />
             </BackButton>
 
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
-                <Trans id="privacyConsentPage.title" />
-              </H1>
+            <H1 as="span">
+              <Trans id="privacyConsentPage.title" />
+            </H1>
+
+            <Stack spacing={8} role="heading" aria-level="1">
+              <Lead>
+                <Trans id="privacyConsentPage.intro" />
+              </Lead>
+              <P>
+                <Trans id="privacyConsentInfoForm.optionsHelpText" />
+              </P>
+              <PrivacyConsentInfoForm
+                onSubmit={data => {
+                  dispatch({
+                    type: 'saveFormData',
+                    data: { consent: data },
+                  })
+                  history.push('/howdiditstart')
+                }}
+              />
             </Stack>
-            <P>
-              <Trans id="privacyConsentPage.intro" />
-            </P>
-            <PrivacyConsentInfoForm
-              onSubmit={data => {
-                dispatch({
-                  type: 'saveFormData',
-                  data: { consent: data },
-                })
-                history.push('/whatwasaffected') // TODO: change this to /howdiditstart when that page is done
-              }}
-            />
           </Stack>
         </Layout>
       )}

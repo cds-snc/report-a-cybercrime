@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+import { Lead } from './components/paragraph'
 import { Layout } from './components/layout'
 import { Steps } from './components/stepper'
 import { ImpactStatementInfoForm } from './forms/ImpactStatementInfoForm'
@@ -34,9 +34,9 @@ export const ImpactStatementPage = () => {
               </H1>
             </Stack>
 
-            <P>
+            <Lead>
               <Trans id="impactPage.intro" />
-            </P>
+            </Lead>
 
             <ImpactStatementInfoForm
               onSubmit={data => {

@@ -16,8 +16,9 @@ export const WhatWasAffectedSummary = props => {
   const [data] = useStateValue()
   const impact = {
     affectedOptions: [],
-    ...data.formData.whatWasAffected,
     ...testdata.formData.whatWasAffected, //Remove after done testing
+    ...data.formData.whatWasAffected,
+    
   }
 
   return (

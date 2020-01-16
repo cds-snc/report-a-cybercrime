@@ -67,7 +67,7 @@ const submitToServer = async data => {
 }
 
 export const ConfirmationPage = () => {
-  const [{ formData }, dispatch] = useStateValue()
+  const [{ formData }, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
 
   return (
     <Route
@@ -89,7 +89,7 @@ export const ConfirmationPage = () => {
               onSubmit={() => {
                 let data = prepFormData(formData)
                 submitToServer(data)
-                dispatch({ type: 'deleteFormData', data: {} })
+                // dispatch({ type: 'deleteFormData', data: {} })  restore after testing
                 history.push('/thankYouPage')
               }}
             />

@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { P } from './components/paragraph'
+import { Lead } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { SuspectCluesForm } from './forms/SuspectCluesForm'
 import { Layout } from './components/layout'
@@ -33,15 +33,15 @@ export const SuspectCluesPage = () => {
             </Stack>
 
             <Stack spacing={4}>
-              <P>
+              <Lead>
                 <Trans id="suspectClues.intro" />
-              </P>
+              </Lead>
             </Stack>
 
             <SuspectCluesForm
               onSubmit={data => {
                 dispatch({ type: 'saveFormData', data: { suspectClues: data } })
-                history.push(doneForms ? '/ confirmation' : '/evidence')
+                history.push(doneForms ? '/confirmation' : '/evidence')
               }}
             />
           </Stack>
