@@ -9,6 +9,7 @@ import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { Steps } from './components/stepper'
 
 export const LocationPage = () => {
   const [data, dispatch] = useStateValue()
@@ -24,7 +25,7 @@ export const LocationPage = () => {
             <BackButton route="/evidence">
               <Trans id="locationPage.backButton" />
             </BackButton>
-
+            <Steps activeStep={6} totalSteps={8} />
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
                 <Trans id="locationPage.title" />

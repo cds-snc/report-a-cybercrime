@@ -10,6 +10,7 @@ import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { Steps } from './components/stepper'
 
 export const ContactInfoPage = () => {
   const [, dispatch] = useStateValue()
@@ -23,7 +24,7 @@ export const ContactInfoPage = () => {
             <BackButton route="/location">
               <Trans id="contactinfoPage.backButton" />
             </BackButton>
-
+            <Steps activeStep={7} totalSteps={8} />
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
                 <Trans id="contactinfoPage.title" />

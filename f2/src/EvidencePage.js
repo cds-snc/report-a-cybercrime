@@ -12,6 +12,7 @@ import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { Steps } from './components/stepper'
 
 export const EvidencePage = () => {
   const [data, dispatch] = useStateValue()
@@ -26,7 +27,7 @@ export const EvidencePage = () => {
             <BackButton route="/suspectclues">
               <Trans id="evidencePage.backButton" />
             </BackButton>
-
+            <Steps activeStep={5} totalSteps={8} />
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
                 <Trans id="evidencePage.title" />

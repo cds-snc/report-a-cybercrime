@@ -10,6 +10,7 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
+import { Steps } from './components/stepper'
 
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
@@ -24,7 +25,7 @@ export const WhatWasAffectedPage = () => {
             <BackButton route="/howdiditstart">
               <Trans id="whatWasAffectedPage.backButton" />
             </BackButton>
-
+            <Steps activeStep={2} totalSteps={8} />
             <Stack spacing={4} role="heading" aria-level="1">
               <H1 as="span">
                 <Trans id="whatWasAffectedPage.title" />

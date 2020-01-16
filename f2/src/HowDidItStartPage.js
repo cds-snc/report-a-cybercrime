@@ -10,6 +10,7 @@ import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { Steps } from './components/stepper'
 
 export const HowDidItStartPage = () => {
   const [data, dispatch] = useStateValue()
@@ -22,6 +23,7 @@ export const HowDidItStartPage = () => {
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/privacyconsent">
+            <Steps activeStep={1} totalSteps={8} />
               <Trans id="howDidItStartPage.backButton" />
             </BackButton>
 
