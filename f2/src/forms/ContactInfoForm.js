@@ -9,6 +9,10 @@ import { Stack, FormControl } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
+import { Button } from '../components/button'
+import { Lead } from '../components/paragraph'
+import { Link as ReactRouterLink } from 'react-router-dom'
+import { Icon } from '@chakra-ui/core'
 
 export const ContactInfoForm = ({ onSubmit }) => {
   const [data] = useStateValue()
@@ -60,11 +64,29 @@ export const ContactInfoForm = ({ onSubmit }) => {
             next={<Trans id="contactinfoPage.nextInfo" />}
             button={<Trans id="contactinfoPage.nextButton" />}
           />
+          
+          <Lead>
+          <Trans id="contactinfoPage.skipInfo"/>
+          </Lead>
+          <Button
+        as={ReactRouterLink}
+        fontSize={{ base: 'lg', md: 'xl' }}
+        color="black"
+        variant="link"
+        variantColor="teal"
+        to="/confirmation"
+        textAlign="center"
+      >
+        <Trans id="contactinfoPage.skipButton" />
+      <Icon focusable="false" ml={2} mr={-2} name="chevron-right" size="28px" />
+        
+      </Button>
         </Stack>
       )}
     />
   )
-}
+  
+} 
 
 ContactInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
