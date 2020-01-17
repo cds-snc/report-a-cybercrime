@@ -39,7 +39,11 @@ export const ThankYouPage = () => {
             <Trans id="thankYouPage.summary" />
             <Trans
               id="thankYouPage.referenceNumber"
-              values={{ reference: state.formData.reportId }}
+              values={{
+                reference: state.formData.reportId
+                  ? state.formData.reportId
+                  : '< report ID >',
+              }}
             >
               <Text as="span" color="yellow.200" fontSize="xl" />
             </Trans>
