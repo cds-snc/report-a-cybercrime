@@ -45,7 +45,10 @@
     "upgrade-interactive": "npm-check --update"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "plugin:jsx-a11y/recommended"
+    ]
   },
   "browserslist": {
     "production": [
@@ -70,6 +73,8 @@
     "babel-core": "^7.0.0-bridge.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "eslint": "^6.8.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "husky": "^4.0.10",
     "jest-emotion": "^10.0.17",
     "recompose": "^0.30.0",
