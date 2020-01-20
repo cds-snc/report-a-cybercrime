@@ -10,7 +10,6 @@ describe('<Field/>', () => {
     const submitMock = jest.fn()
     const { getByLabelText, getByText } = render(
       <Form
-        initialValues={location}
         onSubmit={submitMock}
         render={({ handleSubmit }) => (
           <Field id="test" label="foo" helpText="help" />
