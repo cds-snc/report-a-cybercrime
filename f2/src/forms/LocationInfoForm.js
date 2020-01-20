@@ -10,7 +10,7 @@ import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
-
+import { Field as OurField } from '../components/Field'
 
 export const LocationInfoForm = props => {
   const [data] = useStateValue()
@@ -25,10 +25,15 @@ export const LocationInfoForm = props => {
       onSubmit={props.onSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-
+          {/** Testing the Field component */}
+          <OurField
+            id="test"
+            label="This is the label"
+            helpText="This is the help text"
+          />
+          {/** compared to the more verbose way of doing it */}
           <Field name="postalCode">
             {props => (
-
               <FormControl>
                 <FormLabel htmlFor="postalCode">
                   <Trans id="locationinfoPage.postalCode" />
@@ -39,7 +44,7 @@ export const LocationInfoForm = props => {
                   </Trans>
                 </FormHelperText>
                 <TextInput
-                  id="email"
+                  id="postalCode"
                   name={props.input.name}
                   value={props.input.value}
                   onChange={props.input.onChange}
@@ -62,7 +67,7 @@ export const LocationInfoForm = props => {
                   </Trans>
                 </FormHelperText>
                 <TextInput
-                  id="postalCode"
+                  id="cityTown"
                   name={props.input.name}
                   value={props.input.value}
                   onChange={props.input.onChange}
