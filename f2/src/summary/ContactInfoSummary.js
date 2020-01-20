@@ -37,7 +37,7 @@ export const ContactInfoSummary = ({ onSubmit }) => {
           <EditButton path="/contactinfo" label="Edit Contact Info" />
         </Flex>
         {hasInfoToDisplay ? (
-          <Stack as="dl" spacing={4} shouldWrapChildren>
+          <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.contactInfo.email"
               description={contactInfo.email}

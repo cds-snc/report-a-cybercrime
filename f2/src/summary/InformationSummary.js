@@ -38,7 +38,7 @@ export const InformationSummary = props => {
           />
         </Flex>
 
-        <Stack as="dl" spacing={4} shouldWrapChildren>
+        <Stack as="dl" spacing={4}>
           <DescriptionListItem
             descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
             description={personalInformation.typeOfInfoReq}

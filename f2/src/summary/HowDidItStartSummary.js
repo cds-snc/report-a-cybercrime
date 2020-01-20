@@ -64,7 +64,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
 
         {hasDataToDisplay ? (
           <React.Fragment>
-            <Stack as="dl" spacing={4} shouldWrapChildren>
+            <Stack as="dl" spacing={4}>
               <Text>{overviewLine}</Text>
               <DescriptionListItem
                 descriptionTitle="confirmationPage.howDidItStart.email"

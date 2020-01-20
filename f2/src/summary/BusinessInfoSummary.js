@@ -33,7 +33,7 @@ export const BusinessInfoSummary = props => {
           <EditButton path="/business" label="Edit affected business assets" />
         </Flex>
 
-        <Stack as="dl" spacing={4} shouldWrapChildren>
+        <Stack as="dl" spacing={4}>
           <DescriptionListItem
             descriptionTitle="confirmationPage.businessInfo.business"
             description={businessInfo.business}

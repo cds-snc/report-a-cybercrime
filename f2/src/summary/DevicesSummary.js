@@ -38,7 +38,7 @@ export const DevicesSummary = props => {
         </Flex>
 
         <React.Fragment>
-          <Stack as="dl" spacing={4} shouldWrapChildren>
+          <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.deviceOrAccount"
               description={devices.deviceOrAccount}
