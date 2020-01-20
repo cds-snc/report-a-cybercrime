@@ -11,7 +11,6 @@ import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
 
-
 export const LocationInfoForm = props => {
   const [data] = useStateValue()
   const location = {
@@ -25,10 +24,8 @@ export const LocationInfoForm = props => {
       onSubmit={props.onSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-
           <Field name="postalCode">
             {props => (
-
               <FormControl>
                 <FormLabel htmlFor="postalCode">
                   <Trans id="locationinfoPage.postalCode" />
@@ -39,7 +36,7 @@ export const LocationInfoForm = props => {
                   </Trans>
                 </FormHelperText>
                 <TextInput
-                  id="email"
+                  id="postalCode"
                   name={props.input.name}
                   value={props.input.value}
                   onChange={props.input.onChange}
@@ -62,7 +59,7 @@ export const LocationInfoForm = props => {
                   </Trans>
                 </FormHelperText>
                 <TextInput
-                  id="postalCode"
+                  id="cityTown"
                   name={props.input.name}
                   value={props.input.value}
                   onChange={props.input.onChange}
