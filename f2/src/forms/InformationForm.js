@@ -48,8 +48,8 @@ export const InformationForm = props => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
   const information = {
-    typeOfInfoReq: '',
-    typeOfInfoObtained: '',
+    typeOfInfoReq: [],
+    typeOfInfoObtained: [],
     tellUsMore: '',
     ...data.formData.personalInformation,
   }
