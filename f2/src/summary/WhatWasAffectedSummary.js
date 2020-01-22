@@ -27,7 +27,7 @@ export const WhatWasAffectedSummary = props => {
         <H2>
           <Trans id="confirmationPage.ImpactTitle" />
         </H2>
-        <EditButton path="/whatwasaffected" label="Edit what was affected" />
+        <EditButton path="/whatwasaffected" label="confirmationPage.ImpactTitle.edit" />
       </Flex>
       {impact.affectedOptions.length > 0 ? (
         <Stack as="dl" spacing={4} shouldWrapChildren>

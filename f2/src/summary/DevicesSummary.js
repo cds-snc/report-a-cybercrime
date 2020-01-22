@@ -33,7 +33,7 @@ export const DevicesSummary = props => {
           </H2>
           <EditButton
             path="/devices"
-            label="Edit affected devices or accounts"
+            label="confirmationPage.devicesTitle.edit"
           />
         </Flex>
 

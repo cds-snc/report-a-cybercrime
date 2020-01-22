@@ -23,7 +23,7 @@ export const EvidenceInfoSummary = props => {
         <H2>
           <Trans id="confirmationPage.evidence.title" />
         </H2>
-        <EditButton path="/evidence" label="Edit Evidence" />
+        <EditButton path="/evidence" label="confirmationPage.evidence.title.edit" />
       </Flex>
       {evidence.files.length > 0 || evidence.fileDescriptions.length > 0 ? (
         <Stack as="dl" spacing={4} shouldWrapChildren>
