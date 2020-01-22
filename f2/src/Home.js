@@ -19,6 +19,7 @@ import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
 import { EvidencePage } from './EvidencePage'
 import { PrivacyConsentPage } from './PrivacyConsentPage'
+import { PrivacyStatementPage } from './PrivacyStatementPage'
 import { WhatWasAffectedPage } from './WhatWasAffected'
 
 export const Home = () => (
@@ -29,6 +30,9 @@ export const Home = () => (
       </Route>
       <Route path="/privacyconsent">
         <PrivacyConsentPage />
+      </Route>
+      <Route path="/privacystatement">
+        <PrivacyStatementPage />
       </Route>
       <Route path="/whatwasaffected">
         <WhatWasAffectedPage />
