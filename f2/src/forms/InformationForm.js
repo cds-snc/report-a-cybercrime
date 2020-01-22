@@ -6,10 +6,9 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { TextInput } from '../components/TextInput'
 import { Checkbox } from '../components/checkbox'
 import { TextArea } from '../components/text-area'
-import { Stack, FormControl, VisuallyHidden, Box } from '@chakra-ui/core'
+import { Stack, FormControl, Box } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
@@ -39,9 +38,6 @@ const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
   )
 }
 
-const validate = () => {
-  return {}
-}
 
 
 export const InformationForm = props => {
@@ -97,6 +93,28 @@ export const InformationForm = props => {
                       >
                         {i18n._(key)}
                       </CheckboxArrayControl>
+                      {values.typeOfInfoReq.includes(typeOfInfoReq.other) && (
+                        <ConditionalForm>
+                          <Field name={key}>
+                            {props => (
+                              <FormControl>
+                                <FormLabel htmlFor={key}>
+                                  <Trans id={typeOfInfoReq.other} />
+                                </FormLabel>
+                                <FormHelperText>
+                                  <Trans id={typeOfInfoReq.other} />
+                                </FormHelperText>
+                                <TextArea
+                                  id={typeOfInfoReq.other}
+                                  name={props.input.name}
+                                  value={props.input.value}
+                                  onChange={props.input.onChange}
+                                />
+                              </FormControl>
+                            )}
+                          </Field>
+                        </ConditionalForm>
+                      )}
                     </Box>
                   )
                 })}
