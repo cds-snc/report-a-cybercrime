@@ -59,9 +59,19 @@ export const PrivacyStatementPage = () => {
                 <Trans id="privacyStatementPage.toinquireHeading" />
               </H2>
               <P>
-                <Trans id="privacyStatementPage.toinquireText" />
+                <Trans id="privacyStatementPage.toinquireText1" />
+              </P>
+              <P>
+                <Trans id="privacyStatementPage.toinquireText2" />
+              </P>
+              <P>
+                <Trans id="privacyStatementPage.toinquireText3" />
+              </P>
+              <P>
+                <Trans id="privacyStatementPage.toinquireText4" />
               </P>
             </Stack>
+            <br></br>
               <PrivacyConsentInfoForm
                 onSubmit={data => {
                   dispatch({
