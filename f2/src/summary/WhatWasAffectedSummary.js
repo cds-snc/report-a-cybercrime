@@ -18,7 +18,6 @@ export const WhatWasAffectedSummary = props => {
     affectedOptions: [],
     ...testdata.formData.whatWasAffected, //Remove after done testing
     ...data.formData.whatWasAffected,
-    
   }
 
   return (
@@ -30,7 +29,7 @@ export const WhatWasAffectedSummary = props => {
         <EditButton path="/whatwasaffected" label="confirmationPage.ImpactTitle.edit" />
       </Flex>
       {impact.affectedOptions.length > 0 ? (
-        <Stack as="dl" spacing={4} shouldWrapChildren>
+        <Stack as="dl" spacing={4}>
           <Text>
             <Trans id="confirmationPage.whatWasAffected.format" />
             &nbsp;
