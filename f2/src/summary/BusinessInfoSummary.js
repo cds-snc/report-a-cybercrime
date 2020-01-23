@@ -9,6 +9,7 @@ import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 
 export const BusinessInfoSummary = props => {
+
   const [data] = useStateValue()
 
   const businessInfo = {
@@ -30,7 +31,8 @@ export const BusinessInfoSummary = props => {
           <H2>
             <Trans id="confirmationPage.businessInfo.title" />
           </H2>
-          <EditButton path="/business" label="Edit affected business assets" />
+
+          <EditButton path="/business" label="confirmationPage.businessInfo.title.edit" />
         </Flex>
 
         <Stack as="dl" spacing={4}>

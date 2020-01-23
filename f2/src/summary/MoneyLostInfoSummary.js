@@ -33,10 +33,7 @@ export const MoneyLostInfoSummary = props => {
           <H2>
             <Trans id="confirmationPage.moneyLostTitle" />
           </H2>
-          <EditButton
-            path="/moneylost"
-            label="Edit affected money or finances"
-          />
+          <EditButton path="/moneylost" label="confirmationPage.moneyLostTitle.edit" />
         </Flex>
 
         <Stack as="dl" spacing={4}>
