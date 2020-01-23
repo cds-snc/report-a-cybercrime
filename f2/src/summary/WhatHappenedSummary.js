@@ -22,7 +22,7 @@ export const WhatHappenedSummary = props => {
         <H2>
           <Trans id="confirmationPage.whatHappened.title" />
         </H2>
-        <EditButton label={'Edit what happened'} path="/whathappened" />
+        <EditButton label="confirmationPage.whatHappened.title.edit" path="/whathappened" />
       </Flex>
 
       {whatHappened.whatHappened.length > 0 ? (
