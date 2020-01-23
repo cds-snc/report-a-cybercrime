@@ -37,7 +37,7 @@ export const LocationInfoSummary = ({ onSubmit }) => {
           <EditButton path="/location" label="confirmationPage.location.title.edit" />
         </Flex>
         {hasInfoToDisplay ? (
-          <Stack as="dl" spacing={4} shouldWrapChildren>
+          <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.location.postalCode"
               description={location.postalCode}
