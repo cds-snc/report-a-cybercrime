@@ -34,10 +34,10 @@ export const LocationInfoSummary = ({ onSubmit }) => {
           <H2>
             <Trans id="confirmationPage.location.title" />
           </H2>
-          <EditButton path="/location" label="Edit Location Information" />
+          <EditButton path="/location" label="confirmationPage.location.title.edit" />
         </Flex>
         {hasInfoToDisplay ? (
-          <Stack as="dl" spacing={4} shouldWrapChildren>
+          <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.location.postalCode"
               description={location.postalCode}
