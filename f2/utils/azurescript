@@ -1,10 +1,11 @@
  export PROJECT_NAME=rcmpcybercrime
  export RG_NAME=MpSCCDSCybercrimeRG
  export ACR_NAME=MpSCCDSCybercrimeacr
- export IMAGE_NAME=cybercrimeimage
+ export IMAGE_NAME=f2
  export DB_NAME=mpsccdscybercrimecosdb
  export PLAN_NAME=MpSCCDSCybercrimeazappplan
  export APP_NAME=MpSCCDSCybercrimeazapp
+ export SERVICE_PRINCIPAL_NAME=MpSCCDSCybercrimeACR-sp
  # Set up Azure
  ## Resource group
  az group create --name $RG_NAME --location canadacentral
@@ -21,9 +22,9 @@
  az appservice plan create --name $PLAN_NAME --sku F1 --is-linux
  az webapp create --name $APP_NAME --plan $PLAN_NAME --deployment-container-image-name ${ACR_NAME}.azurecr.io/${IMAGE_NAME}:latest
  ### ACR access
- export ACR_USERNAME=$ACR_NAME
- export ACR_PASSWORD=`az acr credential show --name $ACR_NAME | jq '.passwords[0].value' | sed -e 's/^"//' -e 's/"$//'`
- az webapp config container set --name $APP_NAME --docker-custom-image-name ${ACR_NAME}.azurecr.io/${IMAGE_NAME}:latest --docker-registry-server-url https://${ACR_NAME}.azurecr.io --docker-registry-server-user $ACR_USERNAME --docker-registry-server-password $ACR_PASSWORD
+ SP_PASSWD=$(az ad sp create-for-rbac --name http://$SERVICE_PRINCIPAL_NAME --scopes $ACR_REGISTRY_ID --role acrpull --query password --output tsv)
+ SP_APP_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)
+ az webapp config container set --name $APP_NAME --resource-group $RG_NAME --docker-custom-image-name ${ACR_NAME}.azurecr.io/${IMAGE_NAME}:latest --docker-registry-server-url https://${ACR_NAME}.azurecr.io --docker-registry-server-user $SP_APP_ID --docker-registry-server-password $SP_PASSWD
  ### Environmental variables
  export COSMO_KEY=`az cosmosdb keys list --name $DB_NAME --query "primaryMasterKey" | sed -e 's/^"//' -e 's/"$//'`
  az webapp config appsettings set  --name $APP_NAME --settings COSMOSDB_NAME=$DB_NAME COSMOSDB_KEY=$COSMO_KEY
