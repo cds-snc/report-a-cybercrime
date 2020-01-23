@@ -26,6 +26,7 @@ export const ContactInfoSummary = ({ onSubmit }) => {
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.contactInfo.email" />
           <Trans id="confirmationPage.contactInfo.phone" />
+          <Trans id="confirmationPage.contactTitle.edit" />
         </div>
       ) : null}
 
@@ -34,7 +35,10 @@ export const ContactInfoSummary = ({ onSubmit }) => {
           <H2>
             <Trans id="confirmationPage.contactTitle" />
           </H2>
-          <EditButton path="/contactinfo" label="confirmationPage.contactTitle.edit" />
+          <EditButton
+            path="/contactinfo"
+            label="confirmationPage.contactTitle.edit"
+          />
         </Flex>
         {hasInfoToDisplay ? (
           <Stack as="dl" spacing={4}>
