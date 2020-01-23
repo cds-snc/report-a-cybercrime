@@ -36,8 +36,7 @@ export const MoneyLostInfoSummary = props => {
           <EditButton path="/moneylost" label="confirmationPage.moneyLostTitle.edit" />
         </Flex>
 
-
-        <Stack as="dl" spacing={4} shouldWrapChildren>
+        <Stack as="dl" spacing={4}>
           <DescriptionListItem
             descriptionTitle="confirmationPage.moneyLost.demandedMoney"
             description={moneyLost.demandedMoney}
