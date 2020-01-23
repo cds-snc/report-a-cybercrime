@@ -50,7 +50,6 @@ export const InformationSummary = props => {
           {personalInformation.typeOfInfoReq.length > 0 ? (
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
-              description={personalInformation.typeOfInfoReq}
               description={intl.formatList(
                 personalInformation.typeOfInfoReq.map(i => i18n._(i)),
                 { type: 'conjunction' },
@@ -65,7 +64,6 @@ export const InformationSummary = props => {
           {personalInformation.typeOfInfoObtained.length > 0 ? (
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
-              description={personalInformation.typeOfInfoObtained}
               description={intl.formatList(
                 personalInformation.typeOfInfoObtained.map(i => i18n._(i)),
                 { type: 'conjunction' },
