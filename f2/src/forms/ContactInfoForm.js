@@ -10,7 +10,6 @@ import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
-import { Lead } from '../components/paragraph'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Icon } from '@chakra-ui/core'
 
@@ -63,17 +62,17 @@ export const ContactInfoForm = ({ onSubmit }) => {
           <NextAndCancelButtons
             next={<Trans id="contactinfoPage.nextInfo" />}
             button={<Trans id="contactinfoPage.nextButton" />}
-          />
-          
-          <Lead>
+          />        
+          <p>
           <Trans id="contactinfoPage.skipInfo"/>
-          </Lead>
+          </p>
           <Button
         as={ReactRouterLink}
         fontSize={{ base: 'lg', md: 'xl' }}
         color="black"
-        variant="link"
-        variantColor="teal"
+        // variant="link"
+        variantColor="gray"
+        bg = "gray.400"
         to="/confirmation"
         textAlign="center"
       >
