@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import { Route } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
 import { Button } from './components/button'
