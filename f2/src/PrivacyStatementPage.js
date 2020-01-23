@@ -70,8 +70,6 @@ export const PrivacyStatementPage = () => {
               <P>
                 <Trans id="privacyStatementPage.toinquireText4" />
               </P>
-            </Stack>
-            <br></br>
               <PrivacyConsentInfoForm
                 onSubmit={data => {
                   dispatch({
@@ -80,8 +78,11 @@ export const PrivacyStatementPage = () => {
                   })
                   history.push('/howdiditstart')
                 }}
-              />         
+              />       
+        </Stack>  
         </Layout>
+
+
       )}
     />
   )
