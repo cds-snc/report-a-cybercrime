@@ -41,7 +41,7 @@ export const InformationSummary = props => {
           </H2>
           <EditButton
             path="/information"
-            label="Edit affected data or personal information"
+            label="confirmationPage.personalInformation.title.edit"
           />
         </Flex>
 
@@ -74,6 +74,17 @@ export const InformationSummary = props => {
                 <Trans id="confirmationPage.impactIntro" />
               </Text>
             )}
+
+        <Stack as="dl" spacing={4}>
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
+            description={personalInformation.typeOfInfoReq}
+          />
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
+            description={personalInformation.typeOfInfoObtained}
+          />
+
           <DescriptionListItem
             descriptionTitle="confirmationPage.personalInformation.tellUsMore"
             description={personalInformation.tellUsMore}

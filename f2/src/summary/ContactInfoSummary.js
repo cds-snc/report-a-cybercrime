@@ -34,10 +34,10 @@ export const ContactInfoSummary = ({ onSubmit }) => {
           <H2>
             <Trans id="confirmationPage.contactTitle" />
           </H2>
-          <EditButton path="/contactinfo" label="Edit Contact Info" />
+          <EditButton path="/contactinfo" label="confirmationPage.contactTitle.edit" />
         </Flex>
         {hasInfoToDisplay ? (
-          <Stack as="dl" spacing={4} shouldWrapChildren>
+          <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.contactInfo.email"
               description={contactInfo.email}

@@ -37,10 +37,10 @@ export const SuspectCluesSummary = () => {
           <H2>
             <Trans id="confirmationPage.suspectClues.title" />
           </H2>
-          <EditButton path="/suspectclues" label="Edit suspect information" />
+          <EditButton path="/suspectclues" label="confirmationPage.suspectClues.title.edit" />
         </Flex>
         {hasInfoToDisplay ? (
-          <Stack as="dl" spacing={4} shouldWrapChildren>
+          <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.suspectClues.suspectClues1"
               description={suspectClues.suspectClues1}
