@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import { PageNotFound } from './PageNotFound'
 import { LandingPage } from './LandingPage'
+import { StartPage } from './StartPage'
 import { ThankYouPage } from './ThankYouPage'
 import { WhatHappenedPage } from './WhatHappenedPage'
 import { ContactInfoPage } from './ContactInfoPage'
@@ -26,6 +27,9 @@ export const Home = () => (
     <Switch>
       <Route exact path="/">
         <LandingPage />
+      </Route>
+      <Route exact path="/startpage">
+        <StartPage />
       </Route>
       <Route path="/privacyconsent">
         <PrivacyConsentPage />
