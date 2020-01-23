@@ -13,6 +13,7 @@ import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
 import { ConditionalForm } from '../components/container'
+import { TextInput } from '../components/TextInput'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -58,6 +59,8 @@ export const InformationForm = props => {
     'typeOfInfoReq.other',
   ]
 
+
+
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -67,6 +70,11 @@ export const InformationForm = props => {
           <Trans id="typeOfInfoReq.homeAddress" />
           <Trans id="typeOfInfoReq.sin" />
           <Trans id="typeOfInfoReq.other" />
+          <Trans id="typeOfInfoObtained.creditCard" />
+          <Trans id="typeOfInfoObtained.dob" />
+          <Trans id="typeOfInfoObtained.homeAddress" />
+          <Trans id="typeOfInfoObtained.sin" />
+          <Trans id="typeOfInfoObtained.other" />
 
         </div>
       ) : null}
@@ -93,19 +101,16 @@ export const InformationForm = props => {
                       >
                         {i18n._(key)}
                       </CheckboxArrayControl>
-                      {values.typeOfInfoReq.includes(typeOfInfoReq.other) && (
+                      {key === 'typeOfInfoReq.other' && values.typeOfInfoReq.includes('typeOfInfoReq.other') && (
                         <ConditionalForm>
-                          <Field name={key}>
+                          <Field name='infoReqOther'>
                             {props => (
                               <FormControl>
                                 <FormLabel htmlFor={key}>
-                                  <Trans id={typeOfInfoReq.other} />
+
                                 </FormLabel>
-                                <FormHelperText>
-                                  <Trans id={typeOfInfoReq.other} />
-                                </FormHelperText>
-                                <TextArea
-                                  id={typeOfInfoReq.other}
+                                <TextInput
+                                  id='infoReqOther'
                                   name={props.input.name}
                                   value={props.input.value}
                                   onChange={props.input.onChange}
@@ -138,6 +143,25 @@ export const InformationForm = props => {
                       >
                         {i18n._(key)}
                       </CheckboxArrayControl>
+                      {key === 'typeOfInfoReq.other' && values.typeOfInfoObtained.includes('typeOfInfoReq.other') && (
+                        <ConditionalForm>
+                          <Field name='infoObtainedOther'>
+                            {props => (
+                              <FormControl>
+                                <FormLabel htmlFor={key}>
+
+                                </FormLabel>
+                                <TextInput
+                                  id='infoObtainedOther'
+                                  name={props.input.name}
+                                  value={props.input.value}
+                                  onChange={props.input.onChange}
+                                />
+                              </FormControl>
+                            )}
+                          </Field>
+                        </ConditionalForm>
+                      )}
                     </Box>
                   )
                 })}
