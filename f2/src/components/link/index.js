@@ -12,7 +12,7 @@ const BaseAnchor = asAnchor('a')
 export const Link = props => (
   <ChakraLink
     as={ReactRouterLink}
-    color="blue.500"
+    color="blue.600"
     fontSize={['md', null, 'lg', null]}
     {...props}
   >
@@ -71,7 +71,7 @@ ButtonAnchor.propTypes = {
 }
 
 export const A = props => (
-  <ChakraLink color="blue.600" fontSize={['md', null, 'lg', null]} {...props}>
+  <ChakraLink color="blue.600" {...props}>
     {props.children}
   </ChakraLink>
 )
