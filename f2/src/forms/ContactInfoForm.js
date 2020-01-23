@@ -63,9 +63,9 @@ export const ContactInfoForm = ({ onSubmit }) => {
             next={<Trans id="contactinfoPage.nextInfo" />}
             button={<Trans id="contactinfoPage.nextButton" />}
           />        
-          <p>
+          <P>
           <Trans id="contactinfoPage.skipInfo"/>
-          </p>
+          </P>
           <Button
         as={ReactRouterLink}
         fontSize={{ base: 'lg', md: 'xl' }}
