@@ -17,7 +17,7 @@
   "button.cancelReport": "Cancel report",
   "button.edit": "Edit",
   "confirmationPage.ImpactTitle": "What could be affected?",
-  "confirmationPage.ImpactTitle.edit":"Edit What Was Affected",
+  "confirmationPage.ImpactTitle.edit": "Edit What Was Affected",
   "confirmationPage.backButton": "Back to Your contact details",
   "confirmationPage.businessInfo.business": "Description",
   "confirmationPage.businessInfo.title": "Business",
@@ -288,5 +288,10 @@
   "whenDidItStart.pastWeek": "Within the past week",
   "whenDidItStart.pastYear": "Within the past year",
   "whenDidItStart.today": "Today",
+  "feedbackPage.backButton": "Back to the previous page",
+  "feedbackPage.title": "Helps us improve this service",
+  "feedbackPage.part1": "We'd like to speak with you about your experience using this reporting form.",
+  "feedbackPage.part2": "If you're interested in chatting with us, you can contact: ",
+  "feedbackPage.contactInfo": "melissa.banyard@tbs-sct.gc.ca.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
 }
