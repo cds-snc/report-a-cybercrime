@@ -21,7 +21,7 @@ describe('<FeedbackPage />', () => {
         <ThemeProvider theme={canada}>
           <StateProvider initialState={initialState} reducer={reducer}>
             <I18nProvider i18n={i18n}>
-              <FeedbackPage location={{ search: undefined }} />
+              <FeedbackPage />
             </I18nProvider>
           </StateProvider>
         </ThemeProvider>
