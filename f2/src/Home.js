@@ -21,6 +21,7 @@ import { EvidencePage } from './EvidencePage'
 import { PrivacyConsentPage } from './PrivacyConsentPage'
 import { PrivacyStatementPage } from './PrivacyStatementPage'
 import { WhatWasAffectedPage } from './WhatWasAffected'
+import { FeedbackPage } from './FeedbackPage'
 
 export const Home = () => (
   <Router>
@@ -87,10 +88,15 @@ export const Home = () => (
       <Route path="/impact">
         <ImpactStatementPage />
       </Route>
+      
+      <Route path="/feedbackPage">
+        <FeedbackPage />
+      </Route>
 
       <Route>
         <PageNotFound />
       </Route>
+      
     </Switch>
   </Router>
 )
