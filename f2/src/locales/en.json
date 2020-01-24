@@ -1,7 +1,7 @@
 {
-  "Page not found": "Page not found",
+  "pageNotFound.header": "Page not found",
   "SkipLink.text": "Skip to main content",
-  "Sorry, the page you were trying to view does not exist.": "Sorry, the page you were trying to view does not exist.",
+  "pageNotFound.messages": "Sorry, the page you were trying to view does not exist.",
   "banner.footerPrivacy": "Privacy",
   "banner.footerTermsAndConditions": "Terms and Conditions",
   "banner.phase": "BETA",
@@ -222,7 +222,7 @@
   "scammerDetail.fileDescription": "Describe what this file shows",
   "scammerDetail.intro": "Any clues about the source of the scam can help police track down the scammer.",
   "scammerDetail.nextButton": "Next: Impact of scam",
-  "scammerDetail.nextPage": "scammerDetail.nextPage",
+  "scammerDetail.nextPage": " ",
   "scammerDetail.reminder": "Remember to include any email addresses, phone numbers, or website links",
   "scammerDetail.removeFileButton": "Remove file",
   "scammerDetail.summary": "What do you know about where the scam came from?",
