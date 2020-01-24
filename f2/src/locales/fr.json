@@ -299,5 +299,10 @@
   "whenDidItStart.pastWeek": "Au cours de la dernière semaine",
   "whenDidItStart.pastYear": "Il y a moins d’un an",
   "whenDidItStart.today": "Aujourd’hui",
+  "feedbackPage.backButton": "Retourner à la page précédente",
+"feedbackPage.title": "Dites-nous ce que vous en pensez.",
+"feedbackPage.part1": "Nous aimerions en savoir plus sur votre experience en utilisant ce formulaire.",
+"feedbackPage.part2": "Si vous souhaitez en discuter avec nous, veuillez nous contacter via: ",
+"feedbackPage.contactInfo": " melissa.banyard@tbs-sct.gc.ca.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 }

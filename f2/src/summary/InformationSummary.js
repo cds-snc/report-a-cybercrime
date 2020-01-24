@@ -31,6 +31,7 @@ export const InformationSummary = props => {
           <Trans id="confirmationPage.personalInformation.typeOfInfoReq" />
           <Trans id="confirmationPage.personalInformation.typeOfInfoObtained" />
           <Trans id="confirmationPage.personalInformation.tellUsMore" />
+          <Trans id="confirmationPage.personalInformation.title.edit" />
         </div>
       ) : null}
 
