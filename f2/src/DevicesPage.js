@@ -28,12 +28,9 @@ export const DevicesPage = () => {
             <BackButton route="/whatwasaffected">
               <Trans id="devicePage.backButton" />
             </BackButton>
-
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
+              <H1 >
                 <Trans id="devicePage.title" />
               </H1>
-            </Stack>
             <Stack spacing={4}>
               <P>
                 <Trans id="devicePage.intro" />

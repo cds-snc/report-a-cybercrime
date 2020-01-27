@@ -23,6 +23,7 @@ export const DevicesSummary = props => {
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.devices.deviceOrAccount" />
           <Trans id="confirmationPage.devices.devicesTellUsMore" />
+          <Trans id="confirmationPage.devicesTitle.edit" />
         </div>
       ) : null}
 
@@ -33,12 +34,12 @@ export const DevicesSummary = props => {
           </H2>
           <EditButton
             path="/devices"
-            label="Edit affected devices or accounts"
+            label="confirmationPage.devicesTitle.edit"
           />
         </Flex>
 
         <React.Fragment>
-          <Stack as="dl" spacing={4} shouldWrapChildren>
+          <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.deviceOrAccount"
               description={devices.deviceOrAccount}

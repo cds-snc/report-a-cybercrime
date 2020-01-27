@@ -11,6 +11,7 @@ import { ConfirmationForm } from './forms/ConfirmationForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { generateReportId } from './utils/generateReportId'
 
 const randLetter = () => {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
@@ -61,7 +62,7 @@ const prepFormData = formData => {
 }
 
 const submitToServer = async data => {
-  console.log({ data })
+  console.log('Submitting data:', data)
   await postData('/submit', data)
 }
 
@@ -76,18 +77,20 @@ export const ConfirmationPage = () => {
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/contactinfo">
               <Trans id="confirmationPage.backButton" />
-            </BackButton>
-            <Stack spacing={4} role="heading" aria-level="1" shouldWrapChildren>
-              <H1 as="span">
+            </BackButton>         
+              <H1>
                 <Trans id="confirmationPage.title" />
-              </H1>
-            </Stack>
+              </H1>        
             <ConfirmationSummary />
             <ConfirmationForm
               onSubmit={() => {
-                let data = prepFormData(formData)
-                submitToServer(data)
-                // dispatch({ type: 'deleteFormData', data: {} })  restore after testing
+                const reportId = generateReportId()
+                dispatch({
+                  type: 'saveFormData',
+                  data: { reportId },
+                })
+                let data = prepFormData(formData, reportId)
+                submitToServer({ ...data, reportId }) // pass reportId to protect against dispatch race condition
                 history.push('/thankYouPage')
               }}
             />

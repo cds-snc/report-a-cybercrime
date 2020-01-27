@@ -51,6 +51,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
           <Trans id="confirmationPage.howDidItStart.others" />
           <Trans id="confirmationPage.whenDidItStart" />
           <Trans id="confirmationPage.howManyTimes" />
+          <Trans id="confirmationPage.howDidItStart.title.edit" />
         </div>
       ) : null}
 
@@ -59,12 +60,15 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
           <H2>
             <Trans id="confirmationPage.howDidItStart.title" />
           </H2>
-          <EditButton path="/howdiditstart" label="Edit How Did It Start" />
+          <EditButton
+            path="/howdiditstart"
+            label="confirmationPage.howDidItStart.title.edit"
+          />
         </Flex>
 
         {hasDataToDisplay ? (
           <React.Fragment>
-            <Stack as="dl" spacing={4} shouldWrapChildren>
+            <Stack as="dl" spacing={4}>
               <Text>{overviewLine}</Text>
               <DescriptionListItem
                 descriptionTitle="confirmationPage.howDidItStart.email"
