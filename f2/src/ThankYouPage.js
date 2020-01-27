@@ -144,10 +144,13 @@ export const ThankYouPage = () => {
         </Link>
       </Layout>
       <Layout fluid borderBottom="4px" borderColor="blue.500">
+        
         <Layout>
           <Alert status="info" variant="solid">
             <AlertIcon name="chat" mt={0} />
-            <Trans id="thankYouPage.feedback" />
+            <Link as={Route} to="/feedbackPage" color="white" display="block">
+          <Trans id="thankYouPage.feedback" />
+            </Link>
           </Alert>
         </Layout>
       </Layout>

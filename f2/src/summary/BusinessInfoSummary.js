@@ -9,7 +9,6 @@ import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 
 export const BusinessInfoSummary = props => {
-
   const [data] = useStateValue()
 
   const businessInfo = {
@@ -23,6 +22,7 @@ export const BusinessInfoSummary = props => {
         <div>
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.businessInfo.business" />
+          <Trans id="confirmationPage.businessInfo.title.edit" />
         </div>
       ) : null}
 
@@ -32,7 +32,10 @@ export const BusinessInfoSummary = props => {
             <Trans id="confirmationPage.businessInfo.title" />
           </H2>
 
-          <EditButton path="/business" label="confirmationPage.businessInfo.title.edit" />
+          <EditButton
+            path="/business"
+            label="confirmationPage.businessInfo.title.edit"
+          />
         </Flex>
 
         <Stack as="dl" spacing={4}>

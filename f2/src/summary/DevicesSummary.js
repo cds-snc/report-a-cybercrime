@@ -23,6 +23,7 @@ export const DevicesSummary = props => {
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.devices.deviceOrAccount" />
           <Trans id="confirmationPage.devices.devicesTellUsMore" />
+          <Trans id="confirmationPage.devicesTitle.edit" />
         </div>
       ) : null}
 
