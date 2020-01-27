@@ -12,8 +12,8 @@ const LinguiDataFails = (data, file) => {
   return returnValue
 }
 
-let linguiFr = JSON.parse(fs.readFileSync('locales/fr.json'))
-let linguiEn = JSON.parse(fs.readFileSync('locales/en.json'))
+let linguiFr = JSON.parse(fs.readFileSync('src/locales/fr.json'))
+let linguiEn = JSON.parse(fs.readFileSync('src/locales/en.json'))
 
 let linguiFails = false
 
