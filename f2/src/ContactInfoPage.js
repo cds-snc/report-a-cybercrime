@@ -23,13 +23,9 @@ export const ContactInfoPage = () => {
             <BackButton route="/location">
               <Trans id="contactinfoPage.backButton" />
             </BackButton>
-
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
+              <H1 >
                 <Trans id="contactinfoPage.title" />
               </H1>
-            </Stack>
-
             <Lead>
               <Trans id="contactinfoPage.intro" />
             </Lead>
