@@ -40,6 +40,7 @@
   "confirmationPage.howDidItStart.online": "Suspect's website",
   "confirmationPage.howDidItStart.others": "Other means",
   "confirmationPage.howDidItStart.overviewPrefix": "I was contacted ",
+  "confirmationPage.howDidItStart.conjuction": ", and ",
   "confirmationPage.howDidItStart.phone": "Suspect's phone number",
   "confirmationPage.howDidItStart.title": "How did the crime start?",
   "confirmationPage.howDidItStart.title.edit": "Edit How Did It Start?",

@@ -40,6 +40,7 @@
   "confirmationPage.howDidItStart.online": "Adresse de site Web du suspect",
   "confirmationPage.howDidItStart.others": "Autre moyen",
   "confirmationPage.howDidItStart.overviewPrefix": "J'ai été ciblé ",
+  "confirmationPage.howDidItStart.conjuction": ", et ",
   "confirmationPage.howDidItStart.phone": "Numéro de téléphone du suspect",
   "confirmationPage.howDidItStart.title": "Comment le crime a-t-il commencé?",
   "confirmationPage.howDidItStart.title.edit": "Modifier Comment le crime a commencé?",

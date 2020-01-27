@@ -2,7 +2,6 @@
 import React from 'react'
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
-import { useIntl } from 'react-intl'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
@@ -14,27 +13,32 @@ import { Text } from '../components/text'
 export const HowDidItStartSummary = ({ onSubmit }) => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
-  const intl = useIntl()
+  const summary = []
+  let overviewLine = " "
+  let summaryLastItem = []
+  let summaryFirstitems = []
 
   const howdiditstart = {
     ...testdata.formData.howdiditstart,
     ...data.formData.howdiditstart,
   }
-
-  const overviewLine =
-    i18n._('confirmationPage.howDidItStart.overviewPrefix') +
-    ' ' +
-    intl
-      .formatList(
-        howdiditstart.howDidTheyReachYou.map(key =>
-          key === 'howDidTheyReachYou.others'
-            ? howdiditstart.others
-            : i18n._(key).toLowerCase(),
-        ),
-        { type: 'conjunction' },
-      )
-      .replace('others') +
-    '.'
+  if (howdiditstart.howDidTheyReachYou.length > 0) {
+    //Obtain all the array data into the summary array
+    howdiditstart.howDidTheyReachYou.map(key =>
+      summary.push( key === 'howDidTheyReachYou.others'
+      ? howdiditstart.others: i18n._(key).toLowerCase(),
+      ),
+    )
+    //Pop the last item of the array to be used in conjuction
+    summaryLastItem = summary.pop();
+    //Join the arr with comma deleimiter
+    summaryFirstitems = summary.join(', ');
+    //compose the overview summary
+    overviewLine = i18n._('confirmationPage.howDidItStart.overviewPrefix')
+    + summaryFirstitems
+    + i18n._('confirmationPage.howDidItStart.conjuction')
+    + summaryLastItem
+  }
 
   const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0
 
@@ -44,6 +48,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
         <div>
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.howDidItStart.overviewPrefix" />
+          <Trans id="confirmationPage.howDidItStart.conjuction" />
           <Trans id="confirmationPage.howDidItStart.email" />
           <Trans id="confirmationPage.howDidItStart.phone" />
           <Trans id="confirmationPage.howDidItStart.online" />
