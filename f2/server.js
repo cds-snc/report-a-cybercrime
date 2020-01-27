@@ -68,12 +68,28 @@ const uploadData = (req, res) => {
   }
 }
 
+let count = 0
+
 app
   .use(express.static(path.join(__dirname, 'build')))
   .use(bodyParser.json())
 
   .get('/ping', function(_req, res) {
     return res.send('pong')
+  })
+
+  .get('/available', function(_req, res) {
+    count += 1
+    switch (count % 3) {
+      case 1:
+        res.json({ acceptingReports: true })
+        break
+      case 2:
+        res.json({ acceptingReports: false })
+        break
+      default:
+        res.status(404).send('Not found')
+    }
   })
 
   .post('/submit', (req, res) => {

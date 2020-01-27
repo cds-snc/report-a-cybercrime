@@ -26,6 +26,7 @@ export const MoneyLostInfoSummary = props => {
           <Trans id="confirmationPage.moneyLost.methodPayment" />
           <Trans id="confirmationPage.moneyLost.transactionDate" />
           <Trans id="confirmationPage.moneyLost.tellUsMore" />
+          <Trans id="confirmationPage.moneyLostTitle.edit" />
         </div>
       ) : null}
       <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
@@ -33,11 +34,13 @@ export const MoneyLostInfoSummary = props => {
           <H2>
             <Trans id="confirmationPage.moneyLostTitle" />
           </H2>
-          <EditButton path="/moneylost" label="Edit affected money or finances" />
+          <EditButton
+            path="/moneylost"
+            label="confirmationPage.moneyLostTitle.edit"
+          />
         </Flex>
 
-
-        <Stack as="dl" spacing={4} shouldWrapChildren>
+        <Stack as="dl" spacing={4}>
           <DescriptionListItem
             descriptionTitle="confirmationPage.moneyLost.demandedMoney"
             description={moneyLost.demandedMoney}

@@ -8,12 +8,13 @@ import { Container, InfoCard } from '../components/container'
 import { plural, Trans } from '@lingui/macro'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
-import { H2, H3 } from '../components/header'
+import { H2 } from '../components/header'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
 import { Box, Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
+import { P } from '../components/paragraph'
 
 export const EvidenceInfoForm = props => {
   const [data] = useStateValue()
@@ -91,12 +92,12 @@ export const EvidenceInfoForm = props => {
                 </FileUpload>
               </Box>
 
-              <H2 fontSize="3xl">
+              <P>
                 {plural(files.length, {
                   one: '# file attached',
                   other: '# files attached',
                 })}
-              </H2>
+              </P>
 
               {status ? (
                 <VisuallyHidden tabIndex={-1} id="status">
@@ -108,9 +109,9 @@ export const EvidenceInfoForm = props => {
             <Container>
               {files.map((f, index) => (
                 <React.Fragment key={index}>
-                  <InfoCard mb={4}>
+                  <InfoCard as="article" mb={4}>
                     <Stack spacing={4}>
-                      <H3 fontSize="2xl">{f.name}</H3>
+                      <H2 fontSize="2xl">{f.name}</H2>
                       <Box>
                         <Field
                           name={`file-description-${index}`}
