@@ -37,7 +37,7 @@ const App = () => {
               <PhaseBanner phase={<Trans id="banner.phase" />}>
                 <Trans id="banner.phaseText" />
               </PhaseBanner>
-              <TopBanner lang={i18n.locale} bg="black" />
+              <TopBanner lang={i18n.locale} />
             </header>
 
             <Flex

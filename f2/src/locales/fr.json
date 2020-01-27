@@ -40,6 +40,7 @@
   "confirmationPage.howDidItStart.online": "Adresse de site Web du suspect",
   "confirmationPage.howDidItStart.others": "Autre moyen",
   "confirmationPage.howDidItStart.overviewPrefix": "J'ai été ciblé ",
+  "confirmationPage.howDidItStart.conjuction": ", et ",
   "confirmationPage.howDidItStart.phone": "Numéro de téléphone du suspect",
   "confirmationPage.howDidItStart.title": "Comment le crime a-t-il commencé?",
   "confirmationPage.howDidItStart.title.edit": "Modifier Comment le crime a commencé?",
@@ -89,7 +90,11 @@
   "contactinfoPage.nextInfo": "Ensuite, on vous demandera d'examiner votre rapport.",
   "contactinfoPage.or": "Ou",
   "contactinfoPage.phoneNumber": "Inscrivez votre numéro de téléphone.",
+<<<<<<< HEAD
   "contactinfoPage.skipButton": "sauter",
+=======
+  "contactinfoPage.skipButton": "Sauter",
+>>>>>>> 18dcd716cf84a026d2ff5cad711f25f3db266e42
   "contactinfoPage.skipInfo": "Ignorez cette étape pour signaler de manière anonyme.",
   "contactinfoPage.title": "Vos coordonnées",
   "devicePage.backButton": "Retourner à 'Quelles pourraient-être les répercussions?'",

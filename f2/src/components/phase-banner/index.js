@@ -5,17 +5,20 @@ import { Flex, Tag } from '@chakra-ui/core'
 import { Text } from '../text'
 
 export const PhaseBanner = props => (
-  <Flex align="center" p={4} bg="purple.50">
+  <Flex align="center" p={4} bg="gray.200">
     <Tag
       rounded="none"
-      variantColor="purple"
-      variant="solid"
+      color="black"
+      borderWidth="2px"
+      borderColor="gray.900"
       minW="inherit"
+      minH="inherit"
       mr={4}
+      py={0}
     >
       {props.phase}
     </Tag>
-    <Text color="green.900">{props.children}</Text>
+    <Text fontSize="md">{props.children}</Text>
   </Flex>
 )
 
