@@ -24,14 +24,10 @@ export const SuspectCluesPage = () => {
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/whathappened">
               <Trans id="suspectClues.backButton" />
-            </BackButton>
-
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
+            </BackButton>  
+              <H1 >
                 <Trans id="suspectClues.title" />
               </H1>
-            </Stack>
-
             <Stack spacing={4}>
               <Lead>
                 <Trans id="suspectClues.intro" />
