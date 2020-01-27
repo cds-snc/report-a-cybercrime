@@ -29,15 +29,22 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
       ? howdiditstart.others: i18n._(key).toLowerCase(),
       ),
     )
-    //Pop the last item of the array to be used in conjuction
-    summaryLastItem = summary.pop();
-    //Join the arr with comma delimiter
-    summaryFirstitems = summary.join(', ');
-    //compose the overview summary
-    overviewLine = i18n._('confirmationPage.howDidItStart.overviewPrefix')
-    + summaryFirstitems
-    + i18n._('confirmationPage.howDidItStart.conjuction')
-    + summaryLastItem
+    // No need for conjuction where is only is a single contact
+    if (howdiditstart.howDidTheyReachYou.length === 1){
+      overviewLine = i18n._('confirmationPage.howDidItStart.overviewPrefix') + summary
+
+    } else {
+      //Pop the last item of the array to be used in conjuction
+      summaryLastItem = summary.pop();
+      //Join the arr with comma delimiter
+      summaryFirstitems = summary.join(', ');
+
+      //compose the overview summary
+      overviewLine = i18n._('confirmationPage.howDidItStart.overviewPrefix')
+      + summaryFirstitems
+      + i18n._('confirmationPage.howDidItStart.conjuction')
+      + summaryLastItem
+    }
   }
 
   const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0
