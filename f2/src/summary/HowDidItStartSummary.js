@@ -31,7 +31,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
     )
     //Pop the last item of the array to be used in conjuction
     summaryLastItem = summary.pop();
-    //Join the arr with comma deleimiter
+    //Join the arr with comma delimiter
     summaryFirstitems = summary.join(', ');
     //compose the overview summary
     overviewLine = i18n._('confirmationPage.howDidItStart.overviewPrefix')
