@@ -6,7 +6,6 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Lead } from './components/paragraph'
 import { Layout } from './components/layout'
-import { Steps } from './components/stepper'
 import { ImpactStatementInfoForm } from './forms/ImpactStatementInfoForm'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
@@ -25,15 +24,10 @@ export const ImpactStatementPage = () => {
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/scammerdetails">
               <Trans id="impactPage.backButton" />
-            </BackButton>
-
-            <Stack spacing={4} role="heading" aria-level="1">
-              <Steps activeStep={4} totalSteps={6} />
-              <H1 as="span">
+            </BackButton>            
+              <H1 >
                 <Trans id="impactPage.title" />
               </H1>
-            </Stack>
-
             <Lead>
               <Trans id="impactPage.intro" />
             </Lead>
