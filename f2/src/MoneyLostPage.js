@@ -28,11 +28,9 @@ export const MoneyLostPage = () => {
             <BackButton route="/whatwasaffected">
               <Trans id="moneyLostPage.backButton" />
             </BackButton>
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
+              <H1 >
                 <Trans id="moneyLostPage.title" />
-              </H1>
-            </Stack>
+              </H1>         
             <Stack spacing={4}>
               <P>
                 <Trans id="moneyLostPage.intro" />
