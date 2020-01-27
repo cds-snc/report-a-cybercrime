@@ -49,7 +49,7 @@ export const ThankYouPage = () => {
             </Trans>
           </InfoCard>
         </Layout>
-        <Layout fluid bg="gray.300" pt={20} pb={10}>
+        <Layout fluid bg="gray.200" pt={20} pb={10}>
           <Layout>
             <Stack spacing={4} shouldWrapChildren>
               <H2>
@@ -57,7 +57,7 @@ export const ThankYouPage = () => {
               </H2>
               <Ul>
                 <Li>
-                  <A
+                  <A 
                     href={
                       i18n.locale === 'en'
                         ? 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm'

@@ -77,12 +77,10 @@ export const ConfirmationPage = () => {
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/contactinfo">
               <Trans id="confirmationPage.backButton" />
-            </BackButton>
-            <Stack spacing={4} role="heading" aria-level="1" shouldWrapChildren>
-              <H1 as="span">
+            </BackButton>         
+              <H1>
                 <Trans id="confirmationPage.title" />
-              </H1>
-            </Stack>
+              </H1>        
             <ConfirmationSummary />
             <ConfirmationForm
               onSubmit={() => {
