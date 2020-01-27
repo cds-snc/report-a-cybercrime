@@ -89,6 +89,8 @@
   "contactinfoPage.nextInfo": "Next, you will be asked to review your report.",
   "contactinfoPage.or": "Or",
   "contactinfoPage.phoneNumber": "Enter your phone number",
+  "contactinfoPage.skipButton": "Skip",
+  "contactinfoPage.skipInfo": "Skip this step to report anonymously.",
   "contactinfoPage.title": "Your contact details",
   "devicePage.backButton": "Back to 'What could be affected?'",
   "devicePage.deviceOrAccount": "What type of devices or accounts were affected?",
