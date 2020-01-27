@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from '@chakra-ui/core'
+import { Link } from '../link'
 
 export const ButtonLink = props => <Link {...props}></Link>
 

@@ -11,12 +11,12 @@ export function LocaleSwitcher() {
   return (
     <Box>
       {i18n.locale === 'en' && (
-        <ButtonLink color="white" key={'en'} onClick={() => activate('fr')}>
+        <ButtonLink key={'en'} onClick={() => activate('fr')}>
           {locales['fr']}
         </ButtonLink>
       )}
       {i18n.locale === 'fr' && (
-        <ButtonLink color="white" key={'en'} onClick={() => activate('en')}>
+        <ButtonLink key={'en'} onClick={() => activate('en')}>
           {locales['en']}
         </ButtonLink>
       )}

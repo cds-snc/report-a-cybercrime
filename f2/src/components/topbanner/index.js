@@ -6,26 +6,31 @@ import { useLingui } from '@lingui/react'
 import sigEn from '../../images/sig-blk-en.svg'
 import sigFr from '../../images/sig-blk-fr.svg'
 import { Flex, Box, Image } from '@chakra-ui/core'
+import { Layout } from '../layout'
 
 export const TopBanner = props => {
   const { i18n } = useLingui()
 
   return (
-    <Flex align="center" {...props} fontFamily="body" bg="white">
-      <Box p={4} height={[25, null, 32]}>
-        <Image
-          src={i18n.locale === 'en' ? sigEn : sigFr}
-          width="100%"
-          alt={
-            i18n.locale === 'en'
-              ? 'Symbol of the Government of Canada - Symbole du Gouvernement du Canada'
-              : 'Symbole du Gouvernement du Canada - Symbol of the Government of Canada'
-          }
-        />
-      </Box>
-      <Box p={4} ml="auto">
-        <LocaleSwitcher />
-      </Box>
+    <Flex {...props}>
+      <Layout>
+        <Flex align="center" fontFamily="body">
+          <Box py={4} width={{ base: 272, md: 360 }}>
+            <Image
+              src={i18n.locale === 'en' ? sigEn : sigFr}
+              width="100%"
+              alt={
+                i18n.locale === 'en'
+                  ? 'Symbol of the Government of Canada - Symbole du Gouvernement du Canada'
+                  : 'Symbole du Gouvernement du Canada - Symbol of the Government of Canada'
+              }
+            />
+          </Box>
+          <Box p={4} ml="auto">
+            <LocaleSwitcher />
+          </Box>
+        </Flex>
+      </Layout>
     </Flex>
   )
 }
@@ -36,5 +41,5 @@ TopBanner.propTypes = {
 }
 
 TopBanner.defaultProps = {
-  bg: 'black',
+  bg: 'gray.50',
 }

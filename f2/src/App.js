@@ -12,6 +12,8 @@ import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 import { StateProvider, initialState, reducer } from './utils/state'
 import { IntlProvider } from 'react-intl'
+import { P } from './components/paragraph'
+import { Layout } from './components/layout'
 
 const App = () => {
   const { i18n } = useLingui()
@@ -52,9 +54,12 @@ const App = () => {
               <Home />
             </Flex>
 
-            <Footer height="1000px" bg="black">
+            <Layout>
+              <P fontSize="sm">Version: 000000</P>
+            </Layout>
+
+            <Footer>
               <Link
-                color="white"
                 href={
                   i18n.locale === 'en'
                     ? 'https://digital.canada.ca/legal/privacy/'
@@ -64,7 +69,6 @@ const App = () => {
                 <Trans id="banner.footerPrivacy" />
               </Link>
               <Link
-                color="white"
                 ml={4}
                 href={
                   i18n.locale === 'en'
