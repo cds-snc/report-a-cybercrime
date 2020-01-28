@@ -26,7 +26,7 @@ export const TopBanner = props => {
               }
             />
           </Box>
-          <Box p={4} ml="auto">
+          <Box py={4} pl={4} ml="auto">
             <LocaleSwitcher />
           </Box>
         </Flex>
