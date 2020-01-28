@@ -10,7 +10,7 @@ const Toggler = props => {
   return (
     <ButtonLink key={locale} onClick={() => activate(locale)}>
       <VisuallyHidden>{locales[locale]}</VisuallyHidden>
-      <PseudoBox aria-hidden d={{ base: 'none', md: 'initial' }}>
+      <PseudoBox aria-hidden d={{ base: 'none', md: 'flex' }}>
         {locales[locale]}
       </PseudoBox>
       <PseudoBox
