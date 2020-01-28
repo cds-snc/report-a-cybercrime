@@ -13,6 +13,7 @@ import { Button } from '../components/button'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 
+
 export const ContactInfoForm = ({ onSubmit }) => {
   const [data] = useStateValue()
   const contactInfo = {
@@ -62,38 +63,34 @@ export const ContactInfoForm = ({ onSubmit }) => {
           <NextAndCancelButtons
             next={<Trans id="contactinfoPage.nextInfo" />}
             button={<Trans id="contactinfoPage.nextButton" />}
-          />
+          />  
 
           <Flex direction="row" align="center" wrap="wrap" mb={10}>
-            <P w="100%">
-              <Trans id="contactinfoPage.skipInfo" />
-            </P>
-            <Button
-              as={ReactRouterLink}
-              fontSize={{ base: 'lg', md: 'xl' }}
-              color="black"
-              variant="solid"
-              variantColor="gray"
-              bg="gray.400"
-              borderColor="gray.500"
-              to="/confirmation"
-              textAlign="center"
-            >
-              <Trans id="contactinfoPage.skipButton" />
-              <Icon
-                focusable="false"
-                ml={2}
-                mr={-2}
-                name="chevron-right"
-                size="28px"
-              />
-            </Button>
-          </Flex>
+          <P w="100%">
+          <Trans id="contactinfoPage.skipInfo"/>
+          </P>
+          <Button
+        as={ReactRouterLink}
+        fontSize={{ base: 'lg', md: 'xl' }}
+        color="black"
+        variant="solid"
+        variantColor="gray"
+        bg = "gray.400"
+        borderColor="gray.500"
+        to="/confirmation"
+        textAlign="center"
+      >
+        <Trans id="contactinfoPage.skipButton" />
+      <Icon focusable="false" ml={2} mr={-2} name="chevron-right" size="28px" />
+        
+      </Button>
+      </Flex>
         </Stack>
       )}
     />
   )
-}
+  
+} 
 
 ContactInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
