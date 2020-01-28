@@ -9,7 +9,7 @@ import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
-export const SuspectCluesSummary = () => {
+export const SuspectCluesSummary = props => {
   const [data] = useStateValue()
   const suspectClues = {
     ...testdata.formData.suspectClues,
@@ -33,7 +33,13 @@ export const SuspectCluesSummary = () => {
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
           <H2>
             <Trans id="confirmationPage.suspectClues.title" />

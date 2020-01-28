@@ -7,14 +7,23 @@ import { useStateValue } from '../utils/state'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
+import { Text } from '../components/text'
 
 export const BusinessInfoSummary = props => {
   const [data] = useStateValue()
 
   const businessInfo = {
+    condition: {
+      ...testdata.formData.whatWasAffected,
+      ...data.formData.whatWasAffected,
+    },
     ...testdata.formData.businessInfo,
     ...data.formData.businessInfo,
   }
+
+  const shouldExist = businessInfo.condition.affectedOptions.includes(
+    'whatWasAffectedForm.business_assets',
+  )
 
   return (
     <React.Fragment>
@@ -25,26 +34,39 @@ export const BusinessInfoSummary = props => {
           <Trans id="confirmationPage.businessInfo.title.edit" />
         </div>
       ) : null}
+      {shouldExist ? (
+        <Stack
+          spacing={4}
+          borderBottom="2px"
+          borderColor="gray.300"
+          pb={4}
+          {...props}
+        >
+          <Flex align="baseline">
+            <H2>
+              <Trans id="confirmationPage.businessInfo.title" />
+            </H2>
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
-        <Flex align="baseline">
-          <H2>
-            <Trans id="confirmationPage.businessInfo.title" />
-          </H2>
+            <EditButton
+              path="/business"
+              label="confirmationPage.businessInfo.title.edit"
+            />
+          </Flex>
 
-          <EditButton
-            path="/business"
-            label="confirmationPage.businessInfo.title.edit"
-          />
-        </Flex>
-
-        <Stack as="dl" spacing={4}>
-          <DescriptionListItem
-            descriptionTitle="confirmationPage.businessInfo.business"
-            description={businessInfo.business}
-          />
+          {businessInfo.business.length > 0 ? (
+            <Stack as="dl" spacing={4}>
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.businessInfo.business"
+                description={businessInfo.business}
+              />
+            </Stack>
+          ) : (
+            <Text>
+              <Trans id="confirmationPage.businessInfo.nag" />
+            </Text>
+          )}
         </Stack>
-      </Stack>
+      ) : null}
     </React.Fragment>
   )
 }

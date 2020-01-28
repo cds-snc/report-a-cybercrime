@@ -84,7 +84,7 @@ export const ConfirmationSummary = () => {
 
   return (
     <React.Fragment>
-      <Stack spacing={12} shouldWrapChildren>
+      <Stack spacing={12}>
         <HowDidItStartSummary />
         <WhatWasAffectedSummary />
         <MoneyLostInfoSummary />

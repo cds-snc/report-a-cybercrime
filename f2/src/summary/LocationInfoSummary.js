@@ -9,7 +9,7 @@ import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
-export const LocationInfoSummary = ({ onSubmit }) => {
+export const LocationInfoSummary = props => {
   const [data] = useStateValue()
   const location = {
     ...testdata.formData.location, //Remove after done testing
@@ -30,7 +30,13 @@ export const LocationInfoSummary = ({ onSubmit }) => {
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
           <H2>
             <Trans id="confirmationPage.location.title" />

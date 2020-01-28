@@ -9,7 +9,7 @@ import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
-export const ContactInfoSummary = ({ onSubmit }) => {
+export const ContactInfoSummary = props => {
   const [data] = useStateValue()
   const contactInfo = {
     ...testdata.formData.contactInfo, //Remove after done testing
@@ -30,7 +30,13 @@ export const ContactInfoSummary = ({ onSubmit }) => {
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
           <H2>
             <Trans id="confirmationPage.contactTitle" />
