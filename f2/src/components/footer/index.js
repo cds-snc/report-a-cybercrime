@@ -13,7 +13,9 @@ export const Footer = props => {
     <Flex as="footer" {...props} py={4} fontFamily="body">
       <Layout>
         <Flex align="center" direction="row">
-          <List px={0}>{props.children}</List>
+          <List px={0} d="flex" align="center" direction="row">
+            {props.children}
+          </List>
           <Box py={4} width={{ base: 147.2 }} ml="auto">
             <Image
               src={wmms}

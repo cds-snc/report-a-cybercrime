@@ -14,6 +14,7 @@ import { StateProvider, initialState, reducer } from './utils/state'
 import { IntlProvider } from 'react-intl'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
+import { Li } from './components/list-item'
 
 const App = () => {
   const { i18n } = useLingui()
@@ -59,25 +60,30 @@ const App = () => {
             </Layout>
 
             <Footer>
-              <Link
-                href={
-                  i18n.locale === 'en'
-                    ? 'https://digital.canada.ca/legal/privacy/'
-                    : 'https://numerique.canada.ca/transparence/confidentialite/'
-                }
-              >
-                <Trans id="banner.footerPrivacy" />
-              </Link>
-              <Link
-                ml={4}
-                href={
-                  i18n.locale === 'en'
-                    ? 'https://digital.canada.ca/legal/terms/'
-                    : 'https://numerique.canada.ca/transparence/avis/'
-                }
-              >
-                <Trans id="banner.footerTermsAndConditions" />
-              </Link>
+              {/** The List component is in the Footer component */}
+              <Li>
+                <Link
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://digital.canada.ca/legal/privacy/'
+                      : 'https://numerique.canada.ca/transparence/confidentialite/'
+                  }
+                >
+                  <Trans id="banner.footerPrivacy" />
+                </Link>
+              </Li>
+              <Li>
+                <Link
+                  ml={4}
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://digital.canada.ca/legal/terms/'
+                      : 'https://numerique.canada.ca/transparence/avis/'
+                  }
+                >
+                  <Trans id="banner.footerTermsAndConditions" />
+                </Link>
+              </Li>
             </Footer>
           </Flex>
         </StateProvider>
