@@ -47,7 +47,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && lingui extract --clean"
+      "pre-commit": "echo 'Running npm run extract' && lingui extract --clean && pretty-quick --staged"
     }
   },
   "eslintConfig": {
