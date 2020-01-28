@@ -4,7 +4,7 @@ import { Container } from '../container'
 
 export const Layout = ({ fluid, columns, ...props }) => {
   const col = {
-    base: (columns.base * 100) / 4 + '%',
+    base: columns.base * 100 + '%',
     md: columns.md * 100 + '%',
     lg: columns.lg * 100 + '%',
     xl: columns.xl * 100 + '%',
@@ -17,7 +17,7 @@ export const Layout = ({ fluid, columns, ...props }) => {
         : {
             maxW: { sm: 540, md: 768, lg: 960, xl: 1200 },
             mx: 'auto',
-            px: 2,
+            px: 4,
             w: '100%',
           })}
       {...props}
