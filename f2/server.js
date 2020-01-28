@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
+var formidable = require('formidable')
+
 require('dotenv').config()
 const app = express()
 
@@ -33,7 +35,25 @@ const randomizeString = s =>
     : s
 
 const uploadData = (req, res) => {
-  const data = req.body
+
+  new formidable.IncomingForm().parse(req, (err, fields, files) => {
+    if (err) {
+      console.error('Error', err)
+      throw err
+    }
+    /*
+    Logging Form fields and files for demonstration purposes, remove later
+    */
+    console.log('Fields', fields)
+    console.log('Files', files)
+    for (const file of Object.entries(files)) {
+      console.log(file)
+    }
+    
+
+  // Extract the JSON from the "JSON" form element
+  const data = JSON.parse(fields['json']);
+  console.log('Parsed JSON:', data);
   data.submissionTime = new Date().toISOString()
   data.contactInfo.email = randomizeString(data.contactInfo.email)
 
@@ -66,6 +86,7 @@ const uploadData = (req, res) => {
     res.statusMessage = 'CosmosDB not configured'
     res.send('CosmosDB not configured')
   }
+  })
 }
 
 let count = 0
