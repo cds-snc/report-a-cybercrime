@@ -13,17 +13,9 @@ export const MoneyLostInfoSummary = props => {
   const [data] = useStateValue()
 
   const moneyLost = {
-    condition: {
-      ...testdata.formData.whatWasAffected,
-      ...data.formData.whatWasAffected,
-    },
     ...testdata.formData.moneyLost, //Remove after done testing
     ...data.formData.moneyLost,
   }
-
-  const shouldExist = moneyLost.condition.affectedOptions.includes(
-    'whatWasAffectedForm.financial',
-  )
 
   const hasInfoToDisplay =
     moneyLost.demandedMoney.length > 0 ||
@@ -46,54 +38,52 @@ export const MoneyLostInfoSummary = props => {
         </div>
       ) : null}
 
-      {shouldExist ? (
-        <Stack
-          spacing={4}
-          borderBottom="2px"
-          borderColor="gray.300"
-          pb={4}
-          {...props}
-        >
-          <Flex align="baseline">
-            <H2>
-              <Trans id="confirmationPage.moneyLostTitle" />
-            </H2>
-            <EditButton
-              path="/moneylost"
-              label="confirmationPage.moneyLostTitle.edit"
-            />
-          </Flex>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
+        <Flex align="baseline">
+          <H2>
+            <Trans id="confirmationPage.moneyLostTitle" />
+          </H2>
+          <EditButton
+            path="/moneylost"
+            label="confirmationPage.moneyLostTitle.edit"
+          />
+        </Flex>
 
-          {hasInfoToDisplay ? (
-            <Stack as="dl" spacing={4}>
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.moneyLost.demandedMoney"
-                description={moneyLost.demandedMoney}
-              />
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.moneyLost.moneyTaken"
-                description={moneyLost.moneyTaken}
-              />
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.moneyLost.methodPayment"
-                description={moneyLost.methodPayment}
-              />
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.moneyLost.transactionDate"
-                description={moneyLost.transactionDate}
-              />
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.moneyLost.tellUsMore"
-                description={moneyLost.tellUsMore}
-              />
-            </Stack>
-          ) : (
-            <Text>
-              <Trans id="confirmationPage.moneyLost.nag" />
-            </Text>
-          )}
-        </Stack>
-      ) : null}
+        {hasInfoToDisplay ? (
+          <Stack as="dl" spacing={4}>
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.moneyLost.demandedMoney"
+              description={moneyLost.demandedMoney}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.moneyLost.moneyTaken"
+              description={moneyLost.moneyTaken}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.moneyLost.methodPayment"
+              description={moneyLost.methodPayment}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.moneyLost.transactionDate"
+              description={moneyLost.transactionDate}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.moneyLost.tellUsMore"
+              description={moneyLost.tellUsMore}
+            />
+          </Stack>
+        ) : (
+          <Text>
+            <Trans id="confirmationPage.moneyLost.nag" />
+          </Text>
+        )}
+      </Stack>
     </React.Fragment>
   )
 }

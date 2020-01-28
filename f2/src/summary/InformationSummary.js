@@ -17,19 +17,11 @@ export const InformationSummary = props => {
   const intl = useIntl()
 
   const personalInformation = {
-    condition: {
-      ...testdata.formData.whatWasAffected,
-      ...data.formData.whatWasAffected,
-    },
     typeOfInfoReq: [],
     typeOfInfoObtained: [],
     ...testdata.formData.personalInformation,
     ...data.formData.personalInformation,
   }
-
-  const shouldExist = personalInformation.condition.affectedOptions.includes(
-    'whatWasAffectedForm.personal_information',
-  )
 
   const hasInfoToDisplay =
     personalInformation.typeOfInfoReq.length > 0 ||
@@ -48,58 +40,56 @@ export const InformationSummary = props => {
         </div>
       ) : null}
 
-      {shouldExist ? (
-        <Stack
-          className="section"
-          spacing={4}
-          borderBottom="2px"
-          borderColor="gray.300"
-          pb={4}
-          {...props}
-        >
-          <Flex align="baseline">
-            <H2>
-              <Trans id="confirmationPage.personalInformation.title" />
-            </H2>
-            <EditButton
-              path="/information"
-              label="Edit affected data or personal information"
-            />
-          </Flex>
+      <Stack
+        className="section"
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
+        <Flex align="baseline">
+          <H2>
+            <Trans id="confirmationPage.personalInformation.title" />
+          </H2>
+          <EditButton
+            path="/information"
+            label="Edit affected data or personal information"
+          />
+        </Flex>
 
-          {hasInfoToDisplay ? (
-            <Stack as="dl" spacing={4} shouldWrapChildren>
-              {personalInformation.typeOfInfoReq.length > 0 ? (
-                <DescriptionListItem
-                  descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
-                  description={intl.formatList(
-                    personalInformation.typeOfInfoReq.map(i => i18n._(i)),
-                    { type: 'conjunction' },
-                  )}
-                />
-              ) : null}
-
-              {personalInformation.typeOfInfoObtained.length > 0 ? (
-                <DescriptionListItem
-                  descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
-                  description={intl.formatList(
-                    personalInformation.typeOfInfoObtained.map(i => i18n._(i)),
-                    { type: 'conjunction' },
-                  )}
-                />
-              ) : null}
+        {hasInfoToDisplay ? (
+          <Stack as="dl" spacing={4} shouldWrapChildren>
+            {personalInformation.typeOfInfoReq.length > 0 ? (
               <DescriptionListItem
-                descriptionTitle="confirmationPage.personalInformation.tellUsMore"
-                description={personalInformation.tellUsMore}
+                descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
+                description={intl.formatList(
+                  personalInformation.typeOfInfoReq.map(i => i18n._(i)),
+                  { type: 'conjunction' },
+                )}
               />
-            </Stack>
-          ) : (
-            <Text>
-              <Trans id="confirmationPage.personalInformation.nag" />
-            </Text>
-          )}
-        </Stack>
-      ) : null}
+            ) : null}
+
+            {personalInformation.typeOfInfoObtained.length > 0 ? (
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
+                description={intl.formatList(
+                  personalInformation.typeOfInfoObtained.map(i => i18n._(i)),
+                  { type: 'conjunction' },
+                )}
+              />
+            ) : null}
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.personalInformation.tellUsMore"
+              description={personalInformation.tellUsMore}
+            />
+          </Stack>
+        ) : (
+          <Text>
+            <Trans id="confirmationPage.personalInformation.nag" />
+          </Text>
+        )}
+      </Stack>
     </React.Fragment>
   )
 }
