@@ -45,6 +45,11 @@
     "compile": "lingui compile",
     "upgrade-interactive": "npm-check --update"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -73,6 +78,7 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "husky": "^4.0.10",
     "jest-emotion": "^10.0.17",
+    "pretty-quick": "^2.0.1",
     "recompose": "^0.30.0",
     "waait": "^1.0.5"
   },
