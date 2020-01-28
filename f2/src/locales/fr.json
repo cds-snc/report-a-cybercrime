@@ -50,11 +50,6 @@
   "confirmationPage.location.nag": "Aucune information fournie.",
   "confirmationPage.location.postalCode": "Code postal",
   "confirmationPage.location.title": "Votre lieu",
-  "confirmationPage.moneyLost.demandedMoney": "",
-  "confirmationPage.moneyLost.methodPayment": "",
-  "confirmationPage.moneyLost.moneyTaken": "",
-  "confirmationPage.moneyLost.tellUsMore": "",
-  "confirmationPage.moneyLost.transactionDate": "",
   "confirmationPage.location.title.edit": "Modifier Votre lieu",
   "confirmationPage.moneyLost.demandedMoney": "Montant d'argent demandé par le suspect",
   "confirmationPage.moneyLost.methodPayment": "Méthode de transfert d'argent",
@@ -90,11 +85,7 @@
   "contactinfoPage.nextInfo": "Ensuite, on vous demandera d'examiner votre rapport.",
   "contactinfoPage.or": "Ou",
   "contactinfoPage.phoneNumber": "Inscrivez votre numéro de téléphone.",
-<<<<<<< HEAD
-  "contactinfoPage.skipButton": "sauter",
-=======
   "contactinfoPage.skipButton": "Sauter",
->>>>>>> 18dcd716cf84a026d2ff5cad711f25f3db266e42
   "contactinfoPage.skipInfo": "Ignorez cette étape pour signaler de manière anonyme.",
   "contactinfoPage.title": "Vos coordonnées",
   "devicePage.backButton": "Retourner à 'Quelles pourraient-être les répercussions?'",
@@ -296,7 +287,6 @@
   "typeOfInfoReq.homeAddress": "Adresse du domicile",
   "typeOfInfoReq.other": "Autre",
   "typeOfInfoReq.sin": "Numéro d'assurance sociale",
-  "whatHappenedPage.backButton": "Retourner à Quelles pourraient-être les répercussions?",
   "whatHappenedPage.backButton": "Retourner à 'Quelles pourraient-être les répercussions?'",
   "whatHappenedPage.hint": "Commencez par le début. N’oubliez pas d’indiquer ce qu’on vous a demandé, promis ou volé, ou les menaces que vous avez reçues.",
   "whatHappenedPage.intro1": "Ce qui s’est passé n’est pas de votre faute. De nouveaux crimes sont inventés chaque jour, et ce n’est pas toujours facile de les reconnaître.",
@@ -324,9 +314,9 @@
   "whenDidItStart.pastYear": "Il y a moins d’un an",
   "whenDidItStart.today": "Aujourd’hui",
   "feedbackPage.backButton": "Retourner à la page précédente",
-"feedbackPage.title": "Dites-nous ce que vous en pensez.",
-"feedbackPage.part1": "Nous aimerions en savoir plus sur votre experience en utilisant ce formulaire.",
-"feedbackPage.part2": "Si vous souhaitez en discuter avec nous, veuillez nous contacter via: ",
-"feedbackPage.contactInfo": " melissa.banyard@tbs-sct.gc.ca.",
+  "feedbackPage.title": "Dites-nous ce que vous en pensez.",
+  "feedbackPage.part1": "Nous aimerions en savoir plus sur votre experience en utilisant ce formulaire.",
+  "feedbackPage.part2": "Si vous souhaitez en discuter avec nous, veuillez nous contacter via: ",
+  "feedbackPage.contactInfo": " melissa.banyard@tbs-sct.gc.ca.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 }
