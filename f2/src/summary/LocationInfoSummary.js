@@ -26,6 +26,7 @@ export const LocationInfoSummary = ({ onSubmit }) => {
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.location.postalCode" />
           <Trans id="confirmationPage.location.cityTown" />
+          <Trans id="confirmationPage.location.title.edit" />
         </div>
       ) : null}
 
@@ -34,10 +35,13 @@ export const LocationInfoSummary = ({ onSubmit }) => {
           <H2>
             <Trans id="confirmationPage.location.title" />
           </H2>
-          <EditButton path="/location" label="confirmationPage.location.title.edit" />
+          <EditButton
+            path="/location"
+            label="confirmationPage.location.title.edit"
+          />
         </Flex>
         {hasInfoToDisplay ? (
-          <Stack as="dl" spacing={4} shouldWrapChildren>
+          <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.location.postalCode"
               description={location.postalCode}

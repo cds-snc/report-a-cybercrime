@@ -13,7 +13,8 @@ export const Button = ({ variant, variants, variantColor, ...props }) => (
       {...(variant === 'solid'
         ? {
             borderBottomWidth: '3px',
-            borderBottomColor: `${variantColor}.700`,
+            borderBottomColor: `${variantColor}.800`,
+            bg: `${variantColor}.600`,
           }
         : '')}
       _hover={{

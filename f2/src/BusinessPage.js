@@ -27,13 +27,10 @@ export const BusinessPage = () => {
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/whatwasaffected">
               <Trans id="businessInfoPage.backButton" />
-            </BackButton>
-
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
+            </BackButton>       
+              <H1>
                 <Trans id="businessPage.title" />
-              </H1>
-            </Stack>
+              </H1> 
             <Stack spacing={4}>
               <P>
                 <Trans id="businessPage.intro" />
