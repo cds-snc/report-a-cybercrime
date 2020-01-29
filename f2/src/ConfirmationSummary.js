@@ -37,11 +37,11 @@ export const testdata = {
       affectedOptions: [],
     },
     moneyLost: {
-      demandedMoney: 'moneylost1',
-      moneyTaken: 'moneylost2',
-      methodPayment: 'moneylost3',
-      transactionDate: 'moneylost4',
-      tellUsMore: 'moneylost5',
+      demandedMoney: '',
+      moneyTaken: '',
+      methodPayment: '',
+      transactionDate: '',
+      tellUsMore: '',
     },
     personalInformation: {
       typeOfInfoReq: '',
@@ -62,9 +62,12 @@ export const testdata = {
       fileDescriptions: [],
     },
     location: { postalCode: '', cityTown: '' },
-    contactInfo: { email: '' },
+    contactInfo: { email: '', phone: '' },
   },
 }
+
+
+
 
 export const EditButton = ({ path, label }) => {
   const { i18n } = useLingui()
@@ -77,7 +80,11 @@ export const EditButton = ({ path, label }) => {
 
 export const ConfirmationSummary = () => {
   const [data, dispatch] = useStateValue()
-
+  const impact = {
+    affectedOptions: [],
+    ...testdata.formData.whatWasAffected, //Remove after done testing
+    ...data.formData.whatWasAffected,
+  }
   if (!data.doneForms) {
     dispatch({ type: 'saveDoneForms', data: true })
   }
@@ -87,10 +94,21 @@ export const ConfirmationSummary = () => {
       <Stack spacing={12} shouldWrapChildren>
         <HowDidItStartSummary />
         <WhatWasAffectedSummary />
-        <MoneyLostInfoSummary />
-        <InformationSummary />
-        <DevicesSummary />
-        <BusinessInfoSummary />
+        {console.log('affectioned options: ' + impact.affectedOptions)}
+        {impact.affectedOptions.includes('whatWasAffectedForm.financial') &&
+
+          <MoneyLostInfoSummary />
+        }
+        {impact.affectedOptions.includes('whatWasAffectedForm.personal_information') &&
+          <InformationSummary />
+        }
+        {impact.affectedOptions.includes('whatWasAffectedForm.devices') &&
+          <DevicesSummary />
+        }
+        {impact.affectedOptions.includes('whatWasAffectedForm.business_assets') &&
+          <BusinessInfoSummary />
+        }
+
         <WhatHappenedSummary />
         <SuspectCluesSummary />
         <EvidenceInfoSummary />

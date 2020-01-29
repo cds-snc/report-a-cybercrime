@@ -22,6 +22,7 @@ export const BusinessInfoSummary = props => {
         <div>
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.businessInfo.business" />
+          <Trans id="confirmationPage.businessInfo.title.edit" />
         </div>
       ) : null}
 
@@ -30,10 +31,14 @@ export const BusinessInfoSummary = props => {
           <H2>
             <Trans id="confirmationPage.businessInfo.title" />
           </H2>
-          <EditButton path="/business" label="Edit affected business assets" />
+
+          <EditButton
+            path="/business"
+            label="confirmationPage.businessInfo.title.edit"
+          />
         </Flex>
 
-        <Stack as="dl" spacing={4} shouldWrapChildren>
+        <Stack as="dl" spacing={4}>
           <DescriptionListItem
             descriptionTitle="confirmationPage.businessInfo.business"
             description={businessInfo.business}

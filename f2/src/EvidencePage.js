@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { Lead, P } from './components/paragraph'
+import { P } from './components/paragraph'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { TrackPageViews } from './TrackPageViews'
@@ -26,16 +26,13 @@ export const EvidencePage = () => {
             <BackButton route="/suspectclues">
               <Trans id="evidencePage.backButton" />
             </BackButton>
-
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
+              <H1>
                 <Trans id="evidencePage.title" />
-              </H1>
-            </Stack>
+              </H1>       
             <Box>
-              <Lead>
+              <P>
                 <Trans id="evidencePage.details" />
-              </Lead>
+              </P>
               <Ul>
                 <Li>
                   <Trans id="evidencePage.detail1" />
@@ -49,8 +46,8 @@ export const EvidencePage = () => {
               </Ul>
             </Box>
             <P>
-                <Trans id="evidencePage.intro" />
-              </P>
+              <Trans id="evidencePage.intro" />
+            </P>
 
             <EvidenceInfoForm
               onSubmit={data => {

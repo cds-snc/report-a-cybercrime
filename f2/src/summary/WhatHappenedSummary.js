@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from 'react'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
@@ -17,21 +18,33 @@ export const WhatHappenedSummary = props => {
   }
 
   return (
-    <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
-      <Flex align="baseline">
-        <H2>
-          <Trans id="confirmationPage.whatHappened.title" />
-        </H2>
-        <EditButton label={'Edit what happened'} path="/whathappened" />
-      </Flex>
+    <React.Fragment>
+      {false ? (
+        <div>
+          {/*: mark the proper ids for lingui */}
+          <Trans id="confirmationPage.whatHappened.title.edit" />
+        </div>
+      ) : null}
 
-      {whatHappened.whatHappened.length > 0 ? (
-        <Text>{whatHappened.whatHappened}</Text>
-      ) : (
-        <Text>
-          <Trans id="confirmationPage.whatHappened.nag" />
-        </Text>
-      )}
-    </Stack>
+      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+        <Flex align="baseline">
+          <H2>
+            <Trans id="confirmationPage.whatHappened.title" />
+          </H2>
+          <EditButton
+            label="confirmationPage.whatHappened.title.edit"
+            path="/whathappened"
+          />
+        </Flex>
+
+        {whatHappened.whatHappened.length > 0 ? (
+          <Text>{whatHappened.whatHappened}</Text>
+        ) : (
+          <Text>
+            <Trans id="confirmationPage.whatHappened.nag" />
+          </Text>
+        )}
+      </Stack>
+    </React.Fragment>
   )
 }

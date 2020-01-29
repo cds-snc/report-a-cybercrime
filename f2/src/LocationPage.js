@@ -23,14 +23,10 @@ export const LocationPage = () => {
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/evidence">
               <Trans id="locationPage.backButton" />
-            </BackButton>
-
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
+            </BackButton> 
+              <H1 >
                 <Trans id="locationPage.title" />
               </H1>
-            </Stack>
-
             <Lead>
               <Trans id="locationPage.intro" />
             </Lead>

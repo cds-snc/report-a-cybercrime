@@ -29,7 +29,7 @@ steps:
       npm run test
       npm run lint
     displayName: 'Run npm scripts'
-# Build and push container to container registry. App Service is configured to serve latest build of container.
+# Build and push container to container registry. App Service is configured to serve latest build of container. containerRegistry value is the name of the DevOps Service Connection made to the ACR
   - task: Docker@2
     inputs:
       containerRegistry: 'scACR-F2'
