@@ -43,6 +43,7 @@
     "add-locale": "lingui add-locale",
     "extract": "lingui extract --clean",
     "compile": "lingui compile",
+    "check-translations": "node utils/checkTranslations.js",
     "upgrade-interactive": "npm-check --update"
   },
   "eslintConfig": {

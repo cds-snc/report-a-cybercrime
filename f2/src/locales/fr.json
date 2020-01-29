@@ -1,7 +1,7 @@
 {
-  "Page not found": "Page introuvable",
+  "pageNotFound.header": "Page introuvable",
   "SkipLink.text": "Aller au contenu principal",
-  "Sorry, the page you were trying to view does not exist.": "Désolé, la page que vous essayiez de voir n'existe pas.",
+  "pageNotFound.message": "Désolé, la page que vous essayiez de voir n'existe pas.",
   "banner.footerPrivacy": "Confidentialité",
   "banner.footerTermsAndConditions": "Avis",
   "banner.phase": "BÊTA",
@@ -247,7 +247,7 @@
   "scammerDetail.fileDescription": "Décrivez ce que ce fichier indique",
   "scammerDetail.intro": "Tout indice concernant la source de la fraude peut aider la police à retrouver le fraudeur.",
   "scammerDetail.nextButton": "Étape suivante : Répercussions de la fraude",
-  "scammerDetail.nextPage": "",
+  "scammerDetail.nextPage": "Continuer",
   "scammerDetail.reminder": "Indiquez toutes les adresses courriel, les numéros de téléphone ou les sites Web utilisés par le fraudeur.",
   "scammerDetail.removeFileButton": "Supprimer le fichier",
   "scammerDetail.summary": "Que savez-vous sur l'origine de la fraude?",
@@ -320,9 +320,9 @@
   "whenDidItStart.pastYear": "Il y a moins d’un an",
   "whenDidItStart.today": "Aujourd’hui",
   "feedbackPage.backButton": "Retourner à la page précédente",
-"feedbackPage.title": "Dites-nous ce que vous en pensez.",
-"feedbackPage.part1": "Nous aimerions en savoir plus sur votre experience en utilisant ce formulaire.",
-"feedbackPage.part2": "Si vous souhaitez en discuter avec nous, veuillez nous contacter via: ",
-"feedbackPage.contactInfo": " melissa.banyard@tbs-sct.gc.ca.",
+  "feedbackPage.title": "Dites-nous ce que vous en pensez.",
+  "feedbackPage.part1": "Nous aimerions en savoir plus sur votre experience en utilisant ce formulaire.",
+  "feedbackPage.part2": "Si vous souhaitez en discuter avec nous, veuillez nous contacter via: ",
+  "feedbackPage.contactInfo": " melissa.banyard@tbs-sct.gc.ca.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 }
