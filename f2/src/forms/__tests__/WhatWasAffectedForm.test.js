@@ -1,12 +1,7 @@
 import React from 'react'
 import wait from 'waait'
 import { i18n } from '@lingui/core'
-import {
-  render,
-  fireEvent,
-  cleanup,
-  getByLabelText,
-} from '@testing-library/react'
+import { render, fireEvent, cleanup } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
