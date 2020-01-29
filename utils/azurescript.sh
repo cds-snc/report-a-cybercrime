@@ -22,7 +22,7 @@ az acr create --name $ACR_NAME --sku standard
 ## Database
 az cosmosdb create --name $DB_NAME --kind MongoDB
 ## Antivirus Scanner
-az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image mk0x/docker-clamav --dns-name-label $VIRUS_SCANNER_NAME --ports 3310
+az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image mk0x/docker-clamav:alpine --dns-name-label $VIRUS_SCANNER_NAME --ports 3310
 ## Azure Cognitive Services - Content Moderator
 az cognitiveservices account create --name MpSCCogContMod1 --resource-group $RG_NAME --kind ContentModerator --sku F0 --location canadacentral --yes
 # Deploy code
