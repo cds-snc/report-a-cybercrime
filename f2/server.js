@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
-var formidable = require('formidable')
+const formidable = require('formidable')
 
 require('dotenv').config()
 const app = express()
