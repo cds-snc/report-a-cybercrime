@@ -9,6 +9,7 @@ export PLAN_NAME=MpSCCDSCybercrimeazappplan
 export APP_NAME=MpSCCDSCybercrimeazapp
 export SERVICE_PRINCIPAL_NAME=MpSCCDSCybercrimeACR-sp
 export VIRUS_SCANNER_NAME=mpsccdscybercrimeclamav
+export COGNITIVE_NAME=MpSCCogContMod1
 export WAF_RG=MpPCCorenetRg
 export WAF_NAME=MpPCWafGw
 export WAF_FRONTEND_IP=appGatewayFrontendIP
@@ -24,7 +25,7 @@ az cosmosdb create --name $DB_NAME --kind MongoDB
 ## Antivirus Scanner
 az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image mk0x/docker-clamav:alpine --dns-name-label $VIRUS_SCANNER_NAME --ports 3310
 ## Azure Cognitive Services - Content Moderator
-az cognitiveservices account create --name MpSCCogContMod1 --resource-group $RG_NAME --kind ContentModerator --sku F0 --location canadacentral --yes
+az cognitiveservices account create --name $COGNITIVE_NAME --resource-group $RG_NAME --kind ContentModerator --sku F0 --location canadacentral --yes
 # Deploy code
 ## Docker image
 az acr build --registry $ACR_NAME --image $IMAGE_NAME .
