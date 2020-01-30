@@ -1,7 +1,5 @@
 {
-  "pageNotFound.header": "Page not found",
   "SkipLink.text": "Skip to main content",
-  "pageNotFound.messages": "Sorry, the page you were trying to view does not exist.",
   "banner.footerPrivacy": "Privacy",
   "banner.footerTermsAndConditions": "Terms and Conditions",
   "banner.phase": "BETA",
@@ -186,6 +184,8 @@
   "moneyLostPage.title": "How were your money or finances affected?",
   "moneyLostPage.transactionDate": "When did transactions take place?",
   "moneyLostPage.transactionDateExample": "For example: November 28, 2019",
+  "pageNotFound.header": "Page not found",
+  "pageNotFound.message": "pageNotFound.message",
   "privacyConsentInfoForm.nextButton": "Continue",
   "privacyConsentInfoForm.nextPage": "Next, you will be asked about how the incident started.",
   "privacyConsentInfoForm.optionsHelpText": "It may also be shared with police and security partners to solve crimes, educate the public, and improve this service.",

@@ -1,7 +1,5 @@
 {
-  "pageNotFound.header": "Page introuvable",
   "SkipLink.text": "Aller au contenu principal",
-  "pageNotFound.message": "Désolé, la page que vous essayiez de voir n'existe pas.",
   "banner.footerPrivacy": "Confidentialité",
   "banner.footerTermsAndConditions": "Avis",
   "banner.phase": "BÊTA",
@@ -186,6 +184,8 @@
   "moneyLostPage.title": "Répercussions sur votre argent ou vos finances",
   "moneyLostPage.transactionDate": "Quand les transactions ont-elles eu lieu?",
   "moneyLostPage.transactionDateExample": "Par exemple : 28 novembre 2019",
+  "pageNotFound.header": "Page introuvable",
+  "pageNotFound.message": "Désolé, la page que vous essayiez de voir n'existe pas.",
   "privacyConsentInfoForm.nextButton": "Continuer",
   "privacyConsentInfoForm.nextPage": "À la prochaine étape, nous vous demanderons comment l'incident a commencé.",
   "privacyConsentInfoForm.optionsHelpText": "Votre rapport pourrait également être partagé avec les services de police et d’autres partenaires du secteur de la sûreté dans le but de résoudre des crimes, d'éduquer le public et d'améliorer le présent service.",
@@ -274,10 +274,5 @@
   "whenDidItStart.pastWeek": "Au cours de la dernière semaine",
   "whenDidItStart.pastYear": "Il y a moins d’un an",
   "whenDidItStart.today": "Aujourd’hui",
-  "feedbackPage.backButton": "Retourner à la page précédente",
-  "feedbackPage.title": "Dites-nous ce que vous en pensez.",
-  "feedbackPage.part1": "Nous aimerions en savoir plus sur votre experience en utilisant ce formulaire.",
-  "feedbackPage.part2": "Si vous souhaitez en discuter avec nous, veuillez nous contacter via: ",
-  "feedbackPage.contactInfo": " melissa.banyard@tbs-sct.gc.ca.",
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 }
