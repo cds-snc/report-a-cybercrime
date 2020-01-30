@@ -1,7 +1,7 @@
 {
-  "Page not found": "Page not found",
+  "pageNotFound.header": "Page not found",
   "SkipLink.text": "Skip to main content",
-  "Sorry, the page you were trying to view does not exist.": "Sorry, the page you were trying to view does not exist.",
+  "pageNotFound.messages": "Sorry, the page you were trying to view does not exist.",
   "banner.footerPrivacy": "Privacy",
   "banner.footerTermsAndConditions": "Terms and Conditions",
   "banner.phase": "BETA",
