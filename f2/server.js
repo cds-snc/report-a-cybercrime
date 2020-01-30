@@ -49,43 +49,43 @@ const uploadData = (req, res) => {
     for (const file of Object.entries(files)) {
       console.log(file)
     }
-    
+      
 
-  // Extract the JSON from the "JSON" form element
-  const data = JSON.parse(fields['json']);
-  console.log('Parsed JSON:', data);
-  data.submissionTime = new Date().toISOString()
-  data.contactInfo.email = randomizeString(data.contactInfo.email)
+    // Extract the JSON from the "JSON" form element
+    const data = JSON.parse(fields['json']);
+    console.log('Parsed JSON:', data);
+    data.submissionTime = new Date().toISOString()
+    data.contactInfo.email = randomizeString(data.contactInfo.email)
 
-  if (cosmosDbConfigured) {
-    MongoClient.connect(url, function(err, db) {
-      if (err) {
-        console.warn(`ERROR in MongoClient.connect: ${err}`)
-        res.statusCode = 502
-        res.statusMessage = 'Error saving to CosmosDB'
-        res.send(res.statusMessage)
-      } else {
-        var dbo = db.db('cybercrime')
-        dbo.collection('reports').insertOne(data, function(err, result) {
-          if (err) {
-            console.log({ data })
-            console.warn(`ERROR in insertOne: ${err}`)
-            res.statusCode = 502
-            res.statusMessage = 'Error saving to CosmosDB'
-            res.send(res.statusMessage)
-          } else {
-            db.close()
-            console.log('Report saved to CosmosDB')
-            res.send('Report saved to CosmosDB')
-          }
-        })
-      }
-    })
-  } else {
-    res.statusCode = 500
-    res.statusMessage = 'CosmosDB not configured'
-    res.send('CosmosDB not configured')
-  }
+    if (cosmosDbConfigured) {
+      MongoClient.connect(url, function(err, db) {
+        if (err) {
+          console.warn(`ERROR in MongoClient.connect: ${err}`)
+          res.statusCode = 502
+          res.statusMessage = 'Error saving to CosmosDB'
+          res.send(res.statusMessage)
+        } else {
+          var dbo = db.db('cybercrime')
+          dbo.collection('reports').insertOne(data, function(err, result) {
+            if (err) {
+              console.log({ data })
+              console.warn(`ERROR in insertOne: ${err}`)
+              res.statusCode = 502
+              res.statusMessage = 'Error saving to CosmosDB'
+              res.send(res.statusMessage)
+            } else {
+              db.close()
+              console.log('Report saved to CosmosDB')
+              res.send('Report saved to CosmosDB')
+            }
+          })
+        }
+      })
+    } else {
+      res.statusCode = 500
+      res.statusMessage = 'CosmosDB not configured'
+      res.send('CosmosDB not configured')
+    }
   })
 }
 
