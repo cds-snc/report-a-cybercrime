@@ -5,11 +5,11 @@ import { Trans } from '@lingui/macro'
 import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
-import { FormControl, Stack, Box } from '@chakra-ui/core'
+import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph';
+import { P } from '../components/paragraph'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -57,6 +57,7 @@ export const WhatWasAffectedForm = props => {
   }
 
   const affectedOptions = whatWasAffectedPages.map(page => page.key)
+  let showWarning = false
 
   return (
     <React.Fragment>
@@ -72,7 +73,13 @@ export const WhatWasAffectedForm = props => {
 
       <Form
         initialValues={whatWasAffected}
-        onSubmit={props.onSubmit}
+        onSubmit={values => {
+          if (values.affectedOptions.length === 0) {
+            showWarning = true
+          } else {
+            props.onSubmit(values)
+          }
+        }}
         validate={validate}
         render={({ handleSubmit, values }) => (
           <Stack
@@ -107,7 +114,19 @@ export const WhatWasAffectedForm = props => {
                 })}
               </Stack>
             </Control>
-            <P><Trans id="whatWasAffectedForm.expectations" /></P>
+
+            {showWarning ? (
+              <Control>
+                <Alert status="warning">
+                  <AlertIcon />
+                  <Trans id="whatWasAffectedForm.warning" />
+                </Alert>
+              </Control>
+            ) : null}
+
+            <P>
+              <Trans id="whatWasAffectedForm.expectations" />
+            </P>
             <NextAndCancelButtons
               next={<Trans id="whatWasAffectedForm.nextPage" />}
               button={<Trans id="whatWasAffectedForm.nextButton" />}
