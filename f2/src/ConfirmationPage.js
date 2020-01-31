@@ -50,7 +50,16 @@ const prepFormData = formData => {
   fullName = randomizeString(fullName)
   email = randomizeString(email)
   postalCode = randomizeString(postalCode)
-
+  
+  if (!(formData.whatWasAffected.affectedOptions.includes('whatWasAffectedForm.financial'))) {
+    formData.moneyLost={
+      demandedMoney: '',
+      moneyTaken: '',
+      methodPayment: '',
+      transactionDate: '',
+      tellUsMore: '',
+    } }
+    
   return {
     ...formData,
     contactInfo: {
