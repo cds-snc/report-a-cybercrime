@@ -23,11 +23,11 @@ export const PrivacyConsentPage = () => {
               <Trans id="privacyConsentPage.backButton" />
             </BackButton>
 
-            <H1 as="span">
+            <H1>
               <Trans id="privacyConsentPage.title" />
             </H1>
 
-            <Stack spacing={8} role="heading" aria-level="1">
+            <Stack spacing={8}>
               <P>
                 <Trans id="privacyConsentPage.intro" />
               </P>
