@@ -33,7 +33,7 @@ describe('<WhatWasAffectedForm />', () => {
       </MemoryRouter>,
     )
 
-    const nextButton = getByRole('button')
+    const nextButton = document.querySelector('[type="submit"]')
 
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
@@ -57,7 +57,7 @@ describe('<WhatWasAffectedForm />', () => {
     )
 
     const checkbox = getByLabelText('whatWasAffectedForm.other')
-    const nextButton = getByRole('button')
+    const nextButton = document.querySelector('[type="submit"]')
 
     clickOn(checkbox) // Wait for promises to resolve
     await wait(0)

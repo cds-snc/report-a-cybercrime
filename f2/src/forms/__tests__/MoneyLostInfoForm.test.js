@@ -33,7 +33,7 @@ describe('<LocationInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const nextButton = getByRole('button')
+    const nextButton = document.querySelector('[type="submit"]')
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 

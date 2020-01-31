@@ -34,7 +34,7 @@ describe('<WhatHappenedForm />', () => {
     )
 
     // find the next button so we can trigger a form submission
-    const nextButton = getByRole('button')
+    const nextButton = document.querySelector('[type="submit"]')
     // Click the next button to trigger the form submission
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve

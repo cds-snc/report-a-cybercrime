@@ -37,7 +37,7 @@ describe('<ContactInfoForm />', () => {
     )
 
     const inputNode = getAllByRole('textbox')[0]
-    const nextButton = getByRole('button')
+    const nextButton = document.querySelector('[type="submit"]')
 
     fillIn(inputNode, { with: 'Mallory' })
     clickOn(nextButton)
