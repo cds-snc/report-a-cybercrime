@@ -12,6 +12,9 @@ import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 import { StateProvider, initialState, reducer } from './utils/state'
 import { IntlProvider } from 'react-intl'
+import { P } from './components/paragraph'
+import { Layout } from './components/layout'
+import { Li } from './components/list-item'
 
 const App = () => {
   const { i18n } = useLingui()
@@ -37,7 +40,7 @@ const App = () => {
               <PhaseBanner phase={<Trans id="banner.phase" />}>
                 <Trans id="banner.phaseText" />
               </PhaseBanner>
-              <TopBanner lang={i18n.locale} bg="black" />
+              <TopBanner lang={i18n.locale} />
             </header>
 
             <Flex
@@ -52,28 +55,35 @@ const App = () => {
               <Home />
             </Flex>
 
-            <Footer height="1000px" bg="black">
-              <Link
-                color="white"
-                href={
-                  i18n.locale === 'en'
-                    ? 'https://digital.canada.ca/legal/privacy/'
-                    : 'https://numerique.canada.ca/transparence/confidentialite/'
-                }
-              >
-                <Trans id="banner.footerPrivacy" />
-              </Link>
-              <Link
-                color="white"
-                ml={4}
-                href={
-                  i18n.locale === 'en'
-                    ? 'https://digital.canada.ca/legal/terms/'
-                    : 'https://numerique.canada.ca/transparence/avis/'
-                }
-              >
-                <Trans id="banner.footerTermsAndConditions" />
-              </Link>
+            <Layout>
+              <P fontSize="sm">Version: 000000</P>
+            </Layout>
+
+            <Footer>
+              {/** The List component is in the Footer component */}
+              <Li>
+                <Link
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://digital.canada.ca/legal/privacy/'
+                      : 'https://numerique.canada.ca/transparence/confidentialite/'
+                  }
+                >
+                  <Trans id="banner.footerPrivacy" />
+                </Link>
+              </Li>
+              <Li>
+                <Link
+                  ml={4}
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://digital.canada.ca/legal/terms/'
+                      : 'https://numerique.canada.ca/transparence/avis/'
+                  }
+                >
+                  <Trans id="banner.footerTermsAndConditions" />
+                </Link>
+              </Li>
             </Footer>
           </Flex>
         </StateProvider>
