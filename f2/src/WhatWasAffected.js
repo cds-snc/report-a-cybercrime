@@ -25,11 +25,10 @@ export const WhatWasAffectedPage = () => {
               <Trans id="whatWasAffectedPage.backButton" />
             </BackButton>
 
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
-                <Trans id="whatWasAffectedPage.title" />
-              </H1>
-            </Stack>
+            <H1>
+              <Trans id="whatWasAffectedPage.title" />
+            </H1>
+
             <Lead>
               <Trans id="whatWasAffectedPage.intro" />
             </Lead>
