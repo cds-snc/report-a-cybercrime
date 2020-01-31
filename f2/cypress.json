@@ -1,0 +1,7 @@
+{
+    "projectId": "qe5gas",
+    "env": {
+      "production": "https://report-a-scam.cds-snc.ca",
+      "local": "http://localhost:3000/"
+    }
+  }
