@@ -21,7 +21,7 @@ describe('<LocationInfoForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByRole } = render(
+    const { getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -33,7 +33,9 @@ describe('<LocationInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const nextButton = document.querySelector('[type="submit"]')
+    // we want to grab whatever is in the submit button as text, pass it to getByText
+    const context = document.querySelector('[type="submit"]').textContent
+    const nextButton = getByText(context)
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 
