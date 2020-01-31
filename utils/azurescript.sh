@@ -28,7 +28,7 @@ az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image
 az cognitiveservices account create --name $COGNITIVE_NAME --resource-group $RG_NAME --kind ContentModerator --sku F0 --location canadacentral --yes
 # Deploy code
 ## Docker image
-az acr build --registry $ACR_NAME --image $IMAGE_NAME .
+az acr build --registry $ACR_NAME --image $IMAGE_NAME ../f2
 ## App Service
 ### Create
 az appservice plan create --name $PLAN_NAME --sku F1 --is-linux
