@@ -26,12 +26,9 @@ export const EvidencePage = () => {
             <BackButton route="/suspectclues">
               <Trans id="evidencePage.backButton" />
             </BackButton>
-
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
+              <H1>
                 <Trans id="evidencePage.title" />
-              </H1>
-            </Stack>
+              </H1>       
             <Box>
               <P>
                 <Trans id="evidencePage.details" />
