@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button as ChakraButton, Box } from '@chakra-ui/core'
+import { Button as ChakraButton } from '@chakra-ui/core'
 
 export const Button = ({ variant, variants, variantColor, ...props }) => (
   <ChakraButton

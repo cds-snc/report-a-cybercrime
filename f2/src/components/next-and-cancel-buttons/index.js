@@ -3,9 +3,9 @@ import { jsx } from '@emotion/core'
 import { Button } from '../button'
 import { Trans } from '@lingui/macro'
 import PropTypes from 'prop-types'
-import { Flex, Box, Icon } from '@chakra-ui/core'
+import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../paragraph'
-import { Link as ReactRouterLink, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 export const NextAndCancelButtons = ({ cancelRoute = '/', ...props }) => (
   <Flex direction="row" align="center" wrap="wrap" mb={10} mt={10}>

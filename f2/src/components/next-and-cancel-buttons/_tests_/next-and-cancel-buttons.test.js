@@ -24,9 +24,15 @@ describe('<NextAndCancelButtons />', () => {
         </ThemeProvider>
       </MemoryRouter>,
     )
+    //There is only one next and one cancel button
     expect(getAllByText(/Next/)).toHaveLength(1)
     expect(getAllByText(/button.cancelReport/)).toHaveLength(1)
-    expect(document.querySelector('a').getAttribute('href')).toBe('/')
-    expect(document.querySelector('button').getAttribute('type')).toBe('submit')
+
+    //The cancel button returns to="/"
+    expect(document.querySelector('button[to]').getAttribute('to')).toBe('/')
+    //The submit button submits
+    expect(
+      document.querySelector('button[type="submit"]').getAttribute('type'),
+    ).toBe('submit')
   })
 })
