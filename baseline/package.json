@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "arangojs": "^6.11.0",
+    "arangojs": "^6.12.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "ejs": "^2.6.2",
