@@ -35,7 +35,7 @@ export const SuspectCluesSummary = () => {
 
       <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.suspectClues.title" />
           </H2>
           <EditButton
