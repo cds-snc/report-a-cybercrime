@@ -37,7 +37,7 @@ export const InformationSummary = props => {
 
       <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.personalInformation.title" />
           </H2>
           <EditButton
@@ -45,7 +45,6 @@ export const InformationSummary = props => {
             label="Edit affected data or personal information"
           />
         </Flex>
-
 
         <Stack as="dl" spacing={4} shouldWrapChildren>
           {personalInformation.typeOfInfoReq.length > 0 ? (
@@ -57,10 +56,10 @@ export const InformationSummary = props => {
               )}
             />
           ) : (
-              <Text>
-                <Trans id="confirmationPage.impactIntro" />
-              </Text>
-            )}
+            <Text>
+              <Trans id="confirmationPage.impactIntro" />
+            </Text>
+          )}
 
           {personalInformation.typeOfInfoObtained.length > 0 ? (
             <DescriptionListItem
@@ -71,10 +70,10 @@ export const InformationSummary = props => {
               )}
             />
           ) : (
-              <Text>
-                <Trans id="confirmationPage.impactIntro" />
-              </Text>
-            )}
+            <Text>
+              <Trans id="confirmationPage.impactIntro" />
+            </Text>
+          )}
           <DescriptionListItem
             descriptionTitle="confirmationPage.personalInformation.tellUsMore"
             description={personalInformation.tellUsMore}

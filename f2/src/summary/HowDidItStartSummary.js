@@ -14,7 +14,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
   const summary = []
-  let overviewLine = " "
+  let overviewLine = ' '
   let summaryLastItem = []
   let summaryFirstitems = []
 
@@ -25,25 +25,28 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
   if (howdiditstart.howDidTheyReachYou.length > 0) {
     //Obtain all the array data into the summary array
     howdiditstart.howDidTheyReachYou.map(key =>
-      summary.push( key === 'howDidTheyReachYou.others'
-      ? howdiditstart.others: i18n._(key).toLowerCase(),
+      summary.push(
+        key === 'howDidTheyReachYou.others'
+          ? howdiditstart.others
+          : i18n._(key).toLowerCase(),
       ),
     )
     // No need for conjuction where is only is a single contact
-    if (howdiditstart.howDidTheyReachYou.length === 1){
-      overviewLine = i18n._('confirmationPage.howDidItStart.overviewPrefix') + summary
-
+    if (howdiditstart.howDidTheyReachYou.length === 1) {
+      overviewLine =
+        i18n._('confirmationPage.howDidItStart.overviewPrefix') + summary
     } else {
       //Pop the last item of the array to be used in conjuction
-      summaryLastItem = summary.pop();
+      summaryLastItem = summary.pop()
       //Join the arr with comma delimiter
-      summaryFirstitems = summary.join(', ');
+      summaryFirstitems = summary.join(', ')
 
       //compose the overview summary
-      overviewLine = i18n._('confirmationPage.howDidItStart.overviewPrefix')
-      + summaryFirstitems
-      + i18n._('confirmationPage.howDidItStart.conjuction')
-      + summaryLastItem
+      overviewLine =
+        i18n._('confirmationPage.howDidItStart.overviewPrefix') +
+        summaryFirstitems +
+        i18n._('confirmationPage.howDidItStart.conjuction') +
+        summaryLastItem
     }
   }
 
@@ -69,7 +72,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
 
       <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.howDidItStart.title" />
           </H2>
           <EditButton
