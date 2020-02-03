@@ -23,6 +23,11 @@ export const InformationSummary = props => {
     ...data.formData.personalInformation,
   }
 
+  const hasInfoToDisplay =
+    personalInformation.typeOfInfoReq.length > 0 ||
+    personalInformation.typeOfInfoObtained.length > 0 ||
+    personalInformation.tellUsMore.length > 0
+
   return (
     <React.Fragment>
       {false ? (
@@ -53,8 +58,8 @@ export const InformationSummary = props => {
           />
         </Flex>
 
-        <Stack as="dl" spacing={4} shouldWrapChildren>
-          {personalInformation.typeOfInfoReq.length > 0 ? (
+        {hasInfoToDisplay ? (
+          <Stack as="dl" spacing={4} shouldWrapChildren>
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
               description={intl.formatList(
@@ -62,13 +67,7 @@ export const InformationSummary = props => {
                 { type: 'conjunction' },
               )}
             />
-          ) : (
-            <Text>
-              <Trans id="confirmationPage.impactIntro" />
-            </Text>
-          )}
 
-          {personalInformation.typeOfInfoObtained.length > 0 ? (
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
               description={intl.formatList(
@@ -76,16 +75,17 @@ export const InformationSummary = props => {
                 { type: 'conjunction' },
               )}
             />
-          ) : (
-            <Text>
-              <Trans id="confirmationPage.impactIntro" />
-            </Text>
-          )}
-          <DescriptionListItem
-            descriptionTitle="confirmationPage.personalInformation.tellUsMore"
-            description={personalInformation.tellUsMore}
-          />
-        </Stack>
+
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.personalInformation.tellUsMore"
+              description={personalInformation.tellUsMore}
+            />
+          </Stack>
+        ) : (
+          <Text>
+            <Trans id="confirmationPage.personalInformation.nag" />
+          </Text>
+        )}
       </Stack>
     </React.Fragment>
   )
