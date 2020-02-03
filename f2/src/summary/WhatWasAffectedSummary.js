@@ -37,7 +37,7 @@ export const WhatWasAffectedSummary = props => {
         {...props}
       >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.ImpactTitle" />
           </H2>
           <EditButton

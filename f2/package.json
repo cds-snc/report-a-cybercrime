@@ -35,6 +35,7 @@
     "prod": "npm run build && node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
+    "coverage": "react-scripts test --coverage --watchAll=false",
     "watch": "react-scripts test",
     "dbg": "react-scripts --inspect-brk test --watchAll=false --runInBand",
     "eject": "react-scripts eject",
@@ -43,7 +44,13 @@
     "add-locale": "lingui add-locale",
     "extract": "lingui extract --clean",
     "compile": "lingui compile",
+    "check-translations": "node utils/checkTranslations.js",
     "upgrade-interactive": "npm-check --update"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo 'Running npm run extract' && lingui extract --clean && git add src/locales && pretty-quick --staged"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -71,8 +78,10 @@
     "babel-core": "^7.0.0-bridge.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
-    "husky": "^4.0.10",
+    "husky": "^4.2.1",
     "jest-emotion": "^10.0.17",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "recompose": "^0.30.0",
     "waait": "^1.0.5"
   },

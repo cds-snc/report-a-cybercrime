@@ -38,7 +38,7 @@ export const LocationInfoSummary = props => {
         {...props}
       >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.location.title" />
           </H2>
           <EditButton

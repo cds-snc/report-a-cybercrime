@@ -49,7 +49,7 @@ export const InformationSummary = props => {
         {...props}
       >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.personalInformation.title" />
           </H2>
           <EditButton
@@ -58,37 +58,39 @@ export const InformationSummary = props => {
           />
         </Flex>
 
-        {hasInfoToDisplay ? (
-          <Stack as="dl" spacing={4} shouldWrapChildren>
-            {personalInformation.typeOfInfoReq.length > 0 ? (
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
-                description={intl.formatList(
-                  personalInformation.typeOfInfoReq.map(i => i18n._(i)),
-                  { type: 'conjunction' },
-                )}
-              />
-            ) : null}
-
-            {personalInformation.typeOfInfoObtained.length > 0 ? (
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
-                description={intl.formatList(
-                  personalInformation.typeOfInfoObtained.map(i => i18n._(i)),
-                  { type: 'conjunction' },
-                )}
-              />
-            ) : null}
+        <Stack as="dl" spacing={4} shouldWrapChildren>
+          {personalInformation.typeOfInfoReq.length > 0 ? (
             <DescriptionListItem
-              descriptionTitle="confirmationPage.personalInformation.tellUsMore"
-              description={personalInformation.tellUsMore}
+              descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
+              description={intl.formatList(
+                personalInformation.typeOfInfoReq.map(i => i18n._(i)),
+                { type: 'conjunction' },
+              )}
             />
-          </Stack>
-        ) : (
-          <Text>
-            <Trans id="confirmationPage.personalInformation.nag" />
-          </Text>
-        )}
+          ) : (
+            <Text>
+              <Trans id="confirmationPage.impactIntro" />
+            </Text>
+          )}
+
+          {personalInformation.typeOfInfoObtained.length > 0 ? (
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
+              description={intl.formatList(
+                personalInformation.typeOfInfoObtained.map(i => i18n._(i)),
+                { type: 'conjunction' },
+              )}
+            />
+          ) : (
+            <Text>
+              <Trans id="confirmationPage.impactIntro" />
+            </Text>
+          )}
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.personalInformation.tellUsMore"
+            description={personalInformation.tellUsMore}
+          />
+        </Stack>
       </Stack>
     </React.Fragment>
   )

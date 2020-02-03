@@ -34,7 +34,7 @@ export const WhatHappenedSummary = props => {
         {...props}
       >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.whatHappened.title" />
           </H2>
           <EditButton
