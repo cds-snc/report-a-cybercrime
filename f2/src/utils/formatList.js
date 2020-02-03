@@ -1,4 +1,4 @@
-export const format = (list, listFormat) => {
+export const formatList = (list, listFormat) => {
   //This code is vaguely inspired by listFormat sepcs: https://tc39.es/proposal-intl-list-format/
 
   let size = list.length

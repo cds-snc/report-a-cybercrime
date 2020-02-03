@@ -9,7 +9,7 @@ import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { useLingui } from '@lingui/react'
 import { Text } from '../components/text'
-import { format } from '../utils/formatList'
+import { formatList } from '../utils/formatList'
 
 export const InformationSummary = props => {
   const [data] = useStateValue()
@@ -52,7 +52,7 @@ export const InformationSummary = props => {
           {personalInformation.typeOfInfoReq.length > 0 ? (
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
-              description={format(
+              description={formatList(
                 personalInformation.typeOfInfoReq.map(i => i18n._(i)),
                 {
                   type: i18n._('default.conjunction'),
@@ -69,7 +69,7 @@ export const InformationSummary = props => {
           {personalInformation.typeOfInfoObtained.length > 0 ? (
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
-              description={format(
+              description={formatList(
                 personalInformation.typeOfInfoObtained.map(i => i18n._(i)),
                 {
                   type: i18n._('default.conjunction'),
