@@ -23,11 +23,6 @@ export const InformationSummary = props => {
     ...data.formData.personalInformation,
   }
 
-  const hasInfoToDisplay =
-    personalInformation.typeOfInfoReq.length > 0 ||
-    personalInformation.typeOfInfoObtained.length > 0 ||
-    personalInformation.tellUsMore.length > 0
-
   return (
     <React.Fragment>
       {false ? (
