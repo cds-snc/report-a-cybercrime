@@ -15,13 +15,54 @@ export const InformationSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
   const intl = useIntl()
+  const infoReqSummary = []
+  let infoReqLine = " "
+  let infoReqSummaryLastItem = []
+  let infoReqSummaryFirstitems = []
+  const infoObtainedSummary = []
+  let infoObtainedLine = " "
+  let infoObtainedSummaryLastItem = []
+  let infoObtainedSummaryFirstitems = []
 
   const personalInformation = {
-    typeOfInfoReq: [],
-    typeOfInfoObtained: [],
     ...testdata.formData.personalInformation,
     ...data.formData.personalInformation,
   }
+
+  //push all select entities into the stack and if 'other' is selected, push the value of other.
+  personalInformation.typeOfInfoReq.map(key =>
+    infoReqSummary.push(
+      key === 'typeOfInfoReq.other'
+        ? personalInformation.infoReqOther : i18n._(key).toLowerCase(),
+    ),
+  )
+  //Pop the last item of the array to be used in conjuction
+  infoReqSummaryLastItem = infoReqSummary.pop();
+  //Join the arr with comma delimiter
+  infoReqSummaryFirstitems = infoReqSummary.join(', ');
+
+  //compose the overview summary
+  infoReqLine = infoReqSummaryFirstitems
+    + i18n._('confirmationPage.howDidItStart.conjuction')
+    + infoReqSummaryLastItem
+
+  //push all select entities into the stack and if 'other' is selected, push the value of other.
+  personalInformation.typeOfInfoObtained.map(key =>
+    infoObtainedSummary.push(
+      key === 'typeOfInfoObtained.other'
+        ? personalInformation.infoObtainedOther : i18n._(key).toLowerCase(),
+    ),
+  )
+  //Pop the last item of the array to be used in conjuction
+  infoObtainedSummaryLastItem = infoObtainedSummary.pop();
+  //Join the arr with comma delimiter
+  infoObtainedSummaryFirstitems = infoObtainedSummary.join(', ');
+
+  //compose the overview summary
+  infoObtainedLine = infoObtainedSummaryFirstitems
+    + i18n._('confirmationPage.howDidItStart.conjuction')
+    + infoObtainedSummaryLastItem
+
 
   return (
     <React.Fragment>
@@ -51,10 +92,7 @@ export const InformationSummary = props => {
           {personalInformation.typeOfInfoReq.length > 0 ? (
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
-              description={intl.formatList(
-                personalInformation.typeOfInfoReq.map(i => i18n._(i)),
-                { type: 'conjunction' },
-              )}
+              description={infoReqLine}
             />
           ) : (
               <Text>
@@ -65,10 +103,7 @@ export const InformationSummary = props => {
           {personalInformation.typeOfInfoObtained.length > 0 ? (
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
-              description={intl.formatList(
-                personalInformation.typeOfInfoObtained.map(i => i18n._(i)),
-                { type: 'conjunction' },
-              )}
+              description={infoObtainedLine}
             />
           ) : (
               <Text>
