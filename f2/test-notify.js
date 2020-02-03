@@ -25,15 +25,39 @@ async function main() {
   })
 
   // send mail with defined transport object
-  let info = await transporter.sendMail({
+
+  const message = {
     from: '"Fred Foo 👻" <foo@guqvkp.m.notification.alpha.cdssandbox.xyz>', // sender address
     to: mailTo, // list of receivers
-    subject: 'Hello 2 ✔', // Subject line
-    text: 'Hello world?', // plain text body
-    html: '<b>Hello world?</b>', // html body
-  })
+    subject: 'Custom attachment',
+    attachments: [
+      {
+        raw: `Content-Type: text/plain
+Content-Disposition: attachment
 
-  console.log('Message sent: %s', info.messageId)
+Attached text file`,
+      },
+    ],
+  }
+
+  //   const message = {
+  //     from: '"Fred Foo 👻" <foo@guqvkp.m.notification.alpha.cdssandbox.xyz>', // sender address
+  //     to: mailTo, // list of receivers
+  //     subject: 'node notify test', // Subject line
+  //     attachments: [
+  //       {
+  //         raw: `Content-Type: text/plain;
+  //   Content-Disposition: attachment
+
+  //   Attached text file
+  // `,
+  //       },
+  //     ],
+  //   }
+
+  let info = await transporter.sendMail(message)
+
+  console.log(`Message sent to ${mailTo}: ${info.messageId}`)
 }
 
 main().catch(console.error)
