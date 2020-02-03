@@ -14,7 +14,6 @@ import { Text } from '../components/text'
 export const InformationSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
-  const intl = useIntl()
   const infoReqSummary = []
   let infoReqLine = " "
   let infoReqSummaryLastItem = []
@@ -36,16 +35,20 @@ export const InformationSummary = props => {
         ? personalInformation.infoReqOther : i18n._(key).toLowerCase(),
     ),
   )
-  //Pop the last item of the array to be used in conjuction
-  infoReqSummaryLastItem = infoReqSummary.pop();
-  //Join the arr with comma delimiter
-  infoReqSummaryFirstitems = infoReqSummary.join(', ');
+  if (personalInformation.typeOfInfoReq.length === 1) {
+    infoReqLine = infoReqSummary
 
-  //compose the overview summary
-  infoReqLine = infoReqSummaryFirstitems
-    + i18n._('confirmationPage.howDidItStart.conjuction')
-    + infoReqSummaryLastItem
+  } else {
+    //Pop the last item of the array to be used in conjuction
+    infoReqSummaryLastItem = infoReqSummary.pop();
+    //Join the arr with comma delimiter
+    infoReqSummaryFirstitems = infoReqSummary.join(', ');
 
+    //compose the overview summary
+    infoReqLine = infoReqSummaryFirstitems
+      + i18n._('confirmationPage.howDidItStart.conjuction')
+      + infoReqSummaryLastItem
+  }
   //push all select entities into the stack and if 'other' is selected, push the value of other.
   personalInformation.typeOfInfoObtained.map(key =>
     infoObtainedSummary.push(
@@ -53,16 +56,21 @@ export const InformationSummary = props => {
         ? personalInformation.infoObtainedOther : i18n._(key).toLowerCase(),
     ),
   )
-  //Pop the last item of the array to be used in conjuction
-  infoObtainedSummaryLastItem = infoObtainedSummary.pop();
-  //Join the arr with comma delimiter
-  infoObtainedSummaryFirstitems = infoObtainedSummary.join(', ');
+  // No need for conjuction where is only is a single contact
+  if (personalInformation.typeOfInfoObtained.length === 1) {
+    infoObtainedLine = infoObtainedSummary
 
-  //compose the overview summary
-  infoObtainedLine = infoObtainedSummaryFirstitems
-    + i18n._('confirmationPage.howDidItStart.conjuction')
-    + infoObtainedSummaryLastItem
+  } else {
+    //Pop the last item of the array to be used in conjuction
+    infoObtainedSummaryLastItem = infoObtainedSummary.pop();
+    //Join the arr with comma delimiter
+    infoObtainedSummaryFirstitems = infoObtainedSummary.join(', ');
 
+    //compose the overview summary
+    infoObtainedLine = infoObtainedSummaryFirstitems
+      + i18n._('confirmationPage.howDidItStart.conjuction')
+      + infoObtainedSummaryLastItem
+  }
 
   return (
     <React.Fragment>
