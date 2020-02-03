@@ -7,14 +7,13 @@ import { useStateValue } from '../utils/state'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
-import { useIntl } from 'react-intl'
 import { useLingui } from '@lingui/react'
 import { Text } from '../components/text'
+import { format } from '../utils/formatList'
 
 export const InformationSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
-  const intl = useIntl()
 
   const personalInformation = {
     typeOfInfoReq: [],
@@ -32,6 +31,9 @@ export const InformationSummary = props => {
           <Trans id="confirmationPage.personalInformation.typeOfInfoObtained" />
           <Trans id="confirmationPage.personalInformation.tellUsMore" />
           <Trans id="confirmationPage.personalInformation.title.edit" />
+          {/**Consider moving this upwards if we want to go towards lingui defaults */}
+          <Trans id="default.conjunction" />
+          <Trans id="default.glue" />
         </div>
       ) : null}
 
@@ -50,9 +52,12 @@ export const InformationSummary = props => {
           {personalInformation.typeOfInfoReq.length > 0 ? (
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
-              description={intl.formatList(
+              description={format(
                 personalInformation.typeOfInfoReq.map(i => i18n._(i)),
-                { type: 'conjunction' },
+                {
+                  type: i18n._('default.conjunction'),
+                  style: i18n._('default.glue'),
+                },
               )}
             />
           ) : (
@@ -64,9 +69,12 @@ export const InformationSummary = props => {
           {personalInformation.typeOfInfoObtained.length > 0 ? (
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
-              description={intl.formatList(
+              description={format(
                 personalInformation.typeOfInfoObtained.map(i => i18n._(i)),
-                { type: 'conjunction' },
+                {
+                  type: i18n._('default.conjunction'),
+                  style: i18n._('default.glue'),
+                },
               )}
             />
           ) : (
