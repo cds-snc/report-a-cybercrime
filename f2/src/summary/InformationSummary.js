@@ -54,7 +54,7 @@ export const InformationSummary = props => {
           </H2>
           <EditButton
             path="/information"
-            label="Edit affected data or personal information"
+            label="confirmationPage.personalInformation.title.edit"
           />
         </Flex>
 
