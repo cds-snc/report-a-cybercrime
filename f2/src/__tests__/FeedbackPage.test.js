@@ -1,10 +1,10 @@
 import React from 'react'
 import { i18n } from '@lingui/core'
-import { MemoryRouter } from 'react-router-dom'
 import { render, cleanup } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { ImpactStatementPage } from '../ImpactStatementPage'
+import { FeedbackPage } from '../FeedbackPage'
 import canada from '../theme/canada'
 import en from '../locales/en.json'
 import { StateProvider, initialState, reducer } from '../utils/state'
@@ -12,7 +12,7 @@ import { StateProvider, initialState, reducer } from '../utils/state'
 i18n.load('en', { en })
 i18n.activate('en')
 
-describe('<ImpactStatementPage />', () => {
+describe('<FeedbackPage />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
@@ -21,7 +21,7 @@ describe('<ImpactStatementPage />', () => {
         <ThemeProvider theme={canada}>
           <StateProvider initialState={initialState} reducer={reducer}>
             <I18nProvider i18n={i18n}>
-              <ImpactStatementPage />
+              <FeedbackPage />
             </I18nProvider>
           </StateProvider>
         </ThemeProvider>

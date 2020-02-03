@@ -24,12 +24,9 @@ export const HowDidItStartPage = () => {
             <BackButton route="/privacyconsent">
               <Trans id="howDidItStartPage.backButton" />
             </BackButton>
-
-            <Stack spacing={4} role="heading" aria-level="1">
-              <H1 as="span">
+              <H1 >
                 <Trans id="howDidItStartPage.title" />
               </H1>
-            </Stack>
             <Stack spacing={4}>
               <Lead>
                 <Trans id="howDidItStartPage.intro" />
