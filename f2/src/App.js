@@ -44,6 +44,7 @@ const App = () => {
             </header>
 
             <Flex
+              as="main"
               id="main"
               fontFamily="body"
               flex="1 0 auto"

@@ -31,7 +31,7 @@ export const MoneyLostInfoSummary = props => {
       ) : null}
       <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.moneyLostTitle" />
           </H2>
           <EditButton
