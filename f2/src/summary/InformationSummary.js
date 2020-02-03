@@ -7,7 +7,6 @@ import { useStateValue } from '../utils/state'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
-import { useIntl } from 'react-intl'
 import { useLingui } from '@lingui/react'
 import { Text } from '../components/text'
 
