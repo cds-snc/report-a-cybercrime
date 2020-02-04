@@ -28,7 +28,13 @@ export const WhatWasAffectedSummary = props => {
           <Trans id="confirmationPage.ImpactTitle.edit" />
         </div>
       ) : null}
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
           <H2 fontWeight="normal">
             <Trans id="confirmationPage.ImpactTitle" />
