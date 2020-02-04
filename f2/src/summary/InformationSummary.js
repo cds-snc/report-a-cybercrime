@@ -14,11 +14,11 @@ export const InformationSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
   const infoReqSummary = []
-  let infoReqLine = " "
+  let infoReqLine
   let infoReqSummaryLastItem = []
   let infoReqSummaryFirstitems = []
   const infoObtainedSummary = []
-  let infoObtainedLine = " "
+  let infoObtainedLine
   let infoObtainedSummaryLastItem = []
   let infoObtainedSummaryFirstitems = []
 
@@ -101,10 +101,10 @@ export const InformationSummary = props => {
               description={infoReqLine}
             />
           ) : (
-            <Text>
-              <Trans id="confirmationPage.impactIntro" />
-            </Text>
-          )}
+              <Text>
+                <Trans id="confirmationPage.impactIntro" />
+              </Text>
+            )}
 
           {personalInformation.typeOfInfoObtained.length > 0 ? (
             <DescriptionListItem
@@ -112,10 +112,10 @@ export const InformationSummary = props => {
               description={infoObtainedLine}
             />
           ) : (
-            <Text>
-              <Trans id="confirmationPage.impactIntro" />
-            </Text>
-          )}
+              <Text>
+                <Trans id="confirmationPage.impactIntro" />
+              </Text>
+            )}
           <DescriptionListItem
             descriptionTitle="confirmationPage.personalInformation.tellUsMore"
             description={personalInformation.tellUsMore}
