@@ -37,8 +37,9 @@ export const InformationSummary = props => {
           <Trans id="confirmationPage.personalInformation.tellUsMore" />
           <Trans id="confirmationPage.personalInformation.title.edit" />
           {/**Consider moving this upwards if we want to go towards lingui defaults */}
-          <Trans id="default.conjunction" />
-          <Trans id="default.glue" />
+          <Trans id="default.pair" />
+          <Trans id="default.middle" />
+          <Trans id="default.end" />
         </div>
       ) : null}
 
@@ -67,8 +68,9 @@ export const InformationSummary = props => {
               description={formatList(
                 personalInformation.typeOfInfoReq.map(i => i18n._(i)),
                 {
-                  type: i18n._('default.conjunction'),
-                  style: i18n._('default.glue'),
+                  pair: i18n._('default.pair'),
+                  middle: i18n._('default.middle'),
+                  end: i18n._('default.end'),
                 },
               )}
             />
@@ -78,8 +80,9 @@ export const InformationSummary = props => {
               description={formatList(
                 personalInformation.typeOfInfoObtained.map(i => i18n._(i)),
                 {
-                  type: i18n._('default.conjunction'),
-                  style: i18n._('default.glue'),
+                  pair: i18n._('default.pair'),
+                  middle: i18n._('default.middle'),
+                  end: i18n._('default.end'),
                 },
               )}
             />
