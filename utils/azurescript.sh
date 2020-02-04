@@ -55,3 +55,4 @@ publicIP="${publicIP}/32"
 # When adding your first IP Restriction rule, the service will add an explicit deny all rule with a priority of 2147483647.
 # In practice, the explicit deny all rule will be last rule executed and will block access to any IP address that is not explicitly allowed using an Allow rule.
 az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow from WAF' --action Allow --ip-address $publicIP --priority 1000
+az webapp update --https-only true --name $APP_NAME --resource-group $RG_NAME
