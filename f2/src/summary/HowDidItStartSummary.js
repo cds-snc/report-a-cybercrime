@@ -10,7 +10,7 @@ import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
-export const HowDidItStartSummary = ({ onSubmit }) => {
+export const HowDidItStartSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
   const summary = []
@@ -70,7 +70,13 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
           <H2 fontWeight="normal">
             <Trans id="confirmationPage.howDidItStart.title" />
@@ -115,7 +121,11 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
               />
             </Stack>
           </React.Fragment>
-        ) : null}
+        ) : (
+          <Text>
+            <Trans id="confirmationPage.howDidItStart.nag" />
+          </Text>
+        )}
       </Stack>
     </React.Fragment>
   )
