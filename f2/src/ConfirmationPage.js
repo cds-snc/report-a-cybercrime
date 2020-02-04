@@ -55,7 +55,34 @@ const prepFormData = formData => {
   fullName = randomizeString(fullName)
   email = randomizeString(email)
   postalCode = randomizeString(postalCode)
-
+  
+  if (!(formData.whatWasAffected.affectedOptions.includes('whatWasAffectedForm.financial'))) {
+    formData.moneyLost={
+      demandedMoney: '',
+      moneyTaken: '',
+      methodPayment: '',
+      transactionDate: '',
+      tellUsMore: '',
+    } }
+     
+    if(!(formData.whatWasAffected.affectedOptions.includes('whatWasAffectedForm.personal_information'))){
+      formData.personalInformation={
+        typeOfInfoReq: '',
+        typeOfInfoObtained: '',
+        tellUsMore: '',
+      }}
+      
+      if(!(formData.whatWasAffected.affectedOptions.includes('whatWasAffectedForm.devices'))){
+        formData.devicesInfo={
+          deviceOrAccount: '', 
+          devicesTellUsMore: ''
+        }}
+        
+        if(!(formData.whatWasAffected.affectedOptions.includes('whatWasAffectedForm.business_assets'))){
+          formData.businessInfo={
+            business: '' 
+          }}
+          
   return {
     ...formData,
     contactInfo: {
