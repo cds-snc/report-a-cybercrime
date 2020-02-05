@@ -39,7 +39,7 @@ export const testdata = {
     moneyLost: {
       demandedMoney: '',
       moneyTaken: '',
-      methodPayment: '',
+      methodPayment: [],
       transactionDate: '',
       tellUsMore: '',
     },
