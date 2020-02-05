@@ -30,9 +30,11 @@ ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku standard --query id --out
 ## Create Database
 az cosmosdb create --name $DB_NAME --kind MongoDB
 
-## Create Antivirus Scanner - Currently not using the alpine version because mk0x needs to rebuild from clamd v102.2 or 103 to pickup known azure bugfix.
-# See https://bugzilla.clamav.net/show_bug.cgi?id=12469
-az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image mk0x/docker-clamav --dns-name-label $VIRUS_SCANNER_NAME --ports 3310
+## Create Antivirus Scanner Container Instance
+# - Currently not using the alpine version because mk0x needs to rebuild from clamd v102.2 or 103 to pickup known azure bugfix.
+# - See https://bugzilla.clamav.net/show_bug.cgi?id=12469
+# To query the log analytics workspace for container logs query ContainerEvent_CL and ContainerInstanceLog_CL tables
+az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image mk0x/docker-clamav --dns-name-label $VIRUS_SCANNER_NAME --ports 3310 --log-analytics-workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query customerId --output tsv) --log-analytics-workspace-key $(az monitor log-analytics workspace get-shared-keys --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query primarySharedKey --output tsv)
 
 ## Create Content Moderator - Azure Cognitive Services
 az cognitiveservices account create --name $COGNITIVE_NAME --resource-group $RG_NAME --kind ContentModerator --sku F0 --location canadacentral --yes
