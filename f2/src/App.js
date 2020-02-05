@@ -54,9 +54,13 @@ const App = () => {
             <Home />
           </Flex>
 
-          <Layout>
-            <P fontSize="sm">Version: 000000</P>
-          </Layout>
+            <Layout fluid bg="gray.300">
+              <Layout>
+                <P fontSize="sm" my={3}>
+                  Version: 000000
+                </P>
+              </Layout>
+            </Layout>
 
           <Footer>
             {/** The List component is in the Footer component */}
