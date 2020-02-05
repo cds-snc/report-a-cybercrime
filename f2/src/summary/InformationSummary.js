@@ -115,11 +115,7 @@ export const InformationSummary = props => {
               description={infoReqLine}
             />
 
-          ) : (
-              <Text>
-                <Trans id="confirmationPage.impactIntro" />
-              </Text>
-            )}
+
 
 
             <DescriptionListItem
@@ -127,28 +123,18 @@ export const InformationSummary = props => {
               description={infoObtainedLine}
             />
 
-          ) : (
-              <Text>
-                <Trans id="confirmationPage.impactIntro" />
-              </Text>
-            )}
-          <DescriptionListItem
-            descriptionTitle="confirmationPage.personalInformation.tellUsMore"
-            description={personalInformation.tellUsMore}
-          />
-        </Stack>
-
 
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.tellUsMore"
               description={personalInformation.tellUsMore}
             />
           </Stack>
+
         ) : (
-          <Text>
-            <Trans id="confirmationPage.personalInformation.nag" />
-          </Text>
-        )}
+            <Text>
+              <Trans id="confirmationPage.personalInformation.nag" />
+            </Text>
+          )}
 
       </Stack>
     </React.Fragment>
