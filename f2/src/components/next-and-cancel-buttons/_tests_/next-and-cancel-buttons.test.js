@@ -29,7 +29,9 @@ describe('<NextAndCancelButtons />', () => {
     expect(getAllByText(/button.cancelReport/)).toHaveLength(1)
 
     //The cancel button returns to="/"
-    expect(document.querySelector('button[to]').getAttribute('to')).toBe('/')
+    expect(document.querySelector('button[to]').getAttribute('to')).toBe(
+      '/confirmCancel',
+    )
     //The submit button submits
     expect(
       document.querySelector('button[type="submit"]').getAttribute('type'),
