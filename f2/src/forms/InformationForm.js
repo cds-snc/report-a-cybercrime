@@ -59,6 +59,14 @@ export const InformationForm = props => {
     'typeOfInfoReq.other',
   ]
 
+  const typeOfInfoObtained = [
+    'typeOfInfoObtained.creditCard',
+    'typeOfInfoObtained.dob',
+    'typeOfInfoObtained.homeAddress',
+    'typeOfInfoObtained.sin',
+    'typeOfInfoObtained.other',
+  ]
+
 
 
   return (
@@ -133,7 +141,7 @@ export const InformationForm = props => {
                 <Trans id="informationPage.typeOfInfoObtainedExample" />
               </FormHelperText>
               <Stack spacing={4} shouldWrapChildren>
-                {typeOfInfoReq.map(key => {
+                {typeOfInfoObtained.map(key => {
                   return (
                     <Box key={key}>
                       <CheckboxArrayControl
@@ -143,7 +151,7 @@ export const InformationForm = props => {
                       >
                         {i18n._(key)}
                       </CheckboxArrayControl>
-                      {key === 'typeOfInfoReq.other' && values.typeOfInfoObtained.includes('typeOfInfoReq.other') && (
+                      {key === 'typeOfInfoObtained.other' && values.typeOfInfoObtained.includes('typeOfInfoObtained.other') && (
                         <ConditionalForm>
                           <Field name='infoObtainedOther'>
                             {props => (

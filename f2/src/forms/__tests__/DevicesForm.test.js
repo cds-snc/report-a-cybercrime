@@ -16,31 +16,33 @@ i18n.activate('en')
 const clickOn = element => fireEvent.click(element)
 
 describe('<DevicesForm />', () => {
-    afterEach(cleanup)
+  afterEach(cleanup)
 
-    it('calls the onSubmit function when the form is submitted', async () => {
-        const submitMock = jest.fn()
+  it('calls the onSubmit function when the form is submitted', async () => {
+    const submitMock = jest.fn()
 
-        const { getByRole } = render(
-            <MemoryRouter initialEntries={['/']}>
-                <ThemeProvider theme={canada}>
-                    <I18nProvider i18n={i18n}>
-                        <StateProvider initialState={initialState} reducer={reducer}>
-                            <DevicesForm onSubmit={submitMock} />
-                        </StateProvider>
-                    </I18nProvider>
-                </ThemeProvider>
-            </MemoryRouter>,
-        )
+    const { getByText } = render(
+      <MemoryRouter initialEntries={['/']}>
+        <ThemeProvider theme={canada}>
+          <I18nProvider i18n={i18n}>
+            <StateProvider initialState={initialState} reducer={reducer}>
+              <DevicesForm onSubmit={submitMock} />
+            </StateProvider>
+          </I18nProvider>
+        </ThemeProvider>
+      </MemoryRouter>,
+    )
 
-        // find the next button so we can trigger a form submission
-        const nextButton = getByRole('button')
-        // Click the next button to trigger the form submission
-        clickOn(nextButton)
-        await wait(0) // Wait for promises to resolve
+    // find the next button so we can trigger a form submission
+    // we want to grab whatever is in the submit button as text, pass it to getByText
+    const context = document.querySelector('[type="submit"]').textContent
+    const nextButton = getByText(context)
+    // Click the next button to trigger the form submission
+    clickOn(nextButton)
+    await wait(0) // Wait for promises to resolve
 
-        // We expect that sequence of events to have caused our onSubmit mock to get
-        // exectuted.
-        expect(submitMock).toHaveBeenCalledTimes(1)
-    })
+    // We expect that sequence of events to have caused our onSubmit mock to get
+    // exectuted.
+    expect(submitMock).toHaveBeenCalledTimes(1)
+  })
 })
