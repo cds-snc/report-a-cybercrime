@@ -49,7 +49,6 @@ export const testdata = {
       infoReqOther: '',
       infoObtainedOther: '',
       tellUsMore: '',
-      infoObtainedOther: '',
     },
     devicesInfo: { deviceOrAccount: '', devicesTellUsMore: '' },
     businessInfo: { business: '' },

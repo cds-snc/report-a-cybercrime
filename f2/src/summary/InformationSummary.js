@@ -39,13 +39,13 @@ export const InformationSummary = props => {
   })
 
   //push all select entities into the stack and if 'other' is selected, push the value of other.
-  personalInformation.typeOfInfoObtained.map(key => {
+  personalInformation.typeOfInfoObtained.map(key =>
     infoObtainedSummary.push(
       key === 'typeOfInfoObtained.other'
         ? personalInformation.infoObtainedOther
         : i18n._(key),
-    )
-  })
+    ),
+  )
 
   infoObtainedLine = formatList(infoObtainedSummary, {
     pair: i18n._('default.pair'),
