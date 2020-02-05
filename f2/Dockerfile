@@ -11,6 +11,7 @@ RUN npm run build
 
 FROM node:12.14-alpine
 LABEL maintainer="stephen.astels@cds-snc.ca"
+RUN apk add --no-cache openssl
 USER node
 
 ENV NODE_ENV production

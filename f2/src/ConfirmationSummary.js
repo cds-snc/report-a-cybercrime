@@ -46,6 +46,8 @@ export const testdata = {
     personalInformation: {
       typeOfInfoReq: [],
       typeOfInfoObtained: [],
+      infoReqOther: '',
+      infoObtainedOther: '',
       tellUsMore: '',
       infoObtainedOther: '',
     },

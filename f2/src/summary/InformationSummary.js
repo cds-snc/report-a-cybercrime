@@ -14,17 +14,48 @@ import { formatList } from '../utils/formatList'
 export const InformationSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
+  const infoReqSummary = []
+  let infoReqLine
+  const infoObtainedSummary = []
+  let infoObtainedLine
 
   const personalInformation = {
-    typeOfInfoReq: [],
-    typeOfInfoObtained: [],
     ...testdata.formData.personalInformation,
     ...data.formData.personalInformation,
   }
 
+  //push all select entities into the stack and if 'other' is selected, push the value of other.
+  personalInformation.typeOfInfoReq.map(key =>
+    infoReqSummary.push(
+      key === 'typeOfInfoReq.other'
+        ? personalInformation.infoReqOther
+        : i18n._(key),
+    ),
+  )
+  infoReqLine = formatList(infoReqSummary, {
+    pair: i18n._('default.pair'),
+    middle: i18n._('default.middle'),
+    end: i18n._('default.end'),
+  })
+
+  //push all select entities into the stack and if 'other' is selected, push the value of other.
+  personalInformation.typeOfInfoObtained.map(key => {
+    infoObtainedSummary.push(
+      key === 'typeOfInfoObtained.other'
+        ? personalInformation.infoObtainedOther
+        : i18n._(key),
+    )
+  })
+
+  infoObtainedLine = formatList(infoObtainedSummary, {
+    pair: i18n._('default.pair'),
+    middle: i18n._('default.middle'),
+    end: i18n._('default.end'),
+  })
+
   const hasInfoToDisplay =
-    personalInformation.typeOfInfoReq.length > 0 ||
-    personalInformation.typeOfInfoObtained.length > 0 ||
+    infoReqLine.length > 0 ||
+    infoObtainedLine.length > 0 ||
     personalInformation.tellUsMore.length > 0
 
   return (
@@ -65,26 +96,12 @@ export const InformationSummary = props => {
           <Stack as="dl" spacing={4} shouldWrapChildren>
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
-              description={formatList(
-                personalInformation.typeOfInfoReq.map(i => i18n._(i)),
-                {
-                  pair: i18n._('default.pair'),
-                  middle: i18n._('default.middle'),
-                  end: i18n._('default.end'),
-                },
-              )}
+              description={infoReqLine}
             />
 
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
-              description={formatList(
-                personalInformation.typeOfInfoObtained.map(i => i18n._(i)),
-                {
-                  pair: i18n._('default.pair'),
-                  middle: i18n._('default.middle'),
-                  end: i18n._('default.end'),
-                },
-              )}
+              description={infoObtainedLine}
             />
 
             <DescriptionListItem
