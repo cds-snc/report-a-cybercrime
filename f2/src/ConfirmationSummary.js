@@ -44,8 +44,10 @@ export const testdata = {
       tellUsMore: '',
     },
     personalInformation: {
-      typeOfInfoReq: '',
-      typeOfInfoObtained: '',
+      typeOfInfoReq: [],
+      typeOfInfoObtained: [],
+      infoReqOther: '',
+      infoObtainedOther: '',
       tellUsMore: '',
     },
     devicesInfo: { deviceOrAccount: '', devicesTellUsMore: '' },
