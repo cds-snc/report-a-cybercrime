@@ -9,74 +9,54 @@ import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { useLingui } from '@lingui/react'
 import { Text } from '../components/text'
+import { formatList } from '../utils/formatList'
 
 export const InformationSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
   const infoReqSummary = []
   let infoReqLine
-  let infoReqSummaryLastItem = []
-  let infoReqSummaryFirstitems = []
   const infoObtainedSummary = []
   let infoObtainedLine
-  let infoObtainedSummaryLastItem = []
-  let infoObtainedSummaryFirstitems = []
 
   const personalInformation = {
     ...testdata.formData.personalInformation,
     ...data.formData.personalInformation,
   }
 
-
   //push all select entities into the stack and if 'other' is selected, push the value of other.
   personalInformation.typeOfInfoReq.map(key =>
     infoReqSummary.push(
       key === 'typeOfInfoReq.other'
-        ? personalInformation.infoReqOther : i18n._(key).toLowerCase(),
+        ? personalInformation.infoReqOther
+        : i18n._(key),
     ),
   )
-  if (personalInformation.typeOfInfoReq.length === 1) {
-    infoReqLine = infoReqSummary
+  infoReqLine = formatList(infoReqSummary, {
+    pair: i18n._('default.pair'),
+    middle: i18n._('default.middle'),
+    end: i18n._('default.end'),
+  })
 
-  } else {
-    //Pop the last item of the array to be used in conjuction
-    infoReqSummaryLastItem = infoReqSummary.pop();
-    //Join the arr with comma delimiter
-    infoReqSummaryFirstitems = infoReqSummary.join(', ');
-
-    //compose the overview summary
-    infoReqLine = infoReqSummaryFirstitems
-      + i18n._('confirmationPage.howDidItStart.conjuction')
-      + infoReqSummaryLastItem
-  }
   //push all select entities into the stack and if 'other' is selected, push the value of other.
   personalInformation.typeOfInfoObtained.map(key =>
     infoObtainedSummary.push(
       key === 'typeOfInfoObtained.other'
-        ? personalInformation.infoObtainedOther : i18n._(key).toLowerCase(),
+        ? personalInformation.infoObtainedOther
+        : i18n._(key),
     ),
   )
-  // No need for conjuction where is only is a single contact
-  if (personalInformation.typeOfInfoObtained.length === 1) {
-    infoObtainedLine = infoObtainedSummary
 
-  } else {
-    //Pop the last item of the array to be used in conjuction
-    infoObtainedSummaryLastItem = infoObtainedSummary.pop();
-    //Join the arr with comma delimiter
-    infoObtainedSummaryFirstitems = infoObtainedSummary.join(', ');
-
-    //compose the overview summary
-    infoObtainedLine = infoObtainedSummaryFirstitems
-      + i18n._('confirmationPage.howDidItStart.conjuction')
-      + infoObtainedSummaryLastItem
-  }
+  infoObtainedLine = formatList(infoObtainedSummary, {
+    pair: i18n._('default.pair'),
+    middle: i18n._('default.middle'),
+    end: i18n._('default.end'),
+  })
 
   const hasInfoToDisplay =
-    personalInformation.typeOfInfoReq.length > 0 ||
-    personalInformation.typeOfInfoObtained.length > 0 ||
+    infoReqLine.length > 0 ||
+    infoObtainedLine.length > 0 ||
     personalInformation.tellUsMore.length > 0
-
 
   return (
     <React.Fragment>
@@ -87,6 +67,10 @@ export const InformationSummary = props => {
           <Trans id="confirmationPage.personalInformation.typeOfInfoObtained" />
           <Trans id="confirmationPage.personalInformation.tellUsMore" />
           <Trans id="confirmationPage.personalInformation.title.edit" />
+          {/**Consider moving this upwards if we want to go towards lingui defaults */}
+          <Trans id="default.pair" />
+          <Trans id="default.middle" />
+          <Trans id="default.end" />
         </div>
       ) : null}
 
@@ -115,27 +99,21 @@ export const InformationSummary = props => {
               description={infoReqLine}
             />
 
-
-
-
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
               description={infoObtainedLine}
             />
-
 
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.tellUsMore"
               description={personalInformation.tellUsMore}
             />
           </Stack>
-
         ) : (
-            <Text>
-              <Trans id="confirmationPage.personalInformation.nag" />
-            </Text>
-          )}
-
+          <Text>
+            <Trans id="confirmationPage.personalInformation.nag" />
+          </Text>
+        )}
       </Stack>
     </React.Fragment>
   )
