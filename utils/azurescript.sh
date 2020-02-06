@@ -78,5 +78,6 @@ az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NA
 ## Configure app service for https only
 az webapp update --https-only true --name $APP_NAME --resource-group $RG_NAME
 
-## Configure app service to log to Log Analytics workspace
+## Configure resources to log to Log Analytics workspace
 az monitor diagnostic-settings create --resource $(az webapp show --name $APP_NAME --resource-group $RG_NAME --query 'id' --output tsv) --name ${APP_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logs.json --metrics @metrics.json
+az monitor diagnostic-settings create --resource $(az cognitiveservices account show --name $COGNITIVE_NAME --resource-group $RG_NAME --query id --output tsv) --name ${COGNITIVE_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logscontentmod.json --metrics @metricscontentmod.json
