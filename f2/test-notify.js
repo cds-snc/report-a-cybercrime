@@ -71,6 +71,8 @@ const encryptMessage = (uid, message, sendMail) => {
         if (!error && !stderr) {
           const attachment = stdout
           console.log('Encrypted Mail: Message encrypted')
+          console.log(attachment)
+
           sendMail(attachment)
         }
       },
@@ -99,7 +101,7 @@ async function sendMail(attachment) {
       },
     ],
   }
-  console.log(message)
+  // console.log(message)
 
   let info = await transporter.sendMail(message)
   console.log(`Encrypted Mail: Message sent to ${mailTo}: ${info.messageId}`)
@@ -107,12 +109,12 @@ async function sendMail(attachment) {
 
 // ----------------------------------------------------
 
+const sendMail2 = () => {}
+
 getCert(ldapUid, mailCertFile)
 
-// setTimeout(() => encryptMessage(ldapUid, 'hi from NodeJS!', () => {}), 1000)
-
 setTimeout(
-  () => encryptMessage(ldapUid, 'Hello!\nHi from NodeJS!\n', sendMail),
+  () => encryptMessage(ldapUid, 'Hello!\nHi from NodeJS!\n', sendMail2),
   1000,
 )
 
