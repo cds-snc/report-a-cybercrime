@@ -65,8 +65,8 @@ const encryptMessage = (uid, message, sendMail) => {
       { cwd: process.cwd() },
       function(error, stdout, stderr) {
         if (error) throw error
-        if (stderr) console.log(stderr)
-        if (!error && !stderr) {
+        else if (stderr) console.log(stderr)
+        else {
           const attachment = stdout
           console.log('Encrypted Mail: Message encrypted')
           fs.unlink(messageFileName, () => {})
@@ -106,7 +106,7 @@ async function sendMail(attachment) {
 // ----------------------------------------------------
 
 const getAllCerts = uidList => {
-  if (uidList) uidList.split().forEach(uid => getCert(uid, certFileName(uid)))
+  if (uidList) uidList.split().forEach(uid => getCert(uid))
   else console.warn('Encrypted Mail: No certs to fetch!')
 }
 
