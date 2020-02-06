@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 const nodemailer = require('nodemailer')
 const ldap = require('ldapjs')
@@ -99,7 +99,6 @@ async function sendMail(attachment) {
       },
     ],
   }
-  // console.log(message)
 
   let info = await transporter.sendMail(message)
   console.log(`Encrypted Mail: Message sent to ${mailTo}: ${info.messageId}`)
@@ -107,11 +106,16 @@ async function sendMail(attachment) {
 
 // ----------------------------------------------------
 
-const sendMail2 = () => {}
+const getAllCerts = uidList => {
+  uidList.split().forEach(uid => getCert(uid, certFileName(uid)))
+}
 
-ldapUid.split().forEach(uid => getCert(uid, certFileName(uid)))
+const encryptAndSend = (uidList, message) => {
+  encryptMessage(uidList, message, sendMail)
+}
 
-setTimeout(
-  () => encryptMessage(ldapUid, 'Hello!\nHi from NodeJS!\n', sendMail2),
-  1000,
-)
+getAllCerts(ldapUid)
+
+setTimeout(() => encryptAndSend(ldapUid, 'Hello World\nFrom node'), 1000)
+
+module.exports = { getAllCerts, encryptAndSend }
