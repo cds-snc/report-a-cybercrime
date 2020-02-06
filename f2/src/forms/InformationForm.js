@@ -39,8 +39,6 @@ const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
   )
 }
 
-
-
 export const InformationForm = props => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
@@ -59,7 +57,13 @@ export const InformationForm = props => {
     'typeOfInfoReq.other',
   ]
 
-
+  const typeOfInfoObtained = [
+    'typeOfInfoObtained.creditCard',
+    'typeOfInfoObtained.dob',
+    'typeOfInfoObtained.homeAddress',
+    'typeOfInfoObtained.sin',
+    'typeOfInfoObtained.other',
+  ]
 
   return (
     <React.Fragment>
@@ -75,14 +79,18 @@ export const InformationForm = props => {
           <Trans id="typeOfInfoObtained.homeAddress" />
           <Trans id="typeOfInfoObtained.sin" />
           <Trans id="typeOfInfoObtained.other" />
-
         </div>
       ) : null}
       <Form
         initialValues={information}
         onSubmit={props.onSubmit}
         render={({ handleSubmit, values }) => (
-          <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
+          <Stack
+            as="form"
+            onSubmit={handleSubmit}
+            shouldWrapChildren
+            spacing={6}
+          >
             <Control as="fieldset" name="typeOfInfoReq">
               <FormLabel as="legend" htmlFor="typeOfInfoReq" mb={2}>
                 <Trans id="informationPage.typeOfInfoReq" />
@@ -94,32 +102,29 @@ export const InformationForm = props => {
                 {typeOfInfoReq.map(key => {
                   return (
                     <Box key={key}>
-                      <CheckboxArrayControl
-                        name="typeOfInfoReq"
-                        value={key}
-
-                      >
+                      <CheckboxArrayControl name="typeOfInfoReq" value={key}>
                         {i18n._(key)}
                       </CheckboxArrayControl>
-                      {key === 'typeOfInfoReq.other' && values.typeOfInfoReq.includes('typeOfInfoReq.other') && (
-                        <ConditionalForm>
-                          <Field name='infoReqOther'>
-                            {props => (
-                              <FormControl>
-                                <FormLabel htmlFor={key}>
-
-                                </FormLabel>
-                                <TextInput
-                                  id='infoReqOther'
-                                  name={props.input.name}
-                                  value={props.input.value}
-                                  onChange={props.input.onChange}
-                                />
-                              </FormControl>
-                            )}
-                          </Field>
-                        </ConditionalForm>
-                      )}
+                      {key === 'typeOfInfoReq.other' &&
+                        values.typeOfInfoReq.includes(
+                          'typeOfInfoReq.other',
+                        ) && (
+                          <ConditionalForm>
+                            <Field name="infoReqOther">
+                              {props => (
+                                <FormControl>
+                                  <FormLabel htmlFor={key}></FormLabel>
+                                  <TextInput
+                                    id="infoReqOther"
+                                    name={props.input.name}
+                                    value={props.input.value}
+                                    onChange={props.input.onChange}
+                                  />
+                                </FormControl>
+                              )}
+                            </Field>
+                          </ConditionalForm>
+                        )}
                     </Box>
                   )
                 })}
@@ -133,41 +138,40 @@ export const InformationForm = props => {
                 <Trans id="informationPage.typeOfInfoObtainedExample" />
               </FormHelperText>
               <Stack spacing={4} shouldWrapChildren>
-                {typeOfInfoReq.map(key => {
+                {typeOfInfoObtained.map(key => {
                   return (
                     <Box key={key}>
                       <CheckboxArrayControl
                         name="typeOfInfoObtained"
                         value={key}
-
                       >
                         {i18n._(key)}
                       </CheckboxArrayControl>
-                      {key === 'typeOfInfoReq.other' && values.typeOfInfoObtained.includes('typeOfInfoReq.other') && (
-                        <ConditionalForm>
-                          <Field name='infoObtainedOther'>
-                            {props => (
-                              <FormControl>
-                                <FormLabel htmlFor={key}>
-
-                                </FormLabel>
-                                <TextInput
-                                  id='infoObtainedOther'
-                                  name={props.input.name}
-                                  value={props.input.value}
-                                  onChange={props.input.onChange}
-                                />
-                              </FormControl>
-                            )}
-                          </Field>
-                        </ConditionalForm>
-                      )}
+                      {key === 'typeOfInfoObtained.other' &&
+                        values.typeOfInfoObtained.includes(
+                          'typeOfInfoObtained.other',
+                        ) && (
+                          <ConditionalForm>
+                            <Field name="infoObtainedOther">
+                              {props => (
+                                <FormControl>
+                                  <FormLabel htmlFor={key}></FormLabel>
+                                  <TextInput
+                                    id="infoObtainedOther"
+                                    name={props.input.name}
+                                    value={props.input.value}
+                                    onChange={props.input.onChange}
+                                  />
+                                </FormControl>
+                              )}
+                            </Field>
+                          </ConditionalForm>
+                        )}
                     </Box>
                   )
                 })}
               </Stack>
             </Control>
-
 
             <Field name="tellUsMore">
               {props => (

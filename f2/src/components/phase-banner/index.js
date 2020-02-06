@@ -14,6 +14,7 @@ export const PhaseBanner = props => (
           letterSpacing={2}
           rounded="none"
           color="black"
+          variantColor="gray"
           borderWidth="2px"
           borderColor="gray.900"
           minW="inherit"
