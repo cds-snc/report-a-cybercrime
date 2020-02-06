@@ -52,7 +52,7 @@ export const EvidenceInfoSummary = props => {
                     <Text pr={4}>{index + 1}.</Text>
                     <Box>
                       <Text as="dt" fontWeight="bold">
-                        {file}
+                        {file.name}
                       </Text>
                       <Text as="dd">{evidence.fileDescriptions[index]}</Text>
                     </Box>
