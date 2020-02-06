@@ -5,13 +5,20 @@ import { Trans } from '@lingui/macro'
 import { Form, Field, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
-import { Radio } from '../components/radio'
-import { FormControl, Stack, Box } from '@chakra-ui/core'
+import { Radio, RadioAdapter } from '../components/radio'
+import {
+  FormControl,
+  Stack,
+  Box,
+  RadioGroup,
+  CheckboxGroup,
+} from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 import { ConditionalForm } from '../components/container'
+import { FormArrayControl } from '../components/FormArrayControl'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -165,14 +172,12 @@ export const HowDidItStartForm = props => {
             shouldWrapChildren
             spacing={12}
           >
-            <Control as="fieldset" name="howDidTheyReachYou">
-              <FormLabel as="legend" htmlFor="howDidTheyReachYou" mb={2}>
-                <Trans id="howDidTheyReachYou.question" />
-              </FormLabel>
-              <FormHelperText>
-                <Trans id="howDidTheyReachYou.reminder" />
-              </FormHelperText>
-              <Stack spacing={4} shouldWrapChildren>
+            <FormArrayControl
+              name="howDidTheyReachYou"
+              label={<Trans id="howDidTheyReachYou.question" />}
+              helperText={<Trans id="howDidTheyReachYou.reminder" />}
+            >
+              <CheckboxGroup spacing={4}>
                 {questionsList.map(question => {
                   return (
                     <Box key={question.channel}>
@@ -210,50 +215,50 @@ export const HowDidItStartForm = props => {
                     </Box>
                   )
                 })}
-              </Stack>
-            </Control>
+              </CheckboxGroup>
+            </FormArrayControl>
 
-            <Control as="fieldset" name="whenDidItStart">
-              <FormLabel as="legend" htmlFor="whenDidItStart" mb={2}>
-                <Trans id="whenDidItStart.label" />
-              </FormLabel>
-              <Stack spacing={4} shouldWrapChildren>
+            <FormArrayControl
+              name="whenDidItStart"
+              label={<Trans id="whenDidItStart.label" />}
+            >
+              <RadioGroup spacing={4}>
                 {whenDidItStart.map(key => {
                   return (
-                    <Box key={key}>
-                      <RadioButtonArrayControl
+                    <React.Fragment key={key}>
+                      <RadioAdapter
                         name="whenDidItStart"
                         value={key}
                         isChecked={timeline.whenDidItStart.includes(key)}
                       >
                         {i18n._(key)}
-                      </RadioButtonArrayControl>
-                    </Box>
+                      </RadioAdapter>
+                    </React.Fragment>
                   )
                 })}
-              </Stack>
-            </Control>
+              </RadioGroup>
+            </FormArrayControl>
 
-            <Control as="fieldset" name="howManyTimes">
-              <FormLabel as="legend" htmlFor="howManyTimes" mb={2}>
-                <Trans id="howManyTimes.label" />
-              </FormLabel>
-              <Stack spacing={4} shouldWrapChildren>
+            <FormArrayControl
+              name="howManyTimes"
+              label={<Trans id="howManyTimes.label" />}
+            >
+              <RadioGroup spacing={4}>
                 {howManyTimes.map(key => {
                   return (
                     <Box key={key}>
-                      <RadioButtonArrayControl
+                      <RadioAdapter
                         name="howManyTimes"
                         value={key}
                         isChecked={recurrenceCheck.howManyTimes.includes(key)}
                       >
                         {i18n._(key)}
-                      </RadioButtonArrayControl>
+                      </RadioAdapter>
                     </Box>
                   )
                 })}
-              </Stack>
-            </Control>
+              </RadioGroup>
+            </FormArrayControl>
             <NextAndCancelButtons
               next={<Trans id="howDidItStartPage.nextPage" />}
               button={<Trans id="howDidItStartPage.nextButton" />}

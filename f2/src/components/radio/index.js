@@ -4,54 +4,69 @@ import { jsx } from '@emotion/core'
 import { Text } from '../text'
 import { UniqueID } from '../unique-id'
 import { Box, VisuallyHidden, ControlBox, Flex } from '@chakra-ui/core'
+import { useField } from 'react-final-form'
 
-export const Radio = ({ label, isChecked, ...props }) => {
+export const RadioAdapter = ({ name, value, defaultIsChecked, children }) => {
+  const {
+    input: { checked, ...input },
+    meta: { error, touched },
+  } = useField(name, {
+    type: 'radio',
+    value,
+    defaultIsChecked,
+  })
+
+  return (
+    <Radio input={input} isChecked={checked} isInvalid={error && touched}>
+      {children}
+    </Radio>
+  )
+}
+
+export const Radio = ({ input, label, isChecked, ...props }) => {
   return (
     <UniqueID>
       {id => {
         return (
-          <Box as="label" {...props} id={id}>
-            <Flex align="center">
-              <VisuallyHidden
-                as="input"
-                type="radio"
-                name={props.name}
-                value={props.value}
-                defaultChecked={isChecked ? 'true' : ''}
-              />
+          <Flex as="label" id={id} align="center">
+            <VisuallyHidden
+              {...input}
+              as="input"
+              type="radio"
+              defaultChecked={isChecked ? 'true' : ''}
+            />
 
-              <ControlBox
-                borderWidth="2px"
-                borderColor="black"
-                size="40px"
-                rounded="full"
-                type="radio"
-                _hover={{
-                  boxShadow: 'outlineHover',
-                  borderColor: 'black',
-                }}
-                _checked={{
-                  borderColor: 'black',
-                  border: '3px',
-                }}
-                _checkedAndHover={{
-                  boxShadow: 'outlineHover',
-                }}
-                _focus={{
-                  outline: 'none',
-                  bg: 'white',
-                  boxShadow: 'outline',
-                  borderColor: 'black',
-                }}
-              >
-                <Box size="20px" bg="black" rounded="full" />
-              </ControlBox>
+            <ControlBox
+              borderWidth="2px"
+              borderColor="black"
+              size="40px"
+              rounded="full"
+              type="radio"
+              _hover={{
+                boxShadow: 'outlineHover',
+                borderColor: 'black',
+              }}
+              _checked={{
+                borderColor: 'black',
+                border: '3px',
+              }}
+              _checkedAndHover={{
+                boxShadow: 'outlineHover',
+              }}
+              _focus={{
+                outline: 'none',
+                bg: 'white',
+                boxShadow: 'outline',
+                borderColor: 'black',
+              }}
+            >
+              <Box size="20px" bg="black" rounded="full" />
+            </ControlBox>
 
-              <Text ml={2} htmlFor={id}>
-                {props.children}
-              </Text>
-            </Flex>
-          </Box>
+            <Text ml={2} htmlFor={id}>
+              {props.children}
+            </Text>
+          </Flex>
         )
       }}
     </UniqueID>
