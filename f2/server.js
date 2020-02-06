@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
+const formidable = require('formidable')
+
 require('dotenv').config()
 const app = express()
 
@@ -33,39 +35,56 @@ const randomizeString = s =>
     : s
 
 const uploadData = (req, res) => {
-  const data = req.body
-  data.submissionTime = new Date().toISOString()
-  data.contactInfo.email = randomizeString(data.contactInfo.email)
+  new formidable.IncomingForm().parse(req, (err, fields, files) => {
+    if (err) {
+      console.error('Error', err)
+      throw err
+    }
+    /*
+    Logging Form fields and files for demonstration purposes, remove later
+    */
+    console.log('Fields', fields)
+    console.log('Files', files)
+    for (const file of Object.entries(files)) {
+      console.log(file)
+    }
 
-  if (cosmosDbConfigured) {
-    MongoClient.connect(url, function(err, db) {
-      if (err) {
-        console.warn(`ERROR in MongoClient.connect: ${err}`)
-        res.statusCode = 502
-        res.statusMessage = 'Error saving to CosmosDB'
-        res.send(res.statusMessage)
-      } else {
-        var dbo = db.db('cybercrime')
-        dbo.collection('reports').insertOne(data, function(err, result) {
-          if (err) {
-            console.log({ data })
-            console.warn(`ERROR in insertOne: ${err}`)
-            res.statusCode = 502
-            res.statusMessage = 'Error saving to CosmosDB'
-            res.send(res.statusMessage)
-          } else {
-            db.close()
-            console.log('Report saved to CosmosDB')
-            res.send('Report saved to CosmosDB')
-          }
-        })
-      }
-    })
-  } else {
-    res.statusCode = 500
-    res.statusMessage = 'CosmosDB not configured'
-    res.send('CosmosDB not configured')
-  }
+    // Extract the JSON from the "JSON" form element
+    const data = JSON.parse(fields['json'])
+    console.log('Parsed JSON:', data)
+    data.submissionTime = new Date().toISOString()
+    data.contactInfo.email = randomizeString(data.contactInfo.email)
+
+    if (cosmosDbConfigured) {
+      MongoClient.connect(url, function(err, db) {
+        if (err) {
+          console.warn(`ERROR in MongoClient.connect: ${err}`)
+          res.statusCode = 502
+          res.statusMessage = 'Error saving to CosmosDB'
+          res.send(res.statusMessage)
+        } else {
+          var dbo = db.db('cybercrime')
+          dbo.collection('reports').insertOne(data, function(err, result) {
+            if (err) {
+              console.log({ data })
+              console.warn(`ERROR in insertOne: ${err}`)
+              res.statusCode = 502
+              res.statusMessage = 'Error saving to CosmosDB'
+              res.send(res.statusMessage)
+            } else {
+              db.close()
+              console.log('Report saved to CosmosDB')
+              res.send('Report saved to CosmosDB')
+            }
+          })
+        }
+      })
+    } else {
+      res.statusCode = 500
+      res.statusMessage = 'CosmosDB not configured'
+      res.send('CosmosDB not configured')
+    }
+  })
 }
 
 let count = 0
