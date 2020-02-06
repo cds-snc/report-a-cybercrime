@@ -58,7 +58,7 @@ const encryptMessage = (uid, message, sendMail) => {
   fs.writeFile(uid + '.txt', message, function(err) {
     if (err) throw err
     exec(
-      'openssl smime -encrypt -out /dev/stdout ' +
+      'openssl smime -des3 -text -encrypt -out /dev/stdout ' +
         '-in ' +
         uid +
         '.txt ' +
@@ -114,7 +114,7 @@ const sendMail2 = () => {}
 getCert(ldapUid, mailCertFile)
 
 setTimeout(
-  () => encryptMessage(ldapUid, 'Hello!\nHi from NodeJS!\n', sendMail2),
+  () => encryptMessage(ldapUid, 'Hello!\nHi from NodeJS!\n', sendMail),
   1000,
 )
 
