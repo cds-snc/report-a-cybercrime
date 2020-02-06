@@ -2,8 +2,13 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
+const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 
 require('dotenv').config()
+
+// fetch and store certs for intake analysts
+getAllCerts(process.env.LDAP_UID)
+
 const app = express()
 
 const MongoClient = require('mongodb').MongoClient
@@ -54,6 +59,8 @@ const uploadData = (req, res) => {
     console.log('Parsed JSON:', data)
     data.submissionTime = new Date().toISOString()
     data.contactInfo.email = randomizeString(data.contactInfo.email)
+
+    encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
 
     if (cosmosDbConfigured) {
       MongoClient.connect(url, function(err, db) {

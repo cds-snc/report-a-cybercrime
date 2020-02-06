@@ -12,7 +12,6 @@ const mailHost = process.env.MAIL_HOST
 const mailUser = process.env.MAIL_USER
 const mailPass = process.env.MAIL_PASS
 const ldapUrl = process.env.LDAP_URL
-const ldapUid = process.env.LDAP_UID
 const mailTo = process.env.MAIL_TO
 const mailFrom = process.env.MAIL_FROM
 
@@ -107,15 +106,16 @@ async function sendMail(attachment) {
 // ----------------------------------------------------
 
 const getAllCerts = uidList => {
-  uidList.split().forEach(uid => getCert(uid, certFileName(uid)))
+  if (uidList) uidList.split().forEach(uid => getCert(uid, certFileName(uid)))
+  else console.warn('Encrypted Mail: No certs to fetch!')
 }
 
 const encryptAndSend = (uidList, message) => {
-  encryptMessage(uidList, message, sendMail)
+  if (uidList) encryptMessage(uidList, message, sendMail)
+  else console.warn('Encrypted Mail: No certs to encrypt with!')
 }
 
-getAllCerts(ldapUid)
-
-setTimeout(() => encryptAndSend(ldapUid, 'Hello World\nFrom node'), 1000)
+// getAllCerts(process.env.LDAP_UID)
+// setTimeout(() => encryptAndSend(process.env.LDAP_UID, 'Hello World\nFrom node'), 1000)
 
 module.exports = { getAllCerts, encryptAndSend }
