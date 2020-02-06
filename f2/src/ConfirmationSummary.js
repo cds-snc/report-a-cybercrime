@@ -39,13 +39,15 @@ export const testdata = {
     moneyLost: {
       demandedMoney: '',
       moneyTaken: '',
-      methodPayment: '',
+      methodPayment: [],
       transactionDate: '',
       tellUsMore: '',
     },
     personalInformation: {
-      typeOfInfoReq: '',
-      typeOfInfoObtained: '',
+      typeOfInfoReq: [],
+      typeOfInfoObtained: [],
+      infoReqOther: '',
+      infoObtainedOther: '',
       tellUsMore: '',
     },
     devicesInfo: { deviceOrAccount: '', devicesTellUsMore: '' },
@@ -65,9 +67,6 @@ export const testdata = {
     contactInfo: { email: '', phone: '' },
   },
 }
-
-
-
 
 export const EditButton = ({ path, label }) => {
   const { i18n } = useLingui()
@@ -91,23 +90,21 @@ export const ConfirmationSummary = () => {
 
   return (
     <React.Fragment>
-      <Stack spacing={12} shouldWrapChildren>
+      <Stack spacing={12}>
         <HowDidItStartSummary />
         <WhatWasAffectedSummary />
-        {console.log('affectioned options: ' + impact.affectedOptions)}
-        {impact.affectedOptions.includes('whatWasAffectedForm.financial') &&
-
+        {impact.affectedOptions.includes('whatWasAffectedForm.financial') && (
           <MoneyLostInfoSummary />
-        }
-        {impact.affectedOptions.includes('whatWasAffectedForm.personal_information') &&
-          <InformationSummary />
-        }
-        {impact.affectedOptions.includes('whatWasAffectedForm.devices') &&
+        )}
+        {impact.affectedOptions.includes(
+          'whatWasAffectedForm.personal_information',
+        ) && <InformationSummary />}
+        {impact.affectedOptions.includes('whatWasAffectedForm.devices') && (
           <DevicesSummary />
-        }
-        {impact.affectedOptions.includes('whatWasAffectedForm.business_assets') &&
-          <BusinessInfoSummary />
-        }
+        )}
+        {impact.affectedOptions.includes(
+          'whatWasAffectedForm.business_assets',
+        ) && <BusinessInfoSummary />}
 
         <WhatHappenedSummary />
         <SuspectCluesSummary />
