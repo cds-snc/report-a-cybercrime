@@ -49,7 +49,7 @@ const getCert = uid => {
       console.error('Encrypted Mail: error: ' + err.message)
     })
     res.on('end', function(result) {
-      if (result.status != 0)
+      if (result.status !== 0)
         console.log('Encrypted Mail: end status: ' + result.status)
       ldapClient.destroy()
     })
