@@ -8,11 +8,10 @@ import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Text } from '../components/text'
-import { useIntl } from 'react-intl'
+import { formatList } from '../utils/formatList'
 
 export const WhatWasAffectedSummary = props => {
   const { i18n } = useLingui()
-  const intl = useIntl()
 
   const [data] = useStateValue()
   const impact = {
@@ -29,7 +28,13 @@ export const WhatWasAffectedSummary = props => {
           <Trans id="confirmationPage.ImpactTitle.edit" />
         </div>
       ) : null}
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
           <H2 fontWeight="normal">
             <Trans id="confirmationPage.ImpactTitle" />
@@ -45,9 +50,12 @@ export const WhatWasAffectedSummary = props => {
               <Trans id="confirmationPage.whatWasAffected.format" />
               &nbsp;
               <Text as="span" textTransform="lowercase">
-                {intl.formatList(
+                {formatList(
                   impact.affectedOptions.map(i => i18n._(i)),
-                  { type: 'conjunction' },
+                  {
+                    type: i18n._('default.conjunction'),
+                    style: i18n._('default.glue'),
+                  },
                 )}
               </Text>
             </Text>

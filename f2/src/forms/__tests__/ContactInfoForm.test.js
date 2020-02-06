@@ -24,7 +24,7 @@ describe('<ContactInfoForm />', () => {
   it.only('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getAllByRole, getByRole } = render(
+    const { getAllByRole, getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -37,9 +37,13 @@ describe('<ContactInfoForm />', () => {
     )
 
     const inputNode = getAllByRole('textbox')[0]
-    const nextButton = getByRole('button')
+    // we want to grab whatever is in the submit button as text, pass it to getByText
+    const context = document.querySelector('[type="submit"]').textContent
+    const nextButton = getByText(context)
 
-    fillIn(inputNode, { with: 'Mallory' })
+    fillIn(inputNode, {
+      with: 'Mallory',
+    })
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 
