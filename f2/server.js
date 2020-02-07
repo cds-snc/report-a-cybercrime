@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
-import { selfHarmWordsScan } from '../selfHarmWordsScan'
+const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
 
 require('dotenv').config()
 
