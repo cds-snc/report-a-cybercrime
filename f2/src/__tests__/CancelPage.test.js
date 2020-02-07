@@ -4,15 +4,15 @@ import { MemoryRouter } from 'react-router-dom'
 import { render, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { DevicesPage } from '../DevicesPage'
-import canada from '../theme/canada'
 import en from '../locales/en.json'
+import canada from '../theme/canada'
 import { StateProvider, initialState, reducer } from '../utils/state'
+import { CancelPage } from '../CancelPage'
 
 i18n.load('en', { en })
 i18n.activate('en')
 
-describe('<DevicesPage />', () => {
+describe('<CancelPage />', () => {
   beforeEach(() => (global.scrollTo = jest.fn()))
   afterEach(cleanup)
 
@@ -22,7 +22,7 @@ describe('<DevicesPage />', () => {
         <ThemeProvider theme={canada}>
           <StateProvider initialState={initialState} reducer={reducer}>
             <I18nProvider i18n={i18n}>
-              <DevicesPage />
+              <CancelPage />
             </I18nProvider>
           </StateProvider>
         </ThemeProvider>

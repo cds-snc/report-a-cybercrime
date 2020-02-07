@@ -1,0 +1,50 @@
+[
+    {
+      "category": "DataPlaneRequests",
+      "enabled": true,
+      "retentionPolicy": {
+        "days": 0,
+        "enabled": false
+      }
+    },
+    {
+      "category": "MongoRequests",
+      "enabled": true,
+      "retentionPolicy": {
+        "days": 0,
+        "enabled": false
+      }
+    },
+    {
+      "category": "QueryRuntimeStatistics",
+      "enabled": true,
+      "retentionPolicy": {
+        "days": 0,
+        "enabled": false
+      }
+    },
+    {
+      "category": "PartitionKeyStatistics",
+      "enabled": true,
+      "retentionPolicy": {
+        "days": 0,
+        "enabled": false
+      }
+    },
+    {
+      "category": "PartitionKeyRUConsumption",
+      "enabled": true,
+      "retentionPolicy": {
+        "days": 0,
+        "enabled": false
+      }
+    },
+    {
+      "category": "ControlPlaneRequests",
+      "enabled": true,
+      "retentionPolicy": {
+        "days": 0,
+        "enabled": false
+      }
+    }
+  ]

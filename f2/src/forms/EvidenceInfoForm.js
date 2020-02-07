@@ -24,7 +24,7 @@ export const EvidenceInfoForm = props => {
     ...data.formData.scammerDetails,
   }
 
-  const [files, setFiles] = useState(cached.files.map(file => ({ name: file })))
+  const [files, setFiles] = useState(cached.files)
   const [fileDescriptions, setFileDescriptions] = useState(
     cached.fileDescriptions,
   )
@@ -61,7 +61,7 @@ export const EvidenceInfoForm = props => {
 
   const localSubmit = () => {
     const data = {
-      files: files.map(f => f.name),
+      files,
       fileDescriptions,
     }
     props.onSubmit(data)
