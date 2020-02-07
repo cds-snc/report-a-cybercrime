@@ -2,6 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Container } from '../container'
 
+class ScrollToTop extends React.Component {
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
+  render() {
+    return <div />
+  }
+}
+
 export const Layout = ({ fluid, columns, ...props }) => {
   const col = {
     base: columns.base * 100 + '%',
@@ -11,19 +21,22 @@ export const Layout = ({ fluid, columns, ...props }) => {
   }
 
   return (
-    <Container
-      {...(fluid
-        ? { w: '100%' }
-        : {
-            maxW: { sm: 540, md: 768, lg: 960, xl: 1200 },
-            mx: 'auto',
-            px: 4,
-            w: '100%',
-          })}
-      {...props}
-    >
-      <Container w={col}>{props.children}</Container>
-    </Container>
+    <React.Fragment>
+      <ScrollToTop />
+      <Container
+        {...(fluid
+          ? { w: '100%' }
+          : {
+              maxW: { sm: 540, md: 768, lg: 960, xl: 1200 },
+              mx: 'auto',
+              px: 4,
+              w: '100%',
+            })}
+        {...props}
+      >
+        <Container w={col}>{props.children}</Container>
+      </Container>
+    </React.Fragment>
   )
 }
 
