@@ -18,12 +18,16 @@ import { PrivacyConsentPage } from './PrivacyConsentPage'
 import { PrivacyStatementPage } from './PrivacyStatementPage'
 import { WhatWasAffectedPage } from './WhatWasAffected'
 import { FeedbackPage } from './FeedbackPage'
+import { StartPage } from './StartPage'
 
 export const Home = () => (
   <Router>
     <Switch>
       <Route exact path="/">
         <LandingPage />
+      </Route>
+      <Route exact path="/startPage">
+        <StartPage />
       </Route>
       <Route path="/privacyconsent">
         <PrivacyConsentPage />
