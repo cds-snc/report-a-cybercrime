@@ -32,9 +32,9 @@ async function postData(url = '', data = {}) {
   // Stick all our collected data into a single form element called json
   // Maybe there's a better way to generate form fields from json?
   // add the files to the formdata object after.
-  var form_data = new FormData();
-  form_data.append('json', JSON.stringify(data));
-  data.evidence.files.forEach(f => form_data.append(f.name, f, f.name));
+  var form_data = new FormData()
+  form_data.append('json', JSON.stringify(data))
+  data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
 
   // Default options are marked with *
   const response = await fetch(url, {

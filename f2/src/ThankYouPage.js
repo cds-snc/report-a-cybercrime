@@ -22,7 +22,6 @@ export const ThankYouPage = () => {
 
   const contactInfo = {
     ...data.formData.contactInfo,
-
   }
   return (
     <Box w="100%">
@@ -41,9 +40,7 @@ export const ThankYouPage = () => {
             <H1 mb={6}>
               <Trans id="thankYouPage.title" />
             </H1>
-            {contactInfo.email &&
-              <Trans id="thankYouPage.summary" />
-            }
+            {contactInfo.email && <Trans id="thankYouPage.summary" />}
 
             <Trans
               id="thankYouPage.referenceNumber"
@@ -152,7 +149,6 @@ export const ThankYouPage = () => {
         </Link>
       </Layout>
       <Layout fluid borderBottom="4px" borderColor="blue.500">
-
         <Layout>
           <Alert status="info" variant="solid">
             <AlertIcon name="chat" mt={0} />

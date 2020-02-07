@@ -2,8 +2,13 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
+const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 
 require('dotenv').config()
+
+// fetch and store certs for intake analysts
+getAllCerts(process.env.LDAP_UID)
+
 const app = express()
 
 const MongoClient = require('mongodb').MongoClient
@@ -35,7 +40,6 @@ const randomizeString = s =>
     : s
 
 const uploadData = (req, res) => {
-
   new formidable.IncomingForm().parse(req, (err, fields, files) => {
     if (err) {
       console.error('Error', err)
@@ -49,13 +53,14 @@ const uploadData = (req, res) => {
     for (const file of Object.entries(files)) {
       console.log(file)
     }
-      
 
     // Extract the JSON from the "JSON" form element
-    const data = JSON.parse(fields['json']);
-    console.log('Parsed JSON:', data);
+    const data = JSON.parse(fields['json'])
+    console.log('Parsed JSON:', data)
     data.submissionTime = new Date().toISOString()
     data.contactInfo.email = randomizeString(data.contactInfo.email)
+
+    encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
 
     if (cosmosDbConfigured) {
       MongoClient.connect(url, function(err, db) {
