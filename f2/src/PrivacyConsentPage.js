@@ -10,6 +10,17 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
+class ScrollToTop extends React.Component {
+  componentDidMount() {
+    window.scrollTo(0, 0)
+    console.log('mount!')
+  }
+
+  render() {
+    return <div />
+  }
+}
+
 export const PrivacyConsentPage = () => {
   const [state, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
 
@@ -17,6 +28,7 @@ export const PrivacyConsentPage = () => {
     <Route
       render={({ history }) => (
         <Layout>
+          <ScrollToTop />
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/">
