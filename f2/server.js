@@ -15,6 +15,14 @@ const MongoClient = require('mongodb').MongoClient
 
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
+const allowedOrigins = [
+  'http://dev.antifraudcentre-centreantifraude.ca',
+  'http://pre.antifraudcentre-centreantifraude.ca',
+  'http://antifraudcentre-centreantifraude.ca',
+  'http://centreantifraude-antifraudcentre.ca',
+  'http://antifraudcentre.ca',
+  'http://centreantifraude.ca',
+]
 
 let cosmosDbConfigured = dbName && dbKey
 if (!cosmosDbConfigured) {
@@ -99,6 +107,21 @@ let count = 0
 app
   .use(express.static(path.join(__dirname, 'build')))
   .use(bodyParser.json())
+  .use(function(req, res, next) {
+    var origin = req.headers.origin
+    // Can only set one value of Access-Control-Allow-Origin, so we need some code to set it dynamically
+    if (
+      origin !== undefined &&
+      allowedOrigins.indexOf(origin.toLowerCase()) > -1
+    ) {
+      res.header('Access-Control-Allow-Origin', origin)
+      res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept',
+      )
+    }
+    next()
+  })
 
   .get('/ping', function(_req, res) {
     return res.send('pong')

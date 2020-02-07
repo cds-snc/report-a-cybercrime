@@ -2,20 +2,35 @@
 
 export PROJECT_NAME=rcmpcybercrime
 export RG_NAME=MpPCCDSCybercrimeRG
+
 export ACR_NAME=MpPCCDSCybercrimeacr
 export IMAGE_NAME=f2
+
 export DB_NAME=mppccdscybercrimecosdb
+
 export PLAN_NAME=MpPCCDSCybercrimeazappplan
 export APP_NAME=MpPCCDSCybercrimeazapp
 export SERVICE_PRINCIPAL_NAME=MpPCCDSCybercrimeACR-sp
+
 export VIRUS_SCANNER_NAME=mppccdscybercrimeclamav
+
 export COGNITIVE_NAME=MpPCCogContMod1
+
 export WAF_RG=MpPCCorenetRg
 export WAF_NAME=MpPCWafGw
 export WAF_FRONTEND_IP=appGatewayFrontendIP
 export WAF_SUBSCRIPTION=MpPSub
+
 export LOG_ANALYTICS=MpPCSecWs
 export LOG_RG=MpPCSeclogRg
+
+export VNET_NAME=MpPCCDSCybercrimeVN
+export VNET_ADDRESS=10.9.0.0/16
+export APP_SUBNET="${APP_NAME}SN"
+export APP_SUBNET_RANGE=10.9.0.0/24
+export CONTAINER_SUBNET="${VIRUS_SCANNER_NAME}SN"
+export CONTAINER_SUBNET_RANGE=10.9.1.0/24
+
 
 #### Set up Azure
 ## Create Resource group
@@ -23,6 +38,10 @@ az group create --name $RG_NAME --location canadacentral
 
 # set default resource group
 az configure --defaults group=$RG_NAME location=canadacentral
+
+### Create VNET and SUBNETS for resources
+az network vnet create --name $VNET_NAME --resource-group $RG_NAME --address-prefixes $VNET_ADDRESS --subnet-name $APP_SUBNET --subnet-prefixes $APP_SUBNET_RANGE
+az network vnet subnet create --address-prefixes $CONTAINER_SUBNET_RANGE --name $CONTAINER_SUBNET --resource-group $RG_NAME --vnet-name $VNET_NAME
 
 ## Create Container registry
 ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku standard --query id --output tsv)
