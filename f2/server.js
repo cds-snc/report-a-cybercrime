@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+import { selfHarmWordsScan } from '../selfHarmWordsScan'
 
 require('dotenv').config()
 
@@ -57,6 +58,12 @@ const uploadData = (req, res) => {
     // Extract the JSON from the "JSON" form element
     const data = JSON.parse(fields['json'])
     console.log('Parsed JSON:', data)
+
+    const selfHarmWords = selfHarmWordsScan(data)
+    if (selfHarmWords) {
+      console.warn(`Self harm words detected: ${selfHarmWords}`)
+    }
+    data.selfHarmWords = selfHarmWords
     data.submissionTime = new Date().toISOString()
     data.contactInfo.email = randomizeString(data.contactInfo.email)
 
