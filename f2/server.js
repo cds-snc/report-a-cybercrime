@@ -6,6 +6,26 @@ const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 
 require('dotenv').config()
 
+// keyvault
+
+const { DefaultAzureCredential } = require('@azure/identity')
+const { SecretClient } = require('@azure/keyvault-secrets')
+
+const keyVaultName = process.env.KEY_VAULT_NAME
+const KVUri = 'https://' + keyVaultName + '.vault.azure.net'
+
+async function getSecrets() {
+  const credential = new DefaultAzureCredential()
+  const client = new SecretClient(KVUri, credential)
+
+  await client.setSecret('secretName', 'secretValue')
+  console.log('secret set!')
+  const retrievedSecret = await client.getSecret('newSecret')
+  console.log(retrievedSecret.value)
+}
+
+getSecrets()
+
 // fetch and store certs for intake analysts
 getAllCerts(process.env.LDAP_UID)
 
