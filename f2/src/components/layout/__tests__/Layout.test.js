@@ -3,6 +3,7 @@ import { render, cleanup } from '@testing-library/react'
 import { Layout } from '..'
 
 describe('<Layout />', () => {
+  beforeEach(() => (global.scrollTo = jest.fn()))
   afterEach(cleanup)
 
   it('renders', () => {
