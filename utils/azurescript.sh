@@ -12,6 +12,9 @@ export PLAN_NAME=MpPCCDSCybercrimeazappplan
 export APP_NAME=MpPCCDSCybercrimeazapp
 export SERVICE_PRINCIPAL_NAME=MpPCCDSCybercrimeACR-sp
 
+export KEYVAULT_NAME=mppccdscybercrimekeyvault
+export KEYVAULT_SERVICE_PRINCIPAL_NAME=http://mppccdscybercrimekeyvault-sp
+
 export VIRUS_SCANNER_NAME=mppccdscybercrimeclamav
 
 export COGNITIVE_NAME=MpPCCogContMod1
@@ -48,6 +51,11 @@ ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku standard --query id --out
 
 ## Create Database
 az cosmosdb create --name $DB_NAME --kind MongoDB
+
+## Create keyvault and service principal
+az keyvault create --name $KEYVAULT_NAME
+az ad sp create-for-rbac -n $KEYVAULT_SERVICE_PRINCIPAL_NAME --sdk-auth
+# need to get the AZURE_CLIENT_ID, AZURE_CLIENT_SECRET and AZURE_TENANT_ID and add to App Service env vars
 
 ## Create Antivirus Scanner Container Instance
 # - Currently not using the alpine version because mk0x needs to rebuild from clamd v102.2 or 103 to pickup known azure bugfix.
