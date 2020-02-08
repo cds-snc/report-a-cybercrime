@@ -23,13 +23,29 @@ Note that you must be in the `f2` directory to run the code.
 
 ### Set up the environment
 
-To run with a database connection and Google Analytics enabled you will need to define some environmental
-variables, either in your terminal or in `f2/.env`.
+Some features require you to define some environmental
+variables. You can add them to App Service, or for locally either `export` in your terminal or add to `f2/.env`
+
+#### Google Analytics
 
 ```sh
-export COSMOSDB_NAME=...
-export COSMOSDB_KEY=...
-export GOOGLE_ANALYTICS_ID=UA-XXXXXXXXX-X
+GOOGLE_ANALYTICS_ID=UA-XXXXXXXXX-X
+```
+
+#### Azure CosmosDB
+
+```sh
+COSMOSDB_NAME=...
+COSMOSDB_KEY=...
+```
+
+#### Azure Keyvault
+
+```sh
+AZURE_CLIENT_ID=...
+AZURE_CLIENT_SECRET=...
+AZURE_TENANT_ID=...
+KEY_VAULT_NAME=...
 ```
 
 ### Run with create-react-app
