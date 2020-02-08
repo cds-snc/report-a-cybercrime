@@ -21,10 +21,14 @@ npm install
 
 Note that you must be in the `f2` directory to run the code.
 
+### Set up Azure Key Vault
+
+We currently pull `cosmosdbName` and `cosmosdbKey` from Azure Key Vault
+
 ### Set up the environment
 
 Some features require you to define some environmental
-variables. You can add them to App Service, or for locally either `export` in your terminal or add to `f2/.env`
+variables. You can add them to App Service, or for locally either `export` in your terminal or add to `f2/.env`.
 
 #### Google Analytics
 
@@ -32,14 +36,7 @@ variables. You can add them to App Service, or for locally either `export` in yo
 GOOGLE_ANALYTICS_ID=UA-XXXXXXXXX-X
 ```
 
-#### Azure CosmosDB
-
-```sh
-COSMOSDB_NAME=...
-COSMOSDB_KEY=...
-```
-
-#### Azure Keyvault
+#### Azure Key Vault
 
 ```sh
 AZURE_CLIENT_ID=...
