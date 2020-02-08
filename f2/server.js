@@ -2,39 +2,55 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
+const MongoClient = require('mongodb').MongoClient
+const { DefaultAzureCredential } = require('@azure/identity')
+const { SecretClient } = require('@azure/keyvault-secrets')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 
 require('dotenv').config()
 
 // keyvault
 
-const { DefaultAzureCredential } = require('@azure/identity')
-const { SecretClient } = require('@azure/keyvault-secrets')
+let cosmosDbConfigured = false
+let cosmosdbUrl
 
-const keyVaultName = process.env.KEY_VAULT_NAME
-const KVUri = 'https://' + keyVaultName + '.vault.azure.net'
+async function readKeyVault() {
+  const keyVaultName = process.env.KEY_VAULT_NAME
 
-async function getSecrets() {
+  console.log(keyVaultName)
+
+  const KVUri = 'https://' + keyVaultName + '.vault.azure.net'
   const credential = new DefaultAzureCredential()
   const client = new SecretClient(KVUri, credential)
+  const cosmosdbName = (await client.getSecret('cosmosdbName')).value
+  const cosmosdbKey = (await client.getSecret('cosmosdbKey')).value
 
-  await client.setSecret('secretName', 'secretValue')
-  console.log('secret set!')
-  const retrievedSecret = await client.getSecret('newSecret')
-  console.log(retrievedSecret.value)
+  cosmosDbConfigured = cosmosdbName && cosmosdbKey
+  if (!cosmosDbConfigured)
+    console.warn(
+      'Warning: CosmosDB not configured. Data will not be saved to CosmosDB database. Please check your Keyvault configuration and/or contents',
+    )
+  else {
+    cosmosdbUrl = `mongodb://${cosmosdbName}:${cosmosdbKey}@${cosmosdbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
+    MongoClient.connect(cosmosdbUrl, function(err, db) {
+      if (err) {
+        console.error(`MongoClient: ERROR: ${err}`)
+        cosmosDbConfigured = false
+      } else {
+        console.log('MongoClient: connection succeeded')
+        db.close()
+      }
+    })
+  }
 }
 
-getSecrets()
+readKeyVault()
 
 // fetch and store certs for intake analysts
 getAllCerts(process.env.LDAP_UID)
 
 const app = express()
 
-const MongoClient = require('mongodb').MongoClient
-
-const dbName = process.env.COSMOSDB_NAME
-const dbKey = process.env.COSMOSDB_KEY
 const allowedOrigins = [
   'http://dev.antifraudcentre-centreantifraude.ca',
   'http://pre.antifraudcentre-centreantifraude.ca',
@@ -43,15 +59,6 @@ const allowedOrigins = [
   'http://antifraudcentre.ca',
   'http://centreantifraude.ca',
 ]
-
-let cosmosDbConfigured = dbName && dbKey
-if (!cosmosDbConfigured) {
-  console.warn(
-    'Warning: CosmosDB not configured. Data will not be saved to CosmosDB database. Please set the environment variables COSMOSDB_NAME and COSMOSDB_KEY',
-  )
-}
-
-const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
 
 const randLetter = () => {
   const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
@@ -91,7 +98,7 @@ const uploadData = (req, res) => {
     encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
 
     if (cosmosDbConfigured) {
-      MongoClient.connect(url, function(err, db) {
+      MongoClient.connect(cosmosdbUrl, function(err, db) {
         if (err) {
           console.warn(`ERROR in MongoClient.connect: ${err}`)
           res.statusCode = 502
