@@ -68,6 +68,7 @@ const uploadData = (req, res) => {
       console.log(file)
       //scan file for virus
       var readStream = fs.createReadStream(file[1].path)
+      //set timeout for 10000
       scanner
         .scanStream(readStream, 10000)
         .then(function(reply) {
