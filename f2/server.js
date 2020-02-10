@@ -73,7 +73,7 @@ const uploadData = (req, res) => {
       scanner
         .scanStream(readStream, 10000)
         .then(function(reply) {
-          console.log(reply)
+          console.log(file[0] + ': ' + reply)
           // print some thing like
           // 'stream: OK', if not infected
           // `stream: ${virus} FOUND`, if infected
