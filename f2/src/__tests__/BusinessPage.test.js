@@ -13,19 +13,20 @@ i18n.load('en', { en })
 i18n.activate('en')
 
 describe('<BusinessPage />', () => {
-    afterEach(cleanup)
+  beforeEach(() => (global.scrollTo = jest.fn()))
+  afterEach(cleanup)
 
-    it('renders', () => {
-        render(
-            <MemoryRouter initialEntries={['/']}>
-                <ThemeProvider theme={canada}>
-                    <StateProvider initialState={initialState} reducer={reducer}>
-                        <I18nProvider i18n={i18n}>
-                            <BusinessPage />
-                        </I18nProvider>
-                    </StateProvider>
-                </ThemeProvider>
-            </MemoryRouter>,
-        )
-    })
+  it('renders', () => {
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <ThemeProvider theme={canada}>
+          <StateProvider initialState={initialState} reducer={reducer}>
+            <I18nProvider i18n={i18n}>
+              <BusinessPage />
+            </I18nProvider>
+          </StateProvider>
+        </ThemeProvider>
+      </MemoryRouter>,
+    )
+  })
 })
