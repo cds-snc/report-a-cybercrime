@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { P } from './components/paragraph'
 import { Button } from './components/button'
-import { H1, H3 } from './components/header'
+import { H1, H2 } from './components/header'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { A } from './components/link'
@@ -39,9 +39,9 @@ export const LandingPage = props => {
 
               <Stack spacing={4} direction="row" flexWrap="wrap">
                 <LandingBox spacing={4} alignSelf="stretch">
-                  <H3>
+                  <H2>
                     <Trans id="landingPage.reportOnline" />
-                  </H3>
+                  </H2>
                   <P>
                     <Trans id="landingPage.onlineIntro">
                       <A
@@ -72,9 +72,9 @@ export const LandingPage = props => {
                 </LandingBox>
 
                 <LandingBox>
-                  <H3>
+                  <H2>
                     <Trans id="landingPage.reportByPhone" />
-                  </H3>
+                  </H2>
                   <Stack spacing={0}>
                     <P>
                       <Trans id="landingPage.cafcLink">
@@ -129,9 +129,9 @@ export const LandingPage = props => {
                 <Trans id="landingPage.warning" />
               </Alert>
 
-              <H3>
+              <H2>
                 <Trans id="landingPage.reportingOptions" />
-              </H3>
+              </H2>
 
               <Stack spacing={10} shouldWrapChildren>
                 <Ul>
