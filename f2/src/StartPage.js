@@ -49,9 +49,6 @@ export const StartPage = props => {
                   <Trans id="startPage.requirement3" />
                 </Li>
                 <Li>
-                  <Trans id="startPage.requirement3" />
-                </Li>
-                <Li>
                   <Trans id="startPage.requirement4" />
                 </Li>
               </Ul>
@@ -70,7 +67,7 @@ export const StartPage = props => {
                 size="28px"
               />
             </Button>
-            <Alert status="success" backgroundColor="blue.100">
+            <Alert status="success" backgroundColor="blue.100" mb={10}>
               <AlertIcon name="info-outline" color="blue.800" />
               <Trans id="startPage.warning" />
             </Alert>
