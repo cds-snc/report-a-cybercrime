@@ -1,24 +1,28 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
-import { render } from 'react-dom'
 import { FormErrorMessage, FormControl } from '@chakra-ui/core'
 import { FormHelperText } from '../FormHelperText'
 import { FormLabel } from '../FormLabel'
 import { Field as FieldAdapter } from 'react-final-form'
+import { UniqueID } from '../unique-id'
 
-export const Field = (name, label, helperText, errorMessage, children) => {
-  render(
-    <FieldAdapter name={name}>
-      {props => (
-        <FormControl>
-          <FormLabel htmlFor={name}>{label}</FormLabel>
-          <FormHelperText>{helperText}</FormHelperText>
-          <FormErrorMessage>{errorMessage}</FormErrorMessage>
-          {children}
-        </FormControl>
-      )}
-    </FieldAdapter>,
+export const Field = ({ name, label, helperText, errorMessage, component }) => {
+  return (
+    <UniqueID>
+      {id => {
+        return (
+          <FormControl aria-labelledby={id}>
+            <FormLabel id={id} htmlFor={name}>
+              {label}
+            </FormLabel>
+            <FormHelperText>{helperText}</FormHelperText>
+            <FormErrorMessage>{errorMessage}</FormErrorMessage>
+            <FieldAdapter id={name} component={component} />
+          </FormControl>
+        )
+      }}
+    </UniqueID>
   )
 }
 

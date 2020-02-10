@@ -13,6 +13,7 @@ export const CheckboxAdapter = ({
   value,
   defaultIsChecked,
   children,
+  ...props
 }) => {
   const {
     input: { checked, ...input },
@@ -24,19 +25,18 @@ export const CheckboxAdapter = ({
   })
 
   return (
-    <Checkbox input={input} isChecked={checked} isInvalid={error && touched}>
+    <Checkbox
+      input={input}
+      isChecked={checked}
+      isInvalid={error && touched}
+      conditionalField={props.conditionalField}
+    >
       {children}
     </Checkbox>
   )
 }
 
-export const Checkbox = ({
-  input,
-  label,
-  isChecked,
-  conditionalField,
-  ...props
-}) => {
+export const Checkbox = ({ input, label, isChecked, ...props }) => {
   return (
     <UniqueID>
       {id => {
@@ -80,7 +80,9 @@ export const Checkbox = ({
               </Text>
             </Flex>
 
-            {isChecked && <ConditionalForm>{conditionalField}</ConditionalForm>}
+            {isChecked && (
+              <ConditionalForm>{props.conditionalField}</ConditionalForm>
+            )}
           </React.Fragment>
         )
       }}
@@ -89,6 +91,6 @@ export const Checkbox = ({
 }
 
 Checkbox.propTypes = {
-  conditionalField: PropTypes.object,
+  conditionalField: PropTypes.any,
   children: PropTypes.any,
 }

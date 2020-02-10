@@ -2,70 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, Field, useField } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Checkbox } from '../components/checkbox'
-import { Radio, RadioAdapter } from '../components/radio'
-import {
-  FormControl,
-  Stack,
-  Box,
-  RadioGroup,
-  CheckboxGroup,
-} from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
-import { TextArea } from '../components/text-area'
+import { CheckboxAdapter } from '../components/checkbox'
+import { RadioAdapter } from '../components/radio'
+import { Stack, Box, RadioGroup, CheckboxGroup } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormLabel } from '../components/FormLabel'
-import { ConditionalForm } from '../components/container'
 import { FormArrayControl } from '../components/FormArrayControl'
-import { Field as ConditionalField } from '../components/Field'
-
-const Control = ({ name, ...rest }) => {
-  const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
-  return <FormControl {...rest} isInvalid={error && touched} />
-}
-
-const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
-  const {
-    input: { checked, ...input },
-    meta: { error, touched },
-  } = useField(name, {
-    type: 'checkbox', // important for RFF to manage the checked prop
-    value, // important for RFF to manage list of strings
-    defaultIsChecked,
-  })
-
-  return (
-    <Checkbox {...input} isChecked={checked} isInvalid={error && touched}>
-      {children}
-    </Checkbox>
-  )
-}
-
-const RadioButtonArrayControl = ({
-  name,
-  value,
-  defaultIsChecked,
-  children,
-}) => {
-  const {
-    input: { checked, ...input },
-    meta: { error, touched },
-  } = useField(name, {
-    type: 'radio',
-    value,
-    defaultIsChecked,
-  })
-
-  return (
-    <Radio {...input} isChecked={checked} isInvalid={error && touched}>
-      {children}
-    </Radio>
-  )
-}
+import { Field } from '../components/Field'
+import { TextArea } from '../components/text-area'
+import { TextInput } from '../components/TextInput'
 
 const validate = () => {
   return {}
@@ -178,98 +124,68 @@ export const HowDidItStartForm = props => {
               label={<Trans id="howDidTheyReachYou.question" />}
               helperText={<Trans id="howDidTheyReachYou.reminder" />}
             >
-              <CheckboxGroup spacing={4}>
-                {questionsList.map(question => {
-                  return (
-                    <Box key={question.channel}>
-                      <CheckboxArrayControl
-                        name="howDidTheyReachYou"
-                        value={question.channel}
-                        isChecked={howdiditstart.howDidTheyReachYou.includes(
-                          question.channel,
-                        )}
-                      >
-                        {i18n._(question.channel)}
-                        <ConditionalField
+              {/** All questions have conditional fields. It makes sense to use the map function */}
+              {questionsList.map(question => {
+                return (
+                  <React.Fragment key={question.channel}>
+                    <CheckboxAdapter
+                      name="howDidTheyReachYou"
+                      value={question.channel}
+                      isChecked={howdiditstart.howDidTheyReachYou.includes(
+                        question.channel,
+                      )}
+                      conditionalField={
+                        <Field
                           name={question.name}
                           label={<Trans id={question.label} />}
                           helperText={<Trans id={question.hint} />}
-                        >
-                          <TextArea
-                            name={props.input.name}
-                            value={props.input.value}
-                            onChange={props.input.onChange}
-                          />
-                        </ConditionalField>
-                      </CheckboxArrayControl>
-                      {values.howDidTheyReachYou.includes(question.channel) && (
-                        <ConditionalForm>
-                          <Field name={question.name}>
-                            {props => (
-                              <FormControl>
-                                <FormLabel htmlFor={question.name}>
-                                  <Trans id={question.label} />
-                                </FormLabel>
-                                <FormHelperText>
-                                  <Trans id={question.hint} />
-                                </FormHelperText>
-                                <TextArea
-                                  id={question.hint}
-                                  name={props.input.name}
-                                  value={props.input.value}
-                                  onChange={props.input.onChange}
-                                />
-                              </FormControl>
-                            )}
-                          </Field>
-                        </ConditionalForm>
-                      )}
-                    </Box>
-                  )
-                })}
-              </CheckboxGroup>
+                          component={TextArea}
+                        />
+                      }
+                    >
+                      {i18n._(question.channel)}
+                    </CheckboxAdapter>
+                  </React.Fragment>
+                )
+              })}
             </FormArrayControl>
 
             <FormArrayControl
               name="whenDidItStart"
               label={<Trans id="whenDidItStart.label" />}
             >
-              <RadioGroup spacing={4}>
-                {whenDidItStart.map(key => {
-                  return (
-                    <React.Fragment key={key}>
-                      <RadioAdapter
-                        name="whenDidItStart"
-                        value={key}
-                        isChecked={timeline.whenDidItStart.includes(key)}
-                      >
-                        {i18n._(key)}
-                      </RadioAdapter>
-                    </React.Fragment>
-                  )
-                })}
-              </RadioGroup>
+              {whenDidItStart.map(key => {
+                return (
+                  <React.Fragment key={key}>
+                    <RadioAdapter
+                      name="whenDidItStart"
+                      value={key}
+                      isChecked={timeline.whenDidItStart.includes(key)}
+                    >
+                      {i18n._(key)}
+                    </RadioAdapter>
+                  </React.Fragment>
+                )
+              })}
             </FormArrayControl>
 
             <FormArrayControl
               name="howManyTimes"
               label={<Trans id="howManyTimes.label" />}
             >
-              <RadioGroup spacing={4}>
-                {howManyTimes.map(key => {
-                  return (
-                    <Box key={key}>
-                      <RadioAdapter
-                        name="howManyTimes"
-                        value={key}
-                        isChecked={recurrenceCheck.howManyTimes.includes(key)}
-                      >
-                        {i18n._(key)}
-                      </RadioAdapter>
-                    </Box>
-                  )
-                })}
-              </RadioGroup>
+              {howManyTimes.map(key => {
+                return (
+                  <Box key={key}>
+                    <RadioAdapter
+                      name="howManyTimes"
+                      value={key}
+                      isChecked={recurrenceCheck.howManyTimes.includes(key)}
+                    >
+                      {i18n._(key)}
+                    </RadioAdapter>
+                  </Box>
+                )
+              })}
             </FormArrayControl>
             <NextAndCancelButtons
               next={<Trans id="howDidItStartPage.nextPage" />}
