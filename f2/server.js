@@ -4,6 +4,7 @@ const path = require('path')
 const formidable = require('formidable')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
+const { notifyIsSetup, sendConfirmation } = require('./utils/notifyUtils')
 
 require('dotenv').config()
 
@@ -68,12 +69,16 @@ const uploadData = (req, res) => {
     console.log('Parsed JSON:', data)
 
     const selfHarmWords = selfHarmWordsScan(data)
-    if (selfHarmWords) {
+    if (selfHarmWords.length) {
       console.warn(`Self harm words detected: ${selfHarmWords}`)
     }
     data.selfHarmWords = selfHarmWords
     data.submissionTime = new Date().toISOString()
-    data.contactInfo.email = randomizeString(data.contactInfo.email)
+
+    if (notifyIsSetup && data.contactInfo.email) {
+      sendConfirmation(data.contactInfo.email, data.reportId)
+      data.contactInfo.email = randomizeString(data.contactInfo.email)
+    }
 
     encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
 
