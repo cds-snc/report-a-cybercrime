@@ -7,8 +7,6 @@ const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
 var clamd = require('clamdjs')
 var fs = require('fs')
 
-var http = require('http')
-
 require('dotenv').config()
 var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
 
