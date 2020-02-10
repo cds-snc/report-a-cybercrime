@@ -1,16 +1,30 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
-import { ButtonLink } from './components/button-link'
 import { locales, activate } from './i18n.config'
 import { Box, PseudoBox, VisuallyHidden } from '@chakra-ui/core'
 
 const Toggler = props => {
   const { locale } = props
   return (
-    <ButtonLink key={locale} onClick={() => activate(locale)}>
+    <PseudoBox
+      as="button"
+      key={locale}
+      padding={0}
+      onClick={() => activate(locale)}
+      _focus={{
+        outline: `3px solid #ffbf47`,
+      }}
+      color="blue.600"
+    >
       <VisuallyHidden>{locales[locale]}</VisuallyHidden>
-      <PseudoBox aria-hidden d={{ base: 'none', md: 'flex' }}>
+      <PseudoBox
+        aria-hidden
+        fontSize="lg"
+        d={{ base: 'none', md: 'flex' }}
+        alignItems="center"
+        justifyContent="center"
+      >
         {locales[locale]}
       </PseudoBox>
       <PseudoBox
@@ -24,7 +38,7 @@ const Toggler = props => {
       >
         {locale}
       </PseudoBox>
-    </ButtonLink>
+    </PseudoBox>
   )
 }
 

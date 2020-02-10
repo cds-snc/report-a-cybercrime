@@ -18,7 +18,11 @@ import { useStateValue } from './utils/state'
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
   const [state] = useStateValue()
+  const [data] = useStateValue()
 
+  const contactInfo = {
+    ...data.formData.contactInfo,
+  }
   return (
     <Box w="100%">
       <Stack spacing={-10} w="100%">
@@ -36,7 +40,8 @@ export const ThankYouPage = () => {
             <H1 mb={6}>
               <Trans id="thankYouPage.title" />
             </H1>
-            <Trans id="thankYouPage.summary" />
+            {contactInfo.email && <Trans id="thankYouPage.summary" />}
+
             <Trans
               id="thankYouPage.referenceNumber"
               values={{
@@ -57,7 +62,7 @@ export const ThankYouPage = () => {
               </H2>
               <Ul>
                 <Li>
-                  <A 
+                  <A
                     href={
                       i18n.locale === 'en'
                         ? 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm'
@@ -144,12 +149,11 @@ export const ThankYouPage = () => {
         </Link>
       </Layout>
       <Layout fluid borderBottom="4px" borderColor="blue.500">
-        
         <Layout>
           <Alert status="info" variant="solid">
             <AlertIcon name="chat" mt={0} />
             <Link as={Route} to="/feedbackPage" color="white" display="block">
-          <Trans id="thankYouPage.feedback" />
+              <Trans id="thankYouPage.feedback" />
             </Link>
           </Alert>
         </Layout>

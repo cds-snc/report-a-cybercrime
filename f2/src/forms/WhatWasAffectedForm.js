@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, useField } from 'react-final-form'
+import { Form, useField, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
 import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
@@ -10,6 +10,8 @@ import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
+import { ConditionalForm } from '../components/container'
+import { TextInput } from '../components/TextInput'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -109,6 +111,26 @@ export const WhatWasAffectedForm = props => {
                       >
                         {i18n._(key)}
                       </CheckboxArrayControl>
+                      {key === 'whatWasAffectedForm.other' &&
+                        values.affectedOptions.includes(
+                          'whatWasAffectedForm.other',
+                        ) && (
+                          <ConditionalForm>
+                            <Field name="optionOther">
+                              {props => (
+                                <FormControl>
+                                  <FormLabel htmlFor={key}></FormLabel>
+                                  <TextInput
+                                    id="optionOther"
+                                    name={props.input.name}
+                                    value={props.input.value}
+                                    onChange={props.input.onChange}
+                                  />
+                                </FormControl>
+                              )}
+                            </Field>
+                          </ConditionalForm>
+                        )}
                     </Box>
                   )
                 })}

@@ -11,7 +11,6 @@ import { ThemeProvider, Flex, Link, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 import { StateProvider, initialState, reducer } from './utils/state'
-import { IntlProvider } from 'react-intl'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { Li } from './components/list-item'
@@ -20,76 +19,78 @@ const App = () => {
   const { i18n } = useLingui()
 
   return (
-    <IntlProvider locale={i18n.locale}>
-      <ThemeProvider theme={canada}>
-        <StateProvider initialState={initialState} reducer={reducer}>
-          <CSSReset />
-          <Global
-            styles={css`
-              @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
-            `}
-          />
-          <Flex direction="column" minHeight="100vh" bg="gray.50">
-            <header>
-              <SkipLink invisible href="#main">
-                <Trans id="SkipLink.text" />
-              </SkipLink>
-              <WarningBanner>
-                <Trans id="banner.warning" />
-              </WarningBanner>
-              <PhaseBanner phase={<Trans id="banner.phase" />}>
-                <Trans id="banner.phaseText" />
-              </PhaseBanner>
-              <TopBanner lang={i18n.locale} />
-            </header>
+    <ThemeProvider theme={canada}>
+      <StateProvider initialState={initialState} reducer={reducer}>
+        <CSSReset />
+        <Global
+          styles={css`
+            @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
+          `}
+        />
+        <Flex direction="column" minHeight="100vh" bg="gray.50">
+          <header>
+            <SkipLink invisible href="#main">
+              <Trans id="SkipLink.text" />
+            </SkipLink>
+            <WarningBanner>
+              <Trans id="banner.warning" />
+            </WarningBanner>
+            <PhaseBanner phase={<Trans id="banner.phase" />}>
+              <Trans id="banner.phaseText" />
+            </PhaseBanner>
+            <TopBanner lang={i18n.locale} />
+          </header>
 
-            <Flex
-              as="main"
-              id="main"
-              fontFamily="body"
-              flex="1 0 auto"
-              mx="auto"
-              pt={10}
-              width="100%"
-              bg="gray.50"
-            >
-              <Home />
-            </Flex>
-
-            <Layout>
-              <P fontSize="sm">Version: 000000</P>
-            </Layout>
-
-            <Footer>
-              {/** The List component is in the Footer component */}
-              <Li>
-                <Link
-                  href={
-                    i18n.locale === 'en'
-                      ? 'https://digital.canada.ca/legal/privacy/'
-                      : 'https://numerique.canada.ca/transparence/confidentialite/'
-                  }
-                >
-                  <Trans id="banner.footerPrivacy" />
-                </Link>
-              </Li>
-              <Li>
-                <Link
-                  ml={4}
-                  href={
-                    i18n.locale === 'en'
-                      ? 'https://digital.canada.ca/legal/terms/'
-                      : 'https://numerique.canada.ca/transparence/avis/'
-                  }
-                >
-                  <Trans id="banner.footerTermsAndConditions" />
-                </Link>
-              </Li>
-            </Footer>
+          <Flex
+            as="main"
+            id="main"
+            fontFamily="body"
+            flex="1 0 auto"
+            mx="auto"
+            pt={10}
+            width="100%"
+            bg="gray.50"
+          >
+            <Home />
           </Flex>
-        </StateProvider>
-      </ThemeProvider>
-    </IntlProvider>
+
+          <Layout fluid bg="gray.300">
+            <Layout>
+              <P fontSize="sm" my={3}>
+                Version: 000000
+              </P>
+            </Layout>
+          </Layout>
+
+          <Footer>
+            {/** The List component is in the Footer component */}
+            <Li>
+              <Link
+                href={
+                  i18n.locale === 'en'
+                    ? 'https://digital.canada.ca/legal/privacy/'
+                    : 'https://numerique.canada.ca/transparence/confidentialite/'
+                }
+              >
+                <Trans id="banner.footerPrivacy" />
+              </Link>
+            </Li>
+            <Li>
+              <Link
+                ml={4}
+                href={
+                  i18n.locale === 'en'
+                    ? 'https://digital.canada.ca/legal/terms/'
+                    : 'https://numerique.canada.ca/transparence/avis/'
+                }
+              >
+                <Trans id="banner.footerTermsAndConditions" />
+              </Link>
+            </Li>
+          </Footer>
+        </Flex>
+      </StateProvider>
+    </ThemeProvider>
   )
 }
 
