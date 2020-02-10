@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { FormErrorMessage, FormControl } from '@chakra-ui/core'
 import { useField } from 'react-final-form'
@@ -26,4 +27,12 @@ export const FormArrayControl = ({
       {children}
     </FormControl>
   )
+}
+
+FormArrayControl.propTypes = {
+  label: PropTypes.object,
+  helperText: PropTypes.object,
+  errorMessage: PropTypes.object,
+  name: PropTypes.string,
+  children: PropTypes.any,
 }

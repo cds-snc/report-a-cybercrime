@@ -19,6 +19,7 @@ import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 import { ConditionalForm } from '../components/container'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { Field as ConditionalField } from '../components/Field'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -189,6 +190,17 @@ export const HowDidItStartForm = props => {
                         )}
                       >
                         {i18n._(question.channel)}
+                        <ConditionalField
+                          name={question.name}
+                          label={<Trans id={question.label} />}
+                          helperText={<Trans id={question.hint} />}
+                        >
+                          <TextArea
+                            name={props.input.name}
+                            value={props.input.value}
+                            onChange={props.input.onChange}
+                          />
+                        </ConditionalField>
                       </CheckboxArrayControl>
                       {values.howDidTheyReachYou.includes(question.channel) && (
                         <ConditionalForm>

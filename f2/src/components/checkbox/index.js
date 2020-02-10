@@ -1,10 +1,12 @@
 /** @jsx jsx */
+import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Text } from '../text'
 import { UniqueID } from '../unique-id'
 import { Box, VisuallyHidden, ControlBox, Icon, Flex } from '@chakra-ui/core'
 import { useField } from 'react-final-form'
+import { ConditionalForm } from '../container'
 
 export const CheckboxAdapter = ({
   name,
@@ -28,13 +30,19 @@ export const CheckboxAdapter = ({
   )
 }
 
-export const Checkbox = ({ input, label, isChecked, ...props }) => {
+export const Checkbox = ({
+  input,
+  label,
+  isChecked,
+  conditionalField,
+  ...props
+}) => {
   return (
     <UniqueID>
       {id => {
         return (
-          <Box as="label" {...props} id={id}>
-            <Flex align="center">
+          <React.Fragment>
+            <Flex as="label" {...props} id={id} align="center">
               <VisuallyHidden
                 {...input}
                 as="input"
@@ -71,15 +79,16 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
                 {props.children}
               </Text>
             </Flex>
-          </Box>
+
+            {isChecked && <ConditionalForm>{conditionalField}</ConditionalForm>}
+          </React.Fragment>
         )
       }}
     </UniqueID>
   )
 }
 
-Checkbox.defaultProps = {}
-
 Checkbox.propTypes = {
+  conditionalField: PropTypes.object,
   children: PropTypes.any,
 }
