@@ -1,13 +1,29 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
+const formidable = require('formidable')
+const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
+
 require('dotenv').config()
+
+// fetch and store certs for intake analysts
+getAllCerts(process.env.LDAP_UID)
+
 const app = express()
 
 const MongoClient = require('mongodb').MongoClient
 
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
+const allowedOrigins = [
+  'http://dev.antifraudcentre-centreantifraude.ca',
+  'http://pre.antifraudcentre-centreantifraude.ca',
+  'http://antifraudcentre-centreantifraude.ca',
+  'http://centreantifraude-antifraudcentre.ca',
+  'http://antifraudcentre.ca',
+  'http://centreantifraude.ca',
+]
 
 let cosmosDbConfigured = dbName && dbKey
 if (!cosmosDbConfigured) {
@@ -33,39 +49,64 @@ const randomizeString = s =>
     : s
 
 const uploadData = (req, res) => {
-  const data = req.body
-  data.submissionTime = new Date().toISOString()
-  data.contactInfo.email = randomizeString(data.contactInfo.email)
+  new formidable.IncomingForm().parse(req, (err, fields, files) => {
+    if (err) {
+      console.error('Error', err)
+      throw err
+    }
+    /*
+    Logging Form fields and files for demonstration purposes, remove later
+    */
+    console.log('Fields', fields)
+    console.log('Files', files)
+    for (const file of Object.entries(files)) {
+      console.log(file)
+    }
 
-  if (cosmosDbConfigured) {
-    MongoClient.connect(url, function(err, db) {
-      if (err) {
-        console.warn(`ERROR in MongoClient.connect: ${err}`)
-        res.statusCode = 502
-        res.statusMessage = 'Error saving to CosmosDB'
-        res.send(res.statusMessage)
-      } else {
-        var dbo = db.db('cybercrime')
-        dbo.collection('reports').insertOne(data, function(err, result) {
-          if (err) {
-            console.log({ data })
-            console.warn(`ERROR in insertOne: ${err}`)
-            res.statusCode = 502
-            res.statusMessage = 'Error saving to CosmosDB'
-            res.send(res.statusMessage)
-          } else {
-            db.close()
-            console.log('Report saved to CosmosDB')
-            res.send('Report saved to CosmosDB')
-          }
-        })
-      }
-    })
-  } else {
-    res.statusCode = 500
-    res.statusMessage = 'CosmosDB not configured'
-    res.send('CosmosDB not configured')
-  }
+    // Extract the JSON from the "JSON" form element
+    const data = JSON.parse(fields['json'])
+    console.log('Parsed JSON:', data)
+
+    const selfHarmWords = selfHarmWordsScan(data)
+    if (selfHarmWords) {
+      console.warn(`Self harm words detected: ${selfHarmWords}`)
+    }
+    data.selfHarmWords = selfHarmWords
+    data.submissionTime = new Date().toISOString()
+    data.contactInfo.email = randomizeString(data.contactInfo.email)
+
+    encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
+
+    if (cosmosDbConfigured) {
+      MongoClient.connect(url, function(err, db) {
+        if (err) {
+          console.warn(`ERROR in MongoClient.connect: ${err}`)
+          res.statusCode = 502
+          res.statusMessage = 'Error saving to CosmosDB'
+          res.send(res.statusMessage)
+        } else {
+          var dbo = db.db('cybercrime')
+          dbo.collection('reports').insertOne(data, function(err, result) {
+            if (err) {
+              console.log({ data })
+              console.warn(`ERROR in insertOne: ${err}`)
+              res.statusCode = 502
+              res.statusMessage = 'Error saving to CosmosDB'
+              res.send(res.statusMessage)
+            } else {
+              db.close()
+              console.log('Report saved to CosmosDB')
+              res.send('Report saved to CosmosDB')
+            }
+          })
+        }
+      })
+    } else {
+      res.statusCode = 500
+      res.statusMessage = 'CosmosDB not configured'
+      res.send('CosmosDB not configured')
+    }
+  })
 }
 
 let count = 0
@@ -73,6 +114,21 @@ let count = 0
 app
   .use(express.static(path.join(__dirname, 'build')))
   .use(bodyParser.json())
+  .use(function(req, res, next) {
+    var origin = req.headers.origin
+    // Can only set one value of Access-Control-Allow-Origin, so we need some code to set it dynamically
+    if (
+      origin !== undefined &&
+      allowedOrigins.indexOf(origin.toLowerCase()) > -1
+    ) {
+      res.header('Access-Control-Allow-Origin', origin)
+      res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept',
+      )
+    }
+    next()
+  })
 
   .get('/ping', function(_req, res) {
     return res.send('pong')

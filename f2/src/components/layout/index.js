@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Container } from '../container'
 
@@ -9,6 +9,11 @@ export const Layout = ({ fluid, columns, ...props }) => {
     lg: columns.lg * 100 + '%',
     xl: columns.xl * 100 + '%',
   }
+
+  // scroll to the top of the page when this Layout renders
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  })
 
   return (
     <Container
