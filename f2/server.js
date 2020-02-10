@@ -6,13 +6,11 @@ const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
 var clamd = require('clamdjs')
 var fs = require('fs')
-var scanner = clamd.createScanner(
-  'mpsccdscybercrimeclamav.canadacentral.azurecontainer.io',
-  3310,
-)
+
 var http = require('http')
 
 require('dotenv').config()
+var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
 
 // fetch and store certs for intake analysts
 getAllCerts(process.env.LDAP_UID)
