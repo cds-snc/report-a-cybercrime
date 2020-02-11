@@ -22,6 +22,7 @@ import { StartPage } from './StartPage'
 import { ConfirmCancelPage } from './ConfirmCancelPage'
 import { CancelPage } from './CancelPage'
 
+
 export const Home = () => (
   <Router>
     <Switch>
