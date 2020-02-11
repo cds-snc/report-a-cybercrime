@@ -8,14 +8,30 @@ import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
+import { formatList } from '../utils/formatList'
+import { useLingui } from '@lingui/react'
 
 export const MoneyLostInfoSummary = props => {
   const [data] = useStateValue()
+  const { i18n } = useLingui()
+  const methodPaymentSummary = []
+  let methodPaymentLine
 
   const moneyLost = {
     ...testdata.formData.moneyLost, //Remove after done testing
     ...data.formData.moneyLost,
   }
+
+  moneyLost.methodPayment.map(key =>
+    methodPaymentSummary.push(
+      key === 'methodPayment.other' ? moneyLost.methodOther : i18n._(key),
+    ),
+  )
+  methodPaymentLine = formatList(methodPaymentSummary, {
+    pair: i18n._('default.pair'),
+    middle: i18n._('default.middle'),
+    end: i18n._('default.end'),
+  })
 
   const hasInfoToDisplay =
     moneyLost.demandedMoney.length > 0 ||
@@ -67,7 +83,7 @@ export const MoneyLostInfoSummary = props => {
             />
             <DescriptionListItem
               descriptionTitle="confirmationPage.moneyLost.methodPayment"
-              description={moneyLost.methodPayment}
+              description={methodPaymentLine}
             />
             <DescriptionListItem
               descriptionTitle="confirmationPage.moneyLost.transactionDate"

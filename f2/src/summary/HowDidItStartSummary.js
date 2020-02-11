@@ -9,14 +9,13 @@ import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
+import { formatList } from '../utils/formatList'
 
 export const HowDidItStartSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
   const summary = []
   let overviewLine = ' '
-  let summaryLastItem = []
-  let summaryFirstitems = []
 
   const howdiditstart = {
     ...testdata.formData.howdiditstart,
@@ -31,23 +30,14 @@ export const HowDidItStartSummary = props => {
           : i18n._(key).toLowerCase(),
       ),
     )
-    // No need for conjuction where is only is a single contact
-    if (howdiditstart.howDidTheyReachYou.length === 1) {
-      overviewLine =
-        i18n._('confirmationPage.howDidItStart.overviewPrefix') + summary
-    } else {
-      //Pop the last item of the array to be used in conjuction
-      summaryLastItem = summary.pop()
-      //Join the arr with comma delimiter
-      summaryFirstitems = summary.join(', ')
 
-      //compose the overview summary
-      overviewLine =
-        i18n._('confirmationPage.howDidItStart.overviewPrefix') +
-        summaryFirstitems +
-        i18n._('confirmationPage.howDidItStart.conjuction') +
-        summaryLastItem
-    }
+    overviewLine =
+      i18n._('confirmationPage.howDidItStart.overviewPrefix') +
+      formatList(summary, {
+        pair: i18n._('default.pair'),
+        middle: i18n._('default.middle'),
+        end: i18n._('default.end'),
+      })
   }
 
   const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0

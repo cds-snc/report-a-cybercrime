@@ -39,7 +39,7 @@ export const testdata = {
     moneyLost: {
       demandedMoney: '',
       moneyTaken: '',
-      methodPayment: '',
+      methodPayment: [],
       transactionDate: '',
       tellUsMore: '',
     },
@@ -93,7 +93,6 @@ export const ConfirmationSummary = () => {
       <Stack spacing={12}>
         <HowDidItStartSummary />
         <WhatWasAffectedSummary />
-        {console.log('affectioned options: ' + impact.affectedOptions)}
         {impact.affectedOptions.includes('whatWasAffectedForm.financial') && (
           <MoneyLostInfoSummary />
         )}

@@ -7,7 +7,10 @@ import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../paragraph'
 import { Route } from 'react-router-dom'
 
-export const NextAndCancelButtons = ({ cancelRoute = '/', ...props }) => (
+export const NextAndCancelButtons = ({
+  cancelRoute = '/confirmCancel',
+  ...props
+}) => (
   <Flex direction="row" align="center" wrap="wrap" mb={10} mt={10}>
     <P w="100%">{props.next}</P>
     <Button type="submit" w={{ base: '100%', md: 'auto' }}>
