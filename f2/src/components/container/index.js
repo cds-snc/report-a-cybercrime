@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 
-import { Box } from '@chakra-ui/core'
+import { Box, Stack } from '@chakra-ui/core'
 
 export const Container = props => <Box {...props} />
 
@@ -16,6 +16,20 @@ export const InfoCard = props => (
     bg="white"
     {...props}
   ></Box>
+)
+
+export const LandingBox = props => (
+  <Stack
+    direction="column"
+    bg="gray.300"
+    borderColor="gray.400"
+    boxShadow="lg"
+    color="black"
+    p={[4, null, 4]}
+    w={343}
+    mb={4}
+    {...props}
+  ></Stack>
 )
 
 export const ConditionalForm = ({ ...props }) => (

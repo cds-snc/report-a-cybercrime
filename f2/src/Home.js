@@ -18,6 +18,7 @@ import { PrivacyConsentPage } from './PrivacyConsentPage'
 import { PrivacyStatementPage } from './PrivacyStatementPage'
 import { WhatWasAffectedPage } from './WhatWasAffected'
 import { FeedbackPage } from './FeedbackPage'
+import { StartPage } from './StartPage'
 import { ConfirmCancelPage } from './ConfirmCancelPage'
 import { CancelPage } from './CancelPage'
 
@@ -26,6 +27,9 @@ export const Home = () => (
     <Switch>
       <Route exact path="/">
         <LandingPage />
+      </Route>
+      <Route exact path="/startPage">
+        <StartPage />
       </Route>
       <Route path="/privacyconsent">
         <PrivacyConsentPage />

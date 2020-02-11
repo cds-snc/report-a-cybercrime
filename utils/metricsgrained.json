@@ -1,11 +1,11 @@
 [
-    {
-      "category": "AllMetrics",
-      "enabled": true,
-      "retentionPolicy": {
-        "days": 0,
-        "enabled": false
-      },
-      "timeGrain": null
-    }
-  ]
+  {
+    "category": "AllMetrics",
+    "enabled": true,
+    "retentionPolicy": {
+      "days": 0,
+      "enabled": false
+    },
+    "timeGrain": null
+  }
+]
