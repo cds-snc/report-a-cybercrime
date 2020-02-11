@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { useLingui } from '@lingui/react'
 import { Route } from 'react-router-dom'
 import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
@@ -49,7 +50,7 @@ async function postData(url = '', data = {}) {
   return await response
 }
 
-const prepFormData = formData => {
+const prepFormData = (formData, language) => {
   let contactInfo = formData.contactInfo ? formData.contactInfo : {}
   let { fullName, email, postalCode } = contactInfo
   fullName = randomizeString(fullName)
@@ -105,6 +106,7 @@ const prepFormData = formData => {
 
   return {
     ...formData,
+    language,
     contactInfo: {
       fullName,
       email,
@@ -120,6 +122,7 @@ const submitToServer = async data => {
 
 export const ConfirmationPage = () => {
   const [{ formData }, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
+  const { i18n } = useLingui()
 
   return (
     <Route
@@ -141,7 +144,7 @@ export const ConfirmationPage = () => {
                   type: 'saveFormData',
                   data: { reportId },
                 })
-                let data = prepFormData(formData, reportId)
+                let data = prepFormData(formData, i18n.locale)
                 submitToServer({ ...data, reportId }) // pass reportId to protect against dispatch race condition
                 history.push('/thankYouPage')
               }}
