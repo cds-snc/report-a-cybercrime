@@ -2,9 +2,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
+const MongoClient = require('mongodb').MongoClient
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
-const { notifyIsSetup, sendConfirmation } = require('./utils/notifyUtils')
+const { notifyIsSetup, sendConfirmation } = require('./utils/notify')
 
 require('dotenv').config()
 
@@ -12,8 +13,6 @@ require('dotenv').config()
 getAllCerts(process.env.LDAP_UID)
 
 const app = express()
-
-const MongoClient = require('mongodb').MongoClient
 
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY

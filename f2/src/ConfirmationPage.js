@@ -53,7 +53,7 @@ const prepFormData = formData => {
   let contactInfo = formData.contactInfo ? formData.contactInfo : {}
   let { fullName, email, postalCode } = contactInfo
   fullName = randomizeString(fullName)
-  email = randomizeString(email)
+  // email = randomizeString(email) done on server (so that Notify can send confirmation email)
   postalCode = randomizeString(postalCode)
 
   if (

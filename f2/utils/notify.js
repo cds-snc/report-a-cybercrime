@@ -24,7 +24,10 @@ const notifyClient =
     ? new NotifyClient(baseUrl, key)
     : false
 
-const sendConfirmation = async (email, data) => {
+if (notifyClient) console.log('Notify client created')
+else console.warn('Notify client NOT created')
+
+const sendConfirmation = async (email, reportId) => {
   const templateId = process.env.NOTIFY_CONFIRMATION_TEMPLATE_ID
   if (!email || !templateId) {
     console.warn(
@@ -33,11 +36,13 @@ const sendConfirmation = async (email, data) => {
     return false
   }
   try {
-    const response = notifyClient.sendEmail(templateId, email, data)
-    console.log('Email sent!')
+    const response = notifyClient.sendEmail(templateId, email, {
+      personalisation: { reportId },
+    })
+    console.log('Notify: Email sent!')
     return response.body
   } catch (err) {
-    console.log(err.message)
+    console.error(`Notify Error: ${err.message}`)
     return false
   }
 }
