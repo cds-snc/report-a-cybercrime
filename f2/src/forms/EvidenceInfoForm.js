@@ -4,17 +4,16 @@ import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { jsx } from '@emotion/core'
 import { Form, Field } from 'react-final-form'
-import { Container, InfoCard } from '../components/container'
-import { plural, Trans } from '@lingui/macro'
+import { Plural, Trans } from '@lingui/macro'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
-import { H2 } from '../components/header'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
 import { Box, Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
+import { Link } from '../components/link'
 
 export const EvidenceInfoForm = props => {
   const [data] = useStateValue()
@@ -84,6 +83,49 @@ export const EvidenceInfoForm = props => {
             shouldWrapChildren
           >
             <Stack spacing={4}>
+              <P borderBottom="2px" borderBottomColor="gray.200" pb={2}>
+                <Plural
+                  id="evidencePage.numberOfFilesAttached"
+                  value={files.length}
+                  one="# file attached"
+                  other="# files attached"
+                />
+              </P>
+              {status ? (
+                <VisuallyHidden tabIndex={-1} id="status">
+                  {i18n._(status)}
+                </VisuallyHidden>
+              ) : null}
+
+              {files.map((f, index) => (
+                <Stack
+                  spacing={4}
+                  borderBottom="2px"
+                  borderBottomColor="gray.200"
+                  py={6}
+                  key={index}
+                >
+                  <P>{f.name}</P>
+                  <FormControl>
+                    <FormLabel htmlFor={`file-description-${index}`}>
+                      <Trans id="evidencePage.fileDescription" />
+                    </FormLabel>
+                    <Field
+                      mb={2}
+                      id={`file-description-${index}`}
+                      component={TextArea}
+                    />
+                    <Link
+                      as="button"
+                      onClick={() => removeFile(index)}
+                      color="red.600"
+                    >
+                      Remove File
+                    </Link>
+                  </FormControl>
+                </Stack>
+              ))}
+
               <Box>
                 <FileUpload onChange={onChange}>
                   <Button leftIcon="attachment" as="div" variantColor="blue">
@@ -91,64 +133,8 @@ export const EvidenceInfoForm = props => {
                   </Button>
                 </FileUpload>
               </Box>
-
-              <P>
-                {plural(files.length, {
-                  one: '# file attached',
-                  other: '# files attached',
-                })}
-              </P>
-
-              {status ? (
-                <VisuallyHidden tabIndex={-1} id="status">
-                  {i18n._(status)}
-                </VisuallyHidden>
-              ) : null}
             </Stack>
 
-            <Container>
-              {files.map((f, index) => (
-                <React.Fragment key={index}>
-                  <InfoCard as="article" mb={4}>
-                    <Stack spacing={4}>
-                      <H2 fontSize="2xl">{f.name}</H2>
-                      <Box>
-                        <Field
-                          name={`file-description-${index}`}
-                          input={{
-                            value: fileDescriptions[index],
-                            onChange,
-                          }}
-                        >
-                          {props => (
-                            <FormControl>
-                              <FormLabel htmlFor={`file-description-${index}`}>
-                                <Trans id="evidencePage.fileDescription" />
-                              </FormLabel>
-                              <TextArea
-                                id={`file-description-${index}`}
-                                name={props.input.name}
-                                value={props.input.value}
-                                onChange={props.input.onChange}
-                              />
-                            </FormControl>
-                          )}
-                        </Field>
-                      </Box>
-
-                      <Button
-                        mr="auto"
-                        variantColor="red"
-                        type="button"
-                        onClick={() => removeFile(index)}
-                      >
-                        <Trans id="evidencePage.removeFileButton" />
-                      </Button>
-                    </Stack>
-                  </InfoCard>
-                </React.Fragment>
-              ))}
-            </Container>
             <NextAndCancelButtons
               next={<Trans id="evidencePage.nextPage" />}
               button={<Trans id="evidencePage.nextButton" />}
