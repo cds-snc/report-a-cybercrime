@@ -45,9 +45,9 @@ export const FormArrayControl = ({
 }
 
 FormArrayControl.propTypes = {
-  label: PropTypes.object,
-  helperText: PropTypes.object,
-  errorMessage: PropTypes.object,
+  label: PropTypes.any,
+  helperText: PropTypes.any,
+  errorMessage: PropTypes.any,
   name: PropTypes.string,
   children: PropTypes.any,
 }
