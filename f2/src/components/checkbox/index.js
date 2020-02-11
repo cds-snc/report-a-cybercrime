@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Text } from '../text'
 import { UniqueID } from '../unique-id'
-import { Box, VisuallyHidden, ControlBox, Icon, Flex } from '@chakra-ui/core'
+import { VisuallyHidden, ControlBox, Icon, Flex } from '@chakra-ui/core'
 import { useField } from 'react-final-form'
 import { ConditionalForm } from '../container'
 
