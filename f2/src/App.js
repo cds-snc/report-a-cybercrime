@@ -57,7 +57,7 @@ const App = () => {
           <Layout fluid bg="gray.300">
             <Layout>
               <P fontSize="sm" my={3}>
-                Version: 000000
+                Version: {process.env.REACT_APP_VERSION || '000000'}
               </P>
             </Layout>
           </Layout>
