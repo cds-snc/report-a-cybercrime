@@ -4,8 +4,11 @@ const path = require('path')
 const formidable = require('formidable')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
+var clamd = require('clamdjs')
+var fs = require('fs')
 
 require('dotenv').config()
+var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
 
 // fetch and store certs for intake analysts
 getAllCerts(process.env.LDAP_UID)
@@ -61,6 +64,18 @@ const uploadData = (req, res) => {
     console.log('Files', files)
     for (const file of Object.entries(files)) {
       console.log(file)
+      //scan file for virus
+      var readStream = fs.createReadStream(file[1].path)
+      //set timeout for 10000
+      scanner
+        .scanStream(readStream, 10000)
+        .then(function(reply) {
+          console.log(file[0] + ': ' + reply)
+          // print some thing like
+          // 'stream: OK', if not infected
+          // `stream: ${virus} FOUND`, if infected
+        })
+        .catch(function() {})
     }
 
     // Extract the JSON from the "JSON" form element
