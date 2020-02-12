@@ -34,19 +34,8 @@ export const LandingPage = props => {
             </H1>
             <Stack spacing={4}>
               <P>
-                <Trans id="landingPage.intro" />
-              </P>
-
-              <Stack spacing={4} direction="row" flexWrap="wrap">
-                <LandingBox spacing={4} alignSelf="stretch">
-
-                  <H2>
-                    <Trans id="landingPage.reportOnline" />
-                  </H2>
-
-                  <P>
-                    <Trans id="landingPage.onlineIntro">
-                      <A
+                <Trans id="landingPage.intro">
+                <A
                         href={
                           i18n.locale === 'en'
                             ? 'http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3'
@@ -62,7 +51,19 @@ export const LandingPage = props => {
                           }
                           isExternal
                         />
-                    </Trans>
+                 </Trans>
+              </P>
+
+              <Stack spacing={4} direction="row" flexWrap="wrap">
+                <LandingBox spacing={4} alignSelf="stretch">
+
+                  <H2>
+                    <Trans id="landingPage.reportOnline" />
+                  </H2>
+
+                  <P>
+                    <Trans id="landingPage.onlineIntro" />
+
                   </P>
                   <Box flex="1 1 0"></Box>
                   <Button
@@ -88,18 +89,6 @@ export const LandingPage = props => {
                   </H2>
 
                   <Stack spacing={0}>
-                    <P>
-                      <Trans id="landingPage.cafcLink">
-                        <A
-                          href={
-                            i18n.locale === 'en'
-                              ? 'http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-eng.htm'
-                              : 'http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-fra.htm'
-                          }
-                          isExternal
-                        />
-                      </Trans>
-                    </P>
                     <P>
                       <Trans id="landingPage.phoneDays" />
                     </P>
