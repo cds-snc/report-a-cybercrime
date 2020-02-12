@@ -14,12 +14,6 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { generateReportId } from './utils/generateReportId'
 
-const randLetter = () => {
-  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  return letters[Math.floor(Math.random() * letters.length)]
-}
-const randDigit = () => Math.floor(Math.random() * 10)
-
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
   // Stick all our collected data into a single form element called json
