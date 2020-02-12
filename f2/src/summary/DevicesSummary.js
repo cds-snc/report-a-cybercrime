@@ -7,6 +7,7 @@ import { useStateValue } from '../utils/state'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
+import { Text } from '../components/text'
 
 export const DevicesSummary = props => {
   const [data] = useStateValue()
@@ -15,6 +16,9 @@ export const DevicesSummary = props => {
     ...testdata.formData.devicesInfo,
     ...data.formData.devicesInfo,
   }
+
+  const hasInfoToDisplay =
+    devices.deviceOrAccount.length > 0 || devices.devicesTellUsMore.length > 0
 
   return (
     <React.Fragment>
@@ -27,9 +31,15 @@ export const DevicesSummary = props => {
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.devicesTitle" />
           </H2>
           <EditButton
@@ -38,7 +48,7 @@ export const DevicesSummary = props => {
           />
         </Flex>
 
-        <React.Fragment>
+        {hasInfoToDisplay ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.deviceOrAccount"
@@ -49,7 +59,11 @@ export const DevicesSummary = props => {
               description={devices.devicesTellUsMore}
             />
           </Stack>
-        </React.Fragment>
+        ) : (
+          <Text>
+            <Trans id="confirmationPage.devices.nag" />
+          </Text>
+        )}
       </Stack>
     </React.Fragment>
   )

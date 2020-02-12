@@ -6,12 +6,8 @@ import { ThankYouPage } from './ThankYouPage'
 import { WhatHappenedPage } from './WhatHappenedPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { SuspectCluesPage } from './SuspectCluesPage'
-import { ScammerDetailsPage } from './ScammerDetailsPage'
 import { HowDidItStartPage } from './HowDidItStartPage'
 import { ConfirmationPage } from './ConfirmationPage'
-import { NextSteps } from './NextSteps'
-import { TimeFramePage } from './TimeFramePage'
-import { ImpactStatementPage } from './ImpactStatementPage'
 import { MoneyLostPage } from './MoneyLostPage'
 import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
@@ -22,6 +18,10 @@ import { PrivacyConsentPage } from './PrivacyConsentPage'
 import { PrivacyStatementPage } from './PrivacyStatementPage'
 import { WhatWasAffectedPage } from './WhatWasAffected'
 import { FeedbackPage } from './FeedbackPage'
+import { StartPage } from './StartPage'
+import { ConfirmCancelPage } from './ConfirmCancelPage'
+import { CancelPage } from './CancelPage'
+
 
 export const Home = () => (
   <Router>
@@ -29,11 +29,17 @@ export const Home = () => (
       <Route exact path="/">
         <LandingPage />
       </Route>
+      <Route exact path="/startPage">
+        <StartPage />
+      </Route>
       <Route path="/privacyconsent">
         <PrivacyConsentPage />
       </Route>
       <Route path="/privacystatement">
         <PrivacyStatementPage />
+      </Route>
+      <Route path="/howdiditstart">
+        <HowDidItStartPage />
       </Route>
       <Route path="/whatwasaffected">
         <WhatWasAffectedPage />
@@ -71,32 +77,18 @@ export const Home = () => (
       <Route exact path="/thankYouPage">
         <ThankYouPage />
       </Route>
-
-      {/* not needed anymore */}
-      <Route path="/scammerdetails">
-        <ScammerDetailsPage />
+      <Route exact path="/confirmCancel">
+        <ConfirmCancelPage />
       </Route>
-      <Route path="/howdiditstart">
-        <HowDidItStartPage />
+      <Route exact path="/cancelled">
+        <CancelPage />
       </Route>
-      <Route path="/nextsteps">
-        <NextSteps />
-      </Route>
-      <Route path="/timeframe">
-        <TimeFramePage />
-      </Route>
-      <Route path="/impact">
-        <ImpactStatementPage />
-      </Route>
-      
       <Route path="/feedbackPage">
         <FeedbackPage />
       </Route>
-
       <Route>
         <PageNotFound />
       </Route>
-      
     </Switch>
   </Router>
 )

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 export const H1 = props => (
   <Header
     as="h1"
-    fontSize={['4xl', null, '5xl', null]}
+    fontSize={{ base: '4xl', md: '5xl' }}
     fontFamily="heading"
     lineHeight={1}
     {...props}
@@ -21,7 +21,7 @@ H1.propTypes = {
 export const H2 = props => (
   <Header
     as="h2"
-    fontSize={['3xl', null, null, '4xl']}
+    fontSize="3xl"
     fontFamily="heading"
     lineHeight={1.25}
     {...props}
@@ -37,7 +37,7 @@ H2.propTypes = {
 export const H3 = props => (
   <Header
     as="h3"
-    fontSize={['2xl', null, null, '3xl']}
+    fontSize="xl"
     fontFamily="heading"
     lineHeight={1.25}
     {...props}
@@ -53,7 +53,7 @@ H3.propTypes = {
 export const H4 = props => (
   <Header
     as="h4"
-    fontSize={['xl', null, null, '2xl']}
+    fontSize="lg"
     fontFamily="heading"
     lineHeight={1.25}
     color="gray.700"
@@ -70,7 +70,7 @@ H4.propTypes = {
 export const H5 = props => (
   <Header
     as="h5"
-    fontSize={['lg', null, null, 'xl']}
+    fontSize="lg"
     fontFamily="heading"
     lineHeight={1.25}
     color="gray.600"
@@ -87,7 +87,7 @@ H5.propTypes = {
 export const H6 = props => (
   <Header
     as="h6"
-    fontSize={['lg', null, null, 'xl']}
+    fontSize="lg"
     fontFamily="heading"
     lineHeight={1.25}
     color="gray.500"

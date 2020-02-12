@@ -3,19 +3,30 @@ import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { Flex, Tag } from '@chakra-ui/core'
 import { Text } from '../text'
+import { Layout } from '../layout'
 
 export const PhaseBanner = props => (
-  <Flex align="center" p={4} bg="purple.50">
-    <Tag
-      rounded="none"
-      variantColor="purple"
-      variant="solid"
-      minW="inherit"
-      mr={4}
-    >
-      {props.phase}
-    </Tag>
-    <Text color="green.900">{props.children}</Text>
+  <Flex bg="gray.100">
+    <Layout>
+      <Flex align="center" py={4}>
+        <Tag
+          fontFamily="body"
+          letterSpacing={2}
+          rounded="none"
+          color="black"
+          variantColor="gray"
+          borderWidth="2px"
+          borderColor="gray.900"
+          minW="inherit"
+          minH="inherit"
+          mr={4}
+          py={0}
+        >
+          {props.phase}
+        </Tag>
+        <Text fontSize="md">{props.children}</Text>
+      </Flex>
+    </Layout>
   </Flex>
 )
 

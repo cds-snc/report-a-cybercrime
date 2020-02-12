@@ -1,0 +1,18 @@
+[
+  {
+    "category": "ContainerRegistryRepositoryEvents",
+    "enabled": true,
+    "retentionPolicy": {
+      "days": 0,
+      "enabled": false
+    }
+  },
+  {
+    "category": "ContainerRegistryLoginEvents",
+    "enabled": true,
+    "retentionPolicy": {
+      "days": 0,
+      "enabled": false
+    }
+  }
+]

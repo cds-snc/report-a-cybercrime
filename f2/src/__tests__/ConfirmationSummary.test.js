@@ -8,26 +8,24 @@ import { ConfirmationSummary } from '../ConfirmationSummary'
 import canada from '../theme/canada'
 import en from '../locales/en.json'
 import { StateProvider, initialState, reducer } from '../utils/state'
-import { IntlProvider } from 'react-intl'
 
 i18n.load('en', { en })
 i18n.activate('en')
 
 describe('<ConfirmationSummary />', () => {
+  beforeEach(() => (global.scrollTo = jest.fn()))
   afterEach(cleanup)
 
   it('renders', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
-        <IntlProvider locale={i18n.locale}>
-          <ThemeProvider theme={canada}>
-            <StateProvider initialState={initialState} reducer={reducer}>
-              <I18nProvider i18n={i18n}>
-                <ConfirmationSummary />
-              </I18nProvider>
-            </StateProvider>
-          </ThemeProvider>
-        </IntlProvider>
+        <ThemeProvider theme={canada}>
+          <StateProvider initialState={initialState} reducer={reducer}>
+            <I18nProvider i18n={i18n}>
+              <ConfirmationSummary />
+            </I18nProvider>
+          </StateProvider>
+        </ThemeProvider>
       </MemoryRouter>,
     )
   })
