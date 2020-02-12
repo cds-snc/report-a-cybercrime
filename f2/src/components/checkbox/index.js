@@ -1,18 +1,50 @@
 /** @jsx jsx */
+import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Text } from '../text'
 import { UniqueID } from '../unique-id'
-import { Box, VisuallyHidden, ControlBox, Icon, Flex } from '@chakra-ui/core'
+import { VisuallyHidden, ControlBox, Icon, Flex } from '@chakra-ui/core'
+import { useField } from 'react-final-form'
+import { ConditionalForm } from '../container'
 
-export const Checkbox = ({ label, isChecked, ...props }) => {
+export const CheckboxAdapter = ({
+  name,
+  value,
+  defaultIsChecked,
+  children,
+  ...props
+}) => {
+  const {
+    input: { checked, ...input },
+    meta: { error, touched },
+  } = useField(name, {
+    type: 'checkbox', // important for RFF to manage the checked prop
+    value, // important for RFF to manage list of strings
+    defaultIsChecked,
+  })
+
+  return (
+    <Checkbox
+      input={input}
+      isChecked={checked}
+      isInvalid={error && touched}
+      conditionalField={props.conditionalField}
+    >
+      {children}
+    </Checkbox>
+  )
+}
+
+export const Checkbox = ({ input, label, isChecked, ...props }) => {
   return (
     <UniqueID>
       {id => {
         return (
-          <Box as="label" {...props} id={id}>
-            <Flex align="center">
+          <React.Fragment>
+            <Flex as="label" {...props} id={id} align="center">
               <VisuallyHidden
+                {...input}
                 as="input"
                 type="checkbox"
                 defaultChecked={isChecked ? 'true' : ''}
@@ -47,15 +79,18 @@ export const Checkbox = ({ label, isChecked, ...props }) => {
                 {props.children}
               </Text>
             </Flex>
-          </Box>
+
+            {isChecked && (
+              <ConditionalForm>{props.conditionalField}</ConditionalForm>
+            )}
+          </React.Fragment>
         )
       }}
     </UniqueID>
   )
 }
 
-Checkbox.defaultProps = {}
-
 Checkbox.propTypes = {
+  conditionalField: PropTypes.any,
   children: PropTypes.any,
 }

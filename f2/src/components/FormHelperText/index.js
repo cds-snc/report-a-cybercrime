@@ -6,11 +6,11 @@ export const FormHelperText = styled(ChakraFormHelperText)(
   variant({
     variants: {
       above: {
-        mt: 0,
-        mb: 2,
+        mt: -2,
+        mb: 4,
       },
       below: {
-        mt: 2,
+        mt: 4,
         mb: 0,
       },
       unstyled: {
@@ -22,7 +22,7 @@ export const FormHelperText = styled(ChakraFormHelperText)(
 
 FormHelperText.defaultProps = {
   variant: 'above',
-  as: 'div',
+  as: 'p',
   fontSize: 'md',
   color: 'black',
   fontFamily: 'body',

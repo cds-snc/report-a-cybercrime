@@ -39,7 +39,6 @@ export const LandingPage = props => {
 
               <Stack spacing={4} direction="row" flexWrap="wrap">
                 <LandingBox spacing={4} alignSelf="stretch">
-
                   <H2>
                     <Trans id="landingPage.reportOnline" />
                   </H2>
@@ -74,7 +73,6 @@ export const LandingPage = props => {
                 </LandingBox>
 
                 <LandingBox>
-
                   <H2>
                     <Trans id="landingPage.reportByPhone" />
                   </H2>
@@ -136,7 +134,6 @@ export const LandingPage = props => {
               <H2>
                 <Trans id="landingPage.reportingOptions" />
               </H2>
-
 
               <Stack spacing={10} shouldWrapChildren>
                 <Ul>
