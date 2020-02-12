@@ -9,7 +9,7 @@ import { FormHelperText } from '../components/FormHelperText'
 import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
+import { Button } from '../components/button'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -46,12 +46,7 @@ const validate = () => {
 
 export const FinalFeedbackForm = props => {
   const { i18n } = useLingui()
-
   const [data] = useStateValue()
-  const howdiditstart = {
-    howDidTheyReachYou: [],
-    ...data.formData.howdiditstart,
-  }
 
   const wasServiceHard = [
     'finalFeedback.wasServiceHard.veryHard',
@@ -83,8 +78,12 @@ export const FinalFeedbackForm = props => {
       ) : null}
 
       <Form
-        initialValues={howdiditstart}
-        onSubmit={data => props.onSubmit(data)}
+        initialValues={{
+          wasServiceHard: '',
+          wouldYouUseAgain: '',
+          howCanWeDoBetter: '',
+        }}
+        onSubmit={props.onSubmit}
         validate={validate}
         render={({ handleSubmit, values }) => (
           <Stack
@@ -154,12 +153,9 @@ export const FinalFeedbackForm = props => {
               )}
             </Field>
 
-            <Box as="form" onSubmit={handleSubmit}>
-              <NextAndCancelButtons
-                next={<Trans id="confirmationPage.correctInfo" />}
-                button={<Trans id="confirmationPage.nextButton" />}
-              />
-            </Box>
+            <Button type="submit" mb={10}>
+              <Trans id="landingPage.nextButton.reportNow" />
+            </Button>
           </Stack>
         )}
       />

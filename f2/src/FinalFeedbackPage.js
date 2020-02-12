@@ -40,10 +40,10 @@ export const FinalFeedbackPage = () => {
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/thankyoupage">
-              <Trans id="FinalFeedback.backButton" />
+              <Trans id="finalFeedback.backButton" />
             </BackButton>
             <H1>
-              <Trans id="FinalFeedback.title" />
+              <Trans id="finalFeedback.title" />
             </H1>
             <FinalFeedbackForm
               onSubmit={data => {
