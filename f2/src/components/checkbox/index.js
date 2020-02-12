@@ -37,6 +37,8 @@ export const CheckboxAdapter = ({
 }
 
 export const Checkbox = ({ input, label, isChecked, ...props }) => {
+  const isCheckedAndHasCondition = isChecked && props.conditionalField
+
   return (
     <UniqueID>
       {id => {
@@ -80,7 +82,7 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
               </Text>
             </Flex>
 
-            {isChecked && (
+            {isCheckedAndHasCondition && (
               <ConditionalForm>{props.conditionalField}</ConditionalForm>
             )}
           </React.Fragment>
