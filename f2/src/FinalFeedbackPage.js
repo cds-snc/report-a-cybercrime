@@ -32,7 +32,7 @@ const submitToServer = async data => {
   await postData('/submitFinalFeedback', data)
 }
 
-export const FeedbackPage = () => {
+export const FinalFeedbackPage = () => {
   return (
     <Route
       render={({ history }) => (

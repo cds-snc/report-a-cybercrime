@@ -53,7 +53,7 @@ export const CancelPage = () => {
         <Layout>
           <Alert status="info" variant="solid">
             <AlertIcon name="chat" mt={0} />
-            <Link as={Route} to="/feedbackPage" color="white" display="block">
+            <Link as={Route} to="/finalFeedback" color="white" display="block">
               <Trans id="thankYouPage.feedback" />
             </Link>
           </Alert>
