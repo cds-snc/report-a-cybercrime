@@ -24,8 +24,8 @@ export const ContactInfoSummary = props => {
       {false ? (
         <div>
           {/*: mark the proper ids for lingui */}
-          <Trans id="confirmationPage.contactInfo.email" />
-          <Trans id="confirmationPage.contactInfo.phone" />
+          <Trans id="confirmationPage.victim.email" />
+          <Trans id="confirmationPage.victim.phone" />
           <Trans id="confirmationPage.contactTitle.edit" />
         </div>
       ) : null}
@@ -49,11 +49,11 @@ export const ContactInfoSummary = props => {
         {hasInfoToDisplay ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
-              descriptionTitle="confirmationPage.contactInfo.email"
+              descriptionTitle="confirmationPage.victim.email"
               description={contactInfo.email}
             />
             <DescriptionListItem
-              descriptionTitle="confirmationPage.contactInfo.phone"
+              descriptionTitle="confirmationPage.victim.phone"
               description={contactInfo.phone}
             />
           </Stack>

@@ -17,18 +17,18 @@ export const SuspectCluesSummary = props => {
   }
 
   const hasInfoToDisplay =
-    suspectClues.suspectClues1.length > 0 ||
-    suspectClues.suspectClues2.length > 0 ||
-    suspectClues.suspectClues3.length > 0
+    suspectClues.suspectName.length > 0 ||
+    suspectClues.suspectAddress.length > 0 ||
+    suspectClues.otherDetails.length > 0
 
   return (
     <React.Fragment>
       {false ? (
         <div>
           {/*: mark the proper ids for lingui */}
-          <Trans id="confirmationPage.suspectClues.suspectClues1" />
-          <Trans id="confirmationPage.suspectClues.suspectClues2" />
-          <Trans id="confirmationPage.suspectClues.suspectClues3" />
+          <Trans id="confirmationPage.suspectClues.suspectName" />
+          <Trans id="confirmationPage.suspectClues.suspectAddress" />
+          <Trans id="confirmationPage.suspectClues.otherDetails" />
           <Trans id="confirmationPage.suspectClues.title.edit" />
         </div>
       ) : null}
@@ -52,16 +52,16 @@ export const SuspectCluesSummary = props => {
         {hasInfoToDisplay ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
-              descriptionTitle="confirmationPage.suspectClues.suspectClues1"
-              description={suspectClues.suspectClues1}
+              descriptionTitle="confirmationPage.suspectClues.suspectName"
+              description={suspectClues.suspectName}
             />
             <DescriptionListItem
-              descriptionTitle="confirmationPage.suspectClues.suspectClues2"
-              description={suspectClues.suspectClues2}
+              descriptionTitle="confirmationPage.suspectClues.suspectAddress"
+              description={suspectClues.suspectAddress}
             />
             <DescriptionListItem
-              descriptionTitle="confirmationPage.suspectClues.suspectClues3"
-              description={suspectClues.suspectClues3}
+              descriptionTitle="confirmationPage.suspectClues.otherDetails"
+              description={suspectClues.otherDetails}
             />
           </Stack>
         ) : (

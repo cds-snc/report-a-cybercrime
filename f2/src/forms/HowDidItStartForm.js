@@ -75,13 +75,13 @@ export const HowDidItStartForm = props => {
   var questionsList = [
     {
       name: 'email',
-      channel: 'howDidTheyReachYou.email',
+      channel: 'suspect.email',
       label: 'howDidTheyReachYouLabel.question1',
       hint: 'howDidTheyReachYouLabel.hint1',
     },
     {
       name: 'phone',
-      channel: 'howDidTheyReachYou.phone',
+      channel: 'suspect.phone',
       label: 'howDidTheyReachYouLabel.question2',
       hint: 'howDidTheyReachYouLabel.hint2',
     },
@@ -139,8 +139,8 @@ export const HowDidItStartForm = props => {
           <Trans id="howDidTheyReachYouLabel.hint3" />
           <Trans id="howDidTheyReachYouLabel.hint4" />
           <Trans id="howDidTheyReachYouLabel.hint5" />
-          <Trans id="howDidTheyReachYou.email" />
-          <Trans id="howDidTheyReachYou.phone" />
+          <Trans id="suspect.email" />
+          <Trans id="suspect.phone" />
           <Trans id="howDidTheyReachYou.online" />
           <Trans id="howDidTheyReachYou.app" />
           <Trans id="howDidTheyReachYou.others" />
