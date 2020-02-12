@@ -18,6 +18,7 @@ import { PrivacyConsentPage } from './PrivacyConsentPage'
 import { PrivacyStatementPage } from './PrivacyStatementPage'
 import { WhatWasAffectedPage } from './WhatWasAffected'
 import { FinalFeedbackPage } from './FinalFeedbackPage'
+import { FinalFeedbackThanksPage } from './FinalFeedbackThanksPage'
 import { StartPage } from './StartPage'
 import { ConfirmCancelPage } from './ConfirmCancelPage'
 import { CancelPage } from './CancelPage'
@@ -85,6 +86,10 @@ export const Home = () => (
       <Route path="/finalFeedback">
         <FinalFeedbackPage />
       </Route>
+      <Route path="/finalFeedbackThanks">
+        <FinalFeedbackThanksPage />
+      </Route>
+
       <Route>
         <PageNotFound />
       </Route>

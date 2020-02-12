@@ -48,7 +48,7 @@ export const FinalFeedbackPage = () => {
             <FinalFeedbackForm
               onSubmit={data => {
                 submitToServer(data)
-                history.push('/feedbackThanks')
+                history.push('/finalFeedbackThanks')
               }}
             />
           </Stack>
