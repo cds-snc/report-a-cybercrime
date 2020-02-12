@@ -1,51 +1,59 @@
-/* eslint-disable react/no-unescaped-entities */
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
+import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
-import { P } from './components/paragraph'
 import { H1 } from './components/header'
-import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
-import { Stack } from '@chakra-ui/core'
-import { useStateValue } from './utils/state'
+import { Layout } from './components/layout'
+import { FinalFeedbackForm } from './forms/FinalFeedbackForm'
 import { BackButton } from './components/backbutton'
+import { Stack } from '@chakra-ui/core'
 
-export const FeedbackPage = props => {
-    const [state, dispatch] = useStateValue()
-    if (state.doneForms){
-        dispatch({ type: 'saveForms', data: false })
-    }
-    
-    return (
-        <Route
-          render={({ history }) => (
-            <Layout>
-              <TrackPageViews />
-              
-              <Stack spacing={10} shouldWrapChildren>
-              
-                <BackButton route="/thankYouPage">
-                  <Trans id="feedbackPage.backButton" />
-                </BackButton>
-    
-                <H1>
-                  <Trans id="feedbackPage.title" />
-                </H1>
-                <Stack spacing={4}>
-                  <P>
-                    <Trans id="feedbackPage.part1" />
-                  </P>
-                 
-                  <P>
-                    <Trans id="feedbackPage.part2" />
-                    <Trans id="feedbackPage.contactInfo"/>
-                  </P>
+async function postData(url = '', data = {}) {
+  var form_data = new FormData()
+  form_data.append('json', JSON.stringify(data))
 
-                </Stack>s
-              </Stack>
-            </Layout>
-          )}
-        />
-      )
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    redirect: 'follow',
+    referrer: 'no-referrer',
+    body: form_data,
+  })
+  return await response
 }
-  
+
+const submitToServer = async data => {
+  console.log('Submitting finalFeedback:', data)
+  await postData('/submitFinalFeedback', data)
+}
+
+export const FeedbackPage = () => {
+  return (
+    <Route
+      render={({ history }) => (
+        <Layout>
+          <TrackPageViews />
+          <Stack spacing={10} shouldWrapChildren>
+            <BackButton route="/thankyoupage">
+              <Trans id="FinalFeedback.backButton" />
+            </BackButton>
+            <H1>
+              <Trans id="FinalFeedback.title" />
+            </H1>
+            <FinalFeedbackForm
+              onSubmit={data => {
+                submitToServer(data)
+                history.push('/feedbackThanks')
+              }}
+            />
+          </Stack>
+        </Layout>
+      )}
+    />
+  )
+}
