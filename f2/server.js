@@ -91,7 +91,7 @@ const uploadData = (req, res) => {
     data.submissionTime = new Date().toISOString()
     data.contactInfo.email = randomizeString(data.contactInfo.email)
 
-    const analystEmail = formatAnalystEmail(data)
+    const analystEmail = formatAnalystEmail(data, files)
     console.log(analystEmail)
     encryptAndSend(process.env.LDAP_UID, analystEmail)
 

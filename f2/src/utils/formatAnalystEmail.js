@@ -125,22 +125,22 @@ Transaction date       ${data.moneyLost.transactionDate}
 `
 }
 
-const formatFileAttachments = data => {
-  const fileStringList = data.evidence.files
-    .map((file, index) => {
-      JSON.stringify(file)
-    })
-    .join(', ')
+const formatFileAttachments = (data, files) => {
+  const fileStringList = Object.keys(files)
+    .map(
+      (file, index) => `
+      File name:   ${file}
+      Description: ${data.evidence.fileDescriptions[index]}
+      `,
+    )
+    .join('')
   return `
 File attachments
-
-files:                 ${fileStringList}
-File name              ${data.evidence.files.join()}
-File description       ${data.evidence.fileDescriptions.join()}
+${fileStringList}
 `
 }
 
-const formatAnalystEmail = data => {
+const formatAnalystEmail = (data, files) => {
   return `
   ${formatReportInfo(data)}
   ${formatVictimDetails(data)}
@@ -148,7 +148,7 @@ const formatAnalystEmail = data => {
   ${formatNarrative(data)}
   ${formatSuspectDetails(data)}
   ${formatFinancialTransactions(data)}
-  ${formatFileAttachments(data)}
+  ${formatFileAttachments(data, files)}
   `
 }
 
