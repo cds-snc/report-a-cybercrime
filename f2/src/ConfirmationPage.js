@@ -20,14 +20,6 @@ const randLetter = () => {
 }
 const randDigit = () => Math.floor(Math.random() * 10)
 
-const randomizeString = s =>
-  s
-    ? s
-        .replace(/[a-z]/g, () => randLetter())
-        .replace(/[A-Z]/g, () => randLetter().toUpperCase())
-        .replace(/[0-9]/g, () => randDigit())
-    : s
-
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
   // Stick all our collected data into a single form element called json
@@ -53,9 +45,6 @@ async function postData(url = '', data = {}) {
 const prepFormData = (formData, language) => {
   let contactInfo = formData.contactInfo ? formData.contactInfo : {}
   let { fullName, email, postalCode } = contactInfo
-  fullName = randomizeString(fullName)
-  email = randomizeString(email)
-  postalCode = randomizeString(postalCode)
 
   if (
     !formData.whatWasAffected.affectedOptions.includes(
