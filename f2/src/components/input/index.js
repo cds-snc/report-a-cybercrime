@@ -22,5 +22,6 @@ export const Input = props => (
       border: '3px',
     }}
     {...props.input}
+    {...props}
   />
 )

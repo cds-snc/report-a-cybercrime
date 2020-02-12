@@ -21,5 +21,6 @@ export const TextArea = props => (
       border: '3px',
     }}
     {...props.input}
+    {...props}
   />
 )
