@@ -4,7 +4,7 @@ const path = require('path')
 const formidable = require('formidable')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
-
+const fs = require('fs')
 require('dotenv').config()
 
 // fetch and store certs for intake analysts
@@ -13,6 +13,7 @@ getAllCerts(process.env.LDAP_UID)
 const app = express()
 
 const MongoClient = require('mongodb').MongoClient
+const Binary = require('mongodb').Binary
 
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
@@ -54,19 +55,28 @@ const uploadData = (req, res) => {
       console.error('Error', err)
       throw err
     }
-    /*
-    Logging Form fields and files for demonstration purposes, remove later
-    */
-    console.log('Fields', fields)
-    console.log('Files', files)
-    for (const file of Object.entries(files)) {
-      console.log(file)
-    }
 
     // Extract the JSON from the "JSON" form element
     const data = JSON.parse(fields['json'])
-    console.log('Parsed JSON:', data)
 
+    // Get the files ready for saving to MongoDB
+    const filesToJson = []
+    var i = 0
+    for (const file of Object.entries(files)) {
+      filesToJson.push({
+        name: file[1].name,
+        type: file[1].type,
+        size: file[1].size,
+        fileDescription: data.evidence.fileDescriptions[i],
+        blob: Binary(fs.readFileSync(file[1].path)),
+      })
+      i++
+    }
+
+    // Overwrite the empty files array with the file json we built above
+    data.evidence.files = filesToJson
+
+    console.log(data.evidence.files)
     const selfHarmWords = selfHarmWordsScan(data)
     if (selfHarmWords) {
       console.warn(`Self harm words detected: ${selfHarmWords}`)
