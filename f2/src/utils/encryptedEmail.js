@@ -91,6 +91,15 @@ async function sendMail(attachment) {
   const message = {
     from: mailFrom,
     to: mailTo,
+    priority: 'high',
+    headers: {
+      'x-priority': '1',
+      'x-msmail-priority': 'High',
+      importance: 'high',
+      Priority: 'Urgent',
+      'X-Priority': '1',
+      Importance: 'high',
+    },
     subject: 'Custom attachment',
     attachments: [
       {

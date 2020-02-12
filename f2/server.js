@@ -11,7 +11,7 @@ require('dotenv').config()
 var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
 
 // fetch and store certs for intake analysts
-getAllCerts(process.env.LDAP_UID)
+//getAllCerts(process.env.LDAP_UID)
 
 const app = express()
 
