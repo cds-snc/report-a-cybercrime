@@ -244,7 +244,7 @@
   "startPage.nextButton": "Commencer le rapport",
   "startPage.requirement1": "Date à laquelle l’incident a commencé",
   "startPage.requirement2": "Renseignements sur le suspect tels que ses coordonnées",
-  "startPage.requirement3": "Précisions concernant les conséquences de l’incident",
+  "startPage.requirement3": "Précisions concernant ce qui s'est passé et les conséquences de l’incident",
   "startPage.requirement4": "Documents, messages ou reçus de transactions",
   "startPage.title": "Avant de commencer",
   "startPage.warning": "Vous ne pourrez pas revenir modifier votre rapport si vous fermez cette fenêtre.",
