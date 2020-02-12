@@ -215,7 +215,7 @@
   "pageNotFound.message": "Sorry, the page you were trying to view does not exist.",
   "privacyConsentInfoForm.nextButton": "Continue",
   "privacyConsentInfoForm.nextPage": "Next, you will be asked about how the incident started.",
-  "privacyConsentInfoForm.optionsHelpText": "It may also be shared with police and security partners to solve crimes, educate the public, and improve this service.",
+  "privacyConsentInfoForm.optionsHelpText": "The information you include in your report may also be shared with other police services and security partners to support investigations, intelligence analysis, and prevention efforts.",
   "privacyConsentInfoForm.warning": "To continue, you must check the box above accepting the terms of the Privacy statement.",
   "privacyConsentInfoForm.yes": "I accept the terms of the Privacy statement.",
   "privacyConsentPage.backButton": "Back to the start page",
