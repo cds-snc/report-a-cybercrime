@@ -4,10 +4,16 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field, useField } from 'react-final-form'
 import { Radio } from '../components/radio'
-import { FormControl, Stack, Box, VisuallyHidden } from '@chakra-ui/core'
+import {
+  FormControl,
+  Stack,
+  Box,
+  VisuallyHidden,
+  Alert,
+  AlertIcon,
+} from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { TextArea } from '../components/text-area'
-import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 import { Button } from '../components/button'
 
@@ -46,7 +52,6 @@ const validate = () => {
 
 export const FinalFeedbackForm = props => {
   const { i18n } = useLingui()
-  const [data] = useStateValue()
 
   const wasServiceHard = [
     'finalFeedback.wasServiceHard.veryHard',
@@ -61,6 +66,8 @@ export const FinalFeedbackForm = props => {
     'finalFeedback.wouldYouUseAgain.no',
     'finalFeedback.wouldYouUseAgain.maybe',
   ]
+
+  let showWarning = false
 
   return (
     <React.Fragment>
@@ -83,7 +90,17 @@ export const FinalFeedbackForm = props => {
           wouldYouUseAgain: '',
           howCanWeDoBetter: '',
         }}
-        onSubmit={props.onSubmit}
+        onSubmit={values => {
+          if (
+            values.wasServiceHard.length === 0 &&
+            values.wouldYouUseAgain.length === 0 &&
+            values.howCanWeDoBetter.length === 0
+          ) {
+            showWarning = true
+          } else {
+            props.onSubmit(values)
+          }
+        }}
         validate={validate}
         render={({ handleSubmit, values }) => (
           <Stack
@@ -152,6 +169,15 @@ export const FinalFeedbackForm = props => {
                 </FormControl>
               )}
             </Field>
+
+            {showWarning ? (
+              <Control>
+                <Alert status="warning">
+                  <AlertIcon />
+                  <Trans id="finalFeedback.warning" />
+                </Alert>
+              </Control>
+            ) : null}
 
             <Button type="submit" mb={10}>
               <Trans id="landingPage.nextButton.reportNow" />

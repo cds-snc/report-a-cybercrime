@@ -128,6 +128,7 @@
   "finalFeedback.howCanWeDoBetter.helper": "Do not include any personal or financial details",
   "finalFeedback.howCanWeDoBetter.label": "How can we do better?",
   "finalFeedback.title": "Please help us improve this service",
+  "finalFeedback.warning": "Answer at least one question to submit feedback.",
   "finalFeedback.wasServiceHard.easy": "Easy",
   "finalFeedback.wasServiceHard.hard": "Hard",
   "finalFeedback.wasServiceHard.label": "Was this service hard or easy to use?",
