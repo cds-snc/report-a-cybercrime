@@ -19,7 +19,7 @@ export const Field = ({ name, label, helperText, errorMessage, component }) => {
             </FormLabel>
             <FormHelperText>{helperText}</FormHelperText>
             <FormErrorMessage>{errorMessage}</FormErrorMessage>
-            <FieldAdapter id={name} component={component} />
+            <FieldAdapter name={name} component={component} />
           </FormControl>
         )
       }}

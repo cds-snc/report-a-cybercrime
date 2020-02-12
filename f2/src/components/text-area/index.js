@@ -21,12 +21,6 @@ export const TextArea = props => (
       borderColor: 'black',
       border: '3px',
     }}
-    {...props}
-  >
-    {props.children}
-  </ChakraTextarea>
+    {...props.input}
+  />
 )
-
-TextArea.propTypes = {
-  children: PropTypes.any,
-}

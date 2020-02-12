@@ -22,10 +22,6 @@ export const Input = props => (
       borderColor: 'black',
       border: '3px',
     }}
-    {...props}
+    {...props.input}
   />
 )
-
-Input.propTypes = {
-  children: PropTypes.any,
-}
