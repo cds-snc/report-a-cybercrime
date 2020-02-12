@@ -54,6 +54,14 @@ export const LandingPage = props => {
                         }
                         isExternal
                       />
+                        <A
+                          href={
+                            i18n.locale === 'en'
+                              ? 'http://www.antifraudcentre-centreantifraude.ca/index-eng.htm'
+                              : 'http://www.antifraudcentre-centreantifraude.ca/index-fra.htm'
+                          }
+                          isExternal
+                        />
                     </Trans>
                   </P>
                   <Box flex="1 1 0"></Box>
@@ -141,9 +149,21 @@ export const LandingPage = props => {
               <Stack spacing={10} shouldWrapChildren>
                 <Ul>
                   <Li>
-                    <Trans id="landingPage.reportingOptions1" />
+                    <Trans id="landingPage.reportingOptions0" />
                   </Li>
+                  <Li>
+                    <Trans id="landingPage.reportingOptions1">
+                    <A
+                        href={
+                          i18n.locale === 'en'
+                            ? 'https://www.cybertip.ca/app/en/report'
+                            : 'https://www.cybertip.ca/app/fr/report'  
 
+                        }
+                        isExternal // Opens new tab
+                      />
+                        </Trans>   
+                  </Li>
                   <Li>
                     <Trans id="landingPage.reportingOptions2">
                       <A
