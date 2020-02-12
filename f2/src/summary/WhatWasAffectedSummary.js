@@ -20,6 +20,17 @@ export const WhatWasAffectedSummary = props => {
     ...data.formData.whatWasAffected,
   }
 
+  const summaryOptions = impact.affectedOptions.map(key =>
+    key === 'whatWasAffectedForm.other'
+      ? impact.optionOther
+      : i18n._(key).toLowerCase(),
+  )
+  const summaryLine = formatList(summaryOptions, {
+    pair: i18n._('default.pair'),
+    middle: i18n._('default.middle'),
+    end: i18n._('default.end'),
+  })
+
   return (
     <React.Fragment>
       {false ? (
@@ -50,13 +61,7 @@ export const WhatWasAffectedSummary = props => {
               <Trans id="confirmationPage.whatWasAffected.format" />
               &nbsp;
               <Text as="span" textTransform="lowercase">
-                {formatList(
-                  impact.affectedOptions.map(i => i18n._(i)),
-                  {
-                    type: i18n._('default.conjunction'),
-                    style: i18n._('default.glue'),
-                  },
-                )}
+                {summaryLine}
               </Text>
             </Text>
           </Stack>
