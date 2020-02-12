@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
 var clamd = require('clamdjs')
 var fs = require('fs')
@@ -90,7 +91,9 @@ const uploadData = (req, res) => {
     data.submissionTime = new Date().toISOString()
     data.contactInfo.email = randomizeString(data.contactInfo.email)
 
-    encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
+    const analystEmail = formatAnalystEmail(data)
+    console.log(analystEmail)
+    encryptAndSend(process.env.LDAP_UID, analystEmail)
 
     if (cosmosDbConfigured) {
       MongoClient.connect(url, function(err, db) {
