@@ -12,7 +12,7 @@
       "required": true
     },
     "LDAP_UID": {
-      "required": true
+      "required": false
     },
     "NOTIFY_API_KEY": {
       "required": true
