@@ -37,9 +37,6 @@ async function postData(url = '', data = {}) {
 }
 
 const prepFormData = (formData, language) => {
-  let contactInfo = formData.contactInfo ? formData.contactInfo : {}
-  let { fullName, email, postalCode } = contactInfo
-
   if (
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.financial',
