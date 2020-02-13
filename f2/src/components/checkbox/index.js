@@ -44,12 +44,12 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
       {id => {
         return (
           <React.Fragment>
-            <Flex as="label" {...props} id={id} align="center">
+            <Flex as="label" id={id} align="center">
               <VisuallyHidden
-                {...input}
                 as="input"
                 type="checkbox"
                 defaultChecked={isChecked ? 'true' : ''}
+                {...input}
               />
 
               <ControlBox

@@ -41,10 +41,10 @@ export const Radio = ({
           <React.Fragment>
             <Flex as="label" id={id} align="center">
               <VisuallyHidden
-                {...input}
                 as="input"
                 type="radio"
                 defaultChecked={isChecked ? 'true' : ''}
+                {...input}
               />
 
               <ControlBox
