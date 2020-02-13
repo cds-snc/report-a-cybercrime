@@ -38,6 +38,7 @@
     "prod": "npm run build && node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
+    "start": "node server.js",
     "coverage": "react-scripts test --coverage --watchAll=false",
     "watch": "react-scripts test",
     "dbg": "react-scripts --inspect-brk test --watchAll=false --runInBand",

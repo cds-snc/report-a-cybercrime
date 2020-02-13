@@ -15,9 +15,6 @@
   "buildpacks": [
     {
       "url": "https://github.com/lstoll/heroku-buildpack-monorepo"
-    },
-    {
-      "url": "https://buildpack-registry.s3.amazonaws.com/buildpacks/mars/create-react-app.tgz"
     }
   ]
 }
