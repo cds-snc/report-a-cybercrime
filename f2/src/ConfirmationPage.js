@@ -90,11 +90,6 @@ const prepFormData = (formData, language) => {
   return {
     ...formData,
     language,
-    contactInfo: {
-      fullName,
-      email,
-      postalCode,
-    },
   }
 }
 

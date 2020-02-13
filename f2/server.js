@@ -37,12 +37,6 @@ if (!cosmosDbConfigured) {
 
 const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
 
-const randLetter = () => {
-  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  return letters[Math.floor(Math.random() * letters.length)]
-}
-const randDigit = () => Math.floor(Math.random() * 10)
-
 const uploadData = (req, res) => {
   new formidable.IncomingForm().parse(req, (err, fields, files) => {
     if (err) {
