@@ -16,9 +16,9 @@ const blobServiceClient = new BlobServiceClient(
   sharedKeyCredential,
 )
 
-async function saveBlob(reportId, files) {
-  console.log(reportId)
-  const containerName = reportId.replace('-', '').toLowerCase()
+async function saveBlob(data) {
+  console.log(data.reportId)
+  const containerName = data.reportId.replace('-', '').toLowerCase()
   console.log(containerName)
   const containerClient = blobServiceClient.getContainerClient(containerName)
   const createContainerResponse = await containerClient.create()
@@ -27,11 +27,11 @@ async function saveBlob(reportId, files) {
     createContainerResponse.requestId,
   )
 
-  for (var x = 0; x < files.length; x++) {
-    console.log(files[x])
-    const content = fs.readFileSync(files[x].path)
+  for (var x = 0; x < data.evidence.files.length; x++) {
+    console.log(data.evidence.files[x])
+    const content = fs.readFileSync(data.evidence.files[x].path)
     // Use SHA1 hash as file name to avoid collisions in blob storage
-    const blobName = files[x].sha1
+    const blobName = data.evidence.files[x].sha1
     const blockBlobClient = containerClient.getBlockBlobClient(blobName)
     const uploadBlobResponse = await blockBlobClient.upload(
       content,

@@ -2,25 +2,19 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
-const fs = require('fs')
-const crypto = require('crypto')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+const { getData } = require('./src/utils/getData')
+const { saveRecord } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
-const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
-const clamd = require('clamdjs')
+const { scanFiles } = require('./src/utils/scanFiles')
 
 require('dotenv').config()
-var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
 
 // fetch and store certs for intake analysts
 getAllCerts(process.env.LDAP_UID)
 
 const app = express()
 
-const MongoClient = require('mongodb').MongoClient
-
-const dbName = process.env.COSMOSDB_NAME
-const dbKey = process.env.COSMOSDB_KEY
 const allowedOrigins = [
   'http://dev.antifraudcentre-centreantifraude.ca',
   'http://pre.antifraudcentre-centreantifraude.ca',
@@ -30,108 +24,22 @@ const allowedOrigins = [
   'http://centreantifraude.ca',
 ]
 
-let cosmosDbConfigured = dbName && dbKey
-if (!cosmosDbConfigured) {
-  console.warn(
-    'Warning: CosmosDB not configured. Data will not be saved to CosmosDB database. Please set the environment variables COSMOSDB_NAME and COSMOSDB_KEY',
-  )
+// These can all be done async to avoid holding up the nodejs process?
+async function save(data, res) {
+  saveBlob(data)
+  encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
+  saveRecord(data, res)
 }
 
-const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
+const uploadData = async (req, res, fields, files) => {
+  // Get all the data in the format we want, this function blocks because we need the data
+  var data = await getData(fields, files)
 
-const uploadData = (req, res) => {
-  new formidable.IncomingForm().parse(req, (err, fields, files) => {
-    if (err) {
-      console.error('Error', err)
-      throw err
-    }
+  // Await here because we also need these results before saving
+  await scanFiles(data)
 
-    for (const file of Object.entries(files)) {
-      //scan file for virus
-      var readStream = fs.createReadStream(file[1].path)
-      //set timeout for 10000
-      scanner
-        .scanStream(readStream, 10000)
-        .then(function(reply) {
-          console.log(file[0] + ': ' + reply)
-          // print some thing like
-          // 'stream: OK', if not infected
-          // `stream: ${virus} FOUND`, if infected
-        })
-        .catch(function() {})
-    }
-
-    // Extract the JSON from the "JSON" form element
-    const data = JSON.parse(fields['json'])
-
-    // Clean up the file info we're saving to MongoDB, and record the SHA1 hash so we can find the file in blob storage
-    const filesToJson = []
-    var i = 0
-
-    for (const file of Object.entries(files)) {
-      // Generate and record the SHA1 hash for the file. This way we can find it in blob storage
-      var shasum = crypto.createHash('sha1')
-      shasum.update(fs.readFileSync(file[1].path))
-      const sha1Hash = shasum.digest('hex')
-
-      // Record all the file related fields together in one JSON object for simplicity
-      filesToJson.push({
-        name: file[1].name,
-        type: file[1].type,
-        size: file[1].size,
-        fileDescription: data.evidence.fileDescriptions[i],
-        path: file[1].path,
-        sha1: sha1Hash,
-        // MongoDB had a 16MB document size limit, but CosmosDB only has a 2MB limit so this isn't going to work.
-        //blob: Binary(fs.readFileSync(file[1].path)),
-      })
-      i++
-    }
-
-    // Overwrite the empty files array with the file json we built above
-    data.evidence.files = filesToJson
-
-    saveBlob(data.reportId, filesToJson)
-
-    const selfHarmWords = selfHarmWordsScan(data)
-    if (selfHarmWords) {
-      console.warn(`Self harm words detected: ${selfHarmWords}`)
-    }
-    data.selfHarmWords = selfHarmWords
-    data.submissionTime = new Date().toISOString()
-
-    encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
-
-    if (cosmosDbConfigured) {
-      MongoClient.connect(url, function(err, db) {
-        if (err) {
-          console.warn(`ERROR in MongoClient.connect: ${err}`)
-          res.statusCode = 502
-          res.statusMessage = 'Error saving to CosmosDB'
-          res.send(res.statusMessage)
-        } else {
-          var dbo = db.db('cybercrime')
-          dbo.collection('reports').insertOne(data, function(err, result) {
-            if (err) {
-              console.log({ data })
-              console.warn(`ERROR in insertOne: ${err}`)
-              res.statusCode = 502
-              res.statusMessage = 'Error saving to CosmosDB'
-              res.send(res.statusMessage)
-            } else {
-              db.close()
-              console.log('Report saved to CosmosDB')
-              res.send('Report saved to CosmosDB')
-            }
-          })
-        }
-      })
-    } else {
-      res.statusCode = 500
-      res.statusMessage = 'CosmosDB not configured'
-      res.send('CosmosDB not configured')
-    }
-  })
+  // Save the data, e-mail it, etc.. This is async to avoid holding up nodejs from other requests
+  save(data, res)
 }
 
 let count = 0
@@ -174,7 +82,13 @@ app
   })
 
   .post('/submit', (req, res) => {
-    uploadData(req, res)
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+      if (err) {
+        console.error('Error', err)
+        throw err
+      }
+      uploadData(req, res, fields, files)
+    })
   })
 
   .get('/*', function(_req, res) {
