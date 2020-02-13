@@ -12,7 +12,6 @@ import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { Text } from './components/text'
 import { Stack, Alert, AlertIcon, Box } from '@chakra-ui/core'
-// import { Link as Route } from 'react-router-dom'
 import { useStateValue } from './utils/state'
 import { P } from './components/paragraph'
 import { Route } from 'react-router-dom'
@@ -141,7 +140,7 @@ export const ThankYouPage = () => {
           </Layout>
         </Layout>
       </Stack>
-
+      
      { /* After help section*/}
       <Layout pt={10}>
         <Alert status="success">
