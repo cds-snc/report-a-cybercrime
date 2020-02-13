@@ -7,8 +7,11 @@ const crypto = require('crypto')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
+var clamd = require('clamdjs')
+var fs = require('fs')
 
 require('dotenv').config()
+var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
 
 // fetch and store certs for intake analysts
 getAllCerts(process.env.LDAP_UID)
@@ -37,26 +40,30 @@ if (!cosmosDbConfigured) {
 
 const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
 
-const randLetter = () => {
-  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  return letters[Math.floor(Math.random() * letters.length)]
-}
-const randDigit = () => Math.floor(Math.random() * 10)
-
-const randomizeString = s =>
-  s
-    ? s
-        .replace(/[a-z]/g, () => randLetter())
-        .replace(/[A-Z]/g, () => randLetter().toUpperCase())
-        .replace(/[0-9]/g, () => randDigit())
-    : s
-
 const uploadData = (req, res) => {
   new formidable.IncomingForm().parse(req, (err, fields, files) => {
     if (err) {
       console.error('Error', err)
       throw err
     }
+
+    for (const file of Object.entries(files)) {
+
+      
+      //scan file for virus
+      var readStream = fs.createReadStream(file[1].path)
+      //set timeout for 10000
+      scanner
+        .scanStream(readStream, 10000)
+        .then(function(reply) {
+          console.log(file[0] + ': ' + reply)
+          // print some thing like
+          // 'stream: OK', if not infected
+          // `stream: ${virus} FOUND`, if infected
+        })
+        .catch(function() {})
+    }
+
 
     // Extract the JSON from the "JSON" form element
     const data = JSON.parse(fields['json'])
@@ -96,7 +103,6 @@ const uploadData = (req, res) => {
     }
     data.selfHarmWords = selfHarmWords
     data.submissionTime = new Date().toISOString()
-    data.contactInfo.email = randomizeString(data.contactInfo.email)
 
     encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
 
