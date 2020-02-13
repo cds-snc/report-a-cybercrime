@@ -14,6 +14,7 @@ import { StateProvider, initialState, reducer } from './utils/state'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { Li } from './components/list-item'
+import { A } from './components/link'
 
 const App = () => {
   const { i18n } = useLingui()
@@ -36,7 +37,16 @@ const App = () => {
               <Trans id="banner.warning" />
             </WarningBanner>
             <PhaseBanner phase={<Trans id="banner.phase" />}>
-              <Trans id="banner.phaseText" />
+              <Trans id="banner.phaseText">
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.services.rcmp-grc.gc.ca/chooser-eng.html'
+                      : 'https://www.services.rcmp-grc.gc.ca/chooser-fra.html'
+                  }
+                  isExternal
+                />
+              </Trans>
             </PhaseBanner>
             <TopBanner lang={i18n.locale} />
           </header>
@@ -57,7 +67,7 @@ const App = () => {
           <Layout fluid bg="gray.300">
             <Layout>
               <P fontSize="sm" my={3}>
-                Version: 000000
+                Version: {process.env.REACT_APP_VERSION || '000000'}
               </P>
             </Layout>
           </Layout>
