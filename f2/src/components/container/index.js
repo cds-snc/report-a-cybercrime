@@ -24,9 +24,7 @@ export const LandingBox = props => (
     borderColor="gray.400"
     boxShadow="lg"
     color="black"
-
     p={[4, null, 4]}
-
     w={343}
     mb={4}
     {...props}

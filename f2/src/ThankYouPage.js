@@ -41,18 +41,18 @@ export const ThankYouPage = () => {
             <H1 mb={6}>
               <Trans id="thankYouPage.title" />
             </H1>
-            <P color ="green.200" fontSize="1.125rem">
-            {contactInfo.email && <Trans  id="thankYouPage.summary" />}
-            <Trans
-              id="thankYouPage.referenceNumber"
-              values={{
-                reference: state.formData.reportId
-                  ? state.formData.reportId
-                  : '< report ID >',
-              }}
-            >
-              <Text as="span" color="yellow.200" fontSize="xl" />
-            </Trans>
+            <P color="green.200" fontSize="1.125rem">
+              {contactInfo.email && <Trans id="thankYouPage.summary" />}
+              <Trans
+                id="thankYouPage.referenceNumber"
+                values={{
+                  reference: state.formData.reportId
+                    ? state.formData.reportId
+                    : '< report ID >',
+                }}
+              >
+                <Text as="span" color="yellow.200" fontSize="xl" />
+              </Trans>
             </P>
           </InfoCard>
         </Layout>
