@@ -12,9 +12,10 @@ import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { Text } from './components/text'
 import { Stack, Icon, Alert, AlertIcon, Box } from '@chakra-ui/core'
-import { Link as Route } from 'react-router-dom'
+// import { Link as Route } from 'react-router-dom'
 import { useStateValue } from './utils/state'
 import { P } from './components/paragraph'
+import { Route } from 'react-router-dom'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
@@ -24,6 +25,9 @@ export const ThankYouPage = () => {
   const contactInfo = {
     ...data.formData.contactInfo,
   }
+
+  const [, dispatch] = useStateValue()
+
   return (
     <Box w="100%">
       <Stack spacing={-10} w="100%">
@@ -138,17 +142,33 @@ export const ThankYouPage = () => {
         </Layout>
       </Stack>
 
-      {/*After help section*/}
+     { /* After help section*/}
       <Layout pt={10}>
         <Alert status="success">
           <AlertIcon mt={0} />
           <Trans id="thankYouPage.safelyCloseWindow" />
         </Alert>
 
-        <Link as={Route} to="/" my={8} color="black" display="block">
-          <Trans id="thankYouPage.createNewReport" />
-          <Icon name="chevron-right" />
-        </Link>
+        <Box mb="auto">
+            <Route
+              render={({ history }) => (
+             <Link
+                onClick={() => {
+                  dispatch({
+                    type: 'deleteFormData',
+                  })
+                  history.push('/')
+                }}
+                type="submit"
+                w={{ base: '100%', md: 'auto' }}
+                variantColor="red"
+              >
+                <Trans id="thankYouPage.createNewReport" />
+              </Link>
+              )}
+              />
+              </Box>
+
       </Layout>
       <Layout fluid borderBottom="4px" borderColor="blue.500">
         <Layout>

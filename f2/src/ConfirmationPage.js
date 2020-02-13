@@ -13,6 +13,7 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { generateReportId } from './utils/generateReportId'
+import { Button } from './components/button'
 
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
