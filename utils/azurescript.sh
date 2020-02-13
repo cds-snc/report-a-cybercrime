@@ -56,8 +56,6 @@ SP_PASSWD=$(az ad sp create-for-rbac --name http://$SERVICE_PRINCIPAL_NAME --sco
 SP_APP_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)
 
 ## Create Antivirus Scanner Container Instance
-# - Currently not using the alpine version because mk0x needs to rebuild from clamd v102.2 or 103 to pickup known azure bugfix.
-# - See https://bugzilla.clamav.net/show_bug.cgi?id=12469
 # To query the log analytics workspace for container logs query ContainerEvent_CL and ContainerInstanceLog_CL tables
 az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image ${ACR_NAME}.azurecr.io/${VIRUS_SCANNER_IMAGE_NAME}:latest --dns-name-label $VIRUS_SCANNER_NAME --ports 3310 --registry-login-server ${ACR_NAME}.azurecr.io --registry-password $SP_PASSWD --registry-username $SP_APP_ID --log-analytics-workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query customerId --output tsv) --log-analytics-workspace-key $(az monitor log-analytics workspace get-shared-keys --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query primarySharedKey --output tsv)
 
