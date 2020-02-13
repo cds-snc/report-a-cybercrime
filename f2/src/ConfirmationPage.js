@@ -65,7 +65,7 @@ const prepFormData = (formData, language) => {
     formData.moneyLost = {
       demandedMoney: '',
       moneyTaken: '',
-      methodPayment: '',
+      methodPayment: [],
       transactionDate: '',
       tellUsMore: '',
     }
@@ -77,8 +77,8 @@ const prepFormData = (formData, language) => {
     )
   ) {
     formData.personalInformation = {
-      typeOfInfoReq: '',
-      typeOfInfoObtained: '',
+      typeOfInfoReq: [],
+      typeOfInfoObtained: [],
       tellUsMore: '',
     }
   }
