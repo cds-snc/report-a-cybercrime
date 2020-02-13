@@ -13,11 +13,11 @@ import { Button } from '../components/button'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 
-
 export const ContactInfoForm = ({ onSubmit }) => {
   const [data] = useStateValue()
   const contactInfo = {
     email: '',
+    name: '',
     ...data.formData.contactInfo,
   }
 
@@ -27,6 +27,48 @@ export const ContactInfoForm = ({ onSubmit }) => {
       onSubmit={onSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
+          <Flex direction="row" align="center" wrap="wrap" mb={10}>
+            <P w="100%">
+              <b>
+                <Trans id="contactinfoPage.skipInfo" />
+              </b>
+            </P>
+            <Button
+              as={ReactRouterLink}
+              fontSize={{ base: 'lg', md: 'xl' }}
+              color="black"
+              variant="solid"
+              variantColor="gray"
+              bg="gray.400"
+              borderColor="gray.500"
+              to="/confirmation"
+              textAlign="center"
+            >
+              <Trans id="contactinfoPage.skipButton" />
+              <Icon
+                focusable="false"
+                ml={2}
+                mr={-2}
+                name="chevron-right"
+                size="28px"
+              />
+            </Button>
+          </Flex>
+          <Field name="name">
+            {props => (
+              <FormControl>
+                <FormLabel htmlFor="name">
+                  <Trans id="contactinfoPage.name" />{' '}
+                </FormLabel>
+                <TextInput
+                  id="name"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
           <Field name="email">
             {props => (
               <FormControl>
@@ -42,9 +84,7 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-          <P mb={0}>
-            <Trans id="contactinfoPage.or" />{' '}
-          </P>
+
           <Field name="phone">
             {props => (
               <FormControl>
@@ -63,34 +103,12 @@ export const ContactInfoForm = ({ onSubmit }) => {
           <NextAndCancelButtons
             next={<Trans id="contactinfoPage.nextInfo" />}
             button={<Trans id="contactinfoPage.nextButton" />}
-          />  
-
-          <Flex direction="row" align="center" wrap="wrap" mb={10}>
-          <P w="100%">
-          <Trans id="contactinfoPage.skipInfo"/>
-          </P>
-          <Button
-        as={ReactRouterLink}
-        fontSize={{ base: 'lg', md: 'xl' }}
-        color="black"
-        variant="solid"
-        variantColor="gray"
-        bg = "gray.400"
-        borderColor="gray.500"
-        to="/confirmation"
-        textAlign="center"
-      >
-        <Trans id="contactinfoPage.skipButton" />
-      <Icon focusable="false" ml={2} mr={-2} name="chevron-right" size="28px" />
-        
-      </Button>
-      </Flex>
+          />
         </Stack>
       )}
     />
   )
-  
-} 
+}
 
 ContactInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
