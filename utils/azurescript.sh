@@ -44,7 +44,7 @@ az network vnet create --name $VNET_NAME --resource-group $RG_NAME --address-pre
 az network vnet subnet create --address-prefixes $CONTAINER_SUBNET_RANGE --name $CONTAINER_SUBNET --resource-group $RG_NAME --vnet-name $VNET_NAME
 
 ## Create Container registry
-ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku standard --query id --output tsv)
+ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku Premium --query id --output tsv)
 
 #### Deploy code
 ## Build Docker image
