@@ -46,8 +46,13 @@ az network vnet subnet create --address-prefixes $CONTAINER_SUBNET_RANGE --name 
 ## Create Container registry
 ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku standard --query id --output tsv)
 
-## Create Database
-az cosmosdb create --name $DB_NAME --kind MongoDB
+#### Deploy code
+## Build Docker image
+az acr build --registry $ACR_NAME --image $IMAGE_NAME ../f2
+
+## Gather credentials to access ACR
+SP_PASSWD=$(az ad sp create-for-rbac --name http://$SERVICE_PRINCIPAL_NAME --scopes $ACR_REGISTRY_ID --role acrpull --query password --output tsv)
+SP_APP_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)
 
 ## Create Antivirus Scanner Container Instance
 # - Currently not using the alpine version because mk0x needs to rebuild from clamd v102.2 or 103 to pickup known azure bugfix.
@@ -58,13 +63,8 @@ az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image
 ## Create Content Moderator - Azure Cognitive Services
 az cognitiveservices account create --name $COGNITIVE_NAME --resource-group $RG_NAME --kind ContentModerator --sku F0 --location canadacentral --yes
 
-#### Deploy code
-## Build Docker image
-az acr build --registry $ACR_NAME --image $IMAGE_NAME ../f2
-
-## Gather credentials to access ACR
-SP_PASSWD=$(az ad sp create-for-rbac --name http://$SERVICE_PRINCIPAL_NAME --scopes $ACR_REGISTRY_ID --role acrpull --query password --output tsv)
-SP_APP_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)
+## Create Database
+az cosmosdb create --name $DB_NAME --kind MongoDB
 
 #### App Service
 ## Create App Service & configure
