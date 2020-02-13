@@ -34,7 +34,24 @@ export const LandingPage = props => {
             </H1>
             <Stack spacing={4}>
               <P>
-                <Trans id="landingPage.intro" />
+                <Trans id="landingPage.intro">
+                <A
+                        href={
+                          i18n.locale === 'en'
+                            ? 'http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3'
+                            : 'http://www.rcmp-grc.gc.ca/fr/groupe-national-coordination-cybercriminalite-gncc'
+                        }
+                        isExternal
+                      />
+                        <A
+                          href={
+                            i18n.locale === 'en'
+                              ? 'http://www.antifraudcentre-centreantifraude.ca/index-eng.htm'
+                              : 'http://www.antifraudcentre-centreantifraude.ca/index-fra.htm'
+                          }
+                          isExternal
+                        />
+                 </Trans>
               </P>
 
               <Stack spacing={4} direction="row" flexWrap="wrap">
@@ -44,16 +61,8 @@ export const LandingPage = props => {
                   </H2>
 
                   <P>
-                    <Trans id="landingPage.onlineIntro">
-                      <A
-                        href={
-                          i18n.locale === 'en'
-                            ? 'http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3'
-                            : 'http://www.rcmp-grc.gc.ca/fr/groupe-national-coordination-cybercriminalite-gncc'
-                        }
-                        isExternal
-                      />
-                    </Trans>
+                    <Trans id="landingPage.onlineIntro" />
+
                   </P>
                   <Box flex="1 1 0"></Box>
                   <Button
@@ -78,18 +87,6 @@ export const LandingPage = props => {
                   </H2>
 
                   <Stack spacing={0}>
-                    <P>
-                      <Trans id="landingPage.cafcLink">
-                        <A
-                          href={
-                            i18n.locale === 'en'
-                              ? 'http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-eng.htm'
-                              : 'http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-fra.htm'
-                          }
-                          isExternal
-                        />
-                      </Trans>
-                    </P>
                     <P>
                       <Trans id="landingPage.phoneDays" />
                     </P>
@@ -138,9 +135,21 @@ export const LandingPage = props => {
               <Stack spacing={10} shouldWrapChildren>
                 <Ul>
                   <Li>
-                    <Trans id="landingPage.reportingOptions1" />
+                    <Trans id="landingPage.reportingOptions0" />
                   </Li>
+                  <Li>
+                    <Trans id="landingPage.reportingOptions1">
+                    <A
+                        href={
+                          i18n.locale === 'en'
+                            ? 'https://www.cybertip.ca/app/en/report'
+                            : 'https://www.cybertip.ca/app/fr/report'  
 
+                        }
+                        isExternal // Opens new tab
+                      />
+                        </Trans>   
+                  </Li>
                   <Li>
                     <Trans id="landingPage.reportingOptions2">
                       <A
