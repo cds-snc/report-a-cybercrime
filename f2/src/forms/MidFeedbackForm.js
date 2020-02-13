@@ -76,7 +76,6 @@ export const MidFeedbackForm = ({ onSubmit }) => {
             spacing={10}
             pt={4}
             pb={10}
-            shouldWrapChildren
             borderTop={18}
             borderStyle="solid"
             borderColor="blue.600"
@@ -88,7 +87,12 @@ export const MidFeedbackForm = ({ onSubmit }) => {
               d="block"
               onSubmit={onSubmit}
               render={({ handleSubmit }) => (
-                <Stack as="form" onSubmit={handleSubmit} spacing={6}>
+                <Stack
+                  as="form"
+                  onSubmit={handleSubmit}
+                  shouldWrapChildren
+                  spacing={6}
+                >
                   <Control as="fieldset" name="midFeedback">
                     <FormLabel as="legend" htmlFor="midFeedback" mb={2}>
                       <Trans id="midFeedback.problem.label" />
@@ -96,7 +100,7 @@ export const MidFeedbackForm = ({ onSubmit }) => {
                     <FormHelperText>
                       <Trans id="midFeedback.problem.helperText" />
                     </FormHelperText>
-                    <Stack spacing={4} shouldWrapChildren>
+                    <Stack spacing={4}>
                       {midFeedback.map(key => {
                         return (
                           <Box key={key}>
@@ -133,16 +137,16 @@ export const MidFeedbackForm = ({ onSubmit }) => {
                       </FormControl>
                     )}
                   </Field>
+                  <Button
+                    type="submit"
+                    w={{ base: '100%', md: 'auto' }}
+                    variantColor="blue"
+                  >
+                    <Trans id="midFeedback.submit" />
+                  </Button>
                 </Stack>
               )}
             />
-            <Button
-              type="submit"
-              w={{ base: '100%', md: 'auto' }}
-              variantColor="blue"
-            >
-              <Trans id="midFeedback.submit" />
-            </Button>
           </Stack>
         </Box>
       </Layout>

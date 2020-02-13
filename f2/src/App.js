@@ -14,7 +14,7 @@ import { StateProvider, initialState, reducer } from './utils/state'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { Li } from './components/list-item'
-import { MidFeedbackForm } from './forms/MidFeebackForm'
+import { MidFeedbackForm } from './forms/MidFeedbackForm'
 
 const App = () => {
   const { i18n } = useLingui()
