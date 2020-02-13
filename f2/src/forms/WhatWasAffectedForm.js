@@ -145,10 +145,6 @@ export const WhatWasAffectedForm = props => {
                 </Alert>
               </Control>
             ) : null}
-
-            <P>
-              <Trans id="whatWasAffectedForm.expectations" />
-            </P>
             <NextAndCancelButtons
               next={<Trans id="whatWasAffectedForm.nextPage" />}
               button={<Trans id="whatWasAffectedForm.nextButton" />}
