@@ -7,8 +7,7 @@ const crypto = require('crypto')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
-var clamd = require('clamdjs')
-var fs = require('fs')
+const clamd = require('clamdjs')
 
 require('dotenv').config()
 var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
@@ -48,8 +47,6 @@ const uploadData = (req, res) => {
     }
 
     for (const file of Object.entries(files)) {
-
-      
       //scan file for virus
       var readStream = fs.createReadStream(file[1].path)
       //set timeout for 10000
@@ -63,7 +60,6 @@ const uploadData = (req, res) => {
         })
         .catch(function() {})
     }
-
 
     // Extract the JSON from the "JSON" form element
     const data = JSON.parse(fields['json'])

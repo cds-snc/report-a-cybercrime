@@ -3,7 +3,6 @@ const {
   StorageSharedKeyCredential,
 } = require('@azure/storage-blob')
 const fs = require('fs')
-const crypto = require('crypto')
 require('dotenv').config()
 
 const account = process.env.BLOB_STORAGE_NAME
