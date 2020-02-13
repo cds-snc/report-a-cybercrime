@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { useLingui } from '@lingui/react'
 import { Route } from 'react-router-dom'
 import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
@@ -11,20 +12,6 @@ import { ConfirmationForm } from './forms/ConfirmationForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-
-const randLetter = () => {
-  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  return letters[Math.floor(Math.random() * letters.length)]
-}
-const randDigit = () => Math.floor(Math.random() * 10)
-
-const randomizeString = s =>
-  s
-    ? s
-        .replace(/[a-z]/g, () => randLetter())
-        .replace(/[A-Z]/g, () => randLetter().toUpperCase())
-        .replace(/[0-9]/g, () => randDigit())
-    : s
 
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
@@ -48,13 +35,7 @@ async function postData(url = '', data = {}) {
   return response
 }
 
-const prepFormData = formData => {
-  let contactInfo = formData.contactInfo ? formData.contactInfo : {}
-  let { fullName, email, postalCode } = contactInfo
-  fullName = randomizeString(fullName)
-  email = randomizeString(email)
-  postalCode = randomizeString(postalCode)
-
+const prepFormData = (formData, language) => {
   if (
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.financial',
@@ -104,11 +85,7 @@ const prepFormData = formData => {
 
   return {
     ...formData,
-    contactInfo: {
-      fullName,
-      email,
-      postalCode,
-    },
+    language,
   }
 }
 
@@ -121,6 +98,7 @@ const submitToServer = async (data, dispatch) => {
 
 export const ConfirmationPage = () => {
   const [{ formData }, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
+  const { i18n } = useLingui()
 
   return (
     <Route
@@ -137,7 +115,7 @@ export const ConfirmationPage = () => {
             <ConfirmationSummary />
             <ConfirmationForm
               onSubmit={() => {
-                submitToServer(prepFormData(formData), dispatch)
+                submitToServer(prepFormData(formData, i18n.locale), dispatch)
                 history.push('/thankYouPage')
               }}
             />
