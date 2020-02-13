@@ -14,6 +14,7 @@ import { Text } from './components/text'
 import { Stack, Icon, Alert, AlertIcon, Box } from '@chakra-ui/core'
 import { Link as Route } from 'react-router-dom'
 import { useStateValue } from './utils/state'
+import { P } from './components/paragraph'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
@@ -40,8 +41,8 @@ export const ThankYouPage = () => {
             <H1 mb={6}>
               <Trans id="thankYouPage.title" />
             </H1>
-            {contactInfo.email && <Trans id="thankYouPage.summary" />}
-
+            <P color ="green.200" fontSize="1.125rem">
+            {contactInfo.email && <Trans  id="thankYouPage.summary" />}
             <Trans
               id="thankYouPage.referenceNumber"
               values={{
@@ -52,6 +53,7 @@ export const ThankYouPage = () => {
             >
               <Text as="span" color="yellow.200" fontSize="xl" />
             </Trans>
+            </P>
           </InfoCard>
         </Layout>
         <Layout fluid bg="gray.200" pt={20} pb={10}>
@@ -152,7 +154,7 @@ export const ThankYouPage = () => {
         <Layout>
           <Alert status="info" variant="solid">
             <AlertIcon name="chat" mt={0} />
-            <Link as={Route} to="/feedbackPage" color="white" display="block">
+            <Link as={Route} to="/finalFeedback" color="white" display="block">
               <Trans id="thankYouPage.feedback" />
             </Link>
           </Alert>
