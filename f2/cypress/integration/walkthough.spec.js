@@ -16,6 +16,7 @@ describe('Entire form form filling testing...', function () {
             -------------------------------------------
         */
         cy.visit(Cypress.env('production'))
+
     });
 
     it('Signaler maintenant', function () {
@@ -32,10 +33,13 @@ describe('Entire form form filling testing...', function () {
     });
 
     it('How did it start', function () {
+        cy.fixture('example.json').then((user)  => {
+            var phone = user.phone
+            var email = user.email
         cy.get('#id-1').click({ force: true })
-        cy.get('textarea[name="email"]').first().type(Cypress.config('email'))
+        cy.get('textarea[name="email"]').first().type(email)
         cy.get('#id-2').click({ force: true })
-        cy.get('textarea[name="phone"]').first().type(Cypress.config('phone'))
+        cy.get('textarea[name="phone"]').first().type(phone)
         cy.get('#id-3').click({ force: true })
         cy.get('textarea[name="online"]').first().type(Cypress.config('string'))
         cy.get('#id-4').click({ force: true })
@@ -45,6 +49,8 @@ describe('Entire form form filling testing...', function () {
         cy.get('#id-6').click({ force: true })
         cy.get('#id-11').click({ force: true })
         cy.contains('Continue').first().click({force: true});
+
+    })
     });
 
     it('What was affected', function () {
