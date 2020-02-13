@@ -179,8 +179,13 @@ export const FinalFeedbackForm = props => {
               </Control>
             ) : null}
 
-            <Button type="submit" mb={10}>
-              <Trans id="landingPage.nextButton.reportNow" />
+            <Button
+              type="submit"
+              w={{ base: '100%', md: 'auto' }}
+              variantColor="blue"
+              mb={10}
+            >
+              <Trans id="finalFeedback.submit" />
             </Button>
           </Stack>
         )}
