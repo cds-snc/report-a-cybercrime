@@ -2,17 +2,20 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
+const MongoClient = require('mongodb').MongoClient
+const clamd = require('clamdjs')
+const fs = require('fs')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
+const { notifyIsSetup, sendConfirmation } = require('./utils/notify')
 
 require('dotenv').config()
+var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
 
 // fetch and store certs for intake analysts
 getAllCerts(process.env.LDAP_UID)
 
 const app = express()
-
-const MongoClient = require('mongodb').MongoClient
 
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
@@ -34,20 +37,6 @@ if (!cosmosDbConfigured) {
 
 const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
 
-const randLetter = () => {
-  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  return letters[Math.floor(Math.random() * letters.length)]
-}
-const randDigit = () => Math.floor(Math.random() * 10)
-
-const randomizeString = s =>
-  s
-    ? s
-        .replace(/[a-z]/g, () => randLetter())
-        .replace(/[A-Z]/g, () => randLetter().toUpperCase())
-        .replace(/[0-9]/g, () => randDigit())
-    : s
-
 const uploadData = (req, res) => {
   new formidable.IncomingForm().parse(req, (err, fields, files) => {
     if (err) {
@@ -61,6 +50,18 @@ const uploadData = (req, res) => {
     console.log('Files', files)
     for (const file of Object.entries(files)) {
       console.log(file)
+      //scan file for virus
+      var readStream = fs.createReadStream(file[1].path)
+      //set timeout for 10000
+      scanner
+        .scanStream(readStream, 10000)
+        .then(function(reply) {
+          console.log(file[0] + ': ' + reply)
+          // print some thing like
+          // 'stream: OK', if not infected
+          // `stream: ${virus} FOUND`, if infected
+        })
+        .catch(function() {})
     }
 
     // Extract the JSON from the "JSON" form element
@@ -68,12 +69,16 @@ const uploadData = (req, res) => {
     console.log('Parsed JSON:', data)
 
     const selfHarmWords = selfHarmWordsScan(data)
-    if (selfHarmWords) {
+    if (selfHarmWords.length) {
       console.warn(`Self harm words detected: ${selfHarmWords}`)
     }
     data.selfHarmWords = selfHarmWords
     data.submissionTime = new Date().toISOString()
-    data.contactInfo.email = randomizeString(data.contactInfo.email)
+
+    if (notifyIsSetup && data.contactInfo.email) {
+      sendConfirmation(data.contactInfo.email, data.reportId)
+      data.contactInfo.email = randomizeString(data.contactInfo.email)
+    }
 
     encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
 

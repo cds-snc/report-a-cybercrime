@@ -9,7 +9,6 @@ import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 import { ConditionalForm } from '../components/container'
 import { TextInput } from '../components/TextInput'
 
@@ -145,10 +144,6 @@ export const WhatWasAffectedForm = props => {
                 </Alert>
               </Control>
             ) : null}
-
-            <P>
-              <Trans id="whatWasAffectedForm.expectations" />
-            </P>
             <NextAndCancelButtons
               next={<Trans id="whatWasAffectedForm.nextPage" />}
               button={<Trans id="whatWasAffectedForm.nextButton" />}
