@@ -24,6 +24,7 @@ import { ConfirmCancelPage } from './ConfirmCancelPage'
 import { CancelPage } from './CancelPage'
 import { TermsAndConditions } from './TermsAndConditions'
 
+
 export const Home = () => (
   <Router>
     <Switch>
