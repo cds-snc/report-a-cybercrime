@@ -27,19 +27,19 @@ export const DevicesForm = props => {
       onSubmit={data => localOnSubmit(data)}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-          <Field name="deviceOrAccount">
+          <Field name="device">
             {props => (
               <FormControl>
-                <FormLabel htmlFor="deviceOrAccount">
-                  <Trans id="devicePage.deviceOrAccount" />
+                <FormLabel htmlFor="device">
+                  <Trans id="devicePage.device" />
                 </FormLabel>
                 <FormHelperText>
-                  <Trans id="devicePage.deviceOrAccountExample">
+                  <Trans id="devicePage.deviceExample">
                     <VisuallyHidden as="span" />
                   </Trans>
                 </FormHelperText>
                 <TextInput
-                  id="deviceOrAccount"
+                  id="device"
                   name={props.input.name}
                   value={props.input.value}
                   onChange={props.input.onChange}
