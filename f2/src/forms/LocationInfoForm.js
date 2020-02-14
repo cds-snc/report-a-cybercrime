@@ -44,29 +44,6 @@ export const LocationInfoForm = props => {
               </FormControl>
             )}
           </Field>
-          <P>
-            <Trans id="locationinfoPage.or" />
-          </P>
-          <Field name="cityTown">
-            {props => (
-              <FormControl>
-                <FormLabel htmlFor="cityTown">
-                  <Trans id="locationinfoPage.cityTown" />
-                </FormLabel>
-                <FormHelperText>
-                  <Trans id="locationinfoPage.cityTownExample">
-                    <VisuallyHidden as="span" />
-                  </Trans>
-                </FormHelperText>
-                <TextInput
-                  id="cityTown"
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
-                />
-              </FormControl>
-            )}
-          </Field>
           <NextAndCancelButtons
             next={<Trans id="locationinfoPage.nextPage" />}
             button={<Trans id="locationinfoPage.nextButton" />}
