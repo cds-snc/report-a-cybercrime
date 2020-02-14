@@ -62,6 +62,14 @@ export const ThankYouPage = () => {
         <Layout fluid bg="gray.200" pt={20} pb={10}>
           <Layout>
             <Stack spacing={4} shouldWrapChildren>
+
+            <H2>
+                <Trans id="thankYouPage.whatNextHeading" />
+              </H2>
+                <P>
+                  <Trans id="thankYouPage.whatNextParagraph" />
+                </P>
+
               <H2>
                 <Trans id="thankYouPage.helpResource" />
               </H2>
@@ -70,22 +78,11 @@ export const ThankYouPage = () => {
                   <A
                     href={
                       i18n.locale === 'en'
-                        ? 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm'
-                        : 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-fra.htm'
+                        ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
+                        : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
                     }
                   >
                     <Trans id="thankYouPage.helpResource1" />
-                  </A>
-                </Li>
-                <Li>
-                  <A
-                    href={
-                      i18n.locale === 'en'
-                        ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
-                        : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
-                    }
-                  >
-                    <Trans id="thankYouPage.helpResource2" />
                   </A>
                 </Li>
                 <Li>
@@ -96,44 +93,19 @@ export const ThankYouPage = () => {
                         : 'http://www.antifraudcentre.ca/index-fra.htm'
                     }
                   >
-                    <Trans id="thankYouPage.helpResource3" />
+                    <Trans id="thankYouPage.helpResource2" />
                   </A>
                 </Li>
-              </Ul>
-
-              <H2>
-                <Trans id="thankYouPage.otherReportOption" />
-              </H2>
-              <Ul>
                 <Li>
-                  <Trans id="thankYouPage.otherReportOption1" />
-                </Li>
-
-                <Li>
-                  <Trans id="thankYouPage.otherReportOption2" />
-                </Li>
-
-                <Li>
-                  <Trans id="thankYouPage.otherReportOption3" />
-                </Li>
-
-                <Li>
-                  <Trans id="thankYouPage.otherReportOption4">
-                    <A
-                      href={
-                        i18n.locale === 'en'
-                          ? 'https://www.consumer.equifax.ca/personal/'
-                          : 'https://www.consumer.equifax.ca/personnel/'
-                      }
-                    />
-                    <A
-                      href={
-                        i18n.locale === 'en'
-                          ? 'https://www.transunion.ca/'
-                          : 'https://www.transunion.ca/fr'
-                      }
-                    />
-                  </Trans>
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
+                        : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
+                    }
+                  >
+                    <Trans id="thankYouPage.helpResource3" />
+                  </A>
                 </Li>
               </Ul>
             </Stack>
