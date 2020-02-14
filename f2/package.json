@@ -38,6 +38,7 @@
   "scripts": {
     "prod": "npm run build && node server.js",
     "build": "react-scripts build",
+    "start": "NODE_ENV=production node server.js",
     "test": "react-scripts test --watchAll=false",
     "coverage": "react-scripts test --coverage --watchAll=false",
     "watch": "react-scripts test",
