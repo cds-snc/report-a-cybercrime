@@ -12,9 +12,10 @@ import { Li } from './components/list-item'
 import { A } from './components/link'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
-import { Stack, Icon, Alert, AlertIcon, Box } from '@chakra-ui/core'
+import { Stack, Icon, Alert, AlertIcon, Box, Link } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { LandingBox } from './components/container'
+import { ButtonLink } from './components/link'
 
 export const LandingPage = props => {
   const { i18n } = useLingui()
@@ -52,7 +53,6 @@ export const LandingPage = props => {
                     isExternal
                   />
                 </Trans>
-
               </P>
 
               <Stack spacing={4} direction="row" flexWrap="wrap">
@@ -63,14 +63,9 @@ export const LandingPage = props => {
 
                   <P>
                     <Trans id="landingPage.onlineIntro" />
-
                   </P>
                   <Box flex="1 1 0"></Box>
-                  <Button
-                    onClick={() => {
-                      history.push('/startPage')
-                    }}
-                  >
+                  <ButtonLink to="/startPage">
                     <Trans id="landingPage.nextButton.reportNow" />
                     <Icon
                       focusable="false"
@@ -79,7 +74,7 @@ export const LandingPage = props => {
                       name="chevron-right"
                       size="28px"
                     />
-                  </Button>
+                  </ButtonLink>
                 </LandingBox>
 
                 <LandingBox>
@@ -102,14 +97,9 @@ export const LandingPage = props => {
 
                   <Box>
                     <Button
-                      onClick={() => {
-                        window.open(
-                          i18n.locale === 'en'
-                            ? 'http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-eng.htm'
-                            : 'http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-fra.htm',
-                          '_blank', // Opens new tab
-                        )
-                      }}
+                      as="a"
+                      role="button"
+                      href={'tel:' + i18n._('landingPage.phoneNumber')}
                     >
                       <Trans id="landingPage.nextButton.callNow" />
                       <Icon
@@ -136,7 +126,6 @@ export const LandingPage = props => {
               <Stack spacing={10} shouldWrapChildren>
                 <Ul>
                   <Li>
-
                     <Trans id="landingPage.reportingOptions0" />
                   </Li>
                   <Li>
