@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Build the Docker image
         working-directory: f2
-        run: docker build -t base --build-arg REACT_APP_VERSION=${{ github.sha }} .
+        run: docker build -t base --build-arg REACT_APP_VERSION=${{ github.sha }} --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=${{ secrets.REACT_APP_GOOGLE_ANALYTICS_ID }} .
       - name: Tag :latest
         run: docker tag base $AZURE_CONTAINER_REGISTRY_SERVER/${IMAGE_NAME}:latest
       - name: Tag :$GITHUB_SHA

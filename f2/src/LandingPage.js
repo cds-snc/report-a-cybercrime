@@ -35,23 +35,23 @@ export const LandingPage = props => {
             <Stack spacing={4}>
               <P>
                 <Trans id="landingPage.intro">
-                <A
-                        href={
-                          i18n.locale === 'en'
-                            ? 'http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3'
-                            : 'http://www.rcmp-grc.gc.ca/fr/groupe-national-coordination-cybercriminalite-gncc'
-                        }
-                        isExternal
-                      />
-                        <A
-                          href={
-                            i18n.locale === 'en'
-                              ? 'http://www.antifraudcentre-centreantifraude.ca/index-eng.htm'
-                              : 'http://www.antifraudcentre-centreantifraude.ca/index-fra.htm'
-                          }
-                          isExternal
-                        />
-                 </Trans>
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3'
+                        : 'http://www.rcmp-grc.gc.ca/fr/groupe-national-coordination-cybercriminalite-gncc'
+                    }
+                    isExternal
+                  />
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'http://www.antifraudcentre-centreantifraude.ca/index-eng.htm'
+                        : 'http://www.antifraudcentre-centreantifraude.ca/index-fra.htm'
+                    }
+                    isExternal
+                  />
+                </Trans>
               </P>
 
               <Stack spacing={4} direction="row" flexWrap="wrap">
@@ -62,7 +62,6 @@ export const LandingPage = props => {
 
                   <P>
                     <Trans id="landingPage.onlineIntro" />
-
                   </P>
                   <Box flex="1 1 0"></Box>
                   <Button
@@ -139,16 +138,15 @@ export const LandingPage = props => {
                   </Li>
                   <Li>
                     <Trans id="landingPage.reportingOptions1">
-                    <A
+                      <A
                         href={
                           i18n.locale === 'en'
                             ? 'https://www.cybertip.ca/app/en/report'
-                            : 'https://www.cybertip.ca/app/fr/report'  
-
+                            : 'https://www.cybertip.ca/app/fr/report'
                         }
                         isExternal // Opens new tab
                       />
-                        </Trans>   
+                    </Trans>
                   </Li>
                   <Li>
                     <Trans id="landingPage.reportingOptions2">
