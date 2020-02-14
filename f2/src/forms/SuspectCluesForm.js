@@ -24,7 +24,7 @@ export const SuspectCluesForm = props => {
       onSubmit={props.onSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
-          <Field name="suspectClues">
+          <Field name="suspectClues1">
             {props => (
               <FormControl>
                 <FormLabel htmlFor="suspectClues1">
