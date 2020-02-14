@@ -52,6 +52,7 @@ export const LandingPage = props => {
                     isExternal
                   />
                 </Trans>
+
               </P>
 
               <Row>
@@ -62,6 +63,7 @@ export const LandingPage = props => {
 
                   <P>
                     <Trans id="landingPage.onlineIntro" />
+
                   </P>
                   <Button
                     mt="auto"
@@ -131,6 +133,7 @@ export const LandingPage = props => {
               <Stack spacing={10} shouldWrapChildren>
                 <Ul>
                   <Li>
+
                     <Trans id="landingPage.reportingOptions0" />
                   </Li>
                   <Li>
