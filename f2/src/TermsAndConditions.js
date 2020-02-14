@@ -7,13 +7,11 @@ import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
-import { useStateValue } from './utils/state'
 import { A } from './components/link'
 import { useLingui } from '@lingui/react'
 
 export const TermsAndConditions = () => {
   const { i18n } = useLingui()
-  const [state, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
 
   return (
     <Route
