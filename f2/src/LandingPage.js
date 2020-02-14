@@ -12,7 +12,7 @@ import { Li } from './components/list-item'
 import { A } from './components/link'
 import { Layout, Row } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
-import { Stack, Icon, Alert, AlertIcon, Box } from '@chakra-ui/core'
+import { Stack, Icon, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { LandingBox } from './components/container'
 
@@ -52,7 +52,6 @@ export const LandingPage = props => {
                     isExternal
                   />
                 </Trans>
-
               </P>
 
               <Row>
@@ -63,7 +62,6 @@ export const LandingPage = props => {
 
                   <P>
                     <Trans id="landingPage.onlineIntro" />
-
                   </P>
                   <Button
                     mt="auto"
@@ -133,7 +131,6 @@ export const LandingPage = props => {
               <Stack spacing={10} shouldWrapChildren>
                 <Ul>
                   <Li>
-
                     <Trans id="landingPage.reportingOptions0" />
                   </Li>
                   <Li>
