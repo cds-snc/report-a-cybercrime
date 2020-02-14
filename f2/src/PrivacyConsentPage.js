@@ -33,23 +33,23 @@ export const PrivacyConsentPage = () => {
             <Stack spacing={8}>
               <P>
                 <Trans id="privacyConsentPage.intro">
-                <A
-                        href={
-                          i18n.locale === 'en'
-                            ? 'http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3'
-                            : 'http://www.rcmp-grc.gc.ca/fr/groupe-national-coordination-cybercriminalite-gncc'
-                        }
-                        isExternal
-                      />
-                 <A
-                          href={
-                            i18n.locale === 'en'
-                              ? 'http://www.antifraudcentre-centreantifraude.ca/index-eng.htm'
-                              : 'http://www.antifraudcentre-centreantifraude.ca/index-fra.htm'
-                          }
-                          isExternal
-                        />
-                    </Trans>
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3'
+                        : 'http://www.rcmp-grc.gc.ca/fr/groupe-national-coordination-cybercriminalite-gncc'
+                    }
+                    isExternal
+                  />
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'http://www.antifraudcentre-centreantifraude.ca/index-eng.htm'
+                        : 'http://www.antifraudcentre-centreantifraude.ca/index-fra.htm'
+                    }
+                    isExternal
+                  />
+                </Trans>
               </P>
               <P>
                 <Trans id="privacyConsentInfoPage.sharing" />
