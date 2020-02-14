@@ -63,7 +63,6 @@ export const ContactInfoForm = ({ onSubmit }) => {
                 </FormLabel>
                 <TextInput
                   id="name"
-                  id="fullName"
                   name={props.input.name}
                   value={props.input.value}
                   onChange={props.input.onChange}
