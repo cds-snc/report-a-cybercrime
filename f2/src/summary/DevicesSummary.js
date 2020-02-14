@@ -25,7 +25,7 @@ export const DevicesSummary = props => {
       {false ? (
         <div>
           {/*: mark the proper ids for lingui */}
-          <Trans id="confirmationPage.devices.deviceOrAccount" />
+          <Trans id="confirmationPage.devices.device" />
           <Trans id="confirmationPage.devices.devicesTellUsMore" />
           <Trans id="confirmationPage.devicesTitle.edit" />
         </div>
@@ -51,7 +51,7 @@ export const DevicesSummary = props => {
         {hasInfoToDisplay ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
-              descriptionTitle="confirmationPage.devices.deviceOrAccount"
+              descriptionTitle="confirmationPage.devices.device"
               description={devices.deviceOrAccount}
             />
             <DescriptionListItem
