@@ -29,7 +29,7 @@ export const EvidenceInfoForm = props => {
   const cached = {
     files: [],
     fileDescriptions: [],
-    ...data.formData.scammerDetails,
+    ...data.formData.evidence,
   }
 
   const [files, setFiles] = useState(cached.files)
