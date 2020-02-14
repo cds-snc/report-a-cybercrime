@@ -12,9 +12,10 @@ import { Li } from './components/list-item'
 import { A } from './components/link'
 import { Layout, Row } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
-import { Stack, Icon, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, Icon, Alert, AlertIcon, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { LandingBox } from './components/container'
+import { ButtonLink } from './components/link'
 
 export const LandingPage = props => {
   const { i18n } = useLingui()
@@ -63,12 +64,8 @@ export const LandingPage = props => {
                   <P>
                     <Trans id="landingPage.onlineIntro" />
                   </P>
-                  <Button
-                    mt="auto"
-                    onClick={() => {
-                      history.push('/startPage')
-                    }}
-                  >
+
+                  <ButtonLink to="/startPage" mt="auto">
                     <Trans id="landingPage.nextButton.reportNow" />
                     <Icon
                       focusable="false"
@@ -77,7 +74,7 @@ export const LandingPage = props => {
                       name="chevron-right"
                       size="28px"
                     />
-                  </Button>
+                  </ButtonLink>
                 </LandingBox>
                 <LandingBox>
                   <H2>
@@ -96,26 +93,22 @@ export const LandingPage = props => {
                     </P>
                   </Stack>
 
-                  <Button
-                    mt="auto"
-                    onClick={() => {
-                      window.open(
-                        i18n.locale === 'en'
-                          ? 'http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-eng.htm'
-                          : 'http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-fra.htm',
-                        '_blank', // Opens new tab
-                      )
-                    }}
-                  >
-                    <Trans id="landingPage.nextButton.callNow" />
-                    <Icon
-                      focusable="false"
-                      ml={2}
-                      mr={-2}
-                      name="chevron-right"
-                      size="28px"
-                    />
-                  </Button>
+                  <Box>
+                    <Button
+                      as="a"
+                      role="button"
+                      href={'tel:' + i18n._('landingPage.phoneNumber')}
+                    >
+                      <Trans id="landingPage.nextButton.callNow" />
+                      <Icon
+                        focusable="false"
+                        ml={2}
+                        mr={-2}
+                        name="chevron-right"
+                        size="28px"
+                      />
+                    </Button>
+                  </Box>
                 </LandingBox>
               </Row>
 

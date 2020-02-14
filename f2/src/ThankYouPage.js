@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
-import { A } from './components/link'
+import { A, ButtonLink } from './components/link'
 import { Link } from './components/link'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
@@ -15,7 +15,6 @@ import { Stack, Alert, AlertIcon, Box, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { P } from './components/paragraph'
 import { Route } from 'react-router-dom'
-import { Button } from './components/button'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
@@ -143,28 +142,22 @@ export const ThankYouPage = () => {
               <H2>
                 <Trans id="thankYouPage.feedback" />
               </H2>
-              <Route
-                render={({ history }) => (
-                  <Button
-                    mt="auto"
-                    variantColor="gray"
-                    color="white"
-                    title={i18n._('thankYouPage.feedbackButton.aria')}
-                    onClick={() => {
-                      history.push('/finalFeedback')
-                    }}
-                  >
-                    <Trans id="thankYouPage.feedbackButton" />
-                    <Icon
-                      focusable="false"
-                      ml={2}
-                      mr={-2}
-                      name="chevron-right"
-                      size="28px"
-                    />
-                  </Button>
-                )}
-              />
+              <ButtonLink
+                mt="auto"
+                variantColor="gray"
+                color="white"
+                title={i18n._('thankYouPage.feedbackButton.aria')}
+                to="/finalFeedback"
+              >
+                <Trans id="thankYouPage.feedbackButton" />
+                <Icon
+                  focusable="false"
+                  ml={2}
+                  mr={-2}
+                  name="chevron-right"
+                  size="28px"
+                />
+              </ButtonLink>
             </LandingBox>
           </Row>
         </Stack>
