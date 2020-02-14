@@ -26,10 +26,13 @@ export const EvidencePage = () => {
             <BackButton route="/suspectclues">
               <Trans id="evidencePage.backButton" />
             </BackButton>
-              <H1>
-                <Trans id="evidencePage.title" />
-              </H1>       
+            <H1>
+              <Trans id="evidencePage.title" />
+            </H1>
             <Box>
+              <P>
+                <Trans id="evidencePage.intro" />
+              </P>
               <P>
                 <Trans id="evidencePage.details" />
               </P>
@@ -45,9 +48,6 @@ export const EvidencePage = () => {
                 </Li>
               </Ul>
             </Box>
-            <P>
-              <Trans id="evidencePage.intro" />
-            </P>
 
             <EvidenceInfoForm
               onSubmit={data => {
