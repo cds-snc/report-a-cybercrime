@@ -18,6 +18,7 @@ export const ContactInfoForm = ({ onSubmit }) => {
   const contactInfo = {
     email: '',
     name: '',
+    phone: '',
     ...data.formData.contactInfo,
   }
 
