@@ -4,6 +4,45 @@
   "env": {
     "PROJECT_PATH": {
       "required": true
+    },
+    "CLAM_URL": {
+      "required": true
+    },
+    "LDAP_URL": {
+      "required": true
+    },
+    "LDAP_UID": {
+      "required": false
+    },
+    "NOTIFY_API_KEY": {
+      "required": true
+    },
+    "NOTIFY_API_BASE_URL": {
+      "required": true
+    },
+    "NOTIFY_CONFIRMATION_TEMPLATE_ID": {
+      "required": true
+    },
+    "MAIL_HOST": {
+      "required": true
+    },
+    "MAIL_USER": {
+      "required": true
+    },
+    "MAIL_PASS": {
+      "required": true
+    },
+    "MAIL_TO": {
+      "required": true
+    },
+    "MAIL_FROM": {
+      "required": true
+    },
+    "COSMOSDB_KEY": {
+      "required": true
+    },
+    "COSMOSDB_NAME": {
+      "required": true
     }
   },
   "formation": {
@@ -17,7 +56,7 @@
       "url": "https://github.com/lstoll/heroku-buildpack-monorepo"
     },
     {
-      "url": "https://buildpack-registry.s3.amazonaws.com/buildpacks/mars/create-react-app.tgz"
+      "url": "heroku/nodejs"
     }
   ]
 }
