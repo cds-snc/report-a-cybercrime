@@ -17,10 +17,15 @@ import { useStateValue } from './utils/state'
 import { LandingBox } from './components/container'
 import { i18n } from '@lingui/core'
 
-window.location.hostname ===
-'https://signalez-un-crime-informatique.cds-snc.ca/'
-  ? i18n.activate('fr')
-  : i18n.activate('en')
+if (
+  window.location.hostname ===
+  'https://signalez-un-crime-informatique.cds-snc.ca/'
+) {
+  i18n.activate('fr')
+} else if (window.location.hostname === 'report-a-scam.cds-snc.ca') {
+  i18n.activate('en')
+} else {
+}
 
 export const LandingPage = props => {
   const { i18n } = useLingui()
