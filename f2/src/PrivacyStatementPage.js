@@ -26,16 +26,13 @@ export const PrivacyStatementPage = () => {
               <Trans id="privacyStatementPage.title" />
             </H1>
               <H2 as="span">
-                <Trans id="privacyStatementPage.aboutHeading" />
-              </H2>
-              <P>
-                <Trans id="privacyStatementPage.aboutText" />
-              </P>
-              <H2 as="span">
                 <Trans id="privacyStatementPage.whoHeading" />
               </H2>
               <P>
-                <Trans id="privacyStatementPage.whoText" />
+                <Trans id="privacyStatementPage.whoText1" />
+              </P>
+              <P>
+                <Trans id="privacyStatementPage.whoText2" />
               </P>
               <H2 as="span">
                 <Trans id="privacyStatementPage.whathappensHeading" />
@@ -44,16 +41,13 @@ export const PrivacyStatementPage = () => {
                 <Trans id="privacyStatementPage.whathappensText" />
               </P>
               <H2 as="span">
-                <Trans id="privacyStatementPage.whereHeading" />
+                <Trans id="privacyStatementPage.informationHeading" />
               </H2>
               <P>
-                <Trans id="privacyStatementPage.whereText" />
+                <Trans id="privacyStatementPage.informationText1" />
               </P>
-              <H2 as="span">
-                <Trans id="privacyStatementPage.howpiiHeading" />
-              </H2>
               <P>
-                <Trans id="privacyStatementPage.howpiiText" />
+                <Trans id="privacyStatementPage.informationText2" />
               </P>
               <H2 as="span">
                 <Trans id="privacyStatementPage.toinquireHeading" />
@@ -66,9 +60,6 @@ export const PrivacyStatementPage = () => {
               </P>
               <P>
                 <Trans id="privacyStatementPage.toinquireText3" />
-              </P>
-              <P>
-                <Trans id="privacyStatementPage.toinquireText4" />
               </P>
               <PrivacyConsentInfoForm
                 onSubmit={data => {
