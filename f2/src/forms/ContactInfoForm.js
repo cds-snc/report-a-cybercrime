@@ -63,6 +63,14 @@ export const ContactInfoForm = ({ onSubmit }) => {
                 </FormLabel>
                 <TextInput
                   id="name"
+          <Field name="fullName">
+            {props => (
+              <FormControl>
+                <FormLabel htmlFor="fullName">
+                  <Trans id="contactinfoPage.fullName" />{' '}
+                </FormLabel>
+                <TextInput
+                  id="fullName"
                   name={props.input.name}
                   value={props.input.value}
                   onChange={props.input.onChange}
