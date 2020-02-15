@@ -1,16 +1,19 @@
 // 'use strict'
 
+const formatLine = (label, text) =>
+  text !== '' ? label + text + '\n' : label + 'no data\n'
+
 const formatReportInfo = data => {
   const selfHarmString = data.selfHarmWords.length
     ? data.selfHarmWords
     : 'no self harm words'
-  const returnString = `Report information    
-  
-Report number          ${data.reportId}
-Date received          ${data.submissionTime}
-Report language        ${data.language}
-Flagged                ${selfHarmString}
-`
+  const returnString =
+    'Report information\n\n' +
+    formatLine('Report number      ', data.reportId) +
+    formatLine('Date received      ', data.submissionTime) +
+    formatLine('Report language    ', data.language) +
+    formatLine('Flagged            ', selfHarmString)
+
   delete data.reportId
   delete data.submissionTime
   delete data.language
@@ -23,15 +26,14 @@ const formatVictimDetails = data => {
     .map(option => option.replace('privacyConsentInfoForm.', ''))
     .join(', ')
 
-  const returnString = `
-Victim details
+  const returnString =
+    '\nVictim details\n\n' +
+    formatLine('Email            ', data.contactInfo.email) +
+    formatLine('Phone number     ', data.contactInfo.phone) +
+    formatLine('Postal code      ', data.location.postalCode) +
+    formatLine('City             ', data.location.cityTown) +
+    formatLine('Consent          ', consentString)
 
-Email                  ${data.contactInfo.email}
-Phone number           ${data.contactInfo.phone}
-Postal code            ${data.location.postalCode}
-City                   ${data.location.cityTown}
-Consent                ${consentString}
-`
   delete data.contactInfo.email
   delete data.contactInfo.phone
   delete data.location.postalCode
@@ -56,15 +58,14 @@ const formatIncidentInformation = data => {
     .map(option => option.replace('whatWasAffectedForm.', ''))
     .join(', ')
 
-  const returnString = `
-Incident information
+  const returnString =
+    '\nIncident information\n\n' +
+    formatLine('Occurrence date            ', occurenceString) +
+    formatLine('Frequency of occurrence    ', freqString) +
+    formatLine('Method of communication    ', methodOfCommsString) +
+    formatLine('What could be affected     ', affectedString) +
+    formatLine('What could be affected     ', data.whatWasAffected.optionOther)
 
-Occurrence date            ${occurenceString}
-Frequency of occurrence    ${freqString}
-Method of communication    ${methodOfCommsString}
-What could be affected     ${affectedString}
-   (other)                 ${data.whatWasAffected.optionOther}
-`
   delete data.howdiditstart.whenDidItStart
   delete data.howdiditstart.howManyTimes
   delete data.howdiditstart.howDidTheyReachYou
@@ -82,32 +83,35 @@ const formatNarrative = data => {
     .map(info => info.replace('typeOfInfoObtained.', ''))
     .join(', ')
 
-  let affectedString = `${data.devicesInfo.deviceOrAccount}
-1${data.moneyLost.tellUsMore}
-2${data.personalInformation.tellUsMore}
-3${data.devicesInfo.devicesTellUsMore}
-4${data.businessInfo.business}
-5${data.suspectClues.suspectClues3}
-`
-  affectedString.replace(/\n\s*\n/g, '\n')
-  const returnString = `
-Narrative
+  const returnString =
+    '\nNarrative\n\n' +
+    formatLine('What happened          ', data.whatHappened.whatHappened) +
+    formatLine('They asked for         ', data.moneyLost.demandedMoney) +
+    formatLine('They asked for         ', infoReqString) +
+    formatLine(
+      'They asked for         ',
+      data.personalInformation.infoReqOther,
+    ) +
+    formatLine('I lost                 ', data.moneyLost.moneyTaken) +
+    formatLine('I lost                 ', infoObtainedString) +
+    formatLine(
+      'I lost                 ',
+      data.personalInformation.infoObtainedOther,
+    ) +
+    formatLine('Affected devices        ', data.devicesInfo.deviceOrAccount) +
+    formatLine('Affected devices        ', data.devicesInfo.devicesTellUsMore) +
+    formatLine('Affected finances       ', data.moneyLost.tellUsMore) +
+    formatLine(
+      'Affected personal info  ',
+      data.personalInformation.tellUsMore,
+    ) +
+    formatLine('Affected business info   ', data.businessInfo.business) +
+    formatLine('Other clues:             ', data.suspectClues.suspectClues3)
 
-${data.whatHappened.whatHappened}
-
-They asked for ${data.moneyLost.demandedMoney}
-They asked for ${infoReqString} ${data.personalInformation.infoReqOther}
-
-I lost ${data.moneyLost.moneyTaken}
-I lost ${infoObtainedString} ${data.personalInformation.infoObtainedOther}
-${affectedString != '\n' ? '\nThis affected:\n' + affectedString : ''}
-`
   delete data.personalInformation.typeOfInfoReq
   delete data.personalInformation.typeOfInfoObtained
   delete data.whatHappened.whatHappened
-  delete data.moneyLost.demandedMoney
   delete data.personalInformation.infoReqOther
-  delete data.moneyLost.moneyTaken
   delete data.personalInformation.infoObtainedOther
   delete data.devicesInfo.deviceOrAccount
   delete data.moneyLost.tellUsMore
@@ -119,17 +123,16 @@ ${affectedString != '\n' ? '\nThis affected:\n' + affectedString : ''}
 }
 
 const formatSuspectDetails = data => {
-  const returnString = `
-Suspect details
+  const returnString =
+    '\nSuspect details\n\n' +
+    formatLine('Name          ', data.suspectClues.suspectClues1) +
+    formatLine('Email         ', data.howdiditstart.email) +
+    formatLine('Phone number  ', data.howdiditstart.phone) +
+    formatLine('Website       ', data.howdiditstart.online) +
+    formatLine('Application   ', data.howdiditstart.application) +
+    formatLine('Address       ', data.suspectClues.suspectClues2) +
+    formatLine('Other         ', data.howdiditstart.other)
 
-Name                   ${data.suspectClues.suspectClues1}
-Email                  ${data.howdiditstart.email}
-Phone number           ${data.howdiditstart.phone}
-Website                ${data.howdiditstart.online}
-Application            ${data.howdiditstart.application}
-Address                ${data.suspectClues.suspectClues2}
-Other                  ${data.howdiditstart.other}
-`
   delete data.suspectClues.suspectClues1
   delete data.howdiditstart.email
   delete data.howdiditstart.phone
@@ -142,17 +145,16 @@ Other                  ${data.howdiditstart.other}
 
 const formatFinancialTransactions = data => {
   const paymentString = data.moneyLost.methodPayment
-    .map(method => method.replace(/methodPayment\./g, ''))
+    .map(method => method.replace('methodPayment.', ''))
     .join(', ')
 
-  const returnString = `
-Financial transactions
+  const returnString =
+    '\nFinancial transactions\n\n' +
+    formatLine('Money requested     ', data.moneyLost.demandedMoney) +
+    formatLine('Money lost          ', data.moneyLost.moneyTaken) +
+    formatLine('Method of payment   ', paymentString) +
+    formatLine('Transaction date    ', data.moneyLost.transactionDate)
 
-Money requested        ${data.moneyLost.demandedMoney}
-Money lost             ${data.moneyLost.moneyTaken}
-Method of payment      ${paymentString}
-Transaction date       ${data.moneyLost.transactionDate}  
-`
   delete data.moneyLost.methodPayment
   delete data.moneyLost.demandedMoney
   delete data.moneyLost.moneyTaken
@@ -169,29 +171,28 @@ const formatFileAttachments = (data, files) => {
       `,
     )
     .join('')
-  const returnString = `
-File attachments
-${fileStringList}
-`
+  const returnString =
+    '\nFile attachments\n\n' +
+    (fileStringList !== '' ? fileStringList : 'No files attached\n')
   delete data.evidence.fileDescriptions
   return returnString
 }
 
 const formatAnalystEmail = (data, files) => {
-  let returnString = `
-  ${formatReportInfo(data)}
-  ${formatVictimDetails(data)}
-  ${formatIncidentInformation(data)}
-  ${formatNarrative(data)}
-  ${formatSuspectDetails(data)}
-  ${formatFinancialTransactions(data)}
-  ${formatFileAttachments(data, files)}
-`
+  let returnString =
+    formatReportInfo(data) +
+    formatVictimDetails(data) +
+    formatIncidentInformation(data) +
+    formatNarrative(data) +
+    formatSuspectDetails(data) +
+    formatFinancialTransactions(data) +
+    formatFileAttachments(data, files)
+
   Object.keys(data).forEach(key => {
     if (Object.keys(data[key]).length === 0) delete data[key]
   })
   let missingFields = Object.keys(data).length
-    ? 'Extra Fields:\n\n' + JSON.stringify(data, null, '  ')
+    ? '\n\nExtra Fields:\n' + JSON.stringify(data, null, '  ')
     : ''
   return returnString + missingFields
 }
