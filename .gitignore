@@ -8,3 +8,4 @@ data
 f2/build
 **/locales/*.js
 platform/**/.env*
+*.cer
