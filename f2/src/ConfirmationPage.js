@@ -58,7 +58,9 @@ const prepFormData = (formData, language) => {
   ) {
     formData.personalInformation = {
       typeOfInfoReq: [],
+      infoReqOther: '',
       typeOfInfoObtained: [],
+      infoObtainedOther: '',
       tellUsMore: '',
     }
   }

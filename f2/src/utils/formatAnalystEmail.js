@@ -27,7 +27,7 @@ const formatVictimDetails = data => {
     .join(', ')
 
   const returnString =
-    '\nVictim details\n\n' +
+    '\n\nVictim details\n\n' +
     formatLine('Email            ', data.contactInfo.email) +
     formatLine('Phone number     ', data.contactInfo.phone) +
     formatLine('Postal code      ', data.location.postalCode) +
@@ -56,10 +56,11 @@ const formatIncidentInformation = data => {
     .join(', ')
   const affectedString = data.whatWasAffected.affectedOptions
     .map(option => option.replace('whatWasAffectedForm.', ''))
+    .filter(option => option !== 'other')
     .join(', ')
 
   const returnString =
-    '\nIncident information\n\n' +
+    '\n\nIncident information\n\n' +
     formatLine('Occurrence date            ', occurenceString) +
     formatLine('Frequency of occurrence    ', freqString) +
     formatLine('Method of communication    ', methodOfCommsString) +
@@ -84,18 +85,18 @@ const formatNarrative = data => {
     .join(', ')
 
   const returnString =
-    '\nNarrative\n\n' +
-    formatLine('What happened          ', data.whatHappened.whatHappened) +
-    formatLine('They asked for         ', data.moneyLost.demandedMoney) +
-    formatLine('They asked for         ', infoReqString) +
+    '\n\nNarrative\n\n' +
+    formatLine('What happened           ', data.whatHappened.whatHappened) +
+    formatLine('They asked for          ', data.moneyLost.demandedMoney) +
+    formatLine('They asked for          ', infoReqString) +
     formatLine(
-      'They asked for         ',
+      'They asked for          ',
       data.personalInformation.infoReqOther,
     ) +
-    formatLine('I lost                 ', data.moneyLost.moneyTaken) +
-    formatLine('I lost                 ', infoObtainedString) +
+    formatLine('I lost                  ', data.moneyLost.moneyTaken) +
+    formatLine('I lost                  ', infoObtainedString) +
     formatLine(
-      'I lost                 ',
+      'I lost                  ',
       data.personalInformation.infoObtainedOther,
     ) +
     formatLine('Affected devices        ', data.devicesInfo.deviceOrAccount) +
@@ -105,8 +106,8 @@ const formatNarrative = data => {
       'Affected personal info  ',
       data.personalInformation.tellUsMore,
     ) +
-    formatLine('Affected business info   ', data.businessInfo.business) +
-    formatLine('Other clues:             ', data.suspectClues.suspectClues3)
+    formatLine('Affected business info  ', data.businessInfo.business) +
+    formatLine('Other clues             ', data.suspectClues.suspectClues3)
 
   delete data.personalInformation.typeOfInfoReq
   delete data.personalInformation.typeOfInfoObtained
@@ -124,14 +125,14 @@ const formatNarrative = data => {
 
 const formatSuspectDetails = data => {
   const returnString =
-    '\nSuspect details\n\n' +
+    '\n\nSuspect details\n\n' +
     formatLine('Name          ', data.suspectClues.suspectClues1) +
     formatLine('Email         ', data.howdiditstart.email) +
     formatLine('Phone number  ', data.howdiditstart.phone) +
     formatLine('Website       ', data.howdiditstart.online) +
     formatLine('Application   ', data.howdiditstart.application) +
     formatLine('Address       ', data.suspectClues.suspectClues2) +
-    formatLine('Other         ', data.howdiditstart.other)
+    formatLine('Other         ', data.howdiditstart.others)
 
   delete data.suspectClues.suspectClues1
   delete data.howdiditstart.email
@@ -139,7 +140,7 @@ const formatSuspectDetails = data => {
   delete data.howdiditstart.online
   delete data.howdiditstart.application
   delete data.suspectClues.suspectClues2
-  delete data.howdiditstart.other
+  delete data.howdiditstart.others
   return returnString
 }
 
@@ -149,7 +150,7 @@ const formatFinancialTransactions = data => {
     .join(', ')
 
   const returnString =
-    '\nFinancial transactions\n\n' +
+    '\n\nFinancial transactions\n\n' +
     formatLine('Money requested     ', data.moneyLost.demandedMoney) +
     formatLine('Money lost          ', data.moneyLost.moneyTaken) +
     formatLine('Method of payment   ', paymentString) +
@@ -172,7 +173,7 @@ const formatFileAttachments = (data, files) => {
     )
     .join('')
   const returnString =
-    '\nFile attachments\n\n' +
+    '\n\nFile attachments\n\n' +
     (fileStringList !== '' ? fileStringList : 'No files attached\n')
   delete data.evidence.fileDescriptions
   return returnString

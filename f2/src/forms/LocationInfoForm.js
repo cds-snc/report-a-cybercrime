@@ -14,7 +14,8 @@ import { P } from '../components/paragraph'
 export const LocationInfoForm = props => {
   const [data] = useStateValue()
   const location = {
-    location: '',
+    postalCode: '',
+    cityTown: '',
     ...data.formData.location,
   }
 
