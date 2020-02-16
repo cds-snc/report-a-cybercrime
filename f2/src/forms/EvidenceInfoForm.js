@@ -45,7 +45,6 @@ export const EvidenceInfoForm = props => {
   const { i18n } = useLingui()
 
   const onFilesChange = e => {
-    // if (e.target.files && e.target.files[0]) {
     const file = e.target.files[0]
     if (file.size > 4194304) {
       // 4MB in bytes is 4194304.
@@ -57,7 +56,7 @@ export const EvidenceInfoForm = props => {
     setStatus('fileUpload.added')
     setFiles(files.concat(e.target.files[0]))
     setFileDescriptions(fileDescriptions.concat(''))
-    // }
+    e.target.value = '' // clear the file input target, to allow the file to be removed then added again
   }
 
   const onFileDescriptionChange = e => {
