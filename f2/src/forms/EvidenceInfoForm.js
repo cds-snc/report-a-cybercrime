@@ -45,21 +45,20 @@ export const EvidenceInfoForm = props => {
   const { i18n } = useLingui()
 
   const onChange = e => {
-    const file = e.target.files[0]
-    if (file.size > 4194304) {
-      // 4MB in bytes is 4194304.
-      alert(
-        'ENGLISH - Warning: Your file size exceeds 4MB. Please reduce the size and try uploading again. \n FRANÇAIS - Alerte : La taille de votre fichier dépasse 4 Mo. Veuillez réduire la taille et essayer de télécharger à nouveau.  ',
-      )
-
-      return
-    }
     if (e.target.id.indexOf('file-description') > -1) {
       const index = Number(e.target.id.substring(17))
       let newFileDescriptions = JSON.parse(JSON.stringify(fileDescriptions))
       newFileDescriptions[index] = e.target.value
       setFileDescriptions(newFileDescriptions)
     } else if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0]
+      if (file.size > 4194304) {
+        // 4MB in bytes is 4194304.
+        alert(
+          'ENGLISH - Warning: Your file size exceeds 4MB. Please reduce the size and try uploading again. \n FRANÇAIS - Alerte : La taille de votre fichier dépasse 4 Mo. Veuillez réduire la taille et essayer de télécharger à nouveau.  ',
+        )
+        return
+      }
       setStatus('fileUpload.added')
       setFiles(files.concat(e.target.files[0]))
       setFileDescriptions(fileDescriptions.concat(''))
