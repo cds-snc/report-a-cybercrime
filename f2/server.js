@@ -87,7 +87,7 @@ const uploadData = (req, res) => {
 
     if (notifyIsSetup && data.contactInfo.email) {
       sendConfirmation(data.contactInfo.email, data.reportId)
-      if (process.env.SEND_UNENCRYPTED_REPORTS)
+      if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
         sendUnencryptedReport(data.contactInfo.email, analystEmail)
     }
 

@@ -9,10 +9,10 @@ const formatReportInfo = data => {
     : 'no self harm words'
   const returnString =
     'Report information\n\n' +
-    formatLine('Report number      ', data.reportId) +
-    formatLine('Date received      ', data.submissionTime) +
-    formatLine('Report language    ', data.language) +
-    formatLine('Flagged            ', selfHarmString)
+    formatLine('Report number:      ', data.reportId) +
+    formatLine('Date received:      ', data.submissionTime) +
+    formatLine('Report language:    ', data.language) +
+    formatLine('Flagged:            ', selfHarmString)
 
   delete data.reportId
   delete data.submissionTime
@@ -28,12 +28,14 @@ const formatVictimDetails = data => {
 
   const returnString =
     '\n\nVictim details\n\n' +
-    formatLine('Email            ', data.contactInfo.email) +
-    formatLine('Phone number     ', data.contactInfo.phone) +
-    formatLine('Postal code      ', data.location.postalCode) +
-    formatLine('City             ', data.location.cityTown) +
-    formatLine('Consent          ', consentString)
+    formatLine('Name:             ', data.contactInfo.fullName) +
+    formatLine('Email:            ', data.contactInfo.email) +
+    formatLine('Phone number:     ', data.contactInfo.phone) +
+    formatLine('Postal code:      ', data.location.postalCode) +
+    formatLine('City:             ', data.location.cityTown) +
+    formatLine('Consent:          ', consentString)
 
+  delete data.contactInfo.fullNames
   delete data.contactInfo.email
   delete data.contactInfo.phone
   delete data.location.postalCode
@@ -61,11 +63,11 @@ const formatIncidentInformation = data => {
 
   const returnString =
     '\n\nIncident information\n\n' +
-    formatLine('Occurrence date            ', occurenceString) +
-    formatLine('Frequency of occurrence    ', freqString) +
-    formatLine('Method of communication    ', methodOfCommsString) +
-    formatLine('What could be affected     ', affectedString) +
-    formatLine('What could be affected     ', data.whatWasAffected.optionOther)
+    formatLine('Occurrence date:            ', occurenceString) +
+    formatLine('Frequency of occurrence:    ', freqString) +
+    formatLine('Method of communication:    ', methodOfCommsString) +
+    formatLine('What could be affected:     ', affectedString) +
+    formatLine('What could be affected:     ', data.whatWasAffected.optionOther)
 
   delete data.howdiditstart.whenDidItStart
   delete data.howdiditstart.howManyTimes
@@ -86,28 +88,31 @@ const formatNarrative = data => {
 
   const returnString =
     '\n\nNarrative\n\n' +
-    formatLine('What happened           ', data.whatHappened.whatHappened) +
-    formatLine('They asked for          ', data.moneyLost.demandedMoney) +
-    formatLine('They asked for          ', infoReqString) +
+    formatLine('What happened:           ', data.whatHappened.whatHappened) +
+    formatLine('They asked for:          ', data.moneyLost.demandedMoney) +
+    formatLine('They asked for:          ', infoReqString) +
     formatLine(
-      'They asked for          ',
+      'They asked for:          ',
       data.personalInformation.infoReqOther,
     ) +
-    formatLine('I lost                  ', data.moneyLost.moneyTaken) +
-    formatLine('I lost                  ', infoObtainedString) +
+    formatLine('I lost:                  ', data.moneyLost.moneyTaken) +
+    formatLine('I lost:                  ', infoObtainedString) +
     formatLine(
-      'I lost                  ',
+      'I lost:                  ',
       data.personalInformation.infoObtainedOther,
     ) +
-    formatLine('Affected devices        ', data.devicesInfo.deviceOrAccount) +
-    formatLine('Affected devices        ', data.devicesInfo.devicesTellUsMore) +
-    formatLine('Affected finances       ', data.moneyLost.tellUsMore) +
+    formatLine('Affected devices:        ', data.devicesInfo.deviceOrAccount) +
     formatLine(
-      'Affected personal info  ',
+      'Affected devices:        ',
+      data.devicesInfo.devicesTellUsMore,
+    ) +
+    formatLine('Affected finances:       ', data.moneyLost.tellUsMore) +
+    formatLine(
+      'Affected personal info:  ',
       data.personalInformation.tellUsMore,
     ) +
-    formatLine('Affected business info  ', data.businessInfo.business) +
-    formatLine('Other clues             ', data.suspectClues.suspectClues3)
+    formatLine('Affected business info:  ', data.businessInfo.business) +
+    formatLine('Other clues:             ', data.suspectClues.suspectClues3)
 
   delete data.personalInformation.typeOfInfoReq
   delete data.personalInformation.typeOfInfoObtained
@@ -126,13 +131,13 @@ const formatNarrative = data => {
 const formatSuspectDetails = data => {
   const returnString =
     '\n\nSuspect details\n\n' +
-    formatLine('Name          ', data.suspectClues.suspectClues1) +
-    formatLine('Email         ', data.howdiditstart.email) +
-    formatLine('Phone number  ', data.howdiditstart.phone) +
-    formatLine('Website       ', data.howdiditstart.online) +
-    formatLine('Application   ', data.howdiditstart.application) +
-    formatLine('Address       ', data.suspectClues.suspectClues2) +
-    formatLine('Other         ', data.howdiditstart.others)
+    formatLine('Name:          ', data.suspectClues.suspectClues1) +
+    formatLine('Email:         ', data.howdiditstart.email) +
+    formatLine('Phone number:  ', data.howdiditstart.phone) +
+    formatLine('Website:       ', data.howdiditstart.online) +
+    formatLine('Application:   ', data.howdiditstart.application) +
+    formatLine('Address:       ', data.suspectClues.suspectClues2) +
+    formatLine('Other:         ', data.howdiditstart.others)
 
   delete data.suspectClues.suspectClues1
   delete data.howdiditstart.email
@@ -151,10 +156,10 @@ const formatFinancialTransactions = data => {
 
   const returnString =
     '\n\nFinancial transactions\n\n' +
-    formatLine('Money requested     ', data.moneyLost.demandedMoney) +
-    formatLine('Money lost          ', data.moneyLost.moneyTaken) +
-    formatLine('Method of payment   ', paymentString) +
-    formatLine('Transaction date    ', data.moneyLost.transactionDate)
+    formatLine('Money requested:     ', data.moneyLost.demandedMoney) +
+    formatLine('Money lost:          ', data.moneyLost.moneyTaken) +
+    formatLine('Method of payment:   ', paymentString) +
+    formatLine('Transaction date:    ', data.moneyLost.transactionDate)
 
   delete data.moneyLost.methodPayment
   delete data.moneyLost.demandedMoney
@@ -179,7 +184,8 @@ const formatFileAttachments = (data, files) => {
   return returnString
 }
 
-const formatAnalystEmail = (data, files) => {
+const formatAnalystEmail = (dataOrig, files) => {
+  let data = JSON.parse(JSON.stringify(dataOrig))
   let returnString =
     formatReportInfo(data) +
     formatVictimDetails(data) +
