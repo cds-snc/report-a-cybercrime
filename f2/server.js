@@ -81,8 +81,6 @@ const uploadData = (req, res) => {
     data.submissionTime = new Date().toISOString()
 
     const analystEmail = formatAnalystEmail(data, files)
-    console.log('-----------\n' + analystEmail + '-----------\n')
-
     encryptAndSend(process.env.LDAP_UID, analystEmail)
 
     if (notifyIsSetup && data.contactInfo.email) {

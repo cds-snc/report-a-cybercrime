@@ -1,24 +1,24 @@
 // 'use strict'
 
-const formatLine = (label, text) =>
-  text !== '' ? label + text + '\n' : label + 'no data\n'
+const formatLine = (label, text) => (text !== '' ? label + text + '\n' : '')
 
 const formatReportInfo = data => {
   const selfHarmString = data.selfHarmWords.length
     ? data.selfHarmWords
     : 'no self harm words'
   const returnString =
-    'Report information\n\n' +
     formatLine('Report number:      ', data.reportId) +
     formatLine('Date received:      ', data.submissionTime) +
     formatLine('Report language:    ', data.language) +
     formatLine('Flagged:            ', selfHarmString)
 
-  delete data.reportId
-  delete data.submissionTime
-  delete data.language
+  delete data.reportId // we delete the parts of the data object that we've displayed
+  delete data.submissionTime // so that at the end we can display the rest and ensure that
+  delete data.language // we didn't miss anything
   delete data.selfHarmWords
-  return returnString
+  return (
+    'Report information\n\n' + (returnString !== '' ? returnString : 'No Data')
+  )
 }
 
 const formatVictimDetails = data => {
@@ -27,7 +27,6 @@ const formatVictimDetails = data => {
     .join(', ')
 
   const returnString =
-    '\n\nVictim details\n\n' +
     formatLine('Name:             ', data.contactInfo.fullName) +
     formatLine('Email:            ', data.contactInfo.email) +
     formatLine('Phone number:     ', data.contactInfo.phone) +
@@ -39,7 +38,9 @@ const formatVictimDetails = data => {
   delete data.contactInfo.phone
   delete data.location.postalCode
   delete data.consent.consentOptions
-  return returnString
+  return (
+    '\n\nVictim details\n\n' + (returnString !== '' ? returnString : 'No Data')
+  )
 }
 
 const formatIncidentInformation = data => {
@@ -60,7 +61,6 @@ const formatIncidentInformation = data => {
     .join(', ')
 
   const returnString =
-    '\n\nIncident information\n\n' +
     formatLine('Occurrence date:            ', occurenceString) +
     formatLine('Frequency of occurrence:    ', freqString) +
     formatLine('Method of communication:    ', methodOfCommsString) +
@@ -72,7 +72,10 @@ const formatIncidentInformation = data => {
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
   delete data.whatWasAffected.optionOther
-  return returnString
+  return (
+    '\n\nIncident information\n\n' +
+    (returnString !== '' ? returnString : 'No Data')
+  )
 }
 
 const formatNarrative = data => {
@@ -85,7 +88,6 @@ const formatNarrative = data => {
     .join(', ')
 
   const returnString =
-    '\n\nNarrative\n\n' +
     formatLine('What happened:           ', data.whatHappened.whatHappened) +
     formatLine('They asked for:          ', data.moneyLost.demandedMoney) +
     formatLine('They asked for:          ', infoReqString) +
@@ -123,12 +125,11 @@ const formatNarrative = data => {
   delete data.devicesInfo.devicesTellUsMore
   delete data.businessInfo.business
   delete data.suspectClues.suspectClues3
-  return returnString
+  return '\n\nNarrative\n\n' + (returnString !== '' ? returnString : 'No Data')
 }
 
 const formatSuspectDetails = data => {
   const returnString =
-    '\n\nSuspect details\n\n' +
     formatLine('Name:          ', data.suspectClues.suspectClues1) +
     formatLine('Email:         ', data.howdiditstart.email) +
     formatLine('Phone number:  ', data.howdiditstart.phone) +
@@ -144,7 +145,9 @@ const formatSuspectDetails = data => {
   delete data.howdiditstart.application
   delete data.suspectClues.suspectClues2
   delete data.howdiditstart.others
-  return returnString
+  return (
+    '\n\nSuspect details\n\n' + (returnString !== '' ? returnString : 'No Data')
+  )
 }
 
 const formatFinancialTransactions = data => {
@@ -153,7 +156,6 @@ const formatFinancialTransactions = data => {
     .join(', ')
 
   const returnString =
-    '\n\nFinancial transactions\n\n' +
     formatLine('Money requested:     ', data.moneyLost.demandedMoney) +
     formatLine('Money lost:          ', data.moneyLost.moneyTaken) +
     formatLine('Method of payment:   ', paymentString) +
@@ -163,11 +165,14 @@ const formatFinancialTransactions = data => {
   delete data.moneyLost.demandedMoney
   delete data.moneyLost.moneyTaken
   delete data.moneyLost.transactionDate
-  return returnString
+  return (
+    '\n\nFinancial transactions\n\n' +
+    (returnString !== '' ? returnString : 'No Data')
+  )
 }
 
 const formatFileAttachments = (data, files) => {
-  const fileStringList = Object.keys(files)
+  const returnString = Object.keys(files)
     .map(
       (file, index) => `
       File name:   ${file}
@@ -175,11 +180,12 @@ const formatFileAttachments = (data, files) => {
       `,
     )
     .join('')
-  const returnString =
-    '\n\nFile attachments\n\n' +
-    (fileStringList !== '' ? fileStringList : 'No files attached\n')
+
   delete data.evidence.fileDescriptions
-  return returnString
+  return (
+    '\n\nFile attachments\n\n' +
+    (returnString !== '' ? returnString : 'No files attached\n')
+  )
 }
 
 const formatAnalystEmail = (dataOrig, files) => {
@@ -193,6 +199,7 @@ const formatAnalystEmail = (dataOrig, files) => {
     formatFinancialTransactions(data) +
     formatFileAttachments(data, files)
 
+  // take data object and delete any objects that are now empty, and display the rest
   Object.keys(data).forEach(key => {
     if (Object.keys(data[key]).length === 0) delete data[key]
   })
