@@ -32,14 +32,12 @@ const formatVictimDetails = data => {
     formatLine('Email:            ', data.contactInfo.email) +
     formatLine('Phone number:     ', data.contactInfo.phone) +
     formatLine('Postal code:      ', data.location.postalCode) +
-    formatLine('City:             ', data.location.cityTown) +
     formatLine('Consent:          ', consentString)
 
-  delete data.contactInfo.fullNames
+  delete data.contactInfo.fullName
   delete data.contactInfo.email
   delete data.contactInfo.phone
   delete data.location.postalCode
-  delete data.location.cityTown
   delete data.consent.consentOptions
   return returnString
 }

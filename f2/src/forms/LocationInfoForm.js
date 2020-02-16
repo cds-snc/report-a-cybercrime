@@ -14,7 +14,6 @@ export const LocationInfoForm = props => {
   const [data] = useStateValue()
   const location = {
     postalCode: '',
-    cityTown: '',
     ...data.formData.location,
   }
 

@@ -63,7 +63,7 @@ export const testdata = {
       files: [],
       fileDescriptions: [],
     },
-    location: { postalCode: '', cityTown: '' },
+    location: { postalCode: '' },
     contactInfo: { email: '', phone: '' },
   },
 }
