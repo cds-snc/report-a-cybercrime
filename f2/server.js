@@ -2,11 +2,17 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
+const MongoClient = require('mongodb').MongoClient
+const clamd = require('clamdjs')
+const fs = require('fs')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
-var clamd = require('clamdjs')
-var fs = require('fs')
+const {
+  notifyIsSetup,
+  sendConfirmation,
+  sendUnencryptedReport,
+} = require('./utils/notify')
 
 require('dotenv').config()
 var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
@@ -15,8 +21,6 @@ var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
 getAllCerts(process.env.LDAP_UID)
 
 const app = express()
-
-const MongoClient = require('mongodb').MongoClient
 
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
@@ -70,17 +74,22 @@ const uploadData = (req, res) => {
     console.log('Parsed JSON:', data)
 
     const selfHarmWords = selfHarmWordsScan(data)
-    if (selfHarmWords) {
+    if (selfHarmWords.length) {
       console.warn(`Self harm words detected: ${selfHarmWords}`)
     }
     data.selfHarmWords = selfHarmWords
     data.submissionTime = new Date().toISOString()
 
     const analystEmail = formatAnalystEmail(data, files)
-
     console.log('-----------\n' + analystEmail + '-----------\n')
 
     encryptAndSend(process.env.LDAP_UID, analystEmail)
+
+    if (notifyIsSetup && data.contactInfo.email) {
+      sendConfirmation(data.contactInfo.email, data.reportId)
+      if (process.env.SEND_UNENCRYPTED_REPORTS)
+        sendUnencryptedReport(data.contactInfo.email, analystEmail)
+    }
 
     if (cosmosDbConfigured) {
       MongoClient.connect(url, function(err, db) {

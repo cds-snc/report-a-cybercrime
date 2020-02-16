@@ -4,17 +4,14 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
-import { PrivacyConsentInfoForm } from './forms/PrivacyConsentInfoForm'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
-import { useStateValue } from './utils/state'
 import { A } from './components/link'
 import { useLingui } from '@lingui/react'
 
-export const PrivacyConsentPage = () => {
+export const TermsAndConditions = () => {
   const { i18n } = useLingui()
-  const [state, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
 
   return (
     <Route
@@ -23,16 +20,24 @@ export const PrivacyConsentPage = () => {
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
             <BackButton route="/">
-              <Trans id="privacyConsentPage.backButton" />
+              <Trans id="termsConditions.backButton" />
             </BackButton>
 
             <H1>
-              <Trans id="privacyConsentPage.title" />
+              <Trans id="termsConditions.title" />
             </H1>
 
             <Stack spacing={8}>
               <P>
-                <Trans id="privacyConsentPage.intro">
+                <Trans id="termsConditions.paragraph1">
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'http://www.antifraudcentre-centreantifraude.ca/index-eng.htm'
+                        : 'http://www.antifraudcentre-centreantifraude.ca/index-fra.htm'
+                    }
+                    isExternal
+                  />
                   <A
                     href={
                       i18n.locale === 'en'
@@ -44,28 +49,36 @@ export const PrivacyConsentPage = () => {
                   <A
                     href={
                       i18n.locale === 'en'
-                        ? 'http://www.antifraudcentre-centreantifraude.ca/index-eng.htm'
-                        : 'http://www.antifraudcentre-centreantifraude.ca/index-fra.htm'
+                        ? 'http://www.rcmp-grc.gc.ca/en/home'
+                        : 'http://www.rcmp-grc.gc.ca/fr/accueil'
                     }
                     isExternal
                   />
                 </Trans>
               </P>
               <P>
-                <Trans id="privacyConsentInfoPage.sharing" />
+                <Trans id="termsConditions.paragraph2">
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'http://www.antifraudcentre-centreantifraude.ca/terms-avis/index-eng.htm'
+                        : 'http://www.antifraudcentre-centreantifraude.ca/terms-avis/index-fra.htm'
+                    }
+                    isExternal
+                  />
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'http://www.rcmp-grc.gc.ca/en/terms-conditions'
+                        : 'http://www.rcmp-grc.gc.ca/fr/avis'
+                    }
+                    isExternal
+                  />
+                </Trans>
               </P>
               <P>
-                <Trans id="privacyConsentInfoPage.learnMore" />
+                <Trans id="termsConditions.paragraph3" />
               </P>
-              <PrivacyConsentInfoForm
-                onSubmit={data => {
-                  dispatch({
-                    type: 'saveFormData',
-                    data: { consent: data },
-                  })
-                  history.push('/howdiditstart')
-                }}
-              />
             </Stack>
           </Stack>
         </Layout>
