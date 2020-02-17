@@ -7,7 +7,7 @@ import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
-import { A } from './components/link'
+import { A, Link } from './components/link'
 import { useLingui } from '@lingui/react'
 
 export const TermsAndConditions = () => {
@@ -77,7 +77,11 @@ export const TermsAndConditions = () => {
                 </Trans>
               </P>
               <P>
-                <Trans id="termsConditions.paragraph3" />
+              <Trans id="termsConditions.paragraph3" />
+                <Link to="/privacystatement">
+                 <Trans id="termsConditions.linkOut" />
+                </Link>
+              <Trans id="termsConditions.period" />
               </P>
             </Stack>
           </Stack>
