@@ -17,7 +17,6 @@ const {
 
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
 
-
 require('dotenv').config()
 
 // fetch and store certs for intake analysts
@@ -39,13 +38,13 @@ async function save(data, res) {
   saveBlob(data)
   data.submissionTime = new Date().toISOString()
 
-  const analystEmail = formatAnalystEmail(data, files)
+  const analystEmail = formatAnalystEmail(data, data.evidence.files)
   encryptAndSend(process.env.LDAP_UID, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
-  if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
-    sendUnencryptedReport(data.contactInfo.email, analystEmail)
+    if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
+      sendUnencryptedReport(data.contactInfo.email, analystEmail)
   }
   saveRecord(data, res)
 }
@@ -59,8 +58,6 @@ const uploadData = async (req, res, fields, files) => {
 
   // Save the data, e-mail it, etc.. This is async to avoid holding up nodejs from other requests
   save(data, res)
-
-
 }
 
 let count = 0
