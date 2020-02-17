@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { ConfirmationSummary } from './ConfirmationSummary'
@@ -114,6 +115,9 @@ export const ConfirmationPage = () => {
             <H1>
               <Trans id="confirmationPage.title" />
             </H1>
+            <P>
+              <Trans id="confirmationPage.intro" />
+            </P>
             <ConfirmationSummary />
             <ConfirmationForm
               onSubmit={() => {
