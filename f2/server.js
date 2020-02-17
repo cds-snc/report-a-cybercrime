@@ -2,11 +2,19 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
+const MongoClient = require('mongodb').MongoClient
+const clamd = require('clamdjs')
+const fs = require('fs')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { scanFiles } = require('./src/utils/scanFiles')
+
+const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
+const { generateReportId } = require('./src/utils/generateReportId')
+const { notifyIsSetup, sendConfirmation } = require('./utils/notify')
 
 require('dotenv').config()
 
@@ -14,6 +22,7 @@ require('dotenv').config()
 getAllCerts(process.env.LDAP_UID)
 
 const app = express()
+
 
 const allowedOrigins = [
   'http://dev.antifraudcentre-centreantifraude.ca',

@@ -7,13 +7,14 @@ import { TopBanner } from './components/topbanner'
 import { PhaseBanner } from './components/phase-banner'
 import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
-import { ThemeProvider, Flex, Link, CSSReset } from '@chakra-ui/core'
+import { ThemeProvider, Flex, Stack, Link, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 import { StateProvider, initialState, reducer } from './utils/state'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { Li } from './components/list-item'
+import { MidFeedbackForm } from './forms/MidFeedbackForm'
 import { A } from './components/link'
 
 const App = () => {
@@ -51,7 +52,7 @@ const App = () => {
             <TopBanner lang={i18n.locale} />
           </header>
 
-          <Flex
+          <Stack
             as="main"
             id="main"
             fontFamily="body"
@@ -62,9 +63,14 @@ const App = () => {
             bg="gray.50"
           >
             <Home />
-          </Flex>
+            <MidFeedbackForm
+              onSubmit={data => {
+                console.log(data)
+              }}
+            />
+          </Stack>
 
-          <Layout fluid bg="gray.300">
+          <Layout fluid>
             <Layout>
               <P fontSize="sm" my={3}>
                 Version: {process.env.REACT_APP_VERSION || '000000'}
