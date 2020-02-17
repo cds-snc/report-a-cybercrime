@@ -105,7 +105,6 @@ export const EvidenceInfoForm = props => {
                 <Box>
                   <Box
                     fontSize="sm"
-                    color="red.500"
                     mb={8}
                     borderBottomWidth="2px"
                     borderBottomColor="grey.400"
@@ -122,10 +121,9 @@ export const EvidenceInfoForm = props => {
                       <Trans id="evidencePage.addFileButtom" />
                     </Button>
                   </FileUpload>
-                  <P fontSize="sm" color="red.500">
+                  <P fontSize="sm">
                     <Text
                       fontSize="sm"
-                      color="red.500"
                       as="span"
                       fontWeight="bold"
                     >
@@ -210,7 +208,7 @@ export const EvidenceInfoForm = props => {
             {files.length < 3 && (
               <Alert status="success" backgroundColor="blue.100">
                 <AlertIcon name="info-outline" color="blue.700" />
-                <Text fontSize="sm" color="red.500">
+                <Text fontSize="sm">
                   <Trans id="evidencePage.fileWarning" />
                 </Text>
               </Alert>
