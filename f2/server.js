@@ -9,7 +9,14 @@ const { saveRecord } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { scanFiles } = require('./src/utils/scanFiles')
 
-const { notifyIsSetup, sendConfirmation } = require('./utils/notify')
+const {
+  notifyIsSetup,
+  sendConfirmation,
+  sendUnencryptedReport,
+} = require('./utils/notify')
+
+const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
+
 
 require('dotenv').config()
 
@@ -30,10 +37,16 @@ const allowedOrigins = [
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
   saveBlob(data)
+  data.submissionTime = new Date().toISOString()
+
+  const analystEmail = formatAnalystEmail(data, files)
+  encryptAndSend(process.env.LDAP_UID, analystEmail)
+
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
+  if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
+    sendUnencryptedReport(data.contactInfo.email, analystEmail)
   }
-  encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
   saveRecord(data, res)
 }
 
@@ -46,6 +59,8 @@ const uploadData = async (req, res, fields, files) => {
 
   // Save the data, e-mail it, etc.. This is async to avoid holding up nodejs from other requests
   save(data, res)
+
+
 }
 
 let count = 0
