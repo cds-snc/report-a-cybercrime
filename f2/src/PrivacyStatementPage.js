@@ -102,7 +102,7 @@ export const PrivacyStatementPage = () => {
             <P>
               <Trans id="privacyStatementPage.toinquireText2">             
               <A
-              href="mailto=atipb@rcmp-grc.gc.ca"
+              href="mailto:atipb@rcmp-grc.gc.ca"
               isExternal
              />
              </Trans>
@@ -110,7 +110,7 @@ export const PrivacyStatementPage = () => {
             <P>
               <Trans id="privacyStatementPage.toinquireText3">
               <A
-              href="mailto=info@priv.gc.ca"
+              href="mailto:info@priv.gc.ca"
               isExternal
              />
              </Trans>
