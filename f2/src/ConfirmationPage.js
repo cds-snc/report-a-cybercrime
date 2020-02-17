@@ -45,7 +45,7 @@ const prepFormData = (formData, language) => {
     formData.moneyLost = {
       demandedMoney: '',
       moneyTaken: '',
-      methodPayment: '',
+      methodPayment: [],
       transactionDate: '',
       tellUsMore: '',
     }
@@ -57,8 +57,10 @@ const prepFormData = (formData, language) => {
     )
   ) {
     formData.personalInformation = {
-      typeOfInfoReq: '',
-      typeOfInfoObtained: '',
+      typeOfInfoReq: [],
+      infoReqOther: '',
+      typeOfInfoObtained: [],
+      infoObtainedOther: '',
       tellUsMore: '',
     }
   }
@@ -93,7 +95,7 @@ const prepFormData = (formData, language) => {
 const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
   const response = await postData('/submit', data)
-  const reportId = response.statusText
+  const reportId = await response.text()
   dispatch({ type: 'saveFormData', data: { reportId } })
 }
 

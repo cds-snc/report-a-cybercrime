@@ -54,6 +54,7 @@ export const WhatWasAffectedForm = props => {
   const [data] = useStateValue()
   const whatWasAffected = {
     affectedOptions: [],
+    optionOther: '',
     ...data.formData.whatWasAffected,
   }
 
