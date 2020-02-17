@@ -13,7 +13,7 @@ import { useStateValue } from '../utils/state'
 export const LocationInfoForm = props => {
   const [data] = useStateValue()
   const location = {
-    location: '',
+    postalCode: '',
     ...data.formData.location,
   }
 
