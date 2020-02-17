@@ -56,9 +56,6 @@ export const PrivacyConsentPage = () => {
                 <Trans id="privacyConsentInfoPage.sharing" />
               </P>
               <P>
-                  <Trans id="privacyConsentInfoPage.learnMore" />
-              </P>
-              <P>
                 <Trans id="privacyConsentInfoPage.learnMore" /> 
                    <Link to="/privacystatement"> 
                       <Trans id="privacyConsentInfoPage.linkOut" />
