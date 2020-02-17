@@ -82,11 +82,7 @@ const App = () => {
             {/** The List component is in the Footer component */}
             <Li>
               <Link
-                href={
-                  i18n.locale === 'en'
-                    ? 'https://digital.canada.ca/legal/privacy/'
-                    : 'https://numerique.canada.ca/transparence/confidentialite/'
-                }
+                href= "/privacystatement"
               >
                 <Trans id="banner.footerPrivacy" />
               </Link>
@@ -94,11 +90,7 @@ const App = () => {
             <Li>
               <Link
                 ml={4}
-                href={
-                  i18n.locale === 'en'
-                    ? 'https://digital.canada.ca/legal/terms/'
-                    : 'https://numerique.canada.ca/transparence/avis/'
-                }
+                href= "/termsandconditions"
               >
                 <Trans id="banner.footerTermsAndConditions" />
               </Link>

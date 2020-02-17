@@ -1,7 +1,7 @@
 {
-  "SkipLink.text": "Skip to main content",
+  "SkipLink.text": "Skip to main content.",
   "banner.footerPrivacy": "Privacy",
-  "banner.footerTermsAndConditions": "Terms and Conditions",
+  "banner.footerTermsAndConditions": "Terms and conditions",
   "banner.phase": "BETA",
   "banner.phaseText": "This is a new version of the service. <0>Return to the previous version</0>.",
   "banner.warning": "Warning! This is a prototype. It won't actually submit your report to the RCMP.",
@@ -130,7 +130,7 @@
   "finalFeedback.backButton": "Go back",
   "finalFeedback.howCanWeDoBetter.helper": "Do not include any personal or financial details",
   "finalFeedback.howCanWeDoBetter.label": "How can we do better?",
-  "finalFeedback.submit": "Submit feedback",
+  "finalFeedback.submit": "Submit",
   "finalFeedback.title": "Please help us improve this service",
   "finalFeedback.warning": "Answer at least one question to submit feedback.",
   "finalFeedback.wasServiceHard.easy": "Easy",
