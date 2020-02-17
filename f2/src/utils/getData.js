@@ -2,8 +2,8 @@
 
 const fs = require('fs')
 const crypto = require('crypto')
-const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
-const { generateReportId } = require('./src/utils/generateReportId')
+const { selfHarmWordsScan } = require('../../utils/selfHarmWordsScan')
+const { generateReportId } = require('./generateReportId')
 
 async function getData(fields, files) {
   // Extract the JSON from the "JSON" form element

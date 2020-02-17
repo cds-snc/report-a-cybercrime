@@ -31,8 +31,9 @@ async function saveRecord(data, res) {
             res.send(res.statusMessage)
           } else {
             db.close()
-            console.log('Report saved to CosmosDB')
-            res.send('Report saved to CosmosDB')
+            console.log(`Report ${data.reportId} saved to CosmosDB`)
+            res.statusMessage = data.reportId
+            res.send(res.statusMessage)
           }
         })
       }
