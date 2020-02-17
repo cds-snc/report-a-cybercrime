@@ -44,7 +44,10 @@ export const MoneyLostInfoForm = props => {
   const [data] = useStateValue()
   const moneyLost = {
     methodPayment: [],
-    moneyLost: '',
+    demandedMoney: '',
+    moneyTaken: '',
+    transactionDate: '',
+    tellUsMore: '',
     ...data.formData.moneyLost,
   }
 

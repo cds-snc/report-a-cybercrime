@@ -6,9 +6,14 @@ const MongoClient = require('mongodb').MongoClient
 const clamd = require('clamdjs')
 const fs = require('fs')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
+const {
+  notifyIsSetup,
+  sendConfirmation,
+  sendUnencryptedReport,
+} = require('./utils/notify')
 const { generateReportId } = require('./src/utils/generateReportId')
-const { notifyIsSetup, sendConfirmation } = require('./utils/notify')
 
 require('dotenv').config()
 var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
@@ -86,11 +91,14 @@ const uploadData = (req, res) => {
     data.selfHarmWords = selfHarmWords
     data.submissionTime = new Date().toISOString()
 
+    const analystEmail = formatAnalystEmail(data, files)
+    encryptAndSend(process.env.LDAP_UID, analystEmail)
+
     if (notifyIsSetup && data.contactInfo.email) {
       sendConfirmation(data.contactInfo.email, data.reportId)
+      if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
+        sendUnencryptedReport(data.contactInfo.email, analystEmail)
     }
-
-    encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
 
     if (cosmosDbConfigured) {
       MongoClient.connect(url, function(err, db) {
