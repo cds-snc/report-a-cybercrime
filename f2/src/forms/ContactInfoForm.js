@@ -13,7 +13,7 @@ export const ContactInfoForm = ({ onSubmit }) => {
   const [data, dispatch] = useStateValue()
   let contactInfo
   if (typeof data.formData.contactInfo === 'undefined') {
-    contactInfo = { email: '', phone: '' }
+    contactInfo = { fullName: '', email: '', phone: '' }
     dispatch({
       type: 'saveFormData',
       data: { contactInfo },

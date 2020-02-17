@@ -13,6 +13,7 @@ const {
   sendConfirmation,
   sendUnencryptedReport,
 } = require('./utils/notify')
+const { generateReportId } = require('./src/utils/generateReportId')
 
 require('dotenv').config()
 var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
@@ -73,6 +74,8 @@ const uploadData = (req, res) => {
     const data = JSON.parse(fields['json'])
     console.log('Parsed JSON:', data)
 
+    data.reportId = generateReportId()
+
     const selfHarmWords = selfHarmWordsScan(data)
     if (selfHarmWords.length) {
       console.warn(`Self harm words detected: ${selfHarmWords}`)
@@ -107,8 +110,9 @@ const uploadData = (req, res) => {
               res.send(res.statusMessage)
             } else {
               db.close()
-              console.log('Report saved to CosmosDB')
-              res.send('Report saved to CosmosDB')
+              console.log(`Report ${data.reportId} saved to CosmosDB`)
+              res.statusMessage = data.reportId
+              res.send(res.statusMessage)
             }
           })
         }
