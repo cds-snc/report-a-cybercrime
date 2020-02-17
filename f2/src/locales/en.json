@@ -53,7 +53,7 @@
   "confirmationPage.howDidItStart.title.edit": "Edit How did it start?",
   "confirmationPage.howManyTimes": "Incident frequency",
   "confirmationPage.impactIntro": "No information provided.",
-  "confirmationPage.intro": "confirmationPage.intro",
+  "confirmationPage.intro": "Check that the information below is complete and correct before submitting your report.",
   "confirmationPage.location.nag": "No information provided.",
   "confirmationPage.location.postalCode": "Your postal code",
   "confirmationPage.location.title": "Your location",
