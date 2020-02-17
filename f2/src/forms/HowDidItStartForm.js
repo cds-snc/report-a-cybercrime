@@ -69,6 +69,13 @@ export const HowDidItStartForm = props => {
   const [data] = useStateValue()
   const howdiditstart = {
     howDidTheyReachYou: [],
+    email: '',
+    phone: '',
+    online: '',
+    application: '',
+    others: '',
+    whenDidItStart: '',
+    howManyTimes: '',
     ...data.formData.howdiditstart,
   }
   //TODO: Move this form data to some sort of a schema file instead?

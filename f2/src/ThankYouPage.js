@@ -62,13 +62,12 @@ export const ThankYouPage = () => {
         <Layout fluid bg="gray.200" pt={20} pb={10}>
           <Layout>
             <Stack spacing={4} shouldWrapChildren>
-
-            <H2>
+              <H2>
                 <Trans id="thankYouPage.whatNextHeading" />
               </H2>
-                <P>
-                  <Trans id="thankYouPage.whatNextParagraph" />
-                </P>
+              <P>
+                <Trans id="thankYouPage.whatNextParagraph" />
+              </P>
 
               <H2>
                 <Trans id="thankYouPage.helpResource" />
@@ -112,8 +111,8 @@ export const ThankYouPage = () => {
           </Layout>
         </Layout>
       </Stack>
-      
-     { /* After help section*/}
+
+      {/* After help section*/}
       <Layout pt={10}>
         <Alert status="success">
           <AlertIcon mt={0} />
@@ -121,9 +120,9 @@ export const ThankYouPage = () => {
         </Alert>
 
         <Box mb="auto">
-            <Route
-              render={({ history }) => (
-             <Link
+          <Route
+            render={({ history }) => (
+              <Link
                 onClick={() => {
                   dispatch({
                     type: 'deleteFormData',
@@ -136,10 +135,9 @@ export const ThankYouPage = () => {
               >
                 <Trans id="thankYouPage.createNewReport" />
               </Link>
-              )}
-              />
-              </Box>
-
+            )}
+          />
+        </Box>
       </Layout>
       <Layout fluid borderBottom="4px" borderColor="blue.500">
         <Layout>

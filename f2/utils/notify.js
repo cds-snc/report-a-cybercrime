@@ -31,7 +31,7 @@ const sendConfirmation = async (email, reportId) => {
   const templateId = process.env.NOTIFY_CONFIRMATION_TEMPLATE_ID
   if (!email || !templateId) {
     console.warn(
-      'WARNING: no Notify template ID or email was passed, mail not sent',
+      'WARNING: no Notify confirmation template ID or email was passed, mail not sent',
     )
     return false
   }
@@ -39,10 +39,30 @@ const sendConfirmation = async (email, reportId) => {
     const response = notifyClient.sendEmail(templateId, email, {
       personalisation: { reportId },
     })
-    console.log('Notify: Email sent!')
+    console.log('Notify: confirmation email (probably) sent!')
     return response.body
   } catch (err) {
-    console.error(`Notify Error: ${err.message}`)
+    console.error(`Notify confirmation email Error: ${err.message}`)
+    return false
+  }
+}
+
+const sendUnencryptedReport = async (email, report) => {
+  const templateId = process.env.NOTIFY_REPORT_TEMPLATE_ID
+  if (!email || !templateId) {
+    console.warn(
+      'WARNING: no Notify report template ID or email was passed, mail not sent',
+    )
+    return false
+  }
+  try {
+    const response = notifyClient.sendEmail(templateId, email, {
+      personalisation: { report },
+    })
+    console.log('Notify: report email (probablty) sent!')
+    return response.body
+  } catch (err) {
+    console.error(`Notify report email error: ${err.message}`)
     return false
   }
 }
@@ -50,4 +70,5 @@ const sendConfirmation = async (email, reportId) => {
 module.exports = {
   notifyIsSetup,
   sendConfirmation,
+  sendUnencryptedReport,
 }
