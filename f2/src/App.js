@@ -73,7 +73,10 @@ const App = () => {
           <Layout fluid>
             <Layout>
               <P fontSize="sm" my={3}>
-                Version: {process.env.REACT_APP_VERSION || '000000'}
+                Version:{' '}
+                {process.env.REACT_APP_VERSION
+                  ? process.env.REACT_APP_VERSION.slice(0, 7)
+                  : '000000'}
               </P>
             </Layout>
           </Layout>
