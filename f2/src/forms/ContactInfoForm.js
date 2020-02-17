@@ -10,11 +10,15 @@ import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 
 export const ContactInfoForm = ({ onSubmit }) => {
-  const [data] = useStateValue()
-  const contactInfo = {
-    email: '',
-    ...data.formData.contactInfo,
-  }
+  const [data, dispatch] = useStateValue()
+  let contactInfo
+  if (typeof data.formData.contactInfo === 'undefined') {
+    contactInfo = { fullName: '', email: '', phone: '' }
+    dispatch({
+      type: 'saveFormData',
+      data: { contactInfo },
+    })
+  } else contactInfo = data.formData.contactInfo
 
   return (
     <Form

@@ -13,9 +13,7 @@ export const ConfirmationForm = props => {
       <Form
         onSubmit={props.onSubmit}
         render={({ handleSubmit }) => (
-
           <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-
           <Box as="form" onSubmit={handleSubmit}>
             <NextAndCancelButtons
               button={<Trans id="confirmationPage.nextButton" />}

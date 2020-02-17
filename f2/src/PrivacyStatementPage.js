@@ -25,55 +25,53 @@ export const PrivacyStatementPage = () => {
             <H1 as="span">
               <Trans id="privacyStatementPage.title" />
             </H1>
-              <H2 as="span">
-                <Trans id="privacyStatementPage.whoHeading" />
-              </H2>
-              <P>
-                <Trans id="privacyStatementPage.whoText1" />
-              </P>
-              <P>
-                <Trans id="privacyStatementPage.whoText2" />
-              </P>
-              <H2 as="span">
-                <Trans id="privacyStatementPage.whathappensHeading" />
-              </H2>
-              <P>
-                <Trans id="privacyStatementPage.whathappensText" />
-              </P>
-              <H2 as="span">
-                <Trans id="privacyStatementPage.informationHeading" />
-              </H2>
-              <P>
-                <Trans id="privacyStatementPage.informationText1" />
-              </P>
-              <P>
-                <Trans id="privacyStatementPage.informationText2" />
-              </P>
-              <H2 as="span">
-                <Trans id="privacyStatementPage.toinquireHeading" />
-              </H2>
-              <P>
-                <Trans id="privacyStatementPage.toinquireText1" />
-              </P>
-              <P>
-                <Trans id="privacyStatementPage.toinquireText2" />
-              </P>
-              <P>
-                <Trans id="privacyStatementPage.toinquireText3" />
-              </P>
-              <PrivacyConsentInfoForm
-                onSubmit={data => {
-                  dispatch({
-                    type: 'saveFormData',
-                    data: { consent: data },
-                  })
-                  history.push('/howdiditstart')
-                }}
-              />       
-        </Stack>  
+            <H2 as="span">
+              <Trans id="privacyStatementPage.whoHeading" />
+            </H2>
+            <P>
+              <Trans id="privacyStatementPage.whoText1" />
+            </P>
+            <P>
+              <Trans id="privacyStatementPage.whoText2" />
+            </P>
+            <H2 as="span">
+              <Trans id="privacyStatementPage.whathappensHeading" />
+            </H2>
+            <P>
+              <Trans id="privacyStatementPage.whathappensText" />
+            </P>
+            <H2 as="span">
+              <Trans id="privacyStatementPage.informationHeading" />
+            </H2>
+            <P>
+              <Trans id="privacyStatementPage.informationText1" />
+            </P>
+            <P>
+              <Trans id="privacyStatementPage.informationText2" />
+            </P>
+            <H2 as="span">
+              <Trans id="privacyStatementPage.toinquireHeading" />
+            </H2>
+            <P>
+              <Trans id="privacyStatementPage.toinquireText1" />
+            </P>
+            <P>
+              <Trans id="privacyStatementPage.toinquireText2" />
+            </P>
+            <P>
+              <Trans id="privacyStatementPage.toinquireText3" />
+            </P>
+            <PrivacyConsentInfoForm
+              onSubmit={data => {
+                dispatch({
+                  type: 'saveFormData',
+                  data: { consent: data },
+                })
+                history.push('/howdiditstart')
+              }}
+            />
+          </Stack>
         </Layout>
-
-
       )}
     />
   )
