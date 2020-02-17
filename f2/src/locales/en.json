@@ -232,6 +232,7 @@
   "moneyLostPage.selectMethod": "Select the method of payment used.",
   "moneyLostPage.tellUsMore": "How did they ask for and steal money?",
   "moneyLostPage.tellUsMoreExample": "Include details about what was said or done for this to happen.",
+  "moneyLostPage.tip": "You can also try contacting your financial institution, credit card company, or insurance company.",
   "moneyLostPage.title": "How were your money or finances affected?",
   "moneyLostPage.transactionDate": "When did the transaction take place?",
   "moneyLostPage.transactionDateExample": "For example: 26 02 2020",

@@ -232,6 +232,7 @@
   "moneyLostPage.selectMethod": "Sélectionnez la méthode de transfert d’argent utilisées.",
   "moneyLostPage.tellUsMore": "Comment vous a-t-on demandé et volé de l’argent?",
   "moneyLostPage.tellUsMoreExample": "Fournissez des détails sur ce qui a été dit ou fait pour que cela se produise.",
+  "moneyLostPage.tip": "Vous pouvez également essayer de contacter votre institution financière, votre compagnie de carte de crédit ou votre compagnie d’assurance.",
   "moneyLostPage.title": "Répercussions sur votre argent ou vos finances",
   "moneyLostPage.transactionDate": "Quand la transaction a-elle eu lieu?",
   "moneyLostPage.transactionDateExample": "Par exemple : 26 02 2020",
