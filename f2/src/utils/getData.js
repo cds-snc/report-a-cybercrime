@@ -2,12 +2,14 @@
 
 const fs = require('fs')
 const crypto = require('crypto')
-const { selfHarmWordsScan } = require('../../utils/selfHarmWordsScan')
+const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
+const { generateReportId } = require('./src/utils/generateReportId')
 
 async function getData(fields, files) {
   // Extract the JSON from the "JSON" form element
   const data = JSON.parse(fields['json'])
 
+  data.reportId = generateReportId()
   // Clean up the file info we're saving to MongoDB, and record the SHA1 hash so we can find the file in blob storage
   const filesToJson = []
   var i = 0
