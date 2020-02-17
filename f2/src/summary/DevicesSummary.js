@@ -18,7 +18,7 @@ export const DevicesSummary = props => {
   }
 
   const hasInfoToDisplay =
-    devices.deviceOrAccount.length > 0 || devices.devicesTellUsMore.length > 0
+    devices.device.length > 0 || devices.devicesTellUsMore.length > 0
 
   return (
     <React.Fragment>
@@ -52,7 +52,7 @@ export const DevicesSummary = props => {
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.device"
-              description={devices.deviceOrAccount}
+              description={devices.device}
             />
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.devicesTellUsMore"
