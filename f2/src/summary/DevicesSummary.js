@@ -18,7 +18,7 @@ export const DevicesSummary = props => {
   }
 
   const hasInfoToDisplay =
-    devices.deviceOrAccount.length > 0 || devices.devicesTellUsMore.length > 0
+    devices.device.length > 0 |devices.account.length > 0 || devices.devicesTellUsMore.length > 0
 
   return (
     <React.Fragment>
