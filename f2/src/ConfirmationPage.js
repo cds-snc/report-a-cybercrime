@@ -12,7 +12,6 @@ import { ConfirmationForm } from './forms/ConfirmationForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { generateReportId } from './utils/generateReportId'
 
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
@@ -33,7 +32,7 @@ async function postData(url = '', data = {}) {
     referrer: 'no-referrer',
     body: form_data,
   })
-  return await response
+  return response
 }
 
 const prepFormData = (formData, language) => {
@@ -90,9 +89,11 @@ const prepFormData = (formData, language) => {
   }
 }
 
-const submitToServer = async data => {
+const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
-  await postData('/submit', data)
+  const response = await postData('/submit', data)
+  const reportId = response.statusText
+  dispatch({ type: 'saveFormData', data: { reportId } })
 }
 
 export const ConfirmationPage = () => {
@@ -114,13 +115,7 @@ export const ConfirmationPage = () => {
             <ConfirmationSummary />
             <ConfirmationForm
               onSubmit={() => {
-                const reportId = generateReportId()
-                dispatch({
-                  type: 'saveFormData',
-                  data: { reportId },
-                })
-                let data = prepFormData(formData, i18n.locale)
-                submitToServer({ ...data, reportId }) // pass reportId to protect against dispatch race condition
+                submitToServer(prepFormData(formData, i18n.locale), dispatch)
                 history.push('/thankYouPage')
               }}
             />
