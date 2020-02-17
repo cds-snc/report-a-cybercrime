@@ -49,8 +49,16 @@ const uploadData = (req, res) => {
     */
     console.log('Fields', fields)
     console.log('Files', files)
-    for (const file of Object.entries(files)) {
-      console.log(file)
+    for (const [fileName, file] of Object.entries(files)) {
+      //scan individual file for size < 4MB
+      if (file.size > 4194304) {
+        res.statusCode = 400
+        res.statusMessage =
+          'Warning: One of the submitted files is bigger than 4MB.'
+        res.send(res.statusMessage)
+        return
+      }
+      console.log(fileName, file)
       //scan file for virus
       var readStream = fs.createReadStream(file[1].path)
       //set timeout for 10000
