@@ -4,7 +4,6 @@ import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
-import { PrivacyConsentInfoForm } from './forms/PrivacyConsentInfoForm'
 import { TrackPageViews } from './TrackPageViews'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
@@ -61,15 +60,6 @@ export const PrivacyStatementPage = () => {
             <P>
               <Trans id="privacyStatementPage.toinquireText3" />
             </P>
-            <PrivacyConsentInfoForm
-              onSubmit={data => {
-                dispatch({
-                  type: 'saveFormData',
-                  data: { consent: data },
-                })
-                history.push('/howdiditstart')
-              }}
-            />
           </Stack>
         </Layout>
       )}
