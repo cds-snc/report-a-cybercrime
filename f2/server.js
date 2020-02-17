@@ -7,6 +7,7 @@ const clamd = require('clamdjs')
 const fs = require('fs')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { selfHarmWordsScan } = require('./utils/selfHarmWordsScan')
+const { generateReportId } = require('./src/utils/generateReportId')
 const { notifyIsSetup, sendConfirmation } = require('./utils/notify')
 
 require('dotenv').config()
@@ -68,6 +69,8 @@ const uploadData = (req, res) => {
     const data = JSON.parse(fields['json'])
     console.log('Parsed JSON:', data)
 
+    data.reportId = generateReportId()
+
     const selfHarmWords = selfHarmWordsScan(data)
     if (selfHarmWords.length) {
       console.warn(`Self harm words detected: ${selfHarmWords}`)
@@ -99,8 +102,9 @@ const uploadData = (req, res) => {
               res.send(res.statusMessage)
             } else {
               db.close()
-              console.log('Report saved to CosmosDB')
-              res.send('Report saved to CosmosDB')
+              console.log(`Report ${data.reportId} saved to CosmosDB`)
+              res.statusMessage = data.reportId
+              res.send(res.statusMessage)
             }
           })
         }
