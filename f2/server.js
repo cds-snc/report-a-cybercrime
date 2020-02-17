@@ -77,7 +77,6 @@ const uploadData = (req, res) => {
 
     if (notifyIsSetup && data.contactInfo.email) {
       sendConfirmation(data.contactInfo.email, data.reportId)
-      data.contactInfo.email = randomizeString(data.contactInfo.email)
     }
 
     encryptAndSend(process.env.LDAP_UID, JSON.stringify(data))
