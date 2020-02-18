@@ -261,7 +261,7 @@ export const HowDidItStartForm = props => {
                 })}
               </Stack>
             </Control>
-            
+
             <Alert status="success" backgroundColor="blue.100">
               <AlertIcon name="info-outline" color="blue.800" />
               <Trans id="howDidItStartPage.tip" />
