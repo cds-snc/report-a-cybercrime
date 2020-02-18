@@ -7,7 +7,7 @@ import { Trans } from '@lingui/macro'
 import { Form, Field, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextArea } from '../components/text-area'
-import { Stack, FormControl} from '@chakra-ui/core'
+import { Stack, FormControl, Alert, AlertIcon} from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
@@ -15,6 +15,7 @@ import { ConditionalForm } from '../components/container'
 import { TextInput } from '../components/TextInput'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { A } from '../components/link'
 
 const Control = ({ name, ...rest }) => {
   const {
