@@ -6,7 +6,6 @@ import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FormControl, Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/paragraph'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Field } from '../components/Field'
@@ -126,9 +125,6 @@ export const WhatWasAffectedForm = props => {
                 ) : null}
             </FormArrayControl>
           </Control>
-          <P>
-            <Trans id="whatWasAffectedForm.expectations" />
-          </P>
           <NextAndCancelButtons
             next={<Trans id="whatWasAffectedForm.nextPage" />}
             button={<Trans id="whatWasAffectedForm.nextButton" />}
