@@ -62,6 +62,7 @@ export const LandingPage = props => {
                     isExternal
                   />
                 </Trans>
+
               </P>
 
               <Stack spacing={4} direction="row" flexWrap="wrap">
@@ -72,6 +73,7 @@ export const LandingPage = props => {
 
                   <P>
                     <Trans id="landingPage.onlineIntro" />
+
                   </P>
                   <Box flex="1 1 0"></Box>
                   <Button
@@ -144,6 +146,7 @@ export const LandingPage = props => {
               <Stack spacing={10} shouldWrapChildren>
                 <Ul>
                   <Li>
+
                     <Trans id="landingPage.reportingOptions0" />
                   </Li>
                   <Li>
