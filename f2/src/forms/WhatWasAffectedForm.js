@@ -4,11 +4,15 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { FormControl, Stack } from '@chakra-ui/core'
+import { FormControl, Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { Field } from '../components/Field'
+import { FormLabel } from '../components/FormLabel'
+import { ConditionalForm } from '../components/container'
+import { TextInput } from '../components/TextInput'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -35,7 +39,6 @@ export const WhatWasAffectedForm = props => {
   const [data] = useStateValue()
   const whatWasAffected = {
     affectedOptions: [],
-    optionOther: '',
     ...data.formData.whatWasAffected,
   }
 
@@ -90,6 +93,14 @@ export const WhatWasAffectedForm = props => {
                   </React.Fragment>
                 )
               })}
+              {showWarning ? (
+                <Control>
+                  <Alert status="warning">
+                    <AlertIcon />
+                    <Trans id="whatWasAffectedForm.warning" />
+                  </Alert>
+                </Control>
+              ) : null}
             </FormArrayControl>
             <P>
               <Trans id="whatWasAffectedForm.expectations" />
