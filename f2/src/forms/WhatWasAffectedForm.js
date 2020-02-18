@@ -9,6 +9,10 @@ import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { Field } from '../components/Field'
+import { FormLabel } from '../components/FormLabel'
+import { ConditionalForm } from '../components/container'
+import { TextInput } from '../components/TextInput'
 
 
 const Control = ({ name, ...rest }) => {
@@ -87,6 +91,26 @@ export const WhatWasAffectedForm = props => {
                       >
                       {i18n._(key)}
                       </CheckboxAdapter>
+                      {key === 'whatWasAffectedForm.other' &&
+                        values.affectedOptions.includes(
+                          'whatWasAffectedForm.other',
+                        ) && (
+                          <ConditionalForm>
+                            <Field name="optionOther">
+                              {props => (
+                                <FormControl>
+                                  <FormLabel htmlFor={key}></FormLabel>
+                                  <TextInput
+                                    id="optionOther"
+                                    name={props.input.name}
+                                    value={props.input.value}
+                                    onChange={props.input.onChange}
+                                  />
+                                </FormControl>
+                              )}
+                            </Field>
+                          </ConditionalForm>
+                        )}
                     </React.Fragment>
                   )
                 })}
