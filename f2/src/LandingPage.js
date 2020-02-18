@@ -24,7 +24,6 @@ if (
   i18n.activate('fr')
 } else if (window.location.hostname === 'report-a-scam.cds-snc.ca') {
   i18n.activate('en')
-} else {
 }
 
 export const LandingPage = props => {
