@@ -12,6 +12,8 @@ import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 import { ConditionalForm } from '../components/container'
+import { P } from '../components/paragraph'
+import { TextInput } from '../components/TextInput'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -74,7 +76,9 @@ export const HowDidItStartForm = props => {
     online: '',
     application: '',
     others: '',
-    whenDidItStart: '',
+    startDay: '',
+    startMonth: '',
+    startYear: '',
     howManyTimes: '',
     ...data.formData.howdiditstart,
   }
@@ -112,25 +116,16 @@ export const HowDidItStartForm = props => {
     },
   ]
 
-  const timeline = {
-    whenDidItStart: [],
-    ...data.formData.timeline,
-  }
-
-  const whenDidItStart = [
-    'whenDidItStart.today',
-    'whenDidItStart.pastWeek',
-    'whenDidItStart.pastMonth',
-    'whenDidItStart.pastYear',
-    'whenDidItStart.moreThanOneYear',
-  ]
-
   const recurrenceCheck = {
     howManyTimes: [],
     ...data.formData.timeline,
   }
 
-  const howManyTimes = ['howManyTimes.once', 'howManyTimes.severalTimes']
+  const howManyTimes = [
+    'howManyTimes.once',
+    'howManyTimes.severalTimes',
+    'howManyTimes.notSure',
+  ]
 
   return (
     <React.Fragment>
@@ -151,13 +146,9 @@ export const HowDidItStartForm = props => {
           <Trans id="howDidTheyReachYou.online" />
           <Trans id="howDidTheyReachYou.app" />
           <Trans id="howDidTheyReachYou.others" />
-          <Trans id="whenDidItStart.today" />
-          <Trans id="whenDidItStart.pastWeek" />
-          <Trans id="whenDidItStart.pastMonth" />
-          <Trans id="whenDidItStart.pastYear" />
-          <Trans id="whenDidItStart.moreThanOneYear" />
           <Trans id="howManyTimes.once" />
           <Trans id="howManyTimes.severalTimes" />
+          <Trans id="howManyTimes.notSure" />
         </div>
       ) : null}
 
@@ -170,7 +161,7 @@ export const HowDidItStartForm = props => {
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
-            spacing={12}
+            spacing={6}
           >
             <Control as="fieldset" name="howDidTheyReachYou">
               <FormLabel as="legend" htmlFor="howDidTheyReachYou" mb={2}>
@@ -220,26 +211,71 @@ export const HowDidItStartForm = props => {
               </Stack>
             </Control>
 
-            <Control as="fieldset" name="whenDidItStart">
-              <FormLabel as="legend" htmlFor="whenDidItStart" mb={2}>
+            <Stack>
+              <P fontWeight="bold">
                 <Trans id="whenDidItStart.label" />
-              </FormLabel>
-              <Stack spacing={4} shouldWrapChildren>
-                {whenDidItStart.map(key => {
-                  return (
-                    <Box key={key}>
-                      <RadioButtonArrayControl
-                        name="whenDidItStart"
-                        value={key}
-                        isChecked={timeline.whenDidItStart.includes(key)}
-                      >
-                        {i18n._(key)}
-                      </RadioButtonArrayControl>
-                    </Box>
-                  )
-                })}
-              </Stack>
-            </Control>
+              </P>
+              <P fontSize="md">
+                <Trans id="whenDidItStart.labelExample" />
+              </P>
+            </Stack>
+
+            <Stack flexDirection="row">
+              <Field name="startDay">
+                {props => (
+                  <FormControl>
+                    <FormLabel htmlFor="startDay">
+                      <Trans id="whenDidItStart.startDay" />
+                      <TextInput
+                        id="startDay"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                        w={70}
+                        h={36}
+                        mt={2}
+                      />
+                    </FormLabel>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="startMonth">
+                {props => (
+                  <FormControl>
+                    <FormLabel htmlFor="startnMonth">
+                      <Trans id="whenDidItStart.startMonth" />
+                      <TextInput
+                        id="startMonth"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                        w={70}
+                        h={36}
+                        mt={2}
+                      />
+                    </FormLabel>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="startYear">
+                {props => (
+                  <FormControl>
+                    <FormLabel htmlFor="startYear">
+                      <Trans id="whenDidItStart.startYear" />
+                      <TextInput
+                        id="startYear"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                        w={110}
+                        h={36}
+                        mt={2}
+                      />
+                    </FormLabel>
+                  </FormControl>
+                )}
+              </Field>
+            </Stack>
 
             <Control as="fieldset" name="howManyTimes">
               <FormLabel as="legend" htmlFor="howManyTimes" mb={2}>
