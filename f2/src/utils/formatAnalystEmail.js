@@ -172,7 +172,6 @@ const formatFinancialTransactions = data => {
 }
 
 const formatFileAttachments = data => {
-  console.log(data.evidence.files[0])
   const returnString = data.evidence.files
     .map(
       file =>
