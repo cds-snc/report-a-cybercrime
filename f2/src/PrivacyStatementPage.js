@@ -10,20 +10,20 @@ import { useLingui } from '@lingui/react'
 
 export const PrivacyStatementPage = () => {
   const { i18n } = useLingui()
- // eslint-disable-line no-unused-vars
+  // eslint-disable-line no-unused-vars
 
   return (
-        <Layout>
-          <TrackPageViews />
-          <Stack spacing={10} shouldWrapChildren>
-            <H1 as="span">
-              <Trans id="privacyStatementPage.title" />
-            </H1>
-            <H2 as="span">
-              <Trans id="privacyStatementPage.whoHeading" />
-            </H2>
-            <P>
-              <Trans id="privacyStatementPage.whoText1">
+    <Layout>
+      <TrackPageViews />
+      <Stack spacing={10} shouldWrapChildren>
+        <H1 as="span">
+          <Trans id="privacyStatementPage.title" />
+        </H1>
+        <H2 as="span">
+          <Trans id="privacyStatementPage.whoHeading" />
+        </H2>
+        <P>
+          <Trans id="privacyStatementPage.whoText1">
             <A
               href={
                 i18n.locale === 'en'
@@ -32,7 +32,7 @@ export const PrivacyStatementPage = () => {
               }
               isExternal
             />
-           <A
+            <A
               href={
                 i18n.locale === 'en'
                   ? 'http://www.antifraudcentre-centreantifraude.ca/index-eng.htm'
@@ -40,11 +40,11 @@ export const PrivacyStatementPage = () => {
               }
               isExternal
             />
-            </Trans>
-            </P>
-            <P>
-              <Trans id="privacyStatementPage.whoText2">
-              <A
+          </Trans>
+        </P>
+        <P>
+          <Trans id="privacyStatementPage.whoText2">
+            <A
               href={
                 i18n.locale === 'en'
                   ? 'http://www.rcmp-grc.gc.ca/en/home'
@@ -52,7 +52,7 @@ export const PrivacyStatementPage = () => {
               }
               isExternal
             />
-              <A
+            <A
               href={
                 i18n.locale === 'en'
                   ? 'https://www.cyber.gc.ca/en/'
@@ -60,55 +60,55 @@ export const PrivacyStatementPage = () => {
               }
               isExternal
             />
-            </Trans>
-            </P>
-            <H2 as="span">
-              <Trans id="privacyStatementPage.whathappensHeading" />
-            </H2>
-            <P>
-              <Trans id="privacyStatementPage.whathappensText" />
-            </P>
-            <H2 as="span">
-              <Trans id="privacyStatementPage.informationHeading" />
-            </H2>
-            <P>
-              <Trans id="privacyStatementPage.informationText1" />
-            </P>
-            <P>
-              <Trans id="privacyStatementPage.informationText2">
-              <A
+          </Trans>
+        </P>
+        <H2 as="span">
+          <Trans id="privacyStatementPage.whathappensHeading" />
+        </H2>
+        <P>
+          <Trans id="privacyStatementPage.whathappensText" />
+        </P>
+        <H2 as="span">
+          <Trans id="privacyStatementPage.informationHeading" />
+        </H2>
+        <P>
+          <Trans id="privacyStatementPage.informationText1" />
+        </P>
+        <P>
+          <Trans id="privacyStatementPage.informationText2">
+            <A
               href={
                 i18n.locale === 'en'
                   ? 'https://digital.canada.ca'
                   : 'https://numerique.canada.ca'
               }
               isExternal
-             />
-            </Trans>
-            </P>
-            <H2 as="span">
-              <Trans id="privacyStatementPage.toinquireHeading" />
-            </H2>
-            <P>
-              <Trans id="privacyStatementPage.toinquireText1" />
-            </P>
-            <P>
-              <Trans id="privacyStatementPage.toinquireText2">             
-              <A
+            />
+          </Trans>
+        </P>
+        <H2 as="span">
+          <Trans id="privacyStatementPage.toinquireHeading" />
+        </H2>
+        <P>
+          <Trans id="privacyStatementPage.toinquireText1" />
+        </P>
+        <P>
+          <Trans id="privacyStatementPage.toinquireText2">
+            <A
               href="mailto:atipb@rcmp-grc.gc.ca"
               isExternal
-             />
-             </Trans>
-            </P>
-            <P>
-              <Trans id="privacyStatementPage.toinquireText3">
-              <A
+            />
+          </Trans>
+        </P>
+        <P>
+          <Trans id="privacyStatementPage.toinquireText3">
+            <A
               href="mailto:info@priv.gc.ca"
               isExternal
-             />
-             </Trans>
-            </P>
-          </Stack>
-        </Layout>
+            />
+          </Trans>
+        </P>
+      </Stack>
+    </Layout>
   )
 }
