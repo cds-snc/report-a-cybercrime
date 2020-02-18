@@ -7,13 +7,14 @@ import { Trans } from '@lingui/macro'
 import { Form, Field, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
-import { FormControl, Stack, Box } from '@chakra-ui/core'
+import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
-import { Checkbox } from '../components/checkbox'
 import { ConditionalForm } from '../components/container'
+import { CheckboxAdapter } from '../components/checkbox'
+
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -22,29 +23,15 @@ const Control = ({ name, ...rest }) => {
   return <FormControl {...rest} isInvalid={error && touched} />
 }
 
-const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
-  const {
-    input: { checked, ...input },
-    meta: { error, touched },
-  } = useField(name, {
-    type: 'checkbox', // important for RFF to manage the checked prop
-    value, // important for RFF to manage list of strings
-    defaultIsChecked,
-  })
-
-  return (
-    <Checkbox {...input} isChecked={checked} isInvalid={error && touched}>
-      {children}
-    </Checkbox>
-  )
-}
-
 export const MoneyLostInfoForm = props => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
   const moneyLost = {
     methodPayment: [],
-    moneyLost: '',
+    demandedMoney: '',
+    moneyTaken: '',
+    transactionDate: '',
+    tellUsMore: '',
     ...data.formData.moneyLost,
   }
 
@@ -125,9 +112,12 @@ export const MoneyLostInfoForm = props => {
                 {methodsOfPayment.map(key => {
                   return (
                     <Box key={key}>
-                      <CheckboxArrayControl name="methodPayment" value={key}>
-                        {i18n._(key)}
-                      </CheckboxArrayControl>
+                      <CheckboxAdapter
+                        name="methodPayment"
+                        value={key}
+                      >
+                      {i18n._(key)}
+                      </CheckboxAdapter>
                       {key === 'methodPayment.other' &&
                         values.methodPayment.includes(
                           'methodPayment.other',
@@ -191,6 +181,10 @@ export const MoneyLostInfoForm = props => {
                 </FormControl>
               )}
             </Field>
+            <Alert status="success" backgroundColor="blue.100">
+              <AlertIcon name="info-outline" color="blue.800" />
+              <Trans id="moneyLostPage.tip" />
+            </Alert>
             <NextAndCancelButtons
               next={<Trans id="moneyLostPage.nextStepDetail" />}
               button={<Trans id="moneyLostPage.nextButton" />}

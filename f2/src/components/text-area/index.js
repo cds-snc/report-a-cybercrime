@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Textarea as ChakraTextarea } from '@chakra-ui/core'
 
 export const TextArea = props => (
@@ -21,12 +20,7 @@ export const TextArea = props => (
       borderColor: 'black',
       border: '3px',
     }}
+    {...props.input}
     {...props}
-  >
-    {props.children}
-  </ChakraTextarea>
+  />
 )
-
-TextArea.propTypes = {
-  children: PropTypes.any,
-}

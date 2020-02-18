@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Container } from '../container'
+import { Flex, Stack } from '@chakra-ui/core'
 
 export const Layout = ({ fluid, columns, ...props }) => {
   const col = {
@@ -22,13 +23,36 @@ export const Layout = ({ fluid, columns, ...props }) => {
         : {
             maxW: { sm: 540, md: 768, lg: 960, xl: 1200 },
             mx: 'auto',
-            px: 4,
+            px: 2,
             w: '100%',
           })}
       {...props}
     >
       <Container w={col}>{props.children}</Container>
     </Container>
+  )
+}
+
+export const Column = ({ columns, ...props }) => {
+  const col = {
+    base: columns.base * 100 + '%',
+    md: columns.md * 100 + '%',
+    lg: columns.lg * 100 + '%',
+    xl: columns.xl * 100 + '%',
+  }
+  // Keep width and mx after props to prevent them being overwritten
+  return (
+    <Stack {...props} mx={2} w={col}>
+      {props.children}
+    </Stack>
+  )
+}
+
+export const Row = props => {
+  return (
+    <Flex {...props} mx={-2}>
+      {props.children}
+    </Flex>
   )
 }
 
