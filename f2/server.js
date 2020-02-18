@@ -7,7 +7,7 @@ const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
-const { scanFiles } = require('./src/utils/scanFiles')
+const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 
 const {
   notifyIsSetup,
@@ -55,6 +55,10 @@ const uploadData = async (req, res, fields, files) => {
 
   // Await here because we also need these results before saving
   await scanFiles(data)
+
+  await contentModeratorFiles(data)
+
+  console.log({ files: data.evidence.files })
 
   // Save the data, e-mail it, etc.. This is async to avoid holding up nodejs from other requests
   save(data, res)
