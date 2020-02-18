@@ -9,6 +9,7 @@ const selfHarmString = process.env.SELF_HARM_WORDS || 'agilé, lean, mvp, scrum'
 const selfHarmWords = selfHarmString
   .split(',')
   .map(w => removeAccents(w.trim().toLowerCase()))
+console.info(`Self harm word list: ${selfHarmWords}`)
 
 const selfHarmWordsScan = data => {
   const json = removeAccents(JSON.stringify(data).toLowerCase())
