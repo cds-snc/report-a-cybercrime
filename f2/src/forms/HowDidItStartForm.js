@@ -6,11 +6,12 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { CheckboxAdapter } from '../components/checkbox'
 import { RadioAdapter } from '../components/radio'
-import { Stack, Box } from '@chakra-ui/core'
+import { Stack, Box, Alert, AlertIcon} from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Field } from '../components/Field'
 import { TextArea } from '../components/text-area'
+
 
 const validate = () => {
   return {}
@@ -190,6 +191,10 @@ export const HowDidItStartForm = props => {
                 )
               })}
             </FormArrayControl>
+            <Alert status="success" backgroundColor="blue.100">
+              <AlertIcon name="info-outline" color="blue.800" />
+              <Trans id="howDidItStartPage.tip" />
+            </Alert>
             <NextAndCancelButtons
               next={<Trans id="howDidItStartPage.nextPage" />}
               button={<Trans id="howDidItStartPage.nextButton" />}

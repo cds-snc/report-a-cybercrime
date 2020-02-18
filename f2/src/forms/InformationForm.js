@@ -185,7 +185,7 @@ export const InformationForm = props => {
               <Trans id="informationPage.tip">
                 <A
                   href={
-                  i18n.locale === 'en'
+                    i18n.locale === 'en'
                       ? 'https://www.consumer.equifax.ca/personal/'
                       : 'https://www.consumer.equifax.ca/personnel/'
                   }
