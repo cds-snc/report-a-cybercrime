@@ -38,7 +38,7 @@ async function save(data, res) {
   saveBlob(data)
   data.submissionTime = new Date().toISOString()
 
-  const analystEmail = formatAnalystEmail(data, data.evidence.files)
+  const analystEmail = formatAnalystEmail(data)
   encryptAndSend(process.env.LDAP_UID, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
