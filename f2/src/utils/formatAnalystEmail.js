@@ -171,16 +171,22 @@ const formatFinancialTransactions = data => {
   )
 }
 
-const formatFileAttachments = (data, files) => {
-  const returnString = Object.keys(files)
+const formatFileAttachments = data => {
+  console.log(data.evidence.files[0])
+  const returnString = data.evidence.files
     .map(
-      (file, index) => `
-      File name:   ${file}
-      Description: ${data.evidence.fileDescriptions[index]}
-      `,
+      file =>
+        formatLine('File name:     ', file.name) +
+        formatLine('Description:   ', file.fileDescription) +
+        formatLine('Size:          ', file.size) +
+        formatLine('CosmosDB file: ', file.sha1) +
+        (file.malwareIsClean
+          ? 'Malware scan:  Clean'
+          : formatLine('Malware scan:  ', file.malwareScanDetail)),
     )
-    .join('')
+    .join('\n\n')
 
+  delete data.evidence.files
   delete data.evidence.fileDescriptions
   return (
     '\n\nFile attachments\n\n' +
@@ -188,7 +194,7 @@ const formatFileAttachments = (data, files) => {
   )
 }
 
-const formatAnalystEmail = (dataOrig, files) => {
+const formatAnalystEmail = dataOrig => {
   let data = JSON.parse(JSON.stringify(dataOrig))
   let returnString =
     formatReportInfo(data) +
@@ -197,7 +203,7 @@ const formatAnalystEmail = (dataOrig, files) => {
     formatNarrative(data) +
     formatSuspectDetails(data) +
     formatFinancialTransactions(data) +
-    formatFileAttachments(data, files)
+    formatFileAttachments(data)
 
   // take data object and delete any objects that are now empty, and display the rest
   Object.keys(data).forEach(key => {
