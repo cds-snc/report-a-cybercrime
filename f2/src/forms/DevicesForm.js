@@ -53,6 +53,26 @@ export const DevicesForm = props => {
               </FormControl>
             )}
           </Field>
+          <Field name="account">
+            {props => (
+              <FormControl>
+                <FormLabel htmlFor="account">
+                  <Trans id="devicePage.account" />
+                </FormLabel>
+                <FormHelperText>
+                  <Trans id="devicePage.accountExample">
+                    <VisuallyHidden as="span" />
+                  </Trans>
+                </FormHelperText>
+                <TextInput
+                  id="account"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
           <Field name="devicesTellUsMore">
             {props => (
               <FormControl>

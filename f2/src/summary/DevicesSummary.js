@@ -18,7 +18,8 @@ export const DevicesSummary = props => {
   }
 
   const hasInfoToDisplay =
-    devices.deviceOrAccount.length > 0 || devices.devicesTellUsMore.length > 0
+    (devices.device.length > 0) | (devices.account.length > 0) ||
+    devices.devicesTellUsMore.length > 0
 
   return (
     <React.Fragment>
@@ -26,6 +27,7 @@ export const DevicesSummary = props => {
         <div>
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.devices.device" />
+          <Trans id="confirmationPage.devices.account" />
           <Trans id="confirmationPage.devices.devicesTellUsMore" />
           <Trans id="confirmationPage.devicesTitle.edit" />
         </div>
@@ -53,6 +55,10 @@ export const DevicesSummary = props => {
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.device"
               description={devices.device}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.devices.account"
+              description={devices.account}
             />
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.devicesTellUsMore"

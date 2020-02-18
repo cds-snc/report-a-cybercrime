@@ -71,7 +71,8 @@ const prepFormData = (formData, language) => {
     )
   ) {
     formData.devicesInfo = {
-      deviceOrAccount: '',
+      device: '',
+      account: '',
       devicesTellUsMore: '',
     }
   }
