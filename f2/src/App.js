@@ -7,7 +7,7 @@ import { TopBanner } from './components/topbanner'
 import { PhaseBanner } from './components/phase-banner'
 import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
-import { ThemeProvider, Flex, Stack, Link, CSSReset } from '@chakra-ui/core'
+import { ThemeProvider, Flex, Stack, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 import { StateProvider, initialState, reducer } from './utils/state'
@@ -81,19 +81,14 @@ const App = () => {
           <Footer>
             {/** The List component is in the Footer component */}
             <Li>
-              <Link
-                href= "/privacystatement"
-              >
+              <A href="/privacystatement" isExternal>
                 <Trans id="banner.footerPrivacy" />
-              </Link>
+              </A>
             </Li>
             <Li>
-              <Link
-                ml={4}
-                href= "/termsandconditions"
-              >
+              <A ml={4} href="/termsandconditions" isExternal>
                 <Trans id="banner.footerTermsAndConditions" />
-              </Link>
+              </A>
             </Li>
           </Footer>
         </Flex>
