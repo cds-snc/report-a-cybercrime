@@ -44,26 +44,26 @@ export const EvidenceInfoForm = props => {
   }, [status])
   const { i18n } = useLingui()
 
-  const onChange = e => {
+  const onFilesChange = e => {
     const file = e.target.files[0]
     if (file.size > 4194304) {
       // 4MB in bytes is 4194304.
       alert(
         'ENGLISH - Warning: Your file size exceeds 4MB. Please reduce the size and try uploading again. \n FRANÇAIS - Alerte : La taille de votre fichier dépasse 4 Mo. Veuillez réduire la taille et essayer de télécharger à nouveau.  ',
       )
-
       return
     }
-    if (e.target.id.indexOf('file-description') > -1) {
-      const index = Number(e.target.id.substring(17))
-      let newFileDescriptions = JSON.parse(JSON.stringify(fileDescriptions))
-      newFileDescriptions[index] = e.target.value
-      setFileDescriptions(newFileDescriptions)
-    } else if (e.target.files && e.target.files[0]) {
-      setStatus('fileUpload.added')
-      setFiles(files.concat(e.target.files[0]))
-      setFileDescriptions(fileDescriptions.concat(''))
-    }
+    setStatus('fileUpload.added')
+    setFiles(files.concat(e.target.files[0]))
+    setFileDescriptions(fileDescriptions.concat(''))
+    e.target.value = '' // clear the file input target, to allow the file to be removed then added again
+  }
+
+  const onFileDescriptionChange = e => {
+    const index = Number(e.target.id.substring(17))
+    let newFileDescriptions = JSON.parse(JSON.stringify(fileDescriptions))
+    newFileDescriptions[index] = e.target.value
+    setFileDescriptions(newFileDescriptions)
   }
 
   const removeFile = index => {
@@ -105,14 +105,13 @@ export const EvidenceInfoForm = props => {
                 <Box>
                   <Box
                     fontSize="sm"
-                    color="red.500"
                     mb={8}
                     borderBottomWidth="2px"
                     borderBottomColor="grey.400"
                   >
                     <Trans id="evidencePage.fileSize" />
                   </Box>
-                  <FileUpload onChange={onChange}>
+                  <FileUpload onChange={onFilesChange}>
                     <Button
                       leftIcon="attachment"
                       as="div"
@@ -122,13 +121,8 @@ export const EvidenceInfoForm = props => {
                       <Trans id="evidencePage.addFileButtom" />
                     </Button>
                   </FileUpload>
-                  <P fontSize="sm" color="red.500">
-                    <Text
-                      fontSize="sm"
-                      color="red.500"
-                      as="span"
-                      fontWeight="bold"
-                    >
+                  <P fontSize="sm">
+                    <Text fontSize="sm" as="span" fontWeight="bold">
                       <Trans id="evidencePage.supportedFiles" />
                     </Text>
 
@@ -164,7 +158,7 @@ export const EvidenceInfoForm = props => {
                           name={`file-description-${index}`}
                           input={{
                             value: fileDescriptions[index],
-                            onChange,
+                            onChange: onFileDescriptionChange,
                           }}
                         >
                           {props => (
@@ -210,7 +204,7 @@ export const EvidenceInfoForm = props => {
             {files.length < 3 && (
               <Alert status="success" backgroundColor="blue.100">
                 <AlertIcon name="info-outline" color="blue.700" />
-                <Text fontSize="sm" color="red.500">
+                <Text fontSize="sm">
                   <Trans id="evidencePage.fileWarning" />
                 </Text>
               </Alert>
