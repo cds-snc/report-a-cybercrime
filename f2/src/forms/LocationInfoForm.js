@@ -9,12 +9,11 @@ import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/paragraph'
 
 export const LocationInfoForm = props => {
   const [data] = useStateValue()
   const location = {
-    location: '',
+    postalCode: '',
     ...data.formData.location,
   }
 
@@ -37,29 +36,6 @@ export const LocationInfoForm = props => {
                 </FormHelperText>
                 <TextInput
                   id="postalCode"
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
-                />
-              </FormControl>
-            )}
-          </Field>
-          <P>
-            <Trans id="locationinfoPage.or" />
-          </P>
-          <Field name="cityTown">
-            {props => (
-              <FormControl>
-                <FormLabel htmlFor="cityTown">
-                  <Trans id="locationinfoPage.cityTown" />
-                </FormLabel>
-                <FormHelperText>
-                  <Trans id="locationinfoPage.cityTownExample">
-                    <VisuallyHidden as="span" />
-                  </Trans>
-                </FormHelperText>
-                <TextInput
-                  id="cityTown"
                   name={props.input.name}
                   value={props.input.value}
                   onChange={props.input.onChange}

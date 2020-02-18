@@ -110,7 +110,7 @@ const getAllCerts = uidList => {
   else console.warn('Encrypted Mail: No certs to fetch!')
 }
 
-const encryptAndSend = (uidList, message) => {
+const encryptAndSend = async (uidList, message) => {
   if (uidList)
     uidList.split().forEach(uid => encryptMessage(uid, message, sendMail))
   else console.warn('Encrypted Mail: No certs to encrypt with!')
