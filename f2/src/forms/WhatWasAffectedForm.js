@@ -2,13 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, useField, Field } from 'react-final-form'
+import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Checkbox } from '../components/checkbox'
-import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
+import { FormControl, Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
@@ -19,23 +16,6 @@ const Control = ({ name, ...rest }) => {
     meta: { error, touched },
   } = useField(name, { subscription: { touched: true, error: true } })
   return <FormControl {...rest} isInvalid={error && touched} />
-}
-
-const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
-  const {
-    input: { checked, ...input },
-    meta: { error, touched },
-  } = useField(name, {
-    type: 'checkbox', // important for RFF to manage the checked prop
-    value, // important for RFF to manage list of strings
-    defaultIsChecked,
-  })
-
-  return (
-    <Checkbox {...input} isChecked={checked} isInvalid={error && touched}>
-      {children}
-    </Checkbox>
-  )
 }
 
 const validate = () => {

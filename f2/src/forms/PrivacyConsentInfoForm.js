@@ -58,14 +58,13 @@ export const PrivacyConsentInfoForm = props => {
             spacing={6}
           >
             <FormArrayControl
-              name="whenDidItStart"
-              label={<Trans id="whenDidItStart.label" />}
-              >
+              name="consentOptions"
+            >
               {consentOptions.map(key => {
                 return (
                 <React.Fragment key={key}>
                   <CheckboxAdapter
-                    name="whenDidItStart"
+                    name="consentOptions"
                     value={key}
                     isChecked={whetherConsent.consentOptions.includes(key)}                  >
                     {i18n._(key)}
@@ -79,7 +78,7 @@ export const PrivacyConsentInfoForm = props => {
                   <Trans id="privacyConsentInfoForm.warning" />
                 </Alert>
               ) : null}
-              </FormArrayControl>
+            </FormArrayControl>
 
             <NextAndCancelButtons
               next={<Trans id="privacyConsentInfoForm.nextPage" />}
