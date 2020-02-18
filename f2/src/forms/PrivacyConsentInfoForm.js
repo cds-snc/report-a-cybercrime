@@ -57,6 +57,8 @@ export const PrivacyConsentInfoForm = props => {
             shouldWrapChildren
             spacing={6}
           >
+          <Control as="fieldset" name="consentOptions">
+            <Stack spacing={4} shouldWrapChildren>
             <FormArrayControl
               name="consentOptions"
             >
@@ -79,11 +81,12 @@ export const PrivacyConsentInfoForm = props => {
                 </Alert>
               ) : null}
             </FormArrayControl>
-
-            <NextAndCancelButtons
-              next={<Trans id="privacyConsentInfoForm.nextPage" />}
-              button={<Trans id="privacyConsentInfoForm.nextButton" />}
-            />
+           </Stack>
+          </Control>
+          <NextAndCancelButtons
+            next={<Trans id="privacyConsentInfoForm.nextPage" />}
+            button={<Trans id="privacyConsentInfoForm.nextButton" />}
+          />
           </Stack>
         )}
       />
