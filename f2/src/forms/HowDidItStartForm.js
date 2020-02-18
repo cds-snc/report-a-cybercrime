@@ -6,7 +6,7 @@ import { Form, Field, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Checkbox } from '../components/checkbox'
 import { Radio } from '../components/radio'
-import { FormControl, Stack, Box } from '@chakra-ui/core'
+import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
@@ -261,6 +261,12 @@ export const HowDidItStartForm = props => {
                 })}
               </Stack>
             </Control>
+
+            <Alert status="success" backgroundColor="blue.100">
+              <AlertIcon name="info-outline" color="blue.800" />
+              <Trans id="howDidItStartPage.tip" />
+            </Alert>
+
             <NextAndCancelButtons
               next={<Trans id="howDidItStartPage.nextPage" />}
               button={<Trans id="howDidItStartPage.nextButton" />}
