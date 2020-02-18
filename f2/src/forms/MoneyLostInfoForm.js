@@ -14,6 +14,7 @@ import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { Checkbox } from '../components/checkbox'
 import { ConditionalForm } from '../components/container'
+import { P } from '../components/paragraph'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -46,7 +47,9 @@ export const MoneyLostInfoForm = props => {
     methodPayment: [],
     demandedMoney: '',
     moneyTaken: '',
-    transactionDate: '',
+    transactionDay: '',
+    transactionMonth: '',
+    transactionYear: '',
     tellUsMore: '',
     ...data.formData.moneyLost,
   }
@@ -157,24 +160,71 @@ export const MoneyLostInfoForm = props => {
               </Stack>
             </Control>
 
-            <Field name="transactionDate">
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="transactionDate">
-                    <Trans id="moneyLostPage.transactionDate" />
-                  </FormLabel>
-                  <FormHelperText>
-                    <Trans id="moneyLostPage.transactionDateExample" />
-                  </FormHelperText>
-                  <TextInput
-                    id="transactionDate"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
+            <Stack>
+              <P fontWeight="bold">
+                <Trans id="moneyLostPage.transactionDate" />
+              </P>
+              <P fontSize="md">
+                <Trans id="moneyLostPage.transactionDateExample" />
+              </P>
+            </Stack>
+
+            <Stack flexDirection="row">
+              <Field name="transactionDay">
+                {props => (
+                  <FormControl>
+                    <FormLabel htmlFor="transactionDay">
+                      <Trans id="moneyLostPage.transactionDay" />
+                      <TextInput
+                        id="transactionDay"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                        w={70}
+                        h={36}
+                        mt={2}
+                      />
+                    </FormLabel>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="transactionMonth">
+                {props => (
+                  <FormControl>
+                    <FormLabel htmlFor="transactionMonth">
+                      <Trans id="moneyLostPage.transactionMonth" />
+                      <TextInput
+                        id="transactionMonth"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                        w={70}
+                        h={36}
+                        mt={2}
+                      />
+                    </FormLabel>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="transactionYear">
+                {props => (
+                  <FormControl>
+                    <FormLabel htmlFor="transactionYear">
+                      <Trans id="moneyLostPage.transactionYear" />
+                      <TextInput
+                        id="transactionYear"
+                        name={props.input.name}
+                        value={props.input.value}
+                        onChange={props.input.onChange}
+                        w={110}
+                        h={36}
+                        mt={2}
+                      />
+                    </FormLabel>
+                  </FormControl>
+                )}
+              </Field>
+            </Stack>
             <Field name="tellUsMore">
               {props => (
                 <FormControl>

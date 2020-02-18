@@ -87,7 +87,13 @@ export const MoneyLostInfoSummary = props => {
             />
             <DescriptionListItem
               descriptionTitle="confirmationPage.moneyLost.transactionDate"
-              description={moneyLost.transactionDate}
+              description={
+                moneyLost.transactionDay +
+                ' ' +
+                moneyLost.transactionMonth +
+                ' ' +
+                moneyLost.transactionYear
+              }
             />
             <DescriptionListItem
               descriptionTitle="confirmationPage.moneyLost.tellUsMore"
