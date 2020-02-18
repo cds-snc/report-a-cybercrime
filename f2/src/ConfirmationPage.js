@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { ConfirmationSummary } from './ConfirmationSummary'
@@ -12,7 +13,6 @@ import { ConfirmationForm } from './forms/ConfirmationForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { generateReportId } from './utils/generateReportId'
 
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
@@ -33,7 +33,7 @@ async function postData(url = '', data = {}) {
     referrer: 'no-referrer',
     body: form_data,
   })
-  return await response
+  return response
 }
 
 const prepFormData = (formData, language) => {
@@ -45,7 +45,7 @@ const prepFormData = (formData, language) => {
     formData.moneyLost = {
       demandedMoney: '',
       moneyTaken: '',
-      methodPayment: '',
+      methodPayment: [],
       transactionDate: '',
       tellUsMore: '',
     }
@@ -57,8 +57,10 @@ const prepFormData = (formData, language) => {
     )
   ) {
     formData.personalInformation = {
-      typeOfInfoReq: '',
-      typeOfInfoObtained: '',
+      typeOfInfoReq: [],
+      infoReqOther: '',
+      typeOfInfoObtained: [],
+      infoObtainedOther: '',
       tellUsMore: '',
     }
   }
@@ -90,9 +92,11 @@ const prepFormData = (formData, language) => {
   }
 }
 
-const submitToServer = async data => {
+const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
-  await postData('/submit', data)
+  const response = await postData('/submit', data)
+  const reportId = await response.text()
+  dispatch({ type: 'saveFormData', data: { reportId } })
 }
 
 export const ConfirmationPage = () => {
@@ -111,16 +115,13 @@ export const ConfirmationPage = () => {
             <H1>
               <Trans id="confirmationPage.title" />
             </H1>
+            <P>
+              <Trans id="confirmationPage.intro" />
+            </P>
             <ConfirmationSummary />
             <ConfirmationForm
               onSubmit={() => {
-                const reportId = generateReportId()
-                dispatch({
-                  type: 'saveFormData',
-                  data: { reportId },
-                })
-                let data = prepFormData(formData, i18n.locale)
-                submitToServer({ ...data, reportId }) // pass reportId to protect against dispatch race condition
+                submitToServer(prepFormData(formData, i18n.locale), dispatch)
                 history.push('/thankYouPage')
               }}
             />

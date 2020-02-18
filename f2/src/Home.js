@@ -22,6 +22,7 @@ import { FinalFeedbackThanksPage } from './FinalFeedbackThanksPage'
 import { StartPage } from './StartPage'
 import { ConfirmCancelPage } from './ConfirmCancelPage'
 import { CancelPage } from './CancelPage'
+import { TermsAndConditions } from './TermsAndConditions'
 
 export const Home = () => (
   <Router>
@@ -37,6 +38,9 @@ export const Home = () => (
       </Route>
       <Route path="/privacystatement">
         <PrivacyStatementPage />
+      </Route>
+      <Route path="/termsandconditions">
+        <TermsAndConditions />
       </Route>
       <Route path="/howdiditstart">
         <HowDidItStartPage />

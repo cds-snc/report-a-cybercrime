@@ -14,7 +14,9 @@ export const SuspectCluesForm = props => {
   const [data] = useStateValue()
 
   const suspectClues = {
-    suspectClues: '',
+    suspectClues1: '',
+    suspectClues2: '',
+    suspectClues3: '',
     ...data.formData.suspectClues,
   }
 
@@ -24,7 +26,7 @@ export const SuspectCluesForm = props => {
       onSubmit={props.onSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
-          <Field name="suspectClues">
+          <Field name="suspectClues1">
             {props => (
               <FormControl>
                 <FormLabel htmlFor="suspectClues1">

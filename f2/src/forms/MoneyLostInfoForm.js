@@ -7,7 +7,7 @@ import { Trans } from '@lingui/macro'
 import { Form, Field, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
-import { FormControl, Stack, Box } from '@chakra-ui/core'
+import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { TextArea } from '../components/text-area'
@@ -44,7 +44,10 @@ export const MoneyLostInfoForm = props => {
   const [data] = useStateValue()
   const moneyLost = {
     methodPayment: [],
-    moneyLost: '',
+    demandedMoney: '',
+    moneyTaken: '',
+    transactionDate: '',
+    tellUsMore: '',
     ...data.formData.moneyLost,
   }
 
@@ -191,6 +194,10 @@ export const MoneyLostInfoForm = props => {
                 </FormControl>
               )}
             </Field>
+            <Alert status="success" backgroundColor="blue.100">
+              <AlertIcon name="info-outline" color="blue.800" />
+              <Trans id="moneyLostPage.tip" />
+            </Alert>
             <NextAndCancelButtons
               next={<Trans id="moneyLostPage.nextStepDetail" />}
               button={<Trans id="moneyLostPage.nextButton" />}
