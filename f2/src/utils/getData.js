@@ -37,7 +37,7 @@ async function getData(fields, files) {
   // Overwrite the empty files array with the file json we built above
   data.evidence.files = filesToJson
 
-  const selfHarmWords = selfHarmWordsScan(data)
+  const selfHarmWords = selfHarmWordsScan(data).join(', ')
   if (selfHarmWords) {
     console.warn(`Self harm words detected: ${selfHarmWords}`)
   }
