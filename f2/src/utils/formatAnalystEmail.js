@@ -177,7 +177,7 @@ const formatFileAttachments = data => {
       file =>
         formatLine('File name:     ', file.name) +
         formatLine('Description:   ', file.fileDescription) +
-        formatLine('Size:          ', file.size) +
+        formatLine('Size:          ', file.size + ' bytes') +
         formatLine('CosmosDB file: ', file.sha1) +
         (file.malwareIsClean
           ? 'Malware scan:  Clean'
