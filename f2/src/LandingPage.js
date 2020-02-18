@@ -17,12 +17,9 @@ import { useStateValue } from './utils/state'
 import { LandingBox } from './components/container'
 import { i18n } from '@lingui/core'
 
-if (
-  window.location.hostname ===
-  'https://signalez-un-crime-informatique.cds-snc.ca/'
-) {
+if (window.location.hostname.indexOf('signalez') > -1) {
   i18n.activate('fr')
-} else if (window.location.hostname === 'report-a-scam.cds-snc.ca') {
+} else if (window.location.hostname.indexOf('report') > -1) {
   i18n.activate('en')
 }
 
@@ -62,7 +59,6 @@ export const LandingPage = props => {
                     isExternal
                   />
                 </Trans>
-
               </P>
 
               <Stack spacing={4} direction="row" flexWrap="wrap">
@@ -73,7 +69,6 @@ export const LandingPage = props => {
 
                   <P>
                     <Trans id="landingPage.onlineIntro" />
-
                   </P>
                   <Box flex="1 1 0"></Box>
                   <Button
@@ -146,7 +141,6 @@ export const LandingPage = props => {
               <Stack spacing={10} shouldWrapChildren>
                 <Ul>
                   <Li>
-
                     <Trans id="landingPage.reportingOptions0" />
                   </Li>
                   <Li>
