@@ -55,7 +55,6 @@ export const WhatWasAffectedForm = props => {
           <Trans id="whatWasAffectedForm.devices" />
           <Trans id="whatWasAffectedForm.business_assets" />
           <Trans id="whatWasAffectedForm.other" />
-          <Trans id="whatWasAffectedForm.expectations" />
         </div>
       ) : null}
 
@@ -81,7 +80,7 @@ export const WhatWasAffectedForm = props => {
                 name="affectedOptions"
                 label={<Trans id="whatWasAffectedForm.optionsTitle" />}
                 helperText={<Trans id="whatWasAffectedForm.optionsHelpText" />}
-                >
+              >
                 {affectedOptions.map(key => {
                   return (
                     <React.Fragment key={key}>
@@ -90,7 +89,7 @@ export const WhatWasAffectedForm = props => {
                         value={key}
                         isChecked={whatWasAffected.affectedOptions.includes(key)}
                       >
-                      {i18n._(key)}
+                        {i18n._(key)}
                       </CheckboxAdapter>
                       {key === 'whatWasAffectedForm.other' &&
                         values.affectedOptions.includes(
@@ -116,21 +115,21 @@ export const WhatWasAffectedForm = props => {
                   )
                 })}
                 {showWarning ? (
-                    <Control>
-                      <Alert status="warning">
-                        <AlertIcon />
-                        <Trans id="whatWasAffectedForm.warning" />
-                      </Alert>
-                    </Control>
+                  <Control>
+                    <Alert status="warning">
+                      <AlertIcon />
+                      <Trans id="whatWasAffectedForm.warning" />
+                    </Alert>
+                  </Control>
                 ) : null}
-            </FormArrayControl>
-          </Control>
-          <NextAndCancelButtons
-            next={<Trans id="whatWasAffectedForm.nextPage" />}
-            button={<Trans id="whatWasAffectedForm.nextButton" />}
-          />
-        </Stack>
-      )}
+              </FormArrayControl>
+            </Control>
+            <NextAndCancelButtons
+              next={<Trans id="whatWasAffectedForm.nextPage" />}
+              button={<Trans id="whatWasAffectedForm.nextButton" />}
+            />
+          </Stack>
+        )}
       />
     </React.Fragment>
   )
