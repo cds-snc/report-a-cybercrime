@@ -13,14 +13,9 @@ export const PrivacyStatementPage = () => {
  // eslint-disable-line no-unused-vars
 
   return (
-    <Route
-      render={({ history }) => (
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/">
-              <Trans id="privacyStatementPage.backButton" />
-            </BackButton>
             <H1 as="span">
               <Trans id="privacyStatementPage.title" />
             </H1>
@@ -115,7 +110,5 @@ export const PrivacyStatementPage = () => {
             </P>
           </Stack>
         </Layout>
-      )}
-    />
   )
 }
