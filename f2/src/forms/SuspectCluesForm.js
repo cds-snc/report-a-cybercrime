@@ -14,7 +14,9 @@ export const SuspectCluesForm = props => {
   const [data] = useStateValue()
 
   const suspectClues = {
-    suspectClues: '',
+    suspectClues1: '',
+    suspectClues2: '',
+    suspectClues3: '',
     ...data.formData.suspectClues,
   }
 
@@ -27,7 +29,7 @@ export const SuspectCluesForm = props => {
           <Field name="suspectClues1">
             {props => (
               <FormControl>
-                <FormLabel htmlFor="suspectClues">
+                <FormLabel htmlFor="suspectClues1">
                   <Trans id="suspectClues.question1" />
                 </FormLabel>
 
@@ -48,7 +50,7 @@ export const SuspectCluesForm = props => {
           <Field name="suspectClues2">
             {props => (
               <FormControl>
-                <FormLabel htmlFor="suspectClues">
+                <FormLabel htmlFor="suspectClues2">
                   <Trans id="suspectClues.question2" />
                 </FormLabel>
 
@@ -69,7 +71,7 @@ export const SuspectCluesForm = props => {
           <Field name="suspectClues3">
             {props => (
               <FormControl>
-                <FormLabel htmlFor="suspectClues">
+                <FormLabel htmlFor="suspectClues3">
                   <Trans id="suspectClues.question3" />
                 </FormLabel>
 

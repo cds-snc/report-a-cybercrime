@@ -8,14 +8,17 @@ import { TextInput } from '../components/TextInput'
 import { Stack, FormControl } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
-import { P } from '../components/paragraph'
 
 export const ContactInfoForm = ({ onSubmit }) => {
-  const [data] = useStateValue()
-  const contactInfo = {
-    email: '',
-    ...data.formData.contactInfo,
-  }
+  const [data, dispatch] = useStateValue()
+  let contactInfo
+  if (typeof data.formData.contactInfo === 'undefined') {
+    contactInfo = { fullName: '', email: '', phone: '' }
+    dispatch({
+      type: 'saveFormData',
+      data: { contactInfo },
+    })
+  } else contactInfo = data.formData.contactInfo
 
   return (
     <Form
@@ -23,6 +26,21 @@ export const ContactInfoForm = ({ onSubmit }) => {
       onSubmit={onSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
+          <Field name="fullName">
+            {props => (
+              <FormControl>
+                <FormLabel htmlFor="fullName">
+                  <Trans id="contactinfoPage.fullName" />{' '}
+                </FormLabel>
+                <TextInput
+                  id="fullName"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
           <Field name="email">
             {props => (
               <FormControl>
@@ -38,9 +56,6 @@ export const ContactInfoForm = ({ onSubmit }) => {
               </FormControl>
             )}
           </Field>
-          <P mb={0}>
-            <Trans id="contactinfoPage.or" />{' '}
-          </P>
           <Field name="phone">
             {props => (
               <FormControl>

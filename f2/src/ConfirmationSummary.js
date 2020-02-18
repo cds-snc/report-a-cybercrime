@@ -35,20 +35,23 @@ export const testdata = {
     },
     whatWasAffected: {
       affectedOptions: [],
+      optionOther: '',
     },
     moneyLost: {
       demandedMoney: '',
       moneyTaken: '',
-      methodPayment: '',
+      methodPayment: [],
       transactionDate: '',
       tellUsMore: '',
     },
     personalInformation: {
-      typeOfInfoReq: '',
-      typeOfInfoObtained: '',
+      typeOfInfoReq: [],
+      typeOfInfoObtained: [],
+      infoReqOther: '',
+      infoObtainedOther: '',
       tellUsMore: '',
     },
-    devicesInfo: { deviceOrAccount: '', devicesTellUsMore: '' },
+    devicesInfo: { device: '', account: '', devicesTellUsMore: '' },
     businessInfo: { business: '' },
     whatHappened: { whatHappened: '' },
 
@@ -61,8 +64,8 @@ export const testdata = {
       files: [],
       fileDescriptions: [],
     },
-    location: { postalCode: '', cityTown: '' },
-    contactInfo: { email: '', phone: '' },
+    location: { postalCode: '' },
+    contactInfo: { fullName: '', email: '', phone: '' },
   },
 }
 
@@ -77,20 +80,33 @@ export const EditButton = ({ path, label }) => {
 
 export const ConfirmationSummary = () => {
   const [data, dispatch] = useStateValue()
-
+  const impact = {
+    affectedOptions: [],
+    ...testdata.formData.whatWasAffected, //Remove after done testing
+    ...data.formData.whatWasAffected,
+  }
   if (!data.doneForms) {
     dispatch({ type: 'saveDoneForms', data: true })
   }
 
   return (
     <React.Fragment>
-      <Stack spacing={12} shouldWrapChildren>
+      <Stack spacing={12}>
         <HowDidItStartSummary />
         <WhatWasAffectedSummary />
-        <MoneyLostInfoSummary />
-        <InformationSummary />
-        <DevicesSummary />
-        <BusinessInfoSummary />
+        {impact.affectedOptions.includes('whatWasAffectedForm.financial') && (
+          <MoneyLostInfoSummary />
+        )}
+        {impact.affectedOptions.includes(
+          'whatWasAffectedForm.personal_information',
+        ) && <InformationSummary />}
+        {impact.affectedOptions.includes('whatWasAffectedForm.devices') && (
+          <DevicesSummary />
+        )}
+        {impact.affectedOptions.includes(
+          'whatWasAffectedForm.business_assets',
+        ) && <BusinessInfoSummary />}
+
         <WhatHappenedSummary />
         <SuspectCluesSummary />
         <EvidenceInfoSummary />

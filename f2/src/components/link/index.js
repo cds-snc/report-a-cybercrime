@@ -4,15 +4,15 @@ import { asAnchor } from '../../utils/asAnchor'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Li } from '../list-item'
+import { Button } from '../button'
 import { Link as ChakraLink } from '@chakra-ui/core'
 
-const BaseLink = asAnchor(ReactRouterLink)
 const BaseAnchor = asAnchor('a')
 
 export const Link = props => (
   <ChakraLink
     as={ReactRouterLink}
-    color="blue.500"
+    color="blue.600"
     fontSize={['md', null, 'lg', null]}
     {...props}
   >
@@ -25,22 +25,9 @@ Link.propTypes = {
 }
 
 export const ButtonLink = props => (
-  <BaseLink
-    fontSize={[2, null, 3]}
-    fontWeight="normal"
-    lineHeight={[2, null, 3]}
-    colors="button"
-    mt={[2, null, 3]}
-    py={1}
-    px={[2, null, 3]}
-    {...props}
-    css={css`
-      text-decoration: none;
-    `}
-    display="inline-block"
-  >
+  <Button {...props} as={ReactRouterLink} type="button">
     {props.children}
-  </BaseLink>
+  </Button>
 )
 
 ButtonLink.propTypes = {
@@ -71,7 +58,7 @@ ButtonAnchor.propTypes = {
 }
 
 export const A = props => (
-  <ChakraLink color="blue.600" fontSize={['md', null, 'lg', null]} {...props}>
+  <ChakraLink color="blue.600" {...props}>
     {props.children}
   </ChakraLink>
 )

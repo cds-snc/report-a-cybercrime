@@ -6,12 +6,8 @@ import { ThankYouPage } from './ThankYouPage'
 import { WhatHappenedPage } from './WhatHappenedPage'
 import { ContactInfoPage } from './ContactInfoPage'
 import { SuspectCluesPage } from './SuspectCluesPage'
-import { ScammerDetailsPage } from './ScammerDetailsPage'
 import { HowDidItStartPage } from './HowDidItStartPage'
 import { ConfirmationPage } from './ConfirmationPage'
-import { NextSteps } from './NextSteps'
-import { TimeFramePage } from './TimeFramePage'
-import { ImpactStatementPage } from './ImpactStatementPage'
 import { MoneyLostPage } from './MoneyLostPage'
 import { BusinessPage } from './BusinessPage'
 import { InformationPage } from './InformationPage'
@@ -19,7 +15,14 @@ import { LocationPage } from './LocationPage'
 import { DevicesPage } from './DevicesPage'
 import { EvidencePage } from './EvidencePage'
 import { PrivacyConsentPage } from './PrivacyConsentPage'
+import { PrivacyStatementPage } from './PrivacyStatementPage'
 import { WhatWasAffectedPage } from './WhatWasAffected'
+import { FinalFeedbackPage } from './FinalFeedbackPage'
+import { FinalFeedbackThanksPage } from './FinalFeedbackThanksPage'
+import { StartPage } from './StartPage'
+import { ConfirmCancelPage } from './ConfirmCancelPage'
+import { CancelPage } from './CancelPage'
+import { TermsAndConditions } from './TermsAndConditions'
 
 export const Home = () => (
   <Router>
@@ -27,8 +30,20 @@ export const Home = () => (
       <Route exact path="/">
         <LandingPage />
       </Route>
+      <Route exact path="/startPage">
+        <StartPage />
+      </Route>
       <Route path="/privacyconsent">
         <PrivacyConsentPage />
+      </Route>
+      <Route path="/privacystatement">
+        <PrivacyStatementPage />
+      </Route>
+      <Route path="/termsandconditions">
+        <TermsAndConditions />
+      </Route>
+      <Route path="/howdiditstart">
+        <HowDidItStartPage />
       </Route>
       <Route path="/whatwasaffected">
         <WhatWasAffectedPage />
@@ -66,22 +81,17 @@ export const Home = () => (
       <Route exact path="/thankYouPage">
         <ThankYouPage />
       </Route>
-
-      {/* not needed anymore */}
-      <Route path="/scammerdetails">
-        <ScammerDetailsPage />
+      <Route exact path="/confirmCancel">
+        <ConfirmCancelPage />
       </Route>
-      <Route path="/howdiditstart">
-        <HowDidItStartPage />
+      <Route exact path="/cancelled">
+        <CancelPage />
       </Route>
-      <Route path="/nextsteps">
-        <NextSteps />
+      <Route path="/finalFeedback">
+        <FinalFeedbackPage />
       </Route>
-      <Route path="/timeframe">
-        <TimeFramePage />
-      </Route>
-      <Route path="/impact">
-        <ImpactStatementPage />
+      <Route path="/finalFeedbackThanks">
+        <FinalFeedbackThanksPage />
       </Route>
 
       <Route>

@@ -1,0 +1,18 @@
+[
+  {
+    "category": "Audit",
+    "enabled": true,
+    "retentionPolicy": {
+      "days": 0,
+      "enabled": false
+    }
+  },
+  {
+    "category": "RequestResponse",
+    "enabled": true,
+    "retentionPolicy": {
+      "days": 0,
+      "enabled": false
+    }
+  }
+]

@@ -9,7 +9,7 @@ import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
-export const SuspectCluesSummary = () => {
+export const SuspectCluesSummary = props => {
   const [data] = useStateValue()
   const suspectClues = {
     ...testdata.formData.suspectClues,
@@ -29,18 +29,28 @@ export const SuspectCluesSummary = () => {
           <Trans id="confirmationPage.suspectClues.suspectClues1" />
           <Trans id="confirmationPage.suspectClues.suspectClues2" />
           <Trans id="confirmationPage.suspectClues.suspectClues3" />
+          <Trans id="confirmationPage.suspectClues.title.edit" />
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.suspectClues.title" />
           </H2>
-          <EditButton path="/suspectclues" label="Edit suspect information" />
+          <EditButton
+            path="/suspectclues"
+            label="confirmationPage.suspectClues.title.edit"
+          />
         </Flex>
         {hasInfoToDisplay ? (
-          <Stack as="dl" spacing={4} shouldWrapChildren>
+          <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.suspectClues.suspectClues1"
               description={suspectClues.suspectClues1}

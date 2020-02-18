@@ -1,6 +1,7 @@
 /** @jsx jsx **/
 import { jsx } from '@emotion/core'
-import { Link, Icon } from '@chakra-ui/core'
+import { Icon } from '@chakra-ui/core'
+import { Link } from '../link'
 import PropTypes from 'prop-types'
 import { Link as RoutedLink } from 'react-router-dom'
 
@@ -9,9 +10,8 @@ export const BackButton = ({ route = '', children }) => (
     as={RoutedLink}
     to={route}
     textAlign="left"
-    fontFamily="body"
-    fontSize="lg"
-    color="blue.600"
+    d="flex"
+    alignItems="center"
   >
     <Icon name="chevron-left" />
     {children}

@@ -2,7 +2,6 @@
 import React from 'react'
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
-import { useIntl } from 'react-intl'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
@@ -10,31 +9,36 @@ import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
+import { formatList } from '../utils/formatList'
 
-export const HowDidItStartSummary = ({ onSubmit }) => {
+export const HowDidItStartSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
-  const intl = useIntl()
+  const summary = []
+  let overviewLine = ' '
 
   const howdiditstart = {
     ...testdata.formData.howdiditstart,
     ...data.formData.howdiditstart,
   }
+  if (howdiditstart.howDidTheyReachYou.length > 0) {
+    //Obtain all the array data into the summary array
+    howdiditstart.howDidTheyReachYou.map(key =>
+      summary.push(
+        key === 'howDidTheyReachYou.others'
+          ? howdiditstart.others
+          : i18n._(key).toLowerCase(),
+      ),
+    )
 
-  const overviewLine =
-    i18n._('confirmationPage.howDidItStart.overviewPrefix') +
-    ' ' +
-    intl
-      .formatList(
-        howdiditstart.howDidTheyReachYou.map(key =>
-          key === 'howDidTheyReachYou.others'
-            ? howdiditstart.others
-            : i18n._(key).toLowerCase(),
-        ),
-        { type: 'conjunction' },
-      )
-      .replace('others') +
-    '.'
+    overviewLine =
+      i18n._('confirmationPage.howDidItStart.overviewPrefix') +
+      formatList(summary, {
+        pair: i18n._('default.pair'),
+        middle: i18n._('default.middle'),
+        end: i18n._('default.end'),
+      })
+  }
 
   const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0
 
@@ -44,6 +48,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
         <div>
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.howDidItStart.overviewPrefix" />
+          <Trans id="confirmationPage.howDidItStart.conjuction" />
           <Trans id="confirmationPage.howDidItStart.email" />
           <Trans id="confirmationPage.howDidItStart.phone" />
           <Trans id="confirmationPage.howDidItStart.online" />
@@ -51,20 +56,30 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
           <Trans id="confirmationPage.howDidItStart.others" />
           <Trans id="confirmationPage.whenDidItStart" />
           <Trans id="confirmationPage.howManyTimes" />
+          <Trans id="confirmationPage.howDidItStart.title.edit" />
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.howDidItStart.title" />
           </H2>
-          <EditButton path="/howdiditstart" label="Edit How Did It Start" />
+          <EditButton
+            path="/howdiditstart"
+            label="confirmationPage.howDidItStart.title.edit"
+          />
         </Flex>
 
         {hasDataToDisplay ? (
           <React.Fragment>
-            <Stack as="dl" spacing={4} shouldWrapChildren>
+            <Stack as="dl" spacing={4}>
               <Text>{overviewLine}</Text>
               <DescriptionListItem
                 descriptionTitle="confirmationPage.howDidItStart.email"
@@ -96,7 +111,11 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
               />
             </Stack>
           </React.Fragment>
-        ) : null}
+        ) : (
+          <Text>
+            <Trans id="confirmationPage.howDidItStart.nag" />
+          </Text>
+        )}
       </Stack>
     </React.Fragment>
   )
