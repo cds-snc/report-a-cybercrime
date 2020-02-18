@@ -30,7 +30,7 @@ async function scanFiles(data) {
   }
 }
 
-async function contentModeratorFiles(data) {
+async function contentModeratorFiles(data, callback) {
   if (!serviceKey)
     console.warn('Warning: files not scanned with Content Moderator')
   else {
@@ -57,13 +57,14 @@ async function contentModeratorFiles(data) {
           try {
             const contMod = JSON.parse(response.body)
             console.log(contMod)
-            file[1].IsImageRacyClassified = contMod.IsImageRacyClassified
-            file[1].IsImageAdultClassified = contMod.IsImageAdultClassified
-            file[1].adultClassificationScore = contMod.adultClassificationScore
+            file[1].isImageRacyClassified = contMod.IsImageRacyClassified
+            file[1].isImageAdultClassified = contMod.IsImageAdultClassified
+            file[1].adultClassificationScore = contMod.AdultClassificationScore
           } catch (error) {
             console.warn(`Error in Content Moderator: ${error} `)
           }
         }
+        callback()
       })
     }
   }

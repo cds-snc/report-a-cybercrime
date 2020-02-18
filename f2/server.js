@@ -56,9 +56,7 @@ const uploadData = async (req, res, fields, files) => {
   // Await here because we also need these results before saving
   await scanFiles(data)
 
-  await contentModeratorFiles(data)
-
-  console.log({ files: data.evidence.files })
+  contentModeratorFiles(data, () => console.log({ files: data.evidence.files }))
 
   // Save the data, e-mail it, etc.. This is async to avoid holding up nodejs from other requests
   save(data, res)
