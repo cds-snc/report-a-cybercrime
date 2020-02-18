@@ -7,7 +7,7 @@ FormLabel.defaultProps = {
   fontSize: 'xl',
   fontWeight: 'bold',
   fontFamily: 'body',
-  mb: 2,
+  p: 0,
   lineHeight: 1,
   maxW: '600px',
 }

@@ -21,8 +21,12 @@ const Control = ({ name, ...rest }) => {
   return <FormControl {...rest} isInvalid={error && touched} />
 }
 
-const validate = () => {
-  return {}
+const validate = values => {
+  const errors = {}
+  if (!values.affectedOptions || values.affectedOptions.length < 1) {
+    errors.affectedOptions = 'Select at least one option'
+  }
+  return errors
 }
 
 export const whatWasAffectedPages = [
@@ -69,7 +73,7 @@ export const WhatWasAffectedForm = props => {
           }
         }}
         validate={validate}
-        render={({ handleSubmit, values }) => (
+        render={({ handleSubmit, values, errors }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
