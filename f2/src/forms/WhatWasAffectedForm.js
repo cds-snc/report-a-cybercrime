@@ -10,8 +10,9 @@ import { FormHelperText } from '../components/FormHelperText'
 import { useStateValue } from '../utils/state'
 import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
-import { ConditionalForm } from '../components/container'
-import { TextInput } from '../components/TextInput'
+import { CheckboxAdapter } from '../components/checkbox'
+import { FormArrayControl } from '../components/FormArrayControl'
+
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -91,70 +92,43 @@ export const WhatWasAffectedForm = props => {
             spacing={6}
           >
             <Control as="fieldset" name="affectedOptions">
-              <FormLabel as="legend" htmlFor="affectedOptions" mb={2}>
-                <Trans id="whatWasAffectedForm.optionsTitle" />
-              </FormLabel>
-              <FormHelperText>
-                <Trans id="whatWasAffectedForm.optionsHelpText" />
-              </FormHelperText>
-
-              <Stack spacing={4} shouldWrapChildren>
+              <FormArrayControl
+                name="affectedOptions"
+                label={<Trans id="whatWasAffectedForm.optionsTitle" />}
+                helperText={<Trans id="whatWasAffectedForm.optionsHelpText" />}
+                >
                 {affectedOptions.map(key => {
                   return (
-                    <Box key={key}>
-                      <CheckboxArrayControl
+                    <React.Fragment key={key}>
+                      <CheckboxAdapter
                         name="affectedOptions"
                         value={key}
-                        isChecked={whatWasAffected.affectedOptions.includes(
-                          key,
-                        )}
+                        isChecked={whatWasAffected.affectedOptions.includes(key)}
                       >
-                        {i18n._(key)}
-                      </CheckboxArrayControl>
-                      {key === 'whatWasAffectedForm.other' &&
-                        values.affectedOptions.includes(
-                          'whatWasAffectedForm.other',
-                        ) && (
-                          <ConditionalForm>
-                            <Field name="optionOther">
-                              {props => (
-                                <FormControl>
-                                  <FormLabel htmlFor={key}></FormLabel>
-                                  <TextInput
-                                    id="optionOther"
-                                    name={props.input.name}
-                                    value={props.input.value}
-                                    onChange={props.input.onChange}
-                                  />
-                                </FormControl>
-                              )}
-                            </Field>
-                          </ConditionalForm>
-                        )}
-                    </Box>
+                      {i18n._(key)}
+                      </CheckboxAdapter>
+                    </React.Fragment>
                   )
                 })}
-              </Stack>
-            </Control>
-
-            {showWarning ? (
-              <Control>
-                <Alert status="warning">
-                  <AlertIcon />
-                  <Trans id="whatWasAffectedForm.warning" />
-                </Alert>
-              </Control>
-            ) : null}
-
-            <P>
-              <Trans id="whatWasAffectedForm.expectations" />
-            </P>
-            <NextAndCancelButtons
-              next={<Trans id="whatWasAffectedForm.nextPage" />}
-              button={<Trans id="whatWasAffectedForm.nextButton" />}
-            />
-          </Stack>
-        )}
+                {showWarning ? (
+                    <Control>
+                      <Alert status="warning">
+                        <AlertIcon />
+                        <Trans id="whatWasAffectedForm.warning" />
+                      </Alert>
+                    </Control>
+                ) : null}
+            </FormArrayControl>
+          </Control>
+          <P>
+            <Trans id="whatWasAffectedForm.expectations" />
+          </P>
+          <NextAndCancelButtons
+            next={<Trans id="whatWasAffectedForm.nextPage" />}
+            button={<Trans id="whatWasAffectedForm.nextButton" />}
+          />
+        </Stack>
+      )}
       />
     </React.Fragment>
   )
