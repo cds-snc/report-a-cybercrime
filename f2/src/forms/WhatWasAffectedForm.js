@@ -40,6 +40,7 @@ export const WhatWasAffectedForm = props => {
   const whatWasAffected = {
     affectedOptions: [],
     ...data.formData.whatWasAffected,
+    optionOther: '',
   }
 
   const affectedOptions = whatWasAffectedPages.map(page => page.key)
@@ -54,6 +55,7 @@ export const WhatWasAffectedForm = props => {
           <Trans id="whatWasAffectedForm.devices" />
           <Trans id="whatWasAffectedForm.business_assets" />
           <Trans id="whatWasAffectedForm.other" />
+          <Trans id="whatWasAffectedForm.expectations" />
         </div>
       ) : null}
 

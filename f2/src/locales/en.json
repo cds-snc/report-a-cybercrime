@@ -177,6 +177,7 @@
   "informationPage.nextStep": "Next: Details about what was affected",
   "informationPage.tellUsMore": "How they ask for and obtained information?",
   "informationPage.tellUsMoreExample": "Include details about what was said or done for this to happen.",
+  "informationPage.tip": "<0/><1/>",
   "informationPage.title": "How was your personal information affected?",
   "informationPage.typeOfInfoObtained": "What information did they obtain?",
   "informationPage.typeOfInfoObtainedExample": "Select the type(s) of information taken.",
