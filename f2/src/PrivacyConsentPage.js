@@ -56,11 +56,11 @@ export const PrivacyConsentPage = () => {
                 <Trans id="privacyConsentInfoPage.sharing" />
               </P>
               <P>
-                <Trans id="privacyConsentInfoPage.learnMore" /> 
-                   <Link to="/privacystatement"> 
-                      <Trans id="privacyConsentInfoPage.linkOut" />
-                   </Link>
-                 <Trans id="privacyConsentInfoPage.period" /> 
+                <Trans id="privacyConsentInfoPage.learnMore" />
+                <Link to="/privacystatement">
+                  <Trans id="privacyConsentInfoPage.linkOut" />
+                </Link>
+                <Trans id="privacyConsentInfoPage.period" />
               </P>
               <PrivacyConsentInfoForm
                 onSubmit={data => {
