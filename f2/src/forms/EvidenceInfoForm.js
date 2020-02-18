@@ -122,11 +122,7 @@ export const EvidenceInfoForm = props => {
                     </Button>
                   </FileUpload>
                   <P fontSize="sm">
-                    <Text
-                      fontSize="sm"
-                      as="span"
-                      fontWeight="bold"
-                    >
+                    <Text fontSize="sm" as="span" fontWeight="bold">
                       <Trans id="evidencePage.supportedFiles" />
                     </Text>
 
