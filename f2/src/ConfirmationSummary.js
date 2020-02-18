@@ -50,7 +50,7 @@ export const testdata = {
       infoObtainedOther: '',
       tellUsMore: '',
     },
-    devicesInfo: { deviceOrAccount: '', devicesTellUsMore: '' },
+    devicesInfo: { device: '', account: '', devicesTellUsMore: '' },
     businessInfo: { business: '' },
     whatHappened: { whatHappened: '' },
 
@@ -63,8 +63,8 @@ export const testdata = {
       files: [],
       fileDescriptions: [],
     },
-    location: { postalCode: '', cityTown: '' },
-    contactInfo: { email: '', phone: '' },
+    location: { postalCode: '' },
+    contactInfo: { fullName: '', email: '', phone: '' },
   },
 }
 

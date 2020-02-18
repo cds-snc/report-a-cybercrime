@@ -14,7 +14,8 @@ export const FileUpload = ({ onChange, accept, ...props }) => {
         type="file"
         id="uploader"
         name="uploader"
-        accept={accept}
+        accept=".png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx, .pdf, .txt, .rtf"
+        max-upload={3}
         onChange={onChange}
       />
       <Label htmlFor="uploader" {...props}>
