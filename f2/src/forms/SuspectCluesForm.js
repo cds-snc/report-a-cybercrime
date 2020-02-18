@@ -14,7 +14,9 @@ export const SuspectCluesForm = props => {
   const [data] = useStateValue()
 
   const suspectClues = {
-    suspectClues: '',
+    suspectClues1: '',
+    suspectClues2: '',
+    suspectClues3: '',
     ...data.formData.suspectClues,
   }
 
