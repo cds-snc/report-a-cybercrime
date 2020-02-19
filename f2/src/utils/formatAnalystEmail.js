@@ -176,22 +176,28 @@ const formatFinancialTransactions = data => {
 const formatFileAttachments = data => {
   const returnString = data.evidence.files
     .map(file => {
-      let moderatorString
-      if (typeof file.AdultClassificationScore == 'number') {
-        if (file.isImageAdultClassified) moderatorString = 'adult image'
-        else if (file.isImageRacyClassified) moderatorString = 'racy image'
-        else moderatorString = 'not adult image'
-      } else moderatorString = file.AdultClassificationScore
-      return (
-        formatLine('File name:     ', file.name) +
-        formatLine('Description:   ', file.fileDescription) +
-        formatLine('Size:          ', file.size + ' bytes') +
-        formatLine('CosmosDB file: ', file.sha1) +
-        (file.malwareIsClean
-          ? 'Malware scan:  Clean'
-          : formatLine('Malware scan:  ', file.malwareScanDetail)) +
-        formatLine('Image scan:    ', moderatorString)
-      )
+      const offensive =
+        file.isImageAdultClassified || file.isImageRacyClassified
+
+      const moderatorString =
+        file.adultClassificationScore === 'Could not scan'
+          ? 'Could not scan content\n'
+          : formatLine('Is adult:      ', file.isImageAdultClassified) +
+            formatLine('Adult score:   ', file.adultClassificationScore) +
+            formatLine('Is racy:       ', file.isImageRacyClassified) +
+            formatLine('Racy Score:    ', file.racyClassificationScore)
+
+      return offensive
+        ? 'WARNING: image may be offensive\n'
+        : '' +
+            formatLine('File name:     ', file.name) +
+            formatLine('Description:   ', file.fileDescription) +
+            formatLine('Size:          ', file.size + ' bytes') +
+            formatLine('CosmosDB file: ', file.sha1) +
+            (file.malwareIsClean
+              ? 'Malware scan:  Clean\n'
+              : formatLine('Malware scan:  ', file.malwareScanDetail)) +
+            moderatorString
     })
     .join('\n\n')
 

@@ -54,10 +54,10 @@ const contentModerateFile = (file, callback) => {
     } else {
       try {
         const contMod = JSON.parse(response.body)
-        console.log(contMod)
         file[1].isImageRacyClassified = contMod.IsImageRacyClassified
         file[1].isImageAdultClassified = contMod.IsImageAdultClassified
         file[1].adultClassificationScore = contMod.AdultClassificationScore
+        file[1].racyClassificationScore = contMod.RacyClassificationScore
       } catch (error) {
         console.warn(`Error in Content Moderator: ${error} `)
       }
