@@ -20,8 +20,10 @@ const generate = require('nanoid/generate')
 
 // so over 10 years there is a 99.99% chance that we will NOT have any duplication
 
-export const generateReportId = () => {
-  const alphabet = '0123456789abcdefghkmnpqrstwxyz'
-  const length = 11
-  return 'NCFRS-' + generate(alphabet, length)
+module.exports = {
+  generateReportId() {
+    const alphabet = '0123456789abcdefghkmnpqrstwxyz'
+    const length = 11
+    return 'NCFRS-' + generate(alphabet, length)
+  },
 }

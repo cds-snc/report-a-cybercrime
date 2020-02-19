@@ -35,6 +35,9 @@ export const EvidencePage = () => {
             </Lead>
             <Box>
               <P>
+                <Trans id="evidencePage.intro" />
+              </P>
+              <P>
                 <Trans id="evidencePage.details" />
               </P>
               <Ul>

@@ -16,8 +16,7 @@ export const LocationInfoSummary = props => {
     ...data.formData.location,
   }
 
-  const hasInfoToDisplay =
-    location.postalCode.length > 0 || location.cityTown.length > 0
+  const hasInfoToDisplay = location.postalCode.length > 0
 
   return (
     <React.Fragment>
@@ -25,7 +24,6 @@ export const LocationInfoSummary = props => {
         <div>
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.location.postalCode" />
-          <Trans id="confirmationPage.location.cityTown" />
           <Trans id="confirmationPage.location.title.edit" />
         </div>
       ) : null}
@@ -51,10 +49,6 @@ export const LocationInfoSummary = props => {
             <DescriptionListItem
               descriptionTitle="confirmationPage.location.postalCode"
               description={location.postalCode}
-            />
-            <DescriptionListItem
-              descriptionTitle="confirmationPage.location.cityTown"
-              description={location.cityTown}
             />
           </Stack>
         ) : (
