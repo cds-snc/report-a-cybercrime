@@ -31,47 +31,49 @@ async function scanFiles(data) {
   }
 }
 
-async function contentModeratorFiles(data) {
+let credentials = new CognitiveServicesCredentials(serviceKey)
+let client = new ContentModeratorAPIClient(
+  credentials,
+  'https://canadacentral.api.cognitive.microsoft.com/',
+)
+
+const contentModerateFile = (file, callback) => {
+  var readStream = fs.createReadStream(file[1].path)
+  options = {}
+  client.imageModeration.evaluateFileInput(readStream, options, function(
+    err,
+    result,
+    request,
+    response,
+  ) {
+    if (err) {
+      console.warn(`Error in Content Moderator: ${err} `)
+      file[1].adultClassificationScore = 'Could not scan'
+    } else {
+      try {
+        const contMod = JSON.parse(response.body)
+        console.log(contMod)
+        file[1].isImageRacyClassified = contMod.IsImageRacyClassified
+        file[1].isImageAdultClassified = contMod.IsImageAdultClassified
+        file[1].adultClassificationScore = contMod.AdultClassificationScore
+      } catch (error) {
+        console.warn(`Error in Content Moderator: ${error} `)
+      }
+    }
+    callback(null, file[1])
+  })
+}
+
+async function contentModeratorFiles(data, finalCallback) {
   if (!serviceKey)
     console.warn('Warning: files not scanned with Content Moderator')
   else {
-    let credentials = new CognitiveServicesCredentials(serviceKey)
-    let client = new ContentModeratorAPIClient(
-      credentials,
-      'https://canadacentral.api.cognitive.microsoft.com/',
-    )
-
-    async.forEachOf(
+    async.map(
       Object.entries(data.evidence.files),
-      file => {
-        var readStream = fs.createReadStream(file[1].path)
-        options = {}
-        client.imageModeration.evaluateFileInput(readStream, options, function(
-          err,
-          result,
-          request,
-          response,
-        ) {
-          if (err) {
-            console.warn(`Error in Content Moderator: ${err} `)
-            file[1].adultClassificationScore = 'Could not scan'
-          } else {
-            try {
-              const contMod = JSON.parse(response.body)
-              console.log(contMod)
-              file[1].isImageRacyClassified = contMod.IsImageRacyClassified
-              file[1].isImageAdultClassified = contMod.IsImageAdultClassified
-              file[1].adultClassificationScore =
-                contMod.AdultClassificationScore
-            } catch (error) {
-              console.warn(`Error in Content Moderator: ${error} `)
-            }
-          }
-        })
-      },
-      err => {
-        if (err) console.error(err.message)
-        console.log({ FILES: data.evidence.files })
+      contentModerateFile,
+      function(err, results) {
+        if (err) console.warn('Content Moderator Error:' + JSON.stringify(err))
+        finalCallback()
       },
     )
 

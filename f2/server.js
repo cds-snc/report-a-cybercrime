@@ -39,6 +39,7 @@ async function save(data, res) {
   data.submissionTime = new Date().toISOString()
 
   const analystEmail = formatAnalystEmail(data, data.evidence.files)
+
   encryptAndSend(process.env.LDAP_UID, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
@@ -56,7 +57,7 @@ const uploadData = async (req, res, fields, files) => {
   // Await here because we also need these results before saving
   await scanFiles(data)
 
-  contentModeratorFiles(data, () => console.log({ files: data.evidence.files }))
+  contentModeratorFiles(data, () => save(data, res))
 
   // Save the data, e-mail it, etc.. This is async to avoid holding up nodejs from other requests
   save(data, res)
