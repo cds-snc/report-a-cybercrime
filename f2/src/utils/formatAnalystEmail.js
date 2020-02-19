@@ -173,8 +173,14 @@ const formatFinancialTransactions = data => {
 
 const formatFileAttachments = data => {
   const returnString = data.evidence.files
-    .map(
-      file =>
+    .map(file => {
+      let moderatorString
+      if (typeof file.AdultClassificationScore == 'number') {
+        if (file.isImageAdultClassified) moderatorString = 'adult image'
+        else if (file.isImageRacyClassified) moderatorString = 'racy image'
+        else moderatorString = 'not adult image'
+      } else moderatorString = file.AdultClassificationScore
+      return (
         formatLine('File name:     ', file.name) +
         formatLine('Description:   ', file.fileDescription) +
         formatLine('Size:          ', file.size + ' bytes') +
@@ -182,9 +188,9 @@ const formatFileAttachments = data => {
         (file.malwareIsClean
           ? 'Malware scan:  Clean'
           : formatLine('Malware scan:  ', file.malwareScanDetail)) +
-        formatLine('Is image racy:   ', file.isImageRacyClassified) +
-        formatLine('Is image adult:   ', file.isImageAdultClassified),
-    )
+        formatLine('Image scan:    ', moderatorString)
+      )
+    })
     .join('\n\n')
 
   delete data.evidence.files
