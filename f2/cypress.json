@@ -6,7 +6,7 @@
       "local": "http://localhost:3000/",
       "staging":"TODO: to be provided by Norman "
     },
-    "reporter": "cypress-multi-reporters",
+    "reporter": "./node_modules/mochawesome/src/mochawesome.js",
     "reporterOptions": {
         "reporterEnabled": "mochawesome",
         "mochawesomeReporterOptions": {
