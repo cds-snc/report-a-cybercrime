@@ -18,7 +18,6 @@ import { Button } from '../components/button'
 import { RadioAdapter } from '../components/radio'
 import { FormArrayControl } from '../components/FormArrayControl'
 
-
 const Control = ({ name, ...rest }) => {
   const {
     meta: { error, touched },
@@ -90,36 +89,36 @@ export const FinalFeedbackForm = props => {
             spacing={12}
           >
             <Control as="fieldset" name="wasServiceHard">
-            <FormArrayControl
-              name="wasServiceHard"
-              label={<Trans id="finalFeedback.wasServiceHard.label" />}
-            >
-              <Stack spacing={4}>
-                {wasServiceHard.map(key => {
-                  return (
-                    <Box key={key}>
-                      <RadioAdapter
-                        name="wasServiceHard"
-                        value={key}
-                        isChecked={wasServiceHard.includes(key)}
-                      >
-                      {i18n._(key)}
-                      </RadioAdapter>
-                    </Box>
-                  )
-                })}
-              </Stack>
-            </FormArrayControl>
+              <FormArrayControl
+                name="wasServiceHard"
+                label={<Trans id="finalFeedback.wasServiceHard.label" />}
+              >
+                <Stack spacing={4}>
+                  {wasServiceHard.map(key => {
+                    return (
+                      <Box key={key}>
+                        <RadioAdapter
+                          name="wasServiceHard"
+                          value={key}
+                          isChecked={wasServiceHard.includes(key)}
+                        >
+                          {i18n._(key)}
+                        </RadioAdapter>
+                      </Box>
+                    )
+                  })}
+                </Stack>
+              </FormArrayControl>
             </Control>
 
             <Control as="fieldset" name="wouldYouUseAgain">
               <Stack spacing={4} shouldWrapChildren>
                 <FormArrayControl
-                name="wasServiceHard"
-                label={<Trans id="finalFeedback.wouldYouUseAgain.label" />}
+                  name="wasServiceHard"
+                  label={<Trans id="finalFeedback.wouldYouUseAgain.label" />}
                 >
                   <Stack spacing={4}>
-                  {wouldYouUseAgain.map(key => {
+                    {wouldYouUseAgain.map(key => {
                       return (
                         <Box key={key}>
                           <RadioAdapter
@@ -127,7 +126,7 @@ export const FinalFeedbackForm = props => {
                             value={key}
                             isChecked={wouldYouUseAgain.includes(key)}
                           >
-                          {i18n._(key)}
+                            {i18n._(key)}
                           </RadioAdapter>
                         </Box>
                       )
