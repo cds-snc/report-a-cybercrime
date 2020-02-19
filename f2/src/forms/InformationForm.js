@@ -7,7 +7,7 @@ import { Trans } from '@lingui/macro'
 import { Form, Field, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextArea } from '../components/text-area'
-import { Stack, FormControl, Alert, AlertIcon} from '@chakra-ui/core'
+import { Stack, FormControl, Alert, AlertIcon } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
@@ -79,44 +79,43 @@ export const InformationForm = props => {
           >
             <Control as="fieldset" name="typeOfInfoReq">
               <Stack spacing={4} shouldWrapChildren>
-              <FormArrayControl
-                name="infoReqOther"
-                label={<Trans id="informationPage.typeOfInfoReq" />}
-                helperText={<Trans id="informationPage.typeOfInfoReqExample" />}
+                <FormArrayControl
+                  name="infoReqOther"
+                  label={<Trans id="informationPage.typeOfInfoReq" />}
+                  helperText={
+                    <Trans id="informationPage.typeOfInfoReqExample" />
+                  }
                 >
-                {typeOfInfoReq.map(key => {
-                  return (
-                    <React.Fragment key={key}>
-                      <CheckboxAdapter
-                        name="infoReqOther"
-                        value={key}
-                      >
-                      {i18n._(key)}
-                      </CheckboxAdapter>
-                      {key === 'typeOfInfoReq.other' &&
-                      values.typeOfInfoReq.includes(
-                        'typeOfInfoReq.other',
-                      ) && (
-                        <ConditionalForm>
-                          <Field name="infoReqOther">
-                            {props => (
-                              <FormControl>
-                                <FormLabel htmlFor={key}></FormLabel>
-                                <TextInput
-                                  id="infoReqOther"
-                                  name={props.input.name}
-                                  value={props.input.value}
-                                  onChange={props.input.onChange}
-                                />
-                              </FormControl>
-                            )}
-                          </Field>
-                        </ConditionalForm>
-                      )}
-                    </React.Fragment>
-                  )
-                })}
-              </FormArrayControl>
+                  {typeOfInfoReq.map(key => {
+                    return (
+                      <React.Fragment key={key}>
+                        <CheckboxAdapter name="infoReqOther" value={key}>
+                          {i18n._(key)}
+                        </CheckboxAdapter>
+                        {key === 'typeOfInfoReq.other' &&
+                          values.typeOfInfoReq.includes(
+                            'typeOfInfoReq.other',
+                          ) && (
+                            <ConditionalForm>
+                              <Field name="infoReqOther">
+                                {props => (
+                                  <FormControl>
+                                    <FormLabel htmlFor={key}></FormLabel>
+                                    <TextInput
+                                      id="infoReqOther"
+                                      name={props.input.name}
+                                      value={props.input.value}
+                                      onChange={props.input.onChange}
+                                    />
+                                  </FormControl>
+                                )}
+                              </Field>
+                            </ConditionalForm>
+                          )}
+                      </React.Fragment>
+                    )
+                  })}
+                </FormArrayControl>
               </Stack>
             </Control>
             <Control as="fieldset" name="typeOfInfoObtained">
@@ -124,37 +123,36 @@ export const InformationForm = props => {
                 <FormArrayControl
                   name="infoReqOther"
                   label={<Trans id="informationPage.typeOfInfoObtained" />}
-                  helperText={<Trans id="informationPage.typeOfInfoObtainedExample" />}
-                  >
+                  helperText={
+                    <Trans id="informationPage.typeOfInfoObtainedExample" />
+                  }
+                >
                   {typeOfInfoObtained.map(key => {
                     return (
                       <React.Fragment key={key}>
-                        <CheckboxAdapter
-                          name="typeOfInfoObtained"
-                          value={key}
-                        >
-                        {i18n._(key)}
+                        <CheckboxAdapter name="typeOfInfoObtained" value={key}>
+                          {i18n._(key)}
                         </CheckboxAdapter>
                         {key === 'typeOfInfoObtained.other' &&
-                        values.typeOfInfoReq.includes(
-                          'typeOfInfoObtained.other',
-                        ) && (
-                          <ConditionalForm>
-                            <Field name="typeOfInfoObtained">
-                              {props => (
-                                <FormControl>
-                                  <FormLabel htmlFor={key}></FormLabel>
-                                  <TextInput
-                                    id="typeOfInfoObtained"
-                                    name={props.input.name}
-                                    value={props.input.value}
-                                    onChange={props.input.onChange}
-                                  />
-                                </FormControl>
-                              )}
-                            </Field>
-                          </ConditionalForm>
-                        )}
+                          values.typeOfInfoReq.includes(
+                            'typeOfInfoObtained.other',
+                          ) && (
+                            <ConditionalForm>
+                              <Field name="typeOfInfoObtained">
+                                {props => (
+                                  <FormControl>
+                                    <FormLabel htmlFor={key}></FormLabel>
+                                    <TextInput
+                                      id="typeOfInfoObtained"
+                                      name={props.input.name}
+                                      value={props.input.value}
+                                      onChange={props.input.onChange}
+                                    />
+                                  </FormControl>
+                                )}
+                              </Field>
+                            </ConditionalForm>
+                          )}
                       </React.Fragment>
                     )
                   })}
@@ -194,18 +192,18 @@ export const InformationForm = props => {
                 <A
                   href={
                     i18n.locale === 'en'
-                    ? 'https://www.transunion.ca/'
-                    : 'https://www.transunion.ca/fr'
+                      ? 'https://www.transunion.ca/'
+                      : 'https://www.transunion.ca/fr'
                   }
                   isExternal // Opens new tab
-              />
-            </Trans>
-          </Alert>
-          <NextAndCancelButtons
-            next={<Trans id="informationPage.nextStep" />}
-            button={<Trans id="informationPage.nextButton" />}
-          />
-        </Stack>
+                />
+              </Trans>
+            </Alert>
+            <NextAndCancelButtons
+              next={<Trans id="informationPage.nextStep" />}
+              button={<Trans id="informationPage.nextButton" />}
+            />
+          </Stack>
         )}
       />
     </React.Fragment>
