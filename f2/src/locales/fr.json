@@ -209,6 +209,8 @@
   "locationinfoPage.nextPage": "Prochaine étape : Vos coordonnées",
   "locationinfoPage.postalCode": "Code postal",
   "locationinfoPage.postalCodeExample": "Par exemple : K1A 0R2",
+  "locationinfoPage.skipButton": "Ignorer",
+  "locationinfoPage.skipInfo": "Si vous préférez ne pas inclure votre lieu, vous pouvez ignorer cette étape.",
   "methodPayment.cash": "Cryptomonnaie",
   "methodPayment.creditCard": "Carte de crédit",
   "methodPayment.eTransfer": "Transfert électronique",
