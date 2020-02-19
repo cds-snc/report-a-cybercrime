@@ -10,11 +10,19 @@ import { H1, H2 } from './components/header'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { A } from './components/link'
-import { Layout } from './components/layout'
+import { Layout, Row } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { Stack, Icon, Alert, AlertIcon, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { LandingBox } from './components/container'
+import { ButtonLink } from './components/link'
+import { i18n } from '@lingui/core'
+
+if (window.location.hostname.indexOf('signalez') > -1) {
+  i18n.activate('fr')
+} else if (window.location.hostname.indexOf('report') > -1) {
+  i18n.activate('en')
+}
 
 export const LandingPage = props => {
   const { i18n } = useLingui()
@@ -54,8 +62,8 @@ export const LandingPage = props => {
                 </Trans>
               </P>
 
-              <Stack spacing={4} direction="row" flexWrap="wrap">
-                <LandingBox spacing={4} alignSelf="stretch">
+              <Row>
+                <LandingBox>
                   <H2>
                     <Trans id="landingPage.reportOnline" />
                   </H2>
@@ -63,12 +71,8 @@ export const LandingPage = props => {
                   <P>
                     <Trans id="landingPage.onlineIntro" />
                   </P>
-                  <Box flex="1 1 0"></Box>
-                  <Button
-                    onClick={() => {
-                      history.push('/startPage')
-                    }}
-                  >
+
+                  <ButtonLink to="/startPage" mt="auto">
                     <Trans id="landingPage.nextButton.reportNow" />
                     <Icon
                       focusable="false"
@@ -77,9 +81,8 @@ export const LandingPage = props => {
                       name="chevron-right"
                       size="28px"
                     />
-                  </Button>
+                  </ButtonLink>
                 </LandingBox>
-
                 <LandingBox>
                   <H2>
                     <Trans id="landingPage.reportByPhone" />
@@ -96,18 +99,12 @@ export const LandingPage = props => {
                       <Trans id="landingPage.phoneNumber" />
                     </P>
                   </Stack>
-                  <Box flex="1 1 0"></Box>
 
                   <Box>
                     <Button
-                      onClick={() => {
-                        window.open(
-                          i18n.locale === 'en'
-                            ? 'http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-eng.htm'
-                            : 'http://www.antifraudcentre-centreantifraude.ca/reportincident-signalerincident/index-fra.htm',
-                          '_blank', // Opens new tab
-                        )
-                      }}
+                      as="a"
+                      role="button"
+                      href={'tel:' + i18n._('landingPage.phoneNumber')}
                     >
                       <Trans id="landingPage.nextButton.callNow" />
                       <Icon
@@ -120,7 +117,7 @@ export const LandingPage = props => {
                     </Button>
                   </Box>
                 </LandingBox>
-              </Stack>
+              </Row>
 
               <Alert status="success" backgroundColor="blue.100">
                 <AlertIcon name="info-outline" color="blue.800" />

@@ -21,7 +21,8 @@ async function postData(url = '', data = {}) {
   // add the files to the formdata object after.
   var form_data = new FormData()
   form_data.append('json', JSON.stringify(data))
-  data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
+  if (data.evidence)
+    data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
 
   // Default options are marked with *
   const response = await fetch(url, {
@@ -38,6 +39,7 @@ async function postData(url = '', data = {}) {
 
 const prepFormData = (formData, language) => {
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.financial',
     )
@@ -52,6 +54,7 @@ const prepFormData = (formData, language) => {
   }
 
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.personal_information',
     )
@@ -66,17 +69,20 @@ const prepFormData = (formData, language) => {
   }
 
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.devices',
     )
   ) {
     formData.devicesInfo = {
-      deviceOrAccount: '',
+      device: '',
+      account: '',
       devicesTellUsMore: '',
     }
   }
 
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.business_assets',
     )

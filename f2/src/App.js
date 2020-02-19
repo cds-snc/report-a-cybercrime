@@ -7,7 +7,7 @@ import { TopBanner } from './components/topbanner'
 import { PhaseBanner } from './components/phase-banner'
 import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
-import { ThemeProvider, Flex, Stack, Link, CSSReset } from '@chakra-ui/core'
+import { ThemeProvider, Flex, Stack, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 import { StateProvider, initialState, reducer } from './utils/state'
@@ -73,7 +73,11 @@ const App = () => {
           <Layout fluid>
             <Layout>
               <P fontSize="sm" my={3}>
-                Version: {process.env.REACT_APP_VERSION || '000000'}
+                {`Version: ${
+                  process.env.REACT_APP_VERSION
+                    ? process.env.REACT_APP_VERSION.slice(0, 7)
+                    : '000000'
+                }`}
               </P>
             </Layout>
           </Layout>
@@ -81,27 +85,14 @@ const App = () => {
           <Footer>
             {/** The List component is in the Footer component */}
             <Li>
-              <Link
-                href={
-                  i18n.locale === 'en'
-                    ? 'https://digital.canada.ca/legal/privacy/'
-                    : 'https://numerique.canada.ca/transparence/confidentialite/'
-                }
-              >
+              <A href="/privacystatement" isExternal>
                 <Trans id="banner.footerPrivacy" />
-              </Link>
+              </A>
             </Li>
             <Li>
-              <Link
-                ml={4}
-                href={
-                  i18n.locale === 'en'
-                    ? 'https://digital.canada.ca/legal/terms/'
-                    : 'https://numerique.canada.ca/transparence/avis/'
-                }
-              >
+              <A ml={4} href="/termsandconditions" isExternal>
                 <Trans id="banner.footerTermsAndConditions" />
-              </Link>
+              </A>
             </Li>
           </Footer>
         </Flex>

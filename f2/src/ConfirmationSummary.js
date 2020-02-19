@@ -35,6 +35,7 @@ export const testdata = {
     },
     whatWasAffected: {
       affectedOptions: [],
+      optionOther: '',
     },
     moneyLost: {
       demandedMoney: '',
@@ -50,7 +51,7 @@ export const testdata = {
       infoObtainedOther: '',
       tellUsMore: '',
     },
-    devicesInfo: { deviceOrAccount: '', devicesTellUsMore: '' },
+    devicesInfo: { device: '', account: '', devicesTellUsMore: '' },
     businessInfo: { business: '' },
     whatHappened: { whatHappened: '' },
 
