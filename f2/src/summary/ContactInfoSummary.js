@@ -17,7 +17,9 @@ export const ContactInfoSummary = props => {
   }
 
   const hasInfoToDisplay =
-    contactInfo.email.length > 0 || contactInfo.phone.length > 0
+    contactInfo.email.length > 0 ||
+    contactInfo.phone.length > 0 ||
+    contactInfo.fullName.length > 0
 
   return (
     <React.Fragment>
