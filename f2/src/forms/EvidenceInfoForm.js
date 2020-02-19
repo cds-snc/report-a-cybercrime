@@ -3,26 +3,17 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { jsx } from '@emotion/core'
-import { Form, Field } from 'react-final-form'
-import { Container, InfoCard } from '../components/container'
-import { plural, Trans } from '@lingui/macro'
+import { Form } from 'react-final-form'
+import { Plural, Trans } from '@lingui/macro'
 import { TextArea } from '../components/text-area'
-import { Button } from '../components/button'
-import { H2 } from '../components/header'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
-import {
-  Box,
-  Stack,
-  FormControl,
-  VisuallyHidden,
-  Alert,
-  AlertIcon,
-} from '@chakra-ui/core'
+import { Box, Stack, VisuallyHidden, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
+import { LinkButton } from '../components/link'
 import { Text } from '../components/text'
+import { Field } from '../components/Field'
 
 export const EvidenceInfoForm = props => {
   const [data] = useStateValue()
@@ -102,117 +93,91 @@ export const EvidenceInfoForm = props => {
           >
             <Stack spacing={4}>
               {files.length < 3 && (
-                <Box>
-                  <Box
-                    fontSize="sm"
-                    mb={8}
-                    borderBottomWidth="2px"
-                    borderBottomColor="grey.400"
-                  >
-                    <Trans id="evidencePage.fileSize" />
-                  </Box>
-                  <FileUpload onChange={onFilesChange}>
-                    <Button
-                      leftIcon="attachment"
-                      as="div"
-                      variantColor="blue"
-                      mb={8}
-                    >
-                      <Trans id="evidencePage.addFileButtom" />
-                    </Button>
-                  </FileUpload>
+                <Box
+                  fontSize="sm"
+                  mb={8}
+                  borderBottomWidth="2px"
+                  borderBottomColor="grey.400"
+                >
+                  <Trans id="evidencePage.fileSize" />
                   <P fontSize="sm">
-                    <Text
-                      fontSize="sm"
-                      as="span"
-                      fontWeight="bold"
-                    >
+                    <Text fontSize="sm" as="span" fontWeight="bold">
                       <Trans id="evidencePage.supportedFiles" />
                     </Text>
-
                     <Trans id="evidencePage.fileTypes" />
                   </P>
                 </Box>
               )}
-
               {files.length > 0 && (
                 <P>
-                  {plural(files.length, {
-                    one: '# file attached',
-                    other: '# files attached',
-                  })}
+                  <Plural
+                    id="evidencePage.numberOfFilesAttached"
+                    value={files.length}
+                    one="# file attached"
+                    other="# files attached"
+                  />
                 </P>
               )}
-
               {status ? (
                 <VisuallyHidden tabIndex={-1} id="status">
                   {i18n._(status)}
                 </VisuallyHidden>
               ) : null}
-            </Stack>
-
-            <Container>
               {files.map((f, index) => (
-                <React.Fragment key={index}>
-                  <InfoCard as="article" mb={4}>
-                    <Stack spacing={4}>
-                      <H2 fontSize="2xl">{f.name}</H2>
-                      <Box>
-                        <Field
-                          name={`file-description-${index}`}
-                          input={{
-                            value: fileDescriptions[index],
-                            onChange: onFileDescriptionChange,
-                          }}
-                        >
-                          {props => (
-                            <FormControl>
-                              <FormLabel htmlFor={`file-description-${index}`}>
-                                <Trans id="evidencePage.fileDescription" />
-                              </FormLabel>
-                              <TextArea
-                                id={`file-description-${index}`}
-                                name={props.input.name}
-                                value={props.input.value}
-                                onChange={props.input.onChange}
-                              />
-                            </FormControl>
-                          )}
-                        </Field>
-                      </Box>
-
-                      <Button
-                        mr="auto"
-                        variantColor="red"
-                        type="button"
-                        onClick={() => removeFile(index)}
-                      >
-                        <Trans id="evidencePage.removeFileButton" />
-                      </Button>
-                    </Stack>
-                  </InfoCard>
-                </React.Fragment>
+                <Stack
+                  spacing={4}
+                  shouldWrapChildren
+                  borderBottom="2px"
+                  borderBottomColor="gray.200"
+                  py={6}
+                  key={index}
+                >
+                  <Text>{f.name}</Text>
+                  <Field
+                    label={<Trans id="evidencePage.fileDescription" />}
+                    name={`file-description-${index}`}
+                    input={{
+                      value: fileDescriptions[index],
+                      onChange: onFileDescriptionChange,
+                    }}
+                    component={TextArea}
+                  />
+                  <LinkButton onClick={() => removeFile(index)} color="red.600">
+                    <Trans id="evidencePage.removeFileButton" />
+                  </LinkButton>
+                </Stack>
               ))}
-            </Container>
-            {files.length === 3 && (
-              <P>
-                <Alert status="success" backgroundColor="blue.100">
-                  <AlertIcon name="info-outline" color="blue.700" />
-                  <Text fontSize="sm">
-                    <Trans id="evidencePage.maxFileWarning" />
-                  </Text>
-                </Alert>
-              </P>
-            )}
-
-            {files.length < 3 && (
-              <Alert status="success" backgroundColor="blue.100">
-                <AlertIcon name="info-outline" color="blue.700" />
-                <Text fontSize="sm">
-                  <Trans id="evidencePage.fileWarning" />
-                </Text>
-              </Alert>
-            )}
+              {files.length === 3 && (
+                <React.Fragment>
+                  <Alert status="success" backgroundColor="blue.100">
+                    <AlertIcon name="info-outline" color="blue.700" />
+                    <Text fontSize="sm">
+                      <Trans id="evidencePage.maxFileWarning" />
+                    </Text>
+                  </Alert>
+                </React.Fragment>
+              )}
+              {files.length < 3 && (
+                <React.Fragment>
+                  <Box mb={4}>
+                    <FileUpload
+                      leftIcon="attachment"
+                      variantColor="blue"
+                      onChange={onFilesChange}
+                    >
+                      <Trans id="evidencePage.addFileButtom" />
+                    </FileUpload>
+                  </Box>
+                  <Alert status="success" backgroundColor="blue.100">
+                    <AlertIcon name="info-outline" color="blue.700" />
+                    <Text fontSize="sm">
+                      <Trans id="evidencePage.fileWarning" />
+                    </Text>
+                  </Alert>
+                </React.Fragment>
+              )}
+              ))}
+            </Stack>
             <NextAndCancelButtons
               next={<Trans id="evidencePage.nextPage" />}
               button={<Trans id="evidencePage.nextButton" />}
