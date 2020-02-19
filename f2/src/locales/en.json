@@ -29,6 +29,7 @@
   "confirmationPage.businessInfo.title": "Business",
   "confirmationPage.businessInfo.title.edit": "Edit How might your business be affected?",
   "confirmationPage.contactInfo.email": "Email address",
+  "confirmationPage.contactInfo.fullName": "Full name",
   "confirmationPage.contactInfo.phone": "Phone number",
   "confirmationPage.contactIntro": "No information provided.",
   "confirmationPage.contactTitle": "Your contact details",
