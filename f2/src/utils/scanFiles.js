@@ -8,7 +8,6 @@ const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmodera
 require('dotenv').config()
 
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
-
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
 
 async function scanFiles(data) {
@@ -31,19 +30,22 @@ async function scanFiles(data) {
   }
 }
 
-let credentials = new CognitiveServicesCredentials(serviceKey)
-let client = new ContentModeratorAPIClient(
-  credentials,
-  'https://canadacentral.api.cognitive.microsoft.com/',
-)
+let credentials = serviceKey
+  ? new CognitiveServicesCredentials(serviceKey)
+  : undefined
+let client = serviceKey
+  ? new ContentModeratorAPIClient(
+      credentials,
+      'https://canadacentral.api.cognitive.microsoft.com/',
+    )
+  : undefined
 
 const contentModerateFile = (file, callback) => {
   var readStream = fs.createReadStream(file[1].path)
-  options = {}
-  client.imageModeration.evaluateFileInput(readStream, options, function(
+  client.imageModeration.evaluateFileInput(readStream, {}, function(
     err,
-    result,
-    request,
+    _result,
+    _request,
     response,
   ) {
     if (err) {
@@ -71,39 +73,11 @@ async function contentModeratorFiles(data, finalCallback) {
     async.map(
       Object.entries(data.evidence.files),
       contentModerateFile,
-      function(err, results) {
+      function(err, _results) {
         if (err) console.warn('Content Moderator Error:' + JSON.stringify(err))
         finalCallback()
       },
     )
-
-    // for (const file of Object.entries(data.evidence.files)) {
-    //   //scan file for virus
-    //   var readStream = fs.createReadStream(file[1].path)
-    //   options = {}
-    //   client.imageModeration.evaluateFileInput(readStream, options, function(
-    //     err,
-    //     result,
-    //     request,
-    //     response,
-    //   ) {
-    //     if (err) {
-    //       console.warn(`Error in Content Moderator: ${err} `)
-    //       file[1].adultClassificationScore = 'Could not scan'
-    //     } else {
-    //       try {
-    //         const contMod = JSON.parse(response.body)
-    //         console.log(contMod)
-    //         file[1].isImageRacyClassified = contMod.IsImageRacyClassified
-    //         file[1].isImageAdultClassified = contMod.IsImageAdultClassified
-    //         file[1].adultClassificationScore = contMod.AdultClassificationScore
-    //       } catch (error) {
-    //         console.warn(`Error in Content Moderator: ${error} `)
-    //       }
-    //     }
-    //     callback()
-    //   })
-    // }
   }
 }
 
