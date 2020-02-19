@@ -29,6 +29,7 @@
   "confirmationPage.businessInfo.title": "Entreprise",
   "confirmationPage.businessInfo.title.edit": "Modifier les répercussions sur l'entreprise",
   "confirmationPage.contactInfo.email": "Votre adresse courriel",
+  "confirmationPage.contactInfo.fullName": "Nom complet",
   "confirmationPage.contactInfo.phone": "Votre numéro de téléphone",
   "confirmationPage.contactIntro": "Aucune information fournie.",
   "confirmationPage.contactTitle": "Vos coordonnées",
