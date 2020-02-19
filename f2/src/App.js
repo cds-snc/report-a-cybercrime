@@ -7,7 +7,7 @@ import { TopBanner } from './components/topbanner'
 import { PhaseBanner } from './components/phase-banner'
 import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
-import { ThemeProvider, Flex, Stack, CSSReset } from '@chakra-ui/core'
+import { ThemeProvider, Flex, Stack, CSSReset, Switch } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 import { StateProvider, initialState, reducer } from './utils/state'
@@ -63,11 +63,8 @@ const App = () => {
             bg="gray.50"
           >
             <Home />
-            <MidFeedbackForm
-              onSubmit={data => {
-                console.log(data)
-              }}
-            />
+
+            <MidFeedbackForm />
           </Stack>
 
           <Layout fluid>

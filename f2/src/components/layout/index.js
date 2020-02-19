@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Container } from '../container'
 import { Flex, Stack } from '@chakra-ui/core'
 
-export const Layout = ({ fluid, columns, ...props }) => {
+export const Layout = ({ fluid, columns, noEffect, ...props }) => {
   const col = {
     base: columns.base * 100 + '%',
     md: columns.md * 100 + '%',
@@ -62,6 +62,7 @@ Layout.propTypes = {
 }
 
 Layout.defaultProps = {
+  noEffect: false,
   fluid: false,
   columns: { base: 1, md: 1, lg: 1, xl: 1 },
 }
