@@ -1,14 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FormControl, Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { A } from '../components/link'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
-
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -22,8 +21,6 @@ const validate = () => {
 }
 
 export const PrivacyConsentInfoForm = props => {
-  const { i18n } = useLingui()
-
   const [data] = useStateValue()
   const whetherConsent = {
     consentOptions: [],
@@ -57,36 +54,41 @@ export const PrivacyConsentInfoForm = props => {
             shouldWrapChildren
             spacing={6}
           >
-          <Control as="fieldset" name="consentOptions">
-            <Stack spacing={4} shouldWrapChildren>
-            <FormArrayControl
-              name="consentOptions"
-            >
-              {consentOptions.map(key => {
-                return (
-                <React.Fragment key={key}>
-                  <CheckboxAdapter
-                    name="consentOptions"
-                    value={key}
-                    isChecked={whetherConsent.consentOptions.includes(key)}                  >
-                    {i18n._(key)}
-                  </CheckboxAdapter>
-                </React.Fragment>
-              )
-              })}
-              {showWarning ? (
-                <Alert status="warning">
-                  <AlertIcon />
-                  <Trans id="privacyConsentInfoForm.warning" />
-                </Alert>
-              ) : null}
-            </FormArrayControl>
-           </Stack>
-          </Control>
-          <NextAndCancelButtons
-            next={<Trans id="privacyConsentInfoForm.nextPage" />}
-            button={<Trans id="privacyConsentInfoForm.nextButton" />}
-          />
+            <Control as="fieldset" name="consentOptions">
+              <Stack spacing={4} shouldWrapChildren>
+                <FormArrayControl name="consentOptions">
+                  {consentOptions.map(key => {
+                    return (
+                      <React.Fragment key={key}>
+                        <CheckboxAdapter
+                          name="consentOptions"
+                          value={key}
+                          isChecked={whetherConsent.consentOptions.includes(
+                            key,
+                          )}
+                        >
+                          <Trans id="privacyConsentInfoForm.yes" />
+                          <A href="/privacystatement" isExternal>
+                            <Trans id="privacyConsentInfoForm.linkOut" />
+                          </A>
+                          <Trans id="privacyConsentInfoForm.period" />
+                        </CheckboxAdapter>
+                      </React.Fragment>
+                    )
+                  })}
+                  {showWarning ? (
+                    <Alert status="warning">
+                      <AlertIcon />
+                      <Trans id="privacyConsentInfoForm.warning" />
+                    </Alert>
+                  ) : null}
+                </FormArrayControl>
+              </Stack>
+            </Control>
+            <NextAndCancelButtons
+              next={<Trans id="privacyConsentInfoForm.nextPage" />}
+              button={<Trans id="privacyConsentInfoForm.nextButton" />}
+            />
           </Stack>
         )}
       />

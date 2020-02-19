@@ -15,7 +15,6 @@ import { useStateValue } from '../utils/state'
 import { ConditionalForm } from '../components/container'
 import { CheckboxAdapter } from '../components/checkbox'
 
-
 const Control = ({ name, ...rest }) => {
   const {
     meta: { error, touched },
@@ -112,11 +111,8 @@ export const MoneyLostInfoForm = props => {
                 {methodsOfPayment.map(key => {
                   return (
                     <Box key={key}>
-                      <CheckboxAdapter
-                        name="methodPayment"
-                        value={key}
-                      >
-                      {i18n._(key)}
+                      <CheckboxAdapter name="methodPayment" value={key}>
+                        {i18n._(key)}
                       </CheckboxAdapter>
                       {key === 'methodPayment.other' &&
                         values.methodPayment.includes(

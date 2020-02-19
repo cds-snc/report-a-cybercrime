@@ -13,7 +13,6 @@ import { FormLabel } from '../components/FormLabel'
 import { ConditionalForm } from '../components/container'
 import { TextInput } from '../components/TextInput'
 
-
 const Control = ({ name, ...rest }) => {
   const {
     meta: { error, touched },
@@ -87,7 +86,9 @@ export const WhatWasAffectedForm = props => {
                       <CheckboxAdapter
                         name="affectedOptions"
                         value={key}
-                        isChecked={whatWasAffected.affectedOptions.includes(key)}
+                        isChecked={whatWasAffected.affectedOptions.includes(
+                          key,
+                        )}
                       >
                         {i18n._(key)}
                       </CheckboxAdapter>
