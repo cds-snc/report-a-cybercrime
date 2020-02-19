@@ -14,7 +14,6 @@ import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
 
-
 export const LocationInfoForm = props => {
   const [data] = useStateValue()
   const location = {
@@ -44,10 +43,16 @@ export const LocationInfoForm = props => {
               textAlign="center"
             >
               <Trans id="locationinfoPage.skipButton" />
-              <Icon focusable="false" ml={2} mr={-2} name="chevron-right" size="28px" />
+              <Icon
+                focusable="false"
+                ml={2}
+                mr={-2}
+                name="chevron-right"
+                size="28px"
+              />
             </Button>
           </Flex>
-          < Field name="postalCode" >
+          <Field name="postalCode">
             {props => (
               <FormControl>
                 <FormLabel htmlFor="postalCode">
@@ -66,12 +71,12 @@ export const LocationInfoForm = props => {
                 />
               </FormControl>
             )}
-          </Field >
+          </Field>
           <NextAndCancelButtons
             next={<Trans id="locationinfoPage.nextPage" />}
             button={<Trans id="locationinfoPage.nextButton" />}
           />
-        </Stack >
+        </Stack>
       )}
     />
   )

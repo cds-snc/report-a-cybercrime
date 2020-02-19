@@ -126,6 +126,7 @@
   "evidencePage.maxFileWarning": "You have added the maximum number of files allowed.",
   "evidencePage.nextButton": "Continue",
   "evidencePage.nextPage": "Next: Enter your location",
+  "evidencePage.numberOfFilesAttached": "{0, plural, one {# file attached} other {# files attached}}",
   "evidencePage.removeFileButton": "Remove file",
   "evidencePage.supportedFiles": "Supported files types: ",
   "evidencePage.title": "Attach supporting evidence",
@@ -347,6 +348,5 @@
   "whenDidItStart.pastMonth": "Within the past month",
   "whenDidItStart.pastWeek": "Within the past week",
   "whenDidItStart.pastYear": "Within the past year",
-  "whenDidItStart.today": "Today",
-  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# file attached} other {# files attached}}"
+  "whenDidItStart.today": "Today"
 }
