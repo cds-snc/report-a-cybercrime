@@ -3,33 +3,17 @@ import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Checkbox } from '../components/checkbox'
-import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
+import { FormControl, Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { A } from '../components/link'
+import { CheckboxAdapter } from '../components/checkbox'
+import { FormArrayControl } from '../components/FormArrayControl'
 
 const Control = ({ name, ...rest }) => {
   const {
     meta: { error, touched },
   } = useField(name, { subscription: { touched: true, error: true } })
   return <FormControl {...rest} isInvalid={error && touched} />
-}
-
-const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
-  const {
-    input: { checked, ...input },
-    meta: { error, touched },
-  } = useField(name, {
-    type: 'checkbox', // important for RFF to manage the checked prop
-    value, // important for RFF to manage list of strings
-    defaultIsChecked,
-  })
-
-  return (
-    <Checkbox {...input} isChecked={checked} isInvalid={error && touched}>
-      {children}
-    </Checkbox>
-  )
 }
 
 const validate = () => {
@@ -52,6 +36,7 @@ export const PrivacyConsentInfoForm = props => {
           <Trans id="privacyConsentInfoForm.yes" />
         </div>
       ) : null}
+
       <Form
         initialValues={whetherConsent}
         onSubmit={values => {
@@ -71,31 +56,35 @@ export const PrivacyConsentInfoForm = props => {
           >
             <Control as="fieldset" name="consentOptions">
               <Stack spacing={4} shouldWrapChildren>
-                {consentOptions.map(key => {
-                  return (
-                    <Box key={key}>
-                      <CheckboxArrayControl
-                        name="consentOptions"
-                        value={key}
-                        isChecked={whetherConsent.consentOptions.includes(key)}
-                      >
-                        <Trans id="privacyConsentInfoForm.yes" />
-                        <A href="/privacystatement" isExternal>
-                          <Trans id="privacyConsentInfoForm.linkOut" />
-                        </A>
-                        <Trans id="privacyConsentInfoForm.period" />                      </CheckboxArrayControl>
-                    </Box>
-                  )
-                })}
-                {showWarning ? (
-                  <Alert status="warning">
-                    <AlertIcon />
-                    <Trans id="privacyConsentInfoForm.warning" />
-                  </Alert>
-                ) : null}
+                <FormArrayControl name="consentOptions">
+                  {consentOptions.map(key => {
+                    return (
+                      <React.Fragment key={key}>
+                        <CheckboxAdapter
+                          name="consentOptions"
+                          value={key}
+                          isChecked={whetherConsent.consentOptions.includes(
+                            key,
+                          )}
+                        >
+                          <Trans id="privacyConsentInfoForm.yes" />
+                          <A href="/privacystatement" isExternal>
+                            <Trans id="privacyConsentInfoForm.linkOut" />
+                          </A>
+                          <Trans id="privacyConsentInfoForm.period" />
+                        </CheckboxAdapter>
+                      </React.Fragment>
+                    )
+                  })}
+                  {showWarning ? (
+                    <Alert status="warning">
+                      <AlertIcon />
+                      <Trans id="privacyConsentInfoForm.warning" />
+                    </Alert>
+                  ) : null}
+                </FormArrayControl>
               </Stack>
             </Control>
-
             <NextAndCancelButtons
               next={<Trans id="privacyConsentInfoForm.nextPage" />}
               button={<Trans id="privacyConsentInfoForm.nextButton" />}
