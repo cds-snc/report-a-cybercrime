@@ -116,7 +116,7 @@ app
         console.error('Error', err)
         throw err
       }
-      submitFeedback(fields)
+      submitFeedback(fields.json)
     })
     res.send('thanks')
   })
