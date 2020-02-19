@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Label } from '../label'
-import { VisuallyHidden, Box } from '@chakra-ui/core'
+import { VisuallyHidden } from '@chakra-ui/core'
 import { Button } from '../button'
 
 export const FileUpload = ({ onChange, accept, ...props }) => {
