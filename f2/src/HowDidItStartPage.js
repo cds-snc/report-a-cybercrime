@@ -19,7 +19,7 @@ export const HowDidItStartPage = () => {
     <Route
       render={({ history }) => (
         <Page>
-          <Layout columns={{ base: 4 / 4, md: 6 / 8 }}>
+          <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
               <BackButton route="/privacyconsent">
                 <Trans id="howDidItStartPage.backButton" />

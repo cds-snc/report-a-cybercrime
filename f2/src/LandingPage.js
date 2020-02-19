@@ -11,7 +11,6 @@ import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { A } from './components/link'
 import { Layout, Row } from './components/layout'
-import { TrackPageViews } from './TrackPageViews'
 import { Stack, Icon, Alert, AlertIcon, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { LandingBox } from './components/container'
@@ -35,7 +34,7 @@ export const LandingPage = props => {
     <Route
       render={({ history }) => (
         <Page>
-          <Layout columns={{ base: 4 / 4, md: 6 / 8 }}>
+          <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
               <H1>
                 <Trans id="landingPage.title" />

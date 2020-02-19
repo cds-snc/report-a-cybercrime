@@ -14,6 +14,7 @@ export const InfoCard = props => (
     rounded="none"
     borderBottom="2px"
     p={4}
+    py={8}
     {...props}
   ></Column>
 )
@@ -27,6 +28,7 @@ export const LandingBox = props => (
     borderBottom="2px"
     color="black"
     p={4}
+    pt={8}
     mb={4}
     spacing={4}
     {...props}
