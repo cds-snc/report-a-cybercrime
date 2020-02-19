@@ -181,7 +181,9 @@ const formatFileAttachments = data => {
         formatLine('CosmosDB file: ', file.sha1) +
         (file.malwareIsClean
           ? 'Malware scan:  Clean'
-          : formatLine('Malware scan:  ', file.malwareScanDetail)),
+          : formatLine('Malware scan:  ', file.malwareScanDetail)) +
+        formatLine('Is image racy:   ', file.isImageRacyClassified) +
+        formatLine('Is image adult:   ', file.isImageAdultClassified),
     )
     .join('\n\n')
 
