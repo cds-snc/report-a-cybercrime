@@ -23,7 +23,6 @@ export async function activate(locale) {
 
 let params = new URL(document.location).searchParams
 let lang = params.get('lang')
-console.log(lang)
 let userLocale = getUserLocale()
 if (lang === 'fr') {
   activate('fr')
