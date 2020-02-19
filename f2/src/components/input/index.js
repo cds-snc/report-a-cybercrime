@@ -1,6 +1,5 @@
 /** @jsx jsx **/
 import { jsx } from '@emotion/core'
-import PropTypes from 'prop-types'
 import { Input as ChakraInput } from '@chakra-ui/core'
 
 export const Input = props => (
@@ -22,10 +21,7 @@ export const Input = props => (
       borderColor: 'black',
       border: '3px',
     }}
+    {...props.input}
     {...props}
   />
 )
-
-Input.propTypes = {
-  children: PropTypes.any,
-}

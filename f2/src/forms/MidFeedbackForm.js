@@ -8,35 +8,19 @@ import { Form, Field, useField } from 'react-final-form'
 import { Stack, FormControl, Box } from '@chakra-ui/core'
 import { FormLabel } from '../components/FormLabel'
 import { FormHelperText } from '../components/FormHelperText'
-import { Checkbox } from '../components/checkbox'
 import { Button } from '../components/button'
 import { Layout, Row } from '../components/layout'
 import { TextArea } from '../components/text-area'
 import { submitToServer } from '../utils/submitToServer'
 import { InfoCard } from '../components/container'
+import { CheckboxAdapter } from '../components/checkbox'
+import { FormArrayControl } from '../components/FormArrayControl'
 
 const Control = ({ name, ...rest }) => {
   const {
     meta: { error, touched },
   } = useField(name, { subscription: { touched: true, error: true } })
   return <FormControl {...rest} isInvalid={error && touched} />
-}
-
-const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
-  const {
-    input: { checked, ...input },
-    meta: { error, touched },
-  } = useField(name, {
-    type: 'checkbox', // important for RFF to manage the checked prop
-    value, // important for RFF to manage list of strings
-    defaultIsChecked,
-  })
-
-  return (
-    <Checkbox {...input} isChecked={checked} isInvalid={error && touched}>
-      {children}
-    </Checkbox>
-  )
 }
 
 export const MidFeedbackForm = () => {
@@ -68,7 +52,7 @@ export const MidFeedbackForm = () => {
           <Trans id="midFeedback.problem.other" />
         </div>
       ) : null}
-      <Layout mt={10} noEffect>
+      <Layout mt={10}>
         {status ? (
           <Row>
             <InfoCard bg="blue.200" borderColor="blue.300" borderBottom="3px">
@@ -112,27 +96,29 @@ export const MidFeedbackForm = () => {
                     spacing={6}
                   >
                     <Control as="fieldset" name="midFeedback">
-                      <FormLabel as="legend" htmlFor="midFeedback" mb={2}>
-                        <Trans id="midFeedback.problem.label" />
-                      </FormLabel>
-                      <FormHelperText>
-                        <Trans id="midFeedback.problem.helperText" />
-                      </FormHelperText>
-                      <Stack spacing={4}>
-                        {midFeedback.map(key => {
-                          return (
-                            <Box key={key}>
-                              <CheckboxArrayControl
-                                name="midFeedback"
-                                value={key}
-                                isChecked={midFeedback.includes(key)}
-                              >
-                                {i18n._(key)}
-                              </CheckboxArrayControl>
-                            </Box>
-                          )
-                        })}
-                      </Stack>
+                      <FormArrayControl
+                        name="midFeedback"
+                        label={<Trans id="midFeedback.problem.label" />}
+                        helperText={
+                          <Trans id="midFeedback.problem.helperText" />
+                        }
+                      >
+                        <Stack spacing={4}>
+                          {midFeedback.map(key => {
+                            return (
+                              <Box key={key}>
+                                <CheckboxAdapter
+                                  name="midFeedback"
+                                  value={key}
+                                  isChecked={midFeedback.includes(key)}
+                                >
+                                  {i18n._(key)}
+                                </CheckboxAdapter>
+                              </Box>
+                            )
+                          })}
+                        </Stack>
+                      </FormArrayControl>
                     </Control>
 
                     <Field name="problemDescription">

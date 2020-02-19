@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field, useField } from 'react-final-form'
-import { Radio } from '../components/radio'
 import {
   FormControl,
   Stack,
@@ -16,34 +15,14 @@ import { FormHelperText } from '../components/FormHelperText'
 import { TextArea } from '../components/text-area'
 import { FormLabel } from '../components/FormLabel'
 import { Button } from '../components/button'
+import { RadioAdapter } from '../components/radio'
+import { FormArrayControl } from '../components/FormArrayControl'
 
 const Control = ({ name, ...rest }) => {
   const {
     meta: { error, touched },
   } = useField(name, { subscription: { touched: true, error: true } })
   return <FormControl {...rest} isInvalid={error && touched} />
-}
-
-const RadioButtonArrayControl = ({
-  name,
-  value,
-  defaultIsChecked,
-  children,
-}) => {
-  const {
-    input: { checked, ...input },
-    meta: { error, touched },
-  } = useField(name, {
-    type: 'radio',
-    value,
-    defaultIsChecked,
-  })
-
-  return (
-    <Radio {...input} isChecked={checked} isInvalid={error && touched}>
-      {children}
-    </Radio>
-  )
 }
 
 const validate = () => {
@@ -110,42 +89,50 @@ export const FinalFeedbackForm = props => {
             spacing={12}
           >
             <Control as="fieldset" name="wasServiceHard">
-              <FormLabel as="legend" htmlFor="wasServiceHard" mb={2}>
-                <Trans id="finalFeedback.wasServiceHard.label" />
-              </FormLabel>
-              <Stack spacing={4} shouldWrapChildren>
-                {wasServiceHard.map(key => {
-                  return (
-                    <Box key={key}>
-                      <RadioButtonArrayControl
-                        name="wasServiceHard"
-                        value={key}
-                      >
-                        {i18n._(key)}
-                      </RadioButtonArrayControl>
-                    </Box>
-                  )
-                })}
-              </Stack>
+              <FormArrayControl
+                name="wasServiceHard"
+                label={<Trans id="finalFeedback.wasServiceHard.label" />}
+              >
+                <Stack spacing={4}>
+                  {wasServiceHard.map(key => {
+                    return (
+                      <Box key={key}>
+                        <RadioAdapter
+                          name="wasServiceHard"
+                          value={key}
+                          isChecked={wasServiceHard.includes(key)}
+                        >
+                          {i18n._(key)}
+                        </RadioAdapter>
+                      </Box>
+                    )
+                  })}
+                </Stack>
+              </FormArrayControl>
             </Control>
 
             <Control as="fieldset" name="wouldYouUseAgain">
-              <FormLabel as="legend" htmlFor="wouldYouUseAgain" mb={2}>
-                <Trans id="finalFeedback.wouldYouUseAgain.label" />
-              </FormLabel>
               <Stack spacing={4} shouldWrapChildren>
-                {wouldYouUseAgain.map(key => {
-                  return (
-                    <Box key={key}>
-                      <RadioButtonArrayControl
-                        name="wouldYouUseAgain"
-                        value={key}
-                      >
-                        {i18n._(key)}
-                      </RadioButtonArrayControl>
-                    </Box>
-                  )
-                })}
+                <FormArrayControl
+                  name="wasServiceHard"
+                  label={<Trans id="finalFeedback.wouldYouUseAgain.label" />}
+                >
+                  <Stack spacing={4}>
+                    {wouldYouUseAgain.map(key => {
+                      return (
+                        <Box key={key}>
+                          <RadioAdapter
+                            name="wouldYouUseAgain"
+                            value={key}
+                            isChecked={wouldYouUseAgain.includes(key)}
+                          >
+                            {i18n._(key)}
+                          </RadioAdapter>
+                        </Box>
+                      )
+                    })}
+                  </Stack>
+                </FormArrayControl>
               </Stack>
             </Control>
 

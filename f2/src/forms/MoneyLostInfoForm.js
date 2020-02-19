@@ -12,31 +12,14 @@ import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
-import { Checkbox } from '../components/checkbox'
 import { ConditionalForm } from '../components/container'
+import { CheckboxAdapter } from '../components/checkbox'
 
 const Control = ({ name, ...rest }) => {
   const {
     meta: { error, touched },
   } = useField(name, { subscription: { touched: true, error: true } })
   return <FormControl {...rest} isInvalid={error && touched} />
-}
-
-const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
-  const {
-    input: { checked, ...input },
-    meta: { error, touched },
-  } = useField(name, {
-    type: 'checkbox', // important for RFF to manage the checked prop
-    value, // important for RFF to manage list of strings
-    defaultIsChecked,
-  })
-
-  return (
-    <Checkbox {...input} isChecked={checked} isInvalid={error && touched}>
-      {children}
-    </Checkbox>
-  )
 }
 
 export const MoneyLostInfoForm = props => {
@@ -128,9 +111,9 @@ export const MoneyLostInfoForm = props => {
                 {methodsOfPayment.map(key => {
                   return (
                     <Box key={key}>
-                      <CheckboxArrayControl name="methodPayment" value={key}>
+                      <CheckboxAdapter name="methodPayment" value={key}>
                         {i18n._(key)}
-                      </CheckboxArrayControl>
+                      </CheckboxAdapter>
                       {key === 'methodPayment.other' &&
                         values.methodPayment.includes(
                           'methodPayment.other',
