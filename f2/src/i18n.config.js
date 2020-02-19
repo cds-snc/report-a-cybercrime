@@ -20,4 +20,18 @@ export async function activate(locale) {
   i18n.activate(locale)
 }
 
-activate('en')
+// this was causing an infinite loop
+let params = new URL(document.location).searchParams
+let lang = params.get('lang')
+console.log(lang)
+if (lang === 'fr') {
+  activate('fr')
+} else if (lang === 'en') {
+  activate('en')
+} else if (window.location.hostname.indexOf('signalez') > -1) {
+  activate('fr')
+} else if (window.location.hostname.indexOf('report') > -1) {
+  activate('en')
+} else {
+  activate('en')
+}
