@@ -118,7 +118,7 @@
   "evidencePage.detail2": "Des photos de reçus, de transactions ou de bordereaux d’expédition de colis.",
   "evidencePage.detail3": "Des documents où sont écrites les demandes du suspect.",
   "evidencePage.details": "Si toutefois vous le pouvez, incluez des indices tels que :",
-  "evidencePage.fileDescription": "Décrivez ce que ce fichier montre.",
+  "evidencePage.fileDescription": "Décrivez ce que montre ce fichier.",
   "evidencePage.fileSize": "Vous pouvez ajouter un maximum de 3 fichiers, chacun d’une taille maximale de 4 MB.",
   "evidencePage.fileTypes": ".png, .jpeg, .doc, .xls, .pdf, et .txt.",
   "evidencePage.fileWarning": "Les fichiers seront vérifiés pour s’assurer que leur contenu est approprié.",
@@ -126,6 +126,7 @@
   "evidencePage.maxFileWarning": "Vous avez ajouté le nombre maximum de fichiers possibles.",
   "evidencePage.nextButton": "Continuer",
   "evidencePage.nextPage": "Prochaine étape : Votre emplacement géographique",
+  "evidencePage.numberOfFilesAttached": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
   "evidencePage.removeFileButton": "Enlever ce fichier",
   "evidencePage.supportedFiles": "Types de fichiers supportés : ",
   "evidencePage.title": "Preuves à l'appui",
@@ -347,6 +348,5 @@
   "whenDidItStart.pastMonth": "Au cours du dernier mois",
   "whenDidItStart.pastWeek": "Au cours de la dernière semaine",
   "whenDidItStart.pastYear": "Il y a moins d’un an",
-  "whenDidItStart.today": "Aujourd’hui",
-  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
+  "whenDidItStart.today": "Aujourd’hui"
 }

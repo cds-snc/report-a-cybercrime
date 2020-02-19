@@ -24,23 +24,26 @@ export const CancelPage = () => {
           <H1 mb={6}>
             <Trans id="cancelPage.title" />
           </H1>
-          <P><Trans id="cancelPage.summary" /></P>
-          <Box><ButtonLink
-            mt="auto"
-            variantColor="gray"
-            color="white"
-            title={i18n._('cancelPage.feedbackButton.aria')}
-            to="/finalFeedback"
-          >
-            <Trans id="cancelPage.feedbackButton" />
-            <Icon
-              focusable="false"
-              ml={2}
-              mr={-2}
-              name="chevron-right"
-              size="28px"
-            />
-          </ButtonLink>
+          <P>
+            <Trans id="cancelPage.summary" />
+          </P>
+          <Box>
+            <ButtonLink
+              mt="auto"
+              variantColor="gray"
+              color="white"
+              title={i18n._('cancelPage.feedbackButton.aria')}
+              to="/finalFeedback"
+            >
+              <Trans id="cancelPage.feedbackButton" />
+              <Icon
+                focusable="false"
+                ml={2}
+                mr={-2}
+                name="chevron-right"
+                size="28px"
+              />
+            </ButtonLink>
           </Box>
           <Box w="100%">
             <Layout>

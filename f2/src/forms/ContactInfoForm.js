@@ -46,7 +46,13 @@ export const ContactInfoForm = ({ onSubmit }) => {
               textAlign="center"
             >
               <Trans id="contactinfoPage.skipButton" />
-              <Icon focusable="false" ml={2} mr={-2} name="chevron-right" size="28px" />
+              <Icon
+                focusable="false"
+                ml={2}
+                mr={-2}
+                name="chevron-right"
+                size="28px"
+              />
             </Button>
           </Flex>
           <Field name="fullName">
