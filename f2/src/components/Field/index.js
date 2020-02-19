@@ -8,7 +8,14 @@ import { Field as FieldAdapter } from 'react-final-form'
 import { UniqueID } from '../unique-id'
 import { Input } from '../input'
 
-export const Field = ({ name, label, helperText, errorMessage, component }) => {
+export const Field = ({
+  name,
+  label,
+  helperText,
+  errorMessage,
+  component,
+  ...props
+}) => {
   return (
     <UniqueID>
       {id => {
@@ -17,9 +24,14 @@ export const Field = ({ name, label, helperText, errorMessage, component }) => {
             <FormLabel id={id} htmlFor={name}>
               {label}
             </FormLabel>
-            <FormHelperText>{helperText}</FormHelperText>
+            {helperText && <FormHelperText>{helperText}</FormHelperText>}
             <FormErrorMessage>{errorMessage}</FormErrorMessage>
-            <FieldAdapter name={name} id={name} component={component} />
+            <FieldAdapter
+              name={name}
+              id={name}
+              component={component}
+              {...props}
+            />
           </FormControl>
         )
       }}
