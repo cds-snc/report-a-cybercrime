@@ -101,9 +101,10 @@ const formatNarrative = data => {
       'I lost:                  ',
       data.personalInformation.infoObtainedOther,
     ) +
-    formatLine('Affected devices:        ', data.devicesInfo.deviceOrAccount) +
+    formatLine('Affected device:        ', data.devicesInfo.device) +
+    formatLine('Affected account:       ', data.devicesInfo.account) +
     formatLine(
-      'Affected devices:        ',
+      'Affected device/account: ',
       data.devicesInfo.devicesTellUsMore,
     ) +
     formatLine('Affected finances:       ', data.moneyLost.tellUsMore) +
@@ -119,7 +120,8 @@ const formatNarrative = data => {
   delete data.whatHappened.whatHappened
   delete data.personalInformation.infoReqOther
   delete data.personalInformation.infoObtainedOther
-  delete data.devicesInfo.deviceOrAccount
+  delete data.devicesInfo.device
+  delete data.devicesInfo.account
   delete data.moneyLost.tellUsMore
   delete data.personalInformation.tellUsMore
   delete data.devicesInfo.devicesTellUsMore
