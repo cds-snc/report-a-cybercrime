@@ -4,12 +4,12 @@ import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Lead } from './components/paragraph'
-import { TrackPageViews } from './TrackPageViews'
 import { SuspectCluesForm } from './forms/SuspectCluesForm'
 import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { Page } from './components/Page'
 
 export const SuspectCluesPage = () => {
   const [data, dispatch] = useStateValue()
@@ -18,30 +18,33 @@ export const SuspectCluesPage = () => {
   return (
     <Route
       render={({ history }) => (
-        <Layout>
-          <TrackPageViews />
-
-          <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/whathappened">
-              <Trans id="suspectClues.backButton" />
-            </BackButton>  
-              <H1 >
+        <Page>
+          <Layout columns={{ base: 4 / 4, md: 6 / 8 }}>
+            <Stack spacing={10} shouldWrapChildren>
+              <BackButton route="/whathappened">
+                <Trans id="suspectClues.backButton" />
+              </BackButton>
+              <H1>
                 <Trans id="suspectClues.title" />
               </H1>
-            <Stack spacing={4}>
-              <Lead>
-                <Trans id="suspectClues.intro" />
-              </Lead>
-            </Stack>
+              <Stack spacing={4}>
+                <Lead>
+                  <Trans id="suspectClues.intro" />
+                </Lead>
+              </Stack>
 
-            <SuspectCluesForm
-              onSubmit={data => {
-                dispatch({ type: 'saveFormData', data: { suspectClues: data } })
-                history.push(doneForms ? '/confirmation' : '/evidence')
-              }}
-            />
-          </Stack>
-        </Layout>
+              <SuspectCluesForm
+                onSubmit={data => {
+                  dispatch({
+                    type: 'saveFormData',
+                    data: { suspectClues: data },
+                  })
+                  history.push(doneForms ? '/confirmation' : '/evidence')
+                }}
+              />
+            </Stack>
+          </Layout>
+        </Page>
       )}
     />
   )

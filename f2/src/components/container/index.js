@@ -19,7 +19,7 @@ export const InfoCard = props => (
 
 export const LandingBox = props => (
   <Column
-    columns={{ base: 4 / 4, md: 4 / 8, lg: 4 / 12 }}
+    columns={{ base: 4 / 4, md: 4 / 8 }}
     alignItems="flex-start"
     bg="gray.300"
     borderColor="gray.400"

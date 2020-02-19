@@ -4,13 +4,6 @@ import { Container } from '../container'
 import { Flex, Stack } from '@chakra-ui/core'
 
 export const Layout = ({ fluid, columns, noEffect, ...props }) => {
-  const col = {
-    base: columns.base * 100 + '%',
-    md: columns.md * 100 + '%',
-    lg: columns.lg * 100 + '%',
-    xl: columns.xl * 100 + '%',
-  }
-
   // scroll to the top of the page when this Layout renders
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -28,7 +21,9 @@ export const Layout = ({ fluid, columns, noEffect, ...props }) => {
           })}
       {...props}
     >
-      <Container w={col}>{props.children}</Container>
+      <Row>
+        <Column columns={columns}>{props.children}</Column>
+      </Row>
     </Container>
   )
 }
