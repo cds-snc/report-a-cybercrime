@@ -4,7 +4,7 @@ Given('I open the report home page', () => {
 
 });
 
-When('Inject axe and check for accessibility issues', () => {
+Then('Inject axe and check for accessibility issues', () => {
        // Inject the axe-core library
        cy.injectAxe();
        // first a11y test
