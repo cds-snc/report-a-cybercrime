@@ -58,9 +58,6 @@ const uploadData = async (req, res, fields, files) => {
   await scanFiles(data)
 
   contentModeratorFiles(data, () => save(data, res))
-
-  // Save the data, e-mail it, etc.. This is async to avoid holding up nodejs from other requests
-  save(data, res)
 }
 
 let count = 0
