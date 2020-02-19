@@ -2,44 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
+import { Form, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { CheckboxAdapter } from '../components/checkbox'
 import { RadioAdapter } from '../components/radio'
-import { Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, Box, Alert, AlertIcon, FormControl } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormLabel } from '../components/FormLabel'
-import { ConditionalForm } from '../components/container'
+import { FormArrayControl } from '../components/FormArrayControl'
+import { TextArea } from '../components/text-area'
 import { P } from '../components/paragraph'
 import { TextInput } from '../components/TextInput'
-
-const Control = ({ name, ...rest }) => {
-  const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
-  return <FormControl {...rest} isInvalid={error && touched} />
-}
-
-const CheckboxArrayControl = ({ name, value, defaultIsChecked, children }) => {
-  const {
-    input: { checked, ...input },
-    meta: { error, touched },
-  } = useField(name, {
-    type: 'checkbox', // important for RFF to manage the checked prop
-    value, // important for RFF to manage list of strings
-    defaultIsChecked,
-  })
-
-  return (
-    <Checkbox {...input} isChecked={checked} isInvalid={error && touched}>
-      {children}
-    </Checkbox>
-  )
-}
-
-import { FormArrayControl } from '../components/FormArrayControl'
-import { Field } from '../components/Field'
-import { TextArea } from '../components/text-area'
+import { FormLabel } from '../components/FormLabel'
 
 const validate = () => {
   return {}
@@ -138,7 +111,7 @@ export const HowDidItStartForm = props => {
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
-            spacing={6}
+            spacing={4}
           >
             <FormArrayControl
               name="howDidTheyReachYou"
@@ -155,11 +128,21 @@ export const HowDidItStartForm = props => {
                       isChecked={howdiditstart.howDidTheyReachYou.includes(
                         question.channel,
                       )}
-                    </Box>
-                  )
-                })}
-              </Stack>
-            </Control>
+                      conditionalField={
+                        <Field
+                          name={question.name}
+                          label={<Trans id={question.label} />}
+                          helperText={<Trans id={question.hint} />}
+                          component={TextArea}
+                        />
+                      }
+                    >
+                      {i18n._(question.channel)}
+                    </CheckboxAdapter>
+                  </React.Fragment>
+                )
+              })}
+            </FormArrayControl>
 
             <Stack>
               <P fontWeight="bold">
@@ -184,6 +167,7 @@ export const HowDidItStartForm = props => {
                         w={70}
                         h={36}
                         mt={2}
+                        maxLength="2"
                       />
                     </FormLabel>
                   </FormControl>
@@ -202,6 +186,7 @@ export const HowDidItStartForm = props => {
                         w={70}
                         h={36}
                         mt={2}
+                        maxLength="2"
                       />
                     </FormLabel>
                   </FormControl>
@@ -220,67 +205,13 @@ export const HowDidItStartForm = props => {
                         w={110}
                         h={36}
                         mt={2}
+                        maxLength="4"
                       />
                     </FormLabel>
                   </FormControl>
                 )}
               </Field>
             </Stack>
-
-            <Control as="fieldset" name="howManyTimes">
-              <FormLabel as="legend" htmlFor="howManyTimes" mb={2}>
-                <Trans id="howManyTimes.label" />
-              </FormLabel>
-              <Stack spacing={4} shouldWrapChildren>
-                {howManyTimes.map(key => {
-                  return (
-                    <Box key={key}>
-                      <RadioButtonArrayControl
-                        name="howManyTimes"
-                        value={key}
-                        isChecked={recurrenceCheck.howManyTimes.includes(key)}
-                      >
-                        {i18n._(key)}
-                      </RadioButtonArrayControl>
-                    </Box>
-                  )
-                })}
-              </Stack>
-            </Control>
-                      conditionalField={
-                        <Field
-                          name={question.name}
-                          label={<Trans id={question.label} />}
-                          helperText={<Trans id={question.hint} />}
-                          component={TextArea}
-                        />
-                      }
-                    >
-                      {i18n._(question.channel)}
-                    </CheckboxAdapter>
-                  </React.Fragment>
-                )
-              })}
-            </FormArrayControl>
-
-            <FormArrayControl
-              name="whenDidItStart"
-              label={<Trans id="whenDidItStart.label" />}
-            >
-              {whenDidItStart.map(key => {
-                return (
-                  <React.Fragment key={key}>
-                    <RadioAdapter
-                      name="whenDidItStart"
-                      value={key}
-                      isChecked={timeline.whenDidItStart.includes(key)}
-                    >
-                      {i18n._(key)}
-                    </RadioAdapter>
-                  </React.Fragment>
-                )
-              })}
-            </FormArrayControl>
 
             <FormArrayControl
               name="howManyTimes"
@@ -304,7 +235,6 @@ export const HowDidItStartForm = props => {
               <AlertIcon name="info-outline" color="blue.800" />
               <Trans id="howDidItStartPage.tip" />
             </Alert>
-
             <NextAndCancelButtons
               next={<Trans id="howDidItStartPage.nextPage" />}
               button={<Trans id="howDidItStartPage.nextButton" />}

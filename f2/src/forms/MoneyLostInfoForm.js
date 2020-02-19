@@ -166,6 +166,7 @@ export const MoneyLostInfoForm = props => {
                         w={70}
                         h={36}
                         mt={2}
+                        maxLength="2"
                       />
                     </FormLabel>
                   </FormControl>
@@ -184,6 +185,7 @@ export const MoneyLostInfoForm = props => {
                         w={70}
                         h={36}
                         mt={2}
+                        maxLength="2"
                       />
                     </FormLabel>
                   </FormControl>
@@ -202,6 +204,7 @@ export const MoneyLostInfoForm = props => {
                         w={110}
                         h={36}
                         mt={2}
+                        maxLength="4"
                       />
                     </FormLabel>
                   </FormControl>
