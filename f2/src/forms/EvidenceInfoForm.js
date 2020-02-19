@@ -12,7 +12,7 @@ import { FileUpload } from '../components/file-upload'
 import { Box, Stack, VisuallyHidden, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
-import { Link, ButtonLink } from '../components/link'
+import { ButtonLink } from '../components/link'
 import { Text } from '../components/text'
 import { Field } from '../components/Field'
 
