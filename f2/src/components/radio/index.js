@@ -32,6 +32,8 @@ export const Radio = ({
   conditionalField,
   ...props
 }) => {
+  const isCheckedAndHasCondition = isChecked && props.conditionalField
+
   return (
     <UniqueID>
       {id => {
@@ -39,10 +41,10 @@ export const Radio = ({
           <React.Fragment>
             <Flex as="label" id={id} align="center">
               <VisuallyHidden
-                {...input}
                 as="input"
                 type="radio"
                 defaultChecked={isChecked ? 'true' : ''}
+                {...input}
               />
 
               <ControlBox
@@ -76,7 +78,9 @@ export const Radio = ({
                 {props.children}
               </Text>
             </Flex>
-            {isChecked && <ConditionalForm>{conditionalField}</ConditionalForm>}
+            {isCheckedAndHasCondition && (
+              <ConditionalForm>{conditionalField}</ConditionalForm>
+            )}
           </React.Fragment>
         )
       }}

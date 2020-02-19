@@ -1,9 +1,11 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { useLingui } from '@lingui/react'
 import { Route } from 'react-router-dom'
 import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
+import { P } from './components/paragraph'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { ConfirmationSummary } from './ConfirmationSummary'
@@ -11,21 +13,6 @@ import { ConfirmationForm } from './forms/ConfirmationForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { generateReportId } from './utils/generateReportId'
-
-const randLetter = () => {
-  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  return letters[Math.floor(Math.random() * letters.length)]
-}
-const randDigit = () => Math.floor(Math.random() * 10)
-
-const randomizeString = s =>
-  s
-    ? s
-        .replace(/[a-z]/g, () => randLetter())
-        .replace(/[A-Z]/g, () => randLetter().toUpperCase())
-        .replace(/[0-9]/g, () => randDigit())
-    : s
 
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
@@ -34,7 +21,8 @@ async function postData(url = '', data = {}) {
   // add the files to the formdata object after.
   var form_data = new FormData()
   form_data.append('json', JSON.stringify(data))
-  data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
+  if (data.evidence)
+    data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
 
   // Default options are marked with *
   const response = await fetch(url, {
@@ -46,17 +34,12 @@ async function postData(url = '', data = {}) {
     referrer: 'no-referrer',
     body: form_data,
   })
-  return await response
+  return response
 }
 
-const prepFormData = formData => {
-  let contactInfo = formData.contactInfo ? formData.contactInfo : {}
-  let { fullName, email, postalCode } = contactInfo
-  fullName = randomizeString(fullName)
-  email = randomizeString(email)
-  postalCode = randomizeString(postalCode)
-
+const prepFormData = (formData, language) => {
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.financial',
     )
@@ -64,36 +47,42 @@ const prepFormData = formData => {
     formData.moneyLost = {
       demandedMoney: '',
       moneyTaken: '',
-      methodPayment: '',
+      methodPayment: [],
       transactionDate: '',
       tellUsMore: '',
     }
   }
 
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.personal_information',
     )
   ) {
     formData.personalInformation = {
-      typeOfInfoReq: '',
-      typeOfInfoObtained: '',
+      typeOfInfoReq: [],
+      infoReqOther: '',
+      typeOfInfoObtained: [],
+      infoObtainedOther: '',
       tellUsMore: '',
     }
   }
 
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.devices',
     )
   ) {
     formData.devicesInfo = {
-      deviceOrAccount: '',
+      device: '',
+      account: '',
       devicesTellUsMore: '',
     }
   }
 
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.business_assets',
     )
@@ -105,21 +94,20 @@ const prepFormData = formData => {
 
   return {
     ...formData,
-    contactInfo: {
-      fullName,
-      email,
-      postalCode,
-    },
+    language,
   }
 }
 
-const submitToServer = async data => {
+const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
-  await postData('/submit', data)
+  const response = await postData('/submit', data)
+  const reportId = await response.text()
+  dispatch({ type: 'saveFormData', data: { reportId } })
 }
 
 export const ConfirmationPage = () => {
   const [{ formData }, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
+  const { i18n } = useLingui()
 
   return (
     <Route
@@ -133,16 +121,13 @@ export const ConfirmationPage = () => {
             <H1>
               <Trans id="confirmationPage.title" />
             </H1>
+            <P>
+              <Trans id="confirmationPage.intro" />
+            </P>
             <ConfirmationSummary />
             <ConfirmationForm
               onSubmit={() => {
-                const reportId = generateReportId()
-                dispatch({
-                  type: 'saveFormData',
-                  data: { reportId },
-                })
-                let data = prepFormData(formData, reportId)
-                submitToServer({ ...data, reportId }) // pass reportId to protect against dispatch race condition
+                submitToServer(prepFormData(formData, i18n.locale), dispatch)
                 history.push('/thankYouPage')
               }}
             />

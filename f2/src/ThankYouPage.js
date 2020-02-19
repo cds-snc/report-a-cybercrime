@@ -3,17 +3,18 @@ import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
-import { A } from './components/link'
+import { A, ButtonLink } from './components/link'
 import { Link } from './components/link'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
-import { InfoCard } from './components/container'
+import { InfoCard, LandingBox } from './components/container'
 import { TrackPageViews } from './TrackPageViews'
-import { Layout } from './components/layout'
+import { Layout, Row } from './components/layout'
 import { Text } from './components/text'
-import { Stack, Icon, Alert, AlertIcon, Box } from '@chakra-ui/core'
-import { Link as Route } from 'react-router-dom'
+import { Stack, Alert, AlertIcon, Box, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { P } from './components/paragraph'
+import { Route } from 'react-router-dom'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
@@ -23,40 +24,51 @@ export const ThankYouPage = () => {
   const contactInfo = {
     ...data.formData.contactInfo,
   }
+
+  const [, dispatch] = useStateValue()
+
   return (
     <Box w="100%">
-      <Stack spacing={-10} w="100%">
+      <Stack spacing={10} w="100%">
         <Layout>
           <TrackPageViews />
-          <InfoCard
-            bg="green.900"
-            rounded="5px"
-            boxShadow="lg"
-            color="green.200"
-            maxW={{ lg: '80%', xl: '60%' }}
-            z-index="10"
-            position="relative"
-          >
-            <H1 mb={6}>
-              <Trans id="thankYouPage.title" />
-            </H1>
-            {contactInfo.email && <Trans id="thankYouPage.summary" />}
-
-            <Trans
-              id="thankYouPage.referenceNumber"
-              values={{
-                reference: state.formData.reportId
-                  ? state.formData.reportId
-                  : '< report ID >',
-              }}
+          <Row>
+            <InfoCard
+              bg="green.200"
+              color="black"
+              borderColor="green.400"
+              spacing={6}
             >
-              <Text as="span" color="yellow.200" fontSize="xl" />
-            </Trans>
-          </InfoCard>
+              <H1 mb={6}>
+                <Trans id="thankYouPage.title" />
+              </H1>
+              <P fontSize="lg">
+                <Trans
+                  id="thankYouPage.referenceNumber"
+                  values={{
+                    reference: state.formData.reportId
+                      ? state.formData.reportId
+                      : '< report ID >',
+                  }}
+                >
+                  <Text as="span" d="block" fontSize="2xl" />
+                </Trans>
+              </P>
+            </InfoCard>
+          </Row>
+
+          {contactInfo.email && <Trans id="thankYouPage.summary" />}
         </Layout>
-        <Layout fluid bg="gray.200" pt={20} pb={10}>
+        <Layout fluid bg="gray.200" py={10}>
           <Layout>
             <Stack spacing={4} shouldWrapChildren>
+              <H2>
+                <Trans id="thankYouPage.whatNextHeading" />
+              </H2>
+              <P>
+                <Trans id="thankYouPage.whatNextParagraph" />
+              </P>
+
               <H2>
                 <Trans id="thankYouPage.helpResource" />
               </H2>
@@ -65,22 +77,11 @@ export const ThankYouPage = () => {
                   <A
                     href={
                       i18n.locale === 'en'
-                        ? 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-eng.htm'
-                        : 'http://www.rcmp-grc.gc.ca/ccaps-spcca/vic-fra.htm'
+                        ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
+                        : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
                     }
                   >
                     <Trans id="thankYouPage.helpResource1" />
-                  </A>
-                </Li>
-                <Li>
-                  <A
-                    href={
-                      i18n.locale === 'en'
-                        ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
-                        : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
-                    }
-                  >
-                    <Trans id="thankYouPage.helpResource2" />
                   </A>
                 </Li>
                 <Li>
@@ -91,44 +92,19 @@ export const ThankYouPage = () => {
                         : 'http://www.antifraudcentre.ca/index-fra.htm'
                     }
                   >
-                    <Trans id="thankYouPage.helpResource3" />
+                    <Trans id="thankYouPage.helpResource2" />
                   </A>
                 </Li>
-              </Ul>
-
-              <H2>
-                <Trans id="thankYouPage.otherReportOption" />
-              </H2>
-              <Ul>
                 <Li>
-                  <Trans id="thankYouPage.otherReportOption1" />
-                </Li>
-
-                <Li>
-                  <Trans id="thankYouPage.otherReportOption2" />
-                </Li>
-
-                <Li>
-                  <Trans id="thankYouPage.otherReportOption3" />
-                </Li>
-
-                <Li>
-                  <Trans id="thankYouPage.otherReportOption4">
-                    <A
-                      href={
-                        i18n.locale === 'en'
-                          ? 'https://www.consumer.equifax.ca/personal/'
-                          : 'https://www.consumer.equifax.ca/personnel/'
-                      }
-                    />
-                    <A
-                      href={
-                        i18n.locale === 'en'
-                          ? 'https://www.transunion.ca/'
-                          : 'https://www.transunion.ca/fr'
-                      }
-                    />
-                  </Trans>
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
+                        : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
+                    }
+                  >
+                    <Trans id="thankYouPage.helpResource3" />
+                  </A>
                 </Li>
               </Ul>
             </Stack>
@@ -136,27 +112,55 @@ export const ThankYouPage = () => {
         </Layout>
       </Stack>
 
-      {/*After help section*/}
+      {/* After help section*/}
       <Layout pt={10}>
-        <Alert status="success">
-          <AlertIcon mt={0} />
-          <Trans id="thankYouPage.safelyCloseWindow" />
-        </Alert>
-
-        <Link as={Route} to="/" my={8} color="black" display="block">
-          <Trans id="thankYouPage.createNewReport" />
-          <Icon name="chevron-right" />
-        </Link>
-      </Layout>
-      <Layout fluid borderBottom="4px" borderColor="blue.500">
-        <Layout>
-          <Alert status="info" variant="solid">
-            <AlertIcon name="chat" mt={0} />
-            <Link as={Route} to="/feedbackPage" color="white" display="block">
-              <Trans id="thankYouPage.feedback" />
-            </Link>
+        <Stack spacing={6}>
+          <Alert status="success">
+            <AlertIcon mt={0} />
+            <Trans id="thankYouPage.safelyCloseWindow" />
           </Alert>
-        </Layout>
+
+          <Box mb="auto">
+            <Route
+              render={({ history }) => (
+                <Link
+                  onClick={() => {
+                    dispatch({
+                      type: 'deleteFormData',
+                    })
+                  }}
+                  to="/"
+                >
+                  <Trans id="thankYouPage.createNewReport" />
+                </Link>
+              )}
+            />
+          </Box>
+
+          <Row>
+            <LandingBox spacing={10}>
+              <H2>
+                <Trans id="thankYouPage.feedback" />
+              </H2>
+              <ButtonLink
+                mt="auto"
+                variantColor="gray"
+                color="white"
+                title={i18n._('thankYouPage.feedbackButton.aria')}
+                to="/finalFeedback"
+              >
+                <Trans id="thankYouPage.feedbackButton" />
+                <Icon
+                  focusable="false"
+                  ml={2}
+                  mr={-2}
+                  name="chevron-right"
+                  size="28px"
+                />
+              </ButtonLink>
+            </LandingBox>
+          </Row>
+        </Stack>
       </Layout>
     </Box>
   )
