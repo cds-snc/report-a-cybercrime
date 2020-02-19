@@ -12,7 +12,7 @@ import { FileUpload } from '../components/file-upload'
 import { Box, Stack, VisuallyHidden, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
-import { Link } from '../components/link'
+import { Link, ButtonLink } from '../components/link'
 import { Text } from '../components/text'
 import { Field } from '../components/Field'
 
@@ -143,13 +143,9 @@ export const EvidenceInfoForm = props => {
                     }}
                     component={TextArea}
                   />
-                  <Link
-                    as="button"
-                    onClick={() => removeFile(index)}
-                    color="red.600"
-                  >
+                  <ButtonLink onClick={() => removeFile(index)} color="red.600">
                     <Trans id="evidencePage.removeFileButton" />
-                  </Link>
+                  </ButtonLink>
                 </Stack>
               ))}
               {files.length === 3 && (
