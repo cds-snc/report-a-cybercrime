@@ -9,16 +9,8 @@ import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
-import {
-  Box,
-  Stack,
-  FormControl,
-  VisuallyHidden,
-  Alert,
-  AlertIcon,
-} from '@chakra-ui/core'
+import { Box, Stack, VisuallyHidden, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormLabel } from '../components/FormLabel'
 import { P } from '../components/paragraph'
 import { Link } from '../components/link'
 import { Text } from '../components/text'
