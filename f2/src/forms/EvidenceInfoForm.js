@@ -12,7 +12,7 @@ import { FileUpload } from '../components/file-upload'
 import { Box, Stack, VisuallyHidden, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
-import { ButtonLink } from '../components/link'
+import { LinkButton } from '../components/link'
 import { Text } from '../components/text'
 import { Field } from '../components/Field'
 
@@ -143,9 +143,9 @@ export const EvidenceInfoForm = props => {
                     }}
                     component={TextArea}
                   />
-                  <ButtonLink onClick={() => removeFile(index)} color="red.600">
+                  <LinkButton onClick={() => removeFile(index)} color="red.600">
                     <Trans id="evidencePage.removeFileButton" />
-                  </ButtonLink>
+                  </LinkButton>
                 </Stack>
               ))}
               {files.length === 3 && (
@@ -161,14 +161,12 @@ export const EvidenceInfoForm = props => {
               {files.length < 3 && (
                 <React.Fragment>
                   <Box mb={4}>
-                    <FileUpload onChange={onFilesChange}>
-                      <Button
-                        leftIcon="attachment"
-                        as="div"
-                        variantColor="blue"
-                      >
-                        <Trans id="evidencePage.addFileButtom" />
-                      </Button>
+                    <FileUpload
+                      leftIcon="attachment"
+                      variantColor="blue"
+                      onChange={onFilesChange}
+                    >
+                      <Trans id="evidencePage.addFileButtom" />
                     </FileUpload>
                   </Box>
                   <Alert status="success" backgroundColor="blue.100">
