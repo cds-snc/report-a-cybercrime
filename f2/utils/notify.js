@@ -67,8 +67,30 @@ const sendUnencryptedReport = async (email, report) => {
   }
 }
 
+const submitFeedback = async data => {
+  const templateId = process.env.NOTIFY_FEEDBACK_TEMPLATE_ID
+  const email = process.env.FEEDBACK_EMAIL
+  if (!email || !templateId) {
+    console.warn(
+      `WARNING: no Notify report template ID or email was passed for feedback ${data}`,
+    )
+    return false
+  }
+  try {
+    const response = notifyClient.sendEmail(templateId, email, {
+      personalisation: { feedback: JSON.stringify(data, null, '  ') },
+    })
+    console.log('Notify: feedback email (probablty) sent!')
+    return response.body
+  } catch (err) {
+    console.error(`Notify feedback email error: ${err.message}`)
+    return false
+  }
+}
+
 module.exports = {
   notifyIsSetup,
   sendConfirmation,
   sendUnencryptedReport,
+  submitFeedback,
 }
