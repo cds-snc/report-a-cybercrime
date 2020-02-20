@@ -21,6 +21,7 @@ export const HowDidItStartSummary = props => {
     ...testdata.formData.howdiditstart,
     ...data.formData.howdiditstart,
   }
+
   if (howdiditstart.howDidTheyReachYou.length > 0) {
     //Obtain all the array data into the summary array
     howdiditstart.howDidTheyReachYou.map(key =>
@@ -103,7 +104,13 @@ export const HowDidItStartSummary = props => {
               />
               <DescriptionListItem
                 descriptionTitle="confirmationPage.whenDidItStart"
-                description={i18n._(howdiditstart.whenDidItStart)}
+                description={
+                  howdiditstart.startDay +
+                  ' ' +
+                  howdiditstart.startMonth +
+                  ' ' +
+                  howdiditstart.startYear
+                }
               />
               <DescriptionListItem
                 descriptionTitle="confirmationPage.howManyTimes"
