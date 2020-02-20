@@ -216,8 +216,9 @@ const formatAnalystEmail = dataOrig => {
       ? '\n\nExtra Fields:\n' + JSON.stringify(data, null, '  ')
       : ''
   } catch (error) {
-    console.error(`ERROR in formatAnalystEmail: ${error}`)
-    return `ERROR in formatAnalystEmail: ${error}`
+    const errorMessage = `ERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
+    console.error(errorMessage)
+    return errorMessage
   }
   return returnString + missingFields
 }
