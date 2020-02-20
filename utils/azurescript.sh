@@ -48,8 +48,9 @@ az network vnet subnet create --address-prefixes $CONTAINER_SUBNET_RANGE --name 
 ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku Premium --query id --output tsv)
 
 #### Deploy code
-## Build Docker image
+## Build Docker images
 az acr build --registry $ACR_NAME --image $IMAGE_NAME ../f2
+az acr bulid --registry $ACR_NAME --image $VIRUS_SCANNER_IMAGE_NAME 'https://github.com/cds-snc/docker-clamav.git#alpine'
 
 ## Gather credentials to access ACR
 SP_PASSWD=$(az ad sp create-for-rbac --name http://$SERVICE_PRINCIPAL_NAME --scopes $ACR_REGISTRY_ID --role acrpull --query password --output tsv)
