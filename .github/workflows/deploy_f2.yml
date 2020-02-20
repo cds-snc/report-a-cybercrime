@@ -27,12 +27,6 @@ jobs:
           npm test
         env:
           CI: true
-      - name: Run Cypress end-to-end
-        uses: cypress-io/github-action@v1
-        with:
-          # we have already installed all dependencies above
-          install: false
-          start: npm run start:cypress
   deploy:
     name: Build container and deploy
     env:
