@@ -22,7 +22,7 @@ export const HowDidItStartSummary = props => {
     ...data.formData.howdiditstart,
   }
 
-  if (howdiditstart.howDidTheyReachYou.length > 0) {
+  if (howdiditstart.howDidTheyReachYou.length > 0 )  {
     //Obtain all the array data into the summary array
     howdiditstart.howDidTheyReachYou.map(key =>
       summary.push(
@@ -40,8 +40,9 @@ export const HowDidItStartSummary = props => {
         end: i18n._('default.end'),
       })
   }
-
-  const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0
+  // const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0
+  const hasDataToDisplay = (howdiditstart.howDidTheyReachYou.length > 0 || howdiditstart.whenDidItStart.length >0
+  || howdiditstart.howManyTimes.length > 0)
 
   return (
     <React.Fragment>
