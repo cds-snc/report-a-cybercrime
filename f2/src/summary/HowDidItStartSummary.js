@@ -22,7 +22,7 @@ export const HowDidItStartSummary = props => {
     ...data.formData.howdiditstart,
   }
 
-  if (howdiditstart.howDidTheyReachYou.length > 0 )  {
+  if (howdiditstart.howDidTheyReachYou.length > 0) {
     howdiditstart.howDidTheyReachYou.map(key =>
       summary.push(
         key === 'howDidTheyReachYou'
@@ -40,9 +40,7 @@ export const HowDidItStartSummary = props => {
       })
   }
 
-  // make data display  in the confirmation page even only "when did it start " and "how many times did this happen" have data.
-
-  const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0 
+  const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0
 
   return (
     <React.Fragment>
