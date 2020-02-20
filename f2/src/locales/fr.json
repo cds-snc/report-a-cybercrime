@@ -351,9 +351,5 @@
   "whenDidItStart.labelExample": "Par exemple : 26 02 2020",
   "whenDidItStart.startDay": "Jour",
   "whenDidItStart.startMonth": "Mois",
-  "whenDidItStart.startYear": "Année",
-  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
-
+  "whenDidItStart.startYear": "Année"
 }
-
- 

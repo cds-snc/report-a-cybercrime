@@ -176,7 +176,7 @@ export const HowDidItStartForm = props => {
               <Field name="startMonth">
                 {props => (
                   <FormControl>
-                    <FormLabel htmlFor="startnMonth">
+                    <FormLabel htmlFor="startMonth">
                       <Trans id="whenDidItStart.startMonth" />
                       <TextInput
                         id="startMonth"
