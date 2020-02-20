@@ -8,6 +8,7 @@ import { FormControl, Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { Text } from '../components/text'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -21,8 +22,14 @@ const validate = () => {
 }
 
 export const whatWasAffectedPages = [
-  { key: 'whatWasAffectedForm.financial', url: 'moneylost' },
-  { key: 'whatWasAffectedForm.personal_information', url: 'information' },
+  {
+    key: 'whatWasAffectedForm.financial',
+    url: 'moneylost',
+  },
+  {
+    key: 'whatWasAffectedForm.personal_information',
+    url: 'information',
+  },
   { key: 'whatWasAffectedForm.devices', url: 'devices' },
   { key: 'whatWasAffectedForm.business_assets', url: 'business' },
   { key: 'whatWasAffectedForm.other', url: '' },
@@ -50,6 +57,11 @@ export const WhatWasAffectedForm = props => {
           <Trans id="whatWasAffectedForm.devices" />
           <Trans id="whatWasAffectedForm.business_assets" />
           <Trans id="whatWasAffectedForm.other" />
+          <Trans id="whatWasAffectedForm.financial.example" />
+          <Trans id="whatWasAffectedForm.personal_information.example" />
+          <Trans id="whatWasAffectedForm.devices.example" />
+          <Trans id="whatWasAffectedForm.business_assets.example" />
+          <Trans id="whatWasAffectedForm.other.example" />
         </div>
       ) : null}
 
@@ -70,37 +82,34 @@ export const WhatWasAffectedForm = props => {
             shouldWrapChildren
             spacing={6}
           >
-            <Control as="fieldset" name="affectedOptions">
-              <FormArrayControl
-                name="affectedOptions"
-                label={<Trans id="whatWasAffectedForm.optionsTitle" />}
-                helperText={<Trans id="whatWasAffectedForm.optionsHelpText" />}
-              >
-                {affectedOptions.map(key => {
-                  return (
-                    <React.Fragment key={key}>
-                      <CheckboxAdapter
-                        name="affectedOptions"
-                        value={key}
-                        isChecked={whatWasAffected.affectedOptions.includes(
-                          key,
-                        )}
-                      >
-                        {i18n._(key)}
-                      </CheckboxAdapter>
-                    </React.Fragment>
-                  )
-                })}
-                {showWarning ? (
-                  <Control>
-                    <Alert status="warning">
-                      <AlertIcon />
-                      <Trans id="whatWasAffectedForm.warning" />
-                    </Alert>
-                  </Control>
-                ) : null}
-              </FormArrayControl>
-            </Control>
+            <FormArrayControl
+              name="affectedOptions"
+              label={<Trans id="whatWasAffectedForm.optionsTitle" />}
+              helperText={<Trans id="whatWasAffectedForm.optionsHelpText" />}
+            >
+              {affectedOptions.map(key => {
+                return (
+                  <React.Fragment key={key}>
+                    <CheckboxAdapter
+                      name="affectedOptions"
+                      value={key}
+                      isChecked={whatWasAffected.affectedOptions.includes(key)}
+                    >
+                      {i18n._(key)}
+                      <Text fontSize="sm">
+                        {<Trans id={`${key}.example`} />}
+                      </Text>
+                    </CheckboxAdapter>
+                  </React.Fragment>
+                )
+              })}
+              {showWarning ? (
+                <Alert status="warning">
+                  <AlertIcon />
+                  <Trans id="whatWasAffectedForm.warning" />
+                </Alert>
+              ) : null}
+            </FormArrayControl>
             <NextAndCancelButtons
               next={<Trans id="whatWasAffectedForm.nextPage" />}
               button={<Trans id="whatWasAffectedForm.nextButton" />}
