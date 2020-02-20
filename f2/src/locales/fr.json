@@ -119,7 +119,7 @@
   "evidencePage.detail3": "Des documents où sont écrites les demandes du suspect.",
   "evidencePage.details": "Si toutefois vous le pouvez, incluez des indices tels que :",
   "evidencePage.fileDescription": "Décrivez ce que montre ce fichier.",
-  "evidencePage.fileSize": "Vous pouvez ajouter un maximum de 3 fichiers, chacun d’une taille maximale de 4 MB.",
+  "evidencePage.fileSize": "Vous pouvez ajouter un maximum de 3 fichiers, chacun d’une taille maximale de 4 Mo.",
   "evidencePage.fileTypes": ".png, .jpeg, .doc, .xls, .pdf, et .txt.",
   "evidencePage.fileWarning": "Les fichiers seront vérifiés pour s’assurer que leur contenu est approprié.",
   "evidencePage.intro": "Ce n’est pas grave si vous n’avez pas conservé de documents liés à l’incident. Vous pouvez passer à la section suivante.",
@@ -155,7 +155,7 @@
   "howDidItStartPage.nextPage": "Étape suivante : D’après vous, quelles pourraient être les répercussions?",
   "howDidItStartPage.tip": "Si l’incident se reproduit, évitez autant que possible d’entrer en contact avec le suspect.",
   "howDidItStartPage.title": "Comment l'incident a-t-il commencé?",
-  "howDidTheyReachYou.app": "Sur un logiciel ou une application mobile",
+  "howDidTheyReachYou.app": "Sur une application",
   "howDidTheyReachYou.email": "Par courriel",
   "howDidTheyReachYou.online": "Sur un site Web",
   "howDidTheyReachYou.others": "Autre",
@@ -191,7 +191,7 @@
   "landingPage.intro": "Votre signalement aidera la <0>Gendarmerie royale du Canada</0> et le <1>Centre antifraude du Canada</1> à en apprendre plus sur ces types d’incidents.",
   "landingPage.nextButton.callNow": "Appeler maintenant",
   "landingPage.nextButton.reportNow": "Signaler maintenant",
-  "landingPage.onlineIntro": "Essayez le nouveau questionnaire pour signaler un incident.",
+  "landingPage.onlineIntro": "Essayez le nouveau site Web qui vous permet de signaler un incident.",
   "landingPage.phoneDays": "Lundi au vendredi",
   "landingPage.phoneNumber": "1-888-495-8501",
   "landingPage.phoneTimes": "10 h à 16 h 45 (HNE)",
@@ -229,7 +229,7 @@
   "midFeedback.problem.worry": "Je m’inquiète de la manière dont mes renseignements pourraient être utilisés.",
   "midFeedback.submit": "Soumettre",
   "midFeedback.summary": "Un problème sur cette page?",
-  "midFeedback.title": "Un problème sur cette page??",
+  "midFeedback.title": "Un problème sur cette page?",
   "moneyLostPage.backButton": "Retour",
   "moneyLostPage.demandedMoney": "Combien d’argent le suspect vous a-t-il demandé?",
   "moneyLostPage.demandedMoneyExample": "Par exemple : 1200 $ CAD, 10 Bitcoin",
@@ -239,7 +239,7 @@
   "moneyLostPage.moneyTakenExample": "Par exemple : 5000 $ CAD, 250 EUR",
   "moneyLostPage.nextButton": "Continuer",
   "moneyLostPage.nextStepDetail": "Étape suivante : Précisions sur les répercussions",
-  "moneyLostPage.selectMethod": "Sélectionnez la méthode de transfert d’argent utilisées.",
+  "moneyLostPage.selectMethod": "Sélectionnez la méthode de transfert d’argent utilisée.",
   "moneyLostPage.tellUsMore": "Comment vous a-t-on demandé et volé de l’argent?",
   "moneyLostPage.tellUsMoreExample": "Fournissez des détails sur ce qui a été dit ou fait pour que cela se produise.",
   "moneyLostPage.tip": "Vous pouvez également essayer de contacter votre institution financière, votre compagnie de carte de crédit ou votre compagnie d’assurance.",
@@ -307,7 +307,7 @@
   "thankYouPage.createNewReport": "Créer un nouveau rapport",
   "thankYouPage.feedback": "Avez-vous des commentaires pour améliorer le site?",
   "thankYouPage.feedbackButton": "Dites nous en plus",
-  "thankYouPage.helpResource": "Où vous pouvez obtenir de l’aide :",
+  "thankYouPage.helpResource": "Où vous pouvez obtenir de l’aide",
   "thankYouPage.helpResource1": "Découvrez comment vous pouvez vous protéger à l’avenir.",
   "thankYouPage.helpResource2": "Tenez-vous à jour sur les fraudes les plus communes.",
   "thankYouPage.helpResource3": "Trouvez des astuces pour prévenir les crimes informatiques.",
@@ -316,7 +316,7 @@
   "thankYouPage.summary": "Nous vous avons envoyé un courriel de confirmation. ",
   "thankYouPage.title": "Merci de votre signalement",
   "thankYouPage.whatNextHeading": "Que se passe-t-il ensuite?",
-  "thankYouPage.whatNextParagraph": "We will analyze your report and combine it with others that are similar. You can always add more detail by calling the Canadian Anti-Fraud Centre at 1-888-495-8501.",
+  "thankYouPage.whatNextParagraph": "Nous analyserons votre rapport et le combinerons à d’autres semblables. Conservez votre numéro de référence. Vous pouvez l’utiliser pour ajouter plus de détail en communiquant avec le Centre antifraude du Canada au 1-888-495-8501.",
   "typeOfInfoObtained.creditCard": "Informations sur la carte de crédit ou informations bancaires",
   "typeOfInfoObtained.dob": "Date de naissance",
   "typeOfInfoObtained.homeAddress": "Adresse du domicile",
@@ -355,3 +355,5 @@
   "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
 
 }
+
+ 
