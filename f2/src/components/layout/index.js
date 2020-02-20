@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Container } from '../container'
-import { Flex, Stack, Box } from '@chakra-ui/core'
+import { Flex, Stack } from '@chakra-ui/core'
 
 export const Layout = ({ fluid, columns, noEffect, ...props }) => {
   // scroll to the top of the page when this Layout renders
@@ -32,9 +32,8 @@ export const Column = ({ columns, ...props }) => {
   const col = {}
   //Turn fractions into %
   Object.keys(columns).map(key => {
-    col[key] = columns[key] * 100 + '%'
+    return (col[key] = columns[key] * 100 + '%')
   })
-  console.log(props)
 
   // Keep width and mx after props to prevent them being overwritten
   return (
