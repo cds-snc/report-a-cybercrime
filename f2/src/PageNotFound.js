@@ -6,10 +6,6 @@ import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { Page } from './components/Page'
 
-const CenterContent = styled('div')`
-  text-align: center;
-`
-
 export const PageNotFound = () => (
   <Page>
     <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>

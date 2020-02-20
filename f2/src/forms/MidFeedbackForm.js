@@ -10,7 +10,6 @@ import { FormLabel } from '../components/FormLabel'
 import { FormHelperText } from '../components/FormHelperText'
 import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
-import { submitToServer } from '../utils/submitToServer'
 import { InfoCard } from '../components/container'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
@@ -23,12 +22,15 @@ const Control = ({ name, ...rest }) => {
   return <FormControl {...rest} isInvalid={error && touched} />
 }
 
-export const MidFeedbackForm = () => {
+export const MidFeedbackForm = props => {
   const [status, setStatus] = useState('')
 
-  const onSubmit = data => {
-    submitToServer(data)
+  const onChangeStatus = () => {
     setStatus('feedback.submitted')
+  }
+
+  const validate = () => {
+    return {}
   }
 
   const { i18n } = useLingui()
@@ -40,6 +42,8 @@ export const MidFeedbackForm = () => {
     'midFeedback.problem.worry',
     'midFeedback.problem.other',
   ]
+
+  let showWarning = false
 
   return (
     <React.Fragment>
@@ -91,9 +95,22 @@ export const MidFeedbackForm = () => {
               <Trans id="midFeedback.title" />
             </H1>
             <Form
-              d="block"
-              onSubmit={onSubmit}
-              render={({ handleSubmit }) => (
+              initialValues={{
+                midFeedback: [],
+                problemDescription: '',
+              }}
+              onSubmit={values => {
+                if (
+                  values.midFeedback.length === 0 &&
+                  values.problemDescription.length === 0
+                ) {
+                  showWarning = true
+                } else {
+                  props.onSubmit(values)
+                }
+              }}
+              validate={validate}
+              render={({ handleSubmit, values }) => (
                 <Stack
                   as="form"
                   onSubmit={handleSubmit}
@@ -148,6 +165,7 @@ export const MidFeedbackForm = () => {
                     type="submit"
                     w={{ base: '100%', md: 'auto' }}
                     variantColor="blue"
+                    onChange={onChangeStatus}
                   >
                     <Trans id="midFeedback.submit" />
                   </Button>

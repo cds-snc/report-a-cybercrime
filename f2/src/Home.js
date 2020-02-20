@@ -23,7 +23,6 @@ import { StartPage } from './StartPage'
 import { ConfirmCancelPage } from './ConfirmCancelPage'
 import { CancelPage } from './CancelPage'
 import { TermsAndConditions } from './TermsAndConditions'
-import { MidFeedbackForm } from './forms/MidFeedbackForm'
 
 export const Home = () => (
   <Router>
