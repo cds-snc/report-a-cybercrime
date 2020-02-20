@@ -56,7 +56,7 @@ export const PrivacyConsentPage = () => {
                 </P>
                 <P>
                   <Trans id="privacyConsentInfoPage.learnMore" />
-                  <A href="/privacystatement" isExternal>
+                  <A href={'/privacystatement?lang=' + i18n.locale} isExternal>
                     <Trans id="privacyConsentInfoPage.linkOut" />
                   </A>
                   <Trans id="privacyConsentInfoPage.period" />

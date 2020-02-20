@@ -15,14 +15,7 @@ import { Stack, Icon, Alert, AlertIcon, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { LandingBox } from './components/container'
 import { ButtonLink } from './components/link'
-import { i18n } from '@lingui/core'
 import { Page } from './components/Page'
-
-if (window.location.hostname.indexOf('signalez') > -1) {
-  i18n.activate('fr')
-} else if (window.location.hostname.indexOf('report') > -1) {
-  i18n.activate('en')
-}
 
 export const LandingPage = props => {
   const { i18n } = useLingui()

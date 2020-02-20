@@ -62,8 +62,8 @@ export const ThankYouPage = () => {
 
         {contactInfo.email && <Trans id="thankYouPage.summary" />}
       </Layout>
-      <Box bg="gray.200" py={10} pt={20}>
-        <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
+      <Box bg="gray.200" py={10}>
+        <Layout>
           <Stack spacing={4} shouldWrapChildren>
             <H2>
               <Trans id="thankYouPage.whatNextHeading" />
@@ -71,7 +71,9 @@ export const ThankYouPage = () => {
             <P>
               <Trans id="thankYouPage.whatNextParagraph" />
             </P>
-
+            <P>
+              <Trans id="thankYouPage.whatNextParagraph2" />
+            </P>
             <H2>
               <Trans id="thankYouPage.helpResource" />
             </H2>
@@ -140,7 +142,7 @@ export const ThankYouPage = () => {
           </Box>
 
           <Row>
-            <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 8 }}>
+            <LandingBox spacing={10} columns={{ base: 4 / 4, md: 8 / 8 }}>
               <H2>
                 <Trans id="thankYouPage.feedback" />
               </H2>
