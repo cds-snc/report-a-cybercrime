@@ -6,7 +6,12 @@ import { Text } from '../text'
 import { Trans } from '@lingui/macro'
 
 export const DescriptionListItem = ({ description, descriptionTitle }) => {
-  if (description.length === 0) {
+  if (typeof description === 'undefined')
+    console.warn(
+      `Warning! description undefined for descriptionTitle=${descriptionTitle}`,
+    )
+
+  if (typeof description === 'undefined' || description.length === 0) {
     return null
   }
   return (
