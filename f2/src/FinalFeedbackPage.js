@@ -29,7 +29,7 @@ async function postData(url = '', data = {}) {
 
 const submitToServer = async data => {
   console.log('Submitting finalFeedback:', data)
-  await postData('/submitFinalFeedback', data)
+  await postData('/submitFeedback', data)
 }
 
 export const FinalFeedbackPage = () => {
