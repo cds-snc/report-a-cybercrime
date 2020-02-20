@@ -68,7 +68,9 @@ export const ThankYouPage = () => {
               <P>
                 <Trans id="thankYouPage.whatNextParagraph" />
               </P>
-
+              <P>
+                <Trans id="thankYouPage.whatNextParagraph2" />
+              </P>
               <H2>
                 <Trans id="thankYouPage.helpResource" />
               </H2>
