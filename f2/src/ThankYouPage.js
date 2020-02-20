@@ -57,7 +57,6 @@ export const ThankYouPage = () => {
             </InfoCard>
           </Row>
 
-          {contactInfo.email && <Trans id="thankYouPage.summary" />}
         </Layout>
         <Layout fluid bg="gray.200" py={10}>
           <Layout>
@@ -66,6 +65,7 @@ export const ThankYouPage = () => {
                 <Trans id="thankYouPage.whatNextHeading" />
               </H2>
               <P>
+                {contactInfo.email && <Trans id="thankYouPage.summary" />}
                 <Trans id="thankYouPage.whatNextParagraph" />
               </P>
               <P>
