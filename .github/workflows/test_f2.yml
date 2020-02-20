@@ -25,7 +25,7 @@ jobs:
           CI: true
       - name: Run Cypress end-to-end
         working-directory: f2
-        run: npm run start:cypress
+        run: npm run cypress:cli
         env:
           CI: true
       - name: npm test
