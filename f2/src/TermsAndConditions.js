@@ -70,7 +70,7 @@ export const TermsAndConditions = () => {
           </P>
           <P>
             <Trans id="termsConditions.paragraph3" />
-            <Link to="/privacystatement">
+            <Link to={'/privacystatement?lang=' + i18n.locale}>
               <Trans id="termsConditions.linkOut" />
             </Link>
             <Trans id="termsConditions.period" />
