@@ -34,6 +34,8 @@ export const Column = ({ columns, ...props }) => {
   Object.keys(columns).map(key => {
     col[key] = columns[key] * 100 + '%'
   })
+  console.log(props)
+
   // Keep width and mx after props to prevent them being overwritten
   return (
     <Stack
@@ -43,9 +45,8 @@ export const Column = ({ columns, ...props }) => {
       flexBasis={col}
       maxW={col}
       px={2}
-      mb={4}
     >
-      <Stack {...props} h="100%"></Stack>
+      {props.children}
     </Stack>
   )
 }

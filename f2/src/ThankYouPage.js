@@ -62,7 +62,7 @@ export const ThankYouPage = () => {
 
         {contactInfo.email && <Trans id="thankYouPage.summary" />}
       </Layout>
-      <Layout fluid bg="gray.200" py={10} pt={20}>
+      <Box bg="gray.200" py={10} pt={20}>
         <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
           <Stack spacing={4} shouldWrapChildren>
             <H2>
@@ -112,7 +112,7 @@ export const ThankYouPage = () => {
             </Ul>
           </Stack>
         </Layout>
-      </Layout>
+      </Box>
 
       {/* After help section*/}
       <Layout pt={10} columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
