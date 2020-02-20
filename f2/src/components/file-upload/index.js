@@ -1,14 +1,19 @@
 /** @jsx jsx */
-import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
-import { fontSize, fontWeight, lineHeight, space, color } from 'styled-system'
 import { Label } from '../label'
 import { VisuallyHidden } from '@chakra-ui/core'
+import { Button } from '../button'
 
 export const FileUpload = ({ onChange, accept, ...props }) => {
   return (
-    <React.Fragment>
+    <Button
+      {...props}
+      as="div"
+      _focusWithin={{
+        boxShadow: 'outline',
+      }}
+    >
       <VisuallyHidden
         as="input"
         type="file"
@@ -18,10 +23,8 @@ export const FileUpload = ({ onChange, accept, ...props }) => {
         max-upload={3}
         onChange={onChange}
       />
-      <Label htmlFor="uploader" {...props}>
-        {props.children}
-      </Label>
-    </React.Fragment>
+      <Label htmlFor="uploader">{props.children}</Label>
+    </Button>
   )
 }
 
@@ -32,9 +35,4 @@ FileUpload.defaultProps = {
 FileUpload.propTypes = {
   onChange: PropTypes.func.isRequired,
   accept: PropTypes.string,
-  ...fontSize.propTypes,
-  ...fontWeight.propTypes,
-  ...lineHeight.propTypes,
-  ...space.propTypes,
-  ...color.propTypes,
 }

@@ -13,6 +13,7 @@ const {
   notifyIsSetup,
   sendConfirmation,
   sendUnencryptedReport,
+  submitFeedback,
 } = require('./utils/notify')
 
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
@@ -32,7 +33,7 @@ const allowedOrigins = [
   'http://antifraudcentre.ca',
   'http://centreantifraude.ca',
 ]
-
+  
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
   saveBlob(data)
@@ -107,6 +108,17 @@ app
       }
       uploadData(req, res, fields, files)
     })
+  })
+
+  .post('/submitFeedback', (req, res) => {
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+      if (err) {
+        console.error('Error', err)
+        throw err
+      }
+      submitFeedback(fields.json)
+    })
+    res.send('thanks')
   })
 
   .get('/*', function(_req, res) {

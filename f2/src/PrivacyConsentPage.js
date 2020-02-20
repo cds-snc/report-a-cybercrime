@@ -11,7 +11,6 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { A } from './components/link'
 import { useLingui } from '@lingui/react'
-import { Link } from './components/link'
 
 export const PrivacyConsentPage = () => {
   const { i18n } = useLingui()
@@ -57,9 +56,9 @@ export const PrivacyConsentPage = () => {
               </P>
               <P>
                 <Trans id="privacyConsentInfoPage.learnMore" />
-                <Link to="/privacystatement">
+                <A href="/privacystatement" isExternal>
                   <Trans id="privacyConsentInfoPage.linkOut" />
-                </Link>
+                </A>
                 <Trans id="privacyConsentInfoPage.period" />
               </P>
               <PrivacyConsentInfoForm

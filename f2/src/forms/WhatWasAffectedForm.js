@@ -8,11 +8,6 @@ import { FormControl, Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
-import { Field } from '../components/Field'
-import { FormLabel } from '../components/FormLabel'
-import { ConditionalForm } from '../components/container'
-import { TextInput } from '../components/TextInput'
-
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -55,7 +50,6 @@ export const WhatWasAffectedForm = props => {
           <Trans id="whatWasAffectedForm.devices" />
           <Trans id="whatWasAffectedForm.business_assets" />
           <Trans id="whatWasAffectedForm.other" />
-          <Trans id="whatWasAffectedForm.expectations" />
         </div>
       ) : null}
 
@@ -81,56 +75,38 @@ export const WhatWasAffectedForm = props => {
                 name="affectedOptions"
                 label={<Trans id="whatWasAffectedForm.optionsTitle" />}
                 helperText={<Trans id="whatWasAffectedForm.optionsHelpText" />}
-                >
+              >
                 {affectedOptions.map(key => {
                   return (
                     <React.Fragment key={key}>
                       <CheckboxAdapter
                         name="affectedOptions"
                         value={key}
-                        isChecked={whatWasAffected.affectedOptions.includes(key)}
-                      >
-                      {i18n._(key)}
-                      </CheckboxAdapter>
-                      {key === 'whatWasAffectedForm.other' &&
-                        values.affectedOptions.includes(
-                          'whatWasAffectedForm.other',
-                        ) && (
-                          <ConditionalForm>
-                            <Field name="optionOther">
-                              {props => (
-                                <FormControl>
-                                  <FormLabel htmlFor={key}></FormLabel>
-                                  <TextInput
-                                    id="optionOther"
-                                    name={props.input.name}
-                                    value={props.input.value}
-                                    onChange={props.input.onChange}
-                                  />
-                                </FormControl>
-                              )}
-                            </Field>
-                          </ConditionalForm>
+                        isChecked={whatWasAffected.affectedOptions.includes(
+                          key,
                         )}
+                      >
+                        {i18n._(key)}
+                      </CheckboxAdapter>
                     </React.Fragment>
                   )
                 })}
                 {showWarning ? (
-                    <Control>
-                      <Alert status="warning">
-                        <AlertIcon />
-                        <Trans id="whatWasAffectedForm.warning" />
-                      </Alert>
-                    </Control>
+                  <Control>
+                    <Alert status="warning">
+                      <AlertIcon />
+                      <Trans id="whatWasAffectedForm.warning" />
+                    </Alert>
+                  </Control>
                 ) : null}
-            </FormArrayControl>
-          </Control>
-          <NextAndCancelButtons
-            next={<Trans id="whatWasAffectedForm.nextPage" />}
-            button={<Trans id="whatWasAffectedForm.nextButton" />}
-          />
-        </Stack>
-      )}
+              </FormArrayControl>
+            </Control>
+            <NextAndCancelButtons
+              next={<Trans id="whatWasAffectedForm.nextPage" />}
+              button={<Trans id="whatWasAffectedForm.nextButton" />}
+            />
+          </Stack>
+        )}
       />
     </React.Fragment>
   )
