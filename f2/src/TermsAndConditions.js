@@ -5,7 +5,7 @@ import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { TrackPageViews } from './TrackPageViews'
 import { Stack } from '@chakra-ui/core'
-import { A, Link } from './components/link'
+import { A } from './components/link'
 import { useLingui } from '@lingui/react'
 
 export const TermsAndConditions = () => {
@@ -70,9 +70,9 @@ export const TermsAndConditions = () => {
           </P>
           <P>
             <Trans id="termsConditions.paragraph3" />
-            <Link to={'/privacystatement?lang=' + i18n.locale}>
+            <A href={'/privacystatement?lang=' + i18n.locale} isExternal>
               <Trans id="termsConditions.linkOut" />
-            </Link>
+            </A>
             <Trans id="termsConditions.period" />
           </P>
         </Stack>
