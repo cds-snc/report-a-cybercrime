@@ -5,11 +5,12 @@ trigger:
   branches:
     include:
       - master
+      - release-rcmp-staging
+      - release-rcmp-prod
   paths:
     include:
       - f2
     exclude:
-      - api/*
       - f2/manifests/*
 
 # Use an Ubuntu VM to run Azure pipeline
@@ -22,20 +23,87 @@ steps:
     inputs:
       command: 'install'
       workingDir: 'f2'
-# Run automated npm tests
+  # Run automated npm tests
   - script: |
       cd f2
       npm run compile
       npm run test
       npm run lint
     displayName: 'Run npm scripts'
-# Build and push container to container registry. App Service is configured to serve latest build of container. containerRegistry value is the name of the DevOps Service Connection made to the ACR
+  # Build and push container to container registry. App Service is configured to serve latest build of container. containerRegistry value is the name of the DevOps Service Connection made to the ACR
   - task: Docker@2
+    displayName: 'Master/DEV - Build Docker Image'
+    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'master'))
     inputs:
       containerRegistry: 'scACR-F2'
       repository: 'f2'
-      command: 'buildAndPush'
       Dockerfile: 'f2/Dockerfile'
+      command: 'build'
+      tags: |
+        $(Build.SourceBranchName)
+        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
+        latest
+      arguments: --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_REACT_APP_GOOGLE_ANALYTICS_ID)
+
+  - task: Docker@2
+    displayName: 'Master/DEV - Push Docker Image to ACR'
+    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'master'))
+    inputs:
+      containerRegistry: 'scACR-F2'
+      repository: 'f2'
+      command: 'push'
+      tags: |
+        $(Build.SourceBranchName)
+        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
+        latest
+
+  - task: Docker@2
+    displayName: 'Staging - Build Docker Image'
+    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'release-rcmp-staging'))
+    inputs:
+      containerRegistry: 'scCybercrimeStaging'
+      repository: 'f2'
+      Dockerfile: 'f2/Dockerfile'
+      command: 'build'
+      tags: |
+        $(Build.SourceBranchName)
+        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
+        latest
+      arguments: --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_REACT_APP_GOOGLE_ANALYTICS_ID)
+
+  - task: Docker@2
+    displayName: 'Staging - Push Docker Image to ACR'
+    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'release-rcmp-staging'))
+    inputs:
+      containerRegistry: 'scCybercrimeStaging'
+      repository: 'f2'
+      command: 'push'
+      tags: |
+        $(Build.SourceBranchName)
+        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
+        latest
+
+  - task: Docker@2
+    displayName: 'PROD - Build Docker Image'
+    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'release-rcmp-prod'))
+    inputs:
+      containerRegistry: 'scCybercrimeProd'
+      repository: 'f2'
+      Dockerfile: 'f2/Dockerfile'
+      command: 'build'
+      tags: |
+        $(Build.SourceBranchName)
+        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
+        latest
+      arguments: --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_REACT_APP_GOOGLE_ANALYTICS_ID)
+
+  - task: Docker@2
+    displayName: 'PROD - Push Docker Image to ACR'
+    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'release-rcmp-prod'))
+    inputs:
+      containerRegistry: 'scCybercrimeProd'
+      repository: 'f2'
+      command: 'push'
       tags: |
         $(Build.SourceBranchName)
         $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)

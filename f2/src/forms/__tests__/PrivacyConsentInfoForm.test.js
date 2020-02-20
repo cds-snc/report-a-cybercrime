@@ -57,7 +57,9 @@ describe('<PrivacyConsentInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const checkbox = getByLabelText('privacyConsentInfoForm.yes')
+    const checkbox = getByLabelText('privacyConsentInfoForm.yes', {
+      exact: false,
+    })
     // we want to grab whatever is in the submit button as text, pass it to getByText
     const context = document.querySelector('[type="submit"]').textContent
     const nextButton = getByText(context)
