@@ -5,7 +5,7 @@ import { H1, H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, Field, useField } from 'react-final-form'
-import { Stack, FormControl, Box } from '@chakra-ui/core'
+import { Stack, FormControl, Box, Alert, AlertIcon } from '@chakra-ui/core'
 import { FormLabel } from '../components/FormLabel'
 import { FormHelperText } from '../components/FormHelperText'
 import { Button } from '../components/button'
@@ -117,6 +117,12 @@ export const MidFeedbackForm = props => {
                   shouldWrapChildren
                   spacing={6}
                 >
+                  {showWarning ? (
+                    <Alert status="warning">
+                      <AlertIcon />
+                      <Trans id="finalFeedback.warning" />
+                    </Alert>
+                  ) : null}
                   <Control as="fieldset" name="midFeedback">
                     <FormArrayControl
                       name="midFeedback"

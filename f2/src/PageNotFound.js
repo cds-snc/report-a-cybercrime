@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from '@emotion/styled'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
