@@ -24,10 +24,10 @@ jobs:
         env:
           CI: true
       - name: Run Cypress end-to-end
-          working-directory: f2
-          run: npm run start:cypress
-          env:
-            CI: true
+        working-directory: f2
+        run: npm run start:cypress
+        env:
+          CI: true
       - name: npm test
         working-directory: f2
         run: npm test
