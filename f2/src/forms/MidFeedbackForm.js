@@ -73,6 +73,9 @@ export const MidFeedbackForm = props => {
       ) : (
         <Box as="details">
           <Button
+            h="inherit"
+            py={4}
+            whiteSpace="wrap"
             as="summary"
             w={{ base: '100%', md: 'auto' }}
             color="black"

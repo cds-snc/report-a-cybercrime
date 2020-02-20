@@ -6,7 +6,7 @@ import { jsx } from '@emotion/core'
 import { Box } from '@chakra-ui/core'
 import { Column } from '../layout'
 
-export const Container = props => <Box {...props} />
+export const Container = props => <Box className="container" {...props} />
 
 export const InfoCard = props => (
   <Column
@@ -24,8 +24,8 @@ export const LandingBox = props => (
     columns={{ base: 4 / 4, md: 4 / 8 }}
     alignItems="flex-start"
     bg="gray.300"
-    borderColor="gray.400"
     borderBottom="2px"
+    borderColor="gray.400"
     color="black"
     p={4}
     pt={8}
