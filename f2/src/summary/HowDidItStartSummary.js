@@ -23,11 +23,10 @@ export const HowDidItStartSummary = props => {
   }
 
   if (howdiditstart.howDidTheyReachYou.length > 0 )  {
-    //Obtain all the array data into the summary array
     howdiditstart.howDidTheyReachYou.map(key =>
       summary.push(
-        key === 'howDidTheyReachYou.others'
-          ? howdiditstart.others
+        key === 'howDidTheyReachYou'
+          ? howdiditstart
           : i18n._(key).toLowerCase(),
       ),
     )
