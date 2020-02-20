@@ -14,7 +14,7 @@ const {
   sendConfirmation,
   sendUnencryptedReport,
   submitFeedback,
-} = require('./utils/notify')
+} = require('./src/utils/notify')
 
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
 
@@ -33,7 +33,7 @@ const allowedOrigins = [
   'http://antifraudcentre.ca',
   'http://centreantifraude.ca',
 ]
-  
+
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
   saveBlob(data)
