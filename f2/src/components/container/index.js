@@ -9,7 +9,7 @@ import { Column } from '../layout'
 export const Container = props => <Box className="container" {...props} />
 
 export const InfoCard = props => (
-  <Column columns={{ base: 4 / 4, md: 6 / 8, lg: 5 / 12 }}>
+  <Column columns={props.columns}>
     <Box rounded="none" borderBottom="2px" p={4} py={8} {...props}>
       {props.children}
     </Box>
@@ -17,7 +17,7 @@ export const InfoCard = props => (
 )
 
 export const LandingBox = props => (
-  <Column columns={{ base: 4 / 4, md: 4 / 8 }}>
+  <Column columns={props.columns}>
     <Stack
       className="landing-box"
       alignItems="flex-start"
@@ -56,4 +56,11 @@ export const ConditionalForm = ({ ...props }) => (
 
 ConditionalForm.propTypes = {
   children: PropTypes.any,
+}
+
+LandingBox.defaultProps = {
+  columns: { base: 4 / 4, md: 4 / 8 },
+}
+InfoCard.defaultProps = {
+  columns: { base: 4 / 4, md: 6 / 8, lg: 5 / 12 },
 }
