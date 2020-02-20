@@ -13,6 +13,7 @@ const {
   notifyIsSetup,
   sendConfirmation,
   sendUnencryptedReport,
+  submitFeedback,
 } = require('./utils/notify')
 
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
@@ -106,6 +107,17 @@ app
       }
       uploadData(req, res, fields, files)
     })
+  })
+
+  .post('/submitFeedback', (req, res) => {
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+      if (err) {
+        console.error('Error', err)
+        throw err
+      }
+      submitFeedback(fields.json)
+    })
+    res.send('thanks')
   })
 
   .get('/*', function(_req, res) {
