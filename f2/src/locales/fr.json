@@ -173,6 +173,7 @@
   "howDidTheyReachYouLabel.question4": "Quelle a été l’application Web ou mobile utilisée?",
   "howDidTheyReachYouLabel.question5": "Décrivez comment l’incident a commencé.",
   "howManyTimes.label": "Combien de fois l'incident s’est-il produit?",
+  "howManyTimes.notSure": "Je ne sais pas",
   "howManyTimes.once": "Une fois",
   "howManyTimes.severalTimes": "Plusieurs fois",
   "informationPage.backButton": "Retour",
@@ -245,6 +246,9 @@
   "moneyLostPage.title": "Répercussions sur votre argent ou vos finances",
   "moneyLostPage.transactionDate": "Quand la transaction a-t-elle eu lieu?",
   "moneyLostPage.transactionDateExample": "Par exemple : 26 02 2020",
+  "moneyLostPage.transactionDay": "Jour",
+  "moneyLostPage.transactionMonth": "Mois",
+  "moneyLostPage.transactionYear": "Année",
   "pageNotFound.header": "Page introuvable",
   "pageNotFound.message": "Désolé, la page que vous essayiez de voir n'existe pas.",
   "privacyConsentInfoForm.linkOut": "Déclaration de confidentialité",
@@ -344,9 +348,12 @@
   "whatWasAffectedPage.intro": "Vous n’êtes probablement pas la seule personne affectée par une telle situation. Aidez-nous à en apprendre plus en précisant ce que voulait le suspect.",
   "whatWasAffectedPage.title": "D’après vous, quelles pourraient être les répercussions?",
   "whenDidItStart.label": "Quand l'incident a-t-il commencé?",
-  "whenDidItStart.moreThanOneYear": "Il y a plus d’un an",
-  "whenDidItStart.pastMonth": "Au cours du dernier mois",
-  "whenDidItStart.pastWeek": "Au cours de la dernière semaine",
-  "whenDidItStart.pastYear": "Il y a moins d’un an",
-  "whenDidItStart.today": "Aujourd’hui"
+  "whenDidItStart.labelExample": "Par exemple : 26 02 2020",
+  "whenDidItStart.startDay": "Jour",
+  "whenDidItStart.startMonth": "Mois",
+  "whenDidItStart.startYear": "Année",
+  "{0, plural, one {# file attached} other {# files attached}}": "{0, plural, one {# fichier joint} other {# fichiers joints}}"
+
 }
+
+ 
