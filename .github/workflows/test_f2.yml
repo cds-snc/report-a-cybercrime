@@ -41,6 +41,5 @@ jobs:
       - name: Run Cypress end-to-end
         working-directory: f2
         run: npm run start:cypress
-        uses: cypress-io/github-action@v1
         env:
           CI: true
