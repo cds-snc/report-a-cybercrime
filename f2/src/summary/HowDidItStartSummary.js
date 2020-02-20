@@ -42,8 +42,7 @@ export const HowDidItStartSummary = props => {
 
   // make data display  in the confirmation page even only "when did it start " and "how many times did this happen" have data.
 
-  const hasDataToDisplay = (howdiditstart.howDidTheyReachYou.length > 0 || howdiditstart.whenDidItStart.length >0
-  || howdiditstart.howManyTimes.length > 0)
+  const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0 
 
   return (
     <React.Fragment>
