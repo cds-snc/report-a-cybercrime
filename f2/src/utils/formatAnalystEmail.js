@@ -101,9 +101,10 @@ const formatNarrative = data => {
       'I lost:                  ',
       data.personalInformation.infoObtainedOther,
     ) +
-    formatLine('Affected devices:        ', data.devicesInfo.deviceOrAccount) +
+    formatLine('Affected device:        ', data.devicesInfo.device) +
+    formatLine('Affected account:       ', data.devicesInfo.account) +
     formatLine(
-      'Affected devices:        ',
+      'Affected device/account: ',
       data.devicesInfo.devicesTellUsMore,
     ) +
     formatLine('Affected finances:       ', data.moneyLost.tellUsMore) +
@@ -119,7 +120,8 @@ const formatNarrative = data => {
   delete data.whatHappened.whatHappened
   delete data.personalInformation.infoReqOther
   delete data.personalInformation.infoObtainedOther
-  delete data.devicesInfo.deviceOrAccount
+  delete data.devicesInfo.device
+  delete data.devicesInfo.account
   delete data.moneyLost.tellUsMore
   delete data.personalInformation.tellUsMore
   delete data.devicesInfo.devicesTellUsMore
@@ -173,16 +175,30 @@ const formatFinancialTransactions = data => {
 
 const formatFileAttachments = data => {
   const returnString = data.evidence.files
-    .map(
-      file =>
-        formatLine('File name:     ', file.name) +
-        formatLine('Description:   ', file.fileDescription) +
-        formatLine('Size:          ', file.size + ' bytes') +
-        formatLine('CosmosDB file: ', file.sha1) +
-        (file.malwareIsClean
-          ? 'Malware scan:  Clean'
-          : formatLine('Malware scan:  ', file.malwareScanDetail)),
-    )
+    .map(file => {
+      const offensive =
+        file.isImageAdultClassified || file.isImageRacyClassified
+
+      const moderatorString =
+        file.adultClassificationScore === 'Could not scan'
+          ? 'Could not scan content\n'
+          : formatLine('Is adult:      ', file.isImageAdultClassified) +
+            formatLine('Adult score:   ', file.adultClassificationScore) +
+            formatLine('Is racy:       ', file.isImageRacyClassified) +
+            formatLine('Racy Score:    ', file.racyClassificationScore)
+
+      return offensive
+        ? 'WARNING: image may be offensive\n'
+        : '' +
+            formatLine('File name:     ', file.name) +
+            formatLine('Description:   ', file.fileDescription) +
+            formatLine('Size:          ', file.size + ' bytes') +
+            formatLine('CosmosDB file: ', file.sha1) +
+            (file.malwareIsClean
+              ? 'Malware scan:  Clean\n'
+              : formatLine('Malware scan:  ', file.malwareScanDetail)) +
+            moderatorString
+    })
     .join('\n\n')
 
   delete data.evidence.files
