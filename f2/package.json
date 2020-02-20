@@ -45,6 +45,7 @@
     "watch": "react-scripts test",
     "dbg": "react-scripts --inspect-brk test --watchAll=false --runInBand",
     "eject": "react-scripts eject",
+    "start:cypress": "NODE_ENV=test node ./bin/www",
     "cypress:open": "cypress open",
     "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
     "pretest": "npm run clean:reports",
