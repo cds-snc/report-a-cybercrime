@@ -217,7 +217,7 @@ const formatAnalystEmail = dataOrig => {
       : ''
   } catch (error) {
     console.error(`ERROR in formatAnalystEmail: ${error}`)
-    return 'ERROR formatting email'
+    return `ERROR in formatAnalystEmail: ${error}`
   }
   return returnString + missingFields
 }
