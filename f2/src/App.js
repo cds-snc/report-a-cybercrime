@@ -85,12 +85,16 @@ const App = () => {
           <Footer>
             {/** The List component is in the Footer component */}
             <Li>
-              <A href="/privacystatement" isExternal>
+              <A href={'/privacystatement?lang=' + i18n.locale} isExternal>
                 <Trans id="banner.footerPrivacy" />
               </A>
             </Li>
             <Li>
-              <A ml={4} href="/termsandconditions" isExternal>
+              <A
+                ml={4}
+                href={'/termsandconditions?lang=' + i18n.locale}
+                isExternal
+              >
                 <Trans id="banner.footerTermsAndConditions" />
               </A>
             </Li>
