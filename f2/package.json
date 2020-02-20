@@ -115,6 +115,7 @@
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
     "recompose": "^0.30.0",
+    "start-server-and-test": "^1.10.8",
     "waait": "^1.0.5"
   },
   "jest": {
