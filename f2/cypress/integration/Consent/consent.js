@@ -4,14 +4,6 @@ Given('I open the report home page', () => {
 
 });
 
-Then('Inject axe and check for accessibility issues', () => {
-       // Inject the axe-core library
-       cy.injectAxe();
-       // first a11y test
-       cy.checkA11y();
-
-});
-
 When('I click on create a report button', () => {
     cy.contains('Report now').first().click({force: true});
 });

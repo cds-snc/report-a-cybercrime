@@ -5,7 +5,6 @@ Feature: Consent
   @smoke
   Scenario: Home page
     Given I open the report home page
-    Then Inject axe and check for accessibility issues
     When I click on create a report button
     When I read before you start instructions
     And I check the consent checkbox
