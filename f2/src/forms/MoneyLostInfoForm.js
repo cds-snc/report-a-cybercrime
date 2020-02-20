@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, Field, useField } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
 import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
@@ -15,13 +15,8 @@ import { useStateValue } from '../utils/state'
 import { ConditionalForm } from '../components/container'
 import { P } from '../components/paragraph'
 import { CheckboxAdapter } from '../components/checkbox'
-
-const Control = ({ name, ...rest }) => {
-  const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
-  return <FormControl {...rest} isInvalid={error && touched} />
-}
+import { Field } from '../components/Field'
+import { FormArrayControl } from '../components/FormArrayControl'
 
 export const MoneyLostInfoForm = props => {
   const { i18n } = useLingui()
@@ -66,82 +61,41 @@ export const MoneyLostInfoForm = props => {
             spacing={6}
             shouldWrapChildren
           >
-            <Field name="demandedMoney">
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="demandedMoney">
-                    <Trans id="moneyLostPage.demandedMoney" />
-                  </FormLabel>
-                  <FormHelperText>
-                    <Trans id="moneyLostPage.demandedMoneyExample" />
-                  </FormHelperText>
-                  <TextInput
-                    id="demandedMoney"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-            <Field name="moneyTaken">
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="moneyTaken">
-                    <Trans id="moneyLostPage.moneyTaken" />
-                  </FormLabel>
-                  <FormHelperText>
-                    <Trans id="moneyLostPage.moneyTakenExample" />
-                  </FormHelperText>
-                  <TextInput
-                    id="moneyTaken"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
+            <Field
+              name="demandedMoney"
+              label={<Trans id="moneyLostPage.demandedMoney" />}
+              helperText={<Trans id="moneyLostPage.demandedMoneyExample" />}
+              component={TextInput}
+            />
 
-            <Control as="fieldset" name="methodsOfPayment">
-              <FormLabel as="legend" htmlFor="methodsOfPayment" mb={2}>
-                <Trans id="moneyLostPage.methodPayment" />
-              </FormLabel>
-              <FormHelperText>
-                <Trans id="moneyLostPage.selectMethod" />
-              </FormHelperText>
-              <Stack spacing={4} shouldWrapChildren>
-                {methodsOfPayment.map(key => {
-                  return (
-                    <Box key={key}>
-                      <CheckboxAdapter name="methodPayment" value={key}>
-                        {i18n._(key)}
-                      </CheckboxAdapter>
-                      {key === 'methodPayment.other' &&
-                        values.methodPayment.includes(
-                          'methodPayment.other',
-                        ) && (
-                          <ConditionalForm>
-                            <Field name="methodOther">
-                              {props => (
-                                <FormControl>
-                                  <FormLabel htmlFor={key}></FormLabel>
-                                  <TextInput
-                                    id="methodOther"
-                                    name={props.input.name}
-                                    value={props.input.value}
-                                    onChange={props.input.onChange}
-                                  />
-                                </FormControl>
-                              )}
-                            </Field>
-                          </ConditionalForm>
-                        )}
-                    </Box>
-                  )
-                })}
-              </Stack>
-            </Control>
+            <Field
+              name="moneyTaken"
+              label={<Trans id="moneyLostPage.moneyTaken" />}
+              helperText={<Trans id="moneyLostPage.moneyTakenExample" />}
+              component={TextInput}
+            />
+
+            <FormArrayControl
+              name="methodsOfPayment"
+              label={<Trans id="moneyLostPage.methodPayment" />}
+              helperText={<Trans id="moneyLostPage.selectMethod" />}
+            >
+              {methodsOfPayment.map(key => {
+                return (
+                  <Box key={key}>
+                    <CheckboxAdapter name="methodPayment" value={key}>
+                      {i18n._(key)}
+                    </CheckboxAdapter>
+                    {key === 'methodPayment.other' &&
+                      values.methodPayment.includes('methodPayment.other') && (
+                        <ConditionalForm>
+                          <Field name="methodOther" component={TextInput} />
+                        </ConditionalForm>
+                      )}
+                  </Box>
+                )
+              })}
+            </FormArrayControl>
 
             <Stack>
               <P fontWeight="bold">
