@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, Field, useField } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextArea } from '../components/text-area'
 import { Stack, FormControl, Alert, AlertIcon } from '@chakra-ui/core'
@@ -15,13 +15,7 @@ import { ConditionalForm } from '../components/container'
 import { TextInput } from '../components/TextInput'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
-
-const Control = ({ name, ...rest }) => {
-  const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
-  return <FormControl {...rest} isInvalid={error && touched} />
-}
+import { Field } from '../components/Field'
 
 export const InformationForm = props => {
   const { i18n } = useLingui()
@@ -76,89 +70,62 @@ export const InformationForm = props => {
             shouldWrapChildren
             spacing={6}
           >
-            <Control as="fieldset" name="typeOfInfoReq">
-              <Stack spacing={4} shouldWrapChildren>
-                <FormArrayControl
-                  name="infoReqOther"
-                  label={<Trans id="informationPage.typeOfInfoReq" />}
-                  helperText={
-                    <Trans id="informationPage.typeOfInfoReqExample" />
-                  }
-                >
-                  {typeOfInfoReq.map(key => {
-                    return (
-                      <React.Fragment key={key}>
-                        <CheckboxAdapter name="infoReqOther" value={key}>
-                          {i18n._(key)}
-                        </CheckboxAdapter>
-                        {key === 'typeOfInfoReq.other' &&
-                          values.typeOfInfoReq.includes(
-                            'typeOfInfoReq.other',
-                          ) && (
-                            <ConditionalForm>
-                              <Field name="infoReqOther">
-                                {props => (
-                                  <FormControl>
-                                    <FormLabel htmlFor={key}></FormLabel>
-                                    <TextInput
-                                      id="infoReqOther"
-                                      name={props.input.name}
-                                      value={props.input.value}
-                                      onChange={props.input.onChange}
-                                    />
-                                  </FormControl>
-                                )}
-                              </Field>
-                            </ConditionalForm>
-                          )}
-                      </React.Fragment>
-                    )
-                  })}
-                </FormArrayControl>
-              </Stack>
-            </Control>
-            <Control as="fieldset" name="typeOfInfoObtained">
-              <Stack spacing={4} shouldWrapChildren>
-                <FormArrayControl
-                  name="infoReqOther"
-                  label={<Trans id="informationPage.typeOfInfoObtained" />}
-                  helperText={
-                    <Trans id="informationPage.typeOfInfoObtainedExample" />
-                  }
-                >
-                  {typeOfInfoObtained.map(key => {
-                    return (
-                      <React.Fragment key={key}>
-                        <CheckboxAdapter name="typeOfInfoObtained" value={key}>
-                          {i18n._(key)}
-                        </CheckboxAdapter>
-                        {key === 'typeOfInfoObtained.other' &&
-                          values.typeOfInfoReq.includes(
-                            'typeOfInfoObtained.other',
-                          ) && (
-                            <ConditionalForm>
-                              <Field name="typeOfInfoObtained">
-                                {props => (
-                                  <FormControl>
-                                    <FormLabel htmlFor={key}></FormLabel>
-                                    <TextInput
-                                      id="typeOfInfoObtained"
-                                      name={props.input.name}
-                                      value={props.input.value}
-                                      onChange={props.input.onChange}
-                                    />
-                                  </FormControl>
-                                )}
-                              </Field>
-                            </ConditionalForm>
-                          )}
-                      </React.Fragment>
-                    )
-                  })}
-                </FormArrayControl>
-              </Stack>
-            </Control>
+            <Stack spacing={4} shouldWrapChildren>
+              <FormArrayControl
+                name="typeOfInfoReq"
+                label={<Trans id="informationPage.typeOfInfoReq" />}
+                helperText={<Trans id="informationPage.typeOfInfoReqExample" />}
+              >
+                {typeOfInfoReq.map(key => {
+                  return (
+                    <React.Fragment key={key}>
+                      <CheckboxAdapter name="typeOfInfoReq" value={key}>
+                        {i18n._(key)}
+                      </CheckboxAdapter>
+                      {key === 'typeOfInfoReq.other' &&
+                        values.typeOfInfoReq.includes(
+                          'typeOfInfoReq.other',
+                        ) && (
+                          <ConditionalForm>
+                            <Field name="infoReqOther" component={TextInput} />
+                          </ConditionalForm>
+                        )}
+                    </React.Fragment>
+                  )
+                })}
+              </FormArrayControl>
+            </Stack>
 
+            <Stack spacing={4} shouldWrapChildren>
+              <FormArrayControl
+                name="typeOfInfoObtained"
+                label={<Trans id="informationPage.typeOfInfoObtained" />}
+                helperText={
+                  <Trans id="informationPage.typeOfInfoObtainedExample" />
+                }
+              >
+                {typeOfInfoObtained.map(key => {
+                  return (
+                    <React.Fragment key={key}>
+                      <CheckboxAdapter name="typeOfInfoObtained" value={key}>
+                        {i18n._(key)}
+                      </CheckboxAdapter>
+                      {key === 'typeOfInfoObtained.other' &&
+                        values.typeOfInfoObtained.includes(
+                          'typeOfInfoObtained.other',
+                        ) && (
+                          <ConditionalForm>
+                            <Field
+                              name="infoObtainedOther"
+                              component={TextInput}
+                            />
+                          </ConditionalForm>
+                        )}
+                    </React.Fragment>
+                  )
+                })}
+              </FormArrayControl>
+            </Stack>
             <Field name="tellUsMore">
               {props => (
                 <FormControl>
