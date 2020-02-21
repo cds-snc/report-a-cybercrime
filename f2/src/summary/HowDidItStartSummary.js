@@ -26,7 +26,7 @@ export const HowDidItStartSummary = props => {
     //Obtain all the array data into the summary array
     howdiditstart.howDidTheyReachYou.map(key =>
       summary.push(
-        key === 'howDidTheyReachYou.others' && howdiditstart.others != ''
+        key === 'howDidTheyReachYou.others' && howdiditstart.others !== ''
           ? howdiditstart.others
           : i18n._(key).toLowerCase(),
       ),
