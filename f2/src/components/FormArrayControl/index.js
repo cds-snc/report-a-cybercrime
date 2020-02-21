@@ -17,22 +17,25 @@ export const FormArrayControl = ({
   ...rest
 }) => {
   const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
+    meta: { error, touched, submitFailed },
+  } = useField(name, {
+    subscription: { touched: true, error: true, submitFailed: true },
+  })
 
-  console.log(touched)
+  console.log(submitFailed)
 
   return (
     <UniqueID>
       {id => {
         return (
           <FormControl
-            borderLeft={error && touched ? '3px' : null}
-            pl={error && touched ? 4 : null}
-            borderLeftColor={error && touched ? 'red.700' : null}
+            id={name}
+            borderLeft={submitFailed ? '3px' : null}
+            pl={submitFailed ? 4 : null}
+            borderLeftColor={submitFailed ? 'red.700' : null}
             as="fieldset"
             aria-labelledby={id}
-            isInvalid={error && touched}
+            isInvalid={submitFailed}
             {...rest}
           >
             <Stack spacing={1} pb={4}>

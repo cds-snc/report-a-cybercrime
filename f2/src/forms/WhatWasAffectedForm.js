@@ -4,27 +4,21 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { FormControl, Stack, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
-import { Field } from '../components/Field'
-import { FormLabel } from '../components/FormLabel'
-import { ConditionalForm } from '../components/container'
-import { TextInput } from '../components/TextInput'
-
-const Control = ({ name, ...rest }) => {
-  const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
-  return <FormControl {...rest} isInvalid={error && touched} />
-}
+import { A } from '../components/link'
+import { Li } from '../components/list-item'
+import { Ol } from '../components/ordered-list'
+import { Text } from '../components/text'
 
 const validate = values => {
   const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
   if (!values.affectedOptions || values.affectedOptions.length < 1) {
-    errors.affectedOptions = 'Select at least one option'
+    errors.affectedOptions = 'whatWasAffectedForm.warning'
   }
   return errors
 }
@@ -73,13 +67,44 @@ export const WhatWasAffectedForm = props => {
           }
         }}
         validate={validate}
-        render={({ handleSubmit, values, errors }) => (
+        render={({
+          handleSubmit,
+          values,
+          errors,
+          submitFailed,
+          hasValidationErrors,
+        }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
             spacing={6}
           >
+            {submitFailed && hasValidationErrors ? (
+              <Alert status="error" borderLeft="3px" borderColor="red.700">
+                <Stack>
+                  <Text fontSize="md" fontWeight="bold">
+                    <Trans id="default.hasValidationErrors" />
+                  </Text>
+
+                  <Ol>
+                    {Object.keys(errors).map(key => (
+                      <Li fontSize="md">
+                        <A
+                          fontSize="md"
+                          fontWeight="bold"
+                          key={key}
+                          href={`#${key}`}
+                        >
+                          {i18n._(errors[key])}
+                        </A>
+                      </Li>
+                    ))}
+                  </Ol>
+                </Stack>
+              </Alert>
+            ) : null}
+
             <FormArrayControl
               name="affectedOptions"
               label={<Trans id="whatWasAffectedForm.optionsTitle" />}
@@ -99,14 +124,6 @@ export const WhatWasAffectedForm = props => {
                   </React.Fragment>
                 )
               })}
-              {showWarning ? (
-                <Control>
-                  <Alert status="warning">
-                    <AlertIcon />
-                    <Trans id="whatWasAffectedForm.warning" />
-                  </Alert>
-                </Control>
-              ) : null}
             </FormArrayControl>
             <P>
               <Trans id="whatWasAffectedForm.expectations" />
