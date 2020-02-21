@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
@@ -16,10 +17,6 @@ export const DevicesSummary = props => {
     ...testdata.formData.devicesInfo,
     ...data.formData.devicesInfo,
   }
-
-  const hasInfoToDisplay =
-    (devices.device.length > 0) | (devices.account.length > 0) ||
-    devices.devicesTellUsMore.length > 0
 
   return (
     <React.Fragment>
@@ -50,7 +47,7 @@ export const DevicesSummary = props => {
           />
         </Flex>
 
-        {hasInfoToDisplay ? (
+        {containsData(devices) ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.device"
