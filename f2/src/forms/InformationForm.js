@@ -17,7 +17,6 @@ import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { A } from '../components/link'
 import { Field } from '../components/Field'
-
 export const InformationForm = props => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
@@ -147,24 +146,7 @@ export const InformationForm = props => {
             </Field>
             <Alert status="success" backgroundColor="blue.100">
               <AlertIcon name="info-outline" color="blue.800" />
-              <Trans id="informationPage.tip">
-                <A
-                  href={
-                    i18n.locale === 'en'
-                      ? 'https://www.consumer.equifax.ca/personal/'
-                      : 'https://www.consumer.equifax.ca/personnel/'
-                  }
-                  isExternal // Opens new tab
-                />
-                <A
-                  href={
-                    i18n.locale === 'en'
-                      ? 'https://www.transunion.ca/'
-                      : 'https://www.transunion.ca/fr'
-                  }
-                  isExternal // Opens new tab
-                />
-              </Trans>
+              <Trans id="informationPage.tip" />
             </Alert>
             <NextAndCancelButtons
               next={<Trans id="informationPage.nextStep" />}
