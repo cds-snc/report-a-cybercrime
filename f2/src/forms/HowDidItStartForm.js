@@ -6,20 +6,11 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { CheckboxAdapter } from '../components/checkbox'
 import { RadioAdapter } from '../components/radio'
-import {
-  Stack,
-  Box,
-  Alert,
-  AlertIcon,
-  FormControl,
-  Flex,
-} from '@chakra-ui/core'
+import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { TextArea } from '../components/text-area'
-import { P } from '../components/paragraph'
 import { TextInput } from '../components/TextInput'
-import { FormLabel } from '../components/FormLabel'
 import { Field } from '../components/Field'
 
 const validate = () => {
@@ -187,7 +178,7 @@ export const HowDidItStartForm = props => {
             >
               {howManyTimes.map(key => {
                 return (
-                  <Box key={key}>
+                  <React.Fragment key={key}>
                     <RadioAdapter
                       name="howManyTimes"
                       value={key}
@@ -195,7 +186,7 @@ export const HowDidItStartForm = props => {
                     >
                       {i18n._(key)}
                     </RadioAdapter>
-                  </Box>
+                  </React.Fragment>
                 )
               })}
             </FormArrayControl>
