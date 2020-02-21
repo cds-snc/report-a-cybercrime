@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
@@ -15,11 +16,6 @@ export const SuspectCluesSummary = props => {
     ...testdata.formData.suspectClues,
     ...data.formData.suspectClues,
   }
-
-  const hasInfoToDisplay =
-    suspectClues.suspectClues1.length > 0 ||
-    suspectClues.suspectClues2.length > 0 ||
-    suspectClues.suspectClues3.length > 0
 
   return (
     <React.Fragment>
@@ -49,7 +45,7 @@ export const SuspectCluesSummary = props => {
             label="confirmationPage.suspectClues.title.edit"
           />
         </Flex>
-        {hasInfoToDisplay ? (
+        {containsData(suspectClues) ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.suspectClues.suspectClues1"
