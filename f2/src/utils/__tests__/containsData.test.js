@@ -30,12 +30,22 @@ describe('containsData', () => {
     expect(containsData(x)).toEqual(true)
   })
 
+  it('returns true for numbers', () => {
+    expect(containsData(3.4)).toEqual(true)
+    expect(containsData(0)).toEqual(true)
+  })
+
+  it('returns true for boolean', () => {
+    expect(containsData(true)).toEqual(true)
+    expect(containsData(false)).toEqual(true)
+  })
+
   it('returns true for a list that contains things that are non-empty', () => {
     const x = ['a', {}]
     expect(containsData(x)).toEqual(true)
   })
 
-  it('returns true for anobject that contains things that are non-empty', () => {
+  it('returns true for an object that contains things that are non-empty', () => {
     const x = { a: 'hi', b: '' }
     expect(containsData(x)).toEqual(true)
   })
