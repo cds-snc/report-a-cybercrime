@@ -13,6 +13,7 @@ export const useStateValue = () => useContext(StateContext)
 export const initialState = {
   doneForms: false,
   formData: {},
+  doneFinalFeedback: false,
 }
 
 export const reducer = (state, action) => {

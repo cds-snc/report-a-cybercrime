@@ -21,6 +21,8 @@ export const ThankYouPage = () => {
   const [state] = useStateValue()
   const [data] = useStateValue()
 
+  console.log(state)
+
   const contactInfo = {
     ...data.formData.contactInfo,
   }
@@ -34,6 +36,13 @@ export const ThankYouPage = () => {
         mb={-10}
         zIndex={1}
       >
+        {state.doneFinalFeedback && (
+          <Alert status="success">
+            <AlertIcon mt={0} />
+            <Trans id="thankYouPage.feedback.success" />
+          </Alert>
+        )}
+
         <Row>
           <InfoCard
             bg="green.200"
@@ -143,9 +152,18 @@ export const ThankYouPage = () => {
 
           <Row>
             <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 8 }}>
-              <H2>
-                <Trans id="thankYouPage.feedback" />
-              </H2>
+              {state.doneFinalFeedback ? (
+                <Box>
+                  <H2 mb={2}>
+                    <Trans id="finalFeedbackThanks.title" />
+                  </H2>
+                  <Trans id="thankYouPage.feedback.new" />
+                </Box>
+              ) : (
+                <H2 mb={2}>
+                  <Trans id="thankYouPage.feedback" />
+                </H2>
+              )}
               <ButtonLink
                 mt="auto"
                 variantColor="gray"
