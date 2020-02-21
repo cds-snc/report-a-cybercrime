@@ -8,13 +8,13 @@ import { Link } from './components/link'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { InfoCard, LandingBox } from './components/container'
-import { TrackPageViews } from './TrackPageViews'
 import { Layout, Row } from './components/layout'
 import { Text } from './components/text'
 import { Stack, Alert, AlertIcon, Box, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { P } from './components/paragraph'
 import { Route } from 'react-router-dom'
+import { Page } from './components/Page'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
@@ -28,94 +28,96 @@ export const ThankYouPage = () => {
   const [, dispatch] = useStateValue()
 
   return (
-    <Box w="100%">
-      <Stack spacing={10} w="100%">
-        <Layout>
-          <TrackPageViews />
-          <Row>
-            <InfoCard
-              bg="green.200"
-              color="black"
-              borderColor="green.400"
-              spacing={6}
-            >
-              <H1 mb={6}>
-                <Trans id="thankYouPage.title" />
-              </H1>
-              <P fontSize="lg">
-                <Trans
-                  id="thankYouPage.referenceNumber"
-                  values={{
-                    reference: state.formData.reportId
-                      ? state.formData.reportId
-                      : '< report ID >',
-                  }}
-                >
-                  <Text as="span" d="block" fontSize="2xl" />
-                </Trans>
-              </P>
-            </InfoCard>
-          </Row>
+    <Page>
+      <Layout
+        columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}
+        mb={-10}
+        zIndex={1}
+      >
+        <Row>
+          <InfoCard
+            bg="green.200"
+            color="black"
+            borderColor="green.400"
+            spacing={6}
+            columns={{ base: 4 / 4, md: 6 / 8 }}
+          >
+            <H1 mb={6}>
+              <Trans id="thankYouPage.title" />
+            </H1>
+            <P fontSize="lg">
+              <Trans
+                id="thankYouPage.referenceNumber"
+                values={{
+                  reference: state.formData.reportId
+                    ? state.formData.reportId
+                    : '< report ID >',
+                }}
+              >
+                <Text as="span" d="block" fontSize="2xl" />
+              </Trans>
+            </P>
+          </InfoCard>
+        </Row>
 
-          {contactInfo.email && <Trans id="thankYouPage.summary" />}
+        {contactInfo.email && <Trans id="thankYouPage.summary" />}
+      </Layout>
+      <Box bg="gray.200" py={10}>
+        <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }} pt={10}>
+          <Stack spacing={4} shouldWrapChildren>
+            <H2>
+              <Trans id="thankYouPage.whatNextHeading" />
+            </H2>
+            <P>
+              <Trans id="thankYouPage.whatNextParagraph" />
+            </P>
+            <P>
+              <Trans id="thankYouPage.whatNextParagraph2" />
+            </P>
+            <H2>
+              <Trans id="thankYouPage.helpResource" />
+            </H2>
+            <Ul>
+              <Li>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
+                      : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
+                  }
+                >
+                  <Trans id="thankYouPage.helpResource1" />
+                </A>
+              </Li>
+              <Li>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'http://www.antifraudcentre.ca/index-eng.htm'
+                      : 'http://www.antifraudcentre.ca/index-fra.htm'
+                  }
+                >
+                  <Trans id="thankYouPage.helpResource2" />
+                </A>
+              </Li>
+              <Li>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
+                      : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
+                  }
+                >
+                  <Trans id="thankYouPage.helpResource3" />
+                </A>
+              </Li>
+            </Ul>
+          </Stack>
         </Layout>
-        <Layout fluid bg="gray.200" py={10}>
-          <Layout>
-            <Stack spacing={4} shouldWrapChildren>
-              <H2>
-                <Trans id="thankYouPage.whatNextHeading" />
-              </H2>
-              <P>
-                <Trans id="thankYouPage.whatNextParagraph" />
-              </P>
-              <P>
-                <Trans id="thankYouPage.whatNextParagraph2" />
-              </P>
-              <H2>
-                <Trans id="thankYouPage.helpResource" />
-              </H2>
-              <Ul>
-                <Li>
-                  <A
-                    href={
-                      i18n.locale === 'en'
-                        ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
-                        : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
-                    }
-                  >
-                    <Trans id="thankYouPage.helpResource1" />
-                  </A>
-                </Li>
-                <Li>
-                  <A
-                    href={
-                      i18n.locale === 'en'
-                        ? 'http://www.antifraudcentre.ca/index-eng.htm'
-                        : 'http://www.antifraudcentre.ca/index-fra.htm'
-                    }
-                  >
-                    <Trans id="thankYouPage.helpResource2" />
-                  </A>
-                </Li>
-                <Li>
-                  <A
-                    href={
-                      i18n.locale === 'en'
-                        ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
-                        : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
-                    }
-                  >
-                    <Trans id="thankYouPage.helpResource3" />
-                  </A>
-                </Li>
-              </Ul>
-            </Stack>
-          </Layout>
-        </Layout>
-      </Stack>
+      </Box>
 
       {/* After help section*/}
-      <Layout pt={10}>
+      <Layout pt={10} columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
         <Stack spacing={6}>
           <Alert status="success">
             <AlertIcon mt={0} />
@@ -140,7 +142,7 @@ export const ThankYouPage = () => {
           </Box>
 
           <Row>
-            <LandingBox spacing={10}>
+            <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 8 }}>
               <H2>
                 <Trans id="thankYouPage.feedback" />
               </H2>
@@ -164,6 +166,6 @@ export const ThankYouPage = () => {
           </Row>
         </Stack>
       </Layout>
-    </Box>
+    </Page>
   )
 }
