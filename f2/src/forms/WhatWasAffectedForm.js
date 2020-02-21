@@ -2,11 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, useField } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, Alert } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/paragraph'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { A } from '../components/link'
@@ -125,9 +124,6 @@ export const WhatWasAffectedForm = props => {
                 )
               })}
             </FormArrayControl>
-            <P>
-              <Trans id="whatWasAffectedForm.expectations" />
-            </P>
             <NextAndCancelButtons
               next={<Trans id="whatWasAffectedForm.nextPage" />}
               button={<Trans id="whatWasAffectedForm.nextButton" />}

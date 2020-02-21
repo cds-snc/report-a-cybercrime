@@ -19,6 +19,9 @@ export const Button = ({ variant, variants, variantColor, ...props }) => (
     _hover={{
       boxShadow: 'outlineHover',
     }}
+    _active={{
+      bg: `${variantColor}.700`,
+    }}
     {...props}
   />
 )

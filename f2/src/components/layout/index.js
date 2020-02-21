@@ -1,15 +1,9 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Container } from '../container'
+import { Flex, Stack } from '@chakra-ui/core'
 
-export const Layout = ({ fluid, columns, ...props }) => {
-  const col = {
-    base: columns.base * 100 + '%',
-    md: columns.md * 100 + '%',
-    lg: columns.lg * 100 + '%',
-    xl: columns.xl * 100 + '%',
-  }
-
+export const Layout = ({ fluid, columns, noEffect, ...props }) => {
   // scroll to the top of the page when this Layout renders
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -27,8 +21,40 @@ export const Layout = ({ fluid, columns, ...props }) => {
           })}
       {...props}
     >
-      <Container w={col}>{props.children}</Container>
+      <Row>
+        <Column columns={columns}>{props.children}</Column>
+      </Row>
     </Container>
+  )
+}
+
+export const Column = ({ columns, ...props }) => {
+  const col = {}
+  //Turn fractions into %
+  Object.keys(columns).map(key => {
+    return (col[key] = columns[key] * 100 + '%')
+  })
+
+  // Keep width and mx after props to prevent them being overwritten
+  return (
+    <Stack
+      className="col"
+      flexShrink="0"
+      flexGrow="0"
+      flexBasis={col}
+      maxW={col}
+      px={2}
+    >
+      {props.children}
+    </Stack>
+  )
+}
+
+export const Row = props => {
+  return (
+    <Flex {...props} mx={-2} wrap="wrap" className="row">
+      {props.children}
+    </Flex>
   )
 }
 
@@ -38,6 +64,11 @@ Layout.propTypes = {
 }
 
 Layout.defaultProps = {
+  noEffect: false,
   fluid: false,
-  columns: { base: 1, md: 1, lg: 1, xl: 1 },
+  columns: { base: 1 },
+}
+
+Column.defaultProps = {
+  columns: { base: 1 },
 }

@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FormControl, Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { A } from '../components/link'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { useLingui } from '@lingui/react'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -22,7 +23,6 @@ const validate = () => {
 
 export const PrivacyConsentInfoForm = props => {
   const { i18n } = useLingui()
-
   const [data] = useStateValue()
   const whetherConsent = {
     consentOptions: [],
@@ -69,7 +69,14 @@ export const PrivacyConsentInfoForm = props => {
                             key,
                           )}
                         >
-                          {i18n._(key)}
+                          <Trans id="privacyConsentInfoForm.yes" />
+                          <A
+                            href={'/privacystatement?lang=' + i18n.locale}
+                            isExternal
+                          >
+                            <Trans id="privacyConsentInfoForm.linkOut" />
+                          </A>
+                          <Trans id="privacyConsentInfoForm.period" />
                         </CheckboxAdapter>
                       </React.Fragment>
                     )

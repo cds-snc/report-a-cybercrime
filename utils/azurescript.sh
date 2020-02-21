@@ -5,6 +5,7 @@ export RG_NAME=MpPCCDSCybercrimeRG
 
 export ACR_NAME=MpPCCDSCybercrimeacr
 export IMAGE_NAME=f2
+export VIRUS_SCANNER_IMAGE_NAME=clamav
 
 export DB_NAME=mppccdscybercrimecosdb
 
@@ -44,27 +45,26 @@ az network vnet create --name $VNET_NAME --resource-group $RG_NAME --address-pre
 az network vnet subnet create --address-prefixes $CONTAINER_SUBNET_RANGE --name $CONTAINER_SUBNET --resource-group $RG_NAME --vnet-name $VNET_NAME
 
 ## Create Container registry
-ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku standard --query id --output tsv)
-
-## Create Database
-az cosmosdb create --name $DB_NAME --kind MongoDB
-
-## Create Antivirus Scanner Container Instance
-# - Currently not using the alpine version because mk0x needs to rebuild from clamd v102.2 or 103 to pickup known azure bugfix.
-# - See https://bugzilla.clamav.net/show_bug.cgi?id=12469
-# To query the log analytics workspace for container logs query ContainerEvent_CL and ContainerInstanceLog_CL tables
-az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image mk0x/docker-clamav --dns-name-label $VIRUS_SCANNER_NAME --ports 3310 --log-analytics-workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query customerId --output tsv) --log-analytics-workspace-key $(az monitor log-analytics workspace get-shared-keys --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query primarySharedKey --output tsv)
-
-## Create Content Moderator - Azure Cognitive Services
-az cognitiveservices account create --name $COGNITIVE_NAME --resource-group $RG_NAME --kind ContentModerator --sku F0 --location canadacentral --yes
+ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku Premium --query id --output tsv)
 
 #### Deploy code
-## Build Docker image
+## Build Docker images
 az acr build --registry $ACR_NAME --image $IMAGE_NAME ../f2
+az acr bulid --registry $ACR_NAME --image $VIRUS_SCANNER_IMAGE_NAME 'https://github.com/cds-snc/docker-clamav.git#alpine'
 
 ## Gather credentials to access ACR
 SP_PASSWD=$(az ad sp create-for-rbac --name http://$SERVICE_PRINCIPAL_NAME --scopes $ACR_REGISTRY_ID --role acrpull --query password --output tsv)
 SP_APP_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)
+
+## Create Antivirus Scanner Container Instance
+# To query the log analytics workspace for container logs query ContainerEvent_CL and ContainerInstanceLog_CL tables
+az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image ${ACR_NAME}.azurecr.io/${VIRUS_SCANNER_IMAGE_NAME}:latest --dns-name-label $VIRUS_SCANNER_NAME --ports 3310 --registry-login-server ${ACR_NAME}.azurecr.io --registry-password $SP_PASSWD --registry-username $SP_APP_ID --log-analytics-workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query customerId --output tsv) --log-analytics-workspace-key $(az monitor log-analytics workspace get-shared-keys --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query primarySharedKey --output tsv)
+
+## Create Content Moderator - Azure Cognitive Services
+az cognitiveservices account create --name $COGNITIVE_NAME --resource-group $RG_NAME --kind ContentModerator --sku F0 --location canadacentral --yes
+
+## Create Database
+az cosmosdb create --name $DB_NAME --kind MongoDB
 
 #### App Service
 ## Create App Service & configure

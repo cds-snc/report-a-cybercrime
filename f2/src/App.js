@@ -14,7 +14,6 @@ import { StateProvider, initialState, reducer } from './utils/state'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { Li } from './components/list-item'
-import { MidFeedbackForm } from './forms/MidFeedbackForm'
 import { A } from './components/link'
 
 const App = () => {
@@ -63,30 +62,31 @@ const App = () => {
             bg="gray.50"
           >
             <Home />
-            <MidFeedbackForm
-              onSubmit={data => {
-                console.log(data)
-              }}
-            />
           </Stack>
 
-          <Layout fluid>
-            <Layout>
-              <P fontSize="sm" my={3}>
-                Version: {process.env.REACT_APP_VERSION || '000000'}
-              </P>
-            </Layout>
+          <Layout>
+            <P fontSize="sm" my={3}>
+              {`Version: ${
+                process.env.REACT_APP_VERSION
+                  ? process.env.REACT_APP_VERSION.slice(0, 7)
+                  : '000000'
+              }`}
+            </P>
           </Layout>
 
           <Footer>
             {/** The List component is in the Footer component */}
             <Li>
-              <A href="/privacystatement" isExternal>
+              <A href={'/privacystatement?lang=' + i18n.locale} isExternal>
                 <Trans id="banner.footerPrivacy" />
               </A>
             </Li>
             <Li>
-              <A ml={4} href="/termsandconditions" isExternal>
+              <A
+                ml={4}
+                href={'/termsandconditions?lang=' + i18n.locale}
+                isExternal
+              >
                 <Trans id="banner.footerTermsAndConditions" />
               </A>
             </Li>

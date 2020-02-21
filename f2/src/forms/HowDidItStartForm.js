@@ -6,11 +6,12 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { CheckboxAdapter } from '../components/checkbox'
 import { RadioAdapter } from '../components/radio'
-import { Stack, Box } from '@chakra-ui/core'
+import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
-import { Field } from '../components/Field'
 import { TextArea } from '../components/text-area'
+import { TextInput } from '../components/TextInput'
+import { Field } from '../components/Field'
 
 const validate = () => {
   return {}
@@ -24,7 +25,9 @@ export const HowDidItStartForm = props => {
     howDidTheyReachYou: [],
     application: '',
     others: '',
-    whenDidItStart: '',
+    startDay: '',
+    startMonth: '',
+    startYear: '',
     howManyTimes: '',
     ...data.formData.howdiditstart,
   }
@@ -62,25 +65,16 @@ export const HowDidItStartForm = props => {
     },
   ]
 
-  const timeline = {
-    whenDidItStart: [],
-    ...data.formData.timeline,
-  }
-
-  const whenDidItStart = [
-    'whenDidItStart.today',
-    'whenDidItStart.pastWeek',
-    'whenDidItStart.pastMonth',
-    'whenDidItStart.pastYear',
-    'whenDidItStart.moreThanOneYear',
-  ]
-
   const recurrenceCheck = {
     howManyTimes: [],
     ...data.formData.timeline,
   }
 
-  const howManyTimes = ['howManyTimes.once', 'howManyTimes.severalTimes']
+  const howManyTimes = [
+    'howManyTimes.once',
+    'howManyTimes.severalTimes',
+    'howManyTimes.notSure',
+  ]
 
   return (
     <React.Fragment>
@@ -101,13 +95,9 @@ export const HowDidItStartForm = props => {
           <Trans id="howDidTheyReachYou.online" />
           <Trans id="howDidTheyReachYou.app" />
           <Trans id="howDidTheyReachYou.others" />
-          <Trans id="whenDidItStart.today" />
-          <Trans id="whenDidItStart.pastWeek" />
-          <Trans id="whenDidItStart.pastMonth" />
-          <Trans id="whenDidItStart.pastYear" />
-          <Trans id="whenDidItStart.moreThanOneYear" />
           <Trans id="howManyTimes.once" />
           <Trans id="howManyTimes.severalTimes" />
+          <Trans id="howManyTimes.notSure" />
         </div>
       ) : null}
 
@@ -126,7 +116,6 @@ export const HowDidItStartForm = props => {
               name="howDidTheyReachYou"
               label={<Trans id="howDidTheyReachYou.question" />}
               helperText={<Trans id="howDidTheyReachYou.reminder" />}
-              errorMessage={<Trans id="howDidItStartPage.tip" />}
             >
               {/** All questions have conditional fields. It makes sense to use the map function */}
               {questionsList.map(question => {
@@ -155,22 +144,32 @@ export const HowDidItStartForm = props => {
             </FormArrayControl>
 
             <FormArrayControl
-              name="whenDidItStart"
               label={<Trans id="whenDidItStart.label" />}
+              helperText={<Trans id="whenDidItStart.labelExample" />}
             >
-              {whenDidItStart.map(key => {
-                return (
-                  <React.Fragment key={key}>
-                    <RadioAdapter
-                      name="whenDidItStart"
-                      value={key}
-                      isChecked={timeline.whenDidItStart.includes(key)}
-                    >
-                      {i18n._(key)}
-                    </RadioAdapter>
-                  </React.Fragment>
-                )
-              })}
+              <Stack direction="row" spacing="2">
+                <Field
+                  name="startDay"
+                  label={<Trans id="whenDidItStart.startDay" />}
+                  component={TextInput}
+                  w={70}
+                  maxLength="2"
+                />
+                <Field
+                  name="startMonth"
+                  label={<Trans id="whenDidItStart.startMonth" />}
+                  component={TextInput}
+                  w={70}
+                  maxLength="2"
+                />
+                <Field
+                  name="startYear"
+                  label={<Trans id="whenDidItStart.startYear" />}
+                  component={TextInput}
+                  w={110}
+                  maxLength="4"
+                />
+              </Stack>
             </FormArrayControl>
 
             <FormArrayControl
@@ -179,7 +178,7 @@ export const HowDidItStartForm = props => {
             >
               {howManyTimes.map(key => {
                 return (
-                  <Box key={key}>
+                  <React.Fragment key={key}>
                     <RadioAdapter
                       name="howManyTimes"
                       value={key}
@@ -187,10 +186,14 @@ export const HowDidItStartForm = props => {
                     >
                       {i18n._(key)}
                     </RadioAdapter>
-                  </Box>
+                  </React.Fragment>
                 )
               })}
             </FormArrayControl>
+            <Alert status="success" backgroundColor="blue.100">
+              <AlertIcon name="info-outline" color="blue.800" />
+              <Trans id="howDidItStartPage.tip" />
+            </Alert>
             <NextAndCancelButtons
               next={<Trans id="howDidItStartPage.nextPage" />}
               button={<Trans id="howDidItStartPage.nextButton" />}

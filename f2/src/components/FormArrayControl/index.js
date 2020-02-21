@@ -22,8 +22,6 @@ export const FormArrayControl = ({
     subscription: { touched: true, error: true, submitFailed: true },
   })
 
-  console.log(submitFailed)
-
   return (
     <UniqueID>
       {id => {
