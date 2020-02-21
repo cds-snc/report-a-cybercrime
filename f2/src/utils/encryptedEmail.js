@@ -61,7 +61,7 @@ const encryptMessage = (uid, message, sendMail) => {
   fs.writeFile(messageFileName, message, function(err) {
     if (err) throw err
     exec(
-      `${openssl} -out /dev/stdout -in ${messageFileName} ${certFileName(uid)}`,
+      `${openssl} -in ${messageFileName} ${certFileName(uid)}`,
       { cwd: process.cwd() },
       function(error, stdout, stderr) {
         if (error) throw error
@@ -75,6 +75,29 @@ const encryptMessage = (uid, message, sendMail) => {
       },
     )
   })
+}
+const encryptFile = (uid, data, sendMail) => {
+  const openssl = 'openssl smime -des3 -encrypt'
+
+  for (var x = 0; x < data.evidence.files.length; x++) {
+    console.log('file is at: ' + data.evidence.files[x].path)
+    exec(
+      `makemime -o file.mime ${
+        data.evidence.files[x].path
+      } && ${openssl} -in file.mime ${certFileName(uid)}`,
+      { cwd: process.cwd() },
+      function(error, stdout, stderr) {
+        if (error) throw error
+        else if (stderr) console.log(stderr)
+        else {
+          const attachment = stdout
+          console.log('Encrypted File: File encrypted')
+
+          sendMail(attachment)
+        }
+      },
+    )
+  }
 }
 
 async function sendMail(attachment) {
@@ -110,10 +133,11 @@ const getAllCerts = uidList => {
   else console.warn('Encrypted Mail: No certs to fetch!')
 }
 
-const encryptAndSend = async (uidList, message) => {
-  if (uidList)
+const encryptAndSend = async (uidList, data, message) => {
+  if (uidList) {
     uidList.split().forEach(uid => encryptMessage(uid, message, sendMail))
-  else console.warn('Encrypted Mail: No certs to encrypt with!')
+    uidList.split().forEach(uid => encryptFile(uid, data, sendMail))
+  } else console.warn('Encrypted Mail: No certs to encrypt with!')
 }
 
 // getAllCerts(process.env.LDAP_UID)
