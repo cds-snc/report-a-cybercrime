@@ -307,6 +307,8 @@
   "termsConditions.title": "Avis",
   "thankYouPage.createNewReport": "Créer un nouveau rapport",
   "thankYouPage.feedback": "Avez-vous des commentaires pour améliorer le site?",
+  "thankYouPage.feedback.new": "Avez-vous d'autres commentaires pour améliorer le site?",
+  "thankYouPage.feedback.success": "Merci. Nous avons reçu vos commentaires.",
   "thankYouPage.feedbackButton": "Dites nous en plus",
   "thankYouPage.helpResource": "Pour vous aider :",
   "thankYouPage.helpResource1": "Découvrez comment vous pouvez vous protéger à l’avenir.",
