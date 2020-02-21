@@ -95,7 +95,7 @@
   "contactinfoPage.phoneNumber": "Numéro de téléphone.",
   "contactinfoPage.title": "Vos coordonnées",
   "default.end": " et ",
-  "default.hasValidationErrors": "",
+  "default.hasValidationErrors": "Veuillez corriger les erreurs sur cete page",
   "default.middle": ", ",
   "default.pair": " et ",
   "devicePage.account": "Quels type de compte a été affecté?",
