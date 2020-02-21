@@ -211,23 +211,32 @@ const formatFileAttachments = data => {
 }
 
 const formatAnalystEmail = dataOrig => {
-  let data = JSON.parse(JSON.stringify(dataOrig))
-  let returnString =
-    formatReportInfo(data) +
-    formatVictimDetails(data) +
-    formatIncidentInformation(data) +
-    formatNarrative(data) +
-    formatSuspectDetails(data) +
-    formatFinancialTransactions(data) +
-    formatFileAttachments(data)
+  let returnString
+  let missingFields
 
-  // take data object and delete any objects that are now empty, and display the rest
-  Object.keys(data).forEach(key => {
-    if (Object.keys(data[key]).length === 0) delete data[key]
-  })
-  let missingFields = Object.keys(data).length
-    ? '\n\nExtra Fields:\n' + JSON.stringify(data, null, '  ')
-    : ''
+  try {
+    let data = JSON.parse(JSON.stringify(dataOrig))
+    returnString =
+      formatReportInfo(data) +
+      formatVictimDetails(data) +
+      formatIncidentInformation(data) +
+      formatNarrative(data) +
+      formatSuspectDetails(data) +
+      formatFinancialTransactions(data) +
+      formatFileAttachments(data)
+
+    // take data object and delete any objects that are now empty, and display the rest
+    Object.keys(data).forEach(key => {
+      if (Object.keys(data[key]).length === 0) delete data[key]
+    })
+    missingFields = Object.keys(data).length
+      ? '\n\nExtra Fields:\n' + JSON.stringify(data, null, '  ')
+      : ''
+  } catch (error) {
+    const errorMessage = `ERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
+    console.error(errorMessage)
+    return errorMessage
+  }
   return returnString + missingFields
 }
 

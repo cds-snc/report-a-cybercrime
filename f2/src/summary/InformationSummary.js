@@ -10,6 +10,7 @@ import { DescriptionListItem } from '../components/DescriptionListItem'
 import { useLingui } from '@lingui/react'
 import { Text } from '../components/text'
 import { formatList } from '../utils/formatList'
+import { containsData } from '../utils/containsData'
 
 export const InformationSummary = props => {
   const [data] = useStateValue()
@@ -53,11 +54,6 @@ export const InformationSummary = props => {
     end: i18n._('default.end'),
   })
 
-  const hasInfoToDisplay =
-    infoReqLine.length > 0 ||
-    infoObtainedLine.length > 0 ||
-    personalInformation.tellUsMore.length > 0
-
   return (
     <React.Fragment>
       {false ? (
@@ -92,7 +88,7 @@ export const InformationSummary = props => {
           />
         </Flex>
 
-        {hasInfoToDisplay ? (
+        {containsData(personalInformation) ? (
           <Stack as="dl" spacing={4} shouldWrapChildren>
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoReq"
