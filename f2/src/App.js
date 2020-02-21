@@ -14,7 +14,6 @@ import { StateProvider, initialState, reducer } from './utils/state'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { Li } from './components/list-item'
-import { MidFeedbackForm } from './forms/MidFeedbackForm'
 import { A } from './components/link'
 
 const App = () => {
@@ -63,23 +62,16 @@ const App = () => {
             bg="gray.50"
           >
             <Home />
-            <MidFeedbackForm
-              onSubmit={data => {
-                console.log(data)
-              }}
-            />
           </Stack>
 
-          <Layout fluid>
-            <Layout>
-              <P fontSize="sm" my={3}>
-                {`Version: ${
-                  process.env.REACT_APP_VERSION
-                    ? process.env.REACT_APP_VERSION.slice(0, 7)
-                    : '000000'
-                }`}
-              </P>
-            </Layout>
+          <Layout>
+            <P fontSize="sm" my={3}>
+              {`Version: ${
+                process.env.REACT_APP_VERSION
+                  ? process.env.REACT_APP_VERSION.slice(0, 7)
+                  : '000000'
+              }`}
+            </P>
           </Layout>
 
           <Footer>
