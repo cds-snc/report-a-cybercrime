@@ -25,7 +25,9 @@ export const Field = ({
               {label}
             </FormLabel>
             {helperText && <FormHelperText>{helperText}</FormHelperText>}
-            <FormErrorMessage>{errorMessage}</FormErrorMessage>
+            {errorMessage && (
+              <FormErrorMessage>{errorMessage}</FormErrorMessage>
+            )}
             <FieldAdapter
               name={name}
               id={name}

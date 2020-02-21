@@ -41,7 +41,6 @@ export const WhatWasAffectedForm = props => {
   }
 
   const affectedOptions = whatWasAffectedPages.map(page => page.key)
-  let showWarning = false
 
   return (
     <React.Fragment>
@@ -59,11 +58,7 @@ export const WhatWasAffectedForm = props => {
       <Form
         initialValues={whatWasAffected}
         onSubmit={values => {
-          if (values.affectedOptions.length === 0) {
-            showWarning = true
-          } else {
-            props.onSubmit(values)
-          }
+          props.onSubmit(values)
         }}
         validate={validate}
         render={({

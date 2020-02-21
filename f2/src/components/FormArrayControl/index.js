@@ -17,9 +17,9 @@ export const FormArrayControl = ({
   ...rest
 }) => {
   const {
-    meta: { error, touched, submitFailed },
+    meta: { submitFailed },
   } = useField(name, {
-    subscription: { touched: true, error: true, submitFailed: true },
+    subscription: { submitFailed: true },
   })
 
   return (
@@ -37,11 +37,13 @@ export const FormArrayControl = ({
             {...rest}
           >
             <Stack spacing={1} pb={4}>
-              <FormLabel id={id} as="legend" htmlFor={name}>
+              <FormLabel id={id} as="legend" htmlFor={name} mb={label && 0}>
                 {label}
               </FormLabel>
-              <FormHelperText>{helperText}</FormHelperText>
-              <FormErrorMessage>{errorMessage}</FormErrorMessage>
+              {helperText && <FormHelperText>{helperText}</FormHelperText>}
+              {errorMessage && (
+                <FormErrorMessage>{errorMessage}</FormErrorMessage>
+              )}
             </Stack>
 
             {/** This component comes with a group attribute. We don't need to use Chakra's <CheckboxGroup> or <RadioGroup> as per the Chakra docs */}
