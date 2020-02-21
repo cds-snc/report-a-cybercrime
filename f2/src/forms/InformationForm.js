@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, useField } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack, FormControl, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { ConditionalForm } from '../components/container'
 import { TextInput } from '../components/TextInput'
@@ -14,13 +14,6 @@ import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { A } from '../components/link'
 import { Field } from '../components/Field'
-
-const Control = ({ name, ...rest }) => {
-  const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
-  return <FormControl {...rest} isInvalid={error && touched} />
-}
 
 export const InformationForm = props => {
   const { i18n } = useLingui()
