@@ -78,7 +78,7 @@ export const InformationForm = props => {
               >
                 {typeOfInfoReq.map(key => {
                   return (
-                    <Box key={key}>
+                    <React.Fragment key={key}>
                       <CheckboxAdapter name="typeOfInfoReq" value={key}>
                         {i18n._(key)}
                       </CheckboxAdapter>
@@ -90,7 +90,7 @@ export const InformationForm = props => {
                             <Field name="infoReqOther" component={TextInput} />
                           </ConditionalForm>
                         )}
-                    </Box>
+                    </React.Fragment>
                   )
                 })}
               </FormArrayControl>
@@ -106,7 +106,7 @@ export const InformationForm = props => {
               >
                 {typeOfInfoObtained.map(key => {
                   return (
-                    <Box key={key}>
+                    <React.Fragment key={key}>
                       <CheckboxAdapter name="typeOfInfoObtained" value={key}>
                         {i18n._(key)}
                       </CheckboxAdapter>
@@ -121,7 +121,7 @@ export const InformationForm = props => {
                             />
                           </ConditionalForm>
                         )}
-                    </Box>
+                    </React.Fragment>
                   )
                 })}
               </FormArrayControl>
