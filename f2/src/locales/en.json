@@ -307,6 +307,8 @@
   "termsConditions.title": "Terms and conditions",
   "thankYouPage.createNewReport": "Create a new report",
   "thankYouPage.feedback": "Have feedback to help us improve this site?",
+  "thankYouPage.feedback.new": "Have more feedback to help us improve this site?",
+  "thankYouPage.feedback.success": "Thank you. We have received your feedback.",
   "thankYouPage.feedbackButton": "Tell us more",
   "thankYouPage.helpResource": "Where you can find help:",
   "thankYouPage.helpResource1": "Learn about how you can protect yourself in the future.",
