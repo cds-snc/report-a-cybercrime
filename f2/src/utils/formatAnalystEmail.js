@@ -44,10 +44,7 @@ const formatVictimDetails = data => {
 }
 
 const formatIncidentInformation = data => {
-  const occurenceString = data.howdiditstart.whenDidItStart.replace(
-    'whenDidItStart.',
-    '',
-  )
+  const occurenceString = `${data.howdiditstart.startDay}-${data.howdiditstart.startMonth}-${data.howdiditstart.startYear}`
   const freqString = data.howdiditstart.howManyTimes.replace(
     'howManyTimes.',
     '',
@@ -67,7 +64,9 @@ const formatIncidentInformation = data => {
     formatLine('What could be affected:     ', affectedString) +
     formatLine('What could be affected:     ', data.whatWasAffected.optionOther)
 
-  delete data.howdiditstart.whenDidItStart
+  delete data.howdiditstart.startDay
+  delete data.howdiditstart.startMonth
+  delete data.howdiditstart.startYear
   delete data.howdiditstart.howManyTimes
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
@@ -156,17 +155,19 @@ const formatFinancialTransactions = data => {
   const paymentString = data.moneyLost.methodPayment
     .map(method => method.replace('methodPayment.', ''))
     .join(', ')
-
+  const transactionDate = `${data.moneyLost.transactionDay}-${data.moneyLost.transactionMonth}-${data.moneyLost.transactionYear}`
   const returnString =
     formatLine('Money requested:     ', data.moneyLost.demandedMoney) +
     formatLine('Money lost:          ', data.moneyLost.moneyTaken) +
     formatLine('Method of payment:   ', paymentString) +
-    formatLine('Transaction date:    ', data.moneyLost.transactionDate)
+    formatLine('Transaction date:    ', transactionDate)
 
   delete data.moneyLost.methodPayment
   delete data.moneyLost.demandedMoney
   delete data.moneyLost.moneyTaken
-  delete data.moneyLost.transactionDate
+  delete data.moneyLost.transactionDay
+  delete data.moneyLost.transactionMonth
+  delete data.moneyLost.transactionYear
   return (
     '\n\nFinancial transactions\n\n' +
     (returnString !== '' ? returnString : 'No Data')
