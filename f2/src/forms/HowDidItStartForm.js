@@ -17,9 +17,8 @@ const validate = () => {
   return {}
 }
 
-const cleanData = dataOrig => {
+const clearData = dataOrig => {
   let data = JSON.parse(JSON.stringify(dataOrig))
-  console.log(data)
   if (
     !data.howDidTheyReachYou ||
     !data.howDidTheyReachYou.includes('howDidTheyReachYou.email')
@@ -135,7 +134,7 @@ export const HowDidItStartForm = props => {
 
       <Form
         initialValues={howdiditstart}
-        onSubmit={data => props.onSubmit(cleanData(data))}
+        onSubmit={data => props.onSubmit(clearData(data))}
         validate={validate}
         render={({ handleSubmit, values }) => (
           <Stack
