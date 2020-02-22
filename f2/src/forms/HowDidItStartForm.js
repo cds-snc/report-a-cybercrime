@@ -19,31 +19,15 @@ const validate = () => {
 
 const clearData = dataOrig => {
   let data = JSON.parse(JSON.stringify(dataOrig))
-  if (
-    !data.howDidTheyReachYou ||
-    !data.howDidTheyReachYou.includes('howDidTheyReachYou.email')
-  )
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.email'))
     data.email = ''
-  if (
-    !data.howDidTheyReachYou ||
-    !data.howDidTheyReachYou.includes('howDidTheyReachYou.phone')
-  )
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.phone'))
     data.phone = ''
-  if (
-    !data.howDidTheyReachYou ||
-    !data.howDidTheyReachYou.includes('howDidTheyReachYou.online')
-  )
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.online'))
     data.online = ''
-  if (
-    !data.howDidTheyReachYou ||
-    !data.howDidTheyReachYou.includes('howDidTheyReachYou.app')
-  )
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.app'))
     data.application = ''
-
-  if (
-    !data.howDidTheyReachYou ||
-    !data.howDidTheyReachYou.includes('howDidTheyReachYou.others')
-  )
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.others'))
     data.others = ''
   return data
 }
