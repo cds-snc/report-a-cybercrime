@@ -8,7 +8,7 @@ const formatReportInfo = data => {
 
   if (data.selfHarmWords.length) {
     selfHarmString = data.selfHarmWords
-    returnString = `**** SELF HARM WORDS FOUND : ${selfHarmString}\n\n`
+    returnString = `\n\nSELF HARM WORDS FOUND : ${selfHarmString}\n\n`
   }
   returnString +=
     'Report information\n\n' +

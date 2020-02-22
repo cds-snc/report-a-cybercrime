@@ -14,7 +14,7 @@ describe('formatAnalystEmail', () => {
     console.error = jest.fn()
     const s = formatAnalystEmail(data)
     expect(s).toEqual(
-      expect.stringMatching(/^\*\*\*\* SELF HARM WORDS FOUND : agile/),
+      expect.stringMatching(/^\n\nSELF HARM WORDS FOUND : agile/),
     )
     expect(console.error).toHaveBeenCalled()
   })
