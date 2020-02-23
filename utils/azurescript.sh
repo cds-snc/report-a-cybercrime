@@ -1,21 +1,20 @@
 #!/bin/bash
 
-export PROJECT_NAME=rcmpcybercrime
-export RG_NAME=MpPCCDSCybercrimeRG
+export RG_NAME=MpPc-CDS-CyberCrime-rg
 
-export ACR_NAME=MpPCCDSCybercrimeacr
+export ACR_NAME=MpPc-CDSCybercrime-acr 
 export IMAGE_NAME=f2
 export VIRUS_SCANNER_IMAGE_NAME=clamav
 
-export DB_NAME=mppccdscybercrimecosdb
+export DB_NAME=MpPc-CDSCybercrime-cosdb
 
-export PLAN_NAME=MpPCCDSCybercrimeazappplan
-export APP_NAME=MpPCCDSCybercrimeazapp
-export SERVICE_PRINCIPAL_NAME=MpPCCDSCybercrimeACR-sp
+export PLAN_NAME=MpPc-CDSCybercrime-asp
+export APP_NAME=MpPc-CDSCybercrime-asrv
+export SERVICE_PRINCIPAL_NAME=MpPc-CDSCybercrimeACR-spn
 
-export VIRUS_SCANNER_NAME=mppccdscybercrimeclamav
+export VIRUS_SCANNER_NAME=MpPc-CDSCybercrimeClamav-ci
 
-export COGNITIVE_NAME=MpPCCogContMod1
+export COGNITIVE_NAME=MpPc-CDSCybercrime-cogsrvs 
 
 export WAF_RG=MpPCCorenetRg
 export WAF_NAME=MpPCWafGw
@@ -25,7 +24,7 @@ export WAF_SUBSCRIPTION=MpPSub
 export LOG_ANALYTICS=MpPCSecWs
 export LOG_RG=MpPCSeclogRg
 
-export VNET_NAME=MpPCCDSCybercrimeVN
+export VNET_NAME=MpPc-CDSCybercrime-vn
 export VNET_ADDRESS=10.9.0.0/16
 export APP_SUBNET="${APP_NAME}SN"
 export APP_SUBNET_RANGE=10.9.0.0/24
