@@ -64,12 +64,14 @@ const App = () => {
             <Home />
 
             <Layout>
-            <P fontSize="sm" my={3}>
+
+            <P fontSize="sm" my={3} aria-label="application version">
               {`Version: ${
                 process.env.REACT_APP_VERSION
                   ? process.env.REACT_APP_VERSION.slice(0, 7)
                   : '000000'
               }`}
+
             </P>
           </Layout>
           </Stack>

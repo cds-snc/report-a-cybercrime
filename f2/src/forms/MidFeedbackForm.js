@@ -153,7 +153,7 @@ export const MidFeedbackForm = props => {
                   <Field name="problemDescription">
                     {props => (
                       <FormControl>
-                        <FormLabel>
+                        <FormLabel htmlFor="problemDescription">
                           <Trans id="midFeedback.description.label" />
                         </FormLabel>
 
