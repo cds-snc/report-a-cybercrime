@@ -62,9 +62,8 @@ const App = () => {
             bg="gray.50"
           >
             <Home />
-          </Stack>
 
-          <Layout>
+            <Layout>
             <P fontSize="sm" my={3}>
               {`Version: ${
                 process.env.REACT_APP_VERSION
@@ -73,7 +72,7 @@ const App = () => {
               }`}
             </P>
           </Layout>
-
+          </Stack>
           <Footer>
             {/** The List component is in the Footer component */}
             <Li>
