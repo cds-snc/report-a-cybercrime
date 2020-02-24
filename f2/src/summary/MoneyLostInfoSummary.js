@@ -5,6 +5,7 @@ import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
+import { formatDate } from '../utils/formatDate'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
@@ -81,13 +82,11 @@ export const MoneyLostInfoSummary = props => {
             />
             <DescriptionListItem
               descriptionTitle="confirmationPage.moneyLost.transactionDate"
-              description={
-                moneyLost.transactionDay +
-                ' ' +
-                moneyLost.transactionMonth +
-                ' ' +
-                moneyLost.transactionYear
-              }
+              description={formatDate(
+                moneyLost.transactionDay,
+                moneyLost.transactionMonth,
+                moneyLost.transactionYear,
+              )}
             />
             <DescriptionListItem
               descriptionTitle="confirmationPage.moneyLost.tellUsMore"
