@@ -45,7 +45,7 @@ const getCert = uid => {
       console.log('Encrypted Mail: referral: ' + referral.uris.join())
     })
     res.on('error', function(err) {
-      console.error('Encrypted Mail: error: ' + err.message)
+      console.warn('Encrypted Mail: error: ' + err.message)
     })
     res.on('end', function(result) {
       if (result.status !== 0)

@@ -21,15 +21,15 @@ try {
     sharedKeyCredential,
   )
 } catch (error) {
-  console.error('WARNING: File storage not configured')
+  console.warn('WARNING: File storage not configured')
 }
 
 async function saveBlob(data) {
-  if (!blobServiceClient && data.evidence.files.length > 0) {
-    console.error(`WARNING: Report ${data.reportId} not able to save files`)
-    return
-  }
   try {
+    if (!blobServiceClient && data.evidence.files.length > 0) {
+      console.warn(`WARNING: Report ${data.reportId} not able to save files`)
+      return
+    }
     if (data.evidence.files.length > 0) {
       const containerName = data.reportId.replace('-', '').toLowerCase()
       console.log(containerName)
@@ -59,7 +59,7 @@ async function saveBlob(data) {
       }
     }
   } catch (error) {
-    console.error(`ERROR in saveBlob: ${error}`)
+    console.warn(`ERROR in saveBlob: ${error}`)
   }
 }
 
