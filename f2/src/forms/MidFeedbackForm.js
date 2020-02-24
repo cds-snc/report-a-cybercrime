@@ -1,18 +1,20 @@
 /** @jsx jsx */
-import React from 'react'
+import React, { useState } from 'react'
 import { jsx } from '@emotion/core'
-import { H1 } from '../components/header'
+import { H1, H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
+import { containsData } from '../utils/containsData'
 import { Form, Field, useField } from 'react-final-form'
-import { Stack, FormControl, Box } from '@chakra-ui/core'
+import { Stack, FormControl, Box, Alert, AlertIcon } from '@chakra-ui/core'
 import { FormLabel } from '../components/FormLabel'
 import { FormHelperText } from '../components/FormHelperText'
 import { Button } from '../components/button'
-import { Layout } from '../components/layout'
 import { TextArea } from '../components/text-area'
+import { InfoCard } from '../components/container'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { Row } from '../components/layout'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -21,7 +23,13 @@ const Control = ({ name, ...rest }) => {
   return <FormControl {...rest} isInvalid={error && touched} />
 }
 
-export const MidFeedbackForm = ({ onSubmit }) => {
+export const MidFeedbackForm = props => {
+  const [status, setStatus] = useState('')
+
+  const validate = () => {
+    return {}
+  }
+
   const { i18n } = useLingui()
 
   const midFeedback = [
@@ -31,6 +39,8 @@ export const MidFeedbackForm = ({ onSubmit }) => {
     'midFeedback.problem.worry',
     'midFeedback.problem.other',
   ]
+
+  let showWarning = false
 
   return (
     <React.Fragment>
@@ -43,9 +53,26 @@ export const MidFeedbackForm = ({ onSubmit }) => {
           <Trans id="midFeedback.problem.other" />
         </div>
       ) : null}
-      <Layout mt={10}>
+
+      {status ? (
+        <Row>
+          <InfoCard
+            bg="blue.200"
+            borderColor="blue.300"
+            borderBottom="3px"
+            columns={{ base: 4 / 4, md: 6 / 8 }}
+          >
+            <H2 as="p">
+              <Trans id="midFeedback.thankYou" />
+            </H2>
+          </InfoCard>
+        </Row>
+      ) : (
         <Box as="details">
           <Button
+            h="inherit"
+            py={4}
+            whiteSpace="wrap"
             as="summary"
             w={{ base: '100%', md: 'auto' }}
             color="black"
@@ -68,15 +95,32 @@ export const MidFeedbackForm = ({ onSubmit }) => {
               <Trans id="midFeedback.title" />
             </H1>
             <Form
-              d="block"
-              onSubmit={onSubmit}
-              render={({ handleSubmit }) => (
+              initialValues={{
+                midFeedback: [],
+                problemDescription: '',
+              }}
+              onSubmit={values => {
+                if (!containsData(values)) {
+                  showWarning = true
+                } else {
+                  setStatus('feedback.submitted')
+                  props.onSubmit(values)
+                }
+              }}
+              validate={validate}
+              render={({ handleSubmit, values }) => (
                 <Stack
                   as="form"
                   onSubmit={handleSubmit}
                   shouldWrapChildren
                   spacing={6}
                 >
+                  {showWarning ? (
+                    <Alert status="warning">
+                      <AlertIcon />
+                      <Trans id="finalFeedback.warning" />
+                    </Alert>
+                  ) : null}
                   <Control as="fieldset" name="midFeedback">
                     <FormArrayControl
                       name="midFeedback"
@@ -133,7 +177,7 @@ export const MidFeedbackForm = ({ onSubmit }) => {
             />
           </Stack>
         </Box>
-      </Layout>
+      )}
     </React.Fragment>
   )
 }

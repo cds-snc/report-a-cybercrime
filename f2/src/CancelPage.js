@@ -3,7 +3,6 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
-import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { Stack, Alert, AlertIcon, Box, Icon } from '@chakra-ui/core'
 import { Route } from 'react-router-dom'
@@ -12,35 +11,38 @@ import { Li } from './components/list-item'
 import { A, Link, ButtonLink } from './components/link'
 import { useLingui } from '@lingui/react'
 import { useStateValue } from './utils/state'
+import { Page } from './components/Page'
 
 export const CancelPage = () => {
   const { i18n } = useLingui()
   const [, dispatch] = useStateValue()
   return (
-    <Stack w="100%">
-      <Layout>
+    <Page>
+      <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
         <Stack spacing={10} w="100%">
-          <TrackPageViews />
           <H1 mb={6}>
             <Trans id="cancelPage.title" />
           </H1>
-          <P><Trans id="cancelPage.summary" /></P>
-          <Box><ButtonLink
-            mt="auto"
-            variantColor="gray"
-            color="white"
-            title={i18n._('cancelPage.feedbackButton.aria')}
-            to="/finalFeedback"
-          >
-            <Trans id="cancelPage.feedbackButton" />
-            <Icon
-              focusable="false"
-              ml={2}
-              mr={-2}
-              name="chevron-right"
-              size="28px"
-            />
-          </ButtonLink>
+          <P>
+            <Trans id="cancelPage.summary" />
+          </P>
+          <Box>
+            <ButtonLink
+              mt="auto"
+              variantColor="gray"
+              color="white"
+              title={i18n._('cancelPage.feedbackButton.aria')}
+              to="/finalFeedback"
+            >
+              <Trans id="cancelPage.feedbackButton" />
+              <Icon
+                focusable="false"
+                ml={2}
+                mr={-2}
+                name="chevron-right"
+                size="28px"
+              />
+            </ButtonLink>
           </Box>
           <Box w="100%">
             <Layout>
@@ -123,6 +125,6 @@ export const CancelPage = () => {
           </Alert>
         </Layout>
       </Layout>
-    </Stack>
+    </Page>
   )
 }
