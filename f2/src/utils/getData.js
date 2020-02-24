@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 const crypto = require('crypto')
-const { selfHarmWordsScan } = require('../../utils/selfHarmWordsScan')
+const { selfHarmWordsScan } = require('./selfHarmWordsScan')
 const { generateReportId } = require('./generateReportId')
 
 async function getData(fields, files) {
