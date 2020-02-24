@@ -17,9 +17,9 @@ export const FormArrayControl = ({
   ...rest
 }) => {
   const {
-    meta: { submitFailed },
+    meta: { submitFailed, invalid },
   } = useField(name, {
-    subscription: { submitFailed: true },
+    subscription: { submitFailed: true, invalid: true },
   })
 
   return (
@@ -28,12 +28,12 @@ export const FormArrayControl = ({
         return (
           <FormControl
             id={name}
-            borderLeft={submitFailed ? '3px' : null}
-            pl={submitFailed ? 4 : null}
-            borderLeftColor={submitFailed ? 'red.700' : null}
+            borderLeft={submitFailed && invalid ? '3px' : null}
+            pl={submitFailed && invalid ? 4 : null}
+            borderLeftColor={submitFailed && invalid ? 'red.700' : null}
             as="fieldset"
             aria-labelledby={id}
-            isInvalid={submitFailed}
+            isInvalid={submitFailed && invalid}
             {...rest}
           >
             <Stack spacing={1} pb={4}>

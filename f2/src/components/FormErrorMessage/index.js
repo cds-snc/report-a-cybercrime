@@ -15,5 +15,6 @@ FormErrorMessage.defaultProps = {
   color: 'red.700',
   fontFamily: 'body',
   lineHeight: 1.25,
+  mb: 1,
   maxW: '600px',
 }

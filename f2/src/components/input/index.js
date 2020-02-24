@@ -21,6 +21,10 @@ export const Input = props => (
       borderColor: 'black',
       border: '3px',
     }}
+    _invalid={{
+      border: '3px',
+      borderColor: 'red.700',
+    }}
     {...props.input}
     {...props}
   />
