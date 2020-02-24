@@ -32,10 +32,11 @@ const getCert = uid => {
   ) {
     res.on('searchEntry', function(entry) {
       console.log(`Encrypted Mail: Found LDAP entry for ${uid}`)
-      const cert =
+      let cert =
         '-----BEGIN CERTIFICATE-----\r\n' +
-        entry.object['userCertificate;binary'].replace(/(.{64})/g, '$1\r\n') +
-        '-----END CERTIFICATE-----'
+        entry.object['userCertificate;binary'].replace(/(.{64})/g, '$1\r\n')
+      if (!cert.endsWith('\n')) cert += '\n'
+      cert += '-----END CERTIFICATE-----'
       fs.writeFile(certFileName(uid), cert, function(err) {
         if (err) throw err
         else console.log(`Encrypted Mail: Certificate for ${uid} Saved!`)
