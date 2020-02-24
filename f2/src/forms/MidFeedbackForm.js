@@ -148,7 +148,7 @@ export const MidFeedbackForm = props => {
                   <Field name="problemDescription">
                     {props => (
                       <FormControl>
-                        <FormLabel htmlFor="problemDescription">
+                        <FormLabel>
                           <Trans id="midFeedback.description.label" />
                         </FormLabel>
 
@@ -169,6 +169,7 @@ export const MidFeedbackForm = props => {
                     type="submit"
                     w={{ base: '100%', md: 'auto' }}
                     variantColor="blue"
+                    variant="solid"
                   >
                     <Trans id="midFeedback.submit" />
                   </Button>
