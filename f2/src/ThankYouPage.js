@@ -54,17 +54,23 @@ export const ThankYouPage = () => {
             <H1 mb={6}>
               <Trans id="thankYouPage.title" />
             </H1>
-            <P fontSize="lg">
-              <Trans
-                id="thankYouPage.referenceNumber"
-                values={{
-                  reference: state.formData.reportId
-                    ? state.formData.reportId
-                    : '< report ID >',
-                }}
-              >
-                <Text as="span" d="block" fontSize="2xl" />
-              </Trans>
+
+            <P fontSize="2xl">
+              {state.formData.reportId &&
+              state.formData.reportId.startsWith('NCFRS-') ? (
+                <Trans id="thankYouPage.reportSubmissionError">
+                  <Text as="span" d="block">
+                    {state.formData.reportId}
+                  </Text>
+                </Trans>
+              ) : (
+                <Trans
+                  id="thankYouPage.referenceNumber"
+                  values={{ reference: state.formData.reportId }}
+                >
+                  <Text as="span" d="block" />
+                </Trans>
+              )}
             </P>
           </InfoCard>
         </Row>
