@@ -315,6 +315,7 @@
   "thankYouPage.helpResource2": "Stay up-to-date on what scams are most common.",
   "thankYouPage.helpResource3": "Find tips on how to prevent cybercrime.",
   "thankYouPage.referenceNumber": "Your reference number: <0>{reference}</0>",
+  "thankYouPage.reportSubmissionError": "Sorry, your report was not successfully submitted.",
   "thankYouPage.safelyCloseWindow": "You can safely close this window",
   "thankYouPage.summary": "We’ve sent you a confirmation email. ",
   "thankYouPage.title": "Thank you for reporting",

@@ -315,6 +315,7 @@
   "thankYouPage.helpResource2": "Tenez-vous à jour sur les fraudes les plus communes.",
   "thankYouPage.helpResource3": "Trouvez des astuces pour prévenir les crimes informatiques.",
   "thankYouPage.referenceNumber": "Votre numéro de référence : <0>{reference}</0>",
+  "thankYouPage.reportSubmissionError": "Désolé, l’envoi de votre rapport n’a pas fonctionné.",
   "thankYouPage.safelyCloseWindow": "Vous pouvez fermer cette fenêtre en toute sécurité",
   "thankYouPage.summary": "Nous vous avons envoyé un courriel de confirmation. ",
   "thankYouPage.title": "Merci pour votre signalement",
