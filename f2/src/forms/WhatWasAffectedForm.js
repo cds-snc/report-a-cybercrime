@@ -4,14 +4,11 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack, Alert } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
-import { A } from '../components/link'
-import { Li } from '../components/list-item'
-import { Ol } from '../components/ordered-list'
-import { Text } from '../components/text'
+import { ErrorSummary } from '../components/ErrorSummary'
 
 const validate = values => {
   const errors = {}
@@ -51,7 +48,6 @@ export const WhatWasAffectedForm = props => {
           <Trans id="whatWasAffectedForm.devices" />
           <Trans id="whatWasAffectedForm.business_assets" />
           <Trans id="whatWasAffectedForm.other" />
-          <Trans id="whatWasAffectedForm.expectations" />
         </div>
       ) : null}
 
@@ -75,28 +71,7 @@ export const WhatWasAffectedForm = props => {
             spacing={6}
           >
             {submitFailed && hasValidationErrors ? (
-              <Alert status="error" borderLeft="3px" borderColor="red.700">
-                <Stack>
-                  <Text fontSize="md" fontWeight="bold">
-                    <Trans id="default.hasValidationErrors" />
-                  </Text>
-
-                  <Ol>
-                    {Object.keys(errors).map(key => (
-                      <Li fontSize="md">
-                        <A
-                          fontSize="md"
-                          fontWeight="bold"
-                          key={key}
-                          href={`#${key}`}
-                        >
-                          {i18n._(errors[key])}
-                        </A>
-                      </Li>
-                    ))}
-                  </Ol>
-                </Stack>
-              </Alert>
+              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
             ) : null}
 
             <FormArrayControl
