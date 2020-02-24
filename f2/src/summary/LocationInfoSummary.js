@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
@@ -15,8 +16,6 @@ export const LocationInfoSummary = props => {
     ...testdata.formData.location, //Remove after done testing
     ...data.formData.location,
   }
-
-  const hasInfoToDisplay = location.postalCode.length > 0
 
   return (
     <React.Fragment>
@@ -44,7 +43,7 @@ export const LocationInfoSummary = props => {
             label="confirmationPage.location.title.edit"
           />
         </Flex>
-        {hasInfoToDisplay ? (
+        {containsData(location) ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.location.postalCode"

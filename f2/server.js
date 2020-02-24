@@ -14,7 +14,7 @@ const {
   sendConfirmation,
   sendUnencryptedReport,
   submitFeedback,
-} = require('./utils/notify')
+} = require('./src/utils/notify')
 
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
 
