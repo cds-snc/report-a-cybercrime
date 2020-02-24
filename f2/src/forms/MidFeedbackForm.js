@@ -4,24 +4,16 @@ import { jsx } from '@emotion/core'
 import { H1, H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
+import { Form } from 'react-final-form'
+import { Stack, Box, AlertIcon, Alert } from '@chakra-ui/core'
 import { containsData } from '../utils/containsData'
-import { Form, Field, useField } from 'react-final-form'
-import { Stack, FormControl, Box, Alert, AlertIcon } from '@chakra-ui/core'
-import { FormLabel } from '../components/FormLabel'
-import { FormHelperText } from '../components/FormHelperText'
 import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
 import { InfoCard } from '../components/container'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { Field } from '../components/Field'
 import { Row } from '../components/layout'
-
-const Control = ({ name, ...rest }) => {
-  const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
-  return <FormControl {...rest} isInvalid={error && touched} />
-}
 
 export const MidFeedbackForm = props => {
   const [status, setStatus] = useState('')
@@ -121,50 +113,34 @@ export const MidFeedbackForm = props => {
                       <Trans id="finalFeedback.warning" />
                     </Alert>
                   ) : null}
-                  <Control as="fieldset" name="midFeedback">
-                    <FormArrayControl
-                      name="midFeedback"
-                      label={<Trans id="midFeedback.problem.label" />}
-                      helperText={<Trans id="midFeedback.problem.helperText" />}
-                    >
-                      <Stack spacing={4}>
-                        {midFeedback.map(key => {
-                          return (
-                            <Box key={key}>
-                              <CheckboxAdapter
-                                name="midFeedback"
-                                value={key}
-                                isChecked={midFeedback.includes(key)}
-                              >
-                                {i18n._(key)}
-                              </CheckboxAdapter>
-                            </Box>
-                          )
-                        })}
-                      </Stack>
-                    </FormArrayControl>
-                  </Control>
 
-                  <Field name="problemDescription">
-                    {props => (
-                      <FormControl>
-                        <FormLabel>
-                          <Trans id="midFeedback.description.label" />
-                        </FormLabel>
-
-                        <FormHelperText>
-                          <Trans id="midFeedback.description.helperText" />
-                        </FormHelperText>
-
-                        <TextArea
-                          id="problemDescription"
-                          name={props.input.name}
-                          value={props.input.value}
-                          onChange={props.input.onChange}
-                        />
-                      </FormControl>
-                    )}
-                  </Field>
+                  <FormArrayControl
+                    name="midFeedback"
+                    label={<Trans id="midFeedback.problem.label" />}
+                    helperText={<Trans id="midFeedback.problem.helperText" />}
+                  >
+                    {midFeedback.map(key => {
+                      return (
+                        <React.Fragment key={key}>
+                          <CheckboxAdapter
+                            name="midFeedback"
+                            value={key}
+                            isChecked={midFeedback.includes(key)}
+                          >
+                            {i18n._(key)}
+                          </CheckboxAdapter>
+                        </React.Fragment>
+                      )
+                    })}
+                  </FormArrayControl>
+                  <Field
+                    name="problemDescription"
+                    label={<Trans id="midFeedback.description.label" />}
+                    helperText={
+                      <Trans id="midFeedback.description.helperText" />
+                    }
+                    component={TextArea}
+                  />
                   <Button
                     type="submit"
                     w={{ base: '100%', md: 'auto' }}
