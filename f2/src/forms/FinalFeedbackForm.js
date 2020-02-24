@@ -2,28 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, Field, useField } from 'react-final-form'
-import {
-  FormControl,
-  Stack,
-  Box,
-  VisuallyHidden,
-  Alert,
-  AlertIcon,
-} from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
+import { Form } from 'react-final-form'
+import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { TextArea } from '../components/text-area'
-import { FormLabel } from '../components/FormLabel'
 import { Button } from '../components/button'
 import { RadioAdapter } from '../components/radio'
 import { FormArrayControl } from '../components/FormArrayControl'
-
-const Control = ({ name, ...rest }) => {
-  const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
-  return <FormControl {...rest} isInvalid={error && touched} />
-}
+import { Field } from '../components/Field'
 
 const validate = () => {
   return {}
@@ -88,83 +73,56 @@ export const FinalFeedbackForm = props => {
             shouldWrapChildren
             spacing={12}
           >
-            <Control as="fieldset" name="wasServiceHard">
-              <FormArrayControl
-                name="wasServiceHard"
-                label={<Trans id="finalFeedback.wasServiceHard.label" />}
-              >
-                <Stack spacing={4}>
-                  {wasServiceHard.map(key => {
-                    return (
-                      <Box key={key}>
-                        <RadioAdapter
-                          name="wasServiceHard"
-                          value={key}
-                          isChecked={wasServiceHard.includes(key)}
-                        >
-                          {i18n._(key)}
-                        </RadioAdapter>
-                      </Box>
-                    )
-                  })}
-                </Stack>
-              </FormArrayControl>
-            </Control>
-
-            <Control as="fieldset" name="wouldYouUseAgain">
-              <Stack spacing={4} shouldWrapChildren>
-                <FormArrayControl
-                  name="wasServiceHard"
-                  label={<Trans id="finalFeedback.wouldYouUseAgain.label" />}
-                >
-                  <Stack spacing={4}>
-                    {wouldYouUseAgain.map(key => {
-                      return (
-                        <Box key={key}>
-                          <RadioAdapter
-                            name="wouldYouUseAgain"
-                            value={key}
-                            isChecked={wouldYouUseAgain.includes(key)}
-                          >
-                            {i18n._(key)}
-                          </RadioAdapter>
-                        </Box>
-                      )
-                    })}
-                  </Stack>
-                </FormArrayControl>
-              </Stack>
-            </Control>
-
-            <Field name="howCanWeDoBetter">
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="howCanWeDoBetter">
-                    <Trans id="finalFeedback.howCanWeDoBetter.label" />
-                  </FormLabel>
-                  <FormHelperText>
-                    <Trans id="finalFeedback.howCanWeDoBetter.helper">
-                      <VisuallyHidden as="span" />
-                    </Trans>
-                  </FormHelperText>
-                  <TextArea
-                    id="howCanWeDoBetter"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-
             {showWarning ? (
-              <Control>
-                <Alert status="warning">
-                  <AlertIcon />
-                  <Trans id="finalFeedback.warning" />
-                </Alert>
-              </Control>
+              <Alert status="warning">
+                <AlertIcon />
+                <Trans id="finalFeedback.warning" />
+              </Alert>
             ) : null}
+            <FormArrayControl
+              name="wasServiceHard"
+              label={<Trans id="finalFeedback.wasServiceHard.label" />}
+            >
+              {wasServiceHard.map(key => {
+                return (
+                  <React.Fragment key={key}>
+                    <RadioAdapter
+                      name="wasServiceHard"
+                      value={key}
+                      isChecked={wasServiceHard.includes(key)}
+                    >
+                      {i18n._(key)}
+                    </RadioAdapter>
+                  </React.Fragment>
+                )
+              })}
+            </FormArrayControl>
+
+            <FormArrayControl
+              name="wouldYouUseAgain"
+              label={<Trans id="finalFeedback.wouldYouUseAgain.label" />}
+            >
+              {wouldYouUseAgain.map(key => {
+                return (
+                  <React.Fragment key={key}>
+                    <RadioAdapter
+                      name="wouldYouUseAgain"
+                      value={key}
+                      isChecked={wouldYouUseAgain.includes(key)}
+                    >
+                      {i18n._(key)}
+                    </RadioAdapter>
+                  </React.Fragment>
+                )
+              })}
+            </FormArrayControl>
+
+            <Field
+              name="howCanWeDoBetter"
+              label={<Trans id="finalFeedback.howCanWeDoBetter.label" />}
+              helperText={<Trans id="finalFeedback.howCanWeDoBetter.helper" />}
+              component={TextArea}
+            />
 
             <Button
               type="submit"
