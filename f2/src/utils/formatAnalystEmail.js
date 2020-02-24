@@ -1,5 +1,7 @@
 // 'use strict'
 
+const { formatDate } = require('./formatDate')
+
 const formatLine = (label, text) => (text !== '' ? label + text + '\n' : '')
 
 const formatReportInfo = data => {
@@ -47,7 +49,11 @@ const formatVictimDetails = data => {
 }
 
 const formatIncidentInformation = data => {
-  const occurenceString = `${data.howdiditstart.startDay}-${data.howdiditstart.startMonth}-${data.howdiditstart.startYear}`
+  const occurenceString = formatDate(
+    data.howdiditstart.startDay,
+    data.howdiditstart.startMonth,
+    data.howdiditstart.startYear,
+  )
   const freqString = data.howdiditstart.howManyTimes.replace(
     'howManyTimes.',
     '',
@@ -158,7 +164,11 @@ const formatFinancialTransactions = data => {
   const paymentString = data.moneyLost.methodPayment
     .map(method => method.replace('methodPayment.', ''))
     .join(', ')
-  const transactionDate = `${data.moneyLost.transactionDay}-${data.moneyLost.transactionMonth}-${data.moneyLost.transactionYear}`
+  const transactionDate = formatDate(
+    data.moneyLost.transactionDay,
+    data.moneyLost.transactionMonth,
+    data.moneyLost.transactionYear,
+  )
   const returnString =
     formatLine('Money requested:     ', data.moneyLost.demandedMoney) +
     formatLine('Money lost:          ', data.moneyLost.moneyTaken) +
