@@ -31,6 +31,13 @@ export const LandingPage = props => {
             <Stack spacing={10} shouldWrapChildren>
               <H1>
                 <Trans id="landingPage.title" />
+
+                <Stack spacing={3}>
+                <Alert status="info">
+               <AlertIcon />
+             <Trans id="landingpage.appinfo"/>
+             </Alert>
+             </Stack>
               </H1>
               <Stack spacing={4}>
                 <P>
