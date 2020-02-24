@@ -1,23 +1,22 @@
 #!/bin/bash
 
-export PROJECT_NAME=rcmpcybercrime
-export RG_NAME=MpPCCDSCybercrimeRG
+export RG_NAME=MpPc-CDS-CyberCrime-rg
 
-export ACR_NAME=MpPCCDSCybercrimeacr
+export ACR_NAME=MpPc-CDSCybercrime-acr 
 export IMAGE_NAME=f2
 export VIRUS_SCANNER_IMAGE_NAME=clamav
 
-export DB_NAME=mppccdscybercrimecosdb
+export DB_NAME=MpPc-CDSCybercrime-cosdb
 export BLOB_NAME=MpPc-CDSCybercrime-blob
 
 
-export PLAN_NAME=MpPCCDSCybercrimeazappplan
-export APP_NAME=MpPCCDSCybercrimeazapp
-export SERVICE_PRINCIPAL_NAME=MpPCCDSCybercrimeACR-sp
+export PLAN_NAME=MpPc-CDSCybercrime-asp
+export APP_NAME=MpPc-CDSCybercrime-asrv
+export SERVICE_PRINCIPAL_NAME=MpPc-CDSCybercrimeACR-spn
 
-export VIRUS_SCANNER_NAME=mppccdscybercrimeclamav
+export VIRUS_SCANNER_NAME=MpPc-CDSCybercrimeClamav-ci
 
-export COGNITIVE_NAME=MpPCCogContMod1
+export COGNITIVE_NAME=MpPc-CDSCybercrime-cogsrvs 
 
 export WAF_RG=MpPCCorenetRg
 export WAF_NAME=MpPCWafGw
@@ -27,7 +26,7 @@ export WAF_SUBSCRIPTION=MpPSub
 export LOG_ANALYTICS=MpPCSecWs
 export LOG_RG=MpPCSeclogRg
 
-export VNET_NAME=MpPCCDSCybercrimeVN
+export VNET_NAME=MpPc-CDSCybercrime-vn
 export VNET_ADDRESS=10.9.0.0/16
 export APP_SUBNET="${APP_NAME}SN"
 export APP_SUBNET_RANGE=10.9.0.0/24
@@ -39,6 +38,9 @@ export NOTIFY_API_BASE_URL=
 export NOTIFY_API_KEY=
 export NOTIFY_CONFIRMATION_TEMPLATE_ID=
 export SELF_HARM_WORDS=
+
+export TAG_ALL="Environment=Production Cost_Centre=S0046 Owner=RCMP Classification=Unclassified Project=RCMP-CDS-FRS Division=HQ"
+
 
 #### Set up Azure
 ## Create Resource group
@@ -117,3 +119,13 @@ az monitor diagnostic-settings create --resource $(az webapp show --name $APP_NA
 az monitor diagnostic-settings create --resource $(az cognitiveservices account show --name $COGNITIVE_NAME --resource-group $RG_NAME --query id --output tsv) --name ${COGNITIVE_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logscontentmod.json --metrics @metricscontentmod.json
 az monitor diagnostic-settings create --resource $(az acr show --name $ACR_NAME --resource-group $RG_NAME --query id --output tsv) --name ${ACR_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logsacr.json --metrics @metricsgrained.json
 az monitor diagnostic-settings create --resource $(az cosmosdb show --name $DB_NAME --resource-group $RG_NAME --query id --output tsv) --name ${DB_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logscosmos.json --metrics @metricsgrained.json
+
+## Configure Tagging for all resources created
+az group update -g $RG_NAME --tags $TAG_ALL
+az resource tag --tags $TAG_ALL -g $RG_NAME -n $VNET_NAME --resource-type Microsoft.Network/virtualNetworks
+az resource tag --tags $TAG_ALL -g $RG_NAME -n $COGNITIVE_NAME --resource-type Microsoft.CognitiveServices/accounts
+az resource tag --tags $TAG_ALL -g $RG_NAME -n $VIRUS_SCANNER_NAME --resource-type Microsoft.ContainerInstance/containerGroups
+az resource tag --tags $TAG_ALL -g $RG_NAME -n $ACR_NAME --resource-type Microsoft.ContainerRegistry/registries
+az resource tag --tags $TAG_ALL -g $RG_NAME -n $DB_NAME --resource-type Microsoft.DocumentDB/databaseAccounts
+az resource tag --tags $TAG_ALL -g $RG_NAME -n $PLAN_NAME --resource-type Microsoft.Web/serverFarms
+az resource tag --tags $TAG_ALL -g $RG_NAME -n $APP_NAME --resource-type Microsoft.Web/sites
