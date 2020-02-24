@@ -6,9 +6,9 @@ export ACR_NAME=MpPcCDSCybercrimeAcr
 export IMAGE_NAME=f2
 export VIRUS_SCANNER_IMAGE_NAME=clamav
 
-#db name can't have caps
+#db & blob name can't have caps
 export DB_NAME=mppccdscybercrimecosdb
-export BLOB_NAME=MpPcCDSCybercrimeBlob
+export BLOB_NAME=mppccdscybercrimeblob
 
 
 export PLAN_NAME=MpPcCDSCybercrimeAsp
