@@ -39,7 +39,6 @@ export NOTIFY_API_BASE_URL=
 export NOTIFY_API_KEY=
 export NOTIFY_CONFIRMATION_TEMPLATE_ID=
 export SELF_HARM_WORDS=
-export SEND_UNENCRYPTED_REPORTS=no
 
 #### Set up Azure
 ## Create Resource group
