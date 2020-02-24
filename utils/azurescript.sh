@@ -40,6 +40,9 @@ export NOTIFY_API_KEY=
 export NOTIFY_CONFIRMATION_TEMPLATE_ID=
 export SELF_HARM_WORDS=
 
+export LDAP_URL=ldap://pki-dsa.rcmp-grc.gc.ca:389
+export LDAP_UID=
+
 export TAG_ALL="Environment=Production Cost_Centre=S0046 Owner=RCMP Classification=Unclassified Project=RCMP-CDS-FRS Division=HQ"
 
 
