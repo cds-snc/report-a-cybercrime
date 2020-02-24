@@ -143,7 +143,4 @@ const encryptAndSend = async (uidList, data, message) => {
   } else console.warn('Encrypted Mail: No certs to encrypt with!')
 }
 
-// getAllCerts(process.env.LDAP_UID)
-// setTimeout(() => encryptAndSend(process.env.LDAP_UID, 'Hello World\nFrom node'), 1000)
-
 module.exports = { getAllCerts, encryptAndSend }

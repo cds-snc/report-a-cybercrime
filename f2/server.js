@@ -39,7 +39,7 @@ async function save(data, res) {
   data.submissionTime = new Date().toISOString()
 
   const analystEmail = formatAnalystEmail(data)
-  encryptAndSend(process.env.LDAP_UID, analystEmail)
+  encryptAndSend(process.env.LDAP_UID, data, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
