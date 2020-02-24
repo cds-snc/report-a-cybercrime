@@ -7,6 +7,8 @@ export IMAGE_NAME=f2
 export VIRUS_SCANNER_IMAGE_NAME=clamav
 
 export DB_NAME=MpPc-CDSCybercrime-cosdb
+export BLOB_NAME=MpPc-CDSCybercrime-blob
+
 
 export PLAN_NAME=MpPc-CDSCybercrime-asp
 export APP_NAME=MpPc-CDSCybercrime-asrv
@@ -31,7 +33,14 @@ export APP_SUBNET_RANGE=10.9.0.0/24
 export CONTAINER_SUBNET="${VIRUS_SCANNER_NAME}SN"
 export CONTAINER_SUBNET_RANGE=10.9.1.0/24
 
+## App Environment Variables
+export NOTIFY_API_BASE_URL=
+export NOTIFY_API_KEY=
+export NOTIFY_CONFIRMATION_TEMPLATE_ID=
+export SELF_HARM_WORDS=
+
 export TAG_ALL="Environment=Production Cost_Centre=S0046 Owner=RCMP Classification=Unclassified Project=RCMP-CDS-FRS Division=HQ"
+
 
 #### Set up Azure
 ## Create Resource group
@@ -66,6 +75,10 @@ az cognitiveservices account create --name $COGNITIVE_NAME --resource-group $RG_
 ## Create Database
 az cosmosdb create --name $DB_NAME --kind MongoDB
 
+## Create Storage account for blobs
+az storage account create --name $BLOB_NAME --resource-group $RG_NAME --sku Standard_RAGRS --kind BlobStorage --access-tier Hot
+az storage account blob-service-properties update --enable-delete-retention true --delete-retention-days 100 -n $BLOB_NAME -g $RG_NAME
+
 #### App Service
 ## Create App Service & configure
 # Note: Once created it seems like I've had to restart the app service in some unidentified situations to get it to pick up the image successfully from the ACR
@@ -76,7 +89,11 @@ az webapp config container set --name $APP_NAME --resource-group $RG_NAME --dock
 
 ## Environmental variables
 export COSMO_KEY=`az cosmosdb keys list --name $DB_NAME --query "primaryMasterKey" | sed -e 's/^"//' -e 's/"$//'`
-az webapp config appsettings set  --name $APP_NAME --settings COSMOSDB_NAME=$DB_NAME COSMOSDB_KEY=$COSMO_KEY
+az webapp config appsettings set --name $APP_NAME --settings COSMOSDB_NAME=$DB_NAME COSMOSDB_KEY=$COSMO_KEY
+az webapp config appsettings set --name $APP_NAME --settings BLOB_STORAGE_NAME=$BLOB_NAME BLOB_STORAGE_KEY=$(az storage account keys list --resource-group $RG_NAME --account-name $BLOB_NAME --query [0].value -o tsv)
+az webapp config appsettings set --name $APP_NAME --settings CLAM_URL=${VIRUS_SCANNER_NAME}.canadacentral.azurecontainer.io
+az webapp config appsettings set --name $APP_NAME --settings CONTENT_MODERATOR_SERVICE_KEY=$(az cognitiveservices account keys list --name $COGNITIVE_NAME --query key1 -o tsv)
+az webapp config appsettings set --name $APP_NAME --settings NOTIFY_API_BASE_URL=$NOTIFY_API_BASE_URL NOTIFY_API_KEY=$NOTIFY_API_KEY NOTIFY_CONFIRMATION_TEMPLATE_ID=$NOTIFY_CONFIRMATION_TEMPLATE_ID REACT_APP_GOOGLE_ANALYTICS_ID=$REACT_APP_GOOGLE_ANALYTICS_ID SELF_HARM_WORDS=$SELF_HARM_WORDS SEND_UNENCRYPTED_REPORTS=$SEND_UNENCRYPTED_REPORTS
 
 ## Continuous deployment
 az webapp deployment container config --enable-cd true --name $APP_NAME
