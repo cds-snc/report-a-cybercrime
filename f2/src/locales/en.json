@@ -49,7 +49,7 @@
   "confirmationPage.howDidItStart.nag": "No information provided.",
   "confirmationPage.howDidItStart.online": "Suspect website",
   "confirmationPage.howDidItStart.others": "Other means",
-  "confirmationPage.howDidItStart.overviewPrefix": "I was contacted ",
+  "confirmationPage.howDidItStart.overviewPrefix": "Method of contact: ",
   "confirmationPage.howDidItStart.phone": "Suspect phone number",
   "confirmationPage.howDidItStart.title": "How did it start?",
   "confirmationPage.howDidItStart.title.edit": "Edit How did it start?",
