@@ -100,7 +100,6 @@ app
   })
 
   .get('/stats', function(_req, res) {
-    console.log(availableData)
     res.json({
       acceptingReports: isAvailable(availableData),
       ...availableData,
@@ -109,7 +108,6 @@ app
 
   .post('/submit', (req, res) => {
     availableData.numberOfSubmissions += 1
-    console.log(availableData)
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
         console.error('Error', err)
