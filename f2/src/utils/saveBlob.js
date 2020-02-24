@@ -8,13 +8,17 @@ require('dotenv').config()
 const account = process.env.BLOB_STORAGE_NAME
 const accountKey = process.env.BLOB_STORAGE_KEY
 
-// Use StorageSharedKeyCredential with storage account and account key
-// StorageSharedKeyCredential is only avaiable in Node.js runtime, not in browsers
-const sharedKeyCredential = new StorageSharedKeyCredential(account, accountKey)
-const blobServiceClient = new BlobServiceClient(
-  `https://${account}.blob.core.windows.net`,
-  sharedKeyCredential,
-)
+try {
+  // Use StorageSharedKeyCredential with storage account and account key
+  // StorageSharedKeyCredential is only avaiable in Node.js runtime, not in browsers
+  const sharedKeyCredential = new StorageSharedKeyCredential(account, accountKey)
+  const blobServiceClient = new BlobServiceClient(
+    `https://${account}.blob.core.windows.net`,
+    sharedKeyCredential,
+  )
+} catch(err){
+  console.error(err)
+}
 
 async function saveBlob(data) {
   console.log(data.reportId)
