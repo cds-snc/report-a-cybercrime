@@ -17,6 +17,21 @@ const validate = () => {
   return {}
 }
 
+const clearData = dataOrig => {
+  let data = JSON.parse(JSON.stringify(dataOrig))
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.email'))
+    data.email = ''
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.phone'))
+    data.phone = ''
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.online'))
+    data.online = ''
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.app'))
+    data.application = ''
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.others'))
+    data.others = ''
+  return data
+}
+
 export const HowDidItStartForm = props => {
   const { i18n } = useLingui()
 
@@ -103,7 +118,7 @@ export const HowDidItStartForm = props => {
 
       <Form
         initialValues={howdiditstart}
-        onSubmit={data => props.onSubmit(data)}
+        onSubmit={data => props.onSubmit(clearData(data))}
         validate={validate}
         render={({ handleSubmit, values }) => (
           <Stack
