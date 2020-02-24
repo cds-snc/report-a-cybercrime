@@ -1,22 +1,23 @@
 #!/bin/bash
 
-export RG_NAME=MpPc-CDS-CyberCrime-rg
+export RG_NAME=MpPcCDSCyberCrimeRg
 
-export ACR_NAME=MpPc-CDSCybercrime-acr 
+export ACR_NAME=MpPcCDSCybercrimeAcr 
 export IMAGE_NAME=f2
 export VIRUS_SCANNER_IMAGE_NAME=clamav
 
-export DB_NAME=MpPc-CDSCybercrime-cosdb
-export BLOB_NAME=MpPc-CDSCybercrime-blob
+export DB_NAME=MpPcCDSCybercrimeCosdb
+export BLOB_NAME=MpPcCDSCybercrimeBlob
 
 
-export PLAN_NAME=MpPc-CDSCybercrime-asp
-export APP_NAME=MpPc-CDSCybercrime-asrv
-export SERVICE_PRINCIPAL_NAME=MpPc-CDSCybercrimeACR-spn
+export PLAN_NAME=MpPcCDSCybercrimeAsp
+export APP_NAME=MpPcCDSCybercrimeAsrv
+export SERVICE_PRINCIPAL_NAME=MpPcCDSCybercrimeAcrSpn
 
-export VIRUS_SCANNER_NAME=MpPc-CDSCybercrimeClamav-ci
+# Container instances can't have caps
+export VIRUS_SCANNER_NAME=mppcdscybercrimeclamavci
 
-export COGNITIVE_NAME=MpPc-CDSCybercrime-cogsrvs 
+export COGNITIVE_NAME=MpPcCDSCybercrimeCogsrvs 
 
 export WAF_RG=MpPCCorenetRg
 export WAF_NAME=MpPCWafGw
@@ -26,7 +27,7 @@ export WAF_SUBSCRIPTION=MpPSub
 export LOG_ANALYTICS=MpPCSecWs
 export LOG_RG=MpPCSeclogRg
 
-export VNET_NAME=MpPc-CDSCybercrime-vn
+export VNET_NAME=MpPcCDSCybercrimeVn
 export VNET_ADDRESS=10.9.0.0/16
 export APP_SUBNET="${APP_NAME}SN"
 export APP_SUBNET_RANGE=10.9.0.0/24
