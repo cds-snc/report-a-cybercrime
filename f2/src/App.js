@@ -33,9 +33,11 @@ const App = () => {
             <SkipLink invisible href="#main">
               <Trans id="SkipLink.text" />
             </SkipLink>
-            <WarningBanner>
-              <Trans id="banner.warning" />
-            </WarningBanner>
+            {process.env.REACT_APP_DEV_ENVIRONMENT === 'yes' && (
+              <WarningBanner>
+                <Trans id="banner.warning" />
+              </WarningBanner>
+            )}
             <PhaseBanner phase={<Trans id="banner.phase" />}>
               <Trans id="banner.phaseText">
                 <A

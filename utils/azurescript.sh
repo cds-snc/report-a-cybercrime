@@ -1,22 +1,23 @@
 #!/bin/bash
 
-export RG_NAME=MpPc-CDS-CyberCrime-rg
+export RG_NAME=MpPcCDSCyberCrimeRg
 
-export ACR_NAME=MpPc-CDSCybercrime-acr 
+export ACR_NAME=MpPcCDSCybercrimeAcr 
 export IMAGE_NAME=f2
 export VIRUS_SCANNER_IMAGE_NAME=clamav
 
-export DB_NAME=MpPc-CDSCybercrime-cosdb
-export BLOB_NAME=MpPc-CDSCybercrime-blob
+export DB_NAME=MpPcCDSCybercrimeCosdb
+export BLOB_NAME=MpPcCDSCybercrimeBlob
 
 
-export PLAN_NAME=MpPc-CDSCybercrime-asp
-export APP_NAME=MpPc-CDSCybercrime-asrv
-export SERVICE_PRINCIPAL_NAME=MpPc-CDSCybercrimeACR-spn
+export PLAN_NAME=MpPcCDSCybercrimeAsp
+export APP_NAME=MpPcCDSCybercrimeAsrv
+export SERVICE_PRINCIPAL_NAME=MpPcCDSCybercrimeAcrSpn
 
-export VIRUS_SCANNER_NAME=MpPc-CDSCybercrimeClamav-ci
+# Container instances can't have caps
+export VIRUS_SCANNER_NAME=mppcdscybercrimeclamavci
 
-export COGNITIVE_NAME=MpPc-CDSCybercrime-cogsrvs 
+export COGNITIVE_NAME=MpPcCDSCybercrimeCogsrvs 
 
 export WAF_RG=MpPCCorenetRg
 export WAF_NAME=MpPCWafGw
@@ -26,7 +27,7 @@ export WAF_SUBSCRIPTION=MpPSub
 export LOG_ANALYTICS=MpPCSecWs
 export LOG_RG=MpPCSeclogRg
 
-export VNET_NAME=MpPc-CDSCybercrime-vn
+export VNET_NAME=MpPcCDSCybercrimeVn
 export VNET_ADDRESS=10.9.0.0/16
 export APP_SUBNET="${APP_NAME}SN"
 export APP_SUBNET_RANGE=10.9.0.0/24
@@ -38,6 +39,22 @@ export NOTIFY_API_BASE_URL=
 export NOTIFY_API_KEY=
 export NOTIFY_CONFIRMATION_TEMPLATE_ID=
 export SELF_HARM_WORDS=
+
+export LDAP_URL=ldap://pki-dsa.rcmp-grc.gc.ca:389
+export LDAP_UID=
+
+export MAIL_HOST=
+export MAIL_USER=
+export MAIL_PASS=
+export MAIL_TO=
+export MAIL_FROM=
+
+export SUBMISSIONS_PER_DAY=5
+export SECONDS_BETWEEN_REQUESTS=10
+
+export NOTIFY_FEEDBACK_TEMPLATE_ID=
+export FEEDBACK_EMAIL=
+export NOTIFY_REPORT_TEMPLATE_ID=
 
 export TAG_ALL="Environment=Production Cost_Centre=S0046 Owner=RCMP Classification=Unclassified Project=RCMP-CDS-FRS Division=HQ"
 
@@ -93,7 +110,10 @@ az webapp config appsettings set --name $APP_NAME --settings COSMOSDB_NAME=$DB_N
 az webapp config appsettings set --name $APP_NAME --settings BLOB_STORAGE_NAME=$BLOB_NAME BLOB_STORAGE_KEY=$(az storage account keys list --resource-group $RG_NAME --account-name $BLOB_NAME --query [0].value -o tsv)
 az webapp config appsettings set --name $APP_NAME --settings CLAM_URL=${VIRUS_SCANNER_NAME}.canadacentral.azurecontainer.io
 az webapp config appsettings set --name $APP_NAME --settings CONTENT_MODERATOR_SERVICE_KEY=$(az cognitiveservices account keys list --name $COGNITIVE_NAME --query key1 -o tsv)
-az webapp config appsettings set --name $APP_NAME --settings NOTIFY_API_BASE_URL=$NOTIFY_API_BASE_URL NOTIFY_API_KEY=$NOTIFY_API_KEY NOTIFY_CONFIRMATION_TEMPLATE_ID=$NOTIFY_CONFIRMATION_TEMPLATE_ID REACT_APP_GOOGLE_ANALYTICS_ID=$REACT_APP_GOOGLE_ANALYTICS_ID SELF_HARM_WORDS=$SELF_HARM_WORDS SEND_UNENCRYPTED_REPORTS=$SEND_UNENCRYPTED_REPORTS
+az webapp config appsettings set --name $APP_NAME --settings NOTIFY_API_BASE_URL=$NOTIFY_API_BASE_URL NOTIFY_API_KEY=$NOTIFY_API_KEY NOTIFY_CONFIRMATION_TEMPLATE_ID=$NOTIFY_CONFIRMATION_TEMPLATE_ID SELF_HARM_WORDS=$SELF_HARM_WORDS
+az webapp config appsettings set --name $APP_NAME --settings LDAP_URL=$LDAP_URL LDAP_UID=$LDAP_UID MAIL_HOST=$MAIL_HOST MAIL_USER=$MAIL_USER MAIL_PASS=$MAIL_PASS MAIL_TO=$MAIL_TO MAIL_FROM=$MAIL_FROM
+az webapp config appsettings set --name $APP_NAME --settings SUBMISSIONS_PER_DAY=$SUBMISSIONS_PER_DAY SECONDS_BETWEEN_REQUESTS=$SECONDS_BETWEEN_REQUESTS
+az webapp config appsettings set --name $APP_NAME --settings NOTIFY_FEEDBACK_TEMPLATE_ID=$NOTIFY_FEEDBACK_TEMPLATE_ID FEEDBACK_EMAIL=$FEEDBACK_EMAIL NOTIFY_REPORT_TEMPLATE_ID=$NOTIFY_REPORT_TEMPLATE_ID
 
 ## Continuous deployment
 az webapp deployment container config --enable-cd true --name $APP_NAME

@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { H1, H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
+import { containsData } from '../utils/containsData'
 import { Form, Field, useField } from 'react-final-form'
 import { Stack, FormControl, Box, Alert, AlertIcon } from '@chakra-ui/core'
 import { FormLabel } from '../components/FormLabel'
@@ -24,10 +25,6 @@ const Control = ({ name, ...rest }) => {
 
 export const MidFeedbackForm = props => {
   const [status, setStatus] = useState('')
-
-  const onChangeStatus = () => {
-    setStatus('feedback.submitted')
-  }
 
   const validate = () => {
     return {}
@@ -103,12 +100,10 @@ export const MidFeedbackForm = props => {
                 problemDescription: '',
               }}
               onSubmit={values => {
-                if (
-                  values.midFeedback.length === 0 &&
-                  values.problemDescription.length === 0
-                ) {
+                if (!containsData(values)) {
                   showWarning = true
                 } else {
+                  setStatus('feedback.submitted')
                   props.onSubmit(values)
                 }
               }}
@@ -174,7 +169,6 @@ export const MidFeedbackForm = props => {
                     type="submit"
                     w={{ base: '100%', md: 'auto' }}
                     variantColor="blue"
-                    onChange={onChangeStatus}
                   >
                     <Trans id="midFeedback.submit" />
                   </Button>
