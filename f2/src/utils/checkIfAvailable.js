@@ -7,7 +7,7 @@ if (!submissionsPerDay || !secondsBetweenRequests)
   console.error('ERROR: Availability not configured')
 else console.info('Availability configured')
 
-// availableData is { numberOfSubmissions, lastRequested }
+// availableData is { numberOfSubmissions, numberOfRequests, lastRequested }
 const isAvailable = availableData => {
   try {
     const currentTime = new Date()
