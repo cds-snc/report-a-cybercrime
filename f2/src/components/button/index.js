@@ -13,14 +13,14 @@ export const Button = ({ variant, variants, variantColor, ...props }) => (
       ? {
           borderBottomWidth: '3px',
           borderBottomColor: `${variantColor}.800`,
-          bg: `${variantColor}.600`,
+          bg: `${variantColor}.700`,
         }
       : '')}
     _hover={{
       boxShadow: 'outlineHover',
     }}
     _active={{
-      bg: `${variantColor}.700`,
+      bg: `${variantColor}.800`,
     }}
     {...props}
   />

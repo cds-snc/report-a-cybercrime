@@ -64,18 +64,19 @@ const App = () => {
             bg="gray.50"
           >
             <Home />
-          </Stack>
 
-          <Layout>
-            <P fontSize="sm" my={3}>
+            <Layout>
+
+            <P fontSize="sm" my={3} aria-label="application version">
               {`Version: ${
                 process.env.REACT_APP_VERSION
                   ? process.env.REACT_APP_VERSION.slice(0, 7)
                   : '000000'
               }`}
+
             </P>
           </Layout>
-
+          </Stack>
           <Footer>
             {/** The List component is in the Footer component */}
             <Li>
