@@ -14,11 +14,22 @@ import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
 
+const defaultLocation = {
+  postalCode: '',
+}
+
 export const LocationInfoForm = props => {
-  const [data] = useStateValue()
-  const location = {
-    postalCode: '',
-    ...data.formData.location,
+  const [data, dispatch] = useStateValue()
+
+  let location
+  if (!data.formData.location) {
+    dispatch({ type: 'saveFormData', data: { location: defaultLocation } })
+    location = defaultLocation
+  } else {
+    location = {
+      ...defaultLocation,
+      ...data.formData.location,
+    }
   }
 
   return (
