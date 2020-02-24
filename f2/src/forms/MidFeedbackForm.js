@@ -145,6 +145,7 @@ export const MidFeedbackForm = props => {
                     type="submit"
                     w={{ base: '100%', md: 'auto' }}
                     variantColor="blue"
+                    variant="solid"
                   >
                     <Trans id="midFeedback.submit" />
                   </Button>
