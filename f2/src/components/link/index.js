@@ -1,14 +1,11 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
-import { asAnchor } from '../../utils/asAnchor'
+import { jsx } from '@emotion/core'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Li } from '../list-item'
 import { Button } from '../button'
 import { Link as ChakraLink } from '@chakra-ui/core'
 
-const BaseAnchor = asAnchor('a')
-
+//A link using react-router-dom. Useful for internal links. Takes a "to" attribute
 export const Link = props => (
   <ChakraLink
     as={ReactRouterLink}
@@ -24,6 +21,7 @@ Link.propTypes = {
   children: PropTypes.any,
 }
 
+// Looks like a button, acts as a link
 export const ButtonLink = props => (
   <Button {...props} as={ReactRouterLink} type="button">
     {props.children}
@@ -34,29 +32,25 @@ ButtonLink.propTypes = {
   children: PropTypes.any,
 }
 
-export const ButtonAnchor = props => (
-  <BaseAnchor
-    fontSize={[2, null, 3]}
-    fontWeight="normal"
-    lineHeight={[2, null, 3]}
-    colors="button"
-    mt={[2, null, 3]}
-    py={1}
-    px={[2, null, 3]}
+// Looks like a link, acts as a button
+export const LinkButton = props => (
+  <ChakraLink
+    fontSize="lg"
     {...props}
-    css={css`
-      text-decoration: none;
-    `}
-    display="inline-block"
+    role="button"
+    _active={{
+      boxShadow: 'outline',
+    }}
   >
     {props.children}
-  </BaseAnchor>
+  </ChakraLink>
 )
 
-ButtonAnchor.propTypes = {
+ButtonLink.propTypes = {
   children: PropTypes.any,
 }
 
+// An anchor link. needs to contain an HREF. Useful for links outside the app
 export const A = props => (
   <ChakraLink color="blue.600" {...props}>
     {props.children}
@@ -64,22 +58,5 @@ export const A = props => (
 )
 
 A.propTypes = {
-  children: PropTypes.any,
-}
-
-export const FooterLink = props => (
-  <Li ml={3} mb={0} display="inline-block">
-    <BaseAnchor
-      fontSize={[1, null, 2]}
-      lineHeight={[1, null, 2]}
-      colors="footerLink"
-      {...props}
-    >
-      {props.children}
-    </BaseAnchor>
-  </Li>
-)
-
-FooterLink.propTypes = {
   children: PropTypes.any,
 }
