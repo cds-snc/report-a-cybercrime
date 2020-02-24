@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
@@ -32,13 +33,6 @@ export const MoneyLostInfoSummary = props => {
     middle: i18n._('default.middle'),
     end: i18n._('default.end'),
   })
-
-  const hasInfoToDisplay =
-    moneyLost.demandedMoney.length > 0 ||
-    moneyLost.moneyTaken.length > 0 ||
-    moneyLost.methodPayment.length > 0 ||
-    moneyLost.transactionDate.length > 0 ||
-    moneyLost.tellUsMore.length > 0
 
   return (
     <React.Fragment>
@@ -71,7 +65,7 @@ export const MoneyLostInfoSummary = props => {
           />
         </Flex>
 
-        {hasInfoToDisplay ? (
+        {containsData(moneyLost) ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.moneyLost.demandedMoney"
