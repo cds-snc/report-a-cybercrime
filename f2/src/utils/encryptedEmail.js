@@ -77,38 +77,37 @@ const encryptMessage = (uid, message, sendMail) => {
     )
   })
 }
+
 const encryptFile = (uid, data, sendMail) => {
   const openssl = 'openssl smime -des3 -encrypt'
 
-  for (var x = 0; x < data.evidence.files.length; x++) {
-    console.log('file is at: ' + data.evidence.files[x].path)
-    //create file name for each file in the format of .mime
-    const mimeFile = data.evidence.files[x].path + '.mime'
-    const encryptFile = data.evidence.files[x].path + '.encrypt'
-    exec(
-      //run makemime commend and openssl commend
-      `makemime -o ${mimeFile} ${
-        data.evidence.files[x].path
-      } && ${openssl} -${encryptFile} -in ${mimeFile} ${certFileName(uid)}`,
-      { cwd: process.cwd() },
-      function(error, encryptFile, stderr) {
-        if (error) throw error
-        else if (stderr) console.log(stderr)
-        else {
-          fs.readFile('./data.evidence.files[x].path', function read(
-            err,
-            encryptFile,
-          ) {
-            if (err) {
-              throw err
-            }
-            const attachment = encryptFile
+  try {
+    for (var x = 0; x < data.evidence.files.length; x++) {
+      console.log('file is at: ' + data.evidence.files[x].path)
+      //create file name for each file in the format of .mime
+      const mimeFile = data.evidence.files[x].path + '.mime'
+      const encryptFile = data.evidence.files[x].path + '.encrypt'
+      exec(
+        //run makemime commend and openssl commend
+        `makemime -o ${mimeFile} ${
+          data.evidence.files[x].path
+        } && ${openssl} -out ${encryptFile} -in ${mimeFile} ${certFileName(
+          uid,
+        )}`,
+        { cwd: process.cwd() },
+        function(error, stdout, stderr) {
+          if (error) throw error
+          else if (stderr) console.log(stderr)
+          else {
+            attachment = fs.readFileSync(encryptFile)
             console.log('Encrypted File: File encrypted')
             sendMail(attachment)
-          })
-        }
-      },
-    )
+          }
+        },
+      )
+    }
+  } catch (error) {
+    console.warn(`ERROR in encryptFile: ${error}`)
   }
 }
 
