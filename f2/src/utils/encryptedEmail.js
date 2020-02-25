@@ -12,7 +12,6 @@ const mailHost = process.env.MAIL_HOST
 const mailUser = process.env.MAIL_USER
 const mailPass = process.env.MAIL_PASS
 const ldapUrl = process.env.LDAP_URL
-const mailTo = process.env.MAIL_TO
 const mailFrom = process.env.MAIL_FROM
 
 const certFileName = uid => `${uid}.cer`
@@ -56,7 +55,7 @@ const getCert = uid => {
   })
 }
 
-const encryptMessage = (uid, message, sendMail) => {
+const encryptMessage = (uid, emailAddress, message, sendMail) => {
   const openssl = 'openssl smime -des3 -text -encrypt'
   const messageFileName = `message_${nanoid()}.txt`
   fs.writeFile(messageFileName, message, function(err) {
@@ -71,14 +70,14 @@ const encryptMessage = (uid, message, sendMail) => {
           const attachment = stdout
           console.log('Encrypted Mail: Message encrypted')
           fs.unlink(messageFileName, () => {})
-          sendMail(attachment)
+          sendMail(emailAddress, attachment)
         }
       },
     )
   })
 }
 
-async function sendMail(attachment) {
+async function sendMail(emailAddress, attachment) {
   let transporter = nodemailer.createTransport({
     host: mailHost,
     port: 465,
@@ -91,7 +90,7 @@ async function sendMail(attachment) {
 
   const message = {
     from: mailFrom,
-    to: mailTo,
+    to: emailAddress,
     subject: 'Custom attachment',
     attachments: [
       {
@@ -101,23 +100,24 @@ async function sendMail(attachment) {
   }
 
   let info = await transporter.sendMail(message)
-  console.log(`Encrypted Mail: Message sent to ${mailTo}: ${info.messageId}`)
+  console.log(
+    `Encrypted Mail: Message sent to ${emailAddress}: ${info.messageId}`,
+  )
 }
 
 // ----------------------------------------------------
 
 const getAllCerts = uidList => {
-  if (uidList) uidList.split().forEach(uid => getCert(uid))
+  if (uidList) uidList.forEach(uid => getCert(uid))
   else console.warn('Encrypted Mail: No certs to fetch!')
 }
 
-const encryptAndSend = async (uidList, message) => {
-  if (uidList)
-    uidList.split().forEach(uid => encryptMessage(uid, message, sendMail))
+const encryptAndSend = async (uidList, emailList, message) => {
+  if (uidList && emailList)
+    uidList.forEach((uid, index) =>
+      encryptMessage(uid, emailList[index], message, sendMail),
+    )
   else console.warn('Encrypted Mail: No certs to encrypt with!')
 }
-
-// getAllCerts(process.env.LDAP_UID)
-// setTimeout(() => encryptAndSend(process.env.LDAP_UID, 'Hello World\nFrom node'), 1000)
 
 module.exports = { getAllCerts, encryptAndSend }
