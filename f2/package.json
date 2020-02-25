@@ -38,14 +38,15 @@
     "react-ga": "^2.6.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.1",
-    "styled-system": "^5.1.4"
+    "styled-system": "^5.1.4",
+    "unidecode": "^0.1.8"
   },
   "scripts": {
     "prod": "npm run build && node server.js",
     "build": "react-scripts build",
     "start": "NODE_ENV=production node server.js",
-    "test": "react-scripts test --watchAll=false",
-    "coverage": "react-scripts test --coverage --watchAll=false",
+    "test": "SELF_HARM_WORDS= react-scripts test --watchAll=false",
+    "coverage": "SELF_HARM_WORDS= react-scripts test --coverage --watchAll=false",
     "watch": "react-scripts test",
     "dbg": "react-scripts --inspect-brk test --watchAll=false --runInBand",
     "eject": "react-scripts eject",

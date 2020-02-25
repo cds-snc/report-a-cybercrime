@@ -2,20 +2,34 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form, Field } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { CheckboxAdapter } from '../components/checkbox'
 import { RadioAdapter } from '../components/radio'
-import { Stack, Box, Alert, AlertIcon, FormControl } from '@chakra-ui/core'
+import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { TextArea } from '../components/text-area'
-import { P } from '../components/paragraph'
 import { TextInput } from '../components/TextInput'
-import { FormLabel } from '../components/FormLabel'
+import { Field } from '../components/Field'
 
 const validate = () => {
   return {}
+}
+
+const clearData = dataOrig => {
+  let data = JSON.parse(JSON.stringify(dataOrig))
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.email'))
+    data.email = ''
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.phone'))
+    data.phone = ''
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.online'))
+    data.online = ''
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.app'))
+    data.application = ''
+  if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.others'))
+    data.others = ''
+  return data
 }
 
 export const HowDidItStartForm = props => {
@@ -104,14 +118,14 @@ export const HowDidItStartForm = props => {
 
       <Form
         initialValues={howdiditstart}
-        onSubmit={data => props.onSubmit(data)}
+        onSubmit={data => props.onSubmit(clearData(data))}
         validate={validate}
         render={({ handleSubmit, values }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
-            spacing={4}
+            spacing={12}
           >
             <FormArrayControl
               name="howDidTheyReachYou"
@@ -144,74 +158,34 @@ export const HowDidItStartForm = props => {
               })}
             </FormArrayControl>
 
-            <Stack>
-              <P fontWeight="bold">
-                <Trans id="whenDidItStart.label" />
-              </P>
-              <P fontSize="md">
-                <Trans id="whenDidItStart.labelExample" />
-              </P>
-            </Stack>
-
-            <Stack flexDirection="row">
-              <Field name="startDay">
-                {props => (
-                  <FormControl>
-                    <FormLabel htmlFor="startDay">
-                      <Trans id="whenDidItStart.startDay" />
-                      <TextInput
-                        id="startDay"
-                        name={props.input.name}
-                        value={props.input.value}
-                        onChange={props.input.onChange}
-                        w={70}
-                        h={36}
-                        mt={2}
-                        maxLength="2"
-                      />
-                    </FormLabel>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name="startMonth">
-                {props => (
-                  <FormControl>
-                    <FormLabel htmlFor="startMonth">
-                      <Trans id="whenDidItStart.startMonth" />
-                      <TextInput
-                        id="startMonth"
-                        name={props.input.name}
-                        value={props.input.value}
-                        onChange={props.input.onChange}
-                        w={70}
-                        h={36}
-                        mt={2}
-                        maxLength="2"
-                      />
-                    </FormLabel>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name="startYear">
-                {props => (
-                  <FormControl>
-                    <FormLabel htmlFor="startYear">
-                      <Trans id="whenDidItStart.startYear" />
-                      <TextInput
-                        id="startYear"
-                        name={props.input.name}
-                        value={props.input.value}
-                        onChange={props.input.onChange}
-                        w={110}
-                        h={36}
-                        mt={2}
-                        maxLength="4"
-                      />
-                    </FormLabel>
-                  </FormControl>
-                )}
-              </Field>
-            </Stack>
+            <FormArrayControl
+              label={<Trans id="whenDidItStart.label" />}
+              helperText={<Trans id="whenDidItStart.labelExample" />}
+            >
+              <Stack direction="row" spacing="2">
+                <Field
+                  name="startDay"
+                  label={<Trans id="whenDidItStart.startDay" />}
+                  component={TextInput}
+                  w={70}
+                  maxLength="2"
+                />
+                <Field
+                  name="startMonth"
+                  label={<Trans id="whenDidItStart.startMonth" />}
+                  component={TextInput}
+                  w={70}
+                  maxLength="2"
+                />
+                <Field
+                  name="startYear"
+                  label={<Trans id="whenDidItStart.startYear" />}
+                  component={TextInput}
+                  w={110}
+                  maxLength="4"
+                />
+              </Stack>
+            </FormArrayControl>
 
             <FormArrayControl
               name="howManyTimes"
@@ -219,7 +193,7 @@ export const HowDidItStartForm = props => {
             >
               {howManyTimes.map(key => {
                 return (
-                  <Box key={key}>
+                  <React.Fragment key={key}>
                     <RadioAdapter
                       name="howManyTimes"
                       value={key}
@@ -227,7 +201,7 @@ export const HowDidItStartForm = props => {
                     >
                       {i18n._(key)}
                     </RadioAdapter>
-                  </Box>
+                  </React.Fragment>
                 )
               })}
             </FormArrayControl>
