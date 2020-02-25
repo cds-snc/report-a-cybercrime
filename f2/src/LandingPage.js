@@ -14,6 +14,7 @@ import { Layout } from './components/layout'
 import { Stack, Icon, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { Text } from './components/text'
 
 export const LandingPage = props => {
   const { i18n } = useLingui()
