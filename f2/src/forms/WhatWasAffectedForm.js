@@ -96,9 +96,11 @@ export const WhatWasAffectedForm = props => {
                       isChecked={whatWasAffected.affectedOptions.includes(key)}
                     >
                       {i18n._(key)}
-                      <Text fontSize="sm">
-                        {<Trans id={`${key}.example`} />}
-                      </Text>
+                      {key != 'whatWasAffectedForm.other' && (
+                        <Text as="span" d="block" fontSize="sm">
+                          {<Trans id={`${key}.example`} />}
+                        </Text>
+                      )}
                     </CheckboxAdapter>
                   </React.Fragment>
                 )

@@ -44,7 +44,7 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
       {id => {
         return (
           <React.Fragment>
-            <Flex as="label" id={id} align="center">
+            <Flex as="label" id={id} align="start">
               <VisuallyHidden
                 {...input}
                 as="input"
@@ -78,7 +78,7 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
                 <Icon name="check" size="24px" />
               </ControlBox>
 
-              <Text ml={2} htmlFor={id}>
+              <Text ml={2} pt={2} htmlFor={id} lineHeight="1.5rem">
                 {props.children}
               </Text>
             </Flex>
