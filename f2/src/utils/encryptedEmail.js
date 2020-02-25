@@ -84,20 +84,28 @@ const encryptFile = (uid, data, sendMail) => {
     console.log('file is at: ' + data.evidence.files[x].path)
     //create file name for each file in the format of .mime
     const mimeFile = data.evidence.files[x].path + '.mime'
+    const encryptFile = data.evidence.files[x].path + '.encrypt'
     exec(
       //run makemime commend and openssl commend
       `makemime -o ${mimeFile} ${
         data.evidence.files[x].path
-      } && ${openssl} -in ${mimeFile} ${certFileName(uid)}`,
+      } && ${openssl} -encryptFile -in ${mimeFile} ${certFileName(uid)}`,
       { cwd: process.cwd() },
-      function(error, stdout, stderr) {
+      function(error, encryptFile, stderr) {
         if (error) throw error
         else if (stderr) console.log(stderr)
         else {
-          const attachment = stdout
-          console.log('Encrypted File: File encrypted')
-
-          sendMail(attachment)
+          fs.readFile('./data.evidence.files[x].path', function read(
+            err,
+            encryptFile,
+          ) {
+            if (err) {
+              throw err
+            }
+            const attachment = encryptFile
+            console.log('Encrypted File: File encrypted')
+            sendMail(attachment)
+          })
         }
       },
     )

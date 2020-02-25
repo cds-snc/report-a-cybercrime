@@ -1,0 +1,60 @@
+Report information
+
+Report number:      NCFRS-x86619k7k6b
+Date received:      2020-02-19T19:28:12.981Z
+Report language:    undefined
+Flagged:            no self harm words
+
+
+Victim details
+
+Name:             undefined
+Phone number:     undefined
+Postal code:      undefined
+Consent:          yes
+
+
+Extra Fields:
+{
+  "howdiditstart": {
+    "howDidTheyReachYou": []
+  },
+  "whatWasAffected": {
+    "affectedOptions": [
+      "whatWasAffectedForm.other"
+    ],
+    "optionOther": "other"
+  },
+  "whatHappened": {
+    "whatHappened": ""
+  },
+  "suspectClues": {
+    "suspectClues": ""
+  },
+  "evidence": {
+    "files": [],
+    "fileDescriptions": []
+  },
+  "location": {
+    "location": ""
+  },
+  "moneyLost": {
+    "demandedMoney": "",
+    "moneyTaken": "",
+    "methodPayment": "",
+    "transactionDate": "",
+    "tellUsMore": ""
+  },
+  "personalInformation": {
+    "typeOfInfoReq": "",
+    "typeOfInfoObtained": "",
+    "tellUsMore": ""
+  },
+  "devicesInfo": {
+    "deviceOrAccount": "",
+    "devicesTellUsMore": ""
+  },
+  "businessInfo": {
+    "business": ""
+  }
+}
