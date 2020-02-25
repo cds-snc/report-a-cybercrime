@@ -5,6 +5,8 @@ const crypto = require('crypto')
 const { selfHarmWordsScan } = require('./selfHarmWordsScan')
 const { generateReportId } = require('./generateReportId')
 
+const padNumber = x => `${x}`.padStart(2, 0)
+
 async function getData(fields, files) {
   // Extract the JSON from the "JSON" form element
   const data = JSON.parse(fields['json'])
@@ -43,9 +45,14 @@ async function getData(fields, files) {
   }
   data.selfHarmWords = selfHarmWords
   const now = new Date()
-  const dateString = `${now.getDate()}/${now.getMonth() +
-    1}/${now.getFullYear()}`
-  const timeString = `${now.getHours()}:${now.getMinutes()}`
+  const dateString =
+    padNumber(now.getDate()) +
+    '/' +
+    padNumber(now.getMonth() + 1) +
+    '/' +
+    `${now.getFullYear()}`
+  const timeString =
+    padNumber(now.getHours()) + ':' + padNumber(now.getMinutes())
   data.submissionTime = `${dateString} ${timeString}`
   return data
 }
