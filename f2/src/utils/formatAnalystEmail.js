@@ -1,12 +1,19 @@
 // 'use strict'
 
+const { formatDate } = require('./formatDate')
+
 const formatLine = (label, text) => (text !== '' ? label + text + '\n' : '')
 
 const formatReportInfo = data => {
-  const selfHarmString = data.selfHarmWords.length
-    ? data.selfHarmWords
-    : 'no self harm words'
-  const returnString =
+  let selfHarmString = 'no self harm words'
+  let returnString = ''
+
+  if (data.selfHarmWords.length) {
+    selfHarmString = data.selfHarmWords
+    returnString = `\n\nSELF HARM WORDS FOUND : ${selfHarmString}\n\n`
+  }
+  returnString +=
+    'Report information\n\n' +
     formatLine('Report number:      ', data.reportId) +
     formatLine('Date received:      ', data.submissionTime) +
     formatLine('Report language:    ', data.language) +
@@ -16,9 +23,7 @@ const formatReportInfo = data => {
   delete data.submissionTime // so that at the end we can display the rest and ensure that
   delete data.language // we didn't miss anything
   delete data.selfHarmWords
-  return (
-    'Report information\n\n' + (returnString !== '' ? returnString : 'No Data')
-  )
+  return returnString
 }
 
 const formatVictimDetails = data => {
@@ -44,7 +49,11 @@ const formatVictimDetails = data => {
 }
 
 const formatIncidentInformation = data => {
-  const occurenceString = `${data.howdiditstart.startDay}-${data.howdiditstart.startMonth}-${data.howdiditstart.startYear}`
+  const occurenceString = formatDate(
+    data.howdiditstart.startDay,
+    data.howdiditstart.startMonth,
+    data.howdiditstart.startYear,
+  )
   const freqString = data.howdiditstart.howManyTimes.replace(
     'howManyTimes.',
     '',
@@ -155,7 +164,11 @@ const formatFinancialTransactions = data => {
   const paymentString = data.moneyLost.methodPayment
     .map(method => method.replace('methodPayment.', ''))
     .join(', ')
-  const transactionDate = `${data.moneyLost.transactionDay}-${data.moneyLost.transactionMonth}-${data.moneyLost.transactionYear}`
+  const transactionDate = formatDate(
+    data.moneyLost.transactionDay,
+    data.moneyLost.transactionMonth,
+    data.moneyLost.transactionYear,
+  )
   const returnString =
     formatLine('Money requested:     ', data.moneyLost.demandedMoney) +
     formatLine('Money lost:          ', data.moneyLost.moneyTaken) +
@@ -211,23 +224,43 @@ const formatFileAttachments = data => {
 }
 
 const formatAnalystEmail = dataOrig => {
-  let data = JSON.parse(JSON.stringify(dataOrig))
-  let returnString =
-    formatReportInfo(data) +
-    formatVictimDetails(data) +
-    formatIncidentInformation(data) +
-    formatNarrative(data) +
-    formatSuspectDetails(data) +
-    formatFinancialTransactions(data) +
-    formatFileAttachments(data)
+  let returnString = ''
+  let reportInfoString = ''
+  let missingFields
 
-  // take data object and delete any objects that are now empty, and display the rest
-  Object.keys(data).forEach(key => {
-    if (Object.keys(data[key]).length === 0) delete data[key]
-  })
-  let missingFields = Object.keys(data).length
-    ? '\n\nExtra Fields:\n' + JSON.stringify(data, null, '  ')
-    : ''
+  let data
+  try {
+    data = JSON.parse(JSON.stringify(dataOrig))
+    reportInfoString = formatReportInfo(data)
+  } catch (error) {
+    const errorMessage = `ERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
+    console.error(errorMessage)
+    return errorMessage
+  }
+  try {
+    returnString =
+      reportInfoString +
+      formatVictimDetails(data) +
+      formatIncidentInformation(data) +
+      formatNarrative(data) +
+      formatSuspectDetails(data) +
+      formatFinancialTransactions(data) +
+      formatFileAttachments(data)
+
+    // take data object and delete any objects that are now empty, and display the rest
+    Object.keys(data).forEach(key => {
+      if (Object.keys(data[key]).length === 0) delete data[key]
+    })
+    missingFields = Object.keys(data).length
+      ? '\n\nExtra Fields:\n' + JSON.stringify(data, null, '  ')
+      : ''
+  } catch (error) {
+    const errorMessage =
+      reportInfoString +
+      `\nERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
+    console.error(errorMessage)
+    return errorMessage
+  }
   return returnString + missingFields
 }
 

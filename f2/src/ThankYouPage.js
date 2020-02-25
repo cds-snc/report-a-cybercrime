@@ -68,8 +68,6 @@ export const ThankYouPage = () => {
             </P>
           </InfoCard>
         </Row>
-
-        {contactInfo.email && <Trans id="thankYouPage.summary" />}
       </Layout>
       <Box bg="gray.200" py={10}>
         <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }} pt={10}>
@@ -78,6 +76,7 @@ export const ThankYouPage = () => {
               <Trans id="thankYouPage.whatNextHeading" />
             </H2>
             <P>
+              {contactInfo.email && <Trans id="thankYouPage.summary" />}
               <Trans id="thankYouPage.whatNextParagraph" />
             </P>
             <P>
