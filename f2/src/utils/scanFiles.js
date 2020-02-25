@@ -81,4 +81,18 @@ async function contentModeratorFiles(data, finalCallback) {
   }
 }
 
-module.exports = { scanFiles, contentModeratorFiles }
+function checkFileSize(files) {
+  var fileIsTooBig = false
+  console.log('Files', files)
+  for (const [fileName, file] of Object.entries(files)) {
+    if (file.size > 4194304) {
+      fileIsTooBig = true
+      console.warn('Warning: One of the submitted files is bigger than 4MB.')
+      return fileIsTooBig
+    }
+    console.log(fileName, file)
+  }
+  return fileIsTooBig
+}
+
+module.exports = { scanFiles, contentModeratorFiles, checkFileSize }
