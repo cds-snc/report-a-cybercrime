@@ -99,7 +99,7 @@ const encryptFile = (uid, data, sendMail) => {
           if (error) throw error
           else if (stderr) console.log(stderr)
           else {
-            attachment = fs.readFileSync(encryptFile)
+            const attachment = fs.readFileSync(encryptFile)
             console.log('Encrypted File: File encrypted')
             sendMail(attachment)
           }
