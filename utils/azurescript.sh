@@ -2,7 +2,8 @@
 
 export RG_NAME=MpPcCDSCyberCrimeRg
 
-export ACR_NAME=MpPcCDSCybercrimeAcr 
+#the ACR name should be lower case.  If it's not lowercase then it won't match the registry login server and it won't deploy.
+export ACR_NAME=mppccdscybercrimeacr 
 export IMAGE_NAME=f2
 export VIRUS_SCANNER_IMAGE_NAME=clamav
 
