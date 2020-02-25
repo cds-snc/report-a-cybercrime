@@ -39,7 +39,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.1",
     "styled-system": "^5.1.4",
-    "unidecode": "^0.1.8"
+    "unidecode": "^0.1.8",
+    "cypress-cucumber-preprocessor": "^2.0.1"
   },
   "scripts": {
     "prod": "npm run build && node server.js",
