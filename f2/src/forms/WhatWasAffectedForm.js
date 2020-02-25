@@ -10,13 +10,6 @@ import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Text } from '../components/text'
 
-const Control = ({ name, ...rest }) => {
-  const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
-  return <FormControl {...rest} isInvalid={error && touched} />
-}
-
 const validate = () => {
   return {}
 }
@@ -96,7 +89,7 @@ export const WhatWasAffectedForm = props => {
                       isChecked={whatWasAffected.affectedOptions.includes(key)}
                     >
                       {i18n._(key)}
-                      {key != 'whatWasAffectedForm.other' && (
+                      {key !== 'whatWasAffectedForm.other' && (
                         <Text as="span" d="block" fontSize="sm">
                           {<Trans id={`${key}.example`} />}
                         </Text>
