@@ -89,9 +89,12 @@ export const WhatWasAffectedForm = props => {
                     >
                       {i18n._(key)}
                       {key !== 'whatWasAffectedForm.other' && (
-                        <Text as="span" d="block" fontSize="sm">
-                          {<Trans id={`${key}.example`} />}
-                        </Text>
+                        <React.Fragment>
+                          <br />
+                          <Text as="span" fontSize="sm">
+                            {<Trans id={`${key}.example`} />}
+                          </Text>
+                        </React.Fragment>
                       )}
                     </CheckboxAdapter>
                   </React.Fragment>
