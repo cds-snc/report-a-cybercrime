@@ -201,17 +201,17 @@ const formatFileAttachments = data => {
             formatLine('Is racy:       ', file.isImageRacyClassified) +
             formatLine('Racy Score:    ', file.racyClassificationScore)
 
-      return offensive
-        ? 'WARNING: image may be offensive\n'
-        : '' +
-            formatLine('File name:     ', file.name) +
-            formatLine('Description:   ', file.fileDescription) +
-            formatLine('Size:          ', file.size + ' bytes') +
-            formatLine('CosmosDB file: ', file.sha1) +
-            (file.malwareIsClean
-              ? 'Malware scan:  Clean\n'
-              : formatLine('Malware scan:  ', file.malwareScanDetail)) +
-            moderatorString
+      return (
+        (offensive ? 'WARNING: image may be offensive\n' : '') +
+        formatLine('File name:     ', file.name) +
+        formatLine('Description:   ', file.fileDescription) +
+        formatLine('Size:          ', file.size + ' bytes') +
+        formatLine('CosmosDB file: ', file.sha1) +
+        (file.malwareIsClean
+          ? 'Malware scan:  Clean\n'
+          : formatLine('Malware scan:  ', file.malwareScanDetail)) +
+        moderatorString
+      )
     })
     .join('\n\n')
 
