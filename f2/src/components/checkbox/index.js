@@ -78,13 +78,7 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
                 <Icon name="check" size="24px" />
               </ControlBox>
 
-              <Text
-                ml={2}
-                pt={2}
-                htmlFor={id}
-                lineHeight="1.5rem"
-                aria-atomic="true"
-              >
+              <Text as="div" ml={2} pt={2} htmlFor={id} lineHeight="1.5rem">
                 {props.children}
               </Text>
             </Flex>
