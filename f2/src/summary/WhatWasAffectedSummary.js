@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
@@ -21,9 +22,7 @@ export const WhatWasAffectedSummary = props => {
   }
 
   const summaryOptions = impact.affectedOptions.map(key =>
-    key === 'whatWasAffectedForm.other'
-      ? impact.optionOther
-      : i18n._(key).toLowerCase(),
+    i18n._(key).toLowerCase(),
   )
   const summaryLine = formatList(summaryOptions, {
     pair: i18n._('default.pair'),
@@ -55,7 +54,7 @@ export const WhatWasAffectedSummary = props => {
             label="confirmationPage.ImpactTitle.edit"
           />
         </Flex>
-        {impact.affectedOptions.length > 0 ? (
+        {containsData(impact) ? (
           <Stack as="dl" spacing={4}>
             <Text>
               <Trans id="confirmationPage.whatWasAffected.format" />
