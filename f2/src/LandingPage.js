@@ -13,8 +13,6 @@ import { A } from './components/link'
 import { Layout, Row } from './components/layout'
 import { Stack, Icon, Alert, AlertIcon, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { LandingBox } from './components/container'
-import { ButtonLink } from './components/link'
 import { Page } from './components/Page'
 
 export const LandingPage = props => {
