@@ -29,7 +29,11 @@ export const LandingPage = props => {
         <Page>
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
-              <H1>
+
+              <Alert status="success" backgroundColor="blue.100">
+                <AlertIcon name="info-outline" color="blue.800" />
+                <Trans id="landingpage.appinfo" />
+              </Alert> <H1>
                 <Trans id="landingPage.title" />
               </H1>
               <Stack spacing={4}>
@@ -53,7 +57,6 @@ export const LandingPage = props => {
                     />
                   </Trans>
                 </P>
-
                 <Row>
                   <LandingBox>
                     <H2>
@@ -111,11 +114,7 @@ export const LandingPage = props => {
                   </LandingBox>
                 </Row>
 
-                <Alert status="success" backgroundColor="blue.100">
-                  <AlertIcon name="info-outline" color="blue.800" />
-                  <Trans id="landingPage.warning" />
-                </Alert>
-
+                <P><Trans id="landingPage.warning" /></P>
                 <H2>
                   <Trans id="landingPage.reportingOptions" />
                 </H2>
@@ -166,7 +165,7 @@ export const LandingPage = props => {
               </Stack>
             </Stack>
           </Layout>
-        </Page>
+        </Page >
       )}
     />
   )
