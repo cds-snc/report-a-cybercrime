@@ -70,6 +70,9 @@
     "check-translations": "node utils/checkTranslations.js",
     "upgrade-interactive": "npm-check --update"
   },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  },
   "husky": {
     "hooks": {
       "pre-commit": "echo 'Running npm run extract' && lingui extract --clean && git add src/locales && pretty-quick --staged"
