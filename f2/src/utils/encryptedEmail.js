@@ -89,7 +89,7 @@ const encryptFile = (uid, data, sendMail) => {
       //run makemime commend and openssl commend
       `makemime -o ${mimeFile} ${
         data.evidence.files[x].path
-      } && ${openssl} -encryptFile -in ${mimeFile} ${certFileName(uid)}`,
+      } && ${openssl} -${encryptFile} -in ${mimeFile} ${certFileName(uid)}`,
       { cwd: process.cwd() },
       function(error, encryptFile, stderr) {
         if (error) throw error
