@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
@@ -17,15 +18,13 @@ export const DevicesSummary = props => {
     ...data.formData.devicesInfo,
   }
 
-  const hasInfoToDisplay =
-    devices.deviceOrAccount.length > 0 || devices.devicesTellUsMore.length > 0
-
   return (
     <React.Fragment>
       {false ? (
         <div>
           {/*: mark the proper ids for lingui */}
-          <Trans id="confirmationPage.devices.deviceOrAccount" />
+          <Trans id="confirmationPage.devices.device" />
+          <Trans id="confirmationPage.devices.account" />
           <Trans id="confirmationPage.devices.devicesTellUsMore" />
           <Trans id="confirmationPage.devicesTitle.edit" />
         </div>
@@ -48,11 +47,15 @@ export const DevicesSummary = props => {
           />
         </Flex>
 
-        {hasInfoToDisplay ? (
+        {containsData(devices) ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
-              descriptionTitle="confirmationPage.devices.deviceOrAccount"
-              description={devices.deviceOrAccount}
+              descriptionTitle="confirmationPage.devices.device"
+              description={devices.device}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.devices.account"
+              description={devices.account}
             />
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.devicesTellUsMore"

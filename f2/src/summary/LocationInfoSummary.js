@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
@@ -16,16 +17,12 @@ export const LocationInfoSummary = props => {
     ...data.formData.location,
   }
 
-  const hasInfoToDisplay =
-    location.postalCode.length > 0 || location.cityTown.length > 0
-
   return (
     <React.Fragment>
       {false ? (
         <div>
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.location.postalCode" />
-          <Trans id="confirmationPage.location.cityTown" />
           <Trans id="confirmationPage.location.title.edit" />
         </div>
       ) : null}
@@ -46,15 +43,11 @@ export const LocationInfoSummary = props => {
             label="confirmationPage.location.title.edit"
           />
         </Flex>
-        {hasInfoToDisplay ? (
+        {containsData(location) ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.location.postalCode"
               description={location.postalCode}
-            />
-            <DescriptionListItem
-              descriptionTitle="confirmationPage.location.cityTown"
-              description={location.cityTown}
             />
           </Stack>
         ) : (

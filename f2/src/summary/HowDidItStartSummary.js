@@ -5,6 +5,8 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
+import { formatDate } from '../utils/formatDate'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
@@ -21,11 +23,12 @@ export const HowDidItStartSummary = props => {
     ...testdata.formData.howdiditstart,
     ...data.formData.howdiditstart,
   }
+
   if (howdiditstart.howDidTheyReachYou.length > 0) {
     //Obtain all the array data into the summary array
     howdiditstart.howDidTheyReachYou.map(key =>
       summary.push(
-        key === 'howDidTheyReachYou.others'
+        key === 'howDidTheyReachYou.others' && howdiditstart.others !== ''
           ? howdiditstart.others
           : i18n._(key).toLowerCase(),
       ),
@@ -39,8 +42,6 @@ export const HowDidItStartSummary = props => {
         end: i18n._('default.end'),
       })
   }
-
-  const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0
 
   return (
     <React.Fragment>
@@ -77,7 +78,7 @@ export const HowDidItStartSummary = props => {
           />
         </Flex>
 
-        {hasDataToDisplay ? (
+        {containsData(howdiditstart) ? (
           <React.Fragment>
             <Stack as="dl" spacing={4}>
               <Text>{overviewLine}</Text>
@@ -103,7 +104,11 @@ export const HowDidItStartSummary = props => {
               />
               <DescriptionListItem
                 descriptionTitle="confirmationPage.whenDidItStart"
-                description={i18n._(howdiditstart.whenDidItStart)}
+                description={formatDate(
+                  howdiditstart.startDay,
+                  howdiditstart.startMonth,
+                  howdiditstart.startYear,
+                )}
               />
               <DescriptionListItem
                 descriptionTitle="confirmationPage.howManyTimes"

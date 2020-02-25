@@ -5,14 +5,14 @@ import { Route } from 'react-router-dom'
 import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { TrackPageViews } from './TrackPageViews'
+import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { ConfirmationSummary } from './ConfirmationSummary'
 import { ConfirmationForm } from './forms/ConfirmationForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { generateReportId } from './utils/generateReportId'
+import { Page } from './components/Page'
 
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
@@ -21,7 +21,8 @@ async function postData(url = '', data = {}) {
   // add the files to the formdata object after.
   var form_data = new FormData()
   form_data.append('json', JSON.stringify(data))
-  data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
+  if (data.evidence)
+    data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
 
   // Default options are marked with *
   const response = await fetch(url, {
@@ -33,11 +34,12 @@ async function postData(url = '', data = {}) {
     referrer: 'no-referrer',
     body: form_data,
   })
-  return await response
+  return response
 }
 
 const prepFormData = (formData, language) => {
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.financial',
     )
@@ -45,36 +47,42 @@ const prepFormData = (formData, language) => {
     formData.moneyLost = {
       demandedMoney: '',
       moneyTaken: '',
-      methodPayment: '',
+      methodPayment: [],
       transactionDate: '',
       tellUsMore: '',
     }
   }
 
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.personal_information',
     )
   ) {
     formData.personalInformation = {
-      typeOfInfoReq: '',
-      typeOfInfoObtained: '',
+      typeOfInfoReq: [],
+      infoReqOther: '',
+      typeOfInfoObtained: [],
+      infoObtainedOther: '',
       tellUsMore: '',
     }
   }
 
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.devices',
     )
   ) {
     formData.devicesInfo = {
-      deviceOrAccount: '',
+      device: '',
+      account: '',
       devicesTellUsMore: '',
     }
   }
 
   if (
+    formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.business_assets',
     )
@@ -90,9 +98,11 @@ const prepFormData = (formData, language) => {
   }
 }
 
-const submitToServer = async data => {
+const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
-  await postData('/submit', data)
+  const response = await postData('/submit', data)
+  const reportId = await response.text()
+  dispatch({ type: 'saveFormData', data: { reportId } })
 }
 
 export const ConfirmationPage = () => {
@@ -102,30 +112,30 @@ export const ConfirmationPage = () => {
   return (
     <Route
       render={({ history }) => (
-        <Layout>
-          <TrackPageViews />
-          <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/contactinfo">
-              <Trans id="confirmationPage.backButton" />
-            </BackButton>
-            <H1>
-              <Trans id="confirmationPage.title" />
-            </H1>
+        <Page>
+          <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }} mb={10}>
+            <Stack spacing={10} shouldWrapChildren>
+              <BackButton route="/contactinfo">
+                <Trans id="confirmationPage.backButton" />
+              </BackButton>
+              <H1>
+                <Trans id="confirmationPage.title" />
+              </H1>
+              <P>
+                <Trans id="confirmationPage.intro" />
+              </P>
+            </Stack>
+          </Layout>
+          <Layout columns={{ base: 4 / 4, md: 8 / 8, lg: 9 / 12 }}>
             <ConfirmationSummary />
             <ConfirmationForm
               onSubmit={() => {
-                const reportId = generateReportId()
-                dispatch({
-                  type: 'saveFormData',
-                  data: { reportId },
-                })
-                let data = prepFormData(formData, i18n.locale)
-                submitToServer({ ...data, reportId }) // pass reportId to protect against dispatch race condition
+                submitToServer(prepFormData(formData, i18n.locale), dispatch)
                 history.push('/thankYouPage')
               }}
             />
-          </Stack>
-        </Layout>
+          </Layout>
+        </Page>
       )}
     />
   )

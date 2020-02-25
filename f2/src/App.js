@@ -7,7 +7,7 @@ import { TopBanner } from './components/topbanner'
 import { PhaseBanner } from './components/phase-banner'
 import { WarningBanner } from './components/warning-banner'
 import { Footer } from './components/footer'
-import { ThemeProvider, Flex, Link, CSSReset } from '@chakra-ui/core'
+import { ThemeProvider, Flex, Stack, CSSReset } from '@chakra-ui/core'
 import canada from './theme/canada'
 import { SkipLink } from './components/skip-link'
 import { StateProvider, initialState, reducer } from './utils/state'
@@ -15,7 +15,6 @@ import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { Li } from './components/list-item'
 import { A } from './components/link'
-
 
 const App = () => {
   const { i18n } = useLingui()
@@ -34,26 +33,27 @@ const App = () => {
             <SkipLink invisible href="#main">
               <Trans id="SkipLink.text" />
             </SkipLink>
-            <WarningBanner>
-              <Trans id="banner.warning" />
-            </WarningBanner>
+            {process.env.REACT_APP_DEV_ENVIRONMENT === 'yes' && (
+              <WarningBanner>
+                <Trans id="banner.warning" />
+              </WarningBanner>
+            )}
             <PhaseBanner phase={<Trans id="banner.phase" />}>
               <Trans id="banner.phaseText">
-                        <A
-                          href={
-                            i18n.locale === 'en'
-                              ? 'https://www.services.rcmp-grc.gc.ca/chooser-eng.html'
-                              : 'https://www.services.rcmp-grc.gc.ca/chooser-fra.html'
-                          }
-                          isExternal
-                        />
-               </Trans>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.services.rcmp-grc.gc.ca/chooser-eng.html'
+                      : 'https://www.services.rcmp-grc.gc.ca/chooser-fra.html'
+                  }
+                  isExternal
+                />
+              </Trans>
             </PhaseBanner>
             <TopBanner lang={i18n.locale} />
-            
           </header>
 
-          <Flex
+          <Stack
             as="main"
             id="main"
             fontFamily="body"
@@ -64,40 +64,34 @@ const App = () => {
             bg="gray.50"
           >
             <Home />
-          </Flex>
 
-          <Layout fluid bg="gray.300">
             <Layout>
-              <P fontSize="sm" my={3}>
-                Version: {process.env.REACT_APP_VERSION || '000000'}
-              </P>
-            </Layout>
-          </Layout>
 
+            <P fontSize="sm" my={3} aria-label="application version">
+              {`Version: ${
+                process.env.REACT_APP_VERSION
+                  ? process.env.REACT_APP_VERSION.slice(0, 7)
+                  : '000000'
+              }`}
+
+            </P>
+          </Layout>
+          </Stack>
           <Footer>
             {/** The List component is in the Footer component */}
             <Li>
-              <Link
-                href={
-                  i18n.locale === 'en'
-                    ? 'https://digital.canada.ca/legal/privacy/'
-                    : 'https://numerique.canada.ca/transparence/confidentialite/'
-                }
-              >
+              <A href={'/privacystatement?lang=' + i18n.locale} isExternal>
                 <Trans id="banner.footerPrivacy" />
-              </Link>
+              </A>
             </Li>
             <Li>
-              <Link
+              <A
                 ml={4}
-                href={
-                  i18n.locale === 'en'
-                    ? 'https://digital.canada.ca/legal/terms/'
-                    : 'https://numerique.canada.ca/transparence/avis/'
-                }
+                href={'/termsandconditions?lang=' + i18n.locale}
+                isExternal
               >
                 <Trans id="banner.footerTermsAndConditions" />
-              </Link>
+              </A>
             </Li>
           </Footer>
         </Flex>
