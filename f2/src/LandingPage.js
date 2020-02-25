@@ -54,8 +54,7 @@ export const LandingPage = props => {
                   </Trans>
                 </P>
 
-                <Row>
-                  <LandingBox>
+                <Stack>
                     <H2>
                       <Trans id="landingPage.reportOnline" />
                     </H2>
@@ -63,8 +62,12 @@ export const LandingPage = props => {
                     <P>
                       <Trans id="landingPage.onlineIntro" />
                     </P>
-
-                    <ButtonLink to="/startPage" mt="auto">
+                  <Box>
+                    <Button
+                      as="a"
+                      role="button"
+                      href="/startPage"
+                    >
                       <Trans id="landingPage.nextButton.reportNow" />
                       <Icon
                         focusable="false"
@@ -73,43 +76,43 @@ export const LandingPage = props => {
                         name="chevron-right"
                         size="28px"
                       />
-                    </ButtonLink>
-                  </LandingBox>
-                  <LandingBox>
-                    <H2>
-                      <Trans id="landingPage.reportByPhone" />
-                    </H2>
+                    </Button>
+                  </Box>
+                  </Stack>
+                  <Stack>
+                  <H2>
+                    <Trans id="landingPage.reportByPhone" />
+                  </H2>
 
-                    <Stack spacing={0}>
-                      <P>
-                        <Trans id="landingPage.phoneDays" />
-                      </P>
-                      <P>
-                        <Trans id="landingPage.phoneTimes" />
-                      </P>
-                      <P>
-                        <Trans id="landingPage.phoneNumber" />
-                      </P>
-                    </Stack>
+                  <Stack spacing={0}>
+                    <P>
+                      <Trans id="landingPage.phoneDays" />
+                    </P>
+                    <P>
+                      <Trans id="landingPage.phoneTimes" />
+                    </P>
+                    <P>
+                      <Trans id="landingPage.phoneNumber" />
+                    </P>
+                  </Stack>
 
-                    <Box>
-                      <Button
-                        as="a"
-                        role="button"
-                        href={'tel:' + i18n._('landingPage.phoneNumber')}
-                      >
-                        <Trans id="landingPage.nextButton.callNow" />
-                        <Icon
-                          focusable="false"
-                          ml={2}
-                          mr={-2}
-                          name="chevron-right"
-                          size="28px"
-                        />
-                      </Button>
-                    </Box>
-                  </LandingBox>
-                </Row>
+                  <Box>
+                    <Button
+                      as="a"
+                      role="button"
+                      href={'tel:' + i18n._('landingPage.phoneNumber')}
+                    >
+                      <Trans id="landingPage.nextButton.callNow" />
+                      <Icon
+                        focusable="false"
+                        ml={2}
+                        mr={-2}
+                        name="chevron-right"
+                        size="28px"
+                      />
+                    </Button>
+                  </Box>
+                </Stack>
 
                 <Alert status="success" backgroundColor="blue.100">
                   <AlertIcon name="info-outline" color="blue.800" />
