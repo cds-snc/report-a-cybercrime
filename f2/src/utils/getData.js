@@ -42,7 +42,11 @@ async function getData(fields, files) {
     console.warn(`Self harm words detected: ${selfHarmWords}`)
   }
   data.selfHarmWords = selfHarmWords
-  data.submissionTime = new Date().toISOString()
+  const now = new Date()
+  const dateString = `${now.getDate()}/${now.getMonth() +
+    1}/${now.getFullYear()}`
+  const timeString = `${now.getHours()}:${now.getMinutes()}`
+  data.submissionTime = `${dateString} ${timeString}`
   return data
 }
 
