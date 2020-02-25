@@ -102,7 +102,7 @@ export const EvidenceInfoForm = props => {
                   <P fontSize="md">
                     <Trans id="evidencePage.fileSize" />
                     <br />
-                    <Text fontSize="sm" as="span" fontWeight="bold">
+                    <Text fontSize="md" as="span" fontWeight="bold">
                       <Trans id="evidencePage.supportedFiles" />
                     </Text>
                     <Trans id="evidencePage.fileTypes" />
