@@ -4,7 +4,7 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack, Alert, AlertIcon, VisuallyHidden } from '@chakra-ui/core'
+import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
@@ -87,9 +87,9 @@ export const WhatWasAffectedForm = props => {
                       value={key}
                       isChecked={whatWasAffected.affectedOptions.includes(key)}
                     >
-                      <Text>{<Trans id={`${key}`} />}</Text>
+                      {i18n._(key)}
                       {key !== 'whatWasAffectedForm.other' && (
-                        <Text fontSize="sm">
+                        <Text as="span" d="block" fontSize="sm">
                           {<Trans id={`${key}.example`} />}
                         </Text>
                       )}
