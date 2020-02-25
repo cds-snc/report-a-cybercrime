@@ -46,7 +46,6 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
           <React.Fragment>
             <Flex as="label" id={id} align="start">
               <VisuallyHidden
-                {...input}
                 as="input"
                 type="checkbox"
                 defaultChecked={isChecked ? 'true' : ''}
