@@ -5,7 +5,7 @@ import { Trans } from '@lingui/macro'
 import { jsx } from '@emotion/core'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack, Box } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 
 export const ConfirmationForm = props => {
   return (
