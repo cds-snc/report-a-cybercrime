@@ -348,7 +348,6 @@
   "whatWasAffectedForm.optionsHelpText": "Select at least one thing that could potentially be affected as a result of this incident.",
   "whatWasAffectedForm.optionsTitle": "What were they after?",
   "whatWasAffectedForm.other": "Other",
-  "whatWasAffectedForm.other.example": "whatWasAffectedForm.other.example",
   "whatWasAffectedForm.personal_information": "Personal information",
   "whatWasAffectedForm.personal_information.example": "For example: date of birth, home address, social insurance number",
   "whatWasAffectedForm.warning": "Select at least one thing that could potentially be affected. If you’re not sure, check “Other”.",

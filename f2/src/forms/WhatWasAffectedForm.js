@@ -54,7 +54,6 @@ export const WhatWasAffectedForm = props => {
           <Trans id="whatWasAffectedForm.personal_information.example" />
           <Trans id="whatWasAffectedForm.devices.example" />
           <Trans id="whatWasAffectedForm.business_assets.example" />
-          <Trans id="whatWasAffectedForm.other.example" />
         </div>
       ) : null}
 
