@@ -7,7 +7,11 @@ const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
-const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
+const {
+  scanFiles,
+  contentModeratorFiles,
+  checkFileSize,
+} = require('./src/utils/scanFiles')
 
 const {
   notifyIsSetup,
@@ -54,10 +58,13 @@ const uploadData = async (req, res, fields, files) => {
   // Get all the data in the format we want, this function blocks because we need the data
   var data = await getData(fields, files)
 
-  // Await here because we also need these results before saving
-  await scanFiles(data)
+  // Check file size
+  if (checkFileSize(files)) {
+    // Await here because we also need these results before saving
+    await scanFiles(data)
 
-  contentModeratorFiles(data, () => save(data, res))
+    contentModeratorFiles(data, () => save(data, res))
+  }
 }
 
 let count = 0
