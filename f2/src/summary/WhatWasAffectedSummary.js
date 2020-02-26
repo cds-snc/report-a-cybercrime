@@ -22,9 +22,7 @@ export const WhatWasAffectedSummary = props => {
   }
 
   const summaryOptions = impact.affectedOptions.map(key =>
-    key === 'whatWasAffectedForm.other'
-      ? impact.optionOther
-      : i18n._(key).toLowerCase(),
+    i18n._(key).toLowerCase(),
   )
   const summaryLine = formatList(summaryOptions, {
     pair: i18n._('default.pair'),
