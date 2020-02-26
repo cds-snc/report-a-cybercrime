@@ -14,7 +14,6 @@ import { Layout } from './components/layout'
 import { Stack, Icon, Alert, AlertIcon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
-import { Text } from './components/text'
 
 export const LandingPage = props => {
   const { i18n } = useLingui()
@@ -93,9 +92,7 @@ export const LandingPage = props => {
 
               <Alert status="info" backgroundColor="blue.100">
                 <AlertIcon name="info-outline" color="blue.800" />
-                <Text>
-                  <Trans id="landingPage.warning" />
-                </Text>
+                <Trans id="landingPage.warning" />
               </Alert>
 
               <H2>
