@@ -82,15 +82,14 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
 
   try {
     for (var x = 0; x < data.evidence.files.length; x++) {
-      console.log('file is at: ' + data.evidence.files[x].path)
+      const filePath = data.evidence.files[x].path
+      console.log('file is at: ' + filePath)
       //create file name for each file in the format of .mime
-      const mimeFile = data.evidence.files[x].path + '.mime'
-      const encryptFile = data.evidence.files[x].path + '.encrypt'
+      const mimeFile = filePath + '.' + nanoid() + '.mime'
+      const encryptFile = mimeFile + '.encrypt'
       exec(
         //run makemime commend and openssl commend
-        `makemime -o ${mimeFile} ${
-          data.evidence.files[x].path
-        } && ${openssl} -out ${encryptFile} -in ${mimeFile} ${certFileName(
+        `makemime -o ${mimeFile} ${filePath} && ${openssl} -out ${encryptFile} -in ${mimeFile} ${certFileName(
           uid,
         )}`,
         { cwd: process.cwd() },
