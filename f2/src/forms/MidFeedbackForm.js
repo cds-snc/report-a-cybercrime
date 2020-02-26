@@ -67,7 +67,6 @@ export const MidFeedbackForm = props => {
             h="inherit"
             py={4}
             whiteSpace="wrap"
-            as="summary"
             w={{ base: '100%', md: 'auto' }}
             color="black"
             variant="solid"
