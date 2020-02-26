@@ -46,7 +46,7 @@ const getCert = uid => {
       console.log('Encrypted Mail: referral: ' + referral.uris.join())
     })
     res.on('error', function(err) {
-      console.error('Encrypted Mail: error: ' + err.message)
+      console.warn('Encrypted Mail: error: ' + err.message)
     })
     res.on('end', function(result) {
       if (result.status !== 0)
@@ -62,7 +62,7 @@ const encryptMessage = (uid, message, sendMail) => {
   fs.writeFile(messageFileName, message, function(err) {
     if (err) throw err
     exec(
-      `${openssl} -out /dev/stdout -in ${messageFileName} ${certFileName(uid)}`,
+      `${openssl} -in ${messageFileName} ${certFileName(uid)}`,
       { cwd: process.cwd() },
       function(error, stdout, stderr) {
         if (error) throw error
@@ -76,6 +76,39 @@ const encryptMessage = (uid, message, sendMail) => {
       },
     )
   })
+}
+
+const encryptFile = (uid, data, sendMail) => {
+  const openssl = 'openssl smime -des3 -encrypt'
+
+  try {
+    for (var x = 0; x < data.evidence.files.length; x++) {
+      console.log('file is at: ' + data.evidence.files[x].path)
+      //create file name for each file in the format of .mime
+      const mimeFile = data.evidence.files[x].path + '.mime'
+      const encryptFile = data.evidence.files[x].path + '.encrypt'
+      exec(
+        //run makemime commend and openssl commend
+        `makemime -o ${mimeFile} ${
+          data.evidence.files[x].path
+        } && ${openssl} -out ${encryptFile} -in ${mimeFile} ${certFileName(
+          uid,
+        )}`,
+        { cwd: process.cwd() },
+        function(error, stdout, stderr) {
+          if (error) throw error
+          else if (stderr) console.log(stderr)
+          else {
+            const attachment = fs.readFileSync(encryptFile)
+            console.log('Encrypted File: File encrypted')
+            sendMail(attachment)
+          }
+        },
+      )
+    }
+  } catch (error) {
+    console.warn(`ERROR in encryptFile: ${error}`)
+  }
 }
 
 async function sendMail(attachment) {
@@ -111,13 +144,11 @@ const getAllCerts = uidList => {
   else console.warn('Encrypted Mail: No certs to fetch!')
 }
 
-const encryptAndSend = async (uidList, message) => {
-  if (uidList)
+const encryptAndSend = async (uidList, data, message) => {
+  if (uidList) {
     uidList.split().forEach(uid => encryptMessage(uid, message, sendMail))
-  else console.warn('Encrypted Mail: No certs to encrypt with!')
+    uidList.split().forEach(uid => encryptFile(uid, data, sendMail))
+  } else console.warn('Encrypted Mail: No certs to encrypt with!')
 }
-
-// getAllCerts(process.env.LDAP_UID)
-// setTimeout(() => encryptAndSend(process.env.LDAP_UID, 'Hello World\nFrom node'), 1000)
 
 module.exports = { getAllCerts, encryptAndSend }
