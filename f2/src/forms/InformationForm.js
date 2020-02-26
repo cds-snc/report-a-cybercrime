@@ -16,6 +16,8 @@ import { TextInput } from '../components/TextInput'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Field } from '../components/Field'
+import { Link } from '@chakra-ui/core'
+import { P } from '../components/paragraph'
 
 export const InformationForm = props => {
   const { i18n } = useLingui()
@@ -146,7 +148,27 @@ export const InformationForm = props => {
             </Field>
             <Alert status="success" backgroundColor="blue.100">
               <AlertIcon name="info-outline" color="blue.800" />
-              <Trans id="informationPage.tip" />
+
+              <P fontSize="md">
+                <Trans id="informationPage.tip">
+                  <Link
+                    href={
+                      i18n.locale === 'en'
+                        ? 'https://www.consumer.equifax.ca/personal/'
+                        : 'https://www.consumer.equifax.ca/personnel/'
+                    }
+                    isExternal // Opens new tab
+                  />
+                  <Link
+                    href={
+                      i18n.locale === 'en'
+                        ? 'https://www.transunion.ca/'
+                        : 'https://www.transunion.ca/fr'
+                    }
+                    isExternal // Opens new tab
+                  />
+                </Trans>
+              </P>
             </Alert>
             <NextAndCancelButtons
               next={<Trans id="informationPage.nextStep" />}
