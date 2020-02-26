@@ -148,7 +148,6 @@ export const InformationForm = props => {
             </Field>
             <Alert status="success" backgroundColor="blue.100">
               <AlertIcon name="info-outline" color="blue.800" />
-
               <P fontSize="md">
                 <Trans id="informationPage.tip">
                   <Link
