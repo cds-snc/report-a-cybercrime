@@ -90,7 +90,7 @@ export const LandingPage = props => {
                 </Stack>
               </Stack>
 
-              <Alert status="info" backgroundColor="blue.100">
+              <Alert status="success" backgroundColor="blue.100">
                 <AlertIcon name="info-outline" color="blue.800" />
                 <Trans id="landingPage.warning" />
               </Alert>
