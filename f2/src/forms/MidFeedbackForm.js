@@ -17,6 +17,7 @@ import { Row } from '../components/layout'
 
 export const MidFeedbackForm = props => {
   const [status, setStatus] = useState('')
+  const [isOpen, setIsOpen] = useState(false)
 
   const validate = () => {
     return {}
@@ -60,12 +61,12 @@ export const MidFeedbackForm = props => {
           </InfoCard>
         </Row>
       ) : (
-        <Box as="details">
+        <Box>
           <Button
+            onClick={() => setIsOpen(!isOpen)}
             h="inherit"
             py={4}
             whiteSpace="wrap"
-            as="summary"
             w={{ base: '100%', md: 'auto' }}
             color="black"
             variant="solid"
@@ -75,84 +76,86 @@ export const MidFeedbackForm = props => {
           >
             <Trans id="midFeedback.summary" />
           </Button>
-          <Stack
-            spacing={10}
-            pt={4}
-            pb={10}
-            borderTop={18}
-            borderStyle="solid"
-            borderColor="blue.600"
-          >
-            <H1 as="p">
-              <Trans id="midFeedback.title" />
-            </H1>
-            <Form
-              initialValues={{
-                midFeedback: [],
-                problemDescription: '',
-              }}
-              onSubmit={values => {
-                if (!containsData(values)) {
-                  showWarning = true
-                } else {
-                  setStatus('feedback.submitted')
-                  props.onSubmit(values)
-                }
-              }}
-              validate={validate}
-              render={({ handleSubmit, values }) => (
-                <Stack
-                  as="form"
-                  onSubmit={handleSubmit}
-                  shouldWrapChildren
-                  spacing={6}
-                >
-                  {showWarning ? (
-                    <Alert status="warning">
-                      <AlertIcon />
-                      <Trans id="finalFeedback.warning" />
-                    </Alert>
-                  ) : null}
+          {isOpen && (
+            <Stack
+              spacing={10}
+              pt={4}
+              pb={10}
+              borderTop={18}
+              borderStyle="solid"
+              borderColor="blue.600"
+            >
+              <H1 as="p">
+                <Trans id="midFeedback.title" />
+              </H1>
+              <Form
+                initialValues={{
+                  midFeedback: [],
+                  problemDescription: '',
+                }}
+                onSubmit={values => {
+                  if (!containsData(values)) {
+                    showWarning = true
+                  } else {
+                    setStatus('feedback.submitted')
+                    props.onSubmit(values)
+                  }
+                }}
+                validate={validate}
+                render={({ handleSubmit, values }) => (
+                  <Stack
+                    as="form"
+                    onSubmit={handleSubmit}
+                    shouldWrapChildren
+                    spacing={6}
+                  >
+                    {showWarning ? (
+                      <Alert status="warning">
+                        <AlertIcon />
+                        <Trans id="finalFeedback.warning" />
+                      </Alert>
+                    ) : null}
 
-                  <FormArrayControl
-                    name="midFeedback"
-                    label={<Trans id="midFeedback.problem.label" />}
-                    helperText={<Trans id="midFeedback.problem.helperText" />}
-                  >
-                    {midFeedback.map(key => {
-                      return (
-                        <React.Fragment key={key}>
-                          <CheckboxAdapter
-                            name="midFeedback"
-                            value={key}
-                            isChecked={midFeedback.includes(key)}
-                          >
-                            {i18n._(key)}
-                          </CheckboxAdapter>
-                        </React.Fragment>
-                      )
-                    })}
-                  </FormArrayControl>
-                  <Field
-                    name="problemDescription"
-                    label={<Trans id="midFeedback.description.label" />}
-                    helperText={
-                      <Trans id="midFeedback.description.helperText" />
-                    }
-                    component={TextArea}
-                  />
-                  <Button
-                    type="submit"
-                    w={{ base: '100%', md: 'auto' }}
-                    variantColor="blue"
-                    variant="solid"
-                  >
-                    <Trans id="midFeedback.submit" />
-                  </Button>
-                </Stack>
-              )}
-            />
-          </Stack>
+                    <FormArrayControl
+                      name="midFeedback"
+                      label={<Trans id="midFeedback.problem.label" />}
+                      helperText={<Trans id="midFeedback.problem.helperText" />}
+                    >
+                      {midFeedback.map(key => {
+                        return (
+                          <React.Fragment key={key}>
+                            <CheckboxAdapter
+                              name="midFeedback"
+                              value={key}
+                              isChecked={midFeedback.includes(key)}
+                            >
+                              {i18n._(key)}
+                            </CheckboxAdapter>
+                          </React.Fragment>
+                        )
+                      })}
+                    </FormArrayControl>
+                    <Field
+                      name="problemDescription"
+                      label={<Trans id="midFeedback.description.label" />}
+                      helperText={
+                        <Trans id="midFeedback.description.helperText" />
+                      }
+                      component={TextArea}
+                    />
+                    <Button
+                      type="submit"
+                      w={{ base: '100%', md: 'auto' }}
+                      variantColor="blue"
+                      variant="solid"
+                    >
+                      <Trans id="midFeedback.submit" />
+                    </Button>
+                  </Stack>
+                )}
+              />
+            </Stack>
+          )}
         </Box>
       )}
     </React.Fragment>
