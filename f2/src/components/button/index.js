@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button as ChakraButton } from '@chakra-ui/core'
+import { Button as ChakraButton, Flex } from '@chakra-ui/core'
 
 export const Button = ({ variant, variants, variantColor, ...props }) => (
   <ChakraButton
-    as="a"
-    role="button"
     fontSize={{ base: 'lg', md: 'xl' }}
     fontWeight="normal"
     size="lg"
@@ -25,7 +23,9 @@ export const Button = ({ variant, variants, variantColor, ...props }) => (
       bg: `${variantColor}.800`,
     }}
     {...props}
-  />
+  >
+    <Flex align="center">{props.children}</Flex>
+  </ChakraButton>
 )
 
 Button.propTypes = {

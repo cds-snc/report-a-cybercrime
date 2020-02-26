@@ -27,13 +27,11 @@ describe('<MidFeedbackForm />', () => {
       </ThemeProvider>,
     )
 
-    // find the next button so we can trigger a form submission
-    // we want to grab whatever is in the submit button as text, pass it to getByText
-    const context = document.querySelector('[type="submit"]').textContent
-    const submitButton = getByText(context)
+    /// find the next button so we can trigger a form submission
+    const submitButton = getByText(/submit/)
 
     // Click the next button to trigger the form submission
-    clickOn(submitButton)
+    clickOn(submitButton.parentElement)
     await wait(0) // Wait for promises to resolve
 
     // We expect that sequence of events to have caused our onSubmit mock to get
@@ -52,16 +50,14 @@ describe('<MidFeedbackForm />', () => {
     )
 
     // find the next button so we can trigger a form submission
-    // we want to grab whatever is in the submit button as text, pass it to getByText
-    const context = document.querySelector('[type="submit"]').textContent
-    const submitButton = getByText(context)
+    const submitButton = getByText(/submit/)
 
     //Click on a checkbox
     const checkbox = getByLabelText('midFeedback.problem.confusing')
     clickOn(checkbox)
 
     // Click the next button to trigger the form submission
-    clickOn(submitButton)
+    clickOn(submitButton.parentElement)
     await wait(0) // Wait for promises to resolve
 
     // We expect that sequence of events to have caused our onSubmit mock to get

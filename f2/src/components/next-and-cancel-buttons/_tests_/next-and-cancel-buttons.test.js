@@ -7,7 +7,6 @@ import canada from '../../../theme/canada'
 import { MemoryRouter } from 'react-router-dom'
 import { NextAndCancelButtons } from '../'
 import en from '../../../locales/en.json'
-import { screen } from '@testing-library/dom'
 
 i18n.load('en', { en })
 i18n.activate('en')
