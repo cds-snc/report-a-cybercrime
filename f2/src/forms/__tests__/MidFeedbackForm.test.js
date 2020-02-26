@@ -27,6 +27,9 @@ describe('<MidFeedbackForm />', () => {
       </ThemeProvider>,
     )
 
+    const openButton = getByText('midFeedback.summary')
+    openButton.click()
+
     // find the next button so we can trigger a form submission
     // we want to grab whatever is in the submit button as text, pass it to getByText
     const context = document.querySelector('[type="submit"]').textContent
@@ -50,6 +53,9 @@ describe('<MidFeedbackForm />', () => {
         </I18nProvider>
       </ThemeProvider>,
     )
+
+    const openButton = getByText('midFeedback.summary')
+    openButton.click()
 
     // find the next button so we can trigger a form submission
     // we want to grab whatever is in the submit button as text, pass it to getByText
