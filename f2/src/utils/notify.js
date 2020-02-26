@@ -42,7 +42,7 @@ const sendConfirmation = async (email, reportId) => {
     console.log('Notify: confirmation email (probably) sent!')
     return response.body
   } catch (err) {
-    console.error(`Notify confirmation email Error: ${err.message}`)
+    console.warn(`Notify confirmation email Error: ${err.message}`)
     return false
   }
 }
@@ -62,7 +62,7 @@ const sendUnencryptedReport = async (email, report) => {
     console.log('Notify: report email (probablty) sent!')
     return response.body
   } catch (err) {
-    console.error(`Notify report email error: ${err.message}`)
+    console.warn(`Notify report email error: ${err.message}`)
     return false
   }
 }
@@ -83,7 +83,7 @@ const submitFeedback = async data => {
     console.log('Notify: feedback email (probablty) sent!')
     return response.body
   } catch (err) {
-    console.error(`Notify feedback email error: ${err.message}`)
+    console.warn(`Notify feedback email error: ${err.message}`)
     return false
   }
 }
