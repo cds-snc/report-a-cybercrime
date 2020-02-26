@@ -4,6 +4,7 @@ import { Input as ChakraInput } from '@chakra-ui/core'
 
 export const Input = props => (
   <ChakraInput
+    onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
     autoComplete="off"
     rounded="none"
     borderWidth="2px"
