@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
-import { Layout } from './components/layout'
+import { Layout, Row } from './components/layout'
 import { Stack, Alert, AlertIcon, Box, Icon } from '@chakra-ui/core'
 import { Route } from 'react-router-dom'
 import { Ul } from './components/unordered-list'
@@ -12,9 +12,11 @@ import { A, Link, ButtonLink } from './components/link'
 import { useLingui } from '@lingui/react'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { LandingBox } from './components/container'
 
 export const CancelPage = () => {
   const { i18n } = useLingui()
+  const [state] = useStateValue()
   const [, dispatch] = useStateValue()
   return (
     <Page>
@@ -26,24 +28,30 @@ export const CancelPage = () => {
           <P>
             <Trans id="cancelPage.summary" />
           </P>
-          <Box>
-            <ButtonLink
-              mt="auto"
-              variantColor="gray"
-              color="white"
-              title={i18n._('cancelPage.feedbackButton.aria')}
-              to="/finalFeedback"
-            >
-              <Trans id="cancelPage.feedbackButton" />
-              <Icon
-                focusable="false"
-                ml={2}
-                mr={-2}
-                name="chevron-right"
-                size="28px"
-              />
-            </ButtonLink>
-          </Box>
+          <Row>
+            <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 8 }}>
+              <H2 mb={2}>
+                <Trans id="cancelPage.feedback" />
+              </H2>
+
+              <ButtonLink
+                mt="auto"
+                variantColor="gray"
+                color="white"
+                title={i18n._('thankYouPage.feedbackButton.aria')}
+                to="/finalFeedback"
+              >
+                <Trans id="cancelPage.feedbackButton" />
+                <Icon
+                  focusable="false"
+                  ml={2}
+                  mr={-2}
+                  name="chevron-right"
+                  size="28px"
+                />
+              </ButtonLink>
+            </LandingBox>
+          </Row>
           <Box w="100%">
             <Layout>
               <Stack spacing={4} shouldWrapChildren>
@@ -113,17 +121,6 @@ export const CancelPage = () => {
             </Layout>
           </Box>
         </Stack>
-      </Layout>
-
-      <Layout fluid borderBottom="4px" borderColor="blue.500" mt="auto">
-        <Layout>
-          <Alert status="info" variant="solid">
-            <AlertIcon name="chat" mt={0} />
-            <Link as={Route} to="/finalFeedback" color="white" display="block">
-              <Trans id="thankYouPage.feedback" />
-            </Link>
-          </Alert>
-        </Layout>
       </Layout>
     </Page>
   )
