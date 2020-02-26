@@ -64,6 +64,10 @@ const uploadData = async (req, res, fields, files) => {
     await scanFiles(data)
 
     contentModeratorFiles(data, () => save(data, res))
+  } else {
+    res.statusCode = 502
+    res.statusMessage = 'Error: files too big'
+    res.send(res.statusMessage)
   }
 }
 
