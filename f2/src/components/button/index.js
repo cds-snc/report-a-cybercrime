@@ -4,6 +4,8 @@ import { Button as ChakraButton } from '@chakra-ui/core'
 
 export const Button = ({ variant, variants, variantColor, ...props }) => (
   <ChakraButton
+    as="a"
+    role="button"
     fontSize={{ base: 'lg', md: 'xl' }}
     fontWeight="normal"
     size="lg"
