@@ -40,7 +40,7 @@ async function save(data, res) {
   data.submissionTime = new Date().toISOString()
 
   const analystEmail = formatAnalystEmail(data)
-  encryptAndSend(process.env.LDAP_UID, analystEmail)
+  encryptAndSend(process.env.LDAP_UID, data, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
@@ -102,7 +102,7 @@ app
   .post('/submit', (req, res) => {
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
-        console.error('Error', err)
+        console.warn('ERROR', err)
         throw err
       }
       uploadData(req, res, fields, files)
@@ -112,7 +112,7 @@ app
   .post('/submitFeedback', (req, res) => {
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
-        console.error('Error', err)
+        console.warn('ERROR', err)
         throw err
       }
       submitFeedback(fields.json)

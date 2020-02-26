@@ -41,6 +41,7 @@ export const ConditionalForm = ({ ...props }) => (
   <React.Fragment>
     {props.children && (
       <Box
+        aria-live="polite"
         borderLeftWidth={1}
         borderLeftColor="gray.400"
         mt={1}

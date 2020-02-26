@@ -27,9 +27,11 @@ describe('<MidFeedbackForm />', () => {
       </ThemeProvider>,
     )
 
+    const openButton = getByText('midFeedback.summary')
+    openButton.click()
+
     /// find the next button so we can trigger a form submission
     const submitButton = getByText(/submit/)
-
     // Click the next button to trigger the form submission
     clickOn(submitButton.parentElement)
     await wait(0) // Wait for promises to resolve
@@ -48,6 +50,9 @@ describe('<MidFeedbackForm />', () => {
         </I18nProvider>
       </ThemeProvider>,
     )
+
+    const openButton = getByText('midFeedback.summary')
+    openButton.click()
 
     // find the next button so we can trigger a form submission
     const submitButton = getByText(/submit/)
