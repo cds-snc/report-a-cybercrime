@@ -21,7 +21,7 @@ describe('<PrivacyConsentInfoForm />', () => {
   it('does not call the onSubmit function when the consent box is not checked and the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByRole } = render(
+    const { getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -33,7 +33,9 @@ describe('<PrivacyConsentInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const nextButton = getByRole('button')
+    // we want to grab whatever is in the submit button as text, pass it to getByText
+    const context = document.querySelector('[type="submit"]').textContent
+    const nextButton = getByText(context)
     clickOn(nextButton)
     await wait(0) // Wait for promises to resolve
 
@@ -43,7 +45,7 @@ describe('<PrivacyConsentInfoForm />', () => {
   it('calls the onSubmit function when the consent box is checked and the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByRole, getByLabelText } = render(
+    const { getByText, getByLabelText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -55,8 +57,12 @@ describe('<PrivacyConsentInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const checkbox = getByLabelText('privacyConsentInfoForm.yes')
-    const nextButton = getByRole('button')
+    const checkbox = getByLabelText('privacyConsentInfoForm.yes', {
+      exact: false,
+    })
+    // we want to grab whatever is in the submit button as text, pass it to getByText
+    const context = document.querySelector('[type="submit"]').textContent
+    const nextButton = getByText(context)
 
     clickOn(checkbox)
     await wait(0) // Wait for promises to resolve

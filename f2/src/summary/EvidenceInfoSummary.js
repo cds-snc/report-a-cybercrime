@@ -27,9 +27,15 @@ export const EvidenceInfoSummary = props => {
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.evidence.title" />
           </H2>
           <EditButton
@@ -37,7 +43,7 @@ export const EvidenceInfoSummary = props => {
             label="confirmationPage.evidence.title.edit"
           />
         </Flex>
-        {evidence.files.length > 0 || evidence.fileDescriptions.length > 0 ? (
+        {evidence.files && evidence.files.length > 0 ? (
           <Stack as="dl" spacing={4} shouldWrapChildren>
             {evidence.files ? (
               <Stack as="dl" spacing={4} shouldWrapChildren>
@@ -46,7 +52,7 @@ export const EvidenceInfoSummary = props => {
                     <Text pr={4}>{index + 1}.</Text>
                     <Box>
                       <Text as="dt" fontWeight="bold">
-                        {file}
+                        {file.name}
                       </Text>
                       <Text as="dd">{evidence.fileDescriptions[index]}</Text>
                     </Box>

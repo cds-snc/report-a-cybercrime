@@ -17,7 +17,12 @@ import { EvidencePage } from './EvidencePage'
 import { PrivacyConsentPage } from './PrivacyConsentPage'
 import { PrivacyStatementPage } from './PrivacyStatementPage'
 import { WhatWasAffectedPage } from './WhatWasAffected'
-import { FeedbackPage } from './FeedbackPage'
+import { FinalFeedbackPage } from './FinalFeedbackPage'
+import { FinalFeedbackThanksPage } from './FinalFeedbackThanksPage'
+import { StartPage } from './StartPage'
+import { ConfirmCancelPage } from './ConfirmCancelPage'
+import { CancelPage } from './CancelPage'
+import { TermsAndConditions } from './TermsAndConditions'
 
 export const Home = () => (
   <Router>
@@ -25,11 +30,17 @@ export const Home = () => (
       <Route exact path="/">
         <LandingPage />
       </Route>
+      <Route exact path="/startPage">
+        <StartPage />
+      </Route>
       <Route path="/privacyconsent">
         <PrivacyConsentPage />
       </Route>
       <Route path="/privacystatement">
         <PrivacyStatementPage />
+      </Route>
+      <Route path="/termsandconditions">
+        <TermsAndConditions />
       </Route>
       <Route path="/howdiditstart">
         <HowDidItStartPage />
@@ -70,9 +81,19 @@ export const Home = () => (
       <Route exact path="/thankYouPage">
         <ThankYouPage />
       </Route>
-      <Route path="/feedbackPage">
-        <FeedbackPage />
+      <Route exact path="/confirmCancel">
+        <ConfirmCancelPage />
       </Route>
+      <Route exact path="/cancelled">
+        <CancelPage />
+      </Route>
+      <Route path="/finalFeedback">
+        <FinalFeedbackPage />
+      </Route>
+      <Route path="/finalFeedbackThanks">
+        <FinalFeedbackThanksPage />
+      </Route>
+
       <Route>
         <PageNotFound />
       </Route>

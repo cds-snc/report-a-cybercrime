@@ -33,7 +33,9 @@ export const WhatHappenedForm = props => {
                 <FormHelperText>
                   <Trans id="whatHappenedPage.hint" />
                 </FormHelperText>
+
                 <TextArea
+                  h="300px"
                   id="whatHappened"
                   name={props.input.name}
                   value={props.input.value}

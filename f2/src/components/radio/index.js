@@ -1,23 +1,51 @@
 /** @jsx jsx */
+import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Text } from '../text'
 import { UniqueID } from '../unique-id'
 import { Box, VisuallyHidden, ControlBox, Flex } from '@chakra-ui/core'
+import { useField } from 'react-final-form'
+import { ConditionalForm } from '../container'
 
-export const Radio = ({ label, isChecked, ...props }) => {
+export const RadioAdapter = ({ name, value, defaultIsChecked, children }) => {
+  const {
+    input: { checked, ...input },
+    meta: { error, touched },
+  } = useField(name, {
+    type: 'radio',
+    value,
+    defaultIsChecked,
+  })
+
+  return (
+    <Radio input={input} isChecked={checked} isInvalid={error && touched}>
+      {children}
+    </Radio>
+  )
+}
+
+export const Radio = ({
+  input,
+  label,
+  isChecked,
+  conditionalField,
+  ...props
+}) => {
+  const isCheckedAndHasCondition = isChecked && props.conditionalField
+
   return (
     <UniqueID>
       {id => {
         return (
-          <Box as="label" {...props} id={id}>
-            <Flex align="center">
+          <React.Fragment>
+            <Flex as="label" id={id} align="center">
               <VisuallyHidden
+                {...input}
                 as="input"
                 type="radio"
-                name={props.name}
-                value={props.value}
                 defaultChecked={isChecked ? 'true' : ''}
+                {...input}
               />
 
               <ControlBox
@@ -51,15 +79,17 @@ export const Radio = ({ label, isChecked, ...props }) => {
                 {props.children}
               </Text>
             </Flex>
-          </Box>
+            {isCheckedAndHasCondition && (
+              <ConditionalForm>{conditionalField}</ConditionalForm>
+            )}
+          </React.Fragment>
         )
       }}
     </UniqueID>
   )
 }
 
-Radio.defaultProps = {}
-
 Radio.propTypes = {
   children: PropTypes.any,
+  conditionalField: PropTypes.object,
 }

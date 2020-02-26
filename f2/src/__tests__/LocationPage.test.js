@@ -13,6 +13,7 @@ i18n.load('en', { en })
 i18n.activate('en')
 
 describe('<LocationPage />', () => {
+  beforeEach(() => (global.scrollTo = jest.fn()))
   afterEach(cleanup)
 
   it('renders', () => {

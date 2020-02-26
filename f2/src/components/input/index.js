@@ -1,10 +1,10 @@
 /** @jsx jsx **/
 import { jsx } from '@emotion/core'
-import PropTypes from 'prop-types'
 import { Input as ChakraInput } from '@chakra-ui/core'
 
 export const Input = props => (
   <ChakraInput
+    onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
     autoComplete="off"
     rounded="none"
     borderWidth="2px"
@@ -22,10 +22,7 @@ export const Input = props => (
       borderColor: 'black',
       border: '3px',
     }}
+    {...props.input}
     {...props}
   />
 )
-
-Input.propTypes = {
-  children: PropTypes.any,
-}

@@ -4,15 +4,15 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Text } from '../components/text'
-import { useIntl } from 'react-intl'
+import { formatList } from '../utils/formatList'
 
 export const WhatWasAffectedSummary = props => {
   const { i18n } = useLingui()
-  const intl = useIntl()
 
   const [data] = useStateValue()
   const impact = {
@@ -20,6 +20,15 @@ export const WhatWasAffectedSummary = props => {
     ...testdata.formData.whatWasAffected, //Remove after done testing
     ...data.formData.whatWasAffected,
   }
+
+  const summaryOptions = impact.affectedOptions.map(key =>
+    i18n._(key).toLowerCase(),
+  )
+  const summaryLine = formatList(summaryOptions, {
+    pair: i18n._('default.pair'),
+    middle: i18n._('default.middle'),
+    end: i18n._('default.end'),
+  })
 
   return (
     <React.Fragment>
@@ -29,9 +38,15 @@ export const WhatWasAffectedSummary = props => {
           <Trans id="confirmationPage.ImpactTitle.edit" />
         </div>
       ) : null}
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.ImpactTitle" />
           </H2>
           <EditButton
@@ -39,16 +54,13 @@ export const WhatWasAffectedSummary = props => {
             label="confirmationPage.ImpactTitle.edit"
           />
         </Flex>
-        {impact.affectedOptions.length > 0 ? (
+        {containsData(impact) ? (
           <Stack as="dl" spacing={4}>
             <Text>
               <Trans id="confirmationPage.whatWasAffected.format" />
               &nbsp;
               <Text as="span" textTransform="lowercase">
-                {intl.formatList(
-                  impact.affectedOptions.map(i => i18n._(i)),
-                  { type: 'conjunction' },
-                )}
+                {summaryLine}
               </Text>
             </Text>
           </Stack>

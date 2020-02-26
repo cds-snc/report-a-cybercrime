@@ -5,49 +5,43 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
+import { formatDate } from '../utils/formatDate'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
+import { formatList } from '../utils/formatList'
 
-export const HowDidItStartSummary = ({ onSubmit }) => {
+export const HowDidItStartSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
   const summary = []
-  let overviewLine = " "
-  let summaryLastItem = []
-  let summaryFirstitems = []
+  let overviewLine = ' '
 
   const howdiditstart = {
     ...testdata.formData.howdiditstart,
     ...data.formData.howdiditstart,
   }
+
   if (howdiditstart.howDidTheyReachYou.length > 0) {
     //Obtain all the array data into the summary array
     howdiditstart.howDidTheyReachYou.map(key =>
-      summary.push( key === 'howDidTheyReachYou.others'
-      ? howdiditstart.others: i18n._(key).toLowerCase(),
+      summary.push(
+        key === 'howDidTheyReachYou.others' && howdiditstart.others !== ''
+          ? howdiditstart.others
+          : i18n._(key).toLowerCase(),
       ),
     )
-    // No need for conjuction where is only is a single contact
-    if (howdiditstart.howDidTheyReachYou.length === 1){
-      overviewLine = i18n._('confirmationPage.howDidItStart.overviewPrefix') + summary
 
-    } else {
-      //Pop the last item of the array to be used in conjuction
-      summaryLastItem = summary.pop();
-      //Join the arr with comma delimiter
-      summaryFirstitems = summary.join(', ');
-
-      //compose the overview summary
-      overviewLine = i18n._('confirmationPage.howDidItStart.overviewPrefix')
-      + summaryFirstitems
-      + i18n._('confirmationPage.howDidItStart.conjuction')
-      + summaryLastItem
-    }
+    overviewLine =
+      i18n._('confirmationPage.howDidItStart.overviewPrefix') +
+      formatList(summary, {
+        pair: i18n._('default.pair'),
+        middle: i18n._('default.middle'),
+        end: i18n._('default.end'),
+      })
   }
-
-  const hasDataToDisplay = howdiditstart.howDidTheyReachYou.length > 0
 
   return (
     <React.Fragment>
@@ -67,9 +61,15 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.howDidItStart.title" />
           </H2>
           <EditButton
@@ -78,7 +78,7 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
           />
         </Flex>
 
-        {hasDataToDisplay ? (
+        {containsData(howdiditstart) ? (
           <React.Fragment>
             <Stack as="dl" spacing={4}>
               <Text>{overviewLine}</Text>
@@ -104,7 +104,11 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
               />
               <DescriptionListItem
                 descriptionTitle="confirmationPage.whenDidItStart"
-                description={i18n._(howdiditstart.whenDidItStart)}
+                description={formatDate(
+                  howdiditstart.startDay,
+                  howdiditstart.startMonth,
+                  howdiditstart.startYear,
+                )}
               />
               <DescriptionListItem
                 descriptionTitle="confirmationPage.howManyTimes"
@@ -112,7 +116,11 @@ export const HowDidItStartSummary = ({ onSubmit }) => {
               />
             </Stack>
           </React.Fragment>
-        ) : null}
+        ) : (
+          <Text>
+            <Trans id="confirmationPage.howDidItStart.nag" />
+          </Text>
+        )}
       </Stack>
     </React.Fragment>
   )

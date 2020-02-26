@@ -1,71 +1,63 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
+const formidable = require('formidable')
+const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+
+const { getData } = require('./src/utils/getData')
+const { saveRecord } = require('./src/utils/saveRecord')
+const { saveBlob } = require('./src/utils/saveBlob')
+const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
+
+const {
+  notifyIsSetup,
+  sendConfirmation,
+  sendUnencryptedReport,
+  submitFeedback,
+} = require('./src/utils/notify')
+
+const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
+
 require('dotenv').config()
+
+// fetch and store certs for intake analysts
+getAllCerts(process.env.LDAP_UID)
+
 const app = express()
 
-const MongoClient = require('mongodb').MongoClient
+const allowedOrigins = [
+  'http://dev.antifraudcentre-centreantifraude.ca',
+  'http://pre.antifraudcentre-centreantifraude.ca',
+  'http://antifraudcentre-centreantifraude.ca',
+  'http://centreantifraude-antifraudcentre.ca',
+  'http://antifraudcentre.ca',
+  'http://centreantifraude.ca',
+]
 
-const dbName = process.env.COSMOSDB_NAME
-const dbKey = process.env.COSMOSDB_KEY
-
-let cosmosDbConfigured = dbName && dbKey
-if (!cosmosDbConfigured) {
-  console.warn(
-    'Warning: CosmosDB not configured. Data will not be saved to CosmosDB database. Please set the environment variables COSMOSDB_NAME and COSMOSDB_KEY',
-  )
-}
-
-const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/mean-dev?ssl=true&sslverifycertificate=false`
-
-const randLetter = () => {
-  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  return letters[Math.floor(Math.random() * letters.length)]
-}
-const randDigit = () => Math.floor(Math.random() * 10)
-
-const randomizeString = s =>
-  s
-    ? s
-        .replace(/[a-z]/g, () => randLetter())
-        .replace(/[A-Z]/g, () => randLetter().toUpperCase())
-        .replace(/[0-9]/g, () => randDigit())
-    : s
-
-const uploadData = (req, res) => {
-  const data = req.body
+// These can all be done async to avoid holding up the nodejs process?
+async function save(data, res) {
+  saveBlob(data)
   data.submissionTime = new Date().toISOString()
-  data.contactInfo.email = randomizeString(data.contactInfo.email)
 
-  if (cosmosDbConfigured) {
-    MongoClient.connect(url, function(err, db) {
-      if (err) {
-        console.warn(`ERROR in MongoClient.connect: ${err}`)
-        res.statusCode = 502
-        res.statusMessage = 'Error saving to CosmosDB'
-        res.send(res.statusMessage)
-      } else {
-        var dbo = db.db('cybercrime')
-        dbo.collection('reports').insertOne(data, function(err, result) {
-          if (err) {
-            console.log({ data })
-            console.warn(`ERROR in insertOne: ${err}`)
-            res.statusCode = 502
-            res.statusMessage = 'Error saving to CosmosDB'
-            res.send(res.statusMessage)
-          } else {
-            db.close()
-            console.log('Report saved to CosmosDB')
-            res.send('Report saved to CosmosDB')
-          }
-        })
-      }
-    })
-  } else {
-    res.statusCode = 500
-    res.statusMessage = 'CosmosDB not configured'
-    res.send('CosmosDB not configured')
+  const analystEmail = formatAnalystEmail(data)
+  encryptAndSend(process.env.LDAP_UID, data, analystEmail)
+
+  if (notifyIsSetup && data.contactInfo.email) {
+    sendConfirmation(data.contactInfo.email, data.reportId)
+    if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
+      sendUnencryptedReport(data.contactInfo.email, analystEmail)
   }
+  saveRecord(data, res)
+}
+
+const uploadData = async (req, res, fields, files) => {
+  // Get all the data in the format we want, this function blocks because we need the data
+  var data = await getData(fields, files)
+
+  // Await here because we also need these results before saving
+  await scanFiles(data)
+
+  contentModeratorFiles(data, () => save(data, res))
 }
 
 let count = 0
@@ -73,6 +65,21 @@ let count = 0
 app
   .use(express.static(path.join(__dirname, 'build')))
   .use(bodyParser.json())
+  .use(function(req, res, next) {
+    var origin = req.headers.origin
+    // Can only set one value of Access-Control-Allow-Origin, so we need some code to set it dynamically
+    if (
+      origin !== undefined &&
+      allowedOrigins.indexOf(origin.toLowerCase()) > -1
+    ) {
+      res.header('Access-Control-Allow-Origin', origin)
+      res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept',
+      )
+    }
+    next()
+  })
 
   .get('/ping', function(_req, res) {
     return res.send('pong')
@@ -93,7 +100,24 @@ app
   })
 
   .post('/submit', (req, res) => {
-    uploadData(req, res)
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+      if (err) {
+        console.warn('ERROR', err)
+        throw err
+      }
+      uploadData(req, res, fields, files)
+    })
+  })
+
+  .post('/submitFeedback', (req, res) => {
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+      if (err) {
+        console.warn('ERROR', err)
+        throw err
+      }
+      submitFeedback(fields.json)
+    })
+    res.send('thanks')
   })
 
   .get('/*', function(_req, res) {

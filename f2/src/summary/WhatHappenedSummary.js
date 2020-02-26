@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { Text } from '../components/text'
@@ -26,9 +27,15 @@ export const WhatHappenedSummary = props => {
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.whatHappened.title" />
           </H2>
           <EditButton
@@ -37,7 +44,7 @@ export const WhatHappenedSummary = props => {
           />
         </Flex>
 
-        {whatHappened.whatHappened.length > 0 ? (
+        {containsData(whatHappened) ? (
           <Text>{whatHappened.whatHappened}</Text>
         ) : (
           <Text>

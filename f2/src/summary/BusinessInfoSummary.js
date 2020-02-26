@@ -4,9 +4,11 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
+import { Text } from '../components/text'
 
 export const BusinessInfoSummary = props => {
   const [data] = useStateValue()
@@ -26,9 +28,15 @@ export const BusinessInfoSummary = props => {
         </div>
       ) : null}
 
-      <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Stack
+        spacing={4}
+        borderBottom="2px"
+        borderColor="gray.300"
+        pb={4}
+        {...props}
+      >
         <Flex align="baseline">
-          <H2>
+          <H2 fontWeight="normal">
             <Trans id="confirmationPage.businessInfo.title" />
           </H2>
 
@@ -38,12 +46,18 @@ export const BusinessInfoSummary = props => {
           />
         </Flex>
 
-        <Stack as="dl" spacing={4}>
-          <DescriptionListItem
-            descriptionTitle="confirmationPage.businessInfo.business"
-            description={businessInfo.business}
-          />
-        </Stack>
+        {containsData(businessInfo) ? (
+          <Stack as="dl" spacing={4}>
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.businessInfo.business"
+              description={businessInfo.business}
+            />
+          </Stack>
+        ) : (
+          <Text>
+            <Trans id="confirmationPage.businessInfo.nag" />
+          </Text>
+        )}
       </Stack>
     </React.Fragment>
   )
