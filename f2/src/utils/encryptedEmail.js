@@ -104,6 +104,10 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
             }
           },
         )
+      } else {
+        console.warn(
+          `WARNING: malware detected in ${file.path} (${data.reportId})`,
+        )
       }
     })
   } catch (error) {
