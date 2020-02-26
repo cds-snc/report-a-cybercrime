@@ -102,7 +102,7 @@ app
   .post('/submit', (req, res) => {
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
-        console.error('Error', err)
+        console.warn('ERROR', err)
         throw err
       }
       uploadData(req, res, fields, files)
@@ -112,7 +112,7 @@ app
   .post('/submitFeedback', (req, res) => {
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
-        console.error('Error', err)
+        console.warn('ERROR', err)
         throw err
       }
       submitFeedback(fields.json)
