@@ -16,7 +16,6 @@ import { LandingBox } from './components/container'
 
 export const CancelPage = () => {
   const { i18n } = useLingui()
-  const [state] = useStateValue()
   const [, dispatch] = useStateValue()
   return (
     <Page>
