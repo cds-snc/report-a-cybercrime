@@ -73,11 +73,18 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app
-  .get('/', function(_req, _res, next) {
-    availableData.numberOfRequests += 1
-    availableData.lastRequested = new Date()
-    console.log(`New Request. ${JSON.stringify(availableData)}`)
-    next()
+  .get('/', function(_req, res, next) {
+    if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
+      console.log('Warning: redirecting request to CAFC')
+      res.redirect(
+        'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
+      )
+    } else {
+      availableData.numberOfRequests += 1
+      availableData.lastRequested = new Date()
+      console.log(`New Request. ${JSON.stringify(availableData)}`)
+      next()
+    }
   })
   .use(express.static(path.join(__dirname, 'build')))
   .use(bodyParser.json())
