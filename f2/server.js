@@ -37,7 +37,6 @@ const allowedOrigins = [
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
   saveBlob(data)
-  data.submissionTime = new Date().toISOString()
 
   const analystEmail = formatAnalystEmail(data)
   encryptAndSend(process.env.LDAP_UID, analystEmail)

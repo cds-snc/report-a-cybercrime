@@ -45,6 +45,7 @@ async function getData(fields, files) {
   }
   data.selfHarmWords = selfHarmWords
   const now = new Date()
+  const timeZoneOffset = now.getTimezoneOffset() / 60 // convert to hours
   const dateString =
     padNumber(now.getDate()) +
     '/' +
@@ -53,7 +54,7 @@ async function getData(fields, files) {
     `${now.getFullYear()}`
   const timeString =
     padNumber(now.getHours()) + ':' + padNumber(now.getMinutes())
-  data.submissionTime = `${dateString} ${timeString}`
+  data.submissionTime = `${dateString} ${timeString} UTC-${timeZoneOffset}`
   return data
 }
 
