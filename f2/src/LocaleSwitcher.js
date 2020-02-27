@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import { locales, activate } from './i18n.config'
-import { Box, PseudoBox, VisuallyHidden } from '@chakra-ui/core'
+import { Box } from '@chakra-ui/core'
 import { A } from './components/link'
 
 const Toggler = props => {
