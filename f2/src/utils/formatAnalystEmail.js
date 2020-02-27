@@ -201,11 +201,9 @@ const formatFileAttachments = data => {
             formatLine('Is racy:       ', file.isImageRacyClassified) +
             formatLine('Racy Score:    ', file.racyClassificationScore)
 
-      const attachmentName = file.path.split('/').pop()
       return offensive
         ? 'WARNING: image may be offensive\n'
         : '' +
-            formatLine('Attachment:    ', attachmentName) +
             formatLine('File name:     ', file.name) +
             formatLine('Description:   ', file.fileDescription) +
             formatLine('Size:          ', file.size + ' bytes') +
@@ -253,9 +251,6 @@ const formatAnalystEmail = dataOrig => {
     Object.keys(data).forEach(key => {
       if (Object.keys(data[key]).length === 0) delete data[key]
     })
-    missingFields = Object.keys(data).length
-      ? '\n\nExtra Fields:\n' + JSON.stringify(data, null, '  ')
-      : ''
   } catch (error) {
     const errorMessage =
       reportInfoString +
@@ -263,7 +258,7 @@ const formatAnalystEmail = dataOrig => {
     console.error(errorMessage)
     return errorMessage
   }
-  return returnString + missingFields
+  return returnString
 }
 
 module.exports = { formatAnalystEmail }
