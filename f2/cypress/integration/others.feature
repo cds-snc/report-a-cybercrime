@@ -2,7 +2,6 @@ Feature: Consent
 
   I want to create an online investgation report
 
-  @smoke
   Scenario: Home page
     Given I open the report home page
     When I click on create a report button
@@ -11,16 +10,16 @@ Feature: Consent
     When "Please accept the terms of the Privacy statement" should be shown
     And I check the consent checkbox
     Then "How did the incident start?" should be shown
-    When I navigate to howdiditstart page fill all forms 
+    When I navigate to howdiditstart page fill all forms
     Then "What do you think could be affected?" should be shown
     When I navigate to Whatcouldbeaffected page fill all forms
     Then "How was your personal information affected?" should be shown
     When I navigate to Howwaspersonalinformationaffected page fill all forms
     Then "How was your business affected?" should be shown
-    When I navigate to Howyourbusinessaffected page fill all forms 
+    When I navigate to Howyourbusinessaffected page fill all forms
     Then "What happened?" should be shown
     When I navigate to Whathappened page fill all forms
-    Then "Add suspect clues" should be shown 
+    Then "Add suspect clues" should be shown
     When I navigate to Addsuspectclues page fill all forms
     Then "Attach supporting evidence" should be shown
     When I navigate to AttachSupportingEvidence page fill all forms
@@ -31,4 +30,3 @@ Feature: Consent
     Then "Review your report" should be shown
     When I navigate to summary page fill all forms
     Then "Thank you for reporting" should be shown
-  

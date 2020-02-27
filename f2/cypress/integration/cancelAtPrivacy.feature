@@ -2,7 +2,6 @@ Feature: Consent
 
   I want to create an online investgation report
 
-  @smoke
   Scenario: Home page
     Given I open the report home page
     When I click on create a report button
@@ -10,5 +9,4 @@ Feature: Consent
     When I click cancel button
     When I confirm the cancellation
     When I give the reason to cancel
-    When I give the feedback 
-
+    When I give the feedback
