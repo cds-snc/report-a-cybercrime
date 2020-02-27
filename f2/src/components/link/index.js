@@ -9,7 +9,11 @@ import { Link as ChakraLink } from '@chakra-ui/core'
 export const Link = props => (
   <ChakraLink
     as={ReactRouterLink}
-    color="blue.600"
+    color="blue.800"
+    textDecoration="underline"
+    _hover={{
+      color: 'blue.500',
+    }}
     fontSize={['md', null, 'lg', null]}
     {...props}
   >
@@ -52,7 +56,14 @@ ButtonLink.propTypes = {
 
 // An anchor link. needs to contain an HREF. Useful for links outside the app
 export const A = props => (
-  <ChakraLink color="blue.600" {...props}>
+  <ChakraLink
+    color="blue.800"
+    textDecoration="underline"
+    _hover={{
+      color: 'blue.500',
+    }}
+    {...props}
+  >
     {props.children}
   </ChakraLink>
 )

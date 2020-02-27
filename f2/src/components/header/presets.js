@@ -23,7 +23,7 @@ export const H2 = props => (
     as="h2"
     fontSize="3xl"
     fontFamily="heading"
-    lineHeight={1.25}
+    lineHeight={1.5}
     {...props}
   >
     {props.children}
@@ -39,7 +39,7 @@ export const H3 = props => (
     as="h3"
     fontSize="xl"
     fontFamily="heading"
-    lineHeight={1.25}
+    lineHeight={1.5}
     {...props}
   >
     {props.children}
@@ -55,7 +55,7 @@ export const H4 = props => (
     as="h4"
     fontSize="lg"
     fontFamily="heading"
-    lineHeight={1.25}
+    lineHeight={1.5}
     color="gray.700"
     {...props}
   >
@@ -72,7 +72,7 @@ export const H5 = props => (
     as="h5"
     fontSize="lg"
     fontFamily="heading"
-    lineHeight={1.25}
+    lineHeight={1.5}
     color="gray.600"
     {...props}
   >
@@ -89,7 +89,7 @@ export const H6 = props => (
     as="h6"
     fontSize="lg"
     fontFamily="heading"
-    lineHeight={1.25}
+    lineHeight={1.5}
     color="gray.500"
     {...props}
   >

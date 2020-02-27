@@ -69,6 +69,7 @@ export const MidFeedbackForm = props => {
             whiteSpace="wrap"
             w={{ base: '100%', md: 'auto' }}
             color="black"
+            textAlign="left"
             variant="solid"
             variantColor="gray"
             bg="gray.200"

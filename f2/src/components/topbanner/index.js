@@ -13,8 +13,19 @@ export const TopBanner = props => {
 
   return (
     <Layout {...props}>
-      <Flex align="center" fontFamily="body">
-        <Box py={4} mr="auto" flexBasis={{ base: 272, md: 360 }}>
+      <Flex
+        align="center"
+        direction={{ base: 'column', md: 'row-reverse' }}
+        fontFamily="body"
+      >
+        <Box py={{ base: 2, md: 4 }} pl={4} ml="auto">
+          <LocaleSwitcher />
+        </Box>
+        <Box
+          py={{ base: 2, md: 4 }}
+          mr="auto"
+          flexBasis={{ base: 'auto', md: 360 }}
+        >
           <Image
             src={i18n.locale === 'en' ? sigEn : sigFr}
             width="100%"
@@ -24,9 +35,6 @@ export const TopBanner = props => {
                 : 'Symbole du Gouvernement du Canada - Symbol of the Government of Canada'
             }
           />
-        </Box>
-        <Box py={4} pl={4} ml="auto">
-          <LocaleSwitcher />
         </Box>
       </Flex>
     </Layout>
