@@ -35,7 +35,7 @@ export const CancelPage = () => {
 
               <ButtonLink
                 mt="auto"
-                variantColor="gray"
+                variantColor="blue"
                 color="white"
                 title={i18n._('thankYouPage.feedbackButton.aria')}
                 to="/finalFeedback"
@@ -51,74 +51,68 @@ export const CancelPage = () => {
               </ButtonLink>
             </LandingBox>
           </Row>
-          <Box w="100%">
-            <Layout>
-              <Stack spacing={4} shouldWrapChildren>
-                <H2 mb={2}>
-                  <Trans id="thankYouPage.helpResource" />
-                </H2>
-                <Ul>
-                  <Li>
-                    <A
-                      href={
-                        i18n.locale === 'en'
-                          ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
-                          : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
-                      }
-                    >
-                      <Trans id="thankYouPage.helpResource1" />
-                    </A>
-                  </Li>
-                  <Li>
-                    <A
-                      href={
-                        i18n.locale === 'en'
-                          ? 'http://www.antifraudcentre.ca/index-eng.htm'
-                          : 'http://www.antifraudcentre.ca/index-fra.htm'
-                      }
-                    >
-                      <Trans id="thankYouPage.helpResource2" />
-                    </A>
-                  </Li>
-                  <Li>
-                    <A
-                      href={
-                        i18n.locale === 'en'
-                          ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
-                          : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
-                      }
-                    >
-                      <Trans id="thankYouPage.helpResource3" />
-                    </A>
-                  </Li>
-                </Ul>
-                <Layout pt={10}>
-                  <Stack spacing={6}>
-                    <Alert status="success">
-                      <AlertIcon mt={0} />
-                      <Trans id="thankYouPage.safelyCloseWindow" />
-                    </Alert>
-                    <Box mb="auto">
-                      <Route
-                        render={({ history }) => (
-                          <Link
-                            onClick={() => {
-                              dispatch({
-                                type: 'deleteFormData',
-                              })
-                            }}
-                            to="/"
-                          >
-                            <Trans id="thankYouPage.createNewReport" />
-                          </Link>
-                        )}
-                      />
-                    </Box>
-                  </Stack>
-                </Layout>
-              </Stack>
-            </Layout>
-          </Box>
+          <Stack spacing={4} shouldWrapChildren>
+            <H2 mb={2}>
+              <Trans id="thankYouPage.helpResource" />
+            </H2>
+            <Ul>
+              <Li>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
+                      : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
+                  }
+                >
+                  <Trans id="thankYouPage.helpResource1" />
+                </A>
+              </Li>
+              <Li>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'http://www.antifraudcentre.ca/index-eng.htm'
+                      : 'http://www.antifraudcentre.ca/index-fra.htm'
+                  }
+                >
+                  <Trans id="thankYouPage.helpResource2" />
+                </A>
+              </Li>
+              <Li>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
+                      : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
+                  }
+                >
+                  <Trans id="thankYouPage.helpResource3" />
+                </A>
+              </Li>
+            </Ul>
+          </Stack>
+          <Stack spacing={6}>
+            <Alert status="success">
+              <AlertIcon mt={0} />
+              <Trans id="thankYouPage.safelyCloseWindow" />
+            </Alert>
+            <Box mb="auto">
+              <Route
+                render={({ history }) => (
+                  <Link
+                    onClick={() => {
+                      dispatch({
+                        type: 'deleteFormData',
+                      })
+                    }}
+                    to="/"
+                  >
+                    <Trans id="thankYouPage.createNewReport" />
+                  </Link>
+                )}
+              />
+            </Box>
+          </Stack>
         </Stack>
       </Layout>
     </Page>
