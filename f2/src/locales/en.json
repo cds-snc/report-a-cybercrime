@@ -113,7 +113,7 @@
   "devicePage.tellUsMoreExample": "Include details about what was said or done for this to happen.",
   "devicePage.tip": "Consider changing your passwords and contacting the platform where the incident took place.",
   "devicePage.title": "How were your devices or accounts affected?",
-  "evidencePage.addFileButtom": "Add file",
+  "evidencePage.addFileButton": "Add file",
   "evidencePage.backButton": "Go back",
   "evidencePage.detail1": "Screenshots of webpages, conversations, or email threads.",
   "evidencePage.detail2": "Images of receipts, transactions, or packing slips.",
