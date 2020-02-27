@@ -2,22 +2,9 @@ import React from 'react'
 import { ThemeProvider } from 'emotion-theming'
 import { TextArea } from '../'
 import { render, cleanup } from '@testing-library/react'
-import { mount } from 'enzyme'
 
 describe('<TextArea />', () => {
   afterEach(cleanup)
-
-  it('properly renders as a textarea tag', () => {
-    let wrapper = mount(
-      <form>
-        <label>
-          Test
-          <TextArea />
-        </label>
-      </form>,
-    ).find('textarea')
-    expect(wrapper.is('textarea')).toBeTruthy()
-  })
 
   it('sets font properties from props', () => {
     const { getByLabelText } = render(
