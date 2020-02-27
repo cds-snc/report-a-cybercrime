@@ -81,31 +81,37 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
   const openssl = 'openssl smime -des3 -encrypt'
 
   try {
-    for (var x = 0; x < data.evidence.files.length; x++) {
-      const filePath = data.evidence.files[x].path
-      console.log('file is at: ' + filePath)
-      //create file name for each file in the format of .mime
-      const mimeFile = filePath + '.' + nanoid() + '.mime'
-      const encryptFile = mimeFile + '.encrypt'
-      exec(
-        //run makemime commend and openssl commend
-        `makemime -o ${mimeFile} ${filePath} && ${openssl} -out ${encryptFile} -in ${mimeFile} ${certFileName(
-          uid,
-        )}`,
-        { cwd: process.cwd() },
-        function(error, stdout, stderr) {
-          if (error) throw error
-          else if (stderr) console.log(stderr)
-          else {
-            const attachment = fs.readFileSync(encryptFile)
-            console.log('Encrypted File: File encrypted')
-            sendMail(emailAddress, attachment)
-          }
-        },
-      )
-    }
+    data.evidence.files.forEach(file => {
+      if (file.malwareIsClean) {
+        const filePath = file.path
+        console.log('file is at: ' + filePath)
+        //create file name for each file in the format of .mime
+        const mimeFile = filePath + '.' + nanoid() + '.mime'
+        const encryptedFile = mimeFile + '.encrypt'
+        exec(
+          //run makemime commend and openssl commend
+          `makemime -o ${mimeFile} ${filePath} && ${openssl} -out ${encryptedFile} -in ${mimeFile} ${certFileName(
+            uid,
+          )}`,
+          { cwd: process.cwd() },
+          function(error, stdout, stderr) {
+            if (error) throw error
+            else if (stderr) console.log(stderr)
+            else {
+              const attachment = fs.readFileSync(encryptedFile)
+              console.log('Encrypted File: File encrypted')
+              sendMail(emailAddress, attachment)
+            }
+          },
+        )
+      } else {
+        console.warn(
+          `WARNING: malware detected in ${file.path} (${data.reportId})`,
+        )
+      }
+    })
   } catch (error) {
-    console.warn(`ERROR in encryptFile: ${error}`)
+    console.warn(`ERROR in encryptedFile: ${error}`)
   }
 }
 
