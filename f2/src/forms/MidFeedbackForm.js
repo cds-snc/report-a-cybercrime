@@ -52,7 +52,6 @@ export const MidFeedbackForm = props => {
           <InfoCard
             bg="blue.200"
             borderColor="blue.300"
-            borderBottom="3px"
             columns={{ base: 4 / 4, md: 6 / 8 }}
           >
             <H2 as="p">
@@ -78,12 +77,14 @@ export const MidFeedbackForm = props => {
           </Button>
           {isOpen && (
             <Stack
+              bg="gray.200"
+              rounded="4px"
+              border="1px"
+              borderColor="gray.400"
+              p={4}
+              py={8}
+              mt={4}
               spacing={10}
-              pt={4}
-              pb={10}
-              borderTop={18}
-              borderStyle="solid"
-              borderColor="blue.600"
             >
               <H1 as="p">
                 <Trans id="midFeedback.title" />

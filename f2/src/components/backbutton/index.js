@@ -10,7 +10,7 @@ export const BackButton = ({ route = '', children }) => (
     as={RoutedLink}
     to={route}
     textAlign="left"
-    d="flex"
+    d="inline-flex"
     alignItems="center"
   >
     <Icon name="chevron-left" />
