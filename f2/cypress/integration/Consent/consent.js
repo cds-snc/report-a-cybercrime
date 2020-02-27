@@ -1,6 +1,14 @@
 
 Given('I open the report home page', () => {
-    cy.visit(Cypress.env('local'))
+    cy.visit(Cypress.env('production'))
+
+});
+
+Then('Inject axe and check for accessibility issues', () => {
+       // Inject the axe-core library
+       cy.injectAxe();
+       // first a11y test
+       cy.checkA11y();
 
 });
 
