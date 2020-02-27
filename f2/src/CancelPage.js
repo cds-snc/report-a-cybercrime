@@ -32,7 +32,6 @@ export const CancelPage = () => {
               <H2 mb={2}>
                 <Trans id="cancelPage.feedback" />
               </H2>
-
               <ButtonLink
                 mt="auto"
                 variantColor="blue"
