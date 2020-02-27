@@ -146,9 +146,9 @@ export const InformationForm = props => {
                 </FormControl>
               )}
             </Field>
-            <Alert status="success" backgroundColor="blue.100">
+            <Alert align="center" status="success" backgroundColor="blue.100">
               <AlertIcon name="info-outline" color="blue.800" />
-              <P fontSize="md">
+              <P fontSize="md" mb={0}>
                 <Trans id="informationPage.tip">
                   <A
                     href={
