@@ -16,7 +16,7 @@ import { TextInput } from '../components/TextInput'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Field } from '../components/Field'
-import { Link } from '@chakra-ui/core'
+import { A } from '../components/link'
 import { P } from '../components/paragraph'
 
 export const InformationForm = props => {
@@ -150,7 +150,7 @@ export const InformationForm = props => {
               <AlertIcon name="info-outline" color="blue.800" />
               <P fontSize="md">
                 <Trans id="informationPage.tip">
-                  <Link
+                  <A
                     href={
                       i18n.locale === 'en'
                         ? 'https://www.consumer.equifax.ca/personal/'
@@ -158,7 +158,7 @@ export const InformationForm = props => {
                     }
                     isExternal // Opens new tab
                   />
-                  <Link
+                  <A
                     href={
                       i18n.locale === 'en'
                         ? 'https://www.transunion.ca/'
