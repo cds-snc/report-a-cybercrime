@@ -15,10 +15,6 @@ import { containsData } from '../utils/containsData'
 export const InformationSummary = props => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
-  const infoReqSummary = []
-  let infoReqLine
-  const infoObtainedSummary = []
-  let infoObtainedLine
 
   const personalInformation = {
     ...testdata.formData.personalInformation,
@@ -26,29 +22,25 @@ export const InformationSummary = props => {
   }
 
   //push all select entities into the stack and if 'other' is selected, push the value of other.
-  personalInformation.typeOfInfoReq.map(key =>
-    infoReqSummary.push(
-      key === 'typeOfInfoReq.other'
-        ? personalInformation.infoReqOther
-        : i18n._(key),
-    ),
+  const infoReqSummary = personalInformation.typeOfInfoReq.map(key =>
+    key === 'typeOfInfoReq.other' && personalInformation.infoReqOther !== ''
+      ? personalInformation.infoReqOther
+      : i18n._(key),
   )
-  infoReqLine = formatList(infoReqSummary, {
+  const infoReqLine = formatList(infoReqSummary, {
     pair: i18n._('default.pair'),
     middle: i18n._('default.middle'),
     end: i18n._('default.end'),
   })
 
   //push all select entities into the stack and if 'other' is selected, push the value of other.
-  personalInformation.typeOfInfoObtained.map(key =>
-    infoObtainedSummary.push(
-      key === 'typeOfInfoObtained.other'
-        ? personalInformation.infoObtainedOther
-        : i18n._(key),
-    ),
+  const infoObtainedSummary = personalInformation.typeOfInfoObtained.map(key =>
+    key === 'typeOfInfoObtained.other' &&
+    personalInformation.infoObtainedOther !== ''
+      ? personalInformation.infoObtainedOther
+      : i18n._(key),
   )
-
-  infoObtainedLine = formatList(infoObtainedSummary, {
+  const infoObtainedLine = formatList(infoObtainedSummary, {
     pair: i18n._('default.pair'),
     middle: i18n._('default.middle'),
     end: i18n._('default.end'),

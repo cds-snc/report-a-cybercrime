@@ -4,7 +4,6 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex, Box } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { containsData } from '../utils/containsData'
 import { testdata, EditButton } from '../ConfirmationSummary'
 import { H2 } from '../components/header'
 import { Text } from '../components/text'
@@ -44,7 +43,7 @@ export const EvidenceInfoSummary = props => {
             label="confirmationPage.evidence.title.edit"
           />
         </Flex>
-        {containsData(evidence) ? (
+        {evidence.files && evidence.files.length > 0 ? (
           <Stack as="dl" spacing={4} shouldWrapChildren>
             {evidence.files ? (
               <Stack as="dl" spacing={4} shouldWrapChildren>
