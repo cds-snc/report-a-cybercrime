@@ -79,11 +79,13 @@ const uploadData = async (req, res, fields, files) => {
   contentModeratorFiles(data, () => save(data, res))
 }
 
-app.get('/', function(_req, res, next) {
+app.get('/', function(req, res, next) {
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
     console.log('Warning: redirecting request to CAFC')
     res.redirect(
-      'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
+      req.subdomains.includes('signalez')
+        ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
+        : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
     availableData.numberOfRequests += 1
