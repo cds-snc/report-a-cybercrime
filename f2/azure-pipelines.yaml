@@ -4,14 +4,14 @@
 trigger:
   branches:
     include:
-      - master
-      - release-rcmp-staging
-      - release-rcmp-prod
+    - master
+    - release-rcmp-staging
+    - release-rcmp-prod
   paths:
     include:
-      - f2
+    - f2
     exclude:
-      - f2/manifests/*
+    - f2/manifests/*
 
 # Use an Ubuntu VM to run Azure pipeline
 pool:
@@ -43,7 +43,7 @@ steps:
         $(Build.SourceBranchName)
         $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
         latest
-      arguments: --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_REACT_APP_GOOGLE_ANALYTICS_ID)
+      arguments: --build-arg REACT_APP_DEV_ENVIRONMENT=true --build-arg REACT_APP_VERSION=$(Build.SourceVersion) --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_NON_PROD_ANALYTICS_ID)
 
   - task: Docker@2
     displayName: 'Master/DEV - Push Docker Image to ACR'
@@ -69,7 +69,7 @@ steps:
         $(Build.SourceBranchName)
         $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
         latest
-      arguments: --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_REACT_APP_GOOGLE_ANALYTICS_ID)
+      arguments: --build-arg REACT_APP_DEV_ENVIRONMENT=true --build-arg REACT_APP_VERSION=$(Build.SourceVersion) --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_NON_PROD_ANALYTICS_ID)
 
   - task: Docker@2
     displayName: 'Staging - Push Docker Image to ACR'
@@ -95,7 +95,7 @@ steps:
         $(Build.SourceBranchName)
         $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
         latest
-      arguments: --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_REACT_APP_GOOGLE_ANALYTICS_ID)
+      arguments: --build-arg REACT_APP_DEV_ENVIRONMENT=$(_IS_A_DEV_ENVIRONMENT) --build-arg REACT_APP_VERSION=$(Build.SourceVersion) --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_REACT_APP_GOOGLE_ANALYTICS_ID)
 
   - task: Docker@2
     displayName: 'PROD - Push Docker Image to ACR'

@@ -5,10 +5,15 @@ const { formatDate } = require('./formatDate')
 const formatLine = (label, text) => (text !== '' ? label + text + '\n' : '')
 
 const formatReportInfo = data => {
-  const selfHarmString = data.selfHarmWords.length
-    ? data.selfHarmWords
-    : 'no self harm words'
-  const returnString =
+  let selfHarmString = 'no self harm words'
+  let returnString = ''
+
+  if (data.selfHarmWords.length) {
+    selfHarmString = data.selfHarmWords
+    returnString = `\n\nSELF HARM WORDS FOUND : ${selfHarmString}\n\n`
+  }
+  returnString +=
+    'Report information\n\n' +
     formatLine('Report number:      ', data.reportId) +
     formatLine('Date received:      ', data.submissionTime) +
     formatLine('Report language:    ', data.language) +
@@ -18,9 +23,7 @@ const formatReportInfo = data => {
   delete data.submissionTime // so that at the end we can display the rest and ensure that
   delete data.language // we didn't miss anything
   delete data.selfHarmWords
-  return (
-    'Report information\n\n' + (returnString !== '' ? returnString : 'No Data')
-  )
+  return returnString
 }
 
 const formatVictimDetails = data => {
@@ -198,9 +201,11 @@ const formatFileAttachments = data => {
             formatLine('Is racy:       ', file.isImageRacyClassified) +
             formatLine('Racy Score:    ', file.racyClassificationScore)
 
+      const attachmentName = file.path.split('/').pop()
       return offensive
         ? 'WARNING: image may be offensive\n'
         : '' +
+            formatLine('Attachment:    ', attachmentName) +
             formatLine('File name:     ', file.name) +
             formatLine('Description:   ', file.fileDescription) +
             formatLine('Size:          ', file.size + ' bytes') +
@@ -221,13 +226,22 @@ const formatFileAttachments = data => {
 }
 
 const formatAnalystEmail = dataOrig => {
-  let returnString
+  let returnString = ''
+  let reportInfoString = ''
   let missingFields
 
+  let data
   try {
-    let data = JSON.parse(JSON.stringify(dataOrig))
+    data = JSON.parse(JSON.stringify(dataOrig))
+    reportInfoString = formatReportInfo(data)
+  } catch (error) {
+    const errorMessage = `ERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
+    console.error(errorMessage)
+    return errorMessage
+  }
+  try {
     returnString =
-      formatReportInfo(data) +
+      reportInfoString +
       formatVictimDetails(data) +
       formatIncidentInformation(data) +
       formatNarrative(data) +
@@ -243,7 +257,9 @@ const formatAnalystEmail = dataOrig => {
       ? '\n\nExtra Fields:\n' + JSON.stringify(data, null, '  ')
       : ''
   } catch (error) {
-    const errorMessage = `ERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
+    const errorMessage =
+      reportInfoString +
+      `\nERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
     console.error(errorMessage)
     return errorMessage
   }

@@ -39,7 +39,7 @@ export const Radio = ({
       {id => {
         return (
           <React.Fragment>
-            <Flex as="label" id={id} align="center">
+            <Flex as="label" id={id} align="start">
               <VisuallyHidden
                 {...input}
                 as="input"
@@ -75,7 +75,7 @@ export const Radio = ({
                 <Box size="20px" bg="black" rounded="full" />
               </ControlBox>
 
-              <Text ml={2} htmlFor={id}>
+              <Text ml={2} pt={2} htmlFor={id} lineHeight="1.5rem">
                 {props.children}
               </Text>
             </Flex>
