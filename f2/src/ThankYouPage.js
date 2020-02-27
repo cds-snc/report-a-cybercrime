@@ -29,6 +29,22 @@ export const ThankYouPage = () => {
 
   const [, dispatch] = useStateValue()
 
+  // Message displayed on Thank you Page
+  let reportId = state.formData.reportId
+  let thankYouMessage
+
+  if (!reportId || reportId === '') {
+    thankYouMessage = <Trans id="thankYouPage.reportSubmission" />
+  } else if (reportId.startsWith('NCFRS-')) {
+    thankYouMessage = (
+      <Trans id="thankYouPage.referenceNumber" values={{ reference: reportId }}>
+        <Text as="span" d="block" />
+      </Trans>
+    )
+  } else {
+    thankYouMessage = <Trans id="thankYouPage.reportSubmissionError" />
+  }
+
   return (
     <Page>
       <Layout
@@ -54,18 +70,8 @@ export const ThankYouPage = () => {
             <H1 mb={6}>
               <Trans id="thankYouPage.title" />
             </H1>
-            <P fontSize="lg">
-              <Trans
-                id="thankYouPage.referenceNumber"
-                values={{
-                  reference: state.formData.reportId
-                    ? state.formData.reportId
-                    : '< report ID >',
-                }}
-              >
-                <Text as="span" d="block" fontSize="2xl" />
-              </Trans>
-            </P>
+
+            <P fontSize="2xl">{thankYouMessage}</P>
           </InfoCard>
         </Row>
       </Layout>

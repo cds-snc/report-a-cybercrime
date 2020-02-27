@@ -19,8 +19,7 @@ export const InfoCard = props => (
 export const LandingBox = props => (
   <Column columns={props.columns}>
     <Stack
-      className="landing-box"
-      alignItems="flex-start"
+      d="block"
       height="100%"
       bg="gray.300"
       borderBottom="2px"
@@ -41,6 +40,7 @@ export const ConditionalForm = ({ ...props }) => (
   <React.Fragment>
     {props.children && (
       <Box
+        aria-live="polite"
         borderLeftWidth={1}
         borderLeftColor="gray.400"
         mt={1}

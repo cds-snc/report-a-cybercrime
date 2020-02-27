@@ -3,25 +3,30 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
-
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
-
 const {
   notifyIsSetup,
   sendConfirmation,
   sendUnencryptedReport,
   submitFeedback,
 } = require('./src/utils/notify')
-
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
 
 require('dotenv').config()
 
+const emailList = process.env.MAIL_TO
+  ? process.env.MAIL_TO.split(',').map(k => k.trim())
+  : []
+
+const uidList = process.env.LDAP_UID
+  ? process.env.LDAP_UID.split(',').map(k => k.trim())
+  : []
+
 // fetch and store certs for intake analysts
-getAllCerts(process.env.LDAP_UID)
+getAllCerts(uidList)
 
 const app = express()
 
@@ -39,7 +44,7 @@ async function save(data, res) {
   saveBlob(data)
 
   const analystEmail = formatAnalystEmail(data)
-  encryptAndSend(process.env.LDAP_UID, analystEmail)
+  encryptAndSend(uidList, emailList, data, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
@@ -101,7 +106,7 @@ app
   .post('/submit', (req, res) => {
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
-        console.error('Error', err)
+        console.warn('ERROR', err)
         throw err
       }
       uploadData(req, res, fields, files)
@@ -111,7 +116,7 @@ app
   .post('/submitFeedback', (req, res) => {
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
-        console.error('Error', err)
+        console.warn('ERROR', err)
         throw err
       }
       submitFeedback(fields.json)

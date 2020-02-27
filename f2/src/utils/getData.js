@@ -7,6 +7,14 @@ const { generateReportId } = require('./generateReportId')
 
 const padNumber = x => `${x}`.padStart(2, 0)
 
+const getFileExtension = filename => {
+  const a = filename.split('.')
+  if (a.length === 1 || (a[0] === '' && a.length === 2)) {
+    return ''
+  }
+  return a.pop().toLowerCase()
+}
+
 async function getData(fields, files) {
   // Extract the JSON from the "JSON" form element
   const data = JSON.parse(fields['json'])
@@ -22,13 +30,18 @@ async function getData(fields, files) {
     shasum.update(fs.readFileSync(file[1].path))
     const sha1Hash = shasum.digest('hex')
 
+    const fileExtension = getFileExtension(file[1].name)
+    const newFilePath =
+      fileExtension !== '' ? `${file[1].path}.${fileExtension}` : file[1].path
+    if (file[1].path !== newFilePath) fs.renameSync(file[1].path, newFilePath)
+
     // Record all the file related fields together in one JSON object for simplicity
     filesToJson.push({
       name: file[1].name,
       type: file[1].type,
       size: file[1].size,
       fileDescription: data.evidence.fileDescriptions[i],
-      path: file[1].path,
+      path: newFilePath,
       sha1: sha1Hash,
       // MongoDB had a 16MB document size limit, but CosmosDB only has a 2MB limit so this isn't going to work.
       //blob: Binary(fs.readFileSync(file[1].path)),
@@ -58,4 +71,4 @@ async function getData(fields, files) {
   return data
 }
 
-module.exports = { getData }
+module.exports = { getData, getFileExtension }
