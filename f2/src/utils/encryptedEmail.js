@@ -105,7 +105,7 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
                   emailAddress,
                   attachment,
                   data.reportId,
-                  'WARNING: Adult Attachment',
+                  'WARNING: potential offensive image',
                 )
               else
                 sendMail(emailAddress, attachment, data.reportId, 'Attachment')
