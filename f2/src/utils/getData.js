@@ -5,6 +5,8 @@ const crypto = require('crypto')
 const { selfHarmWordsScan } = require('./selfHarmWordsScan')
 const { generateReportId } = require('./generateReportId')
 
+const padNumber = x => `${x}`.padStart(2, 0)
+
 const getFileExtension = filename => {
   const a = filename.split('.')
   if (a.length === 1 || (a[0] === '' && a.length === 2)) {
@@ -55,7 +57,17 @@ async function getData(fields, files) {
     console.warn(`Self harm words detected: ${selfHarmWords}`)
   }
   data.selfHarmWords = selfHarmWords
-  data.submissionTime = new Date().toISOString()
+  const now = new Date()
+  const timeZoneOffset = now.getTimezoneOffset() / 60 // convert to hours
+  const dateString =
+    padNumber(now.getDate()) +
+    '/' +
+    padNumber(now.getMonth() + 1) +
+    '/' +
+    `${now.getFullYear()}`
+  const timeString =
+    padNumber(now.getHours()) + ':' + padNumber(now.getMinutes())
+  data.submissionTime = `${dateString} ${timeString} UTC-${timeZoneOffset}`
   return data
 }
 

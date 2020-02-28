@@ -55,7 +55,7 @@ const getCert = uid => {
   })
 }
 
-const encryptMessage = (uid, emailAddress, message, sendMail) => {
+const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
   const openssl = 'openssl smime -des3 -text -encrypt'
   const messageFileName = `message_${nanoid()}.txt`
   fs.writeFile(messageFileName, message, function(err) {
@@ -70,7 +70,7 @@ const encryptMessage = (uid, emailAddress, message, sendMail) => {
           const attachment = stdout
           console.log('Encrypted Mail: Message encrypted')
           fs.unlink(messageFileName, () => {})
-          sendMail(emailAddress, attachment)
+          sendMail(emailAddress, attachment, data.reportId, 'Report')
         }
       },
     )
@@ -81,35 +81,41 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
   const openssl = 'openssl smime -des3 -encrypt'
 
   try {
-    for (var x = 0; x < data.evidence.files.length; x++) {
-      const filePath = data.evidence.files[x].path
-      console.log('file is at: ' + filePath)
-      //create file name for each file in the format of .mime
-      const mimeFile = filePath + '.' + nanoid() + '.mime'
-      const encryptFile = mimeFile + '.encrypt'
-      exec(
-        //run makemime commend and openssl commend
-        `makemime -o ${mimeFile} ${filePath} && ${openssl} -out ${encryptFile} -in ${mimeFile} ${certFileName(
-          uid,
-        )}`,
-        { cwd: process.cwd() },
-        function(error, stdout, stderr) {
-          if (error) throw error
-          else if (stderr) console.log(stderr)
-          else {
-            const attachment = fs.readFileSync(encryptFile)
-            console.log('Encrypted File: File encrypted')
-            sendMail(emailAddress, attachment)
-          }
-        },
-      )
-    }
+    data.evidence.files.forEach(file => {
+      if (file.malwareIsClean) {
+        const filePath = file.path
+        console.log('file is at: ' + filePath)
+        //create file name for each file in the format of .mime
+        const mimeFile = filePath + '.' + nanoid() + '.mime'
+        const encryptedFile = mimeFile + '.encrypt'
+        exec(
+          //run makemime commend and openssl commend
+          `makemime -o ${mimeFile} ${filePath} && ${openssl} -out ${encryptedFile} -in ${mimeFile} ${certFileName(
+            uid,
+          )}`,
+          { cwd: process.cwd() },
+          function(error, stdout, stderr) {
+            if (error) throw error
+            else if (stderr) console.log(stderr)
+            else {
+              const attachment = fs.readFileSync(encryptedFile)
+              console.log('Encrypted File: File encrypted')
+              sendMail(emailAddress, attachment, data.reportId, 'Attachment')
+            }
+          },
+        )
+      } else {
+        console.warn(
+          `WARNING: malware detected in ${file.path} (${data.reportId})`,
+        )
+      }
+    })
   } catch (error) {
-    console.warn(`ERROR in encryptFile: ${error}`)
+    console.warn(`ERROR in encryptedFile: ${error}`)
   }
 }
 
-async function sendMail(emailAddress, attachment) {
+async function sendMail(emailAddress, attachment, reportId, emailType) {
   let transporter = nodemailer.createTransport({
     host: mailHost,
     port: 465,
@@ -123,7 +129,9 @@ async function sendMail(emailAddress, attachment) {
   const message = {
     from: mailFrom,
     to: emailAddress,
-    subject: 'Custom attachment',
+    subject: `Report - reference number: ${reportId} ${emailType}`,
+    text: 'Plaintext version of the message',
+    html: 'pHTML version of the message/p',
     attachments: [
       {
         raw: attachment,
@@ -147,7 +155,7 @@ const getAllCerts = uidList => {
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList && emailList) {
     uidList.forEach((uid, index) =>
-      encryptMessage(uid, emailList[index], message, sendMail),
+      encryptMessage(uid, emailList[index], message, data, sendMail),
     )
     uidList.forEach((uid, index) =>
       encryptFile(uid, emailList[index], data, sendMail),
