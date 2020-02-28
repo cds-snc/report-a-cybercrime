@@ -77,7 +77,7 @@ ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku Premium --query id --outp
 
 #### Deploy code
 ## Build Docker images
-az acr build --registry $ACR_NAME --image $IMAGE_NAME ../f2
+az acr build --registry $ACR_NAME --image $IMAGE_NAME ../$(IMAGE_NAME}
 az acr build --registry $ACR_NAME --image $VIRUS_SCANNER_IMAGE_NAME 'https://github.com/cds-snc/docker-clamav.git#alpine'
 
 ## Gather credentials to access ACR
