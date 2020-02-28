@@ -48,7 +48,9 @@ export const FinalFeedbackPage = () => {
               onSubmit={data => {
                 submitToServer(data)
                 setState((state.doneFinalFeedback = true))
-                history.push('/finalfeedbackthanks')
+                if (state.formData && state.formData.submitted)
+                  history.push('/thankYouPage')
+                else history.push('/finalfeedbackthanks')
               }}
             />
           </Stack>
