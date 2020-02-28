@@ -100,7 +100,15 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
             else {
               const attachment = fs.readFileSync(encryptedFile)
               console.log('Encrypted File: File encrypted')
-              sendMail(emailAddress, attachment, data.reportId, 'Attachment')
+              if (file.isImageRacyClassified || file.isImageAdultClassified)
+                sendMail(
+                  emailAddress,
+                  attachment,
+                  data.reportId,
+                  'WARNING: Adult Attachment',
+                )
+              else
+                sendMail(emailAddress, attachment, data.reportId, 'Attachment')
             }
           },
         )
