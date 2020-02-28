@@ -183,7 +183,7 @@
   "informationPage.nextStep": "Étape suivante : Précisions sur les répercussions",
   "informationPage.tellUsMore": "Comment vous a-t-on demandé et soutiré des informations?",
   "informationPage.tellUsMoreExample": "Fournissez des détails sur ce qui a été dit ou fait pour que cela se produise.",
-  "informationPage.tip": "Signalez l’incident à Equifax et à TransUnion pour ajouter une alerte à votre dossier de crédit.",
+  "informationPage.tip": "Signalez l’incident à <0>Equifax</0> et à <1>TransUnion</1> pour ajouter une alerte à votre dossier de crédit.",
   "informationPage.title": "Répercussions sur vos données personnelles",
   "informationPage.typeOfInfoObtained": "Quelles informations vous a-t-on soutirées?",
   "informationPage.typeOfInfoObtainedExample": "Sélectionnez le ou les types d’informations soutirées.",

@@ -7,7 +7,7 @@ export const H1 = props => (
     as="h1"
     fontSize={{ base: '4xl', md: '5xl' }}
     fontFamily="heading"
-    lineHeight={1}
+    lineHeight={1.15}
     {...props}
   >
     {props.children}
