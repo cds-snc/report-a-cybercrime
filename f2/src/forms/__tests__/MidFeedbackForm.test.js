@@ -1,6 +1,7 @@
 import React from 'react'
 import wait from 'waait'
 import { i18n } from '@lingui/core'
+import { MemoryRouter } from 'react-router-dom'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
@@ -20,11 +21,13 @@ describe('<MidFeedbackForm />', () => {
     const submitMock = jest.fn()
 
     const { getByText } = render(
-      <ThemeProvider theme={canada}>
-        <I18nProvider i18n={i18n}>
-          <MidFeedbackForm onSubmit={submitMock} />
-        </I18nProvider>
-      </ThemeProvider>,
+      <MemoryRouter initialEntries={['/']}>
+        <ThemeProvider theme={canada}>
+          <I18nProvider i18n={i18n}>
+            <MidFeedbackForm onSubmit={submitMock} />
+          </I18nProvider>
+        </ThemeProvider>
+      </MemoryRouter>,
     )
 
     const openButton = getByText('midFeedback.summary')
@@ -44,11 +47,13 @@ describe('<MidFeedbackForm />', () => {
     const submitMock = jest.fn()
 
     const { getByText, getByLabelText } = render(
-      <ThemeProvider theme={canada}>
-        <I18nProvider i18n={i18n}>
-          <MidFeedbackForm onSubmit={submitMock} />
-        </I18nProvider>
-      </ThemeProvider>,
+      <MemoryRouter initialEntries={['/']}>
+        <ThemeProvider theme={canada}>
+          <I18nProvider i18n={i18n}>
+            <MidFeedbackForm onSubmit={submitMock} />
+          </I18nProvider>
+        </ThemeProvider>
+      </MemoryRouter>,
     )
 
     const openButton = getByText('midFeedback.summary')
