@@ -48,6 +48,9 @@ const prepFormData = (formData, language) => {
       demandedMoney: '',
       moneyTaken: '',
       methodPayment: [],
+      transactionDay: '',
+      transactionMonth: '',
+      transactionYear: '',
       tellUsMore: '',
     }
   }
