@@ -18,7 +18,8 @@ RUN npm run build
 
 FROM node:12.15-alpine
 LABEL maintainer="stephen.astels@cds-snc.ca"
-RUN apk add --no-cache openssl
+RUN apk add --no-cache openssl tzdata
+ENV TZ America/Toronto
 USER node
 
 ENV NODE_ENV production
