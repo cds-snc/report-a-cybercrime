@@ -3,25 +3,38 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
-
+const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
-
 const {
   notifyIsSetup,
   sendConfirmation,
   sendUnencryptedReport,
   submitFeedback,
 } = require('./src/utils/notify')
-
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
+
+// set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
+var RateLimit = require('express-rate-limit')
+var limiter = new RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100,
+})
 
 require('dotenv').config()
 
+const emailList = process.env.MAIL_TO
+  ? process.env.MAIL_TO.split(',').map(k => k.trim())
+  : []
+
+const uidList = process.env.LDAP_UID
+  ? process.env.LDAP_UID.split(',').map(k => k.trim())
+  : []
+
 // fetch and store certs for intake analysts
-getAllCerts(process.env.LDAP_UID)
+getAllCerts(uidList)
 
 const app = express()
 
@@ -34,13 +47,19 @@ const allowedOrigins = [
   'http://centreantifraude.ca',
 ]
 
+const availableData = {
+  numberOfSubmissions: 0,
+  numberOfRequests: 0,
+  lastRequested: undefined,
+}
+
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
   saveBlob(data)
   data.submissionTime = new Date().toISOString()
 
   const analystEmail = formatAnalystEmail(data)
-  encryptAndSend(process.env.LDAP_UID, data, analystEmail)
+  encryptAndSend(uidList, emailList, data, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
@@ -60,9 +79,23 @@ const uploadData = async (req, res, fields, files) => {
   contentModeratorFiles(data, () => save(data, res))
 }
 
-let count = 0
-
+app.get('/', function(req, res, next) {
+  if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
+    console.log('Warning: redirecting request to CAFC')
+    res.redirect(
+      req.subdomains.includes('signalez')
+        ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
+        : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
+    )
+  } else {
+    availableData.numberOfRequests += 1
+    availableData.lastRequested = new Date()
+    console.log(`New Request. ${JSON.stringify(availableData)}`)
+    next()
+  }
+})
 app
+  .use(limiter)
   .use(express.static(path.join(__dirname, 'build')))
   .use(bodyParser.json())
   .use(function(req, res, next) {
@@ -86,20 +119,18 @@ app
   })
 
   .get('/available', function(_req, res) {
-    count += 1
-    switch (count % 3) {
-      case 1:
-        res.json({ acceptingReports: true })
-        break
-      case 2:
-        res.json({ acceptingReports: false })
-        break
-      default:
-        res.status(404).send('Not found')
-    }
+    res.json({ acceptingReports: isAvailable(availableData) })
+  })
+
+  .get('/stats', function(_req, res) {
+    res.json({
+      acceptingReports: isAvailable(availableData),
+      ...availableData,
+    })
   })
 
   .post('/submit', (req, res) => {
+    availableData.numberOfSubmissions += 1
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
         console.warn('ERROR', err)
@@ -120,9 +151,17 @@ app
     res.send('thanks')
   })
 
-  .get('/*', function(_req, res) {
+  .get('/privacystatement', function(_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
+  .get('/termsandconditions', function(_req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
+
+// uncomment to allow direct loading of arbitrary pages
+// .get('/*', function(_req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'))
+// })
 
 const port = process.env.PORT || 3000
 console.log(`Listening at port ${port}`)
