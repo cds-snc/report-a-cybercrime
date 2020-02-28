@@ -204,18 +204,18 @@ const formatFileAttachments = data => {
             formatLine('Racy Score:    ', file.racyClassificationScore)
 
       const attachmentName = file.path.split('/').pop()
-      return offensive
-        ? 'WARNING: image may be offensive\n'
-        : '' +
-            formatLine('Attachment:    ', attachmentName) +
-            formatLine('File name:     ', file.name) +
-            formatLine('Description:   ', file.fileDescription) +
-            formatLine('Size:          ', file.size + ' bytes') +
-            formatLine('CosmosDB file: ', file.sha1) +
-            (file.malwareIsClean
-              ? 'Malware scan:  Clean\n'
-              : formatLine('Malware scan:  ', file.malwareScanDetail)) +
-            moderatorString
+      return (
+        (offensive ? 'WARNING: image may be offensive\n' : '') +
+        formatLine('Attachment:    ', attachmentName) +
+        formatLine('File name:     ', file.name) +
+        formatLine('Description:   ', file.fileDescription) +
+        formatLine('Size:          ', file.size + ' bytes') +
+        formatLine('CosmosDB file: ', file.sha1) +
+        (file.malwareIsClean
+          ? 'Malware scan:  Clean\n'
+          : formatLine('Malware scan:  ', file.malwareScanDetail)) +
+        moderatorString
+      )
     })
     .join('\n\n')
 
