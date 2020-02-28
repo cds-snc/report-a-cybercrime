@@ -55,7 +55,7 @@ const getCert = uid => {
   })
 }
 
-const encryptMessage = (uid, emailAddress, message, sendMail) => {
+const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
   const openssl = 'openssl smime -des3 -text -encrypt'
   const messageFileName = `message_${nanoid()}.txt`
   fs.writeFile(messageFileName, message, function(err) {
@@ -70,7 +70,7 @@ const encryptMessage = (uid, emailAddress, message, sendMail) => {
           const attachment = stdout
           console.log('Encrypted Mail: Message encrypted')
           fs.unlink(messageFileName, () => {})
-          sendMail(emailAddress, attachment)
+          sendMail(emailAddress, attachment, data.reportId, 'Report')
         }
       },
     )
@@ -100,7 +100,7 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
             else {
               const attachment = fs.readFileSync(encryptedFile)
               console.log('Encrypted File: File encrypted')
-              sendMail(emailAddress, attachment)
+              sendMail(emailAddress, attachment, data.reportId, 'Attachment')
             }
           },
         )
@@ -115,7 +115,7 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
   }
 }
 
-async function sendMail(emailAddress, attachment) {
+async function sendMail(emailAddress, attachment, reportId, emailType) {
   let transporter = nodemailer.createTransport({
     host: mailHost,
     port: 465,
@@ -129,7 +129,9 @@ async function sendMail(emailAddress, attachment) {
   const message = {
     from: mailFrom,
     to: emailAddress,
-    subject: 'Custom attachment',
+    subject: `Report - reference number: ${reportId} ${emailType}`,
+    text: 'Plaintext version of the message',
+    html: 'pHTML version of the message/p',
     attachments: [
       {
         raw: attachment,
@@ -153,7 +155,7 @@ const getAllCerts = uidList => {
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList && emailList) {
     uidList.forEach((uid, index) =>
-      encryptMessage(uid, emailList[index], message, sendMail),
+      encryptMessage(uid, emailList[index], message, data, sendMail),
     )
     uidList.forEach((uid, index) =>
       encryptFile(uid, emailList[index], data, sendMail),
