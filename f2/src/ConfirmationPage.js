@@ -38,6 +38,10 @@ async function postData(url = '', data = {}) {
 }
 
 const prepFormData = (formData, language) => {
+  formData.appVersion = process.env.REACT_APP_VERSION
+    ? process.env.REACT_APP_VERSION.slice(0, 7)
+    : 'no version'
+
   if (
     formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
