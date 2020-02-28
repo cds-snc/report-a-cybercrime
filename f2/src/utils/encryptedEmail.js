@@ -137,9 +137,9 @@ async function sendMail(emailAddress, attachment, reportId, emailType) {
   const message = {
     from: mailFrom,
     to: emailAddress,
-    subject: `Report - reference number: ${reportId} ${emailType}`,
+    subject: `NCFRS - ref ${reportId} : ${emailType}`,
     text: 'Plaintext version of the message',
-    html: 'pHTML version of the message/p',
+    html: 'HTML version of the message',
     attachments: [
       {
         raw: attachment,
