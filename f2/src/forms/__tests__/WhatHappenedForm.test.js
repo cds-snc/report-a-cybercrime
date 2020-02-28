@@ -34,11 +34,10 @@ describe('<WhatHappenedForm />', () => {
     )
 
     // find the next button so we can trigger a form submission
-    // we want to grab whatever is in the submit button as text, pass it to getByText
-    const context = document.querySelector('[type="submit"]').textContent
-    const nextButton = getByText(context)
+    const nextButton = getByText(/nextButton/)
+
     // Click the next button to trigger the form submission
-    clickOn(nextButton)
+    clickOn(nextButton.parentElement)
     await wait(0) // Wait for promises to resolve
 
     // We expect that sequence of events to have caused our onSubmit mock to get

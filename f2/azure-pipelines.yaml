@@ -4,14 +4,14 @@
 trigger:
   branches:
     include:
-    - master
-    - release-rcmp-staging
-    - release-rcmp-prod
+      - master
+      - release-rcmp-staging
+      - release-rcmp-prod
   paths:
     include:
-    - f2
+      - f2
     exclude:
-    - f2/manifests/*
+      - f2/manifests/*
 
 # Use an Ubuntu VM to run Azure pipeline
 pool:
