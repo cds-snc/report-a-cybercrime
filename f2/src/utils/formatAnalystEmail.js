@@ -17,11 +17,13 @@ const formatReportInfo = data => {
     formatLine('Report number:      ', data.reportId) +
     formatLine('Date received:      ', data.submissionTime) +
     formatLine('Report language:    ', data.language) +
+    formatLine('Report version:     ', data.appVersion) +
     formatLine('Flagged:            ', selfHarmString)
 
   delete data.reportId // we delete the parts of the data object that we've displayed
   delete data.submissionTime // so that at the end we can display the rest and ensure that
   delete data.language // we didn't miss anything
+  delete data.appVersion
   delete data.selfHarmWords
   return returnString
 }
@@ -202,18 +204,18 @@ const formatFileAttachments = data => {
             formatLine('Racy Score:    ', file.racyClassificationScore)
 
       const attachmentName = file.path.split('/').pop()
-      return offensive
-        ? 'WARNING: image may be offensive\n'
-        : '' +
-            formatLine('Attachment:    ', attachmentName) +
-            formatLine('File name:     ', file.name) +
-            formatLine('Description:   ', file.fileDescription) +
-            formatLine('Size:          ', file.size + ' bytes') +
-            formatLine('CosmosDB file: ', file.sha1) +
-            (file.malwareIsClean
-              ? 'Malware scan:  Clean\n'
-              : formatLine('Malware scan:  ', file.malwareScanDetail)) +
-            moderatorString
+      return (
+        (offensive ? 'WARNING: image may be offensive\n' : '') +
+        formatLine('Attachment:    ', attachmentName) +
+        formatLine('File name:     ', file.name) +
+        formatLine('Description:   ', file.fileDescription) +
+        formatLine('Size:          ', file.size + ' bytes') +
+        formatLine('CosmosDB file: ', file.sha1) +
+        (file.malwareIsClean
+          ? 'Malware scan:  Clean\n'
+          : formatLine('Malware scan:  ', file.malwareScanDetail)) +
+        moderatorString
+      )
     })
     .join('\n\n')
 
