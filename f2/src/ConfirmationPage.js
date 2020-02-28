@@ -38,6 +38,10 @@ async function postData(url = '', data = {}) {
 }
 
 const prepFormData = (formData, language) => {
+  formData.appVersion = process.env.REACT_APP_VERSION
+    ? process.env.REACT_APP_VERSION.slice(0, 7)
+    : 'no version'
+
   if (
     formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
@@ -48,7 +52,9 @@ const prepFormData = (formData, language) => {
       demandedMoney: '',
       moneyTaken: '',
       methodPayment: [],
-      transactionDate: '',
+      transactionDay: '',
+      transactionMonth: '',
+      transactionYear: '',
       tellUsMore: '',
     }
   }
@@ -102,7 +108,7 @@ const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
   const response = await postData('/submit', data)
   const reportId = await response.text()
-  dispatch({ type: 'saveFormData', data: { reportId } })
+  dispatch({ type: 'saveFormData', data: { reportId, submitted: true } })
 }
 
 export const ConfirmationPage = () => {

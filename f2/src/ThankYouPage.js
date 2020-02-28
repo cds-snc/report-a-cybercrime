@@ -171,8 +171,7 @@ export const ThankYouPage = () => {
               )}
               <ButtonLink
                 mt="auto"
-                variantColor="gray"
-                color="white"
+                variantColor="black"
                 title={i18n._('thankYouPage.feedbackButton.aria')}
                 to="/finalFeedback"
               >
