@@ -9,7 +9,7 @@ trigger:
       - release-rcmp-prod
   paths:
     include:
-    - f2
+      - f2
     exclude:
       - f2/manifests/*
 
@@ -39,71 +39,6 @@ steps:
       repository: 'f2'
       Dockerfile: 'f2/Dockerfile'
       command: 'build'
-      tags: |
-        $(Build.SourceBranchName)
-        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
-        latest
-      arguments: --build-arg REACT_APP_DEV_ENVIRONMENT=true --build-arg REACT_APP_VERSION=$(Build.SourceVersion) --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_NON_PROD_ANALYTICS_ID)
-
-  - task: Docker@2
-    displayName: 'Master/DEV - Push Docker Image to ACR'
-    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'master'))
-    inputs:
-      containerRegistry: 'scACR-F2'
-      repository: 'f2'
-      command: 'push'
-      tags: |
-        $(Build.SourceBranchName)
-        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
-        latest
-
-  - task: Docker@2
-    displayName: 'Staging - Build Docker Image'
-    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'release-rcmp-staging'))
-    inputs:
-      containerRegistry: 'scCybercrimeStaging'
-      repository: 'f2'
-      Dockerfile: 'f2/Dockerfile'
-      command: 'build'
-      tags: |
-        $(Build.SourceBranchName)
-        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
-        latest
-      arguments: --build-arg REACT_APP_DEV_ENVIRONMENT=true --build-arg REACT_APP_VERSION=$(Build.SourceVersion) --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_NON_PROD_ANALYTICS_ID)
-
-  - task: Docker@2
-    displayName: 'Staging - Push Docker Image to ACR'
-    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'release-rcmp-staging'))
-    inputs:
-      containerRegistry: 'scCybercrimeStaging'
-      repository: 'f2'
-      command: 'push'
-      tags: |
-        $(Build.SourceBranchName)
-        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
-        latest
-
-  - task: Docker@2
-    displayName: 'PROD - Build Docker Image'
-    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'release-rcmp-prod'))
-    inputs:
-      containerRegistry: 'scCybercrimeProd'
-      repository: 'f2'
-      Dockerfile: 'f2/Dockerfile'
-      command: 'build'
-      tags: |
-        $(Build.SourceBranchName)
-        $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
-        latest
-      arguments: --build-arg REACT_APP_DEV_ENVIRONMENT=$(_IS_A_DEV_ENVIRONMENT) --build-arg REACT_APP_VERSION=$(Build.SourceVersion) --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_REACT_APP_GOOGLE_ANALYTICS_ID)
-
-  - task: Docker@2
-    displayName: 'PROD - Push Docker Image to ACR'
-    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'release-rcmp-prod'))
-    inputs:
-      containerRegistry: 'scCybercrimeProd'
-      repository: 'f2'
-      command: 'push'
       tags: |
         $(Build.SourceBranchName)
         $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
