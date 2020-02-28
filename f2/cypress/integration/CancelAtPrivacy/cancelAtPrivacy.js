@@ -21,7 +21,7 @@ When('I confirm the cancellation', () => {
 });
 
 When('I give the reason to cancel', () => {
-    cy.contains('Tell us why you cancelled').first().click({force: true});
+    cy.contains('Tell us more').first().click({force: true});
 });
 
 When('I give the feedback', () => {
