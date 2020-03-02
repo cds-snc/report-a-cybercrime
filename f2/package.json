@@ -57,7 +57,9 @@
     "extract": "lingui extract --clean",
     "compile": "lingui compile",
     "check-translations": "node utils/checkTranslations.js",
-    "upgrade-interactive": "npm-check --update"
+    "upgrade-interactive": "npm-check --update",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "husky": {
     "hooks": {
@@ -85,6 +87,11 @@
     "@lingui/cli": "^3.0.0-7",
     "@lingui/loader": "^3.0.0-7",
     "@lingui/macro": "^3.0.0-7",
+    "@storybook/addon-actions": "^5.3.14",
+    "@storybook/addon-links": "^5.3.14",
+    "@storybook/addons": "^5.3.14",
+    "@storybook/preset-create-react-app": "^1.5.2",
+    "@storybook/react": "^5.3.14",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.0",
     "babel-core": "^7.0.0-bridge.0",
