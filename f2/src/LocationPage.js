@@ -20,7 +20,7 @@ export const LocationPage = () => {
         <Page>
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
-              <BackButton route="/evidence">
+              <BackButton onClick={() => history.goBack()}>
                 <Trans id="locationPage.backButton" />
               </BackButton>
               <H1>

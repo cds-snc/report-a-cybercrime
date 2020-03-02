@@ -21,7 +21,7 @@ export const WhatWasAffectedPage = () => {
         <Page>
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
-              <BackButton route="/howdiditstart">
+              <BackButton onClick={() => history.goBack()}>
                 <Trans id="whatWasAffectedPage.backButton" />
               </BackButton>
 
