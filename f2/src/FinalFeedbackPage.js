@@ -7,7 +7,6 @@ import { H1 } from './components/header'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
 import { FinalFeedbackForm } from './forms/FinalFeedbackForm'
-import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 
@@ -42,9 +41,6 @@ export const FinalFeedbackPage = () => {
         <Layout>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
-            <BackButton route="/thankyoupage">
-              <Trans id="finalFeedback.backButton" />
-            </BackButton>
             <H1>
               <Trans id="finalFeedback.title" />
             </H1>
@@ -52,7 +48,9 @@ export const FinalFeedbackPage = () => {
               onSubmit={data => {
                 submitToServer(data)
                 setState((state.doneFinalFeedback = true))
-                history.push('/thankYouPage')
+                if (state.formData && state.formData.submitted)
+                  history.push('/thankYouPage')
+                else history.push('/finalfeedbackthanks')
               }}
             />
           </Stack>

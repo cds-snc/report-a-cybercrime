@@ -52,7 +52,9 @@ const prepFormData = (formData, language) => {
       demandedMoney: '',
       moneyTaken: '',
       methodPayment: [],
-      transactionDate: '',
+      transactionDay: '',
+      transactionMonth: '',
+      transactionYear: '',
       tellUsMore: '',
     }
   }
@@ -106,7 +108,7 @@ const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
   const response = await postData('/submit', data)
   const reportId = await response.text()
-  dispatch({ type: 'saveFormData', data: { reportId } })
+  dispatch({ type: 'saveFormData', data: { reportId, submitted: true } })
 }
 
 export const ConfirmationPage = () => {
