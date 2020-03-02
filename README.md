@@ -23,16 +23,16 @@ A number of environment variables are used to configure different parts of the b
 
 ### Data storage
 
-As our app is currently running in Microsoft Azure, we are using storing the reports in Azure CosmosDB (using a mongodb api) and any uploaded files in Azure Blob Storage. Set the following environment variables:
+As our app is currently running in Microsoft Azure, we are using storing the reports in Azure CosmosDB (using a mongodb api) and uploaded files in Azure Blob Storage. Set the following environment variables:
 
 ```sh
 # database for reports
-COSMOSDB_KEY=
 COSMOSDB_NAME=
+COSMOSDB_KEY=
 
 # Blob Storage for files
-BLOB_STORAGE_KEY=
 BLOB_STORAGE_NAME=
+BLOB_STORAGE_KEY=
 ```
 
 ### Self harm words
@@ -56,7 +56,7 @@ CONTENT_MODERATOR_SERVICE_KEY=
 
 ### Encrypting the reports for the RCMP analysts
 
-Currently the reports are sent to the RCMP via encrypted email. We use the HERMIS IDs of the RCMP staff to fetch their public key certificates
+Currently the reports are sent to the RCMP via encrypted email. We use the HERMIS IDs of the RCMP staff to fetch their public key certificates.
 
 ```sh
 # encrypting email to intake analyst
@@ -108,8 +108,6 @@ Finally, we are currently soft launching the app and so are rate limiting how ma
 SUBMISSIONS_PER_DAY=
 SECONDS_BETWEEN_REQUESTS=
 ```
-
-### Set up the environment
 
 ## Running locally
 
