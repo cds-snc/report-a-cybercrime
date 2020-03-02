@@ -5,6 +5,7 @@ import { H1, H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
+import { useLocation } from 'react-router-dom'
 import { Stack, Box, AlertIcon, Alert } from '@chakra-ui/core'
 import { containsData } from '../utils/containsData'
 import { Button } from '../components/button'
@@ -18,6 +19,7 @@ import { Row } from '../components/layout'
 export const MidFeedbackForm = props => {
   const [status, setStatus] = useState('')
   const [isOpen, setIsOpen] = useState(false)
+  const location = useLocation()
 
   const validate = () => {
     return {}
@@ -90,11 +92,17 @@ export const MidFeedbackForm = props => {
               </H1>
               <Form
                 initialValues={{
+                  page: location.pathname,
                   midFeedback: [],
                   problemDescription: '',
                 }}
                 onSubmit={values => {
-                  if (!containsData(values)) {
+                  if (
+                    !containsData([
+                      values.midFeedback,
+                      values.problemDescription,
+                    ])
+                  ) {
                     showWarning = true
                   } else {
                     setStatus('feedback.submitted')
