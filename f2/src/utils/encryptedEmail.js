@@ -17,6 +17,7 @@ const mailFrom = process.env.MAIL_FROM
 const certFileName = uid => `${uid}.cer`
 
 const getCert = uid => {
+  console.log(`fetching uid for ${uid}`)
   var opts = {
     filter: '(uid=' + uid + ')',
     scope: 'sub',
@@ -55,8 +56,37 @@ const getCert = uid => {
   })
 }
 
+const prepareUnencryptedReportEmail = (message, data, callback) => {
+  let transporter = nodemailer.createTransport({
+    streamTransport: true,
+    newline: 'unix',
+    buffer: true,
+  })
+
+  let attachments = data.evidence.files.map(file => ({
+    filename: file.name,
+    path: file.path,
+  }))
+
+  transporter.sendMail(
+    {
+      from: mailFrom,
+      to: data.contactInfo.email,
+      subject: `NCFRS report ${data.reportId}`,
+      text: message,
+      attachments,
+    },
+    (err, info) => {
+      if (err) console.warn(`ERROR in prepareUnencryptedReportEmail: ${err}`)
+      else {
+        callback(info.message.toString())
+      }
+    },
+  )
+}
+
 const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
-  const openssl = 'openssl smime -des3 -text -encrypt'
+  const openssl = 'openssl smime -des3 -encrypt'
   const messageFileName = `message_${nanoid()}.txt`
   fs.writeFile(messageFileName, message, function(err) {
     if (err) throw err
@@ -162,12 +192,11 @@ const getAllCerts = uidList => {
 
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList && emailList) {
-    uidList.forEach((uid, index) =>
-      encryptMessage(uid, emailList[index], message, data, sendMail),
-    )
-    uidList.forEach((uid, index) =>
-      encryptFile(uid, emailList[index], data, sendMail),
-    )
+    uidList.forEach((uid, index) => {
+      prepareUnencryptedReportEmail(message, data, m =>
+        encryptMessage(uid, emailList[index], m, data, sendMail),
+      )
+    })
   } else console.warn('Encrypted Mail: No certs to encrypt with!')
 }
 
