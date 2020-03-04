@@ -13,6 +13,7 @@ const mailUser = process.env.MAIL_USER
 const mailPass = process.env.MAIL_PASS
 const ldapUrl = process.env.LDAP_URL
 const mailFrom = process.env.MAIL_FROM
+const isProductionSystem = process.env.NODE_ENV === 'production'
 
 const certFileName = uid => `${uid}.cer`
 
@@ -63,10 +64,12 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
     buffer: true,
   })
 
-  let attachments = data.evidence.files.map(file => ({
-    filename: file.name,
-    path: file.path,
-  }))
+  let attachments = data.evidence.files
+    .filter(file => !isProductionSystem || file.malwareIsClean)
+    .map(file => ({
+      filename: file.name,
+      path: file.path,
+    }))
 
   transporter.sendMail(
     {
@@ -87,20 +90,33 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
 
 const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
   const openssl = 'openssl smime -des3 -encrypt'
-  const messageFileName = `message_${nanoid()}.txt`
-  fs.writeFile(messageFileName, message, function(err) {
+  const messageFile = `message_${nanoid()}.txt`
+  const encryptedFile = messageFile + '.encrypted'
+
+  const subjectSuffix = data.evidence.files.some(
+    file => file.isImageRacyClassified || file.isImageAdultClassified,
+  )
+    ? ': WARNING: potential offensive image'
+    : ''
+
+  fs.writeFile(messageFile, message, function(err) {
     if (err) throw err
     exec(
-      `${openssl} -in ${messageFileName} ${certFileName(uid)}`,
+      `${openssl} -in ${messageFile} -out ${encryptedFile} ${certFileName(
+        uid,
+      )}`,
       { cwd: process.cwd() },
-      function(error, stdout, stderr) {
+      function(error, _stdout, stderr) {
         if (error) throw error
         else if (stderr) console.log(stderr)
         else {
-          const attachment = stdout
           console.log('Encrypted Mail: Message encrypted')
-          fs.unlink(messageFileName, () => {})
-          sendMail(emailAddress, attachment, data.reportId, 'Report')
+          const attachment = isProductionSystem
+            ? fs.readFileSync(encryptedFile)
+            : fs.readFileSync(messageFile)
+          fs.unlink(messageFile, () => {})
+          fs.unlink(encryptedFile, () => {})
+          sendMail(emailAddress, attachment, data.reportId, subjectSuffix)
         }
       },
     )
@@ -153,7 +169,7 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
   }
 }
 
-async function sendMail(emailAddress, attachment, reportId, emailType) {
+async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
   let transporter = nodemailer.createTransport({
     host: mailHost,
     port: 465,
@@ -167,7 +183,7 @@ async function sendMail(emailAddress, attachment, reportId, emailType) {
   const message = {
     from: mailFrom,
     to: emailAddress,
-    subject: `NCFRS - ref ${reportId} : ${emailType}`,
+    subject: `NCFRS report ${reportId}${emailSuffix}`,
     text: 'Plaintext version of the message',
     html: 'HTML version of the message',
     attachments: [
@@ -193,8 +209,12 @@ const getAllCerts = uidList => {
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList && emailList) {
     uidList.forEach((uid, index) => {
+      const emailAddress =
+        !isProductionSystem && data.contactInfo.email
+          ? data.contactInfo.email
+          : emailList[index]
       prepareUnencryptedReportEmail(message, data, m =>
-        encryptMessage(uid, emailList[index], m, data, sendMail),
+        encryptMessage(uid, emailAddress, m, data, sendMail),
       )
     })
   } else console.warn('Encrypted Mail: No certs to encrypt with!')

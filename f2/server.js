@@ -11,7 +11,6 @@ const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
   notifyIsSetup,
   sendConfirmation,
-  sendUnencryptedReport,
   submitFeedback,
 } = require('./src/utils/notify')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
@@ -22,6 +21,8 @@ var limiter = new RateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
   max: 100,
 })
+
+console.log(process.env.NODE_ENV)
 
 require('dotenv').config()
 
@@ -62,8 +63,6 @@ async function save(data, res) {
 
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
-    if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
-      sendUnencryptedReport(data.contactInfo.email, analystEmail)
   }
   saveRecord(data, res)
 }
