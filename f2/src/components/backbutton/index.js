@@ -4,12 +4,24 @@ import { Icon } from '@chakra-ui/core'
 import { LinkButton } from '../link'
 import PropTypes from 'prop-types'
 import { Flex } from '@chakra-ui/core'
+import { Route } from 'react-router-dom'
+import { Trans } from '@lingui/macro'
 
 export const BackButton = ({ variant, variants, variantColor, ...props }) => (
-  <LinkButton textAlign="left" d="flex" alignItems="center" {...props}>
-    <Icon name="chevron-left" />
-    <Flex align="center">{props.children}</Flex>
-  </LinkButton>
+  <Route
+    render={({ history }) => (
+      <LinkButton
+        textAlign="left"
+        d="flex"
+        alignItems="center"
+        onClick={() => history.goBack()}
+        {...props}
+      >
+        <Icon name="chevron-left" />
+        <Trans id="backButton.text" />
+      </LinkButton>
+    )}
+  />
 )
 
 BackButton.propTypes = {
