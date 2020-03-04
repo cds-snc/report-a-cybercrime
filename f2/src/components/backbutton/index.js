@@ -3,7 +3,6 @@ import { jsx } from '@emotion/core'
 import { Icon } from '@chakra-ui/core'
 import { LinkButton } from '../link'
 import PropTypes from 'prop-types'
-import { Flex } from '@chakra-ui/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 
