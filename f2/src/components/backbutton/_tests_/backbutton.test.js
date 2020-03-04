@@ -19,7 +19,7 @@ describe('<Button />', () => {
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
-            <BackButton></BackButton>
+            <BackButton />
           </I18nProvider>
         </ThemeProvider>
       </MemoryRouter>,
