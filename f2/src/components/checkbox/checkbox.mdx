@@ -1,0 +1,56 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+import FormDecorator from '../../../.storybook/formDecorator'
+import { withKnobs, boolean, text } from '@storybook/addon-knobs'
+import { CheckboxAdapter } from '.'
+import { Text } from '../text'
+import { Field } from '../Field'
+
+<Meta
+  title="Checkbox"
+  component={CheckboxAdapter}
+  decorators={[ThemeDecorator, FormDecorator, withKnobs]}
+/>
+
+const checked = boolean('checked', true)
+const label = text('Label', 'You agree to the terms')
+
+export const checkbox = () => (
+  <CheckboxAdapter name="checkbox" isChecked={checked}>
+    {label}
+  </CheckboxAdapter>
+)
+
+const conditionalText = text('Conditional Value', 'Yes you do!')
+
+export const withConditionalText = () => (
+  <CheckboxAdapter
+    name="withConditional"
+    isChecked={false}
+    conditionalField={conditionalText}
+  >
+    {label}
+  </CheckboxAdapter>
+)
+
+export const withConditionalField = () => (
+  <CheckboxAdapter
+    name="withConditional"
+    isChecked={false}
+    conditionalField={<Field name="condition" label="Are you sure?" />}
+  >
+    {label}
+  </CheckboxAdapter>
+)
+
+export const withDetails = () => (
+  <CheckboxAdapter name="withConditional" isChecked={false}>
+    {text('Label', 'Devices and accounts')}
+    <Text as="span" d="block" fontSize="sm">
+      {text(
+        'Details',
+        'For example: iPhone 7, social media accounts, wireless network',
+      )}
+    </Text>
+  </CheckboxAdapter>
+)

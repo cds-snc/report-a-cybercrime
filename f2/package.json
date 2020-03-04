@@ -88,6 +88,7 @@
     "@lingui/loader": "^3.0.0-7",
     "@lingui/macro": "^3.0.0-7",
     "@storybook/addon-actions": "^5.3.14",
+    "@storybook/addon-docs": "^5.3.14",
     "@storybook/addon-info": "^5.3.14",
     "@storybook/addon-knobs": "^5.3.14",
     "@storybook/addon-links": "^5.3.14",
@@ -105,6 +106,7 @@
     "npm-check": "^5.9.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
+    "react-is": "^16.13.0",
     "recompose": "^0.30.0",
     "storybook-addon-jsx": "^7.1.14",
     "waait": "^1.0.5"

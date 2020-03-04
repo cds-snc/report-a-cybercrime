@@ -1,16 +1,14 @@
 import React from 'react'
-import { Button } from '.'
 import ThemeDecorator from '../../../.storybook/themeDecorator'
 import { jsxDecorator } from 'storybook-addon-jsx'
 import { withKnobs, text, select } from '@storybook/addon-knobs'
+
+import { Button } from '.'
 import { NextAndCancelButtons } from '../next-and-cancel-buttons'
 
 export default {
   title: 'Button',
   decorators: [jsxDecorator, ThemeDecorator, withKnobs],
-  parameters: {
-    info: { inline: true },
-  },
 }
 
 const variantColors = {
@@ -37,7 +35,7 @@ const icon = {
   None: null,
 }
 
-export const normal = () => (
+export const textButton = () => (
   <Button
     variantColor={select('Variant Color', variantColors, 'green')}
     variant={select('Variant', variants, 'solid')}
