@@ -94,6 +94,14 @@ export const PrivacyStatementPage = () => {
           </Stack>
           <Stack spacing={4}>
             <H2>
+              <Trans id="privacyStatementPage.authorizationHeading" />
+            </H2>
+            <P>
+              <Trans id="privacyStatementPage.authorizationText1" />
+            </P>
+          </Stack>
+          <Stack spacing={4}>
+            <H2>
               <Trans id="privacyStatementPage.toinquireHeading" />
             </H2>
             <P>
