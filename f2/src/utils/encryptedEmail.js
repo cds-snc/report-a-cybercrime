@@ -88,16 +88,18 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
   )
 }
 
-const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
-  const openssl = 'openssl smime -des3 -encrypt'
-  const messageFile = `message_${nanoid()}.txt`
-  const encryptedFile = messageFile + '.encrypted'
-
-  const subjectSuffix = data.evidence.files.some(
+const getEmailWarning = data =>
+  data.evidence.files.some(
     file => file.isImageRacyClassified || file.isImageAdultClassified,
   )
     ? ': WARNING: potential offensive image'
     : ''
+
+const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
+  const openssl = 'openssl smime -des3 -encrypt'
+  const messageFile = `message_${nanoid()}.txt`
+  const encryptedFile = messageFile + '.encrypted'
+  const subjectSuffix = getEmailWarning(data)
 
   fs.writeFile(messageFile, message, function(err) {
     if (err) throw err
@@ -111,9 +113,7 @@ const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
         else if (stderr) console.log(stderr)
         else {
           console.log('Encrypted Mail: Message encrypted')
-          const attachment = isProductionSystem
-            ? fs.readFileSync(encryptedFile)
-            : fs.readFileSync(messageFile)
+          const attachment = fs.readFileSync(encryptedFile)
           fs.unlink(messageFile, () => {})
           fs.unlink(encryptedFile, () => {})
           sendMail(emailAddress, attachment, data.reportId, subjectSuffix)
@@ -124,6 +124,8 @@ const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
 }
 
 async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
+  if (!emailAddress) return
+
   let transporter = nodemailer.createTransport({
     host: mailHost,
     port: 465,
@@ -163,18 +165,15 @@ const getAllCerts = uidList => {
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList.length > 0 && emailList.length > 0) {
     uidList.forEach((uid, index) => {
-      const emailAddress =
-        !isProductionSystem && data.contactInfo.email
-          ? data.contactInfo.email
-          : emailList[index]
       prepareUnencryptedReportEmail(message, data, m =>
-        encryptMessage(uid, emailAddress, m, data, sendMail),
+        encryptMessage(uid, emailList[index], m, data, sendMail),
       )
     })
   } else {
     console.warn('Encrypted Mail: No certs to encrypt with!')
+    const subjectSuffix = getEmailWarning(data)
     prepareUnencryptedReportEmail(message, data, m =>
-      encryptMessage(undefined, undefined, m, data, sendMail),
+      sendMail(data.contactInfo.email, m, data.reportId, subjectSuffix),
     )
   }
 }
