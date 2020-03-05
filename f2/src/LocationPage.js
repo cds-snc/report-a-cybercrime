@@ -20,9 +20,7 @@ export const LocationPage = () => {
         <Page>
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
-              <BackButton route="/evidence">
-                <Trans id="locationPage.backButton" />
-              </BackButton>
+              <BackButton />
               <H1>
                 <Trans id="locationPage.title" />
               </H1>
