@@ -15,4 +15,4 @@ const route = text('Route', '/')
 const label = text('Label', 'Back to the future')
 
 //Stories
-export const backButton = () => <BackButton to={route}>{label}</BackButton>
+export const backButton = () => <BackButton />
