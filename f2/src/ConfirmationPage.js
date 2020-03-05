@@ -52,7 +52,9 @@ const prepFormData = (formData, language) => {
       demandedMoney: '',
       moneyTaken: '',
       methodPayment: [],
-      transactionDate: '',
+      transactionDay: '',
+      transactionMonth: '',
+      transactionYear: '',
       tellUsMore: '',
     }
   }
@@ -106,7 +108,7 @@ const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
   const response = await postData('/submit', data)
   const reportId = await response.text()
-  dispatch({ type: 'saveFormData', data: { reportId } })
+  dispatch({ type: 'saveFormData', data: { reportId, submitted: true } })
 }
 
 export const ConfirmationPage = () => {
@@ -121,9 +123,7 @@ export const ConfirmationPage = () => {
         <Page>
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }} mb={10}>
             <Stack spacing={10} shouldWrapChildren>
-              <BackButton route="/contactinfo">
-                <Trans id="confirmationPage.backButton" />
-              </BackButton>
+              <BackButton />
               <H1>
                 <Trans id="confirmationPage.title" />
               </H1>

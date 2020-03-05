@@ -1,21 +1,25 @@
 /** @jsx jsx **/
 import { jsx } from '@emotion/core'
 import { Icon } from '@chakra-ui/core'
-import { Link } from '../link'
+import { LinkButton } from '../link'
 import PropTypes from 'prop-types'
-import { Link as RoutedLink } from 'react-router-dom'
+import { Route } from 'react-router-dom'
+import { Trans } from '@lingui/macro'
 
-export const BackButton = ({ route = '', children }) => (
-  <Link
-    as={RoutedLink}
-    to={route}
-    textAlign="left"
-    d="inline-flex"
-    alignItems="center"
-  >
-    <Icon name="chevron-left" />
-    {children}
-  </Link>
+export const BackButton = ({ variant, variants, variantColor, ...props }) => (
+  <Route
+    render={({ history }) => (
+      <LinkButton
+        d="flex"
+        alignItems="center"
+        onClick={() => history.goBack()}
+        {...props}
+      >
+        <Icon name="chevron-left" />
+        <Trans id="backButton.text" />
+      </LinkButton>
+    )}
+  />
 )
 
 BackButton.propTypes = {

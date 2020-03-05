@@ -35,8 +35,7 @@ export const CancelPage = () => {
 
               <ButtonLink
                 mt="auto"
-                variantColor="blue"
-                color="white"
+                variantColor="black"
                 title={i18n._('thankYouPage.feedbackButton.aria')}
                 to="/finalFeedback"
               >

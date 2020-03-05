@@ -39,7 +39,12 @@ ButtonLink.propTypes = {
 // Looks like a link, acts as a button
 export const LinkButton = props => (
   <ChakraLink
-    fontSize="lg"
+    color="blue.700"
+    textDecoration="underline"
+    fontSize={['md', null, 'lg', null]}
+    _hover={{
+      color: 'blue.hover',
+    }}
     {...props}
     role="button"
     _active={{
