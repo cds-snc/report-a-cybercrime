@@ -156,12 +156,12 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
 // ----------------------------------------------------
 
 const getAllCerts = uidList => {
-  if (uidList) uidList.forEach(uid => getCert(uid))
-  else console.warn('Encrypted Mail: No certs to fetch!')
+  if (uidList.length > 0) uidList.forEach(uid => getCert(uid))
+  else console.warn('WARNING: Encrypted Mail: No certs to fetch!')
 }
 
 const encryptAndSend = async (uidList, emailList, data, message) => {
-  if (uidList && emailList) {
+  if (uidList.length > 0 && emailList.length > 0) {
     uidList.forEach((uid, index) => {
       const emailAddress =
         !isProductionSystem && data.contactInfo.email
@@ -171,7 +171,12 @@ const encryptAndSend = async (uidList, emailList, data, message) => {
         encryptMessage(uid, emailAddress, m, data, sendMail),
       )
     })
-  } else console.warn('Encrypted Mail: No certs to encrypt with!')
+  } else {
+    console.warn('Encrypted Mail: No certs to encrypt with!')
+    prepareUnencryptedReportEmail(message, data, m =>
+      encryptMessage(undefined, undefined, m, data, sendMail),
+    )
+  }
 }
 
 module.exports = { getAllCerts, encryptAndSend }
