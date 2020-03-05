@@ -1,20 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactGA from 'react-ga'
-import Component from '@reach/component-component'
-import { Route } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const GA = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
 
 // debug dumps info the the console
 // testMode doesn't connect to Google, but allows us to perform automated testing of the tracker in our code
 ReactGA.initialize(GA, {
-  debug: true,
+  debug: false,
   testMode: process.env.NODE_ENV !== 'production',
 })
-
-console.log({ GA })
-console.log(`NODE_ENV=${process.env.NODE_ENV}`)
-
 ReactGA.set({ anonymizeIp: true })
 
 const logPageView = path => {
@@ -23,13 +18,12 @@ const logPageView = path => {
   }
 }
 
-export const TrackPageViews = () => (
-  <Route
-    render={({ location }) => (
-      <Component
-        didMount={() => logPageView(location.pathname)}
-        didUpdate={() => logPageView(location.pathname)}
-      />
-    )}
-  />
-)
+export const TrackPageViews = () => {
+  const location = useLocation()
+
+  useEffect(() => {
+    logPageView(location.pathname)
+  })
+
+  return <div />
+}

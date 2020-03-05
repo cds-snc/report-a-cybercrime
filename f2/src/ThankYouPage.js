@@ -99,6 +99,7 @@ export const ThankYouPage = () => {
                       ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
                       : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
                   }
+                  isExternal
                 >
                   <Trans id="thankYouPage.helpResource1" />
                 </A>
@@ -110,6 +111,7 @@ export const ThankYouPage = () => {
                       ? 'http://www.antifraudcentre.ca/index-eng.htm'
                       : 'http://www.antifraudcentre.ca/index-fra.htm'
                   }
+                  isExternal
                 >
                   <Trans id="thankYouPage.helpResource2" />
                 </A>
@@ -121,6 +123,7 @@ export const ThankYouPage = () => {
                       ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
                       : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
                   }
+                  isExternal
                 >
                   <Trans id="thankYouPage.helpResource3" />
                 </A>
