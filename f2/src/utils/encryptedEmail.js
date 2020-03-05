@@ -123,52 +123,6 @@ const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
   })
 }
 
-const encryptFile = (uid, emailAddress, data, sendMail) => {
-  const openssl = 'openssl smime -des3 -encrypt'
-
-  try {
-    data.evidence.files.forEach(file => {
-      if (file.malwareIsClean) {
-        const filePath = file.path
-        console.log('file is at: ' + filePath)
-        //create file name for each file in the format of .mime
-        const mimeFile = filePath + '.' + nanoid() + '.mime'
-        const encryptedFile = mimeFile + '.encrypt'
-        exec(
-          //run makemime commend and openssl commend
-          `makemime -o ${mimeFile} ${filePath} && ${openssl} -out ${encryptedFile} -in ${mimeFile} ${certFileName(
-            uid,
-          )}`,
-          { cwd: process.cwd() },
-          function(error, stdout, stderr) {
-            if (error) throw error
-            else if (stderr) console.log(stderr)
-            else {
-              const attachment = fs.readFileSync(encryptedFile)
-              console.log('Encrypted File: File encrypted')
-              if (file.isImageRacyClassified || file.isImageAdultClassified)
-                sendMail(
-                  emailAddress,
-                  attachment,
-                  data.reportId,
-                  'WARNING: potential offensive image',
-                )
-              else
-                sendMail(emailAddress, attachment, data.reportId, 'Attachment')
-            }
-          },
-        )
-      } else {
-        console.warn(
-          `WARNING: malware detected in ${file.path} (${data.reportId})`,
-        )
-      }
-    })
-  } catch (error) {
-    console.warn(`ERROR in encryptedFile: ${error}`)
-  }
-}
-
 async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
   let transporter = nodemailer.createTransport({
     host: mailHost,
@@ -184,8 +138,8 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
     from: mailFrom,
     to: emailAddress,
     subject: `NCFRS report ${reportId}${emailSuffix}`,
-    text: 'Plaintext version of the message',
-    html: 'HTML version of the message',
+    text: `NCFRS report ${reportId}${emailSuffix}`,
+    html: `NCFRS report ${reportId}${emailSuffix}`,
     attachments: [
       {
         raw: attachment,
