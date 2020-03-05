@@ -8,7 +8,6 @@
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "@lingui/react": "^3.0.0-7",
-    "@reach/component-component": "^0.8.0",
     "async": "^3.1.1",
     "azure-cognitiveservices-contentmoderator": "^4.1.1",
     "babel-plugin-macros": "^2.8.0",
