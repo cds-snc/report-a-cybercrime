@@ -7,7 +7,7 @@ import { Input } from '../input'
 import { TextArea } from '../text-area'
 
 export default {
-  title: 'Field',
+  title: 'Components/Field',
   decorators: [ThemeDecorator, FormDecorator, withKnobs],
   component: Field,
 }

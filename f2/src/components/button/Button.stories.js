@@ -7,7 +7,7 @@ import { Button } from '.'
 import { NextAndCancelButtons } from '../next-and-cancel-buttons'
 
 export default {
-  title: 'Button',
+  title: 'Components/Button',
   decorators: [jsxDecorator, ThemeDecorator, withKnobs],
 }
 

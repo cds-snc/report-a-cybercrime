@@ -6,7 +6,7 @@ import { H1 } from '../header'
 import { P } from '../paragraph'
 
 export default {
-  title: 'Container',
+  title: 'Components/Container',
   decorators: [ThemeDecorator, withKnobs],
 }
 

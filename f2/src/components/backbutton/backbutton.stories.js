@@ -5,7 +5,7 @@ import { withKnobs, text } from '@storybook/addon-knobs'
 
 //Doc Page
 export default {
-  title: 'Back Button',
+  title: 'Components/Back Button',
   decorators: [ThemeDecorator, withKnobs],
   component: BackButton,
 }
