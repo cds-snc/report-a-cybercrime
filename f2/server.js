@@ -22,8 +22,6 @@ var limiter = new RateLimit({
   max: 100,
 })
 
-console.log(process.env.NODE_ENV)
-
 require('dotenv').config()
 
 const emailList = process.env.MAIL_TO

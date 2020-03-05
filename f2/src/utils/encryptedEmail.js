@@ -18,7 +18,7 @@ const isProductionSystem = process.env.NODE_ENV === 'production'
 const certFileName = uid => `${uid}.cer`
 
 const getCert = uid => {
-  console.log(`fetching uid for ${uid}`)
+  console.info(`Fetching uid for ${uid}`)
   var opts = {
     filter: '(uid=' + uid + ')',
     scope: 'sub',
