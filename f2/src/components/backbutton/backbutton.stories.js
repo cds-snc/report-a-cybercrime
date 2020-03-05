@@ -10,9 +10,5 @@ export default {
   component: BackButton,
 }
 
-//Story variables
-const route = text('Route', '/')
-const label = text('Label', 'Back to the future')
-
 //Stories
 export const backButton = () => <BackButton />
