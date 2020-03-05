@@ -116,7 +116,12 @@ export const ConfirmationPage = () => {
   const { i18n } = useLingui()
   if (formData.reportId !== '') {
     dispatch({ type: 'saveFormData', data: { reportId: '' } })
+  } else if (formData.submitted == true) {
+    dispatch({
+      type: 'deleteFormData',
+    })
   }
+
   return (
     <Route
       render={({ history }) => (
