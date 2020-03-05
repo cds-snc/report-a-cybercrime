@@ -43,19 +43,23 @@ async function saveBlob(data) {
       )
 
       for (var x = 0; x < data.evidence.files.length; x++) {
-        console.log(data.evidence.files[x])
-        const content = fs.readFileSync(data.evidence.files[x].path)
-        // Use SHA1 hash as file name to avoid collisions in blob storage
-        const blobName = data.evidence.files[x].sha1
-        const blockBlobClient = containerClient.getBlockBlobClient(blobName)
-        const uploadBlobResponse = await blockBlobClient.upload(
-          content,
-          content.length,
-        )
-        console.log(
-          `Upload block blob ${blobName} successfully`,
-          uploadBlobResponse.requestId,
-        )
+        if (data.evidence.files[x].malwareIsClean) {
+          console.log(data.evidence.files[x])
+          const content = fs.readFileSync(data.evidence.files[x].path)
+          // Use SHA1 hash as file name to avoid collisions in blob storage
+          const blobName = data.evidence.files[x].sha1
+          const blockBlobClient = containerClient.getBlockBlobClient(blobName)
+          const uploadBlobResponse = await blockBlobClient.upload(
+            content,
+            content.length,
+          )
+          console.log(
+            `Upload block blob ${blobName} successfully`,
+            uploadBlobResponse.requestId,
+          )
+        } else {
+          console.log('Skipping saving file due to malware.')
+        }
       }
     }
   } catch (error) {
