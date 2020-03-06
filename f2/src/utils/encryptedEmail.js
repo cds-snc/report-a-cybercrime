@@ -76,6 +76,7 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
       to: data.contactInfo.email,
       subject: `NCFRS report ${data.reportId}`,
       text: message,
+      html: message,
       attachments,
     },
     (err, info) => {

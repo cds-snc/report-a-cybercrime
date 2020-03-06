@@ -4,21 +4,31 @@ const { formatDate } = require('./formatDate')
 
 const formatLine = (label, text) => (text !== '' ? label + text + '\n' : '')
 
+const formatLineHtml = (label, text) =>
+  text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
+
+const formatTable = rows => `<table><tbody>\n${rows}</tbody></table>\n\n`
+
+const formatSection = (title, rows) =>
+  `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
+
 const formatReportInfo = data => {
   let selfHarmString = 'no self harm words'
   let returnString = ''
 
   if (data.selfHarmWords.length) {
     selfHarmString = data.selfHarmWords
-    returnString = `\n\nSELF HARM WORDS FOUND : ${selfHarmString}`
+    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${selfHarmString}</h1>`
   }
   returnString +=
-    '\n\nReport information\n\n' +
-    formatLine('Report number:      ', data.reportId) +
-    formatLine('Date received:      ', data.submissionTime) +
-    formatLine('Report language:    ', data.language) +
-    formatLine('Report version:     ', data.appVersion) +
-    formatLine('Flagged:            ', selfHarmString)
+    '<h2>Report Information</h2>' +
+    formatTable(
+      formatLineHtml('Report number:', data.reportId) +
+        formatLineHtml('Date received:', data.submissionTime) +
+        formatLineHtml('Report language:', data.language) +
+        formatLineHtml('Report version:', data.appVersion) +
+        formatLineHtml('Flagged:', selfHarmString),
+    )
 
   delete data.reportId // we delete the parts of the data object that we've displayed
   delete data.submissionTime // so that at the end we can display the rest and ensure that
@@ -33,21 +43,19 @@ const formatVictimDetails = data => {
     .map(option => option.replace('privacyConsentInfoForm.', ''))
     .join(', ')
 
-  const returnString =
-    formatLine('Name:             ', data.contactInfo.fullName) +
-    formatLine('Email:            ', data.contactInfo.email) +
-    formatLine('Phone number:     ', data.contactInfo.phone) +
-    formatLine('Postal code:      ', data.location.postalCode) +
-    formatLine('Consent:          ', consentString)
+  const rows =
+    formatLineHtml('Name:             ', data.contactInfo.fullName) +
+    formatLineHtml('Email:            ', data.contactInfo.email) +
+    formatLineHtml('Phone number:     ', data.contactInfo.phone) +
+    formatLineHtml('Postal code:      ', data.location.postalCode) +
+    formatLineHtml('Consent:          ', consentString)
 
   delete data.contactInfo.fullName
   delete data.contactInfo.email
   delete data.contactInfo.phone
   delete data.location.postalCode
   delete data.consent.consentOptions
-  return (
-    '\n\nVictim details\n\n' + (returnString !== '' ? returnString : 'No Data')
-  )
+  return formatSection('Victim details', rows)
 }
 
 const formatIncidentInformation = data => {
@@ -68,12 +76,15 @@ const formatIncidentInformation = data => {
     .filter(option => option !== 'other')
     .join(', ')
 
-  const returnString =
-    formatLine('Occurrence date:            ', occurenceString) +
-    formatLine('Frequency of occurrence:    ', freqString) +
-    formatLine('Method of communication:    ', methodOfCommsString) +
-    formatLine('What could be affected:     ', affectedString) +
-    formatLine('What could be affected:     ', data.whatWasAffected.optionOther)
+  const rows =
+    formatLineHtml('Occurrence date:            ', occurenceString) +
+    formatLineHtml('Frequency of occurrence:    ', freqString) +
+    formatLineHtml('Method of communication:    ', methodOfCommsString) +
+    formatLineHtml('What could be affected:     ', affectedString) +
+    formatLineHtml(
+      'What could be affected:     ',
+      data.whatWasAffected.optionOther,
+    )
 
   delete data.howdiditstart.startDay
   delete data.howdiditstart.startMonth
@@ -82,10 +93,7 @@ const formatIncidentInformation = data => {
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
   delete data.whatWasAffected.optionOther
-  return (
-    '\n\nIncident information\n\n' +
-    (returnString !== '' ? returnString : 'No Data')
-  )
+  return formatSection('Incident information', rows)
 }
 
 const formatNarrative = data => {
@@ -97,33 +105,36 @@ const formatNarrative = data => {
     .map(info => info.replace('typeOfInfoObtained.', ''))
     .join(', ')
 
-  const returnString =
-    formatLine('What happened:           ', data.whatHappened.whatHappened) +
-    formatLine('They asked for:          ', data.moneyLost.demandedMoney) +
-    formatLine('They asked for:          ', infoReqString) +
-    formatLine(
+  const rows =
+    formatLineHtml(
+      'What happened:           ',
+      data.whatHappened.whatHappened,
+    ) +
+    formatLineHtml('They asked for:          ', data.moneyLost.demandedMoney) +
+    formatLineHtml('They asked for:          ', infoReqString) +
+    formatLineHtml(
       'They asked for:          ',
       data.personalInformation.infoReqOther,
     ) +
-    formatLine('I lost:                  ', data.moneyLost.moneyTaken) +
-    formatLine('I lost:                  ', infoObtainedString) +
-    formatLine(
+    formatLineHtml('I lost:                  ', data.moneyLost.moneyTaken) +
+    formatLineHtml('I lost:                  ', infoObtainedString) +
+    formatLineHtml(
       'I lost:                  ',
       data.personalInformation.infoObtainedOther,
     ) +
-    formatLine('Affected device:        ', data.devicesInfo.device) +
-    formatLine('Affected account:       ', data.devicesInfo.account) +
-    formatLine(
+    formatLineHtml('Affected device:        ', data.devicesInfo.device) +
+    formatLineHtml('Affected account:       ', data.devicesInfo.account) +
+    formatLineHtml(
       'Affected device/account: ',
       data.devicesInfo.devicesTellUsMore,
     ) +
-    formatLine('Affected finances:       ', data.moneyLost.tellUsMore) +
-    formatLine(
+    formatLineHtml('Affected finances:       ', data.moneyLost.tellUsMore) +
+    formatLineHtml(
       'Affected personal info:  ',
       data.personalInformation.tellUsMore,
     ) +
-    formatLine('Affected business info:  ', data.businessInfo.business) +
-    formatLine('Other clues:             ', data.suspectClues.suspectClues3)
+    formatLineHtml('Affected business info:  ', data.businessInfo.business) +
+    formatLineHtml('Other clues:             ', data.suspectClues.suspectClues3)
 
   delete data.personalInformation.typeOfInfoReq
   delete data.personalInformation.typeOfInfoObtained
@@ -137,18 +148,18 @@ const formatNarrative = data => {
   delete data.devicesInfo.devicesTellUsMore
   delete data.businessInfo.business
   delete data.suspectClues.suspectClues3
-  return '\n\nNarrative\n\n' + (returnString !== '' ? returnString : 'No Data')
+  return formatSection('Narrative', rows)
 }
 
 const formatSuspectDetails = data => {
-  const returnString =
-    formatLine('Name:          ', data.suspectClues.suspectClues1) +
-    formatLine('Email:         ', data.howdiditstart.email) +
-    formatLine('Phone number:  ', data.howdiditstart.phone) +
-    formatLine('Website:       ', data.howdiditstart.online) +
-    formatLine('Application:   ', data.howdiditstart.application) +
-    formatLine('Address:       ', data.suspectClues.suspectClues2) +
-    formatLine('Other:         ', data.howdiditstart.others)
+  const rows =
+    formatLineHtml('Name:          ', data.suspectClues.suspectClues1) +
+    formatLineHtml('Email:         ', data.howdiditstart.email) +
+    formatLineHtml('Phone number:  ', data.howdiditstart.phone) +
+    formatLineHtml('Website:       ', data.howdiditstart.online) +
+    formatLineHtml('Application:   ', data.howdiditstart.application) +
+    formatLineHtml('Address:       ', data.suspectClues.suspectClues2) +
+    formatLineHtml('Other:         ', data.howdiditstart.others)
 
   delete data.suspectClues.suspectClues1
   delete data.howdiditstart.email
@@ -157,9 +168,7 @@ const formatSuspectDetails = data => {
   delete data.howdiditstart.application
   delete data.suspectClues.suspectClues2
   delete data.howdiditstart.others
-  return (
-    '\n\nSuspect details\n\n' + (returnString !== '' ? returnString : 'No Data')
-  )
+  return formatSection('Suspect details', rows)
 }
 
 const formatFinancialTransactions = data => {
@@ -171,11 +180,11 @@ const formatFinancialTransactions = data => {
     data.moneyLost.transactionMonth,
     data.moneyLost.transactionYear,
   )
-  const returnString =
-    formatLine('Money requested:     ', data.moneyLost.demandedMoney) +
-    formatLine('Money lost:          ', data.moneyLost.moneyTaken) +
-    formatLine('Method of payment:   ', paymentString) +
-    formatLine('Transaction date:    ', transactionDate)
+  const rows =
+    formatLineHtml('Money requested:     ', data.moneyLost.demandedMoney) +
+    formatLineHtml('Money lost:          ', data.moneyLost.moneyTaken) +
+    formatLineHtml('Method of payment:   ', paymentString) +
+    formatLineHtml('Transaction date:    ', transactionDate)
 
   delete data.moneyLost.methodPayment
   delete data.moneyLost.demandedMoney
@@ -183,10 +192,7 @@ const formatFinancialTransactions = data => {
   delete data.moneyLost.transactionDay
   delete data.moneyLost.transactionMonth
   delete data.moneyLost.transactionYear
-  return (
-    '\n\nFinancial transactions\n\n' +
-    (returnString !== '' ? returnString : 'No Data')
-  )
+  return formatSection('Financial transactions', rows)
 }
 
 const formatFileAttachments = data => {
@@ -197,30 +203,34 @@ const formatFileAttachments = data => {
 
       const moderatorString =
         file.adultClassificationScore === 'Could not scan'
-          ? 'Could not scan content\n'
-          : formatLine('Is adult:      ', file.isImageAdultClassified) +
-            formatLine('Adult score:   ', file.adultClassificationScore) +
-            formatLine('Is racy:       ', file.isImageRacyClassified) +
-            formatLine('Racy Score:    ', file.racyClassificationScore)
+          ? formatLineHtml('Image classification:', 'Could not scan content')
+          : formatLineHtml('Is adult:      ', file.isImageAdultClassified) +
+            formatLineHtml('Adult score:   ', file.adultClassificationScore) +
+            formatLineHtml('Is racy:       ', file.isImageRacyClassified) +
+            formatLineHtml('Racy Score:    ', file.racyClassificationScore)
 
       return (
-        (offensive ? 'WARNING: image may be offensive\n' : '') +
-        formatLine('File name:     ', file.name) +
-        formatLine('Description:   ', file.fileDescription) +
-        formatLine('Size:          ', file.size + ' bytes') +
-        formatLine('CosmosDB file: ', file.sha1) +
-        (file.malwareIsClean
-          ? 'Malware scan:  Clean\n'
-          : formatLine('Malware scan:  ', file.malwareScanDetail)) +
+        formatLineHtml(
+          '<b>WARNING:</b>',
+          offensive ? '<b>Image may be offensive</b>' : '',
+        ) +
+        formatLineHtml('File name:     ', file.name) +
+        formatLineHtml('Description:   ', file.fileDescription) +
+        formatLineHtml('Size:          ', file.size + ' bytes') +
+        formatLineHtml('CosmosDB file: ', file.sha1) +
+        formatLineHtml(
+          'Malware scan:',
+          file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
+        ) +
         moderatorString
       )
     })
-    .join('\n\n')
+    .join('<tr><td>&nbsp;</td></tr>')
 
   delete data.evidence.files
   delete data.evidence.fileDescriptions
   return (
-    '\n\nFile attachments\n\n' +
+    '<h2>File attachments</h2>\n' +
     (returnString !== '' ? returnString : 'No files attached\n')
   )
 }
@@ -254,7 +264,8 @@ const formatAnalystEmail = dataOrig => {
       if (Object.keys(data[key]).length === 0) delete data[key]
     })
     missingFields = Object.keys(data).length
-      ? '\n\nExtra Fields:\n' + JSON.stringify(data, null, '  ')
+      ? '\n<h2>Fields missing from above report</h2>\n' +
+        `<p>${JSON.stringify(data, null, '  ')}</p>\n`
       : ''
   } catch (error) {
     const errorMessage =
