@@ -43,8 +43,8 @@ const App = () => {
                 <A
                   href={
                     i18n.locale === 'en'
-                      ? 'https://www.services.rcmp-grc.gc.ca/chooser-eng.html'
-                      : 'https://www.services.rcmp-grc.gc.ca/chooser-fra.html'
+                      ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm'
+                      : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
                   }
                   isExternal
                 />
