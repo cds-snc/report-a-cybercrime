@@ -1,0 +1,110 @@
+Availability configured
+Self harm word list: agile,lean,mvp,scrum
+Fetching uid for 000146484
+Listening at port 3000
+Encrypted Mail: Found LDAP entry for 000146484
+Encrypted Mail: Certificate for 000146484 Saved!
+New Request. {"numberOfSubmissions":0,"numberOfRequests":1,"lastRequested":"2020-03-05T20:25:27.926Z"}
+New Request. {"numberOfSubmissions":0,"numberOfRequests":2,"lastRequested":"2020-03-05T20:26:58.237Z"}
+ncfrs0t82gqy32ha
+Encrypted Mail: Message encrypted
+Create container ncfrs0t82gqy32ha successfully 7582b764-a01e-0022-4c2c-f35897000000
+{
+  name: 'eicar.com.txt',
+  type: 'text/plain',
+  size: 68,
+  fileDescription: '',
+  path: '/tmp/upload_482108b4f75e61d165b1b1fb60126140.txt',
+  sha1: '3395856ce81f2b7382dee72602f798b642f14140',
+  malwareScanDetail: 'stream: Win.Test.EICAR_HDB-1 FOUND\u0000',
+  malwareIsClean: false,
+  adultClassificationScore: 'Could not scan'
+}
+Upload block blob 3395856ce81f2b7382dee72602f798b642f14140 successfully 7582b796-a01e-0022-672c-f35897000000
+{
+  name: 'evidence (1).jpg',
+  type: 'image/jpeg',
+  size: 72972,
+  fileDescription: '',
+  path: '/tmp/upload_4bf380f714b1668332bdb6dbf30fa353.jpg',
+  sha1: 'b61b601eeadbaa15ecfd4f34ed47c82ee95c6dc8',
+  malwareScanDetail: 'stream: OK\u0000',
+  malwareIsClean: true,
+  isImageRacyClassified: false,
+  isImageAdultClassified: false,
+  adultClassificationScore: 0.029178058728575706,
+  racyClassificationScore: 0.04097716510295868
+}
+Report NCFRS-0t82gqy32ha saved to CosmosDB
+Upload block blob b61b601eeadbaa15ecfd4f34ed47c82ee95c6dc8 successfully 7582b7c4-a01e-0022-032c-f35897000000
+{
+  name: 'borat.jpg',
+  type: 'image/jpeg',
+  size: 34587,
+  fileDescription: '',
+  path: '/tmp/upload_241e1e3df65859d13805c14e76f0cd6d.jpg',
+  sha1: '83ef6584ed252001b581d5d906cd2155d93fb9e7',
+  malwareScanDetail: 'stream: OK\u0000',
+  malwareIsClean: true,
+  isImageRacyClassified: true,
+  isImageAdultClassified: false,
+  adultClassificationScore: 0.06528254598379135,
+  racyClassificationScore: 0.49934738874435425
+}
+Upload block blob 83ef6584ed252001b581d5d906cd2155d93fb9e7 successfully 7582b803-a01e-0022-2f2c-f35897000000
+Encrypted Mail: Message sent to Norman.Gosset@rcmp-grc.gc.ca: <e85e28b1-1a19-9a9c-525d-2c6029e30c67@r4jb6af.m.notification.alpha.canada.ca>
+Availability configured
+Self harm word list: agile,lean,mvp,scrum
+Fetching uid for 000146484
+Listening at port 3000
+Encrypted Mail: Found LDAP entry for 000146484
+Encrypted Mail: Certificate for 000146484 Saved!
+New Request. {"numberOfSubmissions":0,"numberOfRequests":1,"lastRequested":"2020-03-05T20:25:27.926Z"}
+New Request. {"numberOfSubmissions":0,"numberOfRequests":2,"lastRequested":"2020-03-05T20:26:58.237Z"}
+ncfrs0t82gqy32ha
+Encrypted Mail: Message encrypted
+Create container ncfrs0t82gqy32ha successfully 7582b764-a01e-0022-4c2c-f35897000000
+{
+  name: 'eicar.com.txt',
+  type: 'text/plain',
+  size: 68,
+  fileDescription: '',
+  path: '/tmp/upload_482108b4f75e61d165b1b1fb60126140.txt',
+  sha1: '3395856ce81f2b7382dee72602f798b642f14140',
+  malwareScanDetail: 'stream: Win.Test.EICAR_HDB-1 FOUND\u0000',
+  malwareIsClean: false,
+  adultClassificationScore: 'Could not scan'
+}
+Upload block blob 3395856ce81f2b7382dee72602f798b642f14140 successfully 7582b796-a01e-0022-672c-f35897000000
+{
+  name: 'evidence (1).jpg',
+  type: 'image/jpeg',
+  size: 72972,
+  fileDescription: '',
+  path: '/tmp/upload_4bf380f714b1668332bdb6dbf30fa353.jpg',
+  sha1: 'b61b601eeadbaa15ecfd4f34ed47c82ee95c6dc8',
+  malwareScanDetail: 'stream: OK\u0000',
+  malwareIsClean: true,
+  isImageRacyClassified: false,
+  isImageAdultClassified: false,
+  adultClassificationScore: 0.029178058728575706,
+  racyClassificationScore: 0.04097716510295868
+}
+Report NCFRS-0t82gqy32ha saved to CosmosDB
+Upload block blob b61b601eeadbaa15ecfd4f34ed47c82ee95c6dc8 successfully 7582b7c4-a01e-0022-032c-f35897000000
+{
+  name: 'borat.jpg',
+  type: 'image/jpeg',
+  size: 34587,
+  fileDescription: '',
+  path: '/tmp/upload_241e1e3df65859d13805c14e76f0cd6d.jpg',
+  sha1: '83ef6584ed252001b581d5d906cd2155d93fb9e7',
+  malwareScanDetail: 'stream: OK\u0000',
+  malwareIsClean: true,
+  isImageRacyClassified: true,
+  isImageAdultClassified: false,
+  adultClassificationScore: 0.06528254598379135,
+  racyClassificationScore: 0.49934738874435425
+}
+Upload block blob 83ef6584ed252001b581d5d906cd2155d93fb9e7 successfully 7582b803-a01e-0022-2f2c-f35897000000
+Encrypted Mail: Message sent to Norman.Gosset@rcmp-grc.gc.ca: <e85e28b1-1a19-9a9c-525d-2c6029e30c67@r4jb6af.m.notification.alpha.canada.ca>
