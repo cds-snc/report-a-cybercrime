@@ -2,8 +2,6 @@
 
 const { formatDate } = require('./formatDate')
 
-const formatLine = (label, text) => (text !== '' ? label + text + '\n' : '')
-
 const formatLineHtml = (label, text) =>
   text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
 
