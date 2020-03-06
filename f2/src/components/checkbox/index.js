@@ -7,6 +7,7 @@ import { UniqueID } from '../unique-id'
 import { VisuallyHidden, ControlBox, Icon, Flex } from '@chakra-ui/core'
 import { useField } from 'react-final-form'
 import { ConditionalForm } from '../container'
+import canada from '../../theme/canada'
 
 export const CheckboxAdapter = ({
   name,
@@ -52,28 +53,7 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
                 {...input}
               />
 
-              <ControlBox
-                borderWidth="2px"
-                borderColor="black"
-                size={10}
-                _hover={{
-                  boxShadow: 'outlineHover',
-                  borderColor: 'black',
-                }}
-                _checked={{
-                  borderColor: 'black',
-                  border: '3px',
-                }}
-                _checkedAndHover={{
-                  boxShadow: 'outlineHover',
-                }}
-                _focus={{
-                  outline: 'none',
-                  bg: 'white',
-                  boxShadow: 'outline',
-                  borderColor: 'black',
-                }}
-              >
+              <ControlBox {...canada.variants.inputs.checkboxes}>
                 <Icon name="check" size="24px" />
               </ControlBox>
 

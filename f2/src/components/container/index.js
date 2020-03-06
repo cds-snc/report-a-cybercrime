@@ -10,7 +10,7 @@ export const Container = props => <Box className="container" {...props} />
 
 export const InfoCard = props => (
   <Column columns={props.columns}>
-    <Box rounded="none" borderBottom="2px" p={4} py={8} {...props}>
+    <Box rounded="4px" border="1px" p={4} py={8} {...props}>
       {props.children}
     </Box>
   </Column>
@@ -19,10 +19,11 @@ export const InfoCard = props => (
 export const LandingBox = props => (
   <Column columns={props.columns}>
     <Stack
+      rounded="4px"
       d="block"
       height="100%"
       bg="gray.300"
-      borderBottom="2px"
+      border="1px"
       borderColor="gray.400"
       color="black"
       p={4}
