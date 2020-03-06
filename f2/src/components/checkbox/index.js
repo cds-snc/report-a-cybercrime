@@ -28,7 +28,7 @@ export const CheckboxAdapter = ({
   return (
     <Checkbox
       input={input}
-      isChecked={checked}
+      isChecked={checked || defaultIsChecked}
       isInvalid={error && touched}
       conditionalField={props.conditionalField}
     >
@@ -73,6 +73,13 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
 }
 
 Checkbox.propTypes = {
+  conditionalField: PropTypes.any,
+  children: PropTypes.any,
+}
+CheckboxAdapter.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string,
+  defaultIsChecked: PropTypes.bool,
   conditionalField: PropTypes.any,
   children: PropTypes.any,
 }

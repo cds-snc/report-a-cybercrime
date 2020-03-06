@@ -7,6 +7,7 @@ export const Button = ({ variant, variants, variantColor, ...props }) => (
   <ChakraButton
     {...canada.variants.buttons.default}
     variantColor={variantColor}
+    variant={variant}
     _hover={{
       boxShadow: 'outlineHover',
     }}

@@ -1,0 +1,32 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+import { Text } from './index'
+import { Stack } from '@chakra-ui/core'
+
+<Meta title="Components/Text" component={Text} decorators={[ThemeDecorator]} />
+
+# Text
+
+The text component can be used to wrap text when no wrapper is available
+
+<Preview>
+  <Story name="Text">
+    <Text>Hello there</Text>
+  </Story>
+</Preview>
+
+You have access to any [Chakra UI Text](https://chakra-ui.com/text) properties like `fontSize`
+
+<Preview>
+  <Story name="Font Size">
+    <Stack spacing="4">
+      <Text fontSize="sm">Hello there</Text>
+      <Text fontSize="2xl">Hello there</Text>
+      <Text fontSize="4xl">Hello there</Text>
+    </Stack>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Text} />
