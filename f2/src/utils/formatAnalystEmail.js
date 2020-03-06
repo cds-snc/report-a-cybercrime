@@ -10,10 +10,10 @@ const formatReportInfo = data => {
 
   if (data.selfHarmWords.length) {
     selfHarmString = data.selfHarmWords
-    returnString = `\n\nSELF HARM WORDS FOUND : ${selfHarmString}\n\n`
+    returnString = `\n\nSELF HARM WORDS FOUND : ${selfHarmString}`
   }
   returnString +=
-    'Report information\n\n' +
+    '\n\nReport information\n\n' +
     formatLine('Report number:      ', data.reportId) +
     formatLine('Date received:      ', data.submissionTime) +
     formatLine('Report language:    ', data.language) +
@@ -203,10 +203,8 @@ const formatFileAttachments = data => {
             formatLine('Is racy:       ', file.isImageRacyClassified) +
             formatLine('Racy Score:    ', file.racyClassificationScore)
 
-      const attachmentName = file.path.split('/').pop()
       return (
         (offensive ? 'WARNING: image may be offensive\n' : '') +
-        formatLine('Attachment:    ', attachmentName) +
         formatLine('File name:     ', file.name) +
         formatLine('Description:   ', file.fileDescription) +
         formatLine('Size:          ', file.size + ' bytes') +

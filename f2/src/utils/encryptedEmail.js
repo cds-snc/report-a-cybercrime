@@ -13,7 +13,6 @@ const mailUser = process.env.MAIL_USER
 const mailPass = process.env.MAIL_PASS
 const ldapUrl = process.env.LDAP_URL
 const mailFrom = process.env.MAIL_FROM
-const isProductionSystem = process.env.NODE_ENV === 'production'
 
 const certFileName = uid => `${uid}.cer`
 
@@ -65,7 +64,7 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
   })
 
   let attachments = data.evidence.files
-    .filter(file => !isProductionSystem || file.malwareIsClean)
+    .filter(file => file.malwareIsClean)
     .map(file => ({
       filename: file.name,
       path: file.path,
