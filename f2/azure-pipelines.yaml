@@ -43,7 +43,7 @@ steps:
         $(Build.SourceBranchName)
         $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
         latest
-      arguments: --build-arg REACT_APP_DEV_ENVIRONMENT=true --build-arg REACT_APP_VERSION=$(Build.SourceVersion) --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_NON_PROD_ANALYTICS_ID)
+      arguments: --build-arg REACT_APP_DEV_ENVIRONMENT=yes --build-arg REACT_APP_VERSION=$(Build.SourceVersion) --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_NON_PROD_ANALYTICS_ID)
 
   - task: Docker@2
     displayName: 'Master/DEV - Push Docker Image to ACR'
@@ -69,7 +69,7 @@ steps:
         $(Build.SourceBranchName)
         $(Build.SourceBranchName)$(_DASH)$(Build.SourceVersion)
         latest
-      arguments: --build-arg REACT_APP_DEV_ENVIRONMENT=true --build-arg REACT_APP_VERSION=$(Build.SourceVersion) --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_NON_PROD_ANALYTICS_ID)
+      arguments: --build-arg REACT_APP_DEV_ENVIRONMENT=yes --build-arg REACT_APP_VERSION=$(Build.SourceVersion) --build-arg REACT_APP_GOOGLE_ANALYTICS_ID=$(_NON_PROD_ANALYTICS_ID)
 
   - task: Docker@2
     displayName: 'Staging - Push Docker Image to ACR'

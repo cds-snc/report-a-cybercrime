@@ -65,7 +65,7 @@ export const ThankYouPage = () => {
             color="black"
             borderColor="green.400"
             spacing={6}
-            columns={{ base: 4 / 4, md: 6 / 8 }}
+            columns={{ base: 4 / 4, lg: 6 / 7 }}
           >
             <H1 mb={6}>
               <Trans id="thankYouPage.title" />
@@ -75,7 +75,7 @@ export const ThankYouPage = () => {
           </InfoCard>
         </Row>
       </Layout>
-      <Box bg="gray.200" py={10}>
+      <Box bg="gray.100" py={10}>
         <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }} pt={10}>
           <Stack spacing={4} shouldWrapChildren>
             <H2>
@@ -134,7 +134,7 @@ export const ThankYouPage = () => {
       </Box>
 
       {/* After help section*/}
-      <Layout pt={10} columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
+      <Layout pt={10} columns={{ base: 4 / 4, lg: 7 / 12 }}>
         <Stack spacing={6}>
           <Alert status="success">
             <AlertIcon mt={0} />
@@ -159,7 +159,7 @@ export const ThankYouPage = () => {
           </Box>
 
           <Row>
-            <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 8 }}>
+            <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
               {state.doneFinalFeedback ? (
                 <Box>
                   <H2 mb={2}>
