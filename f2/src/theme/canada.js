@@ -1,10 +1,5 @@
 import { theme as chakraTheme } from '@chakra-ui/core'
-
-const shadows = {
-  outline: '0 0 0 3px #F6C95E',
-  outlineHover: '0 0 0 2px #D5D5D5',
-  outlineLeft: '-2px 0 0 0 #D5D5D5, 2px 0 0 0 inset #D5D5D5',
-}
+import { generateAlphaColors } from '@chakra-ui/core/dist/theme/colors-utils'
 
 const colors = {
   green: {
@@ -42,6 +37,10 @@ const colors = {
     700: '#975A16',
     800: '#744210',
     900: '#5F370E',
+  },
+  blue: {
+    ...chakraTheme.colors.blue,
+    hover: '#00F',
   },
 }
 
@@ -81,6 +80,91 @@ const space = {
   '7': '1.75rem',
 }
 
+const outlineColor = generateAlphaColors(chakraTheme.colors.blue[300])[700]
+const shadows = {
+  outline: `0 0 0 4px ${outlineColor}`,
+  outlineInput: `0 0 4px 1px ${outlineColor}`,
+  //outline: 'inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6)',
+  outlineHover: `0 0 0 2px ${colors.gray[300]}`,
+  outlineLeft: `-2px 0 0 0 ${colors.gray[300]}, 2px 0 0 0 inset ${colors.gray[300]}`,
+}
+
+const inputDefaults = {
+  borderWidth: '1px',
+  borderColor: 'gray.400',
+  bg: 'white',
+  _hover: {
+    boxShadow: 'outlineHover',
+    borderColor: 'gray.700',
+  },
+  _focus: {
+    outline: 'none',
+    bg: 'white',
+    boxShadow: 'outlineInput',
+    borderColor: 'blue.600',
+  },
+}
+const variants = {
+  inputs: {
+    checkboxes: {
+      ...inputDefaults,
+      size: 10,
+      _checked: {
+        border: '3px',
+        borderColor: 'black',
+      },
+      _checkedAndHover: {
+        boxShadow: 'outlineHover',
+      },
+    },
+    radios: {
+      ...inputDefaults,
+      rounded: 'full',
+      size: 10,
+      _checked: {
+        border: '3px',
+        borderColor: 'black',
+      },
+      _checkedAndHover: {
+        boxShadow: 'outlineHover',
+      },
+    },
+    inputs: {
+      ...inputDefaults,
+      rounded: '4px',
+      p: 2,
+      maxW: '300px',
+      transition: '0',
+    },
+  },
+  buttons: {
+    default: {
+      fontSize: { base: 'lg', md: 'xl' },
+      fontWeight: 'normal',
+      size: 'lg',
+      rounded: '4px',
+      bg: 'gray.200',
+      border: '1px',
+      borderStyle: 'outset',
+      borderColor: 'gray.300',
+      _hover: {
+        boxShadow: 'outlineHover',
+      },
+      _active: {
+        bg: 'gray.300',
+      },
+    },
+    solid: {
+      border: '1px',
+      borderStyle: 'outset',
+      borderColor: 'blue.500',
+      _active: {
+        bg: 'blue.800',
+      },
+    },
+  },
+}
+
 // Final Theme output
 const canada = {
   ...chakraTheme,
@@ -109,6 +193,7 @@ const canada = {
     ...chakraTheme.space,
     ...space,
   },
+  variants,
 }
 
 export default canada
