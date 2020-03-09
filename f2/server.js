@@ -6,6 +6,7 @@ const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
+const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
@@ -66,6 +67,7 @@ async function save(data, res) {
       sendUnencryptedReport(data.contactInfo.email, analystEmail)
   }
   saveRecord(data, res)
+  getReportCount(res)
 }
 
 const uploadData = async (req, res, fields, files) => {
