@@ -10,7 +10,6 @@ export const BackButton = ({ variant, variants, variantColor, ...props }) => (
   <Route
     render={({ history }) => (
       <LinkButton
-        textAlign="left"
         d="flex"
         alignItems="center"
         onClick={() => history.goBack()}

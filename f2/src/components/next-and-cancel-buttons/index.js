@@ -23,7 +23,6 @@ export const NextAndCancelButtons = ({
           onClick={() => history.push(cancelRoute)}
           fontSize={{ base: 'lg', md: 'xl' }}
           color="black"
-          variant="link"
           variantColor="gray"
           to={cancelRoute}
           textAlign="center"
