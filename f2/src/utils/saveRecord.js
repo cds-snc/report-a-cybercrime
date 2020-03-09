@@ -44,5 +44,45 @@ async function saveRecord(data, res) {
     res.send('CosmosDB not configured')
   }
 }
+async function getReportCount(res) {
+  if (cosmosDbConfigured) {
+    MongoClient.connect(url, function(err, db) {
+      if (err) {
+        console.warn(`ERROR in MongoClient.connect: ${err}`)
+        res.statusCode = 502
+        res.statusMessage = 'Error saving to CosmosDB'
+        res.send(res.statusMessage)
+      } else {
+        var dbo = db.db('cybercrime')
+        dbo
+          .collection('reports')
+          .find({
+            submissionTime: {
+              $gte: '09/03/2020 10:14 UTC-4',
+              $lt: '10/03/2020 10:14 UTC-4',
+            },
+          })
+          .toArray(function(err, result) {
+            if (err) {
+              console.log({ data })
+              console.warn(`ERROR in insertOne: ${err}`)
+              res.statusCode = 502
+              res.statusMessage = 'Error saving to CosmosDB'
+              res.send(res.statusMessage)
+            } else {
+              db.close()
+              console.log('number of reports: ' + result.length)
+              res.statusMessage = data.reportId
+              res.send(res.statusMessage)
+            }
+          })
+      }
+    })
+  } else {
+    res.statusCode = 500
+    res.statusMessage = 'CosmosDB not configured'
+    res.send('CosmosDB not configured')
+  }
+}
 
-module.exports = { saveRecord }
+module.exports = { saveRecord, getReportCount }
