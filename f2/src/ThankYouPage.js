@@ -65,7 +65,7 @@ export const ThankYouPage = () => {
             color="black"
             borderColor="green.400"
             spacing={6}
-            columns={{ base: 4 / 4, md: 6 / 8 }}
+            columns={{ base: 4 / 4, lg: 6 / 7 }}
           >
             <H1 mb={6}>
               <Trans id="thankYouPage.title" />
@@ -75,7 +75,7 @@ export const ThankYouPage = () => {
           </InfoCard>
         </Row>
       </Layout>
-      <Box bg="gray.200" py={10}>
+      <Box bg="gray.100" py={10}>
         <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }} pt={10}>
           <Stack spacing={4} shouldWrapChildren>
             <H2>
@@ -99,6 +99,7 @@ export const ThankYouPage = () => {
                       ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
                       : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
                   }
+                  isExternal
                 >
                   <Trans id="thankYouPage.helpResource1" />
                 </A>
@@ -110,6 +111,7 @@ export const ThankYouPage = () => {
                       ? 'http://www.antifraudcentre.ca/index-eng.htm'
                       : 'http://www.antifraudcentre.ca/index-fra.htm'
                   }
+                  isExternal
                 >
                   <Trans id="thankYouPage.helpResource2" />
                 </A>
@@ -121,6 +123,7 @@ export const ThankYouPage = () => {
                       ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
                       : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
                   }
+                  isExternal
                 >
                   <Trans id="thankYouPage.helpResource3" />
                 </A>
@@ -131,7 +134,7 @@ export const ThankYouPage = () => {
       </Box>
 
       {/* After help section*/}
-      <Layout pt={10} columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
+      <Layout pt={10} columns={{ base: 4 / 4, lg: 7 / 12 }}>
         <Stack spacing={6}>
           <Alert status="success">
             <AlertIcon mt={0} />
@@ -156,7 +159,7 @@ export const ThankYouPage = () => {
           </Box>
 
           <Row>
-            <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 8 }}>
+            <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
               {state.doneFinalFeedback ? (
                 <Box>
                   <H2 mb={2}>

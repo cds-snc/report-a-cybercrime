@@ -24,9 +24,7 @@ export const DevicesPage = () => {
         <Page>
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
-              <BackButton route="/whatwasaffected">
-                <Trans id="devicePage.backButton" />
-              </BackButton>
+              <BackButton />
               <H1>
                 <Trans id="devicePage.title" />
               </H1>

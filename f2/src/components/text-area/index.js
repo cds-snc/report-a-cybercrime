@@ -1,25 +1,11 @@
 import React from 'react'
 import { Textarea as ChakraTextarea } from '@chakra-ui/core'
+import canada from '../../theme/canada'
 
 export const TextArea = props => (
   <ChakraTextarea
-    rounded="none"
-    padding={3}
-    borderWidth="2px"
-    borderColor="black"
-    transition="0"
+    {...canada.variants.inputs.inputs}
     maxW="600px"
-    _hover={{
-      boxShadow: 'outlineHover',
-      borderColor: 'black',
-    }}
-    _focus={{
-      outline: 'none',
-      bg: 'white',
-      boxShadow: 'outline',
-      borderColor: 'black',
-      border: '3px',
-    }}
     {...props.input}
     {...props}
   />
