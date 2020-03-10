@@ -19,6 +19,13 @@ import { A } from './components/link'
 const App = () => {
   const { i18n } = useLingui()
 
+  const gitsha = process.env.REACT_APP_VERSION
+    ? process.env.REACT_APP_VERSION.slice(0, 7)
+    : '000000'
+  const prodVersion = process.env.REACT_APP_PROD_VERSION
+    ? process.env.REACT_APP_PROD_VERSION
+    : '0.0.0'
+
   return (
     <ThemeProvider theme={canada}>
       <StateProvider initialState={initialState} reducer={reducer}>
@@ -68,11 +75,7 @@ const App = () => {
 
             <Layout>
               <P fontSize="sm" my={3} aria-label="application version">
-                {`Version: ${
-                  process.env.REACT_APP_VERSION
-                    ? process.env.REACT_APP_VERSION.slice(0, 7)
-                    : '000000'
-                }`}
+                {`Version: ${prodVersion} (${gitsha})`}
               </P>
             </Layout>
           </Stack>
