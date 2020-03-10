@@ -127,11 +127,17 @@ app
 
   .post('/submit', (req, res) => {
     availableData.numberOfSubmissions += 1
-    new formidable.IncomingForm().parse(req, (err, fields, files) => {
-      if (err) {
-        console.warn('ERROR', err)
-        throw err
-      }
+    var form = new formidable.IncomingForm()
+    form.parse(req)
+    let files = []
+    let fields = {}
+    form.on('field', (fieldName, fieldValue) => {
+      fields[fieldName] = fieldValue
+    })
+    form.on('file', function(name, file) {
+      files.push(file)
+    })
+    form.on('end', () => {
       uploadData(req, res, fields, files)
     })
   })
