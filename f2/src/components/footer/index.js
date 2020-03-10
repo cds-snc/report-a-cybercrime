@@ -10,7 +10,14 @@ export const Footer = props => {
   const { i18n } = useLingui()
 
   return (
-    <Flex as="footer" {...props} py={4} fontFamily="body">
+    <Flex
+      as="footer"
+      {...props}
+      py={4}
+      fontFamily="body"
+      borderTop="4px"
+      borderColor="blue.900"
+    >
       <Layout>
         <Flex align="center" direction="row">
           <List px={0} d="flex" align="center" direction="row">

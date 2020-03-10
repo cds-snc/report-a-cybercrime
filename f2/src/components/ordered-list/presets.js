@@ -11,7 +11,7 @@ export const Ol = props => {
       stylePos="outside"
       styleType={listStyleType}
       ml={5}
-      spacing={1}
+      spacing={2}
       {...rest}
     >
       {props.children}

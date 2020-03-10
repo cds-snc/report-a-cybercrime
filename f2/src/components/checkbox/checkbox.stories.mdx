@@ -1,0 +1,74 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'
+import LinkTo from '@storybook/addon-links/react';
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+import FormDecorator from '../../../.storybook/formDecorator'
+import { withKnobs, boolean, text } from '@storybook/addon-knobs'
+import { CheckboxAdapter } from '.'
+import { Text } from '../text'
+import { Field } from '../Field'
+
+<Meta
+  title="Components/Checkbox"
+  component={CheckboxAdapter}
+  decorators={[ThemeDecorator, FormDecorator, withKnobs]}
+/>
+
+# Checkboxes
+
+CheckboxAdapter are aware of their state. They will check themselves based on current state value. You can however set `defaultIsChecked` to true to set its initial value
+
+<Preview>
+<Story name="Checkbox">
+  <CheckboxAdapter name="checkbox" defaultIsChecked={true} >
+    You agree to the terms
+  </CheckboxAdapter>
+</Story>
+</Preview>
+
+<Props of={CheckboxAdapter} />
+
+## Progressive disclosure
+
+Anything can be passed in `conditionalField`. It will be displayed if the parent checkbox's value is true
+<Preview>
+<Story name="Conditional">
+  <CheckboxAdapter
+    name="withConditional"
+    isChecked={false}
+    conditionalField={text('Conditional Value', 'Yes you do!')}
+  >
+    {text('Label', 'You agree to the terms')}
+  </CheckboxAdapter>
+</Story>
+</Preview>
+
+It is useful to pass in conditional fields. Refer to [Field](?path=/docs/field--input)
+
+<Preview>
+<Story name="Conditional Field">
+  <CheckboxAdapter
+    name="withConditional"
+    isChecked={false}
+    conditionalField={<Field name="condition" label="Are you sure?" />}
+  >
+    {text('Label', 'You agree to the terms')}
+  </CheckboxAdapter>
+</Story>
+</Preview>
+
+
+To add a description, just use a `<Text>` Component with some styling.
+<Preview>
+<Story name="With Description">
+  <CheckboxAdapter name="withConditional" isChecked={false}>
+    {text('Label', 'Devices and accounts')}
+    <Text as="span" d="block" fontSize="sm">
+      {text(
+        'Details',
+        'For example: iPhone 7, social media accounts, wireless network',
+      )}
+    </Text>
+  </CheckboxAdapter>
+</Story>
+</Preview>
+
