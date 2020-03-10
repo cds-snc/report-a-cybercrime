@@ -138,7 +138,15 @@ app
       fields[fieldName] = fieldValue
     })
     form.on('file', function(name, file) {
-      files.push(file)
+      if (files.length >= 3)
+        console.warn('ERROR in /submit: number of files more than 3')
+      else if (file.size > 4 * 1024 * 1024)
+        console.warn(
+          `ERROR in /submit: file size of ${4 *
+            1024 *
+            1024} exceeded for file ${name} (${file.size})`,
+        )
+      else files.push(file)
     })
     form.on('end', () => {
       uploadData(req, res, fields, files)
