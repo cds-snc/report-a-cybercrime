@@ -51,3 +51,10 @@ jobs:
         run: docker login -u $AZURE_CONTAINER_REGISTRY_USERNAME -p $AZURE_CONTAINER_REGISTRY_PASSWORD $AZURE_CONTAINER_REGISTRY_SERVER
       - name: Push container to Azure Container Registry
         run: docker push $AZURE_CONTAINER_REGISTRY_SERVER/${IMAGE_NAME}
+
+  deploy-storybook:
+    name: Deploy storybook to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      -name: build and deploy
+      run: npm run deploy-storybook -- --ci
