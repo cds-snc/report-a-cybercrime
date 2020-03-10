@@ -91,7 +91,7 @@ export const LandingPage = props => {
                 </Stack>
               </Stack>
 
-              <Well>
+              <Well variantColor="blue">
                 <Trans id="landingPage.warning" />
               </Well>
 
