@@ -81,7 +81,7 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', function(req, res, next) {
-  if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
+  if (saveRecord.numberofReports >= process.env.SUBMISSIONS_PER_DAY) {
     console.log('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalez')

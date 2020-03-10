@@ -1,5 +1,13 @@
 const MongoClient = require('mongodb').MongoClient
-
+const date = new Date()
+const currentDate =
+  (date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) +
+  '/' +
+  (date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)) +
+  '/' +
+  date.getFullYear()
+console.log(currentDate)
+let numberofReports = 0
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
 
@@ -57,9 +65,8 @@ async function getReportCount(res) {
         dbo
           .collection('reports')
           .find({
-            submissionTime: {
-              $gte: '09/03/2020 10:14 UTC-4',
-              $lt: '10/03/2020 10:14 UTC-4',
+            submissionDate: {
+              $eq: currentDate,
             },
           })
           .toArray(function(err, result) {
@@ -71,8 +78,9 @@ async function getReportCount(res) {
               res.send(res.statusMessage)
             } else {
               db.close()
+              numberofReports = result.length
               console.log('number of reports: ' + result.length)
-              res.statusMessage = data.reportId
+              //res.statusMessage = data.reportId
               res.send(res.statusMessage)
             }
           })
