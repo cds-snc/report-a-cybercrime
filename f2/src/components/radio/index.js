@@ -7,6 +7,7 @@ import { UniqueID } from '../unique-id'
 import { Box, VisuallyHidden, ControlBox, Flex } from '@chakra-ui/core'
 import { useField } from 'react-final-form'
 import { ConditionalForm } from '../container'
+import canada from '../../theme/canada'
 
 export const RadioAdapter = ({ name, value, defaultIsChecked, children }) => {
   const {
@@ -48,30 +49,7 @@ export const Radio = ({
                 {...input}
               />
 
-              <ControlBox
-                borderWidth="2px"
-                borderColor="black"
-                size="40px"
-                rounded="full"
-                type="radio"
-                _hover={{
-                  boxShadow: 'outlineHover',
-                  borderColor: 'black',
-                }}
-                _checked={{
-                  borderColor: 'black',
-                  border: '3px',
-                }}
-                _checkedAndHover={{
-                  boxShadow: 'outlineHover',
-                }}
-                _focus={{
-                  outline: 'none',
-                  bg: 'white',
-                  boxShadow: 'outline',
-                  borderColor: 'black',
-                }}
-              >
+              <ControlBox type="radio" {...canada.variants.inputs.radios}>
                 <Box size="20px" bg="black" rounded="full" />
               </ControlBox>
 

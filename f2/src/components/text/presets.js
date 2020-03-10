@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 export const Text = props => (
   <ChakraText
     fontSize={['lg', null, 'xl', null]}
-    lineHeight={1.25}
+    lineHeight={1.5}
     fontFamily="body"
     color="black"
     {...props}

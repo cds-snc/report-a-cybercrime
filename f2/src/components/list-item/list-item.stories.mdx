@@ -1,0 +1,13 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+import { Li } from './index'
+
+<Meta title="List Item" component={Li} decorators={[ThemeDecorator]} />
+
+# List Item
+
+<Preview>
+  <Story name="Basic list item">
+    <Li>List item</Li>
+  </Story>
+</Preview>
