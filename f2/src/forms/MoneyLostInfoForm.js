@@ -7,7 +7,7 @@ import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
-import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
+import { FormControl, Stack, Box } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { TextArea } from '../components/text-area'
@@ -17,6 +17,7 @@ import { P } from '../components/paragraph'
 import { CheckboxAdapter } from '../components/checkbox'
 import { Field } from '../components/Field'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { Well } from '../components/Messages'
 
 export const MoneyLostInfoForm = props => {
   const { i18n } = useLingui()
@@ -184,10 +185,9 @@ export const MoneyLostInfoForm = props => {
                 </FormControl>
               )}
             </Field>
-            <Alert status="success" backgroundColor="blue.100">
-              <AlertIcon name="info-outline" color="blue.800" />
+            <Well variantColor="blue">
               <Trans id="moneyLostPage.tip" />
-            </Alert>
+            </Well>
             <NextAndCancelButtons
               next={<Trans id="moneyLostPage.nextStepDetail" />}
               button={<Trans id="moneyLostPage.nextButton" />}

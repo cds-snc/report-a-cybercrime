@@ -34,8 +34,6 @@ export const Alert = ({ status, withIcon, ...props }) => {
   //Then we use it to get a color shade in the theme file:
   //    canada.colors[blue][800]
 
-  console.log(statuses[status].icon)
-
   return (
     <ChakraAlert
       status={status}

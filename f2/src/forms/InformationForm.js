@@ -18,6 +18,7 @@ import { FormArrayControl } from '../components/FormArrayControl'
 import { Field } from '../components/Field'
 import { A } from '../components/link'
 import { P } from '../components/paragraph'
+import { Well } from '../components/Messages'
 
 export const InformationForm = props => {
   const { i18n } = useLingui()
@@ -146,11 +147,11 @@ export const InformationForm = props => {
                 </FormControl>
               )}
             </Field>
-            <Alert align="center" status="success" backgroundColor="blue.100">
-              <AlertIcon name="info-outline" color="blue.800" />
+            <Well variantColor="blue">
               <P fontSize="md" mb={0}>
                 <Trans id="informationPage.tip">
                   <A
+                    color="blue.900"
                     href={
                       i18n.locale === 'en'
                         ? 'https://www.consumer.equifax.ca/personal/'
@@ -159,6 +160,7 @@ export const InformationForm = props => {
                     isExternal // Opens new tab
                   />
                   <A
+                    color="blue.900"
                     href={
                       i18n.locale === 'en'
                         ? 'https://www.transunion.ca/'
@@ -168,7 +170,7 @@ export const InformationForm = props => {
                   />
                 </Trans>
               </P>
-            </Alert>
+            </Well>
             <NextAndCancelButtons
               next={<Trans id="informationPage.nextStep" />}
               button={<Trans id="informationPage.nextButton" />}
