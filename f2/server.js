@@ -48,11 +48,15 @@ const allowedOrigins = [
   'http://centreantifraude.ca',
 ]
 
-const availableData = {
-  numberOfSubmissions: getReportCount.numberofReports,
-  numberOfRequests: 0,
-  lastRequested: undefined,
+let availableData
+async function initializeAvailableData() {
+  availableData = {
+    numberOfSubmissions: await getReportCount(),
+    numberOfRequests: 0,
+    lastRequested: undefined,
+  }
 }
+initializeAvailableData()
 
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
@@ -67,7 +71,6 @@ async function save(data, res) {
       sendUnencryptedReport(data.contactInfo.email, analystEmail)
   }
   saveRecord(data, res)
-  getReportCount(res)
 }
 
 const uploadData = async (req, res, fields, files) => {
@@ -90,6 +93,7 @@ app.get('/', function(req, res, next) {
         : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
+    console.log('number of submissions: ' + availableData.numberOfSubmissions)
     availableData.numberOfRequests += 1
     availableData.lastRequested = new Date()
     console.log(`New Request. ${JSON.stringify(availableData)}`)
