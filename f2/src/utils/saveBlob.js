@@ -32,19 +32,14 @@ async function saveBlob(data) {
     }
     if (data.evidence.files.length > 0) {
       const containerName = data.reportId.replace('-', '').toLowerCase()
-      console.log(containerName)
       const containerClient = blobServiceClient.getContainerClient(
         containerName,
       )
       const createContainerResponse = await containerClient.create()
-      console.log(
-        `Create container ${containerName} successfully`,
-        createContainerResponse.requestId,
-      )
+      console.info(`Created container ${containerName} successfully`)
 
       for (var x = 0; x < data.evidence.files.length; x++) {
         if (data.evidence.files[x].malwareIsClean) {
-          console.log(data.evidence.files[x])
           const content = fs.readFileSync(data.evidence.files[x].path)
           // Use SHA1 hash as file name to avoid collisions in blob storage
           const blobName = data.evidence.files[x].sha1
@@ -53,12 +48,13 @@ async function saveBlob(data) {
             content,
             content.length,
           )
-          console.log(
-            `Upload block blob ${blobName} successfully`,
-            uploadBlobResponse.requestId,
+          console.info(
+            `Uploaded report ${data.reportId} file ${data.evidence.files[x].name}, blob ${blobName} successfully`,
           )
         } else {
-          console.log('Skipping saving file due to malware.')
+          console.warn(
+            `Skipping saving report ${data.reportId} file ${data.evidence.files[x].name} due to malware.`,
+          )
         }
       }
     }

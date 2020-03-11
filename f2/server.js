@@ -80,7 +80,7 @@ const uploadData = async (req, res, fields, files) => {
 
 app.get('/', function(req, res, next) {
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
-    console.log('Warning: redirecting request to CAFC')
+    console.warn('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalez')
         ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
@@ -89,7 +89,6 @@ app.get('/', function(req, res, next) {
   } else {
     availableData.numberOfRequests += 1
     availableData.lastRequested = new Date()
-    console.log(`New Request. ${JSON.stringify(availableData)}`)
     next()
   }
 })
@@ -169,5 +168,5 @@ app
 // })
 
 const port = process.env.PORT || 3000
-console.log(`Listening at port ${port}`)
+console.info(`Listening at port ${port}`)
 app.listen(port)
