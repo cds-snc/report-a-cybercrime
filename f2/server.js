@@ -49,7 +49,7 @@ const allowedOrigins = [
 ]
 
 const availableData = {
-  numberOfSubmissions: 0,
+  numberOfSubmissions: getReportCount.numberofReports,
   numberOfRequests: 0,
   lastRequested: undefined,
 }
@@ -81,7 +81,8 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', function(req, res, next) {
-  if (saveRecord.numberofReports >= process.env.SUBMISSIONS_PER_DAY) {
+  if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
+    console.log('number of submissions: ' + availableData.numberOfSubmissions)
     console.log('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalez')

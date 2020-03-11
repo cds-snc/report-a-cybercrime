@@ -79,7 +79,7 @@ async function getReportCount(res) {
             } else {
               db.close()
               numberofReports = result.length
-              console.log('number of reports: ' + result.length)
+              console.log('number of reports submitted: ' + result.length)
               //res.statusMessage = data.reportId
               res.send(res.statusMessage)
             }
