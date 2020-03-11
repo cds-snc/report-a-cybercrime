@@ -1,7 +1,90 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../.storybook/themeDecorator'
+import { Code } from '@chakra-ui/core'
 
-<Meta title="1- Start" />
+<Meta id="1-start" title="Getting started" decorators={[ThemeDecorator]} />
 
-# Start
+# Getting started
 
-This documentation is meant to help build and modify pages.
+This documentation is meant to help build and modify pages and forms.
+
+---
+
+# Reading Stories
+
+You can access any documented component from the sidebar. Storybook is consisted of multiple `Stories`, which each correspond to a component or one of its variations.
+
+Each Story also lets you view a code preview showing how to use the component in code. You can copy it from there as well as a properties table when applicable. Shows property name, possible values and types, and default values when applicable.
+
+## Component variations
+
+If a component is missing, it has not been documented. You can create a Github issue to request that someone document the missing component, or you can create the
+
+## Component views
+
+Each component proposes two alternate views: Canvas or Docs. These are accessible from the top navigation bar.
+
+The Canvas view lets you view a component on its own. This view also gives access to the addons panel at the bottom of the page.
+
+The Docs view provides more context for a component. It can be automagically generated or written in MDX (Markdown + JSX)
+
+---
+
+# Writing Stories
+
+Stories should be written in [Component Story Format (CSF)](https://storybook.js.org/docs/formats/component-story-format/). CSF Can be written in JSX. Stories written in JSX will automagically generate a Docs page.
+
+## MDX
+
+To start with MDX stories, you need a few basic imports.
+
+```jsx
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+```
+
+Then add a Meta tag containing the title of your story. This title will display in the sidebar. add a decorator property to wrap your component in the `<ThemeProvider>`. If you forget this step, you'll likely end up with funky looking stories.
+
+```jsx
+<Meta title="Title of your story" decorators={[ThemeDecorator]} />
+```
+
+Then you can write your story by alternating between Markdown syntax and JSX syntax. To add a component block, just use `<Preview>` and `<Story>`. Every story should have a unique name.
+
+```jsx
+//With a code block
+<Preview>
+  <Story name="Story">
+    <Component/>
+  </Story>
+</Preview>
+
+//Without a code block
+<Story name="Another Story">
+  <Component/>
+</Story>
+```
+
+## JS
+
+Writing stories in JSX is very similar. You start with different imports.
+
+```jsx
+import React from 'react'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+```
+
+Then you need to export a story. This is similar to the MDX `<Meta>` element
+
+```jsx
+export default {
+  title: 'Components/Button',
+  decorators: [ThemeDecorator],
+}
+```
+
+For each component variation, you want to export a unique story
+
+```jsx
+export const story = () => <Component />
+```
