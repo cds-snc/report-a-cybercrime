@@ -36,7 +36,7 @@
     "react-ga": "^2.6.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
-    "styled-system": "^5.1.4",
+    "styled-system": "^5.1.5",
     "unidecode": "^0.1.8"
   },
   "scripts": {
