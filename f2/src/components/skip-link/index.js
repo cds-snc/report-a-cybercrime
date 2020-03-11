@@ -24,7 +24,9 @@ export const SkipLink = ({ invisible, ...rest }) => (
     <A
       mt={2}
       p={2}
-      backgroundColor="black"
+      textDecoration=""
+      backgroundColor="gray.skipLink"
+      rounded="4px"
       color="white"
       fontWeight="bold"
       position="absolute"
