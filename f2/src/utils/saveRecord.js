@@ -68,7 +68,7 @@ async function getReportCount() {
           })
           .toArray(function(err, result) {
             if (err) {
-              console.warn(`ERROR in insertOne: ${err}`)
+              console.warn(`ERROR in find: ${err}`)
             } else {
               db.close()
               numberofReports = result.length
