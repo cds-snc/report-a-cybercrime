@@ -39,12 +39,12 @@ getAllCerts(uidList)
 const app = express()
 
 const allowedOrigins = [
-  'http://dev.antifraudcentre-centreantifraude.ca',
-  'http://pre.antifraudcentre-centreantifraude.ca',
-  'http://antifraudcentre-centreantifraude.ca',
-  'http://centreantifraude-antifraudcentre.ca',
-  'http://antifraudcentre.ca',
-  'http://centreantifraude.ca',
+  'https://dev.antifraudcentre-centreantifraude.ca',
+  'https://pre.antifraudcentre-centreantifraude.ca',
+  'https://antifraudcentre-centreantifraude.ca',
+  'https://centreantifraude-antifraudcentre.ca',
+  'https://antifraudcentre.ca',
+  'https://centreantifraude.ca',
 ]
 
 const availableData = {
