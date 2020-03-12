@@ -87,8 +87,13 @@ app.get('/', function(req, res, next) {
         : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
-    availableData.numberOfRequests += 1
-    availableData.lastRequested = new Date()
+    if (
+      origin !== undefined &&
+      allowedOrigins.indexOf(req.headers.origin.toLowerCase()) > -1
+    ) {
+      availableData.numberOfRequests += 1
+      availableData.lastRequested = new Date()
+    }
     console.log(`New Request. ${JSON.stringify(availableData)}`)
     next()
   }
