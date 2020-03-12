@@ -68,7 +68,6 @@ async function getReportCount() {
           })
           .toArray(function(err, result) {
             if (err) {
-              console.log({ data })
               console.warn(`ERROR in insertOne: ${err}`)
             } else {
               db.close()
