@@ -12,3 +12,4 @@ f2/build
 **/locales/*.js
 platform/**/.env*
 *.cer
+f2/package.json

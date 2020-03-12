@@ -1,6 +1,11 @@
 
 Given('I open the report home page', () => {
     cy.visit(Cypress.env('production'))
+    
+});
+
+When('I change the language', () => {
+    cy.contains('Français').first().click({force:true});
 
 });
 
@@ -50,6 +55,10 @@ When('I navigate to howdiditstart page fill all forms', () => {
     cy.contains('Continue').first().click({force: true});
 });
 
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I navigate to Whatcouldbeaffected page fill all forms', () => {
 
     cy.get('form').find('[value="whatWasAffectedForm.financial"]').check({ force: true })
@@ -58,6 +67,10 @@ When('I navigate to Whatcouldbeaffected page fill all forms', () => {
     cy.get('form').find('[value="whatWasAffectedForm.business_assets"]').check({ force: true })
     cy.get('form').find('[value="whatWasAffectedForm.other"]').check({ force: true })
     cy.contains('Continue').first().click({force: true});
+});
+
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
 When('I navigate to Howwereyourmoney page fill all forms', () => {
@@ -77,6 +90,10 @@ When('I navigate to Howwereyourmoney page fill all forms', () => {
     cy.contains('Continue').first().click({force: true});
 });
 
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 when ('I navigate to Howwaspersonalinformationaffected page fill all forms', () => {
     cy.get('form').find('[value="typeOfInfoReq.creditCard"]').check({ force: true })
     cy.get('form').find('[value="typeOfInfoReq.dob"]').check({ force: true })
@@ -94,6 +111,10 @@ when ('I navigate to Howwaspersonalinformationaffected page fill all forms', () 
     cy.contains('Continue').first().click({force: true});
 });
 
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I navigate Howwereyourdevicesaffected page fill all forms', () => {
 
     cy.get('form').find('[name="device"]').type('Personal Computer')
@@ -102,16 +123,28 @@ When('I navigate Howwereyourdevicesaffected page fill all forms', () => {
     cy.contains('Continue').first().click({force: true});
 });
 
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I navigate to Howyourbusinessaffected page fill all forms', () => {
 
     cy.get('form').find('[name="business"]').type('How your business affected tell more')
     cy.contains('Continue').first().click({force: true});
 });
 
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I navigate to Whathappened page fill all forms', () => {
 
     cy.get('form').find('[name="whatHappened"]').type('What happened tell more')
     cy.contains('Continue').first().click({force: true});
+});
+
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
 When('I navigate to Addsuspectclues page fill all forms', () => {
@@ -122,29 +155,32 @@ When('I navigate to Addsuspectclues page fill all forms', () => {
     cy.contains('Continue').first().click({force: true});
 });
 
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I navigate to AttachSupportingEvidence page fill all forms', () => {
 
-    //const fileName1 = 'marchesurciel-lucille1.jpg';
-    const fileName2 = 'marchesurciel-lucille2.jpg';
-    const fileName3 = 'marchesurciel-lucille3.jpg';
-
-        cy.get('#uploader').uploadFile(Cypress.config('filename1'), 'image/jpeg');
+    const fileName = 'marchesurciel-lucille.jpg';
+        cy.fixture(fileName).then(fileContent => {
+            cy.get('#uploader').upload({ fileContent, fileName, mimeType: 'image/jpg' });
+        });
         cy.wait(1000)
-
-        cy.get('#uploader').uploadFile(fileName2, 'image/jpeg');
-        cy.wait(1000)
-
-        cy.get('#uploader').uploadFile(fileName3, 'image/jpeg');
-        cy.wait(1000)
-
-
         cy.contains('Continue').first().click({force: true});
+});
+
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
 When('I navigate to yourLocation page fill all forms', () => {
 
     cy.get('form').find('[name="postalCode"]').type('K2G 6R2')
     cy.contains('Continue').first().click({force: true});
+});
+
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
 When('I navigate to yourContactDetails page fill all forms', () => {
@@ -155,7 +191,15 @@ When('I navigate to yourContactDetails page fill all forms', () => {
     cy.contains('Continue').first().click({force: true});
 });
 
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I navigate to summary page fill all forms', () => {
 
     cy.contains('Submit report').first().click({force: true});
 }); 
+
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});

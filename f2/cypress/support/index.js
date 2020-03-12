@@ -32,5 +32,8 @@ Cypress.config('color', `Brown`)
 Cypress.config('name', chance.name())
 Cypress.config('year', chance.year({min: 2000, max: 2011}))
 Cypress.config('month', chance.integer({ min: 1, max: 30 }))
-Cypress.config('string',chance.string({ length: 8, casing: 'upper', alpha: true, numeric: true })
-)
+Cypress.config('string',chance.string({ length: 8, casing: 'upper', alpha: true, numeric: true }))
+Cypress.config('filename1' , './marchesurciel-lucille1.jpg')
+
+
+

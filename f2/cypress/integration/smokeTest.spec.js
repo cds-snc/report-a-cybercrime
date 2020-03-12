@@ -172,7 +172,7 @@ describe('Entire form form filling testing...', function () {
     });
 
     it('Confirmation Screenshot', function () {
-        cy.screenshot()
+      //  cy.screenshot()
 
     });
 
