@@ -45,7 +45,6 @@ export const ConfirmCancelPage = () => {
                   fontSize={{ base: 'lg', md: 'xl' }}
                   color="black"
                   height="3rem"
-                  variant="link"
                   variantColor="gray"
                   textAlign="center"
                   w={{ base: '100%', md: 'auto' }}
