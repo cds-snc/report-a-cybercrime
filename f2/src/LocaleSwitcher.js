@@ -2,43 +2,15 @@
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import { locales, activate } from './i18n.config'
-import { Box, PseudoBox, VisuallyHidden } from '@chakra-ui/core'
+import { Box } from '@chakra-ui/core'
+import { A } from './components/link'
 
 const Toggler = props => {
   const { locale } = props
   return (
-    <PseudoBox
-      as="button"
-      key={locale}
-      padding={0}
-      onClick={() => activate(locale)}
-      _focus={{
-        outline: `3px solid #ffbf47`,
-      }}
-      color="blue.600"
-    >
-      <VisuallyHidden>{locales[locale]}</VisuallyHidden>
-      <PseudoBox
-        aria-hidden
-        fontSize="lg"
-        d={{ base: 'none', md: 'flex' }}
-        alignItems="center"
-        justifyContent="center"
-      >
-        {locales[locale]}
-      </PseudoBox>
-      <PseudoBox
-        aria-hidden
-        d={{ base: 'flex', md: 'none' }}
-        bg="gray.100"
-        textTransform="uppercase"
-        size={10}
-        alignItems="center"
-        justifyContent="center"
-      >
-        {locale}
-      </PseudoBox>
-    </PseudoBox>
+    <A key={locale} padding={0} onClick={() => activate(locale)}>
+      {locales[locale]}
+    </A>
   )
 }
 
