@@ -83,7 +83,8 @@ const uploadData = async (req, res, fields, files) => {
   contentModeratorFiles(data, () => save(data, res))
 }
 
-app.get('/', function(req, res, next) {
+app.get('/', async function(req, res, next) {
+  availableData.numberOfSubmissions = await getReportCount()
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
     console.log('number of submissions: ' + availableData.numberOfSubmissions)
     console.log('Warning: redirecting request to CAFC')
@@ -136,7 +137,6 @@ app
   })
 
   .post('/submit', (req, res) => {
-    availableData.numberOfSubmissions += 1
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
         console.warn('ERROR', err)
