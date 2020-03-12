@@ -2,15 +2,17 @@
 Given('I open the report home page', () => {
     cy.visit(Cypress.env('production'))
 
+
 });
 
 When('I click on create a report button', () => {
     cy.contains('Report now').first().click({force: true});
+    cy.reportA11y();
 });
 
 When('I read before you start instructions', () => {
-
     cy.contains('Start report').first().click({force: true});
+    cy.reportA11y();
 });
 
 When('I click continue without checking consent', () => {
@@ -45,8 +47,8 @@ When('I navigate to howdiditstart page fill all forms', () => {
     cy.get('form').find('[name="others"]').type('in-person') */
     cy.get('form').find('[name="startDay"]').type('13')
     cy.get('form').find('[name="startMonth"]').type('12')
-    cy.get('form').find('[name="startYear"]').type('2019') 
-    cy.get('form').find('[value="howManyTimes.notSure"]').check({ force: true }) 
+    cy.get('form').find('[name="startYear"]').type('2019')
+    cy.get('form').find('[value="howManyTimes.notSure"]').check({ force: true })
     cy.contains('Continue').first().click({force: true});
 });
 

@@ -17,6 +17,26 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+const { A11yReporter } = require ('@cdssnc/a11y-tracker-client');
+
+A11yReporter.configure({
+  trackerURI: undefined,
+  revision: '<local>',
+  project: 'report-cyber-crime',
+});
+
+if (Cypress.env['testing'] && Cypress.env['GITHUB_REF'] === 'refs/heads/master') {
+  A11yReporter.configure({
+    trackerURI: Cypress.env('A11Y_TRACKER_URI') || 'https://a11y-tracker.herokuapp.com/',
+    revision: Cypress.env('GITHUB_GIT_HASH'),
+    //TODO: should be added to the secret keys
+    key: Cypress.env('cds-snc:a11y-tracker:340044fa-92f6-46b5-8b9f-94f3ac80edcd'),
+    project: 'report-cyber-crime',
+  });
+}
+
+A11yReporter.setupCypress();
+
 let Chance = require('chance');
 // Instantiate Chance here so it can be used in all tests
 let chance = new Chance();
