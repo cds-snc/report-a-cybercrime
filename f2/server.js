@@ -47,6 +47,12 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
+const allowedReferrers = [
+  'antifraudcentre-centreantifraude.ca',
+  'centreantifraude-antifraudcentre.ca',
+  'antifraudcentre.ca',
+  'centreantifraude.ca',
+]
 const availableData = {
   numberOfSubmissions: 0,
   numberOfRequests: 0,
@@ -91,7 +97,7 @@ app.get('/', function(req, res, next) {
     console.log('Referrer:' + referrer)
     if (
       referrer !== undefined &&
-      allowedOrigins.indexOf(referrer.toLowerCase()) > -1
+      allowedReferrers.indexOf(new URL(referrer).host.toLowerCase()) > -1
     ) {
       availableData.numberOfRequests += 1
       availableData.lastRequested = new Date()
