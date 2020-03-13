@@ -17,3 +17,4 @@ Fixes #(issue)
 - [ ] I have looked at my code on GitHub and it all looks good (ex: no random commented out code or console.logs)
 - [ ] I have added and needed tests for my changes (in particular for new screens)
 - [ ] I have added a comment to any confusing code
+- [ ] I have added documentation to any modified front-end code. (Or added missing documentation)
