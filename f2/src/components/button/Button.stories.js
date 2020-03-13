@@ -1,62 +1,52 @@
 import React from 'react'
 import ThemeDecorator from '../../../.storybook/themeDecorator'
-import { jsxDecorator } from 'storybook-addon-jsx'
-import { withKnobs, text, select } from '@storybook/addon-knobs'
 
 import { Button } from '.'
 import { NextAndCancelButtons } from '../next-and-cancel-buttons'
+import { Stack } from '@chakra-ui/core'
 
 export default {
   title: 'Components/Button',
-  decorators: [jsxDecorator, ThemeDecorator, withKnobs],
-}
-
-const variantColors = {
-  Green: 'green',
-  Blue: 'blue',
-  Red: 'red',
-  Gray: 'gray',
-  Black: 'black',
-}
-const variants = {
-  Solid: 'solid',
-  Ghost: 'ghost',
-  Outline: 'outline',
-  Link: 'link',
-}
-
-const icon = {
-  After: {
-    rightIcon: 'chevron-right',
-  },
-  Before: {
-    leftIcon: 'attachment',
-  },
-  None: null,
+  decorators: [ThemeDecorator],
 }
 
 export const textButton = () => (
-  <Button
-    variantColor={select('Variant Color', variantColors, 'green')}
-    variant={select('Variant', variants, 'solid')}
-  >
-    {text('Button text', 'Button')}
+  <Button variantColor="green" variant="solid">
+    Button
   </Button>
 )
 
 export const withIcon = () => (
-  <Button
-    variantColor={select('Variant Color', variantColors, 'green')}
-    variant={select('Variant', variants, 'solid')}
-    {...select('Icon', icon, icon.After)}
-  >
-    {text('Button text', 'Button')}
-  </Button>
+  <Stack spacing={4} direction="row">
+    <Button variantColor="green" variant="solid" rightIcon="chevron-right">
+      Start
+    </Button>
+    <Button variantColor="blue" variant="solid" leftIcon="attachment">
+      Add File
+    </Button>
+  </Stack>
+)
+
+export const variantColor = () => (
+  <Stack spacing={4} direction="row">
+    <Button variantColor="green" variant="solid">
+      Continue
+    </Button>
+    <Button variantColor="blue" variant="solid">
+      Primary
+    </Button>
+    <Button variantColor="gray" variant="solid">
+      Secondary
+    </Button>
+    <Button variantColor="black" variant="solid">
+      Call to action
+    </Button>
+    <Button variantColor="red" variant="solid">
+      Danger
+    </Button>
+  </Stack>
 )
 
 export const nextAndCancelButtons = () => (
-  <NextAndCancelButtons
-    button={text('Next Button Text', 'Continue')}
-    cancelRoute="/"
-  />
+  <NextAndCancelButtons button="Continue" cancelRoute="/" />
 )
