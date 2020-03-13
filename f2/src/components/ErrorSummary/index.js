@@ -15,7 +15,7 @@ export const ErrorSummary = (...props) => {
   const { errors } = useForm(props.onSubmit).getState()
 
   return (
-    <Alert status="error" borderLeft="3px" borderColor="red.700">
+    <Alert status="error" aria-atomic borderLeft="3px" borderColor="red.700">
       <Stack>
         <Text fontSize="md" fontWeight="bold">
           <Trans id="default.hasValidationErrors" />
@@ -24,7 +24,12 @@ export const ErrorSummary = (...props) => {
         <Ol>
           {Object.keys(errors).map(key => (
             <Li key={key} fontSize="md">
-              <A fontSize="md" fontWeight="bold" href={`#${key}`}>
+              <A
+                fontSize="md"
+                fontWeight="bold"
+                color="blue.900"
+                href={`#${key}`}
+              >
                 {i18n._(errors[key])}
               </A>
             </Li>
