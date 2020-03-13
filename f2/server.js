@@ -88,7 +88,7 @@ app.get('/', function(req, res, next) {
     )
   } else {
     var referrer = req.headers.referer
-    console.log('Refferrer:' + referrer)
+    console.log('Referrer:' + referrer)
     if (
       referrer !== undefined &&
       allowedOrigins.indexOf(referrer.toLowerCase()) > -1
