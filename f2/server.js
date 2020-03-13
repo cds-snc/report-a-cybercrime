@@ -47,6 +47,12 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
+const allowedReferrers = [
+  'antifraudcentre-centreantifraude.ca',
+  'centreantifraude-antifraudcentre.ca',
+  'antifraudcentre.ca',
+  'centreantifraude.ca',
+]
 const availableData = {
   numberOfSubmissions: 0,
   numberOfRequests: 0,
@@ -87,8 +93,15 @@ app.get('/', function(req, res, next) {
         : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
-    availableData.numberOfRequests += 1
-    availableData.lastRequested = new Date()
+    var referrer = req.headers.referer
+    console.log('Referrer:' + referrer)
+    if (
+      referrer !== undefined &&
+      allowedReferrers.indexOf(new URL(referrer).host.toLowerCase()) > -1
+    ) {
+      availableData.numberOfRequests += 1
+      availableData.lastRequested = new Date()
+    }
     console.log(`New Request. ${JSON.stringify(availableData)}`)
     next()
   }
