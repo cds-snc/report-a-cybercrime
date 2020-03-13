@@ -24,7 +24,7 @@ const notifyClient =
     ? new NotifyClient(baseUrl, key)
     : false
 
-if (notifyClient) console.log('Notify client created')
+if (notifyClient) console.info('Notify client created')
 else console.warn('Notify client NOT created')
 
 const sendConfirmation = async (email, reportId) => {
@@ -39,7 +39,7 @@ const sendConfirmation = async (email, reportId) => {
     const response = notifyClient.sendEmail(templateId, email, {
       personalisation: { reportId },
     })
-    console.log('Notify: confirmation email (probably) sent!')
+    console.info('Notify: confirmation email (probably) sent!')
     return response.body
   } catch (err) {
     console.warn(`Notify confirmation email Error: ${err.message}`)
@@ -59,7 +59,7 @@ const sendUnencryptedReport = async (email, report) => {
     const response = notifyClient.sendEmail(templateId, email, {
       personalisation: { report },
     })
-    console.log('Notify: report email (probablty) sent!')
+    console.info('Notify: report email (probably) sent!')
     return response.body
   } catch (err) {
     console.warn(`Notify report email error: ${err.message}`)
@@ -80,7 +80,7 @@ const submitFeedback = async data => {
     const response = notifyClient.sendEmail(templateId, email, {
       personalisation: { feedback: JSON.stringify(data, null, '  ') },
     })
-    console.log('Notify: feedback email (probablty) sent!')
+    console.info('Notify: feedback email (probably) sent!')
     return response.body
   } catch (err) {
     console.warn(`Notify feedback email error: ${err.message}`)
