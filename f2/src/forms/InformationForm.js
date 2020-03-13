@@ -16,6 +16,8 @@ import { TextInput } from '../components/TextInput'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Field } from '../components/Field'
+import { A } from '../components/link'
+import { P } from '../components/paragraph'
 
 export const InformationForm = props => {
   const { i18n } = useLingui()
@@ -144,9 +146,28 @@ export const InformationForm = props => {
                 </FormControl>
               )}
             </Field>
-            <Alert status="success" backgroundColor="blue.100">
+            <Alert align="center" status="success" backgroundColor="blue.100">
               <AlertIcon name="info-outline" color="blue.800" />
-              <Trans id="informationPage.tip" />
+              <P fontSize="md" mb={0}>
+                <Trans id="informationPage.tip">
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'https://www.consumer.equifax.ca/fr/c/portal/update_language?p_l_id=23&redirect=%2Ffr%2Fpersonnel%2F&languageId=en_US'
+                        : 'https://www.consumer.equifax.ca/en/c/portal/update_language?p_l_id=23&redirect=%2Fen%2Fpersonal%2F&languageId=fr_FR'
+                    }
+                    isExternal // Opens new tab
+                  />
+                  <A
+                    href={
+                      i18n.locale === 'en'
+                        ? 'https://www.transunion.ca/'
+                        : 'https://www.transunion.ca/fr'
+                    }
+                    isExternal // Opens new tab
+                  />
+                </Trans>
+              </P>
             </Alert>
             <NextAndCancelButtons
               next={<Trans id="informationPage.nextStep" />}

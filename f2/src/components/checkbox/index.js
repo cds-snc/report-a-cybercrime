@@ -7,6 +7,7 @@ import { UniqueID } from '../unique-id'
 import { VisuallyHidden, ControlBox, Icon, Flex } from '@chakra-ui/core'
 import { useField } from 'react-final-form'
 import { ConditionalForm } from '../container'
+import canada from '../../theme/canada'
 
 export const CheckboxAdapter = ({
   name,
@@ -27,7 +28,7 @@ export const CheckboxAdapter = ({
   return (
     <Checkbox
       input={input}
-      isChecked={checked}
+      isChecked={checked || defaultIsChecked}
       isInvalid={error && touched}
       conditionalField={props.conditionalField}
     >
@@ -44,41 +45,19 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
       {id => {
         return (
           <React.Fragment>
-            <Flex as="label" id={id} align="center">
+            <Flex as="label" id={id} align="start">
               <VisuallyHidden
-                {...input}
                 as="input"
                 type="checkbox"
                 defaultChecked={isChecked ? 'true' : ''}
                 {...input}
               />
 
-              <ControlBox
-                borderWidth="2px"
-                borderColor="black"
-                size={10}
-                _hover={{
-                  boxShadow: 'outlineHover',
-                  borderColor: 'black',
-                }}
-                _checked={{
-                  borderColor: 'black',
-                  border: '3px',
-                }}
-                _checkedAndHover={{
-                  boxShadow: 'outlineHover',
-                }}
-                _focus={{
-                  outline: 'none',
-                  bg: 'white',
-                  boxShadow: 'outline',
-                  borderColor: 'black',
-                }}
-              >
+              <ControlBox {...canada.variants.inputs.checkboxes}>
                 <Icon name="check" size="24px" />
               </ControlBox>
 
-              <Text ml={2} htmlFor={id}>
+              <Text as="div" ml={2} pt={2} htmlFor={id} lineHeight="1.5rem">
                 {props.children}
               </Text>
             </Flex>
@@ -94,6 +73,13 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
 }
 
 Checkbox.propTypes = {
+  conditionalField: PropTypes.any,
+  children: PropTypes.any,
+}
+CheckboxAdapter.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string,
+  defaultIsChecked: PropTypes.bool,
   conditionalField: PropTypes.any,
   children: PropTypes.any,
 }

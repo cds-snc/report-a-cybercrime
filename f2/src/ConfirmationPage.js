@@ -38,6 +38,10 @@ async function postData(url = '', data = {}) {
 }
 
 const prepFormData = (formData, language) => {
+  formData.appVersion = process.env.REACT_APP_VERSION
+    ? process.env.REACT_APP_VERSION.slice(0, 7)
+    : 'no version'
+
   if (
     formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
@@ -48,7 +52,9 @@ const prepFormData = (formData, language) => {
       demandedMoney: '',
       moneyTaken: '',
       methodPayment: [],
-      transactionDate: '',
+      transactionDay: '',
+      transactionMonth: '',
+      transactionYear: '',
       tellUsMore: '',
     }
   }
@@ -102,22 +108,22 @@ const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
   const response = await postData('/submit', data)
   const reportId = await response.text()
-  dispatch({ type: 'saveFormData', data: { reportId } })
+  dispatch({ type: 'saveFormData', data: { reportId, submitted: true } })
 }
 
 export const ConfirmationPage = () => {
   const [{ formData }, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
   const { i18n } = useLingui()
-
+  if (formData.reportId !== '') {
+    dispatch({ type: 'saveFormData', data: { reportId: '' } })
+  }
   return (
     <Route
       render={({ history }) => (
         <Page>
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }} mb={10}>
             <Stack spacing={10} shouldWrapChildren>
-              <BackButton route="/contactinfo">
-                <Trans id="confirmationPage.backButton" />
-              </BackButton>
+              <BackButton />
               <H1>
                 <Trans id="confirmationPage.title" />
               </H1>

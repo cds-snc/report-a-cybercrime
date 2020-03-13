@@ -59,6 +59,7 @@ Field.defaultProps = {
 }
 
 Field.propTypes = {
+  component: PropTypes.elementType,
   children: PropTypes.any,
   name: PropTypes.string,
   label: PropTypes.any,

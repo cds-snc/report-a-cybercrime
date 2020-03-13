@@ -5,22 +5,27 @@ const { formatDate } = require('./formatDate')
 const formatLine = (label, text) => (text !== '' ? label + text + '\n' : '')
 
 const formatReportInfo = data => {
-  const selfHarmString = data.selfHarmWords.length
-    ? data.selfHarmWords
-    : 'no self harm words'
-  const returnString =
+  let selfHarmString = 'no self harm words'
+  let returnString = ''
+
+  if (data.selfHarmWords.length) {
+    selfHarmString = data.selfHarmWords
+    returnString = `\n\nSELF HARM WORDS FOUND : ${selfHarmString}\n\n`
+  }
+  returnString +=
+    'Report information\n\n' +
     formatLine('Report number:      ', data.reportId) +
     formatLine('Date received:      ', data.submissionTime) +
     formatLine('Report language:    ', data.language) +
+    formatLine('Report version:     ', data.appVersion) +
     formatLine('Flagged:            ', selfHarmString)
 
   delete data.reportId // we delete the parts of the data object that we've displayed
   delete data.submissionTime // so that at the end we can display the rest and ensure that
   delete data.language // we didn't miss anything
+  delete data.appVersion
   delete data.selfHarmWords
-  return (
-    'Report information\n\n' + (returnString !== '' ? returnString : 'No Data')
-  )
+  return returnString
 }
 
 const formatVictimDetails = data => {
@@ -158,9 +163,16 @@ const formatSuspectDetails = data => {
 }
 
 const formatFinancialTransactions = data => {
-  const paymentString = data.moneyLost.methodPayment
+  const methods =
+    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
+      ? data.moneyLost.methodPayment.concat([data.moneyLost.methodOther])
+      : data.moneyLost.methodPayment
+
+  const paymentString = methods
+    .filter(method => method !== 'methodPayment.other')
     .map(method => method.replace('methodPayment.', ''))
     .join(', ')
+
   const transactionDate = formatDate(
     data.moneyLost.transactionDay,
     data.moneyLost.transactionMonth,
@@ -172,6 +184,7 @@ const formatFinancialTransactions = data => {
     formatLine('Method of payment:   ', paymentString) +
     formatLine('Transaction date:    ', transactionDate)
 
+  delete data.moneyLost.methodOther
   delete data.moneyLost.methodPayment
   delete data.moneyLost.demandedMoney
   delete data.moneyLost.moneyTaken
@@ -198,17 +211,19 @@ const formatFileAttachments = data => {
             formatLine('Is racy:       ', file.isImageRacyClassified) +
             formatLine('Racy Score:    ', file.racyClassificationScore)
 
-      return offensive
-        ? 'WARNING: image may be offensive\n'
-        : '' +
-            formatLine('File name:     ', file.name) +
-            formatLine('Description:   ', file.fileDescription) +
-            formatLine('Size:          ', file.size + ' bytes') +
-            formatLine('CosmosDB file: ', file.sha1) +
-            (file.malwareIsClean
-              ? 'Malware scan:  Clean\n'
-              : formatLine('Malware scan:  ', file.malwareScanDetail)) +
-            moderatorString
+      const attachmentName = file.path.split('/').pop()
+      return (
+        (offensive ? 'WARNING: image may be offensive\n' : '') +
+        formatLine('Attachment:    ', attachmentName) +
+        formatLine('File name:     ', file.name) +
+        formatLine('Description:   ', file.fileDescription) +
+        formatLine('Size:          ', file.size + ' bytes') +
+        formatLine('CosmosDB file: ', file.sha1) +
+        (file.malwareIsClean
+          ? 'Malware scan:  Clean\n'
+          : formatLine('Malware scan:  ', file.malwareScanDetail)) +
+        moderatorString
+      )
     })
     .join('\n\n')
 
@@ -221,13 +236,22 @@ const formatFileAttachments = data => {
 }
 
 const formatAnalystEmail = dataOrig => {
-  let returnString
+  let returnString = ''
+  let reportInfoString = ''
   let missingFields
 
+  let data
   try {
-    let data = JSON.parse(JSON.stringify(dataOrig))
+    data = JSON.parse(JSON.stringify(dataOrig))
+    reportInfoString = formatReportInfo(data)
+  } catch (error) {
+    const errorMessage = `ERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
+    console.error(errorMessage)
+    return errorMessage
+  }
+  try {
     returnString =
-      formatReportInfo(data) +
+      reportInfoString +
       formatVictimDetails(data) +
       formatIncidentInformation(data) +
       formatNarrative(data) +
@@ -243,7 +267,9 @@ const formatAnalystEmail = dataOrig => {
       ? '\n\nExtra Fields:\n' + JSON.stringify(data, null, '  ')
       : ''
   } catch (error) {
-    const errorMessage = `ERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
+    const errorMessage =
+      reportInfoString +
+      `\nERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
     console.error(errorMessage)
     return errorMessage
   }

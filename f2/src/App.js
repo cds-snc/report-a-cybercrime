@@ -41,10 +41,11 @@ const App = () => {
             <PhaseBanner phase={<Trans id="banner.phase" />}>
               <Trans id="banner.phaseText">
                 <A
+                  color="blue.900"
                   href={
                     i18n.locale === 'en'
-                      ? 'https://www.services.rcmp-grc.gc.ca/chooser-eng.html'
-                      : 'https://www.services.rcmp-grc.gc.ca/chooser-fra.html'
+                      ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm'
+                      : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
                   }
                   isExternal
                 />
@@ -64,22 +65,25 @@ const App = () => {
             bg="gray.50"
           >
             <Home />
+
+            <Layout>
+              <P fontSize="sm" my={3} aria-label="application version">
+                {`Version: ${
+                  process.env.REACT_APP_VERSION
+                    ? process.env.REACT_APP_VERSION.slice(0, 7)
+                    : '000000'
+                }`}
+              </P>
+            </Layout>
           </Stack>
-
-          <Layout>
-            <P fontSize="sm" my={3}>
-              {`Version: ${
-                process.env.REACT_APP_VERSION
-                  ? process.env.REACT_APP_VERSION.slice(0, 7)
-                  : '000000'
-              }`}
-            </P>
-          </Layout>
-
           <Footer>
             {/** The List component is in the Footer component */}
             <Li>
-              <A href={'/privacystatement?lang=' + i18n.locale} isExternal>
+              <A
+                href={'/privacystatement?lang=' + i18n.locale}
+                isExternal
+                color="blue.900"
+              >
                 <Trans id="banner.footerPrivacy" />
               </A>
             </Li>
@@ -88,6 +92,7 @@ const App = () => {
                 ml={4}
                 href={'/termsandconditions?lang=' + i18n.locale}
                 isExternal
+                color="blue.900"
               >
                 <Trans id="banner.footerTermsAndConditions" />
               </A>

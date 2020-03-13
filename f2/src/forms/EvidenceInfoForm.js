@@ -40,8 +40,9 @@ export const EvidenceInfoForm = props => {
     if (file.size > 4194304) {
       // 4MB in bytes is 4194304.
       alert(
-        'ENGLISH - Warning: Your file size exceeds 4MB. Please reduce the size and try uploading again. \n FRANÇAIS - Alerte : La taille de votre fichier dépasse 4 Mo. Veuillez réduire la taille et essayer de télécharger à nouveau.  ',
+        'Warning: Your file size exceeds 4MB. Please reduce the size and try uploading again. \n Alerte : La taille de votre fichier dépasse 4 Mo. Veuillez réduire la taille et essayer de télécharger à nouveau.',
       )
+      e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     }
     setStatus('fileUpload.added')
@@ -99,9 +100,10 @@ export const EvidenceInfoForm = props => {
                   borderBottomWidth="2px"
                   borderBottomColor="grey.400"
                 >
-                  <Trans id="evidencePage.fileSize" />
-                  <P fontSize="sm">
-                    <Text fontSize="sm" as="span" fontWeight="bold">
+                  <P fontSize="md">
+                    <Trans id="evidencePage.fileSize" />
+                    <br />
+                    <Text fontSize="md" as="span" fontWeight="bold">
                       <Trans id="evidencePage.supportedFiles" />
                     </Text>
                     <Trans id="evidencePage.fileTypes" />
@@ -165,7 +167,7 @@ export const EvidenceInfoForm = props => {
                       variantColor="blue"
                       onChange={onFilesChange}
                     >
-                      <Trans id="evidencePage.addFileButtom" />
+                      <Trans id="evidencePage.addFileButton" />
                     </FileUpload>
                   </Box>
                   <Alert status="success" backgroundColor="blue.100">

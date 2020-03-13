@@ -1,6 +1,7 @@
 import React from 'react'
 import wait from 'waait'
 import { i18n } from '@lingui/core'
+import { MemoryRouter } from 'react-router-dom'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
@@ -20,20 +21,22 @@ describe('<MidFeedbackForm />', () => {
     const submitMock = jest.fn()
 
     const { getByText } = render(
-      <ThemeProvider theme={canada}>
-        <I18nProvider i18n={i18n}>
-          <MidFeedbackForm onSubmit={submitMock} />
-        </I18nProvider>
-      </ThemeProvider>,
+      <MemoryRouter initialEntries={['/']}>
+        <ThemeProvider theme={canada}>
+          <I18nProvider i18n={i18n}>
+            <MidFeedbackForm onSubmit={submitMock} />
+          </I18nProvider>
+        </ThemeProvider>
+      </MemoryRouter>,
     )
 
-    // find the next button so we can trigger a form submission
-    // we want to grab whatever is in the submit button as text, pass it to getByText
-    const context = document.querySelector('[type="submit"]').textContent
-    const submitButton = getByText(context)
+    const openButton = getByText('midFeedback.summary')
+    openButton.click()
 
+    /// find the next button so we can trigger a form submission
+    const submitButton = getByText(/submit/)
     // Click the next button to trigger the form submission
-    clickOn(submitButton)
+    clickOn(submitButton.parentElement)
     await wait(0) // Wait for promises to resolve
 
     // We expect that sequence of events to have caused our onSubmit mock to get
@@ -44,24 +47,27 @@ describe('<MidFeedbackForm />', () => {
     const submitMock = jest.fn()
 
     const { getByText, getByLabelText } = render(
-      <ThemeProvider theme={canada}>
-        <I18nProvider i18n={i18n}>
-          <MidFeedbackForm onSubmit={submitMock} />
-        </I18nProvider>
-      </ThemeProvider>,
+      <MemoryRouter initialEntries={['/']}>
+        <ThemeProvider theme={canada}>
+          <I18nProvider i18n={i18n}>
+            <MidFeedbackForm onSubmit={submitMock} />
+          </I18nProvider>
+        </ThemeProvider>
+      </MemoryRouter>,
     )
 
+    const openButton = getByText('midFeedback.summary')
+    openButton.click()
+
     // find the next button so we can trigger a form submission
-    // we want to grab whatever is in the submit button as text, pass it to getByText
-    const context = document.querySelector('[type="submit"]').textContent
-    const submitButton = getByText(context)
+    const submitButton = getByText(/submit/)
 
     //Click on a checkbox
     const checkbox = getByLabelText('midFeedback.problem.confusing')
     clickOn(checkbox)
 
     // Click the next button to trigger the form submission
-    clickOn(submitButton)
+    clickOn(submitButton.parentElement)
     await wait(0) // Wait for promises to resolve
 
     // We expect that sequence of events to have caused our onSubmit mock to get
