@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { A } from '../components/link'
 import { CheckboxAdapter } from '../components/checkbox'
@@ -29,7 +29,6 @@ export const PrivacyConsentInfoForm = props => {
     ...data.formData.whetherConsent,
   }
   const consentOptions = ['privacyConsentInfoForm.yes']
-  let showWarning = false
 
   return (
     <React.Fragment>

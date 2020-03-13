@@ -1,4 +1,5 @@
 /** @jsx jsx **/
+import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Alert, Stack } from '@chakra-ui/core'
