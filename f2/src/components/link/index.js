@@ -27,7 +27,7 @@ Link.propTypes = {
 
 // Looks like a button, acts as a link
 export const ButtonLink = props => (
-  <Button {...props} as={ReactRouterLink} type="button">
+  <Button {...props} as={ReactRouterLink} role="button">
     {props.children}
   </Button>
 )
