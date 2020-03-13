@@ -62,12 +62,6 @@ export const PrivacyConsentInfoForm = props => {
               <ErrorSummary onSubmit={handleSubmit} errors={errors} />
             ) : null}
 
-            {showWarning ? (
-              <Alert status="warning">
-                <AlertIcon />
-                <Trans id="" />
-              </Alert>
-            ) : null}
             <FormArrayControl
               name="consentOptions"
               errorMessage={<Trans id="privacyConsentInfoForm.warning" />}
