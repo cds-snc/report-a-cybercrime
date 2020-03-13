@@ -1,7 +1,7 @@
 import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'
 import ThemeDecorator from '../../../.storybook/themeDecorator'
 import { P } from './index'
-import { Stack } from '@chakra-ui/core'
+import { Box } from '@chakra-ui/core'
 
 <Meta
   title="Components/Paragraph"
@@ -11,6 +11,8 @@ import { Stack } from '@chakra-ui/core'
 
 # Paragraphs
 
+## Single paragraph
+
 The paragraph component renders a Text component with paragraph spacing
 
 <Preview>
@@ -19,11 +21,13 @@ The paragraph component renders a Text component with paragraph spacing
   </Story>
 </Preview>
 
-Many Paragraphs together
+## Many Paragraphs together
+
+Here we are placing them in a wrapper element, notice how the paragraphs have spacing between them.
 
 <Preview>
   <Story name="Many paragraph">
-    <Stack spacing="4">
+    <Box>
       <P>
         You are reporting to the RCMP’s National Cybercrime Coordination Unit
         and the Canadian Anti-Fraud Centre.
@@ -37,7 +41,7 @@ Many Paragraphs together
         Learn more about who you’re reporting to and how your information is
         protected in the Privacy statement.
       </P>
-    </Stack>
+    </Box>
   </Story>
 </Preview>
 
