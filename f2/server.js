@@ -59,6 +59,8 @@ const availableData = {
   lastRequested: undefined,
 }
 
+let debuggingCounter = 0
+
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
   saveBlob(data)
@@ -93,6 +95,18 @@ app.get('/', function(req, res, next) {
         : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
+    // temporary debugging code
+    if (debuggingCounter < 20) {
+      debuggingCounter += 1
+      console.info('DEBUGGING Request Headers & IP:')
+      console.info(req.headers)
+      console.info(req.ip)
+      console.info(req.ips)
+      console.info(req.originalUrl)
+      console.info('DEBUGGING Request Headers & IP end')
+    }
+    // temporary debugging code
+
     var referrer = req.headers.referer
     console.log('Referrer:' + referrer)
     if (
