@@ -170,9 +170,16 @@ const formatSuspectDetails = data => {
 }
 
 const formatFinancialTransactions = data => {
-  const paymentString = data.moneyLost.methodPayment
+  const methods =
+    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
+      ? data.moneyLost.methodPayment.concat([data.moneyLost.methodOther])
+      : data.moneyLost.methodPayment
+
+  const paymentString = methods
+    .filter(method => method !== 'methodPayment.other')
     .map(method => method.replace('methodPayment.', ''))
     .join(', ')
+
   const transactionDate = formatDate(
     data.moneyLost.transactionDay,
     data.moneyLost.transactionMonth,
@@ -184,6 +191,7 @@ const formatFinancialTransactions = data => {
     formatLineHtml('Method of payment:   ', paymentString) +
     formatLineHtml('Transaction date:    ', transactionDate)
 
+  delete data.moneyLost.methodOther
   delete data.moneyLost.methodPayment
   delete data.moneyLost.demandedMoney
   delete data.moneyLost.moneyTaken

@@ -31,7 +31,7 @@ const getCert = uid => {
     res,
   ) {
     res.on('searchEntry', function(entry) {
-      console.log(`Encrypted Mail: Found LDAP entry for ${uid}`)
+      console.info(`Encrypted Mail: Found LDAP entry for ${uid}`)
       let cert =
         '-----BEGIN CERTIFICATE-----\r\n' +
         entry.object['userCertificate;binary'].replace(/(.{64})/g, '$1\r\n')
@@ -39,18 +39,18 @@ const getCert = uid => {
       cert += '-----END CERTIFICATE-----'
       fs.writeFile(certFileName(uid), cert, function(err) {
         if (err) throw err
-        else console.log(`Encrypted Mail: Certificate for ${uid} Saved!`)
+        else console.info(`Encrypted Mail: Certificate for ${uid} Saved!`)
       })
     })
     res.on('searchReference', function(referral) {
-      console.log('Encrypted Mail: referral: ' + referral.uris.join())
+      console.info('Encrypted Mail: referral: ' + referral.uris.join())
     })
     res.on('error', function(err) {
       console.warn('Encrypted Mail: error: ' + err.message)
     })
     res.on('end', function(result) {
       if (result.status !== 0)
-        console.log('Encrypted Mail: end status: ' + result.status)
+        console.info('Encrypted Mail: end status: ' + result.status)
       ldapClient.destroy()
     })
   })
@@ -110,7 +110,7 @@ const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
       { cwd: process.cwd() },
       function(error, _stdout, stderr) {
         if (error) throw error
-        else if (stderr) console.log(stderr)
+        else if (stderr) console.warn(stderr)
         else {
           console.log('Encrypted Mail: Message encrypted')
           const attachment = fs.readFileSync(encryptedFile)
@@ -150,7 +150,7 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
   }
 
   let info = await transporter.sendMail(message)
-  console.log(
+  console.info(
     `Encrypted Mail: Message sent to ${emailAddress}: ${info.messageId}`,
   )
 }

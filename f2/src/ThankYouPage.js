@@ -21,8 +21,6 @@ export const ThankYouPage = () => {
   const [state] = useStateValue()
   const [data] = useStateValue()
 
-  console.log(state)
-
   const contactInfo = {
     ...data.formData.contactInfo,
   }
