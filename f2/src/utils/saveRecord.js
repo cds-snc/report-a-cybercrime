@@ -6,7 +6,7 @@ const currentDate =
   (date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)) +
   '/' +
   date.getFullYear()
-console.log(currentDate)
+
 let numberofReports = 0
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
@@ -72,7 +72,6 @@ async function getReportCount() {
             } else {
               db.close()
               numberofReports = result.length
-              console.log('number of reports submitted: ' + numberofReports)
             }
           })
       }

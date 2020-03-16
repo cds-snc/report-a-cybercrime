@@ -94,7 +94,6 @@ app.get('/', async function(req, res, next) {
         : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
-    console.log('number of submissions: ' + availableData.numberOfSubmissions)
     availableData.numberOfRequests += 1
     availableData.lastRequested = new Date()
     console.log(`New Request. ${JSON.stringify(availableData)}`)
@@ -136,7 +135,7 @@ app
     })
   })
 
- .post('/submit', (req, res) => {
+  .post('/submit', (req, res) => {
     var form = new formidable.IncomingForm()
     form.parse(req)
     let files = []
