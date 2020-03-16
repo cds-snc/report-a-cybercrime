@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { Form, useField } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { FormControl, Stack, Alert, AlertIcon } from '@chakra-ui/core'
+import { FormControl, Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { A } from '../components/link'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { useLingui } from '@lingui/react'
+import { Alert } from '../components/Messages'
 
 const Control = ({ name, ...rest }) => {
   const {
@@ -82,8 +83,7 @@ export const PrivacyConsentInfoForm = props => {
                     )
                   })}
                   {showWarning ? (
-                    <Alert status="warning">
-                      <AlertIcon />
+                    <Alert status="error">
                       <Trans id="privacyConsentInfoForm.warning" />
                     </Alert>
                   ) : null}
