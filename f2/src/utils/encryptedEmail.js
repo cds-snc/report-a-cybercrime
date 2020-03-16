@@ -30,7 +30,7 @@ const getCert = uid => {
     res,
   ) {
     res.on('searchEntry', function(entry) {
-      console.log(`Encrypted Mail: Found LDAP entry for ${uid}`)
+      console.info(`Encrypted Mail: Found LDAP entry for ${uid}`)
       let cert =
         '-----BEGIN CERTIFICATE-----\r\n' +
         entry.object['userCertificate;binary'].replace(/(.{64})/g, '$1\r\n')
@@ -38,18 +38,18 @@ const getCert = uid => {
       cert += '-----END CERTIFICATE-----'
       fs.writeFile(certFileName(uid), cert, function(err) {
         if (err) throw err
-        else console.log(`Encrypted Mail: Certificate for ${uid} Saved!`)
+        else console.info(`Encrypted Mail: Certificate for ${uid} Saved!`)
       })
     })
     res.on('searchReference', function(referral) {
-      console.log('Encrypted Mail: referral: ' + referral.uris.join())
+      console.info('Encrypted Mail: referral: ' + referral.uris.join())
     })
     res.on('error', function(err) {
       console.warn('Encrypted Mail: error: ' + err.message)
     })
     res.on('end', function(result) {
       if (result.status !== 0)
-        console.log('Encrypted Mail: end status: ' + result.status)
+        console.info('Encrypted Mail: end status: ' + result.status)
       ldapClient.destroy()
     })
   })
@@ -65,10 +65,10 @@ const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
       { cwd: process.cwd() },
       function(error, stdout, stderr) {
         if (error) throw error
-        else if (stderr) console.log(stderr)
+        else if (stderr) console.warn(stderr)
         else {
           const attachment = stdout
-          console.log('Encrypted Mail: Message encrypted')
+          console.info('Encrypted Mail: Message encrypted')
           fs.unlink(messageFileName, () => {})
           sendMail(emailAddress, attachment, data.reportId, 'Report')
         }
@@ -84,7 +84,6 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
     data.evidence.files.forEach(file => {
       if (file.malwareIsClean) {
         const filePath = file.path
-        console.log('file is at: ' + filePath)
         //create file name for each file in the format of .mime
         const mimeFile = filePath + '.' + nanoid() + '.mime'
         const encryptedFile = mimeFile + '.encrypt'
@@ -96,10 +95,10 @@ const encryptFile = (uid, emailAddress, data, sendMail) => {
           { cwd: process.cwd() },
           function(error, stdout, stderr) {
             if (error) throw error
-            else if (stderr) console.log(stderr)
+            else if (stderr) console.warn(stderr)
             else {
               const attachment = fs.readFileSync(encryptedFile)
-              console.log('Encrypted File: File encrypted')
+              console.info('Encrypted File: File encrypted')
               if (file.isImageRacyClassified || file.isImageAdultClassified)
                 sendMail(
                   emailAddress,
@@ -148,7 +147,7 @@ async function sendMail(emailAddress, attachment, reportId, emailType) {
   }
 
   let info = await transporter.sendMail(message)
-  console.log(
+  console.info(
     `Encrypted Mail: Message sent to ${emailAddress}: ${info.messageId}`,
   )
 }

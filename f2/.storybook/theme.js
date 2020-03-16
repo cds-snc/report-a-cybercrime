@@ -31,6 +31,6 @@ export default create({
   inputTextColor: 'black',
   inputBorderRadius: 4,
 
-  brandTitle: 'Canada',
+  brandTitle: 'Canada.ca React',
   brandUrl: '/',
 })
