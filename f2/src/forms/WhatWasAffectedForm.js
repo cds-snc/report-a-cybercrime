@@ -46,6 +46,8 @@ export const WhatWasAffectedForm = props => {
 
   const affectedOptions = whatWasAffectedPages.map(page => page.key)
 
+  const ref = React.createRef()
+
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -82,7 +84,7 @@ export const WhatWasAffectedForm = props => {
             spacing={6}
           >
             {submitFailed && hasValidationErrors ? (
-              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+              <ErrorSummary ref={ref} onSubmit={handleSubmit} errors={errors} />
             ) : null}
 
             <FormArrayControl
