@@ -23,6 +23,7 @@ export const Link = props => (
 
 Link.propTypes = {
   children: PropTypes.any,
+  to: PropTypes.any.isRequired,
 }
 
 // Looks like a button, acts as a link
@@ -34,6 +35,7 @@ export const ButtonLink = props => (
 
 ButtonLink.propTypes = {
   children: PropTypes.any,
+  to: PropTypes.any.isRequired,
 }
 
 // Looks like a link, acts as a button
@@ -46,7 +48,7 @@ export const LinkButton = props => (
       color: 'blue.hover',
     }}
     {...props}
-    role="button"
+    tabIndex="0"
     _active={{
       boxShadow: 'outline',
     }}
@@ -55,8 +57,9 @@ export const LinkButton = props => (
   </ChakraLink>
 )
 
-ButtonLink.propTypes = {
+LinkButton.propTypes = {
   children: PropTypes.any,
+  onClick: PropTypes.func.isRequired,
 }
 
 // An anchor link. needs to contain an HREF. Useful for links outside the app
@@ -75,4 +78,5 @@ export const A = props => (
 
 A.propTypes = {
   children: PropTypes.any,
+  href: PropTypes.any.isRequired,
 }
