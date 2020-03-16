@@ -1,17 +1,51 @@
-import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import ThemeDecorator from '../../../.storybook/themeDecorator'
 import { Li } from './index'
+import { Ul } from '../unordered-list/index'
+import { Ol } from '../ordered-list/index'
 
-<Meta
-  title="Components/List Item"
-  component={Li}
-  decorators={[ThemeDecorator]}
-/>
+<Meta title="Components/List" component={Li} decorators={[ThemeDecorator]} />
 
-# List Item
+# Lists
+
+## List item
 
 <Preview>
-  <Story name="Basic list item">
-    <Li>List item</Li>
+  <Story name="List item">
+    <Ul>
+      <Li>List item</Li>
+    </Ul>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Li} />
+
+## Ordered list
+
+<Preview>
+  <Story name="Ordered List">
+    <Ol>
+      <Li>List item</Li>
+      <Li>List item</Li>
+      <Li>List item</Li>
+      <Li>List item</Li>
+      <Li>List item</Li>
+    </Ol>
+  </Story>
+</Preview>
+
+## Unordered list
+
+<Preview>
+  <Story name="Unordered List">
+    <Ul>
+      <Li>List item</Li>
+      <Li>List item</Li>
+      <Li>List item</Li>
+      <Li>List item</Li>
+      <Li>List item</Li>
+    </Ul>
   </Story>
 </Preview>

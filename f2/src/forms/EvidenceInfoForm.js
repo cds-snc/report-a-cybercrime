@@ -43,6 +43,7 @@ export const EvidenceInfoForm = props => {
       alert(
         'Warning: Your file size exceeds 4MB. Please reduce the size and try uploading again. \n Alerte : La taille de votre fichier dépasse 4 Mo. Veuillez réduire la taille et essayer de télécharger à nouveau.',
       )
+      e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     }
     setStatus('fileUpload.added')

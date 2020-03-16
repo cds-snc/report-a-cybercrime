@@ -154,8 +154,8 @@ export const InformationForm = props => {
                     color="blue.900"
                     href={
                       i18n.locale === 'en'
-                        ? 'https://www.consumer.equifax.ca/personal/'
-                        : 'https://www.consumer.equifax.ca/personnel/'
+                        ? 'https://www.consumer.equifax.ca/fr/c/portal/update_language?p_l_id=23&redirect=%2Ffr%2Fpersonnel%2F&languageId=en_US'
+                        : 'https://www.consumer.equifax.ca/en/c/portal/update_language?p_l_id=23&redirect=%2Fen%2Fpersonal%2F&languageId=fr_FR'
                     }
                     isExternal // Opens new tab
                   />
