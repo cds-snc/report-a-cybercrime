@@ -40,12 +40,12 @@ getAllCerts(uidList)
 const app = express()
 
 const allowedOrigins = [
-  'http://dev.antifraudcentre-centreantifraude.ca',
-  'http://pre.antifraudcentre-centreantifraude.ca',
-  'http://antifraudcentre-centreantifraude.ca',
-  'http://centreantifraude-antifraudcentre.ca',
-  'http://antifraudcentre.ca',
-  'http://centreantifraude.ca',
+  'https://dev.antifraudcentre-centreantifraude.ca',
+  'https://pre.antifraudcentre-centreantifraude.ca',
+  'https://antifraudcentre-centreantifraude.ca',
+  'https://centreantifraude-antifraudcentre.ca',
+  'https://antifraudcentre.ca',
+  'https://centreantifraude.ca',
 ]
 
 let availableData
@@ -86,7 +86,7 @@ const uploadData = async (req, res, fields, files) => {
 app.get('/', async function(req, res, next) {
   availableData.numberOfSubmissions = await getReportCount()
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
-    console.log('Warning: redirecting request to CAFC')
+    console.warn('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalez')
         ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
@@ -95,7 +95,6 @@ app.get('/', async function(req, res, next) {
   } else {
     availableData.numberOfRequests += 1
     availableData.lastRequested = new Date()
-    console.log(`New Request. ${JSON.stringify(availableData)}`)
     next()
   }
 })
@@ -174,5 +173,5 @@ app
 // })
 
 const port = process.env.PORT || 3000
-console.log(`Listening at port ${port}`)
+console.info(`Listening at port ${port}`)
 app.listen(port)

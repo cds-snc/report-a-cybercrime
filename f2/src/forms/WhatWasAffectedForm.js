@@ -4,11 +4,12 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Text } from '../components/text'
+import { Alert } from '../components/Messages'
 
 const validate = () => {
   return {}
@@ -98,8 +99,7 @@ export const WhatWasAffectedForm = props => {
                 )
               })}
               {showWarning ? (
-                <Alert status="warning">
-                  <AlertIcon />
+                <Alert status="error">
                   <Trans id="whatWasAffectedForm.warning" />
                 </Alert>
               ) : null}

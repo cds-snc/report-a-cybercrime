@@ -32,14 +32,13 @@ async function saveRecord(data, res) {
         var dbo = db.db('cybercrime')
         dbo.collection('reports').insertOne(data, function(err, result) {
           if (err) {
-            console.log({ data })
-            console.warn(`ERROR in insertOne: ${err}`)
+            console.warn(`ERROR in Report ${data.reportId} insertOne: ${err}`)
             res.statusCode = 502
             res.statusMessage = 'Error saving to CosmosDB'
             res.send(res.statusMessage)
           } else {
             db.close()
-            console.log(`Report ${data.reportId} saved to CosmosDB`)
+            console.info(`Report ${data.reportId} saved to CosmosDB`)
             res.statusMessage = data.reportId
             res.send(res.statusMessage)
           }
