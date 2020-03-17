@@ -17,7 +17,27 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+<<<<<<< HEAD
 
+=======
+const { A11yReporter } = require ('@cdssnc/a11y-tracker-client');
+
+A11yReporter.configure({
+  trackerURI: undefined,
+  revision: '<local>',
+  project: 'report-cyber-crime',
+});
+
+if (Cypress.env['testing'] && Cypress.env['GITHUB_REF'] === 'refs/heads/master') {
+  A11yReporter.configure({
+    trackerURI: Cypress.env('A11Y_TRACKER_URI') || 'https://a11y-tracker.herokuapp.com/',
+    revision: Cypress.env('GITHUB_GIT_HASH'),
+    //TODO: should be added to the secret keys
+    key: Cypress.env('cds-snc:a11y-tracker:340044fa-92f6-46b5-8b9f-94f3ac80edcd'),
+    project: 'report-cyber-crime',
+  });
+}
+>>>>>>> 5c3c0b01528bbbc233cae0e2b988a0c3d2eaf71c
 
 A11yReporter.setupCypress();
 
