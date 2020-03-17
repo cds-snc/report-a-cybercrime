@@ -11,9 +11,10 @@ import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { A } from './components/link'
 import { Layout } from './components/layout'
-import { Stack, Icon, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { Well } from './components/Messages'
 
 export const LandingPage = props => {
   const { i18n } = useLingui()
@@ -90,10 +91,9 @@ export const LandingPage = props => {
                 </Stack>
               </Stack>
 
-              <Alert status="success" backgroundColor="blue.100">
-                <AlertIcon name="info-outline" color="blue.800" />
+              <Well variantColor="blue">
                 <Trans id="landingPage.warning" />
-              </Alert>
+              </Well>
 
               <H2>
                 <Trans id="landingPage.reportingOptions" />
@@ -120,8 +120,8 @@ export const LandingPage = props => {
                     <A
                       href={
                         i18n.locale === 'en'
-                          ? 'https://www.consumer.equifax.ca/personal/'
-                          : 'https://www.consumer.equifax.ca/personnel/'
+                          ? 'https://www.consumer.equifax.ca/fr/c/portal/update_language?p_l_id=23&redirect=%2Ffr%2Fpersonnel%2F&languageId=en_US'
+                          : 'https://www.consumer.equifax.ca/en/c/portal/update_language?p_l_id=23&redirect=%2Fen%2Fpersonal%2F&languageId=fr_FR'
                       }
                       isExternal // Opens new tab
                     />

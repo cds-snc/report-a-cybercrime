@@ -7,7 +7,7 @@ import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextArea } from '../components/text-area'
-import { Stack, FormControl, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, FormControl } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
@@ -18,6 +18,7 @@ import { FormArrayControl } from '../components/FormArrayControl'
 import { Field } from '../components/Field'
 import { A } from '../components/link'
 import { P } from '../components/paragraph'
+import { Well } from '../components/Messages'
 
 export const InformationForm = props => {
   const { i18n } = useLingui()
@@ -146,19 +147,20 @@ export const InformationForm = props => {
                 </FormControl>
               )}
             </Field>
-            <Alert align="center" status="success" backgroundColor="blue.100">
-              <AlertIcon name="info-outline" color="blue.800" />
+            <Well variantColor="blue">
               <P fontSize="md" mb={0}>
                 <Trans id="informationPage.tip">
                   <A
+                    color="blue.900"
                     href={
                       i18n.locale === 'en'
-                        ? 'https://www.consumer.equifax.ca/personal/'
-                        : 'https://www.consumer.equifax.ca/personnel/'
+                        ? 'https://www.consumer.equifax.ca/fr/c/portal/update_language?p_l_id=23&redirect=%2Ffr%2Fpersonnel%2F&languageId=en_US'
+                        : 'https://www.consumer.equifax.ca/en/c/portal/update_language?p_l_id=23&redirect=%2Fen%2Fpersonal%2F&languageId=fr_FR'
                     }
                     isExternal // Opens new tab
                   />
                   <A
+                    color="blue.900"
                     href={
                       i18n.locale === 'en'
                         ? 'https://www.transunion.ca/'
@@ -168,7 +170,7 @@ export const InformationForm = props => {
                   />
                 </Trans>
               </P>
-            </Alert>
+            </Well>
             <NextAndCancelButtons
               next={<Trans id="informationPage.nextStep" />}
               button={<Trans id="informationPage.nextButton" />}
