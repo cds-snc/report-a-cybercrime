@@ -9,14 +9,23 @@ import { Li } from '../list-item'
 import { A } from '../link'
 import { useForm } from 'react-final-form'
 import { Alert } from '../Messages'
+import { useEffect } from 'react'
 
 export const ErrorSummary = props => {
   const { i18n } = useLingui()
 
   const { errors } = useForm(props.onSubmit).getState()
 
+  useEffect(() => {
+    const summary = document
+      .getElementById('error-summary')
+      .getBoundingClientRect()
+
+    window.scrollTo(0, summary.y - 16)
+  })
+
   return (
-    <Alert status="error" aria-atomic>
+    <Alert id="error-summary" status="error" aria-atomic>
       <Stack>
         <Text fontSize="md" fontWeight="bold">
           <Trans id="default.hasValidationErrors" />
