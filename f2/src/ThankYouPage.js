@@ -10,11 +10,12 @@ import { Li } from './components/list-item'
 import { InfoCard, LandingBox } from './components/container'
 import { Layout, Row } from './components/layout'
 import { Text } from './components/text'
-import { Stack, Alert, AlertIcon, Box, Icon } from '@chakra-ui/core'
+import { Stack, Box, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { P } from './components/paragraph'
 import { Route } from 'react-router-dom'
 import { Page } from './components/Page'
+import { Alert } from './components/Messages'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
@@ -51,8 +52,7 @@ export const ThankYouPage = () => {
         zIndex={1}
       >
         {state.doneFinalFeedback && (
-          <Alert status="success">
-            <AlertIcon mt={0} />
+          <Alert status="success" withIcon>
             <Trans id="thankYouPage.feedback.success" />
           </Alert>
         )}
@@ -134,8 +134,7 @@ export const ThankYouPage = () => {
       {/* After help section*/}
       <Layout pt={10} columns={{ base: 4 / 4, lg: 7 / 12 }}>
         <Stack spacing={6}>
-          <Alert status="success">
-            <AlertIcon mt={0} />
+          <Alert status="success" withIcon>
             <Trans id="thankYouPage.safelyCloseWindow" />
           </Alert>
 

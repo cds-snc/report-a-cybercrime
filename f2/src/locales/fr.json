@@ -97,6 +97,7 @@
   "contactinfoPage.skipInfo": "Vous pouvez ignorer cette étape si vous souhaitez signaler de façon anonyme.",
   "contactinfoPage.title": "Vos coordonnées",
   "default.end": " et ",
+  "default.hasValidationErrors": "Veuillez corriger les erreurs sur cete page",
   "default.middle": ", ",
   "default.pair": " et ",
   "devicePage.account": "Quel type de compte a été affecté?",

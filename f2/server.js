@@ -6,6 +6,7 @@ const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
+const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
@@ -46,11 +47,15 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
-const availableData = {
-  numberOfSubmissions: 0,
-  numberOfRequests: 0,
-  lastRequested: undefined,
+let availableData
+async function initializeAvailableData() {
+  availableData = {
+    numberOfSubmissions: await getReportCount(),
+    numberOfRequests: 0,
+    lastRequested: undefined,
+  }
 }
+initializeAvailableData()
 
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
@@ -75,7 +80,8 @@ const uploadData = async (req, res, fields, files) => {
   contentModeratorFiles(data, () => save(data, res))
 }
 
-app.get('/', function(req, res, next) {
+app.get('/', async function(req, res, next) {
+  availableData.numberOfSubmissions = await getReportCount()
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
     console.warn('Warning: redirecting request to CAFC')
     res.redirect(
@@ -125,7 +131,6 @@ app
   })
 
   .post('/submit', (req, res) => {
-    availableData.numberOfSubmissions += 1
     var form = new formidable.IncomingForm()
     form.parse(req)
     let files = []
