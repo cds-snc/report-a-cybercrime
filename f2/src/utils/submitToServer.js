@@ -18,6 +18,6 @@ async function postData(url = '', data = {}) {
 }
 
 export const submitToServer = async data => {
-  console.log('Submitting Feedback:', data)
+  console.info('Submitting Feedback:', data)
   await postData('/submitFeedback', data)
 }

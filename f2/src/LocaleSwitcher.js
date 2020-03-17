@@ -8,7 +8,13 @@ import { A } from './components/link'
 const Toggler = props => {
   const { locale } = props
   return (
-    <A key={locale} padding={0} onClick={() => activate(locale)}>
+    <A
+      key={locale}
+      padding={0}
+      onClick={() => activate(locale)}
+      // eslint-disable-next-line no-script-url
+      href="javascript:;" // otherwise can't navigate to with keyboard
+    >
       {locales[locale]}
     </A>
   )

@@ -8,6 +8,9 @@ export const Input = props => (
     onKeyPress={e => {
       e.key === 'Enter' && e.preventDefault()
     }}
+    _invalid={{
+      borderColor: 'red.700',
+    }}
     autoComplete="off"
     {...canada.variants.inputs.inputs}
     {...props.input}

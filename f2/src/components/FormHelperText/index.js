@@ -1,28 +1,11 @@
 import styled from '@emotion/styled'
 import { FormHelperText as ChakraFormHelperText } from '@chakra-ui/core'
-import { variant } from 'styled-system'
 
-export const FormHelperText = styled(ChakraFormHelperText)(
-  variant({
-    variants: {
-      above: {
-        mt: -2,
-        mb: 4,
-      },
-      below: {
-        mt: 4,
-        mb: 0,
-      },
-      unstyled: {
-        m: 0,
-      },
-    },
-  }),
-)
+export const FormHelperText = styled(ChakraFormHelperText)()
 
 FormHelperText.defaultProps = {
-  variant: 'above',
   as: 'p',
+  mt: 0,
   fontSize: 'md',
   color: 'black',
   fontFamily: 'body',
