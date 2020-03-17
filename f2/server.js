@@ -16,6 +16,10 @@ const {
   submitFeedback,
 } = require('./src/utils/notify')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
+const {
+  fileSizePasses,
+  fileExtensionPasses,
+} = require('./src/utils/acceptableFiles')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -144,11 +148,13 @@ app
     form.on('file', function(name, file) {
       if (files.length >= 3)
         console.warn('ERROR in /submit: number of files more than 3')
-      else if (file.size > 4 * 1024 * 1024)
+      else if (!fileSizePasses(file.size))
         console.warn(
-          `ERROR in /submit: file size of ${4 *
-            1024 *
-            1024} exceeded for file ${name} (${file.size})`,
+          `ERROR in /submit: file ${name} too big (${file.size} bytes)`,
+        )
+      else if (!fileExtensionPasses(name))
+        console.warn(
+          `ERROR in /submit: unauthorized file extension in file ${name}`,
         )
       else files.push(file)
     })
