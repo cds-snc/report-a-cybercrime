@@ -16,6 +16,7 @@ const {
   submitFeedback,
 } = require('./src/utils/notify')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
+const helmet = require('helmet')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -38,6 +39,7 @@ const uidList = process.env.LDAP_UID
 getAllCerts(uidList)
 
 const app = express()
+app.use(helmet())
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
