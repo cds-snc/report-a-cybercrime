@@ -16,15 +16,13 @@ import { Layout } from './components/layout'
 import { Li } from './components/list-item'
 import { A } from './components/link'
 
+const prodVersion = '1.1.0'
+const gitsha = process.env.REACT_APP_VERSION
+  ? process.env.REACT_APP_VERSION.slice(0, 7)
+  : '000000'
+
 const App = () => {
   const { i18n } = useLingui()
-
-  const gitsha = process.env.REACT_APP_VERSION
-    ? process.env.REACT_APP_VERSION.slice(0, 7)
-    : '000000'
-  const prodVersion = process.env.REACT_APP_PROD_VERSION
-    ? process.env.REACT_APP_PROD_VERSION
-    : '0.0.0'
 
   return (
     <ThemeProvider theme={canada}>
