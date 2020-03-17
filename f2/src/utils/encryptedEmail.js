@@ -109,8 +109,6 @@ async function sendMail(emailAddress, attachment, reportId, emailType) {
   )
 }
 
-// ----------------------------------------------------
-
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList && emailList) {
     uidList.forEach((uid, index) =>

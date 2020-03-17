@@ -30,20 +30,21 @@ const uidListInitial = process.env.LDAP_UID
   ? process.env.LDAP_UID.split(',').map(k => k.trim())
   : []
 
-// fetch and store certs for intake analysts
+// certs and emails can be fetched in different order than the original uidListInitial
 let emailList = []
 let uidList = []
-
-// certs and emails can be fetched in different order than the original uidListInitial
 getCertsAndEmail(uidListInitial, emailList, uidList)
 
+// Make sure that everything got loaded.
+// TODO: have a proper "system is ready" flag that express uses to deal with requests
+// (ex: tell CAFC we're not ready yet, return error code to /ping)
 setTimeout(() => {
   if (
-    uidListInitial.length != uidList.length ||
-    uidListInitial.length != emailList.length
+    uidListInitial.length === uidList.length &&
+    uidListInitial.length === emailList.length
   )
-    console.log('ERROR: problem fetching certs from LDAP')
-  else console.log(`LDAP certs successfully fetchedfetched for: ${emailList}`)
+    console.log(`LDAP certs successfully fetchedfetched for: ${emailList}`)
+  else console.log('ERROR: problem fetching certs from LDAP')
 }, 5000)
 
 const app = express()

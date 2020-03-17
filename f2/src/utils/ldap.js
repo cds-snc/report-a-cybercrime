@@ -3,9 +3,6 @@ const fs = require('fs')
 
 require('dotenv').config()
 const ldapUrl = process.env.LDAP_URL
-const uidList = process.env.LDAP_UID
-  ? process.env.LDAP_UID.split(',').map(k => k.trim())
-  : []
 
 const ldapQuery = (uid, emailAddresses, uidList) => {
   var searchOptions = {
