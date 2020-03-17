@@ -3,10 +3,11 @@ const acceptableExtensions = '.png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx, .pdf,
   .map(ext => ext.trim())
 
 const getExtension = fileName =>
-  fileName.includes('.') ? name.split('.').pop() : ''
+  fileName.includes('.') ? fileName.split('.').pop() : ''
 
-const fileExtensionPasses = fileName =>
-  acceptableExtensions.indexOf('.' + getExtension(fileName)) > -1
+const fileExtensionPasses = fileName => {
+  return acceptableExtensions.indexOf('.' + getExtension(fileName)) > -1
+}
 
 const fileSizePasses = fileSize => fileSize <= 4 * 1024 * 1024
 
