@@ -49,7 +49,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
-import 'cypress-axe';
 
 Cypress.Commands.add('uploadFile', { prevSubject: true }, (subject, fileName, fileType = '') => {
     cy.fixture(fileName,'binary').then(content => {

@@ -2,15 +2,17 @@
 Given('I open the report home page', () => {
     cy.visit(Cypress.env('production'))
 
+
 });
 
 When('I click on create a report button', () => {
     cy.contains('Report now').first().click({force: true});
+    cy.reportA11y();
 });
 
 When('I read before you start instructions', () => {
-
     cy.contains('Start report').first().click({force: true});
+    cy.reportA11y();
 });
 
 When('I click continue without checking consent', () => {

@@ -47,6 +47,7 @@ When('I navigate to howdiditstart page fill all forms', () => {
     cy.get('form').find('[name="startMonth"]').type('09')
     cy.get('form').find('[name="startYear"]').type('2019')
     cy.get('form').find('[value="howManyTimes.once"]').check({ force: true })
+    cy.reportA11y();
     cy.contains('Continue').first().click({force: true});
 });
 
@@ -61,6 +62,7 @@ When('I navigate to Whatcouldbeaffected page fill all forms', () => {
     cy.get('form').find('[value="whatWasAffectedForm.devices"]').check({ force: true })
     cy.get('form').find('[value="whatWasAffectedForm.business_assets"]').check({ force: true })
     cy.get('form').find('[value="whatWasAffectedForm.other"]').check({ force: true })
+    cy.reportA11y();
     cy.contains('Continue').first().click({force: true});
 });
 

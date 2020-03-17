@@ -17,6 +17,10 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+
+
+A11yReporter.setupCypress();
+
 let Chance = require('chance');
 // Instantiate Chance here so it can be used in all tests
 let chance = new Chance();
