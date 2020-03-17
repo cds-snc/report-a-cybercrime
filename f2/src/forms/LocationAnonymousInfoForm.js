@@ -5,10 +5,9 @@ import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
-import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
+import { Stack, FormControl } from '@chakra-ui/core'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
-import { Button } from '../components/button'
 
 const defaultLocation = {
   postalCode: '',
