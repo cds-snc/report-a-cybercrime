@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
+const helmet = require('helmet')
 const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
@@ -12,7 +13,6 @@ const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
   notifyIsSetup,
   sendConfirmation,
-  sendUnencryptedReport,
   submitFeedback,
 } = require('./src/utils/notify')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
@@ -42,6 +42,7 @@ const uidList = process.env.LDAP_UID
 getAllCerts(uidList)
 
 const app = express()
+app.use(helmet())
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
@@ -71,8 +72,6 @@ async function save(data, res) {
 
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
-    if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
-      sendUnencryptedReport(data.contactInfo.email, analystEmail)
   }
   saveRecord(data, res)
 }
