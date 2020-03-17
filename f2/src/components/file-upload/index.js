@@ -7,24 +7,26 @@ import { Button } from '../button'
 
 export const FileUpload = ({ onChange, accept, ...props }) => {
   return (
-    <Button
-      {...props}
-      as="div"
-      _focusWithin={{
-        boxShadow: 'outline',
-      }}
-    >
-      <VisuallyHidden
-        as="input"
-        type="file"
-        id="uploader"
-        name="uploader"
-        accept=".png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx, .pdf, .txt, .rtf"
-        max-upload={3}
-        onChange={onChange}
-      />
-      <Label htmlFor="uploader">{props.children}</Label>
-    </Button>
+    <Label>
+      <Button
+        {...props}
+        as="div"
+        _focusWithin={{
+          boxShadow: 'outline',
+        }}
+      >
+        <VisuallyHidden
+          as="input"
+          type="file"
+          id="uploader"
+          name="uploader"
+          accept=".png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx, .pdf, .txt, .rtf"
+          max-upload={3}
+          onChange={onChange}
+        />
+        {props.children}
+      </Button>
+    </Label>
   )
 }
 

@@ -6,6 +6,7 @@ const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
+const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
@@ -39,19 +40,23 @@ getAllCerts(uidList)
 const app = express()
 
 const allowedOrigins = [
-  'http://dev.antifraudcentre-centreantifraude.ca',
-  'http://pre.antifraudcentre-centreantifraude.ca',
-  'http://antifraudcentre-centreantifraude.ca',
-  'http://centreantifraude-antifraudcentre.ca',
-  'http://antifraudcentre.ca',
-  'http://centreantifraude.ca',
+  'https://dev.antifraudcentre-centreantifraude.ca',
+  'https://pre.antifraudcentre-centreantifraude.ca',
+  'https://antifraudcentre-centreantifraude.ca',
+  'https://centreantifraude-antifraudcentre.ca',
+  'https://antifraudcentre.ca',
+  'https://centreantifraude.ca',
 ]
 
-const availableData = {
-  numberOfSubmissions: 0,
-  numberOfRequests: 0,
-  lastRequested: undefined,
+let availableData
+async function initializeAvailableData() {
+  availableData = {
+    numberOfSubmissions: await getReportCount(),
+    numberOfRequests: 0,
+    lastRequested: undefined,
+  }
 }
+initializeAvailableData()
 
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
@@ -78,9 +83,10 @@ const uploadData = async (req, res, fields, files) => {
   contentModeratorFiles(data, () => save(data, res))
 }
 
-app.get('/', function(req, res, next) {
+app.get('/', async function(req, res, next) {
+  availableData.numberOfSubmissions = await getReportCount()
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
-    console.log('Warning: redirecting request to CAFC')
+    console.warn('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalez')
         ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
@@ -89,7 +95,6 @@ app.get('/', function(req, res, next) {
   } else {
     availableData.numberOfRequests += 1
     availableData.lastRequested = new Date()
-    console.log(`New Request. ${JSON.stringify(availableData)}`)
     next()
   }
 })
@@ -129,7 +134,6 @@ app
   })
 
   .post('/submit', (req, res) => {
-    availableData.numberOfSubmissions += 1
     var form = new formidable.IncomingForm()
     form.parse(req)
     let files = []
@@ -169,5 +173,5 @@ app
 // })
 
 const port = process.env.PORT || 3000
-console.log(`Listening at port ${port}`)
+console.info(`Listening at port ${port}`)
 app.listen(port)

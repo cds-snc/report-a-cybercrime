@@ -8,12 +8,13 @@ import { Plural, Trans } from '@lingui/macro'
 import { TextArea } from '../components/text-area'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FileUpload } from '../components/file-upload'
-import { Box, Stack, VisuallyHidden, Alert, AlertIcon } from '@chakra-ui/core'
+import { Box, Stack, VisuallyHidden } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
 import { LinkButton } from '../components/link'
 import { Text } from '../components/text'
 import { Field } from '../components/Field'
+import { Alert } from '../components/Messages'
 
 export const EvidenceInfoForm = props => {
   const [data] = useStateValue()
@@ -42,6 +43,7 @@ export const EvidenceInfoForm = props => {
       alert(
         'Warning: Your file size exceeds 4MB. Please reduce the size and try uploading again. \n Alerte : La taille de votre fichier dépasse 4 Mo. Veuillez réduire la taille et essayer de télécharger à nouveau.',
       )
+      e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     }
     setStatus('fileUpload.added')
@@ -149,14 +151,9 @@ export const EvidenceInfoForm = props => {
                 </Stack>
               ))}
               {files.length === 3 && (
-                <React.Fragment>
-                  <Alert status="success" backgroundColor="blue.100">
-                    <AlertIcon name="info-outline" color="blue.700" />
-                    <Text fontSize="sm">
-                      <Trans id="evidencePage.maxFileWarning" />
-                    </Text>
-                  </Alert>
-                </React.Fragment>
+                <Alert status="warning">
+                  <Trans id="evidencePage.maxFileWarning" />
+                </Alert>
               )}
               {files.length < 3 && (
                 <React.Fragment>
@@ -169,14 +166,11 @@ export const EvidenceInfoForm = props => {
                       <Trans id="evidencePage.addFileButton" />
                     </FileUpload>
                   </Box>
-                  <Alert status="success" backgroundColor="blue.100">
-                    <AlertIcon name="info-outline" color="blue.700" />
-                    <Text fontSize="sm">
-                      <Trans id="evidencePage.fileWarning" />
-                    </Text>
-                  </Alert>
                 </React.Fragment>
               )}
+              <Alert status="info">
+                <Trans id="evidencePage.fileWarning" />
+              </Alert>
               ))}
             </Stack>
             <NextAndCancelButtons
