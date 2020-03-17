@@ -237,7 +237,7 @@ const formatFileAttachments = data => {
   delete data.evidence.fileDescriptions
   return (
     '<h2>File attachments</h2>\n' +
-    (returnString !== '' ? returnString : 'No files attached\n')
+    (returnString !== '' ? formatTable(returnString) : 'No files attached\n')
   )
 }
 
