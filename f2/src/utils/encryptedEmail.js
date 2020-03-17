@@ -1,59 +1,16 @@
 // 'use strict'
-
 const nodemailer = require('nodemailer')
-const ldap = require('ldapjs')
 const fs = require('fs')
 const exec = require('child_process').exec
 const nanoid = require('nanoid')
+const { certFileName } = require('./ldap')
 
 require('dotenv').config()
 
 const mailHost = process.env.MAIL_HOST
 const mailUser = process.env.MAIL_USER
 const mailPass = process.env.MAIL_PASS
-const ldapUrl = process.env.LDAP_URL
 const mailFrom = process.env.MAIL_FROM
-
-const certFileName = uid => `${uid}.cer`
-
-const getCert = uid => {
-  var opts = {
-    filter: '(uid=' + uid + ')',
-    scope: 'sub',
-    attributes: ['cn', 'userCertificate;binary'],
-  }
-  const ldapClient = ldap.createClient({
-    url: ldapUrl,
-  })
-  ldapClient.search('ou=People,ou=rcmp-grc,o=gc,c=ca', opts, function(
-    err,
-    res,
-  ) {
-    res.on('searchEntry', function(entry) {
-      console.info(`Encrypted Mail: Found LDAP entry for ${uid}`)
-      let cert =
-        '-----BEGIN CERTIFICATE-----\r\n' +
-        entry.object['userCertificate;binary'].replace(/(.{64})/g, '$1\r\n')
-      if (!cert.endsWith('\n')) cert += '\n'
-      cert += '-----END CERTIFICATE-----'
-      fs.writeFile(certFileName(uid), cert, function(err) {
-        if (err) throw err
-        else console.info(`Encrypted Mail: Certificate for ${uid} Saved!`)
-      })
-    })
-    res.on('searchReference', function(referral) {
-      console.info('Encrypted Mail: referral: ' + referral.uris.join())
-    })
-    res.on('error', function(err) {
-      console.warn('Encrypted Mail: error: ' + err.message)
-    })
-    res.on('end', function(result) {
-      if (result.status !== 0)
-        console.info('Encrypted Mail: end status: ' + result.status)
-      ldapClient.destroy()
-    })
-  })
-}
 
 const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
   const openssl = 'openssl smime -des3 -text -encrypt'
@@ -154,11 +111,6 @@ async function sendMail(emailAddress, attachment, reportId, emailType) {
 
 // ----------------------------------------------------
 
-const getAllCerts = uidList => {
-  if (uidList) uidList.forEach(uid => getCert(uid))
-  else console.warn('Encrypted Mail: No certs to fetch!')
-}
-
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList && emailList) {
     uidList.forEach((uid, index) =>
@@ -170,4 +122,4 @@ const encryptAndSend = async (uidList, emailList, data, message) => {
   } else console.warn('Encrypted Mail: No certs to encrypt with!')
 }
 
-module.exports = { getAllCerts, encryptAndSend }
+module.exports = { encryptAndSend }

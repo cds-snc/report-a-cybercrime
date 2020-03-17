@@ -2,7 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
-const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+const { encryptAndSend } = require('./src/utils/encryptedEmail')
+const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
@@ -25,16 +26,25 @@ var limiter = new RateLimit({
 
 require('dotenv').config()
 
-const emailList = process.env.MAIL_TO
-  ? process.env.MAIL_TO.split(',').map(k => k.trim())
-  : []
-
-const uidList = process.env.LDAP_UID
+const uidListInitial = process.env.LDAP_UID
   ? process.env.LDAP_UID.split(',').map(k => k.trim())
   : []
 
 // fetch and store certs for intake analysts
-getAllCerts(uidList)
+let emailList = []
+let uidList = []
+
+// certs and emails can be fetched in different order than the original uidListInitial
+getCertsAndEmail(uidListInitial, emailList, uidList)
+
+setTimeout(() => {
+  if (
+    uidListInitial.length != uidList.length ||
+    uidListInitial.length != emailList.length
+  )
+    console.log('ERROR: problem fetching certs from LDAP')
+  else console.log(`LDAP certs successfully fetchedfetched for: ${emailList}`)
+}, 5000)
 
 const app = express()
 
