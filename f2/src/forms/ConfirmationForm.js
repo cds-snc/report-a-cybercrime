@@ -1,13 +1,16 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Stack } from '@chakra-ui/core'
 import { Trans } from '@lingui/macro'
 import { jsx } from '@emotion/core'
 import { Form } from 'react-final-form'
+import { Well } from '../components/Messages'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack } from '@chakra-ui/core'
+import { useStateValue } from '../utils/state'
 
 export const ConfirmationForm = props => {
+  const [{ formData }] = useStateValue()
   return (
     <React.Fragment>
       <Form
@@ -19,9 +22,15 @@ export const ConfirmationForm = props => {
             shouldWrapChildren
             spacing={6}
           >
-            <NextAndCancelButtons
-              button={<Trans id="confirmationPage.nextButton" />}
-            />
+            {formData.submitted ? (
+              <Well variantColor="blue">
+                <Trans id="confirmationPage.thankyou" />
+              </Well>
+            ) : (
+              <NextAndCancelButtons
+                button={<Trans id="confirmationPage.nextButton" />}
+              />
+            )}
           </Stack>
         )}
       />
