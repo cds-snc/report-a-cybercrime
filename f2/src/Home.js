@@ -23,6 +23,7 @@ import { StartPage } from './StartPage'
 import { ConfirmCancelPage } from './ConfirmCancelPage'
 import { CancelPage } from './CancelPage'
 import { TermsAndConditions } from './TermsAndConditions'
+import { LocationAnonymousPage } from './LocationAnonymousPage'
 
 export const Home = () => (
   <Router>
@@ -92,6 +93,9 @@ export const Home = () => (
       </Route>
       <Route path="/finalFeedbackThanks">
         <FinalFeedbackThanksPage />
+      </Route>
+      <Route path="/locationAnonymous">
+        <LocationAnonymousPage />
       </Route>
 
       <Route>

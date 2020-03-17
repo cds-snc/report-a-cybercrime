@@ -1,4 +1,10 @@
 {
+  "LocationAnonymousInfoForm.City": "City or municipality",
+  "LocationAnonymousInfoForm.nextButton": "Continue",
+  "LocationAnonymousInfoForm.nextPage": "Next: Review your report",
+  "LocationAnonymousInfoForm.province": "Province",
+  "LocationAnonymousPage.intro": "We use your report to link your report to other reports in your area and to coordinate with local police services across Canada.",
+  "LocationAnonymousPage.title": "Enter your location",
   "SkipLink.text": "Skip to main content",
   "backButton.text": "Go back",
   "banner.footerPrivacy": "Privacy",

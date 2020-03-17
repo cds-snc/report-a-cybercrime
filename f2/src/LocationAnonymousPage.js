@@ -4,13 +4,13 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Lead } from './components/paragraph'
 import { Layout } from './components/layout'
-import { LocationInfoForm } from './forms/LocationInfoForm'
+import { LocationAnonymousInfoForm } from './forms/LocationAnonymousInfoForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 
-export const LocationPage = () => {
+export const LocationAnonymousPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
 
@@ -22,18 +22,16 @@ export const LocationPage = () => {
             <Stack spacing={10} shouldWrapChildren>
               <BackButton />
               <H1>
-                <Trans id="locationPage.title" />
+                <Trans id="LocationAnonymousPage.title" />
               </H1>
               <Lead>
-                <Trans id="locationPage.intro" />
+                <Trans id="LocationAnonymousPage.intro" />
               </Lead>
 
-              <LocationInfoForm
+              <LocationAnonymousInfoForm
                 onSubmit={data => {
                   dispatch({ type: 'saveFormData', data: { location: data } })
-                  history.push(
-                    doneForms ? '/confirmation' : '/locationAnonymous',
-                  )
+                  history.push(doneForms ? '/confirmation' : '/contactinfo')
                 }}
               />
             </Stack>
