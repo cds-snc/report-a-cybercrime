@@ -1,26 +1,42 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
-import { FormErrorMessage, FormControl } from '@chakra-ui/core'
+import { FormControl } from '@chakra-ui/core'
 import { FormHelperText } from '../FormHelperText'
 import { FormLabel } from '../FormLabel'
-import { Field as FieldAdapter } from 'react-final-form'
+import { FormErrorMessage } from '../FormErrorMessage'
+import { Field as FieldAdapter, useField } from 'react-final-form'
 import { UniqueID } from '../unique-id'
 import { Input } from '../input'
 
 export const Field = props => {
+  const {
+    meta: { invalid, submitFailed },
+  } = useField(props.name, {
+    subscription: {
+      invalid: true,
+      submitFailed: true,
+    },
+  })
+
   return (
     <UniqueID>
       {id => {
         return (
-          <FormControl aria-labelledby={id}>
+          <FormControl
+            aria-labelledby={id}
+            isInvalid={submitFailed && invalid}
+            {...props}
+          >
             <FormLabel id={id} htmlFor={props.name}>
               {props.label}
             </FormLabel>
             {props.helperText && (
               <FormHelperText>{props.helperText}</FormHelperText>
             )}
-            <FormErrorMessage>{props.errorMessage}</FormErrorMessage>
+            {props.errorMessage && (
+              <FormErrorMessage>{props.errorMessage}</FormErrorMessage>
+            )}
             <FieldAdapter
               name={props.name}
               id={props.name}
