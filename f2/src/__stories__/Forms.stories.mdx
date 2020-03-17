@@ -1,0 +1,144 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../.storybook/themeDecorator'
+import FormDecorator from '../../.storybook/formDecorator'
+import { Code } from '@chakra-ui/core'
+import { Form } from 'react-final-form'
+
+<Meta
+  id="forms"
+  title="Forms"
+  decorators={[ThemeDecorator, FormDecorator]}
+  component={Form}
+/>
+
+# Creating forms
+
+Forms are self contained files containing a single React final form [Form](https://final-form.org/docs/react-final-form/api/Form) Component. Start by importing `<Form>` from react-final-form:
+
+## Basic setup
+
+```jsx
+import { Form } from 'react-final-form'
+```
+
+The idea is to have self-contained Forms. You export them like components, then use them in Page compositions. You want to make sure to:
+
+1. Provide an `onSubmit` prop
+2. Provide a way to render the form. Through the `render` prop
+3. Do something with handleSubmit
+
+Source: [Form: Basic Usage](https://final-form.org/docs/react-final-form/api/Form)
+
+5. Use Stack from `@chakra-ui/core` to stack form element vertically.
+6. Make sure you set `as="form"` to Stack. This will make sure the stack is rendered as a html `<form>` element
+7. Our submit buttons are contained in the [`<NextAndCancelButtons>`](/?path=/docs/components-button--next-and-cancel-buttons) component
+
+```jsx
+export const TheForm = props => {
+  return (
+    <Form
+      onSubmit={values => {
+        props.onSubmit(values)
+      }}
+      render={({ handleSubmit, values }) => (
+        <Stack as="form" onSubmit={handleSubmit}>
+          <NextAndCancelButtons
+            next={<Trans id="privacyConsentInfoForm.nextPage" />}
+            button={<Trans id="privacyConsentInfoForm.nextButton" />}
+          />
+        </Stack>
+      )}
+    />
+  )
+}
+```
+
+## Hooks
+
+You'll need to access the form data through the `useStateValue()` hook. Additionally, you want to have access to the `useLingui()` hook in order to translate some text. The lingui hook gives access to some handy translation functions such as `_()`
+
+```jsx
+export const Form = props => {
+  const { i18n } = useLingui()
+  const [data] = useStateValue()
+
+  return (
+    <Form
+      onSubmit={values => {
+        props.onSubmit(values)
+      }}
+      render={({ handleSubmit, values }) => (
+        <Stack as="form" onSubmit={handleSubmit}>
+          <NextAndCancelButtons
+            next={<Trans id="privacyConsentInfoForm.nextPage" />}
+            button={<Trans id="privacyConsentInfoForm.nextButton" />}
+          />
+        </Stack>
+      )}
+    />
+  )
+}
+```
+
+## Data
+
+To enable editing of form pages, we need to combine the existing data with an empty data object. Then, pass these values to the `initialValues` prop
+
+```jsx
+//Create a default empty data object
+const defaultExample = { array: [], string: '' }
+
+//Get current data from the useStateValue hook
+const [data] = useStateValue()
+
+//Combine existing data with empty data. Existing data will overwrite the default data
+const example = {
+  defaultExample,
+  ...data.formData.example,
+}
+
+//Create options for checkbox or radio lists
+const arrayOptions = ['option1', 'option2']
+```
+
+If we put things together:
+
+```jsx
+const defaultExample = { array: [], string: '' }
+
+export const Form = props => {
+  const { i18n } = useLingui()
+  const [data] = useStateValue()
+
+  const example = {
+    defaultExample,
+    ...data.formData.example,
+  }
+
+  const arrayOptions = ['option1', 'option2']
+
+  return (
+    <Form
+      initialValues={example}
+      onSubmit={values => {
+        props.onSubmit(values)
+      }}
+      render={({ handleSubmit, values }) => (
+        <Stack as="form" onSubmit={handleSubmit}>
+          {/*Place Field and FormArrayControl here*/}
+          <NextAndCancelButtons
+            next={<Trans id="privacyConsentInfoForm.nextPage" />}
+            button={<Trans id="privacyConsentInfoForm.nextButton" />}
+          />
+        </Stack>
+      )}
+    />
+  )
+}
+```
+
+## Fields
+
+View [Field](/?path=/docs/components-field--input) documentation for more information on how to use it in a Form.
+
+View [FormArrayControl](/?path=/docs/components-field--input) documentation for more information on how to place radio and checkbox lists in a Form.
