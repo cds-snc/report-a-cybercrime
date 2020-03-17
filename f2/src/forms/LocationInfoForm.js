@@ -13,6 +13,7 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
+import { Alert } from '../components/Messages'
 
 const defaultLocation = {
   postalCode: '',
@@ -29,6 +30,17 @@ export const LocationInfoForm = props => {
     location = {
       ...defaultLocation,
       ...data.formData.location,
+    }
+  }
+
+  function checkPostal(postal) {
+    var regex = new RegExp(
+      /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i,
+    )
+    if (regex.test(postal)) {
+      return true
+    } else {
+      return false
     }
   }
 
@@ -81,6 +93,9 @@ export const LocationInfoForm = props => {
                   onChange={props.input.onChange}
                 />
               </FormControl>
+            )}
+            {checkPostal(data.postalCode) ? null : (
+              <Alert status="error">invild postal code</Alert>
             )}
           </Field>
           <NextAndCancelButtons
