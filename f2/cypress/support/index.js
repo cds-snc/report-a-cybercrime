@@ -17,9 +17,6 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-<<<<<<< HEAD
-
-=======
 const { A11yReporter } = require ('@cdssnc/a11y-tracker-client');
 
 A11yReporter.configure({
@@ -37,27 +34,5 @@ if (Cypress.env['testing'] && Cypress.env['GITHUB_REF'] === 'refs/heads/master')
     project: 'report-cyber-crime',
   });
 }
->>>>>>> 5c3c0b01528bbbc233cae0e2b988a0c3d2eaf71c
 
 A11yReporter.setupCypress();
-
-let Chance = require('chance');
-// Instantiate Chance here so it can be used in all tests
-let chance = new Chance();
-Cypress.config('city', chance.city())
-Cypress.config('province', chance.province({country: 'ca', full: true}))
-Cypress.config('phone', chance.phone())
-Cypress.config('address', chance.address())
-Cypress.config('fname', chance.first())
-Cypress.config('sname', chance.last())
-Cypress.config('postcode', chance.postal())
-Cypress.config('email', chance.email())
-Cypress.config('color', `Brown`)
-Cypress.config('name', chance.name())
-Cypress.config('year', chance.year({min: 2000, max: 2011}))
-Cypress.config('month', chance.integer({ min: 1, max: 30 }))
-Cypress.config('string',chance.string({ length: 8, casing: 'upper', alpha: true, numeric: true }))
-Cypress.config('filename1' , './marchesurciel-lucille1.jpg')
-
-
-
