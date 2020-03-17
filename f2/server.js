@@ -7,15 +7,16 @@ const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
+const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
   notifyIsSetup,
   sendConfirmation,
-  sendUnencryptedReport,
   submitFeedback,
 } = require('./src/utils/notify')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
+const helmet = require('helmet')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -48,6 +49,7 @@ setTimeout(() => {
 }, 5000)
 
 const app = express()
+app.use(helmet())
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
@@ -58,11 +60,15 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
-const availableData = {
-  numberOfSubmissions: 0,
-  numberOfRequests: 0,
-  lastRequested: undefined,
+let availableData
+async function initializeAvailableData() {
+  availableData = {
+    numberOfSubmissions: await getReportCount(),
+    numberOfRequests: 0,
+    lastRequested: undefined,
+  }
 }
+initializeAvailableData()
 
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
@@ -73,8 +79,6 @@ async function save(data, res) {
 
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
-    if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
-      sendUnencryptedReport(data.contactInfo.email, analystEmail)
   }
   saveRecord(data, res)
 }
@@ -89,7 +93,8 @@ const uploadData = async (req, res, fields, files) => {
   contentModeratorFiles(data, () => save(data, res))
 }
 
-app.get('/', function(req, res, next) {
+app.get('/', async function(req, res, next) {
+  availableData.numberOfSubmissions = await getReportCount()
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
     console.warn('Warning: redirecting request to CAFC')
     res.redirect(
@@ -139,7 +144,6 @@ app
   })
 
   .post('/submit', (req, res) => {
-    availableData.numberOfSubmissions += 1
     var form = new formidable.IncomingForm()
     form.parse(req)
     let files = []

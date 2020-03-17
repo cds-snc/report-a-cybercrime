@@ -1,5 +1,5 @@
 {
-  "SkipLink.text": "Skip to main content.",
+  "SkipLink.text": "Skip to main content",
   "backButton.text": "Go back",
   "banner.footerPrivacy": "Privacy",
   "banner.footerTermsAndConditions": "Terms and conditions",
@@ -97,6 +97,7 @@
   "contactinfoPage.skipInfo": "You can skip this step to report anonymously.",
   "contactinfoPage.title": "Enter your contact details",
   "default.end": ", and ",
+  "default.hasValidationErrors": "Please fix the errors on this page.",
   "default.middle": ", ",
   "default.pair": " and ",
   "devicePage.account": "What type of account was affected?",

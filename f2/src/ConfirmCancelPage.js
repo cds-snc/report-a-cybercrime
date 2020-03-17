@@ -44,7 +44,7 @@ export const ConfirmCancelPage = () => {
                   onClick={() => history.goBack()}
                   fontSize={{ base: 'lg', md: 'xl' }}
                   color="black"
-                  variant="link"
+                  height="3rem"
                   variantColor="gray"
                   textAlign="center"
                   w={{ base: '100%', md: 'auto' }}

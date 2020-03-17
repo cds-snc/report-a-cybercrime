@@ -4,7 +4,8 @@ import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { TrackPageViews } from './TrackPageViews'
 import { Layout } from './components/layout'
-import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
+import { Alert } from './components/Messages'
 
 export const FinalFeedbackThanksPage = () => {
   return (
@@ -14,8 +15,7 @@ export const FinalFeedbackThanksPage = () => {
         <H1>
           <Trans id="finalFeedbackThanks.title" />
         </H1>
-        <Alert status="success">
-          <AlertIcon mt={0} />
+        <Alert status="success" withIcon>
           <Trans id="thankYouPage.safelyCloseWindow" />
         </Alert>
       </Stack>
