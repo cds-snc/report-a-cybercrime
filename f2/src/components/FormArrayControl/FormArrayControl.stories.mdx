@@ -4,7 +4,9 @@ import FormDecorator from '../../../.storybook/formDecorator'
 import { withKnobs, boolean, text } from '@storybook/addon-knobs'
 import { CheckboxAdapter } from '../checkbox'
 import { RadioAdapter } from '../radio'
+import { Input } from '../input'
 import { FormArrayControl } from '.'
+import {Stack} from '@chakra-ui/core'
 
 <Meta
   title="Components/Form Array Control"
@@ -12,20 +14,97 @@ import { FormArrayControl } from '.'
   decorators={[ThemeDecorator, FormDecorator, withKnobs]}
 />
 
-# Fields
+# Form Array Control
 
-## Input
+A FormArrayControl can be used to create a group of inputs. This is useful when you want to group inputs, wheter they are checkboxes, radios or text inputs
 
-<Preview>
-  <Story name="Input field">checkbox</Story>
-</Preview>
+## FormArrayControl component
 
-## Text Area
+By default, FormArrayControl simply displays each children as they are composed. Nothing more, nothing less. 
 
 <Preview>
-  <Story name="Text area field">radio</Story>
+  <Story name="Default">
+    <FormArrayControl
+      name="demoArrayControl"
+      label="Text label"
+      helperText="Some text to help"
+    >
+      <P mb={0}>Children</P>
+      <P mb={0}>Children</P>
+      <P mb={0}>Children</P>
+      <P mb={0}>Children</P>
+    </FormArrayControl>
+  </Story>
 </Preview>
-
-##Props
 
 <Props of={FormArrayControl} />
+
+## With radios or checkboxes
+
+<Preview>
+  <Story name="Checkboxes or Radios">
+    <FormArrayControl
+      name="demoArrayControl"
+      label="Text label"
+      helperText="Some text to help"
+    >
+      <CheckboxAdapter name="check" value="value1" conditionalField="hi">
+        Option 1
+      </CheckboxAdapter>
+      <CheckboxAdapter name="check" value="value2" conditionalField="Condition">
+        Option 2
+      </CheckboxAdapter>
+      <CheckboxAdapter
+        name="check"
+        value="value3"
+        conditionalField={
+          <Field
+            name="remeberme"
+            label="Remember me?"
+            helperText="I am a text input"
+            component={Input}
+          />
+        }
+      >
+        Other
+      </CheckboxAdapter>
+    </FormArrayControl>
+  </Story>
+</Preview>
+
+## With text fields
+
+When grouping fields together, like for a split date input, you can use FormArrayControl to group fields together
+
+<Preview>
+  <Story name="With text inputs">
+    <FormArrayControl
+      label="When did it Start?"
+      helperText="For example: 24 - 06 - 2018"
+    >
+      <Stack direction="row" spacing="2">
+        <Field
+          name="startDay"
+          label="Day"
+          component={Input}
+          w={70}
+          maxLength="2"
+        />
+        <Field
+          name="startMonth"
+          label="Month"
+          component={Input}
+          w={70}
+          maxLength="2"
+        />
+        <Field
+          name="startYear"
+          label="Year"
+          component={Input}
+          w={110}
+          maxLength="4"
+        />
+      </Stack>
+    </FormArrayControl>
+  </Story>
+</Preview>
