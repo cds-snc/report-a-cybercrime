@@ -1,12 +1,13 @@
-import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'
-import ThemeDecorator from '../../../.storybook/themeDecorator'
-import FormDecorator from '../../../.storybook/formDecorator'
-import { withKnobs, boolean, text } from '@storybook/addon-knobs'
-import { CheckboxAdapter } from '../checkbox'
-import { RadioAdapter } from '../radio'
-import { Input } from '../input'
-import { FormArrayControl } from '.'
-import {Stack} from '@chakra-ui/core'
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import ThemeDecorator from "../../../.storybook/themeDecorator";
+import FormDecorator from "../../../.storybook/formDecorator";
+import { withKnobs, boolean, text } from "@storybook/addon-knobs";
+import { CheckboxAdapter } from "../checkbox";
+import { RadioAdapter } from "../radio";
+import { Input } from "../input";
+import { FormArrayControl } from ".";
+import { Field } from "../Field";
+import { Stack } from "@chakra-ui/core";
 
 <Meta
   title="Components/Form Array Control"
@@ -16,11 +17,11 @@ import {Stack} from '@chakra-ui/core'
 
 # Form Array Control
 
-A FormArrayControl can be used to create a group of inputs. This is useful when you want to group inputs, wheter they are checkboxes, radios or text inputs
+A FormArrayControl can be used to create a group of inputs. This is useful when you want to group inputs, wheter they are checkboxes, radios or text inputs. FormArrayControl will ensure the group of fields are described by a label and fully accessible.
 
 ## FormArrayControl component
 
-By default, FormArrayControl simply displays each children as they are composed. Nothing more, nothing less. 
+By default, FormArrayControl simply displays each children as they are composed. Nothing more, nothing less.
 
 <Preview>
   <Story name="Default">
