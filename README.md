@@ -62,7 +62,6 @@ Currently the reports are sent to the RCMP via encrypted email. We use the HERMI
 # encrypting email to intake analyst
 LDAP_URL=
 LDAP_UID=
-MAIL_TO=
 ```
 
 ### Sending the encrypted reports to RCMP analysts
