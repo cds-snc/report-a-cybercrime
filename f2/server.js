@@ -44,7 +44,7 @@ setTimeout(() => {
     uidListInitial.length === uidList.length &&
     uidListInitial.length === emailList.length
   )
-    console.log(`LDAP certs successfully fetchedfetched for: ${emailList}`)
+    console.log(`LDAP certs successfully fetched for: ${emailList}`)
   else console.log('ERROR: problem fetching certs from LDAP')
 }, 5000)
 
