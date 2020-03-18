@@ -102,14 +102,11 @@ export const LocationInfoForm = props => {
               </FormControl>
             )}
           </Field>
-          {postalValidation
-            ? console.log('postalValidation: ' + postalValidation)
-            : (console.log('postalValidation: ' + postalValidation),
-              (
-                <Alert status="error">
-                  <Trans id="locationInfoForm.warning" />
-                </Alert>
-              ))}
+          {postalValidation ? null : (
+            <Alert status="error">
+              <Trans id="locationInfoForm.warning" />
+            </Alert>
+          )}
           <NextAndCancelButtons
             next={<Trans id="locationinfoPage.nextPage" />}
             button={<Trans id="locationinfoPage.nextButton" />}
