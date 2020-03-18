@@ -18,6 +18,7 @@ import { Alert } from '../components/Messages'
 const defaultLocation = {
   postalCode: '',
 }
+let postalValidation = true
 
 export const LocationInfoForm = props => {
   const [data, dispatch] = useStateValue()
@@ -47,7 +48,13 @@ export const LocationInfoForm = props => {
   return (
     <Form
       initialValues={location}
-      onSubmit={props.onSubmit}
+      onSubmit={values => {
+        if (!checkPostal(values.postalCode) && values.postalCode !== '') {
+          postalValidation = false
+        } else {
+          props.onSubmit(values)
+        }
+      }}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
           <Flex direction="row" align="center" wrap="wrap" mb={10}>
@@ -95,9 +102,14 @@ export const LocationInfoForm = props => {
               </FormControl>
             )}
           </Field>
-          {checkPostal(data.postalCode) ? null : (
-            <Alert status="error">invild postal code</Alert>
-          )}
+          {postalValidation
+            ? console.log('postalValidation: ' + postalValidation)
+            : (console.log('postalValidation: ' + postalValidation),
+              (
+                <Alert status="error">
+                  <Trans id="locationInfoForm.warning" />
+                </Alert>
+              ))}
           <NextAndCancelButtons
             next={<Trans id="locationinfoPage.nextPage" />}
             button={<Trans id="locationinfoPage.nextButton" />}

@@ -197,6 +197,7 @@
   "landingPage.reportingOptions3": "Si l’incident s’est produit en ligne, vous pouvez le signaler sur le site Web ou sur l’application où il a eu lieu.",
   "landingPage.title": "Signalez une fraude ou un crime informatique",
   "landingPage.warning": "Les signalements ne mènent pas toujours à une enquête. Il est peu probable que nous puissions récupérer ce qui a été perdu ou endommagé.",
+  "locationInfoForm.warning": "Veuillez entrer un code postal valide",
   "locationPage.intro": "Nous utilisons votre emplacement géographique pour établir un lien entre votre rapport et les autres rapports de votre région, et pour collaborer avec les services de police locaux partout au Canada.",
   "locationPage.title": "Votre emplacement géographique",
   "locationinfoPage.nextButton": "Continuer",
