@@ -68,6 +68,7 @@ async function getData(fields, files) {
   const timeString =
     padNumber(now.getHours()) + ':' + padNumber(now.getMinutes())
   data.submissionTime = `${dateString} ${timeString} UTC-${timeZoneOffset}`
+  data.submissionDate = `${dateString}`
   return data
 }
 
