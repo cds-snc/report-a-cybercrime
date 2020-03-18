@@ -49,7 +49,6 @@ export LDAP_UID=
 export MAIL_HOST=
 export MAIL_USER=
 export MAIL_PASS=
-export MAIL_TO=
 export MAIL_FROM=
 
 export SUBMISSIONS_PER_DAY=5
@@ -117,7 +116,7 @@ az webapp config appsettings set --name $APP_NAME --settings BLOB_STORAGE_NAME=$
 az webapp config appsettings set --name $APP_NAME --settings CLAM_URL=${VIRUS_SCANNER_NAME}.canadacentral.azurecontainer.io
 az webapp config appsettings set --name $APP_NAME --settings CONTENT_MODERATOR_SERVICE_KEY=$(az cognitiveservices account keys list --name $COGNITIVE_NAME --query key1 -o tsv)
 az webapp config appsettings set --name $APP_NAME --settings NOTIFY_API_BASE_URL=$NOTIFY_API_BASE_URL NOTIFY_API_KEY=$NOTIFY_API_KEY NOTIFY_CONFIRMATION_TEMPLATE_ID=$NOTIFY_CONFIRMATION_TEMPLATE_ID SELF_HARM_WORDS="${SELF_HARM_WORDS}"
-az webapp config appsettings set --name $APP_NAME --settings LDAP_URL=$LDAP_URL LDAP_UID="${LDAP_UID}" MAIL_HOST=$MAIL_HOST MAIL_USER=$MAIL_USER MAIL_PASS=$MAIL_PASS MAIL_TO="${MAIL_TO}" MAIL_FROM="${MAIL_FROM}"
+az webapp config appsettings set --name $APP_NAME --settings LDAP_URL=$LDAP_URL LDAP_UID="${LDAP_UID}" MAIL_HOST=$MAIL_HOST MAIL_USER=$MAIL_USER MAIL_PASS=$MAIL_PASS MAIL_FROM="${MAIL_FROM}"
 az webapp config appsettings set --name $APP_NAME --settings SUBMISSIONS_PER_DAY=$SUBMISSIONS_PER_DAY SECONDS_BETWEEN_REQUESTS=$SECONDS_BETWEEN_REQUESTS
 az webapp config appsettings set --name $APP_NAME --settings NOTIFY_FEEDBACK_TEMPLATE_ID=$NOTIFY_FEEDBACK_TEMPLATE_ID FEEDBACK_EMAIL=$FEEDBACK_EMAIL NOTIFY_REPORT_TEMPLATE_ID=$NOTIFY_REPORT_TEMPLATE_ID
 

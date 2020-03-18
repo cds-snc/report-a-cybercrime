@@ -32,9 +32,6 @@
     "MAIL_PASS": {
       "required": true
     },
-    "MAIL_TO": {
-      "required": true
-    },
     "MAIL_FROM": {
       "required": true
     },
