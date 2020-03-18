@@ -27,6 +27,7 @@ jobs:
           npm test
         env:
           CI: true
+
   deploy:
     name: Build container and deploy
     env:
