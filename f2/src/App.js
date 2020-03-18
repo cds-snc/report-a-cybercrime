@@ -16,6 +16,11 @@ import { Layout } from './components/layout'
 import { Li } from './components/list-item'
 import { A } from './components/link'
 
+const prodVersion = '1.1.0'
+const gitsha = process.env.REACT_APP_VERSION
+  ? process.env.REACT_APP_VERSION.slice(0, 7)
+  : '000000'
+
 const App = () => {
   const { i18n } = useLingui()
 
@@ -68,11 +73,7 @@ const App = () => {
 
             <Layout>
               <P fontSize="sm" my={3} aria-label="application version">
-                {`Version: ${
-                  process.env.REACT_APP_VERSION
-                    ? process.env.REACT_APP_VERSION.slice(0, 7)
-                    : '000000'
-                }`}
+                {`Version: ${prodVersion} (${gitsha})`}
               </P>
             </Layout>
           </Stack>
