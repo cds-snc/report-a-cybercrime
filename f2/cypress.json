@@ -5,6 +5,10 @@
       "production": "https://report.antifraudcentre.ca",
       "local": "http://localhost:3000/",
       "staging":"https://report-staging.con.rcmp-grc.gc.ca",
-      "dev":"https://report-dev.con.rcmp-grc.gc.ca"
+      "dev":"https://report-dev.con.rcmp-grc.gc.ca",
+      "A11Y_TRACKER_URI":"",
+      "GITHUB_GIT_HASH":"",
+      "GITHUB_REF":"",
+      "TESTING_KEY":"cds-snc:a11y-tracker:340044fa-92f6-46b5-8b9f-94f3ac80edcd"
     }
   }

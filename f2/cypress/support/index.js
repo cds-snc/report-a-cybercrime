@@ -25,12 +25,11 @@ A11yReporter.configure({
   project: 'report-cyber-crime',
 });
 
-if (Cypress.env['testing'] && Cypress.env['GITHUB_REF'] === 'refs/heads/master') {
+if (Cypress.env['staging'] && Cypress.env['GITHUB_REF'] === 'refs/heads/master') {
   A11yReporter.configure({
     trackerURI: Cypress.env('A11Y_TRACKER_URI') || 'https://a11y-tracker.herokuapp.com/',
     revision: Cypress.env('GITHUB_GIT_HASH'),
-    //TODO: should be added to the secret keys
-    key: Cypress.env('cds-snc:a11y-tracker:340044fa-92f6-46b5-8b9f-94f3ac80edcd'),
+    key: Cypress.env('TESTING_KEY'),
     project: 'report-cyber-crime',
   });
 }

@@ -1,6 +1,6 @@
 
 Given('I open the report home page', () => {
-    cy.visit(Cypress.env('production'))
+    cy.visit(Cypress.env('staging'))
 });
 
 When('I click on create a report button', () => {
