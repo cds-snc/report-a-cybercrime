@@ -1,7 +1,7 @@
 Feature: Consent
 
   I want to create an online investgation report
-  @smoke
+  @consent
   Scenario: Home page
     Given I open the report home page
     Then Inject axe and check for accessibility issues
