@@ -2,7 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
-const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+const { encryptAndSend } = require('./src/utils/encryptedEmail')
+const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
@@ -12,10 +13,10 @@ const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
   notifyIsSetup,
   sendConfirmation,
-  sendUnencryptedReport,
   submitFeedback,
 } = require('./src/utils/notify')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
+const helmet = require('helmet')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -26,18 +27,29 @@ var limiter = new RateLimit({
 
 require('dotenv').config()
 
-const emailList = process.env.MAIL_TO
-  ? process.env.MAIL_TO.split(',').map(k => k.trim())
-  : []
-
-const uidList = process.env.LDAP_UID
+const uidListInitial = process.env.LDAP_UID
   ? process.env.LDAP_UID.split(',').map(k => k.trim())
   : []
 
-// fetch and store certs for intake analysts
-getAllCerts(uidList)
+// certs and emails can be fetched in different order than the original uidListInitial
+let emailList = []
+let uidList = []
+getCertsAndEmail(uidListInitial, emailList, uidList)
+
+// Make sure that everything got loaded.
+// TODO: have a proper "system is ready" flag that express uses to deal with requests
+// (ex: tell CAFC we're not ready yet, return error code to /ping)
+setTimeout(() => {
+  if (
+    uidListInitial.length === uidList.length &&
+    uidListInitial.length === emailList.length
+  )
+    console.log(`LDAP certs successfully fetched for: ${emailList}`)
+  else console.log('ERROR: problem fetching certs from LDAP')
+}, 5000)
 
 const app = express()
+app.use(helmet())
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
@@ -67,8 +79,6 @@ async function save(data, res) {
 
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
-    if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
-      sendUnencryptedReport(data.contactInfo.email, analystEmail)
   }
   saveRecord(data, res)
 }
