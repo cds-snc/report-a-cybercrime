@@ -9,17 +9,10 @@ import { Field as FieldAdapter, useField } from 'react-final-form'
 import { UniqueID } from '../unique-id'
 import { Input } from '../input'
 
-export const Field = ({
-  name,
-  label,
-  helperText,
-  errorMessage,
-  component,
-  ...props
-}) => {
+export const Field = props => {
   const {
     meta: { invalid, submitFailed },
-  } = useField(name, {
+  } = useField(props.name, {
     subscription: {
       invalid: true,
       submitFailed: true,
@@ -35,17 +28,19 @@ export const Field = ({
             isInvalid={submitFailed && invalid}
             {...props}
           >
-            <FormLabel id={id} htmlFor={name}>
-              {label}
+            <FormLabel id={id} htmlFor={props.name}>
+              {props.label}
             </FormLabel>
-            {helperText && <FormHelperText>{helperText}</FormHelperText>}
-            {errorMessage && (
-              <FormErrorMessage>{errorMessage}</FormErrorMessage>
+            {props.helperText && (
+              <FormHelperText>{props.helperText}</FormHelperText>
+            )}
+            {props.errorMessage && (
+              <FormErrorMessage>{props.errorMessage}</FormErrorMessage>
             )}
             <FieldAdapter
-              name={name}
-              id={name}
-              component={component}
+              name={props.name}
+              id={props.name}
+              component={props.component}
               {...props}
             />
           </FormControl>
