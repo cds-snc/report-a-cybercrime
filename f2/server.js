@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
+const helmet = require('helmet')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
@@ -16,7 +17,10 @@ const {
   submitFeedback,
 } = require('./src/utils/notify')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
-const helmet = require('helmet')
+const {
+  fileSizePasses,
+  fileExtensionPasses,
+} = require('./src/utils/acceptableFiles')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -152,7 +156,17 @@ app
       fields[fieldName] = fieldValue
     })
     form.on('file', function(name, file) {
-      files.push(file)
+      if (files.length >= 3)
+        console.warn('ERROR in /submit: number of files more than 3')
+      else if (!fileSizePasses(file.size))
+        console.warn(
+          `ERROR in /submit: file ${name} too big (${file.size} bytes)`,
+        )
+      else if (!fileExtensionPasses(name))
+        console.warn(
+          `ERROR in /submit: unauthorized file extension in file ${name}`,
+        )
+      else files.push(file)
     })
     form.on('end', () => {
       uploadData(req, res, fields, files)
