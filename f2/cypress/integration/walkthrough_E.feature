@@ -1,7 +1,5 @@
-Feature: Consent
-
+Feature: Test the entire report workflow in english
   I want to create an online investgation report
-
   Scenario: Home page
     Given I open the report home page
     When I click on create a report button

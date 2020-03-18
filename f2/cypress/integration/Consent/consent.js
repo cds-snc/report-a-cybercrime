@@ -5,11 +5,7 @@ Given('I open the report home page', () => {
 });
 
 Then('Inject axe and check for accessibility issues', () => {
-       // Inject the axe-core library
-       cy.injectAxe();
-       // first a11y test
-       cy.checkA11y();
-
+    cy.reportA11y();
 });
 
 When('I click on create a report button', () => {
@@ -20,13 +16,27 @@ When('I read before you start instructions', () => {
     cy.contains('Start report').first().click({force: true});
 });
 
+When('I click continue without checking the consent', () => {
+    cy.contains('Continue').first().click({force: true});
+});
+
+Then('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
+Then('check for accessibility issues', () => {
+    cy.reportA11y();
+});
+
 When('I check the consent checkbox', () => {
-    //cy.get('[type="checkbox"]').check({ force: true }).should('be.checked')
-    //.check('privacyConsentInfoForm.yes')
     cy.get('form').find('[name="consentOptions"]').check({ force: true })
     cy.contains('Continue').first().click({force: true});
 });
 
 Then('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
+Then('check for accessibility issues', () => {
+    cy.reportA11y();
 });
