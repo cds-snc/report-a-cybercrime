@@ -24,7 +24,10 @@ export const ConfirmationForm = props => {
           >
             {formData.submitted ? (
               <Well variantColor="blue">
-                <Trans id="confirmationPage.thankyou" />
+                <Trans
+                  id="confirmationPage.thankyou"
+                  values={{ reference: formData.reportId }}
+                />
               </Well>
             ) : (
               <NextAndCancelButtons
