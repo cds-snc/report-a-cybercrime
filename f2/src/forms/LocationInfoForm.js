@@ -94,10 +94,10 @@ export const LocationInfoForm = props => {
                 />
               </FormControl>
             )}
-            {checkPostal(data.postalCode) ? null : (
-              <Alert status="error">invild postal code</Alert>
-            )}
           </Field>
+          {checkPostal(data.postalCode) ? null : (
+            <Alert status="error">invild postal code</Alert>
+          )}
           <NextAndCancelButtons
             next={<Trans id="locationinfoPage.nextPage" />}
             button={<Trans id="locationinfoPage.nextButton" />}
