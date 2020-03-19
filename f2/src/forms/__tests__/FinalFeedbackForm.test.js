@@ -34,12 +34,10 @@ describe('<FinalFeedbackForm />', () => {
     )
 
     // find the next button so we can trigger a form submission
-    // we want to grab whatever is in the submit button as text, pass it to getByText
-    const context = document.querySelector('[type="submit"]').textContent
-    const nextButton = getByText(context)
+    const submitButton = getByText(/submit/)
 
     // Click the next button to trigger the form submission
-    clickOn(nextButton)
+    clickOn(submitButton.parentElement)
     await wait(0) // Wait for promises to resolve
 
     // We expect that sequence of events to have caused our onSubmit mock to get
@@ -63,13 +61,13 @@ describe('<FinalFeedbackForm />', () => {
     )
 
     // find the next button so we can trigger a form submission
-    // we want to grab whatever is in the submit button as text, pass it to getByText
-    const context = document.querySelector('[type="submit"]').textContent
-    const submitButton = getByText(context)
+    const submitButton = getByText(/submit/)
 
     const radioButton = getByLabelText('finalFeedback.wasServiceHard.easy')
     clickOn(radioButton)
-    clickOn(submitButton)
+
+    // Click the next button to trigger the form submission
+    clickOn(submitButton.parentElement)
     await wait(0) // Wait for promises to resolve
     expect(submitMock).toHaveBeenCalledTimes(1)
   })

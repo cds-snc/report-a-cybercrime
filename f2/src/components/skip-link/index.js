@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types'
 import { jsx, css } from '@emotion/core'
 import { A } from '../link'
+import { Flex } from '@chakra-ui/core'
 
 const makeInvisible = css`
   left: -999px;
@@ -11,7 +12,6 @@ const makeInvisible = css`
   z-index: -999;
   :focus,
   :active {
-    background-color: white;
     left: auto;
     top: auto;
     height: auto;
@@ -20,7 +20,20 @@ const makeInvisible = css`
   }
 `
 export const SkipLink = ({ invisible, ...rest }) => (
-  <A backgroundColor="white" css={invisible ? makeInvisible : null} {...rest} />
+  <Flex justify="center">
+    <A
+      mt={2}
+      p={2}
+      textDecoration=""
+      backgroundColor="blue.900"
+      color="white"
+      fontWeight="bold"
+      position="absolute"
+      mx="auto"
+      css={invisible ? makeInvisible : null}
+      {...rest}
+    />
+  </Flex>
 )
 
 SkipLink.defaultProps = {

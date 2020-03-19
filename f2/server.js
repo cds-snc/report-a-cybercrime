@@ -2,55 +2,87 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
-const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+const helmet = require('helmet')
+const { encryptAndSend } = require('./src/utils/encryptedEmail')
+const { getCertsAndEmail } = require('./src/utils/ldap')
+const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
+const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
   notifyIsSetup,
   sendConfirmation,
-  sendUnencryptedReport,
   submitFeedback,
 } = require('./src/utils/notify')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
+const {
+  fileSizePasses,
+  fileExtensionPasses,
+} = require('./src/utils/acceptableFiles')
+
+// set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
+var RateLimit = require('express-rate-limit')
+var limiter = new RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100,
+})
 
 require('dotenv').config()
 
-const emailList = process.env.MAIL_TO
-  ? process.env.MAIL_TO.split(',').map(k => k.trim())
-  : []
-
-const uidList = process.env.LDAP_UID
+const uidListInitial = process.env.LDAP_UID
   ? process.env.LDAP_UID.split(',').map(k => k.trim())
   : []
 
-// fetch and store certs for intake analysts
-getAllCerts(uidList)
+// certs and emails can be fetched in different order than the original uidListInitial
+let emailList = []
+let uidList = []
+getCertsAndEmail(uidListInitial, emailList, uidList)
+
+// Make sure that everything got loaded.
+// TODO: have a proper "system is ready" flag that express uses to deal with requests
+// (ex: tell CAFC we're not ready yet, return error code to /ping)
+setTimeout(() => {
+  if (
+    uidListInitial.length === uidList.length &&
+    uidListInitial.length === emailList.length
+  )
+    console.log(`LDAP certs successfully fetched for: ${emailList}`)
+  else console.log('ERROR: problem fetching certs from LDAP')
+}, 5000)
 
 const app = express()
+app.use(helmet())
 
 const allowedOrigins = [
-  'http://dev.antifraudcentre-centreantifraude.ca',
-  'http://pre.antifraudcentre-centreantifraude.ca',
-  'http://antifraudcentre-centreantifraude.ca',
-  'http://centreantifraude-antifraudcentre.ca',
-  'http://antifraudcentre.ca',
-  'http://centreantifraude.ca',
+  'https://dev.antifraudcentre-centreantifraude.ca',
+  'https://pre.antifraudcentre-centreantifraude.ca',
+  'https://antifraudcentre-centreantifraude.ca',
+  'https://centreantifraude-antifraudcentre.ca',
+  'https://antifraudcentre.ca',
+  'https://centreantifraude.ca',
 ]
+
+let availableData
+async function initializeAvailableData() {
+  availableData = {
+    numberOfSubmissions: await getReportCount(),
+    numberOfRequests: 0,
+    lastRequested: undefined,
+  }
+}
+initializeAvailableData()
 
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
   saveBlob(data)
-  data.submissionTime = new Date().toISOString()
 
   const analystEmail = formatAnalystEmail(data)
   encryptAndSend(uidList, emailList, data, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId)
-    if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
-      sendUnencryptedReport(data.contactInfo.email, analystEmail)
   }
   saveRecord(data, res)
 }
@@ -65,9 +97,23 @@ const uploadData = async (req, res, fields, files) => {
   contentModeratorFiles(data, () => save(data, res))
 }
 
-let count = 0
-
+app.get('/', async function(req, res, next) {
+  availableData.numberOfSubmissions = await getReportCount()
+  if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
+    console.warn('Warning: redirecting request to CAFC')
+    res.redirect(
+      req.subdomains.includes('signalez')
+        ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
+        : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
+    )
+  } else {
+    availableData.numberOfRequests += 1
+    availableData.lastRequested = new Date()
+    next()
+  }
+})
 app
+  .use(limiter)
   .use(express.static(path.join(__dirname, 'build')))
   .use(bodyParser.json())
   .use(function(req, res, next) {
@@ -91,25 +137,38 @@ app
   })
 
   .get('/available', function(_req, res) {
-    count += 1
-    switch (count % 3) {
-      case 1:
-        res.json({ acceptingReports: true })
-        break
-      case 2:
-        res.json({ acceptingReports: false })
-        break
-      default:
-        res.status(404).send('Not found')
-    }
+    res.json({ acceptingReports: isAvailable(availableData) })
+  })
+
+  .get('/stats', function(_req, res) {
+    res.json({
+      acceptingReports: isAvailable(availableData),
+      ...availableData,
+    })
   })
 
   .post('/submit', (req, res) => {
-    new formidable.IncomingForm().parse(req, (err, fields, files) => {
-      if (err) {
-        console.warn('ERROR', err)
-        throw err
-      }
+    var form = new formidable.IncomingForm()
+    form.parse(req)
+    let files = []
+    let fields = {}
+    form.on('field', (fieldName, fieldValue) => {
+      fields[fieldName] = fieldValue
+    })
+    form.on('file', function(name, file) {
+      if (files.length >= 3)
+        console.warn('ERROR in /submit: number of files more than 3')
+      else if (!fileSizePasses(file.size))
+        console.warn(
+          `ERROR in /submit: file ${name} too big (${file.size} bytes)`,
+        )
+      else if (!fileExtensionPasses(name))
+        console.warn(
+          `ERROR in /submit: unauthorized file extension in file ${name}`,
+        )
+      else files.push(file)
+    })
+    form.on('end', () => {
       uploadData(req, res, fields, files)
     })
   })
@@ -125,10 +184,18 @@ app
     res.send('thanks')
   })
 
-  .get('/*', function(_req, res) {
+  .get('/privacystatement', function(_req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
+  .get('/termsandconditions', function(_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
 
+// uncomment to allow direct loading of arbitrary pages
+// .get('/*', function(_req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'))
+// })
+
 const port = process.env.PORT || 3000
-console.log(`Listening at port ${port}`)
+console.info(`Listening at port ${port}`)
 app.listen(port)

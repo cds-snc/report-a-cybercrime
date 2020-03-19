@@ -5,7 +5,8 @@ import { H1, H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
-import { Stack, Box, AlertIcon, Alert } from '@chakra-ui/core'
+import { useLocation } from 'react-router-dom'
+import { Stack, Box } from '@chakra-ui/core'
 import { containsData } from '../utils/containsData'
 import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
@@ -14,10 +15,12 @@ import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Field } from '../components/Field'
 import { Row } from '../components/layout'
+import { Alert } from '../components/Messages'
 
 export const MidFeedbackForm = props => {
   const [status, setStatus] = useState('')
   const [isOpen, setIsOpen] = useState(false)
+  const location = useLocation()
 
   const validate = () => {
     return {}
@@ -52,7 +55,6 @@ export const MidFeedbackForm = props => {
           <InfoCard
             bg="blue.200"
             borderColor="blue.300"
-            borderBottom="3px"
             columns={{ base: 4 / 4, md: 6 / 8 }}
           >
             <H2 as="p">
@@ -78,23 +80,31 @@ export const MidFeedbackForm = props => {
           </Button>
           {isOpen && (
             <Stack
+              bg="gray.200"
+              rounded="4px"
+              border="1px"
+              borderColor="gray.400"
+              p={4}
+              py={8}
+              mt={4}
               spacing={10}
-              pt={4}
-              pb={10}
-              borderTop={18}
-              borderStyle="solid"
-              borderColor="blue.600"
             >
               <H1 as="p">
                 <Trans id="midFeedback.title" />
               </H1>
               <Form
                 initialValues={{
+                  page: location.pathname,
                   midFeedback: [],
                   problemDescription: '',
                 }}
                 onSubmit={values => {
-                  if (!containsData(values)) {
+                  if (
+                    !containsData([
+                      values.midFeedback,
+                      values.problemDescription,
+                    ])
+                  ) {
                     showWarning = true
                   } else {
                     setStatus('feedback.submitted')
@@ -110,8 +120,7 @@ export const MidFeedbackForm = props => {
                     spacing={6}
                   >
                     {showWarning ? (
-                      <Alert status="warning">
-                        <AlertIcon />
+                      <Alert status="error">
                         <Trans id="finalFeedback.warning" />
                       </Alert>
                     ) : null}

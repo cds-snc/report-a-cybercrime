@@ -9,10 +9,11 @@ import { H1 } from './components/header'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { Layout } from './components/layout'
-import { Stack, Icon, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { BackButton } from './components/backbutton'
 import { Page } from './components/Page'
+import { Well } from './components/Messages'
 
 export const StartPage = props => {
   const [state, dispatch] = useStateValue()
@@ -26,9 +27,7 @@ export const StartPage = props => {
         <Page>
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
-              <BackButton route="/">
-                <Trans id="startPage.backButton" />
-              </BackButton>
+              <BackButton />
 
               <H1>
                 <Trans id="startPage.title" />
@@ -66,11 +65,9 @@ export const StartPage = props => {
                   size="28px"
                 />
               </Button>
-
-              <Alert status="info" backgroundColor="blue.100" mb={10}>
-                <AlertIcon name="info-outline" color="blue.800" />
+              <Well variantColor="blue">
                 <Trans id="startPage.warning" />
-              </Alert>
+              </Well>
             </Stack>
           </Layout>
         </Page>

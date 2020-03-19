@@ -41,7 +41,9 @@ export const testdata = {
       demandedMoney: '',
       moneyTaken: '',
       methodPayment: [],
-      transactionDate: '',
+      transactionDay: '',
+      transactionMonth: '',
+      transactionYear: '',
       tellUsMore: '',
     },
     personalInformation: {
