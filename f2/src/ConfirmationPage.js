@@ -114,9 +114,6 @@ const submitToServer = async (data, dispatch) => {
 export const ConfirmationPage = () => {
   const [{ formData }, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
   const { i18n } = useLingui()
-  if (formData.reportId !== '') {
-    dispatch({ type: 'saveFormData', data: { reportId: '' } })
-  }
   return (
     <Route
       render={({ history }) => (

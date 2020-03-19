@@ -13,10 +13,12 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
+import { Alert } from '../components/Messages'
 
 const defaultLocation = {
   postalCode: '',
 }
+let postalValidation = true
 
 export const LocationInfoForm = props => {
   const [data, dispatch] = useStateValue()
@@ -32,10 +34,27 @@ export const LocationInfoForm = props => {
     }
   }
 
+  function checkPostal(postal) {
+    var regex = new RegExp(
+      /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i,
+    )
+    if (regex.test(postal)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   return (
     <Form
       initialValues={location}
-      onSubmit={props.onSubmit}
+      onSubmit={values => {
+        if (!checkPostal(values.postalCode) && values.postalCode !== '') {
+          postalValidation = false
+        } else {
+          props.onSubmit(values)
+        }
+      }}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
           <Flex direction="row" align="center" wrap="wrap" mb={10}>
@@ -83,6 +102,11 @@ export const LocationInfoForm = props => {
               </FormControl>
             )}
           </Field>
+          {postalValidation ? null : (
+            <Alert status="error">
+              <Trans id="locationInfoForm.warning" />
+            </Alert>
+          )}
           <NextAndCancelButtons
             next={<Trans id="locationinfoPage.nextPage" />}
             button={<Trans id="locationinfoPage.nextButton" />}
