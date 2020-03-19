@@ -136,6 +136,12 @@ publicIP="${publicIP}/32"
 # In practice, the explicit deny all rule will be last rule executed and will block access to any IP address that is not explicitly allowed using an Allow rule.
 az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow from WAF' --action Allow --ip-address $publicIP --priority 1000
 
+# Add Network Restrictions to allow communication to the ACR servers in Canada Central so that the Continuous Depoyment to the SCM / Kudu site will work.
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 13.71.170.56/29 --description 'bit.ly/2xGlegR' --priority 3300
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 20.38.146.144/29 --description 'bit.ly/2xGlegR' --priority 3300
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 20.38.149.0/25 --description 'bit.ly/2xGlegR' --priority 3300
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 52.246.154.144/29 --description 'bit.ly/2xGlegR' --priority 3300
+
 ## Configure app service for https only
 az webapp update --https-only true --name $APP_NAME --resource-group $RG_NAME
 
