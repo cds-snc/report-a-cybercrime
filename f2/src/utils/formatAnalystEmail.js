@@ -201,12 +201,12 @@ const formatFinancialTransactions = data => {
   return formatSection('Financial transactions', rows)
 }
 
+const isFileOffensive = file =>
+  file.isImageAdultClassified || file.isImageRacyClassified
+
 const formatFileAttachments = data => {
   const returnString = data.evidence.files
     .map(file => {
-      const offensive =
-        file.isImageAdultClassified || file.isImageRacyClassified
-
       const moderatorString =
         file.adultClassificationScore === 'Could not scan'
           ? formatLineHtml('Image classification:', 'Could not scan content')
@@ -218,7 +218,7 @@ const formatFileAttachments = data => {
       return (
         formatLineHtml(
           '<b>WARNING:</b>',
-          offensive ? '<b>Image may be offensive</b>' : '',
+          isFileOffensive(file) ? '<b>Image may be offensive</b>' : '',
         ) +
         formatLineHtml('File name:     ', file.name) +
         formatLineHtml('Description:   ', file.fileDescription) +
@@ -256,7 +256,12 @@ const formatAnalystEmail = dataOrig => {
     return errorMessage
   }
   try {
+    const offensiveMessage = data.evidence.files.some(isFileOffensive)
+      ? '<h1>WARNING: contains a potentially offensive file</h1>'
+      : ''
+
     returnString =
+      offensiveMessage +
       reportInfoString +
       formatVictimDetails(data) +
       formatIncidentInformation(data) +
