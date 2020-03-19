@@ -28,6 +28,7 @@ export WAF_SUBSCRIPTION=MpPSub
 
 export LOG_ANALYTICS=MpPCSecWs
 export LOG_RG=MpPCSeclogRg
+export LOG_SUBSCRIPTION=MpPSub
 
 export VNET_NAME=MpPcCDSCybercrimeVn
 export VNET_ADDRESS=10.9.0.0/16
@@ -48,7 +49,6 @@ export LDAP_UID=
 export MAIL_HOST=
 export MAIL_USER=
 export MAIL_PASS=
-export MAIL_TO=
 export MAIL_FROM=
 
 export SUBMISSIONS_PER_DAY=5
@@ -77,7 +77,7 @@ ACR_REGISTRY_ID=$(az acr create --name $ACR_NAME --sku Premium --query id --outp
 
 #### Deploy code
 ## Build Docker images
-az acr build --registry $ACR_NAME --image $IMAGE_NAME ../f2
+az acr build --registry $ACR_NAME --image $IMAGE_NAME ../$(IMAGE_NAME}
 az acr build --registry $ACR_NAME --image $VIRUS_SCANNER_IMAGE_NAME 'https://github.com/cds-snc/docker-clamav.git#alpine'
 
 ## Gather credentials to access ACR
@@ -89,7 +89,7 @@ SP_APP_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --ou
 #in general, this Container instance resource creation is slow and can take minutes even when it does succeed
 sleep 120
 # To query the log analytics workspace for container logs query ContainerEvent_CL and ContainerInstanceLog_CL tables
-az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image ${ACR_NAME}.azurecr.io/${VIRUS_SCANNER_IMAGE_NAME}:latest --dns-name-label $VIRUS_SCANNER_NAME --ports 3310 --registry-login-server ${ACR_NAME}.azurecr.io --registry-password $SP_PASSWD --registry-username $SP_APP_ID --log-analytics-workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query customerId --output tsv) --log-analytics-workspace-key $(az monitor log-analytics workspace get-shared-keys --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query primarySharedKey --output tsv)
+az container create --resource-group $RG_NAME --name $VIRUS_SCANNER_NAME --image ${ACR_NAME}.azurecr.io/${VIRUS_SCANNER_IMAGE_NAME}:latest --dns-name-label $VIRUS_SCANNER_NAME --ports 3310 --registry-login-server ${ACR_NAME}.azurecr.io --registry-password $SP_PASSWD --registry-username $SP_APP_ID --log-analytics-workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --subscription $LOG_SUBSCRIPTION --workspace-name $LOG_ANALYTICS --query customerId --output tsv) --log-analytics-workspace-key $(az monitor log-analytics workspace get-shared-keys --resource-group $LOG_RG --subscription $LOG_SUBSCRIPTION --workspace-name $LOG_ANALYTICS --query primarySharedKey --output tsv)
 
 ## Create Content Moderator - Azure Cognitive Services
 az cognitiveservices account create --name $COGNITIVE_NAME --resource-group $RG_NAME --kind ContentModerator --sku F0 --location canadacentral --yes
@@ -116,7 +116,7 @@ az webapp config appsettings set --name $APP_NAME --settings BLOB_STORAGE_NAME=$
 az webapp config appsettings set --name $APP_NAME --settings CLAM_URL=${VIRUS_SCANNER_NAME}.canadacentral.azurecontainer.io
 az webapp config appsettings set --name $APP_NAME --settings CONTENT_MODERATOR_SERVICE_KEY=$(az cognitiveservices account keys list --name $COGNITIVE_NAME --query key1 -o tsv)
 az webapp config appsettings set --name $APP_NAME --settings NOTIFY_API_BASE_URL=$NOTIFY_API_BASE_URL NOTIFY_API_KEY=$NOTIFY_API_KEY NOTIFY_CONFIRMATION_TEMPLATE_ID=$NOTIFY_CONFIRMATION_TEMPLATE_ID SELF_HARM_WORDS="${SELF_HARM_WORDS}"
-az webapp config appsettings set --name $APP_NAME --settings LDAP_URL=$LDAP_URL LDAP_UID="${LDAP_UID}" MAIL_HOST=$MAIL_HOST MAIL_USER=$MAIL_USER MAIL_PASS=$MAIL_PASS MAIL_TO="${MAIL_TO}" MAIL_FROM="${MAIL_FROM}"
+az webapp config appsettings set --name $APP_NAME --settings LDAP_URL=$LDAP_URL LDAP_UID="${LDAP_UID}" MAIL_HOST=$MAIL_HOST MAIL_USER=$MAIL_USER MAIL_PASS=$MAIL_PASS MAIL_FROM="${MAIL_FROM}"
 az webapp config appsettings set --name $APP_NAME --settings SUBMISSIONS_PER_DAY=$SUBMISSIONS_PER_DAY SECONDS_BETWEEN_REQUESTS=$SECONDS_BETWEEN_REQUESTS
 az webapp config appsettings set --name $APP_NAME --settings NOTIFY_FEEDBACK_TEMPLATE_ID=$NOTIFY_FEEDBACK_TEMPLATE_ID FEEDBACK_EMAIL=$FEEDBACK_EMAIL NOTIFY_REPORT_TEMPLATE_ID=$NOTIFY_REPORT_TEMPLATE_ID
 
@@ -136,14 +136,20 @@ publicIP="${publicIP}/32"
 # In practice, the explicit deny all rule will be last rule executed and will block access to any IP address that is not explicitly allowed using an Allow rule.
 az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow from WAF' --action Allow --ip-address $publicIP --priority 1000
 
+# Add Network Restrictions to allow communication to the ACR servers in Canada Central so that the Continuous Depoyment to the SCM / Kudu site will work.
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 13.71.170.56/29 --description 'bit.ly/2xGlegR' --priority 3300
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 20.38.146.144/29 --description 'bit.ly/2xGlegR' --priority 3300
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 20.38.149.0/25 --description 'bit.ly/2xGlegR' --priority 3300
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 52.246.154.144/29 --description 'bit.ly/2xGlegR' --priority 3300
+
 ## Configure app service for https only
 az webapp update --https-only true --name $APP_NAME --resource-group $RG_NAME
 
 ## Configure resources to log to Log Analytics workspace
-az monitor diagnostic-settings create --resource $(az webapp show --name $APP_NAME --resource-group $RG_NAME --query 'id' --output tsv) --name ${APP_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logs.json --metrics @metrics.json
-az monitor diagnostic-settings create --resource $(az cognitiveservices account show --name $COGNITIVE_NAME --resource-group $RG_NAME --query id --output tsv) --name ${COGNITIVE_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logscontentmod.json --metrics @metrics.json
-az monitor diagnostic-settings create --resource $(az acr show --name $ACR_NAME --resource-group $RG_NAME --query id --output tsv) --name ${ACR_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logsacr.json --metrics @metricsgrained.json
-az monitor diagnostic-settings create --resource $(az cosmosdb show --name $DB_NAME --resource-group $RG_NAME --query id --output tsv) --name ${DB_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logscosmos.json --metrics @metricsgrained.json
+az monitor diagnostic-settings create --resource $(az webapp show --name $APP_NAME --resource-group $RG_NAME --query 'id' --output tsv) --name ${APP_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --subscription $LOG_SUBSCRIPTION --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logs.json --metrics @metrics.json
+az monitor diagnostic-settings create --resource $(az cognitiveservices account show --name $COGNITIVE_NAME --resource-group $RG_NAME --query id --output tsv) --name ${COGNITIVE_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --subscription $LOG_SUBSCRIPTION --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logscontentmod.json --metrics @metrics.json
+az monitor diagnostic-settings create --resource $(az acr show --name $ACR_NAME --resource-group $RG_NAME --query id --output tsv) --name ${ACR_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --subscription $LOG_SUBSCRIPTION --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logsacr.json --metrics @metricsgrained.json
+az monitor diagnostic-settings create --resource $(az cosmosdb show --name $DB_NAME --resource-group $RG_NAME --query id --output tsv) --name ${DB_NAME}DiagSett --workspace $(az monitor log-analytics workspace show --resource-group $LOG_RG --subscription $LOG_SUBSCRIPTION --workspace-name $LOG_ANALYTICS --query id --output tsv) --logs @logscosmos.json --metrics @metricsgrained.json
 
 ## Configure Tagging for all resources created
 az group update -g $RG_NAME --tags $TAG_ALL
