@@ -9,6 +9,7 @@ import { Li } from '../list-item'
 import { A } from '../link'
 import { useForm } from 'react-final-form'
 import { Alert } from '../Messages'
+import { focusTarget } from '../../utils/focusTarget'
 import { useEffect } from 'react'
 
 export const ErrorSummary = props => {
@@ -39,6 +40,13 @@ export const ErrorSummary = props => {
                 fontWeight="bold"
                 color="blue.900"
                 href={`#${key}`}
+                onClick={event => {
+                  let target = event.target
+
+                  if (focusTarget(target)) {
+                    event.preventDefault()
+                  }
+                }}
               >
                 {i18n._(errors[key])}
               </A>

@@ -13,9 +13,22 @@ import { TextArea } from '../components/text-area'
 import { TextInput } from '../components/TextInput'
 import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
+import { ErrorSummary } from '../components/ErrorSummary'
 
-const validate = () => {
-  return {}
+const validate = values => {
+  const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
+
+  if (values.startDay && (isNaN(values.startDay) || values.startDay > 31)) {
+    errors.startDay = 'whenDidItStart.startDate.warning'
+  }
+  if (
+    values.startMonth &&
+    (isNaN(values.startMonth) || values.startMonth > 12)
+  ) {
+    errors.startMonth = 'whenDidItStart.startMonth.warning'
+  }
+  return errors
 }
 
 const clearData = dataOrig => {
@@ -121,13 +134,22 @@ export const HowDidItStartForm = props => {
         initialValues={howdiditstart}
         onSubmit={data => props.onSubmit(clearData(data))}
         validate={validate}
-        render={({ handleSubmit, values }) => (
+        render={({
+          handleSubmit,
+          values,
+          errors,
+          submitFailed,
+          hasValidationErrors,
+        }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
             spacing={12}
           >
+            {submitFailed ? (
+              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+            ) : null}
             <FormArrayControl
               name="howDidTheyReachYou"
               label={<Trans id="howDidTheyReachYou.question" />}
@@ -160,8 +182,10 @@ export const HowDidItStartForm = props => {
             </FormArrayControl>
 
             <FormArrayControl
+              name="whenDidItStart"
               label={<Trans id="whenDidItStart.label" />}
               helperText={<Trans id="whenDidItStart.labelExample" />}
+              errorMessage={<Trans id="whenDidItStart.errorMessage" />}
             >
               <Stack direction="row" spacing="2">
                 <Field

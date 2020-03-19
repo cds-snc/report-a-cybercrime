@@ -346,6 +346,7 @@
   "whatWasAffectedForm.warning": "Select at least one thing that could potentially be affected. If you’re not sure, check “Other”.",
   "whatWasAffectedPage.intro": "You’re likely not the only one affected by something like this. Help us learn more about what the suspect was after.",
   "whatWasAffectedPage.title": "What do you think could be affected?",
+  "whenDidItStart.errorMessage": "whenDidItStart.errorMessage",
   "whenDidItStart.label": "When did it start?",
   "whenDidItStart.labelExample": "For example: 26 02 2020",
   "whenDidItStart.startDay": "Day",
