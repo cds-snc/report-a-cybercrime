@@ -147,7 +147,7 @@ Then('{string} should be shown', (content) => {
 });
 
 When('I navigate to AttachSupportingEvidence page fill all forms', () => {
-    const fileName = 'marchesurciel-lucille.jpg';
+    const fileName = 'crime.jpg';
     cy.fixture(fileName).then(fileContent => {
         cy.get('#uploader').upload({ fileContent, fileName, mimeType: 'image/jpg' });
     });
