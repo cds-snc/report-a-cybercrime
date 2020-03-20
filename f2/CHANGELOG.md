@@ -1,6 +1,6 @@
 # Changelog for report a cybercrime product
 
-## V1.1.0 (2020-03-16)
+## V1.1.0 (staging: 2020-03-16)
 
 ### Client code:
 
@@ -19,7 +19,6 @@
 
 - Fixed:
 
-  - change GNCC to GNC3 (#1655)
   - fix keyboard nav (#1660)
   - clear file input after alert (#1662)
   - fix target area for upload button (#1653)
@@ -48,6 +47,7 @@
 ### Content:
 
 - Minor copy change (typo) (#1639)
+- change GNCC to GNC3 (#1655)
 
 ### Azure:
 
