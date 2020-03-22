@@ -21,7 +21,7 @@ const validate = values => {
     values.email !== '' &&
     !new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(values.email)
   ) {
-    errors.email = 'contactInfoForm.emailWarning'
+    errors.email = 'contactinfoForm.emailWarning'
   }
   if (values.phone !== '' && !new RegExp(/^\d{10}$/).test(values.phone)) {
     errors.phone = 'contactInfoForm.phoneWarning'
