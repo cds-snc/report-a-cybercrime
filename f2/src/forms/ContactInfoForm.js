@@ -12,6 +12,23 @@ import { Button } from '../components/button'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
+import { ErrorSummary } from '../components/ErrorSummary'
+
+const validate = values => {
+  const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
+  if (
+    values.email !== '' &&
+    !new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(values.email)
+  ) {
+    errors.email = 'contactInfoForm.email.warning'
+  }
+  if (values.phone !== '' && !new RegExp(/^\d{10}$/).test(values.phone)) {
+    errors.phone = 'contactInfoForm.phone.warning'
+  }
+
+  return errors
+}
 
 export const ContactInfoForm = ({ onSubmit }) => {
   const [data, dispatch] = useStateValue()
@@ -28,8 +45,18 @@ export const ContactInfoForm = ({ onSubmit }) => {
     <Form
       initialValues={contactInfo}
       onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
+      validate={validate}
+      render={({
+        handleSubmit,
+        values,
+        errors,
+        submitFailed,
+        hasValidationErrors,
+      }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
+          {submitFailed && hasValidationErrors ? (
+            <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+          ) : null}
           <Flex direction="row" align="center" wrap="wrap" mb={10}>
             <P w="100%">
               <Trans id="contactinfoPage.skipInfo" />
