@@ -89,6 +89,7 @@
   "confirmationPage.whatWasAffected.format": "L’incident pourrait avoir affecté :",
   "confirmationPage.whenDidItStart": "Début",
   "contactinfoForm.email.warning": "S'il vous plaît, mettez une adresse email valide",
+  "contactinfoForm.phone.warning": "Veuillez saisir un numéro de téléphone à 10 chiffres",
   "contactinfoPage.emailAddress": "Adresse courriel",
   "contactinfoPage.fullName": "Nom complet",
   "contactinfoPage.intro": "Nous ne faisons pas de suivi auprès de toutes les personnes qui font un signalement. Nous communiquerons avec vous uniquement pour confirmer vos informations ou si nous avons besoin d’en savoir plus.",

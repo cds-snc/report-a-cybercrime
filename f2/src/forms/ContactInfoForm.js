@@ -25,7 +25,7 @@ const validate = values => {
     errors.email = 'contactinfoForm.email.warning'
   }
   if (values.phone !== '' && !new RegExp(/^\d{10}$/).test(values.phone)) {
-    errors.phone = 'contactInfoForm.phoneWarning'
+    errors.phone = 'contactinfoForm.phone.warning'
   }
 
   return errors
@@ -60,7 +60,10 @@ export const ContactInfoForm = ({ onSubmit }) => {
           ) : null}
           <FormArrayControl
             name="consentOptions"
-            errorMessage={<Trans id="contactinfoForm.email.warning" />}
+            errorMessage={
+              ((<Trans id="contactinfoForm.email.warning" />),
+              (<Trans id="contactinfoForm.phone.warning" />))
+            }
           ></FormArrayControl>
           <Flex direction="row" align="center" wrap="wrap" mb={10}>
             <P w="100%">
