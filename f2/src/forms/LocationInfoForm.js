@@ -13,14 +13,29 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
-import { Alert } from '../components/Messages'
+import { ErrorSummary } from '../components/ErrorSummary'
+import { FormArrayControl } from '../components/FormArrayControl'
+
+const validate = values => {
+  const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
+  if (
+    values.postalCode !== '' &&
+    !new RegExp(
+      /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i,
+    ).test(values.postalCode)
+  ) {
+    errors.postalCode = 'locationInfoForm.warning'
+  }
+
+  return errors
+}
 
 const defaultLocation = {
   postalCode: '',
 }
-let postalValidation = true
 
-export const LocationInfoForm = props => {
+export const LocationInfoForm = ({ onSubmit }) => {
   const [data, dispatch] = useStateValue()
 
   let location
@@ -34,29 +49,26 @@ export const LocationInfoForm = props => {
     }
   }
 
-  function checkPostal(postal) {
-    var regex = new RegExp(
-      /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i,
-    )
-    if (regex.test(postal)) {
-      return true
-    } else {
-      return false
-    }
-  }
-
   return (
     <Form
       initialValues={location}
-      onSubmit={values => {
-        if (!checkPostal(values.postalCode) && values.postalCode !== '') {
-          postalValidation = false
-        } else {
-          props.onSubmit(values)
-        }
-      }}
-      render={({ handleSubmit }) => (
+      onSubmit={onSubmit}
+      validate={validate}
+      render={({
+        handleSubmit,
+        values,
+        errors,
+        submitFailed,
+        hasValidationErrors,
+      }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
+          {submitFailed && hasValidationErrors ? (
+            <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+          ) : null}
+          <FormArrayControl
+            name="consentOptions"
+            errorMessage={<Trans id="locationInfoForm.warning" />}
+          ></FormArrayControl>
           <Flex direction="row" align="center" wrap="wrap" mb={10}>
             <P w="100%">
               <Trans id="locationinfoPage.skipInfo" />
@@ -102,11 +114,6 @@ export const LocationInfoForm = props => {
               </FormControl>
             )}
           </Field>
-          {postalValidation ? null : (
-            <Alert status="error">
-              <Trans id="locationInfoForm.warning" />
-            </Alert>
-          )}
           <NextAndCancelButtons
             next={<Trans id="locationinfoPage.nextPage" />}
             button={<Trans id="locationinfoPage.nextButton" />}
