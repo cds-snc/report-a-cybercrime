@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
@@ -43,105 +44,111 @@ export const ContactInfoForm = ({ onSubmit }) => {
   } else contactInfo = data.formData.contactInfo
 
   return (
-    <Form
-      initialValues={contactInfo}
-      onSubmit={onSubmit}
-      validate={validate}
-      render={({
-        handleSubmit,
-        values,
-        errors,
-        submitFailed,
-        hasValidationErrors,
-      }) => (
-        <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-          {submitFailed && hasValidationErrors ? (
-            <ErrorSummary onSubmit={handleSubmit} errors={errors} />
-          ) : null}
-          <FormArrayControl
-            name="consentOptions"
-            errorMessage={
-              ((<Trans id="contactinfoForm.email.warning" />),
-              (<Trans id="contactinfoForm.phone.warning" />))
-            }
-          ></FormArrayControl>
-          <Flex direction="row" align="center" wrap="wrap" mb={10}>
-            <P w="100%">
-              <Trans id="contactinfoPage.skipInfo" />
-            </P>
-            <Button
-              as={ReactRouterLink}
-              fontSize={{ base: 'lg', md: 'xl' }}
-              color="black"
-              variant="solid"
-              variantColor="gray"
-              bg="gray.400"
-              borderColor="gray.500"
-              to="/confirmation"
-              textAlign="center"
-            >
-              <Trans id="contactinfoPage.skipButton" />
-              <Icon
-                focusable="false"
-                ml={2}
-                mr={-2}
-                name="chevron-right"
-                size="28px"
-              />
-            </Button>
-          </Flex>
-          <Field name="fullName">
-            {props => (
-              <FormControl>
-                <FormLabel htmlFor="fullName">
-                  <Trans id="contactinfoPage.fullName" />{' '}
-                </FormLabel>
-                <TextInput
-                  id="fullName"
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
+    <React.Fragment>
+      {false ? ( // mark ids for lingui
+        <div>
+          <Trans id="contactinfoForm.email.warning" />
+          <Trans id="contactinfoForm.phone.warning" />
+        </div>
+      ) : null}
+      <Form
+        initialValues={contactInfo}
+        onSubmit={onSubmit}
+        validate={validate}
+        render={({
+          handleSubmit,
+          values,
+          errors,
+          submitFailed,
+          hasValidationErrors,
+        }) => (
+          <Stack
+            as="form"
+            onSubmit={handleSubmit}
+            shouldWrapChildren
+            spacing={6}
+          >
+            {submitFailed && hasValidationErrors ? (
+              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+            ) : null}
+            <Flex direction="row" align="center" wrap="wrap" mb={10}>
+              <P w="100%">
+                <Trans id="contactinfoPage.skipInfo" />
+              </P>
+              <Button
+                as={ReactRouterLink}
+                fontSize={{ base: 'lg', md: 'xl' }}
+                color="black"
+                variant="solid"
+                variantColor="gray"
+                bg="gray.400"
+                borderColor="gray.500"
+                to="/confirmation"
+                textAlign="center"
+              >
+                <Trans id="contactinfoPage.skipButton" />
+                <Icon
+                  focusable="false"
+                  ml={2}
+                  mr={-2}
+                  name="chevron-right"
+                  size="28px"
                 />
-              </FormControl>
-            )}
-          </Field>
-          <Field name="email">
-            {props => (
-              <FormControl>
-                <FormLabel htmlFor="email">
-                  <Trans id="contactinfoPage.emailAddress" />{' '}
-                </FormLabel>
-                <TextInput
-                  id="email"
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
-                />
-              </FormControl>
-            )}
-          </Field>
-          <Field name="phone">
-            {props => (
-              <FormControl>
-                <FormLabel htmlFor="phone">
-                  <Trans id="contactinfoPage.phoneNumber" />{' '}
-                </FormLabel>
-                <TextInput
-                  id="phone"
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
-                />
-              </FormControl>
-            )}
-          </Field>
-          <NextAndCancelButtons
-            next={<Trans id="contactinfoPage.nextInfo" />}
-            button={<Trans id="contactinfoPage.nextButton" />}
-          />
-        </Stack>
-      )}
-    />
+              </Button>
+            </Flex>
+            <Field name="fullName">
+              {props => (
+                <FormControl>
+                  <FormLabel htmlFor="fullName">
+                    <Trans id="contactinfoPage.fullName" />{' '}
+                  </FormLabel>
+                  <TextInput
+                    id="fullName"
+                    name={props.input.name}
+                    value={props.input.value}
+                    onChange={props.input.onChange}
+                  />
+                </FormControl>
+              )}
+            </Field>
+            <Field name="email">
+              {props => (
+                <FormControl>
+                  <FormLabel htmlFor="email">
+                    <Trans id="contactinfoPage.emailAddress" />{' '}
+                  </FormLabel>
+                  <TextInput
+                    id="email"
+                    name={props.input.name}
+                    value={props.input.value}
+                    onChange={props.input.onChange}
+                  />
+                </FormControl>
+              )}
+            </Field>
+            <Field name="phone">
+              {props => (
+                <FormControl>
+                  <FormLabel htmlFor="phone">
+                    <Trans id="contactinfoPage.phoneNumber" />{' '}
+                  </FormLabel>
+                  <TextInput
+                    id="phone"
+                    name={props.input.name}
+                    value={props.input.value}
+                    onChange={props.input.onChange}
+                  />
+                </FormControl>
+              )}
+            </Field>
+            <NextAndCancelButtons
+              next={<Trans id="contactinfoPage.nextInfo" />}
+              button={<Trans id="contactinfoPage.nextButton" />}
+            />
+          </Stack>
+        )}
+      />
+    </React.Fragment>
   )
 }
 
