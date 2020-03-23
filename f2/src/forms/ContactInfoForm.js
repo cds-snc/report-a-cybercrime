@@ -14,7 +14,6 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { ErrorSummary } from '../components/ErrorSummary'
-import { FormArrayControl } from '../components/FormArrayControl'
 
 const validate = values => {
   const errors = {}
