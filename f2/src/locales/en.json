@@ -88,6 +88,7 @@
   "confirmationPage.whatHappened.title.edit": "Edit What happened?",
   "confirmationPage.whatWasAffected.format": "This could have affected:",
   "confirmationPage.whenDidItStart": "Start date",
+  "contactinfoForm.email.warning": "Please enter a valid email address",
   "contactinfoPage.emailAddress": "Email address",
   "contactinfoPage.fullName": "Full name",
   "contactinfoPage.intro": "We do not follow up with everyone who submits a report. We will only contact you to confirm your report or if we need more information.",

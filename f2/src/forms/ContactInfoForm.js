@@ -13,6 +13,7 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { FormArrayControl } from '../components/FormArrayControl'
 
 const validate = values => {
   const errors = {}
@@ -21,7 +22,7 @@ const validate = values => {
     values.email !== '' &&
     !new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(values.email)
   ) {
-    errors.email = 'contactinfoForm.emailWarning'
+    errors.email = 'contactinfoForm.email.warning'
   }
   if (values.phone !== '' && !new RegExp(/^\d{10}$/).test(values.phone)) {
     errors.phone = 'contactInfoForm.phoneWarning'
@@ -57,6 +58,10 @@ export const ContactInfoForm = ({ onSubmit }) => {
           {submitFailed && hasValidationErrors ? (
             <ErrorSummary onSubmit={handleSubmit} errors={errors} />
           ) : null}
+          <FormArrayControl
+            name="consentOptions"
+            errorMessage={<Trans id="contactinfoForm.email.warning" />}
+          ></FormArrayControl>
           <Flex direction="row" align="center" wrap="wrap" mb={10}>
             <P w="100%">
               <Trans id="contactinfoPage.skipInfo" />
