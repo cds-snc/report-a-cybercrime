@@ -77,7 +77,6 @@ export const LocationInfoForm = ({ onSubmit }) => {
             {submitFailed && hasValidationErrors ? (
               <ErrorSummary onSubmit={handleSubmit} errors={errors} />
             ) : null}
-            <FormArrayControl name="consentOptions"></FormArrayControl>
             <Flex direction="row" align="center" wrap="wrap" mb={10}>
               <P w="100%">
                 <Trans id="locationinfoPage.skipInfo" />
