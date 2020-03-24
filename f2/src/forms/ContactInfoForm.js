@@ -5,7 +5,6 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { TextInput } from '../components/TextInput'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { Button } from '../components/button'
@@ -101,42 +100,18 @@ export const ContactInfoForm = ({ onSubmit }) => {
               label={<Trans id="contactinfoPage.fullName" />}
               component={Input}
             />
-            {props => (
-              <TextInput
-                id="fullName"
-                name={props.input.name}
-                value={props.input.value}
-                onChange={props.input.onChange}
-              />
-            )}
 
             <Field
               name="email"
               label={<Trans id="contactinfoPage.emailAddress" />}
               component={Input}
             />
-            {props => (
-              <TextInput
-                id="email"
-                name={props.input.name}
-                value={props.input.value}
-                onChange={props.input.onChange}
-              />
-            )}
 
             <Field
               name="phone"
               label={<Trans id="contactinfoPage.phoneNumber" />}
               component={Input}
             />
-            {props => (
-              <TextInput
-                id="phone"
-                name={props.input.name}
-                value={props.input.value}
-                onChange={props.input.onChange}
-              />
-            )}
 
             <NextAndCancelButtons
               next={<Trans id="contactinfoPage.nextInfo" />}
