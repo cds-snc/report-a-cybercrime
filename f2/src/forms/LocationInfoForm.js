@@ -3,18 +3,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Form, Field } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { TextInput } from '../components/TextInput'
-import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
-import { FormLabel } from '../components/FormLabel'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { Input } from '../components/input'
+import { Field } from '../components/Field'
 
 const validate = values => {
   const errors = {}
@@ -101,26 +100,15 @@ export const LocationInfoForm = ({ onSubmit }) => {
                 />
               </Button>
             </Flex>
-            <Field name="postalCode">
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="postalCode">
-                    <Trans id="locationinfoPage.postalCode" />
-                  </FormLabel>
-                  <FormHelperText>
-                    <Trans id="locationinfoPage.postalCodeExample">
-                      <VisuallyHidden as="span" />
-                    </Trans>
-                  </FormHelperText>
-                  <TextInput
-                    id="postalCode"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
+            <Field
+              name="postalCode"
+              label={<Trans id="locationinfoPage.postalCode" />}
+              helperText={
+                <Trans id="locationinfoPage.postalCodeExample"></Trans>
+              }
+              component={Input}
+            />
+
             <NextAndCancelButtons
               next={<Trans id="locationinfoPage.nextPage" />}
               button={<Trans id="locationinfoPage.nextButton" />}
