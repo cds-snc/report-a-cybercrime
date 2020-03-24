@@ -15,6 +15,7 @@ export const NextAndCancelButtons = props => {
         <Flex direction="row" align="center" wrap="wrap" mb={10} mt={10}>
           <P w="100%">{props.next}</P>
           <Button
+            type="submit"
             onClick={event => {
               spy.form.resumeValidation()
               spy.form.submit()
