@@ -15,7 +15,6 @@ import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
 import { ErrorSummary } from '../components/ErrorSummary'
-import { FormArrayControl } from '../components/FormArrayControl'
 
 const validate = values => {
   const errors = {}
