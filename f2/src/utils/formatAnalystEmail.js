@@ -98,7 +98,7 @@ const formatNarrative = data => {
   const infoReqString = data.personalInformation.typeOfInfoReq
     .map(info => info.replace('typeOfInfoReq.', ''))
     .map(info =>
-      info == 'other' &&
+      info === 'other' &&
       data.personalInformation.infoReqOther &&
       data.personalInformation.infoReqOther !== ''
         ? data.personalInformation.infoReqOther
@@ -109,7 +109,7 @@ const formatNarrative = data => {
   const infoObtainedString = data.personalInformation.typeOfInfoObtained
     .map(info => info.replace('typeOfInfoObtained.', ''))
     .map(info =>
-      info == 'other' &&
+      info === 'other' &&
       data.personalInformation.infoObtainedOther &&
       data.personalInformation.infoObtainedOther !== ''
         ? data.personalInformation.infoObtainedOther
