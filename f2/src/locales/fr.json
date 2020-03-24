@@ -348,10 +348,13 @@
   "whatWasAffectedForm.warning": "Selectionnez au moins une chose qui pourrait être affectée par l’incident. Si vous n’êtes pas certain, cochez la case « Autre ».",
   "whatWasAffectedPage.intro": "Vous n’êtes probablement pas la seule personne affectée par une telle situation. Aidez-nous à en apprendre plus en précisant ce que voulait le suspect.",
   "whatWasAffectedPage.title": "D’après vous, quelles pourraient être les répercussions?",
-  "whenDidItStart.errorMessage": "",
+  "whenDidItStart.errorMessage": "La date de l'incident doit être dans le passé",
   "whenDidItStart.label": "Quand l’incident a-t-il commencé?",
   "whenDidItStart.labelExample": "Par exemple : 26 02 2020",
+  "whenDidItStart.startDate.warning": "La date de l'incident doit comprendre un vrai jour",
   "whenDidItStart.startDay": "Jour",
   "whenDidItStart.startMonth": "Mois",
-  "whenDidItStart.startYear": "Année"
+  "whenDidItStart.startMonth.warning": "La date de l'incident doit comprendre un vrai mois",
+  "whenDidItStart.startYear": "Année",
+  "whenDidItStart.startYear.warning": "La date de l'incident doit avoir quatre chiffres"
 }

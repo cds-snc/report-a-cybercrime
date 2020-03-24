@@ -17,6 +17,8 @@ export const ErrorSummary = props => {
 
   const { errors } = useForm(props.onSubmit).getState()
 
+  useForm(props.onSubmit).pauseValidation()
+
   useEffect(() => {
     const summary = document
       .getElementById('error-summary')
@@ -24,6 +26,7 @@ export const ErrorSummary = props => {
 
     window.scrollTo(0, summary.y - 16)
   })
+  console.log(errors)
 
   return (
     <Alert id="error-summary" status="error" aria-atomic>
@@ -31,27 +34,29 @@ export const ErrorSummary = props => {
         <Text fontSize="md" fontWeight="bold">
           <Trans id="default.hasValidationErrors" />
         </Text>
-
         <Ol>
-          {Object.keys(errors).map(key => (
-            <Li key={key} fontSize="md">
-              <A
-                fontSize="md"
-                fontWeight="bold"
-                color="blue.900"
-                href={`#${key}`}
-                onClick={event => {
-                  let target = event.target
+          {Object.keys(errors).map(key => {
+            // Omit all errors set to true from showing in ErrorSummary
+            return errors[key] !== true ? (
+              <Li key={key} fontSize="md">
+                <A
+                  fontSize="md"
+                  fontWeight="bold"
+                  color="blue.900"
+                  href={`#${key}`}
+                  onClick={event => {
+                    let target = event.target
 
-                  if (focusTarget(target)) {
-                    event.preventDefault()
-                  }
-                }}
-              >
-                {i18n._(errors[key])}
-              </A>
-            </Li>
-          ))}
+                    if (focusTarget(target)) {
+                      event.preventDefault()
+                    }
+                  }}
+                >
+                  {i18n._(errors[key])}
+                </A>
+              </Li>
+            ) : null
+          })}
         </Ol>
       </Stack>
     </Alert>

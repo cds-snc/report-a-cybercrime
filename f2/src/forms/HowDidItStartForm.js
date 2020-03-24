@@ -18,16 +18,37 @@ import { ErrorSummary } from '../components/ErrorSummary'
 const validate = values => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
-
+  // if it has a value AND this value is a number below 31
   if (values.startDay && (isNaN(values.startDay) || values.startDay > 31)) {
-    errors.startDay = 'whenDidItStart.startDate.warning'
+    errors.whenDidItStart = 'whenDidItStart.startDate.warning'
+    errors.startDay = true
   }
+  // if it has a value AND this value is a number below 12
   if (
     values.startMonth &&
     (isNaN(values.startMonth) || values.startMonth > 12)
   ) {
-    errors.startMonth = 'whenDidItStart.startMonth.warning'
+    errors.whenDidItStart = 'whenDidItStart.startMonth.warning'
+    errors.startMonth = true
   }
+  // if year contains 4 digits
+  if (values.startYear && values.startYear.length !== 4) {
+    errors.whenDidItStart = 'whenDidItStart.startYear.warning'
+    errors.startYear = true
+  }
+
+  // if date is in the future
+  // values.startMonth - 1 : UTC Date Months are values from 0 to 11
+  if (
+    Date.UTC(values.startYear, values.startMonth - 1, values.startDay) >
+    Date.now()
+  ) {
+    errors.whenDidItStart = 'whenDidItStart.errorMessage'
+    errors.startDay = true
+    errors.startMonth = true
+    errors.startYear = true
+  }
+
   return errors
 }
 
@@ -127,6 +148,10 @@ export const HowDidItStartForm = props => {
           <Trans id="howManyTimes.once" />
           <Trans id="howManyTimes.severalTimes" />
           <Trans id="howManyTimes.notSure" />
+          <Trans id="whenDidItStart.errorMessage" />
+          <Trans id="whenDidItStart.startDate.warning" />
+          <Trans id="whenDidItStart.startMonth.warning" />
+          <Trans id="whenDidItStart.startYear.warning" />
         </div>
       ) : null}
 
@@ -185,13 +210,14 @@ export const HowDidItStartForm = props => {
               name="whenDidItStart"
               label={<Trans id="whenDidItStart.label" />}
               helperText={<Trans id="whenDidItStart.labelExample" />}
-              errorMessage={<Trans id="whenDidItStart.errorMessage" />}
+              errors={errors}
             >
               <Stack direction="row" spacing="2">
                 <Field
                   name="startDay"
                   label={<Trans id="whenDidItStart.startDay" />}
                   component={TextInput}
+                  group="whenDidItStart"
                   w={70}
                   maxLength="2"
                 />
@@ -199,6 +225,7 @@ export const HowDidItStartForm = props => {
                   name="startMonth"
                   label={<Trans id="whenDidItStart.startMonth" />}
                   component={TextInput}
+                  group="whenDidItStart"
                   w={70}
                   maxLength="2"
                 />
@@ -206,6 +233,7 @@ export const HowDidItStartForm = props => {
                   name="startYear"
                   label={<Trans id="whenDidItStart.startYear" />}
                   component={TextInput}
+                  group="whenDidItStart"
                   w={110}
                   maxLength="4"
                 />

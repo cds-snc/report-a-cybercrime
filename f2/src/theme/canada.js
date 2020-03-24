@@ -80,10 +80,13 @@ const space = {
   '7': '1.75rem',
 }
 
-const outlineColor = generateAlphaColors(chakraTheme.colors.blue[300])[700]
+const outlineColor = {
+  focus: generateAlphaColors(chakraTheme.colors.blue[300])[700],
+  invalid: generateAlphaColors(chakraTheme.colors.red[300])[700],
+}
 const shadows = {
-  outline: `0 0 0 4px ${outlineColor}`,
-  outlineInput: `0 0 4px 1px ${outlineColor}`,
+  outline: `0 0 0 4px ${outlineColor.focus}`,
+  outlineInput: `0 0 4px 1px ${outlineColor.focus}`,
   //outline: 'inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6)',
   outlineHover: `0 0 0 2px ${colors.gray[300]}`,
   outlineLeft: `-2px 0 0 0 ${colors.gray[300]}, 2px 0 0 0 inset ${colors.gray[300]}`,
@@ -102,6 +105,14 @@ const inputDefaults = {
     bg: 'white',
     boxShadow: 'outlineInput',
     borderColor: 'blue.600',
+  },
+  _invalid: {
+    borderColor: 'red.700',
+    boxShadow: `0 0 0 2px ${outlineColor.invalid}`,
+    '&:focus': {
+      borderColor: 'blue.600',
+      outlineInput: `0 0 4px 1px ${outlineColor.focus}`,
+    },
   },
 }
 const variants = {
