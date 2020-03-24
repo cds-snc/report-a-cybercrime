@@ -3,18 +3,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Form, Field } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
-import { Stack, FormControl } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormLabel } from '../components/FormLabel'
 import { Button } from '../components/button'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
+import { Field } from '../components/Field'
 
 const validate = values => {
   const errors = {}
@@ -96,51 +96,48 @@ export const ContactInfoForm = ({ onSubmit }) => {
                 />
               </Button>
             </Flex>
-            <Field name="fullName" component={Input}>
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="fullName">
-                    <Trans id="contactinfoPage.fullName" />{' '}
-                  </FormLabel>
-                  <TextInput
-                    id="fullName"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-            <Field name="email" component={Input}>
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="email">
-                    <Trans id="contactinfoPage.emailAddress" />{' '}
-                  </FormLabel>
-                  <TextInput
-                    id="email"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-            <Field name="phone" component={Input}>
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="phone">
-                    <Trans id="contactinfoPage.phoneNumber" />{' '}
-                  </FormLabel>
-                  <TextInput
-                    id="phone"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
+            <Field
+              name="fullName"
+              label={<Trans id="contactinfoPage.fullName" />}
+              component={Input}
+            />
+            {props => (
+              <TextInput
+                id="fullName"
+                name={props.input.name}
+                value={props.input.value}
+                onChange={props.input.onChange}
+              />
+            )}
+
+            <Field
+              name="email"
+              label={<Trans id="contactinfoPage.emailAddress" />}
+              component={Input}
+            />
+            {props => (
+              <TextInput
+                id="email"
+                name={props.input.name}
+                value={props.input.value}
+                onChange={props.input.onChange}
+              />
+            )}
+
+            <Field
+              name="phone"
+              label={<Trans id="contactinfoPage.phoneNumber" />}
+              component={Input}
+            />
+            {props => (
+              <TextInput
+                id="phone"
+                name={props.input.name}
+                value={props.input.value}
+                onChange={props.input.onChange}
+              />
+            )}
+
             <NextAndCancelButtons
               next={<Trans id="contactinfoPage.nextInfo" />}
               button={<Trans id="contactinfoPage.nextButton" />}
