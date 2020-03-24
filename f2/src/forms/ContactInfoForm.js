@@ -14,6 +14,7 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { Input } from '../components/input'
 
 const validate = values => {
   const errors = {}
@@ -95,7 +96,7 @@ export const ContactInfoForm = ({ onSubmit }) => {
                 />
               </Button>
             </Flex>
-            <Field name="fullName">
+            <Field name="fullName" component={Input}>
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="fullName">
@@ -110,7 +111,7 @@ export const ContactInfoForm = ({ onSubmit }) => {
                 </FormControl>
               )}
             </Field>
-            <Field name="email">
+            <Field name="email" component={Input}>
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="email">
@@ -125,7 +126,7 @@ export const ContactInfoForm = ({ onSubmit }) => {
                 </FormControl>
               )}
             </Field>
-            <Field name="phone">
+            <Field name="phone" component={Input}>
               {props => (
                 <FormControl>
                   <FormLabel htmlFor="phone">
