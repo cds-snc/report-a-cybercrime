@@ -30,7 +30,6 @@ Then('{string} should be shown', (content) => {
 });
 
 When('I navigate to howdiditstart page fill all forms', () => {
-
     cy.get('form').find('[value="howDidTheyReachYou.email"]').check({ force: true })
     cy.get('form').find('[id="email"]').type('suspectFrench@magma.com')
     cy.get('form').find('[value="howDidTheyReachYou.phone"]').check({ force: true })
@@ -53,6 +52,7 @@ Then('{string} should be shown', (content) => {
 });
 
 When('I navigate to Whatcouldbeaffected page fill all forms', () => {
+
     cy.get('form').find('[value="whatWasAffectedForm.financial"]').check({ force: true })
     cy.get('form').find('[value="whatWasAffectedForm.personal_information"]').check({ force: true })
     cy.get('form').find('[value="whatWasAffectedForm.devices"]').check({ force: true })
@@ -107,7 +107,6 @@ Then('{string} should be shown', (content) => {
 });
 
 When('I navigate Howwereyourdevicesaffected page fill all forms', () => {
-
     cy.get('form').find('[id="device"]').type('tablette Surface')
     cy.get('form').find('[id="account"]').type('Netflix')
     cy.get('form').find('[id="devicesTellUsMore"]').type('Comment vos appareils ou vos comptes ont-ils été affectés')
@@ -119,7 +118,6 @@ Then('{string} should be shown', (content) => {
 });
 
 When('I navigate to Howyourbusinessaffected page fill all forms', () => {
-
     cy.get('form').find('[id="business"]').type('actifs, réputation, clients')
     cy.contains('Continuer').first().click({force: true});
 });
@@ -129,7 +127,6 @@ Then('{string} should be shown', (content) => {
 });
 
 When('I navigate to Whathappened page fill all forms', () => {
-
     cy.get('form').find('[id="whatHappened"]').type('Décrivez la série d’événements. Commencez par le début. N’oubliez pas d’indiquer ce qu’on vous a demandé, promis ou volé, ou les menaces que vous avez reçues.')
     cy.contains('Continuer').first().click({force: true});
 });
@@ -150,9 +147,9 @@ Then('{string} should be shown', (content) => {
 });
 
 When('I navigate to AttachSupportingEvidence page fill all forms', () => {
-    const fileName1 = 'crime.jpg';
-    const fileName2 = 'fake.jpg';
-    const fileName3 = 'crime.jpg';
+    const fileName1 = 'fake.jpg';
+    const fileName2 = 'crime.jpg';
+    const fileName3 = 'fake.jpg';
 
     cy.get('#uploader').uploadFile(fileName1, 'image/jpeg');
     cy.wait(1000)
@@ -162,9 +159,8 @@ When('I navigate to AttachSupportingEvidence page fill all forms', () => {
 
     cy.get('#uploader').uploadFile(fileName3, 'image/jpeg');
     cy.wait(1000)
-
     //cy.screenshot()
-    cy.contains('Continue').first().click({force: true});
+    cy.contains('Continuer').first().click({force: true});
 });
 
 Then('{string} should be shown', (content) => {
@@ -172,7 +168,6 @@ Then('{string} should be shown', (content) => {
 });
 
 When('I navigate to yourLocation page fill all forms', () => {
-
     cy.get('form').find('[id="postalCode"]').type('K2G 6R2')
     cy.contains('Continuer').first().click({force: true});
 });
