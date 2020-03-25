@@ -9,6 +9,7 @@ import { Stack, FormControl } from '@chakra-ui/core'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
 import { Field } from '../components/Field'
+import { Input } from '../components/input'
 
 const defaultLocation = {
   postalCode: '',
