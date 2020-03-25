@@ -15,7 +15,7 @@ import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
 
-const validate = values => {
+const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   // if it has a value AND this value is a number below 31
@@ -31,13 +31,16 @@ const validate = values => {
     errors.whenDidItStart = 'whenDidItStart.startMonth.warning'
     errors.startMonth = true
   }
-  // if year contains 4 digits
-  if (values.startYear && values.startYear.length !== 4) {
+  // if it has a value AND year is a number containing 4 digits
+  if (
+    (values.startYear && isNaN(values.startYear)) ||
+    values.startYear.length !== 4
+  ) {
     errors.whenDidItStart = 'whenDidItStart.startYear.warning'
     errors.startYear = true
   }
 
-  // if date is in the future
+  // if date is in the future and date is valid
   // values.startMonth - 1 : UTC Date Months are values from 0 to 11
   if (
     Date.UTC(values.startYear, values.startMonth - 1, values.startDay) >
@@ -52,7 +55,7 @@ const validate = values => {
   return errors
 }
 
-const clearData = dataOrig => {
+const clearData = (dataOrig) => {
   let data = JSON.parse(JSON.stringify(dataOrig))
   if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.email'))
     data.email = ''
@@ -67,7 +70,7 @@ const clearData = dataOrig => {
   return data
 }
 
-export const HowDidItStartForm = props => {
+export const HowDidItStartForm = (props) => {
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
@@ -157,7 +160,7 @@ export const HowDidItStartForm = props => {
 
       <Form
         initialValues={howdiditstart}
-        onSubmit={data => props.onSubmit(clearData(data))}
+        onSubmit={(data) => props.onSubmit(clearData(data))}
         validate={validate}
         render={({
           handleSubmit,
@@ -181,7 +184,7 @@ export const HowDidItStartForm = props => {
               helperText={<Trans id="howDidTheyReachYou.reminder" />}
             >
               {/** All questions have conditional fields. It makes sense to use the map function */}
-              {questionsList.map(question => {
+              {questionsList.map((question) => {
                 return (
                   <React.Fragment key={question.channel}>
                     <CheckboxAdapter
@@ -244,7 +247,7 @@ export const HowDidItStartForm = props => {
               name="howManyTimes"
               label={<Trans id="howManyTimes.label" />}
             >
-              {howManyTimes.map(key => {
+              {howManyTimes.map((key) => {
                 return (
                   <React.Fragment key={key}>
                     <RadioAdapter
