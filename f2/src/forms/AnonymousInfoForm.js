@@ -25,12 +25,6 @@ export const AnonymousInfoForm = props => {
     ifanonymous: '',
     ...data.formData.anonymous,
   }
-  //TODO: Move this form data to some sort of a schema file instead?
-
-  // const anonymous= {
-  //   ifanonymous: [],
-  //   ...data.formData.timeline,
-  // }
 
   const ifanonymous = ['ifanonymous.yes', 'ifanonymous.no']
 
