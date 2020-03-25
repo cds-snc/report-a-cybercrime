@@ -11,7 +11,7 @@ import { useForm } from 'react-final-form'
 import { Alert } from '../Messages'
 import { useEffect } from 'react'
 
-export const ErrorSummary = props => {
+export const ErrorSummary = (props) => {
   const { i18n } = useLingui()
 
   const { errors } = useForm(props.onSubmit).getState()
@@ -32,7 +32,7 @@ export const ErrorSummary = props => {
         </Text>
 
         <Ol>
-          {Object.keys(errors).map(key => (
+          {Object.keys(errors).map((key) => (
             <Li key={key} fontSize="md">
               <A
                 fontSize="md"
