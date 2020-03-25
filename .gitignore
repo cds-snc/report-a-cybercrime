@@ -9,5 +9,8 @@ f2/build
 **/locales/*.js
 platform/**/.env*
 *.cer
+f2/cypress/reports
+f2/cypress/videos
+f2/cypress/screenshots
 .vscode
 message_*.txt

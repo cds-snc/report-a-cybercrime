@@ -49,7 +49,6 @@ export LDAP_UID=
 export MAIL_HOST=
 export MAIL_USER=
 export MAIL_PASS=
-export MAIL_TO=
 export MAIL_FROM=
 
 export SUBMISSIONS_PER_DAY=5
@@ -117,7 +116,7 @@ az webapp config appsettings set --name $APP_NAME --settings BLOB_STORAGE_NAME=$
 az webapp config appsettings set --name $APP_NAME --settings CLAM_URL=${VIRUS_SCANNER_NAME}.canadacentral.azurecontainer.io
 az webapp config appsettings set --name $APP_NAME --settings CONTENT_MODERATOR_SERVICE_KEY=$(az cognitiveservices account keys list --name $COGNITIVE_NAME --query key1 -o tsv)
 az webapp config appsettings set --name $APP_NAME --settings NOTIFY_API_BASE_URL=$NOTIFY_API_BASE_URL NOTIFY_API_KEY=$NOTIFY_API_KEY NOTIFY_CONFIRMATION_TEMPLATE_ID=$NOTIFY_CONFIRMATION_TEMPLATE_ID SELF_HARM_WORDS="${SELF_HARM_WORDS}"
-az webapp config appsettings set --name $APP_NAME --settings LDAP_URL=$LDAP_URL LDAP_UID="${LDAP_UID}" MAIL_HOST=$MAIL_HOST MAIL_USER=$MAIL_USER MAIL_PASS=$MAIL_PASS MAIL_TO="${MAIL_TO}" MAIL_FROM="${MAIL_FROM}"
+az webapp config appsettings set --name $APP_NAME --settings LDAP_URL=$LDAP_URL LDAP_UID="${LDAP_UID}" MAIL_HOST=$MAIL_HOST MAIL_USER=$MAIL_USER MAIL_PASS=$MAIL_PASS MAIL_FROM="${MAIL_FROM}"
 az webapp config appsettings set --name $APP_NAME --settings SUBMISSIONS_PER_DAY=$SUBMISSIONS_PER_DAY SECONDS_BETWEEN_REQUESTS=$SECONDS_BETWEEN_REQUESTS
 az webapp config appsettings set --name $APP_NAME --settings NOTIFY_FEEDBACK_TEMPLATE_ID=$NOTIFY_FEEDBACK_TEMPLATE_ID FEEDBACK_EMAIL=$FEEDBACK_EMAIL NOTIFY_REPORT_TEMPLATE_ID=$NOTIFY_REPORT_TEMPLATE_ID
 
@@ -136,6 +135,12 @@ publicIP="${publicIP}/32"
 # When adding your first IP Restriction rule, the service will add an explicit deny all rule with a priority of 2147483647.
 # In practice, the explicit deny all rule will be last rule executed and will block access to any IP address that is not explicitly allowed using an Allow rule.
 az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow from WAF' --action Allow --ip-address $publicIP --priority 1000
+
+# Add Network Restrictions to allow communication to the ACR servers in Canada Central so that the Continuous Depoyment to the SCM / Kudu site will work.
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 13.71.170.56/29 --description 'bit.ly/2xGlegR' --priority 3300
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 20.38.146.144/29 --description 'bit.ly/2xGlegR' --priority 3300
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 20.38.149.0/25 --description 'bit.ly/2xGlegR' --priority 3300
+az webapp config access-restriction add --resource-group $RG_NAME --name $APP_NAME --rule-name 'Allow Azure ACR Canada Central' --action Allow --ip-address 52.246.154.144/29 --description 'bit.ly/2xGlegR' --priority 3300
 
 ## Configure app service for https only
 az webapp update --https-only true --name $APP_NAME --resource-group $RG_NAME
