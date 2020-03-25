@@ -31,9 +31,7 @@ export const LocationPage = () => {
               <LocationInfoForm
                 onSubmit={data => {
                   dispatch({ type: 'saveFormData', data: { location: data } })
-                  history.push(
-                    doneForms ? '/confirmation' : '/locationAnonymous',
-                  )
+                  history.push(doneForms ? '/confirmation' : '/contactinfo')
                 }}
               />
             </Stack>
