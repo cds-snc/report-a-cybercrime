@@ -97,31 +97,37 @@ const formatIncidentInformation = data => {
 const formatNarrative = data => {
   const infoReqString = data.personalInformation.typeOfInfoReq
     .map(info => info.replace('typeOfInfoReq.', ''))
+    .map(info =>
+      info === 'other' &&
+      data.personalInformation.infoReqOther &&
+      data.personalInformation.infoReqOther !== ''
+        ? data.personalInformation.infoReqOther
+        : info,
+    )
     .join(', ')
 
   const infoObtainedString = data.personalInformation.typeOfInfoObtained
     .map(info => info.replace('typeOfInfoObtained.', ''))
+    .map(info =>
+      info === 'other' &&
+      data.personalInformation.infoObtainedOther &&
+      data.personalInformation.infoObtainedOther !== ''
+        ? data.personalInformation.infoObtainedOther
+        : info,
+    )
     .join(', ')
 
   const rows =
+    formatLineHtml('What happened:', data.whatHappened.whatHappened) +
     formatLineHtml(
-      'What happened:           ',
-      data.whatHappened.whatHappened,
+      'They asked for (financial):',
+      data.moneyLost.demandedMoney,
     ) +
-    formatLineHtml('They asked for:          ', data.moneyLost.demandedMoney) +
-    formatLineHtml('They asked for:          ', infoReqString) +
-    formatLineHtml(
-      'They asked for:          ',
-      data.personalInformation.infoReqOther,
-    ) +
-    formatLineHtml('I lost:                  ', data.moneyLost.moneyTaken) +
-    formatLineHtml('I lost:                  ', infoObtainedString) +
-    formatLineHtml(
-      'I lost:                  ',
-      data.personalInformation.infoObtainedOther,
-    ) +
-    formatLineHtml('Affected device:        ', data.devicesInfo.device) +
-    formatLineHtml('Affected account:       ', data.devicesInfo.account) +
+    formatLineHtml('They asked for (information):', infoReqString) +
+    formatLineHtml('I lost (financial):', data.moneyLost.moneyTaken) +
+    formatLineHtml('I lost (information):', infoObtainedString) +
+    formatLineHtml('Affected device:', data.devicesInfo.device) +
+    formatLineHtml('Affected account:', data.devicesInfo.account) +
     formatLineHtml(
       'Affected device/account: ',
       data.devicesInfo.devicesTellUsMore,
