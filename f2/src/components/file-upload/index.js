@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import { Label } from '../label'
 import { VisuallyHidden } from '@chakra-ui/core'
 import { Button } from '../button'
+import { acceptableExtensions } from '../../utils/acceptableFiles'
 
 export const FileUpload = ({ onChange, accept, ...props }) => {
   return (
@@ -20,7 +21,7 @@ export const FileUpload = ({ onChange, accept, ...props }) => {
           type="file"
           id="uploader"
           name="uploader"
-          accept=".png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx, .pdf, .txt, .rtf"
+          accept={acceptableExtensions.join(',')}
           max-upload={3}
           onChange={onChange}
         />
