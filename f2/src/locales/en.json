@@ -88,6 +88,8 @@
   "confirmationPage.whatHappened.title.edit": "Edit What happened?",
   "confirmationPage.whatWasAffected.format": "This could have affected:",
   "confirmationPage.whenDidItStart": "Start date",
+  "contactinfoForm.email.warning": "Please enter a valid email address",
+  "contactinfoForm.phone.warning": "Please enter 10-digit phone number",
   "contactinfoPage.emailAddress": "Email address",
   "contactinfoPage.fullName": "Full name",
   "contactinfoPage.intro": "We do not follow up with everyone who submits a report. We will only contact you to confirm your report or if we need more information.",
@@ -348,9 +350,13 @@
   "whatWasAffectedForm.warning": "Select at least one thing that could potentially be affected. If you’re not sure, check “Other”.",
   "whatWasAffectedPage.intro": "You’re likely not the only one affected by something like this. Help us learn more about what the suspect was after.",
   "whatWasAffectedPage.title": "What do you think could be affected?",
+  "whenDidItStart.errorMessage": "Start date must be in the past.",
   "whenDidItStart.label": "When did it start?",
   "whenDidItStart.labelExample": "For example: 26 02 2020",
+  "whenDidItStart.startDate.warning": "Start date must contain a real day",
   "whenDidItStart.startDay": "Day",
   "whenDidItStart.startMonth": "Month",
-  "whenDidItStart.startYear": "Year"
+  "whenDidItStart.startMonth.warning": "Start date must contain a real month",
+  "whenDidItStart.startYear": "Year",
+  "whenDidItStart.startYear.warning": "Start date must be four digits"
 }
