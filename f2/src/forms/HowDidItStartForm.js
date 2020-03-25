@@ -33,8 +33,8 @@ const validate = (values) => {
   }
   // if it has a value AND year is a number containing 4 digits
   if (
-    (values.startYear && isNaN(values.startYear)) ||
-    values.startYear.length !== 4
+    values.startYear &&
+    (isNaN(values.startYear) || values.startYear.length !== 4)
   ) {
     errors.whenDidItStart = 'whenDidItStart.startYear.warning'
     errors.startYear = true
