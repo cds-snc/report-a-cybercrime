@@ -8,17 +8,10 @@ import { FormHelperText } from '../FormHelperText'
 import { FormErrorMessage } from '../FormErrorMessage'
 import { UniqueID } from '../unique-id'
 
-export const FormArrayControl = ({
-  label,
-  helperText,
-  errorMessage,
-  name,
-  children,
-  ...rest
-}) => {
+export const FormArrayControl = props => {
   const {
     meta: { submitFailed, invalid },
-  } = useField(name, {
+  } = useField(props.name, {
     subscription: { submitFailed: true, invalid: true },
   })
 
@@ -27,28 +20,35 @@ export const FormArrayControl = ({
       {id => {
         return (
           <FormControl
-            id={name}
+            id={props.name}
             borderLeft={submitFailed && invalid ? '3px' : null}
             pl={submitFailed && invalid ? 4 : null}
             borderLeftColor={submitFailed && invalid ? 'red.700' : null}
             as="fieldset"
             aria-labelledby={id}
             isInvalid={submitFailed && invalid}
-            {...rest}
+            {...props}
           >
             <Stack spacing={1} pb={4}>
-              <FormLabel id={id} as="legend" htmlFor={name} mb={label && 0}>
-                {label}
+              <FormLabel
+                id={id}
+                as="legend"
+                htmlFor={props.name}
+                mb={props.label && 0}
+              >
+                {props.label}
               </FormLabel>
-              {helperText && <FormHelperText>{helperText}</FormHelperText>}
-              {errorMessage && (
-                <FormErrorMessage>{errorMessage}</FormErrorMessage>
+              {props.helperText && (
+                <FormHelperText>{props.helperText}</FormHelperText>
+              )}
+              {props.errorMessage && (
+                <FormErrorMessage>{props.errorMessage}</FormErrorMessage>
               )}
             </Stack>
 
             {/** This component comes with a group attribute. We don't need to use Chakra's <CheckboxGroup> or <RadioGroup> as per the Chakra docs */}
             <Stack shouldWrapChildren spacing={4}>
-              {children}
+              {props.children}
             </Stack>
           </FormControl>
         )
