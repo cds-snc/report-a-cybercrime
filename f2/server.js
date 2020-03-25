@@ -2,7 +2,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
-const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+const helmet = require('helmet')
+const { unflatten } = require('flat')
+const { encryptAndSend } = require('./src/utils/encryptedEmail')
+const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
@@ -15,7 +18,10 @@ const {
   submitFeedback,
 } = require('./src/utils/notify')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
-const helmet = require('helmet')
+const {
+  fileSizePasses,
+  fileExtensionPasses,
+} = require('./src/utils/acceptableFiles')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -26,16 +32,26 @@ var limiter = new RateLimit({
 
 require('dotenv').config()
 
-const emailList = process.env.MAIL_TO
-  ? process.env.MAIL_TO.split(',').map(k => k.trim())
-  : []
-
-const uidList = process.env.LDAP_UID
+const uidListInitial = process.env.LDAP_UID
   ? process.env.LDAP_UID.split(',').map(k => k.trim())
   : []
 
-// fetch and store certs for intake analysts
-getAllCerts(uidList)
+// certs and emails can be fetched in different order than the original uidListInitial
+let emailList = []
+let uidList = []
+getCertsAndEmail(uidListInitial, emailList, uidList)
+
+// Make sure that everything got loaded.
+// TODO: have a proper "system is ready" flag that express uses to deal with requests
+// (ex: tell CAFC we're not ready yet, return error code to /ping)
+setTimeout(() => {
+  if (
+    uidListInitial.length === uidList.length &&
+    uidListInitial.length === emailList.length
+  )
+    console.log(`LDAP certs successfully fetched for: ${emailList}`)
+  else console.log('ERROR: problem fetching certs from LDAP')
+}, 5000)
 
 const app = express()
 app.use(helmet())
@@ -138,12 +154,23 @@ app
     let files = []
     let fields = {}
     form.on('field', (fieldName, fieldValue) => {
-      fields[fieldName] = fieldValue
+      fields[fieldName] = JSON.parse(fieldValue)
     })
     form.on('file', function(name, file) {
-      files.push(file)
+      if (files.length >= 3)
+        console.warn('ERROR in /submit: number of files more than 3')
+      else if (!fileSizePasses(file.size))
+        console.warn(
+          `ERROR in /submit: file ${name} too big (${file.size} bytes)`,
+        )
+      else if (!fileExtensionPasses(name))
+        console.warn(
+          `ERROR in /submit: unauthorized file extension in file ${name}`,
+        )
+      else files.push(file)
     })
     form.on('end', () => {
+      fields = unflatten(fields, { safe: true })
       uploadData(req, res, fields, files)
     })
   })
