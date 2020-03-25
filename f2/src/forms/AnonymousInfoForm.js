@@ -27,10 +27,10 @@ export const AnonymousInfoForm = props => {
   }
   //TODO: Move this form data to some sort of a schema file instead?
 
-  const recurrenceCheck = {
-    ifanonymous: [],
-    ...data.formData.timeline,
-  }
+  // const anonymous= {
+  //   ifanonymous: [],
+  //   ...data.formData.timeline,
+  // }
 
   const ifanonymous = ['ifanonymous.yes', 'ifanonymous.no']
 
@@ -61,11 +61,7 @@ export const AnonymousInfoForm = props => {
               {ifanonymous.map(key => {
                 return (
                   <React.Fragment key={key}>
-                    <RadioAdapter
-                      name="anonymous"
-                      value={key}
-                      isChecked={recurrenceCheck.ifanonymous.includes(key)}
-                    >
+                    <RadioAdapter name="anonymous" value={key}>
                       {i18n._(key)}
                     </RadioAdapter>
                   </React.Fragment>
