@@ -15,7 +15,7 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
 
-const validate = values => {
+const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   if (
@@ -45,10 +45,7 @@ export const ContactInfoForm = ({ onSubmit }) => {
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
-        <div>
-          <Trans id="contactinfoForm.email.warning" />
-          <Trans id="contactinfoForm.phone.warning" />
-        </div>
+        <div></div>
       ) : null}
       <Form
         initialValues={contactInfo}
@@ -104,12 +101,15 @@ export const ContactInfoForm = ({ onSubmit }) => {
             <Field
               name="email"
               label={<Trans id="contactinfoPage.emailAddress" />}
+              errorMessage={<Trans id="contactinfoForm.email.warning" />}
               component={Input}
             />
 
             <Field
               name="phone"
               label={<Trans id="contactinfoPage.phoneNumber" />}
+              helperText={<Trans id="contactinfoForm.phone.warning" />}
+              errorMessage={<Trans id="contactinfoForm.phone.warning" />}
               component={Input}
             />
 
