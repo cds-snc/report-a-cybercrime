@@ -364,5 +364,5 @@
   "whenDidItStart.startMonth": "Month",
   "whenDidItStart.startMonth.warning": "Start date must contain a real month",
   "whenDidItStart.startYear": "Year",
-  "whenDidItStart.startYear.warning": "whenDidItStart.startYear.warning"
+  "whenDidItStart.startYear.warning": "Start date must be four digits"
 }
