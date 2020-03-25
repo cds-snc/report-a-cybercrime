@@ -30,6 +30,7 @@ const formatReportInfo = data => {
 
   delete data.reportId // we delete the parts of the data object that we've displayed
   delete data.submissionTime // so that at the end we can display the rest and ensure that
+  delete data.submissionDate //submissionDate does not needed in analyst report
   delete data.language // we didn't miss anything
   delete data.appVersion
   delete data.selfHarmWords
