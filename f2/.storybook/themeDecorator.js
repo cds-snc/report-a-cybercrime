@@ -3,13 +3,13 @@ import { ThemeProvider, CSSReset, Box } from '@chakra-ui/core'
 import theme from '../src/theme/canada'
 import { Global, css } from '@emotion/core'
 import { MemoryRouter } from 'react-router-dom'
-import { I18nProvider, useLingui } from '@lingui/react'
+import { I18nProvider } from '@lingui/react'
 import { i18n } from '@lingui/core'
-import en from '../src/locales/en.json'
+import { activate } from '../src/i18n.config'
 
-const ThemeDecorator = storyFn => {
-  i18n.load('en', en)
-  i18n.activate('en')
+const ThemeDecorator = (storyFn) => {
+  activate('en')
+
   return (
     <MemoryRouter>
       <I18nProvider i18n={i18n}>

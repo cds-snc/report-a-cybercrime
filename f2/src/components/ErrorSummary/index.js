@@ -12,12 +12,12 @@ import { Alert } from '../Messages'
 import { focusTarget } from '../../utils/focusTarget'
 import { useEffect } from 'react'
 
-export const ErrorSummary = props => {
+export const ErrorSummary = () => {
   const { i18n } = useLingui()
 
-  const { errors } = useForm(props.onSubmit).getState()
+  const { errors } = useForm().getState()
 
-  useForm(props.onSubmit).pauseValidation()
+  useForm().pauseValidation()
 
   useEffect(() => {
     const summary = document
@@ -35,7 +35,7 @@ export const ErrorSummary = props => {
           <Trans id="default.hasValidationErrors" />
         </Text>
         <Ol>
-          {Object.keys(errors).map(key => {
+          {Object.keys(errors).map((key) => {
             // Omit all errors set to true from showing in ErrorSummary
             return errors[key] !== true ? (
               <Li key={key} fontSize="md">
@@ -44,7 +44,7 @@ export const ErrorSummary = props => {
                   fontWeight="bold"
                   color="blue.900"
                   href={`#${key}`}
-                  onClick={event => {
+                  onClick={(event) => {
                     let target = event.target
 
                     if (focusTarget(target)) {
