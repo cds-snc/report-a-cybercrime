@@ -1,4 +1,10 @@
 {
+  "LocationAnonymousInfoForm.City": "Ville ou municipalité",
+  "LocationAnonymousInfoForm.nextButton": "Continuer",
+  "LocationAnonymousInfoForm.nextPage": "Prochaine étape : Révisez votre rapport",
+  "LocationAnonymousInfoForm.province": "Province",
+  "LocationAnonymousPage.intro": "Nous utilisons votre emplacement géographique pour établir un lien entre votre rapport et les autres rapports de votre région, et pour collaborer avec les services de police locaux partout au Canada.",
+  "LocationAnonymousPage.title": "Votre emplacement géographique",
   "SkipLink.text": "Aller au contenu principal",
   "backButton.text": "Retour",
   "banner.footerPrivacy": "Confidentialité",
