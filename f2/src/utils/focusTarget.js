@@ -1,6 +1,6 @@
 //Source: https://github.com/alphagov/govuk-frontend/blob/master/src/govuk/components/error-summary/error-summary.js
 
-export const focusTarget = target => {
+export const focusTarget = (target) => {
   // If the element that was clicked was not a link, return early
   if (target.tagName !== 'A' || target.href === false) {
     return false
@@ -26,7 +26,7 @@ export const focusTarget = target => {
   return true
 }
 
-const getFragmentFromUrl = url => {
+const getFragmentFromUrl = (url) => {
   if (url.indexOf('#') === -1) {
     return false
   }
@@ -34,7 +34,7 @@ const getFragmentFromUrl = url => {
   return url.split('#').pop()
 }
 
-const getAssociatedLegendOrLabel = input => {
+const getAssociatedLegendOrLabel = (input) => {
   var fieldset = input.closest('fieldset')
 
   if (fieldset) {

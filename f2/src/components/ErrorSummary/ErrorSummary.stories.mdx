@@ -1,0 +1,58 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+import FormDecorator from '../../../.storybook/formDecorator'
+import { withKnobs, boolean, text } from '@storybook/addon-knobs'
+import { Field } from '../Field'
+import { Input } from '../input'
+import { TextArea } from '../text-area'
+import { ErrorSummary } from '.'
+import { Stack } from '@chakra-ui/core'
+import { Trans } from '@lingui/react'
+
+<Meta
+  title="Components/ErrorSummary"
+  component={ErrorSummary}
+  decorators={[ThemeDecorator, FormDecorator]}
+/>
+
+# Error Summary
+
+The ErrorSummary component uses final-form validation to assign errors to fields. This can be set in a `validate` function that returns an error object. The object is a list of field names as keys, pointing to lingui ids as values. This function is usually defined before exporting the form component.
+
+```jsx
+const validate = (values) => {
+  const errors = { email: 'contactinfoForm.email.warning' }
+  return errors
+}
+```
+
+The ErrorSummary component can be used to list all errors in a form. It is simply inserted in a conditional block, when `submitFailed` and `hasValidationErrors` are both true. Otherwise nothing is shown.
+
+```jsx
+{
+  submitFailed && hasValidationErrors ? <ErrorSummary /> : null
+}
+```
+
+In this example the key `email` matches the field `name` property, while the value `'contactinfoForm.email.warning'` is the lingui id for the field's `errorMessage` property
+
+> Note: to trick storybook into displaying this component, the conditions around `ErrorSummary` have been omited, and the Field has been passed an `isInvalid` property of true. Don't do that.
+
+<Preview>
+  <Story name="Error Summary">
+    <Stack as="form" shouldWrapChildren spacing={8}>
+      <ErrorSummary />
+      <Field
+        name="email"
+        label={<Trans id="contactinfoPage.emailAddress" />}
+        errorMessage={<Trans id="contactinfoForm.email.warning" />}
+        component={Input}
+        isInvalid={true}
+      />
+    </Stack>
+  </Story>
+</Preview>
+
+## Props
+
+You don't need to pass any props to ErrorSummary
