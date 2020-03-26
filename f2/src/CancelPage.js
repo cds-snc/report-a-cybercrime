@@ -4,7 +4,7 @@ import { Trans } from '@lingui/macro'
 import { H1, H2 } from './components/header'
 import { P } from './components/paragraph'
 import { Layout, Row } from './components/layout'
-import { Stack, Alert, AlertIcon, Box, Icon } from '@chakra-ui/core'
+import { Stack, Box, Icon } from '@chakra-ui/core'
 import { Route } from 'react-router-dom'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
@@ -13,6 +13,7 @@ import { useLingui } from '@lingui/react'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { LandingBox } from './components/container'
+import { Alert } from './components/Messages'
 
 export const CancelPage = () => {
   const { i18n } = useLingui()
@@ -91,8 +92,7 @@ export const CancelPage = () => {
             </Ul>
           </Stack>
           <Stack spacing={6}>
-            <Alert status="success">
-              <AlertIcon mt={0} />
+            <Alert status="success" withIcon>
               <Trans id="thankYouPage.safelyCloseWindow" />
             </Alert>
             <Box mb="auto">

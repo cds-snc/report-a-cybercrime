@@ -6,16 +6,11 @@ import { Form, Field } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { TextInput } from '../components/TextInput'
 import { TextArea } from '../components/text-area'
-import {
-  Stack,
-  FormControl,
-  VisuallyHidden,
-  Alert,
-  AlertIcon,
-} from '@chakra-ui/core'
+import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
+import { Well } from '../components/Messages'
 
 export const DevicesForm = props => {
   const localOnSubmit = data => {
@@ -91,10 +86,9 @@ export const DevicesForm = props => {
               </FormControl>
             )}
           </Field>
-          <Alert status="success" backgroundColor="blue.100">
-            <AlertIcon name="info-outline" color="blue.800" />
+          <Well variantColor="blue">
             <Trans id="devicePage.tip" />
-          </Alert>
+          </Well>
           <NextAndCancelButtons
             next={<Trans id="devicePage.nextPage" />}
             button={<Trans id="devicePage.nextButton" />}

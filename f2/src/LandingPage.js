@@ -11,9 +11,10 @@ import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { A } from './components/link'
 import { Layout } from './components/layout'
-import { Stack, Icon, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { Well } from './components/Messages'
 
 export const LandingPage = props => {
   const { i18n } = useLingui()
@@ -90,10 +91,9 @@ export const LandingPage = props => {
                 </Stack>
               </Stack>
 
-              <Alert status="success" backgroundColor="blue.100">
-                <AlertIcon name="info-outline" color="blue.800" />
+              <Well variantColor="blue">
                 <Trans id="landingPage.warning" />
-              </Alert>
+              </Well>
 
               <H2>
                 <Trans id="landingPage.reportingOptions" />

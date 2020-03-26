@@ -15,10 +15,7 @@ const getFileExtension = filename => {
   return a.pop().toLowerCase()
 }
 
-async function getData(fields, files) {
-  // Extract the JSON from the "JSON" form element
-  const data = JSON.parse(fields['json'])
-
+async function getData(data, files) {
   data.reportId = generateReportId()
   // Clean up the file info we're saving to MongoDB, and record the SHA1 hash so we can find the file in blob storage
   const filesToJson = []
@@ -68,6 +65,7 @@ async function getData(fields, files) {
   const timeString =
     padNumber(now.getHours()) + ':' + padNumber(now.getMinutes())
   data.submissionTime = `${dateString} ${timeString} UTC-${timeZoneOffset}`
+  data.submissionDate = `${dateString}`
   return data
 }
 
