@@ -13,7 +13,7 @@ const validate = values => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   if (!values.ifanonymous || values.ifanonymous.length < 1) {
-    errors.ifanonymous = 'AnonymousInfoForm.warning'
+    errors.ifanonymous = 'AnonymousPage.warning'
   }
   return errors
 }
@@ -31,14 +31,14 @@ export const AnonymousInfoForm = props => {
     ...data.formData.anonymous,
   }
 
-  const ifanonymous = ['ifanonymous.yes', 'ifanonymous.no']
+  const ifanonymous = ['anonymousPage.yes', 'anonymousPage.no']
 
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
-          <Trans id="ifanonymous.yes" />
-          <Trans id="ifanonymous.no" />
+          <Trans id="anonymousPage.yes" />
+          <Trans id="anonymousPage.no" />
         </div>
       ) : null}
 
@@ -55,8 +55,8 @@ export const AnonymousInfoForm = props => {
           >
             <FormArrayControl
               name="ifanonymous"
-              label={<Trans id="ifanonymous.title" />}
-              errorMessage={<Trans id="AnonymousInfoForm.warning" />}
+              label={<Trans id="anonymousForm.title" />}
+              errorMessage={<Trans id="anonymousPage.warning" />}
             >
               {ifanonymous.map(key => {
                 return (
@@ -69,8 +69,8 @@ export const AnonymousInfoForm = props => {
               })}
             </FormArrayControl>
             <NextAndCancelButtons
-              next={<Trans id="ifanonymous.nextPage" />}
-              button={<Trans id="ifanonymous.nextButton" />}
+              next={<Trans id="anonymousPage.nextPage" />}
+              button={<Trans id="anonymousPage.nextButton" />}
             />
           </Stack>
         )}

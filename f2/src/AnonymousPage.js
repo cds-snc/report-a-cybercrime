@@ -22,10 +22,10 @@ export const AnonymousPage = () => {
             <Stack spacing={10} shouldWrapChildren>
               <BackButton />
               <H1>
-                <Trans id="ifAnonymousPage.title" />
+                <Trans id="anonymousPage.title" />
               </H1>
               <Lead>
-                <Trans id="ifAnonymousPage.intro" />
+                <Trans id="anonymousPage.intro" />
               </Lead>
 
               <AnonymousInfoForm
