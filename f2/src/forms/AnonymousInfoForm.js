@@ -12,8 +12,8 @@ import { FormArrayControl } from '../components/FormArrayControl'
 const validate = values => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
-  if (!values.ifanonymous || values.ifanonymous.length < 1) {
-    errors.ifanonymous = 'AnonymousPage.warning'
+  if (!values.anonymous || values.anonymous.length < 1) {
+    errors.anonymous = 'AnonymousPage.warning'
   }
   return errors
 }
@@ -27,7 +27,7 @@ export const AnonymousInfoForm = props => {
 
   const [data] = useStateValue()
   const anonymous = {
-    ifanonymous: '',
+    anonymous: '',
     ...data.formData.anonymous,
   }
 
@@ -54,7 +54,7 @@ export const AnonymousInfoForm = props => {
             spacing={12}
           >
             <FormArrayControl
-              name="ifanonymous"
+              name="anonymous"
               label={<Trans id="anonymousForm.title" />}
               errorMessage={<Trans id="anonymousPage.warning" />}
             >

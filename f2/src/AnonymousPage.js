@@ -32,7 +32,7 @@ export const AnonymousPage = () => {
                 onSubmit={data => {
                   dispatch({
                     type: 'saveFormData',
-                    data: { contactInfo: data },
+                    data: { anonymous: data },
                   })
                   history.push('/howdiditstart')
                 }}
