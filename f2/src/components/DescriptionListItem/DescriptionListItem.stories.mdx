@@ -1,0 +1,50 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+import { DescriptionListItem } from '.'
+import { Stack } from '@chakra-ui/core'
+
+<Meta
+  title="Components/Description Lists"
+  component={DescriptionListItem}
+  decorators={[ThemeDecorator]}
+/>
+
+# Description Lists
+
+Description lists arejust like list, but they help present accessible information lists. We use this component on the Confirmation Summay page.
+
+<Preview>
+  <Story name="Description Lists">
+    <Stack as="dl" spacing={4}>
+      <DescriptionListItem
+        descriptionTitle="confirmationPage.howDidItStart.phone"
+        description="123 456-7890"
+      />
+      <DescriptionListItem
+        descriptionTitle="confirmationPage.howDidItStart.whenDidItStart"
+        description="123 456-7890"
+      />
+      <DescriptionListItem
+        descriptionTitle="confirmationPage.howDidItStart.howManyTimes"
+        description="123 456-7890"
+      />
+    </Stack>
+  </Story>
+</Preview>
+
+# Description List Item
+
+The descrtiption list item is a flex layout containing a description title and a description. It renders an html `<dt>` and `<dd>` respectively.
+
+<Preview>
+  <Story name="Description List Item">
+    <DescriptionListItem
+      descriptionTitle="confirmationPage.howDidItStart.phone"
+      description="123 456-7890"
+    />
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={DescriptionListItem} />
