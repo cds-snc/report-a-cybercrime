@@ -18,7 +18,7 @@ const clickOn = element => fireEvent.click(element)
 describe('<AnonymousInfoForm />', () => {
   afterEach(cleanup)
 
-  it('calls the onSubmit function when the form is submitted', async () => {
+  it('does not call the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
     const { getByText } = render(
@@ -40,6 +40,6 @@ describe('<AnonymousInfoForm />', () => {
     clickOn(nextButton.parentElement)
     await wait(0) // Wait for promises to resolve
 
-    expect(submitMock).toHaveBeenCalledTimes(1)
+    expect(submitMock).toHaveBeenCalledTimes(0)
   })
 })
