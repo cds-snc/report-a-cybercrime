@@ -9,8 +9,13 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
 
-const validate = () => {
-  return {}
+const validate = values => {
+  const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
+  if (!values.ifanonymous || values.ifanonymous.length < 1) {
+    errors.ifanonymous = 'AnonymousInfoForm.warning'
+  }
+  return errors
 }
 const clearData = dataOrig => {
   let data = JSON.parse(JSON.stringify(dataOrig))
@@ -51,6 +56,7 @@ export const AnonymousInfoForm = props => {
             <FormArrayControl
               name="ifanonymous"
               label={<Trans id="ifanonymous.title" />}
+              errorMessage={<Trans id="AnonymousInfoForm.warning" />}
             >
               {ifanonymous.map(key => {
                 return (
