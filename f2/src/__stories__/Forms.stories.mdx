@@ -34,10 +34,10 @@ Source: [Form: Basic Usage](https://final-form.org/docs/react-final-form/api/For
 7. Our submit buttons are contained in the [`<NextAndCancelButtons>`](/?path=/docs/components-button--next-and-cancel-buttons) component
 
 ```jsx
-export const TheForm = props => {
+export const TheForm = (props) => {
   return (
     <Form
-      onSubmit={values => {
+      onSubmit={(values) => {
         props.onSubmit(values)
       }}
       render={({ handleSubmit, values }) => (
@@ -58,13 +58,13 @@ export const TheForm = props => {
 You'll need to access the form data through the `useStateValue()` hook. Additionally, you want to have access to the `useLingui()` hook in order to translate some text. The lingui hook gives access to some handy translation functions such as `_()`
 
 ```jsx
-export const Form = props => {
+export const Form = (props) => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
 
   return (
     <Form
-      onSubmit={values => {
+      onSubmit={(values) => {
         props.onSubmit(values)
       }}
       render={({ handleSubmit, values }) => (
@@ -106,7 +106,7 @@ If we put things together:
 ```jsx
 const defaultExample = { array: [], string: '' }
 
-export const Form = props => {
+export const Form = (props) => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
 
@@ -120,7 +120,7 @@ export const Form = props => {
   return (
     <Form
       initialValues={example}
-      onSubmit={values => {
+      onSubmit={(values) => {
         props.onSubmit(values)
       }}
       render={({ handleSubmit, values }) => (
