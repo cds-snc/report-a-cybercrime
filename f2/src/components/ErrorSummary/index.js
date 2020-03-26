@@ -12,12 +12,12 @@ import { Alert } from '../Messages'
 import { focusTarget } from '../../utils/focusTarget'
 import { useEffect } from 'react'
 
-export const ErrorSummary = (props) => {
+export const ErrorSummary = () => {
   const { i18n } = useLingui()
 
-  const { errors } = useForm(props.onSubmit).getState()
+  const { errors } = useForm().getState()
 
-  useForm(props.onSubmit).pauseValidation()
+  useForm().pauseValidation()
 
   useEffect(() => {
     const summary = document
