@@ -46,7 +46,3 @@ export const variantColor = () => (
     </Button>
   </Stack>
 )
-
-export const nextAndCancelButtons = () => (
-  <NextAndCancelButtons button="Continue" cancelRoute="/" />
-)

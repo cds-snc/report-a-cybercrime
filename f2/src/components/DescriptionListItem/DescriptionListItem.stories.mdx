@@ -11,7 +11,7 @@ import { Stack } from '@chakra-ui/core'
 
 # Description Lists
 
-Description lists arejust like list, but they help present accessible information lists. We use this component on the Confirmation Summay page.
+Description lists arejust like list, but they help present accessible information lists. We use this component on the Confirmation Summay page. In order to make it accessible, related `<DescriptionListItem>` must be wrapped in a `<dl>`. You can use `<Stack as="dl">` to create a quick stacked and equally spaced layout.
 
 <Preview>
   <Story name="Description Lists">
@@ -21,12 +21,12 @@ Description lists arejust like list, but they help present accessible informatio
         description="123 456-7890"
       />
       <DescriptionListItem
-        descriptionTitle="confirmationPage.howDidItStart.whenDidItStart"
-        description="123 456-7890"
+        descriptionTitle="confirmationPage.whenDidItStart"
+        description="02/10/2018"
       />
       <DescriptionListItem
-        descriptionTitle="confirmationPage.howDidItStart.howManyTimes"
-        description="123 456-7890"
+        descriptionTitle="confirmationPage.howManyTimes"
+        description="Once"
       />
     </Stack>
   </Story>
@@ -46,5 +46,7 @@ The descrtiption list item is a flex layout containing a description title and a
 </Preview>
 
 ## Props
+
+The `descriptionTitle` prop takes a lingui id as a string. It will automatically be wrapped in a `<Trans>` tag.
 
 <Props of={DescriptionListItem} />
