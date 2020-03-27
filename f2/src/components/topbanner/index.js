@@ -1,5 +1,4 @@
 /** @jsx jsx **/
-import PropTypes from 'prop-types'
 import { LocaleSwitcher } from '../../LocaleSwitcher'
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
