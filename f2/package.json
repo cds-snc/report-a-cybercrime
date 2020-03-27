@@ -30,7 +30,7 @@
     "mongodb": "^3.5.3",
     "ms-rest-azure": "^3.0.0",
     "nanoid": "^2.1.11",
-    "nodemailer": "^6.4.2",
+    "nodemailer": "^6.4.4",
     "notifications-node-client": "^4.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
