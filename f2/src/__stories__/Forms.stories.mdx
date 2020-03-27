@@ -2,6 +2,7 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import ThemeDecorator from '../../.storybook/themeDecorator'
 import FormDecorator from '../../.storybook/formDecorator'
 import { Form } from 'react-final-form'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 
 <Meta
   id="forms"
@@ -141,3 +142,11 @@ export const Form = (props) => {
 View [Field](/?path=/docs/components-field--input-field) documentation for more information on how to use it in a Form.
 
 View [FormArrayControl](/?path=/docs/components-form-array-control--default-story) documentation for more information on how to place radio and checkbox lists in a Form.
+
+## Next and Cancel buttons
+
+<Preview>
+  <Story name="Next and cancel buttons">
+    <NextAndCancelButtons button="Continue" cancelRoute="/" />
+  </Story>
+</Preview>
