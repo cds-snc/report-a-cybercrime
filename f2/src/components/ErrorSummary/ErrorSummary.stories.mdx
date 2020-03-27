@@ -20,7 +20,7 @@ import { Trans } from '@lingui/react'
 The ErrorSummary component uses final-form validation to assign errors to fields. This can be set in a `validate` function that returns an error object. The object is a list of field names as keys, pointing to lingui ids as values. This function is usually defined before exporting the form component.
 
 ```jsx
-const validate = (values) => {
+const validate = values => {
   const errors = { email: 'contactinfoForm.email.warning' }
   return errors
 }

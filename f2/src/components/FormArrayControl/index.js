@@ -9,7 +9,7 @@ import { FormErrorMessage } from '../FormErrorMessage'
 import { UniqueID } from '../unique-id'
 import { Trans } from '@lingui/macro'
 
-export const FormArrayControl = (props) => {
+export const FormArrayControl = props => {
   const {
     meta: { submitFailed, invalid },
   } = useField(props.name, {
@@ -20,7 +20,7 @@ export const FormArrayControl = (props) => {
 
   return (
     <UniqueID>
-      {(id) => {
+      {id => {
         return (
           <FormControl
             id={props.name}
