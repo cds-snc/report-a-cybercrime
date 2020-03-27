@@ -1,6 +1,8 @@
 
 Given('I open the report home page', () => {
     cy.visit(Cypress.env('staging'))
+    cy.screenshot("report.png")
+
 });
 
 Then('Inject axe and check for accessibility issues', () => {
