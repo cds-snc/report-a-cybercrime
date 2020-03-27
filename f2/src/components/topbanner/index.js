@@ -8,7 +8,7 @@ import sigFr from '../../images/sig-blk-fr.svg'
 import { Flex, Box, Image } from '@chakra-ui/core'
 import { Layout } from '../layout'
 
-export const TopBanner = props => {
+export const TopBanner = (props) => {
   const { i18n } = useLingui()
 
   return (
@@ -31,13 +31,4 @@ export const TopBanner = props => {
       </Flex>
     </Layout>
   )
-}
-
-TopBanner.propTypes = {
-  lang: PropTypes.string.isRequired,
-  bg: PropTypes.string,
-}
-
-TopBanner.defaultProps = {
-  bg: 'gray.50',
 }
