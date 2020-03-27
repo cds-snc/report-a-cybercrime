@@ -2,7 +2,6 @@ import React from 'react'
 import ThemeDecorator from '../../../.storybook/themeDecorator'
 
 import { Button } from '.'
-import { NextAndCancelButtons } from '../next-and-cancel-buttons'
 import { Stack } from '@chakra-ui/core'
 
 export default {
@@ -45,8 +44,4 @@ export const variantColor = () => (
       Danger
     </Button>
   </Stack>
-)
-
-export const nextAndCancelButtons = () => (
-  <NextAndCancelButtons button="Continue" cancelRoute="/" />
 )
