@@ -11,7 +11,7 @@ import { FormArrayControl } from '../components/FormArrayControl'
 import { useLingui } from '@lingui/react'
 import { ErrorSummary } from '../components/ErrorSummary'
 
-const validate = (values) => {
+const validate = values => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   if (!values.consentOptions || values.consentOptions.length < 1) {
@@ -21,7 +21,7 @@ const validate = (values) => {
   return errors
 }
 
-export const PrivacyConsentInfoForm = (props) => {
+export const PrivacyConsentInfoForm = props => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
   const whetherConsent = {
@@ -40,7 +40,7 @@ export const PrivacyConsentInfoForm = (props) => {
 
       <Form
         initialValues={whetherConsent}
-        onSubmit={(values) => {
+        onSubmit={values => {
           props.onSubmit(values)
         }}
         validate={validate}
@@ -63,7 +63,7 @@ export const PrivacyConsentInfoForm = (props) => {
               name="consentOptions"
               errorMessage={<Trans id="privacyConsentInfoForm.warning" />}
             >
-              {consentOptions.map((key) => {
+              {consentOptions.map(key => {
                 return (
                   <React.Fragment key={key}>
                     <CheckboxAdapter
