@@ -1,0 +1,64 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../.storybook/themeDecorator'
+import { Stack } from '@chakra-ui/core'
+import { Trans } from '@lingui/react'
+import { Route } from 'react-router-dom'
+import { LandingPage } from '../LandingPage'
+import { Page } from '../components/Page'
+import { Layout } from '../components/layout'
+import { Lead } from '../components/paragraph'
+import { BackButton } from '../components/backbutton'
+import { H1 } from '../components/header'
+
+<Meta
+  id="pages"
+  title="Pages/Page"
+  decorators={[ThemeDecorator]}
+  component={Page}
+/>
+
+# Creating a new page
+
+Pages are used to separate the user flow into small cognitive tasks. A page usually contains one thing, one action or one decision. A page usually leads to another page through buttons and links.
+
+In this app, we create pages as exported components.
+
+```jsx
+export const Page = () => {
+  return <Route render={({ history }) => <Page>Page Content</Page>} />
+}
+```
+
+Every `<Page>` contains a mid-feedback form, rendered at the bottom of the page. Usually, you would want to add a `<Layout>` inside the page, then put your content inside the layout.
+
+You should always have a H1 on your page. Other typical elements are a back button or a lead paragraph. You can then add a Form, more content, card containers, etc.
+
+<Preview>
+  <Story name="Page Content">
+    <Page>
+      <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
+        <Stack spacing={10} shouldWrapChildren>
+          <BackButton />
+          <H1>
+            <Trans id="howDidItStartPage.title" />
+          </H1>
+          <Stack spacing={4}>
+            <Lead>
+              <Trans id="howDidItStartPage.intro" />
+            </Lead>
+          </Stack>
+        </Stack>
+      </Layout>
+    </Page>
+  </Story>
+</Preview>
+
+# Routing
+
+To link pages together, they must be Routed through a Switch. This is done using the [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start) library. Basically, the Switch looks at the url and renders a specific Route. All our Routes are defined in `Home.js`
+
+```jsx
+<Route exact path="/">
+  <LandingPage />
+</Route>
+```
