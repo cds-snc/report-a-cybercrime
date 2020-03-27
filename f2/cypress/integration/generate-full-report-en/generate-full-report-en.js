@@ -1,17 +1,5 @@
-
-// Hooks
-// setTimeout(() => {
-//     beforeEach(async () => {
-//         cy.reportA11y();
-//     });
-
-//     afterEach(async () => {
-//         cy.reportA11y();
-//     });
-//   });
-
 import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps';
-
+// Hooks for repeated commands/rules
 After(() => {
  cy.reportA11y();
 });

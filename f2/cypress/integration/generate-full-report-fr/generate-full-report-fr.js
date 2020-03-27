@@ -79,6 +79,7 @@ When('I navigate to Howwereyourmoney page fill all forms', () => {
     cy.get('form').find('[id="transactionYear"]').type('2019')
     cy.get('form').find('[id="tellUsMore"]').type('Fournissez des détails sur ce qui a été dit ou fait pour que cela se produise')
     cy.contains('Continuer').first().click({force: true});
+    cy.reportA11y();
 });
 
 Then('{string} should be shown', (content) => {
@@ -100,6 +101,7 @@ when ('I navigate to Howwaspersonalinformationaffected page fill all forms', () 
     cy.get('form').find('[id="infoObtainedOther"]').type('Passeport')
     cy.get('form').find('[id="tellUsMore"]').type('Comment vous a-t-on demandé et soutiré des informations')
     cy.contains('Continuer').first().click({force: true});
+    cy.reportA11y();
 });
 
 Then('{string} should be shown', (content) => {
