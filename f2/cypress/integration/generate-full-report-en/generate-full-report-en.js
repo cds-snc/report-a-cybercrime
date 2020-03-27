@@ -1,4 +1,21 @@
 
+// Hooks
+// setTimeout(() => {
+//     beforeEach(async () => {
+//         cy.reportA11y();
+//     });
+
+//     afterEach(async () => {
+//         cy.reportA11y();
+//     });
+//   });
+
+import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps';
+
+After(() => {
+ cy.reportA11y();
+});
+
 Given('I open the report home page', () => {
     cy.visit(Cypress.env('staging'))
 });
@@ -62,7 +79,6 @@ When('I fill Whatcouldbeaffected page forms', () => {
     cy.get('form').find('[value="whatWasAffectedForm.devices"]').check({ force: true })
     cy.get('form').find('[value="whatWasAffectedForm.business_assets"]').check({ force: true })
     cy.get('form').find('[value="whatWasAffectedForm.other"]').check({ force: true })
-    cy.reportA11y();
 });
 
 Then('I click {string}', () => {
@@ -212,7 +228,7 @@ Then('Take summary page screenshot', (content) => {
     cy.screenshot("reportSummary")
 });
 
-Then('I click {string}', () => {
+Then('I click submit report', () => {
     cy.contains('Submit report').first().click({force: true});
 });
 
