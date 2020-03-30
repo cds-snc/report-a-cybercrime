@@ -1,17 +1,35 @@
 /** @jsx jsx */
+import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Form, Field } from 'react-final-form'
+import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { TextInput } from '../components/TextInput'
-import { Stack, FormControl } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormLabel } from '../components/FormLabel'
 import { Button } from '../components/button'
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
+import { ErrorSummary } from '../components/ErrorSummary'
+import { Input } from '../components/input'
+import { Field } from '../components/Field'
+
+const validate = (values) => {
+  const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
+  if (
+    values.email !== '' &&
+    !new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(values.email)
+  ) {
+    errors.email = 'contactinfoForm.email.warning'
+  }
+  if (values.phone !== '' && !new RegExp(/^\d{10}$/).test(values.phone)) {
+    errors.phone = 'contactinfoForm.phone.warning'
+  }
+
+  return errors
+}
 
 export const ContactInfoForm = ({ onSubmit }) => {
   const [data, dispatch] = useStateValue()
@@ -25,88 +43,81 @@ export const ContactInfoForm = ({ onSubmit }) => {
   } else contactInfo = data.formData.contactInfo
 
   return (
-    <Form
-      initialValues={contactInfo}
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-          <Flex direction="row" align="center" wrap="wrap" mb={10}>
-            <P w="100%">
-              <Trans id="contactinfoPage.skipInfo" />
-            </P>
-            <Button
-              as={ReactRouterLink}
-              fontSize={{ base: 'lg', md: 'xl' }}
-              color="black"
-              variant="solid"
-              variantColor="gray"
-              bg="gray.400"
-              borderColor="gray.500"
-              to="/confirmation"
-              textAlign="center"
-            >
-              <Trans id="contactinfoPage.skipButton" />
-              <Icon
-                focusable="false"
-                ml={2}
-                mr={-2}
-                name="chevron-right"
-                size="28px"
-              />
-            </Button>
-          </Flex>
-          <Field name="fullName">
-            {props => (
-              <FormControl>
-                <FormLabel htmlFor="fullName">
-                  <Trans id="contactinfoPage.fullName" />{' '}
-                </FormLabel>
-                <TextInput
-                  id="fullName"
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
+    <React.Fragment>
+      <Form
+        initialValues={contactInfo}
+        onSubmit={onSubmit}
+        validate={validate}
+        render={({
+          handleSubmit,
+          values,
+          errors,
+          submitFailed,
+          hasValidationErrors,
+        }) => (
+          <Stack
+            as="form"
+            onSubmit={handleSubmit}
+            shouldWrapChildren
+            spacing={6}
+          >
+            {submitFailed && hasValidationErrors ? (
+              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+            ) : null}
+            <Flex direction="row" align="center" wrap="wrap" mb={10}>
+              <P w="100%">
+                <Trans id="contactinfoPage.skipInfo" />
+              </P>
+              <Button
+                as={ReactRouterLink}
+                fontSize={{ base: 'lg', md: 'xl' }}
+                color="black"
+                variant="solid"
+                variantColor="gray"
+                bg="gray.400"
+                borderColor="gray.500"
+                to="/confirmation"
+                textAlign="center"
+              >
+                <Trans id="contactinfoPage.skipButton" />
+                <Icon
+                  focusable="false"
+                  ml={2}
+                  mr={-2}
+                  name="chevron-right"
+                  size="28px"
                 />
-              </FormControl>
-            )}
-          </Field>
-          <Field name="email">
-            {props => (
-              <FormControl>
-                <FormLabel htmlFor="email">
-                  <Trans id="contactinfoPage.emailAddress" />{' '}
-                </FormLabel>
-                <TextInput
-                  id="email"
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
-                />
-              </FormControl>
-            )}
-          </Field>
-          <Field name="phone">
-            {props => (
-              <FormControl>
-                <FormLabel htmlFor="phone">
-                  <Trans id="contactinfoPage.phoneNumber" />{' '}
-                </FormLabel>
-                <TextInput
-                  id="phone"
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
-                />
-              </FormControl>
-            )}
-          </Field>
-          <NextAndCancelButtons
-            next={<Trans id="contactinfoPage.nextInfo" />}
-            button={<Trans id="contactinfoPage.nextButton" />}
-          />
-        </Stack>
-      )}
-    />
+              </Button>
+            </Flex>
+            <Field
+              name="fullName"
+              label={<Trans id="contactinfoPage.fullName" />}
+              component={Input}
+            />
+
+            <Field
+              name="email"
+              label={<Trans id="contactinfoPage.emailAddress" />}
+              errorMessage={<Trans id="contactinfoForm.email.warning" />}
+              component={Input}
+            />
+
+            <Field
+              name="phone"
+              label={<Trans id="contactinfoPage.phoneNumber" />}
+              helperText={<Trans id="contactinfoForm.phone.warning" />}
+              errorMessage={<Trans id="contactinfoForm.phone.warning" />}
+              component={Input}
+            />
+
+            <NextAndCancelButtons
+              next={<Trans id="contactinfoPage.nextInfo" />}
+              button={<Trans id="contactinfoPage.nextButton" />}
+            />
+          </Stack>
+        )}
+      />
+    </React.Fragment>
   )
 }
 

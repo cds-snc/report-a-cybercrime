@@ -7,19 +7,28 @@ import canada from '../../../theme/canada'
 import { MemoryRouter } from 'react-router-dom'
 import { NextAndCancelButtons } from '../'
 import en from '../../../locales/en.json'
+import { Form } from 'react-final-form'
 
 i18n.load('en', { en })
 i18n.activate('en')
 
 describe('<NextAndCancelButtons />', () => {
   afterEach(cleanup)
+  const submitMock = jest.fn()
 
   it('properly renders next button with cancel button beside', () => {
     const { getAllByText, getAllByRole } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
-            <NextAndCancelButtons button="Next: Confirm information" />
+            <Form
+              onSubmit={submitMock}
+              render={({ handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
+                  <NextAndCancelButtons button="Next: Confirm information" />
+                </form>
+              )}
+            ></Form>
           </I18nProvider>
         </ThemeProvider>
       </MemoryRouter>,
