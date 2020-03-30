@@ -16,7 +16,7 @@ i18n.activate('en')
 const fillIn = (element, { with: value }) =>
   fireEvent.change(element, { target: { value } })
 
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
 
 describe('<ContactInfoForm />', () => {
   afterEach(cleanup)
@@ -24,7 +24,7 @@ describe('<ContactInfoForm />', () => {
   it.only('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getAllByRole, getByText } = render(
+    const { getAllByLabelText, getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -36,7 +36,7 @@ describe('<ContactInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const inputNode = getAllByRole('textbox')[0]
+    const inputNode = getAllByLabelText('contactinfoPage.fullName')[0]
 
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
