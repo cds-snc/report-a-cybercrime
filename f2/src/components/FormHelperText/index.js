@@ -5,7 +5,8 @@ export const FormHelperText = styled(ChakraFormHelperText)()
 
 FormHelperText.defaultProps = {
   as: 'p',
-  mt: 0,
+  mt: 1,
+  mb: 0,
   fontSize: 'md',
   color: 'black',
   fontFamily: 'body',

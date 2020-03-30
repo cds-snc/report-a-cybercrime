@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
 const helmet = require('helmet')
+const { unflatten } = require('flat')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
@@ -72,7 +73,16 @@ async function initializeAvailableData() {
     lastRequested: undefined,
   }
 }
+const allowedReferrers = [
+  'antifraudcentre-centreantifraude.ca',
+  'centreantifraude-antifraudcentre.ca',
+  'antifraudcentre.ca',
+  'centreantifraude.ca',
+]
+
 initializeAvailableData()
+
+let debuggingCounter = 0
 
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
@@ -107,8 +117,28 @@ app.get('/', async function(req, res, next) {
         : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
-    availableData.numberOfRequests += 1
-    availableData.lastRequested = new Date()
+    // temporary debugging code
+    if (debuggingCounter < 20) {
+      debuggingCounter += 1
+      console.info('DEBUGGING Request Headers & IP:')
+      console.info(req.headers)
+      console.info(req.ip)
+      console.info(req.ips)
+      console.info(req.originalUrl)
+      console.info('DEBUGGING Request Headers & IP end')
+    }
+    // temporary debugging code
+
+    var referrer = req.headers.referer
+    console.log('Referrer:' + referrer)
+    if (
+      referrer !== undefined &&
+      allowedReferrers.indexOf(new URL(referrer).host.toLowerCase()) > -1
+    ) {
+      availableData.numberOfRequests += 1
+      availableData.lastRequested = new Date()
+    }
+    console.log(`New Request. ${JSON.stringify(availableData)}`)
     next()
   }
 })
@@ -153,7 +183,7 @@ app
     let files = []
     let fields = {}
     form.on('field', (fieldName, fieldValue) => {
-      fields[fieldName] = fieldValue
+      fields[fieldName] = JSON.parse(fieldValue)
     })
     form.on('file', function(name, file) {
       if (files.length >= 3)
@@ -169,6 +199,7 @@ app
       else files.push(file)
     })
     form.on('end', () => {
+      fields = unflatten(fields, { safe: true })
       uploadData(req, res, fields, files)
     })
   })
