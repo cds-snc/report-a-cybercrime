@@ -16,7 +16,7 @@ import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { Well } from './components/Messages'
 
-export const LandingPage = props => {
+export const LandingPage = (props) => {
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue()
   if (state.doneForms) {

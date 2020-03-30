@@ -23,7 +23,7 @@ const gitsha = process.env.REACT_APP_VERSION
   : '000000'
 
 const tagManagerArgs = {
-  gtmId: process.env.REACT_APP_GOOGLE_GTM_ID
+  gtmId: process.env.REACT_APP_GOOGLE_GTM_ID,
 }
 TagManager.initialize(tagManagerArgs)
 

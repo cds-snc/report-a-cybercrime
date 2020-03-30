@@ -13,7 +13,7 @@ const defaultLocation = {
   postalCode: '',
 }
 
-export const LocationAnonymousInfoForm = props => {
+export const LocationAnonymousInfoForm = (props) => {
   const [data, dispatch] = useStateValue()
 
   let location

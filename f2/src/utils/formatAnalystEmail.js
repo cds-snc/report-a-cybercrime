@@ -5,12 +5,12 @@ const { formatDate } = require('./formatDate')
 const formatLineHtml = (label, text) =>
   text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
 
-const formatTable = rows => `<table><tbody>\n${rows}</tbody></table>\n\n`
+const formatTable = (rows) => `<table><tbody>\n${rows}</tbody></table>\n\n`
 
 const formatSection = (title, rows) =>
   `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
 
-const formatReportInfo = data => {
+const formatReportInfo = (data) => {
   let selfHarmString = 'no self harm words'
   let returnString = ''
 
@@ -37,9 +37,9 @@ const formatReportInfo = data => {
   return returnString
 }
 
-const formatVictimDetails = data => {
+const formatVictimDetails = (data) => {
   const consentString = data.consent.consentOptions
-    .map(option => option.replace('privacyConsentInfoForm.', ''))
+    .map((option) => option.replace('privacyConsentInfoForm.', ''))
     .join(', ')
 
   const rows =
@@ -57,7 +57,7 @@ const formatVictimDetails = data => {
   return formatSection('Victim details', rows)
 }
 
-const formatIncidentInformation = data => {
+const formatIncidentInformation = (data) => {
   const occurenceString = formatDate(
     data.howdiditstart.startDay,
     data.howdiditstart.startMonth,
@@ -68,11 +68,11 @@ const formatIncidentInformation = data => {
     '',
   )
   const methodOfCommsString = data.howdiditstart.howDidTheyReachYou
-    .map(how => how.replace('howDidTheyReachYou.', ''))
+    .map((how) => how.replace('howDidTheyReachYou.', ''))
     .join(', ')
   const affectedString = data.whatWasAffected.affectedOptions
-    .map(option => option.replace('whatWasAffectedForm.', ''))
-    .filter(option => option !== 'other')
+    .map((option) => option.replace('whatWasAffectedForm.', ''))
+    .filter((option) => option !== 'other')
     .join(', ')
 
   const rows =
@@ -95,10 +95,10 @@ const formatIncidentInformation = data => {
   return formatSection('Incident information', rows)
 }
 
-const formatNarrative = data => {
+const formatNarrative = (data) => {
   const infoReqString = data.personalInformation.typeOfInfoReq
-    .map(info => info.replace('typeOfInfoReq.', ''))
-    .map(info =>
+    .map((info) => info.replace('typeOfInfoReq.', ''))
+    .map((info) =>
       info === 'other' &&
       data.personalInformation.infoReqOther &&
       data.personalInformation.infoReqOther !== ''
@@ -108,8 +108,8 @@ const formatNarrative = data => {
     .join(', ')
 
   const infoObtainedString = data.personalInformation.typeOfInfoObtained
-    .map(info => info.replace('typeOfInfoObtained.', ''))
-    .map(info =>
+    .map((info) => info.replace('typeOfInfoObtained.', ''))
+    .map((info) =>
       info === 'other' &&
       data.personalInformation.infoObtainedOther &&
       data.personalInformation.infoObtainedOther !== ''
@@ -156,7 +156,7 @@ const formatNarrative = data => {
   return formatSection('Narrative', rows)
 }
 
-const formatSuspectDetails = data => {
+const formatSuspectDetails = (data) => {
   const rows =
     formatLineHtml('Name:          ', data.suspectClues.suspectClues1) +
     formatLineHtml('Email:         ', data.howdiditstart.email) +
@@ -176,15 +176,15 @@ const formatSuspectDetails = data => {
   return formatSection('Suspect details', rows)
 }
 
-const formatFinancialTransactions = data => {
+const formatFinancialTransactions = (data) => {
   const methods =
     data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
       ? data.moneyLost.methodPayment.concat([data.moneyLost.methodOther])
       : data.moneyLost.methodPayment
 
   const paymentString = methods
-    .filter(method => method !== 'methodPayment.other')
-    .map(method => method.replace('methodPayment.', ''))
+    .filter((method) => method !== 'methodPayment.other')
+    .map((method) => method.replace('methodPayment.', ''))
     .join(', ')
 
   const transactionDate = formatDate(
@@ -208,9 +208,9 @@ const formatFinancialTransactions = data => {
   return formatSection('Financial transactions', rows)
 }
 
-const formatFileAttachments = data => {
+const formatFileAttachments = (data) => {
   const returnString = data.evidence.files
-    .map(file => {
+    .map((file) => {
       const offensive =
         file.isImageAdultClassified || file.isImageRacyClassified
 
@@ -248,7 +248,7 @@ const formatFileAttachments = data => {
   )
 }
 
-const formatAnalystEmail = dataOrig => {
+const formatAnalystEmail = (dataOrig) => {
   let returnString = ''
   let reportInfoString = ''
   let missingFields
@@ -273,7 +273,7 @@ const formatAnalystEmail = dataOrig => {
       formatFileAttachments(data)
 
     // take data object and delete any objects that are now empty, and display the rest
-    Object.keys(data).forEach(key => {
+    Object.keys(data).forEach((key) => {
       if (Object.keys(data[key]).length === 0) delete data[key]
     })
     missingFields = Object.keys(data).length
