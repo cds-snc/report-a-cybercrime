@@ -1,0 +1,182 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../.storybook/themeDecorator'
+import { Trans } from '@lingui/react'
+import { Stack, Flex } from '@chakra-ui/core'
+import { EditButton } from '../components/EditButton'
+import { H2 } from '../components/header'
+import { containsData } from '../utils/containsData'
+import { DescriptionListItem } from '../components/DescriptionListItem'
+import { Text } from '../components/text'
+
+<Meta id="summary" title="Summary" decorators={[ThemeDecorator]} />
+
+# Summary
+
+The Summary page is one of the most complex page. For this reason, it has been split in multiple blocks. You can find all the summary blocks under the `/summary` folder
+
+## ConfirmationSummary page
+
+The ConfirmationSummary page contains a few elements that are required to create summary blocks.
+
+### The testData object
+
+This object contains an empty report. This ensures all keys are available when we lookup values while rendering the summary blocks. This object is exported, you can import it from the summary blocks.
+
+### Edit button component
+
+The EditButton component can be used to specify an edit link to modify report entries. Visually, the edit button is linked to the adjacent H2. Its important to specify a label for accessibility purposes. Screen readers will use this value to give context to the link.
+
+<Preview>
+  <Story name="Edit Button">
+    <Flex align="baseline">
+      <H2 fontWeight="normal">
+        <Trans id="confirmationPage.howDidItStart.title" />
+      </H2>
+      <EditButton
+        path="/howdiditstart"
+        label="confirmationPage.howDidItStart.title.edit"
+      />
+    </Flex>
+  </Story>
+</Preview>
+
+### Props of EditButton
+
+The `label` prop takes a lingui id as a string. It will automatically be wrapped in a `<Trans>` tag.
+
+<Props of={EditButton} />
+
+## Summary block
+
+Basic usage for a summary block is to read into data from `useStateValue()`
+
+```jsx
+import { useStateValue } from '../utils/state'
+import { testdata } from '../ConfirmationSummary'
+
+export const Summary = (props) => {
+  // Hook into useStateValue() to get the report data
+  const [data] = useStateValue()
+
+  // Overwrite testData with real `data`
+  const howdiditstart = {
+    ...testdata.formData.howdiditstart,
+    ...data.formData.howdiditstart,
+  }
+
+  // return a summary block
+  return (
+    //
+  )
+}
+```
+
+Given a data object like this:
+
+```json
+{
+  "phone": "",
+  "whenDidItStart": "02/10/2018",
+  "howManyTimes": ""
+}
+```
+
+export const howdiditstart = {
+  phone: '',
+  whenDidItStart: '02/10/2018',
+  howManyTimes: 'Once',
+}
+
+We get a summary block similar to this. You want to match all keys into [DescriptionListItem](?path=/docs/components-description-lists--description-list-item) components. `<DescriptionListItem>` will take care of hiding empty values.
+
+<Preview>
+  <Story name="Summary Block">
+    <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Flex align="baseline">
+        <H2 fontWeight="normal">
+          <Trans id="confirmationPage.howDidItStart.title" />
+        </H2>
+        <EditButton
+          path="/howdiditstart"
+          label="confirmationPage.howDidItStart.title.edit"
+        />
+      </Flex>
+      {containsData(howdiditstart) ? (
+        <Stack as="dl" spacing={4}>
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.howDidItStart.phone"
+            description={howdiditstart.phone}
+          />
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.whenDidItStart"
+            description={howdiditstart.whenDidItStart}
+          />
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.howManyTimes"
+            description={howdiditstart.howManyTimes}
+          />
+        </Stack>
+      ) : (
+        <Text>
+          <Trans id="confirmationPage.howDidItStart.nag" />
+        </Text>
+      )}
+    </Stack>
+  </Story>
+</Preview>
+
+## Summary block nag
+
+Given a data object like this:
+
+```json
+{
+  "phone": "",
+  "whenDidItStart": "",
+  "howManyTimes": ""
+}
+```
+
+export const howdiditstartEmpty = {
+  phone: '',
+  whenDidItStart: '',
+  howManyTimes: '',
+}
+
+We get a summary block similar to this. Empty sections are still displayed empty, and prompt the user to enter data where they've left a page empty.
+
+<Preview>
+  <Story name="Summary Block Nag">
+    <Stack spacing={4} borderBottom="2px" borderColor="gray.300" pb={4}>
+      <Flex align="baseline">
+        <H2 fontWeight="normal">
+          <Trans id="confirmationPage.howDidItStart.title" />
+        </H2>
+        <EditButton
+          path="/howdiditstart"
+          label="confirmationPage.howDidItStart.title.edit"
+        />
+      </Flex>
+      {containsData(howdiditstartEmpty) ? (
+        <Stack as="dl" spacing={4}>
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.howDidItStart.phone"
+            description={howdiditstartEmpty.phone}
+          />
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.whenDidItStart"
+            description={howdiditstartEmpty.whenDidItStart}
+          />
+          <DescriptionListItem
+            descriptionTitle="confirmationPage.howManyTimes"
+            description={howdiditstartEmpty.howManyTimes}
+          />
+        </Stack>
+      ) : (
+        <Text>
+          <Trans id="confirmationPage.howDidItStart.nag" />
+        </Text>
+      )}
+    </Stack>
+  </Story>
+</Preview>
