@@ -15,7 +15,7 @@ import { Page } from './components/Page'
 
 export const EvidencePage = () => {
   const [data, dispatch] = useStateValue()
-  const { doneForms } = data
+  const { doneForms, formData } = data
 
   return (
     <Route
