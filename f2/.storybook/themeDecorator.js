@@ -7,7 +7,7 @@ import { I18nProvider } from '@lingui/react'
 import { i18n } from '@lingui/core'
 import { activate } from '../src/i18n.config'
 
-const ThemeDecorator = storyFn => {
+const ThemeDecorator = (storyFn) => {
   activate('en')
 
   return (

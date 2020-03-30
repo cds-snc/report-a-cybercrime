@@ -8,14 +8,14 @@ import { P } from '../paragraph'
 import { Route } from 'react-router-dom'
 import { useForm } from 'react-final-form'
 
-export const NextAndCancelButtons = props => {
+export const NextAndCancelButtons = (props) => {
   const form = useForm()
   return (
     <Flex direction="row" align="center" wrap="wrap" mb={10} mt={10}>
       <P w="100%">{props.next}</P>
       <Button
         type="submit"
-        onClick={event => {
+        onClick={(event) => {
           form.resumeValidation()
           form.submit()
           event.preventDefault()

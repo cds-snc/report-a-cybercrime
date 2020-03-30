@@ -13,7 +13,7 @@ import { AnonymousInfoForm } from '../AnonymousInfoForm'
 i18n.load('en', { en })
 i18n.activate('en')
 
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
 
 describe('<AnonymousInfoForm />', () => {
   afterEach(cleanup)
