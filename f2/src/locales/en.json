@@ -325,7 +325,7 @@
   "thankYouPage.helpResource3": "Find tips on how to prevent cybercrime.",
   "thankYouPage.referenceNumber": "Your reference number: <0>{reference}</0>",
   "thankYouPage.reportSubmission": "Submitting your report…",
-  "thankYouPage.reportSubmissionError": "Sorry, your report was not successfully submitted.",
+  "thankYouPage.reportSubmissionError": "Sorry, something went wrong. Your report was not submitted. Please call 1-888-495-8501 to report your incident.",
   "thankYouPage.safelyCloseWindow": "You can safely close this window",
   "thankYouPage.summary": "We’ve sent you a confirmation email. ",
   "thankYouPage.title": "Thank you for reporting",

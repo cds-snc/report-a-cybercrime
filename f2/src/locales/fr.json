@@ -325,7 +325,7 @@
   "thankYouPage.helpResource3": "Trouvez des astuces pour prévenir les crimes informatiques.",
   "thankYouPage.referenceNumber": "Votre numéro de référence : <0>{reference}</0>",
   "thankYouPage.reportSubmission": "Envoi en cours…",
-  "thankYouPage.reportSubmissionError": "Désolé, l’envoi de votre rapport n’a pas fonctionné.",
+  "thankYouPage.reportSubmissionError": "Désolé, quelque chose a mal tourné. Votre rapport n'a pas été soumis. Veuillez appeler le 1-888-495-8501 pour signaler votre incident.",
   "thankYouPage.safelyCloseWindow": "Vous pouvez fermer cette fenêtre en toute sécurité",
   "thankYouPage.summary": "Nous vous avons envoyé un courriel de confirmation. ",
   "thankYouPage.title": "Merci pour votre signalement",
