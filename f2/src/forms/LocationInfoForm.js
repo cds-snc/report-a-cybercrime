@@ -15,7 +15,7 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
 
-const validate = values => {
+const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   if (
@@ -24,8 +24,7 @@ const validate = values => {
       /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i,
     ).test(values.postalCode)
   ) {
-    errors.postalCode = 'locationInfoForm.warning'
-    errors.postalCodelabel = 'locationInfoForm.labelWarning'
+    errors.postalCode = 'locationInfoForm.Warning'
   }
 
   return errors
@@ -51,11 +50,6 @@ export const LocationInfoForm = ({ onSubmit }) => {
 
   return (
     <React.Fragment>
-      {false ? ( // mark ids for lingui
-        <div>
-          <Trans id="locationInfoForm.warning" />
-        </div>
-      ) : null}
       <Form
         initialValues={location}
         onSubmit={onSubmit}
@@ -104,7 +98,7 @@ export const LocationInfoForm = ({ onSubmit }) => {
             <Field
               name="postalCode"
               label={<Trans id="locationinfoPage.postalCode" />}
-              errorMessage={<Trans id="locationInfoForm.labelWarning" />}
+              errorMessage={<Trans id="locationInfoForm.Warning" />}
               helperText={
                 <Trans id="locationinfoPage.postalCodeExample"></Trans>
               }
