@@ -16,7 +16,7 @@ import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { Well } from './components/Messages'
 
-export const LandingPage = props => {
+export const LandingPage = (props) => {
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue()
   if (state.doneForms) {
@@ -36,8 +36,8 @@ export const LandingPage = props => {
                   <A
                     href={
                       i18n.locale === 'en'
-                        ? 'http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3'
-                        : 'http://www.rcmp-grc.gc.ca/fr/groupe-national-coordination-cybercriminalite-gncc'
+                        ? 'http://www.rcmp-grc.gc.ca/en/nc3'
+                        : 'http://www.rcmp-grc.gc.ca/fr/gnc3'
                     }
                     isExternal
                   />

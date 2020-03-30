@@ -34,8 +34,8 @@ export const PrivacyConsentPage = () => {
                     <A
                       href={
                         i18n.locale === 'en'
-                          ? 'http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3'
-                          : 'http://www.rcmp-grc.gc.ca/fr/groupe-national-coordination-cybercriminalite-gncc'
+                          ? 'http://www.rcmp-grc.gc.ca/en/nc3'
+                          : 'http://www.rcmp-grc.gc.ca/fr/gnc3'
                       }
                       isExternal
                     />
@@ -60,7 +60,7 @@ export const PrivacyConsentPage = () => {
                   <Trans id="privacyConsentInfoPage.period" />
                 </P>
                 <PrivacyConsentInfoForm
-                  onSubmit={data => {
+                  onSubmit={(data) => {
                     dispatch({
                       type: 'saveFormData',
                       data: { consent: data },

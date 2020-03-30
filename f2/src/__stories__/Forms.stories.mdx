@@ -1,8 +1,8 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import ThemeDecorator from '../../.storybook/themeDecorator'
 import FormDecorator from '../../.storybook/formDecorator'
-import { Code } from '@chakra-ui/core'
 import { Form } from 'react-final-form'
+import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 
 <Meta
   id="forms"
@@ -34,10 +34,10 @@ Source: [Form: Basic Usage](https://final-form.org/docs/react-final-form/api/For
 7. Our submit buttons are contained in the [`<NextAndCancelButtons>`](/?path=/docs/components-button--next-and-cancel-buttons) component
 
 ```jsx
-export const TheForm = props => {
+export const TheForm = (props) => {
   return (
     <Form
-      onSubmit={values => {
+      onSubmit={(values) => {
         props.onSubmit(values)
       }}
       render={({ handleSubmit, values }) => (
@@ -58,13 +58,13 @@ export const TheForm = props => {
 You'll need to access the form data through the `useStateValue()` hook. Additionally, you want to have access to the `useLingui()` hook in order to translate some text. The lingui hook gives access to some handy translation functions such as `_()`
 
 ```jsx
-export const Form = props => {
+export const Form = (props) => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
 
   return (
     <Form
-      onSubmit={values => {
+      onSubmit={(values) => {
         props.onSubmit(values)
       }}
       render={({ handleSubmit, values }) => (
@@ -106,7 +106,7 @@ If we put things together:
 ```jsx
 const defaultExample = { array: [], string: '' }
 
-export const Form = props => {
+export const Form = (props) => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
 
@@ -120,7 +120,7 @@ export const Form = props => {
   return (
     <Form
       initialValues={example}
-      onSubmit={values => {
+      onSubmit={(values) => {
         props.onSubmit(values)
       }}
       render={({ handleSubmit, values }) => (
@@ -142,3 +142,11 @@ export const Form = props => {
 View [Field](/?path=/docs/components-field--input-field) documentation for more information on how to use it in a Form.
 
 View [FormArrayControl](/?path=/docs/components-form-array-control--default-story) documentation for more information on how to place radio and checkbox lists in a Form.
+
+## Next and Cancel buttons
+
+<Preview>
+  <Story name="Next and cancel buttons">
+    <NextAndCancelButtons button="Continue" cancelRoute="/" />
+  </Story>
+</Preview>
