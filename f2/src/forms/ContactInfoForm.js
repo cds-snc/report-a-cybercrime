@@ -44,9 +44,6 @@ export const ContactInfoForm = ({ onSubmit }) => {
 
   return (
     <React.Fragment>
-      {false ? ( // mark ids for lingui
-        <div></div>
-      ) : null}
       <Form
         initialValues={contactInfo}
         onSubmit={onSubmit}
