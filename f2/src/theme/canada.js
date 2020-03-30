@@ -108,10 +108,10 @@ const inputDefaults = {
   },
   _invalid: {
     borderColor: 'red.700',
-    boxShadow: `0 0 0 2px ${outlineColor.invalid}`,
+    boxShadow: `0 0 4px 1px ${outlineColor.invalid}`,
     '&:focus': {
       borderColor: 'blue.600',
-      outlineInput: `0 0 4px 1px ${outlineColor.focus}`,
+      boxShadow: `0 0 4px 1px ${outlineColor.focus}`,
     },
   },
 }
