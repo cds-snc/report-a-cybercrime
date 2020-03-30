@@ -27,12 +27,13 @@ const formatReportInfo = data => {
         formatLineHtml('Report version:', data.appVersion) +
         formatLineHtml('Flagged:', selfHarmString),
     )
-
-  delete data.reportId // we delete the parts of the data object that we've displayed
-  delete data.submissionTime // so that at the end we can display the rest and ensure that
-  delete data.language // we didn't miss anything
+  // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
+  delete data.reportId
+  delete data.submissionTime
+  delete data.language
   delete data.appVersion
   delete data.selfHarmWords
+  delete data.submissionDate
   return returnString
 }
 
@@ -97,31 +98,37 @@ const formatIncidentInformation = data => {
 const formatNarrative = data => {
   const infoReqString = data.personalInformation.typeOfInfoReq
     .map(info => info.replace('typeOfInfoReq.', ''))
+    .map(info =>
+      info === 'other' &&
+      data.personalInformation.infoReqOther &&
+      data.personalInformation.infoReqOther !== ''
+        ? data.personalInformation.infoReqOther
+        : info,
+    )
     .join(', ')
 
   const infoObtainedString = data.personalInformation.typeOfInfoObtained
     .map(info => info.replace('typeOfInfoObtained.', ''))
+    .map(info =>
+      info === 'other' &&
+      data.personalInformation.infoObtainedOther &&
+      data.personalInformation.infoObtainedOther !== ''
+        ? data.personalInformation.infoObtainedOther
+        : info,
+    )
     .join(', ')
 
   const rows =
+    formatLineHtml('What happened:', data.whatHappened.whatHappened) +
     formatLineHtml(
-      'What happened:           ',
-      data.whatHappened.whatHappened,
+      'They asked for (financial):',
+      data.moneyLost.demandedMoney,
     ) +
-    formatLineHtml('They asked for:          ', data.moneyLost.demandedMoney) +
-    formatLineHtml('They asked for:          ', infoReqString) +
-    formatLineHtml(
-      'They asked for:          ',
-      data.personalInformation.infoReqOther,
-    ) +
-    formatLineHtml('I lost:                  ', data.moneyLost.moneyTaken) +
-    formatLineHtml('I lost:                  ', infoObtainedString) +
-    formatLineHtml(
-      'I lost:                  ',
-      data.personalInformation.infoObtainedOther,
-    ) +
-    formatLineHtml('Affected device:        ', data.devicesInfo.device) +
-    formatLineHtml('Affected account:       ', data.devicesInfo.account) +
+    formatLineHtml('They asked for (information):', infoReqString) +
+    formatLineHtml('I lost (financial):', data.moneyLost.moneyTaken) +
+    formatLineHtml('I lost (information):', infoObtainedString) +
+    formatLineHtml('Affected device:', data.devicesInfo.device) +
+    formatLineHtml('Affected account:', data.devicesInfo.account) +
     formatLineHtml(
       'Affected device/account: ',
       data.devicesInfo.devicesTellUsMore,

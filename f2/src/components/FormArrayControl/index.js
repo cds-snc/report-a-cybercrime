@@ -2,22 +2,25 @@
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { FormControl, Stack } from '@chakra-ui/core'
-import { useField } from 'react-final-form'
+import { useField, useForm } from 'react-final-form'
 import { FormLabel } from '../FormLabel'
 import { FormHelperText } from '../FormHelperText'
 import { FormErrorMessage } from '../FormErrorMessage'
 import { UniqueID } from '../unique-id'
+import { Trans } from '@lingui/macro'
 
-export const FormArrayControl = props => {
+export const FormArrayControl = (props) => {
   const {
     meta: { submitFailed, invalid },
   } = useField(props.name, {
     subscription: { submitFailed: true, invalid: true },
   })
 
+  const { errors } = useForm(props.onSubmit).getState()
+
   return (
     <UniqueID>
-      {id => {
+      {(id) => {
         return (
           <FormControl
             id={props.name}
@@ -43,6 +46,11 @@ export const FormArrayControl = props => {
               )}
               {props.errorMessage && (
                 <FormErrorMessage>{props.errorMessage}</FormErrorMessage>
+              )}
+              {props.errors && (
+                <FormErrorMessage>
+                  <Trans id={errors[props.name]} />
+                </FormErrorMessage>
               )}
             </Stack>
 

@@ -57,9 +57,7 @@ export const PrivacyConsentInfoForm = props => {
             shouldWrapChildren
             spacing={6}
           >
-            {submitFailed && hasValidationErrors ? (
-              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
-            ) : null}
+            {submitFailed && hasValidationErrors ? <ErrorSummary /> : null}
 
             <FormArrayControl
               name="consentOptions"
