@@ -25,6 +25,7 @@ const validate = values => {
     ).test(values.postalCode)
   ) {
     errors.postalCode = 'locationInfoForm.warning'
+    errors.postalCodelabel = 'locationInfoForm.labelWarning'
   }
 
   return errors
@@ -103,6 +104,7 @@ export const LocationInfoForm = ({ onSubmit }) => {
             <Field
               name="postalCode"
               label={<Trans id="locationinfoPage.postalCode" />}
+              errorMessage={<Trans id="locationInfoForm.labelWarning" />}
               helperText={
                 <Trans id="locationinfoPage.postalCodeExample"></Trans>
               }
