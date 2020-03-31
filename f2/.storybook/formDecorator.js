@@ -6,14 +6,14 @@ const validate = () => {
   return errors
 }
 
-const FormDecorator = storyFn => (
+const FormDecorator = (storyFn) => (
   <Form
     initialValues={''}
-    onSubmit={values => {
+    onSubmit={(values) => {
       props.onSubmit(values)
     }}
     validate={validate}
-    render={values => storyFn()}
+    render={(values) => storyFn()}
   />
 )
 
