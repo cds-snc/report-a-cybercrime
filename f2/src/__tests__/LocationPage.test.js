@@ -21,7 +21,9 @@ describe('<LocationPage />', () => {
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <StateProvider
-            initialState={{ formData: { submitted: true } }}
+            initialState={{
+              formData: { anonymous: { anonymous: 'anonymousPage.yes' } },
+            }}
             reducer={reducer}
           >
             <I18nProvider i18n={i18n}>
