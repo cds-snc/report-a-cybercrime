@@ -35,7 +35,7 @@ export const ErrorSummary = () => {
           <Trans id="default.hasValidationErrors" />
         </Text>
         <Ol>
-          {Object.keys(errors).map(key => {
+          {Object.keys(errors).map((key) => {
             // Omit all errors set to true from showing in ErrorSummary
             return errors[key] !== true ? (
               <Li key={key} fontSize="md">
@@ -44,7 +44,7 @@ export const ErrorSummary = () => {
                   fontWeight="bold"
                   color="blue.900"
                   href={`#${key}`}
-                  onClick={event => {
+                  onClick={(event) => {
                     let target = event.target
 
                     if (focusTarget(target)) {

@@ -13,7 +13,7 @@ import { StateProvider, initialState, reducer } from '../../utils/state'
 i18n.load('en', { en })
 i18n.activate('en')
 
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
 
 describe('<LocationAnonymousInfoForm />', () => {
   afterEach(cleanup)
