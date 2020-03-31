@@ -20,7 +20,10 @@ describe('<LocationPage />', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
-          <StateProvider initialState={initialState} reducer={reducer}>
+          <StateProvider
+            initialState={{ formData: { submitted: true } }}
+            reducer={reducer}
+          >
             <I18nProvider i18n={i18n}>
               <LocationPage />
             </I18nProvider>
