@@ -16,7 +16,7 @@ i18n.activate('en')
 const fillIn = (element, { with: value }) =>
   fireEvent.change(element, { target: { value } })
 
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
 
 describe('<ContactInfoForm />', () => {
   afterEach(cleanup)
@@ -28,7 +28,7 @@ describe('<ContactInfoForm />', () => {
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
-            <StateProvider initialState={initialState} reducer={reducer}>
+            <StateProvider initialState={initialState()} reducer={reducer}>
               <ContactInfoForm onSubmit={submitMock} />
             </StateProvider>
           </I18nProvider>

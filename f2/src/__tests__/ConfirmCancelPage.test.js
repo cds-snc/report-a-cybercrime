@@ -21,7 +21,7 @@ describe('<ConfirmCancelPage />', () => {
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
-            <StateProvider initialState={initialState} reducer={reducer}>
+            <StateProvider initialState={initialState()} reducer={reducer}>
               <ConfirmCancelPage />
             </StateProvider>
           </I18nProvider>

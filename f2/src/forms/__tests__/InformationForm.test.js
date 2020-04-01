@@ -13,7 +13,7 @@ import { StateProvider, initialState, reducer } from '../../utils/state'
 i18n.load('en', { en })
 i18n.activate('en')
 
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
 
 describe('<InformationForm />', () => {
   afterEach(cleanup)
@@ -25,7 +25,7 @@ describe('<InformationForm />', () => {
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
-            <StateProvider initialState={initialState} reducer={reducer}>
+            <StateProvider initialState={initialState()} reducer={reducer}>
               <InformationForm onSubmit={submitMock} />
             </StateProvider>
           </I18nProvider>

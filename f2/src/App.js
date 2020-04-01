@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={canada}>
-      <StateProvider initialState={initialState} reducer={reducer}>
+      <StateProvider initialState={initialState(prodVersion)} reducer={reducer}>
         <CSSReset />
         <Global
           styles={css`
