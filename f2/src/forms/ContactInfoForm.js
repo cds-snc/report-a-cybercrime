@@ -20,7 +20,7 @@ const validate = (values) => {
   //condition for an error to occur: append a lingui id to the list of error
   if (
     values.email !== '' &&
-    !new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(values.email)
+    !new RegExp(/^\w+@[a-zA-Z_-]+?\.[a-zA-Z]{2,3}$/).test(values.email)
   ) {
     errors.email = 'contactinfoForm.email.warning'
   }
