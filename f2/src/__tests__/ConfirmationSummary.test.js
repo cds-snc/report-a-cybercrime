@@ -7,7 +7,7 @@ import { i18n } from '@lingui/core'
 import { ConfirmationSummary } from '../ConfirmationSummary'
 import canada from '../theme/canada'
 import en from '../locales/en.json'
-import { StateProvider, initialState, reducer } from '../utils/state'
+import { StateProvider, reducer } from '../utils/state'
 
 i18n.load('en', { en })
 i18n.activate('en')
