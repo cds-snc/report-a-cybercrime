@@ -30,5 +30,5 @@ jobs:
     name: Deploy storybook to GitHub Pages
     runs-on: ubuntu-latest
     steps:
-      -name: build and deploy
-       run: npm run deploy-storybook -- --ci
+      - name: build and deploy
+        run: npm run deploy-storybook -- --ci
