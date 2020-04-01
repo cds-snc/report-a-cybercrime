@@ -5,7 +5,7 @@ import wait from 'waait'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { ContactInfoForm } from '../ContactInfoForm'
+import { validate, ContactInfoForm } from '../ContactInfoForm'
 import en from '../../locales/en.json'
 import canada from '../../theme/canada'
 import { StateProvider, initialState, reducer } from '../../utils/state'
@@ -16,12 +16,29 @@ i18n.activate('en')
 const fillIn = (element, { with: value }) =>
   fireEvent.change(element, { target: { value } })
 
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
+
+describe('validation', () => {
+  afterEach(cleanup)
+
+  it('passes correct phone numbers', () => {
+    expect(validate({ phone: '1234567890' }).phone).toBeUndefined()
+    expect(validate({ phone: '(123) 456-7890' }).phone).toBeUndefined()
+    expect(validate({ phone: '123-456-7890' }).phone).toBeUndefined()
+    expect(validate({ phone: '123.456.7890' }).phone).toBeUndefined()
+    expect(validate({ phone: '(123)456-7890' }).phone).toBeUndefined()
+  })
+
+  it('fails incorrect phone numbers', () => {
+    expect(validate({ phone: '123456789' }).phone).not.toBeUndefined()
+    expect(validate({ phone: 'not a number' }).phone).not.toBeUndefined()
+  })
+})
 
 describe('<ContactInfoForm />', () => {
   afterEach(cleanup)
 
-  it.only('calls the onSubmit function when the form is submitted', async () => {
+  it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
     const { getAllByRole, getByText } = render(

@@ -15,7 +15,7 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   if (
@@ -24,7 +24,9 @@ const validate = (values) => {
   ) {
     errors.email = 'contactinfoForm.email.warning'
   }
-  if (values.phone !== '' && !new RegExp(/^\d{10}$/).test(values.phone)) {
+  // from https://www.w3resource.com/javascript/form/phone-no-validation.php
+  const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+  if (values.phone !== '' && !new RegExp(phoneRegex).test(values.phone)) {
     errors.phone = 'contactinfoForm.phone.warning'
   }
 
