@@ -43,11 +43,13 @@ const formatVictimDetails = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml('Name:             ', data.contactInfo.fullName) +
-    formatLineHtml('Email:            ', data.contactInfo.email) +
-    formatLineHtml('Phone number:     ', data.contactInfo.phone) +
-    formatLineHtml('Postal code:      ', data.location.postalCode) +
-    formatLineHtml('Consent:          ', consentString)
+    formatLineHtml('Name:', data.contactInfo.fullName) +
+    formatLineHtml('Email:', data.contactInfo.email) +
+    formatLineHtml('Phone number:', data.contactInfo.phone) +
+    formatLineHtml('City:', data.location.city) +
+    formatLineHtml('Province:', data.location.province) +
+    formatLineHtml('Postal code:', data.location.postalCode) +
+    formatLineHtml('Consent:', consentString)
 
   delete data.contactInfo.fullName
   delete data.contactInfo.email
