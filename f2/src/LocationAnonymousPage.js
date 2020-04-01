@@ -29,7 +29,7 @@ export const LocationAnonymousPage = () => {
               </Lead>
 
               <LocationAnonymousInfoForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({ type: 'saveFormData', data: { location: data } })
                   history.push(doneForms ? '/confirmation' : '/confirmation')
                 }}

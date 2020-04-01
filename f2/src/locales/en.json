@@ -215,7 +215,7 @@
   "landingPage.reportingOptions3": "If you encountered the incident online, you can also try reporting it to the website or app where it happened.",
   "landingPage.title": "Report a scam or computer crime",
   "landingPage.warning": "Reporting does not always lead to an investigation and we likely won’t be able to recover what was lost or damaged.",
-  "locationInfoForm.warning": "Please enter a valid postal code",
+  "locationInfoForm.Warning": "Please enter a valid postal code",
   "locationPage.intro": "We use your location to link your report to other reports in your area and to coordinate with local police services across Canada.",
   "locationPage.title": "Enter your location",
   "locationinfoPage.nextButton": "Continue",
@@ -332,6 +332,10 @@
   "thankYouPage.whatNextHeading": "What happens next",
   "thankYouPage.whatNextParagraph": "We will analyze your report and combine it with others that are similar.",
   "thankYouPage.whatNextParagraph2": "Keep your reference number. You can use it to add more detail to your report by calling the Canadian Anti-Fraud Centre at 1-888-495-8501.",
+  "transactionDate.errorMessage": "Transaction date must be in the past",
+  "transactionDate.startDate.warning": "Transaction date must contain a real day",
+  "transactionDate.startMonth.warning": "Transaction date must contain a real month",
+  "transactionDate.startYear.warning": "Transaction date year must contain four digits",
   "typeOfInfoObtained.creditCard": "Bank or credit card information",
   "typeOfInfoObtained.dob": "Date of birth",
   "typeOfInfoObtained.homeAddress": "Home address",
@@ -364,7 +368,7 @@
   "whatWasAffectedForm.warning": "Select at least one thing that could potentially be affected. If you’re not sure, check “Other”.",
   "whatWasAffectedPage.intro": "You’re likely not the only one affected by something like this. Help us learn more about what the suspect was after.",
   "whatWasAffectedPage.title": "What do you think could be affected?",
-  "whenDidItStart.errorMessage": "Start date must be in the past.",
+  "whenDidItStart.errorMessage": "Start date must be in the past",
   "whenDidItStart.label": "When did it start?",
   "whenDidItStart.labelExample": "For example: 26 02 2020",
   "whenDidItStart.startDate.warning": "Start date must contain a real day",
@@ -372,5 +376,5 @@
   "whenDidItStart.startMonth": "Month",
   "whenDidItStart.startMonth.warning": "Start date must contain a real month",
   "whenDidItStart.startYear": "Year",
-  "whenDidItStart.startYear.warning": "Start date must be four digits"
+  "whenDidItStart.startYear.warning": "Start date year must contain four digits"
 }
