@@ -25,7 +25,7 @@ describe('<WhatHappenedForm />', () => {
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
-            <StateProvider initialState={initialState()} reducer={reducer}>
+            <StateProvider initialState={initialState} reducer={reducer}>
               <WhatHappenedForm onSubmit={submitMock} />
             </StateProvider>
           </I18nProvider>

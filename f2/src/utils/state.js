@@ -10,11 +10,11 @@ export const StateProvider = ({ reducer, initialState, children }) => (
 
 export const useStateValue = () => useContext(StateContext)
 
-export const initialState = (prodVersion) => ({
+export const initialState = {
   doneForms: false,
-  formData: { prodVersion },
+  formData: { prodVersion: '1.1.0' },
   doneFinalFeedback: false,
-})
+}
 
 export const reducer = (state, action) => {
   switch (action.type) {

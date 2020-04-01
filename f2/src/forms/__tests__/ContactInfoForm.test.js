@@ -28,7 +28,7 @@ describe('<ContactInfoForm />', () => {
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
-            <StateProvider initialState={initialState()} reducer={reducer}>
+            <StateProvider initialState={initialState} reducer={reducer}>
               <ContactInfoForm onSubmit={submitMock} />
             </StateProvider>
           </I18nProvider>

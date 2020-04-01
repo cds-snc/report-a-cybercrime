@@ -17,7 +17,6 @@ import { Li } from './components/list-item'
 import { A } from './components/link'
 import TagManager from 'react-gtm-module'
 
-const prodVersion = '1.1.0'
 const gitsha = process.env.REACT_APP_VERSION
   ? process.env.REACT_APP_VERSION.slice(0, 7)
   : '000000'
@@ -32,7 +31,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={canada}>
-      <StateProvider initialState={initialState(prodVersion)} reducer={reducer}>
+      <StateProvider initialState={initialState} reducer={reducer}>
         <CSSReset />
         <Global
           styles={css`
@@ -79,7 +78,7 @@ const App = () => {
 
             <Layout>
               <P fontSize="sm" my={3} aria-label="application version">
-                {`Version: ${prodVersion} (${gitsha})`}
+                {`Version: ${initialState.formData.prodVersion} (${gitsha})`}
               </P>
             </Layout>
           </Stack>

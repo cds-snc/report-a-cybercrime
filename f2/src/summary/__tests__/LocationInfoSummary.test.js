@@ -19,7 +19,7 @@ describe('<LocationInfoSummary />', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
-          <StateProvider initialState={initialState()} reducer={reducer}>
+          <StateProvider initialState={initialState} reducer={reducer}>
             <I18nProvider i18n={i18n}>
               <LocationInfoSummary />
             </I18nProvider>
