@@ -1,0 +1,75 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+import { Stack } from '@chakra-ui/core'
+import { Trans } from '@lingui/react'
+import { SkipLink } from '../skip-link'
+import { A } from '../link'
+import { TopBanner } from '.'
+import { WarningBanner } from '../warning-banner'
+import { PhaseBanner } from '../phase-banner'
+
+<Meta
+  title="Pages/Header"
+  decorators={[ThemeDecorator]}
+  component={TopBanner}
+/>
+
+# App header
+
+The app header contains multiple components. Mandatory components are the FIP banner, and the skiplink. The skip link has to be the first interactable element on every page, followed by the language toggler. Use keyboard navigation to test it out.
+
+<Preview>
+  <Story name="App header">
+    <header>
+      <SkipLink invisible href="#main">
+        <Trans id="SkipLink.text" />
+      </SkipLink>
+      <TopBanner lang="en" />
+    </header>
+  </Story>
+</Preview>
+
+## Phase banner
+
+You can add a phase banner above the FIP banner. The phase prop will be rendered as the phase tag. Children of PhaseBanner will be rendered alongside the phase tag.
+
+<Preview>
+  <Story name="Phase banner">
+    <header>
+      <SkipLink invisible href="#main">
+        <Trans id="SkipLink.text" />
+      </SkipLink>
+      <PhaseBanner phase={<Trans id="banner.phase" />}>
+        <Trans id="banner.phaseText" components={[<A href="/docs" />]} />
+      </PhaseBanner>
+      <TopBanner lang="en" />
+    </header>
+  </Story>
+</Preview>
+
+<Props of={PhaseBanner} />
+
+## Warning banner
+
+You can add a warning banner to display any messages above the phase banner and the FIP banner.
+
+<Preview>
+  <Story name="Warning banner">
+    <header>
+      <SkipLink invisible href="#main">
+        <Trans id="SkipLink.text" />
+      </SkipLink>
+      {true && (
+        <WarningBanner>
+          <Trans id="banner.warning" />
+        </WarningBanner>
+      )}
+      <PhaseBanner phase={<Trans id="banner.phase" />}>
+        <Trans id="banner.phaseText" components={[<A href="/docs" />]} />
+      </PhaseBanner>
+      <TopBanner lang="en" />
+    </header>
+  </Story>
+</Preview>
+
+<Props of={WarningBanner} />
