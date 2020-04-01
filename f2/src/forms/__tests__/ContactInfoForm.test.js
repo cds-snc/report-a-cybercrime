@@ -23,9 +23,10 @@ describe('validation', () => {
 
   it('passes correct phone numbers', () => {
     expect(validate({ phone: '1234567890' }).phone).toBeUndefined()
-    expect(validate({ phone: '(123) 456-7890' }).phone).toBeUndefined()
+    expect(validate({ phone: '123 456 7890' }).phone).toBeUndefined()
     expect(validate({ phone: '123-456-7890' }).phone).toBeUndefined()
     expect(validate({ phone: '123.456.7890' }).phone).toBeUndefined()
+    expect(validate({ phone: '(123) 456-7890' }).phone).toBeUndefined()
     expect(validate({ phone: '(123)456-7890' }).phone).toBeUndefined()
   })
 
