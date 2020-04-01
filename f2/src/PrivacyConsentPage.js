@@ -60,7 +60,7 @@ export const PrivacyConsentPage = () => {
                   <Trans id="privacyConsentInfoPage.period" />
                 </P>
                 <PrivacyConsentInfoForm
-                  onSubmit={data => {
+                  onSubmit={(data) => {
                     dispatch({
                       type: 'saveFormData',
                       data: { consent: data },

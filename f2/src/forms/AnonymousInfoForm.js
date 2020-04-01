@@ -9,7 +9,7 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
 
-const validate = values => {
+const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   if (!values.anonymous || values.anonymous.length < 1) {
@@ -17,12 +17,12 @@ const validate = values => {
   }
   return errors
 }
-const clearData = dataOrig => {
+const clearData = (dataOrig) => {
   let data = JSON.parse(JSON.stringify(dataOrig))
   return data
 }
 
-export const AnonymousInfoForm = props => {
+export const AnonymousInfoForm = (props) => {
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
@@ -44,7 +44,7 @@ export const AnonymousInfoForm = props => {
 
       <Form
         initialValues={anonymous}
-        onSubmit={data => props.onSubmit(clearData(data))}
+        onSubmit={(data) => props.onSubmit(clearData(data))}
         validate={validate}
         render={({ handleSubmit }) => (
           <Stack
@@ -58,7 +58,7 @@ export const AnonymousInfoForm = props => {
               label={<Trans id="anonymousForm.title" />}
               errorMessage={<Trans id="anonymousPage.warning" />}
             >
-              {ifanonymous.map(key => {
+              {ifanonymous.map((key) => {
                 return (
                   <React.Fragment key={key}>
                     <RadioAdapter name="anonymous" value={key}>

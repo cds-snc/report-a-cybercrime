@@ -29,7 +29,7 @@ export const AnonymousPage = () => {
               </Lead>
 
               <AnonymousInfoForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { anonymous: data },
