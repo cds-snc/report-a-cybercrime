@@ -4,6 +4,7 @@ const path = require('path')
 const formidable = require('formidable')
 const helmet = require('helmet')
 const { unflatten } = require('flat')
+const { sanitize } = require('./src/utils/sanitize')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
@@ -183,7 +184,7 @@ app
     let files = []
     let fields = {}
     form.on('field', (fieldName, fieldValue) => {
-      fields[fieldName] = JSON.parse(fieldValue)
+      fields[fieldName] = sanitize(JSON.parse(fieldValue))
     })
     form.on('file', function (name, file) {
       if (files.length >= 3)

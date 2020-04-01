@@ -2,6 +2,7 @@ const NotifyClient = require('notifications-node-client').NotifyClient
 
 const key = process.env.NOTIFY_API_KEY
 const baseUrl = process.env.NOTIFY_API_BASE_URL
+const { sanitize } = require('./sanitize')
 
 const notifyEnvVars = [
   'NOTIFY_API_KEY',
@@ -10,7 +11,7 @@ const notifyEnvVars = [
 ]
 
 let notifyIsSetup = true
-notifyEnvVars.forEach(k => {
+notifyEnvVars.forEach((k) => {
   if (!process.env[`${k}`]) {
     notifyIsSetup = false
     console.warn(
@@ -47,7 +48,7 @@ const sendConfirmation = async (email, reportId) => {
   }
 }
 
-const submitFeedback = async data => {
+const submitFeedback = async (data) => {
   const templateId = process.env.NOTIFY_FEEDBACK_TEMPLATE_ID
   const email = process.env.FEEDBACK_EMAIL
   if (!email || !templateId) {
@@ -58,7 +59,7 @@ const submitFeedback = async data => {
   }
   try {
     const response = notifyClient.sendEmail(templateId, email, {
-      personalisation: { feedback: JSON.stringify(data, null, '  ') },
+      personalisation: { feedback: sanitize(JSON.stringify(data, null, '  ')) },
     })
     console.info('Notify: feedback email (probably) sent!')
     return response.body
