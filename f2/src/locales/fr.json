@@ -1,5 +1,5 @@
 {
-  "LocationAnonymousInfoForm.City": "Ville ou municipalité",
+  "LocationAnonymousInfoForm.city": "Ville ou municipalité",
   "LocationAnonymousInfoForm.nextButton": "Continuer",
   "LocationAnonymousInfoForm.nextPage": "Prochaine étape : Révisez votre rapport",
   "LocationAnonymousInfoForm.province": "Province",
@@ -70,8 +70,10 @@
   "confirmationPage.howManyTimes": "Fréquence",
   "confirmationPage.impactIntro": "Aucune information fournie.",
   "confirmationPage.intro": "Vérifiez que les informations ci-dessous sont complètes et exactes avant de soumettre votre rapport.",
+  "confirmationPage.location.city": "Ville ou municipalité",
   "confirmationPage.location.nag": "Aucune information fournie.",
   "confirmationPage.location.postalCode": "Code postal",
+  "confirmationPage.location.province": "Province",
   "confirmationPage.location.title": "Votre emplacement géographique",
   "confirmationPage.location.title.edit": "Modifier Votre emplacement géographique",
   "confirmationPage.moneyLost.demandedMoney": "Montant d’argent demandé par le suspect",
