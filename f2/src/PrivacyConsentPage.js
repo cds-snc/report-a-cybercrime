@@ -65,7 +65,7 @@ export const PrivacyConsentPage = () => {
                       type: 'saveFormData',
                       data: { consent: data },
                     })
-                    history.push('/howdiditstart')
+                    history.push('/anonymous')
                   }}
                 />
               </Stack>
