@@ -2,7 +2,6 @@ const NotifyClient = require('notifications-node-client').NotifyClient
 
 const key = process.env.NOTIFY_API_KEY
 const baseUrl = process.env.NOTIFY_API_BASE_URL
-const { sanitize } = require('./sanitize')
 
 const notifyEnvVars = [
   'NOTIFY_API_KEY',
@@ -59,7 +58,7 @@ const submitFeedback = async (data) => {
   }
   try {
     const response = notifyClient.sendEmail(templateId, email, {
-      personalisation: { feedback: sanitize(JSON.stringify(data, null, '  ')) },
+      personalisation: { feedback: data },
     })
     console.info('Notify: feedback email (probably) sent!')
     return response.body

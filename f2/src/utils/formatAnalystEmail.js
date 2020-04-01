@@ -1,10 +1,9 @@
 // 'use strict'
 
 const { formatDate } = require('./formatDate')
-const { sanitize } = require('./sanitize')
 
 const formatLineHtml = (label, text) =>
-  text !== '' ? `<tr><td>${label}</td><td>${sanitize(text)}</td></tr>\n` : ''
+  text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
 
 const formatTable = (rows) => `<table><tbody>\n${rows}</tbody></table>\n\n`
 
@@ -17,9 +16,7 @@ const formatReportInfo = (data) => {
 
   if (data.selfHarmWords.length) {
     selfHarmString = data.selfHarmWords
-    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${sanitize(
-      selfHarmString,
-    )}</h1>`
+    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${selfHarmString}</h1>`
   }
   returnString +=
     '<h2>Report Information</h2>' +
@@ -263,7 +260,7 @@ const formatAnalystEmail = (dataOrig) => {
   } catch (error) {
     const errorMessage = `ERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
     console.error(errorMessage)
-    return sanitize(errorMessage)
+    return errorMessage
   }
   try {
     returnString =
@@ -281,14 +278,14 @@ const formatAnalystEmail = (dataOrig) => {
     })
     missingFields = Object.keys(data).length
       ? '\n<h2>Fields missing from above report</h2>\n' +
-        `<p>${sanitize(JSON.stringify(data, null, '  '))}</p>\n`
+        `<p>${JSON.stringify(data, null, '  ')}</p>\n`
       : ''
   } catch (error) {
     const errorMessage =
       reportInfoString +
       `\nERROR in formatAnalystEmail (report ${dataOrig.reportId}): ${error}`
     console.error(errorMessage)
-    return sanitize(errorMessage)
+    return errorMessage
   }
   return returnString + missingFields
 }
