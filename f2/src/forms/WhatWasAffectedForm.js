@@ -4,14 +4,20 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { ErrorSummary } from '../components/ErrorSummary'
 import { Text } from '../components/text'
 
-const validate = () => {
-  return {}
+const validate = (values) => {
+  const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
+  if (!values.affectedOptions || values.affectedOptions.length < 1) {
+    errors.affectedOptions = 'whatWasAffectedForm.warning'
+  }
+  return errors
 }
 
 export const whatWasAffectedPages = [
@@ -28,7 +34,7 @@ export const whatWasAffectedPages = [
   { key: 'whatWasAffectedForm.other', url: '' },
 ]
 
-export const WhatWasAffectedForm = props => {
+export const WhatWasAffectedForm = (props) => {
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
@@ -38,8 +44,7 @@ export const WhatWasAffectedForm = props => {
     optionOther: '',
   }
 
-  const affectedOptions = whatWasAffectedPages.map(page => page.key)
-  let showWarning = false
+  const affectedOptions = whatWasAffectedPages.map((page) => page.key)
 
   return (
     <React.Fragment>
@@ -59,27 +64,34 @@ export const WhatWasAffectedForm = props => {
 
       <Form
         initialValues={whatWasAffected}
-        onSubmit={values => {
-          if (values.affectedOptions.length === 0) {
-            showWarning = true
-          } else {
-            props.onSubmit(values)
-          }
+        onSubmit={(values) => {
+          props.onSubmit(values)
         }}
         validate={validate}
-        render={({ handleSubmit, values }) => (
+        render={({
+          handleSubmit,
+          values,
+          errors,
+          submitFailed,
+          hasValidationErrors,
+        }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
             spacing={6}
           >
+            {submitFailed && hasValidationErrors ? (
+              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+            ) : null}
+
             <FormArrayControl
               name="affectedOptions"
               label={<Trans id="whatWasAffectedForm.optionsTitle" />}
               helperText={<Trans id="whatWasAffectedForm.optionsHelpText" />}
+              errorMessage={<Trans id="whatWasAffectedForm.warning" />}
             >
-              {affectedOptions.map(key => {
+              {affectedOptions.map((key) => {
                 return (
                   <React.Fragment key={key}>
                     <CheckboxAdapter
@@ -97,12 +109,6 @@ export const WhatWasAffectedForm = props => {
                   </React.Fragment>
                 )
               })}
-              {showWarning ? (
-                <Alert status="warning">
-                  <AlertIcon />
-                  <Trans id="whatWasAffectedForm.warning" />
-                </Alert>
-              ) : null}
             </FormArrayControl>
             <NextAndCancelButtons
               next={<Trans id="whatWasAffectedForm.nextPage" />}

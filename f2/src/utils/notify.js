@@ -10,7 +10,7 @@ const notifyEnvVars = [
 ]
 
 let notifyIsSetup = true
-notifyEnvVars.forEach(k => {
+notifyEnvVars.forEach((k) => {
   if (!process.env[`${k}`]) {
     notifyIsSetup = false
     console.warn(
@@ -24,7 +24,7 @@ const notifyClient =
     ? new NotifyClient(baseUrl, key)
     : false
 
-if (notifyClient) console.log('Notify client created')
+if (notifyClient) console.info('Notify client created')
 else console.warn('Notify client NOT created')
 
 const sendConfirmation = async (email, reportId) => {
@@ -39,7 +39,7 @@ const sendConfirmation = async (email, reportId) => {
     const response = notifyClient.sendEmail(templateId, email, {
       personalisation: { reportId },
     })
-    console.log('Notify: confirmation email (probably) sent!')
+    console.info('Notify: confirmation email (probably) sent!')
     return response.body
   } catch (err) {
     console.warn(`Notify confirmation email Error: ${err.message}`)
@@ -47,27 +47,7 @@ const sendConfirmation = async (email, reportId) => {
   }
 }
 
-const sendUnencryptedReport = async (email, report) => {
-  const templateId = process.env.NOTIFY_REPORT_TEMPLATE_ID
-  if (!email || !templateId) {
-    console.warn(
-      'WARNING: no Notify report template ID or email was passed, mail not sent',
-    )
-    return false
-  }
-  try {
-    const response = notifyClient.sendEmail(templateId, email, {
-      personalisation: { report },
-    })
-    console.log('Notify: report email (probablty) sent!')
-    return response.body
-  } catch (err) {
-    console.warn(`Notify report email error: ${err.message}`)
-    return false
-  }
-}
-
-const submitFeedback = async data => {
+const submitFeedback = async (data) => {
   const templateId = process.env.NOTIFY_FEEDBACK_TEMPLATE_ID
   const email = process.env.FEEDBACK_EMAIL
   if (!email || !templateId) {
@@ -80,7 +60,7 @@ const submitFeedback = async data => {
     const response = notifyClient.sendEmail(templateId, email, {
       personalisation: { feedback: JSON.stringify(data, null, '  ') },
     })
-    console.log('Notify: feedback email (probablty) sent!')
+    console.info('Notify: feedback email (probably) sent!')
     return response.body
   } catch (err) {
     console.warn(`Notify feedback email error: ${err.message}`)
@@ -91,6 +71,5 @@ const submitFeedback = async data => {
 module.exports = {
   notifyIsSetup,
   sendConfirmation,
-  sendUnencryptedReport,
   submitFeedback,
 }

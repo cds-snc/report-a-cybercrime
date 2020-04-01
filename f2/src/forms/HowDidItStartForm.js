@@ -6,18 +6,56 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { CheckboxAdapter } from '../components/checkbox'
 import { RadioAdapter } from '../components/radio'
-import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { TextArea } from '../components/text-area'
 import { TextInput } from '../components/TextInput'
 import { Field } from '../components/Field'
+import { Well } from '../components/Messages'
+import { ErrorSummary } from '../components/ErrorSummary'
 
-const validate = () => {
-  return {}
+const validate = (values) => {
+  const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
+  // if it has a value AND this value is a number below 31
+  if (values.startDay && (isNaN(values.startDay) || values.startDay > 31)) {
+    errors.whenDidItStart = 'whenDidItStart.startDate.warning'
+    errors.startDay = true
+  }
+  // if it has a value AND this value is a number below 12
+  if (
+    values.startMonth &&
+    (isNaN(values.startMonth) || values.startMonth > 12)
+  ) {
+    errors.whenDidItStart = 'whenDidItStart.startMonth.warning'
+    errors.startMonth = true
+  }
+  // if it has a value AND year is a number containing 4 digits
+  if (
+    values.startYear &&
+    (isNaN(values.startYear) || values.startYear.length !== 4)
+  ) {
+    errors.whenDidItStart = 'whenDidItStart.startYear.warning'
+    errors.startYear = true
+  }
+
+  // if date is in the future and date is valid
+  // values.startMonth - 1 : UTC Date Months are values from 0 to 11
+  if (
+    Date.UTC(values.startYear, values.startMonth - 1, values.startDay) >
+    Date.now()
+  ) {
+    errors.whenDidItStart = 'whenDidItStart.errorMessage'
+    errors.startDay = true
+    errors.startMonth = true
+    errors.startYear = true
+  }
+
+  return errors
 }
 
-const clearData = dataOrig => {
+const clearData = (dataOrig) => {
   let data = JSON.parse(JSON.stringify(dataOrig))
   if (!data.howDidTheyReachYou.includes('howDidTheyReachYou.email'))
     data.email = ''
@@ -32,7 +70,7 @@ const clearData = dataOrig => {
   return data
 }
 
-export const HowDidItStartForm = props => {
+export const HowDidItStartForm = (props) => {
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
@@ -113,27 +151,40 @@ export const HowDidItStartForm = props => {
           <Trans id="howManyTimes.once" />
           <Trans id="howManyTimes.severalTimes" />
           <Trans id="howManyTimes.notSure" />
+          <Trans id="whenDidItStart.errorMessage" />
+          <Trans id="whenDidItStart.startDate.warning" />
+          <Trans id="whenDidItStart.startMonth.warning" />
+          <Trans id="whenDidItStart.startYear.warning" />
         </div>
       ) : null}
 
       <Form
         initialValues={howdiditstart}
-        onSubmit={data => props.onSubmit(clearData(data))}
+        onSubmit={(data) => props.onSubmit(clearData(data))}
         validate={validate}
-        render={({ handleSubmit, values }) => (
+        render={({
+          handleSubmit,
+          values,
+          errors,
+          submitFailed,
+          hasValidationErrors,
+        }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
             spacing={12}
           >
+            {submitFailed ? (
+              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+            ) : null}
             <FormArrayControl
               name="howDidTheyReachYou"
               label={<Trans id="howDidTheyReachYou.question" />}
               helperText={<Trans id="howDidTheyReachYou.reminder" />}
             >
               {/** All questions have conditional fields. It makes sense to use the map function */}
-              {questionsList.map(question => {
+              {questionsList.map((question) => {
                 return (
                   <React.Fragment key={question.channel}>
                     <CheckboxAdapter
@@ -159,14 +210,17 @@ export const HowDidItStartForm = props => {
             </FormArrayControl>
 
             <FormArrayControl
+              name="whenDidItStart"
               label={<Trans id="whenDidItStart.label" />}
               helperText={<Trans id="whenDidItStart.labelExample" />}
+              errors={errors}
             >
               <Stack direction="row" spacing="2">
                 <Field
                   name="startDay"
                   label={<Trans id="whenDidItStart.startDay" />}
                   component={TextInput}
+                  group="whenDidItStart"
                   w={70}
                   maxLength="2"
                 />
@@ -174,6 +228,7 @@ export const HowDidItStartForm = props => {
                   name="startMonth"
                   label={<Trans id="whenDidItStart.startMonth" />}
                   component={TextInput}
+                  group="whenDidItStart"
                   w={70}
                   maxLength="2"
                 />
@@ -181,6 +236,7 @@ export const HowDidItStartForm = props => {
                   name="startYear"
                   label={<Trans id="whenDidItStart.startYear" />}
                   component={TextInput}
+                  group="whenDidItStart"
                   w={110}
                   maxLength="4"
                 />
@@ -191,7 +247,7 @@ export const HowDidItStartForm = props => {
               name="howManyTimes"
               label={<Trans id="howManyTimes.label" />}
             >
-              {howManyTimes.map(key => {
+              {howManyTimes.map((key) => {
                 return (
                   <React.Fragment key={key}>
                     <RadioAdapter
@@ -205,10 +261,9 @@ export const HowDidItStartForm = props => {
                 )
               })}
             </FormArrayControl>
-            <Alert status="success" backgroundColor="blue.100">
-              <AlertIcon name="info-outline" color="blue.800" />
+            <Well variantColor="blue">
               <Trans id="howDidItStartPage.tip" />
-            </Alert>
+            </Well>
             <NextAndCancelButtons
               next={<Trans id="howDidItStartPage.nextPage" />}
               button={<Trans id="howDidItStartPage.nextButton" />}

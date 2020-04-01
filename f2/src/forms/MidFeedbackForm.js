@@ -6,7 +6,7 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { useLocation } from 'react-router-dom'
-import { Stack, Box, AlertIcon, Alert } from '@chakra-ui/core'
+import { Stack, Box } from '@chakra-ui/core'
 import { containsData } from '../utils/containsData'
 import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
@@ -15,8 +15,9 @@ import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Field } from '../components/Field'
 import { Row } from '../components/layout'
+import { Alert } from '../components/Messages'
 
-export const MidFeedbackForm = props => {
+export const MidFeedbackForm = (props) => {
   const [status, setStatus] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
@@ -97,7 +98,7 @@ export const MidFeedbackForm = props => {
                   midFeedback: [],
                   problemDescription: '',
                 }}
-                onSubmit={values => {
+                onSubmit={(values) => {
                   if (
                     !containsData([
                       values.midFeedback,
@@ -119,8 +120,7 @@ export const MidFeedbackForm = props => {
                     spacing={6}
                   >
                     {showWarning ? (
-                      <Alert status="warning">
-                        <AlertIcon />
+                      <Alert status="error">
                         <Trans id="finalFeedback.warning" />
                       </Alert>
                     ) : null}
@@ -130,7 +130,7 @@ export const MidFeedbackForm = props => {
                       label={<Trans id="midFeedback.problem.label" />}
                       helperText={<Trans id="midFeedback.problem.helperText" />}
                     >
-                      {midFeedback.map(key => {
+                      {midFeedback.map((key) => {
                         return (
                           <React.Fragment key={key}>
                             <CheckboxAdapter
