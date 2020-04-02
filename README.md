@@ -133,6 +133,10 @@ docker build -t rac .
 docker run -p 3000:3000 rac
 ```
 
+### Getting the analyst email yourself
+
+It is often useful to quickly see what the analyst email looks like. If the `LDAP_UID` environment variable is not set and the user provides their email address on the contact info screen then the server will send the analyst email unencrypted to the user. This is solely for development purposes. Note that the review apps are configured this way.
+
 ## Load testing the frontend
 
 There are simple scripts to load test the frontend. They use the [k6](https://docs.k6.io) package, which must first be installed (see (https://docs.k6.io/docs/installation)
