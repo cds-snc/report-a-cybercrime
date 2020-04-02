@@ -92,7 +92,7 @@ async function save(data, res) {
   encryptAndSend(uidList, emailList, data, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
-    sendConfirmation(data.contactInfo.email, data.reportId)
+    sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
   saveRecord(data, res)
 }
@@ -223,7 +223,7 @@ app
   })
 
 // uncomment to allow direct loading of arbitrary pages
-// .get('/*', function(_req, res) {
+// .get('/*', function (_req, res) {
 //   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 // })
 
