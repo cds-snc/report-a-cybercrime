@@ -33,7 +33,6 @@ export const testdata = {
     },
     whatWasAffected: {
       affectedOptions: [],
-      optionOther: '',
     },
     moneyLost: {
       demandedMoney: '',
