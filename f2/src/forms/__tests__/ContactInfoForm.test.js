@@ -28,13 +28,27 @@ describe('validation', () => {
 
   it('fails incorrect email address', () => {
     expect(validate({ email: 'aaaaaa.com' }).email).not.toBeUndefined()
-  })
 })
+
+  it('passes correct phone numbers', () => {
+    expect(validate({ phone: '1234567890' }).phone).toBeUndefined()
+    expect(validate({ phone: '123 456 7890' }).phone).toBeUndefined()
+    expect(validate({ phone: '123-456-7890' }).phone).toBeUndefined()
+    expect(validate({ phone: '123.456.7890' }).phone).toBeUndefined()
+    expect(validate({ phone: '(123) 456-7890' }).phone).toBeUndefined()
+    expect(validate({ phone: '(123)456-7890' }).phone).toBeUndefined()
+  })
+
+  it('fails incorrect phone numbers', () => {
+    expect(validate({ phone: '123456789' }).phone).not.toBeUndefined()
+    expect(validate({ phone: 'not a number' }).phone).not.toBeUndefined()
+  })
+
 
 describe('<ContactInfoForm />', () => {
   afterEach(cleanup)
 
-  it.only('calls the onSubmit function when the form is submitted', async () => {
+  it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
     const { getAllByRole, getByText } = render(
