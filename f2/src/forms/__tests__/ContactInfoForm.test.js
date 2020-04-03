@@ -17,18 +17,9 @@ const fillIn = (element, { with: value }) =>
   fireEvent.change(element, { target: { value } })
 
 const clickOn = (element) => fireEvent.click(element)
+
 describe('validation', () => {
   afterEach(cleanup)
-
-  it('passes correct email address', () => {
-    expect(validate({ email: 'aaaa@aaa.com' }).email).toBeUndefined()
-    expect(validate({ phone: 'aaa.aaa@aaa.com' }).phone).toBeUndefined()
-    expect(validate({ phone: 'aaa@aaa-aaa.com' }).phone).toBeUndefined()
-  })
-
-  it('fails incorrect email address', () => {
-    expect(validate({ email: 'aaaaaa.com' }).email).not.toBeUndefined()
-})
 
   it('passes correct phone numbers', () => {
     expect(validate({ phone: '1234567890' }).phone).toBeUndefined()
@@ -44,6 +35,16 @@ describe('validation', () => {
     expect(validate({ phone: 'not a number' }).phone).not.toBeUndefined()
   })
 
+  it('passes correct email address', () => {
+    expect(validate({ email: 'aaaa@aaa.com' }).email).toBeUndefined()
+    expect(validate({ email: 'aaa.aaa@aaa.com' }).email).toBeUndefined()
+    expect(validate({ email: 'aaa@aaa-aaa.com' }).email).toBeUndefined()
+  })
+
+  it('fails incorrect email address', () => {
+    expect(validate({ email: 'aaaaaa.com' }).email).not.toBeUndefined()
+  })
+})
 
 describe('<ContactInfoForm />', () => {
   afterEach(cleanup)
