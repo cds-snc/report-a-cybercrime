@@ -16,7 +16,20 @@ i18n.activate('en')
 const fillIn = (element, { with: value }) =>
   fireEvent.change(element, { target: { value } })
 
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
+describe('validation', () => {
+  afterEach(cleanup)
+
+  it('passes correct email address', () => {
+    expect(validate({ email: 'aaaa@aaa.com' }).email).toBeUndefined()
+    expect(validate({ phone: 'aaa.aaa@aaa.com' }).phone).toBeUndefined()
+    expect(validate({ phone: 'aaa@aaa-aaa.com' }).phone).toBeUndefined()
+  })
+
+  it('fails incorrect email address', () => {
+    expect(validate({ email: 'aaaaaa.com' }).email).not.toBeUndefined()
+  })
+})
 
 describe('<ContactInfoForm />', () => {
   afterEach(cleanup)
