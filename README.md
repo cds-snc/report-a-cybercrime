@@ -122,8 +122,7 @@ npm run dev
 ### Frontend and backend
 
 ```sh
-npm run build
-node server.js
+npm run prod
 ```
 
 ### Run project with Docker
@@ -136,6 +135,13 @@ docker run -p 3000:3000 rac
 ### Getting the analyst email yourself
 
 It is often useful to quickly see what the analyst email looks like. If the `LDAP_UID` environment variable is not set and the user provides their email address on the contact info screen then the server will send the analyst email unencrypted to the user. This is solely for development purposes. Note that the review apps are configured this way.
+
+To do this locally:
+
+- ensure that `LDAP_UID` is not set in your terminal environment nor in your `.env` file
+- run `npm run prod`
+- fill out the report and include your email address on http://localhost:3000/contactinfo
+- you should receive the generated report email
 
 ## Load testing the frontend
 
