@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
+import addrs from 'email-addresses'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
@@ -18,10 +19,7 @@ import { Field } from '../components/Field'
 export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
-  if (
-    values.email !== '' &&
-    !new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(values.email)
-  ) {
+  if (values.email !== '' && addrs(values.email) == null) {
     errors.email = 'contactinfoForm.email.warning'
   }
   // from https://www.w3resource.com/javascript/form/phone-no-validation.php
