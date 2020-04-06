@@ -107,7 +107,9 @@ export const ConfirmationSummary = () => {
         <SuspectCluesSummary />
         <EvidenceInfoSummary />
         <LocationInfoSummary />
-        <ContactInfoSummary />
+        {data.formData.anonymous.anonymous !== 'anonymousPage.yes' ? (
+          <ContactInfoSummary />
+        ) : null}
       </Stack>
     </React.Fragment>
   )
