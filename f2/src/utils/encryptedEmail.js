@@ -20,8 +20,8 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
   })
 
   let attachments = data.evidence.files
-    .filter(file => file.malwareIsClean)
-    .map(file => ({
+    .filter((file) => file.malwareIsClean)
+    .map((file) => ({
       filename: file.name,
       path: file.path,
     }))
@@ -44,9 +44,9 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
   )
 }
 
-const getEmailWarning = data =>
+const getEmailWarning = (data) =>
   data.evidence.files.some(
-    file => file.isImageRacyClassified || file.isImageAdultClassified,
+    (file) => file.isImageRacyClassified || file.isImageAdultClassified,
   )
     ? ': WARNING: potential offensive image'
     : ''
@@ -57,14 +57,14 @@ const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
   const encryptedFile = messageFile + '.encrypted'
   const subjectSuffix = getEmailWarning(data)
 
-  fs.writeFile(messageFile, message, function(err) {
+  fs.writeFile(messageFile, message, function (err) {
     if (err) throw err
     exec(
       `${openssl} -in ${messageFile} -out ${encryptedFile} ${certFileName(
         uid,
       )}`,
       { cwd: process.cwd() },
-      function(error, _stdout, stderr) {
+      function (error, _stdout, stderr) {
         if (error) throw error
         else if (stderr) console.warn(stderr)
         else {
@@ -112,17 +112,22 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
 }
 
 const encryptAndSend = async (uidList, emailList, data, message) => {
+  let email
   if (uidList.length > 0 && emailList.length > 0) {
     uidList.forEach((uid, index) => {
-      prepareUnencryptedReportEmail(message, data, m =>
+      prepareUnencryptedReportEmail(message, data, (m) =>
         encryptMessage(uid, emailList[index], m, data, sendMail),
       )
     })
   } else {
+    //check .env for MAIL_LOCAL var. If not found, use data from form.
+    emailList.length > 0
+      ? (email = emailList[0])
+      : (email = data.contactInfo.email)
     console.warn('Encrypted Mail: No certs to encrypt with!')
     const subjectSuffix = getEmailWarning(data)
-    prepareUnencryptedReportEmail(message, data, m =>
-      sendMail(data.contactInfo.email, m, data.reportId, subjectSuffix),
+    prepareUnencryptedReportEmail(message, data, (m) =>
+      sendMail(email, m, data.reportId, subjectSuffix),
     )
   }
 }

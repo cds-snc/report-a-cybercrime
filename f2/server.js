@@ -89,6 +89,7 @@ async function save(data, res) {
   saveBlob(data)
 
   const analystEmail = formatAnalystEmail(data)
+  emailList.length == 0 && emailList.push(process.env.MAIL_LOCAL)
   encryptAndSend(uidList, emailList, data, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
