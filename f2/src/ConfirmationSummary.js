@@ -3,8 +3,6 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { withProps } from 'recompose'
-import { EditButton as EditButtonAlias } from './components/EditButton'
 import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
@@ -68,11 +66,6 @@ export const testdata = {
     contactInfo: { fullName: '', email: '', phone: '' },
   },
 }
-
-// TODO: Moved the EditButton into the components folder.
-// All summary blocks are still importing EditButton from this file.
-// Leaving this here as an alias.
-export const EditButton = withProps({})(EditButtonAlias)
 
 export const ConfirmationSummary = () => {
   const [data, dispatch] = useStateValue()
