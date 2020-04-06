@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
@@ -31,6 +32,10 @@ var limiter = new RateLimit({
 })
 
 require('dotenv').config()
+
+// valid field names and sizes
+validFields = JSON.parse(fs.readFileSync('./fieldList.json'))
+validFieldsMaxSize = 2000 // characters
 
 const uidListInitial = process.env.LDAP_UID
   ? process.env.LDAP_UID.split(',').map((k) => k.trim())
@@ -178,30 +183,48 @@ app
   })
 
   .post('/submit', (req, res) => {
-    var form = new formidable.IncomingForm()
-    form.parse(req)
-    let files = []
-    let fields = {}
-    form.on('field', (fieldName, fieldValue) => {
-      fields[fieldName] = JSON.parse(fieldValue)
-    })
-    form.on('file', function (name, file) {
-      if (files.length >= 3)
-        console.warn('ERROR in /submit: number of files more than 3')
-      else if (!fileSizePasses(file.size))
-        console.warn(
-          `ERROR in /submit: file ${name} too big (${file.size} bytes)`,
-        )
-      else if (!fileExtensionPasses(name))
-        console.warn(
-          `ERROR in /submit: unauthorized file extension in file ${name}`,
-        )
-      else files.push(file)
-    })
-    form.on('end', () => {
-      fields = unflatten(fields, { safe: true })
-      uploadData(req, res, fields, files)
-    })
+    try {
+      var form = new formidable.IncomingForm()
+      form.parse(req)
+
+      let files = []
+      let fields = {}
+      form.on('field', (fieldName, fieldValue) => {
+        if (!Object.keys(validFields).includes(fieldName)) {
+          console.warn(`ERROR: submission contains invalid field: ${fieldName}`)
+        } else if (fieldValue.length > validFieldsMaxSize) {
+          console.warn(
+            `ERROR: field ${fieldName} contains is ${fieldValue.length} chars long, max is ${validFieldsMaxSize}`,
+          )
+        } else {
+          fields[fieldName] = JSON.parse(fieldValue)
+        }
+      })
+      form.on('file', function (name, file) {
+        if (files.length >= 3)
+          console.warn('ERROR in /submit: number of files more than 3')
+        else if (!fileSizePasses(file.size))
+          console.warn(
+            `ERROR in /submit: file ${name} too big (${file.size} bytes)`,
+          )
+        else if (!fileExtensionPasses(name))
+          console.warn(
+            `ERROR in /submit: unauthorized file extension in file ${name}`,
+          )
+        else files.push(file)
+      })
+      form.on('end', () => {
+        fields = unflatten(fields, { safe: true })
+        uploadData(req, res, fields, files)
+      })
+      form.on('error', (e) => {
+        console.warn(`ERROR in formidable parsing: ${e}`)
+        res.sendStatus(500)
+      })
+    } catch (error) {
+      console.warn(`ERROR in /submit: ${error}`)
+      res.sendStatus(500)
+    }
   })
 
   .post('/submitFeedback', (req, res) => {
