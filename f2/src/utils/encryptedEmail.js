@@ -112,22 +112,23 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
 }
 
 const encryptAndSend = async (uidList, emailList, data, message) => {
-  let email
   if (uidList.length > 0 && emailList.length > 0) {
     uidList.forEach((uid, index) => {
       prepareUnencryptedReportEmail(message, data, (m) =>
         encryptMessage(uid, emailList[index], m, data, sendMail),
       )
     })
-  } else {
-    //check .env for MAIL_LOCAL var. If not found, use data from form.
-    emailList.length > 0
-      ? (email = emailList[0])
-      : (email = data.contactInfo.email)
+  } else if (process.env.MAIL_LOCAL) {
     console.warn('Encrypted Mail: No certs to encrypt with!')
     const subjectSuffix = getEmailWarning(data)
     prepareUnencryptedReportEmail(message, data, (m) =>
-      sendMail(email, m, data.reportId, subjectSuffix),
+      sendMail(process.env.MAIL_LOCAL, m, data.reportId, subjectSuffix),
+    )
+  } else {
+    console.warn('Encrypted Mail: No certs to encrypt with!')
+    const subjectSuffix = getEmailWarning(data)
+    prepareUnencryptedReportEmail(message, data, (m) =>
+      sendMail(data.contactInfo.email, m, data.reportId, subjectSuffix),
     )
   }
 }
