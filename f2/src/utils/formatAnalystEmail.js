@@ -19,6 +19,8 @@ const formatReportInfo = (data) => {
     returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${selfHarmString}</h1>`
   }
   const versionString = `${data.prodVersion} (${data.appVersion})`
+  let isAnonymous = data.anonymous.anonymous.replace('anonymousPage.', '')
+
   returnString +=
     '<h2>Report Information</h2>' +
     formatTable(
@@ -26,9 +28,11 @@ const formatReportInfo = (data) => {
         formatLineHtml('Date received:', data.submissionTime) +
         formatLineHtml('Report language:', data.language) +
         formatLineHtml('Report version:', versionString) +
+        formatLineHtml('Anonymous report:', isAnonymous) +
         formatLineHtml('Flagged:', selfHarmString),
     )
   // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
+  delete data.anonymous.anonymous
   delete data.reportId
   delete data.submissionTime
   delete data.language
@@ -80,19 +84,13 @@ const formatIncidentInformation = (data) => {
     formatLineHtml('Occurrence date:            ', occurenceString) +
     formatLineHtml('Frequency of occurrence:    ', freqString) +
     formatLineHtml('Method of communication:    ', methodOfCommsString) +
-    formatLineHtml('What could be affected:     ', affectedString) +
-    formatLineHtml(
-      'What could be affected:     ',
-      data.whatWasAffected.optionOther,
-    )
-
+    formatLineHtml('What could be affected:     ', affectedString)
   delete data.howdiditstart.startDay
   delete data.howdiditstart.startMonth
   delete data.howdiditstart.startYear
   delete data.howdiditstart.howManyTimes
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
-  delete data.whatWasAffected.optionOther
   return formatSection('Incident information', rows)
 }
 
