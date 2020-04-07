@@ -57,6 +57,8 @@ const formatVictimDetails = (data) => {
   delete data.contactInfo.fullName
   delete data.contactInfo.email
   delete data.contactInfo.phone
+  delete data.location.city
+  delete data.location.province
   delete data.location.postalCode
   delete data.consent.consentOptions
   return formatSection('Victim details', rows)
