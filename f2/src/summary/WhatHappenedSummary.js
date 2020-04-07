@@ -5,11 +5,12 @@ import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
-import { testdata, EditButton } from '../ConfirmationSummary'
+import { testdata } from '../ConfirmationSummary'
+import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { Text } from '../components/text'
 
-export const WhatHappenedSummary = props => {
+export const WhatHappenedSummary = (props) => {
   const [data] = useStateValue()
 
   const whatHappened = {
