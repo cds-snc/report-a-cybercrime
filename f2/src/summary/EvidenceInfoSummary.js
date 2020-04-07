@@ -4,11 +4,12 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex, Box } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { testdata, EditButton } from '../ConfirmationSummary'
+import { testdata } from '../ConfirmationSummary'
+import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { Text } from '../components/text'
 
-export const EvidenceInfoSummary = props => {
+export const EvidenceInfoSummary = (props) => {
   const [data] = useStateValue()
 
   const evidence = {

@@ -22,11 +22,11 @@ async function postData(url = '', data = {}) {
   // add the files to the formdata object after.
   const flattenedData = flatten(data, { safe: true })
   var form_data = new FormData()
-  Object.keys(flattenedData).forEach(key => {
+  Object.keys(flattenedData).forEach((key) => {
     form_data.append(key, JSON.stringify(flattenedData[key]))
   })
   if (data.evidence)
-    data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
+    data.evidence.files.forEach((f) => form_data.append(f.name, f, f.name))
 
   // Default options are marked with *
   const response = await fetch(url, {
@@ -45,6 +45,14 @@ const prepFormData = (formData, language) => {
   formData.appVersion = process.env.REACT_APP_VERSION
     ? process.env.REACT_APP_VERSION.slice(0, 7)
     : 'no version'
+
+  if (formData.anonymous.anonymous === 'anonymousPage.yes') {
+    formData.contactInfo = {
+      fullName: '',
+      email: '',
+      phone: '',
+    }
+  }
 
   if (
     formData.whatWasAffected &&
