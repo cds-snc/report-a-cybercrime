@@ -82,19 +82,13 @@ const formatIncidentInformation = (data) => {
     formatLineHtml('Occurrence date:            ', occurenceString) +
     formatLineHtml('Frequency of occurrence:    ', freqString) +
     formatLineHtml('Method of communication:    ', methodOfCommsString) +
-    formatLineHtml('What could be affected:     ', affectedString) +
-    formatLineHtml(
-      'What could be affected:     ',
-      data.whatWasAffected.optionOther,
-    )
-
+    formatLineHtml('What could be affected:     ', affectedString)
   delete data.howdiditstart.startDay
   delete data.howdiditstart.startMonth
   delete data.howdiditstart.startYear
   delete data.howdiditstart.howManyTimes
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
-  delete data.whatWasAffected.optionOther
   return formatSection('Incident information', rows)
 }
 
