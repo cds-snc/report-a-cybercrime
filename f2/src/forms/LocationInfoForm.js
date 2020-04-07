@@ -15,7 +15,7 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   if (
