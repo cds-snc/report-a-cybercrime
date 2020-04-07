@@ -18,14 +18,13 @@ const formatReportInfo = (data) => {
     selfHarmString = data.selfHarmWords
     returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${selfHarmString}</h1>`
   }
-  const versionString = `${data.prodVersion} (${data.appVersion})`
   returnString +=
     '<h2>Report Information</h2>' +
     formatTable(
       formatLineHtml('Report number:', data.reportId) +
         formatLineHtml('Date received:', data.submissionTime) +
         formatLineHtml('Report language:', data.language) +
-        formatLineHtml('Report version:', versionString) +
+        formatLineHtml('Report version:', data.prodVersion) +
         formatLineHtml('Flagged:', selfHarmString),
     )
   // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
