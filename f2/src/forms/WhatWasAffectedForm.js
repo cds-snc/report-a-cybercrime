@@ -11,7 +11,7 @@ import { FormArrayControl } from '../components/FormArrayControl'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Text } from '../components/text'
 
-const validate = values => {
+const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   if (!values.affectedOptions || values.affectedOptions.length < 1) {
@@ -34,17 +34,16 @@ export const whatWasAffectedPages = [
   { key: 'whatWasAffectedForm.other', url: '' },
 ]
 
-export const WhatWasAffectedForm = props => {
+export const WhatWasAffectedForm = (props) => {
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
   const whatWasAffected = {
     affectedOptions: [],
     ...data.formData.whatWasAffected,
-    optionOther: '',
   }
 
-  const affectedOptions = whatWasAffectedPages.map(page => page.key)
+  const affectedOptions = whatWasAffectedPages.map((page) => page.key)
 
   return (
     <React.Fragment>
@@ -64,7 +63,7 @@ export const WhatWasAffectedForm = props => {
 
       <Form
         initialValues={whatWasAffected}
-        onSubmit={values => {
+        onSubmit={(values) => {
           props.onSubmit(values)
         }}
         validate={validate}
@@ -91,7 +90,7 @@ export const WhatWasAffectedForm = props => {
               helperText={<Trans id="whatWasAffectedForm.optionsHelpText" />}
               errorMessage={<Trans id="whatWasAffectedForm.warning" />}
             >
-              {affectedOptions.map(key => {
+              {affectedOptions.map((key) => {
                 return (
                   <React.Fragment key={key}>
                     <CheckboxAdapter
