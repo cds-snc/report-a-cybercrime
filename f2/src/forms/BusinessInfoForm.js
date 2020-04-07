@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
+import React from 'react'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Field } from 'react-final-form'
@@ -9,12 +10,9 @@ import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
+import { Input } from '../components/input'
 
-export const BusinessInfoForm = props => {
-  const localOnSubmit = data => {
-    props.onSubmit(data)
-  }
-
+export const BusinessInfoForm = ({ onSubmit }) => {
   const [data] = useStateValue()
   let { businessInfo } = data.formData
   businessInfo = {
@@ -22,39 +20,31 @@ export const BusinessInfoForm = props => {
     ...businessInfo,
   }
   return (
-    <Form
-      initialValues={businessInfo}
-      onSubmit={data => localOnSubmit(data)}
-      render={({ handleSubmit }) => (
-        <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-          <Field name="business">
-            {props => (
-              <FormControl>
-                <FormLabel htmlFor="business">
-                  <Trans id="businessPage.business" />
-                </FormLabel>
-                <FormHelperText>
-                  <Trans id="businessPage.businessExample">
-                    <VisuallyHidden as="span" />
-                  </Trans>
-                </FormHelperText>
-                <TextArea
-                  id="business"
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
-                />
-              </FormControl>
-            )}
-          </Field>
+    <React.Fragment>
+      <Form
+        initialValues={businessInfo}
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <Stack
+            as="form"
+            onSubmit={handleSubmit}
+            shouldWrapChildren
+            spacing={6}
+          >
+            <Field
+              name="nameOfBusiness"
+              label={<Trans id="businessPage.nameOfBusiness" />}
+              component={Input}
+            />
 
-          <NextAndCancelButtons
-            next={<Trans id="businessInfoPage.nextPage" />}
-            button={<Trans id="businessInfoPage.nextButton" />}
-          />
-        </Stack>
-      )}
-    />
+            <NextAndCancelButtons
+              next={<Trans id="businessInfoPage.nextPage" />}
+              button={<Trans id="businessInfoPage.nextButton" />}
+            />
+          </Stack>
+        )}
+      />
+    </React.Fragment>
   )
 }
 
