@@ -2,6 +2,8 @@
 
 const { formatDate } = require('./formatDate')
 
+const unCamel = (text) => text.replace(/([A-Z])/g, ' $1').toLowerCase()
+
 const formatLineHtml = (label, text) =>
   text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
 
@@ -70,15 +72,15 @@ const formatIncidentInformation = (data) => {
     data.howdiditstart.startMonth,
     data.howdiditstart.startYear,
   )
-  const freqString = data.howdiditstart.howManyTimes.replace(
-    'howManyTimes.',
-    '',
+  const freqString = unCamel(
+    data.howdiditstart.howManyTimes.replace('howManyTimes.', ''),
   )
+
   const methodOfCommsString = data.howdiditstart.howDidTheyReachYou
-    .map((how) => how.replace('howDidTheyReachYou.', ''))
+    .map((how) => unCamel(how.replace('howDidTheyReachYou.', '')))
     .join(', ')
   const affectedString = data.whatWasAffected.affectedOptions
-    .map((option) => option.replace('whatWasAffectedForm.', ''))
+    .map((option) => unCamel(option.replace('whatWasAffectedForm.', '')))
     .filter((option) => option !== 'other')
     .join(', ')
 
@@ -98,7 +100,7 @@ const formatIncidentInformation = (data) => {
 
 const formatNarrative = (data) => {
   const infoReqString = data.personalInformation.typeOfInfoReq
-    .map((info) => info.replace('typeOfInfoReq.', ''))
+    .map((info) => unCamel(info.replace('typeOfInfoReq.', '')))
     .map((info) =>
       info === 'other' &&
       data.personalInformation.infoReqOther &&
@@ -109,7 +111,7 @@ const formatNarrative = (data) => {
     .join(', ')
 
   const infoObtainedString = data.personalInformation.typeOfInfoObtained
-    .map((info) => info.replace('typeOfInfoObtained.', ''))
+    .map((info) => unCamel(info.replace('typeOfInfoObtained.', '')))
     .map((info) =>
       info === 'other' &&
       data.personalInformation.infoObtainedOther &&
@@ -185,7 +187,7 @@ const formatFinancialTransactions = (data) => {
 
   const paymentString = methods
     .filter((method) => method !== 'methodPayment.other')
-    .map((method) => method.replace('methodPayment.', ''))
+    .map((method) => unCamel(method.replace('methodPayment.', '')))
     .join(', ')
 
   const transactionDate = formatDate(
