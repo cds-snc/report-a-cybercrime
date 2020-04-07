@@ -15,6 +15,7 @@ import { Stack, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { Well } from './components/Messages'
+import { CovidWell } from './Covid19Page'
 
 export const LandingPage = (props) => {
   const { i18n } = useLingui()
@@ -26,6 +27,7 @@ export const LandingPage = (props) => {
     <Route
       render={({ history }) => (
         <Page>
+          <CovidWell />
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
               <H1>
