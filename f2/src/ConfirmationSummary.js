@@ -33,7 +33,6 @@ export const testdata = {
     },
     whatWasAffected: {
       affectedOptions: [],
-      optionOther: '',
     },
     moneyLost: {
       demandedMoney: '',
@@ -107,7 +106,9 @@ export const ConfirmationSummary = () => {
         <SuspectCluesSummary />
         <EvidenceInfoSummary />
         <LocationInfoSummary />
-        <ContactInfoSummary />
+        {data.formData.anonymous.anonymous !== 'anonymousPage.yes' ? (
+          <ContactInfoSummary />
+        ) : null}
       </Stack>
     </React.Fragment>
   )
