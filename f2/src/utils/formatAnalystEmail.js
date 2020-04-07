@@ -46,11 +46,13 @@ const formatVictimDetails = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml('Name:             ', data.contactInfo.fullName) +
-    formatLineHtml('Email:            ', data.contactInfo.email) +
-    formatLineHtml('Phone number:     ', data.contactInfo.phone) +
-    formatLineHtml('Postal code:      ', data.location.postalCode) +
-    formatLineHtml('Consent:          ', consentString)
+    formatLineHtml('Name:', data.contactInfo.fullName) +
+    formatLineHtml('Email:', data.contactInfo.email) +
+    formatLineHtml('Phone number:', data.contactInfo.phone) +
+    formatLineHtml('City:', data.location.city) +
+    formatLineHtml('Province:', data.location.province) +
+    formatLineHtml('Postal code:', data.location.postalCode) +
+    formatLineHtml('Consent:', consentString)
 
   delete data.contactInfo.fullName
   delete data.contactInfo.email
@@ -82,19 +84,13 @@ const formatIncidentInformation = (data) => {
     formatLineHtml('Occurrence date:            ', occurenceString) +
     formatLineHtml('Frequency of occurrence:    ', freqString) +
     formatLineHtml('Method of communication:    ', methodOfCommsString) +
-    formatLineHtml('What could be affected:     ', affectedString) +
-    formatLineHtml(
-      'What could be affected:     ',
-      data.whatWasAffected.optionOther,
-    )
-
+    formatLineHtml('What could be affected:     ', affectedString)
   delete data.howdiditstart.startDay
   delete data.howdiditstart.startMonth
   delete data.howdiditstart.startYear
   delete data.howdiditstart.howManyTimes
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
-  delete data.whatWasAffected.optionOther
   return formatSection('Incident information', rows)
 }
 
