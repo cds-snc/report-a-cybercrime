@@ -74,7 +74,7 @@ const prepFormData = (formData, language) => {
   if (
     formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
-      'whatWasAffectedForm.personal_information',
+      'whatWasAffectedForm.personalInformation',
     )
   ) {
     formData.personalInformation = {

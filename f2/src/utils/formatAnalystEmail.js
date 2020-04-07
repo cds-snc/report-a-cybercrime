@@ -5,7 +5,7 @@ const { formatDate } = require('./formatDate')
 const unCamel = (text) => text.replace(/([A-Z])/g, ' $1').toLowerCase()
 
 const formatLineHtml = (label, text) =>
-  text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
+  text && text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
 
 const formatTable = (rows) => `<table><tbody>\n${rows}</tbody></table>\n\n`
 

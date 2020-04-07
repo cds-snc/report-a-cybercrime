@@ -26,7 +26,7 @@ export const whatWasAffectedPages = [
     url: 'moneylost',
   },
   {
-    key: 'whatWasAffectedForm.personal_information',
+    key: 'whatWasAffectedForm.personalInformation',
     url: 'information',
   },
   { key: 'whatWasAffectedForm.devices', url: 'devices' },
@@ -50,12 +50,12 @@ export const WhatWasAffectedForm = (props) => {
       {false ? ( // mark ids for lingui
         <div>
           <Trans id="whatWasAffectedForm.financial" />
-          <Trans id="whatWasAffectedForm.personal_information" />
+          <Trans id="whatWasAffectedForm.personalInformation" />
           <Trans id="whatWasAffectedForm.devices" />
           <Trans id="whatWasAffectedForm.business_assets" />
           <Trans id="whatWasAffectedForm.other" />
           <Trans id="whatWasAffectedForm.financial.example" />
-          <Trans id="whatWasAffectedForm.personal_information.example" />
+          <Trans id="whatWasAffectedForm.personalInformation.example" />
           <Trans id="whatWasAffectedForm.devices.example" />
           <Trans id="whatWasAffectedForm.business_assets.example" />
         </div>
