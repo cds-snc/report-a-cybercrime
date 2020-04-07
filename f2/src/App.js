@@ -19,7 +19,7 @@ import TagManager from 'react-gtm-module'
 
 const gitsha = process.env.REACT_APP_VERSION
   ? process.env.REACT_APP_VERSION.slice(0, 7)
-  : '000000'
+  : 'no hash available'
 
 const tagManagerArgs = {
   gtmId: process.env.REACT_APP_GOOGLE_GTM_ID,
@@ -78,7 +78,7 @@ const App = () => {
 
             <Layout>
               <P fontSize="sm" my={3} aria-label="application version">
-                {`Version: ${initialState.formData.prodVersion} (GitHub ${gitsha})`}
+                {`Version: ${initialState.formData.prodVersion} (GitHub: ${gitsha})`}
               </P>
             </Layout>
           </Stack>
