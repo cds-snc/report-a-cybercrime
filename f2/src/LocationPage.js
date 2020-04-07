@@ -9,6 +9,7 @@ import { LocationAnonymousInfoForm } from './forms/LocationAnonymousInfoForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { formatPostalCode } from './utils/formatPostalCode'
 import { Page } from './components/Page'
 
 export const LocationPage = () => {
@@ -38,6 +39,7 @@ export const LocationPage = () => {
               ) : (
                 <LocationInfoForm
                   onSubmit={(data) => {
+                    data.postalCode = formatPostalCode(data.postalCode)
                     dispatch({ type: 'saveFormData', data: { location: data } })
                     history.push(doneForms ? '/confirmation' : '/contactinfo')
                   }}
