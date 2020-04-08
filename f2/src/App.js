@@ -78,7 +78,7 @@ const App = () => {
 
             <Layout>
               <P fontSize="sm" my={3} aria-label="application version">
-                {`Version: ${initialState.formData.prodVersion} (GitHub: ${gitsha})`}
+                {`Version: ${initialState.formData.prodVersion} (commit: ${gitsha})`}
               </P>
             </Layout>
           </Stack>
