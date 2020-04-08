@@ -113,8 +113,8 @@ app.get('/', async function (req, res, next) {
     console.warn('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalez')
-        ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
-        : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
+        ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
+        : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
     // temporary debugging code
