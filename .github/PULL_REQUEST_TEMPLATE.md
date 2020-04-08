@@ -7,7 +7,7 @@ Fixes #(issue)
 # Did you add or change any fields in the report data?
 
 - [ ] Update the confirmation page code so that the new fields appear there.
-- [ ] Run `utils/extractFields.js` on a `/submit` network curl command to create the new `f2/fieldList.json` file for field validation.
+- [ ] Run `npm run extract-fields` using a `/submit` network curl command to create the new `f2/fieldList.json` file for field validation (see the README for more details).
 - [ ] Update `formatAnalystEmail.js` to use the new fields.
 - [ ] Run the app using `npm run prod` and ensure that both the confirmation page and the report email contains data entered into the new or changed fields. Also ensure that the server does not log any errors on submission.
 

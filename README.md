@@ -133,6 +133,14 @@ docker build -t rac .
 docker run -p 3000:3000 rac
 ```
 
+## Adding or changing fields
+
+The app contains a list of fields that are used for validation (unknown fields are dropped). If you change or add fields this list must be regenerated.
+
+- Run `npm run prod`, and go through the app with the developer tools network tab open.
+- After submission, save the `/submit` request as a curl command (to the clipboard).
+- Run `npm run extract-fields` and paste in the curl command. This should save the new ``f2/fieldList.json` file.
+
 ## Load testing the frontend
 
 There are simple scripts to load test the frontend. They use the [k6](https://docs.k6.io) package, which must first be installed (see (https://docs.k6.io/docs/installation)
