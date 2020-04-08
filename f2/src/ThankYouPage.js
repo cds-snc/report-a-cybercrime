@@ -37,11 +37,15 @@ export const ThankYouPage = () => {
   } else if (reportId.startsWith('NCFRS-')) {
     thankYouMessage = (
       <Trans id="thankYouPage.referenceNumber" values={{ reference: reportId }}>
-        <Text as="span" d="block" id="NCFRS" />
+        <Text as="span" d="block" id="NCFRS"/>
       </Trans>
     )
   } else {
-    thankYouMessage = <Trans id="thankYouPage.reportSubmissionError" />
+    thankYouMessage =  (
+    <Text as="span" d="block" fontSize="xl" color="red.700" id="NCFRSError" aria-live="assertive">
+      <Trans id="thankYouPage.reportSubmissionError" />
+    </Text>
+    )
   }
 
   return (
