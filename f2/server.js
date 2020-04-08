@@ -92,7 +92,7 @@ async function save(data, res) {
   encryptAndSend(uidList, emailList, data, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
-    sendConfirmation(data.contactInfo.email, data.reportId)
+    sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
   saveRecord(data, res)
 }
@@ -113,8 +113,8 @@ app.get('/', async function (req, res, next) {
     console.warn('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalez')
-        ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
-        : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
+        ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
+        : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
     // temporary debugging code
@@ -223,7 +223,7 @@ app
   })
 
 // uncomment to allow direct loading of arbitrary pages
-// .get('/*', function(_req, res) {
+// .get('/*', function (_req, res) {
 //   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 // })
 
