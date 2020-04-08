@@ -5,10 +5,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { TextArea } from '../components/text-area'
-import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
-import { FormLabel } from '../components/FormLabel'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
@@ -59,13 +56,19 @@ export const BusinessInfoForm = ({ onSubmit }) => {
               label={<Trans id="businessPage.numberOfEmployee" />}
               helperText={<Trans id="businessPage.numberOfEmployeeExample" />}
             >
-              <RadioAdapter name="check" value="value1">
+              <RadioAdapter name="numberOfEmployee" value="1 to 99 employees">
                 1 to 99 employees
               </RadioAdapter>
-              <RadioAdapter name="check" value="value2">
+              <RadioAdapter
+                name="numberOfEmployee"
+                value=" 100 to 499 employees"
+              >
                 100 to 499 employees
               </RadioAdapter>
-              <RadioAdapter name="check" value="value3">
+              <RadioAdapter
+                name="numberOfEmployee"
+                value=" 500 employees or more"
+              >
                 500 employees or more
               </RadioAdapter>
             </FormArrayControl>
