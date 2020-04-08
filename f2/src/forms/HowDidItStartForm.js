@@ -64,14 +64,14 @@ const validate = (values) => {
   }
   // validate if the date in different month  match the calendar
   var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-  if (values.startMonth == 1 || values.startMonth > 2) {
+  if (values.startMonth === 1 || values.startMonth > 2) {
     if (values.startDay > ListofDays[values.startMonth - 1]) {
       errors.whenDidItStart = 'whenDidItStart.startDate.warning'
       errors.startDay = true
     }
   }
   //validate if the dayin Feb can't be >29 in leap year, the day in Feb can't be >28 in non-leap year
-  if (values.startMonth == 2) {
+  if (values.startMonth === 2) {
     var lyear = false
     if (
       (!(values.startYear % 4) && values.startYear % 100) ||
@@ -79,11 +79,11 @@ const validate = (values) => {
     ) {
       lyear = true
     }
-    if (lyear == false && values.startDay >= 29) {
+    if (lyear === false && values.startDay >= 29) {
       errors.whenDidItStart = 'whenDidItStart.startDate.warning'
       errors.startDay = true
     }
-    if (lyear == true && values.startDay > 29) {
+    if (lyear === true && values.startDay > 29) {
       errors.whenDidItStart = 'whenDidItStart.startDate.warning'
       errors.startDay = true
     }
