@@ -1,6 +1,5 @@
 import React from 'react'
 import 'core-js'
-import 'details-element-polyfill'
 import { I18nProvider } from '@lingui/react'
 import { i18n } from '@lingui/core'
 import ReactDOM from 'react-dom'
