@@ -106,33 +106,10 @@ export const Covid19Page = () => {
 export const CovidWell = (props) => {
   return (
     <Layout mb={10} columns={{ base: 4 / 4, lg: 9 / 12, xl: 7 / 12 }}>
-      <Well p={0} as="details" listStyle="none" variantColor="yellow">
-        <PseudoBox
-          p={4}
-          rounded="5px"
-          fontWeight="bold"
-          fontSize={['lg', null, 'xl', null]}
-          lineHeight={1.5}
-          fontFamily="body"
-          color="black"
-          d="block"
-          as="summary"
-          _focus={{
-            outline: 'none',
-            boxShadow: `0 0 0 4px ${canada.colors.yellow[600]}`,
-          }}
-        >
-          <Trans id="covid19.title" />
-        </PseudoBox>
-        <Box p={4}>
-          <P>
-            <Trans id="covid19.report" />
-          </P>
-          <Link fontWeight="bold" color="yellow.900" to="/covid-19">
-            <Trans id="covid19.know" />
-            <Icon name="chevron-right" />
-          </Link>
-        </Box>
+      <Well variantColor="yellow">
+        <Link to="/covid-19" color="yellow.900">
+          <Trans id="covid19.know" />
+        </Link>
       </Well>
     </Layout>
   )
