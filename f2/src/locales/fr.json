@@ -378,5 +378,5 @@
   "whenDidItStart.startMonth": "Mois",
   "whenDidItStart.startMonth.warning": "La date de l'incident doit comprendre un vrai mois",
   "whenDidItStart.startYear": "Année",
-  "whenDidItStart.startYear.warning": "La date de l'incident doit comprendre un vrai année"
+  "whenDidItStart.startYear.warning": "La date de l'incident doit comprendre une vrai année"
 }
