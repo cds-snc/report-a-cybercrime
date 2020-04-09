@@ -393,5 +393,5 @@
   "whenDidItStart.startMonth": "Mois",
   "whenDidItStart.startMonth.warning": "La date de l'incident doit comprendre un vrai mois",
   "whenDidItStart.startYear": "Année",
-  "whenDidItStart.startYear.warning": "L'année de la date de l'incident doit comprendre quatre chiffres"
+  "whenDidItStart.startYear.warning": "La date de l'incident doit comprendre une vrai année"
 }
