@@ -20,7 +20,10 @@
     "NOTIFY_API_BASE_URL": {
       "required": true
     },
-    "NOTIFY_CONFIRMATION_TEMPLATE_ID": {
+    "NOTIFY_ENGLISH_CONFIRMATION_TEMPLATE_ID": {
+      "required": true
+    },
+    "NOTIFY_FRENCH_CONFIRMATION_TEMPLATE_ID": {
       "required": true
     },
     "MAIL_HOST": {

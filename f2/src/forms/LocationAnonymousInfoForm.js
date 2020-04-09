@@ -10,6 +10,8 @@ import { Field } from '../components/Field'
 import { Input } from '../components/input'
 
 const defaultLocation = {
+  city: '',
+  province: '',
   postalCode: '',
 }
 
@@ -34,12 +36,12 @@ export const LocationAnonymousInfoForm = (props) => {
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
           <Field
-            name="City"
-            label={<Trans id="LocationAnonymousInfoForm.City" />}
+            name="city"
+            label={<Trans id="LocationAnonymousInfoForm.city" />}
             component={Input}
           />
           <Field
-            name="Province"
+            name="province"
             label={<Trans id="LocationAnonymousInfoForm.province" />}
             component={Input}
           />

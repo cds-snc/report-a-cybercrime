@@ -3,8 +3,6 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { withProps } from 'recompose'
-import { EditButton as EditButtonAlias } from './components/EditButton'
 import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
@@ -33,7 +31,6 @@ export const testdata = {
     },
     whatWasAffected: {
       affectedOptions: [],
-      optionOther: '',
     },
     moneyLost: {
       demandedMoney: '',
@@ -69,11 +66,6 @@ export const testdata = {
   },
 }
 
-// TODO: Moved the EditButton into the components folder.
-// All summary blocks are still importing EditButton from this file.
-// Leaving this here as an alias.
-export const EditButton = withProps({})(EditButtonAlias)
-
 export const ConfirmationSummary = () => {
   const [data, dispatch] = useStateValue()
   const impact = {
@@ -94,7 +86,7 @@ export const ConfirmationSummary = () => {
           <MoneyLostInfoSummary />
         )}
         {impact.affectedOptions.includes(
-          'whatWasAffectedForm.personal_information',
+          'whatWasAffectedForm.personalInformation',
         ) && <InformationSummary />}
         {impact.affectedOptions.includes('whatWasAffectedForm.devices') && (
           <DevicesSummary />
@@ -107,7 +99,9 @@ export const ConfirmationSummary = () => {
         <SuspectCluesSummary />
         <EvidenceInfoSummary />
         <LocationInfoSummary />
-        <ContactInfoSummary />
+        {data.formData.anonymous.anonymous !== 'anonymousPage.yes' ? (
+          <ContactInfoSummary />
+        ) : null}
       </Stack>
     </React.Fragment>
   )
