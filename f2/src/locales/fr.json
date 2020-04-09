@@ -337,7 +337,7 @@
   "transactionDate.errorMessage": "La date de transaction doit être dans le passé",
   "transactionDate.startDate.warning": "La date de transaction doit comprendre un vrai jour",
   "transactionDate.startMonth.warning": "La date de transaction doit comprendre un vrai mois",
-  "transactionDate.startYear.warning": "L'année de la date de transaction doit comprendre quatre chiffres",
+  "transactionDate.startYear.warning": "La date de transaction doit comprendre une vrai année",
   "typeOfInfoObtained.creditCard": "Informations sur la carte de crédit ou informations bancaires",
   "typeOfInfoObtained.dob": "Date de naissance",
   "typeOfInfoObtained.homeAddress": "Adresse du domicile",

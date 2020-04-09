@@ -337,7 +337,7 @@
   "transactionDate.errorMessage": "Transaction date must be in the past",
   "transactionDate.startDate.warning": "Transaction date must contain a real day",
   "transactionDate.startMonth.warning": "Transaction date must contain a real month",
-  "transactionDate.startYear.warning": "Transaction date year must contain four digits",
+  "transactionDate.startYear.warning": "Transaction date must contain a real year",
   "typeOfInfoObtained.creditCard": "Bank or credit card information",
   "typeOfInfoObtained.dob": "Date of birth",
   "typeOfInfoObtained.homeAddress": "Home address",

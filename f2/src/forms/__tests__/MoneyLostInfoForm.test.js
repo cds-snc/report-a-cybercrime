@@ -13,7 +13,79 @@ import { MoneyLostInfoForm } from '../MoneyLostInfoForm'
 i18n.load('en', { en })
 i18n.activate('en')
 
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
+describe('validation', () => {
+  afterEach(cleanup)
+
+  it('passes correct transaction day', () => {
+    expect(validate({ transactionDay: '1' }).transactionDay).toBeUndefined()
+    expect(validate({ transactionDay: '01' }).transactionDay).toBeUndefined()
+    expect(validate({ transactionDay: '20' }).transactionDay).toBeUndefined()
+    expect(validate({ transactionDay: '28' }).transactionDay).toBeUndefined()
+  })
+
+  it('fails incorrect transaction day', () => {
+    expect(validate({ transactionDay: '0' }).transactionDay).not.toBeUndefined()
+    expect(
+      validate({ transactionDay: '00' }).transactionDay,
+    ).not.toBeUndefined()
+    expect(
+      validate({ transactionDay: '32' }).transactionDay,
+    ).not.toBeUndefined()
+  })
+
+  it('passes correct transaction month', () => {
+    expect(validate({ transactionMonth: '1' }).transactionMonth).toBeUndefined()
+    expect(
+      validate({ transactionMonth: '01' }).transactionMonth,
+    ).toBeUndefined()
+    expect(
+      validate({ transactionMonth: '12' }).transactionMonth,
+    ).toBeUndefined()
+    expect(
+      validate({ transactionMonth: '08' }).transactionMonth,
+    ).toBeUndefined()
+  })
+
+  it('fails incorrect transaction month', () => {
+    expect(
+      validate({ transactionMonth: '0' }).transactionMonth,
+    ).not.toBeUndefined()
+    expect(
+      validate({ transactionMonth: '00' }).transactionMonth,
+    ).not.toBeUndefined()
+    expect(
+      validate({ transactionMonth: '13' }).transactionMonth,
+    ).not.toBeUndefined()
+  })
+
+  it('passes correct transaction year', () => {
+    expect(
+      validate({ transactionYear: '1900' }).transactionYear,
+    ).toBeUndefined()
+    expect(
+      validate({ transactionYear: '2020' }).transactionYear,
+    ).toBeUndefined()
+    expect(
+      validate({ transactionYear: '0001' }).transactionYear,
+    ).toBeUndefined()
+  })
+
+  it('fails incorrect transaction year', () => {
+    expect(
+      validate({ transactionYear: '000' }).transactionYear,
+    ).not.toBeUndefined()
+    expect(
+      validate({ transactionYear: '0000' }).transactionYear,
+    ).not.toBeUndefined()
+    expect(
+      validate({ transactionYear: '202' }).transactionYear,
+    ).not.toBeUndefined()
+    expect(
+      validate({ transactionYear: '20' }).transactionYear,
+    ).not.toBeUndefined()
+  })
+})
 
 describe('<LocationInfoForm />', () => {
   afterEach(cleanup)

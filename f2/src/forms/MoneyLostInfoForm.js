@@ -16,22 +16,28 @@ import { Field } from '../components/Field'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
-
-const validate = (values) => {
+//change to validate funtion for test requirment
+export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
-  // if it has a value AND this value is a number below 31
+  // if it has a value AND this value is a number over 31, or value is 0
   if (
     values.transactionDay &&
-    (isNaN(values.transactionDay) || values.transactionDay > 31)
+    (isNaN(values.transactionDay) ||
+      values.transactionDay > 31 ||
+      values.transactionDay === '0' ||
+      values.transactionDay === '00')
   ) {
     errors.transactionDate = 'transactionDate.startDate.warning'
     errors.transactionDay = true
   }
-  // if it has a value AND this value is a number below 12
+  // if it has a value AND this value is a number over 12
   if (
     values.transactionMonth &&
-    (isNaN(values.transactionMonth) || values.transactionMonth > 12)
+    (isNaN(values.transactionMonth) ||
+      values.transactionMonth > 12 ||
+      values.transactionMonth === '0' ||
+      values.transactionMonth === '00')
   ) {
     errors.transactionDate = 'transactionDate.startMonth.warning'
     errors.transactionMonth = true
@@ -39,7 +45,9 @@ const validate = (values) => {
   // if it has a value AND year is a number containing 4 digits
   if (
     values.transactionYear &&
-    (isNaN(values.transactionYear) || values.transactionYear.length !== 4)
+    (isNaN(values.transactionYear) ||
+      values.transactionYear.length !== 4 ||
+      values.transactionYear === '0000')
   ) {
     errors.transactionDate = 'transactionDate.startYear.warning'
     errors.transactionYear = true
@@ -59,7 +67,32 @@ const validate = (values) => {
     errors.transactionMonth = true
     errors.transactionYear = true
   }
-
+  // validate if the date in different month  match the calendar
+  var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  if (values.transactionMonth === 1 || values.transactionMonth > 2) {
+    if (values.transactionDay > ListofDays[values.transactionMonth - 1]) {
+      errors.transactionDate = 'transactionDate.startDate.warning'
+      errors.transactionDay = true
+    }
+  }
+  //validate if the dayin Feb can't be >29 in leap year, the day in Feb can't be >28 in non-leap year
+  if (values.transactionMonth === 2) {
+    var lyear = false
+    if (
+      (!(values.transactionYear % 4) && values.transactionYear % 100) ||
+      !(values.transactionYear % 400)
+    ) {
+      lyear = true
+    }
+    if (lyear === false && values.transactionDay >= 29) {
+      errors.transactionDate = 'transactionDate.startDate.warning'
+      errors.transactionDay = true
+    }
+    if (lyear === true && values.transactionDay > 29) {
+      errors.transactionDate = 'transactionDate.startDate.warning'
+      errors.transactionDay = true
+    }
+  }
   return errors
 }
 
