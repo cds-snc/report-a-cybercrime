@@ -85,8 +85,72 @@ describe('validation', () => {
       validate({ transactionYear: '20' }).transactionYear,
     ).not.toBeUndefined()
   })
-})
 
+  it('pass correct transaction date in Leap year', () => {
+    expect(
+      validate({
+        transactionDay: '29',
+        transactionMonth: '2',
+        transactionYear: '2020',
+      }).transactionDay,
+    ).toBeUndefined()
+    expect(
+      validate({
+        transactionDay: '29',
+        transactionMonth: '02',
+        transactionYear: '2016',
+      }).transactionDay,
+    ).toBeUndefined()
+  })
+  it('fails incorrect transaction date in Leap year', () => {
+    expect(
+      validate({
+        transactionDay: '30',
+        transactionMonth: '2',
+        transactionYear: '2020',
+      }).transactionDay,
+    ).not.toBeUndefined()
+    expect(
+      validate({
+        transactionDay: '30',
+        transactionMonth: '2',
+        transactionYear: '2016',
+      }).transactionDay,
+    ).not.toBeUndefined()
+  })
+  it('pass correct transaction date in non-Leap year', () => {
+    expect(
+      validate({
+        transactionDay: '28',
+        transactionMonth: '2',
+        transactionYear: '2017',
+      }).transactionDay,
+    ).toBeUndefined()
+    expect(
+      validate({
+        transactionDay: '28',
+        transactionMonth: '02',
+        transactionYear: '2017',
+      }).transactionDay,
+    ).toBeUndefined()
+  })
+  it('fails incorrect transaction date in non-Leap year', () => {
+    expect(
+      validate({
+        transactionDay: '29',
+        transactionMonth: '2',
+        transactionYear: '2017',
+      }).transactionDay,
+    ).not.toBeUndefined()
+    expect(
+      validate({
+        transactionDay: '29',
+        transactionMonth: '2',
+        transactionYear: '2017',
+      }).transactionDay,
+    ).not.toBeUndefined()
+  })
+})
 describe('<LocationInfoForm />', () => {
   afterEach(cleanup)
 
