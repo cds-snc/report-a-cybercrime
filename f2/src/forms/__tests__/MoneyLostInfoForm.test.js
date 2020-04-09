@@ -8,7 +8,7 @@ import { I18nProvider } from '@lingui/react'
 import en from '../../locales/en.json'
 import canada from '../../theme/canada'
 import { StateProvider, initialState, reducer } from '../../utils/state'
-import { MoneyLostInfoForm } from '../MoneyLostInfoForm'
+import { validate, MoneyLostInfoForm } from '../MoneyLostInfoForm'
 
 i18n.load('en', { en })
 i18n.activate('en')
