@@ -73,16 +73,11 @@ export const validate = (values) => {
     if (values.transactionDay > ListofDays[values.transactionMonth - 1]) {
       errors.transactionDate = 'transactionDate.startDate.warning'
       errors.transactionDay = true
-      // return false
     }
-    // return true
   }
   //validate if the dayin Feb can't be >29 in leap year, the day in Feb can't be >28 in non-leap year
   if (values.transactionMonth === '2' || values.transactionMonth === '02') {
     var lyear = false
-    // if (
-    //   ((values.transactionYear % 4) && !(values.transactionYear % 100) ) ||
-    //   (values.transactionYear % 400)
     if (
       (!(values.transactionYear % 4) && values.transactionYear % 100) ||
       !(values.transactionYear % 400)
@@ -92,15 +87,12 @@ export const validate = (values) => {
     if (lyear === false && values.transactionDay >= 29) {
       errors.transactionDate = 'transactionDate.startDate.warning'
       errors.transactionDay = true
-      // return false
     }
     if (lyear === true && values.transactionDay > 29) {
       errors.transactionDate = 'transactionDate.startDate.warning'
       errors.transactionDay = true
-      // return false
     }
   }
-
   return errors
 }
 
