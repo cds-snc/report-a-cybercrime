@@ -7,13 +7,14 @@ import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
 import { formatDate } from '../utils/formatDate'
-import { testdata, EditButton } from '../ConfirmationSummary'
+import { testdata } from '../ConfirmationSummary'
+import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 import { formatList } from '../utils/formatList'
 
-export const HowDidItStartSummary = props => {
+export const HowDidItStartSummary = (props) => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
   const summary = []
@@ -26,7 +27,7 @@ export const HowDidItStartSummary = props => {
 
   if (howdiditstart.howDidTheyReachYou.length > 0) {
     //Obtain all the array data into the summary array
-    howdiditstart.howDidTheyReachYou.map(key =>
+    howdiditstart.howDidTheyReachYou.map((key) =>
       summary.push(
         key === 'howDidTheyReachYou.others' && howdiditstart.others !== ''
           ? howdiditstart.others

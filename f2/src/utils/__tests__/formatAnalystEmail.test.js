@@ -10,7 +10,10 @@ describe('formatAnalystEmail', () => {
   })
 
   it('flags self harm words prominently if present', () => {
-    const data = { selfHarmWords: 'agile' }
+    const data = {
+      selfHarmWords: 'agile',
+      anonymous: { anonymous: 'anonymousPage.no' },
+    }
     console.error = jest.fn()
     const s = formatAnalystEmail(data)
     expect(s).toEqual(

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
 const helmet = require('helmet')
+const { unflatten } = require('flat')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
@@ -32,7 +33,7 @@ var limiter = new RateLimit({
 require('dotenv').config()
 
 const uidListInitial = process.env.LDAP_UID
-  ? process.env.LDAP_UID.split(',').map(k => k.trim())
+  ? process.env.LDAP_UID.split(',').map((k) => k.trim())
   : []
 
 // certs and emails can be fetched in different order than the original uidListInitial
@@ -72,7 +73,16 @@ async function initializeAvailableData() {
     lastRequested: undefined,
   }
 }
+const allowedReferrers = [
+  'antifraudcentre-centreantifraude.ca',
+  'centreantifraude-antifraudcentre.ca',
+  'antifraudcentre.ca',
+  'centreantifraude.ca',
+]
+
 initializeAvailableData()
+
+let debuggingCounter = 0
 
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
@@ -82,7 +92,7 @@ async function save(data, res) {
   encryptAndSend(uidList, emailList, data, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
-    sendConfirmation(data.contactInfo.email, data.reportId)
+    sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
   saveRecord(data, res)
 }
@@ -97,18 +107,38 @@ const uploadData = async (req, res, fields, files) => {
   contentModeratorFiles(data, () => save(data, res))
 }
 
-app.get('/', async function(req, res, next) {
+app.get('/', async function (req, res, next) {
   availableData.numberOfSubmissions = await getReportCount()
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
     console.warn('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalez')
-        ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
-        : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
+        ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
+        : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
-    availableData.numberOfRequests += 1
-    availableData.lastRequested = new Date()
+    // temporary debugging code
+    if (debuggingCounter < 20) {
+      debuggingCounter += 1
+      console.info('DEBUGGING Request Headers & IP:')
+      console.info(req.headers)
+      console.info(req.ip)
+      console.info(req.ips)
+      console.info(req.originalUrl)
+      console.info('DEBUGGING Request Headers & IP end')
+    }
+    // temporary debugging code
+
+    var referrer = req.headers.referer
+    console.log('Referrer:' + referrer)
+    if (
+      referrer !== undefined &&
+      allowedReferrers.indexOf(new URL(referrer).host.toLowerCase()) > -1
+    ) {
+      availableData.numberOfRequests += 1
+      availableData.lastRequested = new Date()
+    }
+    console.log(`New Request. ${JSON.stringify(availableData)}`)
     next()
   }
 })
@@ -116,7 +146,7 @@ app
   .use(limiter)
   .use(express.static(path.join(__dirname, 'build')))
   .use(bodyParser.json())
-  .use(function(req, res, next) {
+  .use(function (req, res, next) {
     var origin = req.headers.origin
     // Can only set one value of Access-Control-Allow-Origin, so we need some code to set it dynamically
     if (
@@ -132,15 +162,15 @@ app
     next()
   })
 
-  .get('/ping', function(_req, res) {
+  .get('/ping', function (_req, res) {
     return res.send('pong')
   })
 
-  .get('/available', function(_req, res) {
+  .get('/available', function (_req, res) {
     res.json({ acceptingReports: isAvailable(availableData) })
   })
 
-  .get('/stats', function(_req, res) {
+  .get('/stats', function (_req, res) {
     res.json({
       acceptingReports: isAvailable(availableData),
       ...availableData,
@@ -153,9 +183,9 @@ app
     let files = []
     let fields = {}
     form.on('field', (fieldName, fieldValue) => {
-      fields[fieldName] = fieldValue
+      fields[fieldName] = JSON.parse(fieldValue)
     })
-    form.on('file', function(name, file) {
+    form.on('file', function (name, file) {
       if (files.length >= 3)
         console.warn('ERROR in /submit: number of files more than 3')
       else if (!fileSizePasses(file.size))
@@ -169,6 +199,7 @@ app
       else files.push(file)
     })
     form.on('end', () => {
+      fields = unflatten(fields, { safe: true })
       uploadData(req, res, fields, files)
     })
   })
@@ -184,15 +215,15 @@ app
     res.send('thanks')
   })
 
-  .get('/privacystatement', function(_req, res) {
+  .get('/privacystatement', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
-  .get('/termsandconditions', function(_req, res) {
+  .get('/termsandconditions', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
 
 // uncomment to allow direct loading of arbitrary pages
-// .get('/*', function(_req, res) {
+// .get('/*', function (_req, res) {
 //   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 // })
 

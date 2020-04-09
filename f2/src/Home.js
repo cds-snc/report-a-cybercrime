@@ -23,10 +23,18 @@ import { StartPage } from './StartPage'
 import { ConfirmCancelPage } from './ConfirmCancelPage'
 import { CancelPage } from './CancelPage'
 import { TermsAndConditions } from './TermsAndConditions'
+import { AnonymousPage } from './AnonymousPage'
+import { LocationAnonymousPage } from './LocationAnonymousPage'
+/*Consider removing after c19 pandemic*/
+import { Covid19Page } from './Covid19Page'
 
 export const Home = () => (
   <Router>
     <Switch>
+      <Route exact path="/covid-19">
+        <Covid19Page />
+      </Route>
+
       <Route exact path="/">
         <LandingPage />
       </Route>
@@ -72,6 +80,9 @@ export const Home = () => (
       <Route path="/location">
         <LocationPage />
       </Route>
+      <Route path="/anonymous">
+        <AnonymousPage />
+      </Route>
       <Route path="/contactinfo">
         <ContactInfoPage />
       </Route>
@@ -92,6 +103,9 @@ export const Home = () => (
       </Route>
       <Route path="/finalFeedbackThanks">
         <FinalFeedbackThanksPage />
+      </Route>
+      <Route path="/locationAnonymous">
+        <LocationAnonymousPage />
       </Route>
 
       <Route>
