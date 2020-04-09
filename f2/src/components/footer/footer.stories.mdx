@@ -1,0 +1,30 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+import { Stack } from '@chakra-ui/core'
+import { Trans } from '@lingui/react'
+import { A } from '../link'
+import { Li } from '../list-item'
+import { Footer } from '.'
+
+<Meta title="Pages/Footer" decorators={[ThemeDecorator]} component={Footer} />
+
+# App footer
+
+The app footer takes `<Li>` components as children. Footer will wrap these list-items in an unordered list.
+
+<Preview>
+  <Story name="App footer">
+    <Footer>
+      <Li>
+        <A href="/privacystatement" isExternal color="blue.900">
+          <Trans id="banner.footerPrivacy" />
+        </A>
+      </Li>
+      <Li>
+        <A ml={4} href="/termsandconditions" isExternal color="blue.900">
+          <Trans id="banner.footerTermsAndConditions" />
+        </A>
+      </Li>
+    </Footer>
+  </Story>
+</Preview>

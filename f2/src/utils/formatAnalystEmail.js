@@ -2,15 +2,17 @@
 
 const { formatDate } = require('./formatDate')
 
-const formatLineHtml = (label, text) =>
-  text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
+const unCamel = (text) => text.replace(/([A-Z])/g, ' $1').toLowerCase()
 
-const formatTable = rows => `<table><tbody>\n${rows}</tbody></table>\n\n`
+const formatLineHtml = (label, text) =>
+  text && text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
+
+const formatTable = (rows) => `<table><tbody>\n${rows}</tbody></table>\n\n`
 
 const formatSection = (title, rows) =>
   `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
 
-const formatReportInfo = data => {
+const formatReportInfo = (data) => {
   let selfHarmString = 'no self harm words'
   let returnString = ''
 
@@ -18,110 +20,118 @@ const formatReportInfo = data => {
     selfHarmString = data.selfHarmWords
     returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${selfHarmString}</h1>`
   }
+  let isAnonymous = data.anonymous.anonymous.replace('anonymousPage.', '')
   returnString +=
     '<h2>Report Information</h2>' +
     formatTable(
       formatLineHtml('Report number:', data.reportId) +
         formatLineHtml('Date received:', data.submissionTime) +
         formatLineHtml('Report language:', data.language) +
+        formatLineHtml('Anonymous report:', isAnonymous) +
         formatLineHtml('Report version:', data.appVersion) +
         formatLineHtml('Flagged:', selfHarmString),
     )
-
-  delete data.reportId // we delete the parts of the data object that we've displayed
-  delete data.submissionTime // so that at the end we can display the rest and ensure that
-  delete data.language // we didn't miss anything
+  // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
+  delete data.anonymous.anonymous
+  delete data.reportId
+  delete data.submissionTime
+  delete data.language
   delete data.appVersion
   delete data.selfHarmWords
+  delete data.submissionDate
   return returnString
 }
 
-const formatVictimDetails = data => {
+const formatVictimDetails = (data) => {
   const consentString = data.consent.consentOptions
-    .map(option => option.replace('privacyConsentInfoForm.', ''))
+    .map((option) => option.replace('privacyConsentInfoForm.', ''))
     .join(', ')
 
   const rows =
-    formatLineHtml('Name:             ', data.contactInfo.fullName) +
-    formatLineHtml('Email:            ', data.contactInfo.email) +
-    formatLineHtml('Phone number:     ', data.contactInfo.phone) +
-    formatLineHtml('Postal code:      ', data.location.postalCode) +
-    formatLineHtml('Consent:          ', consentString)
+    formatLineHtml('Name:', data.contactInfo.fullName) +
+    formatLineHtml('Email:', data.contactInfo.email) +
+    formatLineHtml('Phone number:', data.contactInfo.phone) +
+    formatLineHtml('City:', data.location.city) +
+    formatLineHtml('Province:', data.location.province) +
+    formatLineHtml('Postal code:', data.location.postalCode) +
+    formatLineHtml('Consent:', consentString)
 
   delete data.contactInfo.fullName
   delete data.contactInfo.email
   delete data.contactInfo.phone
+  delete data.location.city
+  delete data.location.province
   delete data.location.postalCode
   delete data.consent.consentOptions
   return formatSection('Victim details', rows)
 }
 
-const formatIncidentInformation = data => {
+const formatIncidentInformation = (data) => {
   const occurenceString = formatDate(
     data.howdiditstart.startDay,
     data.howdiditstart.startMonth,
     data.howdiditstart.startYear,
   )
-  const freqString = data.howdiditstart.howManyTimes.replace(
-    'howManyTimes.',
-    '',
+  const freqString = unCamel(
+    data.howdiditstart.howManyTimes.replace('howManyTimes.', ''),
   )
+
   const methodOfCommsString = data.howdiditstart.howDidTheyReachYou
-    .map(how => how.replace('howDidTheyReachYou.', ''))
+    .map((how) => unCamel(how.replace('howDidTheyReachYou.', '')))
     .join(', ')
   const affectedString = data.whatWasAffected.affectedOptions
-    .map(option => option.replace('whatWasAffectedForm.', ''))
-    .filter(option => option !== 'other')
+    .map((option) => unCamel(option.replace('whatWasAffectedForm.', '')))
+    .filter((option) => option !== 'other')
     .join(', ')
 
   const rows =
     formatLineHtml('Occurrence date:            ', occurenceString) +
     formatLineHtml('Frequency of occurrence:    ', freqString) +
     formatLineHtml('Method of communication:    ', methodOfCommsString) +
-    formatLineHtml('What could be affected:     ', affectedString) +
-    formatLineHtml(
-      'What could be affected:     ',
-      data.whatWasAffected.optionOther,
-    )
-
+    formatLineHtml('What could be affected:     ', affectedString)
   delete data.howdiditstart.startDay
   delete data.howdiditstart.startMonth
   delete data.howdiditstart.startYear
   delete data.howdiditstart.howManyTimes
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
-  delete data.whatWasAffected.optionOther
   return formatSection('Incident information', rows)
 }
 
-const formatNarrative = data => {
+const formatNarrative = (data) => {
   const infoReqString = data.personalInformation.typeOfInfoReq
-    .map(info => info.replace('typeOfInfoReq.', ''))
+    .map((info) => unCamel(info.replace('typeOfInfoReq.', '')))
+    .map((info) =>
+      info === 'other' &&
+      data.personalInformation.infoReqOther &&
+      data.personalInformation.infoReqOther !== ''
+        ? data.personalInformation.infoReqOther
+        : info,
+    )
     .join(', ')
 
   const infoObtainedString = data.personalInformation.typeOfInfoObtained
-    .map(info => info.replace('typeOfInfoObtained.', ''))
+    .map((info) => unCamel(info.replace('typeOfInfoObtained.', '')))
+    .map((info) =>
+      info === 'other' &&
+      data.personalInformation.infoObtainedOther &&
+      data.personalInformation.infoObtainedOther !== ''
+        ? data.personalInformation.infoObtainedOther
+        : info,
+    )
     .join(', ')
 
   const rows =
+    formatLineHtml('What happened:', data.whatHappened.whatHappened) +
     formatLineHtml(
-      'What happened:           ',
-      data.whatHappened.whatHappened,
+      'They asked for (financial):',
+      data.moneyLost.demandedMoney,
     ) +
-    formatLineHtml('They asked for:          ', data.moneyLost.demandedMoney) +
-    formatLineHtml('They asked for:          ', infoReqString) +
-    formatLineHtml(
-      'They asked for:          ',
-      data.personalInformation.infoReqOther,
-    ) +
-    formatLineHtml('I lost:                  ', data.moneyLost.moneyTaken) +
-    formatLineHtml('I lost:                  ', infoObtainedString) +
-    formatLineHtml(
-      'I lost:                  ',
-      data.personalInformation.infoObtainedOther,
-    ) +
-    formatLineHtml('Affected device:        ', data.devicesInfo.device) +
-    formatLineHtml('Affected account:       ', data.devicesInfo.account) +
+    formatLineHtml('They asked for (information):', infoReqString) +
+    formatLineHtml('I lost (financial):', data.moneyLost.moneyTaken) +
+    formatLineHtml('I lost (information):', infoObtainedString) +
+    formatLineHtml('Affected device:', data.devicesInfo.device) +
+    formatLineHtml('Affected account:', data.devicesInfo.account) +
     formatLineHtml(
       'Affected device/account: ',
       data.devicesInfo.devicesTellUsMore,
@@ -149,7 +159,7 @@ const formatNarrative = data => {
   return formatSection('Narrative', rows)
 }
 
-const formatSuspectDetails = data => {
+const formatSuspectDetails = (data) => {
   const rows =
     formatLineHtml('Name:          ', data.suspectClues.suspectClues1) +
     formatLineHtml('Email:         ', data.howdiditstart.email) +
@@ -169,15 +179,15 @@ const formatSuspectDetails = data => {
   return formatSection('Suspect details', rows)
 }
 
-const formatFinancialTransactions = data => {
+const formatFinancialTransactions = (data) => {
   const methods =
     data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
       ? data.moneyLost.methodPayment.concat([data.moneyLost.methodOther])
       : data.moneyLost.methodPayment
 
   const paymentString = methods
-    .filter(method => method !== 'methodPayment.other')
-    .map(method => method.replace('methodPayment.', ''))
+    .filter((method) => method !== 'methodPayment.other')
+    .map((method) => unCamel(method.replace('methodPayment.', '')))
     .join(', ')
 
   const transactionDate = formatDate(
@@ -201,9 +211,9 @@ const formatFinancialTransactions = data => {
   return formatSection('Financial transactions', rows)
 }
 
-const formatFileAttachments = data => {
+const formatFileAttachments = (data) => {
   const returnString = data.evidence.files
-    .map(file => {
+    .map((file) => {
       const offensive =
         file.isImageAdultClassified || file.isImageRacyClassified
 
@@ -241,7 +251,7 @@ const formatFileAttachments = data => {
   )
 }
 
-const formatAnalystEmail = dataOrig => {
+const formatAnalystEmail = (dataOrig) => {
   let returnString = ''
   let reportInfoString = ''
   let missingFields
@@ -266,7 +276,7 @@ const formatAnalystEmail = dataOrig => {
       formatFileAttachments(data)
 
     // take data object and delete any objects that are now empty, and display the rest
-    Object.keys(data).forEach(key => {
+    Object.keys(data).forEach((key) => {
       if (Object.keys(data[key]).length === 0) delete data[key]
     })
     missingFields = Object.keys(data).length

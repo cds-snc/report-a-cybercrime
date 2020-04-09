@@ -15,8 +15,9 @@ import { Stack, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { Well } from './components/Messages'
+import { CovidWell } from './Covid19Page'
 
-export const LandingPage = props => {
+export const LandingPage = (props) => {
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue()
   if (state.doneForms) {
@@ -26,6 +27,7 @@ export const LandingPage = props => {
     <Route
       render={({ history }) => (
         <Page>
+          <CovidWell />
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
               <H1>
@@ -36,8 +38,8 @@ export const LandingPage = props => {
                   <A
                     href={
                       i18n.locale === 'en'
-                        ? 'http://www.rcmp-grc.gc.ca/en/the-national-cybercrime-coordination-unit-nc3'
-                        : 'http://www.rcmp-grc.gc.ca/fr/groupe-national-coordination-cybercriminalite-gncc'
+                        ? 'http://www.rcmp-grc.gc.ca/en/nc3'
+                        : 'http://www.rcmp-grc.gc.ca/fr/gnc3'
                     }
                     isExternal
                   />

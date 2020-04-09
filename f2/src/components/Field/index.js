@@ -9,7 +9,7 @@ import { Field as FieldAdapter, useField } from 'react-final-form'
 import { UniqueID } from '../unique-id'
 import { Input } from '../input'
 
-export const Field = props => {
+export const Field = (props) => {
   const {
     meta: { invalid, submitFailed },
   } = useField(props.name, {
@@ -21,7 +21,7 @@ export const Field = props => {
 
   return (
     <UniqueID>
-      {id => {
+      {(id) => {
         return (
           <FormControl
             aria-labelledby={id}
@@ -37,7 +37,9 @@ export const Field = props => {
             {props.errorMessage && (
               <FormErrorMessage>{props.errorMessage}</FormErrorMessage>
             )}
+
             <FieldAdapter
+              mt={3}
               name={props.name}
               id={props.name}
               component={props.component}
