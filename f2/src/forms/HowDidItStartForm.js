@@ -15,7 +15,8 @@ import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
 
-const validate = (values) => {
+//add validate functin for test
+export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   // if it has a value AND this value is a number over 31
