@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import React from 'react'
+import { useLingui } from '@lingui/react'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
@@ -14,13 +15,34 @@ import { RadioAdapter } from '../components/radio'
 
 export const BusinessInfoForm = ({ onSubmit }) => {
   const [data] = useStateValue()
+  const { i18n } = useLingui()
   let { businessInfo } = data.formData
   businessInfo = {
-    business: '',
+    nameOfBusiness: '',
+    industry: '',
+    role: '',
+    numberOfEmployee: '',
     ...businessInfo,
+  }
+
+  const numberOfEmployee = [
+    'numberOfEmployee.1To99',
+    'numberOfEmployee.100To499',
+    'numberOfEmployee.500More',
+  ]
+  const recurrenceCheck = {
+    numberOfEmployee: [],
+    ...data.formData.timeline,
   }
   return (
     <React.Fragment>
+      {false ? ( // mark ids for lingui
+        <div>
+          <Trans id="numberOfEmployee.1To99" />
+          <Trans id="numberOfEmployee.100To499" />
+          <Trans id="numberOfEmployee.500More" />
+        </div>
+      ) : null}
       <Form
         initialValues={businessInfo}
         onSubmit={onSubmit}
@@ -50,27 +72,23 @@ export const BusinessInfoForm = ({ onSubmit }) => {
               helperText={<Trans id="businessPage.roleExample" />}
               component={Input}
             />
-
             <FormArrayControl
               name="numberOfEmployee"
-              label={<Trans id="businessPage.numberOfEmployee" />}
-              helperText={<Trans id="businessPage.numberOfEmployeeExample" />}
+              label={<Trans id="numberOfEmployee.label" />}
             >
-              <RadioAdapter name="numberOfEmployee" value="1 to 99 employees">
-                1 to 99 employees
-              </RadioAdapter>
-              <RadioAdapter
-                name="numberOfEmployee"
-                value=" 100 to 499 employees"
-              >
-                100 to 499 employees
-              </RadioAdapter>
-              <RadioAdapter
-                name="numberOfEmployee"
-                value=" 500 employees or more"
-              >
-                500 employees or more
-              </RadioAdapter>
+              {numberOfEmployee.map((key) => {
+                return (
+                  <React.Fragment key={key}>
+                    <RadioAdapter
+                      name="numberOfEmployee"
+                      value={key}
+                      isChecked={recurrenceCheck.numberOfEmployee.includes(key)}
+                    >
+                      {i18n._(key)}
+                    </RadioAdapter>
+                  </React.Fragment>
+                )
+              })}
             </FormArrayControl>
 
             <NextAndCancelButtons
