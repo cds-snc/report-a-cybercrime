@@ -55,7 +55,72 @@ describe('validation', () => {
     expect(validate({ startYear: '202' }).startYear).not.toBeUndefined()
     expect(validate({ startYear: '20' }).startYear).not.toBeUndefined()
   })
+  it('pass correct start date in Leap year', () => {
+    expect(
+      validate({
+        startDay: '29',
+        startMonth: '2',
+        startYear: '2020',
+      }).startDay,
+    ).toBeUndefined()
+    expect(
+      validate({
+        startDay: '29',
+        startMonth: '02',
+        startYear: '2016',
+      }).startDay,
+    ).toBeUndefined()
+  })
+  it('fails incorrect transaction date in Leap year', () => {
+    expect(
+      validate({
+        startDay: '30',
+        startMonth: '2',
+        startYear: '2020',
+      }).startDay,
+    ).not.toBeUndefined()
+    expect(
+      validate({
+        startDay: '30',
+        startMonth: '2',
+        startYear: '2016',
+      }).startDay,
+    ).not.toBeUndefined()
+  })
+  it('pass correct transaction date in non-Leap year', () => {
+    expect(
+      validate({
+        startDay: '28',
+        startMonth: '2',
+        startYear: '2017',
+      }).startDay,
+    ).toBeUndefined()
+    expect(
+      validate({
+        startDay: '28',
+        startMonth: '02',
+        startYear: '2017',
+      }).startDay,
+    ).toBeUndefined()
+  })
+  it('fails incorrect transaction date in non-Leap year', () => {
+    expect(
+      validate({
+        startDay: '29',
+        startMonth: '2',
+        startYear: '2017',
+      }).startDay,
+    ).not.toBeUndefined()
+    expect(
+      validate({
+        startDay: '29',
+        startMonth: '2',
+        startYear: '2017',
+      }).startDay,
+    ).not.toBeUndefined()
+  })
 })
+
 describe('<HowDidItStartForm />', () => {
   afterEach(cleanup)
 

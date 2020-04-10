@@ -72,7 +72,7 @@ export const validate = (values) => {
     }
   }
   //validate if the dayin Feb can't be >29 in leap year, the day in Feb can't be >28 in non-leap year
-  if (values.startMonth === 2) {
+  if (values.startMonth === '2' || values.startMonth === '02') {
     var lyear = false
     if (
       (!(values.startYear % 4) && values.startYear % 100) ||
