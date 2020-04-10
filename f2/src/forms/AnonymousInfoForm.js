@@ -7,7 +7,9 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { RadioAdapter } from '../components/radio'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { areFieldsValid } from '../utils/areFieldsValid'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { formDefaults } from './defaultValues'
 
 const validate = (values) => {
   const errors = {}
@@ -17,19 +19,21 @@ const validate = (values) => {
   }
   return errors
 }
+
 const clearData = (dataOrig) => {
   let data = JSON.parse(JSON.stringify(dataOrig))
   return data
 }
 
 export const AnonymousInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (areFieldsValid(data, formDefaults.anonymous)) props.onSubmit(data)
+  }
+
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
-  const anonymous = {
-    anonymous: '',
-    ...data.formData.anonymous,
-  }
+  const { anonymous } = data.formData
 
   const ifanonymous = ['anonymousPage.yes', 'anonymousPage.no']
 
@@ -44,7 +48,7 @@ export const AnonymousInfoForm = (props) => {
 
       <Form
         initialValues={anonymous}
-        onSubmit={(data) => props.onSubmit(clearData(data))}
+        onSubmit={(data) => localOnSubmit(clearData(data))}
         validate={validate}
         render={({ handleSubmit }) => (
           <Stack
