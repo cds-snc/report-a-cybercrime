@@ -16,12 +16,21 @@ import { Text } from '../components/text'
 import { Field } from '../components/Field'
 import { Alert } from '../components/Messages'
 import { fileExtensionPasses } from '../utils/acceptableFiles'
+import { areFieldsValid } from '../utils/areFieldsValid'
+import { formDefaults } from './defaultValues'
 
 export const EvidenceInfoForm = (props) => {
+  const localOnSubmit = () => {
+    const data = {
+      files,
+      fileDescriptions,
+    }
+    if (areFieldsValid(data, formDefaults.evidence)) props.onSubmit(data)
+  }
+
   const [data] = useStateValue()
   const cached = {
-    files: [],
-    fileDescriptions: [],
+    ...formDefaults.evidence,
     ...data.formData.evidence,
   }
 
@@ -78,14 +87,6 @@ export const EvidenceInfoForm = (props) => {
     setStatus('fileUpload.removed')
   }
 
-  const localSubmit = () => {
-    const data = {
-      files,
-      fileDescriptions,
-    }
-    props.onSubmit(data)
-  }
-
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -94,7 +95,7 @@ export const EvidenceInfoForm = (props) => {
         </div>
       ) : null}
       <Form
-        onSubmit={() => localSubmit()}
+        onSubmit={localOnSubmit}
         render={({ handleSubmit }) => (
           <Stack
             as="form"

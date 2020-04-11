@@ -29,7 +29,6 @@ const formDefaults = {
     tellUsMore: '',
     methodOther: '',
   },
-
   personalInformation: {
     typeOfInfoReq: [],
     typeOfInfoObtained: [],
@@ -50,7 +49,7 @@ const formDefaults = {
     files: [],
     fileDescriptions: [],
   },
-  location: { postalCode: '' },
+  location: { postalCode: '', city: '', province: '' },
   contactInfo: { fullName: '', email: '', phone: '' },
 }
 
