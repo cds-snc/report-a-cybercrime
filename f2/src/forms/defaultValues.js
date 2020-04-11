@@ -16,7 +16,6 @@ const formDefaults = {
     startMonth: '',
     startYear: '',
   },
-
   whatWasAffected: {
     affectedOptions: [],
   },
@@ -28,7 +27,9 @@ const formDefaults = {
     transactionMonth: '',
     transactionYear: '',
     tellUsMore: '',
+    methodOther: '',
   },
+
   personalInformation: {
     typeOfInfoReq: [],
     typeOfInfoObtained: [],

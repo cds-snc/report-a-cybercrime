@@ -9,26 +9,25 @@ import { Stack, FormControl, VisuallyHidden } from '@chakra-ui/core'
 import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
+import { areFieldsValid } from '../utils/areFieldsValid'
+import { formDefaults } from './defaultValues'
 
-export const BusinessInfoForm = props => {
-  const localOnSubmit = data => {
-    props.onSubmit(data)
+export const BusinessInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (areFieldsValid(data, formDefaults.businessInfo)) props.onSubmit(data)
   }
 
   const [data] = useStateValue()
-  let { businessInfo } = data.formData
-  businessInfo = {
-    business: '',
-    ...businessInfo,
-  }
+  const { businessInfo } = data.formData
+
   return (
     <Form
       initialValues={businessInfo}
-      onSubmit={data => localOnSubmit(data)}
+      onSubmit={(data) => localOnSubmit(data)}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
           <Field name="business">
-            {props => (
+            {(props) => (
               <FormControl>
                 <FormLabel htmlFor="business">
                   <Trans id="businessPage.business" />
