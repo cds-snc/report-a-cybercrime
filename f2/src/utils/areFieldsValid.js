@@ -1,7 +1,13 @@
 const areFieldsValid = (data, defaults) => {
-  const valid = !Object.keys(data).some(
-    (field) => Object.keys(defaults).indexOf(field) === -1,
-  )
+  let valid = true
+  Object.keys(data).forEach((field) => {
+    if (Object.keys(defaults).indexOf(field) === -1) {
+      valid = false
+      console.log(
+        `ERROR: field ${field} not in defaults ${Object.keys(defaults)}`,
+      )
+    }
+  })
   return valid
 }
 
