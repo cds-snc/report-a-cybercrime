@@ -15,18 +15,28 @@ import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
 
-const validate = (values) => {
+//add validate functin for test
+export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
-  // if it has a value AND this value is a number below 31
-  if (values.startDay && (isNaN(values.startDay) || values.startDay > 31)) {
+  // if it has a value AND this value is a number over 31
+  if (
+    values.startDay &&
+    (isNaN(values.startDay) ||
+      values.startDay > 31 ||
+      values.startDay === '0' ||
+      values.startDay === '00')
+  ) {
     errors.whenDidItStart = 'whenDidItStart.startDate.warning'
     errors.startDay = true
   }
-  // if it has a value AND this value is a number below 12
+  // if it has a value AND this value is a number over 12
   if (
     values.startMonth &&
-    (isNaN(values.startMonth) || values.startMonth > 12)
+    (isNaN(values.startMonth) ||
+      values.startMonth > 12 ||
+      values.startMonth === '0' ||
+      values.startMonth === '00')
   ) {
     errors.whenDidItStart = 'whenDidItStart.startMonth.warning'
     errors.startMonth = true
@@ -34,7 +44,9 @@ const validate = (values) => {
   // if it has a value AND year is a number containing 4 digits
   if (
     values.startYear &&
-    (isNaN(values.startYear) || values.startYear.length !== 4)
+    (isNaN(values.startYear) ||
+      values.startYear.length !== 4 ||
+      values.startYear === '0000')
   ) {
     errors.whenDidItStart = 'whenDidItStart.startYear.warning'
     errors.startYear = true
@@ -51,7 +63,32 @@ const validate = (values) => {
     errors.startMonth = true
     errors.startYear = true
   }
-
+  // validate if the date in different month  match the calendar
+  var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  if (values.startMonth === 1 || values.startMonth > 2) {
+    if (values.startDay > ListofDays[values.startMonth - 1]) {
+      errors.whenDidItStart = 'whenDidItStart.startDate.warning'
+      errors.startDay = true
+    }
+  }
+  //validate if the dayin Feb can't be >29 in leap year, the day in Feb can't be >28 in non-leap year
+  if (values.startMonth === 2) {
+    var lyear = false
+    if (
+      (!(values.startYear % 4) && values.startYear % 100) ||
+      !(values.startYear % 400)
+    ) {
+      lyear = true
+    }
+    if (lyear === false && values.startDay >= 29) {
+      errors.whenDidItStart = 'whenDidItStart.startDate.warning'
+      errors.startDay = true
+    }
+    if (lyear === true && values.startDay > 29) {
+      errors.whenDidItStart = 'whenDidItStart.startDate.warning'
+      errors.startDay = true
+    }
+  }
   return errors
 }
 
