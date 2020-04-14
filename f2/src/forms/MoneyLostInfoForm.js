@@ -6,19 +6,64 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { TextInput } from '../components/TextInput'
-import { FormControl, Stack, Box, Alert, AlertIcon } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
-import { FormLabel } from '../components/FormLabel'
+import { Input } from '../components/input'
+import { Stack, Box } from '@chakra-ui/core'
 import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { ConditionalForm } from '../components/container'
-import { P } from '../components/paragraph'
 import { CheckboxAdapter } from '../components/checkbox'
 import { Field } from '../components/Field'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { Well } from '../components/Messages'
+import { ErrorSummary } from '../components/ErrorSummary'
 
-export const MoneyLostInfoForm = props => {
+const validate = (values) => {
+  const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
+  // if it has a value AND this value is a number below 31
+  if (
+    values.transactionDay &&
+    (isNaN(values.transactionDay) || values.transactionDay > 31)
+  ) {
+    errors.transactionDate = 'transactionDate.startDate.warning'
+    errors.transactionDay = true
+  }
+  // if it has a value AND this value is a number below 12
+  if (
+    values.transactionMonth &&
+    (isNaN(values.transactionMonth) || values.transactionMonth > 12)
+  ) {
+    errors.transactionDate = 'transactionDate.startMonth.warning'
+    errors.transactionMonth = true
+  }
+  // if it has a value AND year is a number containing 4 digits
+  if (
+    values.transactionYear &&
+    (isNaN(values.transactionYear) || values.transactionYear.length !== 4)
+  ) {
+    errors.transactionDate = 'transactionDate.startYear.warning'
+    errors.transactionYear = true
+  }
+
+  // if date is in the future and date is valid
+  // values.transactionMonth - 1 : UTC Date Months are values from 0 to 11
+  if (
+    Date.UTC(
+      values.transactionYear,
+      values.transactionMonth - 1,
+      values.transactionDay,
+    ) > Date.now()
+  ) {
+    errors.transactionDate = 'transactionDate.errorMessage'
+    errors.transactionDay = true
+    errors.transactionMonth = true
+    errors.transactionYear = true
+  }
+
+  return errors
+}
+
+export const MoneyLostInfoForm = (props) => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
   const moneyLost = {
@@ -49,30 +94,36 @@ export const MoneyLostInfoForm = props => {
           <Trans id="methodPayment.giftCard" />
           <Trans id="methodPayment.cash" />
           <Trans id="methodPayment.other" />
+          <Trans id="transactionDate.errorMessage" />
+          <Trans id="transactionDate.startDate.warning" />
+          <Trans id="transactionDate.startMonth.warning" />
+          <Trans id="transactionDate.startYear.warning" />
         </div>
       ) : null}
       <Form
         initialValues={moneyLost}
         onSubmit={props.onSubmit}
-        render={({ handleSubmit, values }) => (
+        validate={validate}
+        render={({ handleSubmit, values, errors, submitFailed }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
             spacing={6}
             shouldWrapChildren
           >
+            {submitFailed ? <ErrorSummary /> : null}
             <Field
               name="demandedMoney"
               label={<Trans id="moneyLostPage.demandedMoney" />}
               helperText={<Trans id="moneyLostPage.demandedMoneyExample" />}
-              component={TextInput}
+              component={Input}
             />
 
             <Field
               name="moneyTaken"
               label={<Trans id="moneyLostPage.moneyTaken" />}
               helperText={<Trans id="moneyLostPage.moneyTakenExample" />}
-              component={TextInput}
+              component={Input}
             />
 
             <FormArrayControl
@@ -80,7 +131,7 @@ export const MoneyLostInfoForm = props => {
               label={<Trans id="moneyLostPage.methodPayment" />}
               helperText={<Trans id="moneyLostPage.selectMethod" />}
             >
-              {methodsOfPayment.map(key => {
+              {methodsOfPayment.map((key) => {
                 return (
                   <Box key={key}>
                     <CheckboxAdapter name="methodPayment" value={key}>
@@ -89,7 +140,7 @@ export const MoneyLostInfoForm = props => {
                     {key === 'methodPayment.other' &&
                       values.methodPayment.includes('methodPayment.other') && (
                         <ConditionalForm>
-                          <Field name="methodOther" component={TextInput} />
+                          <Field name="methodOther" component={Input} />
                         </ConditionalForm>
                       )}
                   </Box>
@@ -97,97 +148,50 @@ export const MoneyLostInfoForm = props => {
               })}
             </FormArrayControl>
 
-            <Stack>
-              <P fontWeight="bold">
-                <Trans id="moneyLostPage.transactionDate" />
-              </P>
-              <P fontSize="md">
-                <Trans id="moneyLostPage.transactionDateExample" />
-              </P>
-            </Stack>
+            <FormArrayControl
+              name="transactionDate"
+              label={<Trans id="moneyLostPage.transactionDate" />}
+              helperText={<Trans id="moneyLostPage.transactionDateExample" />}
+              errors={errors}
+            >
+              <Stack direction="row" spacing="2">
+                <Field
+                  name="transactionDay"
+                  label={<Trans id="moneyLostPage.transactionDay" />}
+                  component={Input}
+                  group="transactionDate"
+                  w={70}
+                  maxLength="2"
+                />
+                <Field
+                  name="transactionMonth"
+                  label={<Trans id="moneyLostPage.transactionMonth" />}
+                  component={Input}
+                  group="transactionDate"
+                  w={70}
+                  maxLength="2"
+                />
+                <Field
+                  name="transactionYear"
+                  label={<Trans id="moneyLostPage.transactionYear" />}
+                  component={Input}
+                  group="transactionDate"
+                  w={110}
+                  maxLength="4"
+                />
+              </Stack>
+            </FormArrayControl>
 
-            <Stack flexDirection="row">
-              <Field name="transactionDay">
-                {props => (
-                  <FormControl>
-                    <FormLabel htmlFor="transactionDay">
-                      <Trans id="moneyLostPage.transactionDay" />
-                      <TextInput
-                        id="transactionDay"
-                        name={props.input.name}
-                        value={props.input.value}
-                        onChange={props.input.onChange}
-                        w={70}
-                        h={36}
-                        mt={2}
-                        maxLength="2"
-                      />
-                    </FormLabel>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name="transactionMonth">
-                {props => (
-                  <FormControl>
-                    <FormLabel htmlFor="transactionMonth">
-                      <Trans id="moneyLostPage.transactionMonth" />
-                      <TextInput
-                        id="transactionMonth"
-                        name={props.input.name}
-                        value={props.input.value}
-                        onChange={props.input.onChange}
-                        w={70}
-                        h={36}
-                        mt={2}
-                        maxLength="2"
-                      />
-                    </FormLabel>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name="transactionYear">
-                {props => (
-                  <FormControl>
-                    <FormLabel htmlFor="transactionYear">
-                      <Trans id="moneyLostPage.transactionYear" />
-                      <TextInput
-                        id="transactionYear"
-                        name={props.input.name}
-                        value={props.input.value}
-                        onChange={props.input.onChange}
-                        w={110}
-                        h={36}
-                        mt={2}
-                        maxLength="4"
-                      />
-                    </FormLabel>
-                  </FormControl>
-                )}
-              </Field>
-            </Stack>
-            <Field name="tellUsMore">
-              {props => (
-                <FormControl>
-                  <FormLabel htmlFor="tellUsMore">
-                    <Trans id="moneyLostPage.tellUsMore" />
-                  </FormLabel>
-                  <FormHelperText>
-                    <Trans id="moneyLostPage.tellUsMoreExample" />
-                  </FormHelperText>
+            <Field
+              name="tellUsMore"
+              label={<Trans id="moneyLostPage.tellUsMore" />}
+              FormHelperText={<Trans id="moneyLostPage.tellUsMoreExample" />}
+              component={TextArea}
+            />
 
-                  <TextArea
-                    id="tellUsMore"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-            <Alert status="success" backgroundColor="blue.100">
-              <AlertIcon name="info-outline" color="blue.800" />
+            <Well variantColor="blue">
               <Trans id="moneyLostPage.tip" />
-            </Alert>
+            </Well>
             <NextAndCancelButtons
               next={<Trans id="moneyLostPage.nextStepDetail" />}
               button={<Trans id="moneyLostPage.nextButton" />}

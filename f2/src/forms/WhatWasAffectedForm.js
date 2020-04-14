@@ -4,14 +4,20 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { ErrorSummary } from '../components/ErrorSummary'
 import { Text } from '../components/text'
 
-const validate = () => {
-  return {}
+const validate = (values) => {
+  const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
+  if (!values.affectedOptions || values.affectedOptions.length < 1) {
+    errors.affectedOptions = 'whatWasAffectedForm.warning'
+  }
+  return errors
 }
 
 export const whatWasAffectedPages = [
@@ -20,7 +26,7 @@ export const whatWasAffectedPages = [
     url: 'moneylost',
   },
   {
-    key: 'whatWasAffectedForm.personal_information',
+    key: 'whatWasAffectedForm.personalInformation',
     url: 'information',
   },
   { key: 'whatWasAffectedForm.devices', url: 'devices' },
@@ -28,30 +34,28 @@ export const whatWasAffectedPages = [
   { key: 'whatWasAffectedForm.other', url: '' },
 ]
 
-export const WhatWasAffectedForm = props => {
+export const WhatWasAffectedForm = (props) => {
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
   const whatWasAffected = {
     affectedOptions: [],
     ...data.formData.whatWasAffected,
-    optionOther: '',
   }
 
-  const affectedOptions = whatWasAffectedPages.map(page => page.key)
-  let showWarning = false
+  const affectedOptions = whatWasAffectedPages.map((page) => page.key)
 
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
           <Trans id="whatWasAffectedForm.financial" />
-          <Trans id="whatWasAffectedForm.personal_information" />
+          <Trans id="whatWasAffectedForm.personalInformation" />
           <Trans id="whatWasAffectedForm.devices" />
           <Trans id="whatWasAffectedForm.business_assets" />
           <Trans id="whatWasAffectedForm.other" />
           <Trans id="whatWasAffectedForm.financial.example" />
-          <Trans id="whatWasAffectedForm.personal_information.example" />
+          <Trans id="whatWasAffectedForm.personalInformation.example" />
           <Trans id="whatWasAffectedForm.devices.example" />
           <Trans id="whatWasAffectedForm.business_assets.example" />
         </div>
@@ -59,27 +63,34 @@ export const WhatWasAffectedForm = props => {
 
       <Form
         initialValues={whatWasAffected}
-        onSubmit={values => {
-          if (values.affectedOptions.length === 0) {
-            showWarning = true
-          } else {
-            props.onSubmit(values)
-          }
+        onSubmit={(values) => {
+          props.onSubmit(values)
         }}
         validate={validate}
-        render={({ handleSubmit, values }) => (
+        render={({
+          handleSubmit,
+          values,
+          errors,
+          submitFailed,
+          hasValidationErrors,
+        }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
             spacing={6}
           >
+            {submitFailed && hasValidationErrors ? (
+              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+            ) : null}
+
             <FormArrayControl
               name="affectedOptions"
               label={<Trans id="whatWasAffectedForm.optionsTitle" />}
               helperText={<Trans id="whatWasAffectedForm.optionsHelpText" />}
+              errorMessage={<Trans id="whatWasAffectedForm.warning" />}
             >
-              {affectedOptions.map(key => {
+              {affectedOptions.map((key) => {
                 return (
                   <React.Fragment key={key}>
                     <CheckboxAdapter
@@ -97,12 +108,6 @@ export const WhatWasAffectedForm = props => {
                   </React.Fragment>
                 )
               })}
-              {showWarning ? (
-                <Alert status="warning">
-                  <AlertIcon />
-                  <Trans id="whatWasAffectedForm.warning" />
-                </Alert>
-              ) : null}
             </FormArrayControl>
             <NextAndCancelButtons
               next={<Trans id="whatWasAffectedForm.nextPage" />}

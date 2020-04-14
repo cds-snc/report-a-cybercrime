@@ -1,0 +1,46 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+import { InfoCard, LandingBox } from '.'
+import { H1 } from '../header'
+import { P } from '../paragraph'
+import { Button } from '../button'
+import { Flex, Box } from '@chakra-ui/core'
+
+<Meta
+  title="Components/Container"
+  decorators={[ThemeDecorator]}
+  component={InfoCard}
+/>
+
+# Containers
+
+## Info Cards
+
+Info Cards can be used to create a call-to-action or content emphasis zone on a page. Cards are used to bring information forward on the page.
+
+The width of the card is controlled by the `columns` property. Refer to the [`<Layout>`](?path=/docs/layout--columns) component for explanation on the column layout.
+
+<Preview>
+  <Story name="Info Card">
+    <InfoCard
+      bg="gray.200"
+      color="black"
+      borderColor="gray.400"
+      spacing={6}
+      columns={{ base: 4 / 12 }}
+    >
+      <H1 mb={6}>Card heading</H1>
+      <P>Card body</P>
+    </InfoCard>
+  </Story>
+</Preview>
+
+<Props of={InfoCard} />
+
+## Box
+
+<Story name="Box">
+  <Box p={1} border="1px" minH="200px" borderColor="blue.300" bg="blue.100">
+    Box
+  </Box>
+</Story>

@@ -3,18 +3,19 @@ import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
-import { Stack, Alert, AlertIcon } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
 import { TextArea } from '../components/text-area'
 import { Button } from '../components/button'
 import { RadioAdapter } from '../components/radio'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Field } from '../components/Field'
+import { Alert } from '../components/Messages'
 
 const validate = () => {
   return {}
 }
 
-export const FinalFeedbackForm = props => {
+export const FinalFeedbackForm = (props) => {
   const { i18n } = useLingui()
 
   const wasServiceHard = [
@@ -54,7 +55,7 @@ export const FinalFeedbackForm = props => {
           wouldYouUseAgain: '',
           howCanWeDoBetter: '',
         }}
-        onSubmit={values => {
+        onSubmit={(values) => {
           if (
             values.wasServiceHard.length === 0 &&
             values.wouldYouUseAgain.length === 0 &&
@@ -74,8 +75,7 @@ export const FinalFeedbackForm = props => {
             spacing={12}
           >
             {showWarning ? (
-              <Alert status="warning">
-                <AlertIcon />
+              <Alert status="error">
                 <Trans id="finalFeedback.warning" />
               </Alert>
             ) : null}
@@ -83,7 +83,7 @@ export const FinalFeedbackForm = props => {
               name="wasServiceHard"
               label={<Trans id="finalFeedback.wasServiceHard.label" />}
             >
-              {wasServiceHard.map(key => {
+              {wasServiceHard.map((key) => {
                 return (
                   <React.Fragment key={key}>
                     <RadioAdapter
@@ -102,7 +102,7 @@ export const FinalFeedbackForm = props => {
               name="wouldYouUseAgain"
               label={<Trans id="finalFeedback.wouldYouUseAgain.label" />}
             >
-              {wouldYouUseAgain.map(key => {
+              {wouldYouUseAgain.map((key) => {
                 return (
                   <React.Fragment key={key}>
                     <RadioAdapter

@@ -1,41 +1,62 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
-import { FormErrorMessage, FormControl, Stack } from '@chakra-ui/core'
-import { useField } from 'react-final-form'
+import { FormControl, Stack } from '@chakra-ui/core'
+import { useField, useForm } from 'react-final-form'
 import { FormLabel } from '../FormLabel'
 import { FormHelperText } from '../FormHelperText'
+import { FormErrorMessage } from '../FormErrorMessage'
 import { UniqueID } from '../unique-id'
+import { Trans } from '@lingui/macro'
 
-export const FormArrayControl = ({
-  label,
-  helperText,
-  errorMessage,
-  name,
-  children,
-  ...rest
-}) => {
+export const FormArrayControl = (props) => {
   const {
-    meta: { error, touched },
-  } = useField(name, { subscription: { touched: true, error: true } })
+    meta: { submitFailed, invalid },
+  } = useField(props.name, {
+    subscription: { submitFailed: true, invalid: true },
+  })
+
+  const { errors } = useForm(props.onSubmit).getState()
+
   return (
     <UniqueID>
-      {id => {
+      {(id) => {
         return (
           <FormControl
+            id={props.name}
+            borderLeft={submitFailed && invalid ? '3px' : null}
+            pl={submitFailed && invalid ? 4 : null}
+            borderLeftColor={submitFailed && invalid ? 'red.700' : null}
             as="fieldset"
             aria-labelledby={id}
-            isInvalid={error && touched}
-            {...rest}
+            isInvalid={submitFailed && invalid}
+            {...props}
           >
-            <FormLabel id={id} as="legend" htmlFor={name}>
-              {label}
-            </FormLabel>
-            <FormHelperText>{helperText}</FormHelperText>
-            <FormErrorMessage>{errorMessage}</FormErrorMessage>
+            <Stack spacing={1} pb={4}>
+              <FormLabel
+                id={id}
+                as="legend"
+                htmlFor={props.name}
+                mb={props.label && 0}
+              >
+                {props.label}
+              </FormLabel>
+              {props.helperText && (
+                <FormHelperText>{props.helperText}</FormHelperText>
+              )}
+              {props.errorMessage && (
+                <FormErrorMessage>{props.errorMessage}</FormErrorMessage>
+              )}
+              {props.errors && (
+                <FormErrorMessage>
+                  <Trans id={errors[props.name]} />
+                </FormErrorMessage>
+              )}
+            </Stack>
+
             {/** This component comes with a group attribute. We don't need to use Chakra's <CheckboxGroup> or <RadioGroup> as per the Chakra docs */}
             <Stack shouldWrapChildren spacing={4}>
-              {children}
+              {props.children}
             </Stack>
           </FormControl>
         )

@@ -1,0 +1,103 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../.storybook/themeDecorator'
+import { Well, Alert } from '.'
+import { H2 } from '../header'
+import { P } from '../paragraph'
+import { Button } from '../button'
+import { A } from '../link'
+
+<Meta
+  title="Components/Messages"
+  component={Well}
+  decorators={[ThemeDecorator]}
+/>
+
+You might want to display some information to help the user, but that is not part of the main content.
+
+# Wells
+
+A well is used to display tips, information or content about the content. The well separates its content from the main content. Before you add a well, you should ask yourself if its content belongs to the main content of the page. If it does, do not use a well. Remember to keep the page content as simple as possible.
+
+<Preview>
+  <Story name="Well">
+    <Well>This content is displayed in a well</Well>
+  </Story>
+</Preview>
+
+## Variants
+
+<Preview>
+  <Story name="Well Variants">
+    <Well variantColor="yellow">
+      This content is displayed in a yellow well
+    </Well>
+  </Story>
+</Preview>
+
+## Composition
+
+You can compose anything in a well, but remember to keep it simple
+
+**Do**: Place a link in a Well
+
+<Preview>
+  <Story name="Well Composition Simple">
+    <Well variantColor="yellow">
+      This content is displayed in a <A href="#">yellow well</A>
+    </Well>
+  </Story>
+</Preview>
+
+**Be careful**: Compose with headings, compose with main interactables like buttons. To set something complex appart, use containers to create a card.
+
+> **Rule of thumb**
+>
+> - A Well substract information from the main content.
+> - A card adds a call to action
+
+<Preview>
+  <Story name="Well Composition Complex">
+    <Well variantColor="green">
+      <H2 mb={4}>Large heading</H2>
+      <P>
+        With a paragraph down here. You can compose anything in a well. Remember
+        to keep things simple
+      </P>
+      <Button>Click here</Button>
+    </Well>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Well} />
+
+# Alerts
+
+An alert requires one of four statuses: `success`, `info`, `warning`, or `error`
+
+An Alert should only be used to notify a user of a change on the current page or to notify the user about a change in the status of the app. For example: form submission, max uploaded files
+
+An alert should only contain text
+
+> Form errors are more complex and require the `<ErrorSummary/>` componnet
+
+<Preview>
+  <Story name="Alert">
+    <Alert status="success" withIcon>
+      This is an alert
+    </Alert>
+  </Story>
+</Preview>
+
+You can choose not to display an icon by omitting the `withIcon` prop
+
+<Preview>
+  <Story name="Alert No icon">
+    <Alert status="info">This is an alert without an icon</Alert>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Alert} />

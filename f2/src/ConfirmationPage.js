@@ -4,6 +4,7 @@ import { useLingui } from '@lingui/react'
 import { Route } from 'react-router-dom'
 import fetch from 'isomorphic-fetch'
 import { Trans } from '@lingui/macro'
+import flatten from 'flat'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
 import { Layout } from './components/layout'
@@ -19,10 +20,13 @@ async function postData(url = '', data = {}) {
   // Stick all our collected data into a single form element called json
   // Maybe there's a better way to generate form fields from json?
   // add the files to the formdata object after.
+  const flattenedData = flatten(data, { safe: true })
   var form_data = new FormData()
-  form_data.append('json', JSON.stringify(data))
+  Object.keys(flattenedData).forEach((key) => {
+    form_data.append(key, JSON.stringify(flattenedData[key]))
+  })
   if (data.evidence)
-    data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
+    data.evidence.files.forEach((f) => form_data.append(f.name, f, f.name))
 
   // Default options are marked with *
   const response = await fetch(url, {
@@ -41,6 +45,14 @@ const prepFormData = (formData, language) => {
   formData.appVersion = process.env.REACT_APP_VERSION
     ? process.env.REACT_APP_VERSION.slice(0, 7)
     : 'no version'
+
+  if (formData.anonymous.anonymous === 'anonymousPage.yes') {
+    formData.contactInfo = {
+      fullName: '',
+      email: '',
+      phone: '',
+    }
+  }
 
   if (
     formData.whatWasAffected &&
@@ -62,7 +74,7 @@ const prepFormData = (formData, language) => {
   if (
     formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
-      'whatWasAffectedForm.personal_information',
+      'whatWasAffectedForm.personalInformation',
     )
   ) {
     formData.personalInformation = {
@@ -108,15 +120,13 @@ const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
   const response = await postData('/submit', data)
   const reportId = await response.text()
-  dispatch({ type: 'saveFormData', data: { reportId, submitted: true } })
+  const submitted = reportId && reportId.startsWith('NCFRS-')
+  dispatch({ type: 'saveFormData', data: { reportId, submitted } })
 }
 
 export const ConfirmationPage = () => {
   const [{ formData }, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
   const { i18n } = useLingui()
-  if (formData.reportId !== '') {
-    dispatch({ type: 'saveFormData', data: { reportId: '' } })
-  }
   return (
     <Route
       render={({ history }) => (

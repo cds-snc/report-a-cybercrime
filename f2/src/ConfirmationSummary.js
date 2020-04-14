@@ -1,12 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
-import { Trans } from '@lingui/macro'
-import { useLingui } from '@lingui/react'
-import { Link } from './components/link'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-
 import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
@@ -35,7 +31,6 @@ export const testdata = {
     },
     whatWasAffected: {
       affectedOptions: [],
-      optionOther: '',
     },
     moneyLost: {
       demandedMoney: '',
@@ -71,15 +66,6 @@ export const testdata = {
   },
 }
 
-export const EditButton = ({ path, label }) => {
-  const { i18n } = useLingui()
-  return (
-    <Link to={path} aria-label={i18n._(label)} ml={4}>
-      <Trans id="button.edit" />
-    </Link>
-  )
-}
-
 export const ConfirmationSummary = () => {
   const [data, dispatch] = useStateValue()
   const impact = {
@@ -100,7 +86,7 @@ export const ConfirmationSummary = () => {
           <MoneyLostInfoSummary />
         )}
         {impact.affectedOptions.includes(
-          'whatWasAffectedForm.personal_information',
+          'whatWasAffectedForm.personalInformation',
         ) && <InformationSummary />}
         {impact.affectedOptions.includes('whatWasAffectedForm.devices') && (
           <DevicesSummary />
@@ -113,7 +99,9 @@ export const ConfirmationSummary = () => {
         <SuspectCluesSummary />
         <EvidenceInfoSummary />
         <LocationInfoSummary />
-        <ContactInfoSummary />
+        {data.formData.anonymous.anonymous !== 'anonymousPage.yes' ? (
+          <ContactInfoSummary />
+        ) : null}
       </Stack>
     </React.Fragment>
   )

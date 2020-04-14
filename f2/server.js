@@ -2,19 +2,26 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
-const { getAllCerts, encryptAndSend } = require('./src/utils/encryptedEmail')
+const helmet = require('helmet')
+const { unflatten } = require('flat')
+const { encryptAndSend } = require('./src/utils/encryptedEmail')
+const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
+const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
   notifyIsSetup,
   sendConfirmation,
-  sendUnencryptedReport,
   submitFeedback,
 } = require('./src/utils/notify')
 const { formatAnalystEmail } = require('./src/utils/formatAnalystEmail')
+const {
+  fileSizePasses,
+  fileExtensionPasses,
+} = require('./src/utils/acceptableFiles')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -25,18 +32,29 @@ var limiter = new RateLimit({
 
 require('dotenv').config()
 
-const emailList = process.env.MAIL_TO
-  ? process.env.MAIL_TO.split(',').map(k => k.trim())
+const uidListInitial = process.env.LDAP_UID
+  ? process.env.LDAP_UID.split(',').map((k) => k.trim())
   : []
 
-const uidList = process.env.LDAP_UID
-  ? process.env.LDAP_UID.split(',').map(k => k.trim())
-  : []
+// certs and emails can be fetched in different order than the original uidListInitial
+let emailList = []
+let uidList = []
+getCertsAndEmail(uidListInitial, emailList, uidList)
 
-// fetch and store certs for intake analysts
-getAllCerts(uidList)
+// Make sure that everything got loaded.
+// TODO: have a proper "system is ready" flag that express uses to deal with requests
+// (ex: tell CAFC we're not ready yet, return error code to /ping)
+setTimeout(() => {
+  if (
+    uidListInitial.length === uidList.length &&
+    uidListInitial.length === emailList.length
+  )
+    console.log(`LDAP certs successfully fetched for: ${emailList}`)
+  else console.log('ERROR: problem fetching certs from LDAP')
+}, 5000)
 
 const app = express()
+app.use(helmet())
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
@@ -53,11 +71,17 @@ const allowedReferrers = [
   'antifraudcentre.ca',
   'centreantifraude.ca',
 ]
-const availableData = {
-  numberOfSubmissions: 0,
-  numberOfRequests: 0,
-  lastRequested: undefined,
+
+let availableData
+async function initializeAvailableData() {
+  availableData = {
+    numberOfSubmissions: await getReportCount(),
+    numberOfRequests: 0,
+    lastRequested: undefined,
+  }
 }
+
+initializeAvailableData()
 
 let debuggingCounter = 0
 
@@ -69,9 +93,7 @@ async function save(data, res) {
   encryptAndSend(uidList, emailList, data, analystEmail)
 
   if (notifyIsSetup && data.contactInfo.email) {
-    sendConfirmation(data.contactInfo.email, data.reportId)
-    if (process.env.SEND_UNENCRYPTED_REPORTS === 'yes')
-      sendUnencryptedReport(data.contactInfo.email, analystEmail)
+    sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
   saveRecord(data, res)
 }
@@ -86,13 +108,14 @@ const uploadData = async (req, res, fields, files) => {
   contentModeratorFiles(data, () => save(data, res))
 }
 
-app.get('/', function(req, res, next) {
+app.get('/', async function (req, res, next) {
+  availableData.numberOfSubmissions = await getReportCount()
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
-    console.log('Warning: redirecting request to CAFC')
+    console.warn('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalez')
-        ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
-        : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
+        ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
+        : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
     // temporary debugging code
@@ -124,7 +147,7 @@ app
   .use(limiter)
   .use(express.static(path.join(__dirname, 'build')))
   .use(bodyParser.json())
-  .use(function(req, res, next) {
+  .use(function (req, res, next) {
     var origin = req.headers.origin
     // Can only set one value of Access-Control-Allow-Origin, so we need some code to set it dynamically
     if (
@@ -140,15 +163,15 @@ app
     next()
   })
 
-  .get('/ping', function(_req, res) {
+  .get('/ping', function (_req, res) {
     return res.send('pong')
   })
 
-  .get('/available', function(_req, res) {
+  .get('/available', function (_req, res) {
     res.json({ acceptingReports: isAvailable(availableData) })
   })
 
-  .get('/stats', function(_req, res) {
+  .get('/stats', function (_req, res) {
     res.json({
       acceptingReports: isAvailable(availableData),
       ...availableData,
@@ -156,12 +179,28 @@ app
   })
 
   .post('/submit', (req, res) => {
-    availableData.numberOfSubmissions += 1
-    new formidable.IncomingForm().parse(req, (err, fields, files) => {
-      if (err) {
-        console.warn('ERROR', err)
-        throw err
-      }
+    var form = new formidable.IncomingForm()
+    form.parse(req)
+    let files = []
+    let fields = {}
+    form.on('field', (fieldName, fieldValue) => {
+      fields[fieldName] = JSON.parse(fieldValue)
+    })
+    form.on('file', function (name, file) {
+      if (files.length >= 3)
+        console.warn('ERROR in /submit: number of files more than 3')
+      else if (!fileSizePasses(file.size))
+        console.warn(
+          `ERROR in /submit: file ${name} too big (${file.size} bytes)`,
+        )
+      else if (!fileExtensionPasses(name))
+        console.warn(
+          `ERROR in /submit: unauthorized file extension in file ${name}`,
+        )
+      else files.push(file)
+    })
+    form.on('end', () => {
+      fields = unflatten(fields, { safe: true })
       uploadData(req, res, fields, files)
     })
   })
@@ -177,18 +216,18 @@ app
     res.send('thanks')
   })
 
-  .get('/privacystatement', function(_req, res) {
+  .get('/privacystatement', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
-  .get('/termsandconditions', function(_req, res) {
+  .get('/termsandconditions', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
 
 // uncomment to allow direct loading of arbitrary pages
-// .get('/*', function(_req, res) {
+// .get('/*', function (_req, res) {
 //   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 // })
 
 const port = process.env.PORT || 3000
-console.log(`Listening at port ${port}`)
+console.info(`Listening at port ${port}`)
 app.listen(port)
