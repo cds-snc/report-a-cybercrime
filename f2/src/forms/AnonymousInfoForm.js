@@ -33,7 +33,10 @@ export const AnonymousInfoForm = (props) => {
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
-  const { anonymous } = data.formData
+  const anonymous = {
+    ...formDefaults.anonymous,
+    ...data.formData.anonymous,
+  }
 
   const ifanonymous = ['anonymousPage.yes', 'anonymousPage.no']
 

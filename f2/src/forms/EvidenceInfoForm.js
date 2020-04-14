@@ -20,14 +20,6 @@ import { areFieldsValid } from '../utils/areFieldsValid'
 import { formDefaults } from './defaultValues'
 
 export const EvidenceInfoForm = (props) => {
-  const localOnSubmit = () => {
-    const data = {
-      files,
-      fileDescriptions,
-    }
-    if (areFieldsValid(data, formDefaults.evidence)) props.onSubmit(data)
-  }
-
   const [data] = useStateValue()
   const cached = {
     ...formDefaults.evidence,
@@ -85,6 +77,14 @@ export const EvidenceInfoForm = (props) => {
     setFiles(newFiles)
     setFileDescriptions(newFileDescriptions)
     setStatus('fileUpload.removed')
+  }
+
+  const localOnSubmit = () => {
+    const data = {
+      files, // from useState()
+      fileDescriptions, // from useState()
+    }
+    if (areFieldsValid(data, formDefaults.evidence)) props.onSubmit(data)
   }
 
   return (

@@ -18,7 +18,10 @@ export const BusinessInfoForm = (props) => {
   }
 
   const [data] = useStateValue()
-  const { businessInfo } = data.formData
+  const businessInfo = {
+    ...formDefaults.businessInfo,
+    ...data.formData.businessInfo,
+  }
 
   return (
     <Form
