@@ -5,12 +5,13 @@ import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
-import { testdata, EditButton } from '../ConfirmationSummary'
+import { testdata } from '../ConfirmationSummary'
+import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
-export const LocationInfoSummary = props => {
+export const LocationInfoSummary = (props) => {
   const [data] = useStateValue()
   const location = {
     ...testdata.formData.location, //Remove after done testing
@@ -22,6 +23,8 @@ export const LocationInfoSummary = props => {
       {false ? (
         <div>
           {/*: mark the proper ids for lingui */}
+          <Trans id="confirmationPage.location.city" />
+          <Trans id="confirmationPage.location.province" />
           <Trans id="confirmationPage.location.postalCode" />
           <Trans id="confirmationPage.location.title.edit" />
         </div>
@@ -45,6 +48,14 @@ export const LocationInfoSummary = props => {
         </Flex>
         {containsData(location) ? (
           <Stack as="dl" spacing={4}>
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.location.city"
+              description={location.city}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.location.province"
+              description={location.province}
+            />
             <DescriptionListItem
               descriptionTitle="confirmationPage.location.postalCode"
               description={location.postalCode}

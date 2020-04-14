@@ -15,6 +15,17 @@ import { P } from './components/paragraph'
 import { Layout } from './components/layout'
 import { Li } from './components/list-item'
 import { A } from './components/link'
+import TagManager from 'react-gtm-module'
+
+const prodVersion = '1.1.0'
+const gitsha = process.env.REACT_APP_VERSION
+  ? process.env.REACT_APP_VERSION.slice(0, 7)
+  : '000000'
+
+const tagManagerArgs = {
+  gtmId: process.env.REACT_APP_GOOGLE_GTM_ID,
+}
+TagManager.initialize(tagManagerArgs)
 
 const App = () => {
   const { i18n } = useLingui()
@@ -68,11 +79,7 @@ const App = () => {
 
             <Layout>
               <P fontSize="sm" my={3} aria-label="application version">
-                {`Version: ${
-                  process.env.REACT_APP_VERSION
-                    ? process.env.REACT_APP_VERSION.slice(0, 7)
-                    : '000000'
-                }`}
+                {`Version: ${prodVersion} (${gitsha})`}
               </P>
             </Layout>
           </Stack>

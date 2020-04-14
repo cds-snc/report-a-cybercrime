@@ -4,7 +4,8 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { testdata, EditButton } from '../ConfirmationSummary'
+import { testdata } from '../ConfirmationSummary'
+import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { useLingui } from '@lingui/react'
@@ -12,7 +13,7 @@ import { Text } from '../components/text'
 import { formatList } from '../utils/formatList'
 import { containsData } from '../utils/containsData'
 
-export const InformationSummary = props => {
+export const InformationSummary = (props) => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
 
@@ -22,7 +23,7 @@ export const InformationSummary = props => {
   }
 
   //push all select entities into the stack and if 'other' is selected, push the value of other.
-  const infoReqSummary = personalInformation.typeOfInfoReq.map(key =>
+  const infoReqSummary = personalInformation.typeOfInfoReq.map((key) =>
     key === 'typeOfInfoReq.other' && personalInformation.infoReqOther !== ''
       ? personalInformation.infoReqOther
       : i18n._(key),
@@ -34,11 +35,12 @@ export const InformationSummary = props => {
   })
 
   //push all select entities into the stack and if 'other' is selected, push the value of other.
-  const infoObtainedSummary = personalInformation.typeOfInfoObtained.map(key =>
-    key === 'typeOfInfoObtained.other' &&
-    personalInformation.infoObtainedOther !== ''
-      ? personalInformation.infoObtainedOther
-      : i18n._(key),
+  const infoObtainedSummary = personalInformation.typeOfInfoObtained.map(
+    (key) =>
+      key === 'typeOfInfoObtained.other' &&
+      personalInformation.infoObtainedOther !== ''
+        ? personalInformation.infoObtainedOther
+        : i18n._(key),
   )
   const infoObtainedLine = formatList(infoObtainedSummary, {
     pair: i18n._('default.pair'),

@@ -5,14 +5,16 @@ import { H1 } from './components/header'
 import { Lead } from './components/paragraph'
 import { Layout } from './components/layout'
 import { LocationInfoForm } from './forms/LocationInfoForm'
+import { LocationAnonymousInfoForm } from './forms/LocationAnonymousInfoForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { formatPostalCode } from './utils/formatPostalCode'
 import { Page } from './components/Page'
 
 export const LocationPage = () => {
   const [data, dispatch] = useStateValue()
-  const { doneForms } = data
+  const { doneForms, formData } = data
 
   return (
     <Route
@@ -27,12 +29,22 @@ export const LocationPage = () => {
               <Lead>
                 <Trans id="locationPage.intro" />
               </Lead>
-
-              <LocationInfoForm
-                onSubmit={data => {
-                  dispatch({ type: 'saveFormData', data: { location: data } })
-                  history.push(doneForms ? '/confirmation' : '/contactinfo')
-                }}
+              {formData.anonymous.anonymous === 'anonymousPage.yes' ? (
+                <LocationAnonymousInfoForm
+                  onSubmit={(data) => {
+                    dispatch({ type: 'saveFormData', data: { location: data } })
+                    history.push(doneForms ? '/confirmation' : '/confirmation')
+                  }}
+                />
+              ) : (
+                <LocationInfoForm
+                  onSubmit={(data) => {
+                    data.postalCode = formatPostalCode(data.postalCode)
+                    dispatch({ type: 'saveFormData', data: { location: data } })
+                    history.push(doneForms ? '/confirmation' : '/contactinfo')
+                  }}
+                />
+              )}
               />
             </Stack>
           </Layout>

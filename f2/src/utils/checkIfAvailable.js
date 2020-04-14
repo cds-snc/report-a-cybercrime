@@ -8,16 +8,9 @@ if (!submissionsPerDay || !secondsBetweenRequests)
 else console.info('Availability configured')
 
 // availableData is { numberOfSubmissions, numberOfRequests, lastRequested }
-const isAvailable = availableData => {
+const isAvailable = (availableData) => {
   try {
     const currentTime = new Date()
-    if (
-      availableData.lastRequested &&
-      availableData.lastRequested.toDateString() !== currentTime.toDateString()
-    ) {
-      availableData.numberOfSubmissions = 0 // a new day has started
-      return true
-    }
     if (!submissionsPerDay || !secondsBetweenRequests) return false
     if (availableData.numberOfSubmissions >= submissionsPerDay) return false
     if (
