@@ -75,6 +75,7 @@ export const BusinessInfoForm = ({ onSubmit }) => {
             <FormArrayControl
               name="numberOfEmployee"
               label={<Trans id="numberOfEmployee.label" />}
+              helperText={<Trans id="numberOfEmployee.labelExample" />}
             >
               {numberOfEmployee.map((key) => {
                 return (

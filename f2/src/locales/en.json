@@ -272,6 +272,7 @@
   "numberOfEmployee.1To99": "1 to 99 employees",
   "numberOfEmployee.500More": "500 employees or more",
   "numberOfEmployee.label": "How many people work at your business or organization?",
+  "numberOfEmployee.labelExample": "Select the approximate number of employees.",
   "pageNotFound.header": "Page not found",
   "pageNotFound.message": "Sorry, the page you were trying to view does not exist.",
   "privacyConsentInfoForm.linkOut": "Privacy statement",
