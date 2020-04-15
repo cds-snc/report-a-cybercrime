@@ -1,10 +1,9 @@
 const flatten = require('flat')
 const fetch = require('isomorphic-fetch')
 const FormData = require('form-data')
+const { formDefaults } = require('../forms/defaultValues')
 
 async function submitReportToServer(url = '', data = {}) {
-  // Building a multi-part form for file upload!
-  // add the files to the formdata object after.
   const flattenedData = flatten(data, { safe: true })
   var form_data = new FormData()
   Object.keys(flattenedData).forEach((key) => {
@@ -13,7 +12,6 @@ async function submitReportToServer(url = '', data = {}) {
   if (data.evidence)
     data.evidence.files.forEach((f) => form_data.append(f.name, f, f.name))
 
-  // Default options are marked with *
   const response = await fetch(url, {
     method: 'POST',
     mode: 'cors',
@@ -23,13 +21,11 @@ async function submitReportToServer(url = '', data = {}) {
     referrer: 'no-referrer',
     body: form_data,
   })
-  return response
+  console.log(`${response.status} (${response.statusText})`)
 }
 
-data = {
-  language: 'en',
-  anonymous: { anonymous: 'yes' },
-  evidence: { files: [], fileDescriptions: [] },
-  contactInfo: { email: '' },
-}
+data = JSON.parse(JSON.stringify(formDefaults))
+data.contactInfo.fullName = 'Mallory'
+// data.contactInfo.extra = 'extra field!'
+
 submitReportToServer('http://localhost:3000/submit', data)

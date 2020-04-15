@@ -12,7 +12,7 @@ const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
 const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
-const { missingFields } = require('./src/utils/missingFields')
+const { fieldsAreValid } = require('./src/utils/fieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
   notifyIsSetup,
@@ -212,17 +212,11 @@ app
       else files.push(file)
     })
     form.on('end', () => {
-      fields = unflatten(fields, { safe: true })
-
-      console.log(fields)
-
-      const missing = missingFields(fields)
-      if (missing.length > 0) {
-        console.warn(
-          `ERROR: submission is missing required data fields: ${missing}`,
-        )
-        res.status(500).send('submit missing field')
-      } else uploadData(req, res, fields, files)
+      if (fieldsAreValid(fields)) {
+        uploadData(req, res, unflatten(fields, { safe: true }), files)
+      } else {
+        res.status(422).send('invalid fields') // 422 is "Unprocessable Entity"
+      }
     })
   })
 
