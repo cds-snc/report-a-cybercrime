@@ -21,14 +21,15 @@ const formatReportInfo = (data) => {
     returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${selfHarmString}</h1>`
   }
   let isAnonymous = data.anonymous.anonymous.replace('anonymousPage.', '')
+
   returnString +=
     '<h2>Report Information</h2>' +
     formatTable(
       formatLineHtml('Report number:', data.reportId) +
         formatLineHtml('Date received:', data.submissionTime) +
         formatLineHtml('Report language:', data.language) +
+        formatLineHtml('Report version:', data.prodVersion) +
         formatLineHtml('Anonymous report:', isAnonymous) +
-        formatLineHtml('Report version:', data.appVersion) +
         formatLineHtml('Flagged:', selfHarmString),
     )
   // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
