@@ -23,11 +23,7 @@ export const Field = (props) => {
     <UniqueID>
       {(id) => {
         return (
-          <FormControl
-            aria-labelledby={id}
-            isInvalid={submitFailed && invalid}
-            {...props}
-          >
+          <FormControl aria-labelledby={id} isInvalid={submitFailed && invalid}>
             <FormLabel id={id} htmlFor={props.name}>
               {props.label}
             </FormLabel>

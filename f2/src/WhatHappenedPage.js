@@ -3,17 +3,26 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
-import { Lead } from './components/paragraph'
+import { Ul } from './components/unordered-list'
+import { Lead, P } from './components/paragraph'
 import { WhatHappenedForm } from './forms/WhatHappenedForm'
 import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { Li } from './components/list-item'
 
 export const WhatHappenedPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
+
+  const whatWasAffected = {
+    affectedOptions: [],
+    ...data.formData.whatWasAffected,
+  }
+
+  console.log(whatWasAffected.affectedOptions)
 
   return (
     <Route
@@ -29,10 +38,53 @@ export const WhatHappenedPage = () => {
                 <Lead>
                   <Trans id="whatHappenedPage.intro1" />
                 </Lead>
+                <P mt={8}>
+                  <Trans id="whatHappenedPage.thinkAbout" />
+                </P>
+                <Ul>
+                  <Li>
+                    <Trans id="whatHappenedPage.thinkAbout.default1" />
+                  </Li>
+                  {whatWasAffected.affectedOptions.includes(
+                    'whatWasAffectedForm.other',
+                  ) && (
+                    <Li>
+                      <Trans id="whatHappenedPage.thinkAbout.other" />
+                    </Li>
+                  )}
+                  {whatWasAffected.affectedOptions.includes(
+                    'whatWasAffectedForm.financial',
+                  ) && (
+                    <Li>
+                      <Trans id="whatHappenedPage.thinkAbout.money" />
+                    </Li>
+                  )}
+                  {whatWasAffected.affectedOptions.includes(
+                    'whatWasAffectedForm.personalInformation',
+                  ) && (
+                    <Li>
+                      <Trans id="whatHappenedPage.thinkAbout.personalInfo" />
+                    </Li>
+                  )}
+                  {whatWasAffected.affectedOptions.includes(
+                    'whatWasAffectedForm.devices',
+                  ) && (
+                    <Li>
+                      <Trans id="whatHappenedPage.thinkAbout.devices" />
+                    </Li>
+                  )}
+                  {whatWasAffected.affectedOptions.includes(
+                    'whatWasAffectedForm.business_assets',
+                  ) && (
+                    <Li>
+                      <Trans id="whatHappenedPage.thinkAbout.business" />
+                    </Li>
+                  )}
+                </Ul>
               </Stack>
 
               <WhatHappenedForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { whatHappened: data },
