@@ -24,7 +24,7 @@ async function submitReportToServer(url = '', data = {}) {
   console.log(`${response.status} (${response.statusText})`)
 }
 
-data = JSON.parse(JSON.stringify(formDefaults))
+let data = JSON.parse(JSON.stringify(formDefaults))
 data.contactInfo.fullName = 'Mallory'
 // data.contactInfo.extra = 'extra field!'
 
