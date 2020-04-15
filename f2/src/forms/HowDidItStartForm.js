@@ -213,7 +213,9 @@ export const HowDidItStartForm = (props) => {
             spacing={12}
           >
             {submitFailed ? (
-              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+              <ErrorSummary>
+                <Trans id="whenDidItStart.hasValidationErrors" />
+              </ErrorSummary>
             ) : null}
             <FormArrayControl
               name="howDidTheyReachYou"

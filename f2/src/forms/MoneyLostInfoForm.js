@@ -111,7 +111,11 @@ export const MoneyLostInfoForm = (props) => {
             spacing={6}
             shouldWrapChildren
           >
-            {submitFailed ? <ErrorSummary /> : null}
+            {submitFailed ? (
+              <ErrorSummary>
+                <Trans id="moneyLostPage.hasValidationErrors" />
+              </ErrorSummary>
+            ) : null}
             <Field
               name="demandedMoney"
               label={<Trans id="moneyLostPage.demandedMoney" />}
