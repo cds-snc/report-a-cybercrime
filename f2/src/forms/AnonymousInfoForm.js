@@ -31,7 +31,6 @@ export const AnonymousInfoForm = (props) => {
       {false ? ( // mark ids for lingui
         <div>
           <Trans id="anonymousPage.yes" />
-          <Trans id="anonymousPage.no" />
         </div>
       ) : null}
 
