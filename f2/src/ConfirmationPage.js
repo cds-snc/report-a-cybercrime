@@ -67,7 +67,6 @@ const prepFormData = (formData, language) => {
       transactionDay: '',
       transactionMonth: '',
       transactionYear: '',
-      tellUsMore: '',
     }
   }
 
@@ -82,7 +81,6 @@ const prepFormData = (formData, language) => {
       infoReqOther: '',
       typeOfInfoObtained: [],
       infoObtainedOther: '',
-      tellUsMore: '',
     }
   }
 
@@ -95,7 +93,6 @@ const prepFormData = (formData, language) => {
     formData.devicesInfo = {
       device: '',
       account: '',
-      devicesTellUsMore: '',
     }
   }
 

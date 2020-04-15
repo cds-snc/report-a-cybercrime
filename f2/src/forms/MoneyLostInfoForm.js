@@ -8,7 +8,6 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Input } from '../components/input'
 import { Stack, Box } from '@chakra-ui/core'
-import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { ConditionalForm } from '../components/container'
 import { CheckboxAdapter } from '../components/checkbox'
@@ -73,7 +72,6 @@ export const MoneyLostInfoForm = (props) => {
     transactionDay: '',
     transactionMonth: '',
     transactionYear: '',
-    tellUsMore: '',
     ...data.formData.moneyLost,
   }
 
@@ -181,13 +179,6 @@ export const MoneyLostInfoForm = (props) => {
                 />
               </Stack>
             </FormArrayControl>
-
-            <Field
-              name="tellUsMore"
-              label={<Trans id="moneyLostPage.tellUsMore" />}
-              FormHelperText={<Trans id="moneyLostPage.tellUsMoreExample" />}
-              component={TextArea}
-            />
 
             <Well variantColor="blue">
               <Trans id="moneyLostPage.tip" />

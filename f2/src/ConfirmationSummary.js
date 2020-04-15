@@ -39,16 +39,14 @@ export const testdata = {
       transactionDay: '',
       transactionMonth: '',
       transactionYear: '',
-      tellUsMore: '',
     },
     personalInformation: {
       typeOfInfoReq: [],
       typeOfInfoObtained: [],
       infoReqOther: '',
       infoObtainedOther: '',
-      tellUsMore: '',
     },
-    devicesInfo: { device: '', account: '', devicesTellUsMore: '' },
+    devicesInfo: { device: '', account: '' },
     businessInfo: {
       nameOfBusiness: '',
       industry: '',
