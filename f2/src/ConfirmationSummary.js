@@ -91,7 +91,7 @@ export const ConfirmationSummary = () => {
           <MoneyLostInfoSummary />
         )}
         {impact.affectedOptions.includes(
-          'whatWasAffectedForm.personal_information',
+          'whatWasAffectedForm.personalInformation',
         ) && <InformationSummary />}
         {impact.affectedOptions.includes('whatWasAffectedForm.devices') && (
           <DevicesSummary />

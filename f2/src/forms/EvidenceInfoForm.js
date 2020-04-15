@@ -15,8 +15,9 @@ import { LinkButton } from '../components/link'
 import { Text } from '../components/text'
 import { Field } from '../components/Field'
 import { Alert } from '../components/Messages'
+import { fileExtensionPasses } from '../utils/acceptableFiles'
 
-export const EvidenceInfoForm = props => {
+export const EvidenceInfoForm = (props) => {
   const [data] = useStateValue()
   const cached = {
     files: [],
@@ -36,12 +37,20 @@ export const EvidenceInfoForm = props => {
   }, [status])
   const { i18n } = useLingui()
 
-  const onFilesChange = e => {
+  const onFilesChange = (e) => {
     const file = e.target.files[0]
     if (file.size > 4194304) {
       // 4MB in bytes is 4194304.
       alert(
         'Warning: Your file size exceeds 4MB. Please reduce the size and try uploading again. \n Alerte : La taille de votre fichier dépasse 4 Mo. Veuillez réduire la taille et essayer de télécharger à nouveau.',
+      )
+      e.target.value = '' // clear the file input target, to allow the file to be chosen again
+      return
+    }
+    if (!fileExtensionPasses(file.name)) {
+      alert(
+        i18n._('evidencePage.supportedFiles') +
+          i18n._('evidencePage.fileTypes'),
       )
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
@@ -52,14 +61,14 @@ export const EvidenceInfoForm = props => {
     e.target.value = '' // clear the file input target, to allow the file to be removed then added again
   }
 
-  const onFileDescriptionChange = e => {
+  const onFileDescriptionChange = (e) => {
     const index = Number(e.target.id.substring(17))
     let newFileDescriptions = JSON.parse(JSON.stringify(fileDescriptions))
     newFileDescriptions[index] = e.target.value
     setFileDescriptions(newFileDescriptions)
   }
 
-  const removeFile = index => {
+  const removeFile = (index) => {
     let newFiles = files.filter((_, fileIndex) => index !== fileIndex)
     let newFileDescriptions = fileDescriptions.filter(
       (_, fileIndex) => index !== fileIndex,

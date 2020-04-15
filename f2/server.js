@@ -4,6 +4,7 @@ const path = require('path')
 const formidable = require('formidable')
 const helmet = require('helmet')
 const { unflatten } = require('flat')
+const { sanitize } = require('./src/utils/sanitize')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
@@ -113,8 +114,8 @@ app.get('/', async function (req, res, next) {
     console.warn('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalez')
-        ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
-        : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
+        ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
+        : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
     // temporary debugging code
@@ -183,7 +184,12 @@ app
     let files = []
     let fields = {}
     form.on('field', (fieldName, fieldValue) => {
-      fields[fieldName] = JSON.parse(fieldValue)
+      const rawValue = JSON.parse(fieldValue)
+      let cleanValue
+      // we have strings and arrays in our data fields
+      if (typeof rawValue === 'object') cleanValue = rawValue.map(sanitize)
+      else cleanValue = sanitize(rawValue)
+      fields[fieldName] = cleanValue
     })
     form.on('file', function (name, file) {
       if (files.length >= 3)
@@ -210,7 +216,7 @@ app
         console.warn('ERROR', err)
         throw err
       }
-      submitFeedback(fields.json)
+      submitFeedback(sanitize(JSON.stringify(fields.json)))
     })
     res.send('thanks')
   })
