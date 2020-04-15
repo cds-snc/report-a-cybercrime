@@ -1,7 +1,8 @@
-Given('I open the local report home page', () => {
-  cy.visit(Cypress.env('local'))
-})
+
+Given('I open the report home page', () => {
+    cy.visit(Cypress.env('staging'))
+});
 
 Then('Inject axe and check for accessibility issues', () => {
-  cy.reportA11y()
-})
+    cy.reportA11y();
+});
