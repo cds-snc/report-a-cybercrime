@@ -12,6 +12,7 @@ const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
 const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
+const { missingFields } = require('./src/utils/missingFields')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
   notifyIsSetup,
@@ -184,12 +185,18 @@ app
     let files = []
     let fields = {}
     form.on('field', (fieldName, fieldValue) => {
-      const rawValue = JSON.parse(fieldValue)
-      let cleanValue
-      // we have strings and arrays in our data fields
-      if (typeof rawValue === 'object') cleanValue = rawValue.map(sanitize)
-      else cleanValue = sanitize(rawValue)
-      fields[fieldName] = cleanValue
+      try {
+        const rawValue = JSON.parse(fieldValue)
+        let cleanValue
+        // we have strings and arrays in our data fields
+        if (typeof rawValue === 'object') cleanValue = rawValue.map(sanitize)
+        else cleanValue = sanitize(rawValue)
+        fields[fieldName] = cleanValue
+      } catch (error) {
+        console.warn(
+          `ERROR in /submit: parsing ${fieldName} value of ${fieldValue}: ${error}`,
+        )
+      }
     })
     form.on('file', function (name, file) {
       if (files.length >= 3)
@@ -206,7 +213,16 @@ app
     })
     form.on('end', () => {
       fields = unflatten(fields, { safe: true })
-      uploadData(req, res, fields, files)
+
+      console.log(fields)
+
+      const missing = missingFields(fields)
+      if (missing.length > 0) {
+        console.warn(
+          `ERROR: submission is missing required data fields: ${missing}`,
+        )
+        res.status(500).send('submit missing field')
+      } else uploadData(req, res, fields, files)
     })
   })
 
