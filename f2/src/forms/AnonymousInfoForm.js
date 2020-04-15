@@ -1,37 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { RadioAdapter } from '../components/radio'
+import { CheckboxAdapter } from '../components/checkbox'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
+import { Alert } from '../components/Messages'
 
-const validate = (values) => {
-  const errors = {}
-  //condition for an error to occur: append a lingui id to the list of error
-  if (!values.anonymous || values.anonymous.length < 1) {
-    errors.anonymous = 'AnonymousPage.warning'
-  }
-  return errors
-}
 const clearData = (dataOrig) => {
   let data = JSON.parse(JSON.stringify(dataOrig))
   return data
 }
 
 export const AnonymousInfoForm = (props) => {
-  const { i18n } = useLingui()
-
   const [data] = useStateValue()
+  const whetherCheck = {
+    checkBoxOptions: [],
+    ...data.formData.whetherConsent,
+  }
+  const checkBoxOptions = ['anonymousPage.yes']
   const anonymous = {
     anonymous: '',
     ...data.formData.anonymous,
   }
-
-  const ifanonymous = ['anonymousPage.yes', 'anonymousPage.no']
 
   return (
     <React.Fragment>
@@ -45,7 +38,6 @@ export const AnonymousInfoForm = (props) => {
       <Form
         initialValues={anonymous}
         onSubmit={(data) => props.onSubmit(clearData(data))}
-        validate={validate}
         render={({ handleSubmit }) => (
           <Stack
             as="form"
@@ -53,17 +45,22 @@ export const AnonymousInfoForm = (props) => {
             shouldWrapChildren
             spacing={12}
           >
-            <FormArrayControl
-              name="anonymous"
-              label={<Trans id="anonymousForm.title" />}
-              errorMessage={<Trans id="anonymousPage.warning" />}
-            >
-              {ifanonymous.map((key) => {
+            <FormArrayControl name="checkBoxOptions">
+              {checkBoxOptions.map((key) => {
                 return (
                   <React.Fragment key={key}>
-                    <RadioAdapter name="anonymous" value={key}>
-                      {i18n._(key)}
-                    </RadioAdapter>
+                    <CheckboxAdapter
+                      name="checkBoxOptions"
+                      value={key}
+                      isChecked={whetherCheck.checkBoxOptions.includes(key)}
+                      conditionalField={
+                        <Alert status="warning" withIcon>
+                          {<Trans id="anonymousPage.warning" />}
+                        </Alert>
+                      }
+                    >
+                      <Trans id="anonymousPage.yes" />
+                    </CheckboxAdapter>
                   </React.Fragment>
                 )
               })}
