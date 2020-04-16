@@ -10,31 +10,29 @@ else console.info('Availability configured')
 // availableData is { numberOfSubmissions, numberOfRequests, lastRequested }
 const isAvailable = (availableData) => {
   try {
-    const currentTime = new date()
+    const currentTime = new Date()
     //convert current date and lastRequested date with format of 00/00/0000
     const currentDate =
-      (currentTime.getDate() + 1 > 9
-        ? currentTime.getDate() + 1
-        : '0' + currentTime.getDate() + 1) +
+      (currentTime.getDate() > 9
+        ? currentTime.getDate()
+        : '0' + currentTime.getDate()) +
       '/' +
       (currentTime.getMonth() > 8
         ? currentTime.getMonth() + 1
         : '0' + (currentTime.getMonth() + 1)) +
       '/' +
       currentTime.getFullYear()
-    console.log('current date is: ' + currentDate)
 
     const lastRequestedDate =
-      (lastRequested.getDate() > 9
-        ? lastRequested.getDate()
-        : '0' + lastRequested.getDate()) +
+      (availableData.lastRequested.getDate() > 9
+        ? availableData.lastRequested.getDate()
+        : '0' + availableData.lastRequested.getDate()) +
       '/' +
-      (lastRequested.getMonth() > 8
-        ? lastRequested.getMonth() + 1
-        : '0' + (lastRequested.getMonth() + 1)) +
+      (availableData.lastRequested.getMonth() > 8
+        ? availableData.lastRequested.getMonth() + 1
+        : '0' + (availableData.lastRequested.getMonth() + 1)) +
       '/' +
-      lastRequested.getFullYear()
-    console.log('last requested date is: ' + lastRequestedDate)
+      availableData.lastRequested.getFullYear()
 
     if (currentDate != lastRequestedDate) {
       availableData.numberOfSubmissions = 0
