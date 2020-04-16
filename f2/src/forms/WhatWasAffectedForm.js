@@ -84,7 +84,9 @@ export const WhatWasAffectedForm = (props) => {
             spacing={6}
           >
             {submitFailed && hasValidationErrors ? (
-              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+              <ErrorSummary>
+                <Trans id="whatWasAffectedForm.hasValidationErrors" />
+              </ErrorSummary>
             ) : null}
 
             <FormArrayControl
