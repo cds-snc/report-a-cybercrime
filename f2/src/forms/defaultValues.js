@@ -1,4 +1,7 @@
 const formDefaults = {
+  language: '',
+  prodVersion: '',
+  appVersion: '',
   consent: { consentOptions: [] },
   anonymous: {
     anonymous: '',
