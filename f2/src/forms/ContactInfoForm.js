@@ -15,7 +15,7 @@ import { P } from '../components/paragraph'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 export const validate = (values) => {
@@ -35,7 +35,8 @@ export const validate = (values) => {
 
 export const ContactInfoForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.contactInfo)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.contactInfo))
+      props.onSubmit(data)
   }
 
   const [data] = useStateValue()

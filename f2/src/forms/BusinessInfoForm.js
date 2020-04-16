@@ -8,7 +8,7 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
@@ -17,7 +17,8 @@ import { RadioAdapter } from '../components/radio'
 
 export const BusinessInfoForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.businessInfo)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.businessInfo))
+      props.onSubmit(data)
   }
 
   const [data] = useStateValue()

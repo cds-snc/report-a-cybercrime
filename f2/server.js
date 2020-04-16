@@ -12,7 +12,7 @@ const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
 const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
-const { fieldsAreValid } = require('./src/utils/fieldsAreValid')
+const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
   notifyIsSetup,
@@ -212,7 +212,7 @@ app
       else files.push(file)
     })
     form.on('end', () => {
-      if (fieldsAreValid(fields)) {
+      if (serverFieldsAreValid(fields)) {
         uploadData(req, res, unflatten(fields, { safe: true }), files)
       } else {
         res.status(422).send('invalid fields') // 422 is "Unprocessable Entity"

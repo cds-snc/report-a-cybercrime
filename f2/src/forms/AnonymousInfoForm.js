@@ -7,7 +7,7 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { RadioAdapter } from '../components/radio'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { formDefaults } from './defaultValues'
 
@@ -27,7 +27,7 @@ const clearData = (dataOrig) => {
 
 export const AnonymousInfoForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.anonymous)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.anonymous)) props.onSubmit(data)
   }
 
   const { i18n } = useLingui()

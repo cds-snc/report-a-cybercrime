@@ -1,7 +1,7 @@
 const { formDefaults } = require('../forms/defaultValues')
 const flatten = require('flat')
 
-const fieldsAreValid = (fields) => {
+const serverFieldsAreValid = (fields) => {
   const requiredFields = flatten(formDefaults, { safe: true })
   let retval = true
 
@@ -27,4 +27,4 @@ const fieldsAreValid = (fields) => {
   return retval
 }
 
-module.exports = { fieldsAreValid }
+module.exports = { serverFieldsAreValid }

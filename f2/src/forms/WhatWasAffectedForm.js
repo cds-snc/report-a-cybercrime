@@ -10,7 +10,7 @@ import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Text } from '../components/text'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 const validate = (values) => {
@@ -38,7 +38,8 @@ export const whatWasAffectedPages = [
 
 export const WhatWasAffectedForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.whatWasAffected)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.whatWasAffected))
+      props.onSubmit(data)
   }
 
   const { i18n } = useLingui()
