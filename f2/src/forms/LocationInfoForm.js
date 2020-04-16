@@ -72,7 +72,9 @@ export const LocationInfoForm = (props) => {
             spacing={6}
           >
             {submitFailed && hasValidationErrors ? (
-              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+              <ErrorSummary>
+                <Trans id="locationinfoPage.hasValidationErrors" />
+              </ErrorSummary>
             ) : null}
             <Flex direction="row" align="center" wrap="wrap" mb={10}>
               <P w="100%">
