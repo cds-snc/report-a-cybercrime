@@ -29,7 +29,7 @@ export const LocationPage = () => {
               <Lead>
                 <Trans id="locationPage.intro" />
               </Lead>
-              {formData.anonymous.anonymous === 'anonymousPage.yes' ? (
+              {formData.anonymous.checkBoxOptions[0] === 'anonymousPage.yes' ? (
                 <LocationAnonymousInfoForm
                   onSubmit={(data) => {
                     dispatch({ type: 'saveFormData', data: { location: data } })

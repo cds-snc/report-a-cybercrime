@@ -17,12 +17,12 @@ const clearData = (dataOrig) => {
 export const AnonymousInfoForm = (props) => {
   const [data] = useStateValue()
   const whetherCheck = {
-    checkBoxOptions: [],
-    ...data.formData.whetherConsent,
+    checkBoxOptions: '',
+    ...data.formData.whetherCheck,
   }
   const checkBoxOptions = ['anonymousPage.yes']
   const anonymous = {
-    anonymous: '',
+    checkBoxOptions: '',
     ...data.formData.anonymous,
   }
 
