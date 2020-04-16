@@ -3,24 +3,29 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
+import { Field } from '../components/Field'
 import { TextArea } from '../components/text-area'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { Field } from '../components/Field'
+import { areFieldsValid } from '../utils/areFieldsValid'
+import { formDefaults } from './defaultValues'
 
 export const WhatHappenedForm = (props) => {
-  const [data] = useStateValue()
+  const localOnSubmit = (data) => {
+    if (areFieldsValid(data, formDefaults.whatHappened)) props.onSubmit(data)
+  }
 
+  const [data] = useStateValue()
   const whatHappened = {
-    whatHappened: '',
+    ...formDefaults.whatHappened,
     ...data.formData.whatHappened,
   }
 
   return (
     <Form
       initialValues={whatHappened}
-      onSubmit={props.onSubmit}
+      onSubmit={localOnSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
           <Field

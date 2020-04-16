@@ -9,21 +9,24 @@ import { Field } from '../components/Field'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { Well } from '../components/Messages'
+import { areFieldsValid } from '../utils/areFieldsValid'
+import { formDefaults } from './defaultValues'
 
 export const DevicesForm = (props) => {
   const localOnSubmit = (data) => {
-    props.onSubmit(data)
+    if (areFieldsValid(data, formDefaults.devicesInfo)) props.onSubmit(data)
   }
 
   const [data] = useStateValue()
-  let { devicesInfo } = data.formData
-  devicesInfo = {
-    ...devicesInfo,
+  const devicesInfo = {
+    ...formDefaults.devicesInfo,
+    ...data.formData.devicesInfo,
   }
+
   return (
     <Form
       initialValues={devicesInfo}
-      onSubmit={(data) => localOnSubmit(data)}
+      onSubmit={localOnSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
           <Field
