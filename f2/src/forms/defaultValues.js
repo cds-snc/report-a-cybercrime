@@ -26,7 +26,6 @@ const formDefaults = {
     transactionDay: '',
     transactionMonth: '',
     transactionYear: '',
-    tellUsMore: '',
     methodOther: '',
   },
   personalInformation: {
@@ -34,9 +33,8 @@ const formDefaults = {
     typeOfInfoObtained: [],
     infoReqOther: '',
     infoObtainedOther: '',
-    tellUsMore: '',
   },
-  devicesInfo: { device: '', account: '', devicesTellUsMore: '' },
+  devicesInfo: { device: '', account: '' },
   businessInfo: {
     nameOfBusiness: '',
     industry: '',
