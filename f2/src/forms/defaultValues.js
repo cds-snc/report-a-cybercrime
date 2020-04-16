@@ -37,7 +37,12 @@ const formDefaults = {
     tellUsMore: '',
   },
   devicesInfo: { device: '', account: '', devicesTellUsMore: '' },
-  businessInfo: { business: '' },
+  businessInfo: {
+    nameOfBusiness: '',
+    industry: '',
+    role: '',
+    numberOfEmployee: '',
+  },
   whatHappened: { whatHappened: '' },
 
   suspectClues: {

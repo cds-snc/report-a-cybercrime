@@ -21,14 +21,15 @@ const formatReportInfo = (data) => {
     returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${selfHarmString}</h1>`
   }
   let isAnonymous = data.anonymous.anonymous.replace('anonymousPage.', '')
+
   returnString +=
     '<h2>Report Information</h2>' +
     formatTable(
       formatLineHtml('Report number:', data.reportId) +
         formatLineHtml('Date received:', data.submissionTime) +
         formatLineHtml('Report language:', data.language) +
+        formatLineHtml('Report version:', data.prodVersion) +
         formatLineHtml('Anonymous report:', isAnonymous) +
-        formatLineHtml('Report version:', data.appVersion) +
         formatLineHtml('Flagged:', selfHarmString),
     )
   // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
@@ -141,7 +142,16 @@ const formatNarrative = (data) => {
       'Affected personal info:  ',
       data.personalInformation.tellUsMore,
     ) +
-    formatLineHtml('Affected business info:  ', data.businessInfo.business) +
+    formatLineHtml(
+      'Name of business/organzation:  ',
+      data.businessInfo.nameOfBusiness,
+    ) +
+    formatLineHtml('Type of industry:  ', data.businessInfo.industry) +
+    formatLineHtml('Role:  ', data.businessInfo.role) +
+    formatLineHtml(
+      'Number of employee:  ',
+      data.businessInfo.numberOfEmployee,
+    ) +
     formatLineHtml('Other clues:             ', data.suspectClues.suspectClues3)
 
   delete data.personalInformation.typeOfInfoReq
@@ -155,6 +165,10 @@ const formatNarrative = (data) => {
   delete data.personalInformation.tellUsMore
   delete data.devicesInfo.devicesTellUsMore
   delete data.businessInfo.business
+  delete data.businessInfo.nameOfBusiness
+  delete data.businessInfo.industry
+  delete data.businessInfo.role
+  delete data.businessInfo.numberOfEmployee
   delete data.suspectClues.suspectClues3
   return formatSection('Narrative', rows)
 }
