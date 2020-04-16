@@ -9,23 +9,28 @@ import { FormLabel } from '../components/FormLabel'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FormControl, Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { areFieldsValid } from '../utils/areFieldsValid'
+import { formDefaults } from './defaultValues'
 
-export const WhatHappenedForm = props => {
+export const WhatHappenedForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (areFieldsValid(data, formDefaults.whatHappened)) props.onSubmit(data)
+  }
+
   const [data] = useStateValue()
-
   const whatHappened = {
-    whatHappened: '',
+    ...formDefaults.whatHappened,
     ...data.formData.whatHappened,
   }
 
   return (
     <Form
       initialValues={whatHappened}
-      onSubmit={props.onSubmit}
+      onSubmit={localOnSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
           <Field name="whatHappened">
-            {props => (
+            {(props) => (
               <FormControl>
                 <FormLabel htmlFor="whatHappened">
                   <Trans id="whatHappenedPage.summary" />

@@ -11,10 +11,15 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { formatPostalCode } from './utils/formatPostalCode'
 import { Page } from './components/Page'
+import { formDefaults } from './forms/defaultValues'
 
 export const LocationPage = () => {
   const [data, dispatch] = useStateValue()
-  const { doneForms, formData } = data
+  const { doneForms } = data
+  const formData = {
+    ...formDefaults,
+    ...data.formData,
+  }
 
   return (
     <Route
