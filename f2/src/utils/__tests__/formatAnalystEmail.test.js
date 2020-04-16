@@ -12,7 +12,7 @@ describe('formatAnalystEmail', () => {
   it('flags self harm words prominently if present', () => {
     const data = {
       selfHarmWords: 'agile',
-      anonymous: { anonyousOptions: 'anonymousPage.no' },
+      anonymous: { anonymousOptions: ['anonymousPage.no'] },
     }
     console.error = jest.fn()
     const s = formatAnalystEmail(data)
