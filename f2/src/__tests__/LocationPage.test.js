@@ -22,7 +22,9 @@ describe('<LocationPage />', () => {
         <ThemeProvider theme={canada}>
           <StateProvider
             initialState={{
-              formData: { anonymous: { checkBoxOptions: 'anonymousPage.yes' } },
+              formData: {
+                anonymous: { anonymousOptions: 'anonymousPage.yes' },
+              },
             }}
             reducer={reducer}
           >

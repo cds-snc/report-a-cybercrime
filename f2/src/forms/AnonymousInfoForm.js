@@ -6,8 +6,9 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { CheckboxAdapter } from '../components/checkbox'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormArrayControl } from '../components/FormArrayControl'
 import { Alert } from '../components/Messages'
+import { formDefaults } from './defaultValues'
+import { areFieldsValid } from '../utils/areFieldsValid'
 
 const clearData = (dataOrig) => {
   let data = JSON.parse(JSON.stringify(dataOrig))
@@ -16,13 +17,15 @@ const clearData = (dataOrig) => {
 
 export const AnonymousInfoForm = (props) => {
   const [data] = useStateValue()
-  const whetherCheck = {
-    checkBoxOptions: '',
-    ...data.formData.whetherCheck,
+
+  const localOnSubmit = (data) => {
+    if (areFieldsValid(data, formDefaults.anonymous))
+      props.onSubmit(clearData(data))
   }
-  const checkBoxOptions = ['anonymousPage.yes']
+
+  const consentOption = 'anonymousPage.yes'
   const anonymous = {
-    checkBoxOptions: '',
+    ...formDefaults.anonymous,
     ...data.formData.anonymous,
   }
 
@@ -36,34 +39,22 @@ export const AnonymousInfoForm = (props) => {
 
       <Form
         initialValues={anonymous}
-        onSubmit={(data) => props.onSubmit(clearData(data))}
-        render={({ handleSubmit }) => (
+        onSubmit={localOnSubmit}
+        render={({ values, handleSubmit }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
-            spacing={12}
+            spacing={6}
           >
-            <FormArrayControl name="checkBoxOptions">
-              {checkBoxOptions.map((key) => {
-                return (
-                  <React.Fragment key={key}>
-                    <CheckboxAdapter
-                      name="checkBoxOptions"
-                      value={key}
-                      isChecked={whetherCheck.checkBoxOptions.includes(key)}
-                      conditionalField={
-                        <Alert status="warning" withIcon>
-                          {<Trans id="anonymousPage.warning" />}
-                        </Alert>
-                      }
-                    >
-                      <Trans id="anonymousPage.yes" />
-                    </CheckboxAdapter>
-                  </React.Fragment>
-                )
-              })}
-            </FormArrayControl>
+            <CheckboxAdapter name="anonymousOptions" value={consentOption}>
+              <Trans id="anonymousPage.yes" />
+            </CheckboxAdapter>
+            {values.anonymousOptions.includes(consentOption) && (
+              <Alert status="warning" withIcon>
+                <Trans id="anonymousPage.warning" />
+              </Alert>
+            )}
             <NextAndCancelButtons
               next={<Trans id="anonymousPage.nextPage" />}
               button={<Trans id="anonymousPage.nextButton" />}

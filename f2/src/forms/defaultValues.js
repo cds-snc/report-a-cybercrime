@@ -1,8 +1,6 @@
 const formDefaults = {
   consent: { consentOptions: [] },
-  anonymous: {
-    anonymous: '',
-  },
+  anonymous: { anonymousOptions: [] },
   howdiditstart: {
     howDidTheyReachYou: [],
     email: '',
