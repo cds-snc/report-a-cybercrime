@@ -10,7 +10,36 @@ else console.info('Availability configured')
 // availableData is { numberOfSubmissions, numberOfRequests, lastRequested }
 const isAvailable = (availableData) => {
   try {
-    const currentTime = new Date()
+    const currentTime = new date()
+    //convert current date and lastRequested date with format of 00/00/0000
+    const currentDate =
+      (new Date().getDate() > 9
+        ? new Date().getDate()
+        : '0' + new Date().getDate()) +
+      '/' +
+      (new Date().getMonth() > 8
+        ? new Date().getMonth() + 1
+        : '0' + (new Date().getMonth() + 1)) +
+      '/' +
+      new Date().getFullYear()
+    console.log('current date is: ' + currentDate)
+
+    const lastRequestedDate =
+      (lastRequested.getDate() > 9
+        ? lastRequested.getDate()
+        : '0' + lastRequested.getDate()) +
+      '/' +
+      (lastRequested.getMonth() > 8
+        ? lastRequested.getMonth() + 1
+        : '0' + (lastRequested.getMonth() + 1)) +
+      '/' +
+      lastRequested.getFullYear()
+    console.log('last requested date is: ' + lastRequestedDate)
+
+    if (currentDate != lastRequestedDate) {
+      availableData.numberOfSubmissions = 0
+      return true
+    }
     if (!submissionsPerDay || !secondsBetweenRequests) return false
     if (availableData.numberOfSubmissions >= submissionsPerDay) return false
     if (
