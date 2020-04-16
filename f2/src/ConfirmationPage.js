@@ -106,7 +106,10 @@ const prepFormData = (formData, language) => {
     )
   ) {
     formData.businessInfo = {
-      business: '',
+      nameOfBusiness: '',
+      industry: '',
+      role: '',
+      numberOfEmployee: '',
     }
   }
 
