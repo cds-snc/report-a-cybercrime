@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { formDefaults } from './forms/defaultValues'
 import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
@@ -17,58 +18,7 @@ import { WhatWasAffectedSummary } from './summary/WhatWasAffectedSummary'
 
 export const testdata = {
   doneForms: true,
-  formData: {
-    consent: { consentOptions: ['privacyConsentInfoForm.yes'] },
-    howdiditstart: {
-      howDidTheyReachYou: [],
-      email: '',
-      phone: '',
-      online: '',
-      application: '',
-      others: '',
-      whenDidItStart: '',
-      howManyTimes: '',
-    },
-    whatWasAffected: {
-      affectedOptions: [],
-    },
-    moneyLost: {
-      demandedMoney: '',
-      moneyTaken: '',
-      methodPayment: [],
-      transactionDay: '',
-      transactionMonth: '',
-      transactionYear: '',
-      tellUsMore: '',
-    },
-    personalInformation: {
-      typeOfInfoReq: [],
-      typeOfInfoObtained: [],
-      infoReqOther: '',
-      infoObtainedOther: '',
-      tellUsMore: '',
-    },
-    devicesInfo: { device: '', account: '', devicesTellUsMore: '' },
-    businessInfo: {
-      nameOfBusiness: '',
-      industry: '',
-      role: '',
-      numberOfEmployee: '',
-    },
-    whatHappened: { whatHappened: '' },
-
-    suspectClues: {
-      suspectClues1: '',
-      suspectClues2: '',
-      suspectClues3: '',
-    },
-    evidence: {
-      files: [],
-      fileDescriptions: [],
-    },
-    location: { postalCode: '' },
-    contactInfo: { fullName: '', email: '', phone: '' },
-  },
+  formData: formDefaults,
 }
 
 export const ConfirmationSummary = () => {
