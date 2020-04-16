@@ -13,15 +13,15 @@ const isAvailable = (availableData) => {
     const currentTime = new date()
     //convert current date and lastRequested date with format of 00/00/0000
     const currentDate =
-      (new Date().getDate() > 9
-        ? new Date().getDate()
-        : '0' + new Date().getDate()) +
+      (currentTime.getDate() + 1 > 9
+        ? currentTime.getDate() + 1
+        : '0' + currentTime.getDate() + 1) +
       '/' +
-      (new Date().getMonth() > 8
-        ? new Date().getMonth() + 1
-        : '0' + (new Date().getMonth() + 1)) +
+      (currentTime.getMonth() > 8
+        ? currentTime.getMonth() + 1
+        : '0' + (currentTime.getMonth() + 1)) +
       '/' +
-      new Date().getFullYear()
+      currentTime.getFullYear()
     console.log('current date is: ' + currentDate)
 
     const lastRequestedDate =
