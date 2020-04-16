@@ -14,6 +14,8 @@ import { Button } from '../components/button'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
+import { areFieldsValid } from '../utils/areFieldsValid'
+import { formDefaults } from './defaultValues'
 
 export const validate = (values) => {
   const errors = {}
@@ -30,11 +32,13 @@ export const validate = (values) => {
   return errors
 }
 
-const defaultLocation = {
-  postalCode: '',
-}
+const defaultLocation = formDefaults.location
 
-export const LocationInfoForm = ({ onSubmit }) => {
+export const LocationInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (areFieldsValid(data, formDefaults.location)) props.onSubmit(data)
+  }
+
   const [data, dispatch] = useStateValue()
 
   let location
@@ -52,7 +56,7 @@ export const LocationInfoForm = ({ onSubmit }) => {
     <React.Fragment>
       <Form
         initialValues={location}
-        onSubmit={onSubmit}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({
           handleSubmit,

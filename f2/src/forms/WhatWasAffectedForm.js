@@ -10,6 +10,8 @@ import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Text } from '../components/text'
+import { areFieldsValid } from '../utils/areFieldsValid'
+import { formDefaults } from './defaultValues'
 
 const validate = (values) => {
   const errors = {}
@@ -35,11 +37,14 @@ export const whatWasAffectedPages = [
 ]
 
 export const WhatWasAffectedForm = (props) => {
-  const { i18n } = useLingui()
+  const localOnSubmit = (data) => {
+    if (areFieldsValid(data, formDefaults.whatWasAffected)) props.onSubmit(data)
+  }
 
+  const { i18n } = useLingui()
   const [data] = useStateValue()
   const whatWasAffected = {
-    affectedOptions: [],
+    ...formDefaults.whatWasAffected,
     ...data.formData.whatWasAffected,
   }
 
@@ -63,9 +68,7 @@ export const WhatWasAffectedForm = (props) => {
 
       <Form
         initialValues={whatWasAffected}
-        onSubmit={(values) => {
-          props.onSubmit(values)
-        }}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({
           handleSubmit,
