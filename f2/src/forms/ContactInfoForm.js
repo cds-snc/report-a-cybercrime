@@ -15,6 +15,8 @@ import { P } from '../components/paragraph'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
+import { areFieldsValid } from '../utils/areFieldsValid'
+import { formDefaults } from './defaultValues'
 
 export const validate = (values) => {
   const errors = {}
@@ -31,22 +33,22 @@ export const validate = (values) => {
   return errors
 }
 
-export const ContactInfoForm = ({ onSubmit }) => {
-  const [data, dispatch] = useStateValue()
-  let contactInfo
-  if (typeof data.formData.contactInfo === 'undefined') {
-    contactInfo = { fullName: '', email: '', phone: '' }
-    dispatch({
-      type: 'saveFormData',
-      data: { contactInfo },
-    })
-  } else contactInfo = data.formData.contactInfo
+export const ContactInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (areFieldsValid(data, formDefaults.contactInfo)) props.onSubmit(data)
+  }
+
+  const [data] = useStateValue()
+  const contactInfo = {
+    ...formDefaults.contactInfo,
+    ...data.formData.contactInfo,
+  }
 
   return (
     <React.Fragment>
       <Form
         initialValues={contactInfo}
-        onSubmit={onSubmit}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({
           handleSubmit,
