@@ -11,30 +11,13 @@ else console.info('Availability configured')
 const isAvailable = (availableData) => {
   try {
     const currentTime = new Date()
-    //convert current date and lastRequested date with format of 00/00/0000
-    const currentDate =
-      (currentTime.getDate() > 9
-        ? currentTime.getDate()
-        : '0' + currentTime.getDate()) +
-      '/' +
-      (currentTime.getMonth() > 8
-        ? currentTime.getMonth() + 1
-        : '0' + (currentTime.getMonth() + 1)) +
-      '/' +
-      currentTime.getFullYear()
+    const lastRequested = availableData.lastRequested
 
-    const lastRequestedDate =
-      (availableData.lastRequested.getDate() > 9
-        ? availableData.lastRequested.getDate()
-        : '0' + availableData.lastRequested.getDate()) +
-      '/' +
-      (availableData.lastRequested.getMonth() > 8
-        ? availableData.lastRequested.getMonth() + 1
-        : '0' + (availableData.lastRequested.getMonth() + 1)) +
-      '/' +
-      availableData.lastRequested.getFullYear()
-
-    if (currentDate !== lastRequestedDate) {
+    if (
+      !lastRequested ||
+      currentTime.getDate() !== lastRequested.getDate() ||
+      currentTime.getMonth() !== lastRequested.getMonth()
+    ) {
       availableData.numberOfSubmissions = 0
       return true
     }
