@@ -12,7 +12,8 @@ import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 
 export const AnonymousPage = () => {
-  const [, dispatch] = useStateValue()
+  const [state, dispatch] = useStateValue()
+  const { doneForms } = state
 
   return (
     <Route
@@ -27,14 +28,14 @@ export const AnonymousPage = () => {
               <Lead>
                 <Trans id="anonymousPage.intro" />
               </Lead>
-
+              {console.log(doneForms)}
               <AnonymousInfoForm
                 onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { anonymous: data },
                   })
-                  history.push('/howdiditstart')
+                  history.push(doneForms ? '/confirmation' : '/howdiditstart')
                 }}
               />
             </Stack>
