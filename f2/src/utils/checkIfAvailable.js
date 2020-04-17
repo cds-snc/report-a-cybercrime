@@ -34,7 +34,7 @@ const isAvailable = (availableData) => {
       '/' +
       availableData.lastRequested.getFullYear()
 
-    if (currentDate != lastRequestedDate) {
+    if (currentDate !== lastRequestedDate) {
       availableData.numberOfSubmissions = 0
       return true
     }
