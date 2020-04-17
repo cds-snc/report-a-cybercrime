@@ -25,8 +25,12 @@ export const ConfirmationSummary = () => {
   const [data, dispatch] = useStateValue()
   const impact = {
     affectedOptions: [],
-    ...testdata.formData.whatWasAffected, //Remove after done testing
+    ...testdata.formData.whatWasAffected,
     ...data.formData.whatWasAffected,
+  }
+  const anonymous = {
+    ...testdata.formData.anonymous,
+    ...data.formData.anonymous,
   }
   if (!data.doneForms) {
     dispatch({ type: 'saveDoneForms', data: true })
@@ -54,9 +58,9 @@ export const ConfirmationSummary = () => {
         <SuspectCluesSummary />
         <EvidenceInfoSummary />
         <LocationInfoSummary />
-        {data.formData.anonymous.anonymous !== 'anonymousPage.yes' ? (
+        {anonymous.anonymousOptions.includes('anonymousPage.yes') ? null : (
           <ContactInfoSummary />
-        ) : null}
+        )}
       </Stack>
     </React.Fragment>
   )
