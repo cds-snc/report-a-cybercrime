@@ -11,6 +11,16 @@ else console.info('Availability configured')
 const isAvailable = (availableData) => {
   try {
     const currentTime = new Date()
+    const lastRequested = availableData.lastRequested
+
+    if (
+      !lastRequested ||
+      currentTime.getDate() !== lastRequested.getDate() ||
+      currentTime.getMonth() !== lastRequested.getMonth()
+    ) {
+      availableData.numberOfSubmissions = 0
+      return true
+    }
     if (!submissionsPerDay || !secondsBetweenRequests) return false
     if (availableData.numberOfSubmissions >= submissionsPerDay) return false
     if (
