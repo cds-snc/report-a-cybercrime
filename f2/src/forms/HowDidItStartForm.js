@@ -14,6 +14,8 @@ import { TextInput } from '../components/TextInput'
 import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { areFieldsValid } from '../utils/areFieldsValid'
+import { formDefaults } from './defaultValues'
 
 //add validate functin for test
 export const validate = (values) => {
@@ -108,19 +110,18 @@ const clearData = (dataOrig) => {
 }
 
 export const HowDidItStartForm = (props) => {
-  const { i18n } = useLingui()
+  const localOnSubmit = (data) => {
+    if (areFieldsValid(data, formDefaults.howdiditstart))
+      props.onSubmit(clearData(data))
+  }
 
+  const { i18n } = useLingui()
   const [data] = useStateValue()
   const howdiditstart = {
-    howDidTheyReachYou: [],
-    application: '',
-    others: '',
-    startDay: '',
-    startMonth: '',
-    startYear: '',
-    howManyTimes: '',
+    ...formDefaults.howdiditstart,
     ...data.formData.howdiditstart,
   }
+
   //TODO: Move this form data to some sort of a schema file instead?
   var questionsList = [
     {
@@ -197,7 +198,7 @@ export const HowDidItStartForm = (props) => {
 
       <Form
         initialValues={howdiditstart}
-        onSubmit={(data) => props.onSubmit(clearData(data))}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({
           handleSubmit,
@@ -213,7 +214,9 @@ export const HowDidItStartForm = (props) => {
             spacing={12}
           >
             {submitFailed ? (
-              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+              <ErrorSummary>
+                <Trans id="whenDidItStart.hasValidationErrors" />
+              </ErrorSummary>
             ) : null}
             <FormArrayControl
               name="howDidTheyReachYou"

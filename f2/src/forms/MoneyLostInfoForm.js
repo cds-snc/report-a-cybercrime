@@ -16,6 +16,8 @@ import { Field } from '../components/Field'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { areFieldsValid } from '../utils/areFieldsValid'
+import { formDefaults } from './defaultValues'
 
 const validate = (values) => {
   const errors = {}
@@ -64,16 +66,15 @@ const validate = (values) => {
 }
 
 export const MoneyLostInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (areFieldsValid(data, formDefaults.moneyLost)) props.onSubmit(data)
+  }
+
   const { i18n } = useLingui()
   const [data] = useStateValue()
+
   const moneyLost = {
-    methodPayment: [],
-    demandedMoney: '',
-    moneyTaken: '',
-    transactionDay: '',
-    transactionMonth: '',
-    transactionYear: '',
-    tellUsMore: '',
+    ...formDefaults.moneyLost,
     ...data.formData.moneyLost,
   }
 
@@ -102,7 +103,7 @@ export const MoneyLostInfoForm = (props) => {
       ) : null}
       <Form
         initialValues={moneyLost}
-        onSubmit={props.onSubmit}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({ handleSubmit, values, errors, submitFailed }) => (
           <Stack
@@ -111,7 +112,11 @@ export const MoneyLostInfoForm = (props) => {
             spacing={6}
             shouldWrapChildren
           >
-            {submitFailed ? <ErrorSummary /> : null}
+            {submitFailed ? (
+              <ErrorSummary>
+                <Trans id="moneyLostPage.hasValidationErrors" />
+              </ErrorSummary>
+            ) : null}
             <Field
               name="demandedMoney"
               label={<Trans id="moneyLostPage.demandedMoney" />}
