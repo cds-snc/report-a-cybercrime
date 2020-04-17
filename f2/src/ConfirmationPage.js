@@ -46,12 +46,14 @@ const prepFormData = (formData, language) => {
     ? process.env.REACT_APP_VERSION.slice(0, 7)
     : 'no version'
 
-  if (formData.anonymous.anonymous === 'anonymousPage.yes') {
+  if (formData.anonymous.anonymousOptions.includes('anonymousPage.yes')) {
     formData.contactInfo = {
       fullName: '',
       email: '',
       phone: '',
     }
+  } else {
+    formData.anonymous.anonymousOptions = ['anonymousPage.no']
   }
 
   if (
