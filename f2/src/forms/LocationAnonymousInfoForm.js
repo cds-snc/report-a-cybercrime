@@ -8,14 +8,14 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { Field } from '../components/Field'
 import { Input } from '../components/input'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 const defaultLocation = formDefaults.location
 
 export const LocationAnonymousInfoForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.location)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.location)) props.onSubmit(data)
   }
 
   const [data, dispatch] = useStateValue()

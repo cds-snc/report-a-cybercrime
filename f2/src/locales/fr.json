@@ -39,8 +39,6 @@
   "confirmCancelPage.title": "Annuler le rapport?",
   "confirmationPage.ImpactTitle": "Quelles pourraient être les répercussions?",
   "confirmationPage.ImpactTitle.edit": "Modifier Quelles pourraient être les répercussions?",
-  "confirmationPage.anonymous.nag": "Vous signalez de façon anonyme. Nous n'avons pas demandé votre nom, votre adresse courriel ou votre numéro de téléphone.",
-  "confirmationPage.anonymous.title": "Signalement anonyme",
   "confirmationPage.businessInfo.industry": "Type d'industrie",
   "confirmationPage.businessInfo.nag": "Aucune information fournie.",
   "confirmationPage.businessInfo.nameOfBusiness": "Nom de l'entreprise / organisation",

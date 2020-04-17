@@ -1,4 +1,4 @@
-const areFieldsValid = (data, defaults) => {
+const clientFieldsAreValid = (data, defaults) => {
   let valid = true
   Object.keys(data).forEach((field) => {
     if (Object.keys(defaults).indexOf(field) === -1) {
@@ -11,4 +11,4 @@ const areFieldsValid = (data, defaults) => {
   return valid
 }
 
-module.exports = { areFieldsValid }
+module.exports = { clientFieldsAreValid }

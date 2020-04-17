@@ -9,12 +9,13 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FormControl, Stack } from '@chakra-ui/core'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 export const SuspectCluesForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.suspectClues)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.suspectClues))
+      props.onSubmit(data)
   }
 
   const [data] = useStateValue()
