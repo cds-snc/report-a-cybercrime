@@ -12,6 +12,7 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { Li } from './components/list-item'
+import { formDefaults } from './forms/defaultValues'
 
 export const WhatHappenedPage = () => {
   const [data, dispatch] = useStateValue()
