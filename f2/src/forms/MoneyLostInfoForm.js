@@ -16,8 +16,13 @@ import { Field } from '../components/Field'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
+
 //change to validate funtion for test requirment
 export const validate = (values) => {
+
+
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   // if it has a value AND this value is a number over 31, or value is 0
@@ -97,16 +102,15 @@ export const validate = (values) => {
 }
 
 export const MoneyLostInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.moneyLost)) props.onSubmit(data)
+  }
+
   const { i18n } = useLingui()
   const [data] = useStateValue()
+
   const moneyLost = {
-    methodPayment: [],
-    demandedMoney: '',
-    moneyTaken: '',
-    transactionDay: '',
-    transactionMonth: '',
-    transactionYear: '',
-    tellUsMore: '',
+    ...formDefaults.moneyLost,
     ...data.formData.moneyLost,
   }
 
@@ -135,7 +139,7 @@ export const MoneyLostInfoForm = (props) => {
       ) : null}
       <Form
         initialValues={moneyLost}
-        onSubmit={props.onSubmit}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({ handleSubmit, values, errors, submitFailed }) => (
           <Stack
@@ -144,7 +148,11 @@ export const MoneyLostInfoForm = (props) => {
             spacing={6}
             shouldWrapChildren
           >
-            {submitFailed ? <ErrorSummary /> : null}
+            {submitFailed ? (
+              <ErrorSummary>
+                <Trans id="moneyLostPage.hasValidationErrors" />
+              </ErrorSummary>
+            ) : null}
             <Field
               name="demandedMoney"
               label={<Trans id="moneyLostPage.demandedMoney" />}

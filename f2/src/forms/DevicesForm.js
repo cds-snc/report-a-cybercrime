@@ -11,25 +11,29 @@ import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
 import { Well } from '../components/Messages'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
 
-export const DevicesForm = props => {
-  const localOnSubmit = data => {
-    props.onSubmit(data)
+export const DevicesForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.devicesInfo))
+      props.onSubmit(data)
   }
 
   const [data] = useStateValue()
-  let { devicesInfo } = data.formData
-  devicesInfo = {
-    ...devicesInfo,
+  const devicesInfo = {
+    ...formDefaults.devicesInfo,
+    ...data.formData.devicesInfo,
   }
+
   return (
     <Form
       initialValues={devicesInfo}
-      onSubmit={data => localOnSubmit(data)}
+      onSubmit={localOnSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
           <Field name="device">
-            {props => (
+            {(props) => (
               <FormControl>
                 <FormLabel htmlFor="device">
                   <Trans id="devicePage.device" />
@@ -49,7 +53,7 @@ export const DevicesForm = props => {
             )}
           </Field>
           <Field name="account">
-            {props => (
+            {(props) => (
               <FormControl>
                 <FormLabel htmlFor="account">
                   <Trans id="devicePage.account" />
@@ -69,7 +73,7 @@ export const DevicesForm = props => {
             )}
           </Field>
           <Field name="devicesTellUsMore">
-            {props => (
+            {(props) => (
               <FormControl>
                 <FormLabel htmlFor="devicesTellUsMore">
                   <Trans id="devicePage.devicesTellUsMore" />

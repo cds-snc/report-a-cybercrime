@@ -59,6 +59,7 @@ describe('validation', () => {
     ).not.toBeUndefined()
   })
 
+
   it('passes correct transaction year', () => {
     expect(
       validate({ transactionYear: '1900' }).transactionYear,

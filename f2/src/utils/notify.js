@@ -60,7 +60,7 @@ const submitFeedback = async (data) => {
   }
   try {
     const response = notifyClient.sendEmail(templateId, email, {
-      personalisation: { feedback: JSON.stringify(data, null, '  ') },
+      personalisation: { feedback: data },
     })
     console.info('Notify: feedback email (probably) sent!')
     return response.body

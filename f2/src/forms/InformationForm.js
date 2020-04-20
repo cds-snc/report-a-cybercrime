@@ -19,15 +19,19 @@ import { Field } from '../components/Field'
 import { A } from '../components/link'
 import { P } from '../components/paragraph'
 import { Well } from '../components/Messages'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
 
-export const InformationForm = props => {
+export const InformationForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.personalInformation))
+      props.onSubmit(data)
+  }
+
   const { i18n } = useLingui()
   const [data] = useStateValue()
   const information = {
-    typeOfInfoReq: [],
-    typeOfInfoObtained: [],
-    infoObtainedOther: '',
-    tellUsMore: '',
+    ...formDefaults.personalInformation,
     ...data.formData.personalInformation,
   }
 
@@ -65,7 +69,7 @@ export const InformationForm = props => {
       ) : null}
       <Form
         initialValues={information}
-        onSubmit={props.onSubmit}
+        onSubmit={localOnSubmit}
         render={({ handleSubmit, values }) => (
           <Stack
             as="form"
@@ -79,7 +83,7 @@ export const InformationForm = props => {
                 label={<Trans id="informationPage.typeOfInfoReq" />}
                 helperText={<Trans id="informationPage.typeOfInfoReqExample" />}
               >
-                {typeOfInfoReq.map(key => {
+                {typeOfInfoReq.map((key) => {
                   return (
                     <React.Fragment key={key}>
                       <CheckboxAdapter name="typeOfInfoReq" value={key}>
@@ -107,7 +111,7 @@ export const InformationForm = props => {
                   <Trans id="informationPage.typeOfInfoObtainedExample" />
                 }
               >
-                {typeOfInfoObtained.map(key => {
+                {typeOfInfoObtained.map((key) => {
                   return (
                     <React.Fragment key={key}>
                       <CheckboxAdapter name="typeOfInfoObtained" value={key}>
@@ -130,7 +134,7 @@ export const InformationForm = props => {
               </FormArrayControl>
             </Stack>
             <Field name="tellUsMore">
-              {props => (
+              {(props) => (
                 <FormControl>
                   <FormLabel htmlFor="tellUsMore">
                     <Trans id="informationPage.tellUsMore" />
