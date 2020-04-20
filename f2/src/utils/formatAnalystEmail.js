@@ -43,6 +43,7 @@ const formatReportInfo = (data) => {
   delete data.appVersion
   delete data.selfHarmWords
   delete data.submissionDate
+  delete data.prodVersion
   return returnString
 }
 
@@ -99,6 +100,7 @@ const formatIncidentInformation = (data) => {
   delete data.howdiditstart.howManyTimes
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
+  delete data.howdiditstart.whenDidItStart
   return formatSection('Incident information', rows)
 }
 
