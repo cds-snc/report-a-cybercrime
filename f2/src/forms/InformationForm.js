@@ -6,10 +6,7 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { TextArea } from '../components/text-area'
-import { Stack, FormControl } from '@chakra-ui/core'
-import { FormHelperText } from '../components/FormHelperText'
-import { FormLabel } from '../components/FormLabel'
+import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { ConditionalForm } from '../components/container'
 import { TextInput } from '../components/TextInput'
@@ -77,7 +74,7 @@ export const InformationForm = (props) => {
             shouldWrapChildren
             spacing={6}
           >
-            <Stack spacing={4} shouldWrapChildren>
+            <Stack spacing={4}>
               <FormArrayControl
                 name="typeOfInfoReq"
                 label={<Trans id="informationPage.typeOfInfoReq" />}
@@ -102,8 +99,7 @@ export const InformationForm = (props) => {
                 })}
               </FormArrayControl>
             </Stack>
-
-            <Stack spacing={4} shouldWrapChildren>
+            <Stack spacing={4}>
               <FormArrayControl
                 name="typeOfInfoObtained"
                 label={<Trans id="informationPage.typeOfInfoObtained" />}
@@ -133,24 +129,6 @@ export const InformationForm = (props) => {
                 })}
               </FormArrayControl>
             </Stack>
-            <Field name="tellUsMore">
-              {(props) => (
-                <FormControl>
-                  <FormLabel htmlFor="tellUsMore">
-                    <Trans id="informationPage.tellUsMore" />
-                  </FormLabel>
-                  <FormHelperText>
-                    <Trans id="informationPage.tellUsMoreExample" />
-                  </FormHelperText>
-                  <TextArea
-                    id="tellUsMore"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
             <Well variantColor="blue">
               <P fontSize="md" mb={0}>
                 <Trans id="informationPage.tip">

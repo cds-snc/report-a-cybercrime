@@ -117,7 +117,6 @@ app.get('/', async function (req, res, next) {
         : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
-    
     var referrer = req.headers.referer
     console.log('Referrer:' + referrer)
     if (
