@@ -17,7 +17,7 @@ import { Field } from '../components/Field'
 import { Row } from '../components/layout'
 import { Alert } from '../components/Messages'
 
-export const MidFeedbackForm = props => {
+export const MidFeedbackForm = (props) => {
   const [status, setStatus] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
@@ -98,7 +98,7 @@ export const MidFeedbackForm = props => {
                   midFeedback: [],
                   problemDescription: '',
                 }}
-                onSubmit={values => {
+                onSubmit={(values) => {
                   if (
                     !containsData([
                       values.midFeedback,
@@ -130,7 +130,7 @@ export const MidFeedbackForm = props => {
                       label={<Trans id="midFeedback.problem.label" />}
                       helperText={<Trans id="midFeedback.problem.helperText" />}
                     >
-                      {midFeedback.map(key => {
+                      {midFeedback.map((key) => {
                         return (
                           <React.Fragment key={key}>
                             <CheckboxAdapter

@@ -15,7 +15,7 @@ import { BackButton } from './components/backbutton'
 import { Page } from './components/Page'
 import { Well } from './components/Messages'
 
-export const StartPage = props => {
+export const StartPage = (props) => {
   const [state, dispatch] = useStateValue()
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })

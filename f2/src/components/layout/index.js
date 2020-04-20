@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Container } from '../container'
 import { Flex, Stack } from '@chakra-ui/core'
 
-export const Layout = props => {
+export const Layout = (props) => {
   // scroll to the top of the page when this Layout renders
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -40,10 +40,10 @@ Layout.defaultProps = {
   columns: { base: 1 },
 }
 
-export const Column = props => {
+export const Column = (props) => {
   const col = {}
   //Turn fractions into %
-  Object.keys(props.columns).map(key => {
+  Object.keys(props.columns).map((key) => {
     return (col[key] = props.columns[key] * 100 + '%')
   })
 
@@ -63,7 +63,7 @@ export const Column = props => {
   )
 }
 
-export const Row = props => {
+export const Row = (props) => {
   return (
     <Flex {...props} mx={-2} wrap="wrap" className="row">
       {props.children}

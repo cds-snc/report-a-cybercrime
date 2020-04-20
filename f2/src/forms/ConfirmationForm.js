@@ -9,7 +9,7 @@ import { Well } from '../components/Messages'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { useStateValue } from '../utils/state'
 
-export const ConfirmationForm = props => {
+export const ConfirmationForm = (props) => {
   const [{ formData }] = useStateValue()
   return (
     <React.Fragment>

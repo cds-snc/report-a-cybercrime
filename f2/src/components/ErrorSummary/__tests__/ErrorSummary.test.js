@@ -12,7 +12,7 @@ import en from '../../../locales/en.json'
 
 i18n.load('en', { en })
 i18n.activate('en')
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
 
 describe('<ErrorSummary />', () => {
   afterEach(cleanup)
@@ -20,7 +20,7 @@ describe('<ErrorSummary />', () => {
   it('does not render if validation passes', () => {
     const submitMock = jest.fn()
 
-    const validate = values => {
+    const validate = (values) => {
       const errors = {}
       //condition for an error to occur: append a lingui id to the list of error
       if (!values.foo) {
@@ -35,7 +35,7 @@ describe('<ErrorSummary />', () => {
           <Form
             initialValues=""
             validate={validate}
-            onSubmit={values => {
+            onSubmit={(values) => {
               submitMock(values)
             }}
             render={({ handleSubmit, values, errors }) => (
@@ -54,7 +54,7 @@ describe('<ErrorSummary />', () => {
   it('displays an error summary that links to a error message', async () => {
     const submitMock = jest.fn()
 
-    const validate = values => {
+    const validate = (values) => {
       const errors = {}
       //condition for an error to occur: append a lingui id to the list of error
       if (values.foo === 'baz') {
@@ -69,7 +69,7 @@ describe('<ErrorSummary />', () => {
           <Form
             initialValues=""
             validate={validate}
-            onSubmit={values => {
+            onSubmit={(values) => {
               submitMock(values)
             }}
             render={({

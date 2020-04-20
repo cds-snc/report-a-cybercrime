@@ -5,7 +5,7 @@ import { locales, activate } from './i18n.config'
 import { Box } from '@chakra-ui/core'
 import { A } from './components/link'
 
-const Toggler = props => {
+const Toggler = (props) => {
   const { locale } = props
   return (
     <A

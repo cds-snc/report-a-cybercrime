@@ -6,7 +6,7 @@ import { ThemeProvider } from 'emotion-theming'
 import theme from '../../../theme'
 import { Link, A, LinkButton, ButtonLink } from '..'
 
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
 
 describe('Links', () => {
   afterEach(cleanup)

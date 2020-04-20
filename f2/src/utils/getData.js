@@ -5,9 +5,9 @@ const crypto = require('crypto')
 const { selfHarmWordsScan } = require('./selfHarmWordsScan')
 const { generateReportId } = require('./generateReportId')
 
-const padNumber = x => `${x}`.padStart(2, 0)
+const padNumber = (x) => `${x}`.padStart(2, 0)
 
-const getFileExtension = filename => {
+const getFileExtension = (filename) => {
   const a = filename.split('.')
   if (a.length === 1 || (a[0] === '' && a.length === 2)) {
     return ''

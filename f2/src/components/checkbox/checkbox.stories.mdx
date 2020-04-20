@@ -23,7 +23,7 @@ CheckboxAdapter are aware of their state. They will check themselves based on cu
   </Story>
 </Preview>
 
-## Props 
+## Props
 
 <Props of={CheckboxAdapter} />
 
@@ -47,10 +47,17 @@ It is useful to pass in conditional fields. Refer to [Field](?path=/docs/field--
 
 <Preview>
   <Story name="Conditional Field">
-    <CheckboxAdapter 
-    name="withConditional" 
-    isChecked={false} 
-    conditionalField={<Field name="condition" label="Describe how it started." helperText="For example: It came from an advertisement, a pop-up window, or some other way." />} >
+    <CheckboxAdapter
+      name="withConditional"
+      isChecked={false}
+      conditionalField={
+        <Field
+          name="condition"
+          label="Describe how it started."
+          helperText="For example: It came from an advertisement, a pop-up window, or some other way."
+        />
+      }
+    >
       Other
     </CheckboxAdapter>
   </Story>

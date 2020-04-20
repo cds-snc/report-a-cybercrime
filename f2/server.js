@@ -67,6 +67,13 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
+const allowedReferrers = [
+  'antifraudcentre-centreantifraude.ca',
+  'centreantifraude-antifraudcentre.ca',
+  'antifraudcentre.ca',
+  'centreantifraude.ca',
+]
+
 let availableData
 async function initializeAvailableData() {
   availableData = {
@@ -75,12 +82,6 @@ async function initializeAvailableData() {
     lastRequested: undefined,
   }
 }
-const allowedReferrers = [
-  'antifraudcentre-centreantifraude.ca',
-  'centreantifraude-antifraudcentre.ca',
-  'antifraudcentre.ca',
-  'centreantifraude.ca',
-]
 
 initializeAvailableData()
 
@@ -117,7 +118,6 @@ app.get('/', async function (req, res, next) {
         : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
-    
     var referrer = req.headers.referer
     console.log('Referrer:' + referrer)
     if (
