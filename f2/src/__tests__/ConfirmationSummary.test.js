@@ -22,7 +22,9 @@ describe('<ConfirmationSummary />', () => {
         <ThemeProvider theme={canada}>
           <StateProvider
             initialState={{
-              formData: { anonymous: { anonymous: 'anonymousPage.yes' } },
+              formData: {
+                anonymous: { anonymousOptions: ['anonymousPage.yes'] },
+              },
             }}
             reducer={reducer}
           >
@@ -41,7 +43,9 @@ describe('<ConfirmationSummary />', () => {
         <ThemeProvider theme={canada}>
           <StateProvider
             initialState={{
-              formData: { anonymous: { anonymous: 'anonymousPage.no' } },
+              formData: {
+                anonymous: { anonymousOptions: ['anonymousPage.no'] },
+              },
             }}
             reducer={reducer}
           >
