@@ -8,12 +8,13 @@ import { TextArea } from '../components/text-area'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 export const WhatHappenedForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.whatHappened)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.whatHappened))
+      props.onSubmit(data)
   }
 
   const [data] = useStateValue()

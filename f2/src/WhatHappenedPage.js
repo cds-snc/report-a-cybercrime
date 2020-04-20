@@ -18,11 +18,9 @@ export const WhatHappenedPage = () => {
   const { doneForms } = data
 
   const whatWasAffected = {
-    affectedOptions: [],
+    ...formDefaults.whatWasAffected,
     ...data.formData.whatWasAffected,
   }
-
-  console.log(whatWasAffected.affectedOptions)
 
   return (
     <Route

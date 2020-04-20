@@ -16,7 +16,7 @@ import { Text } from '../components/text'
 import { Field } from '../components/Field'
 import { Alert } from '../components/Messages'
 import { fileExtensionPasses } from '../utils/acceptableFiles'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 export const EvidenceInfoForm = (props) => {
@@ -84,7 +84,7 @@ export const EvidenceInfoForm = (props) => {
       files, // from useState()
       fileDescriptions, // from useState()
     }
-    if (areFieldsValid(data, formDefaults.evidence)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.evidence)) props.onSubmit(data)
   }
 
   return (

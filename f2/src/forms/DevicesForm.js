@@ -9,12 +9,13 @@ import { Field } from '../components/Field'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { Well } from '../components/Messages'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 export const DevicesForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.devicesInfo)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.devicesInfo))
+      props.onSubmit(data)
   }
 
   const [data] = useStateValue()

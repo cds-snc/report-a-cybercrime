@@ -14,7 +14,7 @@ import { Button } from '../components/button'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 export const validate = (values) => {
@@ -36,7 +36,7 @@ const defaultLocation = formDefaults.location
 
 export const LocationInfoForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.location)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.location)) props.onSubmit(data)
   }
 
   const [data, dispatch] = useStateValue()
@@ -72,7 +72,9 @@ export const LocationInfoForm = (props) => {
             spacing={6}
           >
             {submitFailed && hasValidationErrors ? (
-              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+              <ErrorSummary>
+                <Trans id="locationinfoPage.hasValidationErrors" />
+              </ErrorSummary>
             ) : null}
             <Flex direction="row" align="center" wrap="wrap" mb={10}>
               <P w="100%">
