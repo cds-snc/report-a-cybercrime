@@ -138,15 +138,6 @@ const formatNarrative = (data) => {
     formatLineHtml('Affected device:', data.devicesInfo.device) +
     formatLineHtml('Affected account:', data.devicesInfo.account) +
     formatLineHtml(
-      'Affected device/account: ',
-      data.devicesInfo.devicesTellUsMore,
-    ) +
-    formatLineHtml('Affected finances:       ', data.moneyLost.tellUsMore) +
-    formatLineHtml(
-      'Affected personal info:  ',
-      data.personalInformation.tellUsMore,
-    ) +
-    formatLineHtml(
       'Name of business/organzation:  ',
       data.businessInfo.nameOfBusiness,
     ) +
@@ -165,9 +156,6 @@ const formatNarrative = (data) => {
   delete data.personalInformation.infoObtainedOther
   delete data.devicesInfo.device
   delete data.devicesInfo.account
-  delete data.moneyLost.tellUsMore
-  delete data.personalInformation.tellUsMore
-  delete data.devicesInfo.devicesTellUsMore
   delete data.businessInfo.business
   delete data.businessInfo.nameOfBusiness
   delete data.businessInfo.industry
