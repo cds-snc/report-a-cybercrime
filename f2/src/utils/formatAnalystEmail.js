@@ -40,7 +40,8 @@ const formatReportInfo = (data) => {
   delete data.reportId
   delete data.submissionTime
   delete data.language
-  delete data.appVersion
+  delete data.appVersion // git hash not used in report
+  delete data.prodVersion
   delete data.selfHarmWords
   delete data.submissionDate
   return returnString
