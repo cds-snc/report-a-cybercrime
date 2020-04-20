@@ -19,12 +19,12 @@ import { Field } from '../components/Field'
 import { A } from '../components/link'
 import { P } from '../components/paragraph'
 import { Well } from '../components/Messages'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 export const InformationForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.personalInformation))
+    if (clientFieldsAreValid(data, formDefaults.personalInformation))
       props.onSubmit(data)
   }
 

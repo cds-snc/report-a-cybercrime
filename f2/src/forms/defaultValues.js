@@ -1,4 +1,7 @@
 const formDefaults = {
+  language: '',
+  prodVersion: '',
+  appVersion: '',
   consent: { consentOptions: [] },
   anonymous: { anonymousOptions: [] },
   howdiditstart: {
@@ -8,7 +11,6 @@ const formDefaults = {
     online: '',
     application: '',
     others: '',
-    whenDidItStart: '',
     howManyTimes: '',
     startDay: '',
     startMonth: '',
