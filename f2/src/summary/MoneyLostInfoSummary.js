@@ -45,7 +45,6 @@ export const MoneyLostInfoSummary = (props) => {
           <Trans id="confirmationPage.moneyLost.moneyTaken" />
           <Trans id="confirmationPage.moneyLost.methodPayment" />
           <Trans id="confirmationPage.moneyLost.transactionDate" />
-          <Trans id="confirmationPage.moneyLost.tellUsMore" />
           <Trans id="confirmationPage.moneyLostTitle.edit" />
         </div>
       ) : null}
@@ -88,10 +87,6 @@ export const MoneyLostInfoSummary = (props) => {
                 moneyLost.transactionMonth,
                 moneyLost.transactionYear,
               )}
-            />
-            <DescriptionListItem
-              descriptionTitle="confirmationPage.moneyLost.tellUsMore"
-              description={moneyLost.tellUsMore}
             />
           </Stack>
         ) : (

@@ -66,7 +66,7 @@ export const BusinessInfoSummary = (props) => {
             />
             <DescriptionListItem
               descriptionTitle="confirmationPage.businessInfo.numberOfEmployee"
-              description={businessInfo.numberOfEmployee}
+              description={<Trans id={businessInfo.numberOfEmployee} />}
             />
           </Stack>
         ) : (

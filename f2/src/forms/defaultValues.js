@@ -1,4 +1,7 @@
 const formDefaults = {
+  language: '',
+  prodVersion: '',
+  appVersion: '',
   consent: { consentOptions: [] },
   anonymous: { anonymousOptions: [] },
   howdiditstart: {
@@ -8,7 +11,6 @@ const formDefaults = {
     online: '',
     application: '',
     others: '',
-    whenDidItStart: '',
     howManyTimes: '',
     startDay: '',
     startMonth: '',
@@ -24,7 +26,6 @@ const formDefaults = {
     transactionDay: '',
     transactionMonth: '',
     transactionYear: '',
-    tellUsMore: '',
     methodOther: '',
   },
   personalInformation: {
@@ -32,9 +33,8 @@ const formDefaults = {
     typeOfInfoObtained: [],
     infoReqOther: '',
     infoObtainedOther: '',
-    tellUsMore: '',
   },
-  devicesInfo: { device: '', account: '', devicesTellUsMore: '' },
+  devicesInfo: { device: '', account: '' },
   businessInfo: {
     nameOfBusiness: '',
     industry: '',

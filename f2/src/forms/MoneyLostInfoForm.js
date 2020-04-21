@@ -8,7 +8,6 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Input } from '../components/input'
 import { Stack, Box } from '@chakra-ui/core'
-import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { ConditionalForm } from '../components/container'
 import { CheckboxAdapter } from '../components/checkbox'
@@ -16,7 +15,7 @@ import { Field } from '../components/Field'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 const validate = (values) => {
@@ -67,7 +66,7 @@ const validate = (values) => {
 
 export const MoneyLostInfoForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.moneyLost)) props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.moneyLost)) props.onSubmit(data)
   }
 
   const { i18n } = useLingui()
@@ -186,13 +185,6 @@ export const MoneyLostInfoForm = (props) => {
                 />
               </Stack>
             </FormArrayControl>
-
-            <Field
-              name="tellUsMore"
-              label={<Trans id="moneyLostPage.tellUsMore" />}
-              FormHelperText={<Trans id="moneyLostPage.tellUsMoreExample" />}
-              component={TextArea}
-            />
 
             <Well variantColor="blue">
               <Trans id="moneyLostPage.tip" />

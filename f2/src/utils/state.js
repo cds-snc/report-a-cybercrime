@@ -29,7 +29,7 @@ export const reducer = (state, action) => {
     case 'deleteFormData':
       return {
         ...state,
-        formData: {},
+        formData: { ...initialState.formData },
       }
     case 'saveDoneForms':
       return {

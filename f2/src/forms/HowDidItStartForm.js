@@ -14,7 +14,8 @@ import { TextInput } from '../components/TextInput'
 import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
-import { areFieldsValid } from '../utils/areFieldsValid'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
 
 //add validate functin for test
@@ -111,8 +112,10 @@ const clearData = (dataOrig) => {
 
 export const HowDidItStartForm = (props) => {
   const localOnSubmit = (data) => {
-    if (areFieldsValid(data, formDefaults.howdiditstart))
-      props.onSubmit(clearData(data))
+    if (clientFieldsAreValid(data, formDefaults.howdiditstart))
+      props.onSubmit(
+        clearData({ ...data, phone: formatPhoneNumber(data.phone) }),
+      )
   }
 
   const { i18n } = useLingui()

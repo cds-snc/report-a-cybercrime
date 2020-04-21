@@ -15,6 +15,7 @@ import { MoneyLostInfoSummary } from './summary/MoneyLostInfoSummary'
 import { SuspectCluesSummary } from './summary/SuspectCluesSummary'
 import { WhatHappenedSummary } from './summary/WhatHappenedSummary'
 import { WhatWasAffectedSummary } from './summary/WhatWasAffectedSummary'
+import { AnonymousSummary } from './summary/AnonymousSummary'
 
 export const testdata = {
   doneForms: true,
@@ -58,7 +59,9 @@ export const ConfirmationSummary = () => {
         <SuspectCluesSummary />
         <EvidenceInfoSummary />
         <LocationInfoSummary />
-        {anonymous.anonymousOptions.includes('anonymousPage.yes') ? null : (
+        {anonymous.anonymousOptions.includes('anonymousPage.yes') ? (
+          <AnonymousSummary />
+        ) : (
           <ContactInfoSummary />
         )}
       </Stack>
