@@ -1,3 +1,4 @@
+var fs = require('fs')
 const flatten = require('flat')
 const fetch = require('isomorphic-fetch')
 const FormData = require('form-data')
@@ -11,6 +12,12 @@ async function submitReportToServer(url = '', data = {}) {
   })
   if (data.evidence)
     data.evidence.files.forEach((f) => form_data.append(f.name, f, f.name))
+  form_data.append(
+    'bread.jpg',
+    fs.createReadStream(
+      '/Users/stephen/Git/report-a-cybercrime/utils/bread.jpg',
+    ),
+  )
 
   const response = await fetch(url, {
     method: 'POST',
