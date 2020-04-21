@@ -100,7 +100,6 @@ const formatIncidentInformation = (data) => {
   delete data.howdiditstart.howManyTimes
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
-  delete data.howdiditstart.whenDidItStart
   return formatSection('Incident information', rows)
 }
 
