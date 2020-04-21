@@ -45,6 +45,7 @@ const formatReportInfo = (data) => {
   delete data.prodVersion
   delete data.selfHarmWords
   delete data.submissionDate
+  delete data.prodVersion
   return returnString
 }
 
