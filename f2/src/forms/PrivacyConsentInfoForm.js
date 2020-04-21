@@ -57,7 +57,11 @@ export const PrivacyConsentInfoForm = (props) => {
             shouldWrapChildren
             spacing={6}
           >
-            {submitFailed && hasValidationErrors ? <ErrorSummary /> : null}
+            {submitFailed && hasValidationErrors ? (
+              <ErrorSummary>
+                <Trans id="privacyConsentInfoForm.hasValidationErrors" />
+              </ErrorSummary>
+            ) : null}
 
             <FormArrayControl
               name="consentOptions"
