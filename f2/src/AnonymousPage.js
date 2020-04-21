@@ -28,7 +28,7 @@ export const AnonymousPage = () => {
               <Lead>
                 <Trans id="anonymousPage.intro" />
               </Lead>
-              {console.log(doneForms)}
+
               <AnonymousInfoForm
                 onSubmit={(data) => {
                   dispatch({
