@@ -14,6 +14,7 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { formDefaults } from './forms/defaultValues'
 
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
@@ -46,12 +47,10 @@ const prepFormData = (formData, language) => {
     ? process.env.REACT_APP_VERSION.slice(0, 7)
     : 'no version'
 
-  if (formData.anonymous.anonymous === 'anonymousPage.yes') {
-    formData.contactInfo = {
-      fullName: '',
-      email: '',
-      phone: '',
-    }
+  if (formData.anonymous.anonymousOptions.includes('anonymousPage.yes')) {
+    formData.contactInfo = formDefaults.contactInfo
+  } else {
+    formData.anonymous.anonymousOptions = ['anonymousPage.no']
   }
 
   if (
@@ -60,15 +59,7 @@ const prepFormData = (formData, language) => {
       'whatWasAffectedForm.financial',
     )
   ) {
-    formData.moneyLost = {
-      demandedMoney: '',
-      moneyTaken: '',
-      methodPayment: [],
-      transactionDay: '',
-      transactionMonth: '',
-      transactionYear: '',
-      tellUsMore: '',
-    }
+    formData.moneyLost = formDefaults.moneyLost
   }
 
   if (
@@ -77,13 +68,7 @@ const prepFormData = (formData, language) => {
       'whatWasAffectedForm.personalInformation',
     )
   ) {
-    formData.personalInformation = {
-      typeOfInfoReq: [],
-      infoReqOther: '',
-      typeOfInfoObtained: [],
-      infoObtainedOther: '',
-      tellUsMore: '',
-    }
+    formData.personalInformation = formDefaults.personalInformation
   }
 
   if (
@@ -92,11 +77,7 @@ const prepFormData = (formData, language) => {
       'whatWasAffectedForm.devices',
     )
   ) {
-    formData.devicesInfo = {
-      device: '',
-      account: '',
-      devicesTellUsMore: '',
-    }
+    formData.devicesInfo = formDefaults.devicesInfo
   }
 
   if (
@@ -105,9 +86,7 @@ const prepFormData = (formData, language) => {
       'whatWasAffectedForm.business_assets',
     )
   ) {
-    formData.businessInfo = {
-      business: '',
-    }
+    formData.businessInfo = formDefaults.businessInfo
   }
 
   return {
