@@ -16,6 +16,7 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
 
 export const validate = (values) => {
@@ -36,7 +37,7 @@ export const validate = (values) => {
 export const ContactInfoForm = (props) => {
   const localOnSubmit = (data) => {
     if (clientFieldsAreValid(data, formDefaults.contactInfo))
-      props.onSubmit(data)
+      props.onSubmit({ ...data, phone: formatPhoneNumber(data.phone) })
   }
 
   const [data] = useStateValue()
