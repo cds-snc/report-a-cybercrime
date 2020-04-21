@@ -2,7 +2,8 @@
 
 const { formatDate } = require('./formatDate')
 
-const unCamel = (text) => text.replace(/([A-Z])/g, ' $1').toLowerCase()
+const unCamel = (text) =>
+  text.replace(/([A-Z])|([\d]+)/g, ' $1$2').toLowerCase()
 
 const formatLineHtml = (label, text) =>
   text && text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
@@ -145,7 +146,9 @@ const formatNarrative = (data) => {
     formatLineHtml('Role:  ', data.businessInfo.role) +
     formatLineHtml(
       'Number of employee:  ',
-      data.businessInfo.numberOfEmployee,
+      unCamel(
+        data.businessInfo.numberOfEmployee.replace('numberOfEmployee.', ''),
+      ),
     ) +
     formatLineHtml('Other clues:             ', data.suspectClues.suspectClues3)
 
