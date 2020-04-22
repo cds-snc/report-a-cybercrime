@@ -2,7 +2,8 @@
 
 const { formatDate } = require('./formatDate')
 
-const unCamel = (text) => text.replace(/([A-Z])/g, ' $1').toLowerCase()
+const unCamel = (text) =>
+  text.replace(/([A-Z])|([\d]+)/g, ' $1$2').toLowerCase()
 
 const formatLineHtml = (label, text) =>
   text && text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
@@ -13,32 +14,38 @@ const formatSection = (title, rows) =>
   `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
 
 const formatReportInfo = (data) => {
-  let selfHarmString = 'no self harm words'
+  let selfHarmString = 'none'
   let returnString = ''
 
   if (data.selfHarmWords.length) {
-    selfHarmString = data.selfHarmWords
-    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${selfHarmString}</h1>`
+    selfHarmString = 'self harm words detected'
+    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${data.selfHarmWords}</h1>`
   }
-  let isAnonymous = data.anonymous.anonymous.replace('anonymousPage.', '')
+
+  let isAnonymous = data.anonymous.anonymousOptions[0].replace(
+    'anonymousPage.',
+    '',
+  )
   returnString +=
     '<h2>Report Information</h2>' +
     formatTable(
       formatLineHtml('Report number:', data.reportId) +
         formatLineHtml('Date received:', data.submissionTime) +
         formatLineHtml('Report language:', data.language) +
+        formatLineHtml('Report version:', data.prodVersion) +
         formatLineHtml('Anonymous report:', isAnonymous) +
-        formatLineHtml('Report version:', data.appVersion) +
         formatLineHtml('Flagged:', selfHarmString),
     )
   // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
-  delete data.anonymous.anonymous
+  delete data.anonymous.anonymousOptions
   delete data.reportId
   delete data.submissionTime
   delete data.language
-  delete data.appVersion
+  delete data.appVersion // git hash not used in report
+  delete data.prodVersion
   delete data.selfHarmWords
   delete data.submissionDate
+  delete data.prodVersion
   return returnString
 }
 
@@ -48,7 +55,7 @@ const formatVictimDetails = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml('Name:', data.contactInfo.fullName) +
+    formatLineHtml('Full name:', data.contactInfo.fullName) +
     formatLineHtml('Email:', data.contactInfo.email) +
     formatLineHtml('Phone number:', data.contactInfo.phone) +
     formatLineHtml('City:', data.location.city) +
@@ -133,15 +140,17 @@ const formatNarrative = (data) => {
     formatLineHtml('Affected device:', data.devicesInfo.device) +
     formatLineHtml('Affected account:', data.devicesInfo.account) +
     formatLineHtml(
-      'Affected device/account: ',
-      data.devicesInfo.devicesTellUsMore,
+      'Name of business/organzation:  ',
+      data.businessInfo.nameOfBusiness,
     ) +
-    formatLineHtml('Affected finances:       ', data.moneyLost.tellUsMore) +
+    formatLineHtml('Type of industry:  ', data.businessInfo.industry) +
+    formatLineHtml('Role:  ', data.businessInfo.role) +
     formatLineHtml(
-      'Affected personal info:  ',
-      data.personalInformation.tellUsMore,
+      'Number of employee:  ',
+      unCamel(
+        data.businessInfo.numberOfEmployee.replace('numberOfEmployee.', ''),
+      ),
     ) +
-    formatLineHtml('Affected business info:  ', data.businessInfo.business) +
     formatLineHtml('Other clues:             ', data.suspectClues.suspectClues3)
 
   delete data.personalInformation.typeOfInfoReq
@@ -151,10 +160,11 @@ const formatNarrative = (data) => {
   delete data.personalInformation.infoObtainedOther
   delete data.devicesInfo.device
   delete data.devicesInfo.account
-  delete data.moneyLost.tellUsMore
-  delete data.personalInformation.tellUsMore
-  delete data.devicesInfo.devicesTellUsMore
   delete data.businessInfo.business
+  delete data.businessInfo.nameOfBusiness
+  delete data.businessInfo.industry
+  delete data.businessInfo.role
+  delete data.businessInfo.numberOfEmployee
   delete data.suspectClues.suspectClues3
   return formatSection('Narrative', rows)
 }

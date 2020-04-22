@@ -8,7 +8,6 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Input } from '../components/input'
 import { Stack, Box } from '@chakra-ui/core'
-import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { ConditionalForm } from '../components/container'
 import { CheckboxAdapter } from '../components/checkbox'
@@ -16,6 +15,8 @@ import { Field } from '../components/Field'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
 
 const validate = (values) => {
   const errors = {}
@@ -64,16 +65,15 @@ const validate = (values) => {
 }
 
 export const MoneyLostInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.moneyLost)) props.onSubmit(data)
+  }
+
   const { i18n } = useLingui()
   const [data] = useStateValue()
+
   const moneyLost = {
-    methodPayment: [],
-    demandedMoney: '',
-    moneyTaken: '',
-    transactionDay: '',
-    transactionMonth: '',
-    transactionYear: '',
-    tellUsMore: '',
+    ...formDefaults.moneyLost,
     ...data.formData.moneyLost,
   }
 
@@ -102,7 +102,7 @@ export const MoneyLostInfoForm = (props) => {
       ) : null}
       <Form
         initialValues={moneyLost}
-        onSubmit={props.onSubmit}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({ handleSubmit, values, errors, submitFailed }) => (
           <Stack
@@ -111,7 +111,11 @@ export const MoneyLostInfoForm = (props) => {
             spacing={6}
             shouldWrapChildren
           >
-            {submitFailed ? <ErrorSummary /> : null}
+            {submitFailed ? (
+              <ErrorSummary>
+                <Trans id="moneyLostPage.hasValidationErrors" />
+              </ErrorSummary>
+            ) : null}
             <Field
               name="demandedMoney"
               label={<Trans id="moneyLostPage.demandedMoney" />}
@@ -181,13 +185,6 @@ export const MoneyLostInfoForm = (props) => {
                 />
               </Stack>
             </FormArrayControl>
-
-            <Field
-              name="tellUsMore"
-              label={<Trans id="moneyLostPage.tellUsMore" />}
-              FormHelperText={<Trans id="moneyLostPage.tellUsMoreExample" />}
-              component={TextArea}
-            />
 
             <Well variantColor="blue">
               <Trans id="moneyLostPage.tip" />

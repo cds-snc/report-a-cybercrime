@@ -55,7 +55,6 @@ export const InformationSummary = (props) => {
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.personalInformation.typeOfInfoReq" />
           <Trans id="confirmationPage.personalInformation.typeOfInfoObtained" />
-          <Trans id="confirmationPage.personalInformation.tellUsMore" />
           <Trans id="confirmationPage.personalInformation.title.edit" />
           {/**Consider moving this upwards if we want to go towards lingui defaults */}
           <Trans id="default.pair" />
@@ -92,11 +91,6 @@ export const InformationSummary = (props) => {
             <DescriptionListItem
               descriptionTitle="confirmationPage.personalInformation.typeOfInfoObtained"
               description={infoObtainedLine}
-            />
-
-            <DescriptionListItem
-              descriptionTitle="confirmationPage.personalInformation.tellUsMore"
-              description={personalInformation.tellUsMore}
             />
           </Stack>
         ) : (
