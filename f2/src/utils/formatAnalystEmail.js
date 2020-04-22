@@ -2,7 +2,8 @@
 
 const { formatDate } = require('./formatDate')
 
-const unCamel = (text) => text.replace(/([A-Z])/g, ' $1').toLowerCase()
+const unCamel = (text) =>
+  text.replace(/([A-Z])|([\d]+)/g, ' $1$2').toLowerCase()
 
 const formatLineHtml = (label, text) =>
   text && text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
@@ -13,12 +14,12 @@ const formatSection = (title, rows) =>
   `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
 
 const formatReportInfo = (data) => {
-  let selfHarmString = 'no self harm words'
+  let selfHarmString = 'none'
   let returnString = ''
 
   if (data.selfHarmWords.length) {
-    selfHarmString = data.selfHarmWords
-    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${selfHarmString}</h1>`
+    selfHarmString = 'self harm words detected'
+    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${data.selfHarmWords}</h1>`
   }
 
   let isAnonymous = data.anonymous.anonymousOptions[0].replace(
@@ -40,9 +41,11 @@ const formatReportInfo = (data) => {
   delete data.reportId
   delete data.submissionTime
   delete data.language
-  delete data.appVersion
+  delete data.appVersion // git hash not used in report
+  delete data.prodVersion
   delete data.selfHarmWords
   delete data.submissionDate
+  delete data.prodVersion
   return returnString
 }
 
@@ -52,7 +55,7 @@ const formatVictimDetails = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml('Name:', data.contactInfo.fullName) +
+    formatLineHtml('Full name:', data.contactInfo.fullName) +
     formatLineHtml('Email:', data.contactInfo.email) +
     formatLineHtml('Phone number:', data.contactInfo.phone) +
     formatLineHtml('City:', data.location.city) +
@@ -144,7 +147,9 @@ const formatNarrative = (data) => {
     formatLineHtml('Role:  ', data.businessInfo.role) +
     formatLineHtml(
       'Number of employee:  ',
-      data.businessInfo.numberOfEmployee,
+      unCamel(
+        data.businessInfo.numberOfEmployee.replace('numberOfEmployee.', ''),
+      ),
     ) +
     formatLineHtml('Other clues:             ', data.suspectClues.suspectClues3)
 

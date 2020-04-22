@@ -28,7 +28,7 @@ if (lang === 'fr') {
   activate('fr')
 } else if (lang === 'en') {
   activate('en')
-} else if (window.location.hostname.indexOf('signalez') > -1) {
+} else if (window.location.hostname.indexOf('signalement') > -1) {
   activate('fr')
 } else if (window.location.hostname.indexOf('report') > -1) {
   activate('en')

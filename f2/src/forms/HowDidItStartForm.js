@@ -15,6 +15,7 @@ import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
 
 //add validate functin for test
@@ -74,7 +75,7 @@ export const validate = (values) => {
     }
   }
   //validate if the dayin Feb can't be >29 in leap year, the day in Feb can't be >28 in non-leap year
-  if (values.startMonth === 2) {
+  if (values.startMonth === '2' || values.startMonth === '02') {
     var lyear = false
     if (
       (!(values.startYear % 4) && values.startYear % 100) ||
@@ -112,7 +113,9 @@ const clearData = (dataOrig) => {
 export const HowDidItStartForm = (props) => {
   const localOnSubmit = (data) => {
     if (clientFieldsAreValid(data, formDefaults.howdiditstart))
-      props.onSubmit(clearData(data))
+      props.onSubmit(
+        clearData({ ...data, phone: formatPhoneNumber(data.phone) }),
+      )
   }
 
   const { i18n } = useLingui()

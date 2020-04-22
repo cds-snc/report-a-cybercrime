@@ -112,7 +112,7 @@ app.get('/', async function (req, res, next) {
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
     console.warn('Warning: redirecting request to CAFC')
     res.redirect(
-      req.subdomains.includes('signalez')
+      req.subdomains.includes('signalement')
         ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
         : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
