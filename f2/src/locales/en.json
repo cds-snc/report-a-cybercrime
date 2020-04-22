@@ -401,6 +401,7 @@
   "whatWasAffectedPage.title": "What do you think could be affected?",
   "whenDidItStart.errorMessage": "Enter a date from the past.",
   "whenDidItStart.hasValidationErrors": "Please review the start date.",
+  "whenDidItStart.invalidDateerrorMessage": "whenDidItStart.invalidDateerrorMessage",
   "whenDidItStart.label": "When did it start?",
   "whenDidItStart.labelExample": "For example: 26 02 2020",
   "whenDidItStart.startDate.warning": "Enter a valid day.",

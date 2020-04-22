@@ -401,6 +401,7 @@
   "whatWasAffectedPage.title": "D’après vous, quelles pourraient être les répercussions?",
   "whenDidItStart.errorMessage": "Entrez une date passée.",
   "whenDidItStart.hasValidationErrors": "Veuillez vérifier la date de l’incident.",
+  "whenDidItStart.invalidDateerrorMessage": "",
   "whenDidItStart.label": "Quand l’incident a-t-il commencé?",
   "whenDidItStart.labelExample": "Par exemple : 26 02 2020",
   "whenDidItStart.startDate.warning": "Entrez un jour valide.",
