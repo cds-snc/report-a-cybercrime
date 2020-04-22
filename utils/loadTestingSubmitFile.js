@@ -59,10 +59,7 @@ Object.entries(flattenedData).forEach(([key, value]) => {
   preparedData[key] = JSON.stringify(value);
 });
 
-let binFile = open(
-  "/Users/stephen/Git/report-a-cybercrime/utils/bread.jpg",
-  "b"
-);
+let binFile = open("bread.jpg", "b");
 
 export default function () {
   // var data = {
