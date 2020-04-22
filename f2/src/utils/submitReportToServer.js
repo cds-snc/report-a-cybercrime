@@ -6,6 +6,8 @@ const { formDefaults } = require('../forms/defaultValues')
 
 async function submitReportToServer(url = '', data = {}) {
   const flattenedData = flatten(data, { safe: true })
+  console.log(flattenedData)
+
   var form_data = new FormData()
   Object.keys(flattenedData).forEach((key) => {
     form_data.append(key, JSON.stringify(flattenedData[key]))
