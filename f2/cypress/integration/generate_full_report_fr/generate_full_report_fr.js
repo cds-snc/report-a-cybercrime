@@ -5,7 +5,7 @@ After(() => {
 });
 
 Given('I open the report home page', () => {
-    cy.visit(Cypress.env('staging'))
+    cy.visit(Cypress.env('dev'))
 });
 
 When ('I change the language',() => {
@@ -38,17 +38,8 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
-When('I fill ReportAnonymously page forms', () => {
-    var anonymous = "No";
-    cy.fixture('form_data.json').then((user) => {
-       anonymous = user.anonymous;
-       if (anonymous == "Yes") {
-            cy.get('form').find('[value="anonymousPage.yes"]').check({ force: true }) 
-       } else {
-            cy.get('form').find('[value="anonymousPage.no"]').check({ force: true }) 
-       }
-    });   
-    //cy.get('form').find('[value="anonymousPage.no"]').check({ force: true })
+When('I fill ReportAnonymously page forms', () => {  
+    // Do nothing
 });
 
 Then('I click {string}', () => {
@@ -114,7 +105,6 @@ When('I fill Howwereyourmoney page forms', () => {
     cy.get('form').find('[id="transactionDay"]').type('02')
     cy.get('form').find('[id="transactionMonth"]').type('02')
     cy.get('form').find('[id="transactionYear"]').type('2019')
-    cy.get('form').find('[id="tellUsMore"]').type('Fournissez des détails sur ce qui a été dit ou fait pour que cela se produise')
 });
 
 Then('I click {string}', () => {
@@ -138,7 +128,6 @@ when ('I fill Howwaspersonalinformationaffected page forms', () => {
     cy.get('form').find('[value="typeOfInfoObtained.sin"]').check({ force: true })
     cy.get('form').find('[value="typeOfInfoObtained.other"]').check({ force: true })
     cy.get('form').find('[id="infoObtainedOther"]').type('Passeport')
-    cy.get('form').find('[id="tellUsMore"]').type('Comment vous a-t-on demandé et soutiré des informations')
 });
 
 Then('I click {string}', () => {
@@ -153,7 +142,6 @@ When('I fill Howwereyourdevicesaffected page forms', () => {
 
     cy.get('form').find('[id="device"]').type('tablette Surface')
     cy.get('form').find('[id="account"]').type('Netflix')
-    cy.get('form').find('[id="devicesTellUsMore"]').type('Comment vos appareils ou vos comptes ont-ils été affectés')
 });
 
 Then('I click {string}', () => {
@@ -165,8 +153,10 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill Howyourbusinessaffected page forms', () => {
-
-    cy.get('form').find('[id="business"]').type('actifs, réputation, clients')
+    cy.get('form').find('[name="nameOfBusiness"]').type('Health & Wellness Bedford')
+    cy.get('form').find('[name="industry"]').type('Clinique de Santé')
+    cy.get('form').find('[name="role"]').type('Expert en Informatique')
+    cy.get('form').find('[value="numberOfEmployee.500More"]').check({ force: true })
 });
 
 Then('I click {string}', () => {
@@ -231,7 +221,7 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill yourLocation page forms', () => {
-    cy.get('form').find('[id="postalCode"]').type('K2G 6R2')
+    cy.get('form').find('[id="postalCode"]').type('h1m2c9')
 });
 
 Then('I click {string}', () => {
@@ -243,9 +233,9 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill yourContactDetails page forms', () => {
-    cy.get('form').find('[id="fullName"]').type('FirstName LastName')
+    cy.get('form').find('[id="fullName"]').type('Nom Prenom')
     cy.get('form').find('[id="email"]').type('hong.vu@rcmp-grc.gc.ca')
-    cy.get('form').find('[id="phone"]').type('613-000-1234')
+    cy.get('form').find('[id="phone"]').type('618-030-0233')
 });
 
 Then('I click {string}', () => {

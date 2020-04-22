@@ -6,12 +6,12 @@ Feature: Test the entire report workflow in french
     When I change the language
     Then I read before you start instructions
     And I click continue without checking consent
-    Then "Veuillez accepter les conditions de la Déclaration de confidentialité." should be shown
+    Then "Cochez la case pour accepter les conditions de la Déclaration de confidentialité." should be shown
     When I check the consent checkbox
     Then I click "Continuer"
 
 Scenario: Report anonymously
-    Given "Aimeriez-vous rester anonyme?" should be shown
+    Given "Signaler anonymement?" should be shown
     When I fill ReportAnonymously page forms
     Then I click "Continue"
 
@@ -41,7 +41,7 @@ Scenario: Report anonymously
     Then I click "Continuer"
 
   Scenario: How your business affected
-    Given "Répercussions sur votre entreprise" should be shown
+    Given "Parlez-nous de votre entreprise ou organisation" should be shown
     When I fill Howyourbusinessaffected page forms
     Then I click "Continuer"
 

@@ -6,7 +6,7 @@ Feature: Test the entire report workflow in english
     When I click on create a report button
     Then I read before you start instructions
     And I click continue without checking consent
-    Then "Please accept the terms of the Privacy statement" should be shown
+    Then "Check the box to accept the terms of the Privacy statement." should be shown
     When I check the consent checkbox
     Then I click "Continue"
 
@@ -40,8 +40,8 @@ Feature: Test the entire report workflow in english
     When I fill Howwereyourdevicesaffected page forms
     Then I click "Continue"
 
-  Scenario: How your business affected
-    Given "How was your business affected?" should be shown
+  Scenario: Tell us about your business or organization
+    Given "Tell us about your business or organization" should be shown
     When I fill to Howyourbusinessaffected forms
     Then I click "Continue"
 

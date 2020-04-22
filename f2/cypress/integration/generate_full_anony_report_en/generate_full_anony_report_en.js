@@ -36,16 +36,7 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
-When('I fill ReportAnonymously page forms', () => {
-    //var anonymous = "No";
-    //cy.fixture('form_data.json').then((user) => {
-    //    anonymous = user.anonymous;
-    //    if (anonymous =) {
-    //        cy.get('form').find('[value="anonymousPage.yes"]').check({ force: true }) 
-    //    } else {
-    //        cy.get('form').find('[value="anonymousPage.no"]').check({ force: true }) 
-    //    }
-    // });   
+When('I fill ReportAnonymously page forms', () => { 
     cy.get('form').find('[value="anonymousPage.yes"]').check({ force: true })
 });
 
@@ -107,10 +98,9 @@ When('I fill Howwereyourmoney page forms', () => {
     cy.get('form').find('[value="methodPayment.cash"]').check({ force: true })
     cy.get('form').find('[value="methodPayment.other"]').check({ force: true })
     cy.get('form').find('[id="methodOther"]').type('Certified Cheque')
-    cy.get('form').find('[id="transactionDay"]').type('02')
-    cy.get('form').find('[id="transactionMonth"]').type('02')
+    cy.get('form').find('[id="transactionDay"]').type('1')
+    cy.get('form').find('[id="transactionMonth"]').type('7')
     cy.get('form').find('[id="transactionYear"]').type('2019')
-    cy.get('form').find('#tellUsMore').type('Howwereyourmoney tell more')
 });
 
 Then('I click {string}', () => {
@@ -132,7 +122,6 @@ when ('I fill Howwaspersonalinformationaffected forms', () => {
     cy.get('form').find('[value="typeOfInfoObtained.homeAddress"]').check({ force: true })
     cy.get('form').find('[value="typeOfInfoObtained.sin"]').check({ force: true })
     cy.get('form').find('[value="typeOfInfoObtained.other"]').check({ force: true })
-    cy.get('form').find('#tellUsMore').type('Howwaspersonalinformationaffected tell more')
 });
 
 Then('I click {string}', () => {
@@ -146,15 +135,17 @@ Given('{string} should be shown', (content) => {
 When('I fill Howwereyourdevicesaffected page forms', () => {
     cy.get('form').find('[name="device"]').type('Personal Computer')
     cy.get('form').find('[name="account"]').type('FaceBook')
-    cy.get('form').find('[name="devicesTellUsMore"]').type('testing Devices Tell More')
 });
 
 Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
-When('I fill to Howyourbusinessaffected forms', () => {
-    cy.get('form').find('[name="business"]').type('How your business affected tell more')
+When('I fill to Howyourbusinessaffected forms', () => { 
+    cy.get('form').find('[name="nameOfBusiness"]').type('Edward Jones')
+    cy.get('form').find('[name="industry"]').type('Financial Advisor')
+    cy.get('form').find('[name="role"]').type('Expert Advisor')
+    cy.get('form').find('[value="numberOfEmployee.100To499"]').check({ force: true })
 });
 
 Then('I click {string}', () => {
@@ -178,8 +169,8 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill Addsuspectclues page forms', () => {
-    cy.get('form').find('[name="suspectClues1"]').type('Suspect Name')
-    cy.get('form').find('[name="suspectClues2"]').type('1200 Vanier Parkway')
+    cy.get('form').find('[name="suspectClues1"]').type('Suspect Name Anonymous')
+    cy.get('form').find('[name="suspectClues2"]').type('234 TallWood Cresent')
     cy.get('form').find('[name="suspectClues3"]').type('suspect clues - Tell More')
 });
 
@@ -216,20 +207,6 @@ Then('I click {string}', () => {
     cy.contains("Continue").first().click({force: true});
 });
 
-/*Given('{string} should be shown', (content) => {
-    cy.contains(content, {timeout:10000}).should('be.visible')
-});
-
-When('I fill yourContactDetails page forms', () => {
-    cy.get('form').find('[id="fullName"]').type('FirstName LastName')
-    cy.get('form').find('[id="email"]').type('lmcbhvu@gmail.com')
-    cy.get('form').find('[id="phone"]').type('613 000 1234')
-});
-
-Then('I click {string}', () => {
-    cy.contains("Continue").first().click({force: true});
-});
-*/
 Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
