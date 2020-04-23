@@ -152,7 +152,7 @@
   "evidencePage.details": "If you can, include things such as:",
   "evidencePage.fileDescription": "Describe what this file shows",
   "evidencePage.fileSize": "You can add a maximum of 3 files, each up to 4 MB in size each.",
-  "evidencePage.fileTypes": "jpg, .jpeg, .doc, .xls, .pdf, and .txt.",
+  "evidencePage.fileTypes": "jpg, .jpeg, .doc, .docx, .xls, .xlsx .pdf, .txt and .rtf.",
   "evidencePage.fileWarning": "Files will be checked for safe content.",
   "evidencePage.intro": "It’s okay if you didn’t keep any documentation from the incident. You can skip to the next section.",
   "evidencePage.maxFileWarning": "You have added the maximum number of files allowed.",
