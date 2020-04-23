@@ -152,7 +152,7 @@
   "evidencePage.details": "Si toutefois vous le pouvez, incluez des indices tels que :",
   "evidencePage.fileDescription": "Décrivez ce que montre ce fichier.",
   "evidencePage.fileSize": "Vous pouvez ajouter un maximum de 3 fichiers, chacun d’une taille maximale de 4 Mo.",
-  "evidencePage.fileTypes": ".png, .jpeg, .doc, .xls, .pdf, et .txt.",
+  "evidencePage.fileTypes": ".jpg, .jpeg, .doc, .xls, .pdf, et .txt.",
   "evidencePage.fileWarning": "Les fichiers seront vérifiés pour nous assurer que leur contenu est sûr.",
   "evidencePage.intro": "Ce n’est pas grave si vous n’avez pas conservé de documents liés à l’incident. Vous pouvez passer à la section suivante.",
   "evidencePage.maxFileWarning": "Vous avez ajouté le nombre maximum de fichiers possibles.",
