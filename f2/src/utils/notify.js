@@ -6,15 +6,16 @@ const baseUrl = process.env.NOTIFY_API_BASE_URL
 const notifyEnvVars = [
   'NOTIFY_API_KEY',
   'NOTIFY_API_BASE_URL',
-  'NOTIFY_CONFIRMATION_TEMPLATE_ID',
+  'NOTIFY_ENGLISH_CONFIRMATION_TEMPLATE_ID',
+  'NOTIFY_FRENCH_CONFIRMATION_TEMPLATE_ID',
 ]
 
 let notifyIsSetup = true
-notifyEnvVars.forEach(k => {
+notifyEnvVars.forEach((k) => {
   if (!process.env[`${k}`]) {
     notifyIsSetup = false
     console.warn(
-      `WARNING: Notify environment variable ${k} is missing. Emailing links will probably not work.`,
+      `ERROR: Notify environment variable ${k} is missing. Emailing links will probably not work.`,
     )
   }
 })
@@ -25,14 +26,15 @@ const notifyClient =
     : false
 
 if (notifyClient) console.info('Notify client created')
-else console.warn('Notify client NOT created')
+else console.warn('ERROR: Notify client not created')
 
-const sendConfirmation = async (email, reportId) => {
-  const templateId = process.env.NOTIFY_CONFIRMATION_TEMPLATE_ID
+const sendConfirmation = async (email, reportId, language) => {
+  let templateId
+  if (language === 'fr')
+    templateId = process.env.NOTIFY_FRENCH_CONFIRMATION_TEMPLATE_ID
+  else templateId = process.env.NOTIFY_ENGLISH_CONFIRMATION_TEMPLATE_ID
   if (!email || !templateId) {
-    console.warn(
-      'WARNING: no Notify confirmation template ID or email was passed, mail not sent',
-    )
+    console.warn('ERROR: could not send confirmation email')
     return false
   }
   try {
@@ -42,12 +44,12 @@ const sendConfirmation = async (email, reportId) => {
     console.info('Notify: confirmation email (probably) sent!')
     return response.body
   } catch (err) {
-    console.warn(`Notify confirmation email Error: ${err.message}`)
+    console.warn(`ERROR: Notify confirmation email error: ${err.message}`)
     return false
   }
 }
 
-const submitFeedback = async data => {
+const submitFeedback = async (data) => {
   const templateId = process.env.NOTIFY_FEEDBACK_TEMPLATE_ID
   const email = process.env.FEEDBACK_EMAIL
   if (!email || !templateId) {
@@ -58,7 +60,7 @@ const submitFeedback = async data => {
   }
   try {
     const response = notifyClient.sendEmail(templateId, email, {
-      personalisation: { feedback: JSON.stringify(data, null, '  ') },
+      personalisation: { feedback: data },
     })
     console.info('Notify: feedback email (probably) sent!')
     return response.body

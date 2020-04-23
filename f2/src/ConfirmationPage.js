@@ -14,6 +14,7 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { formDefaults } from './forms/defaultValues'
 
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
@@ -22,11 +23,11 @@ async function postData(url = '', data = {}) {
   // add the files to the formdata object after.
   const flattenedData = flatten(data, { safe: true })
   var form_data = new FormData()
-  Object.keys(flattenedData).forEach(key => {
+  Object.keys(flattenedData).forEach((key) => {
     form_data.append(key, JSON.stringify(flattenedData[key]))
   })
   if (data.evidence)
-    data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
+    data.evidence.files.forEach((f) => form_data.append(f.name, f, f.name))
 
   // Default options are marked with *
   const response = await fetch(url, {
@@ -46,36 +47,28 @@ const prepFormData = (formData, language) => {
     ? process.env.REACT_APP_VERSION.slice(0, 7)
     : 'no version'
 
+  if (formData.anonymous.anonymousOptions.includes('anonymousPage.yes')) {
+    formData.contactInfo = formDefaults.contactInfo
+  } else {
+    formData.anonymous.anonymousOptions = ['anonymousPage.no']
+  }
+
   if (
     formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
       'whatWasAffectedForm.financial',
     )
   ) {
-    formData.moneyLost = {
-      demandedMoney: '',
-      moneyTaken: '',
-      methodPayment: [],
-      transactionDay: '',
-      transactionMonth: '',
-      transactionYear: '',
-      tellUsMore: '',
-    }
+    formData.moneyLost = formDefaults.moneyLost
   }
 
   if (
     formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
-      'whatWasAffectedForm.personal_information',
+      'whatWasAffectedForm.personalInformation',
     )
   ) {
-    formData.personalInformation = {
-      typeOfInfoReq: [],
-      infoReqOther: '',
-      typeOfInfoObtained: [],
-      infoObtainedOther: '',
-      tellUsMore: '',
-    }
+    formData.personalInformation = formDefaults.personalInformation
   }
 
   if (
@@ -84,11 +77,7 @@ const prepFormData = (formData, language) => {
       'whatWasAffectedForm.devices',
     )
   ) {
-    formData.devicesInfo = {
-      device: '',
-      account: '',
-      devicesTellUsMore: '',
-    }
+    formData.devicesInfo = formDefaults.devicesInfo
   }
 
   if (
@@ -97,9 +86,7 @@ const prepFormData = (formData, language) => {
       'whatWasAffectedForm.business_assets',
     )
   ) {
-    formData.businessInfo = {
-      business: '',
-    }
+    formData.businessInfo = formDefaults.businessInfo
   }
 
   return {

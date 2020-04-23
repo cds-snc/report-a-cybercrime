@@ -14,8 +14,10 @@ import { Button } from '../components/button'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   if (
@@ -30,11 +32,13 @@ const validate = (values) => {
   return errors
 }
 
-const defaultLocation = {
-  postalCode: '',
-}
+const defaultLocation = formDefaults.location
 
-export const LocationInfoForm = ({ onSubmit }) => {
+export const LocationInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.location)) props.onSubmit(data)
+  }
+
   const [data, dispatch] = useStateValue()
 
   let location
@@ -52,7 +56,7 @@ export const LocationInfoForm = ({ onSubmit }) => {
     <React.Fragment>
       <Form
         initialValues={location}
-        onSubmit={onSubmit}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({
           handleSubmit,
@@ -68,7 +72,9 @@ export const LocationInfoForm = ({ onSubmit }) => {
             spacing={6}
           >
             {submitFailed && hasValidationErrors ? (
-              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+              <ErrorSummary>
+                <Trans id="locationinfoPage.hasValidationErrors" />
+              </ErrorSummary>
             ) : null}
             <Flex direction="row" align="center" wrap="wrap" mb={10}>
               <P w="100%">

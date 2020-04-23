@@ -1,5 +1,6 @@
 /** @jsx jsx **/
 import { jsx } from '@emotion/core'
+import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Stack } from '@chakra-ui/core'
@@ -12,7 +13,7 @@ import { Alert } from '../Messages'
 import { focusTarget } from '../../utils/focusTarget'
 import { useEffect } from 'react'
 
-export const ErrorSummary = () => {
+export const ErrorSummary = (props) => {
   const { i18n } = useLingui()
 
   const { errors } = useForm().getState()
@@ -26,15 +27,16 @@ export const ErrorSummary = () => {
 
     window.scrollTo(0, summary.y - 16)
   })
-  console.log(errors)
+  let errorLength = Object.keys(errors).length
 
   return (
     <Alert id="error-summary" status="error" aria-atomic>
       <Stack>
         <Text fontSize="md" fontWeight="bold">
-          <Trans id="default.hasValidationErrors" />
+          {props.children}
         </Text>
-        <Ol>
+
+        <Ol {...(errorLength <= 1 && { listStyleType: 'none', ml: 0 })}>
           {Object.keys(errors).map((key) => {
             // Omit all errors set to true from showing in ErrorSummary
             return errors[key] !== true ? (
@@ -61,4 +63,11 @@ export const ErrorSummary = () => {
       </Stack>
     </Alert>
   )
+}
+ErrorSummary.defaultProps = {
+  children: <Trans id="default.hasValidationErrors" />,
+}
+
+ErrorSummary.propTypes = {
+  children: PropTypes.any,
 }

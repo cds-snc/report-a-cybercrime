@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
+import addrs from 'email-addresses'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
@@ -14,14 +15,14 @@ import { P } from '../components/paragraph'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formatPhoneNumber } from '../utils/formatPhoneNumber'
+import { formDefaults } from './defaultValues'
 
 export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
-  if (
-    values.email !== '' &&
-    !new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(values.email)
-  ) {
+  if (values.email !== '' && addrs(values.email) == null) {
     errors.email = 'contactinfoForm.email.warning'
   }
   // from https://www.w3resource.com/javascript/form/phone-no-validation.php
@@ -33,22 +34,23 @@ export const validate = (values) => {
   return errors
 }
 
-export const ContactInfoForm = ({ onSubmit }) => {
-  const [data, dispatch] = useStateValue()
-  let contactInfo
-  if (typeof data.formData.contactInfo === 'undefined') {
-    contactInfo = { fullName: '', email: '', phone: '' }
-    dispatch({
-      type: 'saveFormData',
-      data: { contactInfo },
-    })
-  } else contactInfo = data.formData.contactInfo
+export const ContactInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.contactInfo))
+      props.onSubmit({ ...data, phone: formatPhoneNumber(data.phone) })
+  }
+
+  const [data] = useStateValue()
+  const contactInfo = {
+    ...formDefaults.contactInfo,
+    ...data.formData.contactInfo,
+  }
 
   return (
     <React.Fragment>
       <Form
         initialValues={contactInfo}
-        onSubmit={onSubmit}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({
           handleSubmit,
@@ -64,7 +66,9 @@ export const ContactInfoForm = ({ onSubmit }) => {
             spacing={6}
           >
             {submitFailed && hasValidationErrors ? (
-              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+              <ErrorSummary>
+                <Trans id="contactinfoPage.hasValidationErrors" />
+              </ErrorSummary>
             ) : null}
             <Flex direction="row" align="center" wrap="wrap" mb={10}>
               <P w="100%">

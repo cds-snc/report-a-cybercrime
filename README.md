@@ -84,7 +84,8 @@ We are using the Government of Canada's [Notify](https://notification.alpha.cana
 # Notify configuration
 NOTIFY_API_BASE_URL=
 NOTIFY_API_KEY=
-NOTIFY_CONFIRMATION_TEMPLATE_ID=
+NOTIFY_ENGLISH_CONFIRMATION_TEMPLATE_ID=
+NOTIFY_FRENCH_CONFIRMATION_TEMPLATE_ID=
 NOTIFY_FEEDBACK_TEMPLATE_ID=
 FEEDBACK_EMAIL=
 ```
@@ -96,6 +97,7 @@ Google Analytics is being used to help us get insight into how the different par
 ```sh
 # Google Analytics
 GOOGLE_ANALYTICS_ID=
+REACT_APP_GOOGLE_GTM_ID=
 ```
 
 ### Rate limiting
@@ -121,8 +123,7 @@ npm run dev
 ### Frontend and backend
 
 ```sh
-npm run build
-node server.js
+npm run prod
 ```
 
 ### Run project with Docker
@@ -131,6 +132,17 @@ node server.js
 docker build -t rac .
 docker run -p 3000:3000 rac
 ```
+
+### Getting the analyst email yourself
+
+It is often useful to quickly see what the analyst email looks like. If the `LDAP_UID` environment variable is not set and the user provides their email address on the contact info screen then the server will send the analyst email unencrypted to the user. This is solely for development purposes. Note that the review apps are configured this way.
+
+To do this locally:
+
+- ensure that `LDAP_UID` is not set in your terminal environment nor in your `.env` file
+- run `npm run prod`
+- fill out the report and include your email address on http://localhost:3000/contactinfo
+- you should receive the generated report email
 
 ## Load testing the frontend
 

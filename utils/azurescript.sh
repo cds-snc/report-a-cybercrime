@@ -40,7 +40,8 @@ export CONTAINER_SUBNET_RANGE=10.9.1.0/24
 ## App Environment Variables
 export NOTIFY_API_BASE_URL=
 export NOTIFY_API_KEY=
-export NOTIFY_CONFIRMATION_TEMPLATE_ID=
+export NOTIFY_ENGLISH_CONFIRMATION_TEMPLATE_ID=
+export NOTIFY_FRENCH_CONFIRMATION_TEMPLATE_ID=
 export SELF_HARM_WORDS=
 
 export LDAP_URL=ldap://pki-dsa.rcmp-grc.gc.ca:389
@@ -115,7 +116,7 @@ az webapp config appsettings set --name $APP_NAME --settings COSMOSDB_NAME=$DB_N
 az webapp config appsettings set --name $APP_NAME --settings BLOB_STORAGE_NAME=$BLOB_NAME BLOB_STORAGE_KEY=$(az storage account keys list --resource-group $RG_NAME --account-name $BLOB_NAME --query [0].value -o tsv)
 az webapp config appsettings set --name $APP_NAME --settings CLAM_URL=${VIRUS_SCANNER_NAME}.canadacentral.azurecontainer.io
 az webapp config appsettings set --name $APP_NAME --settings CONTENT_MODERATOR_SERVICE_KEY=$(az cognitiveservices account keys list --name $COGNITIVE_NAME --query key1 -o tsv)
-az webapp config appsettings set --name $APP_NAME --settings NOTIFY_API_BASE_URL=$NOTIFY_API_BASE_URL NOTIFY_API_KEY=$NOTIFY_API_KEY NOTIFY_CONFIRMATION_TEMPLATE_ID=$NOTIFY_CONFIRMATION_TEMPLATE_ID SELF_HARM_WORDS="${SELF_HARM_WORDS}"
+az webapp config appsettings set --name $APP_NAME --settings NOTIFY_API_BASE_URL=$NOTIFY_API_BASE_URL NOTIFY_API_KEY=$NOTIFY_API_KEY NOTIFY_ENGLISH_CONFIRMATION_TEMPLATE_ID=$NOTIFY_ENGLISH_CONFIRMATION_TEMPLATE_ID NOTIFY_FRENCH_CONFIRMATION_TEMPLATE_ID=$NOTIFY_FRENCH_CONFIRMATION_TEMPLATE_ID SELF_HARM_WORDS="${SELF_HARM_WORDS}"
 az webapp config appsettings set --name $APP_NAME --settings LDAP_URL=$LDAP_URL LDAP_UID="${LDAP_UID}" MAIL_HOST=$MAIL_HOST MAIL_USER=$MAIL_USER MAIL_PASS=$MAIL_PASS MAIL_FROM="${MAIL_FROM}"
 az webapp config appsettings set --name $APP_NAME --settings SUBMISSIONS_PER_DAY=$SUBMISSIONS_PER_DAY SECONDS_BETWEEN_REQUESTS=$SECONDS_BETWEEN_REQUESTS
 az webapp config appsettings set --name $APP_NAME --settings NOTIFY_FEEDBACK_TEMPLATE_ID=$NOTIFY_FEEDBACK_TEMPLATE_ID FEEDBACK_EMAIL=$FEEDBACK_EMAIL NOTIFY_REPORT_TEMPLATE_ID=$NOTIFY_REPORT_TEMPLATE_ID

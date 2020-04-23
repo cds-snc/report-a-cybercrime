@@ -34,6 +34,16 @@ describe('validation', () => {
     expect(validate({ phone: '123456789' }).phone).not.toBeUndefined()
     expect(validate({ phone: 'not a number' }).phone).not.toBeUndefined()
   })
+
+  it('passes correct email address', () => {
+    expect(validate({ email: 'aaaa@aaa.com' }).email).toBeUndefined()
+    expect(validate({ email: 'aaa.aaa@aaa.com' }).email).toBeUndefined()
+    expect(validate({ email: 'aaa@aaa-aaa.com' }).email).toBeUndefined()
+  })
+
+  it('fails incorrect email address', () => {
+    expect(validate({ email: 'aaaaaa.com' }).email).not.toBeUndefined()
+  })
 })
 
 describe('<ContactInfoForm />', () => {
@@ -42,7 +52,7 @@ describe('<ContactInfoForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getAllByRole, getByText } = render(
+    const { getAllByLabelText, getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -54,7 +64,7 @@ describe('<ContactInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const inputNode = getAllByRole('textbox')[0]
+    const inputNode = getAllByLabelText('contactinfoPage.fullName')[0]
 
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)

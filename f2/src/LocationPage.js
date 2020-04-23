@@ -9,11 +9,17 @@ import { LocationAnonymousInfoForm } from './forms/LocationAnonymousInfoForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { formatPostalCode } from './utils/formatPostalCode'
 import { Page } from './components/Page'
+import { formDefaults } from './forms/defaultValues'
 
 export const LocationPage = () => {
   const [data, dispatch] = useStateValue()
-  const { doneForms, formData } = data
+  const { doneForms } = data
+  const formData = {
+    ...formDefaults,
+    ...data.formData,
+  }
 
   return (
     <Route
@@ -28,16 +34,19 @@ export const LocationPage = () => {
               <Lead>
                 <Trans id="locationPage.intro" />
               </Lead>
-              {formData.anonymous.anonymous === 'anonymousPage.yes' ? (
+              {formData.anonymous.anonymousOptions.includes(
+                'anonymousPage.yes',
+              ) ? (
                 <LocationAnonymousInfoForm
-                  onSubmit={data => {
+                  onSubmit={(data) => {
                     dispatch({ type: 'saveFormData', data: { location: data } })
                     history.push(doneForms ? '/confirmation' : '/confirmation')
                   }}
                 />
               ) : (
                 <LocationInfoForm
-                  onSubmit={data => {
+                  onSubmit={(data) => {
+                    data.postalCode = formatPostalCode(data.postalCode)
                     dispatch({ type: 'saveFormData', data: { location: data } })
                     history.push(doneForms ? '/confirmation' : '/contactinfo')
                   }}
