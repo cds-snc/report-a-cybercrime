@@ -100,7 +100,8 @@ const submitToServer = async (data, dispatch) => {
   const response = await postData('/submit', data)
   const reportId = await response.text()
   const submitted = reportId && reportId.startsWith('NCFRS-')
-  dispatch({ type: 'saveFormData', data: { reportId, submitted } })
+  dispatch({ type: 'saveReportId', data: reportId })
+  dispatch({ type: 'saveSubmitted', data: submitted })
 }
 
 export const ConfirmationPage = () => {
