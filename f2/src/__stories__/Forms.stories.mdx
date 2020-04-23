@@ -21,6 +21,17 @@ Forms are self contained files containing a single React final form [Form](https
 import { Form } from 'react-final-form'
 ```
 
+<Story name="Form">
+  <Form
+    onSubmit={(values) => {
+      props.onSubmit(values)
+    }}
+    render={({ handleSubmit, values }) => (
+      <Stack as="form" onSubmit={handleSubmit}></Stack>
+    )}
+  />
+</Story>
+
 The idea is to have self-contained Forms. You export them like components, then use them in Page compositions. You want to make sure to:
 
 1. Provide an `onSubmit` prop
@@ -137,11 +148,15 @@ export const Form = (props) => {
 }
 ```
 
-## Fields
+## Fields and Form Array Controls
+
+<Story name="Fields and Form Array Controls"></Story>
 
 View [Field](/?path=/docs/components-field--input-field) documentation for more information on how to use it in a Form.
 
-View [FormArrayControl](/?path=/docs/components-form-array-control--default-story) documentation for more information on how to place radio and checkbox lists in a Form.
+View [FormArrayControl](/?path=/docs/components-form-array-control--default-story)
+documentation for more information on how to place radio and checkbox lists in a
+Form.
 
 ## Next and Cancel buttons
 
