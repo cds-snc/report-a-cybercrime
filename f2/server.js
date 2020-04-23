@@ -223,6 +223,18 @@ app
   .get('/termsandconditions', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
+  .post('/checkToken', (req, res) => {
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+      if (err) {
+        console.warn('ERROR', err)
+        throw err
+      }
+      const token = fields.json.token
+      fetch()
+      console.log(`checkToken: ${JSON.stringify(fields.json)}`)
+    })
+    res.send('thanks')
+  })
 
 // uncomment to allow direct loading of arbitrary pages
 // .get('/*', function (_req, res) {
