@@ -100,6 +100,15 @@ GOOGLE_ANALYTICS_ID=
 REACT_APP_GOOGLE_GTM_ID=
 ```
 
+### Sentry.io
+
+We use sentry.io to track bugs arising in production.
+
+```sh
+# Sentry.io
+REACT_APP_SENTRY_DSN=
+```
+
 ### Rate limiting
 
 Finally, we are currently soft launching the app and so are rate limiting how many reports it generates.

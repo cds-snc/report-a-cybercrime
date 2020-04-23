@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLingui } from '@lingui/react'
 import { Global, css } from '@emotion/core'
+import * as Sentry from '@sentry/browser'
 import { Home } from './Home'
 import { Trans } from '@lingui/macro'
 import { TopBanner } from './components/topbanner'
@@ -25,6 +26,8 @@ const tagManagerArgs = {
   gtmId: process.env.REACT_APP_GOOGLE_GTM_ID,
 }
 TagManager.initialize(tagManagerArgs)
+
+Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN })
 
 const App = () => {
   const { i18n } = useLingui()
