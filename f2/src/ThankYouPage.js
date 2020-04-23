@@ -30,7 +30,7 @@ export const ThankYouPage = () => {
   const [, dispatch] = useStateValue()
 
   // Message displayed on Thank you Page
-  const reportId = state.formData.reportId
+  const reportId = state.reportId
   const submissionInProgress = !reportId || reportId === ''
   const submissionSucceeded =
     !submissionInProgress && reportId.startsWith('NCFRS-')

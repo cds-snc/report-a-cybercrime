@@ -36,6 +36,16 @@ export const reducer = (state, action) => {
         ...state,
         doneForms: action.data,
       }
+    case 'saveSubmitted':
+      return {
+        ...state,
+        submitted: action.data,
+      }
+    case 'saveReportId':
+      return {
+        ...state,
+        reportId: action.data,
+      }
     default:
       return state
   }

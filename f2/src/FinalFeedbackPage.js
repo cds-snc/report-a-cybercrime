@@ -27,7 +27,7 @@ async function postData(url = '', data = {}) {
   return await response
 }
 
-const submitToServer = async data => {
+const submitToServer = async (data) => {
   console.log('Submitting finalFeedback:', data)
   await postData('/submitFeedback', data)
 }
@@ -45,10 +45,10 @@ export const FinalFeedbackPage = () => {
               <Trans id="finalFeedback.title" />
             </H1>
             <FinalFeedbackForm
-              onSubmit={data => {
+              onSubmit={(data) => {
                 submitToServer(data)
                 setState((state.doneFinalFeedback = true))
-                if (state.formData && state.formData.submitted)
+                if (state.formData && state.submitted)
                   history.push('/thankYouPage')
                 else history.push('/finalfeedbackthanks')
               }}
