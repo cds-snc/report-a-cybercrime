@@ -38,11 +38,18 @@ async function postData(url = '', data = {}) {
     redirect: 'follow',
     referrer: 'no-referrer',
     body: form_data,
+  }).catch(function (error) {
+    console.log({ error })
   })
-  return response
+  return response ? response.text() : 'fetch failed'
 }
 
-const prepFormData = (formData, language) => {
+const prepFormData = (formDataOrig, language) => {
+  // this allows us to go directly to the confirmation page during debugging
+  const formData = {
+    ...formDefaults,
+    ...formDataOrig,
+  }
   formData.appVersion = process.env.REACT_APP_VERSION
     ? process.env.REACT_APP_VERSION.slice(0, 7)
     : 'no version'
@@ -97,8 +104,7 @@ const prepFormData = (formData, language) => {
 
 const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
-  const response = await postData('/submit', data)
-  const reportId = await response.text()
+  const reportId = await postData('/submit', data)
   const submitted = reportId && reportId.startsWith('NCFRS-')
   dispatch({ type: 'saveReportId', data: reportId })
   dispatch({ type: 'saveSubmitted', data: submitted })
@@ -126,6 +132,8 @@ export const ConfirmationPage = () => {
             <ConfirmationSummary />
             <ConfirmationForm
               onSubmit={() => {
+                dispatch({ type: 'saveReportId', data: undefined })
+                dispatch({ type: 'saveSubmitted', data: undefined })
                 submitToServer(prepFormData(formData, i18n.locale), dispatch)
                 history.push('/thankYouPage')
               }}
