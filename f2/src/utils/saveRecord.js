@@ -1,6 +1,4 @@
 const MongoClient = require('mongodb').MongoClient
-
-//let numberofReports = 0
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
 
