@@ -32,4 +32,5 @@ jobs:
     needs: build
     steps:
       - name: build and deploy
+        working-directory: f2
         run: npm run deploy-storybook -- --ci
