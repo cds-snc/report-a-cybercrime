@@ -25,4 +25,6 @@ jobs:
           CI: true
       - name: deploy
         working-directory: f2
-        run: npm run deploy-storybook -- --ci --host-token-env-variable=GITHUB_TOKEN
+        run: npm run deploy-storybook -- --ci
+        env:
+          GH_TOKEN: cds-snc:${{ secrets.GITHUB_TOKEN }}
