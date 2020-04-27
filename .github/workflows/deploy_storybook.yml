@@ -3,7 +3,7 @@ name: Deploy Storybook
 on:
   push:
     branches:
-      - master
+      - fix-storybook-deploy
 
 jobs:
   build:
@@ -31,4 +31,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: build and deploy
+        working-directory: f2
         run: npm run deploy-storybook -- --ci
