@@ -48,10 +48,7 @@ describe('<EditButton />', () => {
   it('hides the edit button if submitted', () => {
     const { queryAllByText } = render(
       <MemoryRouter>
-        <StateProvider
-          initialState={{ formData: { submitted: true } }}
-          reducer={reducer}
-        >
+        <StateProvider initialState={{ submitted: true }} reducer={reducer}>
           <I18nProvider i18n={i18n}>
             <ThemeProvider theme={canada}>
               <EditButton path="/" label="foo" />
