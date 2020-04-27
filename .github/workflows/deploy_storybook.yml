@@ -24,4 +24,5 @@ jobs:
         env:
           CI: true
       - name: deploy
+        working-directory: f2
         run: npm run deploy-storybook -- --ci
