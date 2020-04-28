@@ -1,49 +1,52 @@
-module.exports = {
-  validateDate(day, month, year) {
-    //condition for an error to occur: append a lingui id to the list of error
-    // if it has a value AND this value is a number over 31
-    if (day && (isNaN(day) || day > 31 || day === '0' || day === '00')) {
-      return false
-      // errors.whenDidItStart = 'whenDidItStart.hasValidationErrors'
-      // errors= true
-    }
-    // if it has a value AND this value is a number over 12
-    if (
-      month &&
-      (isNaN(month) || month > 12 || month === '0' || month === '00')
-    ) {
-      return false
-    }
-    // if it has a value AND year is a number containing 4 digits
-    if (year && (isNaN(year) || year.length !== 4 || year === '0000')) {
-      return false
-    }
+import isExists from 'date-fns/isExists'
+import isFuture from 'date-fns/isFuture'
+import getDaysInMonth from 'date-fns/getDaysInMonth'
+import { containsData } from './containsData'
 
-    // if date is in the future and date is valid
-    // values.startMonth - 1 : UTC Date Months are values from 0 to 11
-    if (Date.UTC(year, month - 1, day) > Date.now()) {
-      return false
-    }
-    // validate if the date in different month  match the calendar
-    var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    if (month === 1 || month > 2) {
-      if (day > ListofDays[month - 1]) {
-        return false
-      }
-    }
-    //validate if the dayin Feb can't be >29 in leap year, the day in Feb can't be >28 in non-leap year
-    if (month === '2' || month === '02') {
-      var lyear = false
-      if ((!(year % 4) && year % 100) || !(year % 400)) {
-        lyear = true
-      }
-      if (lyear === false && day >= 29) {
-        return false
-      }
-      if (lyear === true && day > 29) {
-        return false
-      }
-    }
-    return true
-  },
+export const validateDate = (y, m, d) => {
+  const year = parseInt(y, 10)
+  const monthIndex = parseInt(m, 10) - 1 // 0 indexed months
+  const day = parseInt(d, 10)
+  const date = new Date(year, monthIndex, day)
+
+  let validate = []
+  let isYear, isMonth, isDay
+
+  const hasYear = containsData(year)
+  const hasMonth = containsData(monthIndex)
+  const hasDay = containsData(day)
+
+  // 1. Date must contain a day a month and a year
+  // 2. Date must be in the past
+  // 3. Field ...X is not valid
+
+  // day is between 1 and the month's last day.
+  // Requires a date to validate against.
+  // new Date with year and month to prevent date-forwarding (jan 32 == feb 1)
+  if (day > getDaysInMonth(new Date(year, monthIndex)) || day < 1)
+    isDay = 'notDay'
+
+  // month is between 0 and 11
+  if (monthIndex > 11 || monthIndex < 0) isMonth = 'notMonth'
+
+  // is not in the future, while all fields are valid
+  !isMonth && !isDay && !isYear && isFuture(date) && validate.push('isFuture')
+
+  //Year is over 1867 :eyes:
+  year < 1867 && validate.push('notYear')
+
+  // number of digits in year is 4
+  if (y && y.length < 4 && y.length > 0) isYear = 'yearLength'
+
+  // Missing fields these are ONLY ok if no other errors exist
+  !hasYear && validate.push('hasNoYear')
+  !hasMonth && validate.push('hasNoMonth')
+  !hasDay && validate.push('hasNoDay')
+
+  // Pushing values to validate[]
+  isYear && validate.push(isYear)
+  isMonth && validate.push(isMonth)
+  isDay && validate.push(isDay)
+
+  return validate
 }

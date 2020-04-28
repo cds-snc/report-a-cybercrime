@@ -17,12 +17,15 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
-import { isExists } from 'date-fns'
 
 //add validate functin for test
 export const validate = (values) => {
   const errors = {}
-  validateDate(values.startDay, values.startMonth, values.startYear)
+  console.log(
+    validateDate(values.startYear, values.startMonth, values.startDay),
+  )
+
+  //validateDate(values.startDay, values.startMonth, values.startYear)
 
   //  var result = isExists(values.startYear, values.startMonth,values.startDay )
 
@@ -32,18 +35,18 @@ export const validate = (values) => {
   //   errors.startMonth = true
   //   errors.startYear = true
   //  }
-  if (values.startDay == false) {
-    errors.whenDidItStart = 'whenDidItStart.startDate.warning'
-    errors.startDay = true
-  }
-  if (values.startMonth == false) {
-    errors.whenDidItStart = 'whenDidItStart.startMonth.warning'
-    errors.startMonth = true
-  }
-  if (values.startYear == false) {
-    errors.whenDidItStart = 'whenDidItStart.startYear.warning'
-    errors.startYear = true
-  }
+  // if (values.startDay == false) {
+  //   errors.whenDidItStart = 'whenDidItStart.startDate.warning'
+  //   errors.startDay = true
+  // }
+  // if (values.startMonth == false) {
+  //   errors.whenDidItStart = 'whenDidItStart.startMonth.warning'
+  //   errors.startMonth = true
+  // }
+  // if (values.startYear == false) {
+  //   errors.whenDidItStart = 'whenDidItStart.startYear.warning'
+  //   errors.startYear = true
+  // }
   return errors
 }
 // return true
