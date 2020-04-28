@@ -22,11 +22,14 @@ import { formDefaults } from './defaultValues'
 export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
-  if (values.email !== '' && addrs(values.email) == null) {
+  // reference https://www.w3resource.com/javascript/form/email-validation.php
+  if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)) {
     errors.email = 'contactinfoForm.email.warning'
   }
+
   // from https://www.w3resource.com/javascript/form/phone-no-validation.php
   const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+  // if (values.phone !== '' && !new RegExp(phoneRegex).test(values.phone)) {
   if (values.phone !== '' && !new RegExp(phoneRegex).test(values.phone)) {
     errors.phone = 'contactinfoForm.phone.warning'
   }
