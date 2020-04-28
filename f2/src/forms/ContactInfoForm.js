@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import React from 'react'
-import addrs from 'email-addresses'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
