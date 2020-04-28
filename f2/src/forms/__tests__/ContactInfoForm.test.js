@@ -39,10 +39,20 @@ describe('validation', () => {
     expect(validate({ email: 'aaaa@aaa.com' }).email).toBeUndefined()
     expect(validate({ email: 'aaa.aaa@aaa.com' }).email).toBeUndefined()
     expect(validate({ email: 'aaa@aaa-aaa.com' }).email).toBeUndefined()
+    expect(validate({ email: 'mysite@you.me.net' }).email).toBeUndefined()
   })
 
   it('fails incorrect email address', () => {
     expect(validate({ email: 'aaaaaa.com' }).email).not.toBeUndefined()
+    expect(validate({ email: 'mysite@.com.my' }).email).not.toBeUndefined()
+    expect(validate({ email: '@you.me.net ' }).email).not.toBeUndefined()
+    expect(validate({ email: 'mysite123@gmail.b' }).email).not.toBeUndefined()
+    expect(validate({ email: 'mysite@.org.org' }).email).not.toBeUndefined()
+    expect(validate({ email: '.mysite@mysite.org' }).email).not.toBeUndefined()
+    expect(validate({ email: 'mysite()*@gmail.com' }).email).not.toBeUndefined()
+    expect(
+      validate({ email: 'mysite..1234@yahoo.com' }).email,
+    ).not.toBeUndefined()
   })
 })
 
@@ -78,6 +88,6 @@ describe('<ContactInfoForm />', () => {
 
     await wait(0) // Wait for promises to resolve
 
-    expect(submitMock).toHaveBeenCalledTimes(1)
+    expect(submitMock).toHaveBeenCalledTimes(0)
   })
 })
