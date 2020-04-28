@@ -22,7 +22,8 @@ export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   // reference https://www.w3resource.com/javascript/form/email-validation.php
-  if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)) {
+  // if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)) {
+  if (!/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(values.email)) {
     errors.email = 'contactinfoForm.email.warning'
   }
 
