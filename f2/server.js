@@ -4,6 +4,7 @@ const path = require('path')
 const formidable = require('formidable')
 const helmet = require('helmet')
 const { unflatten } = require('flat')
+const { sanitize } = require('./src/utils/sanitize')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getCertsAndEmail } = require('./src/utils/ldap')
 const { isAvailable } = require('./src/utils/checkIfAvailable')
@@ -11,6 +12,7 @@ const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
 const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
+const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
 const {
   notifyIsSetup,
@@ -83,8 +85,6 @@ async function initializeAvailableData() {
 
 initializeAvailableData()
 
-let debuggingCounter = 0
-
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
   saveBlob(data)
@@ -113,23 +113,11 @@ app.get('/', async function (req, res, next) {
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
     console.warn('Warning: redirecting request to CAFC')
     res.redirect(
-      req.subdomains.includes('signalez')
+      req.subdomains.includes('signalement')
         ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
         : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
-    // temporary debugging code
-    if (debuggingCounter < 20) {
-      debuggingCounter += 1
-      console.info('DEBUGGING Request Headers & IP:')
-      console.info(req.headers)
-      console.info(req.ip)
-      console.info(req.ips)
-      console.info(req.originalUrl)
-      console.info('DEBUGGING Request Headers & IP end')
-    }
-    // temporary debugging code
-
     var referrer = req.headers.referer
     console.log('Referrer:' + referrer)
     if (
@@ -184,7 +172,18 @@ app
     let files = []
     let fields = {}
     form.on('field', (fieldName, fieldValue) => {
-      fields[fieldName] = JSON.parse(fieldValue)
+      try {
+        const rawValue = JSON.parse(fieldValue)
+        let cleanValue
+        // we have strings and arrays in our data fields
+        if (typeof rawValue === 'object') cleanValue = rawValue.map(sanitize)
+        else cleanValue = sanitize(rawValue)
+        fields[fieldName] = cleanValue
+      } catch (error) {
+        console.warn(
+          `ERROR in /submit: parsing ${fieldName} value of ${fieldValue}: ${error}`,
+        )
+      }
     })
     form.on('file', function (name, file) {
       if (files.length >= 3)
@@ -200,8 +199,11 @@ app
       else files.push(file)
     })
     form.on('end', () => {
-      fields = unflatten(fields, { safe: true })
-      uploadData(req, res, fields, files)
+      if (serverFieldsAreValid(fields)) {
+        uploadData(req, res, unflatten(fields, { safe: true }), files)
+      } else {
+        res.status(422).send('invalid fields') // 422 is "Unprocessable Entity"
+      }
     })
   })
 
@@ -211,7 +213,7 @@ app
         console.warn('ERROR', err)
         throw err
       }
-      submitFeedback(fields.json)
+      submitFeedback(sanitize(JSON.stringify(fields.json)))
     })
     res.send('thanks')
   })

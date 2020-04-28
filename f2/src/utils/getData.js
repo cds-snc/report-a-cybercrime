@@ -4,6 +4,7 @@ const fs = require('fs')
 const crypto = require('crypto')
 const { selfHarmWordsScan } = require('./selfHarmWordsScan')
 const { generateReportId } = require('./generateReportId')
+const { formatDate } = require('./formatDate')
 
 const padNumber = (x) => `${x}`.padStart(2, 0)
 
@@ -56,16 +57,20 @@ async function getData(data, files) {
   data.selfHarmWords = selfHarmWords
   const now = new Date()
   const timeZoneOffset = now.getTimezoneOffset() / 60 // convert to hours
-  const dateString =
+  data.submissionDate =
     padNumber(now.getDate()) +
     '/' +
     padNumber(now.getMonth() + 1) +
     '/' +
     `${now.getFullYear()}`
+  const dateString = formatDate(
+    now.getDate(),
+    now.getMonth() + 1,
+    now.getFullYear(),
+  )
   const timeString =
     padNumber(now.getHours()) + ':' + padNumber(now.getMinutes())
   data.submissionTime = `${dateString} ${timeString} UTC-${timeZoneOffset}`
-  data.submissionDate = `${dateString}`
   return data
 }
 

@@ -97,6 +97,7 @@ Google Analytics is being used to help us get insight into how the different par
 ```sh
 # Google Analytics
 GOOGLE_ANALYTICS_ID=
+REACT_APP_GOOGLE_GTM_ID=
 ```
 
 ### Rate limiting

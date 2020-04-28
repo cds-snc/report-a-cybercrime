@@ -9,25 +9,29 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { FormControl, Stack } from '@chakra-ui/core'
 import { FormLabel } from '../components/FormLabel'
 import { useStateValue } from '../utils/state'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
 
-export const SuspectCluesForm = props => {
+export const SuspectCluesForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.suspectClues))
+      props.onSubmit(data)
+  }
+
   const [data] = useStateValue()
-
   const suspectClues = {
-    suspectClues1: '',
-    suspectClues2: '',
-    suspectClues3: '',
+    ...formDefaults.suspectClues,
     ...data.formData.suspectClues,
   }
 
   return (
     <Form
       initialValues={suspectClues}
-      onSubmit={props.onSubmit}
+      onSubmit={localOnSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
           <Field name="suspectClues1">
-            {props => (
+            {(props) => (
               <FormControl>
                 <FormLabel htmlFor="suspectClues1">
                   <Trans id="suspectClues.question1" />
@@ -48,7 +52,7 @@ export const SuspectCluesForm = props => {
           </Field>
 
           <Field name="suspectClues2">
-            {props => (
+            {(props) => (
               <FormControl>
                 <FormLabel htmlFor="suspectClues2">
                   <Trans id="suspectClues.question2" />
@@ -69,7 +73,7 @@ export const SuspectCluesForm = props => {
           </Field>
 
           <Field name="suspectClues3">
-            {props => (
+            {(props) => (
               <FormControl>
                 <FormLabel htmlFor="suspectClues3">
                   <Trans id="suspectClues.question3" />
