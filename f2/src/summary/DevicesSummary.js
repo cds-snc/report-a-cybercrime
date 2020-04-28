@@ -26,7 +26,6 @@ export const DevicesSummary = (props) => {
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.devices.device" />
           <Trans id="confirmationPage.devices.account" />
-          <Trans id="confirmationPage.devices.devicesTellUsMore" />
           <Trans id="confirmationPage.devicesTitle.edit" />
         </div>
       ) : null}
@@ -57,10 +56,6 @@ export const DevicesSummary = (props) => {
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.account"
               description={devices.account}
-            />
-            <DescriptionListItem
-              descriptionTitle="confirmationPage.devices.devicesTellUsMore"
-              description={devices.devicesTellUsMore}
             />
           </Stack>
         ) : (
