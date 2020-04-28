@@ -16,12 +16,13 @@ import { Text } from '../components/text'
 import { Field } from '../components/Field'
 import { Alert } from '../components/Messages'
 import { fileExtensionPasses } from '../utils/acceptableFiles'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
 
 export const EvidenceInfoForm = (props) => {
   const [data] = useStateValue()
   const cached = {
-    files: [],
-    fileDescriptions: [],
+    ...formDefaults.evidence,
     ...data.formData.evidence,
   }
 
@@ -78,12 +79,12 @@ export const EvidenceInfoForm = (props) => {
     setStatus('fileUpload.removed')
   }
 
-  const localSubmit = () => {
+  const localOnSubmit = () => {
     const data = {
-      files,
-      fileDescriptions,
+      files, // from useState()
+      fileDescriptions, // from useState()
     }
-    props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.evidence)) props.onSubmit(data)
   }
 
   return (
@@ -94,7 +95,7 @@ export const EvidenceInfoForm = (props) => {
         </div>
       ) : null}
       <Form
-        onSubmit={() => localSubmit()}
+        onSubmit={localOnSubmit}
         render={({ handleSubmit }) => (
           <Stack
             as="form"

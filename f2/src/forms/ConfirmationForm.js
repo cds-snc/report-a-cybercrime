@@ -10,7 +10,7 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { useStateValue } from '../utils/state'
 
 export const ConfirmationForm = (props) => {
-  const [{ formData }] = useStateValue()
+  const [{ reportId, submitted }] = useStateValue()
   return (
     <React.Fragment>
       <Form
@@ -22,11 +22,11 @@ export const ConfirmationForm = (props) => {
             shouldWrapChildren
             spacing={6}
           >
-            {formData.submitted ? (
+            {submitted ? (
               <Well variantColor="blue">
                 <Trans
                   id="confirmationPage.thankyou"
-                  values={{ reference: formData.reportId }}
+                  values={{ reference: reportId }}
                 />
               </Well>
             ) : (

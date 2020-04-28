@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { formDefaults } from './forms/defaultValues'
 import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
@@ -14,64 +15,23 @@ import { MoneyLostInfoSummary } from './summary/MoneyLostInfoSummary'
 import { SuspectCluesSummary } from './summary/SuspectCluesSummary'
 import { WhatHappenedSummary } from './summary/WhatHappenedSummary'
 import { WhatWasAffectedSummary } from './summary/WhatWasAffectedSummary'
+import { AnonymousSummary } from './summary/AnonymousSummary'
 
 export const testdata = {
   doneForms: true,
-  formData: {
-    consent: { consentOptions: ['privacyConsentInfoForm.yes'] },
-    howdiditstart: {
-      howDidTheyReachYou: [],
-      email: '',
-      phone: '',
-      online: '',
-      application: '',
-      others: '',
-      whenDidItStart: '',
-      howManyTimes: '',
-    },
-    whatWasAffected: {
-      affectedOptions: [],
-    },
-    moneyLost: {
-      demandedMoney: '',
-      moneyTaken: '',
-      methodPayment: [],
-      transactionDay: '',
-      transactionMonth: '',
-      transactionYear: '',
-      tellUsMore: '',
-    },
-    personalInformation: {
-      typeOfInfoReq: [],
-      typeOfInfoObtained: [],
-      infoReqOther: '',
-      infoObtainedOther: '',
-      tellUsMore: '',
-    },
-    devicesInfo: { device: '', account: '', devicesTellUsMore: '' },
-    businessInfo: { business: '' },
-    whatHappened: { whatHappened: '' },
-
-    suspectClues: {
-      suspectClues1: '',
-      suspectClues2: '',
-      suspectClues3: '',
-    },
-    evidence: {
-      files: [],
-      fileDescriptions: [],
-    },
-    location: { postalCode: '' },
-    contactInfo: { fullName: '', email: '', phone: '' },
-  },
+  formData: formDefaults,
 }
 
 export const ConfirmationSummary = () => {
   const [data, dispatch] = useStateValue()
   const impact = {
     affectedOptions: [],
-    ...testdata.formData.whatWasAffected, //Remove after done testing
+    ...testdata.formData.whatWasAffected,
     ...data.formData.whatWasAffected,
+  }
+  const anonymous = {
+    ...testdata.formData.anonymous,
+    ...data.formData.anonymous,
   }
   if (!data.doneForms) {
     dispatch({ type: 'saveDoneForms', data: true })
@@ -99,9 +59,11 @@ export const ConfirmationSummary = () => {
         <SuspectCluesSummary />
         <EvidenceInfoSummary />
         <LocationInfoSummary />
-        {data.formData.anonymous.anonymous !== 'anonymousPage.yes' ? (
+        {anonymous.anonymousOptions.includes('anonymousPage.yes') ? (
+          <AnonymousSummary />
+        ) : (
           <ContactInfoSummary />
-        ) : null}
+        )}
       </Stack>
     </React.Fragment>
   )
