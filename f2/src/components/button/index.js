@@ -40,6 +40,14 @@ export const Button = ({ variant, variants, variantColor, ...props }) => (
         bg: canada.colors[variantColor][300],
       },
     })}
+    {...(variantColor === 'yellow' && {
+      bg: canada.colors[variantColor][500],
+      borderColor: canada.colors[variantColor][600],
+      color: canada.colors.black,
+      _active: {
+        bg: canada.colors[variantColor][600],
+      },
+    })}
     {...props}
   >
     <Flex align="center">{props.children}</Flex>

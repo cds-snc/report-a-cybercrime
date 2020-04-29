@@ -15,6 +15,7 @@ import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
 
@@ -50,7 +51,9 @@ const clearData = (dataOrig) => {
 export const HowDidItStartForm = (props) => {
   const localOnSubmit = (data) => {
     if (clientFieldsAreValid(data, formDefaults.howdiditstart))
-      props.onSubmit(clearData(data))
+      props.onSubmit(
+        clearData({ ...data, phone: formatPhoneNumber(data.phone) }),
+      )
   }
 
   const { i18n } = useLingui()
