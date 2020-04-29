@@ -19,11 +19,11 @@ async function scanFiles(data) {
       //set timeout for 10000
       await scanner
         .scanStream(readStream, 10000)
-        .then(function(reply) {
+        .then(function (reply) {
           file[1].malwareScanDetail = reply
           file[1].malwareIsClean = clamd.isCleanReply(reply)
         })
-        .catch(function(reply) {
+        .catch(function (reply) {
           file[1].malwareScanDetail = 'ERROR: Unable to perform virus scan'
           file[1].malwareIsClean = false
           console.warn('Virus scan failed on ' + data.reportId)
@@ -46,14 +46,14 @@ let client = serviceKey
 
 const contentModerateFile = (file, callback) => {
   var readStream = fs.createReadStream(file[1].path)
-  client.imageModeration.evaluateFileInput(readStream, {}, function(
+  client.imageModeration.evaluateFileInput(readStream, {}, function (
     err,
     _result,
     _request,
     response,
   ) {
     if (err) {
-      console.warn(`Error in Content Moderator: ${err} `)
+      console.warn(`Error in Content Moderator: ${JSON.stringify(err)} `)
       file[1].adultClassificationScore = 'Could not scan'
     } else {
       try {
@@ -63,7 +63,7 @@ const contentModerateFile = (file, callback) => {
         file[1].adultClassificationScore = contMod.AdultClassificationScore
         file[1].racyClassificationScore = contMod.RacyClassificationScore
       } catch (error) {
-        console.warn(`Error in Content Moderator: ${error} `)
+        console.warn(`Error in Content Moderator: ${JSON.stringify(err)} `)
       }
     }
     callback(null, file[1])
@@ -77,7 +77,7 @@ async function contentModeratorFiles(data, finalCallback) {
     async.map(
       Object.entries(data.evidence.files),
       contentModerateFile,
-      function(err, _results) {
+      function (err, _results) {
         if (err) console.warn('Content Moderator Error:' + JSON.stringify(err))
         finalCallback()
       },
