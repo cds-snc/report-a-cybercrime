@@ -63,7 +63,7 @@ const contentModerateFile = (file, callback) => {
         file[1].adultClassificationScore = contMod.AdultClassificationScore
         file[1].racyClassificationScore = contMod.RacyClassificationScore
       } catch (error) {
-        console.warn(`Error in Content Moderator: ${JSON.stringify(error)} `)
+        console.warn(`Error in Content Moderator: ${error.stack} `)
       }
     }
     callback(null, file[1])
