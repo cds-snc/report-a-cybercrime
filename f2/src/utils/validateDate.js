@@ -1,4 +1,4 @@
-import isExists from 'date-fns/isExists'
+//import isExists from 'date-fns/isExists'
 import isFuture from 'date-fns/isFuture'
 import getDaysInMonth from 'date-fns/getDaysInMonth'
 import { containsData } from './containsData'
@@ -42,6 +42,10 @@ export const validateDate = (y, m, d) => {
   !hasYear && validate.push('hasNoYear')
   !hasMonth && validate.push('hasNoMonth')
   !hasDay && validate.push('hasNoDay')
+
+  //Remove the missing fields errors only if ALL are missing
+  if (!hasYear && !hasMonth && !hasDay)
+    validate = validate.filter((error) => !error.includes('hasNo'))
 
   // Pushing values to validate[]
   isYear && validate.push(isYear)

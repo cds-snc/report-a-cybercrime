@@ -5,18 +5,18 @@ describe('validation', () => {
   afterEach(cleanup)
   let expected = []
   it('passes correct start day', () => {
-    expected = ['notDay', 'notMonth', 'isFuture', 'yearLength']
+    expected = []
     expect(validateDate('2010', '10', '10')).toEqual(
-      expect.not.arrayContaining(expected),
+      expect.arrayContaining(expected),
     )
     expect(validateDate('2010', '1', '10')).toEqual(
-      expect.not.arrayContaining(expected),
+      expect.arrayContaining(expected),
     )
     expect(validateDate('2010', '20', '10')).toEqual(
-      expect.not.arrayContaining(expected),
+      expect.arrayContaining(expected),
     )
     expect(validateDate('2010', '28', '10')).toEqual(
-      expect.not.arrayContaining(expected),
+      expect.arrayContaining(expected),
     )
   })
 
@@ -37,15 +37,15 @@ describe('validation', () => {
   })
 
   it('passes correct start month', () => {
-    expected = ['notDay', 'notMonth', 'isFuture', 'yearLength']
+    expected = []
     expect(validateDate('2010', '1', '10')).toEqual(
-      expect.not.arrayContaining(expected),
+      expect.arrayContaining(expected),
     )
     expect(validateDate('2010', '01', '10')).toEqual(
-      expect.not.arrayContaining(expected),
+      expect.arrayContaining(expected),
     )
     expect(validateDate('2010', '12', '10')).toEqual(
-      expect.not.arrayContaining(expected),
+      expect.arrayContaining(expected),
     )
   })
 
@@ -63,24 +63,25 @@ describe('validation', () => {
   })
 
   it('passes correct start year', () => {
-    expected = ['yearLength']
-    expect(validateDate('1', '1', '10')).toEqual(
+    expected = []
+    expect(validateDate('2000', '1', '10')).toEqual(
       expect.arrayContaining(expected),
     )
-    expect(validateDate('20', '1', '10')).toEqual(
-      expect.arrayContaining(expected),
-    )
-    expect(validateDate('300', '1', '10')).toEqual(
+    expect(validateDate('1900', '1', '10')).toEqual(
       expect.arrayContaining(expected),
     )
   })
 
   it('fails incorrect start year', () => {
-    expected = ['yearLength']
-    expect(validateDate('000', '1', '10')).toEqual(
+    //4 digit years
+    expected = ['notYear']
+    expect(validateDate('0000', '1', '10')).toEqual(
       expect.arrayContaining(expected),
     )
-    expect(validateDate('0000', '1', '10')).toEqual(
+
+    // less than 4 digit years
+    expected = ['yearLength']
+    expect(validateDate('000', '1', '10')).toEqual(
       expect.arrayContaining(expected),
     )
     expect(validateDate('330', '1', '10')).toEqual(
@@ -93,68 +94,44 @@ describe('validation', () => {
       expect.arrayContaining(expected),
     )
   })
-  it('pass correct start date in Leap year', () => {
-    expect(
-      validateDate({
-        startDay: '29',
-        startMonth: '2',
-        startYear: '2020',
-      }).startDay,
-    ).toBeUndefined()
-    expect(
-      validateDate({
-        startDay: '29',
-        startMonth: '02',
-        startYear: '2016',
-      }).startDay,
-    ).toBeUndefined()
+
+  it('passes correct start date in Leap year', () => {
+    expected = []
+    expect(validateDate('2020', '2', '29')).toEqual(
+      expect.arrayContaining(expected),
+    )
+    expect(validateDate('2016', '02', '29')).toEqual(
+      expect.arrayContaining(expected),
+    )
   })
+
   it('fails incorrect transaction date in Leap year', () => {
-    expect(
-      validateDate({
-        startDay: '30',
-        startMonth: '2',
-        startYear: '2020',
-      }).startDay,
-    ).not.toBeUndefined()
-    expect(
-      validateDate({
-        startDay: '30',
-        startMonth: '2',
-        startYear: '2016',
-      }).startDay,
-    ).not.toBeUndefined()
+    expected = ['notDay']
+    expect(validateDate('2019', '2', '29')).toEqual(
+      expect.arrayContaining(expected),
+    )
+    expect(validateDate('2017', '02', '29')).toEqual(
+      expect.arrayContaining(expected),
+    )
   })
-  it('pass correct transaction date in non-Leap year', () => {
-    expect(
-      validateDate({
-        startDay: '28',
-        startMonth: '2',
-        startYear: '2017',
-      }).startDay,
-    ).toBeUndefined()
-    expect(
-      validateDate({
-        startDay: '28',
-        startMonth: '02',
-        startYear: '2017',
-      }).startDay,
-    ).toBeUndefined()
+
+  it('passes correct transaction date in non-Leap year', () => {
+    expected = []
+    expect(validateDate('2017', '2', '28')).toEqual(
+      expect.arrayContaining(expected),
+    )
+    expect(validateDate('2019', '02', '28')).toEqual(
+      expect.arrayContaining(expected),
+    )
   })
+
   it('fails incorrect transaction date in non-Leap year', () => {
-    expect(
-      validateDate({
-        startDay: '29',
-        startMonth: '2',
-        startYear: '2017',
-      }).startDay,
-    ).not.toBeUndefined()
-    expect(
-      validateDate({
-        startDay: '29',
-        startMonth: '2',
-        startYear: '2017',
-      }).startDay,
-    ).not.toBeUndefined()
+    expected = ['notDay']
+    expect(validateDate('2017', '2', '29')).toEqual(
+      expect.arrayContaining(expected),
+    )
+    expect(validateDate('2019', '02', '29')).toEqual(
+      expect.arrayContaining(expected),
+    )
   })
 })
