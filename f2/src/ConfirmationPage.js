@@ -45,7 +45,15 @@ async function postData(url = '', data = {}) {
 }
 
 const prepFormData = (formDataOrig, language) => {
-  // this allows us to go directly to the confirmation page during debugging
+  Object.keys(formDataOrig).forEach((form) => {
+    if (formDefaults[form]) {
+      formDataOrig[form] = {
+        ...formDefaults[form],
+        ...formDataOrig[form],
+      }
+    }
+  })
+  //this allows us to go directly to the confirmation page during debugging
   const formData = {
     ...formDefaults,
     ...formDataOrig,
