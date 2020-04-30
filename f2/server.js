@@ -225,14 +225,14 @@ app
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
   .post('/checkToken', (req, res) => {
-    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+    new formidable.IncomingForm().parse(req, async (err, fields, files) => {
       if (err) {
         console.warn('ERROR', err)
         throw err
       }
       const token = JSON.parse(fields.json).token
-      //fetch()
-      console.log(`checkToken: ${token}`)
+      const googleRes = await verifyRecaptcha(token)
+      console.log(`checkToken: ${googleRes}`)
     })
     res.send('thanks')
   })
