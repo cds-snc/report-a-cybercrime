@@ -1,6 +1,12 @@
 const clamd = require('clamdjs')
 const fs = require('fs')
 var async = require('async')
+const SUPPORTED_FILE_TYPES = [
+  'image/gif',
+  'image/jpeg',
+  'image/png',
+  'image/bmp',
+]
 const CognitiveServicesCredentials = require('ms-rest-azure')
   .CognitiveServicesCredentials
 const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmoderator')
@@ -45,6 +51,15 @@ let client = serviceKey
   : undefined
 
 const contentModerateFile = (file, callback) => {
+  if (!SUPPORTED_FILE_TYPES.includes(file[1].type)) {
+    console.debug(
+      `Azure image moderator doesn't support for file type ${file[1].type}`,
+    )
+    file[1].adultClassificationScore =
+      'Could not scan - not supported file types'
+    callback(null, file[1])
+    return
+  }
   var readStream = fs.createReadStream(file[1].path)
   client.imageModeration.evaluateFileInput(readStream, {}, function (
     err,
