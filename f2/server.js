@@ -14,6 +14,7 @@ const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
+const { verifyRecaptcha } = require('./src/utils/verifyRecaptcha')
 const {
   notifyIsSetup,
   sendConfirmation,
@@ -229,9 +230,9 @@ app
         console.warn('ERROR', err)
         throw err
       }
-      const token = fields.json.token
-      fetch()
-      console.log(`checkToken: ${JSON.stringify(fields.json)}`)
+      const token = JSON.parse(fields.json).token
+      //fetch()
+      console.log(`checkToken: ${token}`)
     })
     res.send('thanks')
   })

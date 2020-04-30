@@ -24,7 +24,9 @@ export const StartPage = (props) => {
 
   return (
     <React.Fragment>
-      <GoogleReCaptcha onVerify={(token) => console.log(token)} />
+      <GoogleReCaptcha
+        onVerify={(token) => console.log(`The token is ${token}`)}
+      />
       <Route
         render={({ history }) => (
           <Page>

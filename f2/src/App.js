@@ -29,7 +29,6 @@ TagManager.initialize(tagManagerArgs)
 
 const App = () => {
   const { i18n } = useLingui()
-
   return (
     <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_RECAPTCHA_KEY}>
       <ThemeProvider theme={canada}>
