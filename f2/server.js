@@ -233,8 +233,9 @@ app
       const token = JSON.parse(fields.json).token
       const googleRes = await verifyRecaptcha(token)
       console.log(`checkToken: ${googleRes}`)
+      res.send(googleRes)
     })
-    res.send('thanks')
+    //  res.send('thanks')
   })
 
 // uncomment to allow direct loading of arbitrary pages

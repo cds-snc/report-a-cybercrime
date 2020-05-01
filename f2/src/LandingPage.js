@@ -18,12 +18,12 @@ import { Page } from './components/Page'
 import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
 
-async function postData(url = '', data = {}) {
+function checkToken(url = '', dispatch, data = {}) {
   var form_data = new FormData()
   form_data.append('json', JSON.stringify(data))
-
+  console.log(url)
   // Default options are marked with *
-  const response = await fetch(url, {
+  fetch(url, {
     method: 'POST',
     mode: 'cors',
     cache: 'no-cache',
@@ -32,7 +32,19 @@ async function postData(url = '', data = {}) {
     referrer: 'no-referrer',
     body: form_data,
   })
-  return response
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        console.error(response)
+        return Error(response.statusText)
+      }
+    })
+    .then((score) => {
+      console.log(`Score from google reCaptcha ${JSON.stringify(score)}`)
+      dispatch({ type: 'saveGoogleRecaptcha', data: score })
+    })
+    .catch((error) => console.error(error))
 }
 
 export const LandingPage = (props) => {
@@ -46,8 +58,7 @@ export const LandingPage = (props) => {
       <GoogleReCaptcha
         onVerify={async (token) => {
           console.log(token)
-          const resp = await postData('/checkToken', { token })
-          console.log(resp)
+          checkToken('/checkToken', dispatch, { token })
         }}
       />
       <Route
