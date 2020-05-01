@@ -74,6 +74,11 @@ app
     }),
   )
   .use(helmet.referrerPolicy({ policy: 'same-origin' }))
+  .use(
+    helmet.featurePolicy({
+      features: { geolocation: ["'none'"], camera: ["'none'"] },
+    }),
+  )
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
