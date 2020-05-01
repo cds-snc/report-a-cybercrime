@@ -21,7 +21,6 @@ import { CovidWell } from './Covid19Page'
 function checkToken(url = '', dispatch, data = {}) {
   var form_data = new FormData()
   form_data.append('json', JSON.stringify(data))
-  console.log(url)
   // Default options are marked with *
   fetch(url, {
     method: 'POST',
@@ -37,7 +36,7 @@ function checkToken(url = '', dispatch, data = {}) {
         return response.json()
       } else {
         console.error(response)
-        return Error(response.statusText)
+        throw Error(response.statusText)
       }
     })
     .then((score) => {

@@ -1,13 +1,12 @@
 const fetch = require('isomorphic-fetch')
 
 let url = 'https://www.google.com/recaptcha/api/siteverify'
-let secret = '6LdoTPAUAAAAAIyDeMoNv8Ur7QnDzKeICh91a6Wp'
+let secret = process.env.REACT_APP_RECAPTCHA_SECRET_KEY
 
-async function postData(token) {
+const verifyRecaptcha = (token, res) => {
+  console.info('Verifying Google Recaptcha:', token)
   var form_data = `secret=${secret}&response=${token}`
-
-  // Default options are marked with *
-  let response = await fetch(url, {
+  fetch(url, {
     method: 'POST',
     mode: 'cors',
     cache: 'no-cache',
@@ -19,14 +18,24 @@ async function postData(token) {
     },
     body: form_data,
   })
-  let result = await response.json()
-  return result
-}
-
-const verifyRecaptcha = async (token) => {
-  console.info('Verifying Google Recaptcha:', token)
-  response = await postData(token)
-  return response
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        console.error(response)
+        throw Error(response.statusText)
+      }
+    })
+    .then((score) => {
+      console.log(`Score from google reCaptcha ${JSON.stringify(score)}`)
+      res.send(score)
+    })
+    .catch((error) => {
+      console.error(error)
+      res.statusCode = 500
+      res.statusMessage = 'Error validating google reCaptcha'
+      res.send(JSON.stringify(error))
+    })
 }
 
 module.exports = { verifyRecaptcha }

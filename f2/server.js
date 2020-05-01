@@ -231,9 +231,7 @@ app
         throw err
       }
       const token = JSON.parse(fields.json).token
-      const googleRes = await verifyRecaptcha(token)
-      console.log(`checkToken: ${googleRes}`)
-      res.send(googleRes)
+      verifyRecaptcha(token, res)
     })
     //  res.send('thanks')
   })
