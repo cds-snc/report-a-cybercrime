@@ -12,7 +12,7 @@ export const useStateValue = () => useContext(StateContext)
 
 export const initialState = {
   doneForms: false,
-  formData: { prodVersion: '1.1.0' },
+  formData: { prodVersion: '1.1.0-dev' },
   doneFinalFeedback: false,
 }
 
@@ -30,11 +30,23 @@ export const reducer = (state, action) => {
       return {
         ...state,
         formData: { ...initialState.formData },
+        submitted: false,
+        reportId: undefined,
       }
     case 'saveDoneForms':
       return {
         ...state,
         doneForms: action.data,
+      }
+    case 'saveSubmitted':
+      return {
+        ...state,
+        submitted: action.data,
+      }
+    case 'saveReportId':
+      return {
+        ...state,
+        reportId: action.data,
       }
     default:
       return state

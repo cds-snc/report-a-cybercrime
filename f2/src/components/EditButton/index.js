@@ -7,9 +7,9 @@ import { useStateValue } from '../../utils/state'
 
 export const EditButton = ({ path, label }) => {
   const { i18n } = useLingui()
-  const [{ formData }] = useStateValue()
+  const [{ submitted }] = useStateValue()
 
-  return formData.submitted ? null : (
+  return submitted ? null : (
     <Link to={path} aria-label={i18n._(label)} ml={4}>
       <Trans id="button.edit" />
     </Link>
