@@ -181,10 +181,10 @@ export const EvidenceInfoForm = (props) => {
                     <Li style={{ fontSize: 16 }}>
                       <Trans id="evidencePage.fileTypes1" />
                     </Li>
-                    <Li>
+                    <Li style={{ fontSize: 16 }}>
                       <Trans id="evidencePage.fileTypes2" />
                     </Li>
-                    <Li>
+                    <Li style={{ fontSize: 16 }}>
                       <Trans id="evidencePage.fileTypes3" />
                     </Li>
                   </Ul>
