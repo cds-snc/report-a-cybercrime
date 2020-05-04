@@ -13,8 +13,8 @@ const isAvailable = (availableData) => {
     const currentTime = new Date()
     const lastRequested = availableData.lastRequested
 
-    if (
-      !lastRequested ||
+    if (!lastRequested) return true
+    else if (
       currentTime.getDate() !== lastRequested.getDate() ||
       currentTime.getMonth() !== lastRequested.getMonth()
     ) {

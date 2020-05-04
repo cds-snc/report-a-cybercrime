@@ -1,6 +1,4 @@
 const MongoClient = require('mongodb').MongoClient
-
-let numberofReports = 0
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
 
@@ -44,7 +42,7 @@ async function saveRecord(data, res) {
     res.send('CosmosDB not configured')
   }
 }
-async function getReportCount() {
+async function getReportCount(availableData) {
   const date = new Date()
   const currentDate =
     (date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) +
@@ -70,13 +68,12 @@ async function getReportCount() {
               console.warn(`ERROR in find: ${err}`)
             } else {
               db.close()
-              numberofReports = result.length
+              availableData.numberOfSubmissions = result.length
             }
           })
       }
     })
   }
-  return numberofReports
 }
 
 module.exports = { saveRecord, getReportCount }
