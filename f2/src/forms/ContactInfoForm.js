@@ -8,10 +8,6 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { Button } from '../components/button'
-import { Link as ReactRouterLink } from 'react-router-dom'
-import { Flex, Icon } from '@chakra-ui/core'
-import { P } from '../components/paragraph'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
@@ -22,14 +18,17 @@ import { formDefaults } from './defaultValues'
 export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
-  if (values.email !== '' && addrs(values.email) == null) {
+  if (values.email === '' || addrs(values.email) == null) {
     errors.email = 'contactinfoForm.email.warning'
   }
   // from https://www.w3resource.com/javascript/form/phone-no-validation.php
   const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-  if (values.phone !== '' && !new RegExp(phoneRegex).test(values.phone)) {
+  if (values.phone === '' || !new RegExp(phoneRegex).test(values.phone)) {
     errors.phone = 'contactinfoForm.phone.warning'
   }
+
+  if (values.fullName === '')
+    errors.fullName = 'contactinfoForm.fullName.warning'
 
   return errors
 }
@@ -70,35 +69,13 @@ export const ContactInfoForm = (props) => {
                 <Trans id="contactinfoPage.hasValidationErrors" />
               </ErrorSummary>
             ) : null}
-            <Flex direction="row" align="center" wrap="wrap" mb={10}>
-              <P w="100%">
-                <Trans id="contactinfoPage.skipInfo" />
-              </P>
-              <Button
-                as={ReactRouterLink}
-                fontSize={{ base: 'lg', md: 'xl' }}
-                color="black"
-                variant="solid"
-                variantColor="gray"
-                bg="gray.400"
-                borderColor="gray.500"
-                to="/confirmation"
-                textAlign="center"
-              >
-                <Trans id="contactinfoPage.skipButton" />
-                <Icon
-                  focusable="false"
-                  ml={2}
-                  mr={-2}
-                  name="chevron-right"
-                  size="28px"
-                />
-              </Button>
-            </Flex>
+
             <Field
               name="fullName"
               label={<Trans id="contactinfoPage.fullName" />}
+              errorMessage={<Trans id="contactinfoForm.fullName.warning" />}
               component={Input}
+              required
             />
 
             <Field
@@ -106,6 +83,7 @@ export const ContactInfoForm = (props) => {
               label={<Trans id="contactinfoPage.emailAddress" />}
               errorMessage={<Trans id="contactinfoForm.email.warning" />}
               component={Input}
+              required
             />
 
             <Field
@@ -114,6 +92,7 @@ export const ContactInfoForm = (props) => {
               helperText={<Trans id="contactinfoForm.phone.warning" />}
               errorMessage={<Trans id="contactinfoForm.phone.warning" />}
               component={Input}
+              required
             />
 
             <NextAndCancelButtons
