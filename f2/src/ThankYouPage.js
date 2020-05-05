@@ -20,17 +20,15 @@ import { Alert } from './components/Messages'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
-  const [state] = useStateValue()
-  const [data] = useStateValue()
+
+  const [state, dispatch] = useStateValue()
 
   const contactInfo = {
-    ...data.formData.contactInfo,
+    ...state.formData.contactInfo,
   }
 
-  const [, dispatch] = useStateValue()
-
   // Message displayed on Thank you Page
-  const reportId = state.formData.reportId
+  const reportId = state.reportId
   const submissionInProgress = !reportId || reportId === ''
   const submissionSucceeded =
     !submissionInProgress && reportId.startsWith('NCFRS-')
@@ -78,13 +76,10 @@ export const ThankYouPage = () => {
 
         <Row>
           <InfoCard
-            bg={
-              submissionInProgress || submissionSucceeded
-                ? 'green.200'
-                : 'yellow.300'
-            }
+            {...(submissionInProgress || submissionSucceeded
+              ? { bg: 'green.200', borderColor: 'green.400' }
+              : { bg: 'yellow.300', borderColor: 'yellow.400' })}
             color="black"
-            borderColor="green.400"
             spacing={6}
             columns={{ base: 4 / 4, lg: 6 / 7 }}
           >
