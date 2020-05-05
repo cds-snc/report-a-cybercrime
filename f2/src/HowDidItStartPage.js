@@ -10,10 +10,16 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { useHistory } from 'react-router-dom'
 
 export const HowDidItStartPage = () => {
-  const [data, dispatch] = useStateValue()
-  const { doneForms } = data
+  const [state, dispatch] = useStateValue()
+  const { doneForms } = state
+  const history = useHistory()
+
+  if (state.formData.consent.consentOptions === undefined) {
+    history.push('/privacyconsent')
+  }
 
   return (
     <Route
@@ -32,7 +38,7 @@ export const HowDidItStartPage = () => {
               </Stack>
 
               <HowDidItStartForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { howdiditstart: data },
