@@ -173,21 +173,22 @@ export const EvidenceInfoForm = (props) => {
                       <Trans id="evidencePage.addFileButton" />
                     </FileUpload>
                   </Box>
-                  <Text fontSize="md" as="p" fontWeight="bold">
-                    <Trans id="evidencePage.supportedFiles" />
-                  </Text>
-                  <br />
-                  <Ul>
-                    <Li fontSize="md" mb={2}>
-                      <Trans id="evidencePage.fileTypes1" />
-                    </Li>
-                    <Li fontSize="md" mb={2}>
-                      <Trans id="evidencePage.fileTypes2" />
-                    </Li>
-                    <Li fontSize="md" mb={2}>
-                      <Trans id="evidencePage.fileTypes3" />
-                    </Li>
-                  </Ul>
+                  <Box mb={4}>
+                    <P fontSize="md" fontWeight="bold">
+                      <Trans id="evidencePage.supportedFiles" />
+                    </P>
+                    <Ul>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes1" />
+                      </Li>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes2" />
+                      </Li>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes3" />
+                      </Li>
+                    </Ul>
+                  </Box>
                 </React.Fragment>
               )}
               <Alert status="info">
