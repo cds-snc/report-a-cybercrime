@@ -4,32 +4,24 @@ import { render, cleanup } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { LocationPage } from '../LocationPage'
-import canada from '../theme/canada'
-import en from '../locales/en.json'
-import { StateProvider, reducer } from '../utils/state'
+import canada from '../../theme/canada'
+import en from '../../locales/en.json'
+import { StateProvider, initialState, reducer } from '../../utils/state'
+import { AnonymousSummary } from '../AnonymousSummary'
 
 i18n.load('en', { en })
 i18n.activate('en')
 
-describe('<LocationPage />', () => {
-  beforeEach(() => (global.scrollTo = jest.fn()))
+describe('<AnonymousSummary />', () => {
   afterEach(cleanup)
 
   it('renders', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
-          <StateProvider
-            initialState={{
-              formData: {
-                anonymous: { anonymousOptions: 'anonymousPage.yes' },
-              },
-            }}
-            reducer={reducer}
-          >
+          <StateProvider initialState={initialState} reducer={reducer}>
             <I18nProvider i18n={i18n}>
-              <LocationPage />
+              <AnonymousSummary />
             </I18nProvider>
           </StateProvider>
         </ThemeProvider>

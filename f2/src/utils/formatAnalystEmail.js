@@ -2,7 +2,8 @@
 
 const { formatDate } = require('./formatDate')
 
-const unCamel = (text) => text.replace(/([A-Z])/g, ' $1').toLowerCase()
+const unCamel = (text) =>
+  text.replace(/([A-Z])|([\d]+)/g, ' $1$2').toLowerCase()
 
 const formatLineHtml = (label, text) =>
   text && text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
@@ -13,14 +14,18 @@ const formatSection = (title, rows) =>
   `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
 
 const formatReportInfo = (data) => {
-  let selfHarmString = 'no self harm words'
+  let selfHarmString = 'none'
   let returnString = ''
 
   if (data.selfHarmWords.length) {
-    selfHarmString = data.selfHarmWords
-    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${selfHarmString}</h1>`
+    selfHarmString = 'self harm words detected'
+    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${data.selfHarmWords}</h1>`
   }
-  let isAnonymous = data.anonymous.anonymous.replace('anonymousPage.', '')
+
+  let isAnonymous =
+    data.anonymous.anonymousOptions.length > 0
+      ? data.anonymous.anonymousOptions[0].replace('anonymousPage.', '')
+      : 'no'
 
   returnString +=
     '<h2>Report Information</h2>' +
@@ -33,13 +38,15 @@ const formatReportInfo = (data) => {
         formatLineHtml('Flagged:', selfHarmString),
     )
   // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
-  delete data.anonymous.anonymous
+  delete data.anonymous.anonymousOptions
   delete data.reportId
   delete data.submissionTime
   delete data.language
-  delete data.appVersion
+  delete data.appVersion // git hash not used in report
+  delete data.prodVersion
   delete data.selfHarmWords
   delete data.submissionDate
+  delete data.prodVersion
   return returnString
 }
 
@@ -49,7 +56,7 @@ const formatVictimDetails = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml('Name:', data.contactInfo.fullName) +
+    formatLineHtml('Full name:', data.contactInfo.fullName) +
     formatLineHtml('Email:', data.contactInfo.email) +
     formatLineHtml('Phone number:', data.contactInfo.phone) +
     formatLineHtml('City:', data.location.city) +
@@ -134,15 +141,6 @@ const formatNarrative = (data) => {
     formatLineHtml('Affected device:', data.devicesInfo.device) +
     formatLineHtml('Affected account:', data.devicesInfo.account) +
     formatLineHtml(
-      'Affected device/account: ',
-      data.devicesInfo.devicesTellUsMore,
-    ) +
-    formatLineHtml('Affected finances:       ', data.moneyLost.tellUsMore) +
-    formatLineHtml(
-      'Affected personal info:  ',
-      data.personalInformation.tellUsMore,
-    ) +
-    formatLineHtml(
       'Name of business/organzation:  ',
       data.businessInfo.nameOfBusiness,
     ) +
@@ -150,7 +148,9 @@ const formatNarrative = (data) => {
     formatLineHtml('Role:  ', data.businessInfo.role) +
     formatLineHtml(
       'Number of employee:  ',
-      data.businessInfo.numberOfEmployee,
+      unCamel(
+        data.businessInfo.numberOfEmployee.replace('numberOfEmployee.', ''),
+      ),
     ) +
     formatLineHtml('Other clues:             ', data.suspectClues.suspectClues3)
 
@@ -161,9 +161,6 @@ const formatNarrative = (data) => {
   delete data.personalInformation.infoObtainedOther
   delete data.devicesInfo.device
   delete data.devicesInfo.account
-  delete data.moneyLost.tellUsMore
-  delete data.personalInformation.tellUsMore
-  delete data.devicesInfo.devicesTellUsMore
   delete data.businessInfo.business
   delete data.businessInfo.nameOfBusiness
   delete data.businessInfo.industry

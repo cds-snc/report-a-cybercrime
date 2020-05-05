@@ -8,22 +8,25 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { RadioAdapter } from '../components/radio'
 
-export const BusinessInfoForm = ({ onSubmit }) => {
-  const [data] = useStateValue()
-  const { i18n } = useLingui()
-  let { businessInfo } = data.formData
-  businessInfo = {
-    nameOfBusiness: '',
-    industry: '',
-    role: '',
-    numberOfEmployee: '',
-    ...businessInfo,
+export const BusinessInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.businessInfo))
+      props.onSubmit(data)
   }
+
+  const [data] = useStateValue()
+  const businessInfo = {
+    ...formDefaults.businessInfo,
+    ...data.formData.businessInfo,
+  }
+  const { i18n } = useLingui()
 
   const numberOfEmployee = [
     'numberOfEmployee.1To99',
@@ -45,7 +48,7 @@ export const BusinessInfoForm = ({ onSubmit }) => {
       ) : null}
       <Form
         initialValues={businessInfo}
-        onSubmit={onSubmit}
+        onSubmit={localOnSubmit}
         render={({ handleSubmit }) => (
           <Stack
             as="form"

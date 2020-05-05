@@ -8,7 +8,6 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Input } from '../components/input'
 import { Stack, Box } from '@chakra-ui/core'
-import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
 import { ConditionalForm } from '../components/container'
 import { CheckboxAdapter } from '../components/checkbox'
@@ -16,64 +15,35 @@ import { Field } from '../components/Field'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
+import { validateDate } from '../utils/validateDate'
 
 const validate = (values) => {
   const errors = {}
-  //condition for an error to occur: append a lingui id to the list of error
-  // if it has a value AND this value is a number below 31
-  if (
-    values.transactionDay &&
-    (isNaN(values.transactionDay) || values.transactionDay > 31)
-  ) {
-    errors.transactionDate = 'transactionDate.startDate.warning'
-    errors.transactionDay = true
-  }
-  // if it has a value AND this value is a number below 12
-  if (
-    values.transactionMonth &&
-    (isNaN(values.transactionMonth) || values.transactionMonth > 12)
-  ) {
-    errors.transactionDate = 'transactionDate.startMonth.warning'
-    errors.transactionMonth = true
-  }
-  // if it has a value AND year is a number containing 4 digits
-  if (
-    values.transactionYear &&
-    (isNaN(values.transactionYear) || values.transactionYear.length !== 4)
-  ) {
-    errors.transactionDate = 'transactionDate.startYear.warning'
-    errors.transactionYear = true
-  }
-
-  // if date is in the future and date is valid
-  // values.transactionMonth - 1 : UTC Date Months are values from 0 to 11
-  if (
-    Date.UTC(
-      values.transactionYear,
-      values.transactionMonth - 1,
-      values.transactionDay,
-    ) > Date.now()
-  ) {
-    errors.transactionDate = 'transactionDate.errorMessage'
-    errors.transactionDay = true
-    errors.transactionMonth = true
-    errors.transactionYear = true
-  }
+  const startDate = validateDate(
+    values.transactionYear,
+    values.transactionMonth,
+    values.transactionDay,
+  )
+  errors.transactionDate = []
+  startDate.map((key) => {
+    return errors.transactionDate.push(`transactionDate.error.${key}`)
+  })
 
   return errors
 }
 
 export const MoneyLostInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.moneyLost)) props.onSubmit(data)
+  }
+
   const { i18n } = useLingui()
   const [data] = useStateValue()
+
   const moneyLost = {
-    methodPayment: [],
-    demandedMoney: '',
-    moneyTaken: '',
-    transactionDay: '',
-    transactionMonth: '',
-    transactionYear: '',
-    tellUsMore: '',
+    ...formDefaults.moneyLost,
     ...data.formData.moneyLost,
   }
 
@@ -94,15 +64,20 @@ export const MoneyLostInfoForm = (props) => {
           <Trans id="methodPayment.giftCard" />
           <Trans id="methodPayment.cash" />
           <Trans id="methodPayment.other" />
-          <Trans id="transactionDate.errorMessage" />
-          <Trans id="transactionDate.startDate.warning" />
-          <Trans id="transactionDate.startMonth.warning" />
-          <Trans id="transactionDate.startYear.warning" />
+
+          <Trans id="transactionDate.error.notDay" />
+          <Trans id="transactionDate.error.notMonth" />
+          <Trans id="transactionDate.error.isFuture" />
+          <Trans id="transactionDate.error.notYear" />
+          <Trans id="transactionDate.error.yearLength" />
+          <Trans id="transactionDate.error.hasNoYear" />
+          <Trans id="transactionDate.error.hasNoMonth" />
+          <Trans id="transactionDate.error.hasNoDay" />
         </div>
       ) : null}
       <Form
         initialValues={moneyLost}
-        onSubmit={props.onSubmit}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({ handleSubmit, values, errors, submitFailed }) => (
           <Stack
@@ -111,7 +86,11 @@ export const MoneyLostInfoForm = (props) => {
             spacing={6}
             shouldWrapChildren
           >
-            {submitFailed ? <ErrorSummary /> : null}
+            {submitFailed ? (
+              <ErrorSummary>
+                <Trans id="moneyLostPage.hasValidationErrors" />
+              </ErrorSummary>
+            ) : null}
             <Field
               name="demandedMoney"
               label={<Trans id="moneyLostPage.demandedMoney" />}
@@ -181,13 +160,6 @@ export const MoneyLostInfoForm = (props) => {
                 />
               </Stack>
             </FormArrayControl>
-
-            <Field
-              name="tellUsMore"
-              label={<Trans id="moneyLostPage.tellUsMore" />}
-              FormHelperText={<Trans id="moneyLostPage.tellUsMoreExample" />}
-              component={TextArea}
-            />
 
             <Well variantColor="blue">
               <Trans id="moneyLostPage.tip" />

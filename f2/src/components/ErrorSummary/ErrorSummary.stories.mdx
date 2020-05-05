@@ -19,9 +19,18 @@ import { Trans } from '@lingui/react'
 
 The ErrorSummary component uses final-form validation to assign errors to fields. This can be set in a `validate` function that returns an error object. The object is a list of field names as keys, pointing to lingui ids as values. This function is usually defined before exporting the form component.
 
+When you can have multiple errors on a single field, you can also pass an array to the errors object.
+
 ```jsx
 const validate = (values) => {
-  const errors = { email: 'contactinfoForm.email.warning' }
+  const errors = {  }
+
+  // single error
+  errors.email: 'contactinfoForm.email.warning'
+
+  // multiple errors
+  errors.date: ['hasNoMonth', 'hasNoDay']
+
   return errors
 }
 ```
@@ -36,7 +45,7 @@ The ErrorSummary component can be used to list all errors in a form. It is simpl
 
 In this example the key `email` matches the field `name` property, while the value `'contactinfoForm.email.warning'` is the lingui id for the field's `errorMessage` property
 
-> Note: to trick storybook into displaying this component, the conditions around `ErrorSummary` have been omited, and the Field has been passed an `isInvalid` property of true. Don't do that.
+> Note: to trick storybook into displaying this component, the conditions around `ErrorSummary` have been omited, and the Field has been passed an `isInvalid` property of true. **Don't do that**.
 
 <Preview>
   <Story name="Error Summary">
@@ -55,4 +64,6 @@ In this example the key `email` matches the field `name` property, while the val
 
 ## Props
 
-You don't need to pass any props to ErrorSummary
+Children of `<ErrorSummary>` will render as the main error message, usually through a `<Trans>` element. There is a default error message, so you can omit passing children to this component.
+
+<Props of={ErrorSummary} />
