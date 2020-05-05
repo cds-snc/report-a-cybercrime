@@ -173,18 +173,18 @@ export const EvidenceInfoForm = (props) => {
                       <Trans id="evidencePage.addFileButton" />
                     </FileUpload>
                   </Box>
-                  <Text fontSize="md" as="span" fontWeight="bold">
+                  <Text fontSize="md" as="p" fontWeight="bold">
                     <Trans id="evidencePage.supportedFiles" />
                   </Text>
                   <br />
                   <Ul>
-                    <Li style={{ fontSize: 16 }}>
+                    <Li fontSize="md" mb={2}>
                       <Trans id="evidencePage.fileTypes1" />
                     </Li>
-                    <Li style={{ fontSize: 16 }}>
+                    <Li fontSize="md" mb={2}>
                       <Trans id="evidencePage.fileTypes2" />
                     </Li>
-                    <Li style={{ fontSize: 16 }}>
+                    <Li fontSize="md" mb={2}>
                       <Trans id="evidencePage.fileTypes3" />
                     </Li>
                   </Ul>
