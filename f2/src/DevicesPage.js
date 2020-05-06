@@ -10,6 +10,7 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { useHistory } from 'react-router-dom'
 
 export const DevicesPage = () => {
   const [state, dispatch] = useStateValue()
@@ -17,6 +18,10 @@ export const DevicesPage = () => {
   const affectedOptions = formData.whatWasAffected
     ? formData.whatWasAffected.affectedOptions
     : []
+  const history = useHistory()
+  if (state.formData.consent.consentOptions.length === 0) {
+    history.push('/privacyconsent')
+  }
 
   return (
     <Route
@@ -35,7 +40,7 @@ export const DevicesPage = () => {
               </Stack>
 
               <DevicesForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { devicesInfo: data },

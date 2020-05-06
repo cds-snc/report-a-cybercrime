@@ -12,13 +12,18 @@ import { useStateValue } from './utils/state'
 import { formatPostalCode } from './utils/formatPostalCode'
 import { Page } from './components/Page'
 import { formDefaults } from './forms/defaultValues'
+import { useHistory } from 'react-router-dom'
 
 export const LocationPage = () => {
-  const [data, dispatch] = useStateValue()
-  const { doneForms } = data
+  const [state, dispatch] = useStateValue()
+  const { doneForms } = state
   const formData = {
     ...formDefaults,
-    ...data.formData,
+    ...state.formData,
+  }
+  const history = useHistory()
+  if (state.formData.consent.consentOptions.length === 0) {
+    history.push('/privacyconsent')
   }
 
   return (
