@@ -43,7 +43,8 @@
     "react-scripts": "^3.4.1",
     "sanitize-html": "^1.22.1",
     "styled-system": "^5.1.5",
-    "unidecode": "^0.1.8"
+    "unidecode": "^0.1.8",
+    "snyk": "^1.319.0"
   },
   "scripts": {
     "prod": "npm run build && node server.js",
@@ -72,7 +73,9 @@
     "upgrade-interactive": "npm-check --update",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
@@ -151,5 +154,6 @@
         "statements": 50
       }
     }
-  }
+  },
+  "snyk": true
 }
