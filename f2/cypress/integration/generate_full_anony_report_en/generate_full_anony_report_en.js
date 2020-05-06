@@ -5,7 +5,7 @@ After(() => {
 });
 
 Given('I open the report home page', () => {
-    cy.visit(Cypress.env('staging'))
+    cy.visit(Cypress.env('dev'))
 });
 
 When('I click on create a report button', () => {
@@ -36,7 +36,7 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
-When('I fill ReportAnonymously page forms', () => { 
+When('I fill ReportAnonymously page forms', () => {
     cy.get('form').find('[value="anonymousPage.yes"]').check({ force: true })
 });
 
@@ -141,7 +141,7 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
-When('I fill to Howyourbusinessaffected forms', () => { 
+When('I fill to Howyourbusinessaffected forms', () => {
     cy.get('form').find('[name="nameOfBusiness"]').type('Edward Jones')
     cy.get('form').find('[name="industry"]').type('Financial Advisor')
     cy.get('form').find('[name="role"]').type('Expert Advisor')
