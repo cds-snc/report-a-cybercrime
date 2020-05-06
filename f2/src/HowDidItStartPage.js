@@ -16,8 +16,7 @@ export const HowDidItStartPage = () => {
   const [state, dispatch] = useStateValue()
   const { doneForms } = state
   const history = useHistory()
-
-  if (!state.formData.consent.consentOptions) {
+  if (state.formData.consent.consentOptions.length === 0) {
     history.push('/privacyconsent')
   }
 

@@ -10,9 +10,14 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { useHistory } from 'react-router-dom'
 
 export const ContactInfoPage = () => {
-  const [, dispatch] = useStateValue()
+  const [state, dispatch] = useStateValue()
+  const history = useHistory()
+  if (state.formData.consent.consentOptions.length === 0) {
+    history.push('/privacyconsent')
+  }
 
   return (
     <Route
@@ -29,7 +34,7 @@ export const ContactInfoPage = () => {
               </Lead>
 
               <ContactInfoForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { contactInfo: data },
