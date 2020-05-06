@@ -1,6 +1,6 @@
 Feature: Test the entire report workflow in french
   I want to create an online investgation report
-
+  @smoke
   Scenario: Home page
     Given I open the report home page
     When I change the language
