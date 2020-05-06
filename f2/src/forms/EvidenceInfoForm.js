@@ -18,6 +18,8 @@ import { Alert } from '../components/Messages'
 import { fileExtensionPasses } from '../utils/acceptableFiles'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
+import { Ul } from '../components/unordered-list'
+import { Li } from '../components/list-item'
 
 export const EvidenceInfoForm = (props) => {
   const [data] = useStateValue()
@@ -119,11 +121,6 @@ export const EvidenceInfoForm = (props) => {
                 >
                   <P fontSize="md">
                     <Trans id="evidencePage.fileSize" />
-                    <br />
-                    <Text fontSize="md" as="span" fontWeight="bold">
-                      <Trans id="evidencePage.supportedFiles" />
-                    </Text>
-                    <Trans id="evidencePage.fileTypes" />
                   </P>
                 </Box>
               )}
@@ -181,6 +178,22 @@ export const EvidenceInfoForm = (props) => {
                     >
                       <Trans id="evidencePage.addFileButton" />
                     </FileUpload>
+                  </Box>
+                  <Box mb={4}>
+                    <P fontSize="md" fontWeight="bold">
+                      <Trans id="evidencePage.supportedFiles" />
+                    </P>
+                    <Ul>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes1" />
+                      </Li>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes2" />
+                      </Li>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes3" />
+                      </Li>
+                    </Ul>
                   </Box>
                 </React.Fragment>
               )}
