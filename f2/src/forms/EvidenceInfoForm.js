@@ -49,6 +49,12 @@ export const EvidenceInfoForm = (props) => {
       )
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
+    } else if (file.size === 0) {
+      alert(
+        'Warning: Your file is empty. Please select the right file and try uploading again. \n Alerte : Votre dossier est vide. Veuillez sélectionner le bon fichier et réessayer de télécharger.',
+      )
+      e.target.value = '' // clear the file input target, to allow the file to be chosen again
+      return
     }
     if (!fileExtensionPasses(file.name)) {
       alert(
