@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React, { useEffect } from 'react'
 import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
@@ -16,9 +17,11 @@ export const HowDidItStartPage = () => {
   const [state, dispatch] = useStateValue()
   const { doneForms } = state
   const history = useHistory()
-  if (state.formData.consent.consentOptions.length === 0) {
-    history.push('/privacyconsent')
-  }
+  useEffect(() => {
+    if (state.formData.consent.consentOptions.length === 0) {
+      history.push('/privacyconsent')
+    }
+  })
 
   return (
     <Route
