@@ -23,7 +23,7 @@ export const DevicesPage = () => {
     if (state.formData.consent.consentOptions.length === 0) {
       history.push('/privacyconsent')
     }
-  })
+  }, [history, state.formData.consent.consentOptions.length])
 
   return (
     <Route
