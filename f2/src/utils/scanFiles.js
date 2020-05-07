@@ -7,6 +7,8 @@ const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmodera
 
 require('dotenv').config()
 
+const logger = require('./winstonLogger')
+
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
 
@@ -19,11 +21,11 @@ async function scanFiles(data) {
       //set timeout for 10000
       await scanner
         .scanStream(readStream, 10000)
-        .then(function(reply) {
+        .then(function (reply) {
           file[1].malwareScanDetail = reply
           file[1].malwareIsClean = clamd.isCleanReply(reply)
         })
-        .catch(function(reply) {
+        .catch(function (reply) {
           file[1].malwareScanDetail = 'ERROR: Unable to perform virus scan'
           file[1].malwareIsClean = false
           console.warn('Virus scan failed on ' + data.reportId)
@@ -46,7 +48,7 @@ let client = serviceKey
 
 const contentModerateFile = (file, callback) => {
   var readStream = fs.createReadStream(file[1].path)
-  client.imageModeration.evaluateFileInput(readStream, {}, function(
+  client.imageModeration.evaluateFileInput(readStream, {}, function (
     err,
     _result,
     _request,
@@ -54,6 +56,11 @@ const contentModerateFile = (file, callback) => {
   ) {
     if (err) {
       console.warn(`Error in Content Moderator: ${err} `)
+      logger.error({
+        ns: 'server.submit.contentmoderator.error',
+        message: 'Error in Content Moderator',
+        err: err,
+      })
       file[1].adultClassificationScore = 'Could not scan'
     } else {
       try {
@@ -77,7 +84,7 @@ async function contentModeratorFiles(data, finalCallback) {
     async.map(
       Object.entries(data.evidence.files),
       contentModerateFile,
-      function(err, _results) {
+      function (err, _results) {
         if (err) console.warn('Content Moderator Error:' + JSON.stringify(err))
         finalCallback()
       },
