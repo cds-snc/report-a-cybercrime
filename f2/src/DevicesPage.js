@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { P } from './components/paragraph'
@@ -19,9 +19,11 @@ export const DevicesPage = () => {
     ? formData.whatWasAffected.affectedOptions
     : []
   const history = useHistory()
-  if (state.formData.consent.consentOptions.length === 0) {
-    history.push('/privacyconsent')
-  }
+  useEffect(() => {
+    if (state.formData.consent.consentOptions.length === 0) {
+      history.push('/privacyconsent')
+    }
+  })
 
   return (
     <Route

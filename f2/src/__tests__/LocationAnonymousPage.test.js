@@ -8,6 +8,7 @@ import { LocationAnonymousPage } from '../LocationAnonymousPage'
 import canada from '../theme/canada'
 import en from '../locales/en.json'
 import { StateProvider, initialState, reducer } from '../utils/state'
+import { formDefaults } from '../forms/defaultValues'
 
 i18n.load('en', { en })
 i18n.activate('en')
@@ -20,7 +21,14 @@ describe('<LocationAnonymousPage />', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
-          <StateProvider initialState={initialState} reducer={reducer}>
+          <StateProvider
+            initialState={{
+              formData: {
+                ...formDefaults,
+              },
+            }}
+            reducer={reducer}
+          >
             <I18nProvider i18n={i18n}>
               <LocationAnonymousPage />
             </I18nProvider>

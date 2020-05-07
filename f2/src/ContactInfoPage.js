@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { useEffect } from 'react'
 import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
@@ -15,9 +16,11 @@ import { useHistory } from 'react-router-dom'
 export const ContactInfoPage = () => {
   const [state, dispatch] = useStateValue()
   const history = useHistory()
-  if (state.formData.consent.consentOptions.length === 0) {
-    history.push('/privacyconsent')
-  }
+  useEffect(() => {
+    if (state.formData.consent.consentOptions.length === 0) {
+      history.push('/privacyconsent')
+    }
+  })
 
   return (
     <Route

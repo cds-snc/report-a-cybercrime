@@ -21,7 +21,7 @@ export const HowDidItStartPage = () => {
     if (state.formData.consent.consentOptions.length === 0) {
       history.push('/privacyconsent')
     }
-  })
+  }, [])
 
   return (
     <Route
