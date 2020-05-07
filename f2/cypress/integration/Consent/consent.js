@@ -1,6 +1,11 @@
+import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps';
+// Hooks for repeated commands/rules
+After(() => {
+ cy.reportA11y();
+});
 
 Given('I open the report home page', () => {
-    cy.visit(Cypress.env('staging'))
+    cy.visit(Cypress.env('dev'))
 });
 
 Then('Inject axe and check for accessibility issues', () => {
