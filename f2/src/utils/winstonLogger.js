@@ -1,6 +1,6 @@
-const { createLogger, format, transports } = require('winston')
+const { createLogger, format } = require('winston')
 var winston = require('winston')
-const { combine, timestamp, label, prettyPrint } = format
+const { combine, timestamp, label } = format
 
 // define the custom settings for each transport (file, console)
 var options = {
