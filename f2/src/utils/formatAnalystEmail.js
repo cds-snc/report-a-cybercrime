@@ -22,10 +22,11 @@ const formatReportInfo = (data) => {
     returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${data.selfHarmWords}</h1>`
   }
 
-  let isAnonymous = data.anonymous.anonymousOptions[0].replace(
-    'anonymousPage.',
-    '',
-  )
+  let isAnonymous =
+    data.anonymous.anonymousOptions.length > 0
+      ? data.anonymous.anonymousOptions[0].replace('anonymousPage.', '')
+      : 'no'
+
   returnString +=
     '<h2>Report Information</h2>' +
     formatTable(
