@@ -65,6 +65,7 @@ const allowedOrigins = [
   'https://centreantifraude-antifraudcentre.ca',
   'https://antifraudcentre.ca',
   'https://centreantifraude.ca',
+  'https://boardom.ca',
 ]
 
 let availableData
@@ -107,6 +108,26 @@ const uploadData = async (req, res, fields, files) => {
   contentModeratorFiles(data, () => save(data, res))
 }
 
+app
+  .use(limiter)
+  .use(express.static(path.join(__dirname, 'build')))
+  .use(bodyParser.json())
+  .use(function (req, res, next) {
+    var origin = req.headers.origin
+    // Can only set one value of Access-Control-Allow-Origin, so we need some code to set it dynamically
+    if (
+      origin !== undefined &&
+      allowedOrigins.indexOf(origin.toLowerCase()) > -1
+    ) {
+      res.header('Access-Control-Allow-Origin', origin)
+      res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept',
+      )
+    }
+    next()
+  })
+
 app.get('/', async function (req, res, next) {
   availableData.numberOfSubmissions = await getReportCount(availableData)
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
@@ -130,25 +151,6 @@ app.get('/', async function (req, res, next) {
     next()
   }
 })
-app
-  .use(limiter)
-  .use(express.static(path.join(__dirname, 'build')))
-  .use(bodyParser.json())
-  .use(function (req, res, next) {
-    var origin = req.headers.origin
-    // Can only set one value of Access-Control-Allow-Origin, so we need some code to set it dynamically
-    if (
-      origin !== undefined &&
-      allowedOrigins.indexOf(origin.toLowerCase()) > -1
-    ) {
-      res.header('Access-Control-Allow-Origin', origin)
-      res.header(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept',
-      )
-    }
-    next()
-  })
 
   .get('/ping', function (_req, res) {
     return res.send('pong')
