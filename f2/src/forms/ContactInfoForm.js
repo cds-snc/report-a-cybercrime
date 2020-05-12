@@ -14,21 +14,32 @@ import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
+import { containsData } from '../utils/containsData'
 
-export const validate = (values) => {
+const validate = (values) => {
   const errors = {}
+
+  // build up a bool that returns false if key does not exist in values or if containsData(key) returns false
+  const phone = 'phone' in values && containsData(values.phone)
+  const email = 'email' in values && containsData(values.email)
+
   //condition for an error to occur: append a lingui id to the list of error
-  if (values.email === '' || addrs(values.email) == null) {
+
+  if (!values.fullName || values.fullName === '')
+    errors.fullName = 'contactinfoForm.fullName.warning'
+
+  //!(email || phone) If either phone or email is not false
+  if (!(email || phone) && addrs(values.email) == null) {
     errors.email = 'contactinfoForm.email.warning'
   }
+
   // from https://www.w3resource.com/javascript/form/phone-no-validation.php
   const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-  if (values.phone === '' || !new RegExp(phoneRegex).test(values.phone)) {
+  if (!(email || phone) && !new RegExp(phoneRegex).test(values.phone)) {
     errors.phone = 'contactinfoForm.phone.warning'
   }
 
-  if (values.fullName === '')
-    errors.fullName = 'contactinfoForm.fullName.warning'
+  console.log(values, errors, phone, email)
 
   return errors
 }
@@ -69,7 +80,6 @@ export const ContactInfoForm = (props) => {
                 <Trans id="contactinfoPage.hasValidationErrors" />
               </ErrorSummary>
             ) : null}
-
             <Field
               name="fullName"
               label={<Trans id="contactinfoPage.fullName" />}
@@ -85,7 +95,6 @@ export const ContactInfoForm = (props) => {
               component={Input}
               required
             />
-
             <Field
               name="phone"
               label={<Trans id="contactinfoPage.phoneNumber" />}
@@ -94,7 +103,6 @@ export const ContactInfoForm = (props) => {
               component={Input}
               required
             />
-
             <NextAndCancelButtons
               next={<Trans id="contactinfoPage.nextInfo" />}
               button={<Trans id="contactinfoPage.nextButton" />}
