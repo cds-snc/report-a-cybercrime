@@ -46,8 +46,6 @@ export const validate = (values) => {
     errors.phone = 'contactinfoForm.phone.warning'
   }
 
-  console.log(values, errors, phone, email, !(phone || email))
-
   return errors
 }
 
