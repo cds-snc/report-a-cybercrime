@@ -16,12 +16,21 @@ import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
 import { containsData } from '../utils/containsData'
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {}
 
-  // build up a bool that returns false if key does not exist in values or if containsData(key) returns false
-  const phone = 'phone' in values && containsData(values.phone)
-  const email = 'email' in values && containsData(values.email)
+  // from https://www.w3resource.com/javascript/form/phone-no-validation.php
+  const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+
+  // build up a bool that returns false if key does not exist in values or if containsData(key) returns false, or if data is not valid
+  const phone =
+    'phone' in values &&
+    containsData(values.phone) &&
+    new RegExp(phoneRegex).test(values.phone)
+  const email =
+    'email' in values &&
+    containsData(values.email) &&
+    addrs(values.email) !== null
 
   //condition for an error to occur: append a lingui id to the list of error
 
@@ -29,17 +38,15 @@ const validate = (values) => {
     errors.fullName = 'contactinfoForm.fullName.warning'
 
   //!(email || phone) If either phone or email is not false
-  if (!(email || phone) && addrs(values.email) == null) {
+  if (!(email || phone)) {
     errors.email = 'contactinfoForm.email.warning'
   }
 
-  // from https://www.w3resource.com/javascript/form/phone-no-validation.php
-  const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-  if (!(email || phone) && !new RegExp(phoneRegex).test(values.phone)) {
+  if (!(email || phone)) {
     errors.phone = 'contactinfoForm.phone.warning'
   }
 
-  console.log(values, errors, phone, email)
+  console.log(values, errors, phone, email, !(phone || email))
 
   return errors
 }
