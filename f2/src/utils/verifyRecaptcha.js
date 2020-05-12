@@ -1,4 +1,4 @@
-const fetch = require('isomorphic-fetch')
+const fetch = require('isomorphic-unfetch')
 
 let url = 'https://www.google.com/recaptcha/api/siteverify'
 let secret = process.env.REACT_APP_RECAPTCHA_SECRET_KEY
