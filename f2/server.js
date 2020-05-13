@@ -57,7 +57,29 @@ setTimeout(() => {
 }, 5000)
 
 const app = express()
-app.use(helmet())
+app
+  .use(helmet())
+  .use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          'www.google-analytics.com',
+          'www.googletagmanager.com',
+        ],
+        styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
+        fontSrc: ["'self'", 'fonts.gstatic.com'],
+      },
+    }),
+  )
+  .use(helmet.referrerPolicy({ policy: 'same-origin' }))
+  .use(
+    helmet.featurePolicy({
+      features: { geolocation: ["'none'"], camera: ["'none'"] },
+    }),
+  )
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',

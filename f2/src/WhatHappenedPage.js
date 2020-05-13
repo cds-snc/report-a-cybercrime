@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { useEffect } from 'react'
 import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
@@ -13,15 +14,22 @@ import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { Li } from './components/list-item'
 import { formDefaults } from './forms/defaultValues'
+import { useHistory } from 'react-router-dom'
 
 export const WhatHappenedPage = () => {
-  const [data, dispatch] = useStateValue()
-  const { doneForms } = data
+  const [state, dispatch] = useStateValue()
+  const { doneForms } = state
 
   const whatWasAffected = {
     ...formDefaults.whatWasAffected,
-    ...data.formData.whatWasAffected,
+    ...state.formData.whatWasAffected,
   }
+  const history = useHistory()
+  useEffect(() => {
+    if (state.formData.consent.consentOptions.length === 0) {
+      history.push('/privacyconsent')
+    }
+  }, [history, state.formData.consent.consentOptions.length])
 
   return (
     <Route

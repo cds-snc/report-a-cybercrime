@@ -51,7 +51,7 @@ export const MoneyLostInfoForm = (props) => {
     'methodPayment.eTransfer',
     'methodPayment.creditCard',
     'methodPayment.giftCard',
-    'methodPayment.cash',
+    'methodPayment.cryptocurrency',
     'methodPayment.other',
   ]
 
@@ -62,7 +62,7 @@ export const MoneyLostInfoForm = (props) => {
           <Trans id="methodPayment.eTransfer" />
           <Trans id="methodPayment.creditCard" />
           <Trans id="methodPayment.giftCard" />
-          <Trans id="methodPayment.cash" />
+          <Trans id="methodPayment.cryptocurrency" />
           <Trans id="methodPayment.other" />
 
           <Trans id="transactionDate.error.notDay" />
