@@ -56,7 +56,29 @@ setTimeout(() => {
 }, 5000)
 
 const app = express()
-app.use(helmet())
+app
+  .use(helmet())
+  .use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          'www.google-analytics.com',
+          'www.googletagmanager.com',
+        ],
+        styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
+        fontSrc: ["'self'", 'fonts.gstatic.com'],
+      },
+    }),
+  )
+  .use(helmet.referrerPolicy({ policy: 'same-origin' }))
+  .use(
+    helmet.featurePolicy({
+      features: { geolocation: ["'none'"], camera: ["'none'"] },
+    }),
+  )
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
@@ -68,12 +90,11 @@ const allowedOrigins = [
 ]
 
 let availableData
-async function initializeAvailableData() {
-  availableData = {
-    numberOfSubmissions: await getReportCount(),
-    numberOfRequests: 0,
-    lastRequested: undefined,
-  }
+
+availableData = {
+  numberOfSubmissions: 0,
+  numberOfRequests: 0,
+  lastRequested: undefined,
 }
 const allowedReferrers = [
   'antifraudcentre-centreantifraude.ca',
@@ -82,7 +103,8 @@ const allowedReferrers = [
   'centreantifraude.ca',
 ]
 
-initializeAvailableData()
+getReportCount(availableData)
+setTimeout(() => console.log({ availableData }), 1000)
 
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
@@ -108,7 +130,7 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', async function (req, res, next) {
-  availableData.numberOfSubmissions = await getReportCount()
+  availableData.numberOfSubmissions = await getReportCount(availableData)
   if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
     console.log('Warning: redirecting request to CAFC')
     res.redirect(
@@ -166,6 +188,7 @@ app
   })
 
   .post('/submit', (req, res) => {
+    availableData.numberOfSubmissions += 1
     var form = new formidable.IncomingForm()
     form.parse(req)
     let files = []

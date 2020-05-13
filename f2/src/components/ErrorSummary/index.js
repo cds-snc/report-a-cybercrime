@@ -1,7 +1,7 @@
 /** @jsx jsx **/
+import React from 'react'
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
-import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Stack } from '@chakra-ui/core'
 import { Text } from '../text'
@@ -14,8 +14,6 @@ import { focusTarget } from '../../utils/focusTarget'
 import { useEffect } from 'react'
 
 export const ErrorSummary = (props) => {
-  const { i18n } = useLingui()
-
   const { errors } = useForm().getState()
 
   useForm().pauseValidation()
@@ -54,7 +52,15 @@ export const ErrorSummary = (props) => {
                     }
                   }}
                 >
-                  {i18n._(errors[key])}
+                  {Array.isArray(errors[key]) ? (
+                    errors[key].map((msg) => (
+                      <React.Fragment>
+                        <Trans key={msg} id={msg} />{' '}
+                      </React.Fragment>
+                    ))
+                  ) : (
+                    <Trans id={errors[key]} />
+                  )}
                 </A>
               </Li>
             ) : null

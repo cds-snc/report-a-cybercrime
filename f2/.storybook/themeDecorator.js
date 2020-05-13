@@ -6,23 +6,26 @@ import { MemoryRouter } from 'react-router-dom'
 import { I18nProvider } from '@lingui/react'
 import { i18n } from '@lingui/core'
 import { activate } from '../src/i18n.config'
+import { StateProvider, initialState, reducer } from '../src/utils/state'
 
 const ThemeDecorator = (storyFn) => {
   activate('en')
 
   return (
     <MemoryRouter>
-      <I18nProvider i18n={i18n}>
-        <ThemeProvider theme={theme}>
-          <CSSReset />
-          <Global
-            styles={css`
-              @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
-            `}
-          />
-          {storyFn()}
-        </ThemeProvider>
-      </I18nProvider>
+      <StateProvider initialState={initialState} reducer={reducer}>
+        <I18nProvider i18n={i18n}>
+          <ThemeProvider theme={theme}>
+            <CSSReset />
+            <Global
+              styles={css`
+                @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
+              `}
+            />
+            {storyFn()}
+          </ThemeProvider>
+        </I18nProvider>
+      </StateProvider>
     </MemoryRouter>
   )
 }
