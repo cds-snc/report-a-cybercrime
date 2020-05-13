@@ -74,7 +74,7 @@ const contentModerateFile = (file, callback) => {
       logger.error({
         ns: 'server.submit.contentmoderator.error',
         message: 'Error in Content Moderator',
-        error: JSON.stringify(err, Object.getOwnPropertyNames(err)),
+        error: err,
       })
       file[1].adultClassificationScore = 'Could not scan'
     } else {
