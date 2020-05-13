@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react'
+import { formDefaults } from '../forms/defaultValues'
 
 export const StateContext = createContext()
 
@@ -12,7 +13,7 @@ export const useStateValue = () => useContext(StateContext)
 
 export const initialState = {
   doneForms: false,
-  formData: { prodVersion: '1.1.0-dev' },
+  formData: { prodVersion: '1.1.0-dev', ...formDefaults },
   doneFinalFeedback: false,
 }
 
