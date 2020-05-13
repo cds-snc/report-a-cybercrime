@@ -51,11 +51,14 @@ const getEmailWarning = (data) =>
     ? ': WARNING: potential offensive image'
     : ''
 
+const getSelfHarmWord = (data) =>
+  data.selfHarmWords.length ? ': WARNING: self harm words detected' : ''
+
 const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
   const openssl = 'openssl smime -des3 -encrypt'
   const messageFile = `message_${nanoid()}.txt`
   const encryptedFile = messageFile + '.encrypted'
-  const subjectSuffix = getEmailWarning(data)
+  const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)
 
   fs.writeFile(messageFile, message, function (err) {
     if (err) throw err
@@ -120,13 +123,13 @@ const encryptAndSend = async (uidList, emailList, data, message) => {
     })
   } else if (process.env.MAIL_LOCAL) {
     console.warn('Encrypted Mail: No certs to encrypt with!')
-    const subjectSuffix = getEmailWarning(data)
+    const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)
     prepareUnencryptedReportEmail(message, data, (m) =>
       sendMail(process.env.MAIL_LOCAL, m, data.reportId, subjectSuffix),
     )
   } else {
     console.warn('Encrypted Mail: No certs to encrypt with!')
-    const subjectSuffix = getEmailWarning(data)
+    const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)
     prepareUnencryptedReportEmail(message, data, (m) =>
       sendMail(data.contactInfo.email, m, data.reportId, subjectSuffix),
     )
