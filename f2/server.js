@@ -131,7 +131,7 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', async function (req, res, next) {
-  availableData.numberOfSubmissions = await getReportCount(availableData)
+  await getReportCount(availableData)
 
   // Default to false. This represents if a user entered a valid TOTP code
   var isTotpValid = false
