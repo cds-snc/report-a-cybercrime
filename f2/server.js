@@ -24,6 +24,8 @@ const {
   fileSizePasses,
   fileExtensionPasses,
 } = require('./src/utils/acceptableFiles')
+const expressWinston = require('express-winston')
+const winston = require('winston')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -77,6 +79,21 @@ app
   .use(
     helmet.featurePolicy({
       features: { geolocation: ["'none'"], camera: ["'none'"] },
+    }),
+  )
+  .use(
+    expressWinston.logger({
+      transports: [new winston.transports.Console()],
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.json(),
+      ),
+      meta: true, // optional: control whether you want to log the meta data about the request (default to true)
+      expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
+      colorize: false, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
+      ignoreRoute: function (req, res) {
+        return false
+      }, // optional: allows to skip some log messages based on request and/or response
     }),
   )
 
@@ -171,7 +188,6 @@ app
     }
     next()
   })
-
   .get('/ping', function (_req, res) {
     return res.send('pong')
   })
