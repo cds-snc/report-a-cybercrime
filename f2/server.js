@@ -191,7 +191,7 @@ app
         logger.error({
           message: `ERROR in /submit: parsing ${fieldName} value of ${fieldValue}`,
           path: '/submit',
-          error: error,
+          error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
         })
       }
     })
