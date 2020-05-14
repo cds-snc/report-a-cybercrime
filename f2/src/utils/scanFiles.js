@@ -13,6 +13,8 @@ const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmodera
 
 require('dotenv').config()
 
+const logger = require('./winstonLogger')
+
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
 
@@ -69,6 +71,11 @@ const contentModerateFile = (file, callback) => {
   ) {
     if (err) {
       console.warn(`Error in Content Moderator: ${JSON.stringify(err)} `)
+      logger.error({
+        ns: 'server.submit.contentmoderator.error',
+        message: 'Error in Content Moderator',
+        error: err,
+      })
       file[1].adultClassificationScore = 'Could not scan'
     } else {
       try {
