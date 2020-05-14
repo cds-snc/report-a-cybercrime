@@ -4,6 +4,9 @@ const fetch = require('isomorphic-fetch')
 const FormData = require('form-data')
 const { formDefaults } = require('../forms/defaultValues')
 
+// trust all TLS certs - not advised
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
+
 async function submitReportToServer(url = '', data = {}) {
   const flattenedData = flatten(data, { safe: true })
   console.log(flattenedData)
