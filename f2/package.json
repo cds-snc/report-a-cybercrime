@@ -46,8 +46,8 @@
     "styled-system": "^5.1.5",
     "unidecode": "^0.1.8",
     "winston": "~3.2.1",
-    "express-winston": "4.0.3"
-
+    "express-winston": "4.0.3",
+    "snyk": "^1.321.0"
   },
   "scripts": {
     "prod": "npm run build && node server.js",
@@ -76,7 +76,9 @@
     "upgrade-interactive": "npm-check --update",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
@@ -155,5 +157,6 @@
         "statements": 50
       }
     }
-  }
+  },
+  "snyk": true
 }
