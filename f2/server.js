@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
 const helmet = require('helmet')
+const speakeasy = require('speakeasy')
 const { unflatten } = require('flat')
 const { sanitize } = require('./src/utils/sanitize')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
@@ -131,8 +132,27 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', async function (req, res, next) {
-  availableData.numberOfSubmissions = await getReportCount(availableData)
-  if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
+  await getReportCount(availableData)
+
+  // Default to false. This represents if a user entered a valid TOTP code
+  var isTotpValid = false
+
+  // If the user passed in a TOTP query parm (/?totp=) and the correct
+  // env var is set, then verify the code.
+  if (req.query.totp && process.env.TOTP_SECRET) {
+    // Check the TOTP code against the secret
+    isTotpValid = speakeasy.totp.verify({
+      secret: process.env.TOTP_SECRET,
+      encoding: 'base32',
+      token: req.query.totp,
+    })
+  }
+
+  // If user had a TOTP code, bypass the submissions_per_day restriction
+  if (
+    availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY &&
+    !isTotpValid
+  ) {
     console.log('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalement')

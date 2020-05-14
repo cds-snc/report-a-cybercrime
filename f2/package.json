@@ -42,6 +42,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
     "sanitize-html": "^1.22.1",
+    "speakeasy": "^2.0.0",
     "styled-system": "^5.1.5",
     "unidecode": "^0.1.8",
     "winston": "~3.2.1"
