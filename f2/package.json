@@ -46,8 +46,8 @@
     "styled-system": "^5.1.5",
     "unidecode": "^0.1.8",
     "winston": "~3.2.1",
-    "express-winston": "4.0.3"
-
+    "express-winston": "4.0.3",
+    "snyk": "^1.321.0"
   },
   "scripts": {
     "prod": "npm run build && node server.js",
@@ -76,7 +76,9 @@
     "upgrade-interactive": "npm-check --update",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
@@ -117,7 +119,7 @@
     "@storybook/eslint-config-storybook": "^2.2.0",
     "@storybook/preset-create-react-app": "^1.5.2",
     "@storybook/react": "^5.3.17",
-    "@storybook/storybook-deployer": "^2.8.3",
+    "@storybook/storybook-deployer": "^2.8.6",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.0",
     "axe-core": "^3.5.2",
@@ -155,5 +157,6 @@
         "statements": 50
       }
     }
-  }
+  },
+  "snyk": true
 }
