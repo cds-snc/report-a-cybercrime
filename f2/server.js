@@ -15,6 +15,7 @@ const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
+const logger = require('./src/utils/winstonLogger')
 const {
   notifyIsSetup,
   sendConfirmation,
@@ -169,6 +170,10 @@ app.get('/', async function (req, res, next) {
       availableData.lastRequested = new Date()
     }
     console.log(`New Request. ${JSON.stringify(availableData)}`)
+    logger.info({
+      message: 'New Request',
+      availableData: availableData,
+    })
     next()
   }
 })
@@ -225,6 +230,11 @@ app
         console.warn(
           `ERROR in /submit: parsing ${fieldName} value of ${fieldValue}: ${error}`,
         )
+        logger.error({
+          message: `ERROR in /submit: parsing ${fieldName} value of ${fieldValue}`,
+          path: '/submit',
+          error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
+        })
       }
     })
     form.on('file', function (name, file) {
