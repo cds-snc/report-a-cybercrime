@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
 const helmet = require('helmet')
+const speakeasy = require('speakeasy')
 const { unflatten } = require('flat')
 const { sanitize } = require('./src/utils/sanitize')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
@@ -14,6 +15,7 @@ const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
+const logger = require('./src/utils/winstonLogger')
 const {
   notifyIsSetup,
   sendConfirmation,
@@ -24,6 +26,8 @@ const {
   fileSizePasses,
   fileExtensionPasses,
 } = require('./src/utils/acceptableFiles')
+const expressWinston = require('express-winston')
+const winston = require('winston')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -56,7 +60,59 @@ setTimeout(() => {
 }, 5000)
 
 const app = express()
-app.use(helmet())
+app
+  .use(helmet())
+  .use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          'www.google-analytics.com',
+          'www.googletagmanager.com',
+        ],
+        styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
+        fontSrc: ["'self'", 'fonts.gstatic.com'],
+      },
+    }),
+  )
+  .use(helmet.referrerPolicy({ policy: 'same-origin' }))
+  .use(
+    helmet.featurePolicy({
+      features: { geolocation: ["'none'"], camera: ["'none'"] },
+    }),
+  )
+  .use(
+    expressWinston.logger({
+      transports: [new winston.transports.Console()],
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.json(),
+      ),
+      meta: true, // optional: control whether you want to log the meta data about the request (default to true)
+      expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
+      colorize: false, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
+      
+      dynamicMeta: (req, res) => {
+        const httpRequest = {}
+        const meta = {}
+        if (req) {
+            meta.httpRequest=httpRequest
+            httpRequest.remoteIpv4andv6 = req.ip // this includes both ipv6 and ipv4 addresses separated by ':'
+            httpRequest.remoteIpv4 = req.ip.indexOf(':') >= 0 ? req.ip.substring(req.ip.lastIndexOf(':') + 1) : req.ip   // just ipv4
+            httpRequest.requestSize = req.socket.bytesRead
+            httpRequest.referrer = req.get('Referrer')
+            
+        }
+        return meta
+      },
+      
+      ignoreRoute: function (req, res) {
+        return false
+      }, // optional: allows to skip some log messages based on request and/or response
+    }),
+  )
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
@@ -68,12 +124,11 @@ const allowedOrigins = [
 ]
 
 let availableData
-async function initializeAvailableData() {
-  availableData = {
-    numberOfSubmissions: await getReportCount(),
-    numberOfRequests: 0,
-    lastRequested: undefined,
-  }
+
+availableData = {
+  numberOfSubmissions: 0,
+  numberOfRequests: 0,
+  lastRequested: undefined,
 }
 const allowedReferrers = [
   'antifraudcentre-centreantifraude.ca',
@@ -82,7 +137,8 @@ const allowedReferrers = [
   'centreantifraude.ca',
 ]
 
-initializeAvailableData()
+getReportCount(availableData)
+setTimeout(() => console.log({ availableData }), 1000)
 
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
@@ -108,8 +164,27 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', async function (req, res, next) {
-  availableData.numberOfSubmissions = await getReportCount()
-  if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
+  await getReportCount(availableData)
+
+  // Default to false. This represents if a user entered a valid TOTP code
+  var isTotpValid = false
+
+  // If the user passed in a TOTP query parm (/?totp=) and the correct
+  // env var is set, then verify the code.
+  if (req.query.totp && process.env.TOTP_SECRET) {
+    // Check the TOTP code against the secret
+    isTotpValid = speakeasy.totp.verify({
+      secret: process.env.TOTP_SECRET,
+      encoding: 'base32',
+      token: req.query.totp,
+    })
+  }
+
+  // If user had a TOTP code, bypass the submissions_per_day restriction
+  if (
+    availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY &&
+    !isTotpValid
+  ) {
     console.log('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalement')
@@ -127,6 +202,10 @@ app.get('/', async function (req, res, next) {
       availableData.lastRequested = new Date()
     }
     console.log(`New Request. ${JSON.stringify(availableData)}`)
+    logger.info({
+      message: 'New Request',
+      availableData: availableData,
+    })
     next()
   }
 })
@@ -149,7 +228,6 @@ app
     }
     next()
   })
-
   .get('/ping', function (_req, res) {
     return res.send('pong')
   })
@@ -166,6 +244,7 @@ app
   })
 
   .post('/submit', (req, res) => {
+    availableData.numberOfSubmissions += 1
     var form = new formidable.IncomingForm()
     form.parse(req)
     let files = []
@@ -182,6 +261,11 @@ app
         console.warn(
           `ERROR in /submit: parsing ${fieldName} value of ${fieldValue}: ${error}`,
         )
+        logger.error({
+          message: `ERROR in /submit: parsing ${fieldName} value of ${fieldValue}`,
+          path: '/submit',
+          error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
+        })
       }
     })
     form.on('file', function (name, file) {

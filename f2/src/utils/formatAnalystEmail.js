@@ -22,16 +22,18 @@ const formatReportInfo = (data) => {
     returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${data.selfHarmWords}</h1>`
   }
 
-  let isAnonymous = data.anonymous.anonymousOptions[0].replace(
-    'anonymousPage.',
-    '',
-  )
+  let isAnonymous =
+    data.anonymous.anonymousOptions.length > 0
+      ? data.anonymous.anonymousOptions[0].replace('anonymousPage.', '')
+      : 'no'
+  let reportLanguage = data.language === 'en' ? 'English' : 'French'
+
   returnString +=
     '<h2>Report Information</h2>' +
     formatTable(
       formatLineHtml('Report number:', data.reportId) +
         formatLineHtml('Date received:', data.submissionTime) +
-        formatLineHtml('Report language:', data.language) +
+        formatLineHtml('Report language:', reportLanguage) +
         formatLineHtml('Report version:', data.prodVersion) +
         formatLineHtml('Anonymous report:', isAnonymous) +
         formatLineHtml('Flagged:', selfHarmString),
