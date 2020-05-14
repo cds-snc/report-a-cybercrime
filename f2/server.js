@@ -91,6 +91,21 @@ app
       meta: true, // optional: control whether you want to log the meta data about the request (default to true)
       expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
       colorize: false, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
+      
+      dynamicMeta: (req, res) => {
+        const httpRequest = {}
+        const meta = {}
+        if (req) {
+            meta.httpRequest=httpRequest
+            httpRequest.remoteIpv4andv6 = req.ip // this includes both ipv6 and ipv4 addresses separated by ':'
+            httpRequest.remoteIpv4 = req.ip.indexOf(':') >= 0 ? req.ip.substring(req.ip.lastIndexOf(':') + 1) : req.ip   // just ipv4
+            httpRequest.requestSize = req.socket.bytesRead
+            httpRequest.referrer = req.get('Referrer')
+            
+        }
+        return meta
+      },
+      
       ignoreRoute: function (req, res) {
         return false
       }, // optional: allows to skip some log messages based on request and/or response
