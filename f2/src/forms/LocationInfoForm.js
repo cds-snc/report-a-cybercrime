@@ -22,7 +22,6 @@ export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   const postalCodeRegEXP = /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
-  // const postalCode =
   if (
     'postalCode' in values &&
     containsData(values.postalCode) &&
