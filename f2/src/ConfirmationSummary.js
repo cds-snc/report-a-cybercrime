@@ -35,10 +35,8 @@ export const ConfirmationSummary = () => {
     ...data.formData.anonymous,
   }
   useEffect(() => {
-    console.log('to call doneForms')
     if (!data.doneForms) {
       dispatch({ type: 'saveDoneForms', data: true })
-      console.log('doneForms called')
     }
   })
 
