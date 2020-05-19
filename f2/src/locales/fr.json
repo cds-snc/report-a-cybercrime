@@ -297,6 +297,8 @@
   "privacyConsentInfoPage.sharing": "Les informations que vous fournissez dans votre rapport peuvent aussi être communiquées à d’autres services de police et à des partenaires du secteur de la sécurité pour faire avancer les enquêtes, l’analyse des renseignements et les démarches de prévention.",
   "privacyConsentPage.intro": "Vous faites un signalement au <0>Groupe national de coordination contre la cybercriminalité</0> et au <1>Centre antifraude du Canada</1>.",
   "privacyConsentPage.title": "Protection de vos renseignements",
+  "privacyStatementPage.authorizationHeading": "Autorisation de collecter vos renseignements personnels",
+  "privacyStatementPage.authorizationText1": "La collecte et l’utilisation de vos renseignements personnels par la GRC sont autorisées par l’article 18 de la Loi sur la Gendarmerie royale du Canada.",
   "privacyStatementPage.informationHeading": "Comment vos informations sont protégées",
   "privacyStatementPage.informationText1": "Vous avez le choix de fournir vos renseignements personnels ou de faire un rapport anonyme. Les renseignements personnels que vous fournissez sont conservés dans les fichiers de renseignements personnels « Documents opérationnels » de la GRC (GRC PPU 005).",
   "privacyStatementPage.informationText2": "Les renseignements ne permettant pas de vous identifier peuvent être communiqués au <0>Service numérique canadien</0> dans le but d’améliorer le présent site Web.",
