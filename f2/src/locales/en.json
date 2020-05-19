@@ -297,8 +297,6 @@
   "privacyConsentInfoPage.sharing": "The information you include in your report may also be shared with other police services and security partners to support investigations, intelligence analysis, and prevention efforts.",
   "privacyConsentPage.intro": "You are reporting to the RCMP’s <0>National Cybercrime Coordination Unit</0> and the <1>Canadian Anti-Fraud Centre</1>.",
   "privacyConsentPage.title": "Your privacy",
-  "privacyStatementPage.authorizationHeading": "Authorization to collect your information",
-  "privacyStatementPage.authorizationText1": "The collection and use of your personal information by RCMP is authorized by the Royal Canadian Mounted Police Act, section 18.",
   "privacyStatementPage.informationHeading": "How your information is protected",
   "privacyStatementPage.informationText1": "You may choose to provide personal information or report anonymously. The personal information that you provide is retained in the RCMP Personal Information Databank Operational Case Records (RCMP PPU 005).",
   "privacyStatementPage.informationText2": "Non-personally identifiable information may be shared with the <0>Canadian Digital Service</0> to improve this website.",
