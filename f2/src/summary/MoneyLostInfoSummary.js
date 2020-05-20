@@ -31,9 +31,9 @@ export const MoneyLostInfoSummary = (props) => {
     ),
   )
   methodPaymentLine = formatList(methodPaymentSummary, {
-    pair: i18n._('default.pair'),
-    middle: i18n._('default.middle'),
-    end: i18n._('default.end'),
+    pair: <Trans id="default.pair" />,
+    middle: <Trans id="default.middle" />,
+    end: <Trans id="default.end" />,
   })
 
   return (

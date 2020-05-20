@@ -86,7 +86,7 @@ export const LandingPage = (props) => {
                     <Trans id="landingPage.phoneTimes" />
                   </P>
                   <P>
-                    <A href={'tel:' + i18n._('landingPage.phoneNumber')}>
+                    <A href={'tel:' + <Trans id="landingPage.phoneNumber" />}>
                       <Trans id="landingPage.phoneNumber" />
                     </A>
                   </P>

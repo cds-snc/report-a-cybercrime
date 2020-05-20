@@ -26,9 +26,9 @@ export const WhatWasAffectedSummary = (props) => {
     i18n._(key).toLowerCase(),
   )
   const summaryLine = formatList(summaryOptions, {
-    pair: i18n._('default.pair'),
-    middle: i18n._('default.middle'),
-    end: i18n._('default.end'),
+    pair: <Trans id="default.pair" />,
+    middle: <Trans id="default.middle" />,
+    end: <Trans id="default.end" />,
   })
 
   return (

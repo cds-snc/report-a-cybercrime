@@ -29,9 +29,9 @@ export const InformationSummary = (props) => {
       : i18n._(key),
   )
   const infoReqLine = formatList(infoReqSummary, {
-    pair: i18n._('default.pair'),
-    middle: i18n._('default.middle'),
-    end: i18n._('default.end'),
+    pair: <Trans id="default.pair" />,
+    middle: <Trans id="default.middle" />,
+    end: <Trans id="default.end" />,
   })
 
   //push all select entities into the stack and if 'other' is selected, push the value of other.
@@ -43,9 +43,9 @@ export const InformationSummary = (props) => {
         : i18n._(key),
   )
   const infoObtainedLine = formatList(infoObtainedSummary, {
-    pair: i18n._('default.pair'),
-    middle: i18n._('default.middle'),
-    end: i18n._('default.end'),
+    pair: <Trans id="default.pair" />,
+    middle: <Trans id="default.middle" />,
+    end: <Trans id="default.end" />,
   })
 
   return (

@@ -343,6 +343,7 @@
   "thankYouPage.feedback.new": "Avez-vous d'autres commentaires pour améliorer le site?",
   "thankYouPage.feedback.success": "Merci. Nous avons reçu vos commentaires.",
   "thankYouPage.feedbackButton": "Dites nous en plus",
+  "thankYouPage.feedbackButton.aria": "",
   "thankYouPage.helpResource": "Pour vous aider :",
   "thankYouPage.helpResource1": "Découvrez comment vous pouvez vous protéger à l’avenir.",
   "thankYouPage.helpResource2": "Tenez-vous à jour sur les fraudes les plus communes.",
