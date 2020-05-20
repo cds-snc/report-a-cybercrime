@@ -152,6 +152,7 @@
   "evidencePage.details": "Si toutefois vous le pouvez, incluez des indices tels que :",
   "evidencePage.fileDescription": "Décrivez ce que montre ce fichier.",
   "evidencePage.fileSize": "Vous pouvez ajouter un maximum de 3 fichiers, chacun d’une taille maximale de 4 Mo.",
+  "evidencePage.fileTypes": "",
   "evidencePage.fileTypes1": "Images PNG et JPEG",
   "evidencePage.fileTypes2": "Documents Word et Excel",
   "evidencePage.fileTypes3": "Fichiers PDF, RTF et TXT",
