@@ -76,13 +76,10 @@ export const ThankYouPage = () => {
 
         <Row>
           <InfoCard
-            bg={
-              submissionInProgress || submissionSucceeded
-                ? 'green.200'
-                : 'yellow.300'
-            }
+            {...(submissionInProgress || submissionSucceeded
+              ? { bg: 'green.200', borderColor: 'green.400' }
+              : { bg: 'yellow.300', borderColor: 'yellow.400' })}
             color="black"
-            borderColor="green.400"
             spacing={6}
             columns={{ base: 4 / 4, lg: 6 / 7 }}
           >
