@@ -33,8 +33,23 @@ async function submitReportToServer(url = '', data = {}) {
   console.log(`${response.status} (${response.statusText})`)
 }
 
-let data = JSON.parse(JSON.stringify(formDefaults))
-data.contactInfo.fullName = 'Mallory'
-// data.contactInfo.extra = 'extra field!'
+const path = './TestData.json'
 
-submitReportToServer('http://localhost:3000/submit', data)
+fs.access(path, fs.F_OK, (err) => {
+  if (err) {
+    console.error(err)
+    console.info('Using data from JSON Object')
+    let data = JSON.parse(JSON.stringify(formDefaults))
+    data.contactInfo.fullName = 'Mallory'
+    // data.contactInfo.extra = 'extra field!'
+    submitReportToServer('https://report-dev.con.rcmp-grc.gc.ca/submit', data)
+    return
+  }
+  console.info('Using data from JSON File')
+  let rawdata = fs.readFileSync('Test.json');
+  let data = JSON.parse(rawdata);
+  data.contactInfo.fullName = 'MalDlory'
+  // data.contactInfo.extra = 'extra field!'
+  submitReportToServer('https://report-dev.con.rcmp-grc.gc.ca/submit', data)
+}
+)
