@@ -12,10 +12,15 @@ import { BackButton } from './components/backbutton'
 import { Stack, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { useHistory } from 'react-router-dom'
 
 export const EvidencePage = () => {
-  const [data, dispatch] = useStateValue()
-  const { doneForms } = data
+  const [state, dispatch] = useStateValue()
+  const { doneForms } = state
+  const history = useHistory()
+  if (state.formData.consent.consentOptions.length === 0) {
+    history.push('/privacyconsent')
+  }
 
   return (
     <Route
@@ -49,7 +54,7 @@ export const EvidencePage = () => {
               </Box>
 
               <EvidenceInfoForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({ type: 'saveFormData', data: { evidence: data } })
                   history.push(doneForms ? '/confirmation' : '/location')
                 }}

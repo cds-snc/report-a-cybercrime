@@ -17,81 +17,19 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
+import { validateDate } from '../utils/validateDate'
 
-//add validate functin for test
-export const validate = (values) => {
+const validate = (values) => {
   const errors = {}
-  //condition for an error to occur: append a lingui id to the list of error
-  // if it has a value AND this value is a number over 31
-  if (
-    values.startDay &&
-    (isNaN(values.startDay) ||
-      values.startDay > 31 ||
-      values.startDay === '0' ||
-      values.startDay === '00')
-  ) {
-    errors.whenDidItStart = 'whenDidItStart.startDate.warning'
-    errors.startDay = true
-  }
-  // if it has a value AND this value is a number over 12
-  if (
-    values.startMonth &&
-    (isNaN(values.startMonth) ||
-      values.startMonth > 12 ||
-      values.startMonth === '0' ||
-      values.startMonth === '00')
-  ) {
-    errors.whenDidItStart = 'whenDidItStart.startMonth.warning'
-    errors.startMonth = true
-  }
-  // if it has a value AND year is a number containing 4 digits
-  if (
-    values.startYear &&
-    (isNaN(values.startYear) ||
-      values.startYear.length !== 4 ||
-      values.startYear === '0000')
-  ) {
-    errors.whenDidItStart = 'whenDidItStart.startYear.warning'
-    errors.startYear = true
-  }
-
-  // if date is in the future and date is valid
-  // values.startMonth - 1 : UTC Date Months are values from 0 to 11
-  if (
-    Date.UTC(values.startYear, values.startMonth - 1, values.startDay) >
-    Date.now()
-  ) {
-    errors.whenDidItStart = 'whenDidItStart.errorMessage'
-    errors.startDay = true
-    errors.startMonth = true
-    errors.startYear = true
-  }
-  // validate if the date in different month  match the calendar
-  var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-  if (values.startMonth === 1 || values.startMonth > 2) {
-    if (values.startDay > ListofDays[values.startMonth - 1]) {
-      errors.whenDidItStart = 'whenDidItStart.startDate.warning'
-      errors.startDay = true
-    }
-  }
-  //validate if the dayin Feb can't be >29 in leap year, the day in Feb can't be >28 in non-leap year
-  if (values.startMonth === 2) {
-    var lyear = false
-    if (
-      (!(values.startYear % 4) && values.startYear % 100) ||
-      !(values.startYear % 400)
-    ) {
-      lyear = true
-    }
-    if (lyear === false && values.startDay >= 29) {
-      errors.whenDidItStart = 'whenDidItStart.startDate.warning'
-      errors.startDay = true
-    }
-    if (lyear === true && values.startDay > 29) {
-      errors.whenDidItStart = 'whenDidItStart.startDate.warning'
-      errors.startDay = true
-    }
-  }
+  const startDate = validateDate(
+    values.startYear,
+    values.startMonth,
+    values.startDay,
+  )
+  errors.whenDidItStart = []
+  startDate.map((key) => {
+    return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
+  })
   return errors
 }
 
@@ -189,13 +127,19 @@ export const HowDidItStartForm = (props) => {
           <Trans id="howDidTheyReachYou.online" />
           <Trans id="howDidTheyReachYou.app" />
           <Trans id="howDidTheyReachYou.others" />
+
           <Trans id="howManyTimes.once" />
           <Trans id="howManyTimes.severalTimes" />
           <Trans id="howManyTimes.notSure" />
-          <Trans id="whenDidItStart.errorMessage" />
-          <Trans id="whenDidItStart.startDate.warning" />
-          <Trans id="whenDidItStart.startMonth.warning" />
-          <Trans id="whenDidItStart.startYear.warning" />
+
+          <Trans id="whenDidItStart.error.notDay" />
+          <Trans id="whenDidItStart.error.notMonth" />
+          <Trans id="whenDidItStart.error.isFuture" />
+          <Trans id="whenDidItStart.error.notYear" />
+          <Trans id="whenDidItStart.error.yearLength" />
+          <Trans id="whenDidItStart.error.hasNoYear" />
+          <Trans id="whenDidItStart.error.hasNoMonth" />
+          <Trans id="whenDidItStart.error.hasNoDay" />
         </div>
       ) : null}
 
