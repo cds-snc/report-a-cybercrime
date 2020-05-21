@@ -17,3 +17,4 @@ message_*.txt
 utils/totp/node_modules
 utils/totp/secret
 utils/totp/code.html
+.DS_Store
