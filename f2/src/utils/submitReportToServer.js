@@ -1,3 +1,9 @@
+//
+// This is a Test Utility to submit JSON directly to the server using
+// either a JSON file or by referencing the defaultValues js file
+//
+// This is not the utility that is actually used by the Server to submit.
+//
 var fs = require('fs')
 const flatten = require('flat')
 const fetch = require('isomorphic-fetch')
