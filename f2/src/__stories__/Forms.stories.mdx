@@ -145,10 +145,26 @@ View [FormArrayControl](/?path=/docs/components-form-array-control--default-stor
 
 ## Default Values
 
-formDefaults is gaint Javascript object contains a list of all fields from report with empty values asigned for each field.
+formDefaults is a Javascript object contains a list of all fields from report with empty values asigned for each field.
 The value can be a empty string or empty array based on the type of field.
 
 This file helps us keep track of all fields for frontend and backend.
+
+Here is a example of money lost page with input fields(text) and checkbox(array)
+
+```jsx
+const formDefaults = {
+  moneyLost: {
+    demandedMoney: '',
+    moneyTaken: '',
+    methodPayment: [],
+    transactionDay: '',
+    transactionMonth: '',
+    transactionYear: '',
+    methodOther: '',
+  },
+}
+```
 
 ## Next and Cancel buttons
 
