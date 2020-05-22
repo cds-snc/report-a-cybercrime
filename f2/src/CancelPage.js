@@ -37,7 +37,7 @@ export const CancelPage = () => {
               <ButtonLink
                 mt="auto"
                 variantColor="black"
-                title={<Trans id="thankYouPage.feedbackButton.aria" />}
+                title={i18n._('thankYouPage.feedbackButton.aria')}
                 to="/finalFeedback"
               >
                 <Trans id="cancelPage.feedbackButton" />
