@@ -73,26 +73,6 @@ export const LandingPage = (props) => {
                   />
                 </ButtonLink>
               </Stack>
-              <Stack>
-                <H2>
-                  <Trans id="landingPage.reportByPhone" />
-                </H2>
-
-                <Stack>
-                  <P>
-                    <Trans id="landingPage.phoneDays" />
-                  </P>
-                  <P>
-                    <Trans id="landingPage.phoneTimes" />
-                  </P>
-                  <P>
-                    <A href={'tel:' + <Trans id="landingPage.phoneNumber" />}>
-                      <Trans id="landingPage.phoneNumber" />
-                    </A>
-                  </P>
-                </Stack>
-              </Stack>
-
               <Well variantColor="blue">
                 <Trans id="landingPage.warning" />
               </Well>
