@@ -47,7 +47,6 @@
     "unidecode": "^0.1.8",
     "winston": "~3.2.1",
     "express-winston": "4.0.3"
-
   },
   "scripts": {
     "prod": "npm run build && node server.js",

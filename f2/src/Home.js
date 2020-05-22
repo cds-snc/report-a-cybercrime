@@ -27,6 +27,7 @@ import { AnonymousPage } from './AnonymousPage'
 import { LocationAnonymousPage } from './LocationAnonymousPage'
 /*Consider removing after c19 pandemic*/
 import { Covid19Page } from './Covid19Page'
+import { RedirectRoute } from './components/route'
 
 export const Home = () => (
   <Router>
@@ -71,9 +72,9 @@ export const Home = () => (
       <Route path="/whathappened">
         <WhatHappenedPage />
       </Route>
-      <Route path="/suspectclues">
+      <RedirectRoute path="/suspectclues">
         <SuspectCluesPage />
-      </Route>
+      </RedirectRoute>
       <Route path="/evidence">
         <EvidencePage />
       </Route>
