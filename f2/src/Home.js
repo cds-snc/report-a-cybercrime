@@ -51,45 +51,45 @@ export const Home = () => (
       <Route path="/termsandconditions">
         <TermsAndConditions />
       </Route>
-      <Route path="/howdiditstart">
+      <RedirectRoute path="/howdiditstart">
         <HowDidItStartPage />
-      </Route>
-      <Route path="/whatwasaffected">
+      </RedirectRoute>
+      <RedirectRoute path="/whatwasaffected">
         <WhatWasAffectedPage />
-      </Route>
-      <Route path="/moneylost">
+      </RedirectRoute>
+      <RedirectRoute path="/moneylost">
         <MoneyLostPage />
-      </Route>
-      <Route path="/information">
+      </RedirectRoute>
+      <RedirectRoute path="/information">
         <InformationPage />
-      </Route>
-      <Route path="/devices">
+      </RedirectRoute>
+      <RedirectRoute path="/devices">
         <DevicesPage />
-      </Route>
-      <Route path="/business">
+      </RedirectRoute>
+      <RedirectRoute path="/business">
         <BusinessPage />
-      </Route>
-      <Route path="/whathappened">
+      </RedirectRoute>
+      <RedirectRoute path="/whathappened">
         <WhatHappenedPage />
-      </Route>
+      </RedirectRoute>
       <RedirectRoute path="/suspectclues">
         <SuspectCluesPage />
       </RedirectRoute>
-      <Route path="/evidence">
+      <RedirectRoute path="/evidence">
         <EvidencePage />
-      </Route>
-      <Route path="/location">
+      </RedirectRoute>
+      <RedirectRoute path="/location">
         <LocationPage />
-      </Route>
+      </RedirectRoute>
       <Route path="/anonymous">
         <AnonymousPage />
       </Route>
-      <Route path="/contactinfo">
+      <RedirectRoute path="/contactinfo">
         <ContactInfoPage />
-      </Route>
-      <Route path="/confirmation">
+      </RedirectRoute>
+      <RedirectRoute path="/confirmation">
         <ConfirmationPage />
-      </Route>
+      </RedirectRoute>
       <Route exact path="/thankYouPage">
         <ThankYouPage />
       </Route>
@@ -105,9 +105,9 @@ export const Home = () => (
       <Route path="/finalFeedbackThanks">
         <FinalFeedbackThanksPage />
       </Route>
-      <Route path="/locationAnonymous">
+      <RedirectRoute path="/locationAnonymous">
         <LocationAnonymousPage />
-      </Route>
+      </RedirectRoute>
 
       <Route>
         <PageNotFound />
