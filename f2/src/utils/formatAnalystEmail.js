@@ -19,7 +19,7 @@ const formatReportInfo = (data) => {
 
   if (data.selfHarmWords.length) {
     selfHarmString = 'self harm words detected'
-    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${data.selfHarmWords}</h1>`
+    returnString = `\n\n<h1 style="background-color:yellow;">SELF HARM WORDS FOUND : ${data.selfHarmWords}</h1>`
   }
 
   let isAnonymous =
