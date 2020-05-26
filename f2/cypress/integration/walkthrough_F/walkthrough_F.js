@@ -1,5 +1,5 @@
 Given('I open the report home page', () => {
-  cy.visit(Cypress.env('staging'))
+  cy.visit(Cypress.env('dev'))
 })
 
 When('I change language', () => {

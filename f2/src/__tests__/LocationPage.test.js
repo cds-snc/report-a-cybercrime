@@ -8,6 +8,7 @@ import { LocationPage } from '../LocationPage'
 import canada from '../theme/canada'
 import en from '../locales/en.json'
 import { StateProvider, reducer } from '../utils/state'
+import { formDefaults } from '../forms/defaultValues'
 
 i18n.load('en', { en })
 i18n.activate('en')
@@ -23,7 +24,7 @@ describe('<LocationPage />', () => {
           <StateProvider
             initialState={{
               formData: {
-                anonymous: { anonymousOptions: 'anonymousPage.yes' },
+                ...formDefaults,
               },
             }}
             reducer={reducer}

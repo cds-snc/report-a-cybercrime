@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Lead } from './components/paragraph'
@@ -12,14 +12,21 @@ import { useStateValue } from './utils/state'
 import { formatPostalCode } from './utils/formatPostalCode'
 import { Page } from './components/Page'
 import { formDefaults } from './forms/defaultValues'
+import { useHistory } from 'react-router-dom'
 
 export const LocationPage = () => {
-  const [data, dispatch] = useStateValue()
-  const { doneForms } = data
+  const [state, dispatch] = useStateValue()
+  const { doneForms } = state
   const formData = {
     ...formDefaults,
-    ...data.formData,
+    ...state.formData,
   }
+  const history = useHistory()
+  useEffect(() => {
+    if (state.formData.consent.consentOptions.length === 0) {
+      history.push('/privacyconsent')
+    }
+  }, [history, state.formData.consent.consentOptions.length])
 
   return (
     <Route
