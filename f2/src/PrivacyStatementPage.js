@@ -102,6 +102,26 @@ export const PrivacyStatementPage = () => {
           </Stack>
           <Stack spacing={4}>
             <H2>
+              <Trans id="privacyStatementPage.webAnalyticsHeading" />
+            </H2>
+            <P>
+              <Trans id="privacyStatementPage.webAnalyticsText1" />
+            </P>
+            <P>
+              <Trans id="privacyStatementPage.webAnalyticsText2">
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.rcmp-grc.gc.ca/en/terms-conditions'
+                      : 'https://www.rcmp-grc.gc.ca/fr/avis'
+                  }
+                  isExternal
+                />
+              </Trans>
+            </P>
+          </Stack>
+          <Stack spacing={4}>
+            <H2>
               <Trans id="privacyStatementPage.toinquireHeading" />
             </H2>
             <P>
