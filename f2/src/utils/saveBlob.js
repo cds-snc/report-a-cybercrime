@@ -3,9 +3,8 @@ const {
   StorageSharedKeyCredential,
   generateBlobSASQueryParameters,
   ContainerSASPermissions,
-  SASProtocol
+  SASProtocol,
 } = require('@azure/storage-blob')
-
 
 const fs = require('fs')
 require('dotenv').config()
@@ -13,20 +12,16 @@ require('dotenv').config()
 const account = process.env.BLOB_STORAGE_NAME
 const accountKey = process.env.BLOB_STORAGE_KEY
 
-
 const sasExpiryDays = process.env.BLOB_SAS_DAYS_EXPIRY
 const sasIpRangeLower = process.env.BLOB_SAS_IP_LOWER
-const sasIpRangeUpper= process.env.BLOB_SAS_IP_UPPER
+const sasIpRangeUpper = process.env.BLOB_SAS_IP_UPPER
 
 // Use StorageSharedKeyCredential with storage account and account key
 // StorageSharedKeyCredential is only avaiable in Node.js runtime, not in browsers
 let blobServiceClient
 let sharedKeyCredential
 try {
-  sharedKeyCredential = new StorageSharedKeyCredential(
-    account,
-    accountKey,
-  )
+  sharedKeyCredential = new StorageSharedKeyCredential(account, accountKey)
   blobServiceClient = new BlobServiceClient(
     `https://${account}.blob.core.windows.net`,
     sharedKeyCredential,
@@ -53,26 +48,29 @@ async function saveBlob(data) {
         )
       else console.info(`Created container ${containerName} successfully`)
 
-
       // Generate service level SAS for a container
-      const containerSAS = generateBlobSASQueryParameters({
-        containerName, // Required
-        permissions: ContainerSASPermissions.parse("r"), // Required
-        startsOn: new Date(), // Required
-        expiresOn: new Date(new Date().valueOf() + (86400000 * sasExpiryDays)), // Optional. 86400000 miliseconds = 1 day
-        ipRange: { start: sasIpRangeLower, end: sasIpRangeUpper}, // Optional
-        protocol: SASProtocol.Https, // Optional
-      },
-      sharedKeyCredential // StorageSharedKeyCredential - `new StorageSharedKeyCredential(account, accountKey)`
-      ).toString();
+      const containerSAS = generateBlobSASQueryParameters(
+        {
+          containerName, // Required
+          permissions: ContainerSASPermissions.parse('r'), // Required
+          startsOn: new Date(), // Required
+          expiresOn: new Date(new Date().valueOf() + 86400000 * sasExpiryDays), // Optional. 86400000 miliseconds = 1 day
+          ipRange: { start: sasIpRangeLower, end: sasIpRangeUpper }, // Optional
+          protocol: SASProtocol.Https, // Optional
+        },
+        sharedKeyCredential, // StorageSharedKeyCredential - `new StorageSharedKeyCredential(account, accountKey)`
+      ).toString()
 
       for (var x = 0; x < data.evidence.files.length; x++) {
         if (data.evidence.files[x].malwareIsClean) {
           const content = fs.readFileSync(data.evidence.files[x].path)
           // Use SHA1 hash as file name to avoid collisions in blob storage, keep file extension
-          const blobName = data.evidence.files[x].sha1 + '.' + data.evidence.files[x].name.split('.').pop()
+          const blobName =
+            data.evidence.files[x].sha1 +
+            '.' +
+            data.evidence.files[x].name.split('.').pop()
           const blockBlobClient = containerClient.getBlockBlobClient(blobName)
-          
+
           errorCode = (await blockBlobClient.upload(content, content.length))
             .errorCode
           if (errorCode)
@@ -83,8 +81,9 @@ async function saveBlob(data) {
             console.info(
               `Uploaded report ${data.reportId} file ${data.evidence.files[x].name}, blob ${blobName} successfully`,
             )
-            // TODO: Only print the URL if here are no HRMIS in ENV
-            console.info('File Url with SAS Token: ' + blockBlobClient.url + '?' + containerSAS.toString());
+          // Add the SAS URL to the file data structure
+          data.evidence.files[x].sasUrl =
+            blockBlobClient.url + '?' + containerSAS.toString()
         } else {
           console.warn(
             `Skipping saving report ${data.reportId} file ${data.evidence.files[x].name} due to malware.`,
