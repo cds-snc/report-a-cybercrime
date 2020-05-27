@@ -6,7 +6,10 @@ const {
   SASProtocol,
 } = require('@azure/storage-blob')
 
+const nanoid = require('nanoid')
 const fs = require('fs')
+const exec = require('child_process').exec
+const { certFileName } = require('./ldap')
 require('dotenv').config()
 
 const account = process.env.BLOB_STORAGE_NAME
@@ -30,6 +33,13 @@ try {
   console.warn('WARNING: File storage not configured')
 }
 
+const uidListInitial = process.env.LDAP_UID
+  ? process.env.LDAP_UID.split(',').map((k) => k.trim())
+  : []
+
+/*
+Given 'data' 
+*/
 async function saveBlob(data) {
   try {
     if (!blobServiceClient && data.evidence.files.length > 0) {
@@ -63,30 +73,35 @@ async function saveBlob(data) {
 
       for (var x = 0; x < data.evidence.files.length; x++) {
         if (data.evidence.files[x].malwareIsClean) {
-          const content = fs.readFileSync(data.evidence.files[x].path)
           // Use SHA1 hash as file name to avoid collisions in blob storage, keep file extension
           const blobName =
             data.evidence.files[x].sha1 +
             '.' +
-            data.evidence.files[x].name.split('.').pop()
+            data.evidence.files[x].name.split('.').pop() +
+            '.p7m'
           const blockBlobClient = containerClient.getBlockBlobClient(blobName)
-
-          errorCode = (await blockBlobClient.upload(content, content.length))
-            .errorCode
-          if (errorCode)
-            console.warn(
-              `ERROR: Upload report ${data.reportId} file ${data.evidence.files[x].name}, blob ${blobName}: error code ${errorCode}`,
-            )
-          else
-            console.info(
-              `Uploaded report ${data.reportId} file ${data.evidence.files[x].name}, blob ${blobName} successfully`,
-            )
+          encryptFile(
+            uidListInitial,
+            data.evidence.files[x],
+            (file, content) => {
+              errorCode = blockBlobClient.upload(content, content.length)
+                .errorCode
+              if (errorCode)
+                console.warn(
+                  `ERROR: Upload report ${data.reportId} file ${file.name}, blob ${blobName}: error code ${errorCode}`,
+                )
+              else
+                console.info(
+                  `Uploaded report ${data.reportId} file ${file.name}, blob ${blobName} successfully`,
+                )
+            },
+          )
           // Add the SAS URL to the file data structure
           data.evidence.files[x].sasUrl =
             blockBlobClient.url + '?' + containerSAS.toString()
         } else {
           console.warn(
-            `Skipping saving report ${data.reportId} file ${data.evidence.files[x].name} due to malware.`,
+            `Skipping saving report ${data.reportId} file ${file.name} due to malware.`,
           )
         }
       }
@@ -94,6 +109,36 @@ async function saveBlob(data) {
   } catch (error) {
     console.warn(`ERROR in saveBlob: ${error}`)
   }
+}
+
+/* Encrypts the file at file.path for user specified by uid. 
+Calls the 'callback' function after with encrypted file. */
+const encryptFile = (uids, file, callback) => {
+  const openssl = 'openssl smime -des3 -encrypt -binary'
+  const messageFile = `${file.path}`
+  const encryptedFile = messageFile + '.p7m'
+
+  const cerFileList = []
+  uids.forEach((uid) => {
+    cerFileList.push(certFileName(uid))
+  })
+  const certFiles = cerFileList.join(' ')
+
+  exec(
+    `${openssl} -in ${messageFile} -out ${encryptedFile} ${certFiles}`,
+    { cwd: process.cwd() },
+    function (error, _stdout, stderr) {
+      if (error) throw error
+      else if (stderr) console.warn(stderr)
+      else {
+        console.log('Encrypted File: ' + file.path)
+        const attachment = fs.readFileSync(encryptedFile)
+        fs.unlink(messageFile, () => {})
+        fs.unlink(encryptedFile, () => {})
+        callback(file, attachment)
+      }
+    },
+  )
 }
 
 module.exports = { saveBlob }
