@@ -46,8 +46,8 @@
     "styled-system": "^5.1.5",
     "unidecode": "^0.1.8",
     "winston": "~3.2.1",
-    "express-winston": "4.0.3"
-
+    "express-winston": "4.0.3",
+    "jimp": "0.12.1"
   },
   "scripts": {
     "prod": "npm run build && node server.js",
