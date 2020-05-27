@@ -18,14 +18,15 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
     newline: 'unix',
     buffer: true,
   })
-
+  /*
+  Disabling attachments for now, let's try sending a SAS link instead
   let attachments = data.evidence.files
     .filter((file) => file.malwareIsClean)
     .map((file) => ({
       filename: file.name,
       path: file.path,
     }))
-
+  */
   transporter.sendMail(
     {
       from: mailFrom,
@@ -33,7 +34,7 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
       subject: `NCFRS report ${data.reportId}`,
       text: message,
       html: message,
-      attachments,
+      //attachments,
     },
     (err, info) => {
       if (err) console.warn(`ERROR in prepareUnencryptedReportEmail: ${err}`)

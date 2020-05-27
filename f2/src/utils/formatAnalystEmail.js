@@ -236,6 +236,10 @@ const formatFileAttachments = (data) => {
             formatLineHtml('Is racy:       ', file.isImageRacyClassified) +
             formatLineHtml('Racy Score:    ', file.racyClassificationScore)
 
+      const downloadLink = file.malwareIsClean
+        ? formatLineHtml('Download file: ', file.sasUrl)
+        : ''
+
       return (
         formatLineHtml(
           '<b>WARNING:</b>',
@@ -249,6 +253,7 @@ const formatFileAttachments = (data) => {
           'Malware scan:',
           file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
         ) +
+        downloadLink +
         moderatorString
       )
     })

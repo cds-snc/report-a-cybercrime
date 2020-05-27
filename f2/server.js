@@ -84,13 +84,17 @@ const allowedReferrers = [
 getReportCount(availableData)
 setTimeout(() => console.log({ availableData }), 1000)
 
-// These can all be done async to avoid holding up the nodejs process?
-async function save(data, res) {
-  saveBlob(data)
-
+// Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
+// without holding up the rest of the 'save' function
+async function saveBlobAndEmailReport(data) {
+  // Await on this because saveBlob generates the SAS link for each file
+  await saveBlob(data)
   const analystEmail = formatAnalystEmail(data)
   encryptAndSend(uidList, emailList, data, analystEmail)
-
+}
+// These can all be done async to avoid holding up the nodejs process?
+async function save(data, res) {
+  saveBlobAndEmailReport(data)
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
