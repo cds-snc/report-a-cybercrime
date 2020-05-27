@@ -25,7 +25,7 @@ const prepareUnencryptedReportEmail = async (message, data, callback) => {
     data.evidence.files
       .filter((file) => file.malwareIsClean)
       .map(async (file) => {
-        fileExtension = getFileExtension(file.name)
+        let fileExtension = getFileExtension(file.name)
         if (fileExtension.endsWith('png')) {
           let jpgPath = file.path.substr(0, file.path.lastIndexOf('.')) + '.jpg'
           await png2jpeg(file.path, jpgPath)
