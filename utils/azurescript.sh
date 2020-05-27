@@ -127,6 +127,9 @@ az webapp deployment container config --enable-cd true --name $APP_NAME
 ## Configure the App Service to apply network restrictions to the SCM site as well
 az webapp config access-restriction set --resource-group $RG_NAME --name $APP_NAME --use-same-restrictions-for-scm-site true
 
+## Disable FTP(S) access
+az webapp config set --ftps-state Disabled --resource-group $RG_NAME --name $APP_NAME
+
 ## Get public IP address of the Application Gateway to use when configuring network restrictions
 publicIpID="$(az network application-gateway frontend-ip show --resource-group $WAF_RG --gateway-name $WAF_NAME --name $WAF_FRONTEND_IP --subscription $WAF_SUBSCRIPTION --query 'publicIpAddress.id' --output tsv)"
 publicIP="$(az network public-ip show --ids $publicIpID --query 'ipAddress' --output tsv)"
