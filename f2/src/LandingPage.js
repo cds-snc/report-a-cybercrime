@@ -10,12 +10,14 @@ import { H1, H2 } from './components/header'
 import { Ul } from './components/unordered-list'
 import { Li } from './components/list-item'
 import { A } from './components/link'
-import { Layout } from './components/layout'
+import { Layout, Row } from './components/layout'
 import { Stack, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
+import { LandingBox } from './components/container'
+
 
 export const LandingPage = (props) => {
   const { i18n } = useLingui()
@@ -62,6 +64,26 @@ export const LandingPage = (props) => {
                 <P>
                   <Trans id="landingPage.onlineIntro" />
                 </P>
+                <Row>
+                  <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 8 }}>
+                    <p mb={2}>
+                      <Trans id="landingPage.fyiReport.description" />
+                    </p>
+
+                    <ButtonLink to="/startPage">
+                      <Trans id="landingPage.fullReport.button" />
+                      <Icon
+                        focusable="false"
+                        ml={2}
+                        mr={-2}
+                        name="chevron-right"
+                        size="28px"
+                      />
+                    </ButtonLink>
+                    
+                  </LandingBox>
+                </Row>
+
                 <ButtonLink to="/startPage">
                   <Trans id="landingPage.nextButton.reportNow" />
                   <Icon
