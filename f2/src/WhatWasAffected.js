@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Lead } from './components/paragraph'
@@ -10,17 +10,10 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
-import { useHistory } from 'react-router-dom'
 
 export const WhatWasAffectedPage = () => {
-  const [state, dispatch] = useStateValue()
-  const { doneForms } = state
-  const history = useHistory()
-  useEffect(() => {
-    if (state.formData.consent.consentOptions.length === 0) {
-      history.push('/privacyconsent')
-    }
-  }, [history, state.formData.consent.consentOptions.length])
+  const [data, dispatch] = useStateValue()
+  const { doneForms } = data
 
   return (
     <Route
