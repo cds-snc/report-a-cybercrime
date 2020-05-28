@@ -77,7 +77,16 @@ export const PrivacyStatementPage = () => {
               <Trans id="privacyStatementPage.informationHeading" />
             </H2>
             <P>
-              <Trans id="privacyStatementPage.informationText1" />
+              <Trans id="privacyStatementPage.informationText1">
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.rcmp-grc.gc.ca/atip-aiprp/infosource/pib-frp-eng.htm#ppu005'
+                      : 'https://www.rcmp-grc.gc.ca/atip-aiprp/infosource/pib-frp-fra.htm#ppu005'
+                  }
+                  isExternal
+                />
+              </Trans>
             </P>
             <P>
               <Trans id="privacyStatementPage.informationText2">
