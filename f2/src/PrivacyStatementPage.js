@@ -77,7 +77,16 @@ export const PrivacyStatementPage = () => {
               <Trans id="privacyStatementPage.informationHeading" />
             </H2>
             <P>
-              <Trans id="privacyStatementPage.informationText1" />
+              <Trans id="privacyStatementPage.informationText1">
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.rcmp-grc.gc.ca/atip-aiprp/infosource/pib-frp-eng.htm#ppu005'
+                      : 'https://www.rcmp-grc.gc.ca/atip-aiprp/infosource/pib-frp-fra.htm#ppu005'
+                  }
+                  isExternal
+                />
+              </Trans>
             </P>
             <P>
               <Trans id="privacyStatementPage.informationText2">
@@ -98,6 +107,26 @@ export const PrivacyStatementPage = () => {
             </H2>
             <P>
               <Trans id="privacyStatementPage.authorizationText1" />
+            </P>
+          </Stack>
+          <Stack spacing={4}>
+            <H2>
+              <Trans id="privacyStatementPage.webAnalyticsHeading" />
+            </H2>
+            <P>
+              <Trans id="privacyStatementPage.webAnalyticsText1" />
+            </P>
+            <P>
+              <Trans id="privacyStatementPage.webAnalyticsText2">
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.rcmp-grc.gc.ca/en/terms-conditions'
+                      : 'https://www.rcmp-grc.gc.ca/fr/avis'
+                  }
+                  isExternal
+                />
+              </Trans>
             </P>
           </Stack>
           <Stack spacing={4}>
