@@ -10,10 +10,9 @@ export const BackButton = ({ variant, variants, variantColor, ...props }) => (
   <Route
     render={({ history }) => (
       <LinkButton
-        d="flex"
+        d="inline-flex"
         alignItems="center"
         onClick={() => history.goBack()}
-        width= "fit-content"
         // eslint-disable-next-line no-script-url
         href="javascript:;" // otherwise can't navigate to with keyboard
         {...props}
