@@ -85,6 +85,15 @@ export const LandingPage = (props) => {
               <Ul>
                 <Li>
                   <Trans id="landingPage.reportingOptions0" />
+                  <A
+                    href={
+                      'tel:' +
+                      i18n._('landingPage.reportingOptions0.phoneNumber')
+                    }
+                  >
+                    <Trans id="landingPage.reportingOptions0.phoneNumber" />
+                  </A>
+                  <Trans id="landingPage.reportingOptions0.period" />
                 </Li>
                 <Li>
                   <Trans id="landingPage.reportingOptions1">
