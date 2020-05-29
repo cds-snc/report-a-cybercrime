@@ -30,6 +30,7 @@ export const PrivacyConsentInfoForm = (props) => {
     ...data.formData.consent,
   }
   const consentOptions = ['privacyConsentInfoForm.yes']
+  const { fyiForm }  = data.formData
 
   return (
     <React.Fragment>
@@ -90,7 +91,7 @@ export const PrivacyConsentInfoForm = (props) => {
               })}
             </FormArrayControl>
             <NextAndCancelButtons
-              next={<Trans id="privacyConsentInfoForm.nextPage" />}
+              next={ fyiForm ? <Trans id="fyiForm.nextPage1" /> : <Trans id="privacyConsentInfoForm.nextPage" /> }
               button={<Trans id="privacyConsentInfoForm.nextButton" />}
             />
           </Stack>

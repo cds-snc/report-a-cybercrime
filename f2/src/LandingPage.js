@@ -61,14 +61,10 @@ export const LandingPage = (props) => {
                   <Trans id="landingPage.reportOnline" />
                 </H2>
 
-                <P>
-                  <Trans id="landingPage.onlineIntro" />
-                </P>
-                <Row>
-                  <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 8 }}>
-                    <p mb={2}>
-                      <Trans id="landingPage.fyiReport.description" />
-                    </p>
+                  <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
+                    <P mb={2}>
+                      <Trans id="landingPage.fullReport.description" />
+                    </P>
 
                     <ButtonLink to="/startPage">
                       <Trans id="landingPage.fullReport.button" />
@@ -82,18 +78,32 @@ export const LandingPage = (props) => {
                     </ButtonLink>
                     
                   </LandingBox>
-                </Row>
+                  
+                  <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
+                    <P mb={2}>
+                      <Trans id="landingPage.fyiReport.description" />
+                    </P>
 
-                <ButtonLink to="/startPage">
-                  <Trans id="landingPage.nextButton.reportNow" />
-                  <Icon
-                    focusable="false"
-                    ml={2}
-                    mr={-2}
-                    name="chevron-right"
-                    size="28px"
-                  />
-                </ButtonLink>
+                    <ButtonLink 
+                      onClick={()=> { 
+                        dispatch({
+                          type: 'saveFormData',
+                          data: { fyiForm: true },
+                        })
+                      }}
+                      to="/privacyconsent"
+                    >
+                      <Trans id="landingPage.fyiReport.button" />
+                      <Icon
+                        focusable="false"
+                        ml={2}
+                        mr={-2}
+                        name="chevron-right"
+                        size="28px"
+                      />
+                    </ButtonLink>
+                    
+                  </LandingBox>
               </Stack>
 
               <Well variantColor="blue">

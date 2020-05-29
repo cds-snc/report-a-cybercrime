@@ -16,6 +16,7 @@ import { Page } from './components/Page'
 export const EvidencePage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
+  const { fyiForm } = data.formData
 
   return (
     <Route
@@ -51,7 +52,7 @@ export const EvidencePage = () => {
               <EvidenceInfoForm
                 onSubmit={(data) => {
                   dispatch({ type: 'saveFormData', data: { evidence: data } })
-                  history.push(doneForms ? '/confirmation' : '/location')
+                  history.push((doneForms || fyiForm) ? '/confirmation' : '/location')
                 }}
               />
             </Stack>

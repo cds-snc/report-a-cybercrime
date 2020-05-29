@@ -17,6 +17,7 @@ import { formDefaults } from './forms/defaultValues'
 export const WhatHappenedPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
+  const { fyiForm } = data.formData
 
   const whatWasAffected = {
     ...formDefaults.whatWasAffected,
@@ -88,7 +89,11 @@ export const WhatHappenedPage = () => {
                     type: 'saveFormData',
                     data: { whatHappened: data },
                   })
-                  history.push(doneForms ? '/confirmation' : '/suspectclues')
+                  if (doneForms) {
+                    history.push('/confirmation')
+                  } else {
+                    history.push(fyiForm ? '/evidence' : '/suspectclues')
+                  }
                 }}
               />
             </Stack>

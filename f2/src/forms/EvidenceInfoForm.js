@@ -27,6 +27,7 @@ export const EvidenceInfoForm = (props) => {
     ...formDefaults.evidence,
     ...data.formData.evidence,
   }
+  const { fyiForm } = data.formData
 
   const [files, setFiles] = useState(cached.files)
   const [fileDescriptions, setFileDescriptions] = useState(
@@ -203,7 +204,7 @@ export const EvidenceInfoForm = (props) => {
               ))}
             </Stack>
             <NextAndCancelButtons
-              next={<Trans id="evidencePage.nextPage" />}
+              next={fyiForm ? <Trans id="fyiForm.nextPage3" /> : <Trans id="evidencePage.nextPage" />}
               button={<Trans id="evidencePage.nextButton" />}
             />
           </Stack>

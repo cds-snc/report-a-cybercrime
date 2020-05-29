@@ -54,6 +54,7 @@ const formDefaults = {
   },
   location: { postalCode: '', city: '', province: '' },
   contactInfo: { fullName: '', email: '', phone: '' },
+  fyiForm: false,
 }
 
 module.exports = { formDefaults }

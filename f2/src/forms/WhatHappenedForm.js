@@ -22,6 +22,7 @@ export const WhatHappenedForm = (props) => {
     ...formDefaults.whatHappened,
     ...data.formData.whatHappened,
   }
+  const { fyiForm }  = data.formData
 
   return (
     <Form
@@ -37,7 +38,7 @@ export const WhatHappenedForm = (props) => {
             h="300px"
           />
           <NextAndCancelButtons
-            next={<Trans id="whatHappenedPage.nextPage" />}
+            next={fyiForm ? <Trans id="fyiForm.nextPage2" /> : <Trans id="whatHappenedPage.nextPage" />}
             button={<Trans id="whatHappenedPage.nextButton" />}
           />
         </Stack>
