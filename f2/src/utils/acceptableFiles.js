@@ -9,6 +9,6 @@ const fileExtensionPasses = fileName => {
   return acceptableExtensions.indexOf('.' + getExtension(fileName)) > -1
 }
 
-const fileSizePasses = fileSize => fileSize <= 4 * 1024 * 1024
+const fileSizePasses = fileSize => fileSize >0 && fileSize <= 4 * 1024 * 1024
 
 module.exports = { acceptableExtensions, fileExtensionPasses, fileSizePasses }
