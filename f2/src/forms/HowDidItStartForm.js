@@ -240,7 +240,6 @@ export const HowDidItStartForm = (props) => {
                     <RadioAdapter
                       name="howManyTimes"
                       value={key}
-                      isChecked={recurrenceCheck.howManyTimes.includes(key)}
                     >
                       {i18n._(key)}
                     </RadioAdapter>

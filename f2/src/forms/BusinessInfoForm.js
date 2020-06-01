@@ -86,7 +86,6 @@ export const BusinessInfoForm = (props) => {
                     <RadioAdapter
                       name="numberOfEmployee"
                       value={key}
-                      isChecked={recurrenceCheck.numberOfEmployee.includes(key)}
                     >
                       {i18n._(key)}
                     </RadioAdapter>

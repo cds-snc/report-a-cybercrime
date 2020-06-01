@@ -74,7 +74,6 @@ export const PrivacyConsentInfoForm = (props) => {
                     <CheckboxAdapter
                       name="consentOptions"
                       value={key}
-                      isChecked={whetherConsent.consentOptions.includes(key)}
                     >
                       <Trans id="privacyConsentInfoForm.yes" />
                       <A
