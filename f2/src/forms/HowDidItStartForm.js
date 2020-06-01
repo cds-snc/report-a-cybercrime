@@ -177,9 +177,6 @@ export const HowDidItStartForm = (props) => {
                     <CheckboxAdapter
                       name="howDidTheyReachYou"
                       value={question.channel}
-                      isChecked={howdiditstart.howDidTheyReachYou.includes(
-                        question.channel,
-                      )}
                       conditionalField={
                         <Field
                           name={question.name}
