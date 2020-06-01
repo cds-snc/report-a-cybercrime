@@ -12,6 +12,7 @@ import { useStateValue } from './utils/state'
 import { formatPostalCode } from './utils/formatPostalCode'
 import { Page } from './components/Page'
 import { formDefaults } from './forms/defaultValues'
+var zipcodes = require('zipcodes')
 
 export const LocationPage = () => {
   const [data, dispatch] = useStateValue()
@@ -47,6 +48,8 @@ export const LocationPage = () => {
                 <LocationInfoForm
                   onSubmit={(data) => {
                     data.postalCode = formatPostalCode(data.postalCode)
+                    var hills = zipcodes.lookup(data.postalCode)
+                    console.log(hills)
                     dispatch({ type: 'saveFormData', data: { location: data } })
                     history.push(doneForms ? '/confirmation' : '/contactinfo')
                   }}

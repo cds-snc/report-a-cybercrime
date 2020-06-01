@@ -1,6 +1,7 @@
 // 'use strict'
 
 const { formatDate } = require('./formatDate')
+var zipcodes = require('zipcodes')
 
 const unCamel = (text) =>
   text.replace(/([A-Z])|([\d]+)/g, ' $1$2').toLowerCase()
@@ -56,6 +57,8 @@ const formatVictimDetails = (data) => {
     .map((option) => option.replace('privacyConsentInfoForm.', ''))
     .join(', ')
 
+  // const postalCity = zipcodes.lookup(data.postalCode).city
+  // const postalProv = zipcodes.lookup(data.postalCode).state
   const rows =
     formatLineHtml('Full name:', data.contactInfo.fullName) +
     formatLineHtml('Email:', data.contactInfo.email) +
@@ -63,6 +66,8 @@ const formatVictimDetails = (data) => {
     formatLineHtml('City:', data.location.city) +
     formatLineHtml('Province:', data.location.province) +
     formatLineHtml('Postal code:', data.location.postalCode) +
+    // formatLineHtml('postalCity:', postalCity) +
+    // formatLineHtml('postalProvince:', postalProv) +
     formatLineHtml('Consent:', consentString)
 
   delete data.contactInfo.fullName
