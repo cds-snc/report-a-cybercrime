@@ -97,11 +97,6 @@ export const HowDidItStartForm = (props) => {
     },
   ]
 
-  const recurrenceCheck = {
-    howManyTimes: [],
-    ...data.formData.timeline,
-  }
-
   const howManyTimes = [
     'howManyTimes.once',
     'howManyTimes.severalTimes',
