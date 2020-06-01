@@ -139,7 +139,6 @@ export const ThankYouPage = () => {
                     >
                       <Trans id="thankYouPage.whatNextParagraph2.phoneNumber" />
                     </A>
-
                     <Trans id="thankYouPage.whatNextParagraph2.period" />
                   </P>
                 </React.Fragment>
