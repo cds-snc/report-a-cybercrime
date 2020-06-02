@@ -124,97 +124,96 @@ export const LandingPage = (props) => {
                       isExternal
                     />
                   </Trans>
-                </P>
-
-                <Stack alignItems="flex-start">
-                  <H2>
-                    <Trans id="landingPage.reportOnline" />
-                  </H2>
-
-                  <P>
-                    <Trans id="landingPage.onlineIntro" />
-                  </P>
-                  <ButtonLink to="/startPage">
-                    <Trans id="landingPage.nextButton.reportNow" />
-                    <Icon
-                      focusable="false"
-                      ml={2}
-                      mr={-2}
-                      name="chevron-right"
-                      size="28px"
-                    />
-                  </ButtonLink>
-                </Stack>
-                <Stack>
-                  <H2>
-                    <Trans id="landingPage.reportByPhone" />
-                  </H2>
-
-                  <Stack>
-                    <P>
-                      <Trans id="landingPage.phoneDays" />
-                    </P>
-                    <P>
-                      <Trans id="landingPage.phoneTimes" />
-                    </P>
-                    <P>
-                      <A href={'tel:' + i18n._('landingPage.phoneNumber')}>
-                        <Trans id="landingPage.phoneNumber" />
-                      </A>
-                    </P>
-                  </Stack>
-                </Stack>
-
-                <Well variantColor="blue">
-                  <Trans id="landingPage.warning" />
-                </Well>
-
+                </Li>
+              </Ul>
+              <Stack alignItems="flex-start">
                 <H2>
-                  <Trans id="landingPage.reportingOptions" />
+                  <Trans id="landingPage.reportOnline" />
                 </H2>
 
-                <Ul>
-                  <Li>
-                    <Trans id="landingPage.reportingOptions0" />
-                  </Li>
-                  <Li>
-                    <Trans id="landingPage.reportingOptions1">
-                      <A
-                        href={
-                          i18n.locale === 'en'
-                            ? 'https://www.cybertip.ca/app/en/report'
-                            : 'https://www.cybertip.ca/app/fr/report'
-                        }
-                        isExternal // Opens new tab
-                      />
-                    </Trans>
-                  </Li>
-                  <Li>
-                    <Trans id="landingPage.reportingOptions2">
-                      <A
-                        href={
-                          i18n.locale === 'en'
-                            ? 'https://www.consumer.equifax.ca/fr/c/portal/update_language?p_l_id=23&redirect=%2Ffr%2Fpersonnel%2F&languageId=en_US'
-                            : 'https://www.consumer.equifax.ca/en/c/portal/update_language?p_l_id=23&redirect=%2Fen%2Fpersonal%2F&languageId=fr_FR'
-                        }
-                        isExternal // Opens new tab
-                      />
-                      <A
-                        href={
-                          i18n.locale === 'en'
-                            ? 'https://www.transunion.ca/'
-                            : 'https://www.transunion.ca/fr'
-                        }
-                        isExternal // Opens new tab
-                      />
-                    </Trans>
-                  </Li>
-
-                  <Li>
-                    <Trans id="landingPage.reportingOptions3" />
-                  </Li>
-                </Ul>
+                <P>
+                  <Trans id="landingPage.onlineIntro" />
+                </P>
+                <ButtonLink to="/startPage">
+                  <Trans id="landingPage.nextButton.reportNow" />
+                  <Icon
+                    focusable="false"
+                    ml={2}
+                    mr={-2}
+                    name="chevron-right"
+                    size="28px"
+                  />
+                </ButtonLink>
               </Stack>
+              <Stack>
+                <H2>
+                  <Trans id="landingPage.reportByPhone" />
+                </H2>
+
+                <Stack>
+                  <P>
+                    <Trans id="landingPage.phoneDays" />
+                  </P>
+                  <P>
+                    <Trans id="landingPage.phoneTimes" />
+                  </P>
+                  <P>
+                    <A href={'tel:' + i18n._('landingPage.phoneNumber')}>
+                      <Trans id="landingPage.phoneNumber" />
+                    </A>
+                  </P>
+                </Stack>
+              </Stack>
+
+              <Well variantColor="blue">
+                <Trans id="landingPage.warning" />
+              </Well>
+
+              <H2>
+                <Trans id="landingPage.reportingOptions" />
+              </H2>
+
+              <Ul>
+                <Li>
+                  <Trans id="landingPage.reportingOptions0" />
+                </Li>
+                <Li>
+                  <Trans id="landingPage.reportingOptions1">
+                    <A
+                      href={
+                        i18n.locale === 'en'
+                          ? 'https://www.cybertip.ca/app/en/report'
+                          : 'https://www.cybertip.ca/app/fr/report'
+                      }
+                      isExternal // Opens new tab
+                    />
+                  </Trans>
+                </Li>
+                <Li>
+                  <Trans id="landingPage.reportingOptions2">
+                    <A
+                      href={
+                        i18n.locale === 'en'
+                          ? 'https://www.consumer.equifax.ca/fr/c/portal/update_language?p_l_id=23&redirect=%2Ffr%2Fpersonnel%2F&languageId=en_US'
+                          : 'https://www.consumer.equifax.ca/en/c/portal/update_language?p_l_id=23&redirect=%2Fen%2Fpersonal%2F&languageId=fr_FR'
+                      }
+                      isExternal // Opens new tab
+                    />
+                    <A
+                      href={
+                        i18n.locale === 'en'
+                          ? 'https://www.transunion.ca/'
+                          : 'https://www.transunion.ca/fr'
+                      }
+                      isExternal // Opens new tab
+                    />
+                  </Trans>
+                </Li>
+
+                <Li>
+                  <Trans id="landingPage.reportingOptions3" />
+                </Li>
+              </Ul>
             </Layout>
           </Page>
         )}
