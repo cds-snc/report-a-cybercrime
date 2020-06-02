@@ -66,7 +66,15 @@ export const LandingPage = (props) => {
                       <Trans id="landingPage.fullReport.description" />
                     </P>
 
-                    <ButtonLink to="/startPage">
+                    <ButtonLink 
+                      onClick={()=> { 
+                        dispatch({
+                          type: 'saveFormData',
+                          data: { fyiForm: false },
+                        })
+                      }}
+                      to="/startPage"
+                    >
                       <Trans id="landingPage.fullReport.button" />
                       <Icon
                         focusable="false"

@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import React from 'react'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
@@ -34,55 +35,60 @@ export const WhatHappenedPage = () => {
               <H1>
                 <Trans id="whatHappenedPage.title" />
               </H1>
-              <Stack spacing={4}>
-                <Lead>
-                  <Trans id="whatHappenedPage.intro1" />
-                </Lead>
-                <P mt={8}>
-                  <Trans id="whatHappenedPage.thinkAbout" />
-                </P>
-                <Ul>
-                  <Li>
-                    <Trans id="whatHappenedPage.thinkAbout.default1" />
-                  </Li>
-                  {whatWasAffected.affectedOptions.includes(
-                    'whatWasAffectedForm.other',
-                  ) && (
-                    <Li>
-                      <Trans id="whatHappenedPage.thinkAbout.other" />
-                    </Li>
-                  )}
-                  {whatWasAffected.affectedOptions.includes(
-                    'whatWasAffectedForm.financial',
-                  ) && (
-                    <Li>
-                      <Trans id="whatHappenedPage.thinkAbout.money" />
-                    </Li>
-                  )}
-                  {whatWasAffected.affectedOptions.includes(
-                    'whatWasAffectedForm.personalInformation',
-                  ) && (
-                    <Li>
-                      <Trans id="whatHappenedPage.thinkAbout.personalInfo" />
-                    </Li>
-                  )}
-                  {whatWasAffected.affectedOptions.includes(
-                    'whatWasAffectedForm.devices',
-                  ) && (
-                    <Li>
-                      <Trans id="whatHappenedPage.thinkAbout.devices" />
-                    </Li>
-                  )}
-                  {whatWasAffected.affectedOptions.includes(
-                    'whatWasAffectedForm.business_assets',
-                  ) && (
-                    <Li>
-                      <Trans id="whatHappenedPage.thinkAbout.business" />
-                    </Li>
-                  )}
-                </Ul>
-              </Stack>
-
+              {fyiForm ?
+                null
+                : 
+                <React.Fragment>
+                  <Stack spacing={4}>
+                    <Lead>
+                      <Trans id="whatHappenedPage.intro1" />
+                    </Lead>
+                    <P mt={8}>
+                      <Trans id="whatHappenedPage.thinkAbout" />
+                    </P>
+                    <Ul>
+                      <Li>
+                        <Trans id="whatHappenedPage.thinkAbout.default1" />
+                      </Li>
+                      {whatWasAffected.affectedOptions.includes(
+                        'whatWasAffectedForm.other',
+                      ) && (
+                        <Li>
+                          <Trans id="whatHappenedPage.thinkAbout.other" />
+                        </Li>
+                      )}
+                      {whatWasAffected.affectedOptions.includes(
+                        'whatWasAffectedForm.financial',
+                      ) && (
+                        <Li>
+                          <Trans id="whatHappenedPage.thinkAbout.money" />
+                        </Li>
+                      )}
+                      {whatWasAffected.affectedOptions.includes(
+                        'whatWasAffectedForm.personalInformation',
+                      ) && (
+                        <Li>
+                          <Trans id="whatHappenedPage.thinkAbout.personalInfo" />
+                        </Li>
+                      )}
+                      {whatWasAffected.affectedOptions.includes(
+                        'whatWasAffectedForm.devices',
+                      ) && (
+                        <Li>
+                          <Trans id="whatHappenedPage.thinkAbout.devices" />
+                        </Li>
+                      )}
+                      {whatWasAffected.affectedOptions.includes(
+                        'whatWasAffectedForm.business_assets',
+                      ) && (
+                        <Li>
+                          <Trans id="whatHappenedPage.thinkAbout.business" />
+                        </Li>
+                      )}
+                    </Ul>
+                  </Stack>
+                </React.Fragment>
+              }
               <WhatHappenedForm
                 onSubmit={(data) => {
                   dispatch({

@@ -381,6 +381,8 @@
   "typeOfInfoReq.homeAddress": "Home address",
   "typeOfInfoReq.other": "Other",
   "typeOfInfoReq.sin": "Social insurance number",
+  "whatHappenedPage.fyi.hint": "Include things such as how it started, who they claimed to be, and what they asked for or threatened to do.",
+  "whatHappenedPage.fyi.summary": "Describe what happened.",
   "whatHappenedPage.hint": "Start at the beginning. Remember to include what they asked for, promised, stole, or threatened to do.",
   "whatHappenedPage.intro1": "What happened is not your fault. These crimes are not always easy to recognize and new ones are invented every day.",
   "whatHappenedPage.nextButton": "Continue",

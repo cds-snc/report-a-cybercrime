@@ -381,6 +381,8 @@
   "typeOfInfoReq.homeAddress": "Adresse du domicile",
   "typeOfInfoReq.other": "Autre",
   "typeOfInfoReq.sin": "Numéro d’assurance sociale",
+  "whatHappenedPage.fyi.hint": "Pensez à écrire comment l’incident a commencé, pour qui la personne s’est fait passer, ce qu’elle vous a demandé et les menaces qu’elle vous a faites.",
+  "whatHappenedPage.fyi.summary": "Décrivez ce qui s’est passé.",
   "whatHappenedPage.hint": "Commencez par le début. N’oubliez pas d’indiquer ce qu’on vous a demandé, promis ou volé, ou les menaces que vous avez reçues.",
   "whatHappenedPage.intro1": "Ce qui s’est passé n’est pas de votre faute. De nouveaux crimes sont inventés chaque jour, et ce n’est pas toujours facile de les reconnaître.",
   "whatHappenedPage.nextButton": "Continuer",

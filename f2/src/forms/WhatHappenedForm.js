@@ -32,8 +32,8 @@ export const WhatHappenedForm = (props) => {
         <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
           <Field
             name="whatHappened"
-            label={<Trans id="whatHappenedPage.summary" />}
-            helperText={<Trans id="whatHappenedPage.hint" />}
+            label={fyiForm ? <Trans id="whatHappenedPage.fyi.summary" /> : <Trans id="whatHappenedPage.summary" />}
+            helperText={fyiForm ? <Trans id="whatHappenedPage.fyi.hint" /> : <Trans id="whatHappenedPage.hint" />}
             component={TextArea}
             h="300px"
           />
