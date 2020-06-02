@@ -22,7 +22,6 @@
     "emotion-theming": "^10.0.27",
     "express": "^4.17.1",
     "express-rate-limit": "^5.1.1",
-    "express-winston": "4.0.3",
     "final-form": "^4.19.0",
     "flat": "^5.0.0",
     "formidable": "^1.2.2",
@@ -47,7 +46,7 @@
     "styled-system": "^5.1.5",
     "unidecode": "^0.1.8",
     "winston": "~3.2.1",
-    "zipcodes": "^8.0.0"
+    "zipcodes": "^8.0.0",
     "express-winston": "4.0.3",
     "jimp": "0.12.1"
   },
