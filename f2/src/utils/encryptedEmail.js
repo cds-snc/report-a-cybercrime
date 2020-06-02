@@ -4,8 +4,6 @@ const fs = require('fs')
 const exec = require('child_process').exec
 const nanoid = require('nanoid')
 const { certFileName } = require('./ldap')
-const { getFileExtension } = require('./filenameUtils')
-const { png2jpeg } = require('./imageConversion')
 
 require('dotenv').config()
 
@@ -14,50 +12,36 @@ const mailUser = process.env.MAIL_USER
 const mailPass = process.env.MAIL_PASS
 const mailFrom = process.env.MAIL_FROM
 
-const prepareUnencryptedReportEmail = async (message, data, callback) => {
+const prepareUnencryptedReportEmail = (message, data, callback) => {
   let transporter = nodemailer.createTransport({
     streamTransport: true,
     newline: 'unix',
     buffer: true,
   })
 
-  Promise.all(
-    data.evidence.files
-      .filter((file) => file.malwareIsClean)
-      .map(async (file) => {
-        let fileExtension = getFileExtension(file.name)
-        if (fileExtension.endsWith('png')) {
-          let jpgPath = file.path.substr(0, file.path.lastIndexOf('.')) + '.jpg'
-          await png2jpeg(file.path, jpgPath)
-          return {
-            filename: file.name.substr(0, file.name.lastIndexOf('.')) + '.jpg',
-            path: jpgPath,
-          }
-        } else {
-          return {
-            filename: file.name,
-            path: file.path,
-          }
-        }
-      }),
-  ).then((attachments) => {
-    transporter.sendMail(
-      {
-        from: mailFrom,
-        to: data.contactInfo.email,
-        subject: `NCFRS report ${data.reportId}`,
-        text: message,
-        html: message,
-        attachments,
-      },
-      (err, info) => {
-        if (err) console.warn(`ERROR in prepareUnencryptedReportEmail: ${err}`)
-        else {
-          callback(info.message.toString())
-        }
-      },
-    )
-  })
+  let attachments = data.evidence.files
+    .filter((file) => file.malwareIsClean)
+    .map((file) => ({
+      filename: file.name,
+      path: file.path,
+    }))
+
+  transporter.sendMail(
+    {
+      from: mailFrom,
+      to: data.contactInfo.email,
+      subject: `NCFRS report ${data.reportId}`,
+      text: message,
+      html: message,
+      attachments,
+    },
+    (err, info) => {
+      if (err) console.warn(`ERROR in prepareUnencryptedReportEmail: ${err}`)
+      else {
+        callback(info.message.toString())
+      }
+    },
+  )
 }
 
 const getEmailWarning = (data) =>
