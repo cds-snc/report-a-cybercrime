@@ -31,6 +31,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         formData: { ...initialState.formData },
+        doneForms: false,
         submitted: false,
         reportId: undefined,
       }
