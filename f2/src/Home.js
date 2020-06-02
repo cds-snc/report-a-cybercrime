@@ -81,9 +81,9 @@ export const Home = () => (
       <RedirectRoute path="/location">
         <LocationPage />
       </RedirectRoute>
-      <Route path="/anonymous">
+      <RedirectRoute path="/anonymous">
         <AnonymousPage />
-      </Route>
+      </RedirectRoute>
       <RedirectRoute path="/contactinfo">
         <ContactInfoPage />
       </RedirectRoute>
