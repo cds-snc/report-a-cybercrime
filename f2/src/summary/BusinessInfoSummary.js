@@ -5,12 +5,13 @@ import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
-import { testdata, EditButton } from '../ConfirmationSummary'
+import { testdata } from '../ConfirmationSummary'
+import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
-export const BusinessInfoSummary = props => {
+export const BusinessInfoSummary = (props) => {
   const [data] = useStateValue()
 
   const businessInfo = {
@@ -23,7 +24,10 @@ export const BusinessInfoSummary = props => {
       {false ? (
         <div>
           {/*: mark the proper ids for lingui */}
-          <Trans id="confirmationPage.businessInfo.business" />
+          <Trans id="confirmationPage.businessInfo.nameOfBusiness" />
+          <Trans id="confirmationPage.businessInfo.industry" />
+          <Trans id="confirmationPage.businessInfo.role" />
+          <Trans id="confirmationPage.businessInfo.numberOfEmployee" />
           <Trans id="confirmationPage.businessInfo.title.edit" />
         </div>
       ) : null}
@@ -49,8 +53,20 @@ export const BusinessInfoSummary = props => {
         {containsData(businessInfo) ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
-              descriptionTitle="confirmationPage.businessInfo.business"
-              description={businessInfo.business}
+              descriptionTitle="confirmationPage.businessInfo.nameOfBusiness"
+              description={businessInfo.nameOfBusiness}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.businessInfo.industry"
+              description={businessInfo.industry}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.businessInfo.role"
+              description={businessInfo.role}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.businessInfo.numberOfEmployee"
+              description={<Trans id={businessInfo.numberOfEmployee} />}
             />
           </Stack>
         ) : (

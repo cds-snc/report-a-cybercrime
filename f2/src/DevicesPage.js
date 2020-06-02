@@ -35,7 +35,7 @@ export const DevicesPage = () => {
               </Stack>
 
               <DevicesForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { devicesInfo: data },

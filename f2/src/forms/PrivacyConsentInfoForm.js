@@ -10,6 +10,7 @@ import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { useLingui } from '@lingui/react'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { formDefaults } from './defaultValues'
 
 const validate = (values) => {
   const errors = {}
@@ -25,8 +26,8 @@ export const PrivacyConsentInfoForm = (props) => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
   const whetherConsent = {
-    consentOptions: [],
-    ...data.formData.whetherConsent,
+    ...formDefaults.consent,
+    ...data.formData.consent,
   }
   const consentOptions = ['privacyConsentInfoForm.yes']
 
@@ -57,7 +58,11 @@ export const PrivacyConsentInfoForm = (props) => {
             shouldWrapChildren
             spacing={6}
           >
-            {submitFailed && hasValidationErrors ? <ErrorSummary /> : null}
+            {submitFailed && hasValidationErrors ? (
+              <ErrorSummary>
+                <Trans id="privacyConsentInfoForm.hasValidationErrors" />
+              </ErrorSummary>
+            ) : null}
 
             <FormArrayControl
               name="consentOptions"

@@ -49,7 +49,7 @@ export const EvidencePage = () => {
               </Box>
 
               <EvidenceInfoForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({ type: 'saveFormData', data: { evidence: data } })
                   history.push(doneForms ? '/confirmation' : '/location')
                 }}

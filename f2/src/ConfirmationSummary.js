@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
+import { useEffect } from 'react'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { withProps } from 'recompose'
-import { EditButton as EditButtonAlias } from './components/EditButton'
+import { formDefaults } from './forms/defaultValues'
 import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
@@ -16,74 +16,29 @@ import { MoneyLostInfoSummary } from './summary/MoneyLostInfoSummary'
 import { SuspectCluesSummary } from './summary/SuspectCluesSummary'
 import { WhatHappenedSummary } from './summary/WhatHappenedSummary'
 import { WhatWasAffectedSummary } from './summary/WhatWasAffectedSummary'
+import { AnonymousSummary } from './summary/AnonymousSummary'
 
 export const testdata = {
   doneForms: true,
-  formData: {
-    consent: { consentOptions: ['privacyConsentInfoForm.yes'] },
-    howdiditstart: {
-      howDidTheyReachYou: [],
-      email: '',
-      phone: '',
-      online: '',
-      application: '',
-      others: '',
-      whenDidItStart: '',
-      howManyTimes: '',
-    },
-    whatWasAffected: {
-      affectedOptions: [],
-      optionOther: '',
-    },
-    moneyLost: {
-      demandedMoney: '',
-      moneyTaken: '',
-      methodPayment: [],
-      transactionDay: '',
-      transactionMonth: '',
-      transactionYear: '',
-      tellUsMore: '',
-    },
-    personalInformation: {
-      typeOfInfoReq: [],
-      typeOfInfoObtained: [],
-      infoReqOther: '',
-      infoObtainedOther: '',
-      tellUsMore: '',
-    },
-    devicesInfo: { device: '', account: '', devicesTellUsMore: '' },
-    businessInfo: { business: '' },
-    whatHappened: { whatHappened: '' },
-
-    suspectClues: {
-      suspectClues1: '',
-      suspectClues2: '',
-      suspectClues3: '',
-    },
-    evidence: {
-      files: [],
-      fileDescriptions: [],
-    },
-    location: { postalCode: '' },
-    contactInfo: { fullName: '', email: '', phone: '' },
-  },
+  formData: formDefaults,
 }
-
-// TODO: Moved the EditButton into the components folder.
-// All summary blocks are still importing EditButton from this file.
-// Leaving this here as an alias.
-export const EditButton = withProps({})(EditButtonAlias)
 
 export const ConfirmationSummary = () => {
   const [data, dispatch] = useStateValue()
   const impact = {
     affectedOptions: [],
-    ...testdata.formData.whatWasAffected, //Remove after done testing
+    ...testdata.formData.whatWasAffected,
     ...data.formData.whatWasAffected,
   }
-  if (!data.doneForms) {
-    dispatch({ type: 'saveDoneForms', data: true })
+  const anonymous = {
+    ...testdata.formData.anonymous,
+    ...data.formData.anonymous,
   }
+  useEffect(() => {
+    if (!data.doneForms) {
+      dispatch({ type: 'saveDoneForms', data: true })
+    }
+  })
 
   return (
     <React.Fragment>
@@ -94,7 +49,7 @@ export const ConfirmationSummary = () => {
           <MoneyLostInfoSummary />
         )}
         {impact.affectedOptions.includes(
-          'whatWasAffectedForm.personal_information',
+          'whatWasAffectedForm.personalInformation',
         ) && <InformationSummary />}
         {impact.affectedOptions.includes('whatWasAffectedForm.devices') && (
           <DevicesSummary />
@@ -107,7 +62,11 @@ export const ConfirmationSummary = () => {
         <SuspectCluesSummary />
         <EvidenceInfoSummary />
         <LocationInfoSummary />
-        <ContactInfoSummary />
+        {anonymous.anonymousOptions.includes('anonymousPage.yes') ? (
+          <AnonymousSummary />
+        ) : (
+          <ContactInfoSummary />
+        )}
       </Stack>
     </React.Fragment>
   )

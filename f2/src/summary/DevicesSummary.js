@@ -5,12 +5,13 @@ import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
-import { testdata, EditButton } from '../ConfirmationSummary'
+import { testdata } from '../ConfirmationSummary'
+import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
-export const DevicesSummary = props => {
+export const DevicesSummary = (props) => {
   const [data] = useStateValue()
 
   const devices = {
@@ -25,7 +26,6 @@ export const DevicesSummary = props => {
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.devices.device" />
           <Trans id="confirmationPage.devices.account" />
-          <Trans id="confirmationPage.devices.devicesTellUsMore" />
           <Trans id="confirmationPage.devicesTitle.edit" />
         </div>
       ) : null}
@@ -56,10 +56,6 @@ export const DevicesSummary = props => {
             <DescriptionListItem
               descriptionTitle="confirmationPage.devices.account"
               description={devices.account}
-            />
-            <DescriptionListItem
-              descriptionTitle="confirmationPage.devices.devicesTellUsMore"
-              description={devices.devicesTellUsMore}
             />
           </Stack>
         ) : (

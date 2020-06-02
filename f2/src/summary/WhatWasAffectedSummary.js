@@ -5,13 +5,14 @@ import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
-import { testdata, EditButton } from '../ConfirmationSummary'
+import { testdata } from '../ConfirmationSummary'
+import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Text } from '../components/text'
 import { formatList } from '../utils/formatList'
 
-export const WhatWasAffectedSummary = props => {
+export const WhatWasAffectedSummary = (props) => {
   const { i18n } = useLingui()
 
   const [data] = useStateValue()
@@ -21,7 +22,7 @@ export const WhatWasAffectedSummary = props => {
     ...data.formData.whatWasAffected,
   }
 
-  const summaryOptions = impact.affectedOptions.map(key =>
+  const summaryOptions = impact.affectedOptions.map((key) =>
     i18n._(key).toLowerCase(),
   )
   const summaryLine = formatList(summaryOptions, {

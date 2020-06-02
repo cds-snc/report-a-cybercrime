@@ -13,7 +13,7 @@ import { HowDidItStartForm } from '../HowDidItStartForm'
 i18n.load('en', { en })
 i18n.activate('en')
 
-const clickOn = element => fireEvent.click(element)
+const clickOn = (element) => fireEvent.click(element)
 
 describe('<HowDidItStartForm />', () => {
   afterEach(cleanup)

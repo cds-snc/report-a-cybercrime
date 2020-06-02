@@ -13,7 +13,6 @@ import { Page } from './components/Page'
 
 export const ContactInfoPage = () => {
   const [, dispatch] = useStateValue()
-
   return (
     <Route
       render={({ history }) => (
@@ -29,7 +28,7 @@ export const ContactInfoPage = () => {
               </Lead>
 
               <ContactInfoForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { contactInfo: data },

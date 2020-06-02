@@ -35,7 +35,7 @@ export const BusinessPage = () => {
                 </P>
               </Stack>
               <BusinessInfoForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { businessInfo: data },

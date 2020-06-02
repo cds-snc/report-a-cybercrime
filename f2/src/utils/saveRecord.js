@@ -1,13 +1,4 @@
 const MongoClient = require('mongodb').MongoClient
-const date = new Date()
-const currentDate =
-  (date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) +
-  '/' +
-  (date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)) +
-  '/' +
-  date.getFullYear()
-
-let numberofReports = 0
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
 
@@ -22,7 +13,7 @@ const url = `mongodb://${dbName}:${dbKey}@${dbName}.documents.azure.com:10255/me
 
 async function saveRecord(data, res) {
   if (cosmosDbConfigured) {
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(url, function (err, db) {
       if (err) {
         console.warn(`ERROR in MongoClient.connect: ${err}`)
         res.statusCode = 502
@@ -30,7 +21,7 @@ async function saveRecord(data, res) {
         res.send(res.statusMessage)
       } else {
         var dbo = db.db('cybercrime')
-        dbo.collection('reports').insertOne(data, function(err, result) {
+        dbo.collection('reports').insertOne(data, function (err, result) {
           if (err) {
             console.warn(`ERROR in Report ${data.reportId} insertOne: ${err}`)
             res.statusCode = 502
@@ -51,9 +42,16 @@ async function saveRecord(data, res) {
     res.send('CosmosDB not configured')
   }
 }
-async function getReportCount() {
+async function getReportCount(availableData) {
+  const date = new Date()
+  const currentDate =
+    (date.getDate() > 9 ? date.getDate() : '0' + date.getDate()) +
+    '/' +
+    (date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)) +
+    '/' +
+    date.getFullYear()
   if (cosmosDbConfigured) {
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(url, function (err, db) {
       if (err) {
         console.warn(`ERROR in MongoClient.connect: ${err}`)
       } else {
@@ -65,18 +63,17 @@ async function getReportCount() {
               $eq: currentDate,
             },
           })
-          .toArray(function(err, result) {
+          .toArray(function (err, result) {
             if (err) {
               console.warn(`ERROR in find: ${err}`)
             } else {
               db.close()
-              numberofReports = result.length
+              availableData.numberOfSubmissions = result.length
             }
           })
       }
     })
   }
-  return numberofReports
 }
 
 module.exports = { saveRecord, getReportCount }

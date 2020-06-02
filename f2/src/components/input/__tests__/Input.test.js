@@ -2,9 +2,22 @@ import React from 'react'
 import { ThemeProvider } from 'emotion-theming'
 import { Input } from '../'
 import { render, cleanup } from '@testing-library/react'
+import { mount } from 'enzyme'
 
 describe('<Input />', () => {
   afterEach(cleanup)
+
+  it('renders component in HTML as an input tag', () => {
+    let wrapper = mount(
+      <form>
+        <label>
+          Test
+          <Input />
+        </label>
+      </form>,
+    ).find('input')
+    expect(wrapper.is('input')).toBeTruthy()
+  })
 
   it('uses the dimension props to set height and width in CSS', () => {
     const { getByLabelText } = render(

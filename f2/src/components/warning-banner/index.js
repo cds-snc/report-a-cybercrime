@@ -5,13 +5,17 @@ import PropTypes from 'prop-types'
 import { Alert, AlertIcon, AlertDescription, Box } from '@chakra-ui/core'
 import { Layout } from '../layout'
 
-export const WarningBanner = props => {
-  const { status, bg } = props
-
+export const WarningBanner = (props) => {
   return (
-    <Box bg={`${bg}.400`}>
+    <Box bg={`${props.bg}.400`}>
       <Layout>
-        <Alert px={0} py={4} status={status} bg={`${bg}.400`} fontFamily="body">
+        <Alert
+          px={0}
+          py={4}
+          status={props.status}
+          bg={`${props.bg}.400`}
+          fontFamily="body"
+        >
           <AlertIcon mt={0} color="black" />
           <AlertDescription color="black">{props.children}</AlertDescription>
         </Alert>

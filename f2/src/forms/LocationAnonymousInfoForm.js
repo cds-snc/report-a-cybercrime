@@ -8,12 +8,16 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { Field } from '../components/Field'
 import { Input } from '../components/input'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
 
-const defaultLocation = {
-  postalCode: '',
-}
+const defaultLocation = formDefaults.location
 
 export const LocationAnonymousInfoForm = (props) => {
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.location)) props.onSubmit(data)
+  }
+
   const [data, dispatch] = useStateValue()
 
   let location
@@ -30,16 +34,16 @@ export const LocationAnonymousInfoForm = (props) => {
   return (
     <Form
       initialValues={location}
-      onSubmit={props.onSubmit}
+      onSubmit={localOnSubmit}
       render={({ handleSubmit }) => (
         <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
           <Field
-            name="City"
-            label={<Trans id="LocationAnonymousInfoForm.City" />}
+            name="city"
+            label={<Trans id="LocationAnonymousInfoForm.city" />}
             component={Input}
           />
           <Field
-            name="Province"
+            name="province"
             label={<Trans id="LocationAnonymousInfoForm.province" />}
             component={Input}
           />

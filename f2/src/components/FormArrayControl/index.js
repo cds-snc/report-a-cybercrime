@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
+import React from 'react'
 import { FormControl, Stack } from '@chakra-ui/core'
 import { useField, useForm } from 'react-final-form'
 import { FormLabel } from '../FormLabel'
@@ -49,7 +50,15 @@ export const FormArrayControl = (props) => {
               )}
               {props.errors && (
                 <FormErrorMessage>
-                  <Trans id={errors[props.name]} />
+                  {Array.isArray(errors[props.name]) ? (
+                    errors[props.name].map((msg) => (
+                      <React.Fragment>
+                        <Trans key={msg} id={msg} />{' '}
+                      </React.Fragment>
+                    ))
+                  ) : (
+                    <Trans id={errors[props.name]} />
+                  )}
                 </FormErrorMessage>
               )}
             </Stack>

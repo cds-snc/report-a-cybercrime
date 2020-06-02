@@ -36,7 +36,7 @@ export const InformationPage = () => {
               </Stack>
 
               <InformationForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { personalInformation: data },

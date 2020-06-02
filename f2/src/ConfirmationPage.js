@@ -14,6 +14,7 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { formDefaults } from './forms/defaultValues'
 
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
@@ -22,11 +23,11 @@ async function postData(url = '', data = {}) {
   // add the files to the formdata object after.
   const flattenedData = flatten(data, { safe: true })
   var form_data = new FormData()
-  Object.keys(flattenedData).forEach(key => {
+  Object.keys(flattenedData).forEach((key) => {
     form_data.append(key, JSON.stringify(flattenedData[key]))
   })
   if (data.evidence)
-    data.evidence.files.forEach(f => form_data.append(f.name, f, f.name))
+    data.evidence.files.forEach((f) => form_data.append(f.name, f, f.name))
 
   // Default options are marked with *
   const response = await fetch(url, {
@@ -37,14 +38,35 @@ async function postData(url = '', data = {}) {
     redirect: 'follow',
     referrer: 'no-referrer',
     body: form_data,
+  }).catch(function (error) {
+    console.log({ error })
   })
-  return response
+  return response ? response.text() : 'fetch failed'
 }
 
-const prepFormData = (formData, language) => {
+const prepFormData = (formDataOrig, language) => {
+  Object.keys(formDataOrig).forEach((form) => {
+    if (formDefaults[form]) {
+      formDataOrig[form] = {
+        ...formDefaults[form],
+        ...formDataOrig[form],
+      }
+    }
+  })
+  //this allows us to go directly to the confirmation page during debugging
+  const formData = {
+    ...formDefaults,
+    ...formDataOrig,
+  }
   formData.appVersion = process.env.REACT_APP_VERSION
     ? process.env.REACT_APP_VERSION.slice(0, 7)
     : 'no version'
+
+  if (formData.anonymous.anonymousOptions.includes('anonymousPage.yes')) {
+    formData.contactInfo = formDefaults.contactInfo
+  } else {
+    formData.anonymous.anonymousOptions = ['anonymousPage.no']
+  }
 
   if (
     formData.whatWasAffected &&
@@ -52,30 +74,16 @@ const prepFormData = (formData, language) => {
       'whatWasAffectedForm.financial',
     )
   ) {
-    formData.moneyLost = {
-      demandedMoney: '',
-      moneyTaken: '',
-      methodPayment: [],
-      transactionDay: '',
-      transactionMonth: '',
-      transactionYear: '',
-      tellUsMore: '',
-    }
+    formData.moneyLost = formDefaults.moneyLost
   }
 
   if (
     formData.whatWasAffected &&
     !formData.whatWasAffected.affectedOptions.includes(
-      'whatWasAffectedForm.personal_information',
+      'whatWasAffectedForm.personalInformation',
     )
   ) {
-    formData.personalInformation = {
-      typeOfInfoReq: [],
-      infoReqOther: '',
-      typeOfInfoObtained: [],
-      infoObtainedOther: '',
-      tellUsMore: '',
-    }
+    formData.personalInformation = formDefaults.personalInformation
   }
 
   if (
@@ -84,11 +92,7 @@ const prepFormData = (formData, language) => {
       'whatWasAffectedForm.devices',
     )
   ) {
-    formData.devicesInfo = {
-      device: '',
-      account: '',
-      devicesTellUsMore: '',
-    }
+    formData.devicesInfo = formDefaults.devicesInfo
   }
 
   if (
@@ -97,9 +101,7 @@ const prepFormData = (formData, language) => {
       'whatWasAffectedForm.business_assets',
     )
   ) {
-    formData.businessInfo = {
-      business: '',
-    }
+    formData.businessInfo = formDefaults.businessInfo
   }
 
   return {
@@ -110,10 +112,10 @@ const prepFormData = (formData, language) => {
 
 const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
-  const response = await postData('/submit', data)
-  const reportId = await response.text()
+  const reportId = await postData('/submit', data)
   const submitted = reportId && reportId.startsWith('NCFRS-')
-  dispatch({ type: 'saveFormData', data: { reportId, submitted } })
+  dispatch({ type: 'saveReportId', data: reportId })
+  dispatch({ type: 'saveSubmitted', data: submitted })
 }
 
 export const ConfirmationPage = () => {
@@ -138,6 +140,8 @@ export const ConfirmationPage = () => {
             <ConfirmationSummary />
             <ConfirmationForm
               onSubmit={() => {
+                dispatch({ type: 'saveReportId', data: undefined })
+                dispatch({ type: 'saveSubmitted', data: undefined })
                 submitToServer(prepFormData(formData, i18n.locale), dispatch)
                 history.push('/thankYouPage')
               }}

@@ -20,8 +20,8 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
   })
 
   let attachments = data.evidence.files
-    .filter(file => file.malwareIsClean)
-    .map(file => ({
+    .filter((file) => file.malwareIsClean)
+    .map((file) => ({
       filename: file.name,
       path: file.path,
     }))
@@ -44,27 +44,30 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
   )
 }
 
-const getEmailWarning = data =>
+const getEmailWarning = (data) =>
   data.evidence.files.some(
-    file => file.isImageRacyClassified || file.isImageAdultClassified,
+    (file) => file.isImageRacyClassified || file.isImageAdultClassified,
   )
     ? ': WARNING: potential offensive image'
     : ''
+
+const getSelfHarmWord = (data) =>
+  data.selfHarmWords.length ? ': WARNING: self harm words detected' : ''
 
 const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
   const openssl = 'openssl smime -des3 -encrypt'
   const messageFile = `message_${nanoid()}.txt`
   const encryptedFile = messageFile + '.encrypted'
-  const subjectSuffix = getEmailWarning(data)
+  const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)
 
-  fs.writeFile(messageFile, message, function(err) {
+  fs.writeFile(messageFile, message, function (err) {
     if (err) throw err
     exec(
       `${openssl} -in ${messageFile} -out ${encryptedFile} ${certFileName(
         uid,
       )}`,
       { cwd: process.cwd() },
-      function(error, _stdout, stderr) {
+      function (error, _stdout, stderr) {
         if (error) throw error
         else if (stderr) console.warn(stderr)
         else {
@@ -114,14 +117,20 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList.length > 0 && emailList.length > 0) {
     uidList.forEach((uid, index) => {
-      prepareUnencryptedReportEmail(message, data, m =>
+      prepareUnencryptedReportEmail(message, data, (m) =>
         encryptMessage(uid, emailList[index], m, data, sendMail),
       )
     })
+  } else if (process.env.MAIL_LOCAL) {
+    console.warn('Encrypted Mail: No certs to encrypt with!')
+    const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)
+    prepareUnencryptedReportEmail(message, data, (m) =>
+      sendMail(process.env.MAIL_LOCAL, m, data.reportId, subjectSuffix),
+    )
   } else {
     console.warn('Encrypted Mail: No certs to encrypt with!')
-    const subjectSuffix = getEmailWarning(data)
-    prepareUnencryptedReportEmail(message, data, m =>
+    const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)
+    prepareUnencryptedReportEmail(message, data, (m) =>
       sendMail(data.contactInfo.email, m, data.reportId, subjectSuffix),
     )
   }

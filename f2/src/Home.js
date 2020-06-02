@@ -25,10 +25,17 @@ import { CancelPage } from './CancelPage'
 import { TermsAndConditions } from './TermsAndConditions'
 import { AnonymousPage } from './AnonymousPage'
 import { LocationAnonymousPage } from './LocationAnonymousPage'
+/*Consider removing after c19 pandemic*/
+import { Covid19Page } from './Covid19Page'
+import { RedirectRoute } from './components/route'
 
 export const Home = () => (
   <Router>
     <Switch>
+      <Route exact path="/covid-19">
+        <Covid19Page />
+      </Route>
+
       <Route exact path="/">
         <LandingPage />
       </Route>
@@ -44,45 +51,45 @@ export const Home = () => (
       <Route path="/termsandconditions">
         <TermsAndConditions />
       </Route>
-      <Route path="/howdiditstart">
+      <RedirectRoute path="/howdiditstart">
         <HowDidItStartPage />
-      </Route>
-      <Route path="/whatwasaffected">
+      </RedirectRoute>
+      <RedirectRoute path="/whatwasaffected">
         <WhatWasAffectedPage />
-      </Route>
-      <Route path="/moneylost">
+      </RedirectRoute>
+      <RedirectRoute path="/moneylost">
         <MoneyLostPage />
-      </Route>
-      <Route path="/information">
+      </RedirectRoute>
+      <RedirectRoute path="/information">
         <InformationPage />
-      </Route>
-      <Route path="/devices">
+      </RedirectRoute>
+      <RedirectRoute path="/devices">
         <DevicesPage />
-      </Route>
-      <Route path="/business">
+      </RedirectRoute>
+      <RedirectRoute path="/business">
         <BusinessPage />
-      </Route>
-      <Route path="/whathappened">
+      </RedirectRoute>
+      <RedirectRoute path="/whathappened">
         <WhatHappenedPage />
-      </Route>
-      <Route path="/suspectclues">
+      </RedirectRoute>
+      <RedirectRoute path="/suspectclues">
         <SuspectCluesPage />
-      </Route>
-      <Route path="/evidence">
+      </RedirectRoute>
+      <RedirectRoute path="/evidence">
         <EvidencePage />
-      </Route>
-      <Route path="/location">
+      </RedirectRoute>
+      <RedirectRoute path="/location">
         <LocationPage />
-      </Route>
-      <Route path="/anonymous">
+      </RedirectRoute>
+      <RedirectRoute path="/anonymous">
         <AnonymousPage />
-      </Route>
-      <Route path="/contactinfo">
+      </RedirectRoute>
+      <RedirectRoute path="/contactinfo">
         <ContactInfoPage />
-      </Route>
-      <Route path="/confirmation">
+      </RedirectRoute>
+      <RedirectRoute path="/confirmation">
         <ConfirmationPage />
-      </Route>
+      </RedirectRoute>
       <Route exact path="/thankYouPage">
         <ThankYouPage />
       </Route>
@@ -98,9 +105,9 @@ export const Home = () => (
       <Route path="/finalFeedbackThanks">
         <FinalFeedbackThanksPage />
       </Route>
-      <Route path="/locationAnonymous">
+      <RedirectRoute path="/locationAnonymous">
         <LocationAnonymousPage />
-      </Route>
+      </RedirectRoute>
 
       <Route>
         <PageNotFound />

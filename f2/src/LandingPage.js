@@ -15,6 +15,7 @@ import { Stack, Icon } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { Well } from './components/Messages'
+import { CovidWell } from './Covid19Page'
 
 export const LandingPage = (props) => {
   const { i18n } = useLingui()
@@ -26,6 +27,7 @@ export const LandingPage = (props) => {
     <Route
       render={({ history }) => (
         <Page>
+          <CovidWell />
           <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
             <Stack spacing={10} shouldWrapChildren>
               <H1>
@@ -71,25 +73,6 @@ export const LandingPage = (props) => {
                   />
                 </ButtonLink>
               </Stack>
-              <Stack>
-                <H2>
-                  <Trans id="landingPage.reportByPhone" />
-                </H2>
-
-                <Stack>
-                  <P>
-                    <Trans id="landingPage.phoneDays" />
-                  </P>
-                  <P>
-                    <Trans id="landingPage.phoneTimes" />
-                  </P>
-                  <P>
-                    <A href={'tel:' + i18n._('landingPage.phoneNumber')}>
-                      <Trans id="landingPage.phoneNumber" />
-                    </A>
-                  </P>
-                </Stack>
-              </Stack>
 
               <Well variantColor="blue">
                 <Trans id="landingPage.warning" />
@@ -102,6 +85,15 @@ export const LandingPage = (props) => {
               <Ul>
                 <Li>
                   <Trans id="landingPage.reportingOptions0" />
+                  <A
+                    href={
+                      'tel:' +
+                      i18n._('landingPage.reportingOptions0.phoneNumber')
+                    }
+                  >
+                    <Trans id="landingPage.reportingOptions0.phoneNumber" />
+                  </A>
+                  <Trans id="landingPage.reportingOptions0.period" />
                 </Li>
                 <Li>
                   <Trans id="landingPage.reportingOptions1">

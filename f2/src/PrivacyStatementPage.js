@@ -77,7 +77,16 @@ export const PrivacyStatementPage = () => {
               <Trans id="privacyStatementPage.informationHeading" />
             </H2>
             <P>
-              <Trans id="privacyStatementPage.informationText1" />
+              <Trans id="privacyStatementPage.informationText1">
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.rcmp-grc.gc.ca/atip-aiprp/infosource/pib-frp-eng.htm#ppu005'
+                      : 'https://www.rcmp-grc.gc.ca/atip-aiprp/infosource/pib-frp-fra.htm#ppu005'
+                  }
+                  isExternal
+                />
+              </Trans>
             </P>
             <P>
               <Trans id="privacyStatementPage.informationText2">
@@ -102,20 +111,76 @@ export const PrivacyStatementPage = () => {
           </Stack>
           <Stack spacing={4}>
             <H2>
+              <Trans id="privacyStatementPage.webAnalyticsHeading" />
+            </H2>
+            <P>
+              <Trans id="privacyStatementPage.webAnalyticsText1" />
+            </P>
+            <P>
+              <Trans id="privacyStatementPage.webAnalyticsText2">
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.rcmp-grc.gc.ca/en/terms-conditions'
+                      : 'https://www.rcmp-grc.gc.ca/fr/avis'
+                  }
+                  isExternal
+                />
+              </Trans>
+            </P>
+          </Stack>
+          <Stack spacing={4}>
+            <H2>
               <Trans id="privacyStatementPage.toinquireHeading" />
             </H2>
             <P>
               <Trans id="privacyStatementPage.toinquireText1" />
+              <A
+                href={
+                  'tel:' +
+                  i18n._('privacyStatementPage.toinquireText1.phoneNumber')
+                }
+              >
+                <Trans id="privacyStatementPage.toinquireText1.phoneNumber" />
+              </A>
+              <Trans id="privacyStatementPage.toinquireText1.lastPeriod" />
             </P>
             <P>
               <Trans id="privacyStatementPage.toinquireText2">
                 <A href="mailto:atipb@rcmp-grc.gc.ca" isExternal />
               </Trans>
+              <A
+                href={
+                  'tel:' +
+                  i18n._('privacyStatementPage.toinquireText2.phoneNumber1')
+                }
+              >
+                <Trans id="privacyStatementPage.toinquireText2.phoneNumber1" />
+              </A>
+              <Trans id="privacyStatementPage.toinquireText2.or"></Trans>
+              <A
+                href={
+                  'tel:' +
+                  i18n._('privacyStatementPage.toinquireText2.phoneNumber2')
+                }
+              >
+                <Trans id="privacyStatementPage.toinquireText2.phoneNumber2" />
+              </A>
+              <Trans id="privacyStatementPage.toinquireText2.lastPeriod" />
             </P>
             <P>
               <Trans id="privacyStatementPage.toinquireText3">
                 <A href="mailto:info@priv.gc.ca" isExternal />
               </Trans>
+              <A
+                href={
+                  'tel:' +
+                  i18n._('privacyStatementPage.toinquireText3.phoneNumber')
+                }
+              >
+                <Trans id="privacyStatementPage.toinquireText3.phoneNumber" />
+              </A>
+              <Trans id="privacyStatementPage.toinquireText3.lastPeriod" />
             </P>
           </Stack>
         </Stack>

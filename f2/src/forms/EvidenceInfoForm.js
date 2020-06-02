@@ -15,12 +15,16 @@ import { LinkButton } from '../components/link'
 import { Text } from '../components/text'
 import { Field } from '../components/Field'
 import { Alert } from '../components/Messages'
+import { fileExtensionPasses } from '../utils/acceptableFiles'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formDefaults } from './defaultValues'
+import { Ul } from '../components/unordered-list'
+import { Li } from '../components/list-item'
 
-export const EvidenceInfoForm = props => {
+export const EvidenceInfoForm = (props) => {
   const [data] = useStateValue()
   const cached = {
-    files: [],
-    fileDescriptions: [],
+    ...formDefaults.evidence,
     ...data.formData.evidence,
   }
 
@@ -36,12 +40,26 @@ export const EvidenceInfoForm = props => {
   }, [status])
   const { i18n } = useLingui()
 
-  const onFilesChange = e => {
+  const onFilesChange = (e) => {
     const file = e.target.files[0]
     if (file.size > 4194304) {
       // 4MB in bytes is 4194304.
       alert(
         'Warning: Your file size exceeds 4MB. Please reduce the size and try uploading again. \n Alerte : La taille de votre fichier dépasse 4 Mo. Veuillez réduire la taille et essayer de télécharger à nouveau.',
+      )
+      e.target.value = '' // clear the file input target, to allow the file to be chosen again
+      return
+    } else if (file.size === 0) {
+      alert(
+        'Warning: Your file is empty. Please select the right file and try uploading again. \n Alerte : Votre dossier est vide. Veuillez sélectionner le bon fichier et réessayer de télécharger.',
+      )
+      e.target.value = '' // clear the file input target, to allow the file to be chosen again
+      return
+    }
+    if (!fileExtensionPasses(file.name)) {
+      alert(
+        i18n._('evidencePage.supportedFiles') +
+          i18n._('evidencePage.fileTypes'),
       )
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
@@ -52,14 +70,14 @@ export const EvidenceInfoForm = props => {
     e.target.value = '' // clear the file input target, to allow the file to be removed then added again
   }
 
-  const onFileDescriptionChange = e => {
+  const onFileDescriptionChange = (e) => {
     const index = Number(e.target.id.substring(17))
     let newFileDescriptions = JSON.parse(JSON.stringify(fileDescriptions))
     newFileDescriptions[index] = e.target.value
     setFileDescriptions(newFileDescriptions)
   }
 
-  const removeFile = index => {
+  const removeFile = (index) => {
     let newFiles = files.filter((_, fileIndex) => index !== fileIndex)
     let newFileDescriptions = fileDescriptions.filter(
       (_, fileIndex) => index !== fileIndex,
@@ -69,12 +87,12 @@ export const EvidenceInfoForm = props => {
     setStatus('fileUpload.removed')
   }
 
-  const localSubmit = () => {
+  const localOnSubmit = () => {
     const data = {
-      files,
-      fileDescriptions,
+      files, // from useState()
+      fileDescriptions, // from useState()
     }
-    props.onSubmit(data)
+    if (clientFieldsAreValid(data, formDefaults.evidence)) props.onSubmit(data)
   }
 
   return (
@@ -85,7 +103,7 @@ export const EvidenceInfoForm = props => {
         </div>
       ) : null}
       <Form
-        onSubmit={() => localSubmit()}
+        onSubmit={localOnSubmit}
         render={({ handleSubmit }) => (
           <Stack
             as="form"
@@ -103,11 +121,6 @@ export const EvidenceInfoForm = props => {
                 >
                   <P fontSize="md">
                     <Trans id="evidencePage.fileSize" />
-                    <br />
-                    <Text fontSize="md" as="span" fontWeight="bold">
-                      <Trans id="evidencePage.supportedFiles" />
-                    </Text>
-                    <Trans id="evidencePage.fileTypes" />
                   </P>
                 </Box>
               )}
@@ -165,6 +178,22 @@ export const EvidenceInfoForm = props => {
                     >
                       <Trans id="evidencePage.addFileButton" />
                     </FileUpload>
+                  </Box>
+                  <Box mb={4}>
+                    <P fontSize="md" fontWeight="bold">
+                      <Trans id="evidencePage.supportedFiles" />
+                    </P>
+                    <Ul>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes1" />
+                      </Li>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes2" />
+                      </Li>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes3" />
+                      </Li>
+                    </Ul>
                   </Box>
                 </React.Fragment>
               )}

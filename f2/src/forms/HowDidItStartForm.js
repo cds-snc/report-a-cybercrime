@@ -14,44 +14,22 @@ import { TextInput } from '../components/TextInput'
 import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formatPhoneNumber } from '../utils/formatPhoneNumber'
+import { formDefaults } from './defaultValues'
+import { validateDate } from '../utils/validateDate'
 
 const validate = (values) => {
   const errors = {}
-  //condition for an error to occur: append a lingui id to the list of error
-  // if it has a value AND this value is a number below 31
-  if (values.startDay && (isNaN(values.startDay) || values.startDay > 31)) {
-    errors.whenDidItStart = 'whenDidItStart.startDate.warning'
-    errors.startDay = true
-  }
-  // if it has a value AND this value is a number below 12
-  if (
-    values.startMonth &&
-    (isNaN(values.startMonth) || values.startMonth > 12)
-  ) {
-    errors.whenDidItStart = 'whenDidItStart.startMonth.warning'
-    errors.startMonth = true
-  }
-  // if it has a value AND year is a number containing 4 digits
-  if (
-    values.startYear &&
-    (isNaN(values.startYear) || values.startYear.length !== 4)
-  ) {
-    errors.whenDidItStart = 'whenDidItStart.startYear.warning'
-    errors.startYear = true
-  }
-
-  // if date is in the future and date is valid
-  // values.startMonth - 1 : UTC Date Months are values from 0 to 11
-  if (
-    Date.UTC(values.startYear, values.startMonth - 1, values.startDay) >
-    Date.now()
-  ) {
-    errors.whenDidItStart = 'whenDidItStart.errorMessage'
-    errors.startDay = true
-    errors.startMonth = true
-    errors.startYear = true
-  }
-
+  const startDate = validateDate(
+    values.startYear,
+    values.startMonth,
+    values.startDay,
+  )
+  errors.whenDidItStart = []
+  startDate.map((key) => {
+    return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
+  })
   return errors
 }
 
@@ -71,19 +49,20 @@ const clearData = (dataOrig) => {
 }
 
 export const HowDidItStartForm = (props) => {
-  const { i18n } = useLingui()
+  const localOnSubmit = (data) => {
+    if (clientFieldsAreValid(data, formDefaults.howdiditstart))
+      props.onSubmit(
+        clearData({ ...data, phone: formatPhoneNumber(data.phone) }),
+      )
+  }
 
+  const { i18n } = useLingui()
   const [data] = useStateValue()
   const howdiditstart = {
-    howDidTheyReachYou: [],
-    application: '',
-    others: '',
-    startDay: '',
-    startMonth: '',
-    startYear: '',
-    howManyTimes: '',
+    ...formDefaults.howdiditstart,
     ...data.formData.howdiditstart,
   }
+
   //TODO: Move this form data to some sort of a schema file instead?
   var questionsList = [
     {
@@ -148,19 +127,25 @@ export const HowDidItStartForm = (props) => {
           <Trans id="howDidTheyReachYou.online" />
           <Trans id="howDidTheyReachYou.app" />
           <Trans id="howDidTheyReachYou.others" />
+
           <Trans id="howManyTimes.once" />
           <Trans id="howManyTimes.severalTimes" />
           <Trans id="howManyTimes.notSure" />
-          <Trans id="whenDidItStart.errorMessage" />
-          <Trans id="whenDidItStart.startDate.warning" />
-          <Trans id="whenDidItStart.startMonth.warning" />
-          <Trans id="whenDidItStart.startYear.warning" />
+
+          <Trans id="whenDidItStart.error.notDay" />
+          <Trans id="whenDidItStart.error.notMonth" />
+          <Trans id="whenDidItStart.error.isFuture" />
+          <Trans id="whenDidItStart.error.notYear" />
+          <Trans id="whenDidItStart.error.yearLength" />
+          <Trans id="whenDidItStart.error.hasNoYear" />
+          <Trans id="whenDidItStart.error.hasNoMonth" />
+          <Trans id="whenDidItStart.error.hasNoDay" />
         </div>
       ) : null}
 
       <Form
         initialValues={howdiditstart}
-        onSubmit={(data) => props.onSubmit(clearData(data))}
+        onSubmit={localOnSubmit}
         validate={validate}
         render={({
           handleSubmit,
@@ -176,7 +161,9 @@ export const HowDidItStartForm = (props) => {
             spacing={12}
           >
             {submitFailed ? (
-              <ErrorSummary onSubmit={handleSubmit} errors={errors} />
+              <ErrorSummary>
+                <Trans id="whenDidItStart.hasValidationErrors" />
+              </ErrorSummary>
             ) : null}
             <FormArrayControl
               name="howDidTheyReachYou"

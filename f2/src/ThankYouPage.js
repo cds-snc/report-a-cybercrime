@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from 'react'
 import { jsx } from '@emotion/core'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
@@ -19,29 +20,54 @@ import { Alert } from './components/Messages'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
-  const [state] = useStateValue()
-  const [data] = useStateValue()
+
+  const [state, dispatch] = useStateValue()
 
   const contactInfo = {
-    ...data.formData.contactInfo,
+    ...state.formData.contactInfo,
   }
 
-  const [, dispatch] = useStateValue()
-
   // Message displayed on Thank you Page
-  let reportId = state.formData.reportId
+  const reportId = state.reportId
+  const submissionInProgress = !reportId || reportId === ''
+  const submissionSucceeded =
+    !submissionInProgress && reportId.startsWith('NCFRS-')
+  const submissionFailed = !submissionInProgress && !submissionSucceeded
   let thankYouMessage
+  let thankYouTitle
 
-  if (!reportId || reportId === '') {
+  if (submissionInProgress) {
+    thankYouTitle = <Trans id="thankYouPage.title" />
     thankYouMessage = <Trans id="thankYouPage.reportSubmission" />
-  } else if (reportId.startsWith('NCFRS-')) {
+  } else if (submissionSucceeded) {
+    thankYouTitle = <Trans id="thankYouPage.title" />
     thankYouMessage = (
       <Trans id="thankYouPage.referenceNumber" values={{ reference: reportId }}>
-        <Text as="span" d="block" />
+        <Text as="span" d="block" id="NCFRS" aria-live="polite" />
       </Trans>
     )
   } else {
-    thankYouMessage = <Trans id="thankYouPage.reportSubmissionError" />
+    thankYouTitle = <Trans id="thankYouPage.titleError" />
+    thankYouMessage = (
+      <Text
+        as="span"
+        d="block"
+        fontSize="xl"
+        id="NCFRSError"
+        aria-live="assertive"
+      >
+        <Trans id="thankYouPage.reportSubmissionError1" />
+        <A
+          href={
+            'tel:' + i18n._('thankYouPage.reportSubmissionError.phoneNumber')
+          }
+        >
+          <Trans id="thankYouPage.reportSubmissionError.phoneNumber" />
+        </A>
+
+        <Trans id="thankYouPage.reportSubmissionError2" />
+      </Text>
+    )
   }
 
   return (
@@ -59,33 +85,64 @@ export const ThankYouPage = () => {
 
         <Row>
           <InfoCard
-            bg="green.200"
+            {...(submissionInProgress || submissionSucceeded
+              ? { bg: 'green.200', borderColor: 'green.400' }
+              : { bg: 'yellow.300', borderColor: 'yellow.400' })}
             color="black"
-            borderColor="green.400"
             spacing={6}
             columns={{ base: 4 / 4, lg: 6 / 7 }}
           >
-            <H1 mb={6}>
-              <Trans id="thankYouPage.title" />
-            </H1>
+            <H1 mb={6}>{thankYouTitle}</H1>
 
             <P fontSize="2xl">{thankYouMessage}</P>
+
+            {submissionFailed && (
+              <ButtonLink
+                mt="auto"
+                variantColor="yellow"
+                title={i18n._('thankYouPage.confirmationPageButton')}
+                to="/confirmation"
+              >
+                <Icon
+                  focusable="false"
+                  mr={2}
+                  ml={-2}
+                  name="chevron-left"
+                  size="28px"
+                />
+                <Trans id="thankYouPage.confirmationPageButton" />
+              </ButtonLink>
+            )}
           </InfoCard>
         </Row>
       </Layout>
       <Box bg="gray.100" py={10}>
         <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }} pt={10}>
           <Stack spacing={4} shouldWrapChildren>
-            <H2>
-              <Trans id="thankYouPage.whatNextHeading" />
-            </H2>
-            <P>
-              {contactInfo.email && <Trans id="thankYouPage.summary" />}
-              <Trans id="thankYouPage.whatNextParagraph" />
-            </P>
-            <P>
-              <Trans id="thankYouPage.whatNextParagraph2" />
-            </P>
+            {submissionInProgress ||
+              (submissionSucceeded && (
+                <React.Fragment>
+                  <H2>
+                    <Trans id="thankYouPage.whatNextHeading" />
+                  </H2>
+                  <P>
+                    {contactInfo.email && <Trans id="thankYouPage.summary" />}
+                    <Trans id="thankYouPage.whatNextParagraph" />
+                  </P>
+                  <P>
+                    <Trans id="thankYouPage.whatNextParagraph2" />
+                    <A
+                      href={
+                        'tel:' +
+                        i18n._('thankYouPage.whatNextParagraph2.phoneNumber')
+                      }
+                    >
+                      <Trans id="thankYouPage.whatNextParagraph2.phoneNumber" />
+                    </A>
+                    <Trans id="thankYouPage.whatNextParagraph2.period" />
+                  </P>
+                </React.Fragment>
+              ))}
             <H2>
               <Trans id="thankYouPage.helpResource" />
             </H2>
@@ -106,8 +163,8 @@ export const ThankYouPage = () => {
                 <A
                   href={
                     i18n.locale === 'en'
-                      ? 'http://www.antifraudcentre.ca/index-eng.htm'
-                      : 'http://www.antifraudcentre.ca/index-fra.htm'
+                      ? 'https://antifraudcentre-centreantifraude.ca/protect-protegez-eng.htm'
+                      : 'https://antifraudcentre-centreantifraude.ca/protect-protegez-fra.htm'
                   }
                   isExternal
                 >
@@ -134,27 +191,29 @@ export const ThankYouPage = () => {
       {/* After help section*/}
       <Layout pt={10} columns={{ base: 4 / 4, lg: 7 / 12 }}>
         <Stack spacing={6}>
-          <Alert status="success" withIcon>
-            <Trans id="thankYouPage.safelyCloseWindow" />
-          </Alert>
-
-          <Box mb="auto">
-            <Route
-              render={({ history }) => (
-                <Link
-                  onClick={() => {
-                    dispatch({
-                      type: 'deleteFormData',
-                    })
-                  }}
-                  to="/"
-                >
-                  <Trans id="thankYouPage.createNewReport" />
-                </Link>
-              )}
-            />
-          </Box>
-
+          {submissionSucceeded && (
+            <Alert status="success" withIcon>
+              <Trans id="thankYouPage.safelyCloseWindow" />
+            </Alert>
+          )}
+          {submissionSucceeded && (
+            <Box mb="auto">
+              <Route
+                render={({ history }) => (
+                  <Link
+                    onClick={() => {
+                      dispatch({
+                        type: 'deleteFormData',
+                      })
+                    }}
+                    to="/"
+                  >
+                    <Trans id="thankYouPage.createNewReport" />
+                  </Link>
+                )}
+              />
+            </Box>
+          )}
           <Row>
             <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
               {state.doneFinalFeedback ? (
@@ -172,7 +231,7 @@ export const ThankYouPage = () => {
               <ButtonLink
                 mt="auto"
                 variantColor="black"
-                title={i18n._('thankYouPage.feedbackButton.aria')}
+                title={i18n._('thankYouPage.feedbackButton')}
                 to="/finalFeedback"
               >
                 <Trans id="thankYouPage.feedbackButton" />

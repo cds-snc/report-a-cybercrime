@@ -6,14 +6,15 @@ import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
 import { formatDate } from '../utils/formatDate'
-import { testdata, EditButton } from '../ConfirmationSummary'
+import { testdata } from '../ConfirmationSummary'
+import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 import { formatList } from '../utils/formatList'
 import { useLingui } from '@lingui/react'
 
-export const MoneyLostInfoSummary = props => {
+export const MoneyLostInfoSummary = (props) => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
   const methodPaymentSummary = []
@@ -24,7 +25,7 @@ export const MoneyLostInfoSummary = props => {
     ...data.formData.moneyLost,
   }
 
-  moneyLost.methodPayment.map(key =>
+  moneyLost.methodPayment.map((key) =>
     methodPaymentSummary.push(
       key === 'methodPayment.other' ? moneyLost.methodOther : i18n._(key),
     ),
@@ -44,7 +45,6 @@ export const MoneyLostInfoSummary = props => {
           <Trans id="confirmationPage.moneyLost.moneyTaken" />
           <Trans id="confirmationPage.moneyLost.methodPayment" />
           <Trans id="confirmationPage.moneyLost.transactionDate" />
-          <Trans id="confirmationPage.moneyLost.tellUsMore" />
           <Trans id="confirmationPage.moneyLostTitle.edit" />
         </div>
       ) : null}
@@ -87,10 +87,6 @@ export const MoneyLostInfoSummary = props => {
                 moneyLost.transactionMonth,
                 moneyLost.transactionYear,
               )}
-            />
-            <DescriptionListItem
-              descriptionTitle="confirmationPage.moneyLost.tellUsMore"
-              description={moneyLost.tellUsMore}
             />
           </Stack>
         ) : (
