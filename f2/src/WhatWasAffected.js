@@ -32,7 +32,7 @@ export const WhatWasAffectedPage = () => {
               </Lead>
 
               <WhatWasAffectedForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { whatWasAffected: data },

@@ -1,0 +1,15 @@
+{
+  "name": "totp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generatesecret.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "qrcode": "^1.4.4",
+    "speakeasy": "^2.0.0"
+  }
+}

@@ -70,7 +70,43 @@ export const LandingPage = (props) => {
                   <Trans id="landingPage.title" />
                 </H1>
                 <P>
-                  <Trans id="landingPage.intro">
+                  <Trans id="landingPage.onlineIntro" />
+                </P>
+                <ButtonLink to="/startPage">
+                  <Trans id="landingPage.nextButton.reportNow" />
+                  <Icon
+                    focusable="false"
+                    ml={2}
+                    mr={-2}
+                    name="chevron-right"
+                    size="28px"
+                  />
+                </ButtonLink>
+              </Stack>
+
+              <Well variantColor="blue">
+                <Trans id="landingPage.warning" />
+              </Well>
+
+              <H2>
+                <Trans id="landingPage.reportingOptions" />
+              </H2>
+
+              <Ul>
+                <Li>
+                  <Trans id="landingPage.reportingOptions0" />
+                  <A
+                    href={
+                      'tel:' +
+                      i18n._('landingPage.reportingOptions0.phoneNumber')
+                    }
+                  >
+                    <Trans id="landingPage.reportingOptions0.phoneNumber" />
+                  </A>
+                  <Trans id="landingPage.reportingOptions0.period" />
+                </Li>
+                <Li>
+                  <Trans id="landingPage.reportingOptions1">
                     <A
                       href={
                         i18n.locale === 'en'
