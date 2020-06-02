@@ -27,16 +27,17 @@ async function convertImages(files) {
           let imageData = fs.readFileSync(jpgPath)
           shasum.update(imageData)
           const sha1Hash = shasum.digest('hex')
-
-          return {
-            name: file.name.substr(0, file.name.lastIndexOf('.')) + '.jpg',
-            type: 'image/png',
-            path: jpgPath,
-            length: imageData.length,
-            fileDescription: file.fileDescription,
-            sha1: sha1Hash,
-            malwareIsClean: file.malwareIsClean,
-          }
+          console.log(JSON.stringify(file))
+          let jsonFile = {}
+          Object.assign(jsonFile, file)
+          jsonFile.name =
+            file.name.substr(0, file.name.lastIndexOf('.')) + '.jpg'
+          jsonFile.type = 'image/jpeg'
+          jsonFile.path = jpgPath
+          jsonFile.size = imageData.length
+          jsonFile.sha1 = sha1Hash
+          console.log(JSON.stringify(jsonFile))
+          return jsonFile
         } else {
           return null
         }
@@ -44,4 +45,4 @@ async function convertImages(files) {
   )
 }
 
-module.exports = { png2jpeg, convertImages }
+module.exports = { convertImages }
