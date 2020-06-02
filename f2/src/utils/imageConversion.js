@@ -1,13 +1,47 @@
 const Jimp = require('jimp')
+const crypto = require('crypto')
+const { getFileExtension } = require('./filenameUtils')
+const fs = require('fs')
 
-async function png2jpeg(png, jpg) {
-  await Jimp.read(png)
+function png2jpeg(png, jpg) {
+  return Jimp.read(png)
     .then((image) => {
-      image.quality(50).write(jpg)
+      return image.quality(50).writeAsync(jpg)
     })
+    .then((done) => {})
     .catch((err) => {
       console.log(err)
     })
 }
 
-module.exports = { png2jpeg }
+async function convertImages(files) {
+  return Promise.all(
+    files
+      .filter((file) => file.malwareIsClean)
+      .map(async (file) => {
+        let fileExtension = getFileExtension(file.name)
+        if (fileExtension.endsWith('png')) {
+          let jpgPath = file.path.substr(0, file.path.lastIndexOf('.')) + '.jpg'
+          await png2jpeg(file.path, jpgPath)
+          var shasum = crypto.createHash('sha1')
+          let imageData = fs.readFileSync(jpgPath)
+          shasum.update(imageData)
+          const sha1Hash = shasum.digest('hex')
+
+          return {
+            name: file.name.substr(0, file.name.lastIndexOf('.')) + '.jpg',
+            type: 'image/png',
+            path: jpgPath,
+            length: imageData.length,
+            fileDescription: file.fileDescription,
+            sha1: sha1Hash,
+            malwareIsClean: file.malwareIsClean,
+          }
+        } else {
+          return null
+        }
+      }),
+  )
+}
+
+module.exports = { png2jpeg, convertImages }
