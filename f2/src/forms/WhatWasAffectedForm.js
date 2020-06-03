@@ -102,7 +102,6 @@ export const WhatWasAffectedForm = (props) => {
                     <CheckboxAdapter
                       name="affectedOptions"
                       value={key}
-                      isChecked={whatWasAffected.affectedOptions.includes(key)}
                     >
                       {i18n._(key)}
                       {key !== 'whatWasAffectedForm.other' && (
