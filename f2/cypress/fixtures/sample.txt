@@ -1,0 +1,62 @@
+"text/plain"
+"image/jpeg",
+"image/png",
+"application/pdf",
+"application/msword",
+"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+
+
+<H4>This is a size "4" heading</H4>
+<H5>This is a size "5" heading</H5>
+<H6>This is a size "6" heading</H6>
+<p style="color:red">This is a red paragraph.</p>
+<center>
+<H4>Copyright © 1997, by
+<A HREF="https://www.sheldonbrown.com/index.html">Sheldon Brown</A>
+</H4>
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2 title="I'm a header">The title Attribute</h2>
+
+<p title="I'm a tooltip">
+Mouse over this paragraph, to display the title attribute as a tooltip.
+</p>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Basic HTML Table</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Doe</td>
+    <td>80</td>
+  </tr>
+</table>
+
+</body>
+</html>
