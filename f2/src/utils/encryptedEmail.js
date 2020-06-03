@@ -101,6 +101,8 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
     },
   })
 
+  // With encrypted e-mail, just pass the raw output of openssl to nodemailer.
+  // This is because the output of openssl's "smime" command is already a valid RFC822 message
   const message = {
     envelope: {
       from: mailFrom,
