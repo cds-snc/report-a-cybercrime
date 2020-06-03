@@ -69,9 +69,9 @@ const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
   fs.writeFile(messageFile, message, function (err) {
     if (err) throw err
     exec(
-      `${openssl} -in ${messageFile} -out ${encryptedFile} ${certFileName(
-        uid,
-      )}`,
+      `${openssl} -in ${messageFile} -out ${encryptedFile} -subject "NCFRS report ${
+        data.reportId
+      } ${subjectSuffix}", ${certFileName(uid)}`,
       { cwd: process.cwd() },
       function (error, _stdout, stderr) {
         if (error) throw error
@@ -105,7 +105,6 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
     envelope: {
       from: mailFrom,
       to: emailAddress,
-      subject: `NCFRS report ${reportId}${emailSuffix}`,
     },
     raw: attachment,
   }
