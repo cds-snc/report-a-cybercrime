@@ -13,7 +13,8 @@ const Toggler = props => {
       padding={0}
       onClick={() => activate(locale)}
       // eslint-disable-next-line no-script-url
-      href="javascript:;" // otherwise can't navigate to with keyboard
+      href="#"//"javascript:;" // otherwise can't navigate to with keyboard
+      tabindex="0"
     >
       {locales[locale]}
     </A>

@@ -14,7 +14,8 @@ export const BackButton = ({ variant, variants, variantColor, ...props }) => (
         alignItems="center"
         onClick={() => history.goBack()}
         // eslint-disable-next-line no-script-url
-        href="javascript:;" // otherwise can't navigate to with keyboard
+        href="#"//href="javascript:;" // otherwise can't navigate to with keyboard
+        tabindex="0"
         {...props}
       >
         <Icon name="chevron-left" />
