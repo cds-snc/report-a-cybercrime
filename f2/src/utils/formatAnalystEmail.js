@@ -10,6 +10,9 @@ const formatLineHtml = (label, text) =>
 
 const formatTable = (rows) => `<table><tbody>\n${rows}</tbody></table>\n\n`
 
+const formatDownloadLink = (filename, url) =>
+  `<tr><td colspan='2'><a href='${url}'>Download ${filename}</a></tr></td>\n`
+
 const formatSection = (title, rows) =>
   `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
 
@@ -237,7 +240,7 @@ const formatFileAttachments = (data) => {
             formatLineHtml('Racy Score:    ', file.racyClassificationScore)
 
       const downloadLink = file.malwareIsClean
-        ? formatLineHtml('Download file: ', file.sasUrl)
+        ? formatDownloadLink(file.name, file.sasUrl)
         : ''
 
       return (
@@ -253,8 +256,8 @@ const formatFileAttachments = (data) => {
           'Malware scan:',
           file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
         ) +
-        downloadLink +
-        moderatorString
+        moderatorString +
+        downloadLink
       )
     })
     .join('<tr><td>&nbsp;</td></tr>')

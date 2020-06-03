@@ -27,14 +27,19 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
       path: file.path,
     }))
   */
+
   transporter.sendMail(
     {
       from: mailFrom,
       to: data.contactInfo.email,
       subject: `NCFRS report ${data.reportId}`,
-      text: message,
-      html: message,
-      //attachments,
+      text: `Please find NCFRS Report ${data.reportId} attached to this message`,
+      attachments: [
+        {
+          filename: `${data.reportId}.htm`,
+          content: message,
+        },
+      ],
     },
     (err, info) => {
       if (err) console.warn(`ERROR in prepareUnencryptedReportEmail: ${err}`)
