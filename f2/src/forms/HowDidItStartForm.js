@@ -97,11 +97,6 @@ export const HowDidItStartForm = (props) => {
     },
   ]
 
-  const recurrenceCheck = {
-    howManyTimes: [],
-    ...data.formData.timeline,
-  }
-
   const howManyTimes = [
     'howManyTimes.once',
     'howManyTimes.severalTimes',
@@ -177,9 +172,6 @@ export const HowDidItStartForm = (props) => {
                     <CheckboxAdapter
                       name="howDidTheyReachYou"
                       value={question.channel}
-                      isChecked={howdiditstart.howDidTheyReachYou.includes(
-                        question.channel,
-                      )}
                       conditionalField={
                         <Field
                           name={question.name}
@@ -240,7 +232,6 @@ export const HowDidItStartForm = (props) => {
                     <RadioAdapter
                       name="howManyTimes"
                       value={key}
-                      isChecked={recurrenceCheck.howManyTimes.includes(key)}
                     >
                       {i18n._(key)}
                     </RadioAdapter>
