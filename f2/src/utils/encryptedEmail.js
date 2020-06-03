@@ -102,16 +102,12 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
   })
 
   const message = {
-    from: mailFrom,
-    to: emailAddress,
-    subject: `NCFRS report ${reportId}${emailSuffix}`,
-    text: `NCFRS report ${reportId}${emailSuffix}`,
-    html: `NCFRS report ${reportId}${emailSuffix}`,
-    attachments: [
-      {
-        raw: attachment,
-      },
-    ],
+    envelope: {
+      from: mailFrom,
+      to: emailAddress,
+      subject: `NCFRS report ${reportId}${emailSuffix}`,
+    },
+    raw: attachment,
   }
 
   let info = await transporter.sendMail(message)
