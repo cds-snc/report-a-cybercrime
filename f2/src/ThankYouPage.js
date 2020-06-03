@@ -56,7 +56,16 @@ export const ThankYouPage = () => {
         id="NCFRSError"
         aria-live="assertive"
       >
-        <Trans id="thankYouPage.reportSubmissionError" />
+        <Trans id="thankYouPage.reportSubmissionError1" />
+        <A
+          href={
+            'tel:' + i18n._('thankYouPage.reportSubmissionError.phoneNumber')
+          }
+        >
+          <Trans id="thankYouPage.reportSubmissionError.phoneNumber" />
+        </A>
+
+        <Trans id="thankYouPage.reportSubmissionError2" />
       </Text>
     )
   }
@@ -122,6 +131,15 @@ export const ThankYouPage = () => {
                   </P>
                   <P>
                     <Trans id="thankYouPage.whatNextParagraph2" />
+                    <A
+                      href={
+                        'tel:' +
+                        i18n._('thankYouPage.whatNextParagraph2.phoneNumber')
+                      }
+                    >
+                      <Trans id="thankYouPage.whatNextParagraph2.phoneNumber" />
+                    </A>
+                    <Trans id="thankYouPage.whatNextParagraph2.period" />
                   </P>
                 </React.Fragment>
               ))}
