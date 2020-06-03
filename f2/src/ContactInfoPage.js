@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import { useEffect } from 'react'
 import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
@@ -11,17 +10,9 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
-import { useHistory } from 'react-router-dom'
 
 export const ContactInfoPage = () => {
-  const [state, dispatch] = useStateValue()
-  const history = useHistory()
-  useEffect(() => {
-    if (state.formData.consent.consentOptions.length === 0) {
-      history.push('/privacyconsent')
-    }
-  }, [history, state.formData.consent.consentOptions.length])
-
+  const [, dispatch] = useStateValue()
   return (
     <Route
       render={({ history }) => (
