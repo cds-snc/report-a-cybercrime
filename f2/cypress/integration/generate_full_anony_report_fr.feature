@@ -65,11 +65,6 @@ Scenario: Report anonymously
     When I fill yourLocation page forms
     Then I click "Continuer"
 
-  Scenario: your contact details
-    Given "Vos coordonnées" should be shown
-    When I fill yourContactDetails page forms
-    Then I click "Continuer"
-
   Scenario: Review  your report and  capture a screenshot
     Given "Révisez votre rapport" should be shown
     Then Take summary page screenshot

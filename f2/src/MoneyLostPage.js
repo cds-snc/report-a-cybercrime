@@ -34,7 +34,7 @@ export const MoneyLostPage = () => {
                 </P>
               </Stack>
               <MoneyLostInfoForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { moneyLost: data },

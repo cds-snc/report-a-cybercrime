@@ -73,25 +73,6 @@ export const LandingPage = (props) => {
                   />
                 </ButtonLink>
               </Stack>
-              <Stack>
-                <H2>
-                  <Trans id="landingPage.reportByPhone" />
-                </H2>
-
-                <Stack>
-                  <P>
-                    <Trans id="landingPage.phoneDays" />
-                  </P>
-                  <P>
-                    <Trans id="landingPage.phoneTimes" />
-                  </P>
-                  <P>
-                    <A href={'tel:' + i18n._('landingPage.phoneNumber')}>
-                      <Trans id="landingPage.phoneNumber" />
-                    </A>
-                  </P>
-                </Stack>
-              </Stack>
 
               <Well variantColor="blue">
                 <Trans id="landingPage.warning" />
@@ -104,6 +85,15 @@ export const LandingPage = (props) => {
               <Ul>
                 <Li>
                   <Trans id="landingPage.reportingOptions0" />
+                  <A
+                    href={
+                      'tel:' +
+                      i18n._('landingPage.reportingOptions0.phoneNumber')
+                    }
+                  >
+                    <Trans id="landingPage.reportingOptions0.phoneNumber" />
+                  </A>
+                  <Trans id="landingPage.reportingOptions0.period" />
                 </Li>
                 <Li>
                   <Trans id="landingPage.reportingOptions1">

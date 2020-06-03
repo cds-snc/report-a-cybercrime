@@ -32,7 +32,7 @@ export const HowDidItStartPage = () => {
               </Stack>
 
               <HowDidItStartForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { howdiditstart: data },

@@ -14,3 +14,7 @@ f2/cypress/videos
 f2/cypress/screenshots
 .vscode
 message_*.txt
+utils/totp/node_modules
+utils/totp/secret
+utils/totp/code.html
+.DS_Store

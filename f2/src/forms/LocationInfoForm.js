@@ -16,19 +16,19 @@ import { Input } from '../components/input'
 import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
+import { containsData } from '../utils/containsData'
 
 export const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
+  const postalCodeRegEXP = /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
   if (
-    values.postalCode !== '' &&
-    !new RegExp(
-      /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i,
-    ).test(values.postalCode)
+    'postalCode' in values &&
+    containsData(values.postalCode) &&
+    !new RegExp(postalCodeRegEXP).test(values.postalCode)
   ) {
     errors.postalCode = 'locationInfoForm.Warning'
   }
-
   return errors
 }
 
