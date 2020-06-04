@@ -6,7 +6,6 @@ const {
   SASProtocol,
 } = require('@azure/storage-blob')
 
-const nanoid = require('nanoid')
 const fs = require('fs')
 const exec = require('child_process').exec
 const { certFileName } = require('./ldap')
