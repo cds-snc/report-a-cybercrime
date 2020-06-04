@@ -10,18 +10,10 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
-import { useHistory } from 'react-router-dom'
-import { useEffect } from 'react'
 
 export const AnonymousPage = () => {
   const [state, dispatch] = useStateValue()
   const { doneForms } = state
-  const history = useHistory()
-  useEffect(() => {
-    if (state.formData.consent.consentOptions.length === 0) {
-      history.push('/privacyconsent')
-    }
-  }, [history, state.formData.consent.consentOptions.length])
 
   return (
     <Route
@@ -36,7 +28,6 @@ export const AnonymousPage = () => {
               <Lead>
                 <Trans id="anonymousPage.intro" />
               </Lead>
-              {console.log(doneForms)}
               <AnonymousInfoForm
                 onSubmit={(data) => {
                   dispatch({
