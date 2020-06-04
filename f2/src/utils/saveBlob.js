@@ -37,7 +37,7 @@ const uidListInitial = process.env.LDAP_UID
   : []
 
 /*
-Given 'data' 
+Given 'data' , find all the files, encrypt and save to cloud
 */
 async function saveBlob(data) {
   try {
@@ -73,34 +73,44 @@ async function saveBlob(data) {
       for (var x = 0; x < data.evidence.files.length; x++) {
         if (data.evidence.files[x].malwareIsClean) {
           // Use SHA1 hash as file name to avoid collisions in blob storage, keep file extension
-          const blobName =
+          let blobName =
             data.evidence.files[x].sha1 +
             '.' +
-            data.evidence.files[x].name.split('.').pop() +
-            '.p7m'
+            data.evidence.files[x].name.split('.').pop()
+
+          // Add p7m extension if we are encrypting file
+          blobName = uidListInitial.length > 0 ? blobName + '.p7m' : blobName
+
           const blockBlobClient = containerClient.getBlockBlobClient(blobName)
-          encryptFile(
-            uidListInitial,
-            data.evidence.files[x],
-            (file, content) => {
-              errorCode = blockBlobClient.upload(content, content.length)
-                .errorCode
-              if (errorCode)
-                console.warn(
-                  `ERROR: Upload report ${data.reportId} file ${file.name}, blob ${blobName}: error code ${errorCode}`,
-                )
-              else
-                console.info(
-                  `Uploaded report ${data.reportId} file ${file.name}, blob ${blobName} successfully`,
-                )
-            },
-          )
+
+          // Create a callback function for use with encryptFile
+          let uploadFile = (file, content) => {
+            let errorCode = blockBlobClient.upload(content, content.length)
+              .errorCode
+            if (errorCode)
+              console.warn(
+                `ERROR: Upload report ${data.reportId} file ${file.name}, blob ${blobName}: error code ${errorCode}`,
+              )
+            else
+              console.info(
+                `Uploaded report ${data.reportId} file ${file.name}, blob ${blobName} successfully`,
+              )
+          }
+          // If running in a test environment with no HRMIS, upload the raw file instead of encrypting
+          if (uidListInitial.length > 0) {
+            encryptFile(uidListInitial, data.evidence.files[x], uploadFile)
+          } else {
+            uploadFile(
+              data.evidence.files[x],
+              fs.readFileSync(data.evidence.files[x].path),
+            )
+          }
           // Add the SAS URL to the file data structure
           data.evidence.files[x].sasUrl =
             blockBlobClient.url + '?' + containerSAS.toString()
         } else {
           console.warn(
-            `Skipping saving report ${data.reportId} file ${file.name} due to malware.`,
+            `Skipping saving report ${data.reportId} file ${data.evidence.files[x].name} due to malware.`,
           )
         }
       }

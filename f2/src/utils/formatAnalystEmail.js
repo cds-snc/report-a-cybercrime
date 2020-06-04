@@ -1,5 +1,7 @@
 // 'use strict'
 
+const { getFileExtension } = require('./filenameUtils')
+
 const { formatDate } = require('./formatDate')
 var zipcodes = require('zipcodes')
 
@@ -240,6 +242,12 @@ const formatFinancialTransactions = (data) => {
 const formatFileAttachments = (data) => {
   const returnString = data.evidence.files
     .map((file) => {
+      // Don't include png in the e-mail. They are converted to JPG and those will be included
+      let fileExtension = getFileExtension(file.name)
+      if (fileExtension.endsWith('png')) {
+        return ''
+      }
+
       const offensive =
         file.isImageAdultClassified || file.isImageRacyClassified
 
