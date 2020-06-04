@@ -3,10 +3,9 @@ require('dotenv').config()
 const submissionsPerDay = process.env.SUBMISSIONS_PER_DAY
 const secondsBetweenRequests = process.env.SECONDS_BETWEEN_REQUESTS
 
-if (!submissionsPerDay || !secondsBetweenRequests)
-  console.error('ERROR: Availability not configured')
-else console.info('Availability configured')
-
+if (!submissionsPerDay || !secondsBetweenRequests) {
+  console.error('ERROR: SUBMISSIONS_PER_DAY or SECONDS_BETWEEN_REQUESTS not configured.  The Server will constantly report unavailable as a result.')
+}
 // availableData is { numberOfSubmissions, numberOfRequests, lastRequested }
 const isAvailable = (availableData) => {
   try {
