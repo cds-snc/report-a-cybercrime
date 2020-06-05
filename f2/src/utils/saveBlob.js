@@ -60,25 +60,22 @@ async function saveBlob(data) {
       // Generate service level SAS for a container
       const containerSAS = generateBlobSASQueryParameters(
         {
-          containerName, // Required
-          permissions: ContainerSASPermissions.parse('r'), // Required
-          startsOn: new Date(), // Required
-          expiresOn: new Date(new Date().valueOf() + 86400000 * sasExpiryDays), // Optional. 86400000 miliseconds = 1 day
-          ipRange: { start: sasIpRangeLower, end: sasIpRangeUpper }, // Optional
-          protocol: SASProtocol.Https, // Optional
+          containerName,
+          permissions: ContainerSASPermissions.parse('r'), // Read Only
+          startsOn: new Date(), // Starting today
+          expiresOn: new Date(new Date().valueOf() + 86400000 * sasExpiryDays), // Expires in 'sasExpiryDays' days (86400000 = 1 day)
+          ipRange: { start: sasIpRangeLower, end: sasIpRangeUpper }, // Restrict the SAS link to requests from this IP range
+          protocol: SASProtocol.Https, // Restrict SAS to HTTPS requests only
         },
-        sharedKeyCredential, // StorageSharedKeyCredential - `new StorageSharedKeyCredential(account, accountKey)`
+        sharedKeyCredential,
       ).toString()
 
-      for (var x = 0; x < data.evidence.files.length; x++) {
-        if (data.evidence.files[x].malwareIsClean) {
+      data.evidence.files.forEach((file) => {
+        if (file.malwareIsClean) {
           // Use SHA1 hash as file name to avoid collisions in blob storage, keep file extension
-          let blobName =
-            data.evidence.files[x].sha1 +
-            '.' +
-            data.evidence.files[x].name.split('.').pop()
+          let blobName = file.sha1 + '.' + file.name.split('.').pop()
 
-          // Add p7m extension if we are encrypting file
+          // Add p7m extension if we are encrypting file. Entrust on RCMP computer will recognize p7m as encrypted file
           blobName = uidListInitial.length > 0 ? blobName + '.p7m' : blobName
 
           const blockBlobClient = containerClient.getBlockBlobClient(blobName)
@@ -96,24 +93,21 @@ async function saveBlob(data) {
                 `Uploaded report ${data.reportId} file ${file.name}, blob ${blobName} successfully`,
               )
           }
+
           // If running in a test environment with no HRMIS, upload the raw file instead of encrypting
           if (uidListInitial.length > 0) {
-            encryptFile(uidListInitial, data.evidence.files[x], uploadFile)
+            encryptFile(uidListInitial, file, uploadFile)
           } else {
-            uploadFile(
-              data.evidence.files[x],
-              fs.readFileSync(data.evidence.files[x].path),
-            )
+            uploadFile(file, fs.readFileSync(file.path))
           }
           // Add the SAS URL to the file data structure
-          data.evidence.files[x].sasUrl =
-            blockBlobClient.url + '?' + containerSAS.toString()
+          file.sasUrl = blockBlobClient.url + '?' + containerSAS.toString()
         } else {
           console.warn(
-            `Skipping saving report ${data.reportId} file ${data.evidence.files[x].name} due to malware.`,
+            `Skipping saving report ${data.reportId} file ${file.name} due to malware.`,
           )
         }
-      }
+      })
     }
   } catch (error) {
     console.warn(`ERROR in saveBlob: ${error}`)
