@@ -56,8 +56,14 @@ const formatVictimDetails = (data) => {
   const consentString = data.consent.consentOptions
     .map((option) => option.replace('privacyConsentInfoForm.', ''))
     .join(', ')
-  const postalCity = zipcodes.lookup(data.location.postalCode).city
-  const postalProv = zipcodes.lookup(data.location.postalCode).state
+
+  let postalCity = ''
+  let postalProv = ''
+
+  if (data.location.postalCode) {
+    postalCity = zipcodes.lookup(data.location.postalCode).city
+    postalProv = zipcodes.lookup(data.location.postalCode).state
+  }
 
   const rows =
     formatLineHtml('Full name:', data.contactInfo.fullName) +

@@ -13,7 +13,7 @@ export const useStateValue = () => useContext(StateContext)
 
 export const initialState = {
   doneForms: false,
-  formData: { ...formDefaults, prodVersion: '1.1.0-dev' },
+  formData: { ...formDefaults, prodVersion: '1.4.0' },
   doneFinalFeedback: false,
 }
 
