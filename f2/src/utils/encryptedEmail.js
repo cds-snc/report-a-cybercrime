@@ -18,22 +18,28 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
     newline: 'unix',
     buffer: true,
   })
-
+  /*
+  Disabling attachments for now, let's try sending a SAS link instead
   let attachments = data.evidence.files
     .filter((file) => file.malwareIsClean)
     .map((file) => ({
       filename: file.name,
       path: file.path,
     }))
+  */
 
   transporter.sendMail(
     {
       from: mailFrom,
       to: data.contactInfo.email,
       subject: `NCFRS report ${data.reportId}`,
-      text: message,
-      html: message,
-      attachments,
+      text: `Please find NCFRS Report ${data.reportId} attached to this message`,
+      attachments: [
+        {
+          filename: `${data.reportId}.htm`,
+          content: message,
+        },
+      ],
     },
     (err, info) => {
       if (err) console.warn(`ERROR in prepareUnencryptedReportEmail: ${err}`)
@@ -63,9 +69,9 @@ const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
   fs.writeFile(messageFile, message, function (err) {
     if (err) throw err
     exec(
-      `${openssl} -in ${messageFile} -out ${encryptedFile} ${certFileName(
-        uid,
-      )}`,
+      `${openssl} -in ${messageFile} -out ${encryptedFile} -subject "NCFRS report ${
+        data.reportId
+      } ${subjectSuffix}", ${certFileName(uid)}`,
       { cwd: process.cwd() },
       function (error, _stdout, stderr) {
         if (error) throw error
@@ -95,17 +101,14 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
     },
   })
 
+  // With encrypted e-mail, just pass the raw output of openssl to nodemailer.
+  // This is because the output of openssl's "smime" command is already a valid RFC822 message
   const message = {
-    from: mailFrom,
-    to: emailAddress,
-    subject: `NCFRS report ${reportId}${emailSuffix}`,
-    text: `NCFRS report ${reportId}${emailSuffix}`,
-    html: `NCFRS report ${reportId}${emailSuffix}`,
-    attachments: [
-      {
-        raw: attachment,
-      },
-    ],
+    envelope: {
+      from: mailFrom,
+      to: emailAddress,
+    },
+    raw: attachment,
   }
 
   let info = await transporter.sendMail(message)
