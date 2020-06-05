@@ -1,5 +1,7 @@
 // 'use strict'
 
+const { getFileExtension } = require('./filenameUtils')
+
 const { formatDate } = require('./formatDate')
 var zipcodes = require('zipcodes')
 
@@ -10,6 +12,9 @@ const formatLineHtml = (label, text) =>
   text && text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
 
 const formatTable = (rows) => `<table><tbody>\n${rows}</tbody></table>\n\n`
+
+const formatDownloadLink = (filename, url) =>
+  `<tr><td colspan='2'><a href='${url}'>Download ${filename}</a></tr></td>\n`
 
 const formatSection = (title, rows) =>
   `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
@@ -237,6 +242,12 @@ const formatFinancialTransactions = (data) => {
 const formatFileAttachments = (data) => {
   const returnString = data.evidence.files
     .map((file) => {
+      // Don't include png in the e-mail. They are converted to JPG and those will be included
+      let fileExtension = getFileExtension(file.name)
+      if (fileExtension.endsWith('png')) {
+        return ''
+      }
+
       const offensive =
         file.isImageAdultClassified || file.isImageRacyClassified
 
@@ -247,6 +258,10 @@ const formatFileAttachments = (data) => {
             formatLineHtml('Adult score:   ', file.adultClassificationScore) +
             formatLineHtml('Is racy:       ', file.isImageRacyClassified) +
             formatLineHtml('Racy Score:    ', file.racyClassificationScore)
+
+      const downloadLink = file.malwareIsClean
+        ? formatDownloadLink(file.name, file.sasUrl)
+        : ''
 
       return (
         formatLineHtml(
@@ -261,7 +276,8 @@ const formatFileAttachments = (data) => {
           'Malware scan:',
           file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
         ) +
-        moderatorString
+        moderatorString +
+        downloadLink
       )
     })
     .join('<tr><td>&nbsp;</td></tr>')
