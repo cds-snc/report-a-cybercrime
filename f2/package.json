@@ -69,7 +69,7 @@
     "pretest": "npm run clean:reports",
     "scripts": "cypress run",
     "dev": "react-scripts start",
-    "lint": "eslint --max-warnings=0 'src/**/*.js'",
+    "lint": "eslint --max-warnings=0 **/*.js",
     "add-locale": "lingui add-locale",
     "extract": "lingui extract --clean",
     "compile": "lingui compile",
