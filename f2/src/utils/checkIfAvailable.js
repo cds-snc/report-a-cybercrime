@@ -22,11 +22,8 @@ const isAvailable = (availableData) => {
     }
     if (!submissionsPerDay || !secondsBetweenRequests) return false
     if (availableData.numberOfSubmissions >= submissionsPerDay) return false
-    if (
-      !availableData.lastRequested ||
-      currentTime - availableData.lastRequested > secondsBetweenRequests * 1000
-    )
-      return true
+    if (currentTime - availableData.lastRequested > secondsBetweenRequests * 1000) return true
+    
   } catch (error) {
     console.error(`ERROR in isAvailable: ${error}`)
   }
