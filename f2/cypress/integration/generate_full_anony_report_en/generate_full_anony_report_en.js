@@ -111,7 +111,7 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
-when ('I fill Howwaspersonalinformationaffected forms', () => {
+When ('I fill Howwaspersonalinformationaffected forms', () => {
     cy.get('form').find('[value="typeOfInfoReq.creditCard"]').check({ force: true })
     cy.get('form').find('[value="typeOfInfoReq.dob"]').check({ force: true })
     cy.get('form').find('[value="typeOfInfoReq.homeAddress"]').check({ force: true })
