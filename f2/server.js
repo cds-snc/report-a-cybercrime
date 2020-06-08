@@ -88,7 +88,6 @@ app
     expressWinston.logger({
       transports: [new winston.transports.Console()],
       format: winston.format.combine(
-        winston.format.colorize(),
         winston.format.json(),
       ),
       meta: true, // optional: control whether you want to log the meta data about the request (default to true)
@@ -143,15 +142,19 @@ const allowedReferrers = [
 getReportCount(availableData)
 setTimeout(() => console.log({ availableData }), 1000)
 
-// These can all be done async to avoid holding up the nodejs process?
-async function save(data, res) {
+// Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
+// without holding up the rest of the 'save' function
+async function saveBlobAndEmailReport(data) {
   var converted = await convertImages(data.evidence.files)
   data.evidence.files.push(...converted.filter((file) => file !== null))
-  saveBlob(data)
-
+  // Await on this because saveBlob generates the SAS link for each file
+  await saveBlob(data)
   const analystEmail = formatAnalystEmail(data)
   encryptAndSend(uidList, emailList, data, analystEmail)
-
+}
+// These can all be done async to avoid holding up the nodejs process?
+async function save(data, res) {
+  saveBlobAndEmailReport(data)
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
