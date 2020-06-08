@@ -126,6 +126,14 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
+let availableData
+
+availableData = {
+  numberOfSubmissions: 0,
+  numberOfRequests: 0,
+  lastRequested: undefined,
+}
+
 getReportCount(availableData)
 setTimeout(() => console.log({ availableData }), 1000)
 
@@ -171,11 +179,20 @@ app.get('/', async function (req, res, next) {
     })
   }
 
-  if ( isTotpValid ) next()
+  if ( isTotpValid ) {
+    logger.info({
+      message: 'Totp valid, bypassing availability check'
+    })
+    next()
+  }
     
   var referer = req.headers.referer
 
-  if ( requestAccess(referer) ) {
+  if ( requestAccess(availableData, referer) ) {
+    logger.info({
+      message: 'New Request',
+      availableData: availableData,
+    })
     next()
   } else {
     logger.info({
