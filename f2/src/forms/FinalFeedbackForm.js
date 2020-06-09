@@ -89,6 +89,7 @@ export const FinalFeedbackForm = props => {
                     <RadioAdapter
                       name="wasServiceHard"
                       value={key}
+                      isChecked={wasServiceHard.includes(key)}
                     >
                       {i18n._(key)}
                     </RadioAdapter>
@@ -107,6 +108,7 @@ export const FinalFeedbackForm = props => {
                     <RadioAdapter
                       name="wouldYouUseAgain"
                       value={key}
+                      isChecked={wouldYouUseAgain.includes(key)}
                     >
                       {i18n._(key)}
                     </RadioAdapter>

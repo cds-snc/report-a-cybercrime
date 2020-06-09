@@ -28,7 +28,6 @@ const {
 } = require('./src/utils/acceptableFiles')
 const expressWinston = require('express-winston')
 const winston = require('winston')
-const { convertImages } = require('./src/utils/imageConversion')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -63,6 +62,21 @@ setTimeout(() => {
 const app = express()
 app
   .use(helmet())
+  .use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          'www.google-analytics.com',
+          'www.googletagmanager.com',
+        ],
+        styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
+        fontSrc: ["'self'", 'fonts.gstatic.com'],
+      },
+    }),
+  )
   .use(helmet.referrerPolicy({ policy: 'same-origin' }))
   .use(
     helmet.featurePolicy({
@@ -79,23 +93,21 @@ app
       meta: true, // optional: control whether you want to log the meta data about the request (default to true)
       expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
       colorize: false, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
-
+      
       dynamicMeta: (req, res) => {
         const httpRequest = {}
         const meta = {}
         if (req) {
-          meta.httpRequest = httpRequest
-          httpRequest.remoteIpv4andv6 = req.ip // this includes both ipv6 and ipv4 addresses separated by ':'
-          httpRequest.remoteIpv4 =
-            req.ip.indexOf(':') >= 0
-              ? req.ip.substring(req.ip.lastIndexOf(':') + 1)
-              : req.ip // just ipv4
-          httpRequest.requestSize = req.socket.bytesRead
-          httpRequest.referrer = req.get('Referrer')
+            meta.httpRequest=httpRequest
+            httpRequest.remoteIpv4andv6 = req.ip // this includes both ipv6 and ipv4 addresses separated by ':'
+            httpRequest.remoteIpv4 = req.ip.indexOf(':') >= 0 ? req.ip.substring(req.ip.lastIndexOf(':') + 1) : req.ip   // just ipv4
+            httpRequest.requestSize = req.socket.bytesRead
+            httpRequest.referrer = req.get('Referrer')
+            
         }
         return meta
       },
-
+      
       ignoreRoute: function (req, res) {
         return false
       }, // optional: allows to skip some log messages based on request and/or response
@@ -128,19 +140,13 @@ const allowedReferrers = [
 getReportCount(availableData)
 setTimeout(() => console.log({ availableData }), 1000)
 
-// Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
-// without holding up the rest of the 'save' function
-async function saveBlobAndEmailReport(data) {
-  var converted = await convertImages(data.evidence.files)
-  data.evidence.files.push(...converted.filter((file) => file !== null))
-  // Await on this because saveBlob generates the SAS link for each file
-  await saveBlob(data)
-  const analystEmail = formatAnalystEmail(data)
-  encryptAndSend(uidList, emailList, data, analystEmail)
-}
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
-  saveBlobAndEmailReport(data)
+  saveBlob(data)
+
+  const analystEmail = formatAnalystEmail(data)
+  encryptAndSend(uidList, emailList, data, analystEmail)
+
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
@@ -162,7 +168,6 @@ app.get('/', async function (req, res, next) {
 
   // Default to false. This represents if a user entered a valid TOTP code
   var isTotpValid = false
-  var validReferer = false
 
   // If the user passed in a TOTP query parm (/?totp=) and the correct
   // env var is set, then verify the code.
@@ -175,43 +180,28 @@ app.get('/', async function (req, res, next) {
     })
   }
 
-  if (process.env.CHECK_REFERER) {
-    var referer = req.headers.referer
-    validReferer = referer ? allowedReferrers.includes(new URL(referer).host.toLowerCase()) : referer
-  } else {
-    validReferer = true
-  }
-
-  var maxSubmissions = availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY
-
-  var availabilityCheck = {
-    "SUBMISSIONS_PER_DAY":process.env.SUBMISSIONS_PER_DAY,
-    "NUMBER_OF_SUBMISSIONS": availableData.numberOfSubmissions,
-    "MAX_SUBMISSIONS": maxSubmissions,
-    "CHECK_REFERER": process.env.CHECK_REFERER,
-    "VALID_REFERER": validReferer,
-    "TOTP_SECRET": process.env.TOTP_SECRET,
-    "TOTP_VALID": isTotpValid
-  }
-
-  logger.info({
-    message: 'Availability Check',
-    availabilityCheck: availabilityCheck
-  })
-
   // If user had a TOTP code, bypass the submissions_per_day restriction
-  if ( (maxSubmissions || !validReferer) && !isTotpValid ) {
-    logger.info({
-      message: 'Redirecting to CAFC'
-    })
+  if (
+    availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY &&
+    !isTotpValid
+  ) {
+    console.log('Warning: redirecting request to CAFC')
     res.redirect(
       req.subdomains.includes('signalement')
         ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
         : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
-    availableData.numberOfRequests += 1
-    availableData.lastRequested = new Date()
+    var referrer = req.headers.referer
+    console.log('Referrer:' + referrer)
+    if (
+      referrer !== undefined &&
+      allowedReferrers.indexOf(new URL(referrer).host.toLowerCase()) > -1
+    ) {
+      availableData.numberOfRequests += 1
+      availableData.lastRequested = new Date()
+    }
+    console.log(`New Request. ${JSON.stringify(availableData)}`)
     logger.info({
       message: 'New Request',
       availableData: availableData,

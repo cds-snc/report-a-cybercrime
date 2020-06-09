@@ -45,7 +45,7 @@ export const Checkbox = ({ input, label, isChecked, ...props }) => {
       {id => {
         return (
           <React.Fragment>
-            <Flex as="label" id={id} align="start" d="inline-flex"> 
+            <Flex as="label" id={id} align="start">
               <VisuallyHidden
                 as="input"
                 type="checkbox"

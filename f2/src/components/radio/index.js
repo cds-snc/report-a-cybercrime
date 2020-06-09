@@ -40,7 +40,7 @@ export const Radio = ({
       {id => {
         return (
           <React.Fragment>
-            <Flex as="label" id={id} align="start" d="inline-flex">
+            <Flex as="label" id={id} align="start">
               <VisuallyHidden
                 {...input}
                 as="input"

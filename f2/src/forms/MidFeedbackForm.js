@@ -136,6 +136,7 @@ export const MidFeedbackForm = props => {
                             <CheckboxAdapter
                               name="midFeedback"
                               value={key}
+                              isChecked={midFeedback.includes(key)}
                             >
                               {i18n._(key)}
                             </CheckboxAdapter>

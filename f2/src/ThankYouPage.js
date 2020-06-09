@@ -56,16 +56,7 @@ export const ThankYouPage = () => {
         id="NCFRSError"
         aria-live="assertive"
       >
-        <Trans id="thankYouPage.reportSubmissionError1" />
-        <A
-          href={
-            'tel:' + i18n._('thankYouPage.reportSubmissionError.phoneNumber')
-          }
-        >
-          <Trans id="thankYouPage.reportSubmissionError.phoneNumber" />
-        </A>
-
-        <Trans id="thankYouPage.reportSubmissionError2" />
+        <Trans id="thankYouPage.reportSubmissionError" />
       </Text>
     )
   }
@@ -131,15 +122,6 @@ export const ThankYouPage = () => {
                   </P>
                   <P>
                     <Trans id="thankYouPage.whatNextParagraph2" />
-                    <A
-                      href={
-                        'tel:' +
-                        i18n._('thankYouPage.whatNextParagraph2.phoneNumber')
-                      }
-                    >
-                      <Trans id="thankYouPage.whatNextParagraph2.phoneNumber" />
-                    </A>
-                    <Trans id="thankYouPage.whatNextParagraph2.period" />
                   </P>
                 </React.Fragment>
               ))}
@@ -163,8 +145,8 @@ export const ThankYouPage = () => {
                 <A
                   href={
                     i18n.locale === 'en'
-                      ? 'https://antifraudcentre-centreantifraude.ca/protect-protegez-eng.htm'
-                      : 'https://antifraudcentre-centreantifraude.ca/protect-protegez-fra.htm'
+                      ? 'http://www.antifraudcentre.ca/index-eng.htm'
+                      : 'http://www.antifraudcentre.ca/index-fra.htm'
                   }
                   isExternal
                 >

@@ -10,7 +10,7 @@ export const BackButton = ({ variant, variants, variantColor, ...props }) => (
   <Route
     render={({ history }) => (
       <LinkButton
-        d="inline-flex"
+        d="flex"
         alignItems="center"
         onClick={() => history.goBack()}
         // eslint-disable-next-line no-script-url

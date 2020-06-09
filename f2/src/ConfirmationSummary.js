@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
-import { useEffect } from 'react'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { formDefaults } from './forms/defaultValues'
@@ -34,11 +33,9 @@ export const ConfirmationSummary = () => {
     ...testdata.formData.anonymous,
     ...data.formData.anonymous,
   }
-  useEffect(() => {
-    if (!data.doneForms) {
-      dispatch({ type: 'saveDoneForms', data: true })
-    }
-  })
+  if (!data.doneForms) {
+    dispatch({ type: 'saveDoneForms', data: true })
+  }
 
   return (
     <React.Fragment>

@@ -1,9 +1,6 @@
 // 'use strict'
 
-const { getFileExtension } = require('./filenameUtils')
-
 const { formatDate } = require('./formatDate')
-var zipcodes = require('zipcodes')
 
 const unCamel = (text) =>
   text.replace(/([A-Z])|([\d]+)/g, ' $1$2').toLowerCase()
@@ -12,9 +9,6 @@ const formatLineHtml = (label, text) =>
   text && text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
 
 const formatTable = (rows) => `<table><tbody>\n${rows}</tbody></table>\n\n`
-
-const formatDownloadLink = (filename, url) =>
-  `<tr><td colspan='2'><a href='${url}'>Download ${filename}</a></tr></td>\n`
 
 const formatSection = (title, rows) =>
   `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
@@ -25,7 +19,7 @@ const formatReportInfo = (data) => {
 
   if (data.selfHarmWords.length) {
     selfHarmString = 'self harm words detected'
-    returnString = `\n\n<h1 style="background-color:yellow;">SELF HARM WORDS FOUND : ${data.selfHarmWords}</h1>`
+    returnString = `\n\n<h1>SELF HARM WORDS FOUND : ${data.selfHarmWords}</h1>`
   }
 
   let isAnonymous =
@@ -62,14 +56,6 @@ const formatVictimDetails = (data) => {
     .map((option) => option.replace('privacyConsentInfoForm.', ''))
     .join(', ')
 
-  let postalCity = ''
-  let postalProv = ''
-
-  if (data.location.postalCode) {
-    postalCity = zipcodes.lookup(data.location.postalCode).city
-    postalProv = zipcodes.lookup(data.location.postalCode).state
-  }
-
   const rows =
     formatLineHtml('Full name:', data.contactInfo.fullName) +
     formatLineHtml('Email:', data.contactInfo.email) +
@@ -77,8 +63,6 @@ const formatVictimDetails = (data) => {
     formatLineHtml('City:', data.location.city) +
     formatLineHtml('Province:', data.location.province) +
     formatLineHtml('Postal code:', data.location.postalCode) +
-    formatLineHtml('City based on postal code:', postalCity) +
-    formatLineHtml('Province based on postal code:', postalProv) +
     formatLineHtml('Consent:', consentString)
 
   delete data.contactInfo.fullName
@@ -242,12 +226,6 @@ const formatFinancialTransactions = (data) => {
 const formatFileAttachments = (data) => {
   const returnString = data.evidence.files
     .map((file) => {
-      // Don't include png in the e-mail. They are converted to JPG and those will be included
-      let fileExtension = getFileExtension(file.name)
-      if (fileExtension.endsWith('png')) {
-        return ''
-      }
-
       const offensive =
         file.isImageAdultClassified || file.isImageRacyClassified
 
@@ -258,10 +236,6 @@ const formatFileAttachments = (data) => {
             formatLineHtml('Adult score:   ', file.adultClassificationScore) +
             formatLineHtml('Is racy:       ', file.isImageRacyClassified) +
             formatLineHtml('Racy Score:    ', file.racyClassificationScore)
-
-      const downloadLink = file.malwareIsClean
-        ? formatDownloadLink(file.name, file.sasUrl)
-        : ''
 
       return (
         formatLineHtml(
@@ -276,8 +250,7 @@ const formatFileAttachments = (data) => {
           'Malware scan:',
           file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
         ) +
-        moderatorString +
-        downloadLink
+        moderatorString
       )
     })
     .join('<tr><td>&nbsp;</td></tr>')

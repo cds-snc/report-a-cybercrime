@@ -36,7 +36,7 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
-When('I fill ReportAnonymously page forms', () => {
+When('I fill ReportAnonymously page forms', () => {   
     //cy.get('form').find('[value="anonymousPage.no"]').check({ force: true })
 });
 
@@ -95,7 +95,7 @@ When('I fill Howwereyourmoney page forms', () => {
     cy.get('form').find('[value="methodPayment.eTransfer"]').check({ force: true })
     cy.get('form').find('[value="methodPayment.creditCard"]').check({ force: true })
     cy.get('form').find('[value="methodPayment.giftCard"]').check({ force: true })
-    cy.get('form').find('[value="methodPayment.cryptocurrency"]').check({ force: true })
+    cy.get('form').find('[value="methodPayment.cash"]').check({ force: true })
     cy.get('form').find('[value="methodPayment.other"]').check({ force: true })
     cy.get('form').find('[id="methodOther"]').type('Certified Cheque')
     cy.get('form').find('[id="transactionDay"]').type('22')

@@ -1,51 +1,5 @@
 # Changelog for report a cybercrime product
 
-## V1.3.0 (2020-05-25)
-
-- More date validation tweaks (Pull Request #1809, #1889 Issue #1808, #1800, #1842)
-- Tweaks to thank you page design (Pull Request #1851, Issue #1851)
-- Added storybook (util/docs for devs, transparent to users) (Pull Request #1781, #1870, #1866)
-- Fixed bug where a 2nd submission could fail (Pull Request #1863)
-- Changes to application logging (Pull Request #1878)
-- Added scripts for load testing (Pull Request #1856)
-- Fixed bug where a report could fail if a user removed previously input data (PR #1872, Issue #1872)
-- Fixed report not properly stating if user was anonymous: Pull Request (#1883, Issue #1881)
-- Fixed bug in initialization of counter of # of reports submitted: (PR #1865, Issue #1819)
-- Additional file uploads validation and error handling (PR #1891, #1890 Issue #1888, #1887, #1885)
-- Improve language and direction for user on file uploads (PR #1904, Issue #1901)
-- Added more automated testing and accessibility testing (PR #1841, #1907)
-- Improve HTTP Server headers for better security (PR #1898, Issue #1871)
-- Fixed bug where "cryptocurrency" shows up as "cash" in e-mail report (PR #1912, Issue #1905)
-- Add warning in subject line of report when self harm words detected (PR #1914, Issue #1910)
-- Improve enforcement of requirement of user consent (PR #1908, #1602)
-- Improvements to application logging (PR #1909, #1916)
-- Change label of report language from "en" and "fr" to "english" and "french" in report to analyst (PR #1915, Issue #1855)
-- Added a way to devs to access app and verify deployment even when app is "closed for the day" (PR #1911, Issue #1882)
-- Fix bug where user can't remove postal code after entering it (PR #1917, Issue #1906)
-- Remove CAFC call centre number due to closure (PR #1928, Issue #1923)
-- Update privacy statement (PR #1930, Issue #1926)
-
-## V1.2.0 (2020-04-28)
-
-- added more date validation (Pull Request #1799, issue #1786)
-- added google tag manager related settings (Pull Request #1815, Pull Request #1814))
-- added more sanitization of user inputs (Pull Request #1773, Issue #1775
-- Make beta banner more obvious (Pull Request #1816)
-- Added version number to the report (Pull Request #1768, Issue #1703)
-- Added new fields to small business form for victims (Pull Request #1802, Issue #1790)
-- Updating wording on some error messages (Pull Request #1822, Issue #1812)
-- Changed the way a user can opt-in/opt-out to anonymous flow (Pull Request #1820, Issue #1804)
-- Removed some debug logging (Pull Request #1832)
-- Added more server side validation (Pull Request #1823)
-- Updated version of "chakra" library (Pull Request #1837)
-- Fixed translation issues (Pull Request #1829, #1848, Issue #1826)
-- Add a summary block for anonymous opt-in on summary page (PR #1834, issue #1771)
-- Formatting of e-mail report (PR #1849, Issue #1795)
-- Fixed formatting and content issues with report e-mail (PR #1839, PR #1850, Issue #1836, Issue #1844)
-- Redesign of some pages (Issue #1803)
-- Fix bug where some french users were served the english version of the app (PR #1852, Issue #1830)
-- Fix issue with how we limit number of reports (#PR #1838, Issue #1821)
-
 ## V1.1.0 (2020-04-14)
 
 ### Client code:
