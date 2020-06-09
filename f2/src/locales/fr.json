@@ -162,7 +162,7 @@
   "evidencePage.nextPage": "Prochaine étape : Votre emplacement géographique",
   "evidencePage.numberOfFilesAttached": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
   "evidencePage.removeFileButton": "Enlever ce fichier",
-  "evidencePage.supportedFiles": "Types de fichiers pris en charge :  ",
+  "evidencePage.supportedFiles": "Types de fichiers pris en charge : ",
   "evidencePage.title": "Preuves à l’appui",
   "fileUpload.added": "Fichier ajouté",
   "fileUpload.removed": "Fichier enlevé",
