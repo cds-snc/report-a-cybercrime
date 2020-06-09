@@ -59,11 +59,7 @@ export const EvidenceInfoForm = (props) => {
     if (!fileExtensionPasses(file.name)) {
       alert(
         i18n._('evidencePage.supportedFiles') +
-          i18n._('evidencePage.fileTypes1') +
-          ', ' +
-          i18n._('evidencePage.fileTypes2') +
-          ', ' +
-          i18n._('evidencePage.fileTypes3'),
+          i18n._('evidencePage.fileTypes'),
       )
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
