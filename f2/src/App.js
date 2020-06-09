@@ -56,10 +56,9 @@ const App = () => {
                     color="blue.900"
                     href={
                       i18n.locale === 'en'
-                         ? 'https://www.services.rcmp-grc.gc.ca/chooser-eng.html'
-                      : 'https://www.services.rcmp-grc.gc.ca/chooser-fra.html'
+                        ? 'https://www.services.rcmp-grc.gc.ca/chooser-eng.html'
+                        : 'https://www.services.rcmp-grc.gc.ca/chooser-fra.html'
                     }
-                    isExternal
                   />
                 </Trans>
               </PhaseBanner>
