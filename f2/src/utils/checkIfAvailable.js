@@ -27,7 +27,13 @@ if (!submissionsPerDay || !secondsBetweenRequests) {
      SECONDS_BETWEEN_REQUESTS: `${secondsBetweenRequests}`})
 }
 
-getReportCount(availableData)
+const updateAvailableData = async () => {
+  await getReportCount(availableData)
+}
+
+const getAvailableData = () => {
+  return availableData
+}
 
 const isAvailable = () => {
   try {
@@ -66,7 +72,7 @@ const isAvailable = () => {
 const requestAccess = (referer) => {
   try {
 
-    getReportCount(availableData)
+    updateAvailableData()
 
     var validReferer = false
 
@@ -120,8 +126,6 @@ const incrementSubmissions = () => {
   availableData.numberOfSubmissions++
 }
 
-const getAvailableData = () => {
-  return availableData
-}
+updateAvailableData()
 
 module.exports = { isAvailable, requestAccess, incrementSubmissions, getAvailableData }
