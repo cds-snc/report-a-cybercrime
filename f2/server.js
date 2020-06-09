@@ -8,10 +8,9 @@ const { unflatten } = require('flat')
 const { sanitize } = require('./src/utils/sanitize')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getCertsAndEmail } = require('./src/utils/ldap')
-const { isAvailable, requestAccess } = require('./src/utils/checkIfAvailable')
+const availabilityService = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
-const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
@@ -126,17 +125,6 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
-let availableData
-
-availableData = {
-  numberOfSubmissions: 0,
-  numberOfRequests: 0,
-  lastRequested: undefined,
-}
-
-getReportCount(availableData)
-setTimeout(() => console.log({ availableData }), 1000)
-
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
   var converted = await convertImages(data.evidence.files)
@@ -163,7 +151,6 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', async function (req, res, next) {
-  await getReportCount(availableData)
 
   // Default to false. This represents if a user entered a valid TOTP code
   var isTotpValid = false
@@ -188,10 +175,9 @@ app.get('/', async function (req, res, next) {
     
   var referer = req.headers.referer
 
-  if ( requestAccess(availableData, referer) ) {
+  if ( availabilityService.requestAccess(referer) ) {
     logger.info({
-      message: 'New Request',
-      availableData: availableData,
+      message: 'New Request'
     })
     next()
   } else {
@@ -229,18 +215,19 @@ app
   })
 
   .get('/available', function (_req, res) {
-    res.json({ acceptingReports: isAvailable(availableData) })
+    res.json({ acceptingReports: availabilityService.isAvailable() })
   })
 
   .get('/stats', function (_req, res) {
+    var data = availabilityService.getAvailableData()
     res.json({
-      acceptingReports: isAvailable(availableData),
-      ...availableData,
+      acceptingReports: availabilityService.isAvailable(),
+      ...data,
     })
   })
 
   .post('/submit', (req, res) => {
-    availableData.numberOfSubmissions += 1
+    availabilityService.incrementSubmissions()
     var form = new formidable.IncomingForm()
     form.parse(req)
     let files = []

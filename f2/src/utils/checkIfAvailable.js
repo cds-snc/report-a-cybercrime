@@ -1,5 +1,6 @@
 require('dotenv').config()
 const logger = require('./winstonLogger')
+const { getReportCount } = require('./saveRecord')
 
 const submissionsPerDay = process.env.SUBMISSIONS_PER_DAY
 const secondsBetweenRequests = process.env.SECONDS_BETWEEN_REQUESTS
@@ -12,6 +13,12 @@ const allowedReferrers = [
   'centreantifraude.ca',
 ]
 
+let availableData = {
+  numberOfSubmissions: 0,
+  numberOfRequests: 0,
+  lastRequested: undefined,
+}
+
 if (!submissionsPerDay || !secondsBetweenRequests) {
   logger.error({message:
     `SUBMISSIONS_PER_DAY or SECONDS_BETWEEN_REQUESTS not configured.
@@ -20,7 +27,9 @@ if (!submissionsPerDay || !secondsBetweenRequests) {
      SECONDS_BETWEEN_REQUESTS: `${secondsBetweenRequests}`})
 }
 
-const isAvailable = (availableData) => {
+getReportCount(availableData)
+
+const isAvailable = () => {
   try {
 
     /*
@@ -30,13 +39,12 @@ const isAvailable = (availableData) => {
     if (!submissionsPerDay || !secondsBetweenRequests) return false
     if (availableData.numberOfSubmissions >= submissionsPerDay) return false
 
-    const currentTime = new Date()
-    const lastRequested = availableData.lastRequested
-
     //If we do not have a record of the last request, the app is available.
-    if (!lastRequested) return true
+    if (!availableData.lastRequested) return true
     else {
-
+      
+      const currentTime = new Date()
+      const lastRequested = new Date(availableData.lastRequested.getTime())
       const timeSinceLastRequest = currentTime - lastRequested
 
       //If the last request was not received today the app is available.
@@ -55,8 +63,10 @@ const isAvailable = (availableData) => {
   return false
 }
 
-const requestAccess = (availableData, referer) => {
+const requestAccess = (referer) => {
   try {
+
+    getReportCount(availableData)
 
     var validReferer = false
 
@@ -92,6 +102,10 @@ const requestAccess = (availableData, referer) => {
     } else {
       availableData.numberOfRequests += 1
       availableData.lastRequested = new Date()
+      logger.info({
+        message:'Request Access Complete',
+        availableData: availableData
+      })
       return true
     }
   }
@@ -102,4 +116,12 @@ const requestAccess = (availableData, referer) => {
 
 }
 
-module.exports = { isAvailable, requestAccess }
+const incrementSubmissions = () => {
+  availableData.numberOfSubmissions++
+}
+
+const getAvailableData = () => {
+  return availableData
+}
+
+module.exports = { isAvailable, requestAccess, incrementSubmissions, getAvailableData }
