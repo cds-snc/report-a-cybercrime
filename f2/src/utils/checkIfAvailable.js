@@ -42,11 +42,18 @@ const isAvailable = () => {
       If submissions per day or seconds between requests have not been set,
       or we have reach the maximum number of submissions, the app is not available.
     */
-    if (!submissionsPerDay || !secondsBetweenRequests) return false
-    if (availableData.numberOfSubmissions >= submissionsPerDay) return false
+    if (!submissionsPerDay || !secondsBetweenRequests) {
+      return false
+    }
+    
+    if (availableData.numberOfSubmissions >= submissionsPerDay) {
+      return false
+    }
 
     //If we do not have a record of the last request, the app is available.
-    if (!availableData.lastRequested) return true
+    if (!availableData.lastRequested) {
+      return true
+    }
     else {
       
       const currentTime = new Date()
