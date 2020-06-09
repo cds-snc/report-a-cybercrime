@@ -63,6 +63,7 @@ export const CancelPage = () => {
                       ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
                       : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
                   }
+                  isExternal
                 >
                   <Trans id="thankYouPage.helpResource1" />
                 </A>
@@ -74,6 +75,7 @@ export const CancelPage = () => {
                       ? 'https://antifraudcentre-centreantifraude.ca/protect-protegez-eng.htm'
                       : 'https://antifraudcentre-centreantifraude.ca/protect-protegez-fra.htm'
                   }
+                  isExternal
                 >
                   <Trans id="thankYouPage.helpResource2" />
                 </A>
@@ -85,6 +87,7 @@ export const CancelPage = () => {
                       ? 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-eng.htm'
                       : 'http://www.rcmp-grc.gc.ca/to-ot/tis-set/cyber-tips-conseils-fra.htm'
                   }
+                  isExternal
                 >
                   <Trans id="thankYouPage.helpResource3" />
                 </A>
