@@ -55,7 +55,7 @@ let client = serviceKey
 const contentModerateFile = (file, callback) => {
   if (!SUPPORTED_FILE_TYPES.includes(file[1].type)) {
     console.debug(
-      `Content Moderator Error File not scanned Azure image moderator doesn't support for file type ${file[1].type}`,
+      `Content Moderator File not scanned Azure image moderator doesn't support for file type ${file[1].type}`,
     )
     file[1].adultClassificationScore =
       'Could not scan - not a supported file type'

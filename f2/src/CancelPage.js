@@ -71,8 +71,8 @@ export const CancelPage = () => {
                 <A
                   href={
                     i18n.locale === 'en'
-                      ? 'http://www.antifraudcentre.ca/index-eng.htm'
-                      : 'http://www.antifraudcentre.ca/index-fra.htm'
+                      ? 'https://antifraudcentre-centreantifraude.ca/protect-protegez-eng.htm'
+                      : 'https://antifraudcentre-centreantifraude.ca/protect-protegez-fra.htm'
                   }
                 >
                   <Trans id="thankYouPage.helpResource2" />
