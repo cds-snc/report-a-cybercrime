@@ -14,10 +14,10 @@ async function postData(url = '', data = {}) {
     referrer: 'no-referrer',
     body: form_data,
   })
-  return await response
+  return response
 }
 
-export const submitToServer = async data => {
+export const submitToServer = async (data) => {
   console.info('Submitting Feedback:', data)
   await postData('/submitFeedback', data)
 }

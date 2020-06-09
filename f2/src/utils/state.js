@@ -40,6 +40,11 @@ export const reducer = (state, action) => {
         ...state,
         doneForms: action.data,
       }
+    case 'saveGoogleRecaptcha':
+      return {
+        ...state,
+        reCaptcha: action.data,
+      }
     case 'saveSubmitted':
       return {
         ...state,
