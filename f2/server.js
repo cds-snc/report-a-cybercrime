@@ -15,6 +15,7 @@ const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
+const { verifyRecaptcha } = require('./src/utils/verifyRecaptcha')
 const logger = require('./src/utils/winstonLogger')
 const {
   notifyIsSetup,
@@ -72,9 +73,12 @@ app
           "'unsafe-inline'",
           'www.google-analytics.com',
           'www.googletagmanager.com',
+          'www.google.com',
+          'www.gstatic.com',
         ],
         styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
         fontSrc: ["'self'", 'fonts.gstatic.com'],
+        frameSrc: ['www.google.com'],
       },
     }),
   )
@@ -330,6 +334,17 @@ app
   })
   .get('/termsandconditions', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
+  .post('/checkToken', (req, res) => {
+    new formidable.IncomingForm().parse(req, async (err, fields, files) => {
+      if (err) {
+        console.warn('ERROR', err)
+        throw err
+      }
+      const token = JSON.parse(fields.json).token
+      verifyRecaptcha(token, res)
+    })
+    //  res.send('thanks')
   })
 
 // uncomment to allow direct loading of arbitrary pages
