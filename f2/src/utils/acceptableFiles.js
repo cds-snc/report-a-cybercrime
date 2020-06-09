@@ -1,4 +1,4 @@
-const acceptableExtensions = '.png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx, .pdf, .txt, .rtf, .PNG, .JPG, .JPEG, .DOC, .DOCX, .XLS, .XLSX, .PDF, .TXT, .RTF'
+const acceptableExtensions = '.png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx, .pdf, .txt, .rtf'
   .split(',')
   .map((ext) => ext.trim())
 
