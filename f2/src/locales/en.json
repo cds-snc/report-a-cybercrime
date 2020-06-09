@@ -162,7 +162,7 @@
   "evidencePage.nextPage": "Next: Enter your location",
   "evidencePage.numberOfFilesAttached": "{0, plural, one {# file attached} other {# files attached}}",
   "evidencePage.removeFileButton": "Remove file",
-  "evidencePage.supportedFiles": "Please submit supported file type ",
+  "evidencePage.supportedFiles": "Supported files types: ",
   "evidencePage.title": "Attach supporting evidence",
   "fileUpload.added": "File added",
   "fileUpload.removed": "File removed",
