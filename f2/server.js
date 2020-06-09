@@ -14,6 +14,7 @@ const { saveRecord } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
+const { verifyRecaptcha } = require('./src/utils/verifyRecaptcha')
 const logger = require('./src/utils/winstonLogger')
 const {
   notifyIsSetup,
@@ -71,9 +72,12 @@ app
           "'unsafe-inline'",
           'www.google-analytics.com',
           'www.googletagmanager.com',
+          'www.google.com',
+          'www.gstatic.com',
         ],
         styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
         fontSrc: ["'self'", 'fonts.gstatic.com'],
+        frameSrc: ['www.google.com'],
       },
     }),
   )
@@ -87,7 +91,6 @@ app
     expressWinston.logger({
       transports: [new winston.transports.Console()],
       format: winston.format.combine(
-        winston.format.colorize(),
         winston.format.json(),
       ),
       meta: true, // optional: control whether you want to log the meta data about the request (default to true)
@@ -125,15 +128,20 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
-// These can all be done async to avoid holding up the nodejs process?
-async function save(data, res) {
+// Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
+// without holding up the rest of the 'save' function
+async function saveBlobAndEmailReport(data) {
+
   var converted = await convertImages(data.evidence.files)
   data.evidence.files.push(...converted.filter((file) => file !== null))
-  saveBlob(data)
-
+  // Await on this because saveBlob generates the SAS link for each file
+  await saveBlob(data)
   const analystEmail = formatAnalystEmail(data)
   encryptAndSend(uidList, emailList, data, analystEmail)
-
+}
+// These can all be done async to avoid holding up the nodejs process?
+async function save(data, res) {
+  saveBlobAndEmailReport(data)
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
@@ -289,6 +297,17 @@ app
   })
   .get('/termsandconditions', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
+  .post('/checkToken', (req, res) => {
+    new formidable.IncomingForm().parse(req, async (err, fields, files) => {
+      if (err) {
+        console.warn('ERROR', err)
+        throw err
+      }
+      const token = JSON.parse(fields.json).token
+      verifyRecaptcha(token, res)
+    })
+    //  res.send('thanks')
   })
 
 // uncomment to allow direct loading of arbitrary pages
