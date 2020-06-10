@@ -1,4 +1,4 @@
-FROM node:12.15-alpine AS build-env
+FROM node:12.18-alpine AS build-env
 WORKDIR /app
 COPY . .
 
@@ -19,7 +19,7 @@ ENV HUSKY_SKIP_INSTALL true
 RUN npm ci
 RUN npm run build
 
-FROM node:12.15-alpine
+FROM node:12.18-alpine
 LABEL maintainer="stephen.astels@cds-snc.ca"
 RUN apk add --no-cache openssl tzdata
 ENV TZ America/Toronto
