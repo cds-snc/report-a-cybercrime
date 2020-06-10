@@ -10,20 +10,12 @@ console.info(`Self harm word list: ${selfHarmWords}`)
 
 const selfHarmWordsScan = data => {
 
-  console.log('')
-  console.log('')
-  console.log(data)
-  console.log('')
-  console.log('')
+  const json = unidecode(JSON.stringify(data).toLowerCase())
 
-  const formattedData = unidecode(data)
-    .toLowerCase()
-    .replace(/\r?\n|\r/g," ")   //Remove newline characters
-    .replace(/[^\w\s]|_/g," ")  //Remove special characters
-    .replace(/\s+/g, " ")       //Remove any extra sapaces
-    .split(" ")                 //Break String into array of words(Strings)
-
-  const wordsUsed = selfHarmWords.filter(w => formattedData.includes(w))
+  const wordsUsed = selfHarmWords.filter(w => {
+    const regEx = new RegExp("\\b" + w + "\\b")
+    return regEx.test(json)
+  })
   return wordsUsed
 }
 
