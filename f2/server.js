@@ -64,24 +64,6 @@ setTimeout(() => {
 const app = express()
 app
   .use(helmet())
-  .use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: [
-          "'self'",
-          "'unsafe-inline'",
-          'www.google-analytics.com',
-          'www.googletagmanager.com',
-          'www.google.com',
-          'www.gstatic.com',
-        ],
-        styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
-        fontSrc: ["'self'", 'fonts.gstatic.com'],
-        frameSrc: ['www.google.com'],
-      },
-    }),
-  )
   .use(helmet.referrerPolicy({ policy: 'same-origin' }))
   .use(
     helmet.featurePolicy({
