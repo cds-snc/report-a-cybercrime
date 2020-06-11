@@ -1,3 +1,4 @@
+import { Given, Then } from 'cypress-cucumber-preprocessor/steps';
 
 Given('I open the report home page', () => {
     cy.visit(Cypress.env('dev'))

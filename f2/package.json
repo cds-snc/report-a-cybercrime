@@ -95,8 +95,10 @@
     "ignorePatterns": "**/build/",
     "plugins": [
       "cypress"
-    ]
-
+    ],
+    "rules": {
+      "cypress/no-unnecessary-waiting": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -137,6 +139,7 @@
     "cypress-file-upload": "^3.5.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "eslint-plugin-cypress": "^2.11.1",
     "husky": "^4.2.3",
     "jest-emotion": "^10.0.32",
     "mocha": "^7.0.1",
