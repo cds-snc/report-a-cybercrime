@@ -15,6 +15,7 @@ const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
+const { verifyRecaptcha } = require('./src/utils/verifyRecaptcha')
 const logger = require('./src/utils/winstonLogger')
 const {
   notifyIsSetup,
@@ -63,21 +64,6 @@ setTimeout(() => {
 const app = express()
 app
   .use(helmet())
-  .use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: [
-          "'self'",
-          "'unsafe-inline'",
-          'www.google-analytics.com',
-          'www.googletagmanager.com',
-        ],
-        styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
-        fontSrc: ["'self'", 'fonts.gstatic.com'],
-      },
-    }),
-  )
   .use(helmet.referrerPolicy({ policy: 'same-origin' }))
   .use(
     helmet.featurePolicy({
@@ -87,10 +73,7 @@ app
   .use(
     expressWinston.logger({
       transports: [new winston.transports.Console()],
-      format: winston.format.combine(
-        winston.format.colorize(),
-        winston.format.json(),
-      ),
+      format: winston.format.combine(winston.format.json()),
       meta: true, // optional: control whether you want to log the meta data about the request (default to true)
       expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
       colorize: false, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
@@ -143,15 +126,19 @@ const allowedReferrers = [
 getReportCount(availableData)
 setTimeout(() => console.log({ availableData }), 1000)
 
-// These can all be done async to avoid holding up the nodejs process?
-async function save(data, res) {
+// Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
+// without holding up the rest of the 'save' function
+async function saveBlobAndEmailReport(data) {
   var converted = await convertImages(data.evidence.files)
   data.evidence.files.push(...converted.filter((file) => file !== null))
-  saveBlob(data)
-
+  // Await on this because saveBlob generates the SAS link for each file
+  await saveBlob(data)
   const analystEmail = formatAnalystEmail(data)
   encryptAndSend(uidList, emailList, data, analystEmail)
-
+}
+// These can all be done async to avoid holding up the nodejs process?
+async function save(data, res) {
+  saveBlobAndEmailReport(data)
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
@@ -188,32 +175,35 @@ app.get('/', async function (req, res, next) {
 
   if (process.env.CHECK_REFERER) {
     var referer = req.headers.referer
-    validReferer = referer ? allowedReferrers.includes(new URL(referer).host.toLowerCase()) : referer
+    validReferer = referer
+      ? allowedReferrers.includes(new URL(referer).host.toLowerCase())
+      : referer
   } else {
     validReferer = true
   }
 
-  var maxSubmissions = availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY
+  var maxSubmissions =
+    availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY
 
   var availabilityCheck = {
-    "SUBMISSIONS_PER_DAY":process.env.SUBMISSIONS_PER_DAY,
-    "NUMBER_OF_SUBMISSIONS": availableData.numberOfSubmissions,
-    "MAX_SUBMISSIONS": maxSubmissions,
-    "CHECK_REFERER": process.env.CHECK_REFERER,
-    "VALID_REFERER": validReferer,
-    "TOTP_SECRET": process.env.TOTP_SECRET,
-    "TOTP_VALID": isTotpValid
+    SUBMISSIONS_PER_DAY: process.env.SUBMISSIONS_PER_DAY,
+    NUMBER_OF_SUBMISSIONS: availableData.numberOfSubmissions,
+    MAX_SUBMISSIONS: maxSubmissions,
+    CHECK_REFERER: process.env.CHECK_REFERER,
+    VALID_REFERER: validReferer,
+    TOTP_SECRET: process.env.TOTP_SECRET,
+    TOTP_VALID: isTotpValid,
   }
 
   logger.info({
     message: 'Availability Check',
-    availabilityCheck: availabilityCheck
+    availabilityCheck: availabilityCheck,
   })
 
   // If user had a TOTP code, bypass the submissions_per_day restriction
-  if ( (maxSubmissions || !validReferer) && !isTotpValid ) {
+  if ((maxSubmissions || !validReferer) && !isTotpValid) {
     logger.info({
-      message: 'Redirecting to CAFC'
+      message: 'Redirecting to CAFC',
     })
     res.redirect(
       req.subdomains.includes('signalement')
@@ -327,6 +317,17 @@ app
   })
   .get('/termsandconditions', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
+  .post('/checkToken', (req, res) => {
+    new formidable.IncomingForm().parse(req, async (err, fields, files) => {
+      if (err) {
+        console.warn('ERROR', err)
+        throw err
+      }
+      const token = JSON.parse(fields.json).token
+      verifyRecaptcha(token, res)
+    })
+    //  res.send('thanks')
   })
 
 // uncomment to allow direct loading of arbitrary pages
