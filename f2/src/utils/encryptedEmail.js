@@ -12,6 +12,9 @@ const mailUser = process.env.MAIL_USER
 const mailPass = process.env.MAIL_PASS
 const mailFrom = process.env.MAIL_FROM
 
+const ANALYST_GROUP_MAIL =
+  'NC3PublicReporting-GNCCRapportsPublics@rcmp-grc.gc.ca'
+
 const prepareUnencryptedReportEmail = (message, data, callback) => {
   let transporter = nodemailer.createTransport({
     streamTransport: true,
@@ -60,18 +63,19 @@ const getEmailWarning = (data) =>
 const getSelfHarmWord = (data) =>
   data.selfHarmWords.length ? ': WARNING: self harm words detected' : ''
 
-const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
+const encryptMessage = (uidList, emailAddress, message, data, sendMail) => {
   const openssl = 'openssl smime -des3 -encrypt'
   const messageFile = `message_${nanoid()}.txt`
   const encryptedFile = messageFile + '.encrypted'
   const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)
+  let certList = uidList.map((uid) => certFileName(uid))
 
   fs.writeFile(messageFile, message, function (err) {
     if (err) throw err
     exec(
       `${openssl} -in ${messageFile} -out ${encryptedFile} -subject "NCFRS report ${
         data.reportId
-      } ${subjectSuffix}", ${certFileName(uid)}`,
+      } ${subjectSuffix}", ${certList.join(' ')}`,
       { cwd: process.cwd() },
       function (error, _stdout, stderr) {
         if (error) throw error
@@ -119,11 +123,9 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
 
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList.length > 0 && emailList.length > 0) {
-    uidList.forEach((uid, index) => {
-      prepareUnencryptedReportEmail(message, data, (m) =>
-        encryptMessage(uid, emailList[index], m, data, sendMail),
-      )
-    })
+    prepareUnencryptedReportEmail(message, data, (m) =>
+      encryptMessage(uidList, ANALYST_GROUP_MAIL, m, data, sendMail),
+    )
   } else if (process.env.MAIL_LOCAL) {
     console.warn('Encrypted Mail: No certs to encrypt with!')
     const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)
