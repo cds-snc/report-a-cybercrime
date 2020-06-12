@@ -31,7 +31,6 @@ const { convertImages } = require('./src/utils/imageConversion')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
-const { createLogger } = require('winston')
 var limiter = new RateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
   max: 100,
