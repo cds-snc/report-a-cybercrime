@@ -2,6 +2,8 @@
 
 const { getFileExtension } = require('./filenameUtils')
 
+const fs = require('fs')
+
 const { formatDate } = require('./formatDate')
 var zipcodes = require('zipcodes')
 
@@ -19,7 +21,17 @@ const formatDownloadLink = (filename, url) =>
 const formatSection = (title, rows) =>
   `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
 
+let lang
+let langEn = fs.readFileSync('src/locales/en.json')
+let langFr = fs.readFileSync('src/locales/en.json')
+let langJsonEn = JSON.parse(langEn)
+let langJsonFr = JSON.parse(langFr)
+//console.log('report language', langJsonEn["anonymousPage.intro"])
+
 const formatReportInfo = (data) => {
+  //set language to use based report language
+  data.language === 'en' ? (lang = langJsonEn) : (lang = langJsonFr)
+
   let selfHarmString = 'none'
   let returnString = ''
 
@@ -41,7 +53,7 @@ const formatReportInfo = (data) => {
         formatLineHtml('Date received:', data.submissionTime) +
         formatLineHtml('Report language:', reportLanguage) +
         formatLineHtml('Report version:', data.prodVersion) +
-        formatLineHtml('Anonymous report:', isAnonymous) +
+        formatLineHtml(lang['anonymousPage.title'], isAnonymous) +
         formatLineHtml('Flagged:', selfHarmString),
     )
   // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
@@ -71,7 +83,10 @@ const formatVictimDetails = (data) => {
   }
 
   const rows =
-    formatLineHtml('Full name:', data.contactInfo.fullName) +
+    formatLineHtml(
+      lang['contactinfoPage.fullName'],
+      data.contactInfo.fullName,
+    ) +
     formatLineHtml('Email:', data.contactInfo.email) +
     formatLineHtml('Phone number:', data.contactInfo.phone) +
     formatLineHtml('City:', data.location.city) +
