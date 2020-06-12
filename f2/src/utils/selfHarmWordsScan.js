@@ -9,8 +9,13 @@ const selfHarmWords = selfHarmString
 console.info(`Self harm word list: ${selfHarmWords}`)
 
 const selfHarmWordsScan = data => {
+
   const json = unidecode(JSON.stringify(data).toLowerCase())
-  const wordsUsed = selfHarmWords.filter(w => json.includes(w))
+
+  const wordsUsed = selfHarmWords.filter(w => {
+    const regEx = new RegExp("\\b" + w + "\\b")
+    return regEx.test(json)
+  })
   return wordsUsed
 }
 
