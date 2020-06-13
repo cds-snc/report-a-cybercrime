@@ -142,7 +142,7 @@
     "react-is": "^16.13.1",
     "recompose": "^0.30.0",
     "start-server-and-test": "^1.10.11",
-    "storybook-addon-jsx": "^7.1.15",
+    "storybook-addon-jsx": "^7.2.3",
     "waait": "^1.0.5"
   },
   "jest": {
