@@ -87,11 +87,23 @@ const formatVictimDetails = (data) => {
       lang['contactinfoPage.fullName'],
       data.contactInfo.fullName,
     ) +
-    formatLineHtml('Email:', data.contactInfo.email) +
-    formatLineHtml('Phone number:', data.contactInfo.phone) +
-    formatLineHtml('City:', data.location.city) +
-    formatLineHtml('Province:', data.location.province) +
-    formatLineHtml('Postal code:', data.location.postalCode) +
+    formatLineHtml(
+      lang['contactinfoPage.emailAddress'],
+      data.contactInfo.email,
+    ) +
+    formatLineHtml(
+      lang['contactinfoPage.phoneNumber'],
+      data.contactInfo.phone,
+    ) +
+    formatLineHtml(lang['LocationAnonymousInfoForm.city'], data.location.city) +
+    formatLineHtml(
+      lang['LocationAnonymousInfoForm.province'],
+      data.location.province,
+    ) +
+    formatLineHtml(
+      lang['locationinfoPage.postalCode'],
+      data.location.postalCode,
+    ) +
     formatLineHtml('City based on postal code:', postalCity) +
     formatLineHtml('Province based on postal code:', postalProv) +
     formatLineHtml('Consent:', consentString)
@@ -126,9 +138,9 @@ const formatIncidentInformation = (data) => {
 
   const rows =
     formatLineHtml('Occurrence date:            ', occurenceString) +
-    formatLineHtml('Frequency of occurrence:    ', freqString) +
-    formatLineHtml('Method of communication:    ', methodOfCommsString) +
-    formatLineHtml('What could be affected:     ', affectedString)
+    formatLineHtml(lang['howManyTimes.label'], freqString) +
+    formatLineHtml(lang['howDidTheyReachYou.question'], methodOfCommsString) +
+    formatLineHtml(lang['confirmationPage.ImpactTitle'], affectedString)
   delete data.howdiditstart.startDay
   delete data.howdiditstart.startMonth
   delete data.howdiditstart.startYear
@@ -162,12 +174,18 @@ const formatNarrative = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml('What happened:', data.whatHappened.whatHappened) +
     formatLineHtml(
-      'They asked for (financial):',
+      lang['whatHappenedPage.title'],
+      data.whatHappened.whatHappened,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.demandedMoney'],
       data.moneyLost.demandedMoney,
     ) +
-    formatLineHtml('They asked for (information):', infoReqString) +
+    formatLineHtml(
+      lang['confirmationPage.personalInformation.typeOfInfoObtained'],
+      infoReqString,
+    ) +
     formatLineHtml('I lost (financial):', data.moneyLost.moneyTaken) +
     formatLineHtml('I lost (information):', infoObtainedString) +
     formatLineHtml('Affected device:', data.devicesInfo.device) +
