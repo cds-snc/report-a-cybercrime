@@ -70,11 +70,14 @@ const formatVictimDetails = (data) => {
       postalCity = 'Location lookup is not found'
       postalProv = 'Location lookup is not found'
     } else {
-      postalCity = zipcodes.lookup(data.location.postalCode).city
-      postalProv = zipcodes.lookup(data.location.postalCode).state
+      postalCity = location.city
+      postalProv = location.state
     }
   } catch (error) {
-    console.log(error)
+    //logging
+    console.error(error)
+    postalCity = 'Location lookup failed'
+    postalProv = 'Location lookup failed'
   }
 
   const rows =
