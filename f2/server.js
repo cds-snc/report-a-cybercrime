@@ -70,9 +70,7 @@ app
       features: { geolocation: ["'none'"], camera: ["'none'"] },
     }),
   )
-  .use(
-    getExpressLogger()
-  )
+  .use(getExpressLogger())
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
@@ -98,7 +96,11 @@ const allowedReferrers = [
 ]
 
 getReportCount(availableData)
-setTimeout(() => logger.info({ availableData }), 1000)
+setTimeout(
+  () =>
+    logger.info({ message: 'Available Data', availableData: availableData }),
+  1000,
+)
 
 // Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
 // without holding up the rest of the 'save' function

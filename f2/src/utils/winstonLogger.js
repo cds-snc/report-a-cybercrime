@@ -6,11 +6,15 @@ const { createLogger, format } = require('winston')
 const { combine, timestamp, label } = format
 
 const logDir = process.env.LOGGING_DIRECTORY
+const ignoreRoutes = process.env.LOGGING_IGNORE_ROUTE
 
+const ignoreRoutesArr = ignoreRoutes
+  ? ignoreRoutes.replace(/\s/g, '').split(',')
+  : []
 const transports = []
 const consoleTransport = new winston.transports.Console({
   level: 'debug',
-  handleExceptions: true
+  handleExceptions: true,
 })
 
 transports.push(consoleTransport)
@@ -24,27 +28,24 @@ if (logDir) {
     maxSize: '20m',
     maxFiles: '14d',
     level: 'debug',
-    handleExceptions: true
+    handleExceptions: true,
   })
   transports.push(fileTransport)
 }
 
 const getLogger = (fileName) => {
-
   return createLogger({
     transports: transports,
     format: combine(
-      label({label: `${fileName}`, message: true}),
+      label({ label: `${fileName}`, message: true }),
       timestamp(),
       format.prettyPrint(),
     ),
-    exitOnError: false
+    exitOnError: false,
   })
-
 }
 
 const getExpressLogger = () => {
-
   return expressWinston.logger({
     transports: transports,
     format: format.prettyPrint(),
@@ -64,11 +65,16 @@ const getExpressLogger = () => {
       return meta
     },
     ignoreRoute: (req, res) => {
-      return false
-    }, 
+      const requestPath = req.path.split('/')[1]
+      const ignoreRoute = ignoreRoutesArr.includes(requestPath)
+
+      if (ignoreRoute) {
+        return true
+      } else {
+        return false
+      }
+    },
   })
 }
 
-
-
-module.exports =  { getLogger, getExpressLogger }
+module.exports = { getLogger, getExpressLogger }
