@@ -23,7 +23,7 @@ const formatSection = (title, rows) =>
 
 let lang
 let langEn = fs.readFileSync('src/locales/en.json')
-let langFr = fs.readFileSync('src/locales/en.json')
+let langFr = fs.readFileSync('src/locales/fr.json')
 let langJsonEn = JSON.parse(langEn)
 let langJsonFr = JSON.parse(langFr)
 //console.log('report language', langJsonEn["anonymousPage.intro"])
@@ -137,7 +137,7 @@ const formatIncidentInformation = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml('Occurrence date:            ', occurenceString) +
+    formatLineHtml(lang['confirmationPage.whenDidItStart'], occurenceString) +
     formatLineHtml(lang['howManyTimes.label'], freqString) +
     formatLineHtml(lang['howDidTheyReachYou.question'], methodOfCommsString) +
     formatLineHtml(lang['confirmationPage.ImpactTitle'], affectedString)
@@ -186,23 +186,44 @@ const formatNarrative = (data) => {
       lang['confirmationPage.personalInformation.typeOfInfoObtained'],
       infoReqString,
     ) +
-    formatLineHtml('I lost (financial):', data.moneyLost.moneyTaken) +
-    formatLineHtml('I lost (information):', infoObtainedString) +
-    formatLineHtml('Affected device:', data.devicesInfo.device) +
-    formatLineHtml('Affected account:', data.devicesInfo.account) +
     formatLineHtml(
-      'Name of business/organzation:  ',
+      lang['confirmationPage.moneyLost.moneyTaken'],
+      data.moneyLost.moneyTaken,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.personalInformation.typeOfInfoObtained'],
+      infoObtainedString,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.devices.device'],
+      data.devicesInfo.device,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.devices.account'],
+      data.devicesInfo.account,
+    ) +
+    formatLineHtml(
+      lang['businessPage.nameOfBusiness'],
       data.businessInfo.nameOfBusiness,
     ) +
-    formatLineHtml('Type of industry:  ', data.businessInfo.industry) +
-    formatLineHtml('Role:  ', data.businessInfo.role) +
     formatLineHtml(
-      'Number of employee:  ',
+      lang['confirmationPage.businessInfo.industry'],
+      data.businessInfo.industry,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.businessInfo.role'],
+      data.businessInfo.role,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.businessInfo.numberOfEmployee'],
       unCamel(
         data.businessInfo.numberOfEmployee.replace('numberOfEmployee.', ''),
       ),
     ) +
-    formatLineHtml('Other clues:             ', data.suspectClues.suspectClues3)
+    formatLineHtml(
+      lang['confirmationPage.suspectClues.suspectClues3'],
+      data.suspectClues.suspectClues3,
+    )
 
   delete data.personalInformation.typeOfInfoReq
   delete data.personalInformation.typeOfInfoObtained
@@ -222,13 +243,34 @@ const formatNarrative = (data) => {
 
 const formatSuspectDetails = (data) => {
   const rows =
-    formatLineHtml('Name:          ', data.suspectClues.suspectClues1) +
-    formatLineHtml('Email:         ', data.howdiditstart.email) +
-    formatLineHtml('Phone number:  ', data.howdiditstart.phone) +
-    formatLineHtml('Website:       ', data.howdiditstart.online) +
-    formatLineHtml('Application:   ', data.howdiditstart.application) +
-    formatLineHtml('Address:       ', data.suspectClues.suspectClues2) +
-    formatLineHtml('Other:         ', data.howdiditstart.others)
+    formatLineHtml(
+      lang['confirmationPage.suspectClues.suspectClues1'],
+      data.suspectClues.suspectClues1,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.howDidItStart.email'],
+      data.howdiditstart.email,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.howDidItStart.phone'],
+      data.howdiditstart.phone,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.howDidItStart.online'],
+      data.howdiditstart.online,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.howDidItStart.application'],
+      data.howdiditstart.application,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.suspectClues.suspectClues2'],
+      data.suspectClues.suspectClues2,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.howDidItStart.others'],
+      data.howdiditstart.others,
+    )
 
   delete data.suspectClues.suspectClues1
   delete data.howdiditstart.email
@@ -257,10 +299,22 @@ const formatFinancialTransactions = (data) => {
     data.moneyLost.transactionYear,
   )
   const rows =
-    formatLineHtml('Money requested:     ', data.moneyLost.demandedMoney) +
-    formatLineHtml('Money lost:          ', data.moneyLost.moneyTaken) +
-    formatLineHtml('Method of payment:   ', paymentString) +
-    formatLineHtml('Transaction date:    ', transactionDate)
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.demandedMoney'],
+      data.moneyLost.demandedMoney,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.moneyTaken'],
+      data.moneyLost.moneyTaken,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.methodPayment'],
+      paymentString,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.transactionDate'],
+      transactionDate,
+    )
 
   delete data.moneyLost.methodOther
   delete data.moneyLost.methodPayment
