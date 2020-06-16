@@ -12,8 +12,7 @@ const mailUser = process.env.MAIL_USER
 const mailPass = process.env.MAIL_PASS
 const mailFrom = process.env.MAIL_FROM
 
-const ANALYST_GROUP_MAIL =
-  'NC3PublicReporting-GNCCRapportsPublics@rcmp-grc.gc.ca'
+const ANALYST_GROUP_MAIL = process.env.ANALYST_GROUP_MAIL
 
 const prepareUnencryptedReportEmail = (message, data, callback) => {
   let transporter = nodemailer.createTransport({
@@ -123,9 +122,15 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
 
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList.length > 0 && emailList.length > 0) {
-    prepareUnencryptedReportEmail(message, data, (m) =>
-      encryptMessage(uidList, ANALYST_GROUP_MAIL, m, data, sendMail),
-    )
+    if (ANALYST_GROUP_MAIL) {
+      prepareUnencryptedReportEmail(message, data, (m) =>
+        encryptMessage(uidList, ANALYST_GROUP_MAIL, m, data, sendMail),
+      )
+    } else {
+      console.error(
+        'Environmental variable ANALYST_GROUP_MAIL is not defined, so encrypted email is not sent!',
+      )
+    }
   } else if (process.env.MAIL_LOCAL) {
     console.warn('Encrypted Mail: No certs to encrypt with!')
     const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)
