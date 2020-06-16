@@ -124,9 +124,9 @@ const formatVictimDetails = (data) => {
       lang['locationinfoPage.postalCode'],
       data.location.postalCode,
     ) +
-    formatLineHtml('City based on postal code:', postalCity) +
-    formatLineHtml('Province based on postal code:', postalProv) +
-    formatLineHtml('Consent:', consentString)
+    formatLineHtml(lang['locationinfoPage.postalCity'], postalCity) +
+    formatLineHtml(lang['locationinfoPage.postalProv'], postalProv) +
+    formatLineHtml(lang['privacyConsentInfoForm.consent'], consentString)
 
   delete data.contactInfo.fullName
   delete data.contactInfo.email
@@ -361,10 +361,22 @@ const formatFileAttachments = (data) => {
       const moderatorString =
         file.adultClassificationScore === 'Could not scan'
           ? formatLineHtml('Image classification:', 'Could not scan content')
-          : formatLineHtml('Is adult:      ', file.isImageAdultClassified) +
-            formatLineHtml('Adult score:   ', file.adultClassificationScore) +
-            formatLineHtml('Is racy:       ', file.isImageRacyClassified) +
-            formatLineHtml('Racy Score:    ', file.racyClassificationScore)
+          : formatLineHtml(
+              lang['fileUpload.isAdult'],
+              file.isImageAdultClassified,
+            ) +
+            formatLineHtml(
+              lang['fileUpload.adultScore'],
+              file.adultClassificationScore,
+            ) +
+            formatLineHtml(
+              lang['fileUpload.isRacy'],
+              file.isImageRacyClassified,
+            ) +
+            formatLineHtml(
+              lang['fileUpload.racyScore'],
+              file.racyClassificationScore,
+            )
 
       const downloadLink = file.malwareIsClean
         ? formatDownloadLink(file.name, file.sasUrl)
@@ -383,7 +395,7 @@ const formatFileAttachments = (data) => {
         formatLineHtml(lang['fileUpload.fileSize'], file.size + ' bytes') +
         formatLineHtml(lang['fileUpload.CosmosDBFile'], file.sha1) +
         formatLineHtml(
-          'Malware scan:',
+          lang['fileUpload.malwareScan'],
           file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
         ) +
         moderatorString +

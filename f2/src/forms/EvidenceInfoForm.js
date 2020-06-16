@@ -105,6 +105,11 @@ export const EvidenceInfoForm = (props) => {
           <Trans id="fileUpload.fileDescription" />
           <Trans id="fileUpload.fileSize" />
           <Trans id="fileUpload.CosmosDBFile" />
+          <Trans id="fileUpload.malwareScan" />
+          <Trans id="fileUpload.isAdult" />
+          <Trans id="fileUpload.adultScore" />
+          <Trans id="fileUpload.isRacy" />
+          <Trans id="fileUpload.racyScore" />
         </div>
       ) : null}
       <Form
