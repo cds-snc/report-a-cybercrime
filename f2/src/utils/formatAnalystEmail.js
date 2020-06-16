@@ -46,16 +46,36 @@ const formatReportInfo = (data) => {
       : 'no'
   let reportLanguage = data.language === 'en' ? 'English' : 'French'
 
-  returnString +=
-    '<h2>Report Information</h2>' +
-    formatTable(
-      formatLineHtml('Report number:', data.reportId) +
-        formatLineHtml('Date received:', data.submissionTime) +
-        formatLineHtml('Report language:', reportLanguage) +
-        formatLineHtml('Report version:', data.prodVersion) +
-        formatLineHtml(lang['anonymousPage.title'], isAnonymous) +
-        formatLineHtml('Flagged:', selfHarmString),
-    )
+  if (lang === langJsonEn) {
+    returnString +=
+      '<h2>Report Information</h2>' +
+      formatTable(
+        formatLineHtml('Report number:', data.reportId) +
+          formatLineHtml('Date received:', data.submissionTime) +
+          formatLineHtml('Report language:', reportLanguage) +
+          formatLineHtml('Report version:', data.prodVersion) +
+          formatLineHtml(
+            lang['confirmationPage.anonymous.title'],
+            isAnonymous,
+          ) +
+          formatLineHtml('Flagged:', selfHarmString),
+      )
+  } else {
+    returnString +=
+      '<h2>Report Information</h2>' +
+      formatTable(
+        formatLineHtml('Signaler le numéro', data.reportId) +
+          formatLineHtml('Date de réception:', data.submissionTime) +
+          formatLineHtml('Langue du rapport:', reportLanguage) +
+          formatLineHtml('Version du rapport:', data.prodVersion) +
+          formatLineHtml(
+            lang['confirmationPage.anonymous.title'],
+            isAnonymous,
+          ) +
+          formatLineHtml('Signalé:', selfHarmString),
+      )
+  }
+
   // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
   delete data.anonymous.anonymousOptions
   delete data.reportId
@@ -355,10 +375,13 @@ const formatFileAttachments = (data) => {
           '<b>WARNING:</b>',
           offensive ? '<b>Image may be offensive</b>' : '',
         ) +
-        formatLineHtml('File name:     ', file.name) +
-        formatLineHtml('Description:   ', file.fileDescription) +
-        formatLineHtml('Size:          ', file.size + ' bytes') +
-        formatLineHtml('CosmosDB file: ', file.sha1) +
+        formatLineHtml(lang['fileUpload.fileName'], file.name) +
+        formatLineHtml(
+          lang['fileUpload.fileDescription'],
+          file.fileDescription,
+        ) +
+        formatLineHtml(lang['fileUpload.fileSize'], file.size + ' bytes') +
+        formatLineHtml(lang['fileUpload.CosmosDBFile'], file.sha1) +
         formatLineHtml(
           'Malware scan:',
           file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
