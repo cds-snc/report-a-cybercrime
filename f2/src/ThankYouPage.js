@@ -151,8 +151,8 @@ export const ThankYouPage = () => {
                 <A
                   href={
                     i18n.locale === 'en'
-                      ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
-                      : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
+                      ? 'https://www.rcmp-grc.gc.ca/en/cyber-safety/staying-cyber-healthy'
+                      : 'https://www.rcmp-grc.gc.ca/fr/cybersecurite/assurer-sa-securite-ligne'
                   }
                   isExternal
                 >
