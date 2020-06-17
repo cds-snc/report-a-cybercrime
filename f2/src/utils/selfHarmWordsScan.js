@@ -9,9 +9,11 @@ const selfHarmWords = selfHarmString
   .map((w) => unidecode(w.trim().toLowerCase()))
 console.info(`Self harm word list: ${selfHarmWords}`)
 
+//Patches stem() and tokenizeAndStem() to String as a shortcut to PorterStemmer.stem(token)
 natural.PorterStemmer.attach()
 natural.PorterStemmerFr.attach()
 
+//Scan form data for self harm key words.
 const selfHarmWordsScan = (data) => {
   try {
     const jsonString = unidecode(JSON.stringify(data).toLowerCase())
@@ -27,7 +29,10 @@ const selfHarmWordsScan = (data) => {
       }
     }
 
-    return keyWordMatch
+    //Only return unique key words.
+    const uniqeKeyWords = [...new Set(keyWordMatch)]
+
+    return uniqeKeyWords
   } catch (err) {
     console.error(`Error scanning form for self-harm key words
     ${err}`)
@@ -43,12 +48,13 @@ const scanString = (str) => {
       .replace(/[^\w\s']|_/g, ' ') //Remove special characters
       .replace(/\s+/g, ' ') //Remove any extra sapaces
 
+    //Attempt to get root for words in String.
     const formTokens = modifiedStr.tokenizeAndStem()
 
-    const modifiedTokens = formTokens.toString().replace(/,/g, ' ')
+    //Create one String with both original and stemmed words.
+    modifiedStr = modifiedStr + ' ' + formTokens.toString().replace(/,/g, ' ')
 
-    modifiedStr = modifiedStr + modifiedTokens
-
+    //Compare text to the list of key words.
     const wordsUsed = selfHarmWords.filter((w) => {
       const regEx = new RegExp('\\b' + w + '\\b')
       return regEx.test(modifiedStr)
@@ -72,14 +78,12 @@ const scanObject = (obj) => {
         let subObj = obj[key]
         for (let subKey in subObj) {
           if (typeof subObj[subKey] === 'string') {
-            let test = scanString(subObj[subKey])
-            objStrings = objStrings.concat(test)
+            objStrings = objStrings.concat(scanString(subObj[subKey]))
           }
         }
       }
       if (typeof obj[key] === 'string') {
-        let test = scanString(obj[key])
-        objStrings = objStrings.concat(test)
+        objStrings = objStrings.concat(scanString(obj[key]))
       }
     }
   } catch (err) {
