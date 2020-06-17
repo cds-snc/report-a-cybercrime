@@ -156,6 +156,18 @@ export const ThankYouPage = () => {
                   }
                   isExternal
                 >
+                  <Trans id="thankYouPage.helpResource0" />
+                </A>
+              </Li>
+              <Li>
+                <A
+                  href={
+                    i18n.locale === 'en'
+                      ? 'https://www.getcybersafe.gc.ca/index-en.aspx'
+                      : 'https://www.pensezcybersecurite.gc.ca/index-fr.aspx'
+                  }
+                  isExternal
+                >
                   <Trans id="thankYouPage.helpResource1" />
                 </A>
               </Li>
