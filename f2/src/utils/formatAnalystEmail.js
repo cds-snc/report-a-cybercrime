@@ -66,7 +66,7 @@ const formatVictimDetails = (data) => {
   let postalProv = ''
   try {
     let location = zipcodes.lookup(data.location.postalCode)
-    if (location === undefined) {
+    if (data.location.postalCode && location === undefined) {
       postalCity = 'Location lookup is not found'
       postalProv = 'Location lookup is not found'
     } else {
@@ -76,8 +76,8 @@ const formatVictimDetails = (data) => {
   } catch (error) {
     //logging
     console.error(error)
-    postalCity = 'Location lookup failed'
-    postalProv = 'Location lookup failed'
+    // postalCity = 'Location lookup failed'
+    // postalProv = 'Location lookup failed'
   }
 
   const rows =
