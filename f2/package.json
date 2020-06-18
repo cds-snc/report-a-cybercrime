@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@azure/storage-blob": "^12.1.1",
+    "@azure/storage-blob": "^12.1.2",
     "@chakra-ui/core": "^0.7.0",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
@@ -137,7 +137,7 @@
     "mochawesome-merge": "^4.0.3",
     "mochawesome-report-generator": "^4.1.0",
     "npm-check": "^5.9.2",
-    "prettier": "^2.0.2",
+    "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "react-is": "^16.13.1",
     "recompose": "^0.30.0",
