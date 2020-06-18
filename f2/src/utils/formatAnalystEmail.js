@@ -76,8 +76,6 @@ const formatVictimDetails = (data) => {
   } catch (error) {
     //logging
     console.error(error)
-    // postalCity = 'Location lookup failed'
-    // postalProv = 'Location lookup failed'
   }
 
   const rows =
