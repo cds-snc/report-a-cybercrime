@@ -50,6 +50,7 @@
     "styled-system": "^5.1.5",
     "unidecode": "^0.1.8",
     "winston": "~3.2.1",
+    "winston-daily-rotate-file": "^4.4.2",
     "zipcodes": "^8.0.0"
   },
   "scripts": {
