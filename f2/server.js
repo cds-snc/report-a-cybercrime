@@ -306,10 +306,10 @@ app
     //  res.send('thanks')
   })
 
-// uncomment to allow direct loading of arbitrary pages
-// .get('/*', function (_req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'))
-// })
+  // uncomment to allow direct loading of arbitrary pages
+  .get('/*', function (_req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
 
 const port = process.env.PORT || 3000
 console.info(`Listening at port ${port}`)
