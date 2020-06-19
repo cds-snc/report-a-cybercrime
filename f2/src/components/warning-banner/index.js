@@ -11,7 +11,7 @@ export const WarningBanner = (props) => {
       <Layout>
         <Alert
           px={0}
-          py={4}
+          py={10}
           status={props.status}
           bg={`${props.bg}.400`}
           fontFamily="body"
