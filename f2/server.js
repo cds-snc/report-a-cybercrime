@@ -142,6 +142,9 @@ async function save(data, res) {
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
+  console.log('')
+  console.log(`Saving Data: ${JSON.stringify(data, null, 2)}`)
+  console.log('')
   saveRecord(data, res)
 }
 

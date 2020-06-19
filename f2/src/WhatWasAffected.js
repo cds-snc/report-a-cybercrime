@@ -6,7 +6,7 @@ import { Lead } from './components/paragraph'
 import { Layout } from './components/layout'
 import { WhatWasAffectedForm } from './forms/WhatWasAffectedForm'
 import { BackButton } from './components/backbutton'
-import { Stack } from '@chakra-ui/core'
+import { Stack, usePrevious } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
@@ -14,6 +14,11 @@ import { Page } from './components/Page'
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
+  const { whatWasAffected } = data.formData
+
+  console.log('')
+  console.log(`State: ${JSON.stringify(whatWasAffected, null, 2)}`)
+  console.log('')
 
   return (
     <Route
@@ -37,6 +42,11 @@ export const WhatWasAffectedPage = () => {
                     type: 'saveFormData',
                     data: { whatWasAffected: data },
                   })
+                  console.log('')
+                  console.log(
+                    `State On Submit: ${JSON.stringify(data, null, 2)}`,
+                  )
+                  console.log('')
                   history.push(
                     doneForms
                       ? '/confirmation'
