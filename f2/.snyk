@@ -1,0 +1,288 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.15.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - '@babel/core > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-knobs > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@testing-library/jest-dom > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - cypress > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - npm-check > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - express-winston > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@babel/core > @babel/generator > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@lingui/cli > @babel/generator > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @babel/generator > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@babel/core > @babel/helper-module-transforms > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@lingui/cli > inquirer > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addons > @storybook/api > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-actions > @storybook/client-api > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-knobs > @storybook/client-api > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-actions > @storybook/components > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-info > @storybook/components > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-knobs > @storybook/components > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @storybook/components > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - storybook-addon-jsx > @storybook/components > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-knobs > react-color > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > babel-plugin-react-docgen > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - cypress-cucumber-preprocessor > cucumber > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - enzyme > cheerio > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - mocha > yargs-unparser > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - npm-check > callsite-record > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - npm-check > depcheck > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - npm-check > inquirer > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - start-server-and-test > wait-on > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > @babel/core > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > html-webpack-plugin > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - ms-rest-azure > async > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > eslint > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > eslint-plugin-flowtype > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - winston > async > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > webpack-manifest-plugin > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@babel/core > @babel/generator > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@lingui/cli > @babel/generator > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @babel/generator > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@lingui/loader > @lingui/cli > @babel/generator > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - npm-check > depcheck > @babel/traverse > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @jest/transform > @babel/core > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @svgr/webpack > @babel/core > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@lingui/loader > @lingui/cli > inquirer > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addons > @storybook/api > @storybook/csf > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addons > @storybook/api > @storybook/router > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addons > @storybook/api > telejson > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-actions > @storybook/addons > @storybook/api > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-info > @storybook/addons > @storybook/api > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-knobs > @storybook/addons > @storybook/api > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-links > @storybook/addons > @storybook/api > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @storybook/addons > @storybook/api > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/addons > @storybook/api > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > @storybook/client-api > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-knobs > react-color > reactcss > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/eslint-config-storybook > @storybook/linter-config > eslint-plugin-json > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > @storybook/ui > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > babel-preset-minify > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > html-webpack-plugin > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > inquirer > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - cypress-cucumber-preprocessor > @cypress/browserify-preprocessor > @babel/core > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > @babel/core > @babel/generator > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > @babel/core > @babel/helper-module-transforms > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > eslint > inquirer > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - notifications-node-client > request-promise > request-promise-core > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > eslint > table > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > last-call-webpack-plugin > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > react-dev-utils > inquirer > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > webpack-dev-server > http-proxy-middleware > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@lingui/loader > @lingui/cli > @babel/generator > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - npm-check > depcheck > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - cypress-cucumber-preprocessor > @cypress/browserify-preprocessor > @babel/core > @babel/generator > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @jest/transform > @babel/core > @babel/helper-module-transforms > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-actions > @storybook/addons > @storybook/api > @storybook/csf > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-info > @storybook/addons > @storybook/api > @storybook/csf > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-knobs > @storybook/addons > @storybook/api > @storybook/csf > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-links > @storybook/addons > @storybook/api > @storybook/csf > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @storybook/addons > @storybook/api > @storybook/csf > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/addons > @storybook/api > @storybook/csf > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-actions > @storybook/addons > @storybook/api > @storybook/router > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-info > @storybook/addons > @storybook/api > @storybook/router > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-knobs > @storybook/addons > @storybook/api > @storybook/router > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-links > @storybook/addons > @storybook/api > @storybook/router > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @storybook/addons > @storybook/api > @storybook/router > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/addons > @storybook/api > @storybook/router > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-actions > @storybook/addons > @storybook/api > telejson > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-info > @storybook/addons > @storybook/api > telejson > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-knobs > @storybook/addons > @storybook/api > telejson > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-links > @storybook/addons > @storybook/api > telejson > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/addons > @storybook/api > telejson > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @storybook/addons > @storybook/api > telejson > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > @storybook/ui > @storybook/components > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @mdx-js/loader > @mdx-js/mdx > @babel/core > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - cypress-cucumber-preprocessor > @cypress/browserify-preprocessor > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > vue-docgen-loader > jscodeshift > @babel/register > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > babel-preset-minify > babel-plugin-minify-dead-code-elimination > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > react-dev-utils > inquirer > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - start-server-and-test > wait-on > request-promise-native > request-promise-core > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > @babel/core > @babel/generator > @babel/types > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@emotion/styled > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > @svgr/webpack > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > @typescript-eslint/eslint-plugin > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > webpack-dev-server > portfinder > async > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - npm-check > depcheck > @babel/traverse > @babel/generator > @babel/types > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - cypress-cucumber-preprocessor > @cypress/browserify-preprocessor > @babel/core > @babel/generator > @babel/types > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - cypress-cucumber-preprocessor > @cypress/browserify-preprocessor > @babel/core > @babel/helpers > @babel/traverse > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > @babel/preset-env > @babel/plugin-transform-modules-amd > @babel/helper-module-transforms > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - cypress-cucumber-preprocessor > @cypress/browserify-preprocessor > @babel/preset-env > @babel/plugin-transform-modules-amd > @babel/helper-module-transforms > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > vue-docgen-loader > jscodeshift > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - cypress-cucumber-preprocessor > @cypress/browserify-preprocessor > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/eslint-config-storybook > @storybook/linter-config > @typescript-eslint/eslint-plugin > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > @svgr/webpack > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @babel/preset-react > @babel/plugin-transform-react-jsx > @babel/helper-builder-react-jsx > @babel/helper-annotate-as-pure > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > @jest/transform > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > @babel/plugin-proposal-class-properties > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > vue-docgen-api > pug > pug-code-gen > constantinople > babel-types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > @babel/preset-env > @babel/plugin-proposal-unicode-property-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - cypress-cucumber-preprocessor > @cypress/browserify-preprocessor > @babel/preset-env > @babel/plugin-proposal-unicode-property-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > vue-docgen-loader > jscodeshift > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > @svgr/webpack > @babel/preset-env > @babel/plugin-proposal-unicode-property-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/react > @storybook/core > @babel/plugin-proposal-class-properties > @babel/helper-create-class-features-plugin > @babel/helper-replace-supers > @babel/traverse > @babel/generator > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-docs > vue-docgen-loader > jscodeshift > @babel/preset-env > @babel/plugin-proposal-unicode-property-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addons > @storybook/api > @storybook/theming > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - storybook-addon-jsx > @storybook/components > @storybook/theming > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-actions > @storybook/addons > @storybook/api > @storybook/theming > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-info > @storybook/addons > @storybook/api > @storybook/theming > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-knobs > @storybook/addons > @storybook/api > @storybook/theming > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/addon-links > @storybook/addons > @storybook/api > @storybook/theming > @emotion/core > @emotion/css > babel-plugin-emotion > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/storybook-deployer > git-url-parse > parse-domain > jest > jest-cli > @jest/core > @jest/reporters > @jest/environment > @jest/transform > @babel/core > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/storybook-deployer > git-url-parse > parse-domain > jest > jest-cli > @jest/core > @jest/reporters > @jest/environment > @jest/transform > @babel/core > @babel/generator > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/storybook-deployer > git-url-parse > parse-domain > jest > jest-cli > @jest/core > @jest/reporters > @jest/environment > @jest/transform > @babel/core > @babel/helper-module-transforms > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - react-scripts > jest > jest-cli > @jest/core > @jest/reporters > jest-runtime > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash:
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/storybook-deployer > git-url-parse > parse-domain > jest > jest-cli > @jest/core > @jest/reporters > @jest/environment > @jest/transform > @babel/core > @babel/generator > @babel/types > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/storybook-deployer > git-url-parse > parse-domain > jest > jest-cli > @jest/core > @jest/reporters > @jest/environment > @jest/transform > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
+    - '@storybook/storybook-deployer > git-url-parse > parse-domain > jest > jest-cli > @jest/core > @jest/reporters > jest-runtime > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash':
+        patched: '2020-06-19T17:42:21.594Z'
