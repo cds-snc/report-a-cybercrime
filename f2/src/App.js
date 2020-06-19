@@ -56,10 +56,9 @@ const App = () => {
                     color="blue.900"
                     href={
                       i18n.locale === 'en'
-                        ? 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm'
-                        : 'http://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
+                        ? 'https://www.services.rcmp-grc.gc.ca/chooser-eng.html'
+                        : 'https://www.services.rcmp-grc.gc.ca/chooser-fra.html'
                     }
-                    isExternal
                   />
                 </Trans>
               </PhaseBanner>
