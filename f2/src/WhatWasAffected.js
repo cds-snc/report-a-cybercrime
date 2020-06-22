@@ -16,9 +16,25 @@ export const WhatWasAffectedPage = () => {
   const { doneForms } = data
   const { whatWasAffected } = data.formData
 
-  console.log('')
-  console.log(`State: ${JSON.stringify(whatWasAffected, null, 2)}`)
-  console.log('')
+  const optionsChanged = (options) => {
+    let updatedOptions = options.filter(
+      (option) => !whatWasAffected.affectedOptions.includes(option),
+    )
+    return updatedOptions
+  }
+
+  const getNextPage = () => {
+    let options = data.affectedOptions ? optionsChanged(options) : []
+
+    console.log(`Options: ${options}`)
+
+    let nextPage =
+      doneForms && !options
+        ? '/confirmation'
+        : nextWhatWasAffectedUrl(options, 'whatwasaffected')
+
+    console.log(`Next pages: ${nextPage}`)
+  }
 
   return (
     <Route
@@ -42,11 +58,7 @@ export const WhatWasAffectedPage = () => {
                     type: 'saveFormData',
                     data: { whatWasAffected: data },
                   })
-                  console.log('')
-                  console.log(
-                    `State On Submit: ${JSON.stringify(data, null, 2)}`,
-                  )
-                  console.log('')
+                  getNextPage()
                   history.push(
                     doneForms
                       ? '/confirmation'
