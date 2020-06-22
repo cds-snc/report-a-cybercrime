@@ -7,6 +7,7 @@ const { combine, timestamp, label } = format
 
 const logDir = process.env.LOGGING_DIRECTORY
 const ignoreRoutes = process.env.LOGGING_IGNORE_ROUTE
+const prettyPrint = process.env.LOGGING_PRETTY_PRINT
 
 const ignoreRoutesArr = ignoreRoutes
   ? ignoreRoutes.replace(/\s/g, '').split(',')
@@ -39,7 +40,7 @@ const getLogger = (fileName) => {
     format: combine(
       label({ label: `${fileName}`, message: true }),
       timestamp(),
-      format.prettyPrint(),
+      prettyPrint ? format.prettyPrint() : format.json(),
     ),
     exitOnError: false,
   })
