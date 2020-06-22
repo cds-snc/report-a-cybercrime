@@ -49,7 +49,7 @@ const getLogger = (fileName) => {
 const getExpressLogger = () => {
   return expressWinston.logger({
     transports: transports,
-    format: format.prettyPrint(),
+    format: prettyPrint ? format.prettyPrint() : format.json(),
     dynamicMeta: (req, res) => {
       const httpRequest = {}
       const meta = {}
