@@ -13,6 +13,16 @@ export const ConfirmationForm = (props) => {
   const [{ reportId, submitted }] = useStateValue()
   return (
     <React.Fragment>
+      {false ? ( // the following trans tags are for analyst email
+        <div>
+          <Trans id="analystReport.reportNumber" />
+          <Trans id="analystReport.dateReceived" />
+          <Trans id="analystReport.reportLanguage" />
+          <Trans id="analystReport.reportVersion" />
+          <Trans id="analystReport.flagged" />
+          <Trans id="analystReport.noData" />
+        </div>
+      ) : null}
       <Form
         onSubmit={props.onSubmit}
         render={({ handleSubmit }) => (

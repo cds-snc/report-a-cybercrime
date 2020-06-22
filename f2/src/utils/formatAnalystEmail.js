@@ -19,14 +19,14 @@ const formatDownloadLink = (filename, url) =>
   `<tr><td colspan='2'><a href='${url}'>Download ${filename}</a></tr></td>\n`
 
 const formatSection = (title, rows) =>
-  `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
+  `<h2>${title}</h2>\n` +
+  (rows !== '' ? formatTable(rows) : lang['analystReport.noData'])
 
 let lang
 let langEn = fs.readFileSync('src/locales/en.json')
 let langFr = fs.readFileSync('src/locales/fr.json')
 let langJsonEn = JSON.parse(langEn)
 let langJsonFr = JSON.parse(langFr)
-//console.log('report language', langJsonEn["anonymousPage.intro"])
 
 const formatReportInfo = (data) => {
   //set language to use based report language
@@ -46,35 +46,19 @@ const formatReportInfo = (data) => {
       : 'no'
   let reportLanguage = data.language === 'en' ? 'English' : 'French'
 
-  if (lang === langJsonEn) {
-    returnString +=
-      '<h2>Report Information</h2>' +
-      formatTable(
-        formatLineHtml('Report number:', data.reportId) +
-          formatLineHtml('Date received:', data.submissionTime) +
-          formatLineHtml('Report language:', reportLanguage) +
-          formatLineHtml('Report version:', data.prodVersion) +
-          formatLineHtml(
-            lang['confirmationPage.anonymous.title'],
-            isAnonymous,
-          ) +
-          formatLineHtml('Flagged:', selfHarmString),
-      )
-  } else {
-    returnString +=
-      '<h2>Report Information</h2>' +
-      formatTable(
-        formatLineHtml('Signaler le numéro', data.reportId) +
-          formatLineHtml('Date de réception:', data.submissionTime) +
-          formatLineHtml('Langue du rapport:', reportLanguage) +
-          formatLineHtml('Version du rapport:', data.prodVersion) +
-          formatLineHtml(
-            lang['confirmationPage.anonymous.title'],
-            isAnonymous,
-          ) +
-          formatLineHtml('Signalé:', selfHarmString),
-      )
-  }
+  returnString +=
+    '<h2>Report Information</h2>' +
+    formatTable(
+      formatLineHtml(lang['analystReport.reportNumber'], data.reportId) +
+        formatLineHtml(
+          lang['analystReport.dateReceived'],
+          data.submissionTime,
+        ) +
+        formatLineHtml(lang['analystReport.reportLanguage'], reportLanguage) +
+        formatLineHtml(lang['analystReport.reportVersion'], data.prodVersion) +
+        formatLineHtml(lang['confirmationPage.anonymous.title'], isAnonymous) +
+        formatLineHtml(lang['analystReport.flagged'], selfHarmString),
+    )
 
   // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
   delete data.anonymous.anonymousOptions
