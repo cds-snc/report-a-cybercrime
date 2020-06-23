@@ -26,14 +26,27 @@ export const whatWasAffectedPages = [
   {
     key: 'whatWasAffectedForm.financial',
     url: 'moneylost',
+    formData: 'moneyLost',
   },
   {
     key: 'whatWasAffectedForm.personalInformation',
     url: 'information',
+    formData: 'personalInformation',
   },
-  { key: 'whatWasAffectedForm.devices', url: 'devices' },
-  { key: 'whatWasAffectedForm.business_assets', url: 'business' },
-  { key: 'whatWasAffectedForm.other', url: '' },
+  {
+    key: 'whatWasAffectedForm.devices',
+    url: 'devices',
+    formData: 'devicesInfo',
+  },
+  {
+    key: 'whatWasAffectedForm.business_assets',
+    url: 'business',
+    formData: 'businessInfo',
+  },
+  {
+    key: 'whatWasAffectedForm.other',
+    url: '',
+  },
 ]
 
 export const WhatWasAffectedForm = (props) => {
@@ -99,10 +112,7 @@ export const WhatWasAffectedForm = (props) => {
               {affectedOptions.map((key) => {
                 return (
                   <React.Fragment key={key}>
-                    <CheckboxAdapter
-                      name="affectedOptions"
-                      value={key}
-                    >
+                    <CheckboxAdapter name="affectedOptions" value={key}>
                       {i18n._(key)}
                       {key !== 'whatWasAffectedForm.other' && (
                         <Text as="span" d="block" fontSize="sm">

@@ -8,32 +8,41 @@ import { WhatWasAffectedForm } from './forms/WhatWasAffectedForm'
 import { BackButton } from './components/backbutton'
 import { Stack, usePrevious } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
+import {
+  nextWhatWasAffectedUrl,
+  getNextPage,
+} from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
-  const { whatWasAffected } = data.formData
+  /*const { whatWasAffected } = data.formData
 
   const optionsChanged = (options) => {
+    
     let updatedOptions = options.filter(
-      (option) => !whatWasAffected.affectedOptions.includes(option),
+      option => !whatWasAffected.affectedOptions.includes(option)
     )
+
     return updatedOptions
   }
+*/
+  const getPage = (selectedOptions) => {
+    getNextPage(data.formData, selectedOptions)
+    /*let nextPage
 
-  const getNextPage = () => {
-    let options = data.affectedOptions ? optionsChanged(options) : []
+    if (whatWasAffected) {
+      options = optionsChanged(options)
+    }
 
-    console.log(`Options: ${options}`)
+    if (doneForms && !options.length) {
+      nextPage = '/confirmation'
+    } else {
+      nextPage = nextWhatWasAffectedUrl(options, 'whatwasaffected')
+    }    
 
-    let nextPage =
-      doneForms && !options
-        ? '/confirmation'
-        : nextWhatWasAffectedUrl(options, 'whatwasaffected')
-
-    console.log(`Next pages: ${nextPage}`)
+    return nextPage */
   }
 
   return (
@@ -58,7 +67,7 @@ export const WhatWasAffectedPage = () => {
                     type: 'saveFormData',
                     data: { whatWasAffected: data },
                   })
-                  getNextPage()
+                  getPage(data)
                   history.push(
                     doneForms
                       ? '/confirmation'
