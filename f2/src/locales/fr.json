@@ -14,6 +14,8 @@
   "analystReport.reportLanguage": "Langue du rapport",
   "analystReport.reportNumber": "Signaler le numéro",
   "analystReport.reportVersion": "Version du rapport",
+  "analystReport.selfHarmString": "mots d'automutilation détectés",
+  "analystReport.selfHarmWord": "MOTS AUTO-NUISIBLES TROUVÉS:",
   "anonymousPage.intro": "Si vous choisissez de signaler de façon anonyme, nous ne vous demanderons pas vos coordonnées et nous ne pourrons pas faire de suivi.",
   "anonymousPage.nextButton": "Continuer",
   "anonymousPage.nextPage": "Étape suivante : Comment l’incident a-t-il commencé?",

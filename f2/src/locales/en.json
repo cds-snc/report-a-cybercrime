@@ -14,6 +14,8 @@
   "analystReport.reportLanguage": "Report language",
   "analystReport.reportNumber": "Report number",
   "analystReport.reportVersion": "Report version",
+  "analystReport.selfHarmString": "self harm words detected",
+  "analystReport.selfHarmWord": "SELF HARM WORDS FOUND :",
   "anonymousPage.intro": "This means we won't ask for your contact details and won't be able to follow up in the future.",
   "anonymousPage.nextButton": "Continue",
   "anonymousPage.nextPage": "Next: How did the incident start?",
