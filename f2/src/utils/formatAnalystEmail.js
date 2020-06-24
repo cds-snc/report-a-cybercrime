@@ -47,7 +47,9 @@ const formatReportInfo = (data) => {
   let reportLanguage = data.language === 'en' ? 'English' : 'French'
 
   returnString +=
-    '<h2>Report Information</h2>' +
+    '<h2>' +
+    lang['analystReport.reportInformation'] +
+    '</h2>' +
     formatTable(
       formatLineHtml(lang['analystReport.reportNumber'], data.reportId) +
         formatLineHtml(
@@ -119,7 +121,7 @@ const formatVictimDetails = (data) => {
   delete data.location.province
   delete data.location.postalCode
   delete data.consent.consentOptions
-  return formatSection('Victim details', rows)
+  return formatSection(lang['contactInfoPage.victimDetail'], rows)
 }
 
 const formatIncidentInformation = (data) => {
@@ -151,7 +153,7 @@ const formatIncidentInformation = (data) => {
   delete data.howdiditstart.howManyTimes
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
-  return formatSection('Incident information', rows)
+  return formatSection(lang['howDidItStartPage.incidentInformation'], rows)
 }
 
 const formatNarrative = (data) => {
@@ -242,7 +244,7 @@ const formatNarrative = (data) => {
   delete data.businessInfo.role
   delete data.businessInfo.numberOfEmployee
   delete data.suspectClues.suspectClues3
-  return formatSection('Narrative', rows)
+  return formatSection(lang['analystReport.narrative'], rows)
 }
 
 const formatSuspectDetails = (data) => {
@@ -283,7 +285,7 @@ const formatSuspectDetails = (data) => {
   delete data.howdiditstart.application
   delete data.suspectClues.suspectClues2
   delete data.howdiditstart.others
-  return formatSection('Suspect details', rows)
+  return formatSection(lang['suspectClues.suspectDetails'], rows)
 }
 
 const formatFinancialTransactions = (data) => {
@@ -327,7 +329,7 @@ const formatFinancialTransactions = (data) => {
   delete data.moneyLost.transactionDay
   delete data.moneyLost.transactionMonth
   delete data.moneyLost.transactionYear
-  return formatSection('Financial transactions', rows)
+  return formatSection(lang['moneyLostPage.financialTransactions'], rows)
 }
 
 const formatFileAttachments = (data) => {
@@ -391,7 +393,9 @@ const formatFileAttachments = (data) => {
   delete data.evidence.files
   delete data.evidence.fileDescriptions
   return (
-    '<h2>File attachments</h2>\n' +
+    '<h2>' +
+    lang['fileUpload.fileAttachment'] +
+    '</h2>\n' +
     (returnString !== '' ? formatTable(returnString) : 'No files attached\n')
   )
 }

@@ -73,6 +73,8 @@ export const MoneyLostInfoForm = (props) => {
           <Trans id="transactionDate.error.hasNoYear" />
           <Trans id="transactionDate.error.hasNoMonth" />
           <Trans id="transactionDate.error.hasNoDay" />
+
+          <Trans id="moneyLostPage.financialTransactions" />
         </div>
       ) : null}
       <Form

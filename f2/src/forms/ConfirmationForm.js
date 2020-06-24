@@ -21,6 +21,8 @@ export const ConfirmationForm = (props) => {
           <Trans id="analystReport.reportVersion" />
           <Trans id="analystReport.flagged" />
           <Trans id="analystReport.noData" />
+          <Trans id="analystReport.reportInformation" />
+          <Trans id="analystReport.narrative" />
         </div>
       ) : null}
       <Form
