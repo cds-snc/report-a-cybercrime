@@ -18,9 +18,17 @@ const logger = require('./winstonLogger')
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
 
+let lang
+let langEn = fs.readFileSync('src/locales/en.json')
+let langFr = fs.readFileSync('src/locales/fr.json')
+let langJsonEn = JSON.parse(langEn)
+let langJsonFr = JSON.parse(langFr)
+
 async function scanFiles(data) {
   try {
     var scanner = clamd.createScanner(process.env.CLAM_URL, 3310)
+    //set language to use based report language
+    data.language === 'en' ? (lang = langJsonEn) : (lang = langJsonFr)
     for (const file of Object.entries(data.evidence.files)) {
       //scan file for virus
       var readStream = fs.createReadStream(file[1].path)
@@ -32,7 +40,7 @@ async function scanFiles(data) {
           file[1].malwareIsClean = clamd.isCleanReply(reply)
         })
         .catch(function (reply) {
-          file[1].malwareScanDetail = 'ERROR: Unable to perform virus scan'
+          file[1].malwareScanDetail = lang['fileUpload.virusScanError']
           file[1].malwareIsClean = false
           console.warn('Virus scan failed on ' + data.reportId)
         })
@@ -57,8 +65,7 @@ const contentModerateFile = (file, callback) => {
     console.debug(
       `Content Moderator File not scanned Azure image moderator doesn't support for file type ${file[1].type}`,
     )
-    file[1].adultClassificationScore =
-      'Could not scan - not a supported file type'
+    file[1].adultClassificationScore = lang['fileUpload.fileTypeError']
     callback(null, file[1])
     return
   }
