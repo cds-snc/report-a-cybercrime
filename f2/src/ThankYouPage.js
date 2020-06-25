@@ -208,23 +208,23 @@ export const ThankYouPage = () => {
               <Trans id="thankYouPage.safelyCloseWindow" />
             </Alert>
           )}
-          {submissionSucceeded && (
-            <Box mb="auto">
-              <Route
-                render={({ history }) => (
-                  <Link
-                    onClick={() => {
-                      dispatch({
-                        type: 'deleteFormData',
-                      })
-                    }}
-                    to="/"
-                  >
-                    <Trans id="thankYouPage.createNewReport" />
-                  </Link>
-                )}
-              />
-            </Box>
+          (
+          <Box mb="auto">
+            <Route
+              render={({ history }) => (
+                <Link
+                  onClick={() => {
+                    dispatch({
+                      type: 'deleteFormData',
+                    })
+                  }}
+                  to="/"
+                >
+                  <Trans id="thankYouPage.createNewReport" />
+                </Link>
+              )}
+            />
+          </Box>
           )}
           <Row>
             <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
