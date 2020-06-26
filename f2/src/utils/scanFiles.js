@@ -53,16 +53,16 @@ let client = serviceKey
   : undefined
 
 const contentModerateFile = (file, callback) => {
-  if (!SUPPORTED_FILE_TYPES.includes(file[1].type)) {
+  if (!SUPPORTED_FILE_TYPES.includes(file.type)) {
     console.debug(
-      `Content Moderator File not scanned Azure image moderator doesn't support for file type ${file[1].type}`,
+      `Content Moderator File not scanned Azure image moderator doesn't support for file type ${file.type}`,
     )
-    file[1].adultClassificationScore =
-      'Could not scan - not a supported file type'
-    callback(null, file[1])
+    file.adultClassificationScore = 'Could not scan - not a supported file type'
+    callback(null, file)
     return
   }
-  var readStream = fs.createReadStream(file[1].path)
+  var readStream = fs.createReadStream(file.path)
+
   client.imageModeration.evaluateFileInput(readStream, {}, function (
     err,
     _result,
@@ -76,34 +76,47 @@ const contentModerateFile = (file, callback) => {
         message: 'Error in Content Moderator',
         error: err,
       })
-      file[1].adultClassificationScore = 'Could not scan'
+      file.adultClassificationScore = 'Could not scan'
     } else {
       try {
         const contMod = JSON.parse(response.body)
-        file[1].isImageRacyClassified = contMod.IsImageRacyClassified
-        file[1].isImageAdultClassified = contMod.IsImageAdultClassified
-        file[1].adultClassificationScore = contMod.AdultClassificationScore
-        file[1].racyClassificationScore = contMod.RacyClassificationScore
+        file.isImageRacyClassified = contMod.IsImageRacyClassified
+        file.isImageAdultClassified = contMod.IsImageAdultClassified
+        file.adultClassificationScore = contMod.AdultClassificationScore
+        file.racyClassificationScore = contMod.RacyClassificationScore
       } catch (error) {
         console.warn(`Error in Content Moderator: ${error.stack} `)
       }
     }
-    callback(null, file[1])
+    callback(null, file)
   })
 }
 
 async function contentModeratorFiles(data, finalCallback) {
-  if (!serviceKey)
+  if (!serviceKey) {
     console.warn('Warning: files not scanned with Content Moderator')
-  else {
-    async.map(
-      Object.entries(data.evidence.files),
-      contentModerateFile,
-      function (err, _results) {
-        if (err) console.warn('Content Moderator Error:' + JSON.stringify(err))
-        finalCallback()
-      },
-    )
+  } else {
+    //Queue to call content moderator once per second.
+    const queue = async.queue((task, callback) => {
+      setTimeout(() => {
+        contentModerateFile(task, (err, _results) => {
+          if (err) {
+            console.warn('Content Moderator Error:' + JSON.stringify(err))
+          }
+        })
+        callback()
+      }, 1000)
+    }, 1)
+
+    //Callback when queue is complete
+    queue.drain(() => {
+      finalCallback()
+    })
+
+    //Add files to queue
+    queue.push(data.evidence.files)
+
+    await queue.drain()
   }
 }
 
