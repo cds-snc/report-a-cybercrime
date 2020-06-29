@@ -4,14 +4,14 @@ import { Route } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { H1 } from './components/header'
 import { Lead } from './components/paragraph'
-import { HowDidItStartForm } from './forms/HowDidItStartForm'
+import { WhenDidItHappenForm } from './forms/WhenDidItHappenForm'
 import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 
-export const HowDidItStartPage = () => {
+export const WhenDidItHappenPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
 
@@ -23,21 +23,21 @@ export const HowDidItStartPage = () => {
             <Stack spacing={10} shouldWrapChildren>
               <BackButton />
               <H1>
-                <Trans id="howDidItStartPage.title" />
+                <Trans id="WhenDidItStartPage.title" />
               </H1>
               <Stack spacing={4}>
                 <Lead>
-                  <Trans id="howDidItStartPage.intro" />
+                  <Trans id="WhenDidItStartPage.intro" />
                 </Lead>
               </Stack>
 
-              <HowDidItStartForm
+              <WhenDidItHappenForm
                 onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { howdiditstart: data },
                   })
-                  history.push(doneForms ? '/confirmation' : '/howdiditstart')
+                  history.push(doneForms ? '/confirmation' : '/whatwasaffected')
                 }}
               />
             </Stack>
