@@ -56,8 +56,8 @@ export const HowDidItStartSummary = (props) => {
           <Trans id="confirmationPage.howDidItStart.online" />
           <Trans id="confirmationPage.howDidItStart.application" />
           <Trans id="confirmationPage.howDidItStart.others" />
-          <Trans id="confirmationPage.whenDidItStart" />
-          <Trans id="confirmationPage.howManyTimes" />
+          {/* <Trans id="confirmationPage.whenDidItStart" />
+          <Trans id="confirmationPage.howManyTimes" /> */}
           <Trans id="confirmationPage.howDidItStart.title.edit" />
         </div>
       ) : null}
@@ -102,18 +102,6 @@ export const HowDidItStartSummary = (props) => {
               <DescriptionListItem
                 descriptionTitle="confirmationPage.howDidItStart.others"
                 description={howdiditstart.others}
-              />
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.whenDidItStart"
-                description={formatDate(
-                  howdiditstart.startDay,
-                  howdiditstart.startMonth,
-                  howdiditstart.startYear,
-                )}
-              />
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.howManyTimes"
-                description={i18n._(howdiditstart.howManyTimes)}
               />
             </Stack>
           </React.Fragment>

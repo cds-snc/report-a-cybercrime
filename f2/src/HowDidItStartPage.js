@@ -37,7 +37,7 @@ export const HowDidItStartPage = () => {
                     type: 'saveFormData',
                     data: { howdiditstart: data },
                   })
-                  history.push(doneForms ? '/confirmation' : '/howdiditstart')
+                  history.push(doneForms ? '/confirmation' : '/whendidithappen')
                 }}
               />
             </Stack>
