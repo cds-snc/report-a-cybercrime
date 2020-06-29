@@ -15,6 +15,8 @@ require('dotenv').config()
 
 const logger = require('./winstonLogger')
 
+let lastRequest = new Date().getTime()
+
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
 
@@ -92,31 +94,43 @@ const contentModerateFile = (file, callback) => {
   })
 }
 
+//Queue to call content moderator once per second.
+const queue = async.queue((task, callback) => {
+  try {
+    /*
+      If time since last request is greater than 1 second, make the request immmediately.
+      Otherwise, wait until 1 second has passed to make the request.
+    */
+    const currentTime = new Date().getTime()
+    const timeDif = currentTime - lastRequest
+    const timeToWait = timeDif > 1000 ? 0 : 1000
+
+    setTimeout(() => {
+      lastRequest = new Date().getTime()
+      contentModerateFile(task, (err, _results) => {
+        if (err) {
+          console.warn('Content Moderator Error:' + JSON.stringify(err))
+        }
+      })
+      callback()
+    }, timeToWait)
+  } catch (err) {
+    console.warn('Error calling Content Moderator:' + JSON.stringify(err))
+    callback()
+  }
+}, 1)
+
 async function contentModeratorFiles(data, finalCallback) {
   if (!serviceKey) {
     console.warn('Warning: files not scanned with Content Moderator')
   } else {
-    //Queue to call content moderator once per second.
-    const queue = async.queue((task, callback) => {
-      setTimeout(() => {
-        contentModerateFile(task, (err, _results) => {
-          if (err) {
-            console.warn('Content Moderator Error:' + JSON.stringify(err))
-          }
-        })
-        callback()
-      }, 1000)
-    }, 1)
-
-    //Callback when queue is complete
-    queue.drain(() => {
-      finalCallback()
-    })
-
     //Add files to queue
     queue.push(data.evidence.files)
 
     await queue.drain()
+
+    //Callback when queue is complete
+    finalCallback()
   }
 }
 
