@@ -55,8 +55,6 @@ export const HowDidItStartSummary = (props) => {
           <Trans id="confirmationPage.howDidItStart.online" />
           <Trans id="confirmationPage.howDidItStart.application" />
           <Trans id="confirmationPage.howDidItStart.others" />
-          {/* <Trans id="confirmationPage.whenDidItStart" />
-          <Trans id="confirmationPage.howManyTimes" /> */}
           <Trans id="confirmationPage.howDidItStart.title.edit" />
         </div>
       ) : null}

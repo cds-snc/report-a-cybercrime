@@ -5,7 +5,6 @@ import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { CheckboxAdapter } from '../components/checkbox'
-
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
@@ -14,21 +13,6 @@ import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
-import { validateDate } from '../utils/validateDate'
-
-const validate = (values) => {
-  const errors = {}
-  const startDate = validateDate(
-    values.startYear,
-    values.startMonth,
-    values.startDay,
-  )
-  errors.whenDidItStart = []
-  startDate.map((key) => {
-    return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
-  })
-  return errors
-}
 
 const clearData = (dataOrig) => {
   let data = JSON.parse(JSON.stringify(dataOrig))
@@ -118,14 +102,8 @@ export const HowDidItStartForm = (props) => {
       <Form
         initialValues={howdiditstart}
         onSubmit={localOnSubmit}
-        validate={validate}
-        render={({
-          handleSubmit,
-          values,
-          errors,
-          submitFailed,
-          hasValidationErrors,
-        }) => (
+        // validate={validate}
+        render={({ handleSubmit, values, errors, hasValidationErrors }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
