@@ -23,11 +23,11 @@ export const WhenDidItHappenPage = () => {
             <Stack spacing={10} shouldWrapChildren>
               <BackButton />
               <H1>
-                <Trans id="WhenDidItStartPage.title" />
+                <Trans id="WhenDidItHappenPage.title" />
               </H1>
               <Stack spacing={4}>
                 <Lead>
-                  <Trans id="WhenDidItStartPage.intro" />
+                  <Trans id="WhenDidItHappenPage.intro" />
                 </Lead>
               </Stack>
 
