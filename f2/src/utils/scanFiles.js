@@ -18,7 +18,6 @@ const logger = require('./winstonLogger')
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
 
-let lang
 let langEn = fs.readFileSync('src/locales/en.json')
 let langFr = fs.readFileSync('src/locales/fr.json')
 let langJsonEn = JSON.parse(langEn)
@@ -41,6 +40,7 @@ async function scanFiles(data) {
           let lang
           //set language to use based report language
           data.language === 'en' ? (lang = langJsonEn) : (lang = langJsonFr)
+
           file[1].malwareScanDetail = lang['fileUpload.virusScanError']
           file[1].malwareIsClean = false
           console.warn('Virus scan failed on ' + data.reportId)
@@ -63,6 +63,9 @@ let client = serviceKey
 
 const contentModerateFile = (file, callback) => {
   if (!SUPPORTED_FILE_TYPES.includes(file[1].type)) {
+    let lang
+    //set language to use based report language
+    file[0] === 'en' ? (lang = langJsonEn) : (lang = langJsonFr)
     console.debug(
       `Content Moderator File not scanned Azure image moderator doesn't support for file type ${file[1].type}`,
     )
@@ -104,14 +107,17 @@ async function contentModeratorFiles(data, finalCallback) {
   if (!serviceKey)
     console.warn('Warning: files not scanned with Content Moderator')
   else {
-    async.map(
-      Object.entries(data.evidence.files),
-      contentModerateFile,
-      function (err, _results) {
-        if (err) console.warn('Content Moderator Error:' + JSON.stringify(err))
-        finalCallback()
-      },
-    )
+    let files = Object.entries(data.evidence.files).map((file) => {
+      file[0] = data.language
+      return file
+    })
+    async.map(Object.entries(files), contentModerateFile, function (
+      err,
+      _results,
+    ) {
+      if (err) console.warn('Content Moderator Error:' + JSON.stringify(err))
+      finalCallback()
+    })
   }
 }
 
