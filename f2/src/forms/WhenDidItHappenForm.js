@@ -35,7 +35,7 @@ const validate = (values) => {
 
 export const WhenDidItHappenForm = (props) => {
   const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.whendiditstart))
+    if (clientFieldsAreValid(data, formDefaults.whendidithappen))
       props
         .onSubmit
         // clearData({ ...data, phone: formatPhoneNumber(data.phone) }),

@@ -35,7 +35,7 @@ export const WhenDidItHappenPage = () => {
                 onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
-                    data: { howdiditstart: data },
+                    data: { howdidithappen: data },
                   })
                   history.push(doneForms ? '/confirmation' : '/whatwasaffected')
                 }}
