@@ -46,13 +46,6 @@ export const Radio = ({
 }) => {
   const isCheckedAndHasCondition = isChecked && conditionalField
 
-  if (isChecked) {
-    console.log('isCheckedAndHasCondition: ', isCheckedAndHasCondition)
-    console.log('isChecked: ', isChecked)
-    console.log('props.conditionalField: ', props.conditionalField)
-    console.log('conditionalField: ', conditionalField)
-  }
-
   return (
     <UniqueID>
       {(id) => {
