@@ -11,6 +11,8 @@ const formDefaults = {
     online: '',
     application: '',
     others: '',
+  },
+  whendidithappen: {
     howManyTimes: '',
     startDay: '',
     startMonth: '',
