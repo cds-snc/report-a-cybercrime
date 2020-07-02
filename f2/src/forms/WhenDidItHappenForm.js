@@ -5,7 +5,8 @@ import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 // import { CheckboxAdapter } from '../components/checkbox'
-import { RadioboxAdapter } from '../components/radioselect'
+// import { RadioboxAdapter } from '../components/radioselect'
+import { RadioAdapter } from '../components/radio'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
@@ -124,7 +125,7 @@ export const WhenDidItHappenForm = (props) => {
               {questionsList.map((question) => {
                 return (
                   <React.Fragment key={question.channel}>
-                    <RadioboxAdapter
+                    <RadioAdapter
                       name="howOften"
                       value={question.channel}
                       conditionalField={
@@ -137,7 +138,7 @@ export const WhenDidItHappenForm = (props) => {
                       }
                     >
                       {i18n._(question.channel)}
-                    </RadioboxAdapter>
+                    </RadioAdapter>
                   </React.Fragment>
                 )
               })}
