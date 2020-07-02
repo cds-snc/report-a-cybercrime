@@ -1,6 +1,26 @@
 # Changelog for report a cybercrime product
 
-## V1.3.0 (2020-05-25)
+## V1.4.0 (2020-06-09)
+
+- E-mail to analysts redesigned to fix usability issues and files transfered by Azure Shared Access Signature instead of e-mail attachment (Pull Request #1975, Issues #1953, #1900, #1704)
+- Fix bugs around enforcing user to consent to privacy statement (PR #1927, #1958, Issue #1924, #1957)
+- Make self harm warning text in e-mail more visible (PR #1939, Issue #1932)
+- Update Documentation (PR #1919, Issue #1827)
+- Fix Bug on tracking user consent (PR #1946, Issue #1929)
+- Tweaks to privacy statement (PR #1945, PR #1961, Issue #1942, #1959)
+- Misc Code improvements (PR #1921, #1966 Issue #1894, #1626)
+- Update links on thank you page (PR #1955, Issue #1952)
+- Phantom button bug (PR #1948, Issue #1943)
+- Fix Bug with form flow (Pr #1960, Issue #1954)
+- Convert png to jpg automatically (PR #1951, Issue #1884)
+- Add markup to phone numbers in app so mobile users can easily dial them (PR #1963, Issue #1455)
+- Stop backend from allowing empty file uploads (PR #1964)
+- Fix bug with NCFRS version number display (PR #1938, Issue #1922)
+- Provide analyst with estimated province and city based on Postal Code (PR #1938, Issue #1922)
+- Block ALL direct traffic that isn't coming from CAFC (PR #1974, Issue #1968)
+- Make warning banner on DEV and Staging environments more obvious (PR #1978, Issue #1627)
+
+## V1.3.0 (2020-05-26)
 
 - More date validation tweaks (Pull Request #1809, #1889 Issue #1808, #1800, #1842)
 - Tweaks to thank you page design (Pull Request #1851, Issue #1851)

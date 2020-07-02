@@ -14,6 +14,7 @@ Fixes #(issue)
 
 # Checklist:
 
+- [ ] I have updated the azurescript.sh with any **new environment variables** and added them to the appsettings
 - [ ] I have looked at my code on GitHub and it all looks good (ex: no random commented out code or console.logs)
 - [ ] I have added and needed tests for my changes (in particular for new screens)
 - [ ] I have added a comment to any confusing code
