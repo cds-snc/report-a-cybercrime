@@ -431,8 +431,5 @@
   "whenDidItStart.error.yearLength": "Enter a 4 digit year.",
   "whenDidItStart.hasValidationErrors": "Please review the start date.",
   "whenDidItStart.label": "When did it start?",
-  "whenDidItStart.labelExample": "For example: 26 02 2020",
-  "whenDidItStart.startDay": "Day",
-  "whenDidItStart.startMonth": "Month",
-  "whenDidItStart.startYear": "Year"
+  "whenDidItStart.labelExample": "For example: 26 02 2020"
 }

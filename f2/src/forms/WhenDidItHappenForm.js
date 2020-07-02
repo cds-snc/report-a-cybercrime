@@ -18,6 +18,7 @@ import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 // import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
+import { TextArea } from '../components/text-area'
 
 const validate = (values) => {
   const errors = {}
@@ -105,7 +106,18 @@ export const WhenDidItHappenForm = (props) => {
               {howManyTimes.map((key) => {
                 return (
                   <React.Fragment key={key}>
-                    <RadioAdapter name="howManyTimes" value={key}>
+                    <RadioAdapter
+                      name="howManyTimes"
+                      value={key}
+                      conditionalField={
+                        <Field
+                          name="Test"
+                          label="Test"
+                          helperText="Test"
+                          component={TextArea}
+                        />
+                      }
+                    >
                       {i18n._(key)}
                     </RadioAdapter>
                   </React.Fragment>
@@ -117,34 +129,7 @@ export const WhenDidItHappenForm = (props) => {
               label={<Trans id="whenDidItStart.label" />}
               helperText={<Trans id="whenDidItStart.labelExample" />}
               errors={errors}
-            >
-              <Stack direction="row" spacing="2">
-                <Field
-                  name="startDay"
-                  label={<Trans id="whenDidItStart.startDay" />}
-                  component={TextInput}
-                  group="whenDidItStart"
-                  w={70}
-                  maxLength="2"
-                />
-                <Field
-                  name="startMonth"
-                  label={<Trans id="whenDidItStart.startMonth" />}
-                  component={TextInput}
-                  group="whenDidItStart"
-                  w={70}
-                  maxLength="2"
-                />
-                <Field
-                  name="startYear"
-                  label={<Trans id="whenDidItStart.startYear" />}
-                  component={TextInput}
-                  group="whenDidItStart"
-                  w={110}
-                  maxLength="4"
-                />
-              </Stack>
-            </FormArrayControl>
+            ></FormArrayControl>
 
             <Well variantColor="blue">
               <Trans id="howDidItStartPage.tip" />
