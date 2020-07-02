@@ -5,7 +5,7 @@ import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 // import { CheckboxAdapter } from '../components/checkbox'
-import { RadioAdapter } from '../components/radio'
+import { RadioboxAdapter } from '../components/radioselect'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
@@ -18,6 +18,7 @@ import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 // import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
+import { TextArea } from '../components/text-area'
 
 const validate = (values) => {
   const errors = {}
@@ -36,10 +37,7 @@ const validate = (values) => {
 export const WhenDidItHappenForm = (props) => {
   const localOnSubmit = (data) => {
     if (clientFieldsAreValid(data, formDefaults.whendidithappen))
-      props
-        .onSubmit
-        // clearData({ ...data, phone: formatPhoneNumber(data.phone) }),
-        ()
+      props.onSubmit()
   }
 
   const { i18n } = useLingui()
@@ -51,19 +49,39 @@ export const WhenDidItHappenForm = (props) => {
 
   //TODO: Move this form data to some sort of a schema file instead?
 
-  const howManyTimes = [
-    'howManyTimes.once',
-    'howManyTimes.severalTimes',
-    'howManyTimes.notSure',
+  var questionsList = [
+    {
+      name: 'once',
+      channel: 'howOften.once',
+      label: 'howoftenLabel.question1',
+      hint: 'howOftenLabel.hint1',
+    },
+    {
+      name: 'morethanonce',
+      channel: 'howOften.morethanonce',
+      label: 'howoftenLabel.question2',
+      hint: 'howoftenLabel.hint2',
+    },
+    {
+      name: 'notsure',
+      channel: 'howOften.notsure',
+      label: 'howoftenLabel.question3',
+      hint: 'howoftenLabel.hint3',
+    },
   ]
-
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
-          <Trans id="howManyTimes.once" />
-          <Trans id="howManyTimes.severalTimes" />
-          <Trans id="howManyTimes.notSure" />
+          <Trans id="howoftenLabel.question1" />
+          <Trans id="howoftenLabel.question2" />
+          <Trans id="howoftenLabel.question3" />
+          <Trans id="howoftenLabel.hint1" />
+          <Trans id="howoftenLabel.hint2" />
+          <Trans id="howoftenLabel.hint3" />
+          <Trans id="howoften.once" />
+          <Trans id="howOften.morethanonce" />
+          <Trans id="howOften.notSure" />
 
           <Trans id="whenDidItStart.error.notDay" />
           <Trans id="whenDidItStart.error.notMonth" />
@@ -99,19 +117,32 @@ export const WhenDidItHappenForm = (props) => {
               </ErrorSummary>
             ) : null}
             <FormArrayControl
-              name="howManyTimes"
-              label={<Trans id="howManyTimes.label" />}
+              name="howOften"
+              label={<Trans id="howoftenLabel.question" />}
             >
-              {howManyTimes.map((key) => {
+              {/** All questions have conditional fields. It makes sense to use the map function */}
+              {questionsList.map((question) => {
                 return (
-                  <React.Fragment key={key}>
-                    <RadioAdapter name="howManyTimes" value={key}>
-                      {i18n._(key)}
-                    </RadioAdapter>
+                  <React.Fragment key={question.channel}>
+                    <RadioboxAdapter
+                      name="howOften"
+                      value={question.channel}
+                      conditionalField={
+                        <Field
+                          name={question.name}
+                          label={<Trans id={question.label} />}
+                          helperText={<Trans id={question.hint} />}
+                          component={TextArea}
+                        />
+                      }
+                    >
+                      {i18n._(question.channel)}
+                    </RadioboxAdapter>
                   </React.Fragment>
                 )
               })}
             </FormArrayControl>
+
             <FormArrayControl
               name="whenDidItStart"
               label={<Trans id="whenDidItStart.label" />}
