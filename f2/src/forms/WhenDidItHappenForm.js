@@ -5,7 +5,6 @@ import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 // import { CheckboxAdapter } from '../components/checkbox'
-// import { RadioboxAdapter } from '../components/radioselect'
 import { RadioAdapter } from '../components/radio'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
@@ -38,7 +37,10 @@ const validate = (values) => {
 export const WhenDidItHappenForm = (props) => {
   const localOnSubmit = (data) => {
     if (clientFieldsAreValid(data, formDefaults.whendidithappen))
-      props.onSubmit()
+      props
+        .onSubmit
+        // clearData({ ...data, phone: formatPhoneNumber(data.phone) }),
+        ()
   }
 
   const { i18n } = useLingui()
@@ -48,39 +50,50 @@ export const WhenDidItHappenForm = (props) => {
     ...data.formData.whendiditstart,
   }
 
+  //   //TODO: Move this form data to some sort of a schema file instead?
+
+  //   const howManyTimes = [
+  //     'howManyTimes.once',
+  //     'howManyTimes.severalTimes',
+  //     'howManyTimes.notSure',
+  //   ]
   //TODO: Move this form data to some sort of a schema file instead?
 
   var questionsList = [
     {
       name: 'once',
       channel: 'howOften.once',
-      label: 'howoftenLabel.question1',
+      label: 'howOftenLabel.question1',
       hint: 'howOftenLabel.hint1',
     },
     {
       name: 'morethanonce',
       channel: 'howOften.morethanonce',
-      label: 'howoftenLabel.question2',
-      hint: 'howoftenLabel.hint2',
+      label: 'howOftenLabel.question2',
+      hint: 'howOftenLabel.hint2',
     },
     {
       name: 'notsure',
       channel: 'howOften.notsure',
-      label: 'howoftenLabel.question3',
-      hint: 'howoftenLabel.hint3',
+      label: 'howOftenLabel.question3',
+      hint: 'howOftenLabel.hint3',
     },
   ]
+
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
-          <Trans id="howoftenLabel.question1" />
-          <Trans id="howoftenLabel.question2" />
-          <Trans id="howoftenLabel.question3" />
-          <Trans id="howoftenLabel.hint1" />
-          <Trans id="howoftenLabel.hint2" />
-          <Trans id="howoftenLabel.hint3" />
-          <Trans id="howoften.once" />
+          {/* <Trans id="howManyTimes.once" />
+          <Trans id="howManyTimes.severalTimes" />
+          <Trans id="howManyTimes.notSure" /> */}
+          <Trans id="howOftenLabel.question1" />
+          <Trans id="howOftenLabel.question2" />
+          <Trans id="howOftenLabel.question3" />
+          <Trans id="howOftenLabel.hint1" />
+          <Trans id="howOftenLabel.hint2" />
+          <Trans id="howOftenLabel.hint3" />
+          <Trans id="howOften.once" />
           <Trans id="howOften.morethanonce" />
           <Trans id="howOften.notSure" />
 
@@ -119,9 +132,8 @@ export const WhenDidItHappenForm = (props) => {
             ) : null}
             <FormArrayControl
               name="howOften"
-              label={<Trans id="howoftenLabel.question" />}
+              label={<Trans id="howOften.label" />}
             >
-              {/** All questions have conditional fields. It makes sense to use the map function */}
               {questionsList.map((question) => {
                 return (
                   <React.Fragment key={question.channel}>
@@ -143,7 +155,6 @@ export const WhenDidItHappenForm = (props) => {
                 )
               })}
             </FormArrayControl>
-
             <FormArrayControl
               name="whenDidItStart"
               label={<Trans id="whenDidItStart.label" />}
