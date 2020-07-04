@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useLingui } from '@lingui/react'
+// import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
@@ -43,7 +43,7 @@ export const WhenDidItHappenForm = (props) => {
         ()
   }
 
-  const { i18n } = useLingui()
+  //   const { i18n } = useLingui()
   const [data] = useStateValue()
   const whendiditstart = {
     ...formDefaults.whendiditstart,
@@ -134,7 +134,65 @@ export const WhenDidItHappenForm = (props) => {
               name="howOften"
               label={<Trans id="howOften.label" />}
             >
-              {questionsList.map((question) => {
+              if (question.name==='once') return (
+              <React.Fragment key="howOften.once">
+                <RadioAdapter
+                  name="howOften"
+                  value="once"
+                  conditionalField={
+                    <Field
+                      name={<Trans id="howOften.once" />}
+                      // name ="once"
+                      label={<Trans id="howOftenLabel.question1" />}
+                      helperText={<Trans id="howOftenLabel.hint1" />}
+                      component={TextArea}
+                    />
+                  }
+                ></RadioAdapter>
+                {/* {i18n._(questionsList.name)} */}
+              </React.Fragment>
+              )} else if (question.name==='morethanonce') return (
+              <React.Fragment key="howOften.morethanonce">
+                <RadioAdapter
+                  name="howOften"
+                  value="morethanonce"
+                  conditionalField={
+                    <React.Fragment>
+                      <Stack>
+                        <Field
+                          name={<Trans id="howOften.morethanonce" />}
+                          label={<Trans id="howOftenLabel.question2.1" />}
+                          helperText={<Trans id="howOftenLabel.hint1" />}
+                          component={TextArea}
+                        />
+                        <Field
+                          name={<Trans id="howOften.morethanonce" />}
+                          label={<Trans id="howOftenLabel.question2.2" />}
+                          helperText={<Trans id="howOftenLabel.hint1" />}
+                          component={TextArea}
+                        />
+                      </Stack>
+                    </React.Fragment>
+                  }
+                ></RadioAdapter>
+              </React.Fragment>
+              )} else if (question.name==='notsure') return (
+              <React.Fragment key="howOften.notSure">
+                <RadioAdapter
+                  name="howOften"
+                  value="notSure"
+                  conditionalField={
+                    <Field
+                      name={<Trans id="howOften.notSure" />}
+                      label={<Trans id="howOftenLabel.question3" />}
+                      helperText={<Trans id="howOftenLabel.hint3" />}
+                      component={TextArea}
+                    />
+                  }
+                ></RadioAdapter>
+              </React.Fragment>
+              )} }{/* else if (questin.name===) */}
+              {/* {questionsList.map((question) => {
                 return (
                   <React.Fragment key={question.channel}>
                     <RadioAdapter
@@ -147,13 +205,13 @@ export const WhenDidItHappenForm = (props) => {
                           helperText={<Trans id={question.hint} />}
                           component={TextArea}
                         />
-                      }
-                    >
+                      } */}
+              {/* >
                       {i18n._(question.channel)}
                     </RadioAdapter>
                   </React.Fragment>
                 )
-              })}
+              })} */}
             </FormArrayControl>
             <FormArrayControl
               name="whenDidItStart"
