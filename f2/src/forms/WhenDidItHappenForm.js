@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import { useLingui } from '@lingui/react'
+import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
@@ -43,20 +43,13 @@ export const WhenDidItHappenForm = (props) => {
         ()
   }
 
-  //   const { i18n } = useLingui()
+  const { i18n } = useLingui()
   const [data] = useStateValue()
   const whendiditstart = {
     ...formDefaults.whendiditstart,
     ...data.formData.whendiditstart,
   }
 
-  //   //TODO: Move this form data to some sort of a schema file instead?
-
-  //   const howManyTimes = [
-  //     'howManyTimes.once',
-  //     'howManyTimes.severalTimes',
-  //     'howManyTimes.notSure',
-  //   ]
   //TODO: Move this form data to some sort of a schema file instead?
 
   var questionsList = [
@@ -88,10 +81,11 @@ export const WhenDidItHappenForm = (props) => {
           <Trans id="howManyTimes.severalTimes" />
           <Trans id="howManyTimes.notSure" /> */}
           <Trans id="howOftenLabel.question1" />
-          <Trans id="howOftenLabel.question2" />
+          <Trans id="howOftenLabel.question2.1" />
+          <Trans id="howOftenLabel.question2.2" />
           <Trans id="howOftenLabel.question3" />
           <Trans id="howOftenLabel.hint1" />
-          <Trans id="howOftenLabel.hint2" />
+          {/* <Trans id="howOftenLabel.hint2" /> */}
           <Trans id="howOftenLabel.hint3" />
           <Trans id="howOften.once" />
           <Trans id="howOften.morethanonce" />
@@ -142,14 +136,14 @@ export const WhenDidItHappenForm = (props) => {
                   conditionalField={
                     <Field
                       name={<Trans id="howOften.once" />}
-                      // name ="once"
                       label={<Trans id="howOftenLabel.question1" />}
                       helperText={<Trans id="howOftenLabel.hint1" />}
                       component={TextArea}
                     />
                   }
-                ></RadioAdapter>
-                {/* {i18n._(questionsList.name)} */}
+                >
+                  <Trans id="howOften.once" />
+                </RadioAdapter>
               </React.Fragment>
               )} else if (question.name==='morethanonce') return (
               <React.Fragment key="howOften.morethanonce">
@@ -174,7 +168,9 @@ export const WhenDidItHappenForm = (props) => {
                       </Stack>
                     </React.Fragment>
                   }
-                ></RadioAdapter>
+                >
+                  <Trans id="howOften.morethanonce" />
+                </RadioAdapter>
               </React.Fragment>
               )} else if (question.name==='notsure') return (
               <React.Fragment key="howOften.notSure">
@@ -189,7 +185,9 @@ export const WhenDidItHappenForm = (props) => {
                       component={TextArea}
                     />
                   }
-                ></RadioAdapter>
+                >
+                  <Trans id="howOften.notSure" />
+                </RadioAdapter>
               </React.Fragment>
               )} }{/* else if (questin.name===) */}
               {/* {questionsList.map((question) => {
