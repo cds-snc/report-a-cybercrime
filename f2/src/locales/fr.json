@@ -436,8 +436,6 @@
   "whenDidItStart.error.notYear": "Entrez une année valide.",
   "whenDidItStart.error.yearLength": "Entrez une année à 4 chiffres",
   "whenDidItStart.hasValidationErrors": "Veuillez vérifier la date de l’incident.",
-  "whenDidItStart.label": "Quand l’incident a-t-il commencé?",
-  "whenDidItStart.labelExample": "Par exemple : 26 02 2020",
   "whenDidItStart.startDay": "Jour",
   "whenDidItStart.startMonth": "Mois",
   "whenDidItStart.startYear": "Année"
