@@ -20,7 +20,7 @@ import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
 import { TextArea } from '../components/text-area'
 
-const validate = (values) => {
+let validate = (values) => {
   const errors = {}
   const startDate = validateDate(
     values.startYear,
@@ -33,6 +33,43 @@ const validate = (values) => {
   })
   return errors
 }
+let daymonthyear = (props) => (
+  <FormArrayControl
+  //   name="whenDidItStart"
+  //   label={<Trans id="whenDidItStart.label" />}
+  //   helperText={<Trans id="whenDidItStart.labelExample" />}
+  // //  errors={errors}
+  >
+    <React.Fragment>
+      <Stack direction="row" spacing="2">
+        <Field
+          name="startDay"
+          label={<Trans id="whenDidItStart.startDay" />}
+          component={TextInput}
+          group="whenDidItStart"
+          w={70}
+          maxLength="2"
+        />
+        <Field
+          name="startMonth"
+          label={<Trans id="whenDidItStart.startMonth" />}
+          component={TextInput}
+          group="whenDidItStart"
+          w={70}
+          maxLength="2"
+        />
+        <Field
+          name="startYear"
+          label={<Trans id="whenDidItStart.startYear" />}
+          component={TextInput}
+          group="whenDidItStart"
+          w={110}
+          maxLength="4"
+        />
+      </Stack>
+    </React.Fragment>
+  </FormArrayControl>
+)
 
 export const WhenDidItHappenForm = (props) => {
   const localOnSubmit = (data) => {
@@ -52,19 +89,40 @@ export const WhenDidItHappenForm = (props) => {
 
   //TODO: Move this form data to some sort of a schema file instead?
 
-  const howManyTimes = [
-    'howManyTimes.once',
-    'howManyTimes.severalTimes',
-    'howManyTimes.notSure',
+  var questionsList = [
+    {
+      name: 'once',
+      channel: 'howOften.once',
+      label: 'howOftenLabel.question1',
+      hint: 'howOftenLabel.hint1',
+    },
+    {
+      name: 'morethanonce',
+      channel: 'howOften.morethanonce',
+      label: 'howOftenLabel.question2',
+      hint: 'howOftenLabel.hint2',
+    },
+    {
+      name: 'notsure',
+      channel: 'howOften.notsure',
+      label: 'howOftenLabel.question3',
+      hint: 'howOftenLabel.hint3',
+    },
   ]
 
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
-          <Trans id="howManyTimes.once" />
-          <Trans id="howManyTimes.severalTimes" />
-          <Trans id="howManyTimes.notSure" />
+          <Trans id="howOftenLabel.question1" />
+          <Trans id="howOftenLabel.question2.1" />
+          <Trans id="howOftenLabel.question2.2" />
+          <Trans id="howOftenLabel.question3" />
+          <Trans id="howOftenLabel.hint1" />
+          <Trans id="howOftenLabel.hint3" />
+          <Trans id="howOften.once" />
+          <Trans id="howOften.morethanonce" />
+          <Trans id="howOften.notSure" />
 
           <Trans id="whenDidItStart.error.notDay" />
           <Trans id="whenDidItStart.error.notMonth" />
@@ -100,37 +158,68 @@ export const WhenDidItHappenForm = (props) => {
               </ErrorSummary>
             ) : null}
             <FormArrayControl
-              name="howManyTimes"
-              label={<Trans id="howManyTimes.label" />}
+              name="howOften"
+              label={<Trans id="howOften.label" />}
             >
-              {howManyTimes.map((key) => {
-                return (
-                  <React.Fragment key={key}>
-                    <RadioAdapter
-                      name="howManyTimes"
-                      value={key}
-                      conditionalField={
+              <React.Fragment>
+                <RadioAdapter
+                  name="howOften"
+                  value="once"
+                  conditionalField={
+                    <Field
+                      name={<Trans id="howOften.once" />}
+                      label={<Trans id="howOftenLabel.question1" />}
+                      helperText={<Trans id="howOftenLabel.hint1" />}
+                      component={daymonthyear}
+                    />
+                  }
+                >
+                  <Trans id="howOften.once" />
+                </RadioAdapter>
+              </React.Fragment>
+              <React.Fragment>
+                <RadioAdapter
+                  name="howOften"
+                  value="morethanonce"
+                  conditionalField={
+                    <React.Fragment>
+                      <Stack>
                         <Field
-                          name="Test"
-                          label="Test"
-                          helperText="Test"
-                          component={TextArea}
+                          name={<Trans id="howOften.morethanonce" />}
+                          label={<Trans id="howOftenLabel.question2.1" />}
+                          helperText={<Trans id="howOftenLabel.hint1" />}
+                          component={daymonthyear}
                         />
-                      }
-                    >
-                      {i18n._(key)}
-                    </RadioAdapter>
-                  </React.Fragment>
-                )
-              })}
+                        <Field
+                          name={<Trans id="howOften.morethanonce" />}
+                          label={<Trans id="howOftenLabel.question2.2" />}
+                          helperText={<Trans id="howOftenLabel.hint1" />}
+                          component={daymonthyear}
+                        />
+                      </Stack>
+                    </React.Fragment>
+                  }
+                >
+                  <Trans id="howOften.morethanonce" />
+                </RadioAdapter>
+              </React.Fragment>
+              <React.Fragment>
+                <RadioAdapter
+                  name="howOften"
+                  value="notSure"
+                  conditionalField={
+                    <Field
+                      name={<Trans id="howOften.notSure" />}
+                      label={<Trans id="howOftenLabel.question3" />}
+                      helperText={<Trans id="howOftenLabel.hint3" />}
+                      component={TextArea}
+                    />
+                  }
+                >
+                  <Trans id="howOften.notSure" />
+                </RadioAdapter>
+              </React.Fragment>
             </FormArrayControl>
-            <FormArrayControl
-              name="whenDidItStart"
-              label={<Trans id="whenDidItStart.label" />}
-              helperText={<Trans id="whenDidItStart.labelExample" />}
-              errors={errors}
-            ></FormArrayControl>
-
             <Well variantColor="blue">
               <Trans id="howDidItStartPage.tip" />
             </Well>
