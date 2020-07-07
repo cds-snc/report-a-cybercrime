@@ -47,12 +47,12 @@ const selfHarmWordsScan = (data) => {
 //Scan String for key words. Tokenize and stem to identify root words.
 const scanString = (str) => {
   try {
-    let modifiedStr = str
+    let modifiedStr = unidecode(str.toLowerCase())
+
+    modifiedStr = modifiedStr
       .replace(/\r?\n|\r/g, ' ') //Remove newline characters
       .replace(/[^\w\s']|_/g, ' ') //Remove special characters
       .replace(/\s+/g, ' ') //Remove any extra sapaces
-
-    modifiedStr = unidecode(modifiedStr.toLowerCase())
 
     //Attempt to get root for words in String.
     const formTokens = modifiedStr.tokenizeAndStem()
