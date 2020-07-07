@@ -49,10 +49,10 @@ describe('validation', () => {
 describe('<ContactInfoForm />', () => {
   afterEach(cleanup)
 
-  it('calls the onSubmit function when the form is submitted', async () => {
+  it('does not call the onSubmit function when the form is submitted with missing values', async () => {
     const submitMock = jest.fn()
 
-    const { getAllByLabelText, getByText } = render(
+    const { container, getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -64,13 +64,53 @@ describe('<ContactInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const inputNode = getAllByLabelText('contactinfoPage.fullName')[0]
+    const fullName = container.querySelector('input[name="fullName"]')
 
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
 
-    fillIn(inputNode, {
+    fillIn(fullName, {
       with: 'Mallory',
+    })
+
+    // Click the next button to trigger the form submission
+    clickOn(nextButton.parentElement)
+
+    await wait(0) // Wait for promises to resolve
+
+    expect(submitMock).toHaveBeenCalledTimes(0)
+  })
+
+  it('calls the onSubmit function when the form is submitted', async () => {
+    const submitMock = jest.fn()
+
+    const { container, getByText } = render(
+      <MemoryRouter initialEntries={['/']}>
+        <ThemeProvider theme={canada}>
+          <I18nProvider i18n={i18n}>
+            <StateProvider initialState={initialState} reducer={reducer}>
+              <ContactInfoForm onSubmit={submitMock} />
+            </StateProvider>
+          </I18nProvider>
+        </ThemeProvider>
+      </MemoryRouter>,
+    )
+
+    const fullName = container.querySelector('input[name="fullName"]')
+    const email = container.querySelector('input[name="email"]')
+    const phone = container.querySelector('input[name="phone"]')
+
+    // find the next button so we can trigger a form submission
+    const nextButton = getByText(/nextButton/)
+
+    fillIn(fullName, {
+      with: 'Mallory',
+    })
+    fillIn(email, {
+      with: 'test@remail.com',
+    })
+    fillIn(phone, {
+      with: '1234567890',
     })
 
     // Click the next button to trigger the form submission

@@ -18,7 +18,7 @@ import { Field } from '.'
 
 <Preview>
   <Story name="Input field">
-    <Field name="input" label="Label for an input field" component={Input} />
+    <Field name="name" label="Label for an input field" component={Input} />
   </Story>
 </Preview>
 
@@ -27,7 +27,7 @@ import { Field } from '.'
 <Preview>
   <Story name="Text area field">
     <Field
-      name="textArea"
+      name="name"
       label="Label for a text area"
       helperText="Helper text"
       component={TextArea}
@@ -35,6 +35,22 @@ import { Field } from '.'
   </Story>
 </Preview>
 
-##Props
+## Required Fields
+
+You can mark required fields with a `required` prop. This will mark the field as required for the user. This prop does not add validation automatically, you still need to add validation against empty fields.
+
+<Preview>
+  <Story name="Required field">
+    <Field
+      name="name"
+      label="This is a required field"
+      helperText="Helper text"
+      component={Input}
+      required
+    />
+  </Story>
+</Preview>
+
+## Props
 
 <Props of={Field} />
