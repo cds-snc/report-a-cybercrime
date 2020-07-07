@@ -16,6 +16,7 @@ import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
 import { DatePicker } from '../components/dayMonthYear'
+import { SingleDatePicker, DateRangePicker } from '../components/DatePicker'
 
 let validate = (values) => {
   const errors = {}
@@ -127,10 +128,11 @@ export const WhenDidItHappenForm = (props) => {
                   value="once"
                   conditionalField={
                     <Field
-                      name={<Trans id="howOften.once" />}
+                      component={SingleDatePicker}
+                      name="singleDate"
+                      group="singleDate"
                       label={<Trans id="howOftenLabel.question1" />}
                       helperText={<Trans id="howOftenLabel.hint1" />}
-                      component={<DatePicker name="once" />}
                     />
                   }
                 >
@@ -142,12 +144,13 @@ export const WhenDidItHappenForm = (props) => {
                   name="howOften"
                   value="morethanonce"
                   conditionalField={
-                    <React.Fragment>
-                      <Stack>
-                        <DatePicker name="start" />
-                        <DatePicker name="end" />
-                      </Stack>
-                    </React.Fragment>
+                    <Field
+                      component={DateRangePicker}
+                      name="dateRange"
+                      group="dateRange"
+                      label={<Trans id="howOftenLabel.question1" />}
+                      helperText={<Trans id="howOftenLabel.hint1" />}
+                    />
                   }
                 >
                   <Trans id="howOften.morethanonce" />
