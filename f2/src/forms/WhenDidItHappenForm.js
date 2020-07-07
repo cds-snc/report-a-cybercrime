@@ -4,21 +4,18 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-// import { CheckboxAdapter } from '../components/checkbox'
 import { RadioAdapter } from '../components/radio'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
-// import { TextArea } from '../components/text-area'
-import { TextInput } from '../components/TextInput'
+import { TextArea } from '../components/text-area'
 import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
-// import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
-import { TextArea } from '../components/text-area'
+import { daymonthyear } from '../components/dayMonthYear'
 
 let validate = (values) => {
   const errors = {}
@@ -33,43 +30,6 @@ let validate = (values) => {
   })
   return errors
 }
-let daymonthyear = (props) => (
-  <FormArrayControl
-  //   name="whenDidItStart"
-  //   label={<Trans id="whenDidItStart.label" />}
-  //   helperText={<Trans id="whenDidItStart.labelExample" />}
-  // //  errors={errors}
-  >
-    <React.Fragment>
-      <Stack direction="row" spacing="2">
-        <Field
-          name="startDay"
-          label={<Trans id="whenDidItStart.startDay" />}
-          component={TextInput}
-          group="whenDidItStart"
-          w={70}
-          maxLength="2"
-        />
-        <Field
-          name="startMonth"
-          label={<Trans id="whenDidItStart.startMonth" />}
-          component={TextInput}
-          group="whenDidItStart"
-          w={70}
-          maxLength="2"
-        />
-        <Field
-          name="startYear"
-          label={<Trans id="whenDidItStart.startYear" />}
-          component={TextInput}
-          group="whenDidItStart"
-          w={110}
-          maxLength="4"
-        />
-      </Stack>
-    </React.Fragment>
-  </FormArrayControl>
-)
 
 export const WhenDidItHappenForm = (props) => {
   const localOnSubmit = (data) => {
