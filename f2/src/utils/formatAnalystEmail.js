@@ -2,6 +2,8 @@
 
 const { getFileExtension } = require('./filenameUtils')
 
+const fs = require('fs')
+
 const { formatDate } = require('./formatDate')
 var zipcodes = require('zipcodes')
 
@@ -17,15 +19,28 @@ const formatDownloadLink = (filename, url) =>
   `<tr><td colspan='2'><a href='${url}'>Download ${filename}</a></tr></td>\n`
 
 const formatSection = (title, rows) =>
-  `<h2>${title}</h2>\n` + (rows !== '' ? formatTable(rows) : '<p>No Data</p>')
+  `<h2>${title}</h2>\n` +
+  (rows !== '' ? formatTable(rows) : lang['analystReport.noData'])
+
+let lang
+let langEn = fs.readFileSync('src/locales/en.json')
+let langFr = fs.readFileSync('src/locales/fr.json')
+let langJsonEn = JSON.parse(langEn)
+let langJsonFr = JSON.parse(langFr)
 
 const formatReportInfo = (data) => {
+  //set language to use based report language
+  data.language === 'en' ? (lang = langJsonEn) : (lang = langJsonFr)
+
   let selfHarmString = 'none'
   let returnString = ''
 
   if (data.selfHarmWords.length) {
-    selfHarmString = 'self harm words detected'
-    returnString = `\n\n<h1 style="background-color:yellow;">SELF HARM WORDS FOUND : ${data.selfHarmWords}</h1>`
+    selfHarmString = lang['analystReport.selfHarmString']
+    returnString =
+      `\n\n<h1 style="background-color:yellow;">` +
+      lang['analystReport.selfHarmWord'] +
+      `${data.selfHarmWords}</h1>`
   }
 
   let isAnonymous =
@@ -35,15 +50,21 @@ const formatReportInfo = (data) => {
   let reportLanguage = data.language === 'en' ? 'English' : 'French'
 
   returnString +=
-    '<h2>Report Information</h2>' +
+    '<h2>' +
+    lang['analystReport.reportInformation'] +
+    '</h2>' +
     formatTable(
-      formatLineHtml('Report number:', data.reportId) +
-        formatLineHtml('Date received:', data.submissionTime) +
-        formatLineHtml('Report language:', reportLanguage) +
-        formatLineHtml('Report version:', data.prodVersion) +
-        formatLineHtml('Anonymous report:', isAnonymous) +
-        formatLineHtml('Flagged:', selfHarmString),
+      formatLineHtml(lang['analystReport.reportNumber'], data.reportId) +
+        formatLineHtml(
+          lang['analystReport.dateReceived'],
+          data.submissionTime,
+        ) +
+        formatLineHtml(lang['analystReport.reportLanguage'], reportLanguage) +
+        formatLineHtml(lang['analystReport.reportVersion'], data.prodVersion) +
+        formatLineHtml(lang['confirmationPage.anonymous.title'], isAnonymous) +
+        formatLineHtml(lang['analystReport.flagged'], selfHarmString),
     )
+
   // we delete the parts of the data object that we've displayed, so that at the end we can display the rest and ensure that we didn't miss anything
   delete data.anonymous.anonymousOptions
   delete data.reportId
@@ -81,15 +102,30 @@ const formatVictimDetails = (data) => {
   }
 
   const rows =
-    formatLineHtml('Full name:', data.contactInfo.fullName) +
-    formatLineHtml('Email:', data.contactInfo.email) +
-    formatLineHtml('Phone number:', data.contactInfo.phone) +
-    formatLineHtml('City:', data.location.city) +
-    formatLineHtml('Province:', data.location.province) +
-    formatLineHtml('Postal code:', data.location.postalCode) +
-    formatLineHtml('City based on postal code:', postalCity) +
-    formatLineHtml('Province based on postal code:', postalProv) +
-    formatLineHtml('Consent:', consentString)
+    formatLineHtml(
+      lang['contactinfoPage.fullName'],
+      data.contactInfo.fullName,
+    ) +
+    formatLineHtml(
+      lang['contactinfoPage.emailAddress'],
+      data.contactInfo.email,
+    ) +
+    formatLineHtml(
+      lang['contactinfoPage.phoneNumber'],
+      data.contactInfo.phone,
+    ) +
+    formatLineHtml(lang['LocationAnonymousInfoForm.city'], data.location.city) +
+    formatLineHtml(
+      lang['LocationAnonymousInfoForm.province'],
+      data.location.province,
+    ) +
+    formatLineHtml(
+      lang['locationinfoPage.postalCode'],
+      data.location.postalCode,
+    ) +
+    formatLineHtml(lang['locationinfoPage.postalCity'], postalCity) +
+    formatLineHtml(lang['locationinfoPage.postalProv'], postalProv) +
+    formatLineHtml(lang['privacyConsentInfoForm.consent'], consentString)
 
   delete data.contactInfo.fullName
   delete data.contactInfo.email
@@ -98,7 +134,7 @@ const formatVictimDetails = (data) => {
   delete data.location.province
   delete data.location.postalCode
   delete data.consent.consentOptions
-  return formatSection('Victim details', rows)
+  return formatSection(lang['contactInfoPage.victimDetail'], rows)
 }
 
 const formatIncidentInformation = (data) => {
@@ -120,17 +156,17 @@ const formatIncidentInformation = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml('Occurrence date:            ', occurenceString) +
-    formatLineHtml('Frequency of occurrence:    ', freqString) +
-    formatLineHtml('Method of communication:    ', methodOfCommsString) +
-    formatLineHtml('What could be affected:     ', affectedString)
+    formatLineHtml(lang['confirmationPage.whenDidItStart'], occurenceString) +
+    formatLineHtml(lang['howManyTimes.label'], freqString) +
+    formatLineHtml(lang['howDidTheyReachYou.question'], methodOfCommsString) +
+    formatLineHtml(lang['confirmationPage.ImpactTitle'], affectedString)
   delete data.howdiditstart.startDay
   delete data.howdiditstart.startMonth
   delete data.howdiditstart.startYear
   delete data.howdiditstart.howManyTimes
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
-  return formatSection('Incident information', rows)
+  return formatSection(lang['howDidItStartPage.incidentInformation'], rows)
 }
 
 const formatNarrative = (data) => {
@@ -157,29 +193,56 @@ const formatNarrative = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml('What happened:', data.whatHappened.whatHappened) +
     formatLineHtml(
-      'They asked for (financial):',
+      lang['whatHappenedPage.title'],
+      data.whatHappened.whatHappened,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.demandedMoney'],
       data.moneyLost.demandedMoney,
     ) +
-    formatLineHtml('They asked for (information):', infoReqString) +
-    formatLineHtml('I lost (financial):', data.moneyLost.moneyTaken) +
-    formatLineHtml('I lost (information):', infoObtainedString) +
-    formatLineHtml('Affected device:', data.devicesInfo.device) +
-    formatLineHtml('Affected account:', data.devicesInfo.account) +
     formatLineHtml(
-      'Name of business/organzation:  ',
+      lang['confirmationPage.personalInformation.typeOfInfoObtained'],
+      infoReqString,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.moneyTaken'],
+      data.moneyLost.moneyTaken,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.personalInformation.typeOfInfoObtained'],
+      infoObtainedString,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.devices.device'],
+      data.devicesInfo.device,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.devices.account'],
+      data.devicesInfo.account,
+    ) +
+    formatLineHtml(
+      lang['businessPage.nameOfBusiness'],
       data.businessInfo.nameOfBusiness,
     ) +
-    formatLineHtml('Type of industry:  ', data.businessInfo.industry) +
-    formatLineHtml('Role:  ', data.businessInfo.role) +
     formatLineHtml(
-      'Number of employee:  ',
+      lang['confirmationPage.businessInfo.industry'],
+      data.businessInfo.industry,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.businessInfo.role'],
+      data.businessInfo.role,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.businessInfo.numberOfEmployee'],
       unCamel(
         data.businessInfo.numberOfEmployee.replace('numberOfEmployee.', ''),
       ),
     ) +
-    formatLineHtml('Other clues:             ', data.suspectClues.suspectClues3)
+    formatLineHtml(
+      lang['confirmationPage.suspectClues.suspectClues3'],
+      data.suspectClues.suspectClues3,
+    )
 
   delete data.personalInformation.typeOfInfoReq
   delete data.personalInformation.typeOfInfoObtained
@@ -194,18 +257,39 @@ const formatNarrative = (data) => {
   delete data.businessInfo.role
   delete data.businessInfo.numberOfEmployee
   delete data.suspectClues.suspectClues3
-  return formatSection('Narrative', rows)
+  return formatSection(lang['analystReport.narrative'], rows)
 }
 
 const formatSuspectDetails = (data) => {
   const rows =
-    formatLineHtml('Name:          ', data.suspectClues.suspectClues1) +
-    formatLineHtml('Email:         ', data.howdiditstart.email) +
-    formatLineHtml('Phone number:  ', data.howdiditstart.phone) +
-    formatLineHtml('Website:       ', data.howdiditstart.online) +
-    formatLineHtml('Application:   ', data.howdiditstart.application) +
-    formatLineHtml('Address:       ', data.suspectClues.suspectClues2) +
-    formatLineHtml('Other:         ', data.howdiditstart.others)
+    formatLineHtml(
+      lang['confirmationPage.suspectClues.suspectClues1'],
+      data.suspectClues.suspectClues1,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.howDidItStart.email'],
+      data.howdiditstart.email,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.howDidItStart.phone'],
+      data.howdiditstart.phone,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.howDidItStart.online'],
+      data.howdiditstart.online,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.howDidItStart.application'],
+      data.howdiditstart.application,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.suspectClues.suspectClues2'],
+      data.suspectClues.suspectClues2,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.howDidItStart.others'],
+      data.howdiditstart.others,
+    )
 
   delete data.suspectClues.suspectClues1
   delete data.howdiditstart.email
@@ -214,7 +298,7 @@ const formatSuspectDetails = (data) => {
   delete data.howdiditstart.application
   delete data.suspectClues.suspectClues2
   delete data.howdiditstart.others
-  return formatSection('Suspect details', rows)
+  return formatSection(lang['suspectClues.suspectDetails'], rows)
 }
 
 const formatFinancialTransactions = (data) => {
@@ -234,10 +318,22 @@ const formatFinancialTransactions = (data) => {
     data.moneyLost.transactionYear,
   )
   const rows =
-    formatLineHtml('Money requested:     ', data.moneyLost.demandedMoney) +
-    formatLineHtml('Money lost:          ', data.moneyLost.moneyTaken) +
-    formatLineHtml('Method of payment:   ', paymentString) +
-    formatLineHtml('Transaction date:    ', transactionDate)
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.demandedMoney'],
+      data.moneyLost.demandedMoney,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.moneyTaken'],
+      data.moneyLost.moneyTaken,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.methodPayment'],
+      paymentString,
+    ) +
+    formatLineHtml(
+      lang['confirmationPage.moneyLost.transactionDate'],
+      transactionDate,
+    )
 
   delete data.moneyLost.methodOther
   delete data.moneyLost.methodPayment
@@ -246,7 +342,7 @@ const formatFinancialTransactions = (data) => {
   delete data.moneyLost.transactionDay
   delete data.moneyLost.transactionMonth
   delete data.moneyLost.transactionYear
-  return formatSection('Financial transactions', rows)
+  return formatSection(lang['moneyLostPage.financialTransactions'], rows)
 }
 
 const formatFileAttachments = (data) => {
@@ -264,10 +360,22 @@ const formatFileAttachments = (data) => {
       const moderatorString =
         file.adultClassificationScore === 'Could not scan'
           ? formatLineHtml('Image classification:', 'Could not scan content')
-          : formatLineHtml('Is adult:      ', file.isImageAdultClassified) +
-            formatLineHtml('Adult score:   ', file.adultClassificationScore) +
-            formatLineHtml('Is racy:       ', file.isImageRacyClassified) +
-            formatLineHtml('Racy Score:    ', file.racyClassificationScore)
+          : formatLineHtml(
+              lang['fileUpload.isAdult'],
+              file.isImageAdultClassified,
+            ) +
+            formatLineHtml(
+              lang['fileUpload.adultScore'],
+              file.adultClassificationScore,
+            ) +
+            formatLineHtml(
+              lang['fileUpload.isRacy'],
+              file.isImageRacyClassified,
+            ) +
+            formatLineHtml(
+              lang['fileUpload.racyScore'],
+              file.racyClassificationScore,
+            )
 
       const downloadLink = file.malwareIsClean
         ? formatDownloadLink(file.name, file.sasUrl)
@@ -278,12 +386,15 @@ const formatFileAttachments = (data) => {
           '<b>WARNING:</b>',
           offensive ? '<b>Image may be offensive</b>' : '',
         ) +
-        formatLineHtml('File name:     ', file.name) +
-        formatLineHtml('Description:   ', file.fileDescription) +
-        formatLineHtml('Size:          ', file.size + ' bytes') +
-        formatLineHtml('CosmosDB file: ', file.sha1) +
+        formatLineHtml(lang['fileUpload.fileName'], file.name) +
         formatLineHtml(
-          'Malware scan:',
+          lang['fileUpload.fileDescription'],
+          file.fileDescription,
+        ) +
+        formatLineHtml(lang['fileUpload.fileSize'], file.size + ' bytes') +
+        formatLineHtml(lang['fileUpload.CosmosDBFile'], file.sha1) +
+        formatLineHtml(
+          lang['fileUpload.malwareScan'],
           file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
         ) +
         moderatorString +
@@ -295,8 +406,12 @@ const formatFileAttachments = (data) => {
   delete data.evidence.files
   delete data.evidence.fileDescriptions
   return (
-    '<h2>File attachments</h2>\n' +
-    (returnString !== '' ? formatTable(returnString) : 'No files attached\n')
+    '<h2>' +
+    lang['fileUpload.fileAttachment'] +
+    '</h2>\n' +
+    (returnString !== ''
+      ? formatTable(returnString)
+      : lang['fileUpload.noFiles'])
   )
 }
 
