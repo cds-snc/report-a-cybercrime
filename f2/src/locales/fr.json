@@ -186,6 +186,7 @@
   "fileUpload.isAdult": "Est adulte",
   "fileUpload.isRacy": "Est racé",
   "fileUpload.malwareScan": "Analyse des logiciels malveillants",
+  "fileUpload.noFiles": "Aucun fichier joint",
   "fileUpload.racyScore": "Score racé",
   "fileUpload.removed": "Fichier enlevé",
   "fileUpload.virusScanError": "ERREUR: impossible d'effectuer une analyse antivirus",

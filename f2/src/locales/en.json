@@ -186,6 +186,7 @@
   "fileUpload.isAdult": "Is adult",
   "fileUpload.isRacy": "Is racy",
   "fileUpload.malwareScan": "Malware scan",
+  "fileUpload.noFiles": "No files attached",
   "fileUpload.racyScore": "Racy score",
   "fileUpload.removed": "File removed",
   "fileUpload.virusScanError": "ERROR: Unable to perform virus scan",

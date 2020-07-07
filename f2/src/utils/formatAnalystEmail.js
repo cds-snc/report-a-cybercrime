@@ -409,7 +409,9 @@ const formatFileAttachments = (data) => {
     '<h2>' +
     lang['fileUpload.fileAttachment'] +
     '</h2>\n' +
-    (returnString !== '' ? formatTable(returnString) : 'No files attached\n')
+    (returnString !== ''
+      ? formatTable(returnString)
+      : lang['fileUpload.noFiles'])
   )
 }
 
