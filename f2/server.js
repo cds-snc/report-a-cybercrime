@@ -80,11 +80,9 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
-
 // Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
 // without holding up the rest of the 'save' function
 async function saveBlobAndEmailReport(data) {
-
   var converted = await convertImages(data.evidence.files)
   data.evidence.files.push(...converted.filter((file) => file !== null))
   // Await on this because saveBlob generates the SAS link for each file
@@ -112,7 +110,6 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', async function (req, res, next) {
-
   // Default to false. This represents if a user entered a valid TOTP code
   var isTotpValid = false
 
@@ -127,19 +124,11 @@ app.get('/', async function (req, res, next) {
     })
   }
 
-  if ( isTotpValid ) {
-    logger.info({
-      message: 'Totp valid, bypassing availability check'
-    })
-    next()
-
-  }
-    
   var referer = req.headers.referer
 
-  if ( availabilityService.requestAccess(referer) ) {
+  if (isTotpValid || availabilityService.requestAccess(referer)) {
     logger.info({
-      message: 'New Request'
+      message: 'New Request',
     })
     next()
   } else {
