@@ -13,6 +13,8 @@ const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmodera
 
 require('dotenv').config()
 
+const logger = require('./winstonLogger')
+
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
 
@@ -53,7 +55,7 @@ let client = serviceKey
 const contentModerateFile = (file, callback) => {
   if (!SUPPORTED_FILE_TYPES.includes(file[1].type)) {
     console.debug(
-      `Content Moderator Error File not scanned Azure image moderator doesn't support for file type ${file[1].type}`,
+      `Content Moderator File not scanned Azure image moderator doesn't support for file type ${file[1].type}`,
     )
     file[1].adultClassificationScore =
       'Could not scan - not a supported file type'
@@ -69,6 +71,11 @@ const contentModerateFile = (file, callback) => {
   ) {
     if (err) {
       console.warn(`Error in Content Moderator: ${JSON.stringify(err)} `)
+      logger.error({
+        ns: 'server.submit.contentmoderator.error',
+        message: 'Error in Content Moderator',
+        error: err,
+      })
       file[1].adultClassificationScore = 'Could not scan'
     } else {
       try {

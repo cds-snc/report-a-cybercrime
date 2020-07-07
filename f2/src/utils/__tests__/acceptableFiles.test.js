@@ -17,6 +17,10 @@ describe('fileSizePasses', () => {
     expect(fileSizePasses(10)).toEqual(true)
   })
 
+  it('fails if file size zero', () => {
+    expect(fileSizePasses(0)).toEqual(false)
+  })
+
   it('fails if file size too big', () => {
     expect(fileSizePasses(5 * 1024 * 1024)).toEqual(false)
   })

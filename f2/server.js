@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const formidable = require('formidable')
 const helmet = require('helmet')
+const speakeasy = require('speakeasy')
 const { unflatten } = require('flat')
 const { sanitize } = require('./src/utils/sanitize')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
@@ -14,6 +15,8 @@ const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
+const { verifyRecaptcha } = require('./src/utils/verifyRecaptcha')
+const { getLogger, getExpressLogger } = require('./src/utils/winstonLogger')
 const {
   notifyIsSetup,
   sendConfirmation,
@@ -24,6 +27,7 @@ const {
   fileSizePasses,
   fileExtensionPasses,
 } = require('./src/utils/acceptableFiles')
+const { convertImages } = require('./src/utils/imageConversion')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -33,6 +37,8 @@ var limiter = new RateLimit({
 })
 
 require('dotenv').config()
+
+const logger = getLogger(__filename)
 
 const uidListInitial = process.env.LDAP_UID
   ? process.env.LDAP_UID.split(',').map((k) => k.trim())
@@ -51,34 +57,20 @@ setTimeout(() => {
     uidListInitial.length === uidList.length &&
     uidListInitial.length === emailList.length
   )
-    console.log(`LDAP certs successfully fetched for: ${emailList}`)
-  else console.log('ERROR: problem fetching certs from LDAP')
+    logger.info(`LDAP certs successfully fetched for: ${emailList}`)
+  else logger.error('Problem fetching certs from LDAP')
 }, 5000)
 
 const app = express()
 app
   .use(helmet())
-  .use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: [
-          "'self'",
-          "'unsafe-inline'",
-          'www.google-analytics.com',
-          'www.googletagmanager.com',
-        ],
-        styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
-        fontSrc: ["'self'", 'fonts.gstatic.com'],
-      },
-    }),
-  )
   .use(helmet.referrerPolicy({ policy: 'same-origin' }))
   .use(
     helmet.featurePolicy({
       features: { geolocation: ["'none'"], camera: ["'none'"] },
     }),
   )
+  .use(getExpressLogger())
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
@@ -104,15 +96,25 @@ const allowedReferrers = [
 ]
 
 getReportCount(availableData)
-setTimeout(() => console.log({ availableData }), 1000)
+setTimeout(
+  () =>
+    logger.info({ message: 'Available Data', availableData: availableData }),
+  1000,
+)
 
-// These can all be done async to avoid holding up the nodejs process?
-async function save(data, res) {
-  saveBlob(data)
-
+// Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
+// without holding up the rest of the 'save' function
+async function saveBlobAndEmailReport(data) {
+  var converted = await convertImages(data.evidence.files)
+  data.evidence.files.push(...converted.filter((file) => file !== null))
+  // Await on this because saveBlob generates the SAS link for each file
+  await saveBlob(data)
   const analystEmail = formatAnalystEmail(data)
   encryptAndSend(uidList, emailList, data, analystEmail)
-
+}
+// These can all be done async to avoid holding up the nodejs process?
+async function save(data, res) {
+  saveBlobAndEmailReport(data)
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
@@ -130,25 +132,67 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', async function (req, res, next) {
-  availableData.numberOfSubmissions = await getReportCount(availableData)
-  if (availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY) {
-    console.log('Warning: redirecting request to CAFC')
+  await getReportCount(availableData)
+
+  // Default to false. This represents if a user entered a valid TOTP code
+  var isTotpValid = false
+  var validReferer = false
+
+  // If the user passed in a TOTP query parm (/?totp=) and the correct
+  // env var is set, then verify the code.
+  if (req.query.totp && process.env.TOTP_SECRET) {
+    // Check the TOTP code against the secret
+    isTotpValid = speakeasy.totp.verify({
+      secret: process.env.TOTP_SECRET,
+      encoding: 'base32',
+      token: req.query.totp,
+    })
+  }
+
+  if (process.env.CHECK_REFERER) {
+    var referer = req.headers.referer
+    validReferer = referer
+      ? allowedReferrers.includes(new URL(referer).host.toLowerCase())
+      : referer
+  } else {
+    validReferer = true
+  }
+
+  var maxSubmissions =
+    availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY
+
+  var availabilityCheck = {
+    SUBMISSIONS_PER_DAY: process.env.SUBMISSIONS_PER_DAY,
+    NUMBER_OF_SUBMISSIONS: availableData.numberOfSubmissions,
+    MAX_SUBMISSIONS: maxSubmissions,
+    CHECK_REFERER: process.env.CHECK_REFERER,
+    VALID_REFERER: validReferer,
+    TOTP_SECRET: process.env.TOTP_SECRET,
+    TOTP_VALID: isTotpValid,
+  }
+
+  logger.info({
+    message: 'Availability Check',
+    availabilityCheck: availabilityCheck,
+  })
+
+  // If user had a TOTP code, bypass the submissions_per_day restriction
+  if ((maxSubmissions || !validReferer) && !isTotpValid) {
+    logger.info({
+      message: 'Redirecting to CAFC',
+    })
     res.redirect(
       req.subdomains.includes('signalement')
         ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
         : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
   } else {
-    var referrer = req.headers.referer
-    console.log('Referrer:' + referrer)
-    if (
-      referrer !== undefined &&
-      allowedReferrers.indexOf(new URL(referrer).host.toLowerCase()) > -1
-    ) {
-      availableData.numberOfRequests += 1
-      availableData.lastRequested = new Date()
-    }
-    console.log(`New Request. ${JSON.stringify(availableData)}`)
+    availableData.numberOfRequests += 1
+    availableData.lastRequested = new Date()
+    logger.info({
+      message: 'New Request',
+      availableData: availableData,
+    })
     next()
   }
 })
@@ -171,7 +215,6 @@ app
     }
     next()
   })
-
   .get('/ping', function (_req, res) {
     return res.send('pong')
   })
@@ -202,20 +245,25 @@ app
         else cleanValue = sanitize(rawValue)
         fields[fieldName] = cleanValue
       } catch (error) {
-        console.warn(
+        logger.warn(
           `ERROR in /submit: parsing ${fieldName} value of ${fieldValue}: ${error}`,
         )
+        logger.error({
+          message: `ERROR in /submit: parsing ${fieldName} value of ${fieldValue}`,
+          path: '/submit',
+          error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
+        })
       }
     })
     form.on('file', function (name, file) {
       if (files.length >= 3)
-        console.warn('ERROR in /submit: number of files more than 3')
+        logger.warn('ERROR in /submit: number of files more than 3')
       else if (!fileSizePasses(file.size))
-        console.warn(
+        logger.warn(
           `ERROR in /submit: file ${name} too big (${file.size} bytes)`,
         )
       else if (!fileExtensionPasses(name))
-        console.warn(
+        logger.warn(
           `ERROR in /submit: unauthorized file extension in file ${name}`,
         )
       else files.push(file)
@@ -232,7 +280,7 @@ app
   .post('/submitFeedback', (req, res) => {
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
-        console.warn('ERROR', err)
+        logger.error('ERROR', err)
         throw err
       }
       submitFeedback(sanitize(JSON.stringify(fields.json)))
@@ -246,11 +294,22 @@ app
   .get('/termsandconditions', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
+  .post('/checkToken', (req, res) => {
+    new formidable.IncomingForm().parse(req, async (err, fields, files) => {
+      if (err) {
+        logger.error('ERROR', err)
+        throw err
+      }
+      const token = JSON.parse(fields.json).token
+      verifyRecaptcha(token, res)
+    })
+    //  res.send('thanks')
+  })
 
-// uncomment to allow direct loading of arbitrary pages
-// .get('/*', function (_req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'))
-// })
+  // uncomment to allow direct loading of arbitrary pages
+  .get('/*', function (_req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
 
 const port = process.env.PORT || 3000
 console.info(`Listening at port ${port}`)

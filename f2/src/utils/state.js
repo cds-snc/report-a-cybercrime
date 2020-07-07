@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react'
+import { formDefaults } from '../forms/defaultValues'
 
 export const StateContext = createContext()
 
@@ -12,7 +13,7 @@ export const useStateValue = () => useContext(StateContext)
 
 export const initialState = {
   doneForms: false,
-  formData: { prodVersion: '1.1.0-dev' },
+  formData: { ...formDefaults, prodVersion: '1.5.0' },
   doneFinalFeedback: false,
 }
 
@@ -30,6 +31,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         formData: { ...initialState.formData },
+        doneForms: false,
         submitted: false,
         reportId: undefined,
       }
@@ -37,6 +39,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         doneForms: action.data,
+      }
+    case 'saveGoogleRecaptcha':
+      return {
+        ...state,
+        reCaptcha: action.data,
       }
     case 'saveSubmitted':
       return {
