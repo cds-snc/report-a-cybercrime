@@ -15,7 +15,7 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
-import { daymonthyear } from '../components/dayMonthYear'
+import { DatePicker } from '../components/dayMonthYear'
 
 let validate = (values) => {
   const errors = {}
@@ -130,7 +130,7 @@ export const WhenDidItHappenForm = (props) => {
                       name={<Trans id="howOften.once" />}
                       label={<Trans id="howOftenLabel.question1" />}
                       helperText={<Trans id="howOftenLabel.hint1" />}
-                      component={daymonthyear}
+                      component={<DatePicker name="once" />}
                     />
                   }
                 >
@@ -144,18 +144,8 @@ export const WhenDidItHappenForm = (props) => {
                   conditionalField={
                     <React.Fragment>
                       <Stack>
-                        <Field
-                          name={<Trans id="howOften.morethanonce" />}
-                          label={<Trans id="howOftenLabel.question2.1" />}
-                          helperText={<Trans id="howOftenLabel.hint1" />}
-                          component={daymonthyear}
-                        />
-                        <Field
-                          name={<Trans id="howOften.morethanonce" />}
-                          label={<Trans id="howOftenLabel.question2.2" />}
-                          helperText={<Trans id="howOftenLabel.hint1" />}
-                          component={daymonthyear}
-                        />
+                        <DatePicker name="start" />
+                        <DatePicker name="end" />
                       </Stack>
                     </React.Fragment>
                   }
