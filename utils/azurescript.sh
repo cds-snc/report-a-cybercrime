@@ -65,14 +65,20 @@ export TOTP_SECRET=
 export CHECK_REFERER=true
 
 # How many days for a read-only token for blob storage to expire
-BLOB_SAS_DAYS_EXPIRY=5
+export BLOB_SAS_DAYS_EXPIRY=5
 
 # Restrict Azure blob downloads to this IP range
-BLOB_SAS_IP_LOWER=000.000.000.000
-BLOB_SAS_IP_UPPER=255.255.255.255
+export BLOB_SAS_IP_LOWER=000.000.000.000
+export BLOB_SAS_IP_UPPER=255.255.255.255
+
+export ANALYST_GROUP_MAIL=NC3PublicReporting-GNCCRapportsPublics@rcmp-grc.gc.ca
 
 export TAG_ALL="Environment=Production Cost_Centre=S0046 Owner=RCMP Classification=Unclassified Project=RCMP-CDS-FRS Division=HQ"
 
+# Logging
+export LOGGING_DIRECTORY=
+export LOGGING_IGNORE_ROUTE=
+export LOGGING_PRETTY_PRINT=
 
 #### Set up Azure
 ## Create Resource group
@@ -132,7 +138,8 @@ az webapp config appsettings set --name $APP_NAME --settings NOTIFY_API_BASE_URL
 az webapp config appsettings set --name $APP_NAME --settings LDAP_URL=$LDAP_URL LDAP_UID="${LDAP_UID}" MAIL_HOST=$MAIL_HOST MAIL_USER=$MAIL_USER MAIL_PASS=$MAIL_PASS MAIL_FROM="${MAIL_FROM}"
 az webapp config appsettings set --name $APP_NAME --settings SUBMISSIONS_PER_DAY=$SUBMISSIONS_PER_DAY SECONDS_BETWEEN_REQUESTS=$SECONDS_BETWEEN_REQUESTS
 az webapp config appsettings set --name $APP_NAME --settings NOTIFY_FEEDBACK_TEMPLATE_ID=$NOTIFY_FEEDBACK_TEMPLATE_ID FEEDBACK_EMAIL=$FEEDBACK_EMAIL NOTIFY_REPORT_TEMPLATE_ID=$NOTIFY_REPORT_TEMPLATE_ID TOTP_SECRET=$TOTP_SECRET CHECK_REFERER=$CHECK_REFERER
-az webapp config appsettings set --name $APP_NAME --settings BLOB_SAS_DAYS_EXPIRY=$BLOB_SAS_DAYS_EXPIRY BLOB_SAS_IP_LOWER="${BLOB_SAS_IP_LOWER}" BLOB_SAS_IP_UPPER="${BLOB_SAS_IP_UPPER}"
+az webapp config appsettings set --name $APP_NAME --settings BLOB_SAS_DAYS_EXPIRY=$BLOB_SAS_DAYS_EXPIRY BLOB_SAS_IP_LOWER="${BLOB_SAS_IP_LOWER}" BLOB_SAS_IP_UPPER="${BLOB_SAS_IP_UPPER}" ANALYST_GROUP_MAIL=$ANALYST_GROUP_MAIL
+az webapp config appsettings set --name $APP_NAME --settings LOGGING_DIRECTORY=$LOGGING_DIRECTORY LOGGING_IGNORE_ROUTE=$LOGGING_IGNORE_ROUTE LOGGING_PRETTY_PRINT=$LOGGING_PRETTY_PRINT
 
 ## Continuous deployment
 az webapp deployment container config --enable-cd true --name $APP_NAME
