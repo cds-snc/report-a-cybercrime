@@ -59,7 +59,6 @@ const App = () => {
                         ? 'https://www.services.rcmp-grc.gc.ca/chooser-eng.html'
                         : 'https://www.services.rcmp-grc.gc.ca/chooser-fra.html'
                     }
-                    isExternal
                   />
                 </Trans>
               </PhaseBanner>

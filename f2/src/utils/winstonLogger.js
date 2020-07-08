@@ -7,7 +7,6 @@ const { combine, timestamp, label } = format
 
 const logDir = process.env.LOGGING_DIRECTORY
 const ignoreRoutes = process.env.LOGGING_IGNORE_ROUTE
-const prettyPrint = process.env.LOGGING_PRETTY_PRINT
 
 const ignoreRoutesArr = ignoreRoutes
   ? ignoreRoutes.replace(/\s/g, '').split(',')
@@ -40,7 +39,7 @@ const getLogger = (fileName) => {
     format: combine(
       label({ label: `${fileName}`, message: true }),
       timestamp(),
-      prettyPrint ? format.prettyPrint() : format.json(),
+      format.prettyPrint(),
     ),
     exitOnError: false,
   })
@@ -49,7 +48,7 @@ const getLogger = (fileName) => {
 const getExpressLogger = () => {
   return expressWinston.logger({
     transports: transports,
-    format: prettyPrint ? format.prettyPrint() : format.json(),
+    format: format.prettyPrint(),
     dynamicMeta: (req, res) => {
       const httpRequest = {}
       const meta = {}

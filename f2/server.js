@@ -80,6 +80,27 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
+let availableData
+
+availableData = {
+  numberOfSubmissions: 0,
+  numberOfRequests: 0,
+  lastRequested: undefined,
+}
+const allowedReferrers = [
+  'antifraudcentre-centreantifraude.ca',
+  'centreantifraude-antifraudcentre.ca',
+  'antifraudcentre.ca',
+  'centreantifraude.ca',
+]
+
+getReportCount(availableData)
+setTimeout(
+  () =>
+    logger.info({ message: 'Available Data', availableData: availableData }),
+  1000,
+)
+
 // Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
 // without holding up the rest of the 'save' function
 async function saveBlobAndEmailReport(data) {
@@ -124,14 +145,35 @@ app.get('/', async function (req, res, next) {
     })
   }
 
-  var referer = req.headers.referer
-
-  if (isTotpValid || availabilityService.requestAccess(referer)) {
-    logger.info({
-      message: 'New Request',
-    })
-    next()
+  if (process.env.CHECK_REFERER) {
+    var referer = req.headers.referer
+    validReferer = referer
+      ? allowedReferrers.includes(new URL(referer).host.toLowerCase())
+      : referer
   } else {
+    validReferer = true
+  }
+
+  var maxSubmissions =
+    availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY
+
+  var availabilityCheck = {
+    SUBMISSIONS_PER_DAY: process.env.SUBMISSIONS_PER_DAY,
+    NUMBER_OF_SUBMISSIONS: availableData.numberOfSubmissions,
+    MAX_SUBMISSIONS: maxSubmissions,
+    CHECK_REFERER: process.env.CHECK_REFERER,
+    VALID_REFERER: validReferer,
+    TOTP_SECRET: process.env.TOTP_SECRET,
+    TOTP_VALID: isTotpValid,
+  }
+
+  logger.info({
+    message: 'Availability Check',
+    availabilityCheck: availabilityCheck,
+  })
+
+  // If user had a TOTP code, bypass the submissions_per_day restriction
+  if ((maxSubmissions || !validReferer) && !isTotpValid) {
     logger.info({
       message: 'Redirecting to CAFC',
     })

@@ -10,26 +10,25 @@ const selfHarmString = process.env.SELF_HARM_WORDS || 'agilé, lean, mvp, scrum'
 const selfHarmWords = selfHarmString
   .split(',')
   .map((w) => unidecode(w.trim().toLowerCase()))
-logger.info(`Self harm word list: ${selfHarmWords}`)
+console.info(`Self harm word list: ${selfHarmWords}`)
+
+//Patches stem() and tokenizeAndStem() to String as a shortcut to PorterStemmer.stem(token)
+natural.PorterStemmer.attach()
+natural.PorterStemmerFr.attach()
 
 //Scan form data for self harm key words.
 const selfHarmWordsScan = (data) => {
   try {
-    //Patches stem() and tokenizeAndStem() to String as a shortcut to PorterStemmer.stem(token)
-    if (data.language === 'fr') {
-      natural.PorterStemmerFr.attach()
-    } else {
-      natural.PorterStemmer.attach()
-    }
-
+    const jsonString = unidecode(JSON.stringify(data).toLowerCase())
+    const json = JSON.parse(jsonString)
     let keyWordMatch = []
 
-    for (let key in data) {
-      if (typeof data[key] === 'object') {
-        keyWordMatch = keyWordMatch.concat(scanObject(data[key]))
+    for (let key in json) {
+      if (typeof json[key] === 'object') {
+        keyWordMatch = keyWordMatch.concat(scanObject(json[key]))
       }
-      if (typeof data[key] === 'string') {
-        keyWordMatch = keyWordMatch.concat(scanString(data[key]))
+      if (typeof json[key] === 'string') {
+        keyWordMatch = keyWordMatch.concat(scanString(json[key]))
       }
     }
 
@@ -47,9 +46,7 @@ const selfHarmWordsScan = (data) => {
 //Scan String for key words. Tokenize and stem to identify root words.
 const scanString = (str) => {
   try {
-    let modifiedStr = unidecode(str.toLowerCase())
-
-    modifiedStr = modifiedStr
+    let modifiedStr = str
       .replace(/\r?\n|\r/g, ' ') //Remove newline characters
       .replace(/[^\w\s']|_/g, ' ') //Remove special characters
       .replace(/\s+/g, ' ') //Remove any extra sapaces
@@ -68,11 +65,8 @@ const scanString = (str) => {
 
     return wordsUsed
   } catch (err) {
-    logger.error({
-      message: 'Error parsing String for self-harm key words',
-      string: str,
-      error: err,
-    })
+    console.error(`Error parsing String for self-harm key words: ${str}
+    ${err}`)
     return []
   }
 }
@@ -96,11 +90,8 @@ const scanObject = (obj) => {
       }
     }
   } catch (err) {
-    logger.error({
-      message: 'Error parsing Object for self-harm key words',
-      object: obj,
-      error: err,
-    })
+    console.error(`Error parsing Object for self-harm key words: ${obj}
+    ${err}`)
     return []
   }
 
