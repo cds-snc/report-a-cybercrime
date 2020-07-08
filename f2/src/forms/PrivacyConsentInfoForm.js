@@ -36,6 +36,7 @@ export const PrivacyConsentInfoForm = (props) => {
       {false ? ( // mark ids for lingui
         <div>
           <Trans id="privacyConsentInfoForm.yes" />
+          <Trans id="privacyConsentInfoForm.consent" />
         </div>
       ) : null}
 
@@ -71,10 +72,7 @@ export const PrivacyConsentInfoForm = (props) => {
               {consentOptions.map((key) => {
                 return (
                   <React.Fragment key={key}>
-                    <CheckboxAdapter
-                      name="consentOptions"
-                      value={key}
-                    >
+                    <CheckboxAdapter name="consentOptions" value={key}>
                       <Trans id="privacyConsentInfoForm.yes" />
                       <A
                         href={'/privacystatement?lang=' + i18n.locale}

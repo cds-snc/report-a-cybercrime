@@ -110,7 +110,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
-    "@babel/polyfill": "^7.8.7",
     "@cdssnc/a11y-tracker-client": "^1.1.2",
     "@lingui/cli": "^3.0.0-7",
     "@lingui/loader": "^3.0.0-7",
