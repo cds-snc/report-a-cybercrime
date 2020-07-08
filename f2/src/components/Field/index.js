@@ -54,7 +54,7 @@ Field.defaultProps = {
 Field.propTypes = {
   component: PropTypes.elementType,
   children: PropTypes.any,
-  name: PropTypes.string,
+  name: PropTypes.any,
   label: PropTypes.any,
   helperText: PropTypes.any,
   errorMessage: PropTypes.any,

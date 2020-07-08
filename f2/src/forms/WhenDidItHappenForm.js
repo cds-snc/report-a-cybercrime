@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
@@ -15,8 +14,7 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
-import { DatePicker } from '../components/dayMonthYear'
-import { SingleDatePicker, DateRangePicker } from '../components/DatePicker'
+import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
 
 let validate = (values) => {
   const errors = {}
@@ -24,6 +22,15 @@ let validate = (values) => {
     values.startYear,
     values.startMonth,
     values.startDay,
+    // values.singleDateSelectionDay,
+    // values.singleDateSelectionMonth,
+    // values.singleDateSelectionYear,
+    // dateRangeStartDay:'',
+    // dateRangeStartMonth:'',
+    // dateRangeStartYear:'',
+    // dateRangeEndDay:'',
+    // dateRangeEndMonth:'',
+    // dateRangeEndYear:'',
   )
   errors.whenDidItStart = []
   startDate.map((key) => {
@@ -41,35 +48,11 @@ export const WhenDidItHappenForm = (props) => {
         ()
   }
 
-  const { i18n } = useLingui()
   const [data] = useStateValue()
   const whendiditstart = {
     ...formDefaults.whendiditstart,
     ...data.formData.whendiditstart,
   }
-
-  //TODO: Move this form data to some sort of a schema file instead?
-
-  var questionsList = [
-    {
-      name: 'once',
-      channel: 'howOften.once',
-      label: 'howOftenLabel.question1',
-      hint: 'howOftenLabel.hint1',
-    },
-    {
-      name: 'morethanonce',
-      channel: 'howOften.morethanonce',
-      label: 'howOftenLabel.question2',
-      hint: 'howOftenLabel.hint2',
-    },
-    {
-      name: 'notsure',
-      channel: 'howOften.notsure',
-      label: 'howOftenLabel.question3',
-      hint: 'howOftenLabel.hint3',
-    },
-  ]
 
   return (
     <React.Fragment>
@@ -119,8 +102,9 @@ export const WhenDidItHappenForm = (props) => {
               </ErrorSummary>
             ) : null}
             <FormArrayControl
-              name="howOften"
+              name="whenDidItStart"
               label={<Trans id="howOften.label" />}
+              errors={errors}
             >
               <React.Fragment>
                 <RadioAdapter
