@@ -6,6 +6,7 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { formDefaults } from './forms/defaultValues'
 import { HowDidItStartSummary } from './summary/HowDidItStartSummary'
+import { WhenDidItHappenSummary } from './summary/WhenDidItHappenSummary'
 import { BusinessInfoSummary } from './summary/BusinessInfoSummary'
 import { ContactInfoSummary } from './summary/ContactInfoSummary'
 import { DevicesSummary } from './summary/DevicesSummary'
@@ -44,6 +45,7 @@ export const ConfirmationSummary = () => {
     <React.Fragment>
       <Stack spacing={12}>
         <HowDidItStartSummary />
+        <WhenDidItHappenSummary />
         <WhatWasAffectedSummary />
         {impact.affectedOptions.includes('whatWasAffectedForm.financial') && (
           <MoneyLostInfoSummary />

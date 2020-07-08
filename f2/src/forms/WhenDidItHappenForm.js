@@ -18,20 +18,24 @@ import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
 
 let validate = (values) => {
   const errors = {}
-  const startDate = validateDate(
-    values.startYear,
-    values.startMonth,
-    values.startDay,
-    // values.singleDateSelectionDay,
-    // values.singleDateSelectionMonth,
-    // values.singleDateSelectionYear,
-    // dateRangeStartDay:'',
-    // dateRangeStartMonth:'',
-    // dateRangeStartYear:'',
-    // dateRangeEndDay:'',
-    // dateRangeEndMonth:'',
-    // dateRangeEndYear:'',
-  )
+  const startDate = (props) =>
+    validateDate(
+      // values.startYear,
+      // values.startMonth,
+      // values.startDay,
+      { ...(props.name + 'Year') },
+      { ...(props.name + 'Month') },
+      { ...(props.name + 'Day') },
+      // values.singleDateSelectionDay,
+      // values.singleDateSelectionMonth,
+      // values.singleDateSelectionYear,
+      // dateRangeStartDay:'',
+      // dateRangeStartMonth:'',
+      // dateRangeStartYear:'',
+      // dateRangeEndDay:'',
+      // dateRangeEndMonth:'',
+      // dateRangeEndYear:'',
+    )
   errors.whenDidItStart = []
   startDate.map((key) => {
     return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
@@ -53,7 +57,11 @@ export const WhenDidItHappenForm = (props) => {
     ...formDefaults.whendiditstart,
     ...data.formData.whendiditstart,
   }
-
+  //   const howOften = [
+  //     'howOften.once',
+  //     'howOften.moreThanOnce',
+  //     'howOften.notSure',
+  //   ]
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -102,7 +110,8 @@ export const WhenDidItHappenForm = (props) => {
               </ErrorSummary>
             ) : null}
             <FormArrayControl
-              name="whenDidItStart"
+              //   name="whenDidItStart"
+              name="howOften"
               label={<Trans id="howOften.label" />}
               errors={errors}
             >
