@@ -381,10 +381,6 @@ const formatFileAttachments = (data) => {
         ? formatDownloadLink(file.name, file.sasUrl)
         : ''
 
-      const downloadLink = file.malwareIsClean
-        ? formatDownloadLink(file.name, file.sasUrl)
-        : ''
-
       return (
         formatLineHtml(
           '<b>WARNING:</b>',
