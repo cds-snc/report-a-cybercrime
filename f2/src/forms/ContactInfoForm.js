@@ -63,6 +63,11 @@ export const ContactInfoForm = (props) => {
 
   return (
     <React.Fragment>
+      {false ? ( // mark ids for lingui
+        <div>
+          <Trans id="contactInfoPage.victimDetail" />
+        </div>
+      ) : null}
       <Form
         initialValues={contactInfo}
         onSubmit={localOnSubmit}
