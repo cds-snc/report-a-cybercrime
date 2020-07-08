@@ -107,6 +107,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
+    "@babel/polyfill": "^7.8.7",
     "@cdssnc/a11y-tracker-client": "^1.1.2",
     "@lingui/cli": "^3.0.0-7",
     "@lingui/loader": "^3.0.0-7",
@@ -143,7 +144,7 @@
     "react-is": "^16.13.1",
     "recompose": "^0.30.0",
     "start-server-and-test": "^1.10.11",
-    "storybook-addon-jsx": "^7.2.3",
+    "storybook-addon-jsx": "^7.1.15",
     "waait": "^1.0.5"
   },
   "jest": {

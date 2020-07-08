@@ -135,8 +135,6 @@ export const HowDidItStartForm = (props) => {
           <Trans id="whenDidItStart.error.hasNoYear" />
           <Trans id="whenDidItStart.error.hasNoMonth" />
           <Trans id="whenDidItStart.error.hasNoDay" />
-
-          <Trans id="howDidItStartPage.incidentInformation" />
         </div>
       ) : null}
 
@@ -231,7 +229,10 @@ export const HowDidItStartForm = (props) => {
               {howManyTimes.map((key) => {
                 return (
                   <React.Fragment key={key}>
-                    <RadioAdapter name="howManyTimes" value={key}>
+                    <RadioAdapter
+                      name="howManyTimes"
+                      value={key}
+                    >
                       {i18n._(key)}
                     </RadioAdapter>
                   </React.Fragment>

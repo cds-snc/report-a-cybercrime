@@ -8,8 +8,6 @@ import { FormErrorMessage } from '../FormErrorMessage'
 import { Field as FieldAdapter, useField } from 'react-final-form'
 import { UniqueID } from '../unique-id'
 import { Input } from '../input'
-import { Trans } from '@lingui/react'
-import { Text } from '../text'
 
 export const Field = (props) => {
   const {
@@ -27,10 +25,7 @@ export const Field = (props) => {
         return (
           <FormControl aria-labelledby={id} isInvalid={submitFailed && invalid}>
             <FormLabel id={id} htmlFor={props.name}>
-              {props.label}{' '}
-              <Text as="span" fontWeight="normal">
-                {props.required && <Trans id="default.requiredField" />}
-              </Text>
+              {props.label}
             </FormLabel>
             {props.helperText && (
               <FormHelperText>{props.helperText}</FormHelperText>
@@ -63,5 +58,4 @@ Field.propTypes = {
   label: PropTypes.any,
   helperText: PropTypes.any,
   errorMessage: PropTypes.any,
-  required: PropTypes.bool,
 }

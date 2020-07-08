@@ -59,11 +59,7 @@ export const EvidenceInfoForm = (props) => {
     if (!fileExtensionPasses(file.name)) {
       alert(
         i18n._('evidencePage.supportedFiles') +
-          i18n._('evidencePage.fileTypes1') +
-          ', ' +
-          i18n._('evidencePage.fileTypes2') +
-          ', ' +
-          i18n._('evidencePage.fileTypes3'),
+          i18n._('evidencePage.fileTypes'),
       )
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
@@ -103,21 +99,7 @@ export const EvidenceInfoForm = (props) => {
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
-          <Trans id="fileUpload.removed" />
-          <Trans id="fileUpload.added" />
-          <Trans id="fileUpload.fileName" />
-          <Trans id="fileUpload.fileDescription" />
-          <Trans id="fileUpload.fileSize" />
-          <Trans id="fileUpload.CosmosDBFile" />
-          <Trans id="fileUpload.malwareScan" />
-          <Trans id="fileUpload.isAdult" />
-          <Trans id="fileUpload.adultScore" />
-          <Trans id="fileUpload.isRacy" />
-          <Trans id="fileUpload.racyScore" />
-          <Trans id="fileUpload.fileAttachment" />
-          <Trans id="fileUpload.virusScanError" />
-          <Trans id="fileUpload.fileTypeError" />
-          <Trans id="fileUpload.noFiles" />
+          <Trans id="fileUpload.removed" /> <Trans id="fileUpload.added" />
         </div>
       ) : null}
       <Form

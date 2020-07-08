@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
@@ -26,92 +25,80 @@ export const SuspectCluesForm = (props) => {
   }
 
   return (
-    <React.Fragment>
-      {false ? ( // the following trans tags are for analyst email
-        <div>
-          <Trans id="suspectClues.suspectDetails" />
-        </div>
-      ) : null}
-      <Form
-        initialValues={suspectClues}
-        onSubmit={localOnSubmit}
-        render={({ handleSubmit }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            spacing={6}
-            shouldWrapChildren
-          >
-            <Field name="suspectClues1">
-              {(props) => (
-                <FormControl>
-                  <FormLabel htmlFor="suspectClues1">
-                    <Trans id="suspectClues.question1" />
-                  </FormLabel>
+    <Form
+      initialValues={suspectClues}
+      onSubmit={localOnSubmit}
+      render={({ handleSubmit }) => (
+        <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
+          <Field name="suspectClues1">
+            {(props) => (
+              <FormControl>
+                <FormLabel htmlFor="suspectClues1">
+                  <Trans id="suspectClues.question1" />
+                </FormLabel>
 
-                  <FormHelperText>
-                    <Trans id="suspectClues.question1Details" />
-                  </FormHelperText>
+                <FormHelperText>
+                  <Trans id="suspectClues.question1Details" />
+                </FormHelperText>
 
-                  <TextArea
-                    id="suspectClues1"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
+                <TextArea
+                  id="suspectClues1"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
 
-            <Field name="suspectClues2">
-              {(props) => (
-                <FormControl>
-                  <FormLabel htmlFor="suspectClues2">
-                    <Trans id="suspectClues.question2" />
-                  </FormLabel>
+          <Field name="suspectClues2">
+            {(props) => (
+              <FormControl>
+                <FormLabel htmlFor="suspectClues2">
+                  <Trans id="suspectClues.question2" />
+                </FormLabel>
 
-                  <FormHelperText>
-                    <Trans id="suspectClues.question2Details" />
-                  </FormHelperText>
+                <FormHelperText>
+                  <Trans id="suspectClues.question2Details" />
+                </FormHelperText>
 
-                  <TextArea
-                    id="suspectClues2"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
+                <TextArea
+                  id="suspectClues2"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
 
-            <Field name="suspectClues3">
-              {(props) => (
-                <FormControl>
-                  <FormLabel htmlFor="suspectClues3">
-                    <Trans id="suspectClues.question3" />
-                  </FormLabel>
+          <Field name="suspectClues3">
+            {(props) => (
+              <FormControl>
+                <FormLabel htmlFor="suspectClues3">
+                  <Trans id="suspectClues.question3" />
+                </FormLabel>
 
-                  <FormHelperText>
-                    <Trans id="suspectClues.question3Details" />
-                  </FormHelperText>
+                <FormHelperText>
+                  <Trans id="suspectClues.question3Details" />
+                </FormHelperText>
 
-                  <TextArea
-                    id="suspectClues3"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-            <NextAndCancelButtons
-              next={<Trans id="suspectClues.whatComesNext" />}
-              button={<Trans id="suspectClues.nextButton" />}
-            />
-          </Stack>
-        )}
-      />
-    </React.Fragment>
+                <TextArea
+                  id="suspectClues3"
+                  name={props.input.name}
+                  value={props.input.value}
+                  onChange={props.input.onChange}
+                />
+              </FormControl>
+            )}
+          </Field>
+          <NextAndCancelButtons
+            next={<Trans id="suspectClues.whatComesNext" />}
+            button={<Trans id="suspectClues.nextButton" />}
+          />
+        </Stack>
+      )}
+    />
   )
 }
 

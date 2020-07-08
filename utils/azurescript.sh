@@ -75,10 +75,6 @@ export ANALYST_GROUP_MAIL=NC3PublicReporting-GNCCRapportsPublics@rcmp-grc.gc.ca
 
 export TAG_ALL="Environment=Production Cost_Centre=S0046 Owner=RCMP Classification=Unclassified Project=RCMP-CDS-FRS Division=HQ"
 
-# Logging
-export LOGGING_DIRECTORY=
-export LOGGING_IGNORE_ROUTE=
-export LOGGING_PRETTY_PRINT=
 
 #### Set up Azure
 ## Create Resource group

@@ -2,9 +2,6 @@
 const unidecode = require('unidecode')
 const natural = require('natural')
 require('dotenv').config()
-const { getLogger } = require('./winstonLogger')
-
-const logger = getLogger(__filename)
 
 const selfHarmString = process.env.SELF_HARM_WORDS || 'agilé, lean, mvp, scrum'
 const selfHarmWords = selfHarmString
@@ -12,15 +9,19 @@ const selfHarmWords = selfHarmString
   .map((w) => unidecode(w.trim().toLowerCase()))
 console.info(`Self harm word list: ${selfHarmWords}`)
 
-//Patches stem() and tokenizeAndStem() to String as a shortcut to PorterStemmer.stem(token)
-natural.PorterStemmer.attach()
-natural.PorterStemmerFr.attach()
-
 //Scan form data for self harm key words.
 const selfHarmWordsScan = (data) => {
   try {
     const jsonString = unidecode(JSON.stringify(data).toLowerCase())
     const json = JSON.parse(jsonString)
+
+    //Patches stem() and tokenizeAndStem() to String as a shortcut to PorterStemmer.stem(token)
+    if (json.language === 'fr') {
+      natural.PorterStemmerFr.attach()
+    } else {
+      natural.PorterStemmer.attach()
+    }
+
     let keyWordMatch = []
 
     for (let key in json) {

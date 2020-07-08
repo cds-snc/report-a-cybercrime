@@ -8,9 +8,10 @@ const { unflatten } = require('flat')
 const { sanitize } = require('./src/utils/sanitize')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getCertsAndEmail } = require('./src/utils/ldap')
-const availabilityService = require('./src/utils/checkIfAvailable')
+const { isAvailable } = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
+const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
@@ -131,8 +132,11 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', async function (req, res, next) {
+  await getReportCount(availableData)
+
   // Default to false. This represents if a user entered a valid TOTP code
   var isTotpValid = false
+  var validReferer = false
 
   // If the user passed in a TOTP query parm (/?totp=) and the correct
   // env var is set, then verify the code.
@@ -182,6 +186,14 @@ app.get('/', async function (req, res, next) {
         ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
         : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
+  } else {
+    availableData.numberOfRequests += 1
+    availableData.lastRequested = new Date()
+    logger.info({
+      message: 'New Request',
+      availableData: availableData,
+    })
+    next()
   }
 })
 app
@@ -208,19 +220,18 @@ app
   })
 
   .get('/available', function (_req, res) {
-    res.json({ acceptingReports: availabilityService.isAvailable() })
+    res.json({ acceptingReports: isAvailable(availableData) })
   })
 
   .get('/stats', function (_req, res) {
-    var data = availabilityService.getAvailableData()
     res.json({
-      acceptingReports: availabilityService.isAvailable(),
-      ...data,
+      acceptingReports: isAvailable(availableData),
+      ...availableData,
     })
   })
 
   .post('/submit', (req, res) => {
-    availabilityService.incrementSubmissions()
+    availableData.numberOfSubmissions += 1
     var form = new formidable.IncomingForm()
     form.parse(req)
     let files = []
