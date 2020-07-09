@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx } from '@emotion/core'
-import { useLingui } from '@lingui/react'
+// import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
@@ -11,40 +11,39 @@ import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
-import { formatList } from '../utils/formatList'
+// import { formatList } from '../utils/formatList'
 import { formatDate } from '../utils/formatDate'
 
 export const WhenDidItHappenSummary = (props) => {
   const [data] = useStateValue()
-  const { i18n } = useLingui()
-  const summary = []
+  //   const { i18n } = useLingui()
+  //   const summary = []
   let overviewLine = ' '
 
   const whendidithappen = {
-    ...testdata.formData.howdidithappen,
-    ...data.formData.howdidithappen,
+    ...testdata.formData.whendidithappen,
+    ...data.formData.whendidithappen,
   }
 
-  if (whendidithappen.howOften.length > 0) {
-    //Obtain all the array data into the summary array
-    // whendidithappen.howOften.map((key) =>
-    whendidithappen.howOften.map((key) =>
-      summary.push(
-        // key === 'whenDidTheyReachYou.others' && howdiditstart.others !== ''
-        //   ? howdiditstart.others
-        //   :
-        i18n._(key).toLowerCase(),
-      ),
-    )
+  //   if (whendidithappen.whenDidItStart.length > 0) {
+  //     //Obtain all the array data into the summary array
+  //     whendidithappen.whenDidItStart.map((key) =>
+  //       summary.push(
+  //         // key === 'whenDidTheyReachYou.others' && howdiditstart.others !== ''
+  //         //   ? howdiditstart.others
+  //         //   :
+  //         i18n._(key).toLowerCase(),
+  //       ),
+  //     )
 
-    overviewLine =
-      i18n._('confirmationPage.whenDidItHappen.overviewPrefix') +
-      formatList(summary, {
-        pair: i18n._('default.pair'),
-        middle: i18n._('default.middle'),
-        end: i18n._('default.end'),
-      })
-  }
+  //     overviewLine =
+  //       i18n._('confirmationPage.whenDidItHappen.overviewPrefix') +
+  //       formatList(summary, {
+  //         pair: i18n._('default.pair'),
+  //         middle: i18n._('default.middle'),
+  //         end: i18n._('default.end'),
+  //       })
+  //   }
 
   return (
     <React.Fragment>
@@ -105,7 +104,7 @@ export const WhenDidItHappenSummary = (props) => {
           </React.Fragment>
         ) : (
           <Text>
-            <Trans id="confirmationPage.howDidItHappen.nag" />
+            <Trans id="confirmationPage.whenDidItHappen.nag" />
           </Text>
         )}
       </Stack>

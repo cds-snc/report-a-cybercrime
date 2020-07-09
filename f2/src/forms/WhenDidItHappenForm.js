@@ -14,13 +14,11 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
-// import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
 import {
   SingleDatePicker,
   DateStartPicker,
   DateEndPicker,
 } from '../components/datePicker'
-// import { SingleDatePicker, DateRangePicker } from '../components/dayMonthYear'
 
 let validate = (values) => {
   const errors = {}
@@ -41,28 +39,25 @@ let validate = (values) => {
   )
 
   errors.whenDidItStart = []
-  if (
+  if (values.whenDidItHappenYear !== '0') {
     happenDate.map((key) => {
       return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
     })
-  )
-    return errors
-  errors.whenDidItStart = []
 
-  if (
+    return errors
+  } else if (values.whenDidItStartYear !== '0') {
     startDate.map((key) => {
-      return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
+      return errors.whenDidItStart.push(`whenDidItStart2.error.${key}`)
     })
-  )
-    return errors
-  errors.whenDidItStart = []
 
-  if (
+    return errors
+  } else if (values.whenDidItEndYear !== 0) {
     endDate.map((key) => {
       return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
     })
-  )
+
     return errors
+  }
 }
 
 export const WhenDidItHappenForm = (props) => {
@@ -79,12 +74,12 @@ export const WhenDidItHappenForm = (props) => {
     ...formDefaults.whendiditstart,
     ...data.formData.whendiditstart,
   }
-  const howOften = [
-    'howOften.once',
-    'howOften.moreThanOnce',
-    'howOften.notSure',
-  ]
-  console.log(howOften[0])
+  //   const howOften = [
+  //     'once',
+  //     'moreThanOnce',
+  //     'notSure',
+  //   ]
+  //   console.log(howOften[0])
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -160,7 +155,7 @@ export const WhenDidItHappenForm = (props) => {
                   name="howOften"
                   value="morethanonce"
                   conditionalField={
-                    <stack>
+                    <Stack>
                       <Field
                         component={DateStartPicker}
                         name="singleDate"
@@ -175,7 +170,7 @@ export const WhenDidItHappenForm = (props) => {
                         label={<Trans id="howOftenLabel.question2.2" />}
                         helperText={<Trans id="howOftenLabel.hint1" />}
                       />
-                    </stack>
+                    </Stack>
                   }
                 >
                   <Trans id="howOften.morethanonce" />

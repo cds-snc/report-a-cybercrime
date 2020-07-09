@@ -38,7 +38,8 @@ export const SingleDatePicker = (props) => {
   return (
     <DatePicker
       name="whenDidItHappen"
-      group={props.group}
+      group="{props.group}"
+      // group="whenDidItHappen"
       label={props.label}
       helperText={props.helperText}
     />
