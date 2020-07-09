@@ -37,7 +37,7 @@ export const SingleDatePicker = (props) => {
   console.log(props)
   return (
     <DatePicker
-      name="whenDidItStart"
+      name="whenDidItHappen"
       group={props.group}
       label={props.label}
       helperText={props.helperText}
@@ -50,13 +50,13 @@ export const DateRangePicker = (props) => {
   return (
     <React.Fragment>
       <DatePicker
-        name={props.group + 'Start'}
+        name="whenDitItStart"
         group={props.group + 'Start'}
         label={props.label + 'Start'}
         helperText={props.helperText + 'Start'}
       />
       <DatePicker
-        name={props.group + 'End'}
+        name="whenDitItEnd"
         group={props.group + 'End'}
         label={props.label + 'End'}
         helperText={props.helperText + 'End'}

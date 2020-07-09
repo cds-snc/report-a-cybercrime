@@ -19,23 +19,45 @@ import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
 
 let validate = (values) => {
   const errors = {}
-  const startDate = validateDate(
-    values.startDay1,
-    values.startMonth1,
-    values.startYear1,
-    values.whenDidItStartDay,
-    values.whenDidItStartMonth,
-    values.whenDidItStartYear,
-
-    //   values.happenYear,
-    //   values.happenMonth,
-    //   values.happenDay,
+  const happenDate = validateDate(
+    values.whenDidItHappenYear,
+    values.whenDidItHappenMonth,
+    values.whenDidItHappenDay,
   )
+  const startDate = validateDate(
+    values.whenDidItStartYear,
+    values.whenDidItStartMonth,
+    values.whenDidItStartDay,
+  )
+  const endDate = validateDate(
+    values.whenDidItEndYear,
+    values.whenDidItEndMonth,
+    values.whenDidItEndDay,
+  )
+
   errors.whenDidItStart = []
-  startDate.map((key) => {
-    return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
-  })
-  return errors
+  if (
+    happenDate.map((key) => {
+      return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
+    })
+  )
+    return errors
+  errors.whenDidItStart = []
+
+  if (
+    startDate.map((key) => {
+      return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
+    })
+  )
+    return errors
+  errors.whenDidItStart = []
+
+  if (
+    endDate.map((key) => {
+      return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
+    })
+  )
+    return errors
 }
 
 export const WhenDidItHappenForm = (props) => {
@@ -107,13 +129,13 @@ export const WhenDidItHappenForm = (props) => {
             ) : null}
             <FormArrayControl
               name="whenDidItStart"
-              //   name="howOften"
+              // name="howOften"
               label={<Trans id="howOften.label" />}
               errors={errors}
             >
               <React.Fragment>
                 <RadioAdapter
-                  name="howOften.once"
+                  name="howOften"
                   value="once"
                   conditionalField={
                     <Field
@@ -130,7 +152,7 @@ export const WhenDidItHappenForm = (props) => {
               </React.Fragment>
               <React.Fragment>
                 <RadioAdapter
-                  name="howOften.moreThanOnce"
+                  name="howOften"
                   value="morethanonce"
                   conditionalField={
                     <Field
@@ -147,7 +169,7 @@ export const WhenDidItHappenForm = (props) => {
               </React.Fragment>
               <React.Fragment>
                 <RadioAdapter
-                  name="howOften.notSure "
+                  name="howOften"
                   value="notSure"
                   conditionalField={
                     <Field
