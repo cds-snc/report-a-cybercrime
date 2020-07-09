@@ -45,22 +45,46 @@ export const SingleDatePicker = (props) => {
   )
 }
 
-export const DateRangePicker = (props) => {
+export const DateStartPicker = (props) => {
   console.log(props)
   return (
-    <React.Fragment>
-      <DatePicker
-        name="whenDitItStart"
-        group={props.group + 'Start'}
-        label={props.label + 'Start'}
-        helperText={props.helperText + 'Start'}
-      />
-      <DatePicker
-        name="whenDitItEnd"
-        group={props.group + 'End'}
-        label={props.label + 'End'}
-        helperText={props.helperText + 'End'}
-      />
-    </React.Fragment>
+    <DatePicker
+      name="whenDidItStart"
+      group={props.group}
+      label={props.label}
+      helperText={props.helperText}
+    />
   )
 }
+export const DateEndPicker = (props) => {
+  console.log(props)
+  return (
+    <DatePicker
+      name="whenDidItEnd"
+      group={props.group}
+      label={props.label}
+      helperText={props.helperText}
+    />
+  )
+}
+// export const DateRangePicker2 = (props) => {
+//   console.log(props)
+//   return (
+//     <React.Fragment>
+//       <DatePicker
+//         name="whenDitItStart"
+//         group={props.group + 'Start'}
+//         label={<Trans id="whenDidItStart.label"/>}
+//         helperText={<Trans id="whenDidItStart.labelExample"/>}
+
+//       />
+//       <DatePicker
+//         name="whenDitItEnd"
+//         group={props.group + 'End'}
+//         label={<Trans id="whenDidItEnd.label"/>}
+//         helperText={<Trans id="whenDidItEnd.labelExample"/>}
+
+//       />
+//     </React.Fragment>
+//   )
+// }

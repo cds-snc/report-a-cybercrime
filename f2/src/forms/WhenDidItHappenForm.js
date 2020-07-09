@@ -14,7 +14,12 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
-import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
+// import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
+import {
+  SingleDatePicker,
+  DateStartPicker,
+  DateEndPicker,
+} from '../components/datePicker'
 // import { SingleDatePicker, DateRangePicker } from '../components/dayMonthYear'
 
 let validate = (values) => {
@@ -155,13 +160,22 @@ export const WhenDidItHappenForm = (props) => {
                   name="howOften"
                   value="morethanonce"
                   conditionalField={
-                    <Field
-                      component={DateRangePicker}
-                      name="dateRange"
-                      group="dateRange"
-                      label={<Trans id="howOftenLabel.question1" />}
-                      helperText={<Trans id="howOftenLabel.hint1" />}
-                    />
+                    <stack>
+                      <Field
+                        component={DateStartPicker}
+                        name="singleDate"
+                        group="singleDate"
+                        label={<Trans id="howOftenLabel.question2.1" />}
+                        helperText={<Trans id="howOftenLabel.hint1" />}
+                      />
+                      <Field
+                        component={DateEndPicker}
+                        name="singleDate"
+                        group="singleDate"
+                        label={<Trans id="howOftenLabel.question2.2" />}
+                        helperText={<Trans id="howOftenLabel.hint1" />}
+                      />
+                    </stack>
                   }
                 >
                   <Trans id="howOften.morethanonce" />
