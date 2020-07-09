@@ -15,27 +15,22 @@ import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
 import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
+// import { SingleDatePicker, DateRangePicker } from '../components/dayMonthYear'
 
 let validate = (values) => {
   const errors = {}
-  const startDate = (props) =>
-    validateDate(
-      // values.startYear,
-      // values.startMonth,
-      // values.startDay,
-      { ...(props.name + 'Year') },
-      { ...(props.name + 'Month') },
-      { ...(props.name + 'Day') },
-      // values.singleDateSelectionDay,
-      // values.singleDateSelectionMonth,
-      // values.singleDateSelectionYear,
-      // dateRangeStartDay:'',
-      // dateRangeStartMonth:'',
-      // dateRangeStartYear:'',
-      // dateRangeEndDay:'',
-      // dateRangeEndMonth:'',
-      // dateRangeEndYear:'',
-    )
+  const startDate = validateDate(
+    values.startDay1,
+    values.startMonth1,
+    values.startYear1,
+    values.whenDidItStartDay,
+    values.whenDidItStartMonth,
+    values.whenDidItStartYear,
+
+    //   values.happenYear,
+    //   values.happenMonth,
+    //   values.happenDay,
+  )
   errors.whenDidItStart = []
   startDate.map((key) => {
     return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
@@ -57,11 +52,12 @@ export const WhenDidItHappenForm = (props) => {
     ...formDefaults.whendiditstart,
     ...data.formData.whendiditstart,
   }
-  //   const howOften = [
-  //     'howOften.once',
-  //     'howOften.moreThanOnce',
-  //     'howOften.notSure',
-  //   ]
+  const howOften = [
+    'howOften.once',
+    'howOften.moreThanOnce',
+    'howOften.notSure',
+  ]
+  console.log(howOften[0])
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -110,14 +106,14 @@ export const WhenDidItHappenForm = (props) => {
               </ErrorSummary>
             ) : null}
             <FormArrayControl
-              //   name="whenDidItStart"
-              name="howOften"
+              name="whenDidItStart"
+              //   name="howOften"
               label={<Trans id="howOften.label" />}
               errors={errors}
             >
               <React.Fragment>
                 <RadioAdapter
-                  name="howOften"
+                  name="howOften.once"
                   value="once"
                   conditionalField={
                     <Field
@@ -134,7 +130,7 @@ export const WhenDidItHappenForm = (props) => {
               </React.Fragment>
               <React.Fragment>
                 <RadioAdapter
-                  name="howOften"
+                  name="howOften.moreThanOnce"
                   value="morethanonce"
                   conditionalField={
                     <Field
@@ -151,7 +147,7 @@ export const WhenDidItHappenForm = (props) => {
               </React.Fragment>
               <React.Fragment>
                 <RadioAdapter
-                  name="howOften"
+                  name="howOften.notSure "
                   value="notSure"
                   conditionalField={
                     <Field

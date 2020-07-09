@@ -37,7 +37,7 @@ export const SingleDatePicker = (props) => {
   console.log(props)
   return (
     <DatePicker
-      name={props.group + 'Selection'}
+      name="whenDidItStart"
       group={props.group}
       label={props.label}
       helperText={props.helperText}
