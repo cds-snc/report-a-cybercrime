@@ -24,19 +24,12 @@ export const WhenDidItHappenSummary = (props) => {
     ...testdata.formData.whendidithappen,
     ...data.formData.whendidithappen,
   }
-
-  if (whendidithappen.howOften.length > 0) {
+  console.log(whendidithappen.howManyTimes)
+  if (whendidithappen.howManyTimes.length > 0) {
     //Obtain all the array data into the summary array
-    // whendidithappen.howOften.map((key) =>
-    whendidithappen.howOften.map((key) =>
-      summary.push(
-        // key === 'whenDidTheyReachYou.others' && howdiditstart.others !== ''
-        //   ? howdiditstart.others
-        //   :
-        i18n._(key).toLowerCase(),
-      ),
+    whendidithappen.howManyTimes.map((key) =>
+      summary.push(i18n._(key).toLowerCase()),
     )
-
     overviewLine =
       i18n._('confirmationPage.whenDidItHappen.overviewPrefix') +
       formatList(summary, {
@@ -52,11 +45,13 @@ export const WhenDidItHappenSummary = (props) => {
         <div>
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.whenDidItHappen.overviewPrefix" />
-          <Trans id="confirmationPage.whenDidItHappen.conjuction" />
           <Trans id="confirmationPage.whenDidItHappen.once" />
           <Trans id="confirmationPage.whenDidItHappen.morethanonce" />
           <Trans id="confirmationPage.whenDidItHappen.notsure" />
           <Trans id="confirmationPage.whenDidItHappen.title.edit" />
+          <Trans id=" confirmationPage.whenDidItHappen.whenDidItHappen" />
+          <Trans id="confirmationPage.whenDidItHappen.whenDidItStart" />
+          <Trans id="confirmationPage.whenDidItHappen.whenDidItEnd" />
         </div>
       ) : null}
 
@@ -86,6 +81,10 @@ export const WhenDidItHappenSummary = (props) => {
                 description={whendidithappen.once}
               />
               <DescriptionListItem
+                descriptionTitle="confirmationPage.whenDidItHappen.once"
+                description={whendidithappen.morethanone}
+              />
+              <DescriptionListItem
                 descriptionTitle="confirmationPage.whenDidItHappen.morethanone"
                 description={whendidithappen.morethanone}
               />
@@ -94,18 +93,38 @@ export const WhenDidItHappenSummary = (props) => {
                 description={whendidithappen.notsure}
               />
               <DescriptionListItem
-                descriptionTitle="confirmationPage.whenDidItHappen.happenedDate"
+                descriptionTitle="confirmationPage.whenDidItHappen.whenDidItHappen"
                 description={formatDate(
-                  whendidithappen.transactionDay,
-                  whendidithappen.transactionMonth,
-                  whendidithappen.transactionYear,
+                  whendidithappen.whenDidItHappenDay,
+                  whendidithappen.whenDidItHappenMonth,
+                  whendidithappen.whenDidItHappenYear,
                 )}
+              />
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.whenDidItHappen.whenDidItStart"
+                description={formatDate(
+                  whendidithappen.whenDidItStartDay,
+                  whendidithappen.whenDidItStartMonth,
+                  whendidithappen.whenDidItStartYear,
+                )}
+              />
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.whenDidItHappen.whenDidItEnd"
+                description={formatDate(
+                  whendidithappen.whenDidItEndDay,
+                  whendidithappen.whenDidItEndMonth,
+                  whendidithappen.whenDidItEndYear,
+                )}
+              />
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.whenDidItHappen.notSure"
+                description={whendidithappen.notsure}
               />
             </Stack>
           </React.Fragment>
         ) : (
           <Text>
-            <Trans id="confirmationPage.howDidItHappen.nag" />
+            <Trans id="confirmationPage.whenDidItHappen.nag" />
           </Text>
         )}
       </Stack>
