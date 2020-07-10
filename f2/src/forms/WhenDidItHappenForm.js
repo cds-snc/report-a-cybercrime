@@ -87,10 +87,13 @@ export const WhenDidItHappenForm = (props) => {
   }
 
   const [data] = useStateValue()
-  const whendiditstart = {
-    ...formDefaults.whendiditstart,
-    ...data.formData.whendiditstart,
+  const whendidithappen = {
+    ...formDefaults.whendidithappen,
+    ...data.formData.whendidithappen,
   }
+
+  console.log(`whendidithappen: ${JSON.stringify(whendidithappen, null, 2)}`)
+
   //   const howOften = [
   //     'howOften.once',
   //     'howOften.moreThanOnce',
@@ -122,7 +125,7 @@ export const WhenDidItHappenForm = (props) => {
       ) : null}
 
       <Form
-        initialValues={whendiditstart}
+        initialValues={whendidithappen}
         onSubmit={localOnSubmit}
         validate={validate}
         render={({
@@ -144,7 +147,7 @@ export const WhenDidItHappenForm = (props) => {
               </ErrorSummary>
             ) : null}
             <FormArrayControl
-              name="whenDidItStart"
+              name="whendidithappen"
               label={<Trans id="howOften.label" />}
               errors={errors}
             >
