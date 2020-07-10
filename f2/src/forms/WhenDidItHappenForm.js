@@ -19,7 +19,7 @@ import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
 // import { SingleDatePicker, DateRangePicker } from '../components/dayMonthYear'
 
 let validate = (values) => {
-  const dateErrors = []
+  //   const dateErrors = []
   const errors = {}
 
   if (values.howOften === 'morethanonce') {
@@ -91,11 +91,11 @@ export const WhenDidItHappenForm = (props) => {
     ...formDefaults.whendiditstart,
     ...data.formData.whendiditstart,
   }
-  const howOften = [
-    'howOften.once',
-    'howOften.moreThanOnce',
-    'howOften.notSure',
-  ]
+  //   const howOften = [
+  //     'howOften.once',
+  //     'howOften.moreThanOnce',
+  //     'howOften.notSure',
+  //   ]
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -145,7 +145,6 @@ export const WhenDidItHappenForm = (props) => {
             ) : null}
             <FormArrayControl
               name="whenDidItStart"
-              // name="howOften"
               label={<Trans id="howOften.label" />}
               errors={errors}
             >
