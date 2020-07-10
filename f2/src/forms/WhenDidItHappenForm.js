@@ -15,11 +15,8 @@ import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
 import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
-// import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
-// import { SingleDatePicker, DateRangePicker } from '../components/dayMonthYear'
 
 let validate = (values) => {
-  //   const dateErrors = []
   const errors = {}
 
   if (values.howOften === 'morethanonce') {
@@ -174,15 +171,25 @@ export const WhenDidItHappenForm = (props) => {
                   name="howOften"
                   value="morethanonce"
                   conditionalField={
-                    <Field
-                      component={DateRangePicker}
-                      name="multipleDates"
-                      dateStart="whenDidItStart"
-                      dateEnd="whenDidItEnd"
-                      group="multipleDates"
-                      label={<Trans id="howOftenLabel.question2.1" />}
-                      helperText={<Trans id="howOftenLabel.hint1" />}
-                    />
+                    <Stack>
+                      <Field
+                        component={SingleDatePicker}
+                        name="whenDidItStart"
+                        datePickerName="whenDidItStart"
+                        group="singleDate"
+                        label={<Trans id="howOftenLabel.question2.1" />}
+                        helperText={<Trans id="howOftenLabel.hint1" />}
+                      />
+                      \n
+                      <Field
+                        component={SingleDatePicker}
+                        name="whenDidItEnd"
+                        datePickerName="whenDidItEnd"
+                        group="singleDate"
+                        label={<Trans id="howOftenLabel.question2.2" />}
+                        helperText={<Trans id="howOftenLabel.hint1" />}
+                      />
+                    </Stack>
                   }
                 >
                   <Trans id="howOften.morethanonce" />
