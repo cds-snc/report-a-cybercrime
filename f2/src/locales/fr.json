@@ -1,5 +1,5 @@
 {
-  " confirmationPage.whenDidItHappen.whenDidItHappen": "Se produit une fois: ",
+  " confirmationPage.whenDidItHappen.whenDidItHappen": "",
   "LocationAnonymousInfoForm.city": "Ville ou municipalité",
   "LocationAnonymousInfoForm.nextButton": "Continuer",
   "LocationAnonymousInfoForm.nextPage": "Prochaine étape : Révisez votre rapport",
@@ -129,7 +129,6 @@
   "confirmationPage.whenDidItHappen.title.edit": "Éditer",
   "confirmationPage.whenDidItHappen.whenDidItEnd": "Arrive plusieurs fois la, date de fin: ",
   "confirmationPage.whenDidItHappen.whenDidItStart": "Arrive plusieurs fois la, date de début: ",
-  "confirmationPage.whenDidItStart": "Début",
   "contactInfoPage.victimDetail": "Détails sur la victime",
   "contactinfoForm.email.warning": "Entrez une adresse courriel valide.",
   "contactinfoForm.fullName.warning": "Entrez votre nom complet",
@@ -219,7 +218,6 @@
   "finalFeedback.wouldYouUseAgain.no": "Non",
   "finalFeedback.wouldYouUseAgain.yes": "Oui",
   "finalFeedbackThanks.title": "Merci de nous avoir aidés à améliorer le service!",
-  "howDidItStartPage.incidentInformation": "Informations sur l'incident",
   "howDidItStartPage.intro": "N’importe qui peut être victime d’une fraude ou d’un crime informatique. Les cybercriminels utilisent plusieurs techniques pour réussir à obtenir ce qu’ils veulent.",
   "howDidItStartPage.nextButton": "Continuer",
   "howDidItStartPage.nextPage": "Étape suivante : Quand l’incident a-t-il eu lieu?",
