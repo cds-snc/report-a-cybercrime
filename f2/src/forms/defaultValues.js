@@ -13,8 +13,7 @@ const formDefaults = {
     others: '',
   },
   whendidithappen: {
-    howOften: [],
-    howManyTimes: [],
+    howOften: '',
     whenDidItHappenDay: '',
     whenDidItHappenMonth: '',
     whenDidItHappenYear: '',
