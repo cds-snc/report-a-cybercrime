@@ -102,17 +102,42 @@ const formatVictimDetails = (data) => {
 }
 
 const formatIncidentInformation = (data) => {
-  const occurenceString = formatDate(
-    data.howdiditstart.startDay,
-    data.howdiditstart.startMonth,
-    data.howdiditstart.startYear,
-  )
-  const freqString =
-    'freqString' /*unCamel(
-    data.whendidithappen.howManyTimes.replace('howManyTimes.', ''),
-  )*/
+  const freq = data.whendidithappen.howOften
+  let occurenceString = 'N/A'
+  let dateRow
 
-  console.log('formatIncidentInformation: ', data)
+  if (freq === 'once') {
+    occurenceString = formatDate(
+      data.whendidithappen.whenDidItHappenDay,
+      data.whendidithappen.whenDidItHappenMonth,
+      data.whendidithappen.whenDidItHappenYear,
+    )
+
+    dateRow = formatLineHtml('Occurrence date:            ', occurenceString)
+  } else if (freq === 'morethanonce') {
+    const startDateString = formatDate(
+      data.whendidithappen.whenDidItStartDay,
+      data.whendidithappen.whenDidItStartMonth,
+      data.whendidithappen.whenDidItStartYear,
+    )
+
+    const endDateString = formatDate(
+      data.whendidithappen.whenDidItEndDay,
+      data.whendidithappen.whenDidItEndMonth,
+      data.whendidithappen.whenDidItEndYear,
+    )
+
+    dateRow =
+      formatLineHtml('First occurrence date:      ', startDateString) +
+      formatLineHtml('Last occurrence date:       ', endDateString)
+  } else {
+    dateRow = formatLineHtml(
+      'Unknown date details:       ',
+      data.whendidithappen.unsureDates,
+    )
+  }
+
+  const freqString = unCamel(data.whendidithappen.howOften)
 
   const methodOfCommsString = data.howdiditstart.howDidTheyReachYou
     .map((how) => unCamel(how.replace('howDidTheyReachYou.', '')))
@@ -123,7 +148,7 @@ const formatIncidentInformation = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml('Occurrence date:            ', occurenceString) +
+    dateRow +
     formatLineHtml('Frequency of occurrence:    ', freqString) +
     formatLineHtml('Method of communication:    ', methodOfCommsString) +
     formatLineHtml('What could be affected:     ', affectedString)
