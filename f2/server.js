@@ -8,10 +8,9 @@ const { unflatten } = require('flat')
 const { sanitize } = require('./src/utils/sanitize')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getCertsAndEmail } = require('./src/utils/ldap')
-const { isAvailable } = require('./src/utils/checkIfAvailable')
+const availabilityService = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
-const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
@@ -81,27 +80,6 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
-let availableData
-
-availableData = {
-  numberOfSubmissions: 0,
-  numberOfRequests: 0,
-  lastRequested: undefined,
-}
-const allowedReferrers = [
-  'antifraudcentre-centreantifraude.ca',
-  'centreantifraude-antifraudcentre.ca',
-  'antifraudcentre.ca',
-  'centreantifraude.ca',
-]
-
-getReportCount(availableData)
-setTimeout(
-  () =>
-    logger.info({ message: 'Available Data', availableData: availableData }),
-  1000,
-)
-
 // Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
 // without holding up the rest of the 'save' function
 async function saveBlobAndEmailReport(data) {
@@ -132,11 +110,8 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', async function (req, res, next) {
-  await getReportCount(availableData)
-
   // Default to false. This represents if a user entered a valid TOTP code
   var isTotpValid = false
-  var validReferer = false
 
   // If the user passed in a TOTP query parm (/?totp=) and the correct
   // env var is set, then verify the code.
@@ -149,35 +124,14 @@ app.get('/', async function (req, res, next) {
     })
   }
 
-  if (process.env.CHECK_REFERER) {
-    var referer = req.headers.referer
-    validReferer = referer
-      ? allowedReferrers.includes(new URL(referer).host.toLowerCase())
-      : referer
+  var referer = req.headers.referer
+
+  if (isTotpValid || availabilityService.requestAccess(referer)) {
+    logger.info({
+      message: 'New Request',
+    })
+    next()
   } else {
-    validReferer = true
-  }
-
-  var maxSubmissions =
-    availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY
-
-  var availabilityCheck = {
-    SUBMISSIONS_PER_DAY: process.env.SUBMISSIONS_PER_DAY,
-    NUMBER_OF_SUBMISSIONS: availableData.numberOfSubmissions,
-    MAX_SUBMISSIONS: maxSubmissions,
-    CHECK_REFERER: process.env.CHECK_REFERER,
-    VALID_REFERER: validReferer,
-    TOTP_SECRET: process.env.TOTP_SECRET,
-    TOTP_VALID: isTotpValid,
-  }
-
-  logger.info({
-    message: 'Availability Check',
-    availabilityCheck: availabilityCheck,
-  })
-
-  // If user had a TOTP code, bypass the submissions_per_day restriction
-  if ((maxSubmissions || !validReferer) && !isTotpValid) {
     logger.info({
       message: 'Redirecting to CAFC',
     })
@@ -186,14 +140,6 @@ app.get('/', async function (req, res, next) {
         ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
         : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
-  } else {
-    availableData.numberOfRequests += 1
-    availableData.lastRequested = new Date()
-    logger.info({
-      message: 'New Request',
-      availableData: availableData,
-    })
-    next()
   }
 })
 app
@@ -220,18 +166,19 @@ app
   })
 
   .get('/available', function (_req, res) {
-    res.json({ acceptingReports: isAvailable(availableData) })
+    res.json({ acceptingReports: availabilityService.isAvailable() })
   })
 
   .get('/stats', function (_req, res) {
+    var data = availabilityService.getAvailableData()
     res.json({
-      acceptingReports: isAvailable(availableData),
-      ...availableData,
+      acceptingReports: availabilityService.isAvailable(),
+      ...data,
     })
   })
 
   .post('/submit', (req, res) => {
-    availableData.numberOfSubmissions += 1
+    availabilityService.incrementSubmissions()
     var form = new formidable.IncomingForm()
     form.parse(req)
     let files = []

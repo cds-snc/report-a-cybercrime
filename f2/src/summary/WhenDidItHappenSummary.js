@@ -83,16 +83,12 @@ export const WhenDidItHappenSummary = (props) => {
                 description={whendidithappen.once}
               />
               <DescriptionListItem
-                descriptionTitle="confirmationPage.whenDidItHappen.once"
-                description={whendidithappen.morethanone}
-              />
-              <DescriptionListItem
                 descriptionTitle="confirmationPage.whenDidItHappen.morethanone"
                 description={whendidithappen.morethanone}
               />
               <DescriptionListItem
                 descriptionTitle="confirmationPage.whenDidItHappen.notsure"
-                description={whendidithappen.notsure}
+                description={whendidithappen.unsureDates}
               />
               <DescriptionListItem
                 descriptionTitle="confirmationPage.whenDidItHappen.whenDidItHappen"
