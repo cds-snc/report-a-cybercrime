@@ -192,7 +192,7 @@ export const WhenDidItHappenForm = (props) => {
                   value="notSure"
                   conditionalField={
                     <Field
-                      name={<Trans id="howOften.notSure" />}
+                      name="unsureDates"
                       label={<Trans id="howOftenLabel.question3" />}
                       helperText={<Trans id="howOftenLabel.hint3" />}
                       component={TextArea}

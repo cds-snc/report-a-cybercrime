@@ -23,6 +23,7 @@ const formDefaults = {
     whenDidItEndDay: '',
     whenDidItEndMonth: '',
     whenDidItEndYear: '',
+    unsureDates: '',
   },
   whatWasAffected: {
     affectedOptions: [],
