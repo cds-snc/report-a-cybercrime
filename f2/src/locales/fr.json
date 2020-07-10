@@ -114,7 +114,7 @@
   "confirmationPage.whenDidItHappen.nag": "Aucune information fournie.",
   "confirmationPage.whenDidItHappen.notsure": "Pas certain: ",
   "confirmationPage.whenDidItHappen.once": "Une fois que",
-  "confirmationPage.whenDidItHappen.overviewPrefix": "",
+  "confirmationPage.whenDidItHappen.overviewPrefix": "Heures de contact:",
   "confirmationPage.whenDidItHappen.title": "Quand est-ce arrivé?",
   "confirmationPage.whenDidItHappen.title.edit": "Éditer",
   "confirmationPage.whenDidItHappen.whenDidItEnd": "Arrive plusieurs fois la, date de fin: ",
