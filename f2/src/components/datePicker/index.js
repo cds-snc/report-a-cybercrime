@@ -34,38 +34,32 @@ export const DatePicker = (props) => (
 )
 
 export const SingleDatePicker = (props) => {
-  console.log(props)
   return (
     <DatePicker
-      name="whenDidItHappen"
-      group="{props.group}"
-      // group="whenDidItHappen"
+      name={props.datePickerName}
+      group={props.group}
       label={props.label}
       helperText={props.helperText}
     />
   )
 }
 
-export const DateStartPicker = (props) => {
-  console.log(props)
+export const DateRangePicker = (props) => {
   return (
-    <DatePicker
-      name="whenDidItStart"
-      group={props.group}
-      label={props.label}
-      helperText={props.helperText}
-    />
-  )
-}
-export const DateEndPicker = (props) => {
-  console.log(props)
-  return (
-    <DatePicker
-      name="whenDidItEnd"
-      group={props.group}
-      label={props.label}
-      helperText={props.helperText}
-    />
+    <React.Fragment>
+      <DatePicker
+        name={props.dateStart}
+        group={props.group}
+        label={props.label}
+        helperText={props.helperText}
+      />
+      <DatePicker
+        name={props.dateEnd}
+        group={props.group}
+        label={props.label}
+        helperText={props.helperText}
+      />
+    </React.Fragment>
   )
 }
 // export const DateRangePicker2 = (props) => {

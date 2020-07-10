@@ -13,11 +13,8 @@ const formDefaults = {
     others: '',
   },
   whendidithappen: {
+    howManyTimes: [],
     howOften: '',
-    startDay: '',
-    startMonth: '',
-    startYear: '',
-    howOfteonce: '',
     whenDidItHappenDay: '',
     whenDidItHappenMonth: '',
     whenDidItHappenYear: '',
@@ -54,7 +51,6 @@ const formDefaults = {
     numberOfEmployee: '',
   },
   whatHappened: { whatHappened: '' },
-
   suspectClues: {
     suspectClues1: '',
     suspectClues2: '',
