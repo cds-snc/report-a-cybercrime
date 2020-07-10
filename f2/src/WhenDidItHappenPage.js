@@ -37,7 +37,6 @@ export const WhenDidItHappenPage = () => {
                     type: 'saveFormData',
                     data: { howdidithappen: data },
                   })
-                  console.log(data)
                   history.push(doneForms ? '/confirmation' : '/whatwasaffected')
                 }}
               />

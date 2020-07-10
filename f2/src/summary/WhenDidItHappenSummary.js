@@ -21,8 +21,8 @@ export const WhenDidItHappenSummary = (props) => {
   let overviewLine = ' '
 
   const whendidithappen = {
-    ...testdata.formData.howdidithappen,
-    ...data.formData.howdidithappen,
+    ...testdata.formData.whendidithappen,
+    ...data.formData.whendidithappen,
   }
 
   if (whendidithappen.howOften.length > 0) {

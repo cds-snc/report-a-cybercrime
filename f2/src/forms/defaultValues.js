@@ -14,19 +14,15 @@ const formDefaults = {
   },
   whendidithappen: {
     howOften: '',
-    startDay: '',
-    startMonth: '',
-    startYear: '',
-    howOfteonce: '',
     whenDidItHappenDay: '',
     whenDidItHappenMonth: '',
     whenDidItHappenYear: '',
-    whenDitItEndDay: '',
-    whenDitItEndMonth: '',
-    whenDitItEndYear: '',
     whenDidItStartDay: '',
     whenDidItStartMonth: '',
     whenDidItStartYear: '',
+    whenDidItEndDay: '',
+    whenDidItEndMonth: '',
+    whenDidItEndYear: '',
   },
   whatWasAffected: {
     affectedOptions: [],
@@ -54,7 +50,6 @@ const formDefaults = {
     numberOfEmployee: '',
   },
   whatHappened: { whatHappened: '' },
-
   suspectClues: {
     suspectClues1: '',
     suspectClues2: '',
