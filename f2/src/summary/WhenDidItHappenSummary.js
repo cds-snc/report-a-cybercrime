@@ -77,7 +77,9 @@ export const WhenDidItHappenSummary = (props) => {
             <Stack as="dl" spacing={4}>
               <Text>{overviewLine}</Text>
               <DescriptionListItem
-                descriptionTitle="confirmationPage.whenDidItHappen.once"
+                descriptionTitle={
+                  <Trans id="confirmationPage.whenDidItHappen.once" />
+                }
                 description={whendidithappen.once}
               />
               <DescriptionListItem
