@@ -1,0 +1,1102 @@
+{
+  message: "[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it's over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d'espoir,plus despoir,pas d'espoir,pas despoir,sera mieux,serai mieux,c'est fini,cest fini,couteau,deprime,depression",
+  level: 'info',
+  timestamp: '2020-07-10T17:45:45.619Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: Kevin.Yang@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-07-10T17:45:51.204Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck: {
+    SUBMISSIONS_PER_DAY: '999',
+    NUMBER_OF_SUBMISSIONS: 9,
+    MAX_SUBMISSIONS: false,
+    CHECK_REFERER: undefined,
+    REFERER: undefined,
+    VALID_REFERER: true
+  },
+  level: 'info',
+  timestamp: '2020-07-10T17:45:54.470Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData: {
+    numberOfSubmissions: 9,
+    numberOfRequests: 1,
+    lastRequested: 2020-07-10T17:45:54.471Z
+  },
+  level: 'info',
+  timestamp: '2020-07-10T17:45:54.471Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-07-10T17:45:54.471Z'
+}
+{
+  meta: {
+    req: {
+      url: '/',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'none',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-user': '?1',
+        'sec-fetch-dest': 'document',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        'if-none-match': 'W/"baf-1733948aa21"',
+        'if-modified-since': 'Fri, 10 Jul 2020 15:12:10 GMT'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 11,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 612,
+      referrer: undefined
+    }
+  },
+  level: 'info',
+  message: 'HTTP GET /'
+}
+{
+  meta: {
+    req: {
+      url: '/submit',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'content-length': '5211',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryhZAoNfwAA4LQH7mA',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/no-referrer',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/submit',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 255,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 5780,
+      referrer: 'http://localhost:3000/no-referrer'
+    }
+  },
+  level: 'info',
+  message: 'HTTP POST /submit'
+}
+{
+  message: "[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it's over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d'espoir,plus despoir,pas d'espoir,pas despoir,sera mieux,serai mieux,c'est fini,cest fini,couteau,deprime,depression",
+  level: 'info',
+  timestamp: '2020-07-10T17:48:42.942Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: Kevin.Yang@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-07-10T17:48:48.552Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck: {
+    SUBMISSIONS_PER_DAY: '999',
+    NUMBER_OF_SUBMISSIONS: 10,
+    MAX_SUBMISSIONS: false,
+    CHECK_REFERER: undefined,
+    REFERER: undefined,
+    VALID_REFERER: true
+  },
+  level: 'info',
+  timestamp: '2020-07-10T17:49:01.857Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData: {
+    numberOfSubmissions: 10,
+    numberOfRequests: 1,
+    lastRequested: 2020-07-10T17:49:01.858Z
+  },
+  level: 'info',
+  timestamp: '2020-07-10T17:49:01.858Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-07-10T17:49:01.859Z'
+}
+{
+  meta: {
+    req: {
+      url: '/',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'none',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-user': '?1',
+        'sec-fetch-dest': 'document',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        'if-none-match': 'W/"baf-17339d5440c"',
+        'if-modified-since': 'Fri, 10 Jul 2020 17:45:44 GMT'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 12,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 612,
+      referrer: undefined
+    }
+  },
+  level: 'info',
+  message: 'HTTP GET /'
+}
+{
+  meta: {
+    req: {
+      url: '/submit',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'content-length': '5211',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundarytfCW1y3PnFv36USQ',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/no-referrer',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/submit',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 238,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 5780,
+      referrer: 'http://localhost:3000/no-referrer'
+    }
+  },
+  level: 'info',
+  message: 'HTTP POST /submit'
+}
+{
+  message: "[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it's over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d'espoir,plus despoir,pas d'espoir,pas despoir,sera mieux,serai mieux,c'est fini,cest fini,couteau,deprime,depression",
+  level: 'info',
+  timestamp: '2020-07-10T17:50:43.352Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck: {
+    SUBMISSIONS_PER_DAY: '999',
+    NUMBER_OF_SUBMISSIONS: 11,
+    MAX_SUBMISSIONS: false,
+    CHECK_REFERER: undefined,
+    REFERER: undefined,
+    VALID_REFERER: true
+  },
+  level: 'info',
+  timestamp: '2020-07-10T17:50:47.206Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData: {
+    numberOfSubmissions: 11,
+    numberOfRequests: 1,
+    lastRequested: 2020-07-10T17:50:47.213Z
+  },
+  level: 'info',
+  timestamp: '2020-07-10T17:50:47.213Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-07-10T17:50:47.213Z'
+}
+{
+  meta: {
+    req: {
+      url: '/',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'cache-control': 'max-age=0',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'none',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-user': '?1',
+        'sec-fetch-dest': 'document',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        'if-none-match': 'W/"baf-17339d7f8d7"',
+        'if-modified-since': 'Fri, 10 Jul 2020 17:48:42 GMT'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 16,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 638,
+      referrer: undefined
+    }
+  },
+  level: 'info',
+  message: 'HTTP GET /'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: Kevin.Yang@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-07-10T17:50:48.945Z'
+}
+{
+  meta: {
+    req: {
+      url: '/submit',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'content-length': '5211',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryPlC9FdniLhaT0nQc',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/no-referrer',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/submit',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 264,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 5780,
+      referrer: 'http://localhost:3000/no-referrer'
+    }
+  },
+  level: 'info',
+  message: 'HTTP POST /submit'
+}
+{
+  message: "[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it's over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d'espoir,plus despoir,pas d'espoir,pas despoir,sera mieux,serai mieux,c'est fini,cest fini,couteau,deprime,depression",
+  level: 'info',
+  timestamp: '2020-07-10T17:57:59.917Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck: {
+    SUBMISSIONS_PER_DAY: '999',
+    NUMBER_OF_SUBMISSIONS: 13,
+    MAX_SUBMISSIONS: false,
+    CHECK_REFERER: undefined,
+    REFERER: undefined,
+    VALID_REFERER: true
+  },
+  level: 'info',
+  timestamp: '2020-07-10T17:58:01.868Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData: {
+    numberOfSubmissions: 13,
+    numberOfRequests: 1,
+    lastRequested: 2020-07-10T17:58:01.868Z
+  },
+  level: 'info',
+  timestamp: '2020-07-10T17:58:01.868Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-07-10T17:58:01.869Z'
+}
+{
+  meta: {
+    req: {
+      url: '/',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'cache-control': 'max-age=0',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'cross-site',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-dest': 'document',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        'if-none-match': 'W/"baf-17339d9ceff"',
+        'if-modified-since': 'Fri, 10 Jul 2020 17:50:42 GMT'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 9,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 624,
+      referrer: undefined
+    }
+  },
+  level: 'info',
+  message: 'HTTP GET /'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: Kevin.Yang@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-07-10T17:58:05.509Z'
+}
+{
+  meta: {
+    req: {
+      url: '/submit',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'content-length': '5211',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7cV9AinPIJ5rDUhV',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/no-referrer',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/submit',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 243,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 5780,
+      referrer: 'http://localhost:3000/no-referrer'
+    }
+  },
+  level: 'info',
+  message: 'HTTP POST /submit'
+}
+{
+  message: "[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it's over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d'espoir,plus despoir,pas d'espoir,pas despoir,sera mieux,serai mieux,c'est fini,cest fini,couteau,deprime,depression",
+  level: 'info',
+  timestamp: '2020-07-10T17:59:28.958Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck: {
+    SUBMISSIONS_PER_DAY: '999',
+    NUMBER_OF_SUBMISSIONS: 14,
+    MAX_SUBMISSIONS: false,
+    CHECK_REFERER: undefined,
+    REFERER: undefined,
+    VALID_REFERER: true
+  },
+  level: 'info',
+  timestamp: '2020-07-10T17:59:30.683Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData: {
+    numberOfSubmissions: 14,
+    numberOfRequests: 1,
+    lastRequested: 2020-07-10T17:59:30.683Z
+  },
+  level: 'info',
+  timestamp: '2020-07-10T17:59:30.683Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-07-10T17:59:30.684Z'
+}
+{
+  meta: {
+    req: {
+      url: '/',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'none',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-user': '?1',
+        'sec-fetch-dest': 'document',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        'if-none-match': 'W/"baf-17339e07875"',
+        'if-modified-since': 'Fri, 10 Jul 2020 17:57:59 GMT'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 9,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 612,
+      referrer: undefined
+    }
+  },
+  level: 'info',
+  message: 'HTTP GET /'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: Kevin.Yang@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-07-10T17:59:34.580Z'
+}
+{
+  meta: {
+    req: {
+      url: '/submit',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'content-length': '5211',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryzcJtaRxfIuHGeZ7B',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/no-referrer',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/submit',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 248,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 5780,
+      referrer: 'http://localhost:3000/no-referrer'
+    }
+  },
+  level: 'info',
+  message: 'HTTP POST /submit'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck: {
+    SUBMISSIONS_PER_DAY: '999',
+    NUMBER_OF_SUBMISSIONS: 15,
+    MAX_SUBMISSIONS: false,
+    CHECK_REFERER: undefined,
+    REFERER: undefined,
+    VALID_REFERER: true
+  },
+  level: 'info',
+  timestamp: '2020-07-10T18:00:09.690Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData: {
+    numberOfSubmissions: 15,
+    numberOfRequests: 2,
+    lastRequested: 2020-07-10T18:00:09.691Z
+  },
+  level: 'info',
+  timestamp: '2020-07-10T18:00:09.691Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-07-10T18:00:09.691Z'
+}
+{
+  meta: {
+    req: {
+      url: '/',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'none',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-user': '?1',
+        'sec-fetch-dest': 'document',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        'if-none-match': 'W/"baf-17339e1d40b"',
+        'if-modified-since': 'Fri, 10 Jul 2020 17:59:28 GMT'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/',
+      query: {}
+    },
+    res: { statusCode: 304 },
+    responseTime: 4,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 612,
+      referrer: undefined
+    }
+  },
+  level: 'info',
+  message: 'HTTP GET /'
+}
+{
+  meta: {
+    req: {
+      url: '/submit',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'content-length': '5211',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryMXCPNFE7WgUHnvtR',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/no-referrer',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/submit',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 249,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 5780,
+      referrer: 'http://localhost:3000/no-referrer'
+    }
+  },
+  level: 'info',
+  message: 'HTTP POST /submit'
+}
+{
+  message: "[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it's over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d'espoir,plus despoir,pas d'espoir,pas despoir,sera mieux,serai mieux,c'est fini,cest fini,couteau,deprime,depression",
+  level: 'info',
+  timestamp: '2020-07-10T18:01:51.119Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck: {
+    SUBMISSIONS_PER_DAY: '999',
+    NUMBER_OF_SUBMISSIONS: 16,
+    MAX_SUBMISSIONS: false,
+    CHECK_REFERER: undefined,
+    REFERER: undefined,
+    VALID_REFERER: true
+  },
+  level: 'info',
+  timestamp: '2020-07-10T18:01:52.198Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData: {
+    numberOfSubmissions: 16,
+    numberOfRequests: 1,
+    lastRequested: 2020-07-10T18:01:52.198Z
+  },
+  level: 'info',
+  timestamp: '2020-07-10T18:01:52.198Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-07-10T18:01:52.199Z'
+}
+{
+  meta: {
+    req: {
+      url: '/',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'cache-control': 'max-age=0',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'none',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-user': '?1',
+        'sec-fetch-dest': 'document',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        'if-none-match': 'W/"baf-17339e1d40b"',
+        'if-modified-since': 'Fri, 10 Jul 2020 17:59:28 GMT'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 10,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 638,
+      referrer: undefined
+    }
+  },
+  level: 'info',
+  message: 'HTTP GET /'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: Kevin.Yang@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-07-10T18:01:56.736Z'
+}
+{
+  meta: {
+    req: {
+      url: '/submit',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'content-length': '5211',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundarydioqJ0dZKrLBG1rt',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/no-referrer',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/submit',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 249,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 5780,
+      referrer: 'http://localhost:3000/no-referrer'
+    }
+  },
+  level: 'info',
+  message: 'HTTP POST /submit'
+}
+{
+  message: "[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it's over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d'espoir,plus despoir,pas d'espoir,pas despoir,sera mieux,serai mieux,c'est fini,cest fini,couteau,deprime,depression",
+  level: 'info',
+  timestamp: '2020-07-10T18:04:40.073Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck: {
+    SUBMISSIONS_PER_DAY: '999',
+    NUMBER_OF_SUBMISSIONS: 17,
+    MAX_SUBMISSIONS: false,
+    CHECK_REFERER: undefined,
+    REFERER: undefined,
+    VALID_REFERER: true
+  },
+  level: 'info',
+  timestamp: '2020-07-10T18:04:45.334Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData: {
+    numberOfSubmissions: 17,
+    numberOfRequests: 1,
+    lastRequested: 2020-07-10T18:04:45.335Z
+  },
+  level: 'info',
+  timestamp: '2020-07-10T18:04:45.335Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-07-10T18:04:45.335Z'
+}
+{
+  meta: {
+    req: {
+      url: '/',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'none',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-user': '?1',
+        'sec-fetch-dest': 'document',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        'if-none-match': 'W/"baf-17339e3ff9f"',
+        'if-modified-since': 'Fri, 10 Jul 2020 18:01:50 GMT'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 10,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 612,
+      referrer: undefined
+    }
+  },
+  level: 'info',
+  message: 'HTTP GET /'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: Kevin.Yang@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-07-10T18:04:45.719Z'
+}
+{
+  meta: {
+    req: {
+      url: '/submit',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'content-length': '5211',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryDFkQhqYC5JvOlj21',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/no-referrer',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/submit',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 256,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 5780,
+      referrer: 'http://localhost:3000/no-referrer'
+    }
+  },
+  level: 'info',
+  message: 'HTTP POST /submit'
+}
+{
+  message: "[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it's over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d'espoir,plus despoir,pas d'espoir,pas despoir,sera mieux,serai mieux,c'est fini,cest fini,couteau,deprime,depression",
+  level: 'info',
+  timestamp: '2020-07-10T18:07:01.873Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: Kevin.Yang@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-07-10T18:07:07.472Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck: {
+    SUBMISSIONS_PER_DAY: '999',
+    NUMBER_OF_SUBMISSIONS: 18,
+    MAX_SUBMISSIONS: false,
+    CHECK_REFERER: undefined,
+    REFERER: undefined,
+    VALID_REFERER: true
+  },
+  level: 'info',
+  timestamp: '2020-07-10T18:07:17.566Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData: {
+    numberOfSubmissions: 18,
+    numberOfRequests: 1,
+    lastRequested: 2020-07-10T18:07:17.566Z
+  },
+  level: 'info',
+  timestamp: '2020-07-10T18:07:17.566Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-07-10T18:07:17.566Z'
+}
+{
+  meta: {
+    req: {
+      url: '/',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'none',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-user': '?1',
+        'sec-fetch-dest': 'document',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        'if-none-match': 'W/"baf-17339e6939f"',
+        'if-modified-since': 'Fri, 10 Jul 2020 18:04:39 GMT'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 11,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 612,
+      referrer: undefined
+    }
+  },
+  level: 'info',
+  message: 'HTTP GET /'
+}
+{
+  meta: {
+    req: {
+      url: '/submit',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'content-length': '5211',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryiUuwwF9LliwPRA5j',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/no-referrer',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/submit',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 249,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 5780,
+      referrer: 'http://localhost:3000/no-referrer'
+    }
+  },
+  level: 'info',
+  message: 'HTTP POST /submit'
+}
+{
+  message: "[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it's over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d'espoir,plus despoir,pas d'espoir,pas despoir,sera mieux,serai mieux,c'est fini,cest fini,couteau,deprime,depression",
+  level: 'info',
+  timestamp: '2020-07-10T18:13:05.635Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck: {
+    SUBMISSIONS_PER_DAY: '999',
+    NUMBER_OF_SUBMISSIONS: 19,
+    MAX_SUBMISSIONS: false,
+    CHECK_REFERER: undefined,
+    REFERER: undefined,
+    VALID_REFERER: true
+  },
+  level: 'info',
+  timestamp: '2020-07-10T18:13:10.183Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData: {
+    numberOfSubmissions: 19,
+    numberOfRequests: 1,
+    lastRequested: 2020-07-10T18:13:10.184Z
+  },
+  level: 'info',
+  timestamp: '2020-07-10T18:13:10.184Z'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-07-10T18:13:10.184Z'
+}
+{
+  meta: {
+    req: {
+      url: '/',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'sec-fetch-site': 'none',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-user': '?1',
+        'sec-fetch-dest': 'document',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9',
+        'if-none-match': 'W/"baf-17339e8bd8c"',
+        'if-modified-since': 'Fri, 10 Jul 2020 18:07:01 GMT'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 9,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 612,
+      referrer: undefined
+    }
+  },
+  level: 'info',
+  message: 'HTTP GET /'
+}
+{
+  message: '[/Users/kevinyang/projects/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: Kevin.Yang@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-07-10T18:13:11.244Z'
+}
+{
+  meta: {
+    req: {
+      url: '/submit',
+      headers: {
+        host: 'localhost:3000',
+        connection: 'keep-alive',
+        'content-length': '5211',
+        'cache-control': 'max-age=0',
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryAXcI15BTXqPo91DG',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/no-referrer',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/submit',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 254,
+    httpRequest: {
+      remoteIpv4andv6: '::1',
+      remoteIpv4: '1',
+      requestSize: 5780,
+      referrer: 'http://localhost:3000/no-referrer'
+    }
+  },
+  level: 'info',
+  message: 'HTTP POST /submit'
+}
