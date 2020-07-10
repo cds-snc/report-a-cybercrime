@@ -107,9 +107,12 @@ const formatIncidentInformation = (data) => {
     data.howdiditstart.startMonth,
     data.howdiditstart.startYear,
   )
-  const freqString = unCamel(
-    data.howdiditstart.howManyTimes.replace('howManyTimes.', ''),
-  )
+  const freqString =
+    'freqString' /*unCamel(
+    data.whendidithappen.howManyTimes.replace('howManyTimes.', ''),
+  )*/
+
+  console.log('formatIncidentInformation: ', data)
 
   const methodOfCommsString = data.howdiditstart.howDidTheyReachYou
     .map((how) => unCamel(how.replace('howDidTheyReachYou.', '')))
