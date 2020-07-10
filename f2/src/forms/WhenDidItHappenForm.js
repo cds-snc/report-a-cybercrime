@@ -14,7 +14,7 @@ import { ErrorSummary } from '../components/ErrorSummary'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { validateDate } from '../utils/validateDate'
-import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
+import { SingleDatePicker } from '../components/datePicker'
 
 let validate = (values) => {
   const errors = {}
