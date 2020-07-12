@@ -142,7 +142,7 @@ export const WhenDidItHappenForm = (props) => {
             ) : null}
             <FormArrayControl
               name="whendidithappen"
-              label={<Trans id="howOften.label" />}
+              label={<Trans id="howManyTimes.label" />}
               errors={errors}
             >
               <React.Fragment>

@@ -241,7 +241,7 @@
   "howDidTheyReachYouLabel.question3": "What was the website URL?",
   "howDidTheyReachYouLabel.question4": "Which application was used?",
   "howDidTheyReachYouLabel.question5": "Describe how it started.",
-  "howOften.label": "How many times did the suspect contact you?",
+  "howManyTimes.label": "How many times did the suspect contact you?",
   "howOften.morethanonce": "More than once",
   "howOften.notSure": "I'm not sure",
   "howOften.once": "Once",

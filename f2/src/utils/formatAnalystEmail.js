@@ -184,9 +184,9 @@ const formatIncidentInformation = (data) => {
     .join(', ')
 
   const rows =
-    dateRow +
-    formatLineHtml(lang['howManyTimes.label'], freqString) +
     formatLineHtml(lang['howDidTheyReachYou.question'], methodOfCommsString) +
+    formatLineHtml(lang['howManyTimes.label'], freqString) +
+    dateRow +
     formatLineHtml(lang['confirmationPage.ImpactTitle'], affectedString)
   delete data.howdiditstart.startDay
   delete data.howdiditstart.startMonth

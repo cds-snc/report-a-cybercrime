@@ -77,16 +77,6 @@ export const WhenDidItHappenSummary = (props) => {
             <Stack as="dl" spacing={4}>
               <Text>{overviewLine}</Text>
               <DescriptionListItem
-                descriptionTitle={
-                  <Trans id="confirmationPage.whenDidItHappen.once" />
-                }
-                description={whendidithappen.once}
-              />
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.whenDidItHappen.morethanone"
-                description={whendidithappen.morethanone}
-              />
-              <DescriptionListItem
                 descriptionTitle="confirmationPage.whenDidItHappen.notsure"
                 description={whendidithappen.unsureDates}
               />
@@ -113,10 +103,6 @@ export const WhenDidItHappenSummary = (props) => {
                   whendidithappen.whenDidItEndMonth,
                   whendidithappen.whenDidItEndYear,
                 )}
-              />
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.whenDidItHappen.notSure"
-                description={whendidithappen.notsure}
               />
             </Stack>
           </React.Fragment>
