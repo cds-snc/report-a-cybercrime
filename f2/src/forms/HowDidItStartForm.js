@@ -96,6 +96,7 @@ export const HowDidItStartForm = (props) => {
           <Trans id="howDidTheyReachYou.online" />
           <Trans id="howDidTheyReachYou.app" />
           <Trans id="howDidTheyReachYou.others" />
+          <Trans id="howDidItStartPage.incidentInformation" />
         </div>
       ) : null}
 
