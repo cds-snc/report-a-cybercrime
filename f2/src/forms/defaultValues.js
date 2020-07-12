@@ -14,6 +14,7 @@ const formDefaults = {
   },
   whendidithappen: {
     howOften: '',
+    howManyTimes: [],
     whenDidItHappenDay: '',
     whenDidItHappenMonth: '',
     whenDidItHappenYear: '',

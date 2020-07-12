@@ -19,6 +19,7 @@ import { SingleDatePicker } from '../components/datePicker'
 let validate = (values) => {
   const errors = {}
 
+  //date validation
   if (values.howOften === 'morethanonce') {
     const startDate = validateDate(
       values.whenDidItStartYear,
@@ -89,13 +90,9 @@ export const WhenDidItHappenForm = (props) => {
     ...data.formData.whendidithappen,
   }
 
+  //for debug
   console.log(`whendidithappen: ${JSON.stringify(whendidithappen, null, 2)}`)
 
-  //   const howOften = [
-  //     'howOften.once',
-  //     'howOften.moreThanOnce',
-  //     'howOften.notSure',
-  //   ]
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -180,7 +177,6 @@ export const WhenDidItHappenForm = (props) => {
                         label={<Trans id="howOftenLabel.question2.1" />}
                         helperText={<Trans id="howOftenLabel.hint1" />}
                       />
-                      \n
                       <Field
                         component={SingleDatePicker}
                         name="whenDidItEnd"

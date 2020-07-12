@@ -49,7 +49,7 @@ export const WhenDidItHappenSummary = (props) => {
           <Trans id="confirmationPage.whenDidItHappen.morethanonce" />
           <Trans id="confirmationPage.whenDidItHappen.notsure" />
           <Trans id="confirmationPage.whenDidItHappen.title.edit" />
-          <Trans id=" confirmationPage.whenDidItHappen.whenDidItHappen" />
+          <Trans id="confirmationPage.whenDidItHappen.whenDidItHappen" />
           <Trans id="confirmationPage.whenDidItHappen.whenDidItStart" />
           <Trans id="confirmationPage.whenDidItHappen.whenDidItEnd" />
         </div>

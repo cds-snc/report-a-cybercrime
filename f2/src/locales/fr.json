@@ -1,5 +1,4 @@
 {
-  " confirmationPage.whenDidItHappen.whenDidItHappen": "",
   "LocationAnonymousInfoForm.city": "Ville ou municipalité",
   "LocationAnonymousInfoForm.nextButton": "Continuer",
   "LocationAnonymousInfoForm.nextPage": "Prochaine étape : Révisez votre rapport",
@@ -127,8 +126,9 @@
   "confirmationPage.whenDidItHappen.overviewPrefix": "Heures de contact:",
   "confirmationPage.whenDidItHappen.title": "Quand est-ce arrivé?",
   "confirmationPage.whenDidItHappen.title.edit": "Éditer",
-  "confirmationPage.whenDidItHappen.whenDidItEnd": "Arrive plusieurs fois la, date de fin: ",
-  "confirmationPage.whenDidItHappen.whenDidItStart": "Arrive plusieurs fois la, date de début: ",
+  "confirmationPage.whenDidItHappen.whenDidItEnd": "Arrivé plusieurs fois. Date de la dernière occurrence: ",
+  "confirmationPage.whenDidItHappen.whenDidItHappen": "C'est arrivé une fois. Date d'occurrence: ",
+  "confirmationPage.whenDidItHappen.whenDidItStart": "Arrivé plusieurs fois. Date de première occurrence: ",
   "contactInfoPage.victimDetail": "Détails sur la victime",
   "contactinfoForm.email.warning": "Entrez une adresse courriel valide.",
   "contactinfoForm.fullName.warning": "Entrez votre nom complet",
