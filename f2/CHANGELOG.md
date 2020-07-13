@@ -25,7 +25,7 @@
 - Reloading now directs user to consent page instead of causing error (#2020)
 - Remove city/prov fields from anonymous reports (#2045)
 
-## V1.4.0 (Staging: 202-06-04, Prod: 2020-06-09)
+## V1.4.0 (Staging: 2020-06-04, Prod: 2020-06-09)
 
 - E-mail to analysts redesigned to fix usability issues and files transfered by Azure Shared Access Signature instead of e-mail attachment (Pull Request #1975, Issues #1953, #1900, #1704)
 - Fix bugs around enforcing user to consent to privacy statement (PR #1927, #1958, Issue #1924, #1957)
