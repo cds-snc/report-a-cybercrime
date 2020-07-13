@@ -1,5 +1,13 @@
 # Changelog for report a cybercrime product
 
+## V1.6.0 (Staging, 2020-07-09, Prod: 2020-07-14)
+
+- More tweaking self harm keyword matching (#2065)
+- Make contact info mandatory on non-anonymous flow (#1902)
+- Code refactoring, logging, infrastructure and dependancy updates (#2064, #1999, #2027)
+- Fix bug that can cause a report to skip self-harm keyword scan when certain quotation characters are used (#2076)
+- Updated error message when uploaded file's type is not supported (#2007)
+
 ## V1.5.0 (Staging, 2020-06-19, Prod: 2020-07-02)
 
 - Logging, Code Refactoring, dependancy/library updates and infrastructure tweaks (PR # 2002, #2001, #1994, #1977, #1990, #2017, #2024, #2028, #2043, #2026, #2030, #2046, #2044, #2036)
