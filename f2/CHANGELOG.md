@@ -1,6 +1,23 @@
 # Changelog for report a cybercrime product
 
-## V1.4.0 (2020-06-09)
+## V1.5.0 (Staging, 2020-06-19, Prod: 2020-07-02)
+
+- Logging, Code Refactoring, dependancy/library updates and infrastructure tweaks (PR # 2002, #2001, #1994, #1977, #1990, #2017, #2024, #2028, #2043, #2026, #2030, #2046, #2044, #2036)
+- Added recaptcha support (However currently disabled and not in use) PR #1981
+- Changed links on cancelation page to match confirmation page #1995
+- Disable CSP protection that broke google analytics (PR #2012)
+- All links on cancelation page now open a new window #PR 2005)
+- Minor cosmetic fixes (PR #2009)
+- File type validation no longer case sensitive (PR #2008)
+- Tuning self harm keyword matching (PR #1976, #2041)
+- Fix bug with e-mail report if user enters invalid postal code (#2034)
+- E-mail reports now go to a group mailbox instead of directly to analysts (#2025)
+- "Return to previous version" link sends user to FRS login instead of CAFC website(#2015)
+- Add "staying cyber healthy" link on confirmation page (#2040)
+- Reloading now directs user to consent page instead of causing error (#2020)
+- Remove city/prov fields from anonymous reports (#2045)
+
+## V1.4.0 (Staging: 202-06-04, Prod: 2020-06-09)
 
 - E-mail to analysts redesigned to fix usability issues and files transfered by Azure Shared Access Signature instead of e-mail attachment (Pull Request #1975, Issues #1953, #1900, #1704)
 - Fix bugs around enforcing user to consent to privacy statement (PR #1927, #1958, Issue #1924, #1957)
