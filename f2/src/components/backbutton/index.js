@@ -12,7 +12,7 @@ export const BackButton = ({ variant, variants, variantColor, ...props }) => (
       <LinkButton
         d="inline-flex"
         alignItems="center"
-        onClick={(e) => {
+        onClick={e => {
           e.preventDefault()
           history.goBack()
         }}
