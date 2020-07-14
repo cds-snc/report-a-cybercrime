@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useLingui } from '@lingui/react'
+// import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
@@ -131,6 +131,7 @@ export const WhenDidItHappenForm = (props) => {
           <Trans id="whenDidItStart.error.hasNoYear" />
           <Trans id="whenDidItStart.error.hasNoMonth" />
           <Trans id="whenDidItStart.error.hasNoDay" />
+          <Trans id="whenDidItHappen.endBeforeStart" />
         </div>
       ) : null}
 

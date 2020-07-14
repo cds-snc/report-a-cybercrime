@@ -114,20 +114,6 @@ export const HowDidItStartForm = (props) => {
           <Trans id="howDidTheyReachYou.online" />
           <Trans id="howDidTheyReachYou.app" />
           <Trans id="howDidTheyReachYou.others" />
-
-          <Trans id="howManyTimes.once" />
-          <Trans id="howManyTimes.severalTimes" />
-          <Trans id="howManyTimes.notSure" />
-
-          <Trans id="whenDidItStart.error.notDay" />
-          <Trans id="whenDidItStart.error.notMonth" />
-          <Trans id="whenDidItStart.error.isFuture" />
-          <Trans id="whenDidItStart.error.notYear" />
-          <Trans id="whenDidItStart.error.yearLength" />
-          <Trans id="whenDidItStart.error.hasNoYear" />
-          <Trans id="whenDidItStart.error.hasNoMonth" />
-          <Trans id="whenDidItStart.error.hasNoDay" />
-
           <Trans id="howDidItStartPage.incidentInformation" />
         </div>
       ) : null}

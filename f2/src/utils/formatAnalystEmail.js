@@ -148,10 +148,13 @@ const formatIncidentInformation = (data) => {
       data.whenDidItHappen.happenedOnceYear,
     )
     occurenceLine =
-      formatLineHtml(lang['confirmationPage.whenDidItStart'], occurenceString) +
       formatLineHtml(
-        lang['howManyTimes.label'],
+        lang['confirmationPage.howManyTimes'],
         lang['whenDidItHappenPage.options.once'],
+      ) +
+      formatLineHtml(
+        lang['whenDidItHappenPage.singleDate.label'],
+        occurenceString,
       )
   } else if (freq === 'moreThanOnce') {
     const startDateString = formatDate(
@@ -167,17 +170,29 @@ const formatIncidentInformation = (data) => {
     )
 
     occurenceLine =
-      formatLineHtml(lang['confirmationPage.whenDidItStart'], startDateString) +
-      formatLineHtml(lang['confirmationPage.whenDidItEnd'], endtDateString) +
       formatLineHtml(
-        lang['howManyTimes.label'],
+        lang['confirmationPage.howManyTimes'],
         lang['whenDidItHappenPage.options.moreThanOnce'],
+      ) +
+      formatLineHtml(
+        lang['whenDidItHappenPage.dateRange.start.label'],
+        startDateString,
+      ) +
+      formatLineHtml(
+        lang['whenDidItHappenPage.dateRange.end.label'],
+        endtDateString,
       )
   } else {
-    occurenceLine = formatLineHtml(
-      lang['confirmationPage.whenDidItStart'],
-      lang['whenDidItHappenPage.options.notSure'],
-    )
+    const textAreaString = data.whenDidItHappen.description
+    occurenceLine =
+      formatLineHtml(
+        lang['confirmationPage.howManyTimes'],
+        lang['whenDidItHappenPage.options.notSure'],
+      ) +
+      formatLineHtml(
+        lang['whenDidItHappenPage.options.notSure.details'],
+        textAreaString,
+      )
   }
 
   const methodOfCommsString = data.howdiditstart.howDidTheyReachYou
@@ -189,8 +204,8 @@ const formatIncidentInformation = (data) => {
     .join(', ')
 
   const rows =
-    occurenceLine +
     formatLineHtml(lang['howDidTheyReachYou.question'], methodOfCommsString) +
+    occurenceLine +
     formatLineHtml(lang['confirmationPage.ImpactTitle'], affectedString)
   delete data.howdiditstart.startDay
   delete data.howdiditstart.startMonth

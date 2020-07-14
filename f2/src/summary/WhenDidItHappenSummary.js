@@ -40,6 +40,7 @@ export const WhenDidItHappenSummary = (props) => {
           <Trans id="whenDidItHappenPage.dateRange.end.label" />
           <Trans id="whenDidItHappenPage.singleDate.label" />
           <Trans id="confirmationPage.howManyTimes" />
+          <Trans id="whenDidItHappenPage.options.notSure.details" />
         </div>
       ) : null}
 
