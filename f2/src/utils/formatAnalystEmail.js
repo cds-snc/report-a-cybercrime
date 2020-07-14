@@ -138,14 +138,47 @@ const formatVictimDetails = (data) => {
 }
 
 const formatIncidentInformation = (data) => {
-  const occurenceString = formatDate(
-    data.howdiditstart.startDay,
-    data.howdiditstart.startMonth,
-    data.howdiditstart.startYear,
-  )
-  const freqString = unCamel(
-    data.howdiditstart.howManyTimes.replace('howManyTimes.', ''),
-  )
+  const freq = data.whenDidItHappen.incidentFrequency
+  let occurenceLine
+
+  if (freq === 'once') {
+    const occurenceString = formatDate(
+      data.whenDidItHappen.happenedOnceDay,
+      data.whenDidItHappen.happenedOnceMonth,
+      data.whenDidItHappen.happenedOnceYear,
+    )
+    occurenceLine =
+      formatLineHtml(lang['confirmationPage.whenDidItStart'], occurenceString) +
+      formatLineHtml(
+        lang['howManyTimes.label'],
+        lang['whenDidItHappenPage.options.once'],
+      )
+  } else if (freq === 'moreThanOnce') {
+    const startDateString = formatDate(
+      data.whenDidItHappen.startDay,
+      data.whenDidItHappen.startMonth,
+      data.whenDidItHappen.startYear,
+    )
+
+    const endtDateString = formatDate(
+      data.whenDidItHappen.endDay,
+      data.whenDidItHappen.endMonth,
+      data.whenDidItHappen.endYear,
+    )
+
+    occurenceLine =
+      formatLineHtml(lang['confirmationPage.whenDidItStart'], startDateString) +
+      formatLineHtml(lang['confirmationPage.whenDidItEnd'], endtDateString) +
+      formatLineHtml(
+        lang['howManyTimes.label'],
+        lang['whenDidItHappenPage.options.moreThanOnce'],
+      )
+  } else {
+    occurenceLine = formatLineHtml(
+      lang['confirmationPage.whenDidItStart'],
+      lang['whenDidItHappenPage.options.notSure'],
+    )
+  }
 
   const methodOfCommsString = data.howdiditstart.howDidTheyReachYou
     .map((how) => unCamel(how.replace('howDidTheyReachYou.', '')))
@@ -156,8 +189,7 @@ const formatIncidentInformation = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml(lang['confirmationPage.whenDidItStart'], occurenceString) +
-    formatLineHtml(lang['howManyTimes.label'], freqString) +
+    occurenceLine +
     formatLineHtml(lang['howDidTheyReachYou.question'], methodOfCommsString) +
     formatLineHtml(lang['confirmationPage.ImpactTitle'], affectedString)
   delete data.howdiditstart.startDay
