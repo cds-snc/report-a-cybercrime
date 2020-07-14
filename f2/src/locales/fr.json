@@ -256,8 +256,6 @@
   "landingPage.title": "Signalez une fraude ou un crime informatique",
   "landingPage.warning": "Les signalements ne mènent pas toujours à une enquête. Il est peu probable que nous puissions récupérer ce qui a été perdu ou endommagé.",
   "locationInfoForm.Warning": "Entrez un code postal canadien dans le format indiqué ou bien laissez le champ vide.",
-  "locationInfoPage.postalCity": "Ville du code postal",
-  "locationInfoPage.postalProv": "Province du code postal",
   "locationPage.intro": "Nous utilisons votre emplacement géographique pour établir un lien entre votre rapport et les autres rapports de votre région, et pour collaborer avec les services de police locaux partout au Canada.",
   "locationPage.title": "Votre emplacement géographique",
   "locationinfoPage.hasValidationErrors": "Veuillez vérifier le code postal.",
