@@ -56,8 +56,8 @@ export const LocationInfoForm = (props) => {
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
-          <Trans id="locationInfoPage.postalCity" />
-          <Trans id="locationInfoPage.postalProv" />
+          <Trans id="locationinfoPage.postalCity" />
+          <Trans id="locationinfoPage.postalProv" />
         </div>
       ) : null}
       <Form
