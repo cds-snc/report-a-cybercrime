@@ -66,7 +66,7 @@ const validate = (values) => {
         `${values.endYear} ${values.endMonth} ${values.endDay}`,
       )
 
-      errors.dateRangeErrors = validateDateRange(startDate, endDate)
+      return (errors.dateRangeErrors = validateDateRange(startDate, endDate))
     }
   }
 
