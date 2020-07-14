@@ -101,7 +101,6 @@ export const WhenDidItHappenForm = (props) => {
       props.onSubmit(clearData({ ...data }))
   }
 
-  const { i18n } = useLingui()
   const [data] = useStateValue()
   const whenDidItHappen = {
     ...formDefaults.whenDidItHappen,

@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx } from '@emotion/core'
-import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
@@ -12,7 +11,6 @@ import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
-import { formatList } from '../utils/formatList'
 
 export const WhenDidItHappenSummary = (props) => {
   const [data] = useStateValue()

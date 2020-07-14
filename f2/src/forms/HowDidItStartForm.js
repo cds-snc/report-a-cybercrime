@@ -5,12 +5,10 @@ import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { CheckboxAdapter } from '../components/checkbox'
-import { RadioAdapter } from '../components/radio'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { TextArea } from '../components/text-area'
-import { TextInput } from '../components/TextInput'
 import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
@@ -95,12 +93,6 @@ export const HowDidItStartForm = (props) => {
       label: 'howDidTheyReachYouLabel.question5',
       hint: 'howDidTheyReachYouLabel.hint5',
     },
-  ]
-
-  const howManyTimes = [
-    'howManyTimes.once',
-    'howManyTimes.severalTimes',
-    'howManyTimes.notSure',
   ]
 
   return (
