@@ -11,7 +11,9 @@ const unCamel = (text) =>
   text.replace(/([A-Z])|([\d]+)/g, ' $1$2').toLowerCase()
 
 const formatLineHtml = (label, text) =>
-  text && text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
+  text && text !== ''
+    ? `<tr><td style="width:250px">${label}</td><td>${text}</td></tr>\n`
+    : ''
 
 const formatTable = (rows) => `<table><tbody>\n${rows}</tbody></table>\n\n`
 
