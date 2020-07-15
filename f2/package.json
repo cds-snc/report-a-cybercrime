@@ -45,7 +45,7 @@
     "react-gtm-module": "^2.0.8",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
-    "sanitize-html": "^1.22.1",
+    "sanitize-html": "^1.27.0",
     "speakeasy": "^2.0.0",
     "styled-system": "^5.1.5",
     "unidecode": "^0.1.8",
@@ -154,7 +154,7 @@
     "react-is": "^16.13.1",
     "recompose": "^0.30.0",
     "start-server-and-test": "^1.10.11",
-    "storybook-addon-jsx": "^7.1.15",
+    "storybook-addon-jsx": "^7.2.3",
     "waait": "^1.0.5"
   },
   "jest": {
