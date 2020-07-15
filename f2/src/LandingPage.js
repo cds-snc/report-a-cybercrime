@@ -98,7 +98,7 @@ export const LandingPage = (props) => {
                   <P>
                     <Trans id="landingPage.onlineIntro" />
                   </P>
-                  <ButtonLink to="/startPage">
+                  <ButtonLink to="/formTest">
                     <Trans id="landingPage.nextButton.reportNow" />
                     <Icon
                       focusable="false"
