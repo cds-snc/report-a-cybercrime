@@ -106,9 +106,9 @@ export const Home = () => (
       <Route path="/finalFeedbackThanks">
         <FinalFeedbackThanksPage />
       </Route>
-      <Route exact path="/whenDidItHappen">
+      <RedirectRoute path="/whenDidItHappen">
         <WhenDidItHappenPage />
-      </Route>
+      </RedirectRoute>
       <RedirectRoute path="/locationAnonymous">
         <LocationAnonymousPage />
       </RedirectRoute>
