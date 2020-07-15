@@ -100,14 +100,6 @@ export const HowDidItStartSummary = (props) => {
                 descriptionTitle="confirmationPage.howDidItStart.others"
                 description={howdiditstart.others}
               />
-              {/* <DescriptionListItem
-                descriptionTitle="confirmationPage.whenDidItStart"
-                description={formatDate(
-                  howdiditstart.startDay,
-                  howdiditstart.startMonth,
-                  howdiditstart.startYear,
-                )} */}
-              />
             </Stack>
           </React.Fragment>
         ) : (
