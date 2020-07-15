@@ -12,7 +12,7 @@ const unCamel = (text) =>
 
 const formatLineHtml = (label, text) =>
   text && text !== ''
-    ? `<tr><td style="width:250px">${label}</td><td>${text}</td></tr>\n`
+    ? `<tr><td style="width:300px">${label}</td><td>${text}</td></tr>\n`
     : ''
 
 const formatTable = (rows) => `<table><tbody>\n${rows}</tbody></table>\n\n`
