@@ -111,10 +111,7 @@ async function contentModeratorFiles(data, finalCallback) {
       file[0] = data.language
       return file
     })
-    async.map(Object.entries(files), contentModerateFile, function (
-      err,
-      _results,
-    ) {
+    async.map(files, contentModerateFile, function (err, _results) {
       if (err) console.warn('Content Moderator Error:' + JSON.stringify(err))
       finalCallback()
     })
