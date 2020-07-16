@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
 import { useStateValue } from './utils/state'
 import { TestPage } from './components/TestPage'
+import { TestForm } from './components/TestForm'
 
 export const FormikYupTestPage = () => {
   const [state, dispatch] = useStateValue()
@@ -11,7 +12,9 @@ export const FormikYupTestPage = () => {
   return (
     <Route
       render={({ history }) => (
-        <TestPage title="Test Form" description="Testing Formik and Yup" />
+        <TestPage title="Test Form" description="Testing Formik and Yup">
+          <TestForm />
+        </TestPage>
       )}
     />
   )

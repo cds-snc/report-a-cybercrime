@@ -27,6 +27,7 @@ const {
   fileExtensionPasses,
 } = require('./src/utils/acceptableFiles')
 const { convertImages } = require('./src/utils/imageConversion')
+const { getSchema } = require('./src/utils/validationSchema')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -251,6 +252,34 @@ app
       verifyRecaptcha(token, res)
     })
     //  res.send('thanks')
+  })
+
+  .post('/submitTestForm', (req, res) => {
+    //Get Yup validation schem
+    const schema = getSchema()
+
+    //Get form data from request
+    var form = new formidable.IncomingForm()
+    form.parse(req)
+    let fields = {}
+
+    //Populate fields object with form data
+    form.on('field', (fieldName, fieldValue) => {
+      fields[fieldName] = fieldValue
+    })
+
+    //When all form data has been parsed
+    form.on('end', () => {
+      //Validate form, promise returns boolean
+      schema.isValid(fields).then((valid) => {
+        console.log(valid)
+        if (valid) {
+          res.sendStatus(200)
+        } else {
+          res.sendStatus(400)
+        }
+      })
+    })
   })
 
   // uncomment to allow direct loading of arbitrary pages

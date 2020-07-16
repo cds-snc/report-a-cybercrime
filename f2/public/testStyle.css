@@ -1,0 +1,32 @@
+label {
+  color: #24b9b6;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.form-group {
+  margin-bottom: 2em !important;
+}
+
+.form-input {
+  min-width: 310px;
+}
+
+.error {
+  border: 2px solid #ff6565 !important;
+}
+
+.error-message {
+  color: #ff6565;
+  padding: 0.5em 0.2em;
+  height: 1em;
+  position: absolute;
+  font-size: 0.8em;
+}
+
+.submit-btn {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgb(31, 81, 38) !important;
+  border-color: rgb(24, 60, 31) !important;
+}
