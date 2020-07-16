@@ -126,7 +126,7 @@
     "@storybook/preset-create-react-app": "^1.5.2",
     "@storybook/react": "^5.3.17",
     "@storybook/storybook-deployer": "^2.8.3",
-    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^9.4.0",
     "axe-core": "^3.5.4",
     "babel-core": "^7.0.0-bridge.0",
