@@ -7,6 +7,7 @@
 - Code refactoring, logging, infrastructure and dependancy updates (#2064, #1999, #2027)
 - Fix bug that can cause a report to skip self-harm keyword scan when certain quotation characters are used (#2076)
 - Updated error message when uploaded file's type is not supported (#2007)
+- blah blah blah
 
 ## V1.5.0 (Staging 2020-06-19, Prod: 2020-07-02)
 
