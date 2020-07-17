@@ -17,6 +17,7 @@ import { SuspectCluesSummary } from './summary/SuspectCluesSummary'
 import { WhatHappenedSummary } from './summary/WhatHappenedSummary'
 import { WhatWasAffectedSummary } from './summary/WhatWasAffectedSummary'
 import { AnonymousSummary } from './summary/AnonymousSummary'
+import { WhenDidItHappenSummary } from './summary/WhenDidItHappenSummary'
 
 export const testdata = {
   doneForms: true,
@@ -44,6 +45,7 @@ export const ConfirmationSummary = () => {
     <React.Fragment>
       <Stack spacing={12}>
         <HowDidItStartSummary />
+        <WhenDidItHappenSummary />
         <WhatWasAffectedSummary />
         {impact.affectedOptions.includes('whatWasAffectedForm.financial') && (
           <MoneyLostInfoSummary />

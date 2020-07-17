@@ -6,7 +6,6 @@ import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
-import { formatDate } from '../utils/formatDate'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
 import { H2 } from '../components/header'
@@ -56,8 +55,6 @@ export const HowDidItStartSummary = (props) => {
           <Trans id="confirmationPage.howDidItStart.online" />
           <Trans id="confirmationPage.howDidItStart.application" />
           <Trans id="confirmationPage.howDidItStart.others" />
-          <Trans id="confirmationPage.whenDidItStart" />
-          <Trans id="confirmationPage.howManyTimes" />
           <Trans id="confirmationPage.howDidItStart.title.edit" />
         </div>
       ) : null}
@@ -102,18 +99,6 @@ export const HowDidItStartSummary = (props) => {
               <DescriptionListItem
                 descriptionTitle="confirmationPage.howDidItStart.others"
                 description={howdiditstart.others}
-              />
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.whenDidItStart"
-                description={formatDate(
-                  howdiditstart.startDay,
-                  howdiditstart.startMonth,
-                  howdiditstart.startYear,
-                )}
-              />
-              <DescriptionListItem
-                descriptionTitle="confirmationPage.howManyTimes"
-                description={i18n._(howdiditstart.howManyTimes)}
               />
             </Stack>
           </React.Fragment>
