@@ -11,7 +11,9 @@ const unCamel = (text) =>
   text.replace(/([A-Z])|([\d]+)/g, ' $1$2').toLowerCase()
 
 const formatLineHtml = (label, text) =>
-  text && text !== '' ? `<tr><td>${label}</td><td>${text}</td></tr>\n` : ''
+  text && text !== ''
+    ? `<tr><td style="width:300px">${label}</td><td>${text}</td></tr>\n`
+    : ''
 
 const formatTable = (rows) => `<table><tbody>\n${rows}</tbody></table>\n\n`
 
@@ -138,14 +140,62 @@ const formatVictimDetails = (data) => {
 }
 
 const formatIncidentInformation = (data) => {
-  const occurenceString = formatDate(
-    data.howdiditstart.startDay,
-    data.howdiditstart.startMonth,
-    data.howdiditstart.startYear,
-  )
-  const freqString = unCamel(
-    data.howdiditstart.howManyTimes.replace('howManyTimes.', ''),
-  )
+  const freq = data.whenDidItHappen.incidentFrequency
+  let occurenceLine
+
+  if (freq === 'once') {
+    const occurenceString = formatDate(
+      data.whenDidItHappen.happenedOnceDay,
+      data.whenDidItHappen.happenedOnceMonth,
+      data.whenDidItHappen.happenedOnceYear,
+    )
+    occurenceLine =
+      formatLineHtml(
+        lang['confirmationPage.howManyTimes'],
+        lang['whenDidItHappenPage.options.once'],
+      ) +
+      formatLineHtml(
+        lang['whenDidItHappenPage.singleDate.label'],
+        occurenceString,
+      )
+  } else if (freq === 'moreThanOnce') {
+    const startDateString = formatDate(
+      data.whenDidItHappen.startDay,
+      data.whenDidItHappen.startMonth,
+      data.whenDidItHappen.startYear,
+    )
+
+    const endtDateString = formatDate(
+      data.whenDidItHappen.endDay,
+      data.whenDidItHappen.endMonth,
+      data.whenDidItHappen.endYear,
+    )
+
+    occurenceLine =
+      formatLineHtml(
+        lang['confirmationPage.howManyTimes'],
+        lang['whenDidItHappenPage.options.moreThanOnce'],
+      ) +
+      formatLineHtml(
+        lang['whenDidItHappenPage.dateRange.start.label'],
+        startDateString,
+      ) +
+      formatLineHtml(
+        lang['whenDidItHappenPage.dateRange.end.label'],
+        endtDateString,
+      )
+  } else {
+    const textAreaString = data.whenDidItHappen.description
+    occurenceLine =
+      formatLineHtml(
+        lang['confirmationPage.howManyTimes'],
+        lang['whenDidItHappenPage.options.notSure'],
+      ) +
+      formatLineHtml(
+        lang['whenDidItHappenPage.options.notSure.details'],
+        textAreaString,
+      )
+  }
 
   const methodOfCommsString = data.howdiditstart.howDidTheyReachYou
     .map((how) => unCamel(how.replace('howDidTheyReachYou.', '')))
@@ -156,9 +206,8 @@ const formatIncidentInformation = (data) => {
     .join(', ')
 
   const rows =
-    formatLineHtml(lang['confirmationPage.whenDidItStart'], occurenceString) +
-    formatLineHtml(lang['howManyTimes.label'], freqString) +
     formatLineHtml(lang['howDidTheyReachYou.question'], methodOfCommsString) +
+    occurenceLine +
     formatLineHtml(lang['confirmationPage.ImpactTitle'], affectedString)
   delete data.howdiditstart.startDay
   delete data.howdiditstart.startMonth
