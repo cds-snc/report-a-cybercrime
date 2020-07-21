@@ -33,10 +33,6 @@ export const BusinessInfoForm = (props) => {
     'numberOfEmployee.100To499',
     'numberOfEmployee.500More',
   ]
-  const recurrenceCheck = {
-    numberOfEmployee: [],
-    ...data.formData.timeline,
-  }
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -83,11 +79,7 @@ export const BusinessInfoForm = (props) => {
               {numberOfEmployee.map((key) => {
                 return (
                   <React.Fragment key={key}>
-                    <RadioAdapter
-                      name="numberOfEmployee"
-                      value={key}
-                      isChecked={recurrenceCheck.numberOfEmployee.includes(key)}
-                    >
+                    <RadioAdapter name="numberOfEmployee" value={key}>
                       {i18n._(key)}
                     </RadioAdapter>
                   </React.Fragment>

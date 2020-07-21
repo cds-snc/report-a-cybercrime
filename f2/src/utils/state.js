@@ -13,7 +13,7 @@ export const useStateValue = () => useContext(StateContext)
 
 export const initialState = {
   doneForms: false,
-  formData: { prodVersion: '1.1.0-dev', ...formDefaults },
+  formData: { ...formDefaults, prodVersion: '1.6.0' },
   doneFinalFeedback: false,
 }
 
@@ -31,6 +31,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         formData: { ...initialState.formData },
+        doneForms: false,
         submitted: false,
         reportId: undefined,
       }
@@ -38,6 +39,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         doneForms: action.data,
+      }
+    case 'saveGoogleRecaptcha':
+      return {
+        ...state,
+        reCaptcha: action.data,
       }
     case 'saveSubmitted':
       return {

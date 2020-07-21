@@ -10,11 +10,14 @@ export const BackButton = ({ variant, variants, variantColor, ...props }) => (
   <Route
     render={({ history }) => (
       <LinkButton
-        d="flex"
+        d="inline-flex"
         alignItems="center"
-        onClick={() => history.goBack()}
-        // eslint-disable-next-line no-script-url
-        href="javascript:;" // otherwise can't navigate to with keyboard
+        onClick={(e) => {
+          e.preventDefault()
+          history.goBack()
+        }}
+        href="#"
+        tabindex="0"
         {...props}
       >
         <Icon name="chevron-left" />

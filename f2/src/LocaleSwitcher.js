@@ -5,15 +5,18 @@ import { locales, activate } from './i18n.config'
 import { Box } from '@chakra-ui/core'
 import { A } from './components/link'
 
-const Toggler = props => {
+const Toggler = (props) => {
   const { locale } = props
   return (
     <A
       key={locale}
       padding={0}
-      onClick={() => activate(locale)}
-      // eslint-disable-next-line no-script-url
-      href="javascript:;" // otherwise can't navigate to with keyboard
+      onClick={(e) => {
+        e.preventDefault()
+        activate(locale)
+      }}
+      href="#"
+      tabindex="0"
     >
       {locales[locale]}
     </A>

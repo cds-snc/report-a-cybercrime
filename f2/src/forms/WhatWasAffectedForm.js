@@ -99,11 +99,7 @@ export const WhatWasAffectedForm = (props) => {
               {affectedOptions.map((key) => {
                 return (
                   <React.Fragment key={key}>
-                    <CheckboxAdapter
-                      name="affectedOptions"
-                      value={key}
-                      isChecked={whatWasAffected.affectedOptions.includes(key)}
-                    >
+                    <CheckboxAdapter name="affectedOptions" value={key}>
                       {i18n._(key)}
                       {key !== 'whatWasAffectedForm.other' && (
                         <Text as="span" d="block" fontSize="sm">

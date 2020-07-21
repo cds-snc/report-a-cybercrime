@@ -12,28 +12,36 @@ const mailUser = process.env.MAIL_USER
 const mailPass = process.env.MAIL_PASS
 const mailFrom = process.env.MAIL_FROM
 
+const ANALYST_GROUP_MAIL = process.env.ANALYST_GROUP_MAIL
+
 const prepareUnencryptedReportEmail = (message, data, callback) => {
   let transporter = nodemailer.createTransport({
     streamTransport: true,
     newline: 'unix',
     buffer: true,
   })
-
+  /*
+  Disabling attachments for now, let's try sending a SAS link instead
   let attachments = data.evidence.files
     .filter((file) => file.malwareIsClean)
     .map((file) => ({
       filename: file.name,
       path: file.path,
     }))
+  */
 
   transporter.sendMail(
     {
       from: mailFrom,
       to: data.contactInfo.email,
       subject: `NCFRS report ${data.reportId}`,
-      text: message,
-      html: message,
-      attachments,
+      text: `Please find NCFRS Report ${data.reportId} attached to this message`,
+      attachments: [
+        {
+          filename: `${data.reportId}.htm`,
+          content: message,
+        },
+      ],
     },
     (err, info) => {
       if (err) console.warn(`ERROR in prepareUnencryptedReportEmail: ${err}`)
@@ -54,18 +62,19 @@ const getEmailWarning = (data) =>
 const getSelfHarmWord = (data) =>
   data.selfHarmWords.length ? ': WARNING: self harm words detected' : ''
 
-const encryptMessage = (uid, emailAddress, message, data, sendMail) => {
+const encryptMessage = (uidList, emailAddress, message, data, sendMail) => {
   const openssl = 'openssl smime -des3 -encrypt'
   const messageFile = `message_${nanoid()}.txt`
   const encryptedFile = messageFile + '.encrypted'
   const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)
+  let certList = uidList.map((uid) => certFileName(uid))
 
   fs.writeFile(messageFile, message, function (err) {
     if (err) throw err
     exec(
-      `${openssl} -in ${messageFile} -out ${encryptedFile} ${certFileName(
-        uid,
-      )}`,
+      `${openssl} -in ${messageFile} -out ${encryptedFile} -subject "NCFRS report ${
+        data.reportId
+      } ${subjectSuffix}", ${certList.join(' ')}`,
       { cwd: process.cwd() },
       function (error, _stdout, stderr) {
         if (error) throw error
@@ -95,17 +104,14 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
     },
   })
 
+  // With encrypted e-mail, just pass the raw output of openssl to nodemailer.
+  // This is because the output of openssl's "smime" command is already a valid RFC822 message
   const message = {
-    from: mailFrom,
-    to: emailAddress,
-    subject: `NCFRS report ${reportId}${emailSuffix}`,
-    text: `NCFRS report ${reportId}${emailSuffix}`,
-    html: `NCFRS report ${reportId}${emailSuffix}`,
-    attachments: [
-      {
-        raw: attachment,
-      },
-    ],
+    envelope: {
+      from: mailFrom,
+      to: emailAddress,
+    },
+    raw: attachment,
   }
 
   let info = await transporter.sendMail(message)
@@ -116,11 +122,15 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
 
 const encryptAndSend = async (uidList, emailList, data, message) => {
   if (uidList.length > 0 && emailList.length > 0) {
-    uidList.forEach((uid, index) => {
+    if (ANALYST_GROUP_MAIL) {
       prepareUnencryptedReportEmail(message, data, (m) =>
-        encryptMessage(uid, emailList[index], m, data, sendMail),
+        encryptMessage(uidList, ANALYST_GROUP_MAIL, m, data, sendMail),
       )
-    })
+    } else {
+      console.error(
+        'Environmental variable ANALYST_GROUP_MAIL is not defined, so encrypted email is not sent!',
+      )
+    }
   } else if (process.env.MAIL_LOCAL) {
     console.warn('Encrypted Mail: No certs to encrypt with!')
     const subjectSuffix = getEmailWarning(data) + getSelfHarmWord(data)

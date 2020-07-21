@@ -30,13 +30,14 @@ export const PrivacyConsentInfoForm = (props) => {
     ...data.formData.consent,
   }
   const consentOptions = ['privacyConsentInfoForm.yes']
-  const { fyiForm }  = data.formData
+  const { fyiForm } = data.formData
 
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
           <Trans id="privacyConsentInfoForm.yes" />
+          <Trans id="privacyConsentInfoForm.consent" />
         </div>
       ) : null}
 
@@ -72,11 +73,7 @@ export const PrivacyConsentInfoForm = (props) => {
               {consentOptions.map((key) => {
                 return (
                   <React.Fragment key={key}>
-                    <CheckboxAdapter
-                      name="consentOptions"
-                      value={key}
-                      isChecked={whetherConsent.consentOptions.includes(key)}
-                    >
+                    <CheckboxAdapter name="consentOptions" value={key}>
                       <Trans id="privacyConsentInfoForm.yes" />
                       <A
                         href={'/privacystatement?lang=' + i18n.locale}
@@ -91,7 +88,13 @@ export const PrivacyConsentInfoForm = (props) => {
               })}
             </FormArrayControl>
             <NextAndCancelButtons
-              next={ fyiForm ? <Trans id="fyiForm.nextPage1" /> : <Trans id="privacyConsentInfoForm.nextPage" /> }
+              next={
+                fyiForm ? (
+                  <Trans id="fyiForm.nextPage1" />
+                ) : (
+                  <Trans id="privacyConsentInfoForm.nextPage" />
+                )
+              }
               button={<Trans id="privacyConsentInfoForm.nextButton" />}
             />
           </Stack>
