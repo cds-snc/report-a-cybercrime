@@ -10,6 +10,7 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
+import { P } from '../components/paragraph'
 
 export const WhatHappenedForm = (props) => {
   const localOnSubmit = (data) => {
@@ -22,7 +23,17 @@ export const WhatHappenedForm = (props) => {
     ...formDefaults.whatHappened,
     ...data.formData.whatHappened,
   }
-  const { fyiForm }  = data.formData
+  const { fyiForm } = data.formData
+
+  let formLabel = <Trans id="whatHappenedPage.summary" />
+  let formHelpText = <Trans id="whatHappenedPage.hint" />
+  let nextButton = <Trans id="whatHappenedPage.nextPage" />
+
+  if (fyiForm) {
+    formLabel = <Trans id="whatHappenedPage.fyi.summary" />
+    formHelpText = <Trans id="whatHappenedPage.fyi.hint" />
+    nextButton = <Trans id="fyiForm.nextPage2" />
+  }
 
   return (
     <Form
@@ -32,13 +43,13 @@ export const WhatHappenedForm = (props) => {
         <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
           <Field
             name="whatHappened"
-            label={fyiForm ? <Trans id="whatHappenedPage.fyi.summary" /> : <Trans id="whatHappenedPage.summary" />}
-            helperText={fyiForm ? <Trans id="whatHappenedPage.fyi.hint" /> : <Trans id="whatHappenedPage.hint" />}
+            label={formLabel}
+            helperText={formHelpText}
             component={TextArea}
             h="300px"
           />
           <NextAndCancelButtons
-            next={fyiForm ? <Trans id="fyiForm.nextPage2" /> : <Trans id="whatHappenedPage.nextPage" />}
+            next={nextButton}
             button={<Trans id="whatHappenedPage.nextButton" />}
           />
         </Stack>

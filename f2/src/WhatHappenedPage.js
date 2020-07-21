@@ -33,11 +33,13 @@ export const WhatHappenedPage = () => {
             <Stack spacing={10} shouldWrapChildren>
               <BackButton />
               <H1>
-                <Trans id="whatHappenedPage.title" />
+                {fyiForm ? (
+                  <Trans id="whatHappenedPage.fyi.title" />
+                ) : (
+                  <Trans id="whatHappenedPage.title" />
+                )}
               </H1>
-              {fyiForm ?
-                null
-                : 
+              {fyiForm ? null : (
                 <React.Fragment>
                   <Stack spacing={4}>
                     <Lead>
@@ -88,7 +90,7 @@ export const WhatHappenedPage = () => {
                     </Ul>
                   </Stack>
                 </React.Fragment>
-              }
+              )}
               <WhatHappenedForm
                 onSubmit={(data) => {
                   dispatch({

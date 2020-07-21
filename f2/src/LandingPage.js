@@ -18,7 +18,6 @@ import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
 import { LandingBox } from './components/container'
 
-
 export const LandingPage = (props) => {
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue()
@@ -61,57 +60,63 @@ export const LandingPage = (props) => {
                   <Trans id="landingPage.reportOnline" />
                 </H2>
 
-                  <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
-                    <P mb={2}>
-                      <Trans id="landingPage.fullReport.description" />
-                    </P>
+                <LandingBox
+                  spacing={10}
+                  columns={{ base: 4 / 4, md: 6 / 7 }}
+                  marginLeft={'-0.5rem'}
+                >
+                  <P mb={2}>
+                    <Trans id="landingPage.fullReport.description" />
+                  </P>
 
-                    <ButtonLink 
-                      onClick={()=> { 
-                        dispatch({
-                          type: 'saveFormData',
-                          data: { fyiForm: false },
-                        })
-                      }}
-                      to="/startPage"
-                    >
-                      <Trans id="landingPage.fullReport.button" />
-                      <Icon
-                        focusable="false"
-                        ml={2}
-                        mr={-2}
-                        name="chevron-right"
-                        size="28px"
-                      />
-                    </ButtonLink>
-                    
-                  </LandingBox>
-                  
-                  <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
-                    <P mb={2}>
-                      <Trans id="landingPage.fyiReport.description" />
-                    </P>
+                  <ButtonLink
+                    onClick={() => {
+                      dispatch({
+                        type: 'saveFormData',
+                        data: { fyiForm: false },
+                      })
+                    }}
+                    to="/startPage"
+                  >
+                    <Trans id="landingPage.fullReport.button" />
+                    <Icon
+                      focusable="false"
+                      ml={2}
+                      mr={-2}
+                      name="chevron-right"
+                      size="28px"
+                    />
+                  </ButtonLink>
+                </LandingBox>
 
-                    <ButtonLink 
-                      onClick={()=> { 
-                        dispatch({
-                          type: 'saveFormData',
-                          data: { fyiForm: true },
-                        })
-                      }}
-                      to="/privacyconsent"
-                    >
-                      <Trans id="landingPage.fyiReport.button" />
-                      <Icon
-                        focusable="false"
-                        ml={2}
-                        mr={-2}
-                        name="chevron-right"
-                        size="28px"
-                      />
-                    </ButtonLink>
-                    
-                  </LandingBox>
+                <LandingBox
+                  spacing={10}
+                  columns={{ base: 4 / 4, md: 6 / 7 }}
+                  marginLeft={'-0.5rem'}
+                >
+                  <P mb={2}>
+                    <Trans id="landingPage.fyiReport.description" />
+                  </P>
+
+                  <ButtonLink
+                    onClick={() => {
+                      dispatch({
+                        type: 'saveFormData',
+                        data: { fyiForm: true },
+                      })
+                    }}
+                    to="/privacyconsent"
+                  >
+                    <Trans id="landingPage.fyiReport.button" />
+                    <Icon
+                      focusable="false"
+                      ml={2}
+                      mr={-2}
+                      name="chevron-right"
+                      size="28px"
+                    />
+                  </ButtonLink>
+                </LandingBox>
               </Stack>
 
               <Well variantColor="blue">

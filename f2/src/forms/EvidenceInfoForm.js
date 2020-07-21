@@ -184,17 +184,21 @@ export const EvidenceInfoForm = (props) => {
                     <P fontSize="md" fontWeight="bold">
                       <Trans id="evidencePage.supportedFiles" />
                     </P>
-                    <Ul>
-                      <Li fontSize="md" mb={2}>
-                        <Trans id="evidencePage.fileTypes1" />
-                      </Li>
-                      <Li fontSize="md" mb={2}>
-                        <Trans id="evidencePage.fileTypes2" />
-                      </Li>
-                      <Li fontSize="md" mb={2}>
-                        <Trans id="evidencePage.fileTypes3" />
-                      </Li>
-                    </Ul>
+                    {fyiForm ? (
+                      <Trans id="evidencePage.supportedFileTypes" />
+                    ) : (
+                      <Ul>
+                        <Li fontSize="md" mb={2}>
+                          <Trans id="evidencePage.fileTypes1" />
+                        </Li>
+                        <Li fontSize="md" mb={2}>
+                          <Trans id="evidencePage.fileTypes2" />
+                        </Li>
+                        <Li fontSize="md" mb={2}>
+                          <Trans id="evidencePage.fileTypes3" />
+                        </Li>
+                      </Ul>
+                    )}
                   </Box>
                 </React.Fragment>
               )}
@@ -204,7 +208,13 @@ export const EvidenceInfoForm = (props) => {
               ))}
             </Stack>
             <NextAndCancelButtons
-              next={fyiForm ? <Trans id="fyiForm.nextPage3" /> : <Trans id="evidencePage.nextPage" />}
+              next={
+                fyiForm ? (
+                  <Trans id="fyiForm.nextPage3" />
+                ) : (
+                  <Trans id="evidencePage.nextPage" />
+                )
+              }
               button={<Trans id="evidencePage.nextButton" />}
             />
           </Stack>
