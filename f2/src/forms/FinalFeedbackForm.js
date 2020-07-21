@@ -26,12 +26,6 @@ export const FinalFeedbackForm = (props) => {
     'finalFeedback.wasServiceHard.veryEasy',
   ]
 
-  const wouldYouUseAgain = [
-    'finalFeedback.wouldYouUseAgain.yes',
-    'finalFeedback.wouldYouUseAgain.no',
-    'finalFeedback.wouldYouUseAgain.maybe',
-  ]
-
   let showWarning = false
 
   return (
