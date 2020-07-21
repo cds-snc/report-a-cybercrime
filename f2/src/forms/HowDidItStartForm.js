@@ -5,12 +5,10 @@ import { Trans } from '@lingui/macro'
 import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { CheckboxAdapter } from '../components/checkbox'
-import { RadioAdapter } from '../components/radio'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { TextArea } from '../components/text-area'
-import { TextInput } from '../components/TextInput'
 import { Field } from '../components/Field'
 import { Well } from '../components/Messages'
 import { ErrorSummary } from '../components/ErrorSummary'
@@ -97,17 +95,6 @@ export const HowDidItStartForm = (props) => {
     },
   ]
 
-  const recurrenceCheck = {
-    howManyTimes: [],
-    ...data.formData.timeline,
-  }
-
-  const howManyTimes = [
-    'howManyTimes.once',
-    'howManyTimes.severalTimes',
-    'howManyTimes.notSure',
-  ]
-
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -127,19 +114,7 @@ export const HowDidItStartForm = (props) => {
           <Trans id="howDidTheyReachYou.online" />
           <Trans id="howDidTheyReachYou.app" />
           <Trans id="howDidTheyReachYou.others" />
-
-          <Trans id="howManyTimes.once" />
-          <Trans id="howManyTimes.severalTimes" />
-          <Trans id="howManyTimes.notSure" />
-
-          <Trans id="whenDidItStart.error.notDay" />
-          <Trans id="whenDidItStart.error.notMonth" />
-          <Trans id="whenDidItStart.error.isFuture" />
-          <Trans id="whenDidItStart.error.notYear" />
-          <Trans id="whenDidItStart.error.yearLength" />
-          <Trans id="whenDidItStart.error.hasNoYear" />
-          <Trans id="whenDidItStart.error.hasNoMonth" />
-          <Trans id="whenDidItStart.error.hasNoDay" />
+          <Trans id="howDidItStartPage.incidentInformation" />
         </div>
       ) : null}
 
@@ -177,9 +152,6 @@ export const HowDidItStartForm = (props) => {
                     <CheckboxAdapter
                       name="howDidTheyReachYou"
                       value={question.channel}
-                      isChecked={howdiditstart.howDidTheyReachYou.includes(
-                        question.channel,
-                      )}
                       conditionalField={
                         <Field
                           name={question.name}
@@ -191,59 +163,6 @@ export const HowDidItStartForm = (props) => {
                     >
                       {i18n._(question.channel)}
                     </CheckboxAdapter>
-                  </React.Fragment>
-                )
-              })}
-            </FormArrayControl>
-
-            <FormArrayControl
-              name="whenDidItStart"
-              label={<Trans id="whenDidItStart.label" />}
-              helperText={<Trans id="whenDidItStart.labelExample" />}
-              errors={errors}
-            >
-              <Stack direction="row" spacing="2">
-                <Field
-                  name="startDay"
-                  label={<Trans id="whenDidItStart.startDay" />}
-                  component={TextInput}
-                  group="whenDidItStart"
-                  w={70}
-                  maxLength="2"
-                />
-                <Field
-                  name="startMonth"
-                  label={<Trans id="whenDidItStart.startMonth" />}
-                  component={TextInput}
-                  group="whenDidItStart"
-                  w={70}
-                  maxLength="2"
-                />
-                <Field
-                  name="startYear"
-                  label={<Trans id="whenDidItStart.startYear" />}
-                  component={TextInput}
-                  group="whenDidItStart"
-                  w={110}
-                  maxLength="4"
-                />
-              </Stack>
-            </FormArrayControl>
-
-            <FormArrayControl
-              name="howManyTimes"
-              label={<Trans id="howManyTimes.label" />}
-            >
-              {howManyTimes.map((key) => {
-                return (
-                  <React.Fragment key={key}>
-                    <RadioAdapter
-                      name="howManyTimes"
-                      value={key}
-                      isChecked={recurrenceCheck.howManyTimes.includes(key)}
-                    >
-                      {i18n._(key)}
-                    </RadioAdapter>
                   </React.Fragment>
                 )
               })}

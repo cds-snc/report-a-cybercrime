@@ -1,6 +1,51 @@
 # Changelog for report a cybercrime product
 
-## V1.3.0 (2020-05-25)
+## V1.6.0 (Staging 2020-07-09, Prod: 2020-07-14)
+
+- More tweaking self harm keyword matching (#2065)
+- Make contact info mandatory on non-anonymous flow (#1902)
+- Code refactoring, logging, infrastructure and dependancy updates (#2064, #1999, #2027)
+- Fix bug that can cause a report to skip self-harm keyword scan when certain quotation characters are used (#2076)
+- Updated error message when uploaded file's type is not supported (#2007)
+
+## V1.5.0 (Staging 2020-06-19, Prod: 2020-07-02)
+
+- Logging, Code Refactoring, dependancy/library updates and infrastructure tweaks (PR # 2002, #2001, #1994, #1977, #1990, #2017, #2024, #2028, #2043, #2026, #2030, #2046, #2044, #2036)
+- Added recaptcha support (However currently disabled and not in use) PR #1981
+- Changed links on cancelation page to match confirmation page #1995
+- Disable CSP protection that broke google analytics (PR #2012)
+- All links on cancelation page now open a new window #PR 2005)
+- Minor cosmetic fixes (PR #2009)
+- File type validation no longer case sensitive (PR #2008)
+- Tuning self harm keyword matching (PR #1976, #2041)
+- Fix bug with e-mail report if user enters invalid postal code (#2034)
+- E-mail reports now go to a group mailbox instead of directly to analysts (#2025)
+- "Return to previous version" link sends user to FRS login instead of CAFC website(#2015)
+- Add "staying cyber healthy" link on confirmation page (#2040)
+- Reloading now directs user to consent page instead of causing error (#2020)
+- Remove city/prov fields from anonymous reports (#2045)
+
+## V1.4.0 (Staging: 2020-06-04, Prod: 2020-06-09)
+
+- E-mail to analysts redesigned to fix usability issues and files transfered by Azure Shared Access Signature instead of e-mail attachment (Pull Request #1975, Issues #1953, #1900, #1704)
+- Fix bugs around enforcing user to consent to privacy statement (PR #1927, #1958, Issue #1924, #1957)
+- Make self harm warning text in e-mail more visible (PR #1939, Issue #1932)
+- Update Documentation (PR #1919, Issue #1827)
+- Fix Bug on tracking user consent (PR #1946, Issue #1929)
+- Tweaks to privacy statement (PR #1945, PR #1961, Issue #1942, #1959)
+- Misc Code improvements (PR #1921, #1966 Issue #1894, #1626)
+- Update links on thank you page (PR #1955, Issue #1952)
+- Phantom button bug (PR #1948, Issue #1943)
+- Fix Bug with form flow (Pr #1960, Issue #1954)
+- Convert png to jpg automatically (PR #1951, Issue #1884)
+- Add markup to phone numbers in app so mobile users can easily dial them (PR #1963, Issue #1455)
+- Stop backend from allowing empty file uploads (PR #1964)
+- Fix bug with NCFRS version number display (PR #1938, Issue #1922)
+- Provide analyst with estimated province and city based on Postal Code (PR #1938, Issue #1922)
+- Block ALL direct traffic that isn't coming from CAFC (PR #1974, Issue #1968)
+- Make warning banner on DEV and Staging environments more obvious (PR #1978, Issue #1627)
+
+## V1.3.0 (2020-05-26)
 
 - More date validation tweaks (Pull Request #1809, #1889 Issue #1808, #1800, #1842)
 - Tweaks to thank you page design (Pull Request #1851, Issue #1851)

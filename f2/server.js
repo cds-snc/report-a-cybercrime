@@ -8,14 +8,14 @@ const { unflatten } = require('flat')
 const { sanitize } = require('./src/utils/sanitize')
 const { encryptAndSend } = require('./src/utils/encryptedEmail')
 const { getCertsAndEmail } = require('./src/utils/ldap')
-const { isAvailable } = require('./src/utils/checkIfAvailable')
+const availabilityService = require('./src/utils/checkIfAvailable')
 const { getData } = require('./src/utils/getData')
 const { saveRecord } = require('./src/utils/saveRecord')
-const { getReportCount } = require('./src/utils/saveRecord')
 const { saveBlob } = require('./src/utils/saveBlob')
 const { serverFieldsAreValid } = require('./src/utils/serverFieldsAreValid')
 const { scanFiles, contentModeratorFiles } = require('./src/utils/scanFiles')
-const logger = require('./src/utils/winstonLogger')
+const { verifyRecaptcha } = require('./src/utils/verifyRecaptcha')
+const { getLogger, getExpressLogger } = require('./src/utils/winstonLogger')
 const {
   notifyIsSetup,
   sendConfirmation,
@@ -26,8 +26,7 @@ const {
   fileSizePasses,
   fileExtensionPasses,
 } = require('./src/utils/acceptableFiles')
-const expressWinston = require('express-winston')
-const winston = require('winston')
+const { convertImages } = require('./src/utils/imageConversion')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -37,6 +36,8 @@ var limiter = new RateLimit({
 })
 
 require('dotenv').config()
+
+const logger = getLogger(__filename)
 
 const uidListInitial = process.env.LDAP_UID
   ? process.env.LDAP_UID.split(',').map((k) => k.trim())
@@ -55,64 +56,20 @@ setTimeout(() => {
     uidListInitial.length === uidList.length &&
     uidListInitial.length === emailList.length
   )
-    console.log(`LDAP certs successfully fetched for: ${emailList}`)
-  else console.log('ERROR: problem fetching certs from LDAP')
+    logger.info(`LDAP certs successfully fetched for: ${emailList}`)
+  else logger.error('Problem fetching certs from LDAP')
 }, 5000)
 
 const app = express()
 app
   .use(helmet())
-  .use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: [
-          "'self'",
-          "'unsafe-inline'",
-          'www.google-analytics.com',
-          'www.googletagmanager.com',
-        ],
-        styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
-        fontSrc: ["'self'", 'fonts.gstatic.com'],
-      },
-    }),
-  )
   .use(helmet.referrerPolicy({ policy: 'same-origin' }))
   .use(
     helmet.featurePolicy({
       features: { geolocation: ["'none'"], camera: ["'none'"] },
     }),
   )
-  .use(
-    expressWinston.logger({
-      transports: [new winston.transports.Console()],
-      format: winston.format.combine(
-        winston.format.colorize(),
-        winston.format.json(),
-      ),
-      meta: true, // optional: control whether you want to log the meta data about the request (default to true)
-      expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
-      colorize: false, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
-      
-      dynamicMeta: (req, res) => {
-        const httpRequest = {}
-        const meta = {}
-        if (req) {
-            meta.httpRequest=httpRequest
-            httpRequest.remoteIpv4andv6 = req.ip // this includes both ipv6 and ipv4 addresses separated by ':'
-            httpRequest.remoteIpv4 = req.ip.indexOf(':') >= 0 ? req.ip.substring(req.ip.lastIndexOf(':') + 1) : req.ip   // just ipv4
-            httpRequest.requestSize = req.socket.bytesRead
-            httpRequest.referrer = req.get('Referrer')
-            
-        }
-        return meta
-      },
-      
-      ignoreRoute: function (req, res) {
-        return false
-      }, // optional: allows to skip some log messages based on request and/or response
-    }),
-  )
+  .use(getExpressLogger())
 
 const allowedOrigins = [
   'https://dev.antifraudcentre-centreantifraude.ca',
@@ -123,30 +80,19 @@ const allowedOrigins = [
   'https://centreantifraude.ca',
 ]
 
-let availableData
-
-availableData = {
-  numberOfSubmissions: 0,
-  numberOfRequests: 0,
-  lastRequested: undefined,
-}
-const allowedReferrers = [
-  'antifraudcentre-centreantifraude.ca',
-  'centreantifraude-antifraudcentre.ca',
-  'antifraudcentre.ca',
-  'centreantifraude.ca',
-]
-
-getReportCount(availableData)
-setTimeout(() => console.log({ availableData }), 1000)
-
-// These can all be done async to avoid holding up the nodejs process?
-async function save(data, res) {
-  saveBlob(data)
-
+// Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
+// without holding up the rest of the 'save' function
+async function saveBlobAndEmailReport(data) {
+  var converted = await convertImages(data.evidence.files)
+  data.evidence.files.push(...converted.filter((file) => file !== null))
+  // Await on this because saveBlob generates the SAS link for each file
+  await saveBlob(data)
   const analystEmail = formatAnalystEmail(data)
   encryptAndSend(uidList, emailList, data, analystEmail)
-
+}
+// These can all be done async to avoid holding up the nodejs process?
+async function save(data, res) {
+  saveBlobAndEmailReport(data)
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
@@ -164,8 +110,6 @@ const uploadData = async (req, res, fields, files) => {
 }
 
 app.get('/', async function (req, res, next) {
-  await getReportCount(availableData)
-
   // Default to false. This represents if a user entered a valid TOTP code
   var isTotpValid = false
 
@@ -180,33 +124,22 @@ app.get('/', async function (req, res, next) {
     })
   }
 
-  // If user had a TOTP code, bypass the submissions_per_day restriction
-  if (
-    availableData.numberOfSubmissions >= process.env.SUBMISSIONS_PER_DAY &&
-    !isTotpValid
-  ) {
-    console.log('Warning: redirecting request to CAFC')
+  var referer = req.headers.referer
+
+  if (isTotpValid || availabilityService.requestAccess(referer)) {
+    logger.info({
+      message: 'New Request',
+    })
+    next()
+  } else {
+    logger.info({
+      message: 'Redirecting to CAFC',
+    })
     res.redirect(
       req.subdomains.includes('signalement')
         ? 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-fra.htm'
         : 'https://www.antifraudcentre-centreantifraude.ca/report-signalez-eng.htm',
     )
-  } else {
-    var referrer = req.headers.referer
-    console.log('Referrer:' + referrer)
-    if (
-      referrer !== undefined &&
-      allowedReferrers.indexOf(new URL(referrer).host.toLowerCase()) > -1
-    ) {
-      availableData.numberOfRequests += 1
-      availableData.lastRequested = new Date()
-    }
-    console.log(`New Request. ${JSON.stringify(availableData)}`)
-    logger.info({
-      message: 'New Request',
-      availableData: availableData,
-    })
-    next()
   }
 })
 app
@@ -233,18 +166,19 @@ app
   })
 
   .get('/available', function (_req, res) {
-    res.json({ acceptingReports: isAvailable(availableData) })
+    res.json({ acceptingReports: availabilityService.isAvailable() })
   })
 
   .get('/stats', function (_req, res) {
+    var data = availabilityService.getAvailableData()
     res.json({
-      acceptingReports: isAvailable(availableData),
-      ...availableData,
+      acceptingReports: availabilityService.isAvailable(),
+      ...data,
     })
   })
 
   .post('/submit', (req, res) => {
-    availableData.numberOfSubmissions += 1
+    availabilityService.incrementSubmissions()
     var form = new formidable.IncomingForm()
     form.parse(req)
     let files = []
@@ -258,7 +192,7 @@ app
         else cleanValue = sanitize(rawValue)
         fields[fieldName] = cleanValue
       } catch (error) {
-        console.warn(
+        logger.warn(
           `ERROR in /submit: parsing ${fieldName} value of ${fieldValue}: ${error}`,
         )
         logger.error({
@@ -270,13 +204,13 @@ app
     })
     form.on('file', function (name, file) {
       if (files.length >= 3)
-        console.warn('ERROR in /submit: number of files more than 3')
+        logger.warn('ERROR in /submit: number of files more than 3')
       else if (!fileSizePasses(file.size))
-        console.warn(
+        logger.warn(
           `ERROR in /submit: file ${name} too big (${file.size} bytes)`,
         )
       else if (!fileExtensionPasses(name))
-        console.warn(
+        logger.warn(
           `ERROR in /submit: unauthorized file extension in file ${name}`,
         )
       else files.push(file)
@@ -293,7 +227,7 @@ app
   .post('/submitFeedback', (req, res) => {
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
-        console.warn('ERROR', err)
+        logger.error('ERROR', err)
         throw err
       }
       submitFeedback(sanitize(JSON.stringify(fields.json)))
@@ -307,11 +241,22 @@ app
   .get('/termsandconditions', function (_req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
+  .post('/checkToken', (req, res) => {
+    new formidable.IncomingForm().parse(req, async (err, fields, files) => {
+      if (err) {
+        logger.error('ERROR', err)
+        throw err
+      }
+      const token = JSON.parse(fields.json).token
+      verifyRecaptcha(token, res)
+    })
+    //  res.send('thanks')
+  })
 
-// uncomment to allow direct loading of arbitrary pages
-// .get('/*', function (_req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'))
-// })
+  // uncomment to allow direct loading of arbitrary pages
+  .get('/*', function (_req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
 
 const port = process.env.PORT || 3000
 console.info(`Listening at port ${port}`)

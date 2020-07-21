@@ -54,6 +54,12 @@ export const LocationInfoForm = (props) => {
 
   return (
     <React.Fragment>
+      {false ? ( // mark ids for lingui
+        <div>
+          <Trans id="locationinfoPage.postalCity" />
+          <Trans id="locationinfoPage.postalProv" />
+        </div>
+      ) : null}
       <Form
         initialValues={location}
         onSubmit={localOnSubmit}
