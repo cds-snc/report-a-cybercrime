@@ -5,12 +5,26 @@ const formDefaults = {
   consent: { consentOptions: [] },
   anonymous: { anonymousOptions: [] },
   howdiditstart: {
-    howDidTheyReachYou: [],
-    email: '',
-    phone: '',
-    online: '',
-    application: '',
-    others: '',
+    email: {
+      checked: false,
+      description: '',
+    },
+    phone: {
+      checked: false,
+      description: '',
+    },
+    web: {
+      checked: false,
+      description: '',
+    },
+    software: {
+      checked: false,
+      description: '',
+    },
+    other: {
+      checked: false,
+      description: '',
+    },
   },
   whenDidItHappen: {
     incidentFrequency: '',

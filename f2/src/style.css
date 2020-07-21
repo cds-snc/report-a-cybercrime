@@ -1,0 +1,74 @@
+.form-check-label {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: rgb(0, 0, 0);
+  margin-left: 0.5rem;
+  padding-top: 0rem;
+}
+
+.question-label {
+  font-size: 1.25rem;
+  opacity: 1;
+  font-weight: 700;
+  text-align: left;
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 1;
+  padding: 0;
+}
+
+.help-text-label {
+  color: #000;
+  line-height: 1.25;
+  font-size: 1rem;
+  margin-bottom: 0;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.open-text-entry {
+  margin-top: 0.75rem;
+  min-height: 80px;
+  border-color: rgb(174, 174, 174);
+  border-width: 1px;
+}
+
+.open-text-entry:hover {
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+  border-color: rgb(55, 55, 55);
+}
+
+.open-text-entry:focus {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+  outline: none;
+  border-color: rgb(42, 105, 172);
+}
+
+.conditional-field {
+  border-left-width: 0.25rem;
+  border-left-color: rgb(174, 174, 174);
+  margin-top: 0.25rem;
+  margin-left: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.checkbox {
+  background-color: rgb(255, 255, 255);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-width: 1px;
+  border-color: rgb(174, 174, 174);
+  transition: all 120ms ease 0s;
+}
+
+.form-check-inline .form-check-input {
+  margin-right: 0rem;
+}
