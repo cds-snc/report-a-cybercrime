@@ -85,11 +85,6 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo 'Running npm run extract' && lingui extract --clean && git add src/locales && pretty-quick --staged"
-    }
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
