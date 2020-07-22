@@ -460,7 +460,7 @@
   "whenDidItHappenPage.dateRange.end.label": "When did it last happen?",
   "whenDidItHappenPage.dateRange.start.label": "When did it start?",
   "whenDidItHappenPage.intro": "These incidents can happen once or multiple times. Tell us how often the suspect tried to contact you.",
-  "whenDidItHappenPage.nextPage": "Next: What do you think could be affected?", 
+  "whenDidItHappenPage.nextPage": "Next: What do you think could be affected?",
   "whenDidItHappenPage.notSure.helperText": "Enter the time frame that the suspect tried to contact you, to the best of your memory.",
   "whenDidItHappenPage.notSure.label": "Describe the series of events.",
   "whenDidItHappenPage.options.moreThanOnce": "More than once",
