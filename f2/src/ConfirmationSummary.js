@@ -35,6 +35,7 @@ export const ConfirmationSummary = () => {
     ...testdata.formData.anonymous,
     ...data.formData.anonymous,
   }
+  const { fyiForm } = data.formData
   useEffect(() => {
     if (!data.doneForms) {
       dispatch({ type: 'saveDoneForms', data: true })
@@ -44,24 +45,27 @@ export const ConfirmationSummary = () => {
   return (
     <React.Fragment>
       <Stack spacing={12}>
-        <HowDidItStartSummary />
-        <WhenDidItHappenSummary />
-        <WhatWasAffectedSummary />
-        {impact.affectedOptions.includes('whatWasAffectedForm.financial') && (
-          <MoneyLostInfoSummary />
+        {fyiForm ? null : (
+          <Stack spacing={12}>
+            <HowDidItStartSummary />
+            <WhenDidItHappenSummary />
+            <WhatWasAffectedSummary />
+            {impact.affectedOptions.includes(
+              'whatWasAffectedForm.financial',
+            ) && <MoneyLostInfoSummary />}
+            {impact.affectedOptions.includes(
+              'whatWasAffectedForm.personalInformation',
+            ) && <InformationSummary />}
+            {impact.affectedOptions.includes('whatWasAffectedForm.devices') && (
+              <DevicesSummary />
+            )}
+            {impact.affectedOptions.includes(
+              'whatWasAffectedForm.business_assets',
+            ) && <BusinessInfoSummary />}
+          </Stack>
         )}
-        {impact.affectedOptions.includes(
-          'whatWasAffectedForm.personalInformation',
-        ) && <InformationSummary />}
-        {impact.affectedOptions.includes('whatWasAffectedForm.devices') && (
-          <DevicesSummary />
-        )}
-        {impact.affectedOptions.includes(
-          'whatWasAffectedForm.business_assets',
-        ) && <BusinessInfoSummary />}
-
         <WhatHappenedSummary />
-        <SuspectCluesSummary />
+        {fyiForm ? null : <SuspectCluesSummary />}
         <EvidenceInfoSummary />
         <LocationInfoSummary />
         {anonymous.anonymousOptions.includes('anonymousPage.yes') ? (

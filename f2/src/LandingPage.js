@@ -96,7 +96,11 @@ export const LandingPage = (props) => {
                     <Trans id="landingPage.reportOnline" />
                   </H2>
 
-                  <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
+                  <LandingBox
+                    spacing={10}
+                    columns={{ base: 4 / 4, md: 6 / 7 }}
+                    marginLeft={'-0.5rem'}
+                  >
                     <P mb={2}>
                       <Trans id="landingPage.fullReport.description" />
                     </P>
@@ -105,7 +109,7 @@ export const LandingPage = (props) => {
                       onClick={() => {
                         dispatch({
                           type: 'saveFormData',
-                          data: { fyiForm: false },
+                          data: { fyiForm: '' },
                         })
                       }}
                       to="/startPage"
@@ -121,7 +125,11 @@ export const LandingPage = (props) => {
                     </ButtonLink>
                   </LandingBox>
 
-                  <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
+                  <LandingBox
+                    spacing={10}
+                    columns={{ base: 4 / 4, md: 6 / 7 }}
+                    marginLeft={'-0.5rem'}
+                  >
                     <P mb={2}>
                       <Trans id="landingPage.fyiReport.description" />
                     </P>
@@ -130,7 +138,7 @@ export const LandingPage = (props) => {
                       onClick={() => {
                         dispatch({
                           type: 'saveFormData',
-                          data: { fyiForm: true },
+                          data: { fyiForm: 'yes' },
                         })
                       }}
                       to="/privacyconsent"

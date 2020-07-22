@@ -10,7 +10,8 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
-import { P } from '../components/paragraph'
+import { FormHelperText } from '../components/FormHelperText'
+import { FormLabel } from '../components/FormLabel'
 
 export const WhatHappenedForm = (props) => {
   const localOnSubmit = (data) => {
@@ -28,10 +29,12 @@ export const WhatHappenedForm = (props) => {
   let formLabel = <Trans id="whatHappenedPage.summary" />
   let formHelpText = <Trans id="whatHappenedPage.hint" />
   let nextButton = <Trans id="whatHappenedPage.nextPage" />
+  let formHelpText2
 
   if (fyiForm) {
     formLabel = <Trans id="whatHappenedPage.fyi.summary" />
     formHelpText = <Trans id="whatHappenedPage.fyi.hint" />
+    formHelpText2 = <Trans id="whatHappenedPage.fyi.hint2" />
     nextButton = <Trans id="fyiForm.nextPage2" />
   }
 
@@ -40,13 +43,22 @@ export const WhatHappenedForm = (props) => {
       initialValues={whatHappened}
       onSubmit={localOnSubmit}
       render={({ handleSubmit }) => (
-        <Stack as="form" onSubmit={handleSubmit} spacing={6} shouldWrapChildren>
+        <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren>
+          <FormLabel htmlFor="whatHappened">{formLabel}</FormLabel>
+          <FormHelperText htmlFor="whatHappened">
+            {formHelpText}
+            {formHelpText2 ? (
+              <p>
+                <br />
+                {formHelpText2}
+              </p>
+            ) : null}
+          </FormHelperText>
           <Field
             name="whatHappened"
-            label={formLabel}
-            helperText={formHelpText}
             component={TextArea}
             h="300px"
+            marginTop="-1.5rem"
           />
           <NextAndCancelButtons
             next={nextButton}
