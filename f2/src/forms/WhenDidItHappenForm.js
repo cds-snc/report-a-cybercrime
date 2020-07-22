@@ -222,7 +222,7 @@ export const WhenDidItHappenForm = (props) => {
               <Trans id="howDidItStartPage.tip" />
             </Well>
             <NextAndCancelButtons
-              next={<Trans id="howDidItStartPage.nextPage" />}
+              next={<Trans id="whenDidItHappenPage.nextPage" />}
               button={<Trans id="howDidItStartPage.nextButton" />}
             />
           </Stack>
