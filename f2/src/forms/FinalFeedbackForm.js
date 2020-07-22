@@ -15,7 +15,7 @@ const validate = () => {
   return {}
 }
 
-export const FinalFeedbackForm = (props) => {
+export const FinalFeedbackForm = props => {
   const { i18n } = useLingui()
 
   const wasServiceHard = [
@@ -55,7 +55,7 @@ export const FinalFeedbackForm = (props) => {
           wouldYouUseAgain: '',
           howCanWeDoBetter: '',
         }}
-        onSubmit={(values) => {
+        onSubmit={values => {
           if (
             values.wasServiceHard.length === 0 &&
             values.wouldYouUseAgain.length === 0 &&
@@ -83,10 +83,13 @@ export const FinalFeedbackForm = (props) => {
               name="wasServiceHard"
               label={<Trans id="finalFeedback.wasServiceHard.label" />}
             >
-              {wasServiceHard.map((key) => {
+              {wasServiceHard.map(key => {
                 return (
                   <React.Fragment key={key}>
-                    <RadioAdapter name="wasServiceHard" value={key}>
+                    <RadioAdapter 
+                      name="wasServiceHard" 
+                      value={key}
+                    >
                       {i18n._(key)}
                     </RadioAdapter>
                   </React.Fragment>
@@ -98,7 +101,7 @@ export const FinalFeedbackForm = (props) => {
               name="wouldYouUseAgain"
               label={<Trans id="finalFeedback.wouldYouUseAgain.label" />}
             >
-              {wouldYouUseAgain.map((key) => {
+              {wouldYouUseAgain.map(key => {
                 return (
                   <React.Fragment key={key}>
                     <RadioAdapter name="wouldYouUseAgain" value={key}>
