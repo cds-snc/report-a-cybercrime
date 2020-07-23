@@ -90,7 +90,7 @@ export const ThankYouPage = () => {
               : { bg: 'yellow.300', borderColor: 'yellow.400' })}
             color="black"
             spacing={6}
-            columns={{ base: 4 / 4, lg: 6 / 7 }}
+            columns={{ base: 4 / 4, md: 6 / 7 }}
           >
             <H1 mb={6}>{thankYouTitle}</H1>
 
