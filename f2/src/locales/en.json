@@ -359,7 +359,7 @@
   "startPage.requirement3": "Details about what happened and how you were affected",
   "startPage.requirement4": "Documents, messages, or transaction receipts",
   "startPage.title": "Before you start",
-  "startPage.warning": "You won’t be able to return to edit your report once you close this window.",
+  "startPage.warning": "You will not be able to save, edit, or return to your report once you start your submission. You can bookmark this page to start your report at another time.",
   "stepper": "Step {activeStep} of {totalSteps}",
   "suspectClues.intro": "It’s often hard to tell who is behind a computer crime or scam. It’s okay if you don’t know much about the suspect. You can leave the questions you cannot answer blank.",
   "suspectClues.nextButton": "Continue",

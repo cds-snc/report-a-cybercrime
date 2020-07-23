@@ -359,7 +359,7 @@
   "startPage.requirement3": "Précisions concernant les conséquences de l’incident",
   "startPage.requirement4": "Documents, messages ou reçus de transactions",
   "startPage.title": "Avant de commencer",
-  "startPage.warning": "Vous ne pourrez pas revenir modifier votre rapport si vous fermez cette fenêtre.",
+  "startPage.warning": "Vous ne pourrez pas sauvegarder, modifier ou revenir à votre rapport une fois celui-ci commencé. Vous pouvez ajouter la présente page à vos favoris pour commencer votre rapport une autre fois.",
   "stepper": "Étape {activeStep} de {totalSteps}",
   "suspectClues.intro": "Il est souvent difficile de savoir qui est responsable d’un crime informatique ou d’une fraude. Ce n’est pas grave si vous ne savez pas grand-chose sur le suspect. Vous pouvez laisser le champ vide si vous n’avez pas de réponse à la question.",
   "suspectClues.nextButton": "Continuer",
