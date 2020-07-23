@@ -449,7 +449,7 @@
   "whenDidItHappenPage.dateRange.end.label": "Quand est-ce arrivé pour la dernière fois?",
   "whenDidItHappenPage.dateRange.start.label": "Quand est-ce arrivé pour la première fois?",
   "whenDidItHappenPage.intro": "Ce type d’incident peut se produire une fois ou plusieurs fois. Dites-nous à quelle fréquence le suspect a essayé de vous contacter.",
-  "whenDidItHappenPage.nextPage": "Étape suivante : D’après vous, quelles pourraient être les répercussions?",  
+  "whenDidItHappenPage.nextPage": "Étape suivante : D’après vous, quelles pourraient être les répercussions?",
   "whenDidItHappenPage.notSure.helperText": "Indiquez du mieux que vous pouvez la période pendant laquelle le suspect a essayé de communiquer avec vous.",
   "whenDidItHappenPage.notSure.label": "Décrivez les événements.",
   "whenDidItHappenPage.options.moreThanOnce": "Plusieurs fois",
