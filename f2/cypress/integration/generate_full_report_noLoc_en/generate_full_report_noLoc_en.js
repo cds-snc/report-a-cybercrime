@@ -37,7 +37,7 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill ReportAnonymously page forms', () => {
-    cy.get('form').find('[value="anonymousPage.yes"]').check({ force: true })
+    //cy.get('form').find('[value="anonymousPage.no"]').check({ force: true })
 });
 
 Then('I click {string}', () => {
@@ -71,12 +71,12 @@ Given('{string} should be shown', (content) => {
 
 When('I fill whendidithappen page forms', () => {
     cy.get('form').find('[value="moreThanOnce"]').check({ force: true })
-    cy.get('form').find('[id="startDay"]').type('16')
-    cy.get('form').find('[id="startMonth"]').type('6')
-    cy.get('form').find('[id="startYear"]').type('2020')
-    cy.get('form').find('[id="endDay"]').type('30')
-    cy.get('form').find('[id="endMonth"]').type('6')
-    cy.get('form').find('[id="endYear"]').type('2020')
+    //cy.get('form').find('[id="startDay"]').type('6')
+    //cy.get('form').find('[id="startMonth"]').type('9')
+    //cy.get('form').find('[id="startYear"]').type('2019')
+    //cy.get('form').find('[id="endDay"]').type('12')
+    //cy.get('form').find('[id="endMonth"]').type('9')
+    //cy.get('form').find('[id="endYear"]').type('2019')
 });
 
 Then('I click {string}', () => {
@@ -104,27 +104,17 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill Howwereyourmoney page forms', () => {
-    cy.get('form').find('[id="demandedMoney"]').type('$10000 CAD')
-    cy.get('form').find('[id="moneyTaken"]').type('$5000 CAD')
+    cy.get('form').find('[id="demandedMoney"]').type('$1000 Bitcoin')
+    cy.get('form').find('[id="moneyTaken"]').type('$500 Bitcoin')
     cy.get('form').find('[value="methodPayment.eTransfer"]').check({ force: true })
     cy.get('form').find('[value="methodPayment.creditCard"]').check({ force: true })
     cy.get('form').find('[value="methodPayment.giftCard"]').check({ force: true })
     cy.get('form').find('[value="methodPayment.cryptocurrency"]').check({ force: true })
     cy.get('form').find('[value="methodPayment.other"]').check({ force: true })
     cy.get('form').find('[id="methodOther"]').type('Certified Cheque')
-});
-
-Then('I click {string}', () => {
-    cy.contains("Continue").first().click({force: true});
-});
-
-Given('{string} should be shown', (content) => {
-    cy.contains(content, {timeout:10000}).should('be.visible')
-});
-
-When('I fill whendidithappen page forms', () => {
-    cy.get('form').find('[value="notSure"]').check({ force: true })
-    cy.get('form').find('[id="description"]').type('It happens in second or third week of july')
+    cy.get('form').find('[id="transactionDay"]').type('22')
+    cy.get('form').find('[id="transactionMonth"]').type('01')
+    cy.get('form').find('[id="transactionYear"]').type('2019')
 });
 
 Then('I click {string}', () => {
@@ -166,10 +156,10 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to Howyourbusinessaffected forms', () => {
-    cy.get('form').find('[name="nameOfBusiness"]').type('Edward Jones')
-    cy.get('form').find('[name="industry"]').type('Financial Advisor')
-    cy.get('form').find('[name="role"]').type('Expert Advisor')
-    cy.get('form').find('[value="numberOfEmployee.100To499"]').check({ force: true })
+    cy.get('form').find('[name="nameOfBusiness"]').type('Garizel Pizza')
+    cy.get('form').find('[name="industry"]').type('Take Out Restaurant')
+    cy.get('form').find('[name="role"]').type('Owner')
+    cy.get('form').find('[value="numberOfEmployee.1To99"]').check({ force: true })
 });
 
 Then('I click {string}', () => {
@@ -181,7 +171,7 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to Whathappened page forms', () => {
-    cy.get('form').find('[name="whatHappened"]').type('TC: full report- anony. What happened tell more')
+    cy.get('form').find('[name="whatHappened"]').type('TC: Full report_noLoc. What happened tell more')
 });
 
 Then('I click {string}', () => {
@@ -193,8 +183,8 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill Addsuspectclues page forms', () => {
-    cy.get('form').find('[name="suspectClues1"]').type('Suspect Name Anonymous')
-    cy.get('form').find('[name="suspectClues2"]').type('234 TallWood Cresent')
+    cy.get('form').find('[name="suspectClues1"]').type('Suspect Name English')
+    cy.get('form').find('[name="suspectClues2"]').type('1200 Vanier Parkway')
     cy.get('form').find('[name="suspectClues3"]').type('suspect clues - Tell More')
 });
 
@@ -207,11 +197,15 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill AttachSupportingEvidence page forms', () => {
-    const fileName = 'fake.jpg';
-    cy.fixture(fileName).then(fileContent => {
-        cy.get('#uploader').upload({ fileContent, fileName, mimeType: 'image/jpg' });
-    });
+    const fileName1 = 'version.png';
+    const fileName2 = 'gun-picture.jpg';
+
+    cy.get('#uploader').uploadFile(fileName1, 'image/png');
     cy.wait(1000)
+
+    cy.get('#uploader').uploadFile(fileName2, 'image/jpeg');
+    cy.wait(1000)
+
 });
 
 Then('I click {string}', () => {
@@ -223,8 +217,21 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to yourLocation page forms', () => {
-    cy.get('form').find('[id="city"]').type('Ottawa')
-    cy.get('form').find('[id="province"]').type('Ontario')
+    //cy.get('form').find('[id="postalCode"]').type('k2j6r2')
+});
+
+Then('I click {string}', () => {
+    cy.contains("Continue").first().click({force: true});
+});
+
+Given('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
+When('I fill yourContactDetails page forms', () => {
+    cy.get('form').find('[id="fullName"]').type('FirstName LastName')
+    cy.get('form').find('[id="email"]').type('Hong.Vu@rcmp-grc.gc.ca')
+    cy.get('form').find('[id="phone"]').type('6131115634')
 });
 
 Then('I click {string}', () => {

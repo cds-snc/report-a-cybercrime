@@ -1,11 +1,11 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, After, When, And, Then } from 'cypress-cucumber-preprocessor/steps';
 // Hooks for repeated commands/rules
 After(() => {
  cy.reportA11y();
 });
 
 Given('I open the report home page', () => {
-    cy.visit(Cypress.env('dev'))
+    cy.visit(Cypress.env('website'))
 });
 
 Then('Inject axe and check for accessibility issues', () => {
@@ -33,7 +33,7 @@ Then('check for accessibility issues', () => {
 });
 
 When('I check the consent checkbox', () => {
-    cy.get('form').find('[name="consentOptions"]').check({ force: true })
+    cy.get('form').find('[value="privacyConsentInfoForm.yes"]').check({ force: true })
     cy.contains('Continue').first().click({force: true});
 });
 

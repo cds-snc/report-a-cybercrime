@@ -1,4 +1,4 @@
- @smoke
+ @regression
 Feature: Test the entire report workflow in english
   I want to create an online investgation report
   
@@ -24,33 +24,13 @@ Feature: Test the entire report workflow in english
   Scenario: When did it happen
     Given "When did the incident happen?" should be shown
     When I fill whendidithappen page forms
-    Then I click "Continue"
+    Then I click "Continue"  
 
   Scenario: What could be affected
     Given "What do you think could be affected?" should be shown
     When I fill Whatcouldbeaffected page forms
     Then I click "Continue"
-
-  Scenario: How were your money affected
-    Given "How were your money or finances affected?" should be shown
-    When I fill Howwereyourmoney page forms
-    Then I click "Continue"
-
-  Scenario: How was personal information affected
-    Given "How was your personal information affected?" should be shown
-    When I fill Howwaspersonalinformationaffected forms
-    Then I click "Continue"
-
-  Scenario: How were your devices or accounts affected
-    Given "How were your devices or accounts affected?" should be shown
-    When I fill Howwereyourdevicesaffected page forms
-    Then I click "Continue"
-
-  Scenario: Tell us about your business or organization
-    Given "Tell us about your business or organization" should be shown
-    When I fill to Howyourbusinessaffected forms
-    Then I click "Continue"
-
+  
   Scenario: What happened?
     Given "What happened?" should be shown
     When I fill to Whathappened page forms

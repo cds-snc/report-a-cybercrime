@@ -1,3 +1,4 @@
+@regression
 Feature: Test the cancellation workflow in english
   I want to cancel an online investgation report
 

@@ -1,11 +1,11 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, After, When, And, Then } from 'cypress-cucumber-preprocessor/steps';
 // Hooks for repeated commands/rules
-After(() => {
- cy.reportA11y();
-});
+//After(() => {
+// cy.reportA11y();
+//});
 
 Given('I open the report home page', () => {
-    cy.visit(Cypress.env('dev'))
+    cy.visit(Cypress.env('website'))
 });
 
 When('I click on create a report button', () => {
@@ -59,10 +59,21 @@ When('I fill howdiditstart page forms', () => {
     cy.get('form').find('[id="application"]').type('Whatapps')
     cy.get('form').find('[value="howDidTheyReachYou.others"]').check({ force: true })
     cy.get('form').find('[id="others"]').type('In Person')
-    cy.get('form').find('[id="startDay"]').type('28')
-    cy.get('form').find('[id="startMonth"]').type('2')
-    cy.get('form').find('[id="startYear"]').type('2019')
-    cy.get('form').find('[value="howManyTimes.severalTimes"]').check({ force: true })
+});
+
+Then('I click {string}', () => {
+    cy.contains("Continue").first().click({force: true});
+});
+
+Given('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
+When('I fill whendidithappen page forms', () => {
+    cy.get('form').find('[value="once"]').check({ force: true })
+    cy.get('form').find('[id="happenedOnceDay"]').type('28')
+    cy.get('form').find('[id="happenedOnceMonth"]').type('2')
+    cy.get('form').find('[id="happenedOnceYear"]').type('2019')
 });
 
 Then('I click {string}', () => {
@@ -157,7 +168,7 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to Whathappened page forms', () => {
-    cy.get('form').find('[name="whatHappened"]').type('What happened tell more')
+    cy.get('form').find('[name="whatHappened"]').type('TC:Full report. What happened tell more')
 });
 
 Then('I click {string}', () => {
@@ -203,7 +214,7 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to yourLocation page forms', () => {
-    cy.get('form').find('[id="postalCode"]').type('k2j6r2')
+    cy.get('form').find('[id="postalCode"]').type('M3H 6A7')
 });
 
 Then('I click {string}', () => {
@@ -217,7 +228,7 @@ Given('{string} should be shown', (content) => {
 When('I fill yourContactDetails page forms', () => {
     cy.get('form').find('[id="fullName"]').type('FirstName LastName')
     cy.get('form').find('[id="email"]').type('Hong.Vu@rcmp-grc.gc.ca')
-    cy.get('form').find('[id="phone"]').type('6131115634')
+    cy.get('form').find('[id="phone"]').type('4161015934')
 });
 
 Then('I click {string}', () => {

@@ -1,4 +1,4 @@
- @smoke
+@regression
 Feature: Test the entire report workflow in english
   I want to create an online investgation report
   
@@ -69,6 +69,11 @@ Feature: Test the entire report workflow in english
   Scenario: your location
     Given "Enter your location" should be shown
     When I fill to yourLocation page forms
+    Then I click "Continue"
+
+  Scenario: your contact details
+    Given "Enter your contact details" should be shown
+    When I fill yourContactDetails page forms
     Then I click "Continue"
 
   Scenario: Review  your report and  capture a screenshot

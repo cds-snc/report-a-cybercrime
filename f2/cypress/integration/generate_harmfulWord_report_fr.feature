@@ -1,4 +1,4 @@
- @smoke
+ @regression
 Feature: Test the entire report workflow in french
   I want to create an online investgation report
 
@@ -25,30 +25,15 @@ Scenario: Report anonymously
     Given "Quand est-ce que l'incident s'est produit ?" should be shown
     When I fill whendidithappen page forms
     Then I click "Continue"
-    
+
   Scenario: What could be affected
     Given "D’après vous, quelles pourraient être les répercussions?" should be shown
     When I fill Whatcouldbeaffected page forms
     Then I click "Continuer"
 
-  Scenario: How were your money affected
-    Given "Répercussions sur votre argent ou vos finances" should be shown
-    When I fill Howwereyourmoney page forms
-    Then I click "Continuer"
-
-  Scenario: How was personal information affected
-    Given "Répercussions sur vos données personnelles" should be shown
-    When I fill Howwaspersonalinformationaffected page forms
-    Then I click "Continuer"
-
   Scenario: How was your device affected
     Given "Répercussions sur vos appareils ou vos comptes" should be shown
     When I fill Howwereyourdevicesaffected page forms
-    Then I click "Continuer"
-
-  Scenario: How your business affected
-    Given "Parlez-nous de votre entreprise ou organisation" should be shown
-    When I fill Howyourbusinessaffected page forms
     Then I click "Continuer"
 
   Scenario: What happened?

@@ -49,69 +49,8 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill howdiditstart page forms', () => {
-    cy.get('form').find('[value="howDidTheyReachYou.email"]').check({ force: true })
-    cy.get('form').find('[id="email"]').type('SuspectEnglish@magma.com')
-    cy.get('form').find('[value="howDidTheyReachYou.phone"]').check({ force: true })
-    cy.get('form').find('[id="phone"]').type('1-800-000-1111')
-    cy.get('form').find('[value="howDidTheyReachYou.online"]').check({ force: true })
-    cy.get('form').find('[id="online"]').type('http://www.suspectEnglish.com')
     cy.get('form').find('[value="howDidTheyReachYou.app"]').check({ force: true })
     cy.get('form').find('[id="application"]').type('Whatapps')
-    cy.get('form').find('[value="howDidTheyReachYou.others"]').check({ force: true })
-    cy.get('form').find('[id="others"]').type('In Person')
-});
-
-Then('I click {string}', () => {
-    cy.contains("Continue").first().click({force: true});
-});
-
-Given('{string} should be shown', (content) => {
-    cy.contains(content, {timeout:10000}).should('be.visible')
-});
-
-When('I fill whendidithappen page forms', () => {
-    cy.get('form').find('[value="moreThanOnce"]').check({ force: true })
-    cy.get('form').find('[id="startDay"]').type('16')
-    cy.get('form').find('[id="startMonth"]').type('6')
-    cy.get('form').find('[id="startYear"]').type('2020')
-    cy.get('form').find('[id="endDay"]').type('30')
-    cy.get('form').find('[id="endMonth"]').type('6')
-    cy.get('form').find('[id="endYear"]').type('2020')
-});
-
-Then('I click {string}', () => {
-    cy.contains('Continuer').first().click({force: true});
-});
-
-Given('{string} should be shown', (content) => {
-    cy.contains(content, {timeout:10000}).should('be.visible')
-});
-
-When('I fill Whatcouldbeaffected page forms', () => {
-    cy.get('form').find('[value="whatWasAffectedForm.financial"]').check({ force: true })
-    cy.get('form').find('[value="whatWasAffectedForm.personalInformation"]').check({ force: true })
-    cy.get('form').find('[value="whatWasAffectedForm.devices"]').check({ force: true })
-    cy.get('form').find('[value="whatWasAffectedForm.business_assets"]').check({ force: true })
-    cy.get('form').find('[value="whatWasAffectedForm.other"]').check({ force: true })
-});
-
-Then('I click {string}', () => {
-    cy.contains("Continue").first().click({force: true});
-});
-
-Given('{string} should be shown', (content) => {
-    cy.contains(content, {timeout:10000}).should('be.visible')
-});
-
-When('I fill Howwereyourmoney page forms', () => {
-    cy.get('form').find('[id="demandedMoney"]').type('$10000 CAD')
-    cy.get('form').find('[id="moneyTaken"]').type('$5000 CAD')
-    cy.get('form').find('[value="methodPayment.eTransfer"]').check({ force: true })
-    cy.get('form').find('[value="methodPayment.creditCard"]').check({ force: true })
-    cy.get('form').find('[value="methodPayment.giftCard"]').check({ force: true })
-    cy.get('form').find('[value="methodPayment.cryptocurrency"]').check({ force: true })
-    cy.get('form').find('[value="methodPayment.other"]').check({ force: true })
-    cy.get('form').find('[id="methodOther"]').type('Certified Cheque')
 });
 
 Then('I click {string}', () => {
@@ -124,7 +63,19 @@ Given('{string} should be shown', (content) => {
 
 When('I fill whendidithappen page forms', () => {
     cy.get('form').find('[value="notSure"]').check({ force: true })
-    cy.get('form').find('[id="description"]').type('It happens in second or third week of july')
+    cy.get('form').find('[id="description"]').type('Beginning of June')
+});
+
+Then('I click {string}', () => {
+    cy.contains("Continue").first().click({force: true});
+});
+
+Given('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
+When('I fill Whatcouldbeaffected page forms', () => {
+    cy.get('form').find('[value="whatWasAffectedForm.personalInformation"]').check({ force: true })
 });
 
 Then('I click {string}', () => {
@@ -139,37 +90,7 @@ when ('I fill Howwaspersonalinformationaffected forms', () => {
     cy.get('form').find('[value="typeOfInfoReq.creditCard"]').check({ force: true })
     cy.get('form').find('[value="typeOfInfoReq.dob"]').check({ force: true })
     cy.get('form').find('[value="typeOfInfoReq.homeAddress"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoReq.sin"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoReq.other"]').check({ force: true })
     cy.get('form').find('[value="typeOfInfoObtained.creditCard"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoObtained.dob"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoObtained.homeAddress"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoObtained.sin"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoObtained.other"]').check({ force: true })
-});
-
-Then('I click {string}', () => {
-    cy.contains("Continue").first().click({force: true});
-});
-
-Given('{string} should be shown', (content) => {
-    cy.contains(content, {timeout:10000}).should('be.visible')
-});
-
-When('I fill Howwereyourdevicesaffected page forms', () => {
-    cy.get('form').find('[name="device"]').type('Personal Computer')
-    cy.get('form').find('[name="account"]').type('FaceBook')
-});
-
-Given('{string} should be shown', (content) => {
-    cy.contains(content, {timeout:10000}).should('be.visible')
-});
-
-When('I fill to Howyourbusinessaffected forms', () => {
-    cy.get('form').find('[name="nameOfBusiness"]').type('Edward Jones')
-    cy.get('form').find('[name="industry"]').type('Financial Advisor')
-    cy.get('form').find('[name="role"]').type('Expert Advisor')
-    cy.get('form').find('[value="numberOfEmployee.100To499"]').check({ force: true })
 });
 
 Then('I click {string}', () => {
@@ -181,7 +102,7 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to Whathappened page forms', () => {
-    cy.get('form').find('[name="whatHappened"]').type('TC: full report- anony. What happened tell more')
+    cy.get('form').find('[name="whatHappened"]').type('TC:sw-personal-anony. What happened tell more')
 });
 
 Then('I click {string}', () => {
@@ -194,7 +115,6 @@ Given('{string} should be shown', (content) => {
 
 When('I fill Addsuspectclues page forms', () => {
     cy.get('form').find('[name="suspectClues1"]').type('Suspect Name Anonymous')
-    cy.get('form').find('[name="suspectClues2"]').type('234 TallWood Cresent')
     cy.get('form').find('[name="suspectClues3"]').type('suspect clues - Tell More')
 });
 
@@ -223,7 +143,6 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to yourLocation page forms', () => {
-    cy.get('form').find('[id="city"]').type('Ottawa')
     cy.get('form').find('[id="province"]').type('Ontario')
 });
 

@@ -1,6 +1,7 @@
+@smoke
 Feature: Test the entire report workflow in english
   I want to create an online investgation report
-  @smoke
+  
   Scenario: Home page
     Given I open the report home page
     When I click on create a report button
@@ -20,6 +21,11 @@ Feature: Test the entire report workflow in english
     When I fill howdiditstart page forms
     Then I click "Continue"
 
+  Scenario: When did it happen
+    Given "When did the incident happen?" should be shown
+    When I fill whendidithappen page forms
+    Then I click "Continue"
+
   Scenario: What could be affected
     Given "What do you think could be affected?" should be shown
     When I fill Whatcouldbeaffected page forms
@@ -35,7 +41,7 @@ Feature: Test the entire report workflow in english
     When I fill Howwaspersonalinformationaffected forms
     Then I click "Continue"
 
-  Scenario: How was personal information affected
+  Scenario: How were your devices or accounts affected
     Given "How were your devices or accounts affected?" should be shown
     When I fill Howwereyourdevicesaffected page forms
     Then I click "Continue"

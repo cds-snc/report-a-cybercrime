@@ -1,16 +1,16 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps';
+import { Given, After, When, And, Then } from 'cypress-cucumber-preprocessor/steps';
 // Hooks for repeated commands/rules
-After(() => {
- cy.reportA11y();
-});
+//After(() => {
+// cy.reportA11y();
+//});
 
 Given('I open the report home page', () => {
-    cy.visit(Cypress.env('dev'))
+    cy.visit(Cypress.env('website'))
 });
 
 When ('I change the language',() => {
     cy.contains('Français').first().click({force: true});
-    cy.wait(2000)
+    cy.wait(3000)
     cy.contains('Signaler maintenant').first().click({force: true});
 });
 
@@ -59,13 +59,26 @@ When('I fill howdiditstart page forms', () => {
     cy.get('form').find('[value="howDidTheyReachYou.online"]').check({ force: true })
     cy.get('form').find('[id="online"]').type('http://www.suspectFrench.com')
     cy.get('form').find('[value="howDidTheyReachYou.app"]').check({ force: true })
-    cy.get('form').find('[id="application"]').type('noms d’applications où vous avez communiqué Application')
+    cy.get('form').find('[id="application"]').type('Noms d’applications où vous avez communiqué Application')
     cy.get('form').find('[value="howDidTheyReachYou.others"]').check({ force: true })
-    cy.get('form').find('[id="others"]').type('Une publicité')
+});
+
+Then('I click {string}', () => {
+    cy.contains('Continuer').first().click({force: true});
+});
+
+Given('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
+When('I fill whendidithappen page forms', () => {
+    cy.get('form').find('[value="moreThanOnce"]').check({ force: true })
     cy.get('form').find('[id="startDay"]').type('6')
     cy.get('form').find('[id="startMonth"]').type('9')
     cy.get('form').find('[id="startYear"]').type('2019')
-    cy.get('form').find('[value="howManyTimes.severalTimes"]').check({ force: true })
+    cy.get('form').find('[id="endDay"]').type('12')
+    cy.get('form').find('[id="endMonth"]').type('9')
+    cy.get('form').find('[id="endYear"]').type('2019')
 });
 
 Then('I click {string}', () => {
@@ -235,7 +248,7 @@ Given('{string} should be shown', (content) => {
 When('I fill yourContactDetails page forms', () => {
     cy.get('form').find('[id="fullName"]').type('Nom Prenom')
     cy.get('form').find('[id="email"]').type('hong.vu@rcmp-grc.gc.ca')
-    cy.get('form').find('[id="phone"]').type('618-030-0233')
+    cy.get('form').find('[id="phone"]').type('514-030-0233')
 });
 
 Then('I click {string}', () => {

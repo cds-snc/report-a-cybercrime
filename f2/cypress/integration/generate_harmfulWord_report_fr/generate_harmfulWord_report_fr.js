@@ -51,15 +51,6 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill howdiditstart page forms', () => {
-
-    cy.get('form').find('[value="howDidTheyReachYou.email"]').check({ force: true })
-    cy.get('form').find('[id="email"]').type('suspectFrench@magma.com')
-    cy.get('form').find('[value="howDidTheyReachYou.phone"]').check({ force: true })
-    cy.get('form').find('[id="phone"]').type('1-800-000-0001')
-    cy.get('form').find('[value="howDidTheyReachYou.online"]').check({ force: true })
-    cy.get('form').find('[id="online"]').type('http://www.suspectFrenchAnonymous.com')
-    cy.get('form').find('[value="howDidTheyReachYou.app"]').check({ force: true })
-    cy.get('form').find('[id="application"]').type('noms d’applications où vous avez communiqué Application')
     cy.get('form').find('[value="howDidTheyReachYou.others"]').check({ force: true })
     cy.get('form').find('[id="others"]').type('Une publicité')
 });
@@ -73,12 +64,14 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill whendidithappen page forms', () => {
-    cy.get('form').find('[value="notSure"]').check({ force: true })
-    cy.get('form').find('[id="description"]').type('Peut-être dans la deuxième semaine avril')
+    cy.get('form').find('[value="once"]').check({ force: true })
+    cy.get('form').find('[id="happenedOnceDay"]').type('28')
+    cy.get('form').find('[id="happenedOnceMonth"]').type('2')
+    cy.get('form').find('[id="happenedOnceYear"]').type('2019')
 });
 
 Then('I click {string}', () => {
-    cy.contains('Continuer').first().click({force: true});
+    cy.contains("Continue").first().click({force: true});
 });
 
 Given('{string} should be shown', (content) => {
@@ -86,57 +79,7 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill Whatcouldbeaffected page forms', () => {
-    cy.get('form').find('[value="whatWasAffectedForm.financial"]').check({ force: true })
-    cy.get('form').find('[value="whatWasAffectedForm.personalInformation"]').check({ force: true })
     cy.get('form').find('[value="whatWasAffectedForm.devices"]').check({ force: true })
-    cy.get('form').find('[value="whatWasAffectedForm.business_assets"]').check({ force: true })
-    cy.get('form').find('[value="whatWasAffectedForm.other"]').check({ force: true })
-});
-
-Then('I click {string}', () => {
-    cy.contains('Continuer').first().click({force: true});
-});
-
-Given('{string} should be shown', (content) => {
-    cy.contains(content, {timeout:10000}).should('be.visible')
-});
-
-When('I fill Howwereyourmoney page forms', () => {
-
-    cy.get('form').find('[id="demandedMoney"]').type('$8000 CAD')
-    cy.get('form').find('[id="moneyTaken"]').type('$3000 CAD')
-    cy.get('form').find('[value="methodPayment.eTransfer"]').check({ force: true })
-    cy.get('form').find('[value="methodPayment.creditCard"]').check({ force: true })
-    cy.get('form').find('[value="methodPayment.giftCard"]').check({ force: true })
-    cy.get('form').find('[value="methodPayment.cryptocurrency"]').check({ force: true })
-    cy.get('form').find('[value="methodPayment.other"]').check({ force: true })
-    cy.get('form').find('[id="methodOther"]').type('Argent')
-    cy.get('form').find('[id="transactionDay"]').type('20')
-    cy.get('form').find('[id="transactionMonth"]').type('12')
-    cy.get('form').find('[id="transactionYear"]').type('2019')
-});
-
-Then('I click {string}', () => {
-    cy.contains('Continuer').first().click({force: true});
-});
-
-Given('{string} should be shown', (content) => {
-    cy.contains(content, {timeout:10000}).should('be.visible')
-});
-
-when ('I fill Howwaspersonalinformationaffected page forms', () => {
-    cy.get('form').find('[value="typeOfInfoReq.creditCard"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoReq.dob"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoReq.homeAddress"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoReq.sin"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoReq.other"]').check({ force: true })
-    cy.get('form').find('[id="infoReqOther"]').type('Permis de conduire')
-    cy.get('form').find('[value="typeOfInfoObtained.creditCard"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoObtained.dob"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoObtained.homeAddress"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoObtained.sin"]').check({ force: true })
-    cy.get('form').find('[value="typeOfInfoObtained.other"]').check({ force: true })
-    cy.get('form').find('[id="infoObtainedOther"]').type('Permis de conduire')
 });
 
 Then('I click {string}', () => {
@@ -158,27 +101,12 @@ Then('I click {string}', () => {
 });
 
 Given('{string} should be shown', (content) => {
-    cy.contains(content, {timeout:10000}).should('be.visible')
-});
-
-When('I fill Howyourbusinessaffected page forms', () => {
-    cy.get('form').find('[name="nameOfBusiness"]').type('Health & Wellness Bedford')
-    cy.get('form').find('[name="industry"]').type('Clinique de Santé')
-    cy.get('form').find('[name="role"]').type('Expert en Informatique')
-    cy.get('form').find('[value="numberOfEmployee.500More"]').check({ force: true })
-});
-
-Then('I click {string}', () => {
-    cy.contains('Continuer').first().click({force: true});
-});
-
-Given('{string} should be shown', (content) => {
     cy.contains('Continuer').first().click({force: true});
 });
 
 When('I fill Whathappened page forms', () => {
     cy.fixture('form_data.json').then((user) => {
-       var large = user.small_fr;
+       var large = user.harmful_fr;
        cy.get('form').find('[id="whatHappened"]').type(large)
     });   
 });
@@ -192,9 +120,9 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill Addsuspectclues page forms', () => {
-    cy.get('form').find('[id="suspectClues1"]').type('Nom du suspect')
-    cy.get('form').find('[id="suspectClues2"]').type('Adresse du suspect')
-    cy.get('form').find('[id="suspectClues3"]').type('Détail qui pourrait aider à identifier le suspect')
+    cy.get('form').find('[id="suspectClues1"]').type('Nous ne pouvions simplement pas abandonner.')
+    cy.get('form').find('[id="suspectClues2"]').type('ils/elles détruisaient. Que ce serait mieux si je mourrais')
+    cy.get('form').find('[id="suspectClues3"]').type('Nous sommes associés avec un papier de nos premiers jours jusqu à la fin de la vie')
 });
 
 Then('I click {string}', () => {
@@ -208,7 +136,7 @@ Given('{string} should be shown', (content) => {
 When('I fill AttachSupportingEvidence page forms', () => {
     const fileName1 = 'sample.txt';
     const fileName2 = 'testFile.pdf';
-    const fileName3 = 'girl.jpg';
+    const fileName3 = 'March_2020.pdf';
 
     cy.get('#uploader').uploadFile(fileName1, 'text/plain');
     cy.wait(1000)
@@ -216,7 +144,7 @@ When('I fill AttachSupportingEvidence page forms', () => {
     cy.get('#uploader').uploadFile(fileName2, 'application/pdf');
     cy.wait(1000)
 
-    cy.get('#uploader').uploadFile(fileName3, 'image/jpeg');
+    cy.get('#uploader').uploadFile(fileName3, 'application/pdf');
     cy.wait(1000)
     //cy.screenshot()
 });
