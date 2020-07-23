@@ -173,7 +173,7 @@
   "evidencePage.nextPage": "Prochaine étape : Votre emplacement géographique",
   "evidencePage.numberOfFilesAttached": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
   "evidencePage.removeFileButton": "Enlever ce fichier",
-  "evidencePage.supportedFileTypes": ".png, .jpeg, .doc, .xls, .pdf, and .txt.",
+  "evidencePage.supportedFileTypes": ".png, .jpeg, .doc, .xls, .pdf, et .txt.",
   "evidencePage.supportedFiles": "Types de fichiers pris en charge : ",
   "evidencePage.title": "Preuves à l’appui",
   "fileUpload.CosmosDBFile": "Fichier CosmosDB",
