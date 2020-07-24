@@ -215,6 +215,8 @@
   "howDidTheyReachYou.online": "Sur un site Web",
   "howDidTheyReachYou.others": "Autre",
   "howDidTheyReachYou.phone": "Au téléphone",
+  "howDidTheyReachYou.question": "",
+  "howDidTheyReachYou.reminder": "",
   "howDidTheyReachYouLabel.hint1": "Écrivez la ou les adresses courriel du suspect ou laisser le champ vide si vous ne savez pas.",
   "howDidTheyReachYouLabel.hint2": "Écrivez le ou les numéros de téléphone tels qu’ils sont apparus sur l’afficheur ou laisser le champ vide si vous ne savez pas.",
   "howDidTheyReachYouLabel.hint3": "Écrivez la ou les adresses de sites Web utilisées par le suspect ou laisser le champ vide si vous ne savez pas.",
