@@ -47,7 +47,6 @@
     "unidecode": "^0.1.8",
     "winston": "~3.2.1",
     "express-winston": "4.0.3"
-
   },
   "scripts": {
     "prod": "npm run build && node server.js",
@@ -59,9 +58,9 @@
     "dbg": "react-scripts --inspect-brk test --watchAll=false --runInBand",
     "eject": "react-scripts eject",
     "start:cypress": "npm run dev",
-    "cypress:open": "node ./node_modules/.bin/cypress open ",
+    "cypress:open": "./node_modules/.bin/cypress open ",
     "cypress": "start-server-and-test start:cypress http://localhost:3000 cypress:open",
-    "cypress:smoke": "node ./node_modules/.bin/cypress-tags run -e TAGS='@smoke'",
+    "cypress:smoke": "./node_modules/.bin/cypress-tags run -e TAGS=@smoke",
     "cypress:consent": "node ./node_modules/.bin/cypress-tags run -e TAGS='@consent'",
     "cypress:cli": "start-server-and-test http://localhost:3000 cypress:smoke",
     "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
@@ -81,11 +80,7 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo 'Running npm run extract' && lingui extract --clean && git add src/locales && pretty-quick --staged"
-    }
-  },
+
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -155,5 +150,8 @@
         "statements": 50
       }
     }
+  },
+  "optionalDependencies": {
+    "win-node-env": "^0.4.0"
   }
 }

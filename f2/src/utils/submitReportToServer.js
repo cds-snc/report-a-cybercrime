@@ -35,6 +35,7 @@ async function submitReportToServer(url = '', data = {}) {
 
 let data = JSON.parse(JSON.stringify(formDefaults))
 data.contactInfo.fullName = 'Mallory'
+data.contactInfo.phone = '613 823 9766'
 // data.contactInfo.extra = 'extra field!'
 
 submitReportToServer('http://localhost:3000/submit', data)
