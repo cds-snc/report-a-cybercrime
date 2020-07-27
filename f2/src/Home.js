@@ -29,6 +29,7 @@ import { LocationAnonymousPage } from './LocationAnonymousPage'
 import { Covid19Page } from './Covid19Page'
 import { RedirectRoute } from './components/route'
 import { WhenDidItHappenPage } from './WhenDidItHappenPage'
+import { WhoAreYouReportForPage } from './WhoAreYouReportForPage'
 
 export const Home = () => (
   <Router>
@@ -111,6 +112,9 @@ export const Home = () => (
       </RedirectRoute>
       <RedirectRoute path="/locationAnonymous">
         <LocationAnonymousPage />
+      </RedirectRoute>
+      <RedirectRoute path="/whoAreYouReportFor">
+        <WhoAreYouReportForPage />
       </RedirectRoute>
 
       <Route>
