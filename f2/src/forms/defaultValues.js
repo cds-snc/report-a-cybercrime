@@ -3,7 +3,12 @@ const formDefaults = {
   prodVersion: '',
   appVersion: '',
   consent: { consentOptions: [] },
-  anonymous: { anonymousOptions: [] },
+  anonymous: { anonymousOptions: [] },  
+  whoAreYouReportFor: {
+    whoYouReportFor: '',
+    someoneDescription: '',
+    businessDescription: '',
+  },
   howdiditstart: {
     howDidTheyReachYou: [],
     email: '',

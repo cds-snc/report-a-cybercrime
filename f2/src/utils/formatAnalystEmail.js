@@ -127,7 +127,10 @@ const formatVictimDetails = (data) => {
     ) +
     formatLineHtml(lang['locationinfoPage.postalCity'], postalCity) +
     formatLineHtml(lang['locationinfoPage.postalProv'], postalProv) +
-    formatLineHtml(lang['privacyConsentInfoForm.consent'], consentString)
+    formatLineHtml(lang['privacyConsentInfoForm.consent'], consentString) +
+    formatLineHtml(lang['whoAreYouReportForPage.title'], lang[data.whoAreYouReportFor.whoYouReportFor]) +
+    formatLineHtml(lang['whoAreYouReportForPage.details'], data.whoAreYouReportFor.someoneDescription) +
+    formatLineHtml(lang['whoAreYouReportForPage.details'], data.whoAreYouReportFor.businessDescription)  
 
   delete data.contactInfo.fullName
   delete data.contactInfo.email
@@ -136,6 +139,9 @@ const formatVictimDetails = (data) => {
   delete data.location.province
   delete data.location.postalCode
   delete data.consent.consentOptions
+  delete data.whoAreYouReportFor.whoYouReportFor
+  delete data.whoAreYouReportFor.someoneDescription
+  delete data.whoAreYouReportFor.businessDescription
   return formatSection(lang['contactInfoPage.victimDetail'], rows)
 }
 
