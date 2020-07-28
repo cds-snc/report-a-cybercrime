@@ -257,7 +257,7 @@ const formatNarrative = (data) => {
       data.moneyLost.demandedMoney,
     ) +
     formatLineHtml(
-      lang['confirmationPage.personalInformation.typeOfInfoObtained'],
+      lang['confirmationPage.personalInformation.typeOfInfoReq'],
       infoReqString,
     ) +
     formatLineHtml(
