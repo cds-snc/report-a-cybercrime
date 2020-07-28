@@ -96,6 +96,7 @@ export const LocationInfoForm = (props) => {
                 borderColor="gray.500"
                 to="/contactinfo"
                 textAlign="center"
+                className="button-link black-button-link"
               >
                 <Trans id="locationinfoPage.skipButton" />
                 <Icon

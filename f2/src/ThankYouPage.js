@@ -102,6 +102,7 @@ export const ThankYouPage = () => {
                 variantColor="yellow"
                 title={i18n._('thankYouPage.confirmationPageButton')}
                 to="/confirmation"
+                className="white-button-link"
               >
                 <Icon
                   focusable="false"
@@ -245,6 +246,7 @@ export const ThankYouPage = () => {
                 variantColor="black"
                 title={i18n._('thankYouPage.feedbackButton')}
                 to="/finalFeedback"
+                className="white-button-link"
               >
                 <Trans id="thankYouPage.feedbackButton" />
                 <Icon

@@ -15,8 +15,6 @@ export const HowDidItStartPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
 
-  console.log('Display Page ', data)
-
   return (
     <Route
       render={({ history }) => (
@@ -35,7 +33,6 @@ export const HowDidItStartPage = () => {
 
               <HowDidItStartForm
                 onSubmit={(data) => {
-                  console.log('Page Submit: ', data)
                   dispatch({
                     type: 'saveFormData',
                     data: { howdiditstart: data },

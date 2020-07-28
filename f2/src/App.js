@@ -18,7 +18,7 @@ import { Li } from './components/list-item'
 import { A } from './components/link'
 import TagManager from 'react-gtm-module'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './style.css'
+import './theme/style.css'
 
 const gitsha = process.env.REACT_APP_VERSION
   ? process.env.REACT_APP_VERSION.slice(0, 7)

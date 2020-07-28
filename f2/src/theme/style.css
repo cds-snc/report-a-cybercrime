@@ -1,0 +1,211 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: rgb(0, 0, 0);
+}
+
+.label {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  padding-top: 0rem;
+}
+
+.next-page-label {
+  margin-bottom: 1rem;
+  padding-left: 0rem;
+}
+
+.form-check-label {
+  margin-left: 0.5rem;
+}
+
+.form-label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+  margin-left: 0px;
+}
+
+.form-question {
+  padding-bottom: 1rem;
+}
+
+.form-helper-text {
+  margin-top: 0.25rem;
+  line-height: 1.25;
+  font-size: 1rem;
+  margin-left: 0px;
+}
+
+.form-section {
+  display: inline-block;
+  margin-bottom: 3rem;
+}
+
+.help-text-label {
+  line-height: 1.25;
+  font-size: 1rem;
+}
+
+.open-text-entry {
+  margin-top: 0.75rem;
+  min-height: 80px;
+  border-color: rgb(174, 174, 174);
+}
+
+.open-text-entry:hover {
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+  border-color: rgb(55, 55, 55);
+}
+
+.open-text-entry:focus {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+  outline: none;
+  border-color: rgb(42, 105, 172);
+}
+
+.conditional-field {
+  border-left-width: 0.25rem;
+  border-left-color: rgb(174, 174, 174);
+  margin-top: 0.25rem;
+  margin-left: 1.25rem;
+  padding-left: 1.5rem;
+  width: -webkit-fill-available;
+}
+
+.checkbox {
+  display: none;
+}
+
+.checkbox-icon {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.empty-check,
+.selected-check {
+  background-color: rgb(255, 255, 255);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.empty-check {
+  border-width: 1px;
+  border-color: rgb(174, 174, 174);
+}
+
+.selected-check {
+  justify-content: center;
+  border-width: 3px;
+  border-style: solid;
+  border-image: initial;
+  border-color: rgb(0, 0, 0);
+}
+
+.check-mark {
+  width: 2rem;
+  height: 2rem;
+}
+
+.checkbox-row {
+  margin-bottom: 1rem;
+  margin-left: 0rem;
+}
+
+.error-row {
+  padding: 0.75rem 1rem;
+  background-color: rgb(254, 215, 215);
+  border-left: 3px solid rgb(130, 39, 39);
+  border-color: rgb(130, 39, 39);
+  margin: 1rem 0rem;
+  width: 100%;
+}
+
+.error-message {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  height: 3rem;
+  -webkit-box-pack: center;
+  white-space: nowrap;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: outset;
+  min-width: 8rem;
+}
+
+.button-label {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.button,
+.button-label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.submit-button {
+  background-color: rgb(31, 81, 38);
+  color: rgb(255, 255, 255);
+  border-color: rgb(24, 60, 31);
+}
+
+.submit-button:hover,
+.submit-button:focus {
+  background-color: rgb(31, 81, 38);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.submit-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(24, 60, 31);
+}
+
+.cancel-button {
+  background-color: rgb(232, 232, 232);
+  color: rgb(0, 0, 0);
+  border-color: rgb(213, 213, 213);
+  margin-left: 16px;
+}
+
+.cancel-button:hover,
+.cancel-button:focus {
+  background-color: rgb(232, 232, 232);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+  color: rgb(0, 0, 0);
+}
+
+.cancel-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(213, 213, 213);
+  color: rgb(0, 0, 0);
+}
+
+.button-icon {
+  margin-left: 0.5rem;
+  margin-right: -0.5rem;
+}
+
+.next-cancel-buttons {
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.white-button-link:hover,
+.black-button-link:hover {
+  text-decoration: none;
+}
+
+.white-button-link:hover {
+  color: rgb(255, 255, 255);
+}
+
+.black-button-link:hover {
+  color: inherit;
+}

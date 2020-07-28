@@ -38,7 +38,7 @@ export const Home = () => (
       </Route>
 
       <Route exact path="/">
-        <HowDidItStartPage />
+        <LandingPage />
       </Route>
       <Route exact path="/startPage">
         <StartPage />
