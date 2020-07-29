@@ -60,6 +60,7 @@ export const StartPage = (props) => {
                   onClick={() => {
                     history.push('/privacyconsent')
                   }}
+                  data-cy="submit"
                 >
                   <Trans id="startPage.nextButton" />
                   <Icon
