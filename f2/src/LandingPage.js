@@ -69,6 +69,7 @@ export const LandingPage = (props) => {
                 <H1>
                   <Trans id="landingPage.title" />
                 </H1>
+                <p>diane test</p>
                 <P>
                   <Trans id="landingPage.intro">
                     <A
