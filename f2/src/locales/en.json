@@ -117,7 +117,6 @@
   "confirmationPage.whatHappened.title.edit": "Edit What happened?",
   "confirmationPage.whatWasAffected.format": "This could have affected:",
   "confirmationPage.whoAreYouReportFor.nag": "No information provided.",
-  "confirmationPage.whoAreYouReportFor.title.edit": "Edit Who are you report for?",
   "confirmationPage.youAreReportingFor": "You are reporting for:",
   "contactInfoPage.victimDetail": "Victim details",
   "contactinfoForm.email.warning": "Enter a valid email address.",
@@ -475,18 +474,11 @@
   "whenDidItStart.startDay": "Day",
   "whenDidItStart.startMonth": "Month",
   "whenDidItStart.startYear": "Year",
-  "whoAreYouReportForPage.details": "Details",
-  "whoAreYouReportForPage.business.helperText": "Provide a business name, a website and/or some way to contact the business",
-  "whoAreYouReportForPage.business.label": "What business are you reporting for?",
   "whoAreYouReportForPage.nextButton": "Continue",
   "whoAreYouReportForPage.nextPage": "Next: How did the incident start?",
-  "whoAreYouReportForPage.someone.label": "Who are you reporting for?",
-  "whoAreYouReportForPage.someone.helperText": "Tell us your relationship to them, and their full name",
   "whoAreYouReportForPage.options.business": "A business",
-  "whoAreYouReportForPage.options.myself": "Myself",  
+  "whoAreYouReportForPage.options.myself": "Myself",
   "whoAreYouReportForPage.options.someone": "Someone I know",
   "whoAreYouReportForPage.or": "or",
   "whoAreYouReportForPage.title": "Who are you reporting for?"
-
-
 }
