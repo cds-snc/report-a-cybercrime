@@ -117,7 +117,6 @@
   "confirmationPage.whatHappened.title.edit": "Modifier Que s’est-il passé?",
   "confirmationPage.whatWasAffected.format": "L’incident pourrait avoir affecté :",
   "confirmationPage.whoAreYouReportFor.nag": "Aucune information fournie.",
-  "confirmationPage.whoAreYouReportFor.title.edit": "Modifier Pour qui faites-vous le signalement?",
   "confirmationPage.youAreReportingFor": "Vous signalez pour:",
   "contactInfoPage.victimDetail": "Détails sur la victime",
   "contactinfoForm.email.warning": "Entrez une adresse courriel valide.",
@@ -475,17 +474,11 @@
   "whenDidItStart.startDay": "Jour",
   "whenDidItStart.startMonth": "Mois",
   "whenDidItStart.startYear": "Année",
-  "whoAreYouReportForPage.details": "Détails",
-  "whoAreYouReportForPage.business.helperText": "Fournissez un nom d’entreprise, un site Web ou une autre façon de contacter cette entreprise.",
-  "whoAreYouReportForPage.business.label": "Pour quelle entreprise faites-vous un signalement?",
   "whoAreYouReportForPage.nextButton": "Continuer",
   "whoAreYouReportForPage.nextPage": "Étape suivante : Comment l’incident a-t-il commencé?",
-  "whoAreYouReportForPage.someone.label": "Pour qui faites-vous le signalement?",
-  "whoAreYouReportForPage.someone.helperText": "Dites-nous quelle est votre relation par rapport à cette personne, et dites-nous son nom complet.",
   "whoAreYouReportForPage.options.business": "Une entreprise",
-  "whoAreYouReportForPage.options.myself": "Moi-même",  
+  "whoAreYouReportForPage.options.myself": "Moi-même",
   "whoAreYouReportForPage.options.someone": "Une connaissance",
   "whoAreYouReportForPage.or": "ou",
   "whoAreYouReportForPage.title": "Pour qui faites-vous le signalement?"
-
 }
