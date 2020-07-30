@@ -31,6 +31,14 @@ export const WhoAreYouReportForSummary = (props) => {
 
   return (
     <React.Fragment>
+      {false ? (
+        <div>
+          {/*: mark the proper ids for lingui */}
+          <Trans id="confirmationPage.whoAreYouReportFor.title.edit" />
+          <Trans id="whoAreYouReportForPage.details" />
+        </div>
+      ) : null}
+
       <Stack
         spacing={4}
         borderBottom="2px"
@@ -44,7 +52,7 @@ export const WhoAreYouReportForSummary = (props) => {
           </H2>
           <EditButton
             path="/whoAreYouReportFor"
-            label="confirmationPage.howDidItStart.title.edit"
+            label="confirmationPage.whoAreYouReportFor.title.edit"
           />
         </Flex>
 
