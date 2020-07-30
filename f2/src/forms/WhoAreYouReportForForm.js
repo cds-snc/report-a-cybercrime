@@ -54,62 +54,80 @@ export const WhoAreYouReportForForm = (props) => {
   ]
 
   return (
-    <Form
-      initialValues={whoAreYouReportFor}
-      onSubmit={localOnSubmit}
-      render={({
-        handleSubmit,
-      }) => (
-        <Stack
-          as="form"
-          onSubmit={handleSubmit}
-          shouldWrapChildren
-          spacing={12}
-        >
-          <FormArrayControl
-            name="whoAreYouReportFor"
+    <React.Fragment>
+            {false ? ( // mark ids for lingui
+        <div>
+          <Trans id="whoAreYouReportForPage.business.helperText" />
+          <Trans id="whoAreYouReportForPage.business.label" />
+          <Trans id="whoAreYouReportForPage.nextButton" />
+          <Trans id="whoAreYouReportForPage.nextPage" />
+          <Trans id="whoAreYouReportForPage.someone.label" />
+          <Trans id="whoAreYouReportForPage.someone.helperText" />
+          <Trans id="whoAreYouReportForPage.options.business" />
+          <Trans id="whoAreYouReportForPage.options.myself" />
+          <Trans id="whoAreYouReportForPage.options.someone" />
+          <Trans id="whoAreYouReportForPage.or" />
+          <Trans id="whoAreYouReportForPage.title" />
+        </div>
+      ) : null}
+
+      <Form
+        initialValues={whoAreYouReportFor}
+        onSubmit={localOnSubmit}
+        render={({
+          handleSubmit,
+        }) => (
+          <Stack
+            as="form"
+            onSubmit={handleSubmit}
+            shouldWrapChildren
+            spacing={12}
           >
-            <React.Fragment key="whoAreYouReportForPage.options.myself">
-              <RadioAdapter
-                name="whoYouReportFor"
-                value="whoAreYouReportForPage.options.myself"
-              >
-                <Trans id="whoAreYouReportForPage.options.myself" />
-              </RadioAdapter>              
-            </React.Fragment>
-            <React.Fragment>
-              <Text ml={2} lineHeight="1.5rem">
-                <Trans id="whoAreYouReportForPage.or" />
-              </Text>
-            </React.Fragment>
-            {optionsList.map((option) => {
-                return (
-                  <React.Fragment key={option.value}>
-                    <RadioAdapter
-                      name="whoYouReportFor"
-                      value={option.value}
-                      conditionalField={
-                        <Field
-                          name={option.name}
-                          label={<Trans id={option.label} />}
-                          helperText={<Trans id={option.hint} />}
-                          component={TextArea}
-                        />
-                      }
-                    >
-                      <Trans id={option.value} />                 
-                    </RadioAdapter>
-                  </React.Fragment>
-                )
-              })}
-          </FormArrayControl>
-          <NextAndCancelButtons
-            next={<Trans id="whoAreYouReportForPage.nextPage" />}
-            button={<Trans id="whoAreYouReportForPage.nextButton" />}
-          />
-        </Stack>
-      )}
-    />
+            <FormArrayControl
+              name="whoAreYouReportFor"
+            >
+              <React.Fragment key="whoAreYouReportForPage.options.myself">
+                <RadioAdapter
+                  name="whoYouReportFor"
+                  value="whoAreYouReportForPage.options.myself"
+                >
+                  <Trans id="whoAreYouReportForPage.options.myself" />
+                </RadioAdapter>              
+              </React.Fragment>
+              <React.Fragment>
+                <Text ml={2} lineHeight="1.5rem">
+                  <Trans id="whoAreYouReportForPage.or" />
+                </Text>
+              </React.Fragment>
+              {optionsList.map((option) => {
+                  return (
+                    <React.Fragment key={option.value}>
+                      <RadioAdapter
+                        name="whoYouReportFor"
+                        value={option.value}
+                        conditionalField={
+                          <Field
+                            name={option.name}
+                            label={<Trans id={option.label} />}
+                            helperText={<Trans id={option.hint} />}
+                            component={TextArea}
+                          />
+                        }
+                      >
+                        <Trans id={option.value} />                 
+                      </RadioAdapter>
+                    </React.Fragment>
+                  )
+                })}
+            </FormArrayControl>
+            <NextAndCancelButtons
+              next={<Trans id="whoAreYouReportForPage.nextPage" />}
+              button={<Trans id="whoAreYouReportForPage.nextButton" />}
+            />
+          </Stack>
+        )}
+      />
+    </React.Fragment>
   )
 }
 
