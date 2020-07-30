@@ -475,18 +475,16 @@
   "whenDidItStart.startDay": "Day",
   "whenDidItStart.startMonth": "Month",
   "whenDidItStart.startYear": "Year",
-  "whoAreYouReportForPage.details": "Details",
   "whoAreYouReportForPage.business.helperText": "Provide a business name, a website and/or some way to contact the business",
   "whoAreYouReportForPage.business.label": "What business are you reporting for?",
+  "whoAreYouReportForPage.details": "Details",
   "whoAreYouReportForPage.nextButton": "Continue",
   "whoAreYouReportForPage.nextPage": "Next: How did the incident start?",
-  "whoAreYouReportForPage.someone.label": "Who are you reporting for?",
-  "whoAreYouReportForPage.someone.helperText": "Tell us your relationship to them, and their full name",
   "whoAreYouReportForPage.options.business": "A business",
-  "whoAreYouReportForPage.options.myself": "Myself",  
+  "whoAreYouReportForPage.options.myself": "Myself",
   "whoAreYouReportForPage.options.someone": "Someone I know",
   "whoAreYouReportForPage.or": "or",
+  "whoAreYouReportForPage.someone.helperText": "Tell us your relationship to them, and their full name",
+  "whoAreYouReportForPage.someone.label": "Who are you reporting for?",
   "whoAreYouReportForPage.title": "Who are you reporting for?"
-
-
 }
