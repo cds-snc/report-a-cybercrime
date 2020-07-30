@@ -16,6 +16,11 @@ Feature: Test the entire report workflow in english
     When I fill ReportAnonymously page forms
     Then I click "Continue"
 
+Scenario: Who are you reporting for
+    Given "Who are you reporting for?" should be shown
+    When I fill Whoareyoureporting page forms
+    Then I click "Continue"
+
   Scenario: How did it start
     Given "How did the incident start?" should be shown
     When I fill howdiditstart page forms

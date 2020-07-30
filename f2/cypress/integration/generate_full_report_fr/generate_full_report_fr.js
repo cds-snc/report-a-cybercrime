@@ -50,6 +50,21 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
+When('I fill Whoareyoureporting page forms', () => {
+    When('I fill Whoareyoureporting page forms', () => {
+        cy.get('form').find('[value="whoAreYouReportForPage.options.business"]').check({ force: true })
+        cy.get('form').find('[id="businessDescription"]').type('Souvenir du Québec, https://www.souvenirduquebec.com/, (514) 895-0746')
+    });
+});
+
+Then('I click {string}', () => {
+    cy.contains("Continue").first().click({force: true});
+});
+
+Given('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I fill howdiditstart page forms', () => {
 
     cy.get('form').find('[value="howDidTheyReachYou.email"]').check({ force: true })

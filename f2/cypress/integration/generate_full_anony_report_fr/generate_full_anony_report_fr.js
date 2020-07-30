@@ -50,6 +50,19 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
+When('I fill Whoareyoureporting page forms', () => {
+    cy.get('form').find('[value="whoAreYouReportForPage.options.someone"]').check({ force: true })
+    cy.get('form').find('[id="someoneDescription"]').type('Je fais un reportage pour mon ami et son nom est Richard Legault')
+});
+
+Then('I click {string}', () => {
+    cy.contains("Continue").first().click({force: true});
+});
+
+Given('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I fill howdiditstart page forms', () => {
 
     cy.get('form').find('[value="howDidTheyReachYou.email"]').check({ force: true })

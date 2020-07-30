@@ -48,6 +48,18 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
+When('I fill Whoareyoureporting page forms', () => {
+    cy.get('form').find('[value="whoAreYouReportForPage.options.myself"]').check({ force: true })
+});
+
+Then('I click {string}', () => {
+    cy.contains("Continue").first().click({force: true});
+});
+
+Given('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I fill howdiditstart page forms', () => {
     cy.get('form').find('[value="howDidTheyReachYou.app"]').check({ force: true })
     cy.get('form').find('[id="application"]').type('Whatapps')

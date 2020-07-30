@@ -48,6 +48,19 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
+When('I fill Whoareyoureporting page forms', () => {
+    cy.get('form').find('[value="whoAreYouReportForPage.options.someone"]').check({ force: true })
+    cy.get('form').find('[id="someoneDescription"]').type('I am reporting for my sister. Her name is Legia Freshlay')
+});
+
+Then('I click {string}', () => {
+    cy.contains("Continue").first().click({force: true});
+});
+
+Given('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I fill howdiditstart page forms', () => {
     cy.get('form').find('[value="howDidTheyReachYou.others"]').check({ force: true })
     cy.get('form').find('[id="others"]').type('In Person')

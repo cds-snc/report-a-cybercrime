@@ -48,6 +48,19 @@ Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
 });
 
+When('I fill Whoareyoureporting page forms', () => {
+    cy.get('form').find('[value="whoAreYouReportForPage.options.business"]').check({ force: true })
+    cy.get('form').find('[id="businessDescription"]').type('Bed Bath & Beyond, https://www.bedbathandbeyond.ca/, Phone: (416) 205-9653')
+});
+
+Then('I click {string}', () => {
+    cy.contains("Continue").first().click({force: true});
+});
+
+Given('{string} should be shown', (content) => {
+    cy.contains(content, {timeout:10000}).should('be.visible')
+});
+
 When('I fill howdiditstart page forms', () => {
     cy.get('form').find('[value="howDidTheyReachYou.email"]').check({ force: true })
     cy.fixture('form_data.json').then((user) => {

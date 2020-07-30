@@ -1,26 +1,71 @@
 Feature: Virus scanning test
   I want to upload a virus infected file to test virus scanning
+  
   Scenario: Home page
     Given I open the report home page
     When I click on create a report button
-    When I read before you start instructions
-    When I click continue without checking consent
-    When "Please accept the terms of the Privacy statement" should be shown
-    And I check the consent checkbox
-    Then "How did the incident start?" should be shown
-    When I navigate to howdiditstart page and click continue
-    Then "What do you think could be affected?" should be shown
-    When I navigate to Whatcouldbeaffected page and click continue
-    Then "What happened?" should be shown
-    When I navigate to Whathappened page and click continue
-    Then "Add suspect clues" should be shown
-    When I navigate to Addsuspectclues page and click continue
-    Then "Attach supporting evidence" should be shown
-    When upload the virus file
-    Then "Enter your location" should be shown
-    When I navigate to yourLocation page and click continue
-    Then "Enter your contact details" should be shown
-    When I navigate to yourContactDetails page and click continue
-    Then "Review your report" should be shown
-    When I navigate to summary page and click Submit
+    Then I read before you start instructions
+    And I click continue without checking consent
+    Then "Check the box to accept the terms of the Privacy statement." should be shown
+    When I check the consent checkbox
+    Then I click "Continue"
+
+  Scenario: Report anonymously
+    Given "Report anonymously?" should be shown
+    When I fill ReportAnonymously page forms
+    Then I click "Continue"
+
+  Scenario: Who are you reporting for
+    Given "Who are you reporting for?" should be shown
+    When I fill Whoareyoureporting page forms
+    Then I click "Continue"
+
+  Scenario: How did it start
+    Given "How did the incident start?" should be shown
+    When I fill howdiditstart page forms
+    Then I click "Continue"
+
+  Scenario: When did it happen
+    Given "When did the incident happen?" should be shown
+    When I fill whendidithappen page forms
+    Then I click "Continue"
+
+  Scenario: What could be affected
+    Given "What do you think could be affected?" should be shown
+    When I fill Whatcouldbeaffected page forms
+    Then I click "Continue"
+  
+  Scenario: What happened?
+    Given "What happened?" should be shown
+    When I fill to Whathappened page forms
+    Then I click "Continue"
+
+  Scenario: Add suspect clues
+    Given "Add suspect clues" should be shown
+    When I fill Addsuspectclues page forms
+    Then I click "Continue"
+
+  Scenario: Attach supporting evidence
+    Given "Attach supporting evidence" should be shown
+    When I fill AttachSupportingEvidence page forms
+    Then I click "Continue"
+
+  Scenario: your location
+    Given "Enter your location" should be shown
+    When I fill to yourLocation page forms
+    Then I click "Continue"
+
+  Scenario: your contact details
+    Given "Enter your contact details" should be shown
+    When I fill yourContactDetails page forms
+    Then I click "Continue"
+
+  Scenario: Review  your report and  capture a screenshot
+    Given "Review your report" should be shown
+    Then Take summary page screenshot
+    Then I click submit report
+
+  Scenario: Confirm Report ID is generated
     Then "Thank you for reporting" should be shown
+    And "Your reference number:" should be shown
+  

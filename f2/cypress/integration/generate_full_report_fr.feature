@@ -16,6 +16,11 @@ Scenario: Report anonymously
     When I fill ReportAnonymously page forms
     Then I click "Continue"
 
+Scenario: Who are you reporting for
+    Given "Pour qui faites-vous le signalement?" should be shown
+    When I fill Whoareyoureporting page forms
+    Then I click "Continue"
+
   Scenario: How did it start
     Given "Comment l’incident a-t-il commencé?" should be shown
     When I fill howdiditstart page forms
