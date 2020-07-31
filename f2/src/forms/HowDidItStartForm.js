@@ -64,10 +64,10 @@ export const HowDidItStartForm = (props) => {
       <Stack shouldWrapChildren spacing={12}>
         <Formik
           initialValues={howDidItStart}
-          validate={(values) => {
+          /*validate={(values) => {
             console.log(values)
-          }}
-          //validationSchema={getHowDidItStartSchema()}
+          }}*/
+          validationSchema={getHowDidItStartSchema()}
           onSubmit={(values) => {
             formOptions.map((question) => {
               if (!values.howDidTheyReachYou.includes(question.name)) {
