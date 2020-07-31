@@ -239,11 +239,11 @@ const formatIncidentInformation = (data) => {
     others: lang['analystReport.methodOfComms.others'],
   }
 
-  for (var key in languageAdjustedAvailableMethodOfComms) {
-    if (methodOfCommsString.includes(key)) {
+  for (var key_mc in languageAdjustedAvailableMethodOfComms) {
+    if (methodOfCommsString.includes(key_mc)) {
       methodOfCommsString = methodOfCommsString.replace(
-        key,
-        languageAdjustedAvailableMethodOfComms[key],
+        key_mc,
+        languageAdjustedAvailableMethodOfComms[key_mc],
       )
     }
   }
@@ -262,11 +262,11 @@ const formatIncidentInformation = (data) => {
     other: lang['analystReport.affected.other'],
   }
 
-  for (var key in languageAdjustedAffectedString) {
-    if (affectedString.includes(key)) {
+  for (var key_as in languageAdjustedAffectedString) {
+    if (affectedString.includes(key_as)) {
       affectedString = affectedString.replace(
-        key,
-        languageAdjustedAffectedString[key],
+        key_as,
+        languageAdjustedAffectedString[key_as],
       )
     }
   }
@@ -316,11 +316,11 @@ const formatNarrative = (data) => {
     other: lang['typeOfInfoReq.other'],
   }
 
-  for (var key in languageAdjustedAvailableInfoReqString) {
-    if (infoReqString.includes(key)) {
+  for (var key_ir in languageAdjustedAvailableInfoReqString) {
+    if (infoReqString.includes(key_ir)) {
       infoReqString = infoReqString.replace(
-        key,
-        languageAdjustedAvailableInfoReqString[key],
+        key_ir,
+        languageAdjustedAvailableInfoReqString[key_ir],
       )
     }
   }
@@ -345,11 +345,11 @@ const formatNarrative = (data) => {
     other: lang['typeOfInfoObtained.other'],
   }
 
-  for (var key in languageAdjustedInfoObtainedString) {
-    if (infoObtainedString.includes(key)) {
+  for (var key_io in languageAdjustedInfoObtainedString) {
+    if (infoObtainedString.includes(key_io)) {
       infoObtainedString = infoObtainedString.replace(
-        key,
-        languageAdjustedInfoObtainedString[key],
+        key_io,
+        languageAdjustedInfoObtainedString[key_io],
       )
     }
   }
@@ -366,11 +366,11 @@ const formatNarrative = (data) => {
     '500More': lang['analystReport.numberOfEmployee.500More'],
   }
 
-  for (var key in languageAdjustedNumberofEmployeeString) {
-    if (numberofEmployeeString.includes(key)) {
+  for (var key_ne in languageAdjustedNumberofEmployeeString) {
+    if (numberofEmployeeString.includes(key_ne)) {
       numberofEmployeeString = numberofEmployeeString.replace(
-        key,
-        languageAdjustedNumberofEmployeeString[key],
+        key_ne,
+        languageAdjustedNumberofEmployeeString[key_ne],
       )
     }
   }
@@ -502,11 +502,11 @@ const formatFinancialTransactions = (data) => {
     other: lang['methodPayment.other'],
   }
 
-  for (var key in languageAdjustedPaymentString) {
-    if (paymentString.includes(key)) {
+  for (var key_ps in languageAdjustedPaymentString) {
+    if (paymentString.includes(key_ps)) {
       paymentString = paymentString.replace(
-        key,
-        languageAdjustedPaymentString[key],
+        key_ps,
+        languageAdjustedPaymentString[key_ps],
       )
     }
   }
