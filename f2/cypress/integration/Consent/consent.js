@@ -33,7 +33,7 @@ Then('check for accessibility issues', () => {
 })
 
 When('I check the consent checkbox', () => {
-  cy.get('form').find('[name="consentOptions"]').check({ force: true })
+  cy.get('form').get('input[name="consentOptions"]').check({ force: true })
   cy.contains('Continue').first().click({ force: true })
 })
 

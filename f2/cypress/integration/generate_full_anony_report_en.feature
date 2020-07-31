@@ -1,3 +1,4 @@
+@full_annoy_en
 Feature: Test the entire report workflow in english
   I want to create an online investgation report
   @smoke
@@ -68,8 +69,7 @@ Feature: Test the entire report workflow in english
   Scenario: Review  your report and  capture a screenshot
     Given "Review your report" should be shown
     Then Take summary page screenshot
-    Then I click submit report
+    Then I click "submit report"
 
   Scenario: Confirm Report ID is generated
     Then "Thank you for reporting" should be shown
-    And "Your reference number:" should be shown

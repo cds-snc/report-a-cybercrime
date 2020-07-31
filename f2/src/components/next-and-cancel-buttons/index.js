@@ -15,6 +15,7 @@ export const NextAndCancelButtons = (props) => {
       <P w="100%">{props.next}</P>
       <Button
         type="submit"
+        data-cy="submit"
         onClick={(event) => {
           form.resumeValidation()
           form.submit()

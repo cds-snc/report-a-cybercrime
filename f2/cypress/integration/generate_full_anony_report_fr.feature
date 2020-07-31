@@ -1,3 +1,4 @@
+@full_annoy_fr
 Feature: Test the entire report workflow in french
   I want to create an online investgation report
   @smoke
@@ -17,7 +18,7 @@ Scenario: Report anonymously
 
   Scenario: How did it start
     Given "Comment l’incident a-t-il commencé?" should be shown
-    When I fill howdiditstart page forms
+    When I fill howdiditstart page forms in French
     Then I click "Continuer"
 
   Scenario: What could be affected

@@ -1,0 +1,21 @@
+import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+
+When('I fill Howwereyourmoney page forms', () => {
+  cy.get('form').find('[id="demandedMoney"]').type('$10000 CAD')
+  cy.get('form').find('[id="moneyTaken"]').type('$5000 CAD')
+  cy.get('form')
+    .find('[value="methodPayment.eTransfer"]')
+    .check({ force: true })
+  cy.get('form')
+    .find('[value="methodPayment.creditCard"]')
+    .check({ force: true })
+  cy.get('form').find('[value="methodPayment.giftCard"]').check({ force: true })
+  cy.get('form')
+    .find('[value="methodPayment.cryptocurrency"]')
+    .check({ force: true })
+  cy.get('form').find('[value="methodPayment.other"]').check({ force: true })
+  cy.get('form').find('[id="methodOther"]').type('Certified Cheque')
+  cy.get('form').find('[id="transactionDay"]').type('1')
+  cy.get('form').find('[id="transactionMonth"]').type('7')
+  cy.get('form').find('[id="transactionYear"]').type('2019')
+})
