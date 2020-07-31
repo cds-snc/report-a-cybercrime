@@ -46,8 +46,6 @@ const formatReportInfo = (data) => {
       `${data.selfHarmWords}</h1>`
   }
 
-  let origAnonymousAfterLan = data.language === 'en' ? 'No' : 'Non'
-
   let origAnonymousFromObj = data.anonymous.anonymousOptions[0].replace(
     'anonymousPage.',
     '',
@@ -250,107 +248,28 @@ const formatIncidentInformation = (data) => {
     }
   }
 
-  // methodOfCommsString = methodOfCommsString.includes("email") ? methodOfCommsString.replace("email", lang['analystReport.methodOfComms.email']) : methodOfCommsString
-  // methodOfCommsString = methodOfCommsString.includes("phone") ? methodOfCommsString.replace("phone", lang['analystReport.methodOfComms.phone']) : methodOfCommsString
-  // methodOfCommsString = methodOfCommsString.includes("online") ? methodOfCommsString.replace("online", lang['analystReport.methodOfComms.online']) : methodOfCommsString
-  // methodOfCommsString = methodOfCommsString.includes("app") ? methodOfCommsString.replace("app", lang['analystReport.methodOfComms.app']) : methodOfCommsString
-  // methodOfCommsString = methodOfCommsString.includes("others") ? methodOfCommsString.replace("others", lang['analystReport.methodOfComms.others']) : methodOfCommsString
-
-  // let methodOfCommsString = OrigMethodOfCommsString
-  // let availableMethodOfComms = ['email', 'phone', 'online', 'app', 'others']
-  // let languageAdjustedAvailableMethodOfComms = [
-  //   lang['analystReport.methodOfComms.email'],
-  //   lang['analystReport.methodOfComms.phone'],
-  //   lang['analystReport.methodOfComms.online'],
-  //   lang['analystReport.methodOfComms.app'],
-  //   lang['analystReport.methodOfComms.others'],
-  // ]
-  // for (i = 0; i < availableMethodOfComms.length; i++) {
-  //   //   methodOfCommsString = methodOfCommsString.includes(availableMethodOfComms[i]) ?
-  //   //     methodOfCommsString.replace(availableMethodOfComms[i], languageAdjustedAvailableMethodOfComms[i]) : methodOfCommsString
-  //   if (methodOfCommsString.includes(availableMethodOfComms[i])) {
-  //     methodOfCommsString = methodOfCommsString.replace(
-  //       availableMethodOfComms[i],
-  //       languageAdjustedAvailableMethodOfComms[i],
-  //     )
-  //   }
-  // }
-
-  // switch(OrigMethodOfCommsString) {
-  //   case 'email':
-  //     methodOfCommsString = lang['analystReport.methodOfComms.email']
-  //     break;
-  //   case 'phone':
-  //     methodOfCommsString = lang['analystReport.methodOfComms.phone']
-  //     break;
-  //   case 'online':
-  //     methodOfCommsString = lang['analystReport.methodOfComms.online']
-  //     break;
-  //   case 'app':
-  //     methodOfCommsString = lang['analystReport.methodOfComms.app']
-  //     break;
-  //   case 'others':
-  //     methodOfCommsString = lang['analystReport.methodOfComms.others']
-  //     break;
-  //   default:
-  //     methodOfCommsString = lang['analystReport.methodOfComms.others']
-  //     break;
-  // }
-
   const OrigAffectedString = data.whatWasAffected.affectedOptions
     .map((option) => unCamel(option.replace('whatWasAffectedForm.', '')))
     .filter((option) => option !== 'other')
     .join(', ')
 
   let affectedString = OrigAffectedString
-  let availableAffectedString = [
-    'financial',
-    'personal information',
-    'business_assets',
-    'devices',
-    'other',
-  ]
-  let languageAdjustedAvailableAffectedString = [
-    lang['analystReport.affected.financial'],
-    lang['analystReport.affected.personalinformation'],
-    lang['analystReport.affected.business_assets'],
-    lang['analystReport.affected.devices'],
-    lang['analystReport.affected.other'],
-  ]
-  for (i = 0; i < availableAffectedString.length; i++) {
-    if (affectedString.includes(availableAffectedString[i])) {
+  let languageAdjustedAffectedString = {
+    financial: lang['analystReport.affected.financial'],
+    'personal information': lang['analystReport.affected.personalinformation'],
+    business_assets: lang['analystReport.affected.business_assets'],
+    devices: lang['analystReport.affected.devices'],
+    other: lang['analystReport.affected.other'],
+  }
+
+  for (var key in languageAdjustedAffectedString) {
+    if (affectedString.includes(key)) {
       affectedString = affectedString.replace(
-        availableAffectedString[i],
-        languageAdjustedAvailableAffectedString[i],
+        key,
+        languageAdjustedAffectedString[key],
       )
     }
   }
-  // for (eachone of availableAffectedString){
-  //   if (affectedString.includes(eachone)){
-  //     affectedString =  affectedString.replace(availableAffectedString[eachone.key], languageAdjustedAvailableAffectedString[eachone.key])
-  //   }
-  // }
-
-  // switch(OrigAffectedString) {
-  //   case 'financial':
-  //     affectedString = lang['analystReport.affected.financial']
-  //     break;
-  //   case 'personal information':
-  //     affectedString = lang['analystReport.affected.personalinformation']
-  //     break;
-  //   case 'business_assets':
-  //     affectedString = lang['analystReport.affected.business_assets']
-  //     break;
-  //   case 'devices':
-  //     affectedString = lang['analystReport.affected.devices']
-  //     break;
-  //   case 'other':
-  //     affectedString = lang['analystReport.affected.other']
-  //     break;
-  //   default:
-  //     affectedString = lang['analystReport.affected.other']
-  //     break;
-  // }
 
   const rows =
     formatLineHtml(lang['howDidTheyReachYou.question'], methodOfCommsString) +
@@ -389,7 +308,7 @@ const formatNarrative = (data) => {
     .join(', ')
 
   let infoReqString = origInfoReqString
-  let languageAdjustedInfoReqString = {
+  let languageAdjustedAvailableInfoReqString = {
     'credit card': lang['typeOfInfoReq.creditCard'],
     dob: lang['typeOfInfoReq.dob'],
     'home address': lang['typeOfInfoReq.homeAddress'],
@@ -397,60 +316,14 @@ const formatNarrative = (data) => {
     other: lang['typeOfInfoReq.other'],
   }
 
-  for (var key in infoReqString) {
+  for (var key in languageAdjustedAvailableInfoReqString) {
     if (infoReqString.includes(key)) {
       infoReqString = infoReqString.replace(
         key,
-        languageAdjustedInfoReqString[key],
+        languageAdjustedAvailableInfoReqString[key],
       )
     }
   }
-
-  // let infoReqString = origInfoReqString
-  // let availableInfoReqString = [
-  //   'credit card',
-  //   'dob',
-  //   'home address',
-  //   'sin',
-  //   'other',
-  // ]
-  // let languageAdjustedAvailAvailableInfoReqString = [
-  //   lang['typeOfInfoReq.creditCard'],
-  //   lang['typeOfInfoReq.dob'],
-  //   lang['typeOfInfoReq.homeAddress'],
-  //   lang['typeOfInfoReq.sin'],
-  //   lang['typeOfInfoReq.other'],
-  // ]
-
-  // for (i = 0; i < availableInfoReqString.length; i++) {
-  //   if (infoReqString.includes(availableInfoReqString[i])) {
-  //     infoReqString = infoReqString.replace(
-  //       availableInfoReqString[i],
-  //       languageAdjustedAvailAvailableInfoReqString[i],
-  //     )
-  //   }
-  // }
-
-  // switch(origInfoReqString) {
-  //   case 'credit card':
-  //     infoReqString = lang['typeOfInfoReq.creditCard']
-  //     break;
-  //   case 'dob':
-  //     infoReqString = lang['typeOfInfoReq.dob']
-  //     break;
-  //   case 'home address':
-  //     infoReqString = lang['typeOfInfoReq.homeAddress']
-  //     break;
-  //   case 'sin':
-  //     infoReqString = lang['typeOfInfoReq.sin']
-  //     break;
-  //   case 'other':
-  //     infoReqString = lang['typeOfInfoReq.other']
-  //     break;
-  //   default:
-  //     infoReqString = lang['typeOfInfoReq.other']
-  //     break;
-  //   }
 
   const origInfoObtainedString = data.personalInformation.typeOfInfoObtained
     .map((info) => unCamel(info.replace('typeOfInfoObtained.', '')))
@@ -481,52 +354,6 @@ const formatNarrative = (data) => {
     }
   }
 
-  // let infoObtainedString = origInfoObtainedString
-  // let availableInfoObtainedString = [
-  //   'credit card',
-  //   'dob',
-  //   'home address',
-  //   'sin',
-  //   'other',
-  // ]
-  // let languageAdjustedAvailableInfoObtainedString = [
-  //   lang['typeOfInfoObtained.creditCard'],
-  //   lang['typeOfInfoObtained.dob'],
-  //   lang['typeOfInfoObtained.homeAddress'],
-  //   lang['typeOfInfoObtained.sin'],
-  //   lang['typeOfInfoObtained.other'],
-  // ]
-
-  // for (i = 0; i < availableInfoObtainedString.length; i++) {
-  //   if (infoObtainedString.includes(availableInfoObtainedString[i])) {
-  //     infoObtainedString = infoObtainedString.replace(
-  //       availableInfoObtainedString[i],
-  //       languageAdjustedAvailableInfoObtainedString[i],
-  //     )
-  //   }
-  // }
-
-  // switch(origInfoObtainedString) {
-  //   case 'credit card':
-  //     infoObtainedString = lang['typeOfInfoObtained.creditCard']
-  //     break;
-  //   case 'dob':
-  //     infoObtainedString = lang['typeOfInfoObtained.dob']
-  //     break;
-  //   case 'home address':
-  //     infoObtainedString = lang['typeOfInfoObtained.homeAddress']
-  //     break;
-  //   case 'sin':
-  //     infoObtainedString = lang['typeOfInfoObtained.sin']
-  //     break;
-  //   case 'other':
-  //     infoObtainedString = lang['typeOfInfoObtained.other']
-  //     break;
-  //   default:
-  //     infoObtainedString = lang['typeOfInfoObtained.other']
-  //     break;
-  //   }
-
   const origNumberofEmployeeString = data.businessInfo.numberOfEmployee.replace(
     'numberOfEmployee.',
     '',
@@ -547,22 +374,6 @@ const formatNarrative = (data) => {
       )
     }
   }
-
-  // let numberofEmployeeString
-  // switch (origNumberofEmployeeString) {
-  //   case '1To99':
-  //     numberofEmployeeString = lang['analystReport.numberOfEmployee.1To99']
-  //     break
-  //   case '100To499':
-  //     numberofEmployeeString = lang['analystReport.numberOfEmployee.100To499']
-  //     break
-  //   case '500More':
-  //     numberofEmployeeString = lang['analystReport.numberOfEmployee.500More']
-  //     break
-  //   default:
-  //     numberofEmployeeString = lang['analystReport.numberOfEmployee.1To99']
-  //     break
-  // }
 
   const rows =
     formatLineHtml(
@@ -680,65 +491,25 @@ const formatFinancialTransactions = (data) => {
   const origPaymentString = methods
     .filter((method) => method !== 'methodPayment.other')
     .map((method) => unCamel(method.replace('methodPayment.', '')))
-    // .map((method) =>
-    // method === 'other' &&
-    //   data.personalInformation.infoObtainedOther &&
-    //   data.personalInformation.infoObtainedOther !== ''
-    //     ? data.personalInformation.infoObtainedOther
-    //     : info,
-    // )
     .join(', ')
 
-  // const origInfoObtainedString = data.personalInformation.typeOfInfoObtained
-  // .map((info) => unCamel(info.replace('typeOfInfoObtained.', '')))
-  // .map((info) =>
-  //   info === 'other' &&
-  //   data.personalInformation.infoObtainedOther &&
-  //   data.personalInformation.infoObtainedOther !== ''
-  //     ? data.personalInformation.infoObtainedOther
-  //     : info,
-  // )
-  // .join(', ')
-
   let paymentString = origPaymentString
-  // let languageAdjustedPaymentString = {
-  //   'e transfer': lang['methodPayment.eTransfer'],
-  //   'credit card': lang['methodPayment.creditCard'],
-  //   'gift card': lang['methodPayment.giftCard'],
-  //   'cryptocurrency': lang['methodPayment.cryptocurrency'],
-  // //   'other': lang['methodPayment.other'],
-  // }
+  let languageAdjustedPaymentString = {
+    'e transfer': lang['methodPayment.eTransfer'],
+    'credit card': lang['methodPayment.creditCard'],
+    'gift card': lang['methodPayment.giftCard'],
+    cryptocurrency: lang['methodPayment.cryptocurrency'],
+    other: lang['methodPayment.other'],
+  }
 
-  // for (var key in languageAdjustedPaymentString) {
-  //   if (paymentString.includes(key)) {
-  //     paymentString = paymentString.replace(
-  //       key,
-  //       languageAdjustedPaymentString[key],
-  //     )
-  //   }
-  // }
-
-  // let paymentString
-  // switch (origPaymentString) {
-  //   case 'creditCard':
-  //     paymentString = lang['methodPayment.creditCard']
-  //     break
-  //   case 'cryptocurrency':
-  //     paymentString = lang['methodPayment.cryptocurrency']
-  //     break
-  //   case 'eTransfer':
-  //     paymentString = lang['methodPayment.eTransfer']
-  //     break
-  //   case 'giftCard':
-  //     paymentString = lang['methodPayment.giftCard']
-  //     break
-  //   case 'other':
-  //     paymentString = lang['methodPayment.other']
-  //     break
-  //   default:
-  //     paymentString = lang['methodPayment.other']
-  //     break
-  // }
+  for (var key in languageAdjustedPaymentString) {
+    if (paymentString.includes(key)) {
+      paymentString = paymentString.replace(
+        key,
+        languageAdjustedPaymentString[key],
+      )
+    }
+  }
 
   const transactionDate = formatDate(
     data.moneyLost.transactionDay,
@@ -810,11 +581,17 @@ const formatFileAttachments = (data) => {
       const downloadLink = file.malwareIsClean
         ? formatDownloadLink(file.name, file.sasUrl)
         : ''
+      let offensiveWarningBlockedString =
+        '<b>' +
+        lang['fileUpload.fileAttachment.offensivewarning.block'] +
+        '</b>'
+      let offensiveWarningMessageString =
+        '<b>' + lang['fileUpload.fileAttachment.offensivewarning'] + '</b>'
 
       return (
         formatLineHtml(
-          '<b>WARNING:</b>',
-          offensive ? '<b>Image may be offensive</b>' : '',
+          offensiveWarningBlockedString,
+          offensive ? offensiveWarningMessageString : '',
         ) +
         formatLineHtml(lang['fileUpload.fileName'], file.name) +
         formatLineHtml(
