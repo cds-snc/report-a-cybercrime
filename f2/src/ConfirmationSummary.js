@@ -18,6 +18,7 @@ import { WhatHappenedSummary } from './summary/WhatHappenedSummary'
 import { WhatWasAffectedSummary } from './summary/WhatWasAffectedSummary'
 import { AnonymousSummary } from './summary/AnonymousSummary'
 import { WhenDidItHappenSummary } from './summary/WhenDidItHappenSummary'
+import { WhoAreYouReportForSummary } from './summary/WhoAreYouReportForSummary'
 
 export const testdata = {
   doneForms: true,
@@ -47,6 +48,7 @@ export const ConfirmationSummary = () => {
       <Stack spacing={12}>
         {fyiForm ? null : (
           <Stack spacing={12}>
+            <WhoAreYouReportForSummary />
             <HowDidItStartSummary />
             <WhenDidItHappenSummary />
             <WhatWasAffectedSummary />
