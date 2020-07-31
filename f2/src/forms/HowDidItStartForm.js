@@ -58,12 +58,16 @@ export const HowDidItStartForm = (props) => {
     },
   ]
 
+  console.log(`Rednering form`)
   return (
     <React.Fragment>
       <Stack shouldWrapChildren spacing={12}>
         <Formik
           initialValues={howDidItStart}
-          validationSchema={getHowDidItStartSchema()}
+          validate={(values) => {
+            console.log(values)
+          }}
+          //validationSchema={getHowDidItStartSchema()}
           onSubmit={(values) => {
             formOptions.map((question) => {
               if (!values.howDidTheyReachYou.includes(question.name)) {
@@ -72,7 +76,7 @@ export const HowDidItStartForm = (props) => {
             })
             props.onSubmit(values)
           }}
-          render={({ values, handleSubmit }) => (
+          render={({ values, handleSubmit, handleChange, handleBlur }) => (
             <Form onSubmit={handleSubmit}>
               <Container>
                 <Row className="form-question">
@@ -94,6 +98,7 @@ export const HowDidItStartForm = (props) => {
                     className="form-section"
                     render={(arrayHelpers) =>
                       formOptions.map((question) => {
+                        console.log(`Checkbox group`)
                         return (
                           <React.Fragment key={question.name}>
                             <Field
@@ -101,19 +106,11 @@ export const HowDidItStartForm = (props) => {
                               label={question.checkboxLabel}
                               component={CheckBox}
                               value={question.name}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
                               checked={values.howDidTheyReachYou.includes(
                                 question.name,
                               )}
-                              handleChange={(e) => {
-                                if (e.value.includes(question.name)) {
-                                  const index = values.howDidTheyReachYou.indexOf(
-                                    question.name,
-                                  )
-                                  arrayHelpers.remove(index)
-                                } else {
-                                  arrayHelpers.push(question.name)
-                                }
-                              }}
                             >
                               <Field
                                 name={question.name}
