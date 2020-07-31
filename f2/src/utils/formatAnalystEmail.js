@@ -35,7 +35,7 @@ const formatReportInfo = (data) => {
   data.language === 'en' ? (lang = langJsonEn) : (lang = langJsonFr)
 
   let selfHarmString = 'none'
-  let returnString = ''
+  let returnString = ' '
 
   if (data.selfHarmWords.length) {
     selfHarmString = lang['analystReport.selfHarmString']
