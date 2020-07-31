@@ -24,35 +24,35 @@ export const HowDidItStartForm = (props) => {
     {
       name: 'email',
       checkboxLabel: <Trans id="howDidTheyReachYou.email" />,
-      checkboxName: 'howDidTheyReachYouEmail',
+      checkboxName: 'howDidTheyReachYou.email',
       questionLabel: <Trans id="howDidTheyReachYouLabel.question1" />,
       helpText: <Trans id="howDidTheyReachYouLabel.hint1" />,
     },
     {
       name: 'phone',
       checkboxLabel: <Trans id="howDidTheyReachYou.phone" />,
-      checkboxName: 'howDidTheyReachYouPhone',
+      checkboxName: 'howDidTheyReachYou.phone',
       questionLabel: <Trans id="howDidTheyReachYouLabel.question2" />,
       helpText: <Trans id="howDidTheyReachYouLabel.hint2" />,
     },
     {
       name: 'online',
       checkboxLabel: <Trans id="howDidTheyReachYou.online" />,
-      checkboxName: 'howDidTheyReachYouOnline',
+      checkboxName: 'howDidTheyReachYou.online',
       questionLabel: <Trans id="howDidTheyReachYouLabel.question3" />,
       helpText: <Trans id="howDidTheyReachYouLabel.hint3" />,
     },
     {
       name: 'application',
       checkboxLabel: <Trans id="howDidTheyReachYou.app" />,
-      checkboxName: 'howDidTheyReachYouApp',
+      checkboxName: 'howDidTheyReachYou.app',
       questionLabel: <Trans id="howDidTheyReachYouLabel.question4" />,
       helpText: <Trans id="howDidTheyReachYouLabel.hint4" />,
     },
     {
       name: 'others',
       checkboxLabel: <Trans id="howDidTheyReachYou.others" />,
-      checkboxName: 'howDidTheyReachYouOthers',
+      checkboxName: 'howDidTheyReachYou.others',
       questionLabel: <Trans id="howDidTheyReachYouLabel.question5" />,
       helpText: <Trans id="howDidTheyReachYouLabel.hint5" />,
     },
@@ -62,20 +62,15 @@ export const HowDidItStartForm = (props) => {
     <React.Fragment>
       <Stack shouldWrapChildren spacing={12}>
         <Formik
-          enableReinitialize={true}
           initialValues={howDidItStart}
           validationSchema={getHowDidItStartSchema()}
-          onSubmit={async (values) => {
+          onSubmit={(values) => {
             formOptions.map((question) => {
               if (!values.howDidTheyReachYou.includes(question.name)) {
                 values[question.name] = ''
               }
-              howDidItStart[question.name] = values[question.name]
             })
-
-            howDidItStart.howDidTheyReachYou = values.howDidTheyReachYou
-
-            props.onSubmit(howDidItStart)
+            props.onSubmit(values)
           }}
           render={({ values, handleSubmit }) => (
             <Form onSubmit={handleSubmit}>
@@ -102,24 +97,21 @@ export const HowDidItStartForm = (props) => {
                         return (
                           <React.Fragment key={question.name}>
                             <Field
-                              name={question.checkboxName}
+                              name="howDidTheyReachYou"
                               label={question.checkboxLabel}
                               component={CheckBox}
-                              value={values.howDidTheyReachYou.includes(
+                              value={question.name}
+                              checked={values.howDidTheyReachYou.includes(
                                 question.name,
                               )}
-                              handleClick={(e) => {
-                                if (
-                                  values.howDidTheyReachYou.includes(
-                                    question.name,
-                                  )
-                                ) {
+                              handleChange={(e) => {
+                                if (e.value.includes(question.name)) {
                                   const index = values.howDidTheyReachYou.indexOf(
                                     question.name,
                                   )
-                                  values.howDidTheyReachYou.splice(index, 1)
+                                  arrayHelpers.remove(index)
                                 } else {
-                                  values.howDidTheyReachYou.push(question.name)
+                                  arrayHelpers.push(question.name)
                                 }
                               }}
                             >

@@ -75,7 +75,8 @@ body {
 }
 
 .checkbox {
-  display: none;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .checkbox-icon {
