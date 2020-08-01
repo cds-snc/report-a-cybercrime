@@ -207,7 +207,7 @@
   "fileUpload.isRacy.false": "Faux",
   "fileUpload.isRacy.true": "Vrai",
   "fileUpload.malwareScan": "Analyse des logiciels malveillants",
-  "fileUpload.malwareScan.clean": "",
+  "fileUpload.malwareScan.clean": "Propre",
   "fileUpload.noFiles": "Aucun fichier joint",
   "fileUpload.racyScore": "Score racé",
   "fileUpload.removed": "Fichier enlevé",
