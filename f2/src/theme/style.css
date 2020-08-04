@@ -74,48 +74,6 @@ body {
   width: -webkit-fill-available;
 }
 
-.checkbox {
-  height: 2.5rem;
-  width: 2.5rem;
-}
-
-.checkbox-icon {
-  height: 2.5rem;
-  width: 2.5rem;
-}
-
-.empty-check,
-.selected-check {
-  background-color: rgb(255, 255, 255);
-  width: 2.5rem;
-  height: 2.5rem;
-  display: inline-flex;
-  align-items: center;
-}
-
-.empty-check {
-  border-width: 1px;
-  border-color: rgb(174, 174, 174);
-}
-
-.selected-check {
-  justify-content: center;
-  border-width: 3px;
-  border-style: solid;
-  border-image: initial;
-  border-color: rgb(0, 0, 0);
-}
-
-.check-mark {
-  width: 2rem;
-  height: 2rem;
-}
-
-.checkbox-row {
-  margin-bottom: 1rem;
-  margin-left: 0rem;
-}
-
 .error-row {
   padding: 0.75rem 1rem;
   background-color: rgb(254, 215, 215);
@@ -209,4 +167,46 @@ body {
 
 .black-button-link:hover {
   color: inherit;
+}
+
+.checkbox-row {
+  margin-bottom: 1rem;
+  margin-left: 0rem;
+}
+
+.custom-checkbox {
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.custom-control-label:before {
+  background-color: white;
+  width: 2rem;
+  height: 2rem;
+  top: 0rem;
+}
+
+.custom-control-label {
+  padding-left: 0.75rem;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: white;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  filter: invert(100%) sepia(32%) saturate(0%) hue-rotate(269deg)
+    brightness(101%) contrast(102%);
+  top: 0rem;
+  display: initial;
+}
+
+.custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+  background-color: #fff;
+  outline: none;
+  border-color: #2a69ac;
 }

@@ -58,16 +58,15 @@ export const HowDidItStartForm = (props) => {
     },
   ]
 
-  console.log(`Rednering form`)
   return (
     <React.Fragment>
       <Stack shouldWrapChildren spacing={12}>
         <Formik
           initialValues={howDidItStart}
-          /*validate={(values) => {
+          validate={(values) => {
             console.log(values)
-          }}*/
-          validationSchema={getHowDidItStartSchema()}
+          }}
+          /*validationSchema={getHowDidItStartSchema()}*/
           onSubmit={(values) => {
             formOptions.map((question) => {
               if (!values.howDidTheyReachYou.includes(question.name)) {
@@ -98,7 +97,6 @@ export const HowDidItStartForm = (props) => {
                     className="form-section"
                     render={(arrayHelpers) =>
                       formOptions.map((question) => {
-                        console.log(`Checkbox group`)
                         return (
                           <React.Fragment key={question.name}>
                             <Field

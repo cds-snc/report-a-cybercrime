@@ -29,6 +29,7 @@ import { LocationAnonymousPage } from './LocationAnonymousPage'
 import { Covid19Page } from './Covid19Page'
 import { RedirectRoute } from './components/route'
 import { WhenDidItHappenPage } from './WhenDidItHappenPage'
+import { TestPage } from './TESTPAGE'
 
 export const Home = () => (
   <Router>
@@ -38,7 +39,7 @@ export const Home = () => (
       </Route>
 
       <Route exact path="/">
-        <LandingPage />
+        <TestPage />
       </Route>
       <Route exact path="/startPage">
         <StartPage />
