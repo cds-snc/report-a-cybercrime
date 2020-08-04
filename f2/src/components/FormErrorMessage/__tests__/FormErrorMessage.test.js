@@ -107,7 +107,7 @@ describe('<FormErrorMessage />', () => {
     expect(queryAllByText(/bar/)).toHaveLength(0)
     await wait(0) // Wait for promises to resolve
 
-    //get the submit button, then click on it. Error summary renders only on submit
+    //get the submit button, then click on it. Error message renders only on submit
     const context = document.querySelector('[type="submit"]').textContent
     const submitButton = getByText(context)
     clickOn(submitButton)
