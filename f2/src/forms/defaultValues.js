@@ -56,7 +56,6 @@ const formDefaults = {
     numberOfEmployee: '',
   },
   whatHappened: { whatHappened: '' },
-
   suspectClues: {
     suspectClues1: '',
     suspectClues2: '',
@@ -68,6 +67,7 @@ const formDefaults = {
   },
   location: { postalCode: '', city: '', province: '' },
   contactInfo: { fullName: '', email: '', phone: '' },
+  fyiForm: '',
 }
 
 module.exports = { formDefaults }
