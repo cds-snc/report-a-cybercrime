@@ -496,8 +496,11 @@ const formatFinancialTransactions = (data) => {
   let paymentString = origPaymentString
   let languageAdjustedPaymentString = {
     'e transfer': lang['methodPayment.eTransfer'],
+    eTransfer: lang['methodPayment.eTransfer'],
     'credit card': lang['methodPayment.creditCard'],
+    creditCard: lang['methodPayment.creditCard'],
     'gift card': lang['methodPayment.giftCard'],
+    giftCard: lang['methodPayment.giftCard'],
     cryptocurrency: lang['methodPayment.cryptocurrency'],
     other: lang['methodPayment.other'],
   }
