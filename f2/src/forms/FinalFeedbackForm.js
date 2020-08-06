@@ -86,8 +86,8 @@ export const FinalFeedbackForm = props => {
               {wasServiceHard.map(key => {
                 return (
                   <React.Fragment key={key}>
-                    <RadioAdapter
-                      name="wasServiceHard"
+                    <RadioAdapter 
+                      name="wasServiceHard" 
                       value={key}
                     >
                       {i18n._(key)}
@@ -104,10 +104,7 @@ export const FinalFeedbackForm = props => {
               {wouldYouUseAgain.map(key => {
                 return (
                   <React.Fragment key={key}>
-                    <RadioAdapter
-                      name="wouldYouUseAgain"
-                      value={key}
-                    >
+                    <RadioAdapter name="wouldYouUseAgain" value={key}>
                       {i18n._(key)}
                     </RadioAdapter>
                   </React.Fragment>
