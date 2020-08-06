@@ -386,7 +386,9 @@ const formatFinancialTransactions = (data) => {
     .join(', ')
 
   let paymentString =
-    String(paymentStringOrig) + ', ' + [data.moneyLost.methodOther]
+    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
+      ? String(paymentStringOrig) + ', ' + [data.moneyLost.methodOther]
+      : String(paymentStringOrig)
 
   const transactionDate = formatDate(
     data.moneyLost.transactionDay,
