@@ -218,7 +218,7 @@ export const EvidenceInfoForm = (props) => {
               <Alert status="info">
                 <Trans id="evidencePage.fileWarning" />
               </Alert>
-              ))}
+              ))
             </Stack>
             <NextAndCancelButtons
               next={<Trans id="evidencePage.nextPage" />}

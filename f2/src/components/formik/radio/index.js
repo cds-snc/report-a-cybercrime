@@ -1,13 +1,13 @@
 import React from 'react'
 import { Form, Row } from 'react-bootstrap'
 
-export const CheckBox = ({ field, form, ...props }) => {
+export const Radio = ({ field, form, ...props }) => {
   return (
     <Row className="form-row">
       <Form.Check
         inline={true}
         id={props.id}
-        type="checkbox"
+        type="radio"
         {...field}
         value={props.value}
         checked={props.checked}

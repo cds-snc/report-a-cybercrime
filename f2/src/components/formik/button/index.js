@@ -2,13 +2,14 @@ import React from 'react'
 import { Button, Container, Row } from 'react-bootstrap'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
+import { FiPaperclip } from 'react-icons/fi'
 
 export const SubmitButton = (props) => {
   return (
     <Button type="submit" className="button submit-button">
       <span className="button-label">
         {props.label}
-        <GoChevronRight className="button-icon" />
+        <GoChevronRight className="button-icon-right" />
       </span>
     </Button>
   )
@@ -42,5 +43,16 @@ export const NextCancelButtons = (props) => {
         <CancelButton label={props.cancel} />
       </Row>
     </Container>
+  )
+}
+
+export const UploadButton = (props) => {
+  return (
+    <Button type="button" className="button upload-button">
+      <span className="button-label">
+        <FiPaperclip className="button-icon-left" />
+        {props.label}
+      </span>
+    </Button>
   )
 }

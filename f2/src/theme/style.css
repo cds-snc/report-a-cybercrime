@@ -40,6 +40,7 @@ body {
 .form-section {
   display: inline-block;
   margin-bottom: 3rem;
+  width: 100%;
 }
 
 .help-text-label {
@@ -51,6 +52,7 @@ body {
   margin-top: 0.75rem;
   min-height: 80px;
   border-color: rgb(174, 174, 174);
+  width: 80%;
 }
 
 .open-text-entry:hover {
@@ -146,9 +148,33 @@ body {
   color: rgb(0, 0, 0);
 }
 
-.button-icon {
+.upload-button {
+  background-color: rgb(30, 78, 140);
+  color: rgb(255, 255, 255);
+  border-color: rgb(21, 62, 117);
+}
+
+.upload-button:hover,
+.upload-button:focus {
+  background-color: rgb(30, 78, 140);
+  border-color: rgb(21, 62, 117);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.upload-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(21, 62, 117);
+  color: rgb(255, 255, 255);
+  border-color: rgb(21, 62, 117);
+}
+
+.button-icon-right {
   margin-left: 0.5rem;
   margin-right: -0.5rem;
+}
+
+.button-icon-left {
+  margin-left: -0.5rem;
+  margin-right: 0.5rem;
 }
 
 .next-cancel-buttons {
@@ -169,44 +195,96 @@ body {
   color: inherit;
 }
 
-.checkbox-row {
+.form-group {
+  width: 100%;
+}
+
+/*Checkboxes and Radio Buttons*/
+
+.form-row {
   margin-bottom: 1rem;
   margin-left: 0rem;
 }
 
-.custom-checkbox {
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
+.custom-control {
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.custom-control-input {
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: auto;
 }
 
 .custom-control-label:before {
   background-color: white;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   top: 0rem;
 }
 
 .custom-control-label {
-  padding-left: 0.75rem;
+  padding-left: 1.5rem;
+  font-size: 1.25rem;
 }
 
-.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+.custom-checkbox .custom-control-label:before {
+  border-radius: 0rem;
+}
+
+.custom-control .custom-control-input:checked ~ .custom-control-label::before {
   background-color: white;
+  border-color: black;
 }
 
-.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+.custom-control .custom-control-input:checked ~ .custom-control-label::after {
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   filter: invert(100%) sepia(32%) saturate(0%) hue-rotate(269deg)
     brightness(101%) contrast(102%);
   top: 0rem;
   display: initial;
+  border-color: black;
 }
 
-.custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
-  background-color: #fff;
+.custom-control .custom-control-input:focus ~ .custom-control-label::before {
+  background-color: rgb(255, 255, 255);
+  border-color: black;
+  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
   outline: none;
-  border-color: #2a69ac;
+}
+
+.custom-control
+  .custom-control-input:not(:checked)
+  ~ .custom-control-label::before {
+  background-color: rgb(255, 255, 255);
+}
+
+/*Input Fields*/
+
+.input-field-control {
+  margin-top: 0.75rem;
+  max-width: 300px;
+}
+
+.input-help-text {
+  line-height: 1.25;
+  font-size: 1rem;
+  max-width: 600px;
+}
+
+/*File Upload*/
+
+.upload-container {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.custom-file {
+  position: absolute;
+  font-size: 100px;
+  opacity: 0;
 }
