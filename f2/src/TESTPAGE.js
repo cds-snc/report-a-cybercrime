@@ -30,8 +30,7 @@ export const TestPage = () => {
                     type: 'saveFormData',
                     data: { anonymous: data },
                   })*/
-                  console.log(data)
-                  history.push(doneForms ? '/confirmation' : '/howdiditstart')
+                  alert(JSON.stringify(data, null, 2))
                 }}
               />
             </Stack>

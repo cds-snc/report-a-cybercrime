@@ -2,15 +2,15 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
-import { getHowDidItStartSchema } from '../utils/formik/validationSchema'
+import { Formik, FieldArray, Field } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { Radio } from '../components/formik/radio'
 import { TextArea } from '../components/formik/textArea'
 import { Input } from '../components/formik/input'
-import { Error } from '../components/formik/error'
 import { FileUpload } from '../components/formik/fileUpload'
-import { NextCancelButtons } from '../components/formik/button'
+import { DatePicker } from '../components/formik/datePicker'
+import { Error, Info, Warning, Success } from '../components/formik/alert'
+import { NextCancelButtons, SkipButton } from '../components/formik/button'
 
 export const TestForm = (props) => {
   const [data] = useStateValue()
@@ -62,11 +62,12 @@ export const TestForm = (props) => {
                 <Row className="form-helper-text">
                   <Trans id="howDidTheyReachYou.reminder" />
                 </Row>
-                <ErrorMessage
-                  name="howDidTheyReachYou"
-                  component={Error}
-                  msg={<Trans id="howDidTheyReachYou.error" />}
-                />
+              </Row>
+              <Row className="form-section">
+                <Error msg="This is an error" />
+                <Info msg="This is an info message" />
+                <Warning msg="This is a warning message" />
+                <Success msg="This is a success message" />
               </Row>
               <Row className="form-section">
                 <Field
@@ -84,6 +85,8 @@ export const TestForm = (props) => {
                     label="Text Area"
                     helpText="This should help"
                     component={TextArea}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
                 </Field>
                 <Field
@@ -101,6 +104,8 @@ export const TestForm = (props) => {
                     label="Text Area #2"
                     helpText="This should help...again"
                     component={TextArea}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
                 </Field>
               </Row>
@@ -128,6 +133,8 @@ export const TestForm = (props) => {
                               label={question.followUp}
                               helpText={question.helpText}
                               component={TextArea}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
                             />
                           </Field>
                         </React.Fragment>
@@ -182,9 +189,39 @@ export const TestForm = (props) => {
                 <FileUpload
                   id="testUpload"
                   label={<Trans id="evidencePage.addFileButton" />}
-                  onChange={() => {
-                    alert('File Uploaded')
+                  onChange={(e) => {
+                    const file = e.target.files[0]
+                    console.log(file)
+                    alert(`File Uploaded - ${file.name}`)
                   }}
+                />
+              </Row>
+
+              <Row className="form-section">
+                <DatePicker
+                  name="startDate"
+                  label="When did it start?"
+                  onChange={handleChange}
+                  id="startDate"
+                  helpText="For example: 26 02 2020"
+                  day={values.day}
+                  month={values.month}
+                  year={values.year}
+                />
+              </Row>
+
+              <Row className="form-section">
+                <SkipButton
+                  label={<Trans id="locationinfoPage.skipButton" />}
+                  to="/privacyconsent"
+                />
+              </Row>
+
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="howDidItStartPage.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label="Test Page Next"
                 />
               </Row>
             </Container>

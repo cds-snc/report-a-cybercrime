@@ -167,6 +167,26 @@ body {
   border-color: rgb(21, 62, 117);
 }
 
+.skip-button {
+  background-color: rgb(174, 174, 174);
+  color: rgb(0, 0, 0);
+  border-color: rgb(128, 128, 128);
+}
+
+.skip-button:hover,
+.skip-button:focus {
+  background-color: rgb(174, 174, 174);
+  color: rgb(0, 0, 0);
+  border-color: rgb(128, 128, 128);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.skip-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(213, 213, 213);
+  color: rgb(0, 0, 0);
+  border-color: rgb(128, 128, 128);
+}
+
 .button-icon-right {
   margin-left: 0.5rem;
   margin-right: -0.5rem;
@@ -275,6 +295,18 @@ body {
   max-width: 600px;
 }
 
+.input-field-control:hover {
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+  border-color: rgb(55, 55, 55);
+}
+
+.input-field-control:focus {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+  outline: none;
+  border-color: rgb(42, 105, 172);
+}
+
 /*File Upload*/
 
 .upload-container {
@@ -287,4 +319,55 @@ body {
   position: absolute;
   font-size: 100px;
   opacity: 0;
+}
+
+/*Date Picker*/
+
+.date-picker {
+  padding-left: 0px;
+}
+
+.day-month {
+  width: 70px;
+}
+
+.year {
+  width: 110px;
+}
+
+.date-label {
+  vertical-align: middle;
+}
+
+.date-input {
+  margin-top: 0.75rem;
+}
+
+.date-group {
+  margin-top: 0.75rem;
+}
+
+.date-input:hover {
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+  border-color: rgb(55, 55, 55);
+}
+
+.date-input:focus {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+  outline: none;
+  border-color: rgb(42, 105, 172);
+}
+
+.alert-banner {
+  display: inline-flex;
+  width: 100%;
+  border-left: 3px solid;
+}
+
+.alert-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-left: -0.5rem;
+  margin-right: 0.5rem;
 }

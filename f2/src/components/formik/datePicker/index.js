@@ -1,39 +1,88 @@
 import React from 'react'
-import { Form, Row } from 'react-bootstrap'
+import { Form, Row, Col, Container } from 'react-bootstrap'
 import { Trans } from '@lingui/macro'
+import { Field } from 'formik'
+
+const DateEntry = ({ field, form, ...props }) => {
+  return (
+    <Col sm="auto" className="date-picker">
+      <Form.Group controlId={props.id}>
+        <Form.Label className="date-label">
+          {<Trans id="whenDidItStart.startDay" />}
+        </Form.Label>
+        <Form.Control
+          className="day-month date-input"
+          type="input"
+          {...field}
+        />
+      </Form.Group>
+    </Col>
+  )
+}
+
+const MonthEntry = ({ field, form, ...props }) => {
+  return (
+    <Col sm="auto" className="date-picker">
+      <Form.Group controlId={props.id}>
+        <Form.Label className="date-label">
+          {<Trans id="whenDidItStart.startMonth" />}
+        </Form.Label>
+        <Form.Control
+          className="day-month date-input"
+          type="input"
+          {...field}
+        />
+      </Form.Group>
+    </Col>
+  )
+}
+
+const YearEntry = ({ field, form, ...props }) => {
+  return (
+    <Col sm="auto" className="date-picker">
+      <Form.Group controlId={props.id}>
+        <Form.Label className="date-label">
+          {<Trans id="whenDidItStart.startYear" />}
+        </Form.Label>
+        <Form.Control className="year date-input" type="input" {...field} />
+      </Form.Group>
+    </Col>
+  )
+}
 
 export const DatePicker = (props) => {
   return (
-    <Row className="form-row">
-      <Form.Label>{props.label}</Form.Label>
-      <Form.Text className="input-help-text">{props.helpText}</Form.Text>
+    <Container fluid>
+      <Row>
+        <Form.Label>{props.label}</Form.Label>
+      </Row>
+      <Row>
+        <Form.Text className="input-help-text">{props.helpText}</Form.Text>
+      </Row>
 
-      <Form.Group controlId={props.id}>
-        <Form.Label>{<Trans id="whenDidItStart.startDay" />}</Form.Label>
-        <Form.Control
-          className="input-field-control"
-          type="input"
-          placeholder={props.placeholder}
+      <Row className="date-group">
+        <Field
+          name={props.name + 'Day'}
+          component={DateEntry}
+          onChange={props.onChange}
+          id={props.id + 'Day'}
+          value={props.day}
         />
-      </Form.Group>
-
-      <Form.Group controlId={props.id}>
-        <Form.Label>{<Trans id="whenDidItStart.startMonth" />}</Form.Label>
-        <Form.Control
-          className="input-field-control"
-          type="input"
-          placeholder={props.placeholder}
+        <Field
+          name={props.name + 'Month'}
+          component={MonthEntry}
+          onChange={props.onChange}
+          id={props.id + 'Month'}
+          value={props.month}
         />
-      </Form.Group>
-
-      <Form.Group controlId={props.id}>
-        <Form.Label>{<Trans id="whenDidItStart.startYear" />}</Form.Label>
-        <Form.Control
-          className="input-field-control"
-          type="input"
-          placeholder={props.placeholder}
+        <Field
+          name={props.name + 'Year'}
+          component={YearEntry}
+          onChange={props.onChange}
+          id={props.id + 'Year'}
+          value={props.year}
         />
-      </Form.Group>
-    </Row>
+      </Row>
+    </Container>
   )
 }

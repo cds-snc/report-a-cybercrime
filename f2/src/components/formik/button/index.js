@@ -56,3 +56,23 @@ export const UploadButton = (props) => {
     </Button>
   )
 }
+
+export const SkipButton = (props) => {
+  return (
+    <Route
+      render={({ history }) => (
+        <Button
+          type="button"
+          className="button skip-button"
+          to={props.to}
+          onClick={() => history.push(props.to)}
+        >
+          <span className="button-label">
+            {props.label}
+            <GoChevronRight className="button-icon-right" />
+          </span>
+        </Button>
+      )}
+    />
+  )
+}
