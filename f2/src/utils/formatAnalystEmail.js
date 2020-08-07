@@ -127,7 +127,19 @@ const formatVictimDetails = (data) => {
     ) +
     formatLineHtml(lang['locationinfoPage.postalCity'], postalCity) +
     formatLineHtml(lang['locationinfoPage.postalProv'], postalProv) +
-    formatLineHtml(lang['privacyConsentInfoForm.consent'], consentString)
+    formatLineHtml(lang['privacyConsentInfoForm.consent'], consentString) +
+    formatLineHtml(
+      lang['whoAreYouReportForPage.title'],
+      lang[data.whoAreYouReportFor.whoYouReportFor],
+    ) +
+    formatLineHtml(
+      lang['whoAreYouReportForPage.details'],
+      data.whoAreYouReportFor.someoneDescription,
+    ) +
+    formatLineHtml(
+      lang['whoAreYouReportForPage.details'],
+      data.whoAreYouReportFor.businessDescription,
+    )
 
   delete data.contactInfo.fullName
   delete data.contactInfo.email
@@ -136,6 +148,9 @@ const formatVictimDetails = (data) => {
   delete data.location.province
   delete data.location.postalCode
   delete data.consent.consentOptions
+  delete data.whoAreYouReportFor.whoYouReportFor
+  delete data.whoAreYouReportFor.someoneDescription
+  delete data.whoAreYouReportFor.businessDescription
   return formatSection(lang['contactInfoPage.victimDetail'], rows)
 }
 
@@ -213,8 +228,20 @@ const formatIncidentInformation = (data) => {
   delete data.howdiditstart.startMonth
   delete data.howdiditstart.startYear
   delete data.howdiditstart.howManyTimes
+  delete data.whenDidItHappen.happenedOnceDay
+  delete data.whenDidItHappen.happenedOnceMonth
+  delete data.whenDidItHappen.happenedOnceYear
+  delete data.whenDidItHappen.startDay
+  delete data.whenDidItHappen.startMonth
+  delete data.whenDidItHappen.startYear
+  delete data.whenDidItHappen.endDay
+  delete data.whenDidItHappen.endMonth
+  delete data.whenDidItHappen.endYear
+  delete data.whenDidItHappen.incidentFrequency
+  delete data.whenDidItHappen.description
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
+  delete data.fyiForm
   return formatSection(lang['howDidItStartPage.incidentInformation'], rows)
 }
 
@@ -251,7 +278,7 @@ const formatNarrative = (data) => {
       data.moneyLost.demandedMoney,
     ) +
     formatLineHtml(
-      lang['confirmationPage.personalInformation.typeOfInfoObtained'],
+      lang['confirmationPage.personalInformation.typeOfInfoReq'],
       infoReqString,
     ) +
     formatLineHtml(
