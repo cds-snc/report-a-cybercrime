@@ -481,6 +481,12 @@ const formatFileAttachments = (data) => {
 
   delete data.evidence.files
   delete data.evidence.fileDescriptions
+  delete data.evidence.CosmosDBFile
+  // delete data.evidence.fileSize
+  // delete data.evidence.jsonFile
+  // delete data.evidence.imageData
+  // delete data.cached
+
   return (
     '<h2>' +
     lang['fileUpload.fileAttachment'] +
