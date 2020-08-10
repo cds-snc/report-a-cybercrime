@@ -42,6 +42,7 @@ export const TestForm = (props) => {
     },
   ]
 
+  console.log(`Rendering form`)
   return (
     <React.Fragment>
       <Formik
