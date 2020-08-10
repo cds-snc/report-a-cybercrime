@@ -90,7 +90,7 @@ export const ThankYouPage = () => {
               : { bg: 'yellow.300', borderColor: 'yellow.400' })}
             color="black"
             spacing={6}
-            columns={{ base: 4 / 4, lg: 6 / 7 }}
+            columns={{ base: 4 / 4, md: 6 / 7 }}
           >
             <H1 mb={6}>{thankYouTitle}</H1>
 
@@ -115,7 +115,40 @@ export const ThankYouPage = () => {
             )}
           </InfoCard>
         </Row>
+
+        <Row>
+          <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
+            {state.doneFinalFeedback ? (
+              <Box>
+                <H2 mb={2}>
+                  <Trans id="finalFeedbackThanks.title" />
+                </H2>
+                <Trans id="thankYouPage.feedback.new" />
+              </Box>
+            ) : (
+              <H2 mb={2}>
+                <Trans id="thankYouPage.feedback" />
+              </H2>
+            )}
+            <ButtonLink
+              mt="auto"
+              variantColor="black"
+              title={i18n._('thankYouPage.feedbackButton')}
+              to="/finalFeedback"
+            >
+              <Trans id="thankYouPage.feedbackButton" />
+              <Icon
+                focusable="false"
+                ml={2}
+                mr={-2}
+                name="chevron-right"
+                size="28px"
+              />
+            </ButtonLink>
+          </LandingBox>
+        </Row>
       </Layout>
+
       <Box bg="gray.100" py={10}>
         <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }} pt={10}>
           <Stack spacing={4} shouldWrapChildren>
@@ -226,37 +259,6 @@ export const ThankYouPage = () => {
               />
             </Box>
           )}
-          <Row>
-            <LandingBox spacing={10} columns={{ base: 4 / 4, md: 6 / 7 }}>
-              {state.doneFinalFeedback ? (
-                <Box>
-                  <H2 mb={2}>
-                    <Trans id="finalFeedbackThanks.title" />
-                  </H2>
-                  <Trans id="thankYouPage.feedback.new" />
-                </Box>
-              ) : (
-                <H2 mb={2}>
-                  <Trans id="thankYouPage.feedback" />
-                </H2>
-              )}
-              <ButtonLink
-                mt="auto"
-                variantColor="black"
-                title={i18n._('thankYouPage.feedbackButton')}
-                to="/finalFeedback"
-              >
-                <Trans id="thankYouPage.feedbackButton" />
-                <Icon
-                  focusable="false"
-                  ml={2}
-                  mr={-2}
-                  name="chevron-right"
-                  size="28px"
-                />
-              </ButtonLink>
-            </LandingBox>
-          </Row>
         </Stack>
       </Layout>
     </Page>
