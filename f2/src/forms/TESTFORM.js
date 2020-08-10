@@ -45,7 +45,7 @@ export const TestForm = (props) => {
   return (
     <React.Fragment>
       <Formik
-        initialValues={{ howDidTheyReachYou: [], howDidTheyContactYou: [] }}
+        initialValues={data.formData}
         validate={(values) => {
           console.log(values)
         }}
@@ -75,9 +75,9 @@ export const TestForm = (props) => {
                   label="Question Label"
                   component={CheckBox}
                   value="Test Check"
+                  type="checkbox"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  checked={values.howDidTheyReachYou.includes('Test Check')}
                   id="test-check"
                 >
                   <Field
@@ -94,9 +94,9 @@ export const TestForm = (props) => {
                   label="Question Label #2"
                   component={CheckBox}
                   value="Test Check #2"
+                  type="checkbox"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  checked={values.howDidTheyReachYou.includes('Test Check #2')}
                   id="test-radio"
                 >
                   <Field
@@ -123,9 +123,7 @@ export const TestForm = (props) => {
                             value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            checked={values.howDidTheyContactYou.includes(
-                              `${question.value}`,
-                            )}
+                            type="radio"
                             id={question.id}
                           >
                             <Field

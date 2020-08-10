@@ -10,11 +10,10 @@ export const Radio = ({ field, form, ...props }) => {
         type="radio"
         {...field}
         value={props.value}
-        checked={props.checked}
         label={props.label}
         custom
       />
-      {props.checked && props.children}
+      {field.checked && props.children}
     </Row>
   )
 }

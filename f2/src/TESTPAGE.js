@@ -26,11 +26,11 @@ export const TestPage = () => {
               <H1>TEST PAGE</H1>
               <TestForm
                 onSubmit={(data) => {
-                  /*dispatch({
+                  dispatch({
                     type: 'saveFormData',
-                    data: { anonymous: data },
-                  })*/
-                  alert(JSON.stringify(data, null, 2))
+                    data: data,
+                  })
+                  history.push('moneylost')
                 }}
               />
             </Stack>

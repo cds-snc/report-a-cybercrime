@@ -10,11 +10,10 @@ export const CheckBox = ({ field, form, ...props }) => {
         type="checkbox"
         {...field}
         value={props.value}
-        checked={props.checked}
         label={props.label}
         custom
       />
-      {props.checked && props.children}
+      {field.checked && props.children}
     </Row>
   )
 }
