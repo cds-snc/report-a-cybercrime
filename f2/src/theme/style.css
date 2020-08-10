@@ -3,6 +3,8 @@ body {
   color: rgb(0, 0, 0);
 }
 
+/*Forms*/
+
 .label {
   font-size: 1.25rem;
   line-height: 1.5rem;
@@ -12,6 +14,15 @@ body {
 .next-page-label {
   margin-bottom: 1rem;
   padding-left: 0rem;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-row {
+  margin-bottom: 1rem;
+  margin-left: 0rem;
 }
 
 .form-check-label {
@@ -48,6 +59,22 @@ body {
   font-size: 1rem;
 }
 
+.error-row {
+  padding: 0.75rem 1rem;
+  background-color: rgb(254, 215, 215);
+  border-left: 3px solid rgb(130, 39, 39);
+  border-color: rgb(130, 39, 39);
+  margin: 1rem 0rem;
+  width: 100%;
+}
+
+.error-message {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/*Text Area*/
+
 .open-text-entry {
   margin-top: 0.75rem;
   min-height: 80px;
@@ -76,19 +103,7 @@ body {
   width: -webkit-fill-available;
 }
 
-.error-row {
-  padding: 0.75rem 1rem;
-  background-color: rgb(254, 215, 215);
-  border-left: 3px solid rgb(130, 39, 39);
-  border-color: rgb(130, 39, 39);
-  margin: 1rem 0rem;
-  width: 100%;
-}
-
-.error-message {
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
+/*Button*/
 
 .button {
   height: 3rem;
@@ -215,16 +230,7 @@ body {
   color: inherit;
 }
 
-.form-group {
-  width: 100%;
-}
-
 /*Checkboxes and Radio Buttons*/
-
-.form-row {
-  margin-bottom: 1rem;
-  margin-left: 0rem;
-}
 
 .custom-control {
   height: 2.5rem;
@@ -339,10 +345,7 @@ body {
   vertical-align: middle;
 }
 
-.date-input {
-  margin-top: 0.75rem;
-}
-
+.date-input,
 .date-group {
   margin-top: 0.75rem;
 }
@@ -358,6 +361,8 @@ body {
   outline: none;
   border-color: rgb(42, 105, 172);
 }
+
+/*Alerts*/
 
 .alert-banner {
   display: inline-flex;
