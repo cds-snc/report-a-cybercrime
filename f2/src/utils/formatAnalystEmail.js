@@ -241,6 +241,7 @@ const formatIncidentInformation = (data) => {
   delete data.whenDidItHappen.description
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
+  delete data.fyiForm
   return formatSection(lang['howDidItStartPage.incidentInformation'], rows)
 }
 
