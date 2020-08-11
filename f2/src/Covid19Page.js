@@ -17,7 +17,7 @@ import { useStateValue } from './utils/state'
 import { Route } from 'react-router-dom'
 
 export const Covid19Page = () => {
-  const [state, dispatch] = useStateValue()
+  const [dispatch] = useStateValue()
   const { i18n } = useLingui()
   return (
     <Route
