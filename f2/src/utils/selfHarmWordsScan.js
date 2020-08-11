@@ -1,5 +1,4 @@
 // 'use strict'
-const unidecode = require('unidecode')
 const natural = require('natural')
 require('dotenv').config()
 const { getLogger } = require('./winstonLogger')
@@ -59,7 +58,7 @@ const scanString = (str) => {
     let wordsUsed = ''
     let wordsUsedArray = []
     let key_name_nl
-    normalizedModifiedStr = modifiedStr
+    let normalizedModifiedStr = modifiedStr
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
