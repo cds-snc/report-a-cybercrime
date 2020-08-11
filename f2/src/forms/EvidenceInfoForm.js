@@ -27,7 +27,6 @@ export const EvidenceInfoForm = (props) => {
     ...formDefaults.evidence,
     ...data.formData.evidence,
   }
-  const { fyiForm } = data.formData
 
   const [files, setFiles] = useState(cached.files)
   const [fileDescriptions, setFileDescriptions] = useState(
@@ -202,21 +201,17 @@ export const EvidenceInfoForm = (props) => {
                     <P fontSize="md" fontWeight="bold">
                       <Trans id="evidencePage.supportedFiles" />
                     </P>
-                    {fyiForm ? (
-                      <Trans id="evidencePage.supportedFileTypes" />
-                    ) : (
-                      <Ul>
-                        <Li fontSize="md" mb={2}>
-                          <Trans id="evidencePage.fileTypes1" />
-                        </Li>
-                        <Li fontSize="md" mb={2}>
-                          <Trans id="evidencePage.fileTypes2" />
-                        </Li>
-                        <Li fontSize="md" mb={2}>
-                          <Trans id="evidencePage.fileTypes3" />
-                        </Li>
-                      </Ul>
-                    )}
+                    <Ul>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes1" />
+                      </Li>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes2" />
+                      </Li>
+                      <Li fontSize="md" mb={2}>
+                        <Trans id="evidencePage.fileTypes3" />
+                      </Li>
+                    </Ul>
                   </Box>
                 </React.Fragment>
               )}
