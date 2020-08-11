@@ -17,8 +17,9 @@ import { useStateValue } from './utils/state'
 import { Route } from 'react-router-dom'
 
 export const Covid19Page = () => {
-  const [dispatch] = useStateValue()
+  const [state, dispatch] = useStateValue()
   const { i18n } = useLingui()
+  const { fyiForm } = state.formData
   return (
     <Route
       render={({ history }) => (
@@ -74,6 +75,11 @@ export const Covid19Page = () => {
 
                   <ButtonLink
                     onClick={() => {
+                      if (fyiForm) {
+                        dispatch({
+                          type: 'deleteFormData',
+                        })
+                      }
                       dispatch({
                         type: 'saveFormData',
                         data: { fyiForm: '' },
@@ -104,6 +110,11 @@ export const Covid19Page = () => {
 
                   <ButtonLink
                     onClick={() => {
+                      if (!fyiForm) {
+                        dispatch({
+                          type: 'deleteFormData',
+                        })
+                      }
                       dispatch({
                         type: 'saveFormData',
                         data: { fyiForm: 'yes' },

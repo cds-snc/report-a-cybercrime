@@ -176,7 +176,6 @@
   "evidencePage.nextPage": "Next: Enter your location",
   "evidencePage.numberOfFilesAttached": "{0, plural, one {# file attached} other {# files attached}}",
   "evidencePage.removeFileButton": "Remove file",
-  "evidencePage.supportedFileTypes": ".png, .jpeg, .doc, .xls, .pdf, and .txt.",
   "evidencePage.supportedFiles": "Supported files types: ",
   "evidencePage.title": "Attach supporting evidence",
   "fileUpload.CosmosDBFile": "CosmosDB file",
