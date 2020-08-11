@@ -99,6 +99,9 @@ const contentModerateFile = (file, callback) => {
         console.warn(`Error in Content Moderator: ${error.stack} `)
       }
     }
+    console.log('---')
+    console.log('Content Moderator ', file[1])
+    console.log('---')
     callback(null, file[1])
   })
 }

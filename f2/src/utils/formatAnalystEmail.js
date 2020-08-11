@@ -496,6 +496,10 @@ const formatAnalystEmail = (dataOrig) => {
   let reportInfoString = ''
   let missingFields
 
+  console.log('---')
+  console.log('Format Email - dataOrig: ', JSON.stringify(dataOrig, null, 2))
+  console.log('---')
+
   let data
   try {
     data = JSON.parse(JSON.stringify(dataOrig))
@@ -514,6 +518,13 @@ const formatAnalystEmail = (dataOrig) => {
       formatSuspectDetails(data) +
       formatFinancialTransactions(data) +
       formatFileAttachments(data)
+
+    console.log('---')
+    console.log(
+      'Format Email - returnString: ',
+      JSON.stringify(returnString, null, 2),
+    )
+    console.log('---')
 
     // take data object and delete any objects that are now empty, and display the rest
     Object.keys(data).forEach((key) => {

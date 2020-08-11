@@ -83,6 +83,9 @@ const allowedOrigins = [
 // Moved these out of save() and to their own function so we can block on 'saveBlob' to get the SAS link
 // without holding up the rest of the 'save' function
 async function saveBlobAndEmailReport(data) {
+  console.log('---')
+  console.log('saveBlobAndEmailReport: ', JSON.stringify(data, null, 2))
+  console.log('---')
   var converted = await convertImages(data.evidence.files)
   data.evidence.files.push(...converted.filter((file) => file !== null))
   // Await on this because saveBlob generates the SAS link for each file
@@ -92,6 +95,9 @@ async function saveBlobAndEmailReport(data) {
 }
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
+  console.log('---')
+  console.log('save: ', JSON.stringify(data, null, 2))
+  console.log('---')
   saveBlobAndEmailReport(data)
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
@@ -102,6 +108,10 @@ async function save(data, res) {
 const uploadData = async (req, res, fields, files) => {
   // Get all the data in the format we want, this function blocks because we need the data
   var data = await getData(fields, files)
+
+  console.log('---')
+  console.log('uploadData: ', JSON.stringify(data, null, 2))
+  console.log('---')
 
   // Await here because we also need these results before saving
   await scanFiles(data)

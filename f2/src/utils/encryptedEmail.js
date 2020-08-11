@@ -121,6 +121,9 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
 }
 
 const encryptAndSend = async (uidList, emailList, data, message) => {
+  console.log('---')
+  console.log('encryptAndSend: ', JSON.stringify(data, null, 2))
+  console.log('---')
   if (uidList.length > 0 && emailList.length > 0) {
     if (ANALYST_GROUP_MAIL) {
       prepareUnencryptedReportEmail(message, data, (m) =>
