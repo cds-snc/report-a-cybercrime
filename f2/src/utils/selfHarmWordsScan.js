@@ -7,9 +7,8 @@ const { getLogger } = require('./winstonLogger')
 const logger = getLogger(__filename)
 
 const selfHarmString = process.env.SELF_HARM_WORDS || 'agilé, lean, mvp, scrum'
-const selfHarmWords = selfHarmString
-  .split(',')
-  .map((w) => unidecode(w.trim().toLowerCase()))
+const selfHarmWords = selfHarmString.split(',')
+
 logger.info(`Self harm word list: ${selfHarmWords}`)
 
 //Scan form data for self harm key words.
@@ -47,24 +46,36 @@ const selfHarmWordsScan = (data) => {
 //Scan String for key words. Tokenize and stem to identify root words.
 const scanString = (str) => {
   try {
-    let modifiedStr = unidecode(str.toLowerCase())
+    let modifiedStr = str
 
     modifiedStr = modifiedStr
       .replace(/\r?\n|\r/g, ' ') //Remove newline characters
-      .replace(/[^\w\s']|_/g, ' ') //Remove special characters
       .replace(/\s+/g, ' ') //Remove any extra sapaces
 
     //Attempt to get root for words in String.
     const formTokens = modifiedStr.tokenizeAndStem()
+    modifiedStr = modifiedStr + ', ' + formTokens.toString()
 
-    //Create one String with both original and stemmed words.
-    modifiedStr = modifiedStr + ' ' + formTokens.toString().replace(/,/g, ' ')
+    let wordsUsed = ''
+    let wordsUsedArray = []
+    let key_name_nl
+    normalizedModifiedStr = modifiedStr
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+    for (var key_nl in selfHarmWords) {
+      key_name_nl = selfHarmWords[key_nl]
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+      if (normalizedModifiedStr.includes(key_name_nl) && key_name_nl !== '') {
+        if (selfHarmWords[key_nl] !== '') {
+          wordsUsedArray.push(selfHarmWords[key_nl].toLowerCase())
+        }
+      }
+    }
 
-    //Compare text to the list of key words.
-    const wordsUsed = selfHarmWords.filter((w) => {
-      const regEx = new RegExp('\\b' + w + '\\b')
-      return regEx.test(modifiedStr)
-    })
+    wordsUsed = wordsUsedArray.toString()
 
     return wordsUsed
   } catch (err) {
