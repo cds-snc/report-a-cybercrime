@@ -45,8 +45,8 @@ export const validate = (values) => {
 const fyiValidate = (values) => {
   const errors = {}
 
-  if (values.phone && !new RegExp(phoneRegex).test(values.phone)) {
-    errors.phone = 'contactinfoForm.phone.warning'
+  if (values.email && !addrs(values.email)) {
+    errors.email = 'contactinfoForm.email.warning'
   }
 
   return errors
