@@ -14,14 +14,13 @@ import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
-import { containsData } from '../utils/containsData'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
 import { Link as ReactRouterLink } from 'react-router-dom'
 
 // from https://www.w3resource.com/javascript/form/phone-no-validation.php
-const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+// const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
 
 export const validate = (values) => {
   const errors = {}

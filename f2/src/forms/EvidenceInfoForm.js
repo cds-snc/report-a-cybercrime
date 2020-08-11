@@ -27,7 +27,6 @@ export const EvidenceInfoForm = (props) => {
     ...formDefaults.evidence,
     ...data.formData.evidence,
   }
-  const { fyiForm } = data.formData
 
   const [files, setFiles] = useState(cached.files)
   const [fileDescriptions, setFileDescriptions] = useState(
