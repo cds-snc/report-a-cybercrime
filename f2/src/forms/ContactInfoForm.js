@@ -4,13 +4,54 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/formik/paragraph'
-import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, FieldArray, Field } from 'formik'
-import { Input } from '../components/formik/input'
-import { SkipButton, NextCancelButtons } from '../components/formik/button'
-import { ErrorSummary } from '../components/formik/alert'
-import { ContactInfoFormSchema } from './ContactInfoFormSchema'
+import { ErrorSummary } from '../components/ErrorSummary'
+import { Input } from '../components/input'
+import { Field } from '../components/Field'
+import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { formatPhoneNumber } from '../utils/formatPhoneNumber'
+import { formDefaults } from './defaultValues'
+import { containsData } from '../utils/containsData'
+import { Flex, Icon } from '@chakra-ui/core'
+import { P } from '../components/paragraph'
+import { Button } from '../components/button'
+import { Link as ReactRouterLink } from 'react-router-dom'
+
+export const validate = (values) => {
+  const errors = {}
+
+  // from https://www.w3resource.com/javascript/form/phone-no-validation.php
+  const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+
+  const phone =
+    'phone' in values &&
+    containsData(values.phone) &&
+    new RegExp(phoneRegex).test(values.phone)
+  const email =
+    'email' in values &&
+    containsData(values.email) &&
+    addrs(values.email) !== null
+
+  //condition for an error to occur: append a lingui id to the list of error
+  if (!values.fullName || values.fullName === '')
+    errors.fullName = 'contactinfoForm.fullName.warning'
+
+  if (!(email && addrs(values.email)) && !phone) {
+    errors.email = 'contactinfoForm.email.warning'
+    errors.phone = 'contactinfoForm.phone.warning'
+  }
+
+  return errors
+}
+
+const fyiValidate = (values) => {
+  const errors = {}
+
+  if (values.email && !addrs(values.email)) {
+    errors.email = 'contactinfoForm.email.warning'
+  }
+
+  return errors
+}
 
 export const ContactInfoForm = (props) => {
   const [data] = useStateValue()
