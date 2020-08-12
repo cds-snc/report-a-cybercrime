@@ -10,7 +10,7 @@ Given('I open the report home page', () => {
 });
 
 When('I click on create a report button', () => {
-    cy.contains('Report now').first().click({force: true});
+    cy.contains('Start report').first().click({force: true});
 });
 
 Then('I read before you start instructions', () => {

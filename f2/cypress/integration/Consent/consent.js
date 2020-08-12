@@ -13,7 +13,7 @@ Then('Inject axe and check for accessibility issues', () => {
 });
 
 When('I click on create a report button', () => {
-    cy.contains('Report now').first().click({force: true});
+    cy.contains('Start report').first().click({force: true});
 });
 
 When('I read before you start instructions', () => {

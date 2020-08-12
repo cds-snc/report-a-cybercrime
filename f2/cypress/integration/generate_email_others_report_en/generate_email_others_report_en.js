@@ -9,7 +9,7 @@ Given('I open the report home page', () => {
 });
 
 When('I click on create a report button', () => {
-    cy.contains('Report now').first().click({force: true});
+    cy.contains('Start report').first().click({force: true});
 });
 
 Then('I read before you start instructions', () => {
@@ -141,7 +141,7 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to yourLocation page forms', () => {
-    cy.get('form').find('[id="postalCode"]').type('a0a1a0')
+    cy.get('form').find('[id="postalCode"]').type('H3e1z8')
 });
 
 Then('I click {string}', () => {

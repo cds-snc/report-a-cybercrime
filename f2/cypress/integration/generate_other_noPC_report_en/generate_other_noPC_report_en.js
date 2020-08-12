@@ -9,7 +9,7 @@ Given('I open the report home page', () => {
 });
 
 When('I click on create a report button', () => {
-    cy.contains('Report now').first().click({force: true});
+    cy.contains('Start report').first().click({force: true});
 });
 
 Then('I read before you start instructions', () => {
@@ -110,7 +110,7 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to Whathappened page forms', () => {
-    cy.get('form').find('[name="whatHappened"]').type('TC: Other-NoPC_NoContact. What happened tell more')
+    cy.get('form').find('[name="whatHappened"]').type('TC: Other-NoPC. What happened tell more')
 });
 
 Then('I click {string}', () => {

@@ -11,7 +11,7 @@ Given('I open the report home page', () => {
 When ('I change the language',() => {
     cy.contains('Français').first().click({force: true});
     cy.wait(3000)
-    cy.contains('Signaler maintenant').first().click({force: true});
+    cy.contains('Commencer le signalement').first().click({force: true});
 });
 
 Then('I read before you start instructions', () => {
