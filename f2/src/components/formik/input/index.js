@@ -11,6 +11,7 @@ export const Input = ({ field, form, ...props }) => {
         <Form.Control
           className="input-field-control"
           type={props.type}
+          {...field}
           placeholder={props.placeholder}
         />
       </Form.Group>
