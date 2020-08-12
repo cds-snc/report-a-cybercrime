@@ -15,12 +15,12 @@ import { NextCancelButtons, SkipButton } from '../components/formik/button'
 export const TestForm = (props) => {
   const [data] = useStateValue()
 
-  const radioData = [
+  const questionData = [
     {
       name: 'Radio 1',
       label: 'Phone',
       value: 'phone',
-      id: 'radio-selection-phone',
+      id: 'selection-phone',
       followUp: 'What was the phone number?',
       helpText: 'Please enter the phone number including area code',
     },
@@ -28,7 +28,7 @@ export const TestForm = (props) => {
       name: 'Radio 2',
       label: 'Online',
       value: 'online',
-      id: 'radio-selection-online',
+      id: 'selection-online',
       followUp: 'What was the email address?',
       helpText: 'Please enter the email address, partial entries are allowed',
     },
@@ -36,7 +36,7 @@ export const TestForm = (props) => {
       name: 'Radio 3',
       label: 'Other',
       value: 'other',
-      id: 'radio-selection-other',
+      id: 'selection-other',
       followUp: 'Additional details',
       helpText: 'Please provide any information regarding the situation',
     },
@@ -71,52 +71,44 @@ export const TestForm = (props) => {
                 <Success msg="This is a success message" />
               </Row>
               <Row className="form-section">
-                <Field
+                <FieldArray
                   name="howDidTheyReachYou"
-                  label="Question Label"
-                  component={CheckBox}
-                  value="Test Check"
-                  type="checkbox"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="test-check"
-                >
-                  <Field
-                    name="Test Text"
-                    label="Text Area"
-                    helpText="This should help"
-                    component={TextArea}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                </Field>
-                <Field
-                  name="howDidTheyReachYou"
-                  label="Question Label #2"
-                  component={CheckBox}
-                  value="Test Check #2"
-                  type="checkbox"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="test-radio"
-                >
-                  <Field
-                    name="Test Text #2"
-                    label="Text Area #2"
-                    helpText="This should help...again"
-                    component={TextArea}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                </Field>
+                  render={() =>
+                    questionData.map((question) => {
+                      return (
+                        <React.Fragment key={question.name + 'checkbox'}>
+                          <Field
+                            name="howDidTheyReachYou"
+                            label={question.label}
+                            component={CheckBox}
+                            value={question.value}
+                            type="checkbox"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            id={'checkbox-' + question.id}
+                          >
+                            <Field
+                              name={question.name}
+                              label={question.followUp}
+                              helpText={question.helpText}
+                              component={TextArea}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                          </Field>
+                        </React.Fragment>
+                      )
+                    })
+                  }
+                />
               </Row>
               <Row className="form-section">
                 <FieldArray
                   name="howDidTheyContactYou"
-                  render={(arrayHelpers) =>
-                    radioData.map((question) => {
+                  render={() =>
+                    questionData.map((question) => {
                       return (
-                        <React.Fragment key={question.name}>
+                        <React.Fragment key={question.name + 'radio'}>
                           <Field
                             name="howDidTheyContactYou"
                             label={question.label}
