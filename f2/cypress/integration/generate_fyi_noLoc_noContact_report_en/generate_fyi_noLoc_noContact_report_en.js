@@ -37,7 +37,7 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to Whathappened page forms', () => {
-    cy.get('form').find('[name="whatHappened"]').type('TC: fyi-What happened tell more')
+    cy.get('form').find('[name="whatHappened"]').type('TC: fyi-noLoc-noContact-What happened tell more')
 });
 
 Then('I click {string}', () => {
@@ -65,13 +65,12 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill to yourLocation page forms', () => {
-    //cy.get('form').find('[id="postalCode"]').type('a0a1a0')
-    cy.contains("Skip").first().click({force: true});
+    //cy.get('form').find('[id="postalCode"]').type('h3c5x6')
 });
 
-//Then('I click {string}', () => {
-//    cy.contains("Skip").first().click({force: true});
-//});
+Then('I click {string}', () => {
+    cy.contains("Continue").first().click({force: true});
+});
 
 Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
@@ -81,12 +80,11 @@ When('I fill yourContactDetails page forms', () => {
     //cy.get('form').find('[id="fullName"]').type('Hong Vu')
     //cy.get('form').find('[id="email"]').type('hong.vu@rcmp-grc.gc.ca')
     //cy.get('form').find('[id="phone"]').type('6131015934')
-    cy.contains("Skip").first().click({force: true});
 });
 
-//Then('I click {string}', () => {
-//    cy.contains("Skip").first().click({force: true});
-//});
+Then('I click {string}', () => {
+    cy.contains("Continue").first().click({force: true});
+});
 
 Given('{string} should be shown', (content) => {
     cy.contains(content, {timeout:10000}).should('be.visible')
