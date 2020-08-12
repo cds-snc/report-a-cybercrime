@@ -12,6 +12,16 @@ import { Text } from '../components/text'
 import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
+import { ErrorSummary } from '../components/ErrorSummary'
+
+const validate = (values) => {
+  const errors = {}
+  //condition for an error to occur: append a lingui id to the list of error
+  if (!values.optionsList || values.optionsList.length < 1) {
+    errors.affectedOptions = 'whatWasAffectedForm.warning'
+  }
+  return errors
+}
 
 const clearData = (dataOrig) => {
   let data = JSON.parse(JSON.stringify(dataOrig))
@@ -55,7 +65,7 @@ export const WhoAreYouReportForForm = (props) => {
 
   return (
     <React.Fragment>
-            {false ? ( // mark ids for lingui
+      {false ? ( // mark ids for lingui
         <div>
           <Trans id="whoAreYouReportForPage.business.helperText" />
           <Trans id="whoAreYouReportForPage.business.label" />
@@ -74,17 +84,23 @@ export const WhoAreYouReportForForm = (props) => {
       <Form
         initialValues={whoAreYouReportFor}
         onSubmit={localOnSubmit}
-        render={({
-          handleSubmit,
-        }) => (
+        validate={validate}
+        render={({ handleSubmit, submitFailed, hasValidationErrors }) => (
           <Stack
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
             spacing={12}
           >
+            {submitFailed && hasValidationErrors ? (
+              <ErrorSummary>
+                <Trans id="whatWasAffectedForm.hasValidationErrors" />
+              </ErrorSummary>
+            ) : null}
+
             <FormArrayControl
               name="whoAreYouReportFor"
+              errorMessage={<Trans id="whatWasAffectedForm.warning" />}
             >
               <React.Fragment key="whoAreYouReportForPage.options.myself">
                 <RadioAdapter
@@ -92,7 +108,7 @@ export const WhoAreYouReportForForm = (props) => {
                   value="whoAreYouReportForPage.options.myself"
                 >
                   <Trans id="whoAreYouReportForPage.options.myself" />
-                </RadioAdapter>              
+                </RadioAdapter>
               </React.Fragment>
               <React.Fragment>
                 <Text ml={2} lineHeight="1.5rem">
@@ -100,25 +116,25 @@ export const WhoAreYouReportForForm = (props) => {
                 </Text>
               </React.Fragment>
               {optionsList.map((option) => {
-                  return (
-                    <React.Fragment key={option.value}>
-                      <RadioAdapter
-                        name="whoYouReportFor"
-                        value={option.value}
-                        conditionalField={
-                          <Field
-                            name={option.name}
-                            label={<Trans id={option.label} />}
-                            helperText={<Trans id={option.hint} />}
-                            component={TextArea}
-                          />
-                        }
-                      >
-                        <Trans id={option.value} />                 
-                      </RadioAdapter>
-                    </React.Fragment>
-                  )
-                })}
+                return (
+                  <React.Fragment key={option.value}>
+                    <RadioAdapter
+                      name="whoYouReportFor"
+                      value={option.value}
+                      conditionalField={
+                        <Field
+                          name={option.name}
+                          label={<Trans id={option.label} />}
+                          helperText={<Trans id={option.hint} />}
+                          component={TextArea}
+                        />
+                      }
+                    >
+                      <Trans id={option.value} />
+                    </RadioAdapter>
+                  </React.Fragment>
+                )
+              })}
             </FormArrayControl>
             <NextAndCancelButtons
               next={<Trans id="whoAreYouReportForPage.nextPage" />}
