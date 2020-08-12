@@ -14,27 +14,33 @@ import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
+import { containsData } from '../utils/containsData'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
 import { Link as ReactRouterLink } from 'react-router-dom'
 
-// from https://www.w3resource.com/javascript/form/phone-no-validation.php
-// const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-
 export const validate = (values) => {
   const errors = {}
+
+  // from https://www.w3resource.com/javascript/form/phone-no-validation.php
+  const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+
+  const phone =
+    'phone' in values &&
+    containsData(values.phone) &&
+    new RegExp(phoneRegex).test(values.phone)
+  const email =
+    'email' in values &&
+    containsData(values.email) &&
+    addrs(values.email) !== null
 
   //condition for an error to occur: append a lingui id to the list of error
   if (!values.fullName || values.fullName === '')
     errors.fullName = 'contactinfoForm.fullName.warning'
 
-  //!(email || phone) If either phone or email is not false
-  if (!addrs(values.email)) {
+  if (!(email && addrs(values.email)) && !phone) {
     errors.email = 'contactinfoForm.email.warning'
-  }
-
-  if (!values.phone) {
     errors.phone = 'contactinfoForm.phone.warning'
   }
 
