@@ -79,10 +79,7 @@ export const BusinessInfoForm = (props) => {
               {numberOfEmployee.map((key) => {
                 return (
                   <React.Fragment key={key}>
-                    <RadioAdapter
-                      name="numberOfEmployee"
-                      value={key}
-                    >
+                    <RadioAdapter name="numberOfEmployee" value={key}>
                       {i18n._(key)}
                     </RadioAdapter>
                   </React.Fragment>

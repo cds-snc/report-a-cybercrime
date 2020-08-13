@@ -16,6 +16,7 @@ import { Page } from './components/Page'
 export const EvidencePage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
+  const { fyiForm } = data.formData
 
   return (
     <Route
@@ -28,9 +29,12 @@ export const EvidencePage = () => {
                 <Trans id="evidencePage.title" />
               </H1>
 
-              <Lead>
-                <Trans id="evidencePage.intro" />
-              </Lead>
+              {fyiForm ? null : (
+                <Lead>
+                  <Trans id="evidencePage.intro" />
+                </Lead>
+              )}
+
               <Box>
                 <P>
                   <Trans id="evidencePage.details" />
@@ -39,9 +43,11 @@ export const EvidencePage = () => {
                   <Li>
                     <Trans id="evidencePage.detail1" />
                   </Li>{' '}
-                  <Li>
-                    <Trans id="evidencePage.detail2" />
-                  </Li>
+                  {fyiForm ? null : (
+                    <Li>
+                      <Trans id="evidencePage.detail2" />
+                    </Li>
+                  )}
                   <Li>
                     <Trans id="evidencePage.detail3" />
                   </Li>
