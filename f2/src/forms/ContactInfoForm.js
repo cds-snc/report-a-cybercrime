@@ -25,6 +25,9 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 export const validate = (values) => {
   const errors = {}
 
+  //a loose validation for phone number(only allow numbers, space, brackets and hyphen)
+  const phoneRegex = /^[0-9()\-\s]*$/g
+
   //condition for an error to occur: append a lingui id to the list of error
   if (!values.fullName || values.fullName === '')
     errors.fullName = 'contactinfoForm.fullName.warning'
@@ -34,7 +37,7 @@ export const validate = (values) => {
     errors.email = 'contactinfoForm.email.warning'
   }
 
-  if (!values.phone) {
+  if (!new RegExp(phoneRegex).test(values.phone)) {
     errors.phone = 'contactinfoForm.phone.warning'
   }
 
@@ -145,7 +148,6 @@ export const ContactInfoForm = (props) => {
             <Field
               name="phone"
               label={<Trans id="contactinfoPage.phoneNumber" />}
-              helperText={<Trans id="contactinfoForm.phone.warning" />}
               errorMessage={<Trans id="contactinfoForm.phone.warning" />}
               component={Input}
               required={!fyiForm}
