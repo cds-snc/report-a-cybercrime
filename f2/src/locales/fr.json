@@ -122,7 +122,7 @@
   "contactInfoPage.victimDetail": "Détails sur la victime",
   "contactinfoForm.email.warning": "Entrez une adresse courriel valide.",
   "contactinfoForm.fullName.warning": "Entrez votre nom complet",
-  "contactinfoForm.phone.warning": "Entrez un numéro de téléphone de 10 chiffres.",
+  "contactinfoForm.phone.warning": "Entrez un numéro de téléphone valide.",
   "contactinfoPage.emailAddress": "Adresse courriel",
   "contactinfoPage.fullName": "Nom complet",
   "contactinfoPage.hasValidationErrors": "Veuillez réviser vos coordonnées.",
