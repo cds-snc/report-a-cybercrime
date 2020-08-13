@@ -21,22 +21,12 @@ export const WhoAreYouReportForSummary = (props) => {
 
   let whoYouReportForString
 
-  if (
-    whoAreYouReportFor.whoYouReportFor ===
-    'whoAreYouReportForPage.options.myself'
-  ) {
+  if (whoAreYouReportFor.whoYouReportFor === 'whoAreYouReportForPage.options.myself') {
     whoYouReportForString = <Trans id="whoAreYouReportForPage.options.myself" />
-  } else if (
-    whoAreYouReportFor.whoYouReportFor ===
-    'whoAreYouReportForPage.options.someone'
-  ) {
-    whoYouReportForString = (
-      <Trans id="whoAreYouReportForPage.options.someone" />
-    )
+  } else if (whoAreYouReportFor.whoYouReportFor === 'whoAreYouReportForPage.options.someone') {
+    whoYouReportForString = <Trans id="whoAreYouReportForPage.options.someone" />
   } else {
-    whoYouReportForString = (
-      <Trans id="whoAreYouReportForPage.options.business" />
-    )
+    whoYouReportForString = <Trans id="whoAreYouReportForPage.options.business" />
   }
 
   return (
@@ -72,7 +62,9 @@ export const WhoAreYouReportForSummary = (props) => {
               <Text>
                 <Trans id="confirmationPage.youAreReportingFor" />
                 &nbsp;
-                <Text as="span">{whoYouReportForString}</Text>
+                <Text as="span">
+                  {whoYouReportForString}
+                </Text>
               </Text>
               {containsData(whoAreYouReportFor.someoneDescription) ? (
                 <DescriptionListItem
