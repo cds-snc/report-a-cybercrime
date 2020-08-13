@@ -1,4 +1,4 @@
- @regression
+ @smoke
 Feature: Test the entire report workflow in english
   I want to create an online investgation report
   
