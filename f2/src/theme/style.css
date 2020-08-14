@@ -368,6 +368,8 @@ body {
   display: inline-flex;
   width: 100%;
   border-left: 3px solid;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .alert-icon {

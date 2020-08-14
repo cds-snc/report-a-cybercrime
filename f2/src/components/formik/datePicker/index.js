@@ -4,47 +4,24 @@ import { Trans } from '@lingui/macro'
 import { Field } from 'formik'
 
 const DateEntry = ({ field, form, ...props }) => {
-  return (
-    <Col sm="auto" className="date-picker">
-      <Form.Group controlId={props.id}>
-        <Form.Label className="date-label">
-          {<Trans id="whenDidItStart.startDay" />}
-        </Form.Label>
-        <Form.Control
-          className="day-month date-input"
-          type="input"
-          {...field}
-        />
-      </Form.Group>
-    </Col>
-  )
-}
+  let length = 2
+  let dateClass = 'day-month'
 
-const MonthEntry = ({ field, form, ...props }) => {
-  return (
-    <Col sm="auto" className="date-picker">
-      <Form.Group controlId={props.id}>
-        <Form.Label className="date-label">
-          {<Trans id="whenDidItStart.startMonth" />}
-        </Form.Label>
-        <Form.Control
-          className="day-month date-input"
-          type="input"
-          {...field}
-        />
-      </Form.Group>
-    </Col>
-  )
-}
+  if (props.type === 'year') {
+    length = 4
+    dateClass = 'year'
+  }
 
-const YearEntry = ({ field, form, ...props }) => {
   return (
     <Col sm="auto" className="date-picker">
       <Form.Group controlId={props.id}>
-        <Form.Label className="date-label">
-          {<Trans id="whenDidItStart.startYear" />}
-        </Form.Label>
-        <Form.Control className="year date-input" type="input" {...field} />
+        <Form.Label className="date-label">{props.label}</Form.Label>
+        <Form.Control
+          className={'date-input ' + dateClass}
+          type="text"
+          {...field}
+          maxLength={length}
+        />
       </Form.Group>
     </Col>
   )
@@ -67,20 +44,24 @@ export const DatePicker = (props) => {
           onChange={props.onChange}
           id={props.id + 'Day'}
           value={props.day}
+          label={<Trans id="whenDidItStart.startDay" />}
         />
         <Field
           name={props.name + 'Month'}
-          component={MonthEntry}
+          component={DateEntry}
           onChange={props.onChange}
           id={props.id + 'Month'}
           value={props.month}
+          label={<Trans id="whenDidItStart.startMonth" />}
         />
         <Field
           name={props.name + 'Year'}
-          component={YearEntry}
+          component={DateEntry}
           onChange={props.onChange}
           id={props.id + 'Year'}
           value={props.year}
+          type="year"
+          label={<Trans id="whenDidItStart.startYear" />}
         />
       </Row>
     </Container>

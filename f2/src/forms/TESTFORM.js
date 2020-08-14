@@ -65,10 +65,10 @@ export const TestForm = (props) => {
                 </Row>
               </Row>
               <Row className="form-section">
-                <Error msg="This is an error" />
-                <Info msg="This is an info message" />
-                <Warning msg="This is a warning message" />
-                <Success msg="This is a success message" />
+                <Error>This is an error</Error>
+                <Info>This is an info message</Info>
+                <Warning>"This is a warning message"</Warning>
+                <Success>"This is a success message"</Success>
               </Row>
               <Row className="form-section">
                 <FieldArray

@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { Well } from '../components/Messages'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
-import { getHowDidItStartSchema } from '../utils/formik/validationSchema'
 import { CheckBox } from '../components/formik/checkbox'
 import { TextArea } from '../components/formik/textArea'
-import { Error } from '../components/formik/error'
 import { NextCancelButtons } from '../components/formik/button'
+import { Error } from '../components/formik/alert'
+import { phone, postalCode } from '../utils/validationSchema'
+import * as Yup from 'yup'
 
 export const HowDidItStartForm = (props) => {
   const { i18n } = useLingui()
@@ -19,6 +19,22 @@ export const HowDidItStartForm = (props) => {
   const howDidItStart = {
     ...data.formData.howdiditstart,
   }
+
+  //Validation object, defines rules used to validation form data
+  const validationSchema = Yup.object().shape({
+    howDidTheyReachYou: Yup.array().required(),
+    email: Yup.string().email(),
+    phone: Yup.string().matches(phone(), {
+      excludeEmptyString: true,
+      message: 'Please enter a valid phone number',
+    }),
+    online: Yup.string(),
+    application: Yup.string(),
+    others: Yup.string().matches(postalCode(), {
+      excludeEmptyString: true,
+      message: 'Please enter a valid postal code',
+    }),
+  })
 
   const formOptions = [
     {
@@ -60,86 +76,82 @@ export const HowDidItStartForm = (props) => {
 
   return (
     <React.Fragment>
-      <Stack shouldWrapChildren spacing={12}>
-        <Formik
-          initialValues={howDidItStart}
-          validate={(values) => {
-            console.log(values)
-          }}
-          /*validationSchema={getHowDidItStartSchema()}*/
-          onSubmit={(values) => {
-            formOptions.map((question) => {
-              if (!values.howDidTheyReachYou.includes(question.name)) {
-                values[question.name] = ''
-              }
-            })
-            props.onSubmit(values)
-          }}
-          render={({ values, handleSubmit, handleChange, handleBlur }) => (
-            <Form onSubmit={handleSubmit}>
-              <Container>
-                <Row className="form-question">
-                  <Row className="form-label">
-                    <Trans id="howDidTheyReachYou.question" />
-                  </Row>
-                  <Row className="form-helper-text">
-                    <Trans id="howDidTheyReachYou.reminder" />
-                  </Row>
-                  <ErrorMessage
-                    name="howDidTheyReachYou"
-                    component={Error}
-                    msg={<Trans id="howDidTheyReachYou.error" />}
-                  />
+      <Formik
+        initialValues={howDidItStart}
+        validationSchema={validationSchema}
+        onSubmit={(values) => {
+          formOptions.map((question) => {
+            if (!values.howDidTheyReachYou.includes(question.name)) {
+              values[question.name] = ''
+            }
+          })
+          props.onSubmit(values)
+        }}
+        render={({ values, handleSubmit, handleChange, handleBlur }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row className="form-question">
+                <Row className="form-label">
+                  <Trans id="howDidTheyReachYou.question" />
                 </Row>
-                <Row className="form-section">
-                  <FieldArray
-                    name="howDidTheyReachYou"
-                    className="form-section"
-                    render={(arrayHelpers) =>
-                      formOptions.map((question) => {
-                        return (
-                          <React.Fragment key={question.name}>
+                <Row className="form-helper-text">
+                  <Trans id="howDidTheyReachYou.reminder" />
+                </Row>
+                <ErrorMessage name="howDidTheyReachYou" component={Error} />
+              </Row>
+              <Row className="form-section">
+                <FieldArray
+                  name="howDidTheyReachYou"
+                  className="form-section"
+                  render={() =>
+                    formOptions.map((question) => {
+                      return (
+                        <React.Fragment key={question.name}>
+                          <Field
+                            name="howDidTheyReachYou"
+                            label={question.checkboxLabel}
+                            component={CheckBox}
+                            value={question.name}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            type="checkbox"
+                            id={'checkbox-' + question.name}
+                          >
+                            <ErrorMessage
+                              name={question.name}
+                              component={Error}
+                            />
                             <Field
-                              name="howDidTheyReachYou"
-                              label={question.checkboxLabel}
-                              component={CheckBox}
-                              value={question.name}
-                              onChange={handleChange}
+                              name={question.name}
+                              label={question.questionLabel}
+                              helpText={question.helpText}
+                              component={TextArea}
                               onBlur={handleBlur}
-                              checked={values.howDidTheyReachYou.includes(
-                                question.name,
-                              )}
-                            >
-                              <Field
-                                name={question.name}
-                                label={question.questionLabel}
-                                helpText={question.helpText}
-                                component={TextArea}
-                              />
-                            </Field>
-                          </React.Fragment>
-                        )
-                      })
-                    }
-                  />
-                </Row>
-                <Row className="form-section">
-                  <Well variantColor="blue">
-                    <Trans id="howDidItStartPage.tip" />
-                  </Well>
-                </Row>
-                <Row>
-                  <NextCancelButtons
-                    submit={<Trans id="howDidItStartPage.nextButton" />}
-                    cancel={<Trans id="button.cancelReport" />}
-                    label={<Trans id="howDidItStartPage.nextPage" />}
-                  />
-                </Row>
-              </Container>
-            </Form>
-          )}
-        />
-      </Stack>
+                              onChange={handleChange}
+                            />
+                          </Field>
+                        </React.Fragment>
+                      )
+                    })
+                  }
+                />
+              </Row>
+              <Row className="form-section">
+                <Well variantColor="blue">
+                  <Trans id="howDidItStartPage.tip" />
+                </Well>
+              </Row>
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="howDidItStartPage.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="howDidItStartPage.nextPage" />}
+                />
+              </Row>
+            </Container>
+          </Form>
+        )}
+      />
     </React.Fragment>
   )
 }

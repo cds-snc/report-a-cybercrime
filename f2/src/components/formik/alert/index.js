@@ -7,7 +7,7 @@ import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
 export const Error = (props) => {
   return (
     <Alert variant="danger" className="alert-banner">
-      {props.msg}
+      {props.children}
     </Alert>
   )
 }
@@ -16,7 +16,7 @@ export const Info = (props) => {
   return (
     <Alert variant="info" className="alert-banner">
       <AiOutlineInfoCircle className="alert-icon" />
-      {props.msg}
+      {props.children}
     </Alert>
   )
 }
@@ -25,7 +25,7 @@ export const Warning = (props) => {
   return (
     <Alert variant="warning" className="alert-banner">
       <IoIosWarning className="alert-icon" />
-      {props.msg}
+      {props.children}
     </Alert>
   )
 }
@@ -34,7 +34,7 @@ export const Success = (props) => {
   return (
     <Alert variant="success" className="alert-banner">
       <IoIosCheckmarkCircleOutline className="alert-icon" />
-      {props.msg}
+      {props.children}
     </Alert>
   )
 }

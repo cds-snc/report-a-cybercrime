@@ -22,7 +22,6 @@ export const CancelButton = (props) => {
         <Button
           type="button"
           className="button cancel-button"
-          to="/confirmCancel"
           onClick={() => history.push('/confirmCancel')}
         >
           <span className="button-label">{props.label}</span>
@@ -64,7 +63,6 @@ export const SkipButton = (props) => {
         <Button
           type="button"
           className="button skip-button"
-          to={props.to}
           onClick={() => history.push(props.to)}
         >
           <span className="button-label">
