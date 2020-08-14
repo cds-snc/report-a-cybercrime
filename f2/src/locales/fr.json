@@ -486,6 +486,7 @@
   "whoAreYouReportForPage.business.helperText": "Fournissez un nom d’entreprise, un site Web ou une autre façon de contacter cette entreprise.",
   "whoAreYouReportForPage.business.label": "Pour quelle entreprise faites-vous un signalement?",
   "whoAreYouReportForPage.details": "Détails",
+  "whoAreYouReportForPage.hasValidationErrors": "",
   "whoAreYouReportForPage.nextButton": "Continuer",
   "whoAreYouReportForPage.nextPage": "Étape suivante : Comment l’incident a-t-il commencé?",
   "whoAreYouReportForPage.options.business": "Une entreprise",

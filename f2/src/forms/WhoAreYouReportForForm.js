@@ -13,13 +13,17 @@ import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { ErrorSummary } from '../components/ErrorSummary'
+//import { useLingui } from '@lingui/react'
 
 const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
-  if (!values.optionsList || values.optionsList.length < 1) {
-    errors.affectedOptions = 'whatWasAffectedForm.warning'
+  if (!values.listOptions || values.listOptions.length < 1) {
+    //if (!values.optionsList || values.optionsList.length < 1) {
+    //errors.listOptions = 'whatWasAffectedForm.warning'
+    errors.listOptions = 'whoAreYouReportForPage.hasValidationErrors'
   }
+  console.log(values.listOptions)
   return errors
 }
 
@@ -32,7 +36,6 @@ const clearData = (dataOrig) => {
   if (data.whoYouReportFor !== 'whoAreYouReportForPage.options.business') {
     data.businessDescription = ''
   }
-
   return data
 }
 
@@ -42,6 +45,7 @@ export const WhoAreYouReportForForm = (props) => {
       props.onSubmit(clearData({ ...data }))
   }
 
+  // const { i18n } = useLingui()
   const [data] = useStateValue()
   const whoAreYouReportFor = {
     ...formDefaults.whoAreYouReportFor,
@@ -62,7 +66,8 @@ export const WhoAreYouReportForForm = (props) => {
       hint: 'whoAreYouReportForPage.business.helperText',
     },
   ]
-
+  const listOptions = optionsList.map((option) => option.value)
+  console.log(listOptions)
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -94,17 +99,17 @@ export const WhoAreYouReportForForm = (props) => {
           >
             {submitFailed && hasValidationErrors ? (
               <ErrorSummary>
-                <Trans id="whatWasAffectedForm.hasValidationErrors" />
+                <Trans id="whoAreYouReportForPage.hasValidationErrors" />
               </ErrorSummary>
             ) : null}
 
             <FormArrayControl
               name="whoAreYouReportFor"
-              errorMessage={<Trans id="whatWasAffectedForm.warning" />}
+              //errorMessage={<Trans id="whatWasAffectedForm.warning" />}
             >
               <React.Fragment key="whoAreYouReportForPage.options.myself">
                 <RadioAdapter
-                  name="whoYouReportFor"
+                  name="listOptions"
                   value="whoAreYouReportForPage.options.myself"
                 >
                   <Trans id="whoAreYouReportForPage.options.myself" />
@@ -117,9 +122,9 @@ export const WhoAreYouReportForForm = (props) => {
               </React.Fragment>
               {optionsList.map((option) => {
                 return (
-                  <React.Fragment key={option.value}>
+                  <React.Fragment key={option}>
                     <RadioAdapter
-                      name="whoYouReportFor"
+                      name="listOptions"
                       value={option.value}
                       conditionalField={
                         <Field
