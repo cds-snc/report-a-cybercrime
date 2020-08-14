@@ -13,7 +13,6 @@ import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 import { ErrorSummary } from '../components/ErrorSummary'
-//import { useLingui } from '@lingui/react'
 
 const validate = (values) => {
   const errors = {}
@@ -62,7 +61,6 @@ export const WhoAreYouReportForForm = (props) => {
       hint: 'whoAreYouReportForPage.business.helperText',
     },
   ]
-  //const listOptions = optionsList.map((option) => option.value)
 
   return (
     <React.Fragment>
