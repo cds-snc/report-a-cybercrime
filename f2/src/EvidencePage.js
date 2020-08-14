@@ -42,12 +42,10 @@ export const EvidencePage = () => {
                 <Ul>
                   <Li>
                     <Trans id="evidencePage.detail1" />
-                  </Li>{' '}
-                  {fyiForm ? null : (
-                    <Li>
-                      <Trans id="evidencePage.detail2" />
-                    </Li>
-                  )}
+                  </Li>
+                  <Li>
+                    <Trans id="evidencePage.detail2" />
+                  </Li>
                   <Li>
                     <Trans id="evidencePage.detail3" />
                   </Li>

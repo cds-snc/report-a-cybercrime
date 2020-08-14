@@ -1,6 +1,7 @@
+@smoke
 Feature: Test the entire report workflow in french
   I want to create an online investgation report
-  @smoke
+
   Scenario: Home page
     Given I open the report home page
     When I change the language
@@ -15,10 +16,20 @@ Scenario: Report anonymously
     When I fill ReportAnonymously page forms
     Then I click "Continue"
 
+Scenario: Who are you reporting for
+    Given "Pour qui faites-vous le signalement?" should be shown
+    When I fill Whoareyoureporting page forms
+    Then I click "Continue"
+
   Scenario: How did it start
     Given "Comment l’incident a-t-il commencé?" should be shown
     When I fill howdiditstart page forms
     Then I click "Continuer"
+
+  Scenario: When did it happen
+    Given "Quand est-ce que l'incident s'est produit ?" should be shown
+    When I fill whendidithappen page forms
+    Then I click "Continue"
 
   Scenario: What could be affected
     Given "D’après vous, quelles pourraient être les répercussions?" should be shown
