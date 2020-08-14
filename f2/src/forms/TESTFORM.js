@@ -67,8 +67,8 @@ export const TestForm = (props) => {
               <Row className="form-section">
                 <Error>This is an error</Error>
                 <Info>This is an info message</Info>
-                <Warning>"This is a warning message"</Warning>
-                <Success>"This is a success message"</Success>
+                <Warning>This is a warning message</Warning>
+                <Success>This is a success message</Success>
               </Row>
               <Row className="form-section">
                 <FieldArray
@@ -88,7 +88,7 @@ export const TestForm = (props) => {
                             id={'checkbox-' + question.id}
                           >
                             <Field
-                              name={question.name}
+                              name={question.name + 'CheckGroup'}
                               label={question.followUp}
                               helpText={question.helpText}
                               component={TextArea}
@@ -104,13 +104,13 @@ export const TestForm = (props) => {
               </Row>
               <Row className="form-section">
                 <FieldArray
-                  name="howDidTheyContactYou"
+                  name="radioGroup"
                   render={() =>
                     questionData.map((question) => {
                       return (
                         <React.Fragment key={question.name + 'radio'}>
                           <Field
-                            name="howDidTheyContactYou"
+                            name="radioGroup"
                             label={question.label}
                             component={Radio}
                             value={question.value}
@@ -120,7 +120,7 @@ export const TestForm = (props) => {
                             id={question.id}
                           >
                             <Field
-                              name={question.name}
+                              name={question.name + 'RadioGroup'}
                               label={question.followUp}
                               helpText={question.helpText}
                               component={TextArea}

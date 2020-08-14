@@ -22,8 +22,10 @@ export const HowDidItStartForm = (props) => {
 
   //Validation object, defines rules used to validation form data
   const validationSchema = Yup.object().shape({
-    howDidTheyReachYou: Yup.array().required(),
-    email: Yup.string().email(),
+    howDidTheyReachYou: Yup.array().required(
+      'Please select at least one option',
+    ),
+    email: Yup.string().email('Please enter a valid email address'),
     phone: Yup.string().matches(phone(), {
       excludeEmptyString: true,
       message: 'Please enter a valid phone number',
