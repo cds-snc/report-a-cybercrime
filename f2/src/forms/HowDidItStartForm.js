@@ -11,6 +11,7 @@ import { TextArea } from '../components/formik/textArea'
 import { NextCancelButtons } from '../components/formik/button'
 import { Error } from '../components/formik/alert'
 import { phone, postalCode } from '../utils/validationSchema'
+import { HowDidItStartFormSchema } from './HowDidItStartFormSchema'
 import * as Yup from 'yup'
 
 export const HowDidItStartForm = (props) => {
@@ -80,7 +81,7 @@ export const HowDidItStartForm = (props) => {
     <React.Fragment>
       <Formik
         initialValues={howDidItStart}
-        validationSchema={validationSchema}
+        validationSchema={HowDidItStartFormSchema()}
         onSubmit={(values) => {
           formOptions.map((question) => {
             if (!values.howDidTheyReachYou.includes(question.name)) {
