@@ -50,6 +50,7 @@ function checkToken(url = '', dispatch, data = {}) {
 export const LandingPage = (props) => {
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue()
+  const { fyiForm } = state.formData
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })
   }
@@ -107,6 +108,11 @@ export const LandingPage = (props) => {
 
                     <ButtonLink
                       onClick={() => {
+                        if (fyiForm) {
+                          dispatch({
+                            type: 'deleteFormData',
+                          })
+                        }
                         dispatch({
                           type: 'saveFormData',
                           data: { fyiForm: '' },
@@ -136,6 +142,11 @@ export const LandingPage = (props) => {
 
                     <ButtonLink
                       onClick={() => {
+                        if (!fyiForm) {
+                          dispatch({
+                            type: 'deleteFormData',
+                          })
+                        }
                         dispatch({
                           type: 'saveFormData',
                           data: { fyiForm: 'yes' },
