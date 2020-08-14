@@ -9,7 +9,7 @@ import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { TextArea } from '../components/formik/textArea'
 import { NextCancelButtons } from '../components/formik/button'
-import { Error } from '../components/formik/alert'
+import { Error, Info } from '../components/formik/alert'
 import { phone, postalCode } from '../utils/validationSchema'
 import * as Yup from 'yup'
 
@@ -139,9 +139,9 @@ export const HowDidItStartForm = (props) => {
                 />
               </Row>
               <Row className="form-section">
-                <Well variantColor="blue">
+                <Info>
                   <Trans id="howDidItStartPage.tip" />
-                </Well>
+                </Info>
               </Row>
               <Row>
                 <NextCancelButtons

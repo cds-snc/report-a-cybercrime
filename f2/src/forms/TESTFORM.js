@@ -208,6 +208,10 @@ export const TestForm = (props) => {
                 />
               </Row>
 
+              <Row className="form-section">
+                <Trans id="howDidItStartPage.tip" />
+              </Row>
+
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="howDidItStartPage.nextButton" />}
