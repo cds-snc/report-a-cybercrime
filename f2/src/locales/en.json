@@ -486,7 +486,7 @@
   "whoAreYouReportForPage.business.helperText": "Provide a business name, a website and/or some way to contact the business",
   "whoAreYouReportForPage.business.label": "What business are you reporting for?",
   "whoAreYouReportForPage.details": "Details",
-  "whoAreYouReportForPage.hasValidationErrors": "whoAreYouReportForPage.hasValidationErrors",
+  "whoAreYouReportForPage.hasValidationErrors": "Select the button represents who you are reporting for",
   "whoAreYouReportForPage.nextButton": "Continue",
   "whoAreYouReportForPage.nextPage": "Next: How did the incident start?",
   "whoAreYouReportForPage.options.business": "A business",

@@ -19,11 +19,8 @@ const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
   if (!values.listOptions || values.listOptions.length < 1) {
-    //if (!values.optionsList || values.optionsList.length < 1) {
-    //errors.listOptions = 'whatWasAffectedForm.warning'
-    errors.listOptions = 'whoAreYouReportForPage.hasValidationErrors'
+    errors.listOptions = ''
   }
-  console.log(values.listOptions)
   return errors
 }
 
@@ -45,7 +42,6 @@ export const WhoAreYouReportForForm = (props) => {
       props.onSubmit(clearData({ ...data }))
   }
 
-  // const { i18n } = useLingui()
   const [data] = useStateValue()
   const whoAreYouReportFor = {
     ...formDefaults.whoAreYouReportFor,
@@ -66,8 +62,8 @@ export const WhoAreYouReportForForm = (props) => {
       hint: 'whoAreYouReportForPage.business.helperText',
     },
   ]
-  const listOptions = optionsList.map((option) => option.value)
-  console.log(listOptions)
+  //const listOptions = optionsList.map((option) => option.value)
+
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -103,10 +99,7 @@ export const WhoAreYouReportForForm = (props) => {
               </ErrorSummary>
             ) : null}
 
-            <FormArrayControl
-              name="whoAreYouReportFor"
-              //errorMessage={<Trans id="whatWasAffectedForm.warning" />}
-            >
+            <FormArrayControl name="whoAreYouReportFor">
               <React.Fragment key="whoAreYouReportForPage.options.myself">
                 <RadioAdapter
                   name="listOptions"
