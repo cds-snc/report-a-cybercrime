@@ -47,10 +47,17 @@ export const validate = (values) => {
 const fyiValidate = (values) => {
   const errors = {}
 
+    //a loose validation for phone number(only allow numbers, space, brackets and hyphen)
+    const phoneRegex = /^[0-9()\-\s]*$/g
+
   if (values.email && !addrs(values.email)) {
     errors.email = 'contactinfoForm.email.warning'
   }
 
+  if (!new RegExp(phoneRegex).test(values.phone)) {
+    errors.phone = 'contactinfoForm.phone.warning'
+  }
+  
   return errors
 }
 
