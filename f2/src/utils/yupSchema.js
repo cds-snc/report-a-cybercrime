@@ -1,4 +1,4 @@
-const Yup = require('yup')
+import * as Yup from 'yup'
 import { regexDef } from './regex'
 
 export const yupSchema = () => {

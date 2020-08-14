@@ -1,4 +1,4 @@
-const Yup = require('yup')
+import * as Yup from 'yup'
 import { yupSchema } from '../utils/yupSchema'
 
 const howDidItStartFormSchema = Yup.object().shape({
