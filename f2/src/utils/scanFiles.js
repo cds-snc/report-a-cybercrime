@@ -13,8 +13,6 @@ const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmodera
 
 require('dotenv').config()
 
-const logger = require('./winstonLogger')
-
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
 
