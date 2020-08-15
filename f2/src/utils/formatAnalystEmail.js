@@ -156,7 +156,7 @@ const formatVictimDetails = (data) => {
 
 const formatIncidentInformation = (data) => {
   const freq = data.whenDidItHappen.incidentFrequency
-  let occurenceLine
+  let occurenceLine = ''
 
   if (freq === 'once') {
     const occurenceString = formatDate(
@@ -199,7 +199,7 @@ const formatIncidentInformation = (data) => {
         lang['whenDidItHappenPage.dateRange.end.label'],
         endtDateString,
       )
-  } else {
+  } else if (freq === 'notSure'){
     const textAreaString = data.whenDidItHappen.description
     occurenceLine =
       formatLineHtml(
