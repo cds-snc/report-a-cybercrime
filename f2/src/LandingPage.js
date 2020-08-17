@@ -119,6 +119,7 @@ export const LandingPage = (props) => {
                         })
                       }}
                       to="/startPage"
+                      className="white-button-link"
                     >
                       <Trans id="landingPage.fullReport.button" />
                       <Icon
@@ -153,6 +154,7 @@ export const LandingPage = (props) => {
                         })
                       }}
                       to="/privacyconsent"
+                      className="white-button-link"
                     >
                       <Trans id="landingPage.fyiReport.button" />
                       <Icon

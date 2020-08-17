@@ -136,6 +136,7 @@ export const ThankYouPage = () => {
               variantColor="black"
               title={i18n._('thankYouPage.feedbackButton')}
               to="/finalFeedback"
+              className="white-button-link"
             >
               <Trans id="thankYouPage.feedbackButton" />
               <Icon
