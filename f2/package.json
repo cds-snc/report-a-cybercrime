@@ -48,7 +48,7 @@
     "react-gtm-module": "^2.0.8",
     "react-icons": "^3.10.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^3.4.2",
     "sanitize-html": "^1.27.0",
     "speakeasy": "^2.0.0",
     "styled-system": "^5.1.5",
