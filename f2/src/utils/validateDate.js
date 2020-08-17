@@ -54,3 +54,13 @@ export const validateDate = (y, m, d) => {
 
   return validate
 }
+
+//Assumes Date objects passed as params
+export const validateDateRange = (startDate, endDate) => {
+  let dateRange = []
+  if (startDate >= endDate) {
+    dateRange.push('whenDidItHappen.endBeforeStart')
+  }
+
+  return dateRange
+}

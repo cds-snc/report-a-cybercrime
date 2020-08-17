@@ -15,6 +15,7 @@ import { Page } from './components/Page'
 export const PrivacyConsentPage = () => {
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
+  const { fyiForm } = state.formData
 
   return (
     <Route
@@ -65,7 +66,7 @@ export const PrivacyConsentPage = () => {
                       type: 'saveFormData',
                       data: { consent: data },
                     })
-                    history.push('/anonymous')
+                    history.push(fyiForm ? '/whathappened' : '/anonymous')
                   }}
                 />
               </Stack>
