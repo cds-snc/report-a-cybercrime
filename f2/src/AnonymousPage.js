@@ -34,7 +34,7 @@ export const AnonymousPage = () => {
                     type: 'saveFormData',
                     data: { anonymous: data },
                   })
-                  history.push(doneForms ? '/confirmation' : '/howdiditstart')
+                  history.push(doneForms ? '/confirmation' : '/whoAreYouReportFor')
                 }}
               />
             </Stack>
