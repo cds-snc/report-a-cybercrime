@@ -66,7 +66,8 @@ export const HowDidItStartForm = (props) => {
           })
           props.onSubmit(values)
         }}
-        render={({ handleSubmit, handleChange, handleBlur }) => (
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
@@ -130,7 +131,7 @@ export const HowDidItStartForm = (props) => {
             </Container>
           </Form>
         )}
-      />
+      </Formik>
     </React.Fragment>
   )
 }
