@@ -99,8 +99,8 @@ export const WhatWasAffectedForm = (props) => {
               {affectedOptions.map((key) => {
                 return (
                   <React.Fragment key={key}>
-                    <CheckboxAdapter
-                      name="affectedOptions"
+                    <CheckboxAdapter 
+                      name="affectedOptions" 
                       value={key}
                     >
                       {i18n._(key)}
