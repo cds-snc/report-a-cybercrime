@@ -1,7 +1,12 @@
+const fs = require('fs')
+
 const NotifyClient = require('notifications-node-client').NotifyClient
 
 const key = process.env.NOTIFY_API_KEY
 const baseUrl = process.env.NOTIFY_API_BASE_URL
+
+let langJson = fs.readFileSync('src/locales/en.json')
+let lang = JSON.parse(langJson)
 
 const notifyEnvVars = [
   'NOTIFY_API_KEY',
@@ -59,8 +64,12 @@ const submitFeedback = async (data) => {
     return false
   }
   try {
+    let feedbacks = JSON.parse(data)
     const response = notifyClient.sendEmail(templateId, email, {
-      personalisation: { feedback: data },
+      personalisation: { 
+        difficultyLevel: lang[feedbacks.wasServiceHard], 
+        useAgain: lang[feedbacks.wouldYouUseAgain], 
+        comments: feedbacks.howCanWeDoBetter}
     })
     console.info('Notify: feedback email (probably) sent!')
     return response.body
