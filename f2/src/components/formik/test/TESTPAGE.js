@@ -10,7 +10,7 @@ import { Page } from '../../Page'
 import { TestForm } from './TESTFORM'
 
 export const TestPage = () => {
-  const [state, dispatch] = useStateValue()
+  const [dispatch] = useStateValue()
 
   return (
     <Route
