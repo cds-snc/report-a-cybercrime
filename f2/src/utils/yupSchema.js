@@ -1,5 +1,7 @@
-const Yup = require('yup')
+import React from 'react'
 import { regexDef } from './regex'
+import { Trans } from '@lingui/macro'
+const Yup = require('yup')
 
 export const yupSchema = () => {
   return {
@@ -7,5 +9,8 @@ export const yupSchema = () => {
       excludeEmptyString: true,
       message: 'Please enter a valid phone number',
     }),
+    emailSchema: Yup.string().email(
+      <Trans id="contactinfoForm.email.warning" />,
+    ),
   }
 }

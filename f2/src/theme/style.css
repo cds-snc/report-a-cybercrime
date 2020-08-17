@@ -367,9 +367,12 @@ body {
 .alert-banner {
   display: inline-flex;
   width: 100%;
-  border-left: 3px solid;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.error-banner {
+  border-left: 3px solid;
 }
 
 .alert-icon {
@@ -377,4 +380,6 @@ body {
   width: 1.5rem;
   margin-left: -0.5rem;
   margin-right: 0.5rem;
+  align-self: center;
+  flex: none;
 }

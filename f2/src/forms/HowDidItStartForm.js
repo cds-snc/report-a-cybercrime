@@ -1,43 +1,19 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
-import { Well } from '../components/Messages'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { TextArea } from '../components/formik/textArea'
 import { NextCancelButtons } from '../components/formik/button'
 import { Error, Info } from '../components/formik/alert'
-import { phone, postalCode } from '../utils/validationSchema'
 import { HowDidItStartFormSchema } from './HowDidItStartFormSchema'
-import * as Yup from 'yup'
 
 export const HowDidItStartForm = (props) => {
-  const { i18n } = useLingui()
   const [data] = useStateValue()
   const howDidItStart = {
     ...data.formData.howdiditstart,
   }
-
-  //Validation object, defines rules used to validation form data
-  const validationSchema = Yup.object().shape({
-    howDidTheyReachYou: Yup.array().required(
-      'Please select at least one option',
-    ),
-    email: Yup.string().email('Please enter a valid email address'),
-    phone: Yup.string().matches(phone(), {
-      excludeEmptyString: true,
-      message: 'Please enter a valid phone number',
-    }),
-    online: Yup.string(),
-    application: Yup.string(),
-    others: Yup.string().matches(postalCode(), {
-      excludeEmptyString: true,
-      message: 'Please enter a valid postal code',
-    }),
-  })
 
   const formOptions = [
     {
@@ -90,7 +66,7 @@ export const HowDidItStartForm = (props) => {
           })
           props.onSubmit(values)
         }}
-        render={({ values, handleSubmit, handleChange, handleBlur }) => (
+        render={({ handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
@@ -157,8 +133,4 @@ export const HowDidItStartForm = (props) => {
       />
     </React.Fragment>
   )
-}
-
-HowDidItStartForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 }

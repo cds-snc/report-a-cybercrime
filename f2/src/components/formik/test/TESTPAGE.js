@@ -1,16 +1,13 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { Route } from 'react-router-dom'
-import { Trans } from '@lingui/macro'
-import { H1 } from './components/header'
-import { Lead } from './components/paragraph'
-import { AnonymousInfoForm } from './forms/AnonymousInfoForm'
-import { Layout } from './components/layout'
-import { BackButton } from './components/backbutton'
+import { H1 } from '../../header'
+import { Layout } from '../../layout'
+import { BackButton } from '../../backbutton'
 import { Stack } from '@chakra-ui/core'
-import { useStateValue } from './utils/state'
-import { Page } from './components/Page'
-import { TestForm } from './forms/TESTFORM'
+import { useStateValue } from '../../../utils/state'
+import { Page } from '../../Page'
+import { TestForm } from './TESTFORM'
 
 export const TestPage = () => {
   const [state, dispatch] = useStateValue()

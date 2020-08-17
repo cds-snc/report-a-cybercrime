@@ -1,9 +1,9 @@
-const Yup = require('yup')
+import * as Yup from 'yup'
 import { yupSchema } from '../utils/yupSchema'
 
 const howDidItStartFormSchema = Yup.object().shape({
   howDidTheyReachYou: Yup.array().required(),
-  email: Yup.string(),
+  email: yupSchema().emailSchema,
   phone: yupSchema().phoneSchema,
   online: Yup.string(),
   application: Yup.string(),
