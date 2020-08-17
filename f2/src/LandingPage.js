@@ -17,6 +17,7 @@ import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
+import { LandingBox } from './components/container'
 
 function checkToken(url = '', dispatch, data = {}) {
   var form_data = new FormData()
@@ -49,6 +50,7 @@ function checkToken(url = '', dispatch, data = {}) {
 export const LandingPage = (props) => {
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue()
+  const { fyiForm } = state.formData
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })
   }
@@ -95,19 +97,73 @@ export const LandingPage = (props) => {
                     <Trans id="landingPage.reportOnline" />
                   </H2>
 
-                  <P>
-                    <Trans id="landingPage.onlineIntro" />
-                  </P>
-                  <ButtonLink to="/startPage" className="white-button-link">
-                    <Trans id="landingPage.nextButton.reportNow" />
-                    <Icon
-                      focusable="false"
-                      ml={2}
-                      mr={-2}
-                      name="chevron-right"
-                      size="28px"
-                    />
-                  </ButtonLink>
+                  <LandingBox
+                    spacing={10}
+                    columns={{ base: 4 / 4, md: 6 / 7 }}
+                    marginLeft={'-0.5rem'}
+                  >
+                    <P mb={2}>
+                      <Trans id="landingPage.fullReport.description" />
+                    </P>
+
+                    <ButtonLink
+                      onClick={() => {
+                        if (fyiForm) {
+                          dispatch({
+                            type: 'deleteFormData',
+                          })
+                        }
+                        dispatch({
+                          type: 'saveFormData',
+                          data: { fyiForm: '' },
+                        })
+                      }}
+                      to="/startPage"
+                    >
+                      <Trans id="landingPage.fullReport.button" />
+                      <Icon
+                        focusable="false"
+                        ml={2}
+                        mr={-2}
+                        name="chevron-right"
+                        size="28px"
+                      />
+                    </ButtonLink>
+                  </LandingBox>
+
+                  <LandingBox
+                    spacing={10}
+                    columns={{ base: 4 / 4, md: 6 / 7 }}
+                    marginLeft={'-0.5rem'}
+                  >
+                    <P mb={2}>
+                      <Trans id="landingPage.fyiReport.description" />
+                    </P>
+
+                    <ButtonLink
+                      onClick={() => {
+                        if (!fyiForm) {
+                          dispatch({
+                            type: 'deleteFormData',
+                          })
+                        }
+                        dispatch({
+                          type: 'saveFormData',
+                          data: { fyiForm: 'yes' },
+                        })
+                      }}
+                      to="/privacyconsent"
+                    >
+                      <Trans id="landingPage.fyiReport.button" />
+                      <Icon
+                        focusable="false"
+                        ml={2}
+                        mr={-2}
+                        name="chevron-right"
+                        size="28px"
+                      />
+                    </ButtonLink>
+                  </LandingBox>
                 </Stack>
 
                 <Well variantColor="blue">
