@@ -1,7 +1,7 @@
 import React from 'react'
+import * as Yup from 'yup'
 import { regexDef } from './regex'
 import { Trans } from '@lingui/macro'
-const Yup = require('yup')
 
 export const yupSchema = () => {
   return {
