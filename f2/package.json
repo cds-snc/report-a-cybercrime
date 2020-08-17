@@ -44,7 +44,7 @@
     "react-google-recaptcha-v3": "^1.4.1",
     "react-gtm-module": "^2.0.8",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.2",
+    "react-scripts": "^3.4.3",
     "sanitize-html": "^1.27.0",
     "speakeasy": "^2.0.0",
     "styled-system": "^5.1.5",
