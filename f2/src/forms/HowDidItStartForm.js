@@ -59,7 +59,7 @@ export const HowDidItStartForm = (props) => {
         initialValues={howDidItStart}
         validationSchema={HowDidItStartFormSchema()}
         onSubmit={(values) => {
-          formOptions.map((question) => {
+          formOptions.forEach((question) => {
             if (!values.howDidTheyReachYou.includes(question.name)) {
               values[question.name] = ''
             }
