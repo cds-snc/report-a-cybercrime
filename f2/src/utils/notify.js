@@ -68,7 +68,6 @@ const submitFeedback = async (data) => {
     const response = notifyClient.sendEmail(templateId, email, {
       personalisation: { 
         difficultyLevel: lang[feedbacks.wasServiceHard], 
-        useAgain: lang[feedbacks.wouldYouUseAgain], 
         comments: feedbacks.howCanWeDoBetter}
     })
     console.info('Notify: feedback email (probably) sent!')
