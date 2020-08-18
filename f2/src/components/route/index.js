@@ -20,7 +20,7 @@ export const RedirectRoute = ({ children, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: '/privacyconsent',
+              pathname: '/',
             }}
           />
         )

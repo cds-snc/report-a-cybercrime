@@ -57,7 +57,9 @@ export const LocationInfoForm = (props) => {
       {false ? ( // mark ids for lingui
         <div>
           <Trans id="locationinfoPage.postalCity" />
+          <Trans id="locationinfoPage.postalCity.notFoundWarning" />
           <Trans id="locationinfoPage.postalProv" />
+          <Trans id="locationinfoPage.postalProv.notFoundWarning" />
         </div>
       ) : null}
       <Form
@@ -96,6 +98,7 @@ export const LocationInfoForm = (props) => {
                 borderColor="gray.500"
                 to="/contactinfo"
                 textAlign="center"
+                className="button-link black-button-link"
               >
                 <Trans id="locationinfoPage.skipButton" />
                 <Icon

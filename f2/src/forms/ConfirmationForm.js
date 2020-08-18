@@ -22,7 +22,22 @@ export const ConfirmationForm = (props) => {
           <Trans id="analystReport.flagged" />
           <Trans id="analystReport.noData" />
           <Trans id="analystReport.reportInformation" />
+          <Trans id="analystReport.consent.yes" />
+          <Trans id="analystReport.consent.no" />
           <Trans id="analystReport.narrative" />
+          <Trans id="analystReport.methodOfComms.email" />
+          <Trans id="analystReport.methodOfComms.phone" />
+          <Trans id="analystReport.methodOfComms.online" />
+          <Trans id="analystReport.methodOfComms.app" />
+          <Trans id="analystReport.methodOfComms.others" />
+          <Trans id="analystReport.numberOfEmployee.100To499" />
+          <Trans id="analystReport.numberOfEmployee.1To99" />
+          <Trans id="analystReport.numberOfEmployee.500More" />
+          <Trans id="analystReport.affected.financial" />
+          <Trans id="analystReport.affected.personalinformation" />
+          <Trans id="analystReport.affected.business_assets" />
+          <Trans id="analystReport.affected.devices" />
+          <Trans id="analystReport.affected.other" />
           <Trans id="analystReport.selfHarmString" />
           <Trans id="analystReport.selfHarmWord" />
         </div>
