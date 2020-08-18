@@ -83,17 +83,14 @@ export const WhoAreYouReportForForm = (props) => {
       <Form
         initialValues={whoAreYouReportFor}
         onSubmit={localOnSubmit}
-
         validate={validate}
         render={({ handleSubmit, submitFailed, hasValidationErrors }) => (
-
           <Stack
             as="form"
             onSubmit={handleSubmit}
             shouldWrapChildren
             spacing={12}
           >
-
             {submitFailed && hasValidationErrors ? (
               <ErrorSummary>
                 <Trans id="whoAreYouReportForPage.hasValidationErrors" />
@@ -118,6 +115,7 @@ export const WhoAreYouReportForForm = (props) => {
                 return (
                   <React.Fragment key={option}>
                     <RadioAdapter
+                      name="listOptions"
                       value={option.value}
                       conditionalField={
                         <Field
