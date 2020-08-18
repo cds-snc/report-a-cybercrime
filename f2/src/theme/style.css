@@ -1,0 +1,385 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: rgb(0, 0, 0);
+}
+
+/*Forms*/
+
+.label {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  padding-top: 0rem;
+}
+
+.next-page-label {
+  margin-bottom: 1rem;
+  padding-left: 0rem;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-row {
+  margin-bottom: 1rem;
+  margin-left: 0rem;
+}
+
+.form-check-label {
+  margin-left: 0.5rem;
+}
+
+.form-label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+  margin-left: 0px;
+}
+
+.form-question {
+  padding-bottom: 1rem;
+}
+
+.form-helper-text {
+  margin-top: 0.25rem;
+  line-height: 1.25;
+  font-size: 1rem;
+  margin-left: 0px;
+}
+
+.form-section {
+  display: inline-block;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.help-text-label {
+  line-height: 1.25;
+  font-size: 1rem;
+}
+
+.error-row {
+  padding: 0.75rem 1rem;
+  background-color: rgb(254, 215, 215);
+  border-left: 3px solid rgb(130, 39, 39);
+  border-color: rgb(130, 39, 39);
+  margin: 1rem 0rem;
+  width: 100%;
+}
+
+.error-message {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/*Text Area*/
+
+.open-text-entry {
+  margin-top: 0.75rem;
+  min-height: 80px;
+  border-color: rgb(174, 174, 174);
+  width: 80%;
+}
+
+.open-text-entry:hover {
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+  border-color: rgb(55, 55, 55);
+}
+
+.open-text-entry:focus {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+  outline: none;
+  border-color: rgb(42, 105, 172);
+}
+
+.conditional-field {
+  border-left-width: 0.25rem;
+  border-left-color: rgb(174, 174, 174);
+  margin-top: 0.25rem;
+  margin-left: 1.25rem;
+  padding-left: 1.5rem;
+  width: -webkit-fill-available;
+}
+
+/*Button*/
+
+.button {
+  height: 3rem;
+  -webkit-box-pack: center;
+  white-space: nowrap;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: outset;
+  min-width: 8rem;
+}
+
+.button-label {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.button,
+.button-label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.submit-button {
+  background-color: rgb(31, 81, 38);
+  color: rgb(255, 255, 255);
+  border-color: rgb(24, 60, 31);
+}
+
+.submit-button:hover,
+.submit-button:focus {
+  background-color: rgb(31, 81, 38);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.submit-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(24, 60, 31);
+}
+
+.cancel-button {
+  background-color: rgb(232, 232, 232);
+  color: rgb(0, 0, 0);
+  border-color: rgb(213, 213, 213);
+  margin-left: 16px;
+}
+
+.cancel-button:hover,
+.cancel-button:focus {
+  background-color: rgb(232, 232, 232);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+  color: rgb(0, 0, 0);
+}
+
+.cancel-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(213, 213, 213);
+  color: rgb(0, 0, 0);
+}
+
+.upload-button {
+  background-color: rgb(30, 78, 140);
+  color: rgb(255, 255, 255);
+  border-color: rgb(21, 62, 117);
+}
+
+.upload-button:hover,
+.upload-button:focus {
+  background-color: rgb(30, 78, 140);
+  border-color: rgb(21, 62, 117);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.upload-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(21, 62, 117);
+  color: rgb(255, 255, 255);
+  border-color: rgb(21, 62, 117);
+}
+
+.skip-button {
+  background-color: rgb(174, 174, 174);
+  color: rgb(0, 0, 0);
+  border-color: rgb(128, 128, 128);
+}
+
+.skip-button:hover,
+.skip-button:focus {
+  background-color: rgb(174, 174, 174);
+  color: rgb(0, 0, 0);
+  border-color: rgb(128, 128, 128);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.skip-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(213, 213, 213);
+  color: rgb(0, 0, 0);
+  border-color: rgb(128, 128, 128);
+}
+
+.button-icon-right {
+  margin-left: 0.5rem;
+  margin-right: -0.5rem;
+}
+
+.button-icon-left {
+  margin-left: -0.5rem;
+  margin-right: 0.5rem;
+}
+
+.next-cancel-buttons {
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.white-button-link:hover,
+.black-button-link:hover {
+  text-decoration: none;
+}
+
+.white-button-link:hover {
+  color: rgb(255, 255, 255);
+}
+
+.black-button-link:hover {
+  color: inherit;
+}
+
+/*Checkboxes and Radio Buttons*/
+
+.custom-control {
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.custom-control-input {
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: auto;
+}
+
+.custom-control-label:before {
+  background-color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  top: 0rem;
+}
+
+.custom-control-label {
+  padding-left: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.custom-checkbox .custom-control-label:before {
+  border-radius: 0rem;
+}
+
+.custom-control .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: white;
+  border-color: black;
+}
+
+.custom-control .custom-control-input:checked ~ .custom-control-label::after {
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  filter: invert(100%) sepia(32%) saturate(0%) hue-rotate(269deg)
+    brightness(101%) contrast(102%);
+  top: 0rem;
+  display: initial;
+  border-color: black;
+}
+
+.custom-control .custom-control-input:focus ~ .custom-control-label::before {
+  background-color: rgb(255, 255, 255);
+  border-color: black;
+  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+  outline: none;
+}
+
+.custom-control
+  .custom-control-input:not(:checked)
+  ~ .custom-control-label::before {
+  background-color: rgb(255, 255, 255);
+}
+
+/*Input Fields*/
+
+.input-field-control {
+  margin-top: 0.75rem;
+  max-width: 300px;
+}
+
+.input-help-text {
+  line-height: 1.25;
+  font-size: 1rem;
+  max-width: 600px;
+}
+
+.input-field-control:hover {
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+  border-color: rgb(55, 55, 55);
+}
+
+.input-field-control:focus {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+  outline: none;
+  border-color: rgb(42, 105, 172);
+}
+
+/*File Upload*/
+
+.upload-container {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.custom-file {
+  position: absolute;
+  font-size: 100px;
+  opacity: 0;
+}
+
+/*Date Picker*/
+
+.date-picker {
+  padding-left: 0px;
+}
+
+.day-month {
+  width: 70px;
+}
+
+.year {
+  width: 110px;
+}
+
+.date-label {
+  vertical-align: middle;
+}
+
+.date-input,
+.date-group {
+  margin-top: 0.75rem;
+}
+
+.date-input:hover {
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+  border-color: rgb(55, 55, 55);
+}
+
+.date-input:focus {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+  outline: none;
+  border-color: rgb(42, 105, 172);
+}
+
+/*Alerts*/
+
+.alert-banner {
+  display: inline-flex;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-banner {
+  border-left: 3px solid;
+}
+
+.alert-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-left: -0.5rem;
+  margin-right: 0.5rem;
+  align-self: center;
+  flex: none;
+}
