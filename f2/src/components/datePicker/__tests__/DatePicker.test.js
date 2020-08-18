@@ -47,14 +47,18 @@ describe('<DatePicker />', () => {
           <Form
             initialValues=""
             onSubmit={submitMock}
-            render={() => <SingleDatePicker name="singleDatePickerTest" />}
+            render={() => (
+              <SingleDatePicker
+                label="singleDatePickerTest"
+                name="singleDatePickerTest"
+              />
+            )}
           />
         </ThemeProvider>
       </I18nProvider>,
     )
-    //need more work here
-    // const testSingleDatePicker = getAllByText(/singleDatePickerTest/)
-    // expect(testSingleDatePicker).toHaveLength(1)
+    const testSingleDatePicker = getAllByText(/singleDatePickerTest/)
+    expect(testSingleDatePicker).toHaveLength(1)
   })
   it('properly renders DateRangePicker components', () => {
     const submitMock = jest.fn()
@@ -64,11 +68,21 @@ describe('<DatePicker />', () => {
           <Form
             initialValues=""
             onSubmit={submitMock}
-            render={() => <DateRangePicker name="dateRangePickerTest" />}
+            render={() => (
+              <DateRangePicker
+                label="dateRangePickerTest"
+                name="dateRangePickerTest"
+              />
+            )}
           />
         </ThemeProvider>
       </I18nProvider>,
-      //need more work here same as single date picker
     )
+    //screen.debug()
+    const testStartDate = getAllByText(/dateRangePickerTest.startLabel/)
+    expect(testStartDate).toHaveLength(1)
+
+    const testEndDate = getAllByText(/dateRangePickerTest.end/)
+    expect(testEndDate).toHaveLength(1)
   })
 })
