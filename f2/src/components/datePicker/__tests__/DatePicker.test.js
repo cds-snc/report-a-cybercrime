@@ -29,8 +29,6 @@ describe('<DatePicker />', () => {
     screen.debug()
     const testDay = getAllByText(/whenDidItStart.startDay/)
     expect(testDay).toHaveLength(1)
-    // const testDay = getByRole('textbox', { name: 'testDay' })
-    // expect(testDay).toHaveLength(1)
 
     const testMonth = getAllByText(/whenDidItStart.startMonth/)
     expect(testMonth).toHaveLength(1)
@@ -62,7 +60,7 @@ describe('<DatePicker />', () => {
   })
   it('properly renders DateRangePicker components', () => {
     const submitMock = jest.fn()
-    const { getAllByText, getByRole } = render(
+    const { getAllByText } = render(
       <I18nProvider i18n={i18n}>
         <ThemeProvider theme={canada}>
           <Form
@@ -70,19 +68,18 @@ describe('<DatePicker />', () => {
             onSubmit={submitMock}
             render={() => (
               <DateRangePicker
-                label="dateRangePickerTest"
-                name="dateRangePickerTest"
+                datePickerName="dateRangePickertest"
+                startLabel="startDateLabel"
+                endLabel="endDateLabel"
               />
             )}
           />
         </ThemeProvider>
       </I18nProvider>,
     )
-    //screen.debug()
-    const testStartDate = getAllByText(/dateRangePickerTest.startLabel/)
+    const testStartDate = getAllByText(/startDateLabel/)
     expect(testStartDate).toHaveLength(1)
-
-    const testEndDate = getAllByText(/dateRangePickerTest.end/)
+    const testEndDate = getAllByText(/endDateLabel/)
     expect(testEndDate).toHaveLength(1)
   })
 })
