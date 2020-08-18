@@ -133,8 +133,8 @@ export const MidFeedbackForm = props => {
                       {midFeedback.map(key => {
                         return (
                           <React.Fragment key={key}>
-                            <CheckboxAdapter
-                              name="midFeedback"
+                            <CheckboxAdapter 
+                              name="midFeedback" 
                               value={key}
                             >
                               {i18n._(key)}

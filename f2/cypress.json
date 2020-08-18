@@ -1,10 +1,11 @@
 {
-    "projectId": "qe5gas",
-    "testFiles": "**/*.feature",
-    "env": {
-      "production": "https://report.antifraudcentre.ca",
-      "local": "http://localhost:3000/",
-      "staging":"https://report-staging.con.rcmp-grc.gc.ca",
-      "dev":"https://report-dev.con.rcmp-grc.gc.ca"
-    }
+  "projectId": "qe5gas",
+  "testFiles": "**/*.feature",
+  "env": {
+    "production": "https://report.antifraudcentre.ca",
+    "local": "http://localhost:3000/",
+    "staging": "https://report-staging.con.rcmp-grc.gc.ca",
+    "website": "https://report-staging.con.rcmp-grc.gc.ca",
+    "dev": "https://report-dev.con.rcmp-grc.gc.ca"
   }
+}
