@@ -17,8 +17,8 @@ import { ErrorSummary } from '../components/ErrorSummary'
 const validate = (values) => {
   const errors = {}
   //condition for an error to occur: append a lingui id to the list of error
-  if (!values.listOptions || values.listOptions.length < 1) {
-    errors.listOptions = ''
+  if (!values.whoYouReportFor || values.whoYouReportFor.length < 1) {
+    errors.whoYouReportFor = ''
   }
   return errors
 }
@@ -100,7 +100,7 @@ export const WhoAreYouReportForForm = (props) => {
             <FormArrayControl name="whoAreYouReportFor">
               <React.Fragment key="whoAreYouReportForPage.options.myself">
                 <RadioAdapter
-                  name="listOptions"
+                  name="whoYouReportFor"
                   value="whoAreYouReportForPage.options.myself"
                 >
                   <Trans id="whoAreYouReportForPage.options.myself" />
@@ -113,9 +113,9 @@ export const WhoAreYouReportForForm = (props) => {
               </React.Fragment>
               {optionsList.map((option) => {
                 return (
-                  <React.Fragment key={option}>
+                  <React.Fragment key={option.value}>
                     <RadioAdapter
-                      name="listOptions"
+                      name="whoYouReportFor"
                       value={option.value}
                       conditionalField={
                         <Field

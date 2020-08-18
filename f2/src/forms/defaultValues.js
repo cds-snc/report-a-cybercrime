@@ -8,7 +8,6 @@ const formDefaults = {
     whoYouReportFor: '',
     someoneDescription: '',
     businessDescription: '',
-    listOptions: [],
   },
   howdiditstart: {
     howDidTheyReachYou: [],
