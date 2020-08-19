@@ -62,16 +62,16 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill howdiditstart page forms', () => {
-    cy.get('form').find('[value="howDidTheyReachYou.email"]').check({ force: true })
-    cy.get('form').find('[id="email"]').type('SuspectEnglish@magma.com')
-    cy.get('form').find('[value="howDidTheyReachYou.phone"]').check({ force: true })
-    cy.get('form').find('[id="phone"]').type('1-800-000-1111')
-    cy.get('form').find('[value="howDidTheyReachYou.online"]').check({ force: true })
-    cy.get('form').find('[id="online"]').type('http://www.suspectEnglish.com')
-    cy.get('form').find('[value="howDidTheyReachYou.app"]').check({ force: true })
-    cy.get('form').find('[id="application"]').type('Whatapps')
-    cy.get('form').find('[value="howDidTheyReachYou.others"]').check({ force: true })
-    cy.get('form').find('[id="others"]').type('In Person')
+    cy.get('form').find('[value="email"]').check({ force: true })
+    cy.get('form').find('[name="email"]').type('SuspectEnglish@magma.com')
+    cy.get('form').find('[value="phone"]').check({ force: true })
+    cy.get('form').find('[name="phone"]').type('1-800-000-1111')
+    cy.get('form').find('[value="online"]').check({ force: true })
+    cy.get('form').find('[name="online"]').type('http://www.suspectEnglish.com')
+    cy.get('form').find('[value="application"]').check({ force: true })
+    cy.get('form').find('[name="application"]').type('Whatapps')
+    cy.get('form').find('[value="others"]').check({ force: true })
+    cy.get('form').find('[name="others"]').type('In Person')
 });
 
 Then('I click {string}', () => {
@@ -220,11 +220,17 @@ Given('{string} should be shown', (content) => {
 });
 
 When('I fill AttachSupportingEvidence page forms', () => {
-    const fileName = 'fake.jpg';
-    cy.fixture(fileName).then(fileContent => {
-        cy.get('#uploader').upload({ fileContent, fileName, mimeType: 'image/jpg' });
-    });
+    //const fileName = 'fake.jpg';
+   // cy.fixture(fileName).then(fileContent => {
+    //    cy.get('#uploader').upload({ fileContent, fileName, mimeType: 'image/jpg' });
+   // });
+    //cy.wait(1000)
+
+    const fileName1 = 'fake.jpg';
+
+    cy.get('#uploader').uploadFile(fileName1, 'image/jpeg');
     cy.wait(1000)
+
 });
 
 Then('I click {string}', () => {
