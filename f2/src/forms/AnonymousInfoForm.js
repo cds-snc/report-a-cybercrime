@@ -18,9 +18,6 @@ export const AnonymousInfoForm = (props) => {
   return (
     <Formik
       initialValues={anonymous}
-      validate={(values) => {
-        console.log(values)
-      }}
       onSubmit={(values) => {
         props.onSubmit(values)
       }}
