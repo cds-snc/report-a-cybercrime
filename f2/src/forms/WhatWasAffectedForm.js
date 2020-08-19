@@ -1,26 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack } from '@chakra-ui/core'
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
+import { CheckBox } from '../components/formik/checkbox'
 import { useStateValue } from '../utils/state'
-import { CheckboxAdapter } from '../components/checkbox'
-import { FormArrayControl } from '../components/FormArrayControl'
-import { ErrorSummary } from '../components/ErrorSummary'
-import { Text } from '../components/text'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
-
-const validate = (values) => {
-  const errors = {}
-  //condition for an error to occur: append a lingui id to the list of error
-  if (!values.affectedOptions || values.affectedOptions.length < 1) {
-    errors.affectedOptions = 'whatWasAffectedForm.warning'
-  }
-  return errors
-}
+import { Error } from '../components/formik/alert'
+import { NextCancelButtons } from '../components/formik/button'
 
 export const whatWasAffectedPages = [
   {
@@ -37,87 +24,110 @@ export const whatWasAffectedPages = [
 ]
 
 export const WhatWasAffectedForm = (props) => {
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.whatWasAffected))
-      props.onSubmit(data)
-  }
-
-  const { i18n } = useLingui()
   const [data] = useStateValue()
   const whatWasAffected = {
     ...formDefaults.whatWasAffected,
     ...data.formData.whatWasAffected,
   }
 
-  const affectedOptions = whatWasAffectedPages.map((page) => page.key)
+  const formOptions = [
+    {
+      name: 'financial',
+      checkboxLabel: <Trans id="whatWasAffectedForm.financial" />,
+      checkboxHelpText: <Trans id="whatWasAffectedForm.financial.example" />,
+      checkboxName: 'whatWasAffectedForm.financial',
+    },
+    {
+      name: 'personalInformation',
+      checkboxLabel: <Trans id="whatWasAffectedForm.personalInformation" />,
+      checkboxHelpText: (
+        <Trans id="whatWasAffectedForm.personalInformation.example" />
+      ),
+      checkboxName: 'whatWasAffectedForm.personalInformation',
+    },
+    {
+      name: 'devices',
+      checkboxLabel: <Trans id="whatWasAffectedForm.devices" />,
+      checkboxHelpText: <Trans id="whatWasAffectedForm.devices.example" />,
+      checkboxName: 'whatWasAffectedForm.devices',
+    },
+    {
+      name: 'businessAssets',
+      checkboxLabel: <Trans id="whatWasAffectedForm.business_assets" />,
+      checkboxHelpText: (
+        <Trans id="whatWasAffectedForm.business_assets.example" />
+      ),
+      checkboxName: 'whatWasAffectedForm.business_assets',
+    },
+    {
+      name: 'other',
+      checkboxLabel: <Trans id="whatWasAffectedForm.other" />,
+      checkboxHelpText: <Trans id="whatWasAffectedForm.other.example" />,
+      checkboxName: 'whatWasAffectedForm.other',
+    },
+  ]
 
   return (
     <React.Fragment>
-      {false ? ( // mark ids for lingui
-        <div>
-          <Trans id="whatWasAffectedForm.financial" />
-          <Trans id="whatWasAffectedForm.personalInformation" />
-          <Trans id="whatWasAffectedForm.devices" />
-          <Trans id="whatWasAffectedForm.business_assets" />
-          <Trans id="whatWasAffectedForm.other" />
-          <Trans id="whatWasAffectedForm.financial.example" />
-          <Trans id="whatWasAffectedForm.personalInformation.example" />
-          <Trans id="whatWasAffectedForm.devices.example" />
-          <Trans id="whatWasAffectedForm.business_assets.example" />
-        </div>
-      ) : null}
-
-      <Form
+      <Formik
         initialValues={whatWasAffected}
-        onSubmit={localOnSubmit}
-        validate={validate}
-        render={({
-          handleSubmit,
-          values,
-          errors,
-          submitFailed,
-          hasValidationErrors,
-        }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            shouldWrapChildren
-            spacing={6}
-          >
-            {submitFailed && hasValidationErrors ? (
-              <ErrorSummary>
-                <Trans id="whatWasAffectedForm.hasValidationErrors" />
-              </ErrorSummary>
-            ) : null}
-
-            <FormArrayControl
-              name="affectedOptions"
-              label={<Trans id="whatWasAffectedForm.optionsTitle" />}
-              helperText={<Trans id="whatWasAffectedForm.optionsHelpText" />}
-              errorMessage={<Trans id="whatWasAffectedForm.warning" />}
-            >
-              {affectedOptions.map((key) => {
-                return (
-                  <React.Fragment key={key}>
-                    <CheckboxAdapter name="affectedOptions" value={key}>
-                      {i18n._(key)}
-                      {key !== 'whatWasAffectedForm.other' && (
-                        <Text as="span" d="block" fontSize="sm">
-                          {<Trans id={`${key}.example`} />}
-                        </Text>
-                      )}
-                    </CheckboxAdapter>
-                  </React.Fragment>
-                )
-              })}
-            </FormArrayControl>
-            <NextAndCancelButtons
-              next={<Trans id="whatWasAffectedForm.nextPage" />}
-              button={<Trans id="whatWasAffectedForm.nextButton" />}
-            />
-          </Stack>
+        onSubmit={(values) => {
+          props.onSubmit(values)
+        }}
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row className="form-question">
+                <Row className="form-label">
+                  <Trans id="whatWasAffectedForm.optionsTitle" />
+                </Row>
+                <Row className="form-helper-text">
+                  <Trans id="whatWasAffectedForm.optionsHelpText" />
+                </Row>
+                <ErrorMessage name="whatWasAffected" component={Error} />
+              </Row>
+              <Row className="form-section">
+                <FieldArray
+                  name="affectedOptions"
+                  className="form-section"
+                  render={() =>
+                    formOptions.map((question) => {
+                      return (
+                        <React.Fragment key={question.name}>
+                          <Field
+                            name="affectedOptions"
+                            label={question.checkboxLabel}
+                            helpText={question.checkboxHelpText}
+                            component={CheckBox}
+                            value={question.name}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            type="checkbox"
+                            id={'checkbox-' + question.name}
+                          >
+                            <ErrorMessage
+                              name={question.name}
+                              component={Error}
+                            />
+                          </Field>
+                        </React.Fragment>
+                      )
+                    })
+                  }
+                />
+              </Row>
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="whatWasAffectedForm.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="whatWasAffectedForm.nextPage" />}
+                />
+              </Row>
+            </Container>
+          </Form>
         )}
-      />
+      </Formik>
     </React.Fragment>
   )
 }
