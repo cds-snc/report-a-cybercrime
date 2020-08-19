@@ -5,15 +5,19 @@ export const CheckBox = ({ field, form, ...props }) => {
   return (
     <Row className="form-row">
       <Form.Check
-        inline={true}
         id={props.id}
         type="checkbox"
         {...field}
         value={props.value}
-        label={props.label}
         custom
-      />
-      {field.checked && props.children}
+      >
+        <Form.Check.Input type="checkbox" />
+        <Form.Check.Label>{props.label}</Form.Check.Label>
+        <Form.Text className="help-text-label">{props.helpText}</Form.Text>
+        {field.checked && (
+          <div className="conditional-field">{props.children}</div>
+        )}
+      </Form.Check>
     </Row>
   )
 }

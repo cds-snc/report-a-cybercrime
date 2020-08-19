@@ -22,7 +22,7 @@ export const AnonymousInfoForm = (props) => {
         props.onSubmit(values)
       }}
     >
-      {({ handleSubmit, handleChange, handleBlur }) => (
+      {({ values, handleSubmit, handleChange, handleBlur }) => (
         <Form onSubmit={handleSubmit}>
           <Container>
             <Row className="form-section">
@@ -35,11 +35,13 @@ export const AnonymousInfoForm = (props) => {
                 onBlur={handleBlur}
                 type="checkbox"
                 id="checkbox-anonymous-option"
-              >
+                helpText="This is help text"
+              />
+              {values.anonymousOptions && (
                 <Warning>
                   <Trans id="anonymousPage.warning" />
                 </Warning>
-              </Field>
+              )}
             </Row>
             <Row>
               <NextCancelButtons
