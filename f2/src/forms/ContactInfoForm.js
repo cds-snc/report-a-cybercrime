@@ -8,7 +8,6 @@ import { Form } from 'react-final-form'
 import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormArrayControl } from '../components/FormArrayControl'
 import { ErrorSummary } from '../components/ErrorSummary'
 import { CheckboxAdapter } from '../components/checkbox'
 import { Input } from '../components/input'
@@ -23,8 +22,12 @@ import { P } from '../components/paragraph'
 import { Button } from '../components/button'
 import { Link as ReactRouterLink } from 'react-router-dom'
 
+export const skipConsentOption = 'contactinfoPage.anonymousskip.yes'
+
 export const validate = (values) => {
   const errors = {}
+
+  if (values.anonymousSkipOptions.includes(skipConsentOption)) return errors
 
   // from https://www.w3resource.com/javascript/form/phone-no-validation.php
   const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
@@ -66,8 +69,6 @@ export const ContactInfoForm = (props) => {
       props.onSubmit({ ...data, phone: formatPhoneNumber(data.phone) })
   }
 
-  const skipConsentOption = 'contactinfoPage.anonymousskip.yes'
-
   const [data] = useStateValue()
   const contactInfo = {
     ...formDefaults.contactInfo,
@@ -77,11 +78,6 @@ export const ContactInfoForm = (props) => {
   const { fyiForm } = data.formData
 
   return (
-    // <FormArrayControl
-    //           name="contactInfo"
-    //           // label={<Trans id="whenDidItHappenPage.question" />}
-    // >
-
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
@@ -116,36 +112,6 @@ export const ContactInfoForm = (props) => {
               value={skipConsentOption}
             >
               <Trans id="contactinfoPage.anonymousskip.yes" />
-              {/* conditionalField={
-            <Field
-              name="fullName"
-              label={<Trans id="contactinfoPage.fullName" />}
-              errorMessage={<Trans id="contactinfoForm.fullName.warning" />}
-              component={Input}
-              required={!fyiForm}
-            />
-            } 
-
-            conditionalField={
-            <Field
-              name="email"
-              label={<Trans id="contactinfoPage.emailAddress" />}
-              errorMessage={<Trans id="contactinfoForm.email.warning" />}
-              component={Input}
-              required={!fyiForm}
-            />
-            }
-
-            conditionalField={
-            <Field
-              name="phone"
-              label={<Trans id="contactinfoPage.phoneNumber" />}
-              helperText={<Trans id="contactinfoForm.phone.warning" />}
-              errorMessage={<Trans id="contactinfoForm.phone.warning" />}
-              component={Input}
-              required={!fyiForm}
-            />
-            }  */}
             </CheckboxAdapter>
             {values.anonymousSkipOptions.includes(skipConsentOption) && (
               <Alert status="warning" withIcon>
@@ -186,13 +152,13 @@ export const ContactInfoForm = (props) => {
               </Flex>
             ) : null}
 
-            {/*  conditionalField={ */}
             <Field
               name="fullName"
               label={<Trans id="contactinfoPage.fullName" />}
               errorMessage={<Trans id="contactinfoForm.fullName.warning" />}
               component={Input}
               required={!fyiForm}
+              disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
             />
 
             <Field
@@ -201,6 +167,7 @@ export const ContactInfoForm = (props) => {
               errorMessage={<Trans id="contactinfoForm.email.warning" />}
               component={Input}
               required={!fyiForm}
+              disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
             />
             <Field
               name="phone"
@@ -209,8 +176,8 @@ export const ContactInfoForm = (props) => {
               errorMessage={<Trans id="contactinfoForm.phone.warning" />}
               component={Input}
               required={!fyiForm}
+              disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
             />
-            {/* //}  */}
 
             <NextAndCancelButtons
               next={<Trans id="contactinfoPage.nextInfo" />}
@@ -220,7 +187,6 @@ export const ContactInfoForm = (props) => {
         )}
       />
     </React.Fragment>
-    ///* </FormArrayControl>               */
   )
 }
 
