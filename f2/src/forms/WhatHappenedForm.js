@@ -14,10 +14,10 @@ import { FormHelperText } from '../components/FormHelperText'
 import { FormLabel } from '../components/FormLabel'
 
 export const WhatHappenedForm = (props) => {
-  const localOnSubmit = (data) => {
+  /*const localOnSubmit = (data) => {
     if (clientFieldsAreValid(data, formDefaults.whatHappened))
       props.onSubmit(data)
-  }
+  }*/
 
   const [data] = useStateValue()
   const whatHappened = {
@@ -39,6 +39,51 @@ export const WhatHappenedForm = (props) => {
   }
 
   return (
+    <Formik
+      initialValues={whatHappened}
+      onSubmit={(values) => {
+        props.onSubmit(values)
+      }}
+    >
+      {({ handleSubmit, handleChange, handleBlur }) => (
+        <Form onSubmit={handleSubmit}>
+          <Container>
+            <Row className="form-question">
+              <Row className="form-label">
+                {formLabel}
+              </Row>
+              <Row className="form-helper-text">
+                <Trans id="howDidTheyReachYou.reminder" />
+              </Row>
+              <ErrorMessage name="howDidTheyReachYou" component={Error} />
+            </Row>
+            <Row className="form-section">
+              <Field
+                name="anonymousOptions"
+                label={<Trans id="anonymousPage.yes" />}
+                component={CheckBox}
+                value="anonymousPage.yes"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="checkbox"
+                id="checkbox-anonymous-option"
+              >
+                <Warning>
+                  <Trans id="anonymousPage.warning" />
+                </Warning>
+              </Field>
+            </Row>
+            <Row>
+              <NextCancelButtons
+                submit={<Trans id="anonymousPage.nextButton" />}
+                cancel={<Trans id="button.cancelReport" />}
+                label={<Trans id="anonymousPage.nextPage" />}
+              />
+            </Row>
+          </Container>
+        </Form>
+      )}
+    </Formik>
     <Form
       initialValues={whatHappened}
       onSubmit={localOnSubmit}
