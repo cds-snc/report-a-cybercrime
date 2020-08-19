@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 import { yupSchema } from '../utils/yupSchema'
 
-const whenDidItHappenFormSchema = Yup.object().shape({
+const whenDidItHappenForm = Yup.object().shape({
   incidentFrequency: Yup.string().required(),
   startDay: yupSchema.daySchema,
   startMonth: yupSchema.monthSchema,
@@ -16,5 +16,5 @@ const whenDidItHappenFormSchema = Yup.object().shape({
 })
 
 export const whenDidItHappenFormSchema = () => {
-  return whenDidItHappenFormSchema
+  return whenDidItHappenForm
 }

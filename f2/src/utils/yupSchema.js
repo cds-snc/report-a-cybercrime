@@ -12,8 +12,8 @@ export const yupSchema = () => {
     emailSchema: Yup.string().email(
       <Trans id="contactinfoForm.email.warning" />,
     ),
-    daySchema: Yup.number().min(01).max(31),
-    monthSchema: Yup.number().min(01).max(12),
+    daySchema: Yup.number().min(1).max(31),
+    monthSchema: Yup.number().min(1).max(12),
     yearSchama: Yup.number(),
   }
 }
