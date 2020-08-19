@@ -138,6 +138,8 @@
   "contactinfoForm.email.warning": "Enter a valid email address.",
   "contactinfoForm.fullName.warning": "Enter your full name.",
   "contactinfoForm.phone.warning": "Enter a phone number that contains 10 digits.",
+  "contactinfoPage.anonymousskip.warning": "Skipping contact details means we won't ask for your contact details and won't be able to follow up in the future.",
+  "contactinfoPage.anonymousskip.yes": "I would rather skip my contact details",
   "contactinfoPage.emailAddress": "Email address",
   "contactinfoPage.fullName": "Full name",
   "contactinfoPage.hasValidationErrors": "Please review your contact details.",

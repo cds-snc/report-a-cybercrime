@@ -1,0 +1,1526 @@
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T18:02:43.250Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T18:02:51.859Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 20,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T18:03:05.264Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 20,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T18:03:05.265Z },
+  level: 'info',
+  timestamp: '2020-08-04T18:03:05.265Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T18:03:05.265Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173aa9477ce"',
+           'if-modified-since': 'Sat, 01 Aug 2020 15:12:03 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 31,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18110',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryDiqynH9MuxvAztBF',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 6523,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18704,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T19:02:48.004Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T19:02:55.997Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 30,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T19:03:09.269Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 30,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T19:03:09.269Z },
+  level: 'info',
+  timestamp: '2020-08-04T19:03:09.270Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T19:03:09.270Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173baa3b39b"',
+           'if-modified-since': 'Tue, 04 Aug 2020 18:02:37 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 40,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18116',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundarylFIRSA44ZcR5PL2x',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 11594,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18710,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T20:13:29.837Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T20:13:37.821Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 31,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T20:13:50.666Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 31,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T20:13:50.667Z },
+  level: 'info',
+  timestamp: '2020-08-04T20:13:50.667Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T20:13:50.668Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173badab7d3"',
+           'if-modified-since': 'Tue, 04 Aug 2020 19:02:42 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 36,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18103',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryOnJ6kthDafDIlQsH',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 10845,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18697,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T20:20:20.200Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T20:20:28.036Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 32,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T20:21:05.861Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 32,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T20:21:05.862Z },
+  level: 'info',
+  timestamp: '2020-08-04T20:21:05.862Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T20:21:05.863Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb1b6f37"',
+           'if-modified-since': 'Tue, 04 Aug 2020 20:13:24 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 40,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T20:38:48.370Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T20:38:56.872Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 32,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T20:39:33.041Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 32,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T20:39:33.042Z },
+  level: 'info',
+  timestamp: '2020-08-04T20:39:33.042Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T20:39:33.043Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb21b323"',
+           'if-modified-since': 'Tue, 04 Aug 2020 20:20:14 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 30,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18114',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryvf5lBhAX5DGQDcvF',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 4712,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18708,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T20:46:33.030Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T20:46:40.753Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 33,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T21:01:28.937Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 33,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T21:01:28.939Z },
+  level: 'info',
+  timestamp: '2020-08-04T21:01:28.939Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T21:01:28.940Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb329717"',
+           'if-modified-since': 'Tue, 04 Aug 2020 20:38:41 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 50,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18130',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryxy6JGmrPmGIeEYNC',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 11021,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18724,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T21:09:50.010Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T21:09:57.924Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 34,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T21:12:28.665Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 34,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T21:12:28.667Z },
+  level: 'info',
+  timestamp: '2020-08-04T21:12:28.667Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T21:12:28.668Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb39b5c3"',
+           'if-modified-since': 'Tue, 04 Aug 2020 20:46:28 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 38,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18103',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryapmauiRl672mNQNK',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 10980,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18697,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T21:23:00.148Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T21:23:07.985Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 35,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T21:23:35.970Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 35,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T21:23:35.972Z },
+  level: 'info',
+  timestamp: '2020-08-04T21:23:35.973Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T21:23:35.973Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb4f024f"',
+           'if-modified-since': 'Tue, 04 Aug 2020 21:09:44 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 42,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18104',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryQKoR2xMEvL4VWI81',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 10991,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18698,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T21:37:21.815Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T21:37:29.391Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 36,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T21:37:42.668Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 36,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T21:37:42.669Z },
+  level: 'info',
+  timestamp: '2020-08-04T21:37:42.669Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T21:37:42.670Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb5b1487"',
+           'if-modified-since': 'Tue, 04 Aug 2020 21:22:55 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 37,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18115',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundarymUcL9aHek1NpJdv7',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 4293,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18709,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T21:46:52.153Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T21:46:59.819Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 37,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T21:47:17.821Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 37,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T21:47:17.822Z },
+  level: 'info',
+  timestamp: '2020-08-04T21:47:17.822Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T21:47:17.823Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb683aeb"',
+           'if-modified-since': 'Tue, 04 Aug 2020 21:37:17 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 33,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18105',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryMEMlsLCf5goLGZZX',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 11228,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18699,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T21:55:10.623Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T21:55:18.357Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 38,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T21:55:50.439Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 38,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T21:55:50.440Z },
+  level: 'info',
+  timestamp: '2020-08-04T21:55:50.440Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T21:55:50.441Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb70ef13"',
+           'if-modified-since': 'Tue, 04 Aug 2020 21:46:47 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 49,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18111',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryMAhHJDdTPMyBjTXq',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 14967,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18705,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T22:09:29.253Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T22:09:36.986Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 39,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T22:09:50.931Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 39,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T22:09:50.932Z },
+  level: 'info',
+  timestamp: '2020-08-04T22:09:50.932Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T22:09:50.933Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb788583"',
+           'if-modified-since': 'Tue, 04 Aug 2020 21:55:04 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 51,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18110',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundary1ApESHsrjGByKw9s',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 11044,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18704,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T22:21:43.160Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T22:21:50.887Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 40,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T22:22:10.628Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 40,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T22:22:10.629Z },
+  level: 'info',
+  timestamp: '2020-08-04T22:22:10.629Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T22:22:10.630Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb85a3fb"',
+           'if-modified-since': 'Tue, 04 Aug 2020 22:09:24 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 43,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18097',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryBS5a35IhfbDfi9wR',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 11120,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18691,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T22:46:22.561Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T22:46:30.494Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 41,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T22:47:02.185Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 41,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T22:47:02.186Z },
+  level: 'info',
+  timestamp: '2020-08-04T22:47:02.186Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T22:47:02.187Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bb90d6cb"',
+           'if-modified-since': 'Tue, 04 Aug 2020 22:21:38 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 37,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18105',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryAYTsBxlli4wU1ypR',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 10922,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18699,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/selfHarmWordsScan.js] Self harm word list: suicide,suicidal,kill,murder,end life,pills,hurt myself,overdose,giving up,destroy,gun,no hope,better off,it\'s over,its over,knife,depressed,suicidaire,tuer,fin de la vie,pilules,medicaments,se faire mal,se blesser,surdose,abandonner,abandon,detruire,fusil,plus d\'espoir,plus despoir,pas d\'espoir,pas despoir,sera mieux,serai mieux,c\'est fini,cest fini,couteau,deprime,depression',
+  level: 'info',
+  timestamp: '2020-08-04T22:54:02.343Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] LDAP certs successfully fetched for: David.Deng@rcmp-grc.gc.ca',
+  level: 'info',
+  timestamp: '2020-08-04T22:54:10.734Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 42,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T22:55:39.725Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 42,
+     numberOfRequests: 1,
+     lastRequested: 2020-08-04T22:55:39.728Z },
+  level: 'info',
+  timestamp: '2020-08-04T22:55:39.728Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T22:55:39.729Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bba76698"',
+           'if-modified-since': 'Tue, 04 Aug 2020 22:46:16 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 48,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18097',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryd4hIpn551q2mZYUr',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 9150,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18691,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Availability Check',
+  availabilityCheck:
+   { SUBMISSIONS_PER_DAY: '999',
+     NUMBER_OF_SUBMISSIONS: 43,
+     MAX_SUBMISSIONS: false,
+     CHECK_REFERER: '',
+     REFERER: undefined,
+     VALID_REFERER: true },
+  level: 'info',
+  timestamp: '2020-08-04T23:00:26.759Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/src/utils/checkIfAvailable.js] Request Access Complete',
+  availableData:
+   { numberOfSubmissions: 43,
+     numberOfRequests: 2,
+     lastRequested: 2020-08-04T23:00:26.761Z },
+  level: 'info',
+  timestamp: '2020-08-04T23:00:26.761Z' }
+{ message:
+   '[/home/test/work/report-a-cybercrime/f2/server.js] New Request',
+  level: 'info',
+  timestamp: '2020-08-04T23:00:26.761Z' }
+{ meta:
+   { req:
+      { url: '/',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'upgrade-insecure-requests': '1',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           accept:
+            'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+           'sec-fetch-site': 'none',
+           'sec-fetch-mode': 'navigate',
+           'sec-fetch-user': '?1',
+           'sec-fetch-dest': 'document',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935',
+           'if-none-match': 'W/"baf-173bbae66c4"',
+           'if-modified-since': 'Tue, 04 Aug 2020 22:53:55 GMT' },
+        method: 'GET',
+        httpVersion: '1.1',
+        originalUrl: '/',
+        query: {} },
+     res: { statusCode: 304 },
+     responseTime: 14,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 636,
+        referrer: undefined } },
+  level: 'info',
+  message: 'HTTP GET /' }
+{ meta:
+   { req:
+      { url: '/submit',
+        headers:
+         { host: 'localhost:3000',
+           connection: 'keep-alive',
+           'content-length': '18132',
+           'cache-control': 'max-age=0',
+           'user-agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+           'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundaryNMSYT2oAkHn6f2fy',
+           accept: '*/*',
+           origin: 'http://localhost:3000',
+           'sec-fetch-site': 'same-origin',
+           'sec-fetch-mode': 'cors',
+           'sec-fetch-dest': 'empty',
+           referer: 'http://localhost:3000/no-referrer',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'en-US,en;q=0.9',
+           cookie: '_ga=GA1.1.467036814.1595955935' },
+        method: 'POST',
+        httpVersion: '1.1',
+        originalUrl: '/submit',
+        query: {} },
+     res: { statusCode: 200 },
+     responseTime: 10818,
+     httpRequest:
+      { remoteIpv4andv6: '::1',
+        remoteIpv4: '1',
+        requestSize: 18726,
+        referrer: 'http://localhost:3000/no-referrer' } },
+  level: 'info',
+  message: 'HTTP POST /submit' }
