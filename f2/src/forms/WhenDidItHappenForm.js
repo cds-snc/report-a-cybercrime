@@ -17,13 +17,16 @@ export const WhenDidItHappenForm = (props) => {
     ...data.formData.whenDidItHappen,
   }
 
+  const formatData = (values) => {}
+
   return (
     <React.Fragment>
       <Formik
-        initialValues={whenDidItHappenFormSchema}
-        //validationSchema={}
+        initialValues={whenDidItHappen}
+        validationSchema={whenDidItHappenFormSchema}
         onSubmit={(values) => {
-          props.onSubmit(values)
+          const data = formatData(values)
+          props.onSubmit(data)
         }}
       >
         {({ values, handleSubmit, handleChange, handleBlur }) => (
