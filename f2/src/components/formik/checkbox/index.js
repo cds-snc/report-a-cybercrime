@@ -4,20 +4,14 @@ import { Form, Row } from 'react-bootstrap'
 export const CheckBox = ({ field, form, ...props }) => {
   return (
     <Row className="form-row">
-      <Form.Check
-        id={props.id}
-        type="checkbox"
-        {...field}
-        value={props.value}
-        custom
-      >
-        <Form.Check.Input type="checkbox" />
+      <Form.Check id={props.id} type="checkbox" custom>
+        <Form.Check.Input type="checkbox" {...field} value={props.value} />
         <Form.Check.Label>{props.label}</Form.Check.Label>
-        <Form.Text className="help-text-label">{props.helpText}</Form.Text>
-        {field.checked && (
-          <div className="conditional-field">{props.children}</div>
-        )}
+        <Form.Text className="check-help-text">{props.helpText}</Form.Text>
       </Form.Check>
+      {field.checked && (
+        <div className="conditional-field">{props.children}</div>
+      )}
     </Row>
   )
 }

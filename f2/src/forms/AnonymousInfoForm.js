@@ -18,6 +18,9 @@ export const AnonymousInfoForm = (props) => {
   return (
     <Formik
       initialValues={anonymous}
+      validate={(values) => {
+        console.log(values)
+      }}
       onSubmit={(values) => {
         props.onSubmit(values)
       }}
@@ -35,9 +38,8 @@ export const AnonymousInfoForm = (props) => {
                 onBlur={handleBlur}
                 type="checkbox"
                 id="checkbox-anonymous-option"
-                helpText="This is help text"
               />
-              {values.anonymousOptions && (
+              {values.anonymousOptions.includes('anonymousPage.yes') && (
                 <Warning>
                   <Trans id="anonymousPage.warning" />
                 </Warning>
