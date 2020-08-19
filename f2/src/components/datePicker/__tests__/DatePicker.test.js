@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'emotion-theming'
 import canada from '../../../theme/canada'
 import { render, cleanup, screen } from '@testing-library/react'
@@ -14,7 +13,7 @@ describe('<DatePicker />', () => {
   afterEach(cleanup)
   it('properly renders DatePicker components', () => {
     const submitMock = jest.fn()
-    const { getAllByText, getByRole } = render(
+    const { getAllByText } = render(
       <I18nProvider i18n={i18n}>
         <ThemeProvider theme={canada}>
           <Form
@@ -39,7 +38,7 @@ describe('<DatePicker />', () => {
 
   it('properly renders SingleDatePicker components', () => {
     const submitMock = jest.fn()
-    const { getAllByText, getByRole } = render(
+    const { getAllByText } = render(
       <I18nProvider i18n={i18n}>
         <ThemeProvider theme={canada}>
           <Form
