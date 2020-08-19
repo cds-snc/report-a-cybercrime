@@ -35,7 +35,7 @@ export const WhatWasAffectedForm = (props) => {
       name: 'financial',
       checkboxLabel: <Trans id="whatWasAffectedForm.financial" />,
       checkboxHelpText: <Trans id="whatWasAffectedForm.financial.example" />,
-      checkboxName: 'whatWasAffectedForm.financial',
+      checkboxValue: 'whatWasAffectedForm.financial',
     },
     {
       name: 'personalInformation',
@@ -43,13 +43,13 @@ export const WhatWasAffectedForm = (props) => {
       checkboxHelpText: (
         <Trans id="whatWasAffectedForm.personalInformation.example" />
       ),
-      checkboxName: 'whatWasAffectedForm.personalInformation',
+      checkboxValue: 'whatWasAffectedForm.personalInformation',
     },
     {
       name: 'devices',
       checkboxLabel: <Trans id="whatWasAffectedForm.devices" />,
       checkboxHelpText: <Trans id="whatWasAffectedForm.devices.example" />,
-      checkboxName: 'whatWasAffectedForm.devices',
+      checkboxValue: 'whatWasAffectedForm.devices',
     },
     {
       name: 'businessAssets',
@@ -57,13 +57,13 @@ export const WhatWasAffectedForm = (props) => {
       checkboxHelpText: (
         <Trans id="whatWasAffectedForm.business_assets.example" />
       ),
-      checkboxName: 'whatWasAffectedForm.business_assets',
+      checkboxValue: 'whatWasAffectedForm.business_assets',
     },
     {
       name: 'other',
       checkboxLabel: <Trans id="whatWasAffectedForm.other" />,
       checkboxHelpText: <Trans id="whatWasAffectedForm.other.example" />,
-      checkboxName: 'whatWasAffectedForm.other',
+      checkboxValue: 'whatWasAffectedForm.other',
     },
   ]
 
@@ -100,7 +100,7 @@ export const WhatWasAffectedForm = (props) => {
                             label={question.checkboxLabel}
                             helpText={question.checkboxHelpText}
                             component={CheckBox}
-                            value={question.name}
+                            value={question.checkboxValue}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             type="checkbox"
