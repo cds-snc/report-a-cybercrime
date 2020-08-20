@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { TextArea } from '../components/text-area'
+import { TextArea } from '../components/formik/textArea'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
