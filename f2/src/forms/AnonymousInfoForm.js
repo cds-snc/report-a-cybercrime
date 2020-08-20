@@ -1,62 +1,58 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { CheckboxAdapter } from '../components/checkbox'
-import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
-import { Alert } from '../components/Messages'
-import { formDefaults } from './defaultValues'
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, Field } from 'formik'
+import { CheckBox } from '../components/formik/checkbox'
+import { Warning } from '../components/formik/alert'
+import { NextCancelButtons } from '../components/formik/button'
 
 export const AnonymousInfoForm = (props) => {
   const [data] = useStateValue()
 
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.anonymous)) props.onSubmit(data)
-  }
-
-  const consentOption = 'anonymousPage.yes'
   const anonymous = {
-    ...formDefaults.anonymous,
     ...data.formData.anonymous,
   }
 
   return (
-    <React.Fragment>
-      {false ? ( // mark ids for lingui
-        <div>
-          <Trans id="anonymousPage.yes" />
-        </div>
-      ) : null}
-
-      <Form
-        initialValues={anonymous}
-        onSubmit={localOnSubmit}
-        render={({ values, handleSubmit }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            shouldWrapChildren
-            spacing={6}
-          >
-            <CheckboxAdapter name="anonymousOptions" value={consentOption}>
-              <Trans id="anonymousPage.yes" />
-            </CheckboxAdapter>
-            {values.anonymousOptions.includes(consentOption) && (
-              <Alert status="warning" withIcon>
-                <Trans id="anonymousPage.warning" />
-              </Alert>
-            )}
-            <NextAndCancelButtons
-              next={<Trans id="anonymousPage.nextPage" />}
-              button={<Trans id="anonymousPage.nextButton" />}
-            />
-          </Stack>
-        )}
-      />
-    </React.Fragment>
+    <Formik
+      initialValues={anonymous}
+      onSubmit={(values) => {
+        props.onSubmit(values)
+      }}
+    >
+      {({ values, handleSubmit, handleChange, handleBlur }) => (
+        <Form onSubmit={handleSubmit}>
+          <Container>
+            <Row className="form-section">
+              <Field
+                name="anonymousOptions"
+                label={<Trans id="anonymousPage.yes" />}
+                component={CheckBox}
+                value="anonymousPage.yes"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="checkbox"
+                id="checkbox-anonymous-option"
+              />
+              {values.anonymousOptions.includes('anonymousPage.yes') && (
+                <Warning>
+                  <Trans id="anonymousPage.warning" />
+                </Warning>
+              )}
+            </Row>
+            <Row>
+              <NextCancelButtons
+                submit={<Trans id="anonymousPage.nextButton" />}
+                cancel={<Trans id="button.cancelReport" />}
+                label={<Trans id="anonymousPage.nextPage" />}
+              />
+            </Row>
+          </Container>
+        </Form>
+      )}
+    </Formik>
   )
 }
 
