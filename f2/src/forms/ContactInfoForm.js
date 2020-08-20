@@ -9,16 +9,20 @@ import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { ErrorSummary } from '../components/ErrorSummary'
+import { CheckboxAdapter } from '../components/checkbox'
 import { Input } from '../components/input'
 import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
+import { Alert } from '../components/Messages'
 import { formDefaults } from './defaultValues'
 import { containsData } from '../utils/containsData'
 import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
 import { Button } from '../components/button'
 import { Link as ReactRouterLink } from 'react-router-dom'
+
+export const skipConsentOption = 'contactinfoPage.anonymousskip.yes'
 
 export const validate = (values) => {
   const errors = {}
@@ -101,6 +105,18 @@ export const ContactInfoForm = (props) => {
             shouldWrapChildren
             spacing={6}
           >
+            <CheckboxAdapter
+              name="anonymousSkipOptions"
+              value={skipConsentOption}
+            >
+              <Trans id="contactinfoPage.anonymousskip.yes" />
+            </CheckboxAdapter>
+            {values.anonymousSkipOptions.includes(skipConsentOption) && (
+              <Alert status="warning" withIcon>
+                <Trans id="contactinfoPage.anonymousskip.warning" />
+              </Alert>
+            )}
+
             {submitFailed && hasValidationErrors ? (
               <ErrorSummary>
                 <Trans id="contactinfoPage.hasValidationErrors" />
@@ -136,26 +152,32 @@ export const ContactInfoForm = (props) => {
             <Field
               name="fullName"
               label={<Trans id="contactinfoPage.fullName" />}
-              errorMessage={<Trans id="contactinfoForm.fullName.warning" />}
+              helperText={<Trans id="contactinfoForm.fullName.warning" />} //errorMessage
               component={Input}
-              required={!fyiForm}
+              required={
+                !fyiForm &&
+                !values.anonymousSkipOptions.includes(skipConsentOption)
+              }
+              disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
             />
 
             <Field
               name="email"
               label={<Trans id="contactinfoPage.emailAddress" />}
-              errorMessage={<Trans id="contactinfoForm.email.warning" />}
+              helperText={<Trans id="contactinfoForm.email.warning" />} //errorMessage
               component={Input}
-              required={!fyiForm}
+              required={false}
+              disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
             />
             <Field
               name="phone"
               label={<Trans id="contactinfoPage.phoneNumber" />}
               helperText={<Trans id="contactinfoForm.phone.warning" />}
-              errorMessage={<Trans id="contactinfoForm.phone.warning" />}
               component={Input}
-              required={!fyiForm}
+              required={false}
+              disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
             />
+
             <NextAndCancelButtons
               next={<Trans id="contactinfoPage.nextInfo" />}
               button={<Trans id="contactinfoPage.nextButton" />}

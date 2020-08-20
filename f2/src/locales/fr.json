@@ -138,6 +138,8 @@
   "contactinfoForm.email.warning": "Entrez une adresse courriel valide.",
   "contactinfoForm.fullName.warning": "Entrez votre nom complet",
   "contactinfoForm.phone.warning": "Entrez un numéro de téléphone de 10 chiffres.",
+  "contactinfoPage.anonymousskip.warning": "Sauter les coordonnées signifie que nous ne vous demanderons pas vos coordonnées et ne serons pas en mesure de faire un suivi à l'avenir",
+  "contactinfoPage.anonymousskip.yes": "Je préfère ignorer mes coordonnées",
   "contactinfoPage.emailAddress": "Adresse courriel",
   "contactinfoPage.fullName": "Nom complet",
   "contactinfoPage.hasValidationErrors": "Veuillez réviser vos coordonnées.",
