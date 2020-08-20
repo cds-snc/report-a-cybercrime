@@ -1,120 +1,79 @@
 /** @jsx jsx */
 import React from 'react'
-import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Form, Field } from 'react-final-form'
-import { TextArea } from '../components/text-area'
-import { FormHelperText } from '../components/FormHelperText'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { FormControl, Stack } from '@chakra-ui/core'
-import { FormLabel } from '../components/FormLabel'
+import { TextArea } from '../components/formik/textArea'
+import { NextCancelButtons } from '../components/formik/button'
 import { useStateValue } from '../utils/state'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
-import { formDefaults } from './defaultValues'
+import { Formik, FieldArray, Field } from 'formik'
+import { SuspectCluesFormSchema } from './SuspectCluesFormSchema'
+import { Form, Container, Row } from 'react-bootstrap'
 
 export const SuspectCluesForm = (props) => {
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.suspectClues))
-      props.onSubmit(data)
-  }
-
   const [data] = useStateValue()
   const suspectClues = {
-    ...formDefaults.suspectClues,
     ...data.formData.suspectClues,
   }
+  const formOptions = [
+    {
+      name: 'suspectClues1',
+      label: <Trans id="suspectClues.question1" />,
+      helpText: <Trans id="suspectClues.question1Details" />,
+    },
+    {
+      name: 'suspectClues2',
+      label: <Trans id="suspectClues.question2" />,
+      helpText: <Trans id="suspectClues.question2Details" />,
+    },
+    {
+      name: 'suspectClues3',
+      label: <Trans id="suspectClues.question3" />,
+      helpText: <Trans id="suspectClues.question3Details" />,
+    },
+  ]
 
   return (
     <React.Fragment>
-      {false ? ( // the following trans tags are for analyst email
-        <div>
-          <Trans id="suspectClues.suspectDetails" />
-        </div>
-      ) : null}
-      <Form
+      <Formik
         initialValues={suspectClues}
-        onSubmit={localOnSubmit}
-        render={({ handleSubmit }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            spacing={6}
-            shouldWrapChildren
-          >
-            <Field name="suspectClues1">
-              {(props) => (
-                <FormControl>
-                  <FormLabel htmlFor="suspectClues1">
-                    <Trans id="suspectClues.question1" />
-                  </FormLabel>
+        validationSchema={SuspectCluesFormSchema()}
+        onSubmit={props.onSubmit()}
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row className="form-section">
+                <FieldArray
+                  name="suspectClues"
+                  className="form-section"
+                  render={() =>
+                    formOptions.map(() => {
+                      return (
+                        <React.Fragment>
+                          <Field
+                            name={props.name}
+                            label={props.label}
+                            helpText={props.helpText}
+                            component={TextArea}
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                          />
+                        </React.Fragment>
+                      )
+                    })
+                  }
+                />
+              </Row>
+            </Container>
 
-                  <FormHelperText>
-                    <Trans id="suspectClues.question1Details" />
-                  </FormHelperText>
-
-                  <TextArea
-                    id="suspectClues1"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-
-            <Field name="suspectClues2">
-              {(props) => (
-                <FormControl>
-                  <FormLabel htmlFor="suspectClues2">
-                    <Trans id="suspectClues.question2" />
-                  </FormLabel>
-
-                  <FormHelperText>
-                    <Trans id="suspectClues.question2Details" />
-                  </FormHelperText>
-
-                  <TextArea
-                    id="suspectClues2"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-
-            <Field name="suspectClues3">
-              {(props) => (
-                <FormControl>
-                  <FormLabel htmlFor="suspectClues3">
-                    <Trans id="suspectClues.question3" />
-                  </FormLabel>
-
-                  <FormHelperText>
-                    <Trans id="suspectClues.question3Details" />
-                  </FormHelperText>
-
-                  <TextArea
-                    id="suspectClues3"
-                    name={props.input.name}
-                    value={props.input.value}
-                    onChange={props.input.onChange}
-                  />
-                </FormControl>
-              )}
-            </Field>
-            <NextAndCancelButtons
-              next={<Trans id="suspectClues.whatComesNext" />}
-              button={<Trans id="suspectClues.nextButton" />}
+            <NextCancelButtons
+              submit={<Trans id="howDidItStartPage.nextButton" />}
+              cancel={<Trans id="button.cancelReport" />}
+              label={<Trans id="howDidItStartPage.nextPage" />}
             />
-          </Stack>
+          </Form>
         )}
-      />
+      </Formik>
     </React.Fragment>
   )
-}
-
-SuspectCluesForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 }
