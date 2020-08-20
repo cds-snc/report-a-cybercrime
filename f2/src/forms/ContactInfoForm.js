@@ -27,9 +27,6 @@ export const skipConsentOption = 'contactinfoPage.anonymousskip.yes'
 export const validate = (values) => {
   const errors = {}
 
-  if (values.anonymousSkipOptions.includes('contactinfoPage.anonymousskip.yes'))
-    return errors
-
   // from https://www.w3resource.com/javascript/form/phone-no-validation.php
   const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
 
@@ -41,8 +38,13 @@ export const validate = (values) => {
     'email' in values &&
     containsData(values.email) &&
     addrs(values.email) !== null
+  const anonymousskip =
+    'anonymousSkipOptions' in values &&
+    containsData(values.anonymousSkipOptions)
 
   //condition for an error to occur: append a lingui id to the list of error
+  if (anonymousskip) return errors
+
   if (!values.fullName || values.fullName === '')
     errors.fullName = 'contactinfoForm.fullName.warning'
 
