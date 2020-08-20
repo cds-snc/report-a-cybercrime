@@ -160,7 +160,10 @@ export const ContactInfoForm = (props) => {
               label={<Trans id="contactinfoPage.fullName" />}
               helperText={<Trans id="contactinfoForm.fullName.warning" />} //errorMessage
               component={Input}
-              required={!fyiForm}
+              required={
+                !fyiForm &&
+                !values.anonymousSkipOptions.includes(skipConsentOption)
+              }
               disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
             />
 
@@ -169,7 +172,7 @@ export const ContactInfoForm = (props) => {
               label={<Trans id="contactinfoPage.emailAddress" />}
               helperText={<Trans id="contactinfoForm.email.warning" />} //errorMessage
               component={Input}
-              required={!fyiForm}
+              required={false}
               disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
             />
             <Field
@@ -177,7 +180,7 @@ export const ContactInfoForm = (props) => {
               label={<Trans id="contactinfoPage.phoneNumber" />}
               helperText={<Trans id="contactinfoForm.phone.warning" />}
               component={Input}
-              required={!fyiForm}
+              required={false}
               disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
             />
 
