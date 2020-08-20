@@ -10,6 +10,7 @@ import { NextCancelButtons } from '../components/formik/button'
 import { Error, Info } from '../components/formik/alert'
 import { TextArea } from '../components/formik/textArea'
 import { whenDidItHappenFormSchema } from './whenDidItHappenFormSchema'
+import moment from 'moment'
 
 export const WhenDidItHappenForm = (props) => {
   const [data] = useStateValue()
@@ -17,7 +18,75 @@ export const WhenDidItHappenForm = (props) => {
     ...data.formData.whenDidItHappen,
   }
 
-  const formatData = (values) => {}
+  const formatData = (values) => {
+    console.log(JSON.stringify(values, null, 2))
+
+    let errors
+
+    if (values.incidentFrequency === 'once') {
+      errors = evalDate(
+        values.happenedOnceDay,
+        values.happenedOnceMonth,
+        values.happenedOnceYear,
+      )
+      console.log(errors)
+    } else if (values.incidentFrequency === 'moreThanOnce') {
+      errors = evalDateRange(values)
+      console.log(JSON.stringify(errors, null, 2))
+    }
+
+    return errors
+  }
+
+  const evalDate = (day, month, year) => {
+    const date = moment(`${month} ${day} ${year}`, 'MM DD YYYY')
+
+    console.log(`${month} ${day} ${year}`)
+    console.log(date.toString())
+
+    if (!date.isValid()) {
+      return 'Invalid date'
+    }
+
+    if (date.isAfter(moment.now())) {
+      return 'Date cannot be in the future'
+    }
+
+    return 'Date is valid'
+  }
+
+  const evalDateRange = (values) => {
+    const errors = {}
+
+    let result
+
+    result = evalDate(values.startDay, values.startMonth, values.startYear)
+
+    if (result) {
+      errors['startDate'] = result
+    }
+
+    result = evalDate(values.endDay, values.endMonth, values.endYear)
+
+    if (result) {
+      errors['endDate'] = result
+    }
+
+    const startDate = moment(
+      `${values.startDay} ${values.startMonth} ${values.startYear}`,
+      'MM DD YYYY',
+    )
+    const endDate = moment(
+      `${values.endDay} ${values.endMonth} ${values.endYear}`,
+      'MM DD YYYY',
+    )
+
+    if (startDate.isAfter(endDate)) {
+      errors['multipleIncidentsStart'] = 'End date must be after start date'
+    }
+
+    return errors
+  }
 
   return (
     <React.Fragment>
@@ -25,8 +94,7 @@ export const WhenDidItHappenForm = (props) => {
         initialValues={whenDidItHappen}
         validationSchema={whenDidItHappenFormSchema}
         onSubmit={(values) => {
-          const data = formatData(values)
-          props.onSubmit(data)
+          formatData(values)
         }}
       >
         {({ values, handleSubmit, handleChange, handleBlur }) => (

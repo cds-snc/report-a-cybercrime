@@ -14,6 +14,6 @@ export const yupSchema = () => {
     ),
     daySchema: Yup.number().min(1).max(31),
     monthSchema: Yup.number().min(1).max(12),
-    yearSchama: Yup.number(),
+    yearSchama: Yup.number().min(1000).max(9999), //Enforce 4 digit entry
   }
 }

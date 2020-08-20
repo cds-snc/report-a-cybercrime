@@ -27,7 +27,7 @@ const DateEntry = ({ field, form, ...props }) => {
   )
 }
 
-export const DatePicker = (props) => {
+export const DatePicker = ({ field, form, ...props }) => {
   return (
     <Container fluid>
       <Row>
@@ -39,7 +39,7 @@ export const DatePicker = (props) => {
 
       <Row className="date-group">
         <Field
-          name={props.name + 'Day'}
+          name={field.name + 'Day'}
           component={DateEntry}
           onChange={props.onChange}
           id={props.id + 'Day'}
@@ -47,7 +47,7 @@ export const DatePicker = (props) => {
           label={<Trans id="whenDidItStart.startDay" />}
         />
         <Field
-          name={props.name + 'Month'}
+          name={field.name + 'Month'}
           component={DateEntry}
           onChange={props.onChange}
           id={props.id + 'Month'}
@@ -55,7 +55,7 @@ export const DatePicker = (props) => {
           label={<Trans id="whenDidItStart.startMonth" />}
         />
         <Field
-          name={props.name + 'Year'}
+          name={field.name + 'Year'}
           component={DateEntry}
           onChange={props.onChange}
           id={props.id + 'Year'}
