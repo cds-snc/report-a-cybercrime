@@ -67,7 +67,7 @@ const submitFeedback = async (data) => {
     let feedbacks = JSON.parse(data)
 
     let question1Str = 'Was service hard?'
-    let answer1Str = lang[feedbacks.wasServiceHard]
+    let answer1Str = lang[feedbacks.wasServiceHard] == undefined? '' : lang[feedbacks.wasServiceHard]
     let question2Str = 'How can we do better?'
     let answer2Str = feedbacks.howCanWeDoBetter
     let question3Str = ''
@@ -77,7 +77,11 @@ const submitFeedback = async (data) => {
       question1Str = 'Page:'
       answer1Str = feedbacks.page
       question2Str = 'What kind of problem is happening?'
-      answer2Str = lang[feedbacks.midFeedback]
+      answer2Str = ''
+      for(feedback of feedbacks.midFeedback) {
+        answer2Str += lang[feedback]
+        answer2Str += '\n'
+      }
       question3Str = 'Problem discription:'
       answer3Str = feedbacks.problemDescription
     }
