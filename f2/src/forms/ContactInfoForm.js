@@ -27,7 +27,8 @@ export const skipConsentOption = 'contactinfoPage.anonymousskip.yes'
 export const validate = (values) => {
   const errors = {}
 
-  if (values.anonymousSkipOptions.includes(skipConsentOption)) return errors
+  if (values.anonymousSkipOptions.includes('contactinfoPage.anonymousskip.yes'))
+    return errors
 
   // from https://www.w3resource.com/javascript/form/phone-no-validation.php
   const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
@@ -155,7 +156,7 @@ export const ContactInfoForm = (props) => {
             <Field
               name="fullName"
               label={<Trans id="contactinfoPage.fullName" />}
-              errorMessage={<Trans id="contactinfoForm.fullName.warning" />}
+              helperText={<Trans id="contactinfoForm.fullName.warning" />} //errorMessage
               component={Input}
               required={!fyiForm}
               disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
@@ -164,7 +165,7 @@ export const ContactInfoForm = (props) => {
             <Field
               name="email"
               label={<Trans id="contactinfoPage.emailAddress" />}
-              errorMessage={<Trans id="contactinfoForm.email.warning" />}
+              helperText={<Trans id="contactinfoForm.email.warning" />} //errorMessage
               component={Input}
               required={!fyiForm}
               disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
@@ -173,7 +174,6 @@ export const ContactInfoForm = (props) => {
               name="phone"
               label={<Trans id="contactinfoPage.phoneNumber" />}
               helperText={<Trans id="contactinfoForm.phone.warning" />}
-              errorMessage={<Trans id="contactinfoForm.phone.warning" />}
               component={Input}
               required={!fyiForm}
               disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
