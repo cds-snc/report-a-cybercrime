@@ -8,7 +8,6 @@ import { useStateValue } from '../utils/state'
 import { Error, Info } from '../components/formik/alert'
 import { A } from '../components/formik/link'
 import { P } from '../components/formik/paragraph'
-import { Box } from '../components/formik/box'
 import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
@@ -97,7 +96,7 @@ export const InformationForm = (props) => {
                 <Row className="form-helper-text">
                   <Trans id="informationPage.typeOfInfoReqExample" />
                 </Row>
-                <ErrorMessage name="information" component={Error} />
+                <ErrorMessage name="informationReq" component={Error} />
               </Row>
               <Row className="form-section">
                 <FieldArray
@@ -135,7 +134,7 @@ export const InformationForm = (props) => {
                 <Row className="form-helper-text">
                   <Trans id="informationPage.typeOfInfoObtainedExample" />
                 </Row>
-                <ErrorMessage name="information" component={Error} />
+                <ErrorMessage name="informationObtained" component={Error} />
               </Row>
               <Row className="form-section">
                 <FieldArray
