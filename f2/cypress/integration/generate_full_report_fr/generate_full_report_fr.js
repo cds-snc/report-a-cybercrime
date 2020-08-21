@@ -59,16 +59,14 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill Whoareyoureporting page forms', () => {
-  When('I fill Whoareyoureporting page forms', () => {
-    cy.get('form')
-      .find('[value="whoAreYouReportForPage.options.business"]')
-      .check({ force: true })
-    cy.get('form')
-      .find('[id="businessDescription"]')
-      .type(
-        'Souvenir du Québec, https://www.souvenirduquebec.com/, (514) 895-0746',
-      )
-  })
+  cy.get('form')
+    .find('[value="whoAreYouReportForPage.options.business"]')
+    .check({ force: true })
+  cy.get('form')
+    .find('[id="businessDescription"]')
+    .type(
+      'Souvenir du Quebec, https://www.souvenirduquebec.com/, (514) 895-0746',
+    )
 })
 
 Then('I click {string}', () => {
@@ -80,25 +78,18 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill howdiditstart page forms', () => {
+  cy.get('form').find('[value="email"]').check({ force: true })
+  cy.get('form').find('[name="email"]').type('suspectFrench@magma.com')
+  cy.get('form').find('[value="phone"]').check({ force: true })
+  cy.get('form').find('[name="phone"]').type('1-800-000-1111')
+  cy.get('form').find('[value="online"]').check({ force: true })
+  cy.get('form').find('[name="online"]').type('http://www.suspectFrench.com')
+  cy.get('form').find('[value="application"]').check({ force: true })
   cy.get('form')
-    .find('[value="howDidTheyReachYou.email"]')
-    .check({ force: true })
-  cy.get('form').find('[id="email"]').type('suspectFrench@magma.com')
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.phone"]')
-    .check({ force: true })
-  cy.get('form').find('[id="phone"]').type('1-800-000-1111')
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.online"]')
-    .check({ force: true })
-  cy.get('form').find('[id="online"]').type('http://www.suspectFrench.com')
-  cy.get('form').find('[value="howDidTheyReachYou.app"]').check({ force: true })
-  cy.get('form')
-    .find('[id="application"]')
+    .find('[name="application"]')
     .type('Noms d’applications où vous avez communiqué Application')
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.others"]')
-    .check({ force: true })
+  cy.get('form').find('[value="others"]').check({ force: true })
+  cy.get('form').find('[name="others"]').type('Une publicité')
 })
 
 Then('I click {string}', () => {
@@ -234,7 +225,7 @@ When('I fill Howyourbusinessaffected page forms', () => {
   cy.get('form').find('[name="industry"]').type('Clinique de Santé')
   cy.get('form').find('[name="role"]').type('Expert en Informatique')
   cy.get('form')
-    .find('[value="numberOfEmployee.500More"]')
+    .find('[value="numberOfEmployee.100To499"]')
     .check({ force: true })
 })
 
