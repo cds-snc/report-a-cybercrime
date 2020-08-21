@@ -2,12 +2,14 @@
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { TextArea } from '../components/text-area'
+//import { TextArea } from '../components/text-area'
+import { TextArea } from '../components/formik/textArea'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
 import { NextCancelButtons } from '../components/formik/button'
+import { LocationInfoFormSchema } from './LocationInfoFormSchema'
 
 export const LocationInfoForm = (props) => {
   const [data] = useStateValue()
@@ -23,6 +25,7 @@ export const LocationInfoForm = (props) => {
   return (
     <Formik
       initialValues={locationInfo}
+      validationSchema={LocationInfoFormSchema()}
       onSubmit={(values) => {
         props.onSubmit(values)
       }}
@@ -36,13 +39,6 @@ export const LocationInfoForm = (props) => {
               <Row className="form-helper-text">
                 <br />
                 {formHelpText}
-
-                {/* {formHelpText2 ? (
-                <p>
-                  <br />
-                  {formHelpText2}
-                </p>
-                ) : null} */}
               </Row>
             </Row>
             <Row className="form-section">
@@ -51,9 +47,9 @@ export const LocationInfoForm = (props) => {
                 component={TextArea}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                h="50px"
+                h="25px"
                 marginTop="-0.5rem"
-                id="textarea-whatHappened"
+                id="textarea-locationInfo"
               ></Field>
             </Row>
             <Row>

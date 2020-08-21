@@ -12,5 +12,10 @@ export const yupSchema = () => {
     emailSchema: Yup.string().email(
       <Trans id="contactinfoForm.email.warning" />,
     ),
+    postCodeSchema: Yup.string().matches(regexDef().postalCodeRegex, {
+      // <Trans id="locationInfoForm.Warning" />,
+      excludeEmptyString: true,
+      message: 'Please enter a valid post code',
+    }),
   }
 }
