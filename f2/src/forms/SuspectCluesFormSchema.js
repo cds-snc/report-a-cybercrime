@@ -1,7 +1,10 @@
 import * as Yup from 'yup'
-//import { yupSchema } from '../utils/yupSchema'
 
-const suspectCluesFormSchema = Yup.object().shape({})
+const suspectCluesFormSchema = Yup.object().shape({
+  suspectClues1: Yup.string(),
+  suspectClues2: Yup.string(),
+  suspectClues3: Yup.string(),
+})
 
 export const SuspectCluesFormSchema = () => {
   return suspectCluesFormSchema

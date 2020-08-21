@@ -37,7 +37,7 @@ export const SuspectCluesForm = (props) => {
       <Formik
         initialValues={suspectClues}
         validationSchema={SuspectCluesFormSchema()}
-        onSubmit={props.onSubmit()}
+        onSubmit={(values) => props.onSubmit(values)}
       >
         {({ handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
@@ -47,13 +47,13 @@ export const SuspectCluesForm = (props) => {
                   name="suspectClues"
                   className="form-section"
                   render={() =>
-                    formOptions.map(() => {
+                    formOptions.map((question) => {
                       return (
                         <React.Fragment>
                           <Field
-                            name={props.name}
-                            label={props.label}
-                            helpText={props.helpText}
+                            name={question.name}
+                            label={question.label}
+                            helpText={question.helpText}
                             component={TextArea}
                             onBlur={handleBlur}
                             onChange={handleChange}
