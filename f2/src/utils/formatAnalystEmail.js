@@ -170,7 +170,7 @@ const formatVictimDetails = (data) => {
 
 const formatIncidentInformation = (data) => {
   const freq = data.whenDidItHappen.incidentFrequency
-  let occurenceLine
+  let occurenceLine = ''
 
   if (freq === 'once') {
     const occurenceString = formatDate(
@@ -213,7 +213,7 @@ const formatIncidentInformation = (data) => {
         lang['whenDidItHappenPage.dateRange.end.label'],
         endtDateString,
       )
-  } else {
+  } else if (freq === 'notSure'){
     const textAreaString = data.whenDidItHappen.description
     occurenceLine =
       formatLineHtml(
@@ -562,7 +562,10 @@ const formatFileAttachments = (data) => {
 
       const moderatorString =
         file.adultClassificationScore === 'Could not scan'
-          ? formatLineHtml('Image classification:', 'Could not scan content')
+          ? formatLineHtml(
+              lang['fileUpload.classification.title'],
+              lang['fileUpload.classification.cannotscan'],
+            )
           : formatLineHtml(
               lang['fileUpload.isAdult'],
               file.isImageAdultClassified,
@@ -606,7 +609,9 @@ const formatFileAttachments = (data) => {
         formatLineHtml(lang['fileUpload.CosmosDBFile'], file.sha1) +
         formatLineHtml(
           lang['fileUpload.malwareScan'],
-          file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
+          file.malwareIsClean
+            ? lang['fileUpload.malwareScan.clean']
+            : file.malwareScanDetail,
         ) +
         moderatorString +
         downloadLink
