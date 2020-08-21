@@ -1,133 +1,72 @@
 /** @jsx jsx */
-import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack } from '@chakra-ui/core'
+import { TextArea } from '../components/text-area'
 import { useStateValue } from '../utils/state'
-import { Link as ReactRouterLink } from 'react-router-dom'
-import { Flex, Icon } from '@chakra-ui/core'
-import { P } from '../components/paragraph'
-import { Button } from '../components/button'
-import { ErrorSummary } from '../components/ErrorSummary'
-import { Input } from '../components/input'
-import { Field } from '../components/Field'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
-import { containsData } from '../utils/containsData'
-
-export const validate = (values) => {
-  const errors = {}
-  //condition for an error to occur: append a lingui id to the list of error
-  const postalCodeRegEXP = /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
-  if (
-    'postalCode' in values &&
-    containsData(values.postalCode) &&
-    !new RegExp(postalCodeRegEXP).test(values.postalCode)
-  ) {
-    errors.postalCode = 'locationInfoForm.Warning'
-  }
-  return errors
-}
-
-const defaultLocation = formDefaults.location
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, Field } from 'formik'
+import { NextCancelButtons } from '../components/formik/button'
 
 export const LocationInfoForm = (props) => {
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.location)) props.onSubmit(data)
+  const [data] = useStateValue()
+  const locationInfo = {
+    ...formDefaults.locationInfo,
+    ...data.formData.locationInfo,
   }
 
-  const [data, dispatch] = useStateValue()
-
-  let location
-  if (!data.formData.location) {
-    dispatch({ type: 'saveFormData', data: { location: defaultLocation } })
-    location = defaultLocation
-  } else {
-    location = {
-      ...defaultLocation,
-      ...data.formData.location,
-    }
-  }
+  let formLabel = <Trans id="locationinfoPage.postalCode" />
+  let formHelpText = <Trans id="locationinfoPage.postalCodeExample" />
+  let nextPage = <Trans id="locationinfoPage.nextPage" />
 
   return (
-    <React.Fragment>
-      {false ? ( // mark ids for lingui
-        <div>
-          <Trans id="locationinfoPage.postalCity" />
-          <Trans id="locationinfoPage.postalCity.notFoundWarning" />
-          <Trans id="locationinfoPage.postalProv" />
-          <Trans id="locationinfoPage.postalProv.notFoundWarning" />
-        </div>
-      ) : null}
-      <Form
-        initialValues={location}
-        onSubmit={localOnSubmit}
-        validate={validate}
-        render={({
-          handleSubmit,
-          values,
-          errors,
-          submitFailed,
-          hasValidationErrors,
-        }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            shouldWrapChildren
-            spacing={6}
-          >
-            {submitFailed && hasValidationErrors ? (
-              <ErrorSummary>
-                <Trans id="locationinfoPage.hasValidationErrors" />
-              </ErrorSummary>
-            ) : null}
-            <Flex direction="row" align="center" wrap="wrap" mb={10}>
-              <P w="100%">
-                <Trans id="locationinfoPage.skipInfo" />
-              </P>
-              <Button
-                as={ReactRouterLink}
-                fontSize={{ base: 'lg', md: 'xl' }}
-                color="black"
-                variant="solid"
-                variantColor="gray"
-                bg="gray.400"
-                borderColor="gray.500"
-                to="/contactinfo"
-                textAlign="center"
-                className="button-link black-button-link"
-              >
-                <Trans id="locationinfoPage.skipButton" />
-                <Icon
-                  focusable="false"
-                  ml={2}
-                  mr={-2}
-                  name="chevron-right"
-                  size="28px"
-                />
-              </Button>
-            </Flex>
-            <Field
-              name="postalCode"
-              label={<Trans id="locationinfoPage.postalCode" />}
-              errorMessage={<Trans id="locationInfoForm.Warning" />}
-              helperText={
-                <Trans id="locationinfoPage.postalCodeExample"></Trans>
-              }
-              component={Input}
-            />
+    <Formik
+      initialValues={locationInfo}
+      onSubmit={(values) => {
+        props.onSubmit(values)
+      }}
+    >
+      {({ handleSubmit, handleChange, handleBlur }) => (
+        <Form onSubmit={handleSubmit}>
+          <Container>
+            <Row className="form-question">
+              <Row className="form-label">{formLabel}</Row>
 
-            <NextAndCancelButtons
-              next={<Trans id="locationinfoPage.nextPage" />}
-              button={<Trans id="locationinfoPage.nextButton" />}
-            />
-          </Stack>
-        )}
-      />
-    </React.Fragment>
+              <Row className="form-helper-text">
+                <br />
+                {formHelpText}
+
+                {/* {formHelpText2 ? (
+                <p>
+                  <br />
+                  {formHelpText2}
+                </p>
+                ) : null} */}
+              </Row>
+            </Row>
+            <Row className="form-section">
+              <Field
+                name="locationInfo"
+                component={TextArea}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                h="50px"
+                marginTop="-0.5rem"
+                id="textarea-whatHappened"
+              ></Field>
+            </Row>
+            <Row>
+              <NextCancelButtons
+                submit={<Trans id="locationPage.nextButton" />}
+                cancel={<Trans id="button.cancelReport" />}
+                label={nextPage}
+              />
+            </Row>
+          </Container>
+        </Form>
+      )}
+    </Formik>
   )
 }
 
