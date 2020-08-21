@@ -6,8 +6,9 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Error, Info } from '../components/formik/alert'
-import { A } from '../components/link'
+import { A } from '../components/formik/link'
 import { P } from '../components/formik/paragraph'
+import { Box } from '../components/formik/box'
 import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
@@ -170,22 +171,22 @@ export const InformationForm = (props) => {
                   <P fontSize="md" mb={0}>
                     <Trans id="informationPage.tip">
                       <A
-                        color="blue.900"
+                        color="#0000ff"
+                        target="_blank"
                         href={
                           i18n.locale === 'en'
                             ? 'https://www.consumer.equifax.ca/fr/c/portal/update_language?p_l_id=23&redirect=%2Ffr%2Fpersonnel%2F&languageId=en_US'
                             : 'https://www.consumer.equifax.ca/en/c/portal/update_language?p_l_id=23&redirect=%2Fen%2Fpersonal%2F&languageId=fr_FR'
                         }
-                        isExternal // Opens new tab
                       />
                       <A
-                        color="blue.900"
+                        color="#0000ff"
+                        target="_blank"
                         href={
                           i18n.locale === 'en'
                             ? 'https://www.transunion.ca/'
                             : 'https://www.transunion.ca/fr'
                         }
-                        isExternal // Opens new tab
                       />
                     </Trans>
                   </P>
