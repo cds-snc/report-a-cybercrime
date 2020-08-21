@@ -89,7 +89,7 @@ export const InformationForm = (props) => {
         {({ handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row className="form-question">
+              <Row className="form-question" lg={1}>
                 <Row className="form-label">
                   <Trans id="informationPage.typeOfInfoReq" />
                 </Row>
