@@ -285,6 +285,7 @@
   "locationinfoPage.postalCode": "Postal code",
   "locationinfoPage.postalCodeExample": "For example: K1A 0R2",
   "locationinfoPage.skipButton": "Skip",
+  "locationinfoPage.skipInfo": "If you’d rather not include your location, you can skip this step.",
   "methodPayment.creditCard": "Credit card",
   "methodPayment.cryptocurrency": "Cryptocurrency",
   "methodPayment.eTransfer": "E-transfer",
