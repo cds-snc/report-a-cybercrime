@@ -4,7 +4,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, Field } from 'formik'
+import { Formik, Field, ErrorMessage } from 'formik'
 import { NextCancelButtons, SkipButton } from '../components/formik/button'
 import { LocationInfoFormSchema } from './LocationInfoFormSchema'
 import { P } from '../components/paragraph'
@@ -43,10 +43,13 @@ export const LocationInfoForm = (props) => {
               component={Input}
               onChange={handleChange}
               onBlur={handleBlur}
+              value="postalCode"
               id="postalCode"
               type="postalCode"
               helpText="For example: K1A 0R2"
-            />
+            >
+              <ErrorMessage name="postalCode" component={Error} />
+            </Field>
             <Row>
               <NextCancelButtons
                 submit={<Trans id="locationPage.nextButton" />}
