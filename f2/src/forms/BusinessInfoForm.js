@@ -4,16 +4,13 @@ import React from 'react'
 import { useLingui } from '@lingui/react'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack } from '@chakra-ui/core'
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
+import { Radio } from '../components/formik/radio'
+import { Input } from '../components/formik/input'
 import { useStateValue } from '../utils/state'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
-import { Input } from '../components/input'
-import { Field } from '../components/Field'
-import { FormArrayControl } from '../components/FormArrayControl'
-import { RadioAdapter } from '../components/radio'
+import { NextCancelButtons } from '../components/formik/button'
 
 export const BusinessInfoForm = (props) => {
   const [data] = useStateValue()
@@ -28,16 +25,19 @@ export const BusinessInfoForm = (props) => {
       name: 'oneTo99',
       radioLabel: <Trans id="numberOfEmployee.1To99" />,
       radioName: 'numberOfEmployee.1To99',
+      radioValue: 'numberOfEmployee.1To99',
     },
     {
       name: 'oneHundredTo499',
       radioLabel: <Trans id="numberOfEmployee.100To499" />,
       radioName: 'numberOfEmployee.100To499',
+      radioValue: 'numberOfEmployee.100To499',
     },
     {
       name: 'fiveHundredMore',
       radioLabel: <Trans id="numberOfEmployee.500More" />,
       radioName: 'numberOfEmployee.500More',
+      radioValue: 'numberOfEmployee.500More',
     },
   ]
 
@@ -56,66 +56,52 @@ export const BusinessInfoForm = (props) => {
                 <ErrorMessage name="businessInfo" component={Error} />
               </Row>
               <Row className="form-section">
-                <FieldArray
-                  name="numberOfEmployee"
-                  className="form-section"
-                  render={() =>
-                    formOptionsReq.map((question) => {
-                      return (
-                        <React.Fragment key={question.name}>
-                          <Field
-                            name="numberOfEmployee"
-                            label={question.checkboxLabel}
-                            component={CheckBox}
-                            value={question.checkboxValue}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            type="checkbox"
-                            id={'checkbox-' + question.name}
-                          >
-                            <ErrorMessage
-                              name={question.name}
-                              component={Error}
-                            />
-                          </Field>
-                        </React.Fragment>
-                      )
-                    })
-                  }
+                <Field
+                  name="nameOfBusiness"
+                  label={<Trans id="businessPage.nameOfBusiness" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id={'name-of-business'}
+                />
+              </Row>
+              <Row className="form-section">
+                <Field
+                  name="industry"
+                  label={<Trans id="businessPage.industry" />}
+                  helpText={<Trans id="businessPage.industryExample" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id={'type-of-industry'}
                 />
               </Row>
               <Row className="form-question">
                 <Row className="form-label">
-                  <Trans id="informationPage.typeOfInfoObtained" />
+                  <Trans id="numberOfEmployee.label" />
                 </Row>
                 <Row className="form-helper-text">
-                  <Trans id="informationPage.typeOfInfoObtainedExample" />
+                  <Trans id="numberOfEmployee.labelExample" />
                 </Row>
-                <ErrorMessage name="informationObtained" component={Error} />
               </Row>
               <Row className="form-section">
                 <FieldArray
-                  name="typeOfInfoObtained"
+                  name="numberOfEmployee"
                   className="form-section"
                   render={() =>
-                    formOptionsObtained.map((question) => {
+                    formOptions.map((question) => {
                       return (
                         <React.Fragment key={question.name}>
                           <Field
-                            name="typeOfInfoObtained"
-                            label={question.checkboxLabel}
-                            component={CheckBox}
-                            value={question.checkboxValue}
+                            name="numberOfEmployee"
+                            label={question.radioLabel}
+                            component={Radio}
+                            value={question.radioValue}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            type="checkbox"
-                            id={'checkbox-' + question.name}
-                          >
-                            <ErrorMessage
-                              name={question.name}
-                              component={Error}
-                            />
-                          </Field>
+                            type="radio"
+                            id={'radio-' + question.name}
+                          />
                         </React.Fragment>
                       )
                     })
