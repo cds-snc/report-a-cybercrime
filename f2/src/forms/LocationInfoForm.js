@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
@@ -18,48 +19,59 @@ export const LocationInfoForm = (props) => {
   }
 
   return (
-    <Formik
-      initialValues={locationInfo}
-      validationSchema={LocationInfoFormSchema()}
-      onSubmit={(values) => {
-        props.onSubmit(values)
-      }}
-    >
-      {({ handleSubmit, handleChange, handleBlur }) => (
-        <Form onSubmit={handleSubmit}>
-          <Container>
-            <P w="100%">
-              <Trans id="locationinfoPage.skipInfo" />
-            </P>
-            <SkipButton
-              label={<Trans id="locationinfoPage.skipButton" />}
-              to="/contactinfo"
-            />
-            <P>
-              <br />
-            </P>
-            <Field
-              name="postalCode"
-              label="Postal code"
-              component={Input}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              id="postalCode"
-              type="text"
-              helpText="For example: K1A 0R2"
-            />
-            <ErrorMessage name="postalCode" component={Error} />
-            <Row>
-              <NextCancelButtons
-                submit={<Trans id="locationPage.nextButton" />}
-                cancel={<Trans id="button.cancelReport" />}
-                label={<Trans id="locationinfoPage.nextPage" />}
+    <React.Fragment>
+      {false ? ( // mark ids for lingui
+        <div>
+          <Trans id="locationinfoPage.postalCode" />
+          <Trans id="locationinfoPage.postalCity" />
+          <Trans id="locationinfoPage.postalCity.notFoundWarning" />
+          <Trans id="locationinfoPage.postalProv" />
+          <Trans id="locationinfoPage.postalProv.notFoundWarning" />
+        </div>
+      ) : null}
+      <Formik
+        initialValues={locationInfo}
+        validationSchema={LocationInfoFormSchema()}
+        onSubmit={(values) => {
+          props.onSubmit(values)
+        }}
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <P w="100%">
+                <Trans id="locationinfoPage.skipInfo" />
+              </P>
+              <SkipButton
+                label={<Trans id="locationinfoPage.skipButton" />}
+                to="/contactinfo"
               />
-            </Row>
-          </Container>
-        </Form>
-      )}
-    </Formik>
+              <P>
+                <br />
+              </P>
+              <Field
+                name="postalCode"
+                label="Postal code"
+                component={Input}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                id="postalCode"
+                type="text"
+                helpText="For example: K1A 0R2"
+              />
+              <ErrorMessage name="postalCode" component={Error} />
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="locationPage.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="locationinfoPage.nextPage" />}
+                />
+              </Row>
+            </Container>
+          </Form>
+        )}
+      </Formik>
+    </React.Fragment>
   )
 }
 
