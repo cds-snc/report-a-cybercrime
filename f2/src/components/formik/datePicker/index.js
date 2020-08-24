@@ -42,11 +42,11 @@ export const DatePicker = ({ field, form, ...props }) => {
       </Row>
 
       <Row>
-        <ErrorMessage name={field.name + 'Day'} component={Error} />
-        <ErrorMessage name={field.name + 'Month'} component={Error} />
-        <ErrorMessage name={field.name + 'Year'} component={Error} />
-        {form.status.errors.happenedOnceError && (
-          <Error>{status.errors.happenedOnceError}</Error>
+        {(form.errors[field.name + 'Day'] ||
+          form.errors[field.name + 'Month'] ||
+          form.errors[field.name + 'Year'] ||
+          form.status.errors[field.name + 'Error']) && (
+          <Error>Invalid date</Error>
         )}
       </Row>
 

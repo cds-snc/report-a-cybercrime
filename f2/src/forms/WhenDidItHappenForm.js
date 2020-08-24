@@ -117,7 +117,7 @@ export const WhenDidItHappenForm = (props) => {
     let endDate = null
 
     if (values.startDay || values.startMonth || values.startYear) {
-      errors['startDay'] = evalDate(
+      errors['starError'] = evalDate(
         values.startDay,
         values.startMonth,
         values.startYear,
@@ -130,7 +130,7 @@ export const WhenDidItHappenForm = (props) => {
     }
 
     if (values.endDay || values.endMonth || values.endYear) {
-      errors['endDay'] = evalDate(
+      errors['endError'] = evalDate(
         values.endDay,
         values.endMonth,
         values.endYear,
@@ -145,7 +145,7 @@ export const WhenDidItHappenForm = (props) => {
 
     if (startDate && endDate) {
       if (startDate.isAfter(endDate)) {
-        errors['endDay'] = 'End date must be after start date'
+        errors['endError'] = 'End date must be after start date'
       }
     }
 
@@ -167,7 +167,7 @@ export const WhenDidItHappenForm = (props) => {
           console.log(JSON.stringify(values, null, 2))
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, status }) => (
+        {({ handleSubmit, handleChange, handleBlur, setErrors }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
@@ -189,10 +189,7 @@ export const WhenDidItHappenForm = (props) => {
                             label={question.radioLabel}
                             component={Radio}
                             value={question.value}
-                            onChange={() => {
-                              handleChange()
-                              setErrors({})
-                            }}
+                            onChange={handleChange}
                             onBlur={handleBlur}
                             type="radio"
                             id={question.id}
