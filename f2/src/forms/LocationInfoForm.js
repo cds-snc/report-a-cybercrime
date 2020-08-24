@@ -43,7 +43,6 @@ export const LocationInfoForm = (props) => {
               component={Input}
               onChange={handleChange}
               onBlur={handleBlur}
-              value="postalCode"
               id="postalCode"
               type="postalCode"
               helpText="For example: K1A 0R2"

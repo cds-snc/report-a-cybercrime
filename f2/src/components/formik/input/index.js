@@ -20,7 +20,7 @@ export const Input = ({ field, form, ...props }) => {
 }
 
 Input.propTypes = {
-  type: PropTypes.oneOf(['text', 'email', 'password']),
+  type: PropTypes.oneOf(['text', 'email', 'password', 'postalCode']),
 }
 
 Input.defaultProps = {
