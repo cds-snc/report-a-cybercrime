@@ -65,17 +65,6 @@ export const BusinessInfoForm = (props) => {
               </Row>
               <Row className="form-section">
                 <Field
-                  name="role"
-                  label={<Trans id="businessPage.role" />}
-                  helpText={<Trans id="businessPage.roleExample" />}
-                  component={Input}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id={'type-of-industry'}
-                />
-              </Row>
-              <Row className="form-section">
-                <Field
                   name="industry"
                   label={<Trans id="businessPage.industry" />}
                   helpText={<Trans id="businessPage.industryExample" />}
@@ -85,7 +74,18 @@ export const BusinessInfoForm = (props) => {
                   id={'type-of-industry'}
                 />
               </Row>
-              <Row className="form-question">
+              <Row className="form-section">
+                <Field
+                  name="role"
+                  label={<Trans id="businessPage.role" />}
+                  helpText={<Trans id="businessPage.roleExample" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id={'role-of-industry'}
+                />
+              </Row>
+              <Row className="form-question" lg={1}>
                 <Row className="form-label">
                   <Trans id="numberOfEmployee.label" />
                 </Row>
