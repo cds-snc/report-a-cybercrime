@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import React from 'react'
-import { useLingui } from '@lingui/react'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
@@ -18,7 +17,6 @@ export const BusinessInfoForm = (props) => {
     ...formDefaults.businessInfo,
     ...data.formData.businessInfo,
   }
-  const { i18n } = useLingui()
 
   const formOptions = [
     {
