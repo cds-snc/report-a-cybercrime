@@ -60,13 +60,38 @@ export const WhenDidItHappenForm = (props) => {
     let errors = {}
 
     if (values.incidentFrequency === 'once') {
-      errors['happenedOnce'] = evalDate(
+      errors['happenedOnceError'] = evalDate(
         values.happenedOnceDay,
         values.happenedOnceMonth,
         values.happenedOnceYear,
       )
+
+      values.startDay = ''
+      values.startMonth = ''
+      values.startYear = ''
+      values.endDay = ''
+      values.endMonth = ''
+      values.endYear = ''
+
+      values.description = ''
     } else if (values.incidentFrequency === 'moreThanOnce') {
       errors = evalDateRange(values)
+
+      values.happenedOnceDay = ''
+      values.happenedOnceMonth = ''
+      values.happenedOnceYear = ''
+
+      values.description = ''
+    } else {
+      values.happenedOnceDay = ''
+      values.happenedOnceMonth = ''
+      values.happenedOnceYear = ''
+      values.startDay = ''
+      values.startMonth = ''
+      values.startYear = ''
+      values.endDay = ''
+      values.endMonth = ''
+      values.endYear = ''
     }
 
     return errors
@@ -88,26 +113,40 @@ export const WhenDidItHappenForm = (props) => {
 
   const evalDateRange = (values) => {
     const errors = {}
+    let startDate = null
+    let endDate = null
 
-    errors['start'] = evalDate(
-      values.startDay,
-      values.startMonth,
-      values.startYear,
-    )
+    if (values.startDay || values.startMonth || values.startYear) {
+      errors['startDay'] = evalDate(
+        values.startDay,
+        values.startMonth,
+        values.startYear,
+      )
 
-    errors['end'] = evalDate(values.endDay, values.endMonth, values.endYear)
+      startDate = moment(
+        `${values.startMonth} ${values.startDay} ${values.startYear}`,
+        'MM DD YYYY',
+      )
+    }
 
-    const startDate = moment(
-      `${values.startDay} ${values.startMonth} ${values.startYear}`,
-      'MM DD YYYY',
-    )
-    const endDate = moment(
-      `${values.endDay} ${values.endMonth} ${values.endYear}`,
-      'MM DD YYYY',
-    )
+    if (values.endDay || values.endMonth || values.endYear) {
+      errors['endDay'] = evalDate(
+        values.endDay,
+        values.endMonth,
+        values.endYear,
+      )
 
-    if (startDate.isAfter(endDate)) {
-      errors['multipleIncidentsStart'] = 'End date must be after start date'
+      endDate = moment(
+        `${values.endMonth} ${values.endDay} ${values.endYear}`,
+        'MM DD YYYY',
+      )
+    }
+    console.log(`${startDate} - ${endDate}`)
+
+    if (startDate && endDate) {
+      if (startDate.isAfter(endDate)) {
+        errors['endDay'] = 'End date must be after start date'
+      }
     }
 
     return errors
@@ -117,14 +156,18 @@ export const WhenDidItHappenForm = (props) => {
     <React.Fragment>
       <Formik
         initialValues={whenDidItHappen}
-        validationSchema={whenDidItHappenFormSchema}
-        onSubmit={(values, actions) => {
+        initialStatus={{ errors: '' }}
+        validationSchema={whenDidItHappenFormSchema()}
+        onSubmit={(values, { setStatus }) => {
           const errors = formatData(values)
-          actions.setStatus({ happenedOnce: 'Test Error' })
+          Object.keys(errors).forEach((key) => {
+            setStatus({ errors: { [key]: errors[key] } })
+          })
           console.log(JSON.stringify(errors, null, 2))
+          console.log(JSON.stringify(values, null, 2))
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, status }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
@@ -133,6 +176,7 @@ export const WhenDidItHappenForm = (props) => {
                 </Row>
               </Row>
               <Row className="form-section">
+                <ErrorMessage name="incidentFrequency" component={Error} />
                 <FieldArray
                   name="incidentFrequency"
                   className="form-section"
@@ -145,17 +189,16 @@ export const WhenDidItHappenForm = (props) => {
                             label={question.radioLabel}
                             component={Radio}
                             value={question.value}
-                            onChange={handleChange}
+                            onChange={() => {
+                              handleChange()
+                              setErrors({})
+                            }}
                             onBlur={handleBlur}
                             type="radio"
                             id={question.id}
                           >
                             {question.value === 'once' && (
                               <React.Fragment>
-                                <ErrorMessage
-                                  name={question.name}
-                                  component={Error}
-                                />
                                 <Field
                                   name={question.name}
                                   label={question.datePickerLabel}

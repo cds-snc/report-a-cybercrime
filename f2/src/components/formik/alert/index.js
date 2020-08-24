@@ -5,6 +5,7 @@ import { IoIosWarning } from 'react-icons/io'
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
 
 export const Error = (props) => {
+  console.log(`${JSON.stringify(props.children, null, 2)}`)
   return (
     <Alert variant="danger" className="alert-banner banner-border">
       {props.children}

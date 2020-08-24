@@ -1,11 +1,13 @@
 import React from 'react'
 import { Form, Row, Col, Container } from 'react-bootstrap'
 import { Trans } from '@lingui/macro'
-import { Field } from 'formik'
+import { Field, ErrorMessage } from 'formik'
+import { Error } from '../alert'
 
 const DateEntry = ({ field, form, ...props }) => {
   let length = 2
   let dateClass = 'day-month'
+  const error = form.errors[`${field.name}`]
 
   if (props.type === 'year') {
     length = 4
@@ -17,7 +19,7 @@ const DateEntry = ({ field, form, ...props }) => {
       <Form.Group controlId={props.id}>
         <Form.Label className="date-label">{props.label}</Form.Label>
         <Form.Control
-          className={'date-input ' + dateClass}
+          className={'date-input ' + dateClass + (error ? ' field-error' : '')}
           type="text"
           {...field}
           maxLength={length}
@@ -28,6 +30,8 @@ const DateEntry = ({ field, form, ...props }) => {
 }
 
 export const DatePicker = ({ field, form, ...props }) => {
+  console.log(JSON.stringify(form, null, 2))
+
   return (
     <Container fluid>
       <Row>
@@ -35,6 +39,15 @@ export const DatePicker = ({ field, form, ...props }) => {
       </Row>
       <Row>
         <Form.Text className="input-help-text">{props.helpText}</Form.Text>
+      </Row>
+
+      <Row>
+        <ErrorMessage name={field.name + 'Day'} component={Error} />
+        <ErrorMessage name={field.name + 'Month'} component={Error} />
+        <ErrorMessage name={field.name + 'Year'} component={Error} />
+        {form.status.errors.happenedOnceError && (
+          <Error>{status.errors.happenedOnceError}</Error>
+        )}
       </Row>
 
       <Row className="date-group">

@@ -73,6 +73,12 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.field-error,
+.field-error:hover,
+.field-error:focus {
+  border-color: rgb(130, 39, 39);
+}
+
 /*Text Area*/
 
 .open-text-entry {
