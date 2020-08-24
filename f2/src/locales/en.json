@@ -282,8 +282,6 @@
   "locationPage.nextButton": "Continue",
   "locationPage.title": "Enter your location",
   "locationinfoPage.nextPage": "Next: Enter your contact details",
-  "locationinfoPage.postalCode": "Postal code",
-  "locationinfoPage.postalCodeExample": "For example: K1A 0R2",
   "locationinfoPage.skipButton": "Skip",
   "locationinfoPage.skipInfo": "If you’d rather not include your location, you can skip this step.",
   "methodPayment.creditCard": "Credit card",
