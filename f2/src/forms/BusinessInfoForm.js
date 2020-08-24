@@ -16,11 +16,6 @@ import { FormArrayControl } from '../components/FormArrayControl'
 import { RadioAdapter } from '../components/radio'
 
 export const BusinessInfoForm = (props) => {
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.businessInfo))
-      props.onSubmit(data)
-  }
-
   const [data] = useStateValue()
   const businessInfo = {
     ...formDefaults.businessInfo,
@@ -28,72 +23,116 @@ export const BusinessInfoForm = (props) => {
   }
   const { i18n } = useLingui()
 
-  const numberOfEmployee = [
-    'numberOfEmployee.1To99',
-    'numberOfEmployee.100To499',
-    'numberOfEmployee.500More',
+  const formOptions = [
+    {
+      name: 'oneTo99',
+      radioLabel: <Trans id="numberOfEmployee.1To99" />,
+      radioName: 'numberOfEmployee.1To99',
+    },
+    {
+      name: 'oneHundredTo499',
+      radioLabel: <Trans id="numberOfEmployee.100To499" />,
+      radioName: 'numberOfEmployee.100To499',
+    },
+    {
+      name: 'fiveHundredMore',
+      radioLabel: <Trans id="numberOfEmployee.500More" />,
+      radioName: 'numberOfEmployee.500More',
+    },
   ]
+
   return (
     <React.Fragment>
-      {false ? ( // mark ids for lingui
-        <div>
-          <Trans id="numberOfEmployee.1To99" />
-          <Trans id="numberOfEmployee.100To499" />
-          <Trans id="numberOfEmployee.500More" />
-        </div>
-      ) : null}
-      <Form
+      <Formik
         initialValues={businessInfo}
-        onSubmit={localOnSubmit}
-        render={({ handleSubmit }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            shouldWrapChildren
-            spacing={6}
-          >
-            <Field
-              name="nameOfBusiness"
-              label={<Trans id="businessPage.nameOfBusiness" />}
-              component={Input}
-            />
-
-            <Field
-              name="industry"
-              label={<Trans id="businessPage.industry" />}
-              helperText={<Trans id="businessPage.industryExample" />}
-              component={Input}
-            />
-
-            <Field
-              name="role"
-              label={<Trans id="businessPage.role" />}
-              helperText={<Trans id="businessPage.roleExample" />}
-              component={Input}
-            />
-            <FormArrayControl
-              name="numberOfEmployee"
-              label={<Trans id="numberOfEmployee.label" />}
-              helperText={<Trans id="numberOfEmployee.labelExample" />}
-            >
-              {numberOfEmployee.map((key) => {
-                return (
-                  <React.Fragment key={key}>
-                    <RadioAdapter name="numberOfEmployee" value={key}>
-                      {i18n._(key)}
-                    </RadioAdapter>
-                  </React.Fragment>
-                )
-              })}
-            </FormArrayControl>
-
-            <NextAndCancelButtons
-              next={<Trans id="businessInfoPage.nextPage" />}
-              button={<Trans id="businessInfoPage.nextButton" />}
-            />
-          </Stack>
+        onSubmit={(values) => {
+          props.onSubmit(values)
+        }}
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row className="form-question">
+                <ErrorMessage name="businessInfo" component={Error} />
+              </Row>
+              <Row className="form-section">
+                <FieldArray
+                  name="numberOfEmployee"
+                  className="form-section"
+                  render={() =>
+                    formOptionsReq.map((question) => {
+                      return (
+                        <React.Fragment key={question.name}>
+                          <Field
+                            name="numberOfEmployee"
+                            label={question.checkboxLabel}
+                            component={CheckBox}
+                            value={question.checkboxValue}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            type="checkbox"
+                            id={'checkbox-' + question.name}
+                          >
+                            <ErrorMessage
+                              name={question.name}
+                              component={Error}
+                            />
+                          </Field>
+                        </React.Fragment>
+                      )
+                    })
+                  }
+                />
+              </Row>
+              <Row className="form-question">
+                <Row className="form-label">
+                  <Trans id="informationPage.typeOfInfoObtained" />
+                </Row>
+                <Row className="form-helper-text">
+                  <Trans id="informationPage.typeOfInfoObtainedExample" />
+                </Row>
+                <ErrorMessage name="informationObtained" component={Error} />
+              </Row>
+              <Row className="form-section">
+                <FieldArray
+                  name="typeOfInfoObtained"
+                  className="form-section"
+                  render={() =>
+                    formOptionsObtained.map((question) => {
+                      return (
+                        <React.Fragment key={question.name}>
+                          <Field
+                            name="typeOfInfoObtained"
+                            label={question.checkboxLabel}
+                            component={CheckBox}
+                            value={question.checkboxValue}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            type="checkbox"
+                            id={'checkbox-' + question.name}
+                          >
+                            <ErrorMessage
+                              name={question.name}
+                              component={Error}
+                            />
+                          </Field>
+                        </React.Fragment>
+                      )
+                    })
+                  }
+                />
+              </Row>
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="businessInfoPage.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="businessInfoPage.nextPage" />}
+                />
+              </Row>
+            </Container>
+          </Form>
         )}
-      />
+      </Formik>
     </React.Fragment>
   )
 }
