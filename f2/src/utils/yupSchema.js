@@ -13,9 +13,7 @@ export const yupSchema = () => {
       <Trans id="contactinfoForm.email.warning" />,
     ),
     postalCodeSchema: Yup.string().matches(regexDef().postalCodeRegex, {
-      // <Trans id="locationInfoForm.Warning" />,
-      // excludeEmptyString: true,
-      message: 'Please enter a valid post code',
+      message: 'Please enter a valid postal code',
     }),
   }
 }

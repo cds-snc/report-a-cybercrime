@@ -9,6 +9,7 @@ import { NextCancelButtons, SkipButton } from '../components/formik/button'
 import { LocationInfoFormSchema } from './LocationInfoFormSchema'
 import { P } from '../components/paragraph'
 import { Input } from '../components/formik/input'
+import { Error } from '../components/formik/alert'
 
 export const LocationInfoForm = (props) => {
   const [data] = useStateValue()
@@ -44,11 +45,10 @@ export const LocationInfoForm = (props) => {
               onChange={handleChange}
               onBlur={handleBlur}
               id="postalCode"
-              type="postalCode"
+              type="text"
               helpText="For example: K1A 0R2"
-            >
-              <ErrorMessage name="postalCode" component={Error} />
-            </Field>
+            />
+            <ErrorMessage name="postalCode" component={Error} />
             <Row>
               <NextCancelButtons
                 submit={<Trans id="locationPage.nextButton" />}

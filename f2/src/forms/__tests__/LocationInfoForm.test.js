@@ -15,23 +15,6 @@ i18n.activate('en')
 
 const clickOn = (element) => fireEvent.click(element)
 
-// describe('postal code validation', () => {
-//   afterEach(cleanup)
-
-//   it('passes empty or correct postal codes', () => {
-//     expect(validate({ postalCode: '' }).postalCode).toBeUndefined()
-//     expect(validate({ postalCode: 'a1a2b2' }).postalCode).toBeUndefined()
-//     expect(validate({ postalCode: 'a1a 2b2' }).postalCode).toBeUndefined()
-//     expect(validate({ postalCode: 'A1a2B2' }).postalCode).toBeUndefined()
-//   })
-
-//   it('fails incorrect postal codes', () => {
-//     expect(validate({ postalCode: 'bad code' }).postalCode).not.toBeUndefined()
-//     expect(validate({ postalCode: '12345' }).postalCode).not.toBeUndefined()
-//     expect(validate({ postalCode: 'a1a242' }).postalCode).not.toBeUndefined()
-//   })
-// })
-
 describe('<LocationInfoForm />', () => {
   afterEach(cleanup)
 
