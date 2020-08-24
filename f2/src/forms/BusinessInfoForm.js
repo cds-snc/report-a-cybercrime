@@ -65,6 +65,17 @@ export const BusinessInfoForm = (props) => {
               </Row>
               <Row className="form-section">
                 <Field
+                  name="role"
+                  label={<Trans id="businessPage.role" />}
+                  helpText={<Trans id="businessPage.roleExample" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id={'type-of-industry'}
+                />
+              </Row>
+              <Row className="form-section">
+                <Field
                   name="industry"
                   label={<Trans id="businessPage.industry" />}
                   helpText={<Trans id="businessPage.industryExample" />}
