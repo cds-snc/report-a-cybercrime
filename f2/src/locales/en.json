@@ -196,6 +196,8 @@
   "fileUpload.CosmosDBFile": "CosmosDB file",
   "fileUpload.added": "File added",
   "fileUpload.adultScore": "Adult score",
+  "fileUpload.classification.cannotscan": "Could not scan content",
+  "fileUpload.classification.title": "Image classification",
   "fileUpload.fileAttachment": "File attachments",
   "fileUpload.fileAttachment.offensivewarning": "Image may be offensive",
   "fileUpload.fileAttachment.offensivewarning.block": "Warning:",
