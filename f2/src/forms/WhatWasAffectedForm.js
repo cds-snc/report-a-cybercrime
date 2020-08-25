@@ -8,6 +8,7 @@ import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
 import { Error } from '../components/formik/alert'
 import { NextCancelButtons } from '../components/formik/button'
+import { WhatWasAffectedFormSchema } from './WhatWasAffectedFormSchema'
 
 export const whatWasAffectedPages = [
   {
@@ -74,6 +75,7 @@ export const WhatWasAffectedForm = (props) => {
         onSubmit={(values) => {
           props.onSubmit(values)
         }}
+        validationSchema={WhatWasAffectedFormSchema()}
       >
         {({ handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
@@ -85,7 +87,7 @@ export const WhatWasAffectedForm = (props) => {
                 <Row className="form-helper-text">
                   <Trans id="whatWasAffectedForm.optionsHelpText" />
                 </Row>
-                <ErrorMessage name="whatWasAffected" component={Error} />
+                <ErrorMessage name="affectedOptions" component={Error} />
               </Row>
               <Row className="form-section">
                 <FieldArray
