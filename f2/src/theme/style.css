@@ -128,6 +128,22 @@ body {
   align-items: center;
 }
 
+.feedback-button {
+  background-color: rgb(30, 78, 140);
+  color: rgb(255, 255, 255);
+  border-color: rgb(24, 60, 31);
+}
+
+.feedback-button:hover,
+.feedback-button:focus {
+  background-color: rgb(30, 78, 140);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.feedback-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(24, 60, 31);
+}
+
 .submit-button {
   background-color: rgb(31, 81, 38);
   color: rgb(255, 255, 255);
