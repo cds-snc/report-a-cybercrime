@@ -34,6 +34,11 @@ export const SuspectCluesForm = (props) => {
 
   return (
     <React.Fragment>
+      {false ? ( // the following trans tags are for analyst email
+        <div>
+          <Trans id="suspectClues.suspectDetails" />
+        </div>
+      ) : null}
       <Formik
         initialValues={suspectClues}
         validationSchema={SuspectCluesFormSchema()}
@@ -67,9 +72,9 @@ export const SuspectCluesForm = (props) => {
             </Container>
 
             <NextCancelButtons
-              submit={<Trans id="howDidItStartPage.nextButton" />}
+              submit={<Trans id="suspectClues.nextButton" />}
               cancel={<Trans id="button.cancelReport" />}
-              label={<Trans id="howDidItStartPage.nextPage" />}
+              label={<Trans id="suspectClues.whatComesNext" />}
             />
           </Form>
         )}
