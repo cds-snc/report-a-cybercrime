@@ -39,7 +39,7 @@ export const DevicesForm = (props) => {
                   component={Input}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  id={'device'}
+                  id="device"
                 />
               </Row>
               <Row className="form-section">
@@ -50,7 +50,7 @@ export const DevicesForm = (props) => {
                   component={Input}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  id={'account'}
+                  id="account"
                 />
               </Row>
               <Row className="form-section">
