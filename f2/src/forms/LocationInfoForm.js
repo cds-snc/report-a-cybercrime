@@ -22,7 +22,6 @@ export const LocationInfoForm = (props) => {
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
-          <Trans id="locationinfoPage.postalCode" />
           <Trans id="locationinfoPage.postalCity" />
           <Trans id="locationinfoPage.postalCity.notFoundWarning" />
           <Trans id="locationinfoPage.postalProv" />
@@ -51,7 +50,7 @@ export const LocationInfoForm = (props) => {
               </P>
               <Field
                 name="postalCode"
-                label="Postal code"
+                label={<Trans id="locationinfoPage.postalCode" />}
                 component={Input}
                 onChange={handleChange}
                 onBlur={handleBlur}
