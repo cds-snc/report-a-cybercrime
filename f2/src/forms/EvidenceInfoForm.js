@@ -109,6 +109,8 @@ export const EvidenceInfoForm = (props) => {
           <Trans id="fileUpload.fileDescription" />
           <Trans id="fileUpload.fileSize" />
           <Trans id="fileUpload.CosmosDBFile" />
+          <Trans id="fileUpload.classification.title" />
+          <Trans id="fileUpload.classification.cannotscan" />
           <Trans id="fileUpload.malwareScan" />
           <Trans id="fileUpload.malwareScan.clean" />
           <Trans id="fileUpload.isAdult" />
