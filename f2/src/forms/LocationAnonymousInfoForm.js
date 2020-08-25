@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
@@ -15,44 +16,46 @@ export const LocationAnonymousInfoForm = (props) => {
   }
 
   return (
-    <Formik
-      initialValues={location}
-      onSubmit={(values) => {
-        props.onSubmit(values)
-      }}
-    >
-      {({ handleSubmit, handleChange, handleBlur }) => (
-        <Form onSubmit={handleSubmit}>
-          <Container>
-            <Field
-              name="city"
-              label={<Trans id="LocationAnonymousInfoForm.city" />}
-              component={Input}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              id="city"
-              type="text"
-            />
-            <Field
-              name="province"
-              label={<Trans id="LocationAnonymousInfoForm.province" />}
-              component={Input}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              id="province"
-              type="text"
-            />
-            <Row>
-              <NextCancelButtons
-                submit={<Trans id="LocationAnonymousInfoForm.nextButton" />}
-                cancel={<Trans id="button.cancelReport" />}
-                label={<Trans id="LocationAnonymousInfoForm.nextPage" />}
+    <React.Fragment>
+      <Formik
+        initialValues={location}
+        onSubmit={(values) => {
+          props.onSubmit(values)
+        }}
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Field
+                name="city"
+                label={<Trans id="LocationAnonymousInfoForm.city" />}
+                component={Input}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                id="city"
+                type="text"
               />
-            </Row>
-          </Container>
-        </Form>
-      )}
-    </Formik>
+              <Field
+                name="province"
+                label={<Trans id="LocationAnonymousInfoForm.province" />}
+                component={Input}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                id="province"
+                type="text"
+              />
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="LocationAnonymousInfoForm.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="LocationAnonymousInfoForm.nextPage" />}
+                />
+              </Row>
+            </Container>
+          </Form>
+        )}
+      </Formik>
+    </React.Fragment>
   )
 }
 
