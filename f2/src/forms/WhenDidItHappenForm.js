@@ -7,10 +7,11 @@ import { Formik, Field, FieldArray, ErrorMessage } from 'formik'
 import { Radio } from '../components/formik/radio'
 import { DatePicker } from '../components/formik/datePicker'
 import { NextCancelButtons } from '../components/formik/button'
-import { Error, Info } from '../components/formik/alert'
+import { Error, Info, ErrorSummary } from '../components/formik/alert'
 import { TextArea } from '../components/formik/textArea'
 import { whenDidItHappenFormSchema } from './whenDidItHappenFormSchema'
-import moment from 'moment'
+import { evalDate, evalDateRange } from '../utils/validateDate'
+import { FormikListener } from '../components/formik/formikListener'
 
 export const WhenDidItHappenForm = (props) => {
   const [data] = useStateValue()
@@ -56,97 +57,56 @@ export const WhenDidItHappenForm = (props) => {
     },
   ]
 
+  const clearHappenedOnce = (values) => {
+    values.happenedOnceDay = ''
+    values.happenedOnceMonth = ''
+    values.happenedOnceYear = ''
+  }
+
+  const clearDateRange = (values) => {
+    values.startDay = ''
+    values.startMonth = ''
+    values.startYear = ''
+    values.endDay = ''
+    values.endMonth = ''
+    values.endYear = ''
+  }
+
+  const clearDescription = (values) => {
+    values.description = ''
+  }
+
   const formatData = (values) => {
     let errors = {}
 
     if (values.incidentFrequency === 'once') {
-      errors['happenedOnceError'] = evalDate(
+      const happenedOnceError = evalDate(
         values.happenedOnceDay,
         values.happenedOnceMonth,
         values.happenedOnceYear,
       )
 
-      values.startDay = ''
-      values.startMonth = ''
-      values.startYear = ''
-      values.endDay = ''
-      values.endMonth = ''
-      values.endYear = ''
-
-      values.description = ''
-    } else if (values.incidentFrequency === 'moreThanOnce') {
-      errors = evalDateRange(values)
-
-      values.happenedOnceDay = ''
-      values.happenedOnceMonth = ''
-      values.happenedOnceYear = ''
-
-      values.description = ''
-    } else {
-      values.happenedOnceDay = ''
-      values.happenedOnceMonth = ''
-      values.happenedOnceYear = ''
-      values.startDay = ''
-      values.startMonth = ''
-      values.startYear = ''
-      values.endDay = ''
-      values.endMonth = ''
-      values.endYear = ''
-    }
-
-    return errors
-  }
-
-  const evalDate = (day, month, year) => {
-    const date = moment(`${month} ${day} ${year}`, 'MM DD YYYY')
-
-    if (!date.isValid()) {
-      return 'Invalid date'
-    }
-
-    if (date.isAfter(moment.now())) {
-      return 'Date cannot be in the future'
-    }
-
-    return null
-  }
-
-  const evalDateRange = (values) => {
-    const errors = {}
-    let startDate = null
-    let endDate = null
-
-    if (values.startDay || values.startMonth || values.startYear) {
-      errors['starError'] = evalDate(
-        values.startDay,
-        values.startMonth,
-        values.startYear,
-      )
-
-      startDate = moment(
-        `${values.startMonth} ${values.startDay} ${values.startYear}`,
-        'MM DD YYYY',
-      )
-    }
-
-    if (values.endDay || values.endMonth || values.endYear) {
-      errors['endError'] = evalDate(
-        values.endDay,
-        values.endMonth,
-        values.endYear,
-      )
-
-      endDate = moment(
-        `${values.endMonth} ${values.endDay} ${values.endYear}`,
-        'MM DD YYYY',
-      )
-    }
-    console.log(`${startDate} - ${endDate}`)
-
-    if (startDate && endDate) {
-      if (startDate.isAfter(endDate)) {
-        errors['endError'] = 'End date must be after start date'
+      if (happenedOnceError) {
+        errors['happenedOnceError'] = happenedOnceError
+      } else {
+        clearDateRange(values)
+        clearDescription(values)
       }
+    } else if (values.incidentFrequency === 'moreThanOnce') {
+      const dateRangeErrors = evalDateRange(values)
+
+      if (dateRangeErrors.startError) {
+        errors['startError'] = dateRangeErrors.startError
+      }
+
+      if (dateRangeErrors.endError) {
+        errors['endError'] = dateRangeErrors.endError
+      }
+      clearHappenedOnce(values)
+      clearDescription(values)
+    } else {
+      clearHappenedOnce(values)
+      clearDateRange(values)
     }
 
     return errors
@@ -158,17 +118,18 @@ export const WhenDidItHappenForm = (props) => {
         initialValues={whenDidItHappen}
         initialStatus={{ errors: '' }}
         validationSchema={whenDidItHappenFormSchema()}
+        validateOnChange={false}
         onSubmit={(values, { setStatus }) => {
           const errors = formatData(values)
-          Object.keys(errors).forEach((key) => {
-            setStatus({ errors: { [key]: errors[key] } })
-          })
-          console.log(JSON.stringify(errors, null, 2))
-          console.log(JSON.stringify(values, null, 2))
+          setStatus({ errors })
+          if (Object.keys(errors).length === 0) {
+            props.onSubmit(values)
+          }
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, setErrors }) => (
+        {({ handleSubmit, handleChange, handleBlur, status, errors }) => (
           <Form onSubmit={handleSubmit}>
+            <FormikListener />
             <Container>
               <Row className="form-question">
                 <Row className="form-label">
@@ -176,6 +137,7 @@ export const WhenDidItHappenForm = (props) => {
                 </Row>
               </Row>
               <Row className="form-section">
+                {status.errors && <ErrorSummary />}
                 <ErrorMessage name="incidentFrequency" component={Error} />
                 <FieldArray
                   name="incidentFrequency"
@@ -255,6 +217,7 @@ export const WhenDidItHappenForm = (props) => {
 
               <Row>
                 <NextCancelButtons
+                  errors={status.errors || Object.keys(errors).length > 0}
                   submit={<Trans id="howDidItStartPage.nextButton" />}
                   cancel={<Trans id="button.cancelReport" />}
                   label={<Trans id="whenDidItHappenPage.nextPage" />}

@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import { Trans } from '@lingui/macro'
+import { Row, Container } from 'react-bootstrap'
 import { Alert } from 'react-bootstrap'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { IoIosWarning } from 'react-icons/io'
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
 
 export const Error = (props) => {
-  console.log(`${JSON.stringify(props.children, null, 2)}`)
   return (
     <Alert variant="danger" className="alert-banner banner-border">
       {props.children}
@@ -37,5 +38,31 @@ export const Success = (props) => {
       <IoIosCheckmarkCircleOutline className="alert-icon" />
       {props.children}
     </Alert>
+  )
+}
+
+export const ErrorSummary = () => {
+  const errorSummaryRef = useRef(null)
+
+  const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+
+  useEffect(() => {
+    scrollToRef(errorSummaryRef)
+  }, [])
+
+  return (
+    <Container>
+      <Row>
+        <Alert
+          variant="danger"
+          className="banner-border error-summary"
+          ref={errorSummaryRef}
+        >
+          <Row className="error-summary-title ">
+            <Trans id="default.hasValidationErrors" />
+          </Row>
+        </Alert>
+      </Row>
+    </Container>
   )
 }

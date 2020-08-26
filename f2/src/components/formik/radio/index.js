@@ -13,7 +13,7 @@ export const Radio = ({ field, form, ...props }) => {
         label={props.label}
         custom
       />
-      {field.checked && (
+      {field.checked && props.children && (
         <div className="conditional-field">{props.children}</div>
       )}
     </Row>

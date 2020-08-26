@@ -30,8 +30,6 @@ const DateEntry = ({ field, form, ...props }) => {
 }
 
 export const DatePicker = ({ field, form, ...props }) => {
-  console.log(JSON.stringify(form, null, 2))
-
   return (
     <Container fluid>
       <Row>
@@ -44,9 +42,9 @@ export const DatePicker = ({ field, form, ...props }) => {
       <Row>
         {(form.errors[field.name + 'Day'] ||
           form.errors[field.name + 'Month'] ||
-          form.errors[field.name + 'Year'] ||
-          form.status.errors[field.name + 'Error']) && (
-          <Error>Invalid date</Error>
+          form.errors[field.name + 'Year']) && <Error>Invalid date</Error>}
+        {form.status.errors && form.status.errors[field.name + 'Error'] && (
+          <Error>{form.status.errors[field.name + 'Error']}</Error>
         )}
       </Row>
 
@@ -54,7 +52,6 @@ export const DatePicker = ({ field, form, ...props }) => {
         <Field
           name={field.name + 'Day'}
           component={DateEntry}
-          onChange={props.onChange}
           id={props.id + 'Day'}
           value={props.day}
           label={<Trans id="whenDidItStart.startDay" />}
@@ -62,7 +59,6 @@ export const DatePicker = ({ field, form, ...props }) => {
         <Field
           name={field.name + 'Month'}
           component={DateEntry}
-          onChange={props.onChange}
           id={props.id + 'Month'}
           value={props.month}
           label={<Trans id="whenDidItStart.startMonth" />}
@@ -70,7 +66,6 @@ export const DatePicker = ({ field, form, ...props }) => {
         <Field
           name={field.name + 'Year'}
           component={DateEntry}
-          onChange={props.onChange}
           id={props.id + 'Year'}
           value={props.year}
           type="year"

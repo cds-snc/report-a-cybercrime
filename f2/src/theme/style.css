@@ -73,6 +73,15 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.error-summary-title {
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+}
+
+.error-summary {
+  width: 100%;
+}
+
 .field-error,
 .field-error:hover,
 .field-error:focus {
@@ -85,7 +94,7 @@ body {
   margin-top: 0.75rem;
   min-height: 80px;
   border-color: rgb(174, 174, 174);
-  width: 80%;
+  width: 100%;
 }
 
 .open-text-entry:hover {
@@ -98,6 +107,10 @@ body {
   box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
   outline: none;
   border-color: rgb(42, 105, 172);
+}
+
+.large-text-area {
+  height: 300px !important;
 }
 
 .conditional-field {
@@ -119,6 +132,13 @@ body {
   border-radius: 4px;
   border-style: outset;
   min-width: 8rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+.button-container {
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 
 .button-label {
@@ -134,7 +154,8 @@ body {
   align-items: center;
 }
 
-.submit-button {
+.submit-button,
+.submit-button:disabled {
   background-color: rgb(31, 81, 38);
   color: rgb(255, 255, 255);
   border-color: rgb(24, 60, 31);
@@ -150,21 +171,21 @@ body {
   background-color: rgb(24, 60, 31);
 }
 
-.cancel-button {
+.default-button {
   background-color: rgb(232, 232, 232);
   color: rgb(0, 0, 0);
   border-color: rgb(213, 213, 213);
   margin-left: 16px;
 }
 
-.cancel-button:hover,
-.cancel-button:focus {
+.default-button:hover,
+.default-button:focus {
   background-color: rgb(232, 232, 232);
   box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
   color: rgb(0, 0, 0);
 }
 
-.cancel-button:not(:disabled):not(.disabled):active {
+.default-button:not(:disabled):not(.disabled):active {
   background-color: rgb(213, 213, 213);
   color: rgb(0, 0, 0);
 }
@@ -234,6 +255,18 @@ body {
 
 .black-button-link:hover {
   color: inherit;
+}
+
+.mid-form-feedback-button-label {
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.mid-form-feedback-button {
+  border-color: rgb(174, 174, 174);
+  padding: 1rem 1.5rem;
+  height: inherit;
+  margin-left: 0rem;
 }
 
 /*Checkboxes and Radio Buttons*/

@@ -2,6 +2,7 @@
 import isFuture from 'date-fns/isFuture'
 import getDaysInMonth from 'date-fns/getDaysInMonth'
 import { containsData } from './containsData'
+import moment from 'moment'
 
 export const validateDate = (y, m, d) => {
   const year = parseInt(y, 10)
@@ -63,4 +64,68 @@ export const validateDateRange = (startDate, endDate) => {
   }
 
   return dateRange
+}
+
+export const evalDate = (day, month, year) => {
+  const date = moment(`${month} ${day} ${year}`, 'MM DD YYYY')
+
+  if (!date.isValid()) {
+    return 'Invalid date'
+  }
+
+  if (date.isAfter(moment.now())) {
+    return 'Date cannot be in the future'
+  }
+
+  return
+}
+
+export const evalDateRange = (values) => {
+  let errors = {}
+  let startDate = null
+  let endDate = null
+
+  console.log('Eval Date Range - ', JSON.stringify(values, null, 2))
+
+  if (values.startDay && values.startMonth && values.startYear) {
+    const startError = evalDate(
+      values.startDay,
+      values.startMonth,
+      values.startYear,
+    )
+
+    if (startError) {
+      errors['startError'] = startError
+    } else {
+      startDate = moment(
+        `${values.startMonth} ${values.startDay} ${values.startYear}`,
+        'MM DD YYYY',
+      )
+    }
+  } else {
+    errors['startError'] = 'Invalid date'
+  }
+
+  if (values.endDay && values.endMonth && values.endYear) {
+    const endError = evalDate(values.endDay, values.endMonth, values.endYear)
+
+    if (endError) {
+      errors['endError'] = endError
+    } else {
+      endDate = moment(
+        `${values.endMonth} ${values.endDay} ${values.endYear}`,
+        'MM DD YYYY',
+      )
+    }
+  } else {
+    errors['endError'] = 'Invalid date'
+  }
+
+  if (startDate && endDate) {
+    if (startDate.isAfter(endDate)) {
+      errors['endError'] = 'End date must be after start date'
+    }
+  }
+
+  return errors
 }

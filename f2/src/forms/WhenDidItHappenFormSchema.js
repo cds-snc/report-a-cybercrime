@@ -1,11 +1,7 @@
 import * as Yup from 'yup'
 import { yupSchema } from '../utils/yupSchema'
 
-const dateValidations = {
-  DAY: yupSchema().daySchema,
-  MONTH: yupSchema().monthSchema,
-  YEAR: yupSchema().yearSchema,
-}
+const { dateSchema } = yupSchema()
 
 const validationSelection = (selection, validation) => ({
   is: selection,
@@ -17,39 +13,39 @@ const whenDidItHappenForm = Yup.object().shape({
   incidentFrequency: Yup.string().required('Please make a selection'),
   startDay: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateValidations.DAY),
+    validationSelection('moreThanOnce', dateSchema.DAY),
   ),
   startMonth: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateValidations.MONTH),
+    validationSelection('moreThanOnce', dateSchema.MONTH),
   ),
   startYear: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateValidations.YEAR),
+    validationSelection('moreThanOnce', dateSchema.YEAR),
   ),
   endDay: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateValidations.DAY),
+    validationSelection('moreThanOnce', dateSchema.DAY),
   ),
   endMonth: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateValidations.MONTH),
+    validationSelection('moreThanOnce', dateSchema.MONTH),
   ),
   endYear: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateValidations.YEAR),
+    validationSelection('moreThanOnce', dateSchema.YEAR),
   ),
   happenedOnceDay: Yup.number().when(
     'incidentFrequency',
-    validationSelection('once', dateValidations.DAY),
+    validationSelection('once', dateSchema.DAY),
   ),
   happenedOnceMonth: Yup.number().when(
     'incidentFrequency',
-    validationSelection('once', dateValidations.MONTH),
+    validationSelection('once', dateSchema.MONTH),
   ),
   happenedOnceYear: Yup.number().when(
     'incidentFrequency',
-    validationSelection('once', dateValidations.YEAR),
+    validationSelection('once', dateSchema.YEAR),
   ),
   description: Yup.string(),
 })
