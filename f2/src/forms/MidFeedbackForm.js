@@ -1,55 +1,66 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { H1, H2 } from '../components/header'
-import { useLingui } from '@lingui/react'
+import { SubmitButton } from '../components/formik/button'
+//import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { useLocation } from 'react-router-dom'
-import { Stack, Box } from '@chakra-ui/core'
-import { containsData } from '../utils/containsData'
+import { useStateValue } from '../utils/state'
+import { Error } from '../components/formik/alert'
+//import { A } from '../components/formik/link'
+//import { P } from '../components/formik/paragraph'
+//import { formDefaults } from './defaultValues'
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
+import { CheckBox } from '../components/formik/checkbox'
+//import { NextCancelButtons } from '../components/formik/button'
+import { InfoCard } from '../components/container'
+import { Stack } from '@chakra-ui/core'
 import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
-import { InfoCard } from '../components/container'
-import { CheckboxAdapter } from '../components/checkbox'
-import { FormArrayControl } from '../components/FormArrayControl'
-import { Field } from '../components/Field'
-import { Row } from '../components/layout'
-import { Alert } from '../components/Messages'
 
 export const MidFeedbackForm = (props) => {
-  const [status, setStatus] = useState('')
+  const [status] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  const location = useLocation()
-
-  const validate = () => {
-    return {}
+  const [data] = useStateValue()
+  const information = {
+    ...data.formData.personalInformation,
   }
-
-  const { i18n } = useLingui()
+  // const validate = () => {
+  //   return {}
+  // }
 
   const midFeedback = [
-    'midFeedback.problem.confusing',
-    'midFeedback.problem.broken',
-    'midFeedback.problem.adaptive',
-    'midFeedback.problem.worry',
-    'midFeedback.problem.other',
+    {
+      name: 'confuseProblem',
+      checkboxLabel: <Trans id="midFeedback.problem.confusing" />,
+      checkboxValue: 'typeOfInfoReq.creditCard',
+    },
+    {
+      name: 'brokenProblem',
+      checkboxLabel: <Trans id="midFeedback.problem.broken" />,
+      checkboxValue: 'typeOfInfoReq.dob',
+    },
+    {
+      name: 'adaptiveProblem',
+      checkboxLabel: <Trans id="midFeedback.problem.adaptive" />,
+      checkboxValue: 'typeOfInfoReq.homeAddress',
+    },
+    {
+      name: 'worryProblem',
+      checkboxLabel: <Trans id="midFeedback.problem.worry" />,
+      checkboxValue: 'typeOfInfoReq.sin',
+    },
+    {
+      name: 'otherProblem',
+      checkboxLabel: <Trans id="midFeedback.problem.other" />,
+      checkboxValue: 'typeOfInfoReq.other',
+    },
   ]
-
-  let showWarning = false
 
   return (
     <React.Fragment>
-      {false ? ( // mark ids for lingui
-        <div>
-          <Trans id="midFeedback.problem.confusing" />
-          <Trans id="midFeedback.problem.broken" />
-          <Trans id="midFeedback.problem.adaptive" />
-          <Trans id="midFeedback.problem.worry" />
-          <Trans id="midFeedback.problem.other" />
-        </div>
-      ) : null}
-
       {status ? (
         <Row>
           <InfoCard
@@ -63,7 +74,7 @@ export const MidFeedbackForm = (props) => {
           </InfoCard>
         </Row>
       ) : (
-        <Box>
+        <Container>
           <Button
             onClick={() => setIsOpen(!isOpen)}
             h="inherit"
@@ -92,77 +103,105 @@ export const MidFeedbackForm = (props) => {
               <H1 as="p">
                 <Trans id="midFeedback.title" />
               </H1>
-              <Form
-                initialValues={{
-                  page: location.pathname,
-                  midFeedback: [],
-                  problemDescription: '',
-                }}
-                onSubmit={(values) => {
-                  if (
-                    !containsData([
-                      values.midFeedback,
-                      values.problemDescription,
-                    ])
-                  ) {
-                    showWarning = true
-                  } else {
-                    setStatus('feedback.submitted')
-                    props.onSubmit(values)
-                  }
-                }}
-                validate={validate}
-                render={({ handleSubmit, values }) => (
-                  <Stack
-                    as="form"
-                    onSubmit={handleSubmit}
-                    shouldWrapChildren
-                    spacing={6}
-                  >
-                    {showWarning ? (
-                      <Alert status="error">
-                        <Trans id="finalFeedback.warning" />
-                      </Alert>
-                    ) : null}
 
-                    <FormArrayControl
-                      name="midFeedback"
-                      label={<Trans id="midFeedback.problem.label" />}
-                      helperText={<Trans id="midFeedback.problem.helperText" />}
-                    >
-                      {midFeedback.map((key) => {
-                        return (
-                          <React.Fragment key={key}>
-                            <CheckboxAdapter name="midFeedback" value={key}>
-                              {i18n._(key)}
-                            </CheckboxAdapter>
-                          </React.Fragment>
-                        )
-                      })}
-                    </FormArrayControl>
-                    <Field
-                      name="problemDescription"
-                      label={<Trans id="midFeedback.description.label" />}
-                      helperText={
-                        <Trans id="midFeedback.description.helperText" />
-                      }
-                      component={TextArea}
-                    />
-                    <Button
-                      type="submit"
-                      w={{ base: '100%', md: 'auto' }}
-                      variantColor="blue"
-                      variant="solid"
-                    >
-                      <Trans id="midFeedback.submit" />
-                    </Button>
-                  </Stack>
+              <Formik
+                initialValues={information}
+                onSubmit={(values) => {
+                  props.onSubmit(values)
+                }}
+              >
+                {({ handleSubmit, handleChange, handleBlur }) => (
+                  <Form onSubmit={handleSubmit}>
+                    <Container>
+                      <Row className="form-question" lg={1}>
+                        <Row className="form-label">
+                          <Trans id="midFeedback.problem.label" />
+                        </Row>
+                        <Row className="form-helper-text">
+                          <Trans id="midFeedback.problem.helperText" />
+                        </Row>
+                        <ErrorMessage name="informationReq" component={Error} />
+                      </Row>
+                      <Row className="form-section">
+                        <FieldArray
+                          name="typeOfInfoReq"
+                          className="form-section"
+                          render={() =>
+                            midFeedback.map((question) => {
+                              return (
+                                <React.Fragment key={question.name}>
+                                  <Field
+                                    name="feedback"
+                                    label={question.checkboxLabel}
+                                    component={CheckBox}
+                                    value={question.checkboxValue}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    type="checkbox"
+                                    id={'checkbox-' + question.name}
+                                  >
+                                    {/* <ErrorMessage
+                              name={question.name}
+                              component={Error}
+                            /> */}
+                                  </Field>
+
+                                  {/* <ErrorMessage name="postalCode" component={Error} /> */}
+                                </React.Fragment>
+                              )
+                            })
+                          }
+                        />
+                      </Row>
+                      <br />
+                      <Container>
+                        <Row className="form-question" lg={1}>
+                          <Row className="form-label">
+                            <Trans id="midFeedback.description.label" />
+                          </Row>
+                          <Row className="form-helper-text">
+                            <Trans id="midFeedback.description.helperText" />
+                          </Row>
+                        </Row>
+                        <Row className="form-section">
+                          <Field
+                            name="problemDescription"
+                            //label={<Trans id="midFeedback.description.label" />}
+                            component={TextArea}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            id="problemDescription"
+                            type="text"
+                            //helpText= {<Trans id="midFeedback.description.helperText" />}
+                          />
+                        </Row>
+                      </Container>
+
+                      <Row>
+                        <SubmitButton
+                          type="submit"
+                          submit={<Trans id="midFeedback.submit" />}
+                        />
+                      </Row>
+
+                      {/* <Row>
+                <NextCancelButtons>
+                submit= {<Trans id="midFeedback.submit" />}
+                cancel={<Trans id="button.cancelReport" />}
+
+                  </NextCancelButtons>
+              </Row> */}
+                    </Container>
+                  </Form>
                 )}
-              />
+              </Formik>
             </Stack>
           )}
-        </Box>
+        </Container>
       )}
     </React.Fragment>
   )
+}
+MidFeedbackForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }
