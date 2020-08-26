@@ -127,7 +127,7 @@ export const InformationForm = (props) => {
                   }
                 />
               </Row>
-              <Row className="form-question">
+              <Row className="form-question" lg={1}>
                 <Row className="form-label">
                   <Trans id="informationPage.typeOfInfoObtained" />
                 </Row>
