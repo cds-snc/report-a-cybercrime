@@ -3,7 +3,3 @@ import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
 After(() => {
   cy.reportA11y()
 })
-
-Then('Take summary page screenshot', (content) => {
-  cy.screenshot('reportSummaryFrench')
-})

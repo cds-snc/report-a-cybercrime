@@ -1,6 +1,6 @@
 import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
 
-when('I fill Howwaspersonalinformationaffected page forms', () => {
+when('I fill Howwaspersonalinformationaffected in French page forms', () => {
   cy.get('form')
     .find('[value="typeOfInfoReq.creditCard"]')
     .check({ force: true })
@@ -10,7 +10,7 @@ when('I fill Howwaspersonalinformationaffected page forms', () => {
     .check({ force: true })
   cy.get('form').find('[value="typeOfInfoReq.sin"]').check({ force: true })
   cy.get('form').find('[value="typeOfInfoReq.other"]').check({ force: true })
-  cy.get('form').find('[id="infoReqOther"]').type('Permis de conduire')
+  cy.get('form').find('[name="infoReqOther"]').type('Permis de conduire')
   cy.get('form')
     .find('[value="typeOfInfoObtained.creditCard"]')
     .check({ force: true })
@@ -22,5 +22,5 @@ when('I fill Howwaspersonalinformationaffected page forms', () => {
   cy.get('form')
     .find('[value="typeOfInfoObtained.other"]')
     .check({ force: true })
-  cy.get('form').find('[id="infoObtainedOther"]').type('Permis de conduire')
+  cy.get('form').find('[name="infoObtainedOther"]').type('Permis de conduire')
 })

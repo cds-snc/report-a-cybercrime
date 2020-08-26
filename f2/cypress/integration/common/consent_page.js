@@ -1,7 +1,8 @@
 import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
 
 And('I click continue without checking consent', () => {
-  cy.get('[data-cy=submit]').click({ force: true })
+  //cy.get('[data-cy=submit]').first().click({ force: true })
+  cy.contains('Continue').first().click({ force: true })
 })
 
 Given('{string} should be shown', (content) => {

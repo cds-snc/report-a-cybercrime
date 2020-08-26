@@ -13,12 +13,22 @@ Feature: Test the entire report workflow in english
 
   Scenario: Report anonymously
     Given "Report anonymously?" should be shown
-    When I fill ReportAnonymously page forms
+    When I fill NoReportAnonymously page forms
+    Then I click "Continue"
+
+  Scenario: Who are you reporting for
+    Given "Who are you reporting for?" should be shown
+    When I fill WhoAreYouReportingSomeOne page forms
     Then I click "Continue"
 
   Scenario: How did it start
     Given "How did the incident start?" should be shown
     When I fill howdiditstart page forms
+    Then I click "Continue"
+
+  Scenario: When did the incident happen
+    Given "When did the incident happen?" should be shown
+    When I fill whendidithappenmore page forms
     Then I click "Continue"
 
   Scenario: What could be affected
@@ -36,7 +46,7 @@ Feature: Test the entire report workflow in english
     When I fill Howwaspersonalinformationaffected forms
     Then I click "Continue"
 
-  Scenario: How was personal information affected
+  Scenario: How was your devices affected
     Given "How were your devices or accounts affected?" should be shown
     When I fill Howwereyourdevicesaffected page forms
     Then I click "Continue"
@@ -58,12 +68,12 @@ Feature: Test the entire report workflow in english
 
   Scenario: Attach supporting evidence
     Given "Attach supporting evidence" should be shown
-    When I fill AttachSupportingEvidence page forms
+    When I fill AttachSupportingEvidenceSensitive page forms
     Then I click "Continue"
 
   Scenario: your location
     Given "Enter your location" should be shown
-    When I fill to yourLocation page forms
+    When I fill postalCode1 page forms
     Then I click "Continue"
 
   Scenario: your contact details
@@ -74,7 +84,7 @@ Feature: Test the entire report workflow in english
   Scenario: Review  your report and  capture a screenshot
     Given "Review your report" should be shown
     Then Take summary page screenshot
-    Then I click "submit report"
+    Then I submit report
 
   Scenario: Confirm Report ID is generated
     Then "Thank you for reporting" should be shown

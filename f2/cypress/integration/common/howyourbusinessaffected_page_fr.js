@@ -1,6 +1,6 @@
 import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
 
-When('I fill Howyourbusinessaffected page forms', () => {
+When('I fill Howyourbusinessaffected in French page forms', () => {
   cy.get('form')
     .find('[name="nameOfBusiness"]')
     .type('Health & Wellness Bedford')

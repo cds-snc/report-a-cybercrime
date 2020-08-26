@@ -1,6 +1,6 @@
 import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
 
-When('I fill AttachSupportingEvidence page forms', () => {
+When('I fill AttachSupportingEvidence in French page forms', () => {
   const fileName1 = 'sample.txt'
   const fileName2 = 'testFile.pdf'
   const fileName3 = 'March_2020.pdf'
