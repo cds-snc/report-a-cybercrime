@@ -45,7 +45,7 @@ Given('{string} should be shown', (content) => {
 When('I fill Whathappened page forms', () => {
   cy.fixture('form_data.json').then((user) => {
     var large = user.small_fr
-    cy.get('form').find('[id="whatHappened"]').type(large)
+    cy.get('form').find('[name="whatHappened"]').type(large)
   })
 })
 
@@ -78,7 +78,7 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill yourLocation page forms', () => {
-  cy.get('form').find('[id="postalCode"]').type('h1n2c9')
+  cy.get('form').find('[name="postalCode"]').type('h1n2c9')
 })
 
 Then('I click {string}', () => {
@@ -90,9 +90,9 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill yourContactDetails page forms', () => {
-  cy.get('form').find('[id="fullName"]').type('Nom Prenom')
-  cy.get('form').find('[id="email"]').type('hong.vu@rcmp-grc.gc.ca')
-  cy.get('form').find('[id="phone"]').type('514-030-0233')
+  cy.get('form').find('[name="fullName"]').type('Nom Prenom')
+  cy.get('form').find('[name="email"]').type('hong.vu@rcmp-grc.gc.ca')
+  cy.get('form').find('[name="phone"]').type('514-030-0233')
 })
 
 Then('I click {string}', () => {
