@@ -59,7 +59,7 @@ export const WhatHappenedForm = (props) => {
                 component={TextArea}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                rows="10"
+                rows="12"
                 id="textarea-whatHappened"              >
               </Field>
             </Row>
