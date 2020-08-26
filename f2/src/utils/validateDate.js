@@ -85,8 +85,6 @@ export const evalDateRange = (values) => {
   let startDate = null
   let endDate = null
 
-  console.log('Eval Date Range - ', JSON.stringify(values, null, 2))
-
   if (values.startDay && values.startMonth && values.startYear) {
     const startError = evalDate(
       values.startDay,
