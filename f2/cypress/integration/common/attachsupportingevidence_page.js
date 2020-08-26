@@ -2,7 +2,7 @@ import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
 
 When('I fill AttachSupportingEvidence page forms', () => {
   const fileName = 'fake.jpg'
-  cy.get('#uploader').uploadFile(fileName, 'text/plain')
+  cy.get('#uploader').uploadFile(fileName, 'image/jpeg')
   cy.wait(1000)
 })
 
