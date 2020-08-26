@@ -40,6 +40,7 @@ export const ConfirmationForm = (props) => {
           <Trans id="analystReport.affected.other" />
           <Trans id="analystReport.selfHarmString" />
           <Trans id="analystReport.selfHarmWord" />
+          <Trans id="analystReport.incidentInformation" />
         </div>
       ) : null}
       <Form
