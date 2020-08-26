@@ -61,7 +61,7 @@ When('I fill Whoareyoureporting page forms', () => {
     .find('[value="whoAreYouReportForPage.options.business"]')
     .check({ force: true })
   cy.get('form')
-    .find('[id="businessDescription"]')
+    .find('[name="businessDescription"]')
     .type(
       'Bed Bath & Beyond, https://www.bedbathandbeyond.ca/, Phone: (416) 205-9653',
     )
@@ -98,12 +98,12 @@ Given('{string} should be shown', (content) => {
 
 When('I fill whendidithappen page forms', () => {
   cy.get('form').find('[value="moreThanOnce"]').check({ force: true })
-  cy.get('form').find('[id="startDay"]').type('16')
-  cy.get('form').find('[id="startMonth"]').type('6')
-  cy.get('form').find('[id="startYear"]').type('2020')
-  cy.get('form').find('[id="endDay"]').type('30')
-  cy.get('form').find('[id="endMonth"]').type('6')
-  cy.get('form').find('[id="endYear"]').type('2020')
+  cy.get('form').find('[name="startDay"]').type('16')
+  cy.get('form').find('[name="startMonth"]').type('6')
+  cy.get('form').find('[name="startYear"]').type('2020')
+  cy.get('form').find('[name="endDay"]').type('30')
+  cy.get('form').find('[name="endMonth"]').type('6')
+  cy.get('form').find('[name="endYear"]').type('2020')
 })
 
 Then('I click {string}', () => {
@@ -141,8 +141,8 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill Howwereyourmoney page forms', () => {
-  cy.get('form').find('[id="demandedMoney"]').type('$10000 CAD')
-  cy.get('form').find('[id="moneyTaken"]').type('$5000 CAD')
+  cy.get('form').find('[name="demandedMoney"]').type('$10000 CAD')
+  cy.get('form').find('[name="moneyTaken"]').type('$5000 CAD')
   cy.get('form')
     .find('[value="methodPayment.eTransfer"]')
     .check({ force: true })
@@ -154,7 +154,7 @@ When('I fill Howwereyourmoney page forms', () => {
     .find('[value="methodPayment.cryptocurrency"]')
     .check({ force: true })
   cy.get('form').find('[value="methodPayment.other"]').check({ force: true })
-  cy.get('form').find('[id="methodOther"]').type('Certified Cheque')
+  cy.get('form').find('[name="methodOther"]').type('Certified Cheque')
 })
 
 Then('I click {string}', () => {
@@ -168,7 +168,7 @@ Given('{string} should be shown', (content) => {
 When('I fill whendidithappen page forms', () => {
   cy.get('form').find('[value="notSure"]').check({ force: true })
   cy.get('form')
-    .find('[id="description"]')
+    .find('[name="description"]')
     .type('It happens in second or third week of july')
 })
 
@@ -289,8 +289,8 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill to yourLocation page forms', () => {
-  cy.get('form').find('[id="city"]').type('Ottawa')
-  cy.get('form').find('[id="province"]').type('Ontario')
+  cy.get('form').find('[name="city"]').type('Ottawa')
+  cy.get('form').find('[name="province"]').type('Ontario')
 })
 
 Then('I click {string}', () => {
