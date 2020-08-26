@@ -9,7 +9,7 @@ import { DatePicker } from '../components/formik/datePicker'
 import { NextCancelButtons } from '../components/formik/button'
 import { Error, Info, ErrorSummary } from '../components/formik/alert'
 import { TextArea } from '../components/formik/textArea'
-import { whenDidItHappenFormSchema } from './whenDidItHappenFormSchema'
+import { whenDidItHappenFormSchema } from './WhenDidItHappenFormSchema'
 import { evalDate, evalDateRange } from '../utils/validateDate'
 import { FormikListener } from '../components/formik/formikListener'
 
