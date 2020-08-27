@@ -77,7 +77,7 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill to yourLocation page forms', () => {
-  cy.get('form').find('[id="postalCode"]').type('h3c5x6')
+  cy.get('form').find('[name="postalCode"]').type('h3c5x6')
 })
 
 Then('I click {string}', () => {
@@ -89,9 +89,9 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill yourContactDetails page forms', () => {
-  cy.get('form').find('[id="fullName"]').type('Hong Vu')
-  cy.get('form').find('[id="email"]').type('hong.vu@rcmp-grc.gc.ca')
-  cy.get('form').find('[id="phone"]').type('6131015934')
+  cy.get('form').find('[name="fullName"]').type('Hong Vu')
+  cy.get('form').find('[name="email"]').type('hong.vu@rcmp-grc.gc.ca')
+  cy.get('form').find('[name="phone"]').type('6131015934')
 })
 
 Then('I click {string}', () => {
@@ -111,9 +111,9 @@ Then('I click submit report', () => {
 })
 
 Then('{string} should be shown', (content) => {
-  cy.contains(content, { timeout: 10000 }).should('be.visible')
+  cy.contains(content, { timeout: 3000 }).should('be.visible')
 })
-
+cy
 And('{string} should be shown', (content) => {
-  cy.contains(content, { timeout: 10000 }).should('be.visible')
+  cy.contains(content, { timeout: 1000 }).should('be.visible')
 })
