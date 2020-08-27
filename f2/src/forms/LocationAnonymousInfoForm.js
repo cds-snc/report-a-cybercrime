@@ -26,24 +26,28 @@ export const LocationAnonymousInfoForm = (props) => {
         {({ handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Field
-                name="city"
-                label={<Trans id="LocationAnonymousInfoForm.city" />}
-                component={Input}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                id="city"
-                type="text"
-              />
-              <Field
-                name="province"
-                label={<Trans id="LocationAnonymousInfoForm.province" />}
-                component={Input}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                id="province"
-                type="text"
-              />
+              <Row>
+                <Field
+                  name="city"
+                  label={<Trans id="LocationAnonymousInfoForm.city" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id="city"
+                  type="text"
+                />
+              </Row>
+              <Row>
+                <Field
+                  name="province"
+                  label={<Trans id="LocationAnonymousInfoForm.province" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id="province"
+                  type="text"
+                />
+              </Row>
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="LocationAnonymousInfoForm.nextButton" />}
