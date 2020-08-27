@@ -12,6 +12,7 @@ import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
+import { Input } from '../components/formik/input'
 import { NextCancelButtons } from '../components/formik/button'
 
 export const InformationForm = (props) => {
@@ -83,10 +84,16 @@ export const InformationForm = (props) => {
       <Formik
         initialValues={information}
         onSubmit={(values) => {
+          if (!values.typeOfInfoReq.includes('typeOfInfoReq.other')) {
+            values.infoReqOther = ''
+          }
+          if (!values.typeOfInfoObtained.includes('typeOfInfoObtained.other')) {
+            values.infoObtainedOther = ''
+          }
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question" lg={1}>
@@ -116,6 +123,19 @@ export const InformationForm = (props) => {
                             type="checkbox"
                             id={'checkbox-' + question.name}
                           >
+                            {question.checkboxValue === 'typeOfInfoReq.other' &&
+                              values.typeOfInfoReq.includes(
+                                'typeOfInfoReq.other',
+                              ) && (
+                                <Field
+                                  name="infoReqOther"
+                                  component={Input}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  id={'input-infoReqOther'}
+                                />
+                              )}
+
                             <ErrorMessage
                               name={question.name}
                               component={Error}
@@ -154,6 +174,20 @@ export const InformationForm = (props) => {
                             type="checkbox"
                             id={'checkbox-' + question.name}
                           >
+                            {question.checkboxValue ===
+                              'typeOfInfoObtained.other' &&
+                              values.typeOfInfoObtained.includes(
+                                'typeOfInfoObtained.other',
+                              ) && (
+                                <Field
+                                  name="infoObtainedOther"
+                                  component={Input}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  id={'input-infoObtainedOther'}
+                                />
+                              )}
+
                             <ErrorMessage
                               name={question.name}
                               component={Error}
