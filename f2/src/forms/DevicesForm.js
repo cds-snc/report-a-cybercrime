@@ -1,23 +1,17 @@
 /** @jsx jsx */
+import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Input } from '../components/input'
-import { Field } from '../components/Field'
-import { Stack } from '@chakra-ui/core'
+import { Input } from '../components/formik/input'
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, Field, ErrorMessage } from 'formik'
+import { NextCancelButtons } from '../components/formik/button'
+import { Error, Info } from '../components/formik/alert'
 import { useStateValue } from '../utils/state'
-import { Well } from '../components/Messages'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
 export const DevicesForm = (props) => {
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.devicesInfo))
-      props.onSubmit(data)
-  }
-
   const [data] = useStateValue()
   const devicesInfo = {
     ...formDefaults.devicesInfo,
@@ -25,33 +19,57 @@ export const DevicesForm = (props) => {
   }
 
   return (
-    <Form
-      initialValues={devicesInfo}
-      onSubmit={localOnSubmit}
-      render={({ handleSubmit }) => (
-        <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren spacing={6}>
-          <Field
-            name="device"
-            label={<Trans id="devicePage.device" />}
-            helperText={<Trans id="devicePage.deviceExample" />}
-            component={Input}
-          />
-          <Field
-            name="account"
-            label={<Trans id="devicePage.account" />}
-            helperText={<Trans id="devicePage.accountExample" />}
-            component={Input}
-          />
-          <Well variantColor="blue">
-            <Trans id="devicePage.tip" />
-          </Well>
-          <NextAndCancelButtons
-            next={<Trans id="devicePage.nextPage" />}
-            button={<Trans id="devicePage.nextButton" />}
-          />
-        </Stack>
-      )}
-    />
+    <React.Fragment>
+      <Formik
+        initialValues={devicesInfo}
+        onSubmit={(values) => {
+          props.onSubmit(values)
+        }}
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row className="form-question" lg={1}></Row>
+              <ErrorMessage name="devicePage" component={Error} />
+              <Row className="form-section">
+                <Field
+                  name="device"
+                  label={<Trans id="devicePage.device" />}
+                  helpText={<Trans id="devicePage.deviceExample" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id="device"
+                />
+              </Row>
+              <Row className="form-section">
+                <Field
+                  name="account"
+                  label={<Trans id="devicePage.account" />}
+                  helpText={<Trans id="devicePage.accountExample" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id="account"
+                />
+              </Row>
+              <Row className="form-section">
+                <Info>
+                  <Trans id="devicePage.tip" />
+                </Info>
+              </Row>
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="devicePage.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="devicePage.nextPage" />}
+                />
+              </Row>
+            </Container>
+          </Form>
+        )}
+      </Formik>
+    </React.Fragment>
   )
 }
 DevicesForm.propTypes = {
