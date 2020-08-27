@@ -21,10 +21,12 @@ import { formDefaults } from './defaultValues'
 import { Ul } from '../components/unordered-list'
 import { Li } from '../components/list-item'
 
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
+
 export const EvidenceInfoForm = (props) => {
   const [data] = useStateValue()
   const cached = {
-    ...formDefaults.evidence,
     ...data.formData.evidence,
   }
 
@@ -127,6 +129,32 @@ export const EvidenceInfoForm = (props) => {
           <Trans id="fileUpload.noFiles" />
         </div>
       ) : null}
+
+      <Formik
+        initialValues={cached}
+        //validationSchema={}
+        onSubmit={(values) => {
+          console.log('Submit - ', JSON.stringify(values, null, 2))
+        }}
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row className="form-question">
+                <Row className="form-label">
+                  <Trans id="howDidTheyReachYou.question" />
+                </Row>
+                <Row className="form-helper-text">
+                  <Trans id="howDidTheyReachYou.reminder" />
+                </Row>
+                <ErrorMessage name="howDidTheyReachYou" component={Error} />
+              </Row>
+              <Row className="form-section"></Row>
+            </Container>
+          </Form>
+        )}
+      </Formik>
+
       <Form
         onSubmit={localOnSubmit}
         render={({ handleSubmit }) => (
