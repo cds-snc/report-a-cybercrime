@@ -38,27 +38,35 @@ export const LocationInfoForm = (props) => {
         {({ handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <P w="100%">
-                <Trans id="locationinfoPage.skipInfo" />
-              </P>
-              <SkipButton
-                label={<Trans id="locationinfoPage.skipButton" />}
-                to="/contactinfo"
-              />
+              <Row>
+                <P w="100%">
+                  <Trans id="locationinfoPage.skipInfo" />
+                </P>
+              </Row>
+              <Row>
+                <SkipButton
+                  label={<Trans id="locationinfoPage.skipButton" />}
+                  to="/contactinfo"
+                />
+              </Row>
               <P>
                 <br />
               </P>
-              <Field
-                name="postalCode"
-                label={<Trans id="locationinfoPage.postalCode" />}
-                component={Input}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                id="postalCode"
-                type="text"
-                helpText="For example: K1A 0R2"
-              />
-              <ErrorMessage name="postalCode" component={Error} />
+              <Row>
+                <Field
+                  name="postalCode"
+                  label={<Trans id="locationinfoPage.postalCode" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id="postalCode"
+                  type="text"
+                  helpText="For example: K1A 0R2"
+                />
+              </Row>
+              <Row>
+                <ErrorMessage name="postalCode" component={Error} />
+              </Row>
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="locationPage.nextButton" />}
