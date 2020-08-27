@@ -65,11 +65,35 @@ const submitFeedback = async (data) => {
   }
   try {
     let feedbacks = JSON.parse(data)
+
+    let question1Str = 'Was service hard?'
+    let answer1Str = lang[feedbacks.wasServiceHard] === undefined? '' : lang[feedbacks.wasServiceHard]
+    let question2Str = 'How can we do better?'
+    let answer2Str = feedbacks.howCanWeDoBetter
+    let question3Str = ''
+    let answer3Str = ''
+
+    if (data.includes('midFeedback')){
+      question1Str = 'Page:'
+      answer1Str = feedbacks.page
+      question2Str = 'What kind of problem is happening?'
+      answer2Str = ''
+      for(let feedback of feedbacks.midFeedback) {
+        answer2Str += lang[feedback]
+        answer2Str += '\n'
+      }
+      question3Str = 'Problem discription:'
+      answer3Str = feedbacks.problemDescription
+    }
+
     const response = notifyClient.sendEmail(templateId, email, {
       personalisation: { 
-        difficultyLevel: lang[feedbacks.wasServiceHard], 
-        useAgain: lang[feedbacks.wouldYouUseAgain], 
-        comments: feedbacks.howCanWeDoBetter}
+        question1: question1Str,
+        answer1: answer1Str,
+        question2: question2Str,        
+        answer2: answer2Str,
+        question3: question3Str,
+        answer3: answer3Str}
     })
     console.info('Notify: feedback email (probably) sent!')
     return response.body
