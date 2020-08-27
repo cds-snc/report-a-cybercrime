@@ -6,7 +6,7 @@ import { H1, H2 } from '../components/header'
 import { SubmitButton } from '../components/formik/button'
 //import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { useStateValue } from '../utils/state'
+//import { useStateValue } from '../utils/state'
 import { Error } from '../components/formik/alert'
 //import { A } from '../components/formik/link'
 //import { P } from '../components/formik/paragraph'
@@ -23,9 +23,9 @@ import { TextArea } from '../components/text-area'
 export const MidFeedbackForm = (props) => {
   const [status] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  const [data] = useStateValue()
+  //const [data] = useStateValue()
   const information = {
-    ...data.formData.personalInformation,
+    // ...data.formData.personalInformation,
   }
   // const validate = () => {
   //   return {}
@@ -35,27 +35,27 @@ export const MidFeedbackForm = (props) => {
     {
       name: 'confuseProblem',
       checkboxLabel: <Trans id="midFeedback.problem.confusing" />,
-      checkboxValue: 'typeOfInfoReq.creditCard',
+      checkboxValue: 'midFeedback.problem.confusing',
     },
     {
       name: 'brokenProblem',
       checkboxLabel: <Trans id="midFeedback.problem.broken" />,
-      checkboxValue: 'typeOfInfoReq.dob',
+      checkboxValue: 'midFeedback.problem.broken',
     },
     {
       name: 'adaptiveProblem',
       checkboxLabel: <Trans id="midFeedback.problem.adaptive" />,
-      checkboxValue: 'typeOfInfoReq.homeAddress',
+      checkboxValue: 'midFeedback.problem.adaptive',
     },
     {
       name: 'worryProblem',
       checkboxLabel: <Trans id="midFeedback.problem.worry" />,
-      checkboxValue: 'typeOfInfoReq.sin',
+      checkboxValue: 'midFeedback.problem.worry',
     },
     {
       name: 'otherProblem',
       checkboxLabel: <Trans id="midFeedback.problem.other" />,
-      checkboxValue: 'typeOfInfoReq.other',
+      checkboxValue: 'midFeedback.problem.other',
     },
   ]
 
@@ -114,24 +114,24 @@ export const MidFeedbackForm = (props) => {
                   <Form onSubmit={handleSubmit}>
                     <Container>
                       <Row className="form-question" lg={1}>
-                        <Row className="form-label">
+                        <Row className="form-label" lg={1}>
                           <Trans id="midFeedback.problem.label" />
                         </Row>
                         <Row className="form-helper-text">
                           <Trans id="midFeedback.problem.helperText" />
                         </Row>
-                        <ErrorMessage name="informationReq" component={Error} />
+                        <ErrorMessage name="midFeedback" component={Error} />
                       </Row>
                       <Row className="form-section">
                         <FieldArray
-                          name="typeOfInfoReq"
+                          name="midFeedback"
                           className="form-section"
                           render={() =>
                             midFeedback.map((question) => {
                               return (
                                 <React.Fragment key={question.name}>
                                   <Field
-                                    name="feedback"
+                                    name="midFeedback"
                                     label={question.checkboxLabel}
                                     component={CheckBox}
                                     value={question.checkboxValue}
@@ -140,10 +140,10 @@ export const MidFeedbackForm = (props) => {
                                     type="checkbox"
                                     id={'checkbox-' + question.name}
                                   >
-                                    {/* <ErrorMessage
-                              name={question.name}
-                              component={Error}
-                            /> */}
+                                    <ErrorMessage
+                                      name={question.name}
+                                      component={Error}
+                                    />
                                   </Field>
 
                                   {/* <ErrorMessage name="postalCode" component={Error} /> */}
@@ -166,31 +166,20 @@ export const MidFeedbackForm = (props) => {
                         <Row className="form-section">
                           <Field
                             name="problemDescription"
-                            //label={<Trans id="midFeedback.description.label" />}
                             component={TextArea}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             id="problemDescription"
                             type="text"
-                            //helpText= {<Trans id="midFeedback.description.helperText" />}
                           />
                         </Row>
                       </Container>
 
                       <Row>
                         <SubmitButton
-                          type="submit"
-                          submit={<Trans id="midFeedback.submit" />}
+                          label={<Trans id="midFeedback.submit" />}
                         />
                       </Row>
-
-                      {/* <Row>
-                <NextCancelButtons>
-                submit= {<Trans id="midFeedback.submit" />}
-                cancel={<Trans id="button.cancelReport" />}
-
-                  </NextCancelButtons>
-              </Row> */}
                     </Container>
                   </Form>
                 )}
