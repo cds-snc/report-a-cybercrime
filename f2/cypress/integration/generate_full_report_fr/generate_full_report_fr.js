@@ -59,16 +59,14 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill Whoareyoureporting page forms', () => {
-  When('I fill Whoareyoureporting page forms', () => {
-    cy.get('form')
-      .find('[value="whoAreYouReportForPage.options.business"]')
-      .check({ force: true })
-    cy.get('form')
-      .find('[id="businessDescription"]')
-      .type(
-        'Souvenir du Québec, https://www.souvenirduquebec.com/, (514) 895-0746',
-      )
-  })
+  cy.get('form')
+    .find('[value="whoAreYouReportForPage.options.business"]')
+    .check({ force: true })
+  cy.get('form')
+    .find('[name="businessDescription"]')
+    .type(
+      'Souvenir du Quebec, https://www.souvenirduquebec.com/, (514) 895-0746',
+    )
 })
 
 Then('I click {string}', () => {
@@ -80,25 +78,18 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill howdiditstart page forms', () => {
+  cy.get('form').find('[value="email"]').check({ force: true })
+  cy.get('form').find('[name="email"]').type('suspectFrench@magma.com')
+  cy.get('form').find('[value="phone"]').check({ force: true })
+  cy.get('form').find('[name="phone"]').type('1-800-000-1111')
+  cy.get('form').find('[value="online"]').check({ force: true })
+  cy.get('form').find('[name="online"]').type('http://www.suspectFrench.com')
+  cy.get('form').find('[value="application"]').check({ force: true })
   cy.get('form')
-    .find('[value="howDidTheyReachYou.email"]')
-    .check({ force: true })
-  cy.get('form').find('[id="email"]').type('suspectFrench@magma.com')
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.phone"]')
-    .check({ force: true })
-  cy.get('form').find('[id="phone"]').type('1-800-000-1111')
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.online"]')
-    .check({ force: true })
-  cy.get('form').find('[id="online"]').type('http://www.suspectFrench.com')
-  cy.get('form').find('[value="howDidTheyReachYou.app"]').check({ force: true })
-  cy.get('form')
-    .find('[id="application"]')
+    .find('[name="application"]')
     .type('Noms d’applications où vous avez communiqué Application')
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.others"]')
-    .check({ force: true })
+  cy.get('form').find('[value="others"]').check({ force: true })
+  cy.get('form').find('[name="others"]').type('Une publicité')
 })
 
 Then('I click {string}', () => {
@@ -111,12 +102,12 @@ Given('{string} should be shown', (content) => {
 
 When('I fill whendidithappen page forms', () => {
   cy.get('form').find('[value="moreThanOnce"]').check({ force: true })
-  cy.get('form').find('[id="startDay"]').type('6')
-  cy.get('form').find('[id="startMonth"]').type('9')
-  cy.get('form').find('[id="startYear"]').type('2019')
-  cy.get('form').find('[id="endDay"]').type('12')
-  cy.get('form').find('[id="endMonth"]').type('9')
-  cy.get('form').find('[id="endYear"]').type('2019')
+  cy.get('form').find('[name="startDay"]').type('6')
+  cy.get('form').find('[name="startMonth"]').type('9')
+  cy.get('form').find('[name="startYear"]').type('2019')
+  cy.get('form').find('[name="endDay"]').type('12')
+  cy.get('form').find('[name="endMonth"]').type('9')
+  cy.get('form').find('[name="endYear"]').type('2019')
 })
 
 Then('I click {string}', () => {
@@ -154,8 +145,8 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill Howwereyourmoney page forms', () => {
-  cy.get('form').find('[id="demandedMoney"]').type('$10000 CAD')
-  cy.get('form').find('[id="moneyTaken"]').type('$5000 CAD')
+  cy.get('form').find('[name="demandedMoney"]').type('$10000 CAD')
+  cy.get('form').find('[name="moneyTaken"]').type('$5000 CAD')
   cy.get('form')
     .find('[value="methodPayment.eTransfer"]')
     .check({ force: true })
@@ -167,10 +158,10 @@ When('I fill Howwereyourmoney page forms', () => {
     .find('[value="methodPayment.cryptocurrency"]')
     .check({ force: true })
   cy.get('form').find('[value="methodPayment.other"]').check({ force: true })
-  cy.get('form').find('[id="methodOther"]').type('Certified Cheque')
-  cy.get('form').find('[id="transactionDay"]').type('02')
-  cy.get('form').find('[id="transactionMonth"]').type('02')
-  cy.get('form').find('[id="transactionYear"]').type('2019')
+  cy.get('form').find('[name="methodOther"]').type('Certified Cheque')
+  cy.get('form').find('[name="transactionDay"]').type('02')
+  cy.get('form').find('[name="transactionMonth"]').type('02')
+  cy.get('form').find('[name="transactionYear"]').type('2019')
 })
 
 Then('I click {string}', () => {
@@ -191,7 +182,7 @@ when('I fill Howwaspersonalinformationaffected page forms', () => {
     .check({ force: true })
   cy.get('form').find('[value="typeOfInfoReq.sin"]').check({ force: true })
   cy.get('form').find('[value="typeOfInfoReq.other"]').check({ force: true })
-  cy.get('form').find('[id="infoReqOther"]').type('Passeport')
+  cy.get('form').find('[name="infoReqOther"]').type('Passeport')
   cy.get('form')
     .find('[value="typeOfInfoObtained.creditCard"]')
     .check({ force: true })
@@ -203,7 +194,7 @@ when('I fill Howwaspersonalinformationaffected page forms', () => {
   cy.get('form')
     .find('[value="typeOfInfoObtained.other"]')
     .check({ force: true })
-  cy.get('form').find('[id="infoObtainedOther"]').type('Passeport')
+  cy.get('form').find('[name="infoObtainedOther"]').type('Passeport')
 })
 
 Then('I click {string}', () => {
@@ -215,8 +206,8 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill Howwereyourdevicesaffected page forms', () => {
-  cy.get('form').find('[id="device"]').type('tablette Surface')
-  cy.get('form').find('[id="account"]').type('Netflix')
+  cy.get('form').find('[name="device"]').type('tablette Surface')
+  cy.get('form').find('[name="account"]').type('Netflix')
 })
 
 Then('I click {string}', () => {
@@ -234,7 +225,7 @@ When('I fill Howyourbusinessaffected page forms', () => {
   cy.get('form').find('[name="industry"]').type('Clinique de Santé')
   cy.get('form').find('[name="role"]').type('Expert en Informatique')
   cy.get('form')
-    .find('[value="numberOfEmployee.500More"]')
+    .find('[value="numberOfEmployee.100To499"]')
     .check({ force: true })
 })
 
@@ -249,7 +240,7 @@ Given('{string} should be shown', (content) => {
 When('I fill Whathappened page forms', () => {
   cy.fixture('form_data.json').then((user) => {
     var large = user.med_fr
-    cy.get('form').find('[id="whatHappened"]').type(large)
+    cy.get('form').find('[name="whatHappened"]').type(large)
   })
 })
 
@@ -262,10 +253,10 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill Addsuspectclues page forms', () => {
-  cy.get('form').find('[id="suspectClues1"]').type('Nom du suspect')
-  cy.get('form').find('[id="suspectClues2"]').type('Adresse du suspect')
+  cy.get('form').find('[name="suspectClues1"]').type('Nom du suspect')
+  cy.get('form').find('[name="suspectClues2"]').type('Adresse du suspect')
   cy.get('form')
-    .find('[id="suspectClues3"]')
+    .find('[name="suspectClues3"]')
     .type('Détail qui pourrait aider à identifier le suspect')
 })
 
@@ -302,7 +293,7 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill yourLocation page forms', () => {
-  cy.get('form').find('[id="postalCode"]').type('h1m2c9')
+  cy.get('form').find('[name="postalCode"]').type('h1m2c9')
 })
 
 Then('I click {string}', () => {
@@ -314,9 +305,9 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill yourContactDetails page forms', () => {
-  cy.get('form').find('[id="fullName"]').type('Nom Prenom')
-  cy.get('form').find('[id="email"]').type('hong.vu@rcmp-grc.gc.ca')
-  cy.get('form').find('[id="phone"]').type('514-030-0233')
+  cy.get('form').find('[name="fullName"]').type('Nom Prenom')
+  cy.get('form').find('[name="email"]').type('hong.vu@rcmp-grc.gc.ca')
+  cy.get('form').find('[name="phone"]').type('514-030-0233')
 })
 
 Then('I click {string}', () => {

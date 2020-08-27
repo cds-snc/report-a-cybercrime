@@ -288,6 +288,13 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
+.check-help-text {
+  padding-left: 1.5rem;
+  font-size: 0.875rem;
+  margin-top: -0.5rem;
+  line-height: 1.5;
+}
+
 /*Input Fields*/
 
 .input-field-control {

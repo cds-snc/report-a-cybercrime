@@ -63,7 +63,7 @@ When('I fill Whoareyoureporting page forms', () => {
     .find('[value="whoAreYouReportForPage.options.someone"]')
     .check({ force: true })
   cy.get('form')
-    .find('[id="someoneDescription"]')
+    .find('[name="someoneDescription"]')
     .type('Je fais un reportage pour mon ami et son nom est Richard Legault')
 })
 
@@ -76,28 +76,20 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill howdiditstart page forms', () => {
+  cy.get('form').find('[value="email"]').check({ force: true })
+  cy.get('form').find('[name="email"]').type('suspectFrench@magma.com')
+  cy.get('form').find('[value="phone"]').check({ force: true })
+  cy.get('form').find('[name="phone"]').type('1-800-000-0001')
+  cy.get('form').find('[value="online"]').check({ force: true })
   cy.get('form')
-    .find('[value="howDidTheyReachYou.email"]')
-    .check({ force: true })
-  cy.get('form').find('[id="email"]').type('suspectFrench@magma.com')
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.phone"]')
-    .check({ force: true })
-  cy.get('form').find('[id="phone"]').type('1-800-000-0001')
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.online"]')
-    .check({ force: true })
-  cy.get('form')
-    .find('[id="online"]')
+    .find('[name="online"]')
     .type('http://www.suspectFrenchAnonymous.com')
-  cy.get('form').find('[value="howDidTheyReachYou.app"]').check({ force: true })
+  cy.get('form').find('[value="application"]').check({ force: true })
   cy.get('form')
-    .find('[id="application"]')
+    .find('[name="application"]')
     .type('noms d’applications où vous avez communiqué Application')
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.others"]')
-    .check({ force: true })
-  cy.get('form').find('[id="others"]').type('Une publicité')
+  cy.get('form').find('[value="others"]').check({ force: true })
+  cy.get('form').find('[name="others"]').type('Une publicité')
 })
 
 Then('I click {string}', () => {
@@ -111,7 +103,7 @@ Given('{string} should be shown', (content) => {
 When('I fill whendidithappen page forms', () => {
   cy.get('form').find('[value="notSure"]').check({ force: true })
   cy.get('form')
-    .find('[id="description"]')
+    .find('[name="description"]')
     .type('Peut-être dans la deuxième semaine avril')
 })
 
@@ -150,8 +142,8 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill Howwereyourmoney page forms', () => {
-  cy.get('form').find('[id="demandedMoney"]').type('$8000 CAD')
-  cy.get('form').find('[id="moneyTaken"]').type('$3000 CAD')
+  cy.get('form').find('[name="demandedMoney"]').type('$8000 CAD')
+  cy.get('form').find('[name="moneyTaken"]').type('$3000 CAD')
   cy.get('form')
     .find('[value="methodPayment.eTransfer"]')
     .check({ force: true })
@@ -163,10 +155,10 @@ When('I fill Howwereyourmoney page forms', () => {
     .find('[value="methodPayment.cryptocurrency"]')
     .check({ force: true })
   cy.get('form').find('[value="methodPayment.other"]').check({ force: true })
-  cy.get('form').find('[id="methodOther"]').type('Argent')
-  cy.get('form').find('[id="transactionDay"]').type('20')
-  cy.get('form').find('[id="transactionMonth"]').type('12')
-  cy.get('form').find('[id="transactionYear"]').type('2019')
+  cy.get('form').find('[name="methodOther"]').type('Argent')
+  cy.get('form').find('[name="transactionDay"]').type('20')
+  cy.get('form').find('[name="transactionMonth"]').type('12')
+  cy.get('form').find('[name="transactionYear"]').type('2019')
 })
 
 Then('I click {string}', () => {
@@ -187,7 +179,7 @@ when('I fill Howwaspersonalinformationaffected page forms', () => {
     .check({ force: true })
   cy.get('form').find('[value="typeOfInfoReq.sin"]').check({ force: true })
   cy.get('form').find('[value="typeOfInfoReq.other"]').check({ force: true })
-  cy.get('form').find('[id="infoReqOther"]').type('Permis de conduire')
+  cy.get('form').find('[name="infoReqOther"]').type('Permis de conduire')
   cy.get('form')
     .find('[value="typeOfInfoObtained.creditCard"]')
     .check({ force: true })
@@ -199,7 +191,7 @@ when('I fill Howwaspersonalinformationaffected page forms', () => {
   cy.get('form')
     .find('[value="typeOfInfoObtained.other"]')
     .check({ force: true })
-  cy.get('form').find('[id="infoObtainedOther"]').type('Permis de conduire')
+  cy.get('form').find('[name="infoObtainedOther"]').type('Permis de conduire')
 })
 
 Then('I click {string}', () => {
@@ -211,8 +203,8 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill Howwereyourdevicesaffected page forms', () => {
-  cy.get('form').find('[id="device"]').type('tablette Surface')
-  cy.get('form').find('[id="account"]').type('DisneyPlus')
+  cy.get('form').find('[name="device"]').type('tablette Surface')
+  cy.get('form').find('[name="account"]').type('DisneyPlus')
 })
 
 Then('I click {string}', () => {
@@ -245,7 +237,7 @@ Given('{string} should be shown', (content) => {
 When('I fill Whathappened page forms', () => {
   cy.fixture('form_data.json').then((user) => {
     var large = user.small_fr
-    cy.get('form').find('[id="whatHappened"]').type(large)
+    cy.get('form').find('[name="whatHappened"]').type(large)
   })
 })
 
@@ -258,10 +250,10 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill Addsuspectclues page forms', () => {
-  cy.get('form').find('[id="suspectClues1"]').type('Nom du suspect')
-  cy.get('form').find('[id="suspectClues2"]').type('Adresse du suspect')
+  cy.get('form').find('[name="suspectClues1"]').type('Nom du suspect')
+  cy.get('form').find('[name="suspectClues2"]').type('Adresse du suspect')
   cy.get('form')
-    .find('[id="suspectClues3"]')
+    .find('[name="suspectClues3"]')
     .type('Détail qui pourrait aider à identifier le suspect')
 })
 
@@ -298,8 +290,8 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill yourLocation page forms', () => {
-  cy.get('form').find('[id="city"]').type('Montreal')
-  cy.get('form').find('[id="province"]').type('Quebec')
+  cy.get('form').find('[name="city"]').type('Montreal')
+  cy.get('form').find('[name="province"]').type('Quebec')
 })
 
 Then('I click {string}', () => {
