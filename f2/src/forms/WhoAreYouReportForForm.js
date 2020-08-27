@@ -7,6 +7,7 @@ import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { Error } from '../components/formik/alert'
 import { Radio } from '../components/formik/radio'
 import { TextArea } from '../components/formik/textArea'
+import { P } from '../components/formik/paragraph'
 import { NextCancelButtons } from '../components/formik/button'
 import { formDefaults } from './defaultValues'
 import { WhoAreYouReportForFormSchema } from './WhoAreYouReportForFormSchema'
@@ -67,7 +68,9 @@ export const WhoAreYouReportForForm = (props) => {
                   />
                 </React.Fragment>
                 <React.Fragment key='Or'>
-                  <Trans id="whoAreYouReportForPage.or" />
+                  <P ml="0.5rem" mb="0.5rem" fontSize="1.25rem">
+                    <Trans id="whoAreYouReportForPage.or" />
+                  </P>
                 </React.Fragment>
                 <FieldArray
                   name="whoYouReportFor"
