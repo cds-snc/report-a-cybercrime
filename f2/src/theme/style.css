@@ -20,6 +20,10 @@ body {
   width: 100%;
 }
 
+.row {
+  width: 100%;
+}
+
 .form-row {
   margin-bottom: 1rem;
   margin-left: 0rem;
@@ -389,4 +393,11 @@ body {
   margin-right: 0.5rem;
   align-self: center;
   flex: none;
+}
+
+.list-item {
+  display: list-item;
+  border: 0;
+  padding: 0 0 0.5rem 0;
+  background-color: inherit;
 }

@@ -1,34 +1,31 @@
 /** @jsx jsx */
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { jsx } from '@emotion/core'
-import { Form } from 'react-final-form'
-import { Plural, Trans } from '@lingui/macro'
-import { TextArea } from '../components/text-area'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { FileUpload } from '../components/file-upload'
-import { Box, Stack, VisuallyHidden } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/paragraph'
-import { LinkButton } from '../components/link'
-import { Text } from '../components/text'
-import { Field } from '../components/Field'
-import { Alert } from '../components/Messages'
 import { fileExtensionPasses } from '../utils/acceptableFiles'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
-import { Ul } from '../components/unordered-list'
-import { Li } from '../components/list-item'
 
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
+import { Error, Info } from '../components/formik/alert'
+import { UploadButton } from '../components/formik/button'
+import { List } from '../components/formik/list'
 
 export const EvidenceInfoForm = (props) => {
   const [data] = useStateValue()
   const cached = {
     ...data.formData.evidence,
   }
+
+  const allowedFilesList = [
+    <Trans id="evidencePage.fileTypes1" />,
+    <Trans id="evidencePage.fileTypes2" />,
+    <Trans id="evidencePage.fileTypes3" />,
+  ]
 
   const [files, setFiles] = useState(cached.files)
   const [fileDescriptions, setFileDescriptions] = useState(
@@ -140,21 +137,25 @@ export const EvidenceInfoForm = (props) => {
         {({ handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row className="form-question">
-                <Row className="form-label">
-                  <Trans id="howDidTheyReachYou.question" />
-                </Row>
-                <Row className="form-helper-text">
-                  <Trans id="howDidTheyReachYou.reminder" />
-                </Row>
-                <ErrorMessage name="howDidTheyReachYou" component={Error} />
+              <Row className="form-section">
+                <Field
+                  component={UploadButton}
+                  label={<Trans id="evidencePage.addFileButton" />}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
               </Row>
-              <Row className="form-section"></Row>
+              <Row className="form-section">
+                <List
+                  label={<Trans id="evidencePage.supportedFiles" />}
+                  items={allowedFilesList}
+                />
+              </Row>
             </Container>
           </Form>
         )}
       </Formik>
-
+      {/*
       <Form
         onSubmit={localOnSubmit}
         render={({ handleSubmit }) => (
@@ -261,7 +262,7 @@ export const EvidenceInfoForm = (props) => {
             />
           </Stack>
         )}
-      />
+              />*/}
     </React.Fragment>
   )
 }
