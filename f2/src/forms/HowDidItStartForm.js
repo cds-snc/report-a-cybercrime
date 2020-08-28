@@ -102,6 +102,7 @@ export const HowDidItStartForm = (props) => {
                               component={Error}
                             />
                             <Field
+                              className="conditional-field"
                               name={question.name}
                               label={question.questionLabel}
                               helpText={question.helpText}
