@@ -14,7 +14,7 @@ export const yupSchema = () => {
     ),
 
     postalCodeSchema: Yup.string().matches(regexDef().postalCodeRegex, {
-      message: 'Please enter a valid postal code',
+      message: <Trans id="locationInfoForm.Warning" />,
     }),
 
     dateSchema: {
@@ -22,6 +22,5 @@ export const yupSchema = () => {
       MONTH: Yup.number().min(1).max(12),
       YEAR: Yup.number().min(1000).max(9999), //Enforce 4 digit entry
     },
-
   }
 }
