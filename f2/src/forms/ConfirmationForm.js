@@ -4,9 +4,10 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { jsx } from '@emotion/core'
 import { useStateValue } from '../utils/state'
-import { Form, Card } from 'react-bootstrap'
+import { Form, Row } from 'react-bootstrap'
 import { Formik } from 'formik'
 import { NextCancelButtons } from '../components/formik/button'
+import { Info } from '../components/formik/alert'
 
 export const ConfirmationForm = (props) => {
   const [{ reportId, submitted }] = useStateValue()
@@ -50,14 +51,12 @@ export const ConfirmationForm = (props) => {
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             {submitted ? (
-                <Card bg="primary">
-                  <Card.Body> 
-                    <Trans
-                      id="confirmationPage.thankyou"
-                      values={{ reference: reportId }}
-                    />
-                  </Card.Body>
-                </Card>
+              <Info>
+                <Trans
+                  id="confirmationPage.thankyou"
+                  values={{ reference: reportId }}
+                />
+              </Info>
             ) : (
               <NextCancelButtons
                   submit={<Trans id="confirmationPage.nextButton" />}
