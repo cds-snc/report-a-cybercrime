@@ -150,6 +150,9 @@ export const EvidenceInfoForm = (props) => {
                   label={<Trans id="evidencePage.supportedFiles" />}
                   items={allowedFilesList}
                 />
+                <Info>
+                  <Trans id="evidencePage.fileWarning" />
+                </Info>
               </Row>
             </Container>
           </Form>
