@@ -13,6 +13,7 @@ import { MoneyLostInfoFormSchema } from './MoneyLostInfoFormSchema'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Radio } from '../components/formik/radio'
 import { Error } from '../components/formik/alert'
+import { CheckBox } from '../components/formik/checkbox'
 
 export const MoneyLostInfoForm = (props) => {
   const [data] = useStateValue()
@@ -25,33 +26,28 @@ export const MoneyLostInfoForm = (props) => {
   const formOptions = [
     {
       name: 'eTransfer',
-      radioLabel: <Trans id="methodPayment.eTransfer" />,
-      radioName: 'methodPayment.eTransfer',
-      radioValue: 'methodPayment.eTransfer',
+      checkboxLabel: <Trans id="methodPayment.eTransfer" />,
+      checkboxName: 'methodPayment.eTransfer',
     },
     {
       name: 'creditCard',
-      radioLabel: <Trans id="methodPayment.creditCard" />,
-      radioName: 'methodPayment.creditCard',
-      radioValue: 'methodPayment.creditCard',
+      checkboxLabel: <Trans id="methodPayment.creditCard" />,
+      checkboxName: 'methodPayment.creditCard',
     },
     {
       name: 'giftCard',
-      radioLabel: <Trans id="methodPayment.giftCard" />,
-      radioName: 'methodPayment.giftCard',
-      radioValue: 'methodPayment.giftCard',
+      checkboxLabel: <Trans id="methodPayment.giftCard" />,
+      checkboxName: 'methodPayment.giftCard',
     },
     {
       name: 'cryptocurrency',
-      radioLabel: <Trans id="methodPayment.cryptocurrency" />,
-      radioName: 'methodPayment.cryptocurrency',
-      radioValue: 'methodPayment.cryptocurrency',
+      checkboxLabel: <Trans id="methodPayment.cryptocurrency" />,
+      checkboxName: 'methodPayment.cryptocurrency',
     },
     {
       name: 'other',
-      radioLabel: <Trans id="methodPayment.other" />,
-      radioName: 'methodPayment.other',
-      radioValue: 'methodPayment.other',
+      checkboxLabel: <Trans id="methodPayment.other" />,
+      checkboxName: 'methodPayment.other',
     },
   ]
 
@@ -110,23 +106,23 @@ export const MoneyLostInfoForm = (props) => {
               </Row>
 
               <Row className="form-section">
-                <ErrorMessage name="methodsOfPayment" component={Error} />
+                <ErrorMessage name="methodPayment" component={Error} />
                 <FieldArray
-                  name="methodsOfPayment"
+                  name="methodPayment"
                   className="form-section"
                   render={() =>
                     formOptions.map((question) => {
                       return (
                         <React.Fragment key={question.name}>
                           <Field
-                            name="methodsOfPayment"
-                            label={question.radioLabel}
-                            component={Radio}
-                            value={question.value}
+                            name="methodPayment"
+                            label={question.checkboxLabel}
+                            component={CheckBox}
+                            value={question.name}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            type="radio"
-                            id={question.id}
+                            type="checkbox"
+                            id={'checkbox-' + question.name}
                           >
                             {question.value === 'other' && (
                               <Field
