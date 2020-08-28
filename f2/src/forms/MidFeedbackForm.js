@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { H1, H2 } from '../components/header'
 import { SubmitButton } from '../components/formik/button'
+import { containsData } from '../utils/containsData'
 //import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 //import { useStateValue } from '../utils/state'
@@ -21,7 +22,7 @@ import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
 
 export const MidFeedbackForm = (props) => {
-  const [status] = useState('')
+  const [status, setStatus] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   //const [data] = useStateValue()
   const information = {
@@ -30,7 +31,7 @@ export const MidFeedbackForm = (props) => {
   // const validate = () => {
   //   return {}
   // }
-
+  let showWarning = false
   const midFeedback = [
     {
       name: 'confuseProblem',
@@ -107,7 +108,17 @@ export const MidFeedbackForm = (props) => {
               <Formik
                 initialValues={information}
                 onSubmit={(values) => {
-                  props.onSubmit(values)
+                  if (
+                    !containsData([
+                      values.midFeedback,
+                      values.problemDescription,
+                    ])
+                  ) {
+                    showWarning = true
+                  } else {
+                    setStatus('feedback.submitted')
+                    props.onSubmit(values)
+                  }
                 }}
               >
                 {({ handleSubmit, handleChange, handleBlur }) => (
@@ -177,6 +188,7 @@ export const MidFeedbackForm = (props) => {
 
                       <Row>
                         <SubmitButton
+                          type="submit"
                           label={<Trans id="midFeedback.submit" />}
                         />
                       </Row>
