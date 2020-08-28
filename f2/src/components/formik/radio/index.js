@@ -9,7 +9,7 @@ export const Radio = ({ field, form, ...props }) => {
         <Form.Check.Label>{props.label}</Form.Check.Label>
         <Form.Text className="check-help-text">{props.helpText}</Form.Text>
       </Form.Check>
-      {field.checked && (
+      {field.checked && props.children && (
         <div className="conditional-field">{props.children}</div>
       )}
     </Row>
