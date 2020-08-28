@@ -1,4 +1,4 @@
- @smoke
+ @smoke-bypassed
 Feature: Test the entire report workflow in french
   I want to create an online investgation report
 
