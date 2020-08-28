@@ -11,11 +11,13 @@ import { LocationInfoFormSchema } from './LocationInfoFormSchema'
 import { P } from '../components/paragraph'
 import { Input } from '../components/formik/input'
 import { Error } from '../components/formik/alert'
+import { formDefaults } from './defaultValues'
 
 export const LocationInfoForm = (props) => {
   const [data] = useStateValue()
   const locationInfo = {
-    ...data.formData.locationInfo,
+    ...formDefaults.location,
+    ...data.formData.location,
   }
 
   return (
@@ -55,7 +57,7 @@ export const LocationInfoForm = (props) => {
               <Row>
                 <ErrorMessage name="postalCode" component={Error} />
               </Row>
-              <Row>
+              <Row className="form-section">
                 <Field
                   name="postalCode"
                   label={<Trans id="locationinfoPage.postalCode" />}
@@ -64,10 +66,9 @@ export const LocationInfoForm = (props) => {
                   onBlur={handleBlur}
                   id="postalCode"
                   type="text"
-                  helpText="For example: K1A 0R2"
+                  helpText={<Trans id="locationinfoPage.postalCodeExample" />}
                 />
               </Row>
-
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="locationPage.nextButton" />}

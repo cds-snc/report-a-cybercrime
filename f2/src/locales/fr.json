@@ -286,6 +286,7 @@
   "locationinfoPage.postalCity": "Ville du code postal",
   "locationinfoPage.postalCity.notFoundWarning": "La recherche de la ville est introuvable",
   "locationinfoPage.postalCode": "Code postal",
+  "locationinfoPage.postalCodeExample": "Par exemple : K1A 0R2",
   "locationinfoPage.postalProv": "Province du code postal",
   "locationinfoPage.postalProv.notFoundWarning": "La recherche de province est introuvable",
   "locationinfoPage.skipButton": "Ignorer",
