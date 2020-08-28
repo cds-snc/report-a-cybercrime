@@ -2,44 +2,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
-import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Input } from '../components/input'
-import { Stack, Box } from '@chakra-ui/core'
+import { Input } from '../components/formik/input'
 import { useStateValue } from '../utils/state'
-import { ConditionalForm } from '../components/container'
-import { CheckboxAdapter } from '../components/checkbox'
-import { Field } from '../components/Field'
-import { FormArrayControl } from '../components/FormArrayControl'
-import { Well } from '../components/Messages'
-import { ErrorSummary } from '../components/ErrorSummary'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
-import { validateDate } from '../utils/validateDate'
-
-const validate = (values) => {
-  const errors = {}
-  const startDate = validateDate(
-    values.transactionYear,
-    values.transactionMonth,
-    values.transactionDay,
-  )
-  errors.transactionDate = []
-  startDate.map((key) => {
-    return errors.transactionDate.push(`transactionDate.error.${key}`)
-  })
-
-  return errors
-}
+import { TextArea } from '../components/formik/textArea'
+import { NextCancelButtons } from '../components/formik/button'
+import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
+import { MoneyLostInfoFormSchema } from './MoneyLostInfoFormSchema'
+import { Form, Container, Row } from 'react-bootstrap'
+import { Radio } from '../components/formik/radio'
+import { Error } from '../components/formik/alert'
 
 export const MoneyLostInfoForm = (props) => {
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.moneyLost)) props.onSubmit(data)
-  }
-
-  const { i18n } = useLingui()
   const [data] = useStateValue()
 
   const moneyLost = {
@@ -47,24 +22,43 @@ export const MoneyLostInfoForm = (props) => {
     ...data.formData.moneyLost,
   }
 
-  const methodsOfPayment = [
-    'methodPayment.eTransfer',
-    'methodPayment.creditCard',
-    'methodPayment.giftCard',
-    'methodPayment.cryptocurrency',
-    'methodPayment.other',
+  const formOptions = [
+    {
+      name: 'eTransfer',
+      radioLabel: <Trans id="methodPayment.eTransfer" />,
+      radioName: 'methodPayment.eTransfer',
+      radioValue: 'methodPayment.eTransfer',
+    },
+    {
+      name: 'creditCard',
+      radioLabel: <Trans id="methodPayment.creditCard" />,
+      radioName: 'methodPayment.creditCard',
+      radioValue: 'methodPayment.creditCard',
+    },
+    {
+      name: 'giftCard',
+      radioLabel: <Trans id="methodPayment.giftCard" />,
+      radioName: 'methodPayment.giftCard',
+      radioValue: 'methodPayment.giftCard',
+    },
+    {
+      name: 'cryptocurrency',
+      radioLabel: <Trans id="methodPayment.cryptocurrency" />,
+      radioName: 'methodPayment.cryptocurrency',
+      radioValue: 'methodPayment.cryptocurrency',
+    },
+    {
+      name: 'other',
+      radioLabel: <Trans id="methodPayment.other" />,
+      radioName: 'methodPayment.other',
+      radioValue: 'methodPayment.other',
+    },
   ]
 
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
         <div>
-          <Trans id="methodPayment.eTransfer" />
-          <Trans id="methodPayment.creditCard" />
-          <Trans id="methodPayment.giftCard" />
-          <Trans id="methodPayment.cryptocurrency" />
-          <Trans id="methodPayment.other" />
-
           <Trans id="transactionDate.error.notDay" />
           <Trans id="transactionDate.error.notMonth" />
           <Trans id="transactionDate.error.isFuture" />
@@ -73,69 +67,115 @@ export const MoneyLostInfoForm = (props) => {
           <Trans id="transactionDate.error.hasNoYear" />
           <Trans id="transactionDate.error.hasNoMonth" />
           <Trans id="transactionDate.error.hasNoDay" />
-
           <Trans id="moneyLostPage.financialTransactions" />
         </div>
       ) : null}
-      <Form
+      <Formik
         initialValues={moneyLost}
-        onSubmit={localOnSubmit}
-        validate={validate}
-        render={({ handleSubmit, values, errors, submitFailed }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            spacing={6}
-            shouldWrapChildren
-          >
-            {submitFailed ? (
-              <ErrorSummary>
-                <Trans id="moneyLostPage.hasValidationErrors" />
-              </ErrorSummary>
-            ) : null}
-            <Field
-              name="demandedMoney"
-              label={<Trans id="moneyLostPage.demandedMoney" />}
-              helperText={<Trans id="moneyLostPage.demandedMoneyExample" />}
-              component={Input}
-            />
+        validationSchema={MoneyLostInfoFormSchema()}
+        onSubmit={(values) => props.onSubmit(values)}
+      >
+        {({ handleSubmit, handleChange, handleBlur }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row className="form-section">
+                <Field
+                  name="demandedMoney"
+                  label={<Trans id="moneyLostPage.demandedMoney" />}
+                  helpText={<Trans id="moneyLostPage.demandedMoneyExample" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id={'demanded-money'}
+                />
+              </Row>
+              <Row className="form-section">
+                <Field
+                  name="moneyTaken"
+                  label={<Trans id="moneyLostPage.moneyTaken" />}
+                  helpText={<Trans id="moneyLostPage.moneyTakenExample" />}
+                  component={Input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id={'money-taken'}
+                />
+              </Row>
+              <Row className="form-question" lg={1}>
+                <Row className="form-label">
+                  <Trans id="moneyLostPage.methodPayment" />
+                </Row>
+                <Row className="form-helper-text">
+                  <Trans id="moneyLostPage.selectMethod" />
+                </Row>
+              </Row>
 
-            <Field
-              name="moneyTaken"
-              label={<Trans id="moneyLostPage.moneyTaken" />}
-              helperText={<Trans id="moneyLostPage.moneyTakenExample" />}
-              component={Input}
-            />
+              <Row className="form-section">
+                <ErrorMessage name="methodsOfPayment" component={Error} />
+                <FieldArray
+                  name="methodsOfPayment"
+                  className="form-section"
+                  render={() =>
+                    formOptions.map((question) => {
+                      return (
+                        <React.Fragment key={question.name}>
+                          <Field
+                            name="methodsOfPayment"
+                            label={question.radioLabel}
+                            component={Radio}
+                            value={question.value}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            type="radio"
+                            id={question.id}
+                          >
+                            {question.value === 'other' && (
+                              <Field
+                                name={question.name}
+                                label={question.descriptionLabel}
+                                helpText={question.descriptionHelpText}
+                                component={TextArea}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                              />
+                            )}
+                          </Field>
+                        </React.Fragment>
+                      )
+                    })
+                  }
+                />
+              </Row>
 
-            <FormArrayControl
-              name="methodsOfPayment"
-              label={<Trans id="moneyLostPage.methodPayment" />}
-              helperText={<Trans id="moneyLostPage.selectMethod" />}
-            >
-              {methodsOfPayment.map((key) => {
-                return (
-                  <Box key={key}>
-                    <CheckboxAdapter name="methodPayment" value={key}>
-                      {i18n._(key)}
-                    </CheckboxAdapter>
-                    {key === 'methodPayment.other' &&
-                      values.methodPayment.includes('methodPayment.other') && (
-                        <ConditionalForm>
-                          <Field name="methodOther" component={Input} />
-                        </ConditionalForm>
-                      )}
-                  </Box>
-                )
-              })}
-            </FormArrayControl>
+              {/* <FormArrayControl
+                name="methodsOfPayment"
+                label={<Trans id="moneyLostPage.methodPayment" />}
+                helperText={<Trans id="moneyLostPage.selectMethod" />}
+              >
+                {methodsOfPayment.map((key) => {
+                  return (
+                    <Box key={key}>
+                      <CheckboxAdapter name="methodPayment" value={key}>
+                        {i18n._(key)}
+                      </CheckboxAdapter>
+                      {key === 'methodPayment.other' &&
+                        values.methodPayment.includes('methodPayment.other') && (
+                          <ConditionalForm>
+                            <Field name="methodOther" component={Input} />
+                          </ConditionalForm>
+                        )}
+                    </Box>
+                  )
+                })}
+              </FormArrayControl> */}
 
-            <FormArrayControl
-              name="transactionDate"
-              label={<Trans id="moneyLostPage.transactionDate" />}
-              helperText={<Trans id="moneyLostPage.transactionDateExample" />}
-              errors={errors}
-            >
-              <Stack direction="row" spacing="2">
+              <Row className="form-label">
+                <Trans id="moneyLostPage.transactionDate" />
+              </Row>
+              <Row className="form-helper-text">
+                <Trans id="moneyLostPage.transactionDateExample" />
+              </Row>
+
+              {/* <Stack direction="row" spacing="2">
                 <Field
                   name="transactionDay"
                   label={<Trans id="moneyLostPage.transactionDay" />}
@@ -160,19 +200,22 @@ export const MoneyLostInfoForm = (props) => {
                   w={110}
                   maxLength="4"
                 />
-              </Stack>
-            </FormArrayControl>
+              </Stack> */}
 
-            <Well variantColor="blue">
-              <Trans id="moneyLostPage.tip" />
-            </Well>
-            <NextAndCancelButtons
-              next={<Trans id="moneyLostPage.nextStepDetail" />}
-              button={<Trans id="moneyLostPage.nextButton" />}
-            />
-          </Stack>
+              {/* <Well variantColor="blue">
+                <Trans id="moneyLostPage.tip" />
+              </Well> */}
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="businessInfoPage.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="businessInfoPage.nextPage" />}
+                />
+              </Row>
+            </Container>
+          </Form>
         )}
-      />
+      </Formik>
     </React.Fragment>
   )
 }
