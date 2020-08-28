@@ -6,6 +6,7 @@ import { H1, H2 } from '../components/header'
 import { SubmitButton } from '../components/formik/button'
 import { containsData } from '../utils/containsData'
 //import { useLingui } from '@lingui/react'
+import { useLocation } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 //import { useStateValue } from '../utils/state'
 import { Error } from '../components/formik/alert'
@@ -24,14 +25,15 @@ import { TextArea } from '../components/text-area'
 export const MidFeedbackForm = (props) => {
   const [status, setStatus] = useState('')
   const [isOpen, setIsOpen] = useState(false)
+  const location = useLocation()
   //const [data] = useStateValue()
-  const information = {
-    // ...data.formData.personalInformation,
-  }
+  //const information = {
+  // ...data.formData.personalInformation,
+  // }
   // const validate = () => {
   //   return {}
   // }
-  let showWarning = false
+
   const midFeedback = [
     {
       name: 'confuseProblem',
@@ -59,7 +61,7 @@ export const MidFeedbackForm = (props) => {
       checkboxValue: 'midFeedback.problem.other',
     },
   ]
-
+  let showWarning = false
   return (
     <React.Fragment>
       {status ? (
@@ -106,7 +108,11 @@ export const MidFeedbackForm = (props) => {
               </H1>
 
               <Formik
-                initialValues={information}
+                initialValues={{
+                  page: location.pathname,
+                  midFeedback: [],
+                  problemDescription: '',
+                }}
                 onSubmit={(values) => {
                   if (
                     !containsData([
