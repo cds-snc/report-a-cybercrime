@@ -53,6 +53,9 @@ export const LocationInfoForm = (props) => {
                 <br />
               </P>
               <Row>
+                <ErrorMessage name="postalCode" component={Error} />
+              </Row>
+              <Row>
                 <Field
                   name="postalCode"
                   label={<Trans id="locationinfoPage.postalCode" />}
@@ -64,9 +67,7 @@ export const LocationInfoForm = (props) => {
                   helpText="For example: K1A 0R2"
                 />
               </Row>
-              <Row>
-                <ErrorMessage name="postalCode" component={Error} />
-              </Row>
+
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="locationPage.nextButton" />}
