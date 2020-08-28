@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Input } from '../components/input'
+import { Input } from '../components/formik/input'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
 import { TextArea } from '../components/formik/textArea'
@@ -78,13 +78,11 @@ export const MoneyLostInfoForm = (props) => {
         {({ handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row className="form-question">
-                <ErrorMessage name="moneyLost" component={Error} />
-              </Row>
               <Row className="form-section">
                 <Field
                   name="demandedMoney"
                   label={<Trans id="moneyLostPage.demandedMoney" />}
+                  helpText={<Trans id="moneyLostPage.demandedMoneyExample" />}
                   component={Input}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -95,13 +93,24 @@ export const MoneyLostInfoForm = (props) => {
                 <Field
                   name="moneyTaken"
                   label={<Trans id="moneyLostPage.moneyTaken" />}
+                  helpText={<Trans id="moneyLostPage.moneyTakenExample" />}
                   component={Input}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   id={'money-taken'}
                 />
               </Row>
+              <Row className="form-question" lg={1}>
+                <Row className="form-label">
+                  <Trans id="moneyLostPage.methodPayment" />
+                </Row>
+                <Row className="form-helper-text">
+                  <Trans id="moneyLostPage.selectMethod" />
+                </Row>
+              </Row>
+
               <Row className="form-section">
+                <ErrorMessage name="methodsOfPayment" component={Error} />
                 <FieldArray
                   name="methodsOfPayment"
                   className="form-section"
@@ -113,20 +122,23 @@ export const MoneyLostInfoForm = (props) => {
                             name="methodsOfPayment"
                             label={question.radioLabel}
                             component={Radio}
-                            value={question.radioValue}
+                            value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             type="radio"
-                            id={'radio-' + question.name}
-                          />
-                          <Field
-                            name={question.name}
-                            label={question.questionLabel}
-                            helpText={question.helpText}
-                            component={TextArea}
-                            onBlur={handleBlur}
-                            onChange={handleChange}
-                          />
+                            id={question.id}
+                          >
+                            {question.value === 'other' && (
+                              <Field
+                                name={question.name}
+                                label={question.descriptionLabel}
+                                helpText={question.descriptionHelpText}
+                                component={TextArea}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                              />
+                            )}
+                          </Field>
                         </React.Fragment>
                       )
                     })
