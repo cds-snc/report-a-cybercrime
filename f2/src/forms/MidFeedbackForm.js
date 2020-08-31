@@ -3,30 +3,27 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { H1, H2 } from '../components/header'
-import { SubmitButton } from '../components/formik/button'
-//import { useLingui } from '@lingui/react'
+import {
+  SubmitButton,
+  MidFormFeedbackButton,
+} from '../components/formik/button'
+import { containsData } from '../utils/containsData'
+import { useLocation } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
-//import { useStateValue } from '../utils/state'
-import { Error } from '../components/formik/alert'
-//import { A } from '../components/formik/link'
-//import { P } from '../components/formik/paragraph'
-//import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
-//import { NextCancelButtons } from '../components/formik/button'
 import { InfoCard } from '../components/container'
-import { Stack } from '@chakra-ui/core'
-import { Button } from '../components/button'
+//import { Stack } from '@chakra-ui/core'
+// import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
+import { Alert } from '../components/Messages'
 
 export const MidFeedbackForm = (props) => {
-  const [status] = useState('')
+  const [status, setStatus] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  //const [data] = useStateValue()
-  const information = {
-    // ...data.formData.personalInformation,
-  }
+  const location = useLocation()
+
   // const validate = () => {
   //   return {}
   // }
@@ -58,7 +55,7 @@ export const MidFeedbackForm = (props) => {
       checkboxValue: 'midFeedback.problem.other',
     },
   ]
-
+  let showWarning = false
   return (
     <React.Fragment>
       {status ? (
@@ -75,7 +72,7 @@ export const MidFeedbackForm = (props) => {
         </Row>
       ) : (
         <Container>
-          <Button
+          <MidFormFeedbackButton
             onClick={() => setIsOpen(!isOpen)}
             h="inherit"
             py={4}
@@ -86,11 +83,10 @@ export const MidFeedbackForm = (props) => {
             variantColor="gray"
             bg="gray.200"
             borderColor="gray.400"
-          >
-            <Trans id="midFeedback.summary" />
-          </Button>
+            label={<Trans id="midFeedback.summary" />}
+          />
           {isOpen && (
-            <Stack
+            <Container
               bg="gray.200"
               rounded="4px"
               border="1px"
@@ -105,16 +101,35 @@ export const MidFeedbackForm = (props) => {
               </H1>
 
               <Formik
-                initialValues={information}
+                initialValues={{
+                  page: location.pathname,
+                  midFeedback: [],
+                  problemDescription: '',
+                }}
                 onSubmit={(values) => {
-                  props.onSubmit(values)
+                  if (
+                    !containsData([
+                      values.midFeedback,
+                      values.problemDescription,
+                    ])
+                  ) {
+                    showWarning = true
+                  } else {
+                    setStatus('feedback.submitted')
+                    props.onSubmit(values)
+                  }
                 }}
               >
                 {({ handleSubmit, handleChange, handleBlur }) => (
                   <Form onSubmit={handleSubmit}>
+                    {showWarning ? (
+                      <Alert status="error">
+                        <Trans id="finalFeedback.warning" />
+                      </Alert>
+                    ) : null}
                     <Container>
                       <Row className="form-question" lg={1}>
-                        <Row className="form-label" lg={1}>
+                        <Row className="form-label">
                           <Trans id="midFeedback.problem.label" />
                         </Row>
                         <Row className="form-helper-text">
@@ -139,14 +154,7 @@ export const MidFeedbackForm = (props) => {
                                     onBlur={handleBlur}
                                     type="checkbox"
                                     id={'checkbox-' + question.name}
-                                  >
-                                    <ErrorMessage
-                                      name={question.name}
-                                      component={Error}
-                                    />
-                                  </Field>
-
-                                  {/* <ErrorMessage name="postalCode" component={Error} /> */}
+                                  ></Field>
                                 </React.Fragment>
                               )
                             })
@@ -174,9 +182,9 @@ export const MidFeedbackForm = (props) => {
                           />
                         </Row>
                       </Container>
-
                       <Row>
                         <SubmitButton
+                          type="submit"
                           label={<Trans id="midFeedback.submit" />}
                         />
                       </Row>
@@ -184,7 +192,7 @@ export const MidFeedbackForm = (props) => {
                   </Form>
                 )}
               </Formik>
-            </Stack>
+            </Container>
           )}
         </Container>
       )}
