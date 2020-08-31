@@ -139,15 +139,17 @@ export const EvidenceInfoForm = (props) => {
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-section">
-                <P
-                  fontSize="md"
-                  borderBottom="2px"
-                  borderColor="rgb(232, 232, 232)"
-                  marginBottom="1rem"
-                >
-                  You can add a maximum of 3 files, each up to 4 MB in size
-                  each.
-                </P>
+                <Row className="form-row">
+                  <P
+                    fontSize="md"
+                    borderBottom="2px"
+                    borderColor="rgb(232, 232, 232)"
+                    marginBottom="1rem"
+                  >
+                    You can add a maximum of 3 files, each up to 4 MB in size
+                    each.
+                  </P>
+                </Row>
                 <Field
                   component={UploadButton}
                   label={<Trans id="evidencePage.addFileButton" />}
