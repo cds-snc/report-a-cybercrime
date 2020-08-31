@@ -12,5 +12,10 @@ export const yupSchema = () => {
     emailSchema: Yup.string().email(
       <Trans id="contactinfoForm.email.warning" />,
     ),
+    dateSchema: {
+      DAY: Yup.number().min(1).max(31),
+      MONTH: Yup.number().min(1).max(12),
+      YEAR: Yup.number().min(1000).max(9999), //Enforce 4 digit entry
+    },
   }
 }
