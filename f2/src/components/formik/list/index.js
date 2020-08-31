@@ -8,16 +8,20 @@ export const List = (props) => {
       <Row className="form-row">
         {props.label && (
           <Row>
-            <P fontSize="md" fontWeight="bold">
+            <P fontSize="md" fontWeight="bold" marginBottom="1rem">
               {props.label}
             </P>
           </Row>
         )}
-        <ListGroup>
-          {props.items.map((item) => {
-            return <ListGroup.Item className="list-item">{item}</ListGroup.Item>
-          })}
-        </ListGroup>
+        <Row>
+          <ListGroup>
+            {props.items.map((item) => {
+              return (
+                <ListGroup.Item className="list-item">{item}</ListGroup.Item>
+              )
+            })}
+          </ListGroup>
+        </Row>
       </Row>
     </Container>
   )

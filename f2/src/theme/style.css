@@ -436,6 +436,7 @@ body {
 
 .list-item {
   display: list-item;
+  list-style-position: inside;
   border: 0;
   padding: 0 0 0.5rem 0;
   background-color: inherit;
