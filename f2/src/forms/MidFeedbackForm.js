@@ -3,7 +3,10 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { H1, H2 } from '../components/header'
-import { SubmitButton } from '../components/formik/button'
+import {
+  SubmitButton,
+  MidFormFeedbackButton,
+} from '../components/formik/button'
 import { containsData } from '../utils/containsData'
 import { useLocation } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
@@ -11,8 +14,8 @@ import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { InfoCard } from '../components/container'
-import { Stack } from '@chakra-ui/core'
-import { Button } from '../components/button'
+//import { Stack } from '@chakra-ui/core'
+// import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
 import { Alert } from '../components/Messages'
 
@@ -69,7 +72,7 @@ export const MidFeedbackForm = (props) => {
         </Row>
       ) : (
         <Container>
-          <Button
+          <MidFormFeedbackButton
             onClick={() => setIsOpen(!isOpen)}
             h="inherit"
             py={4}
@@ -80,11 +83,10 @@ export const MidFeedbackForm = (props) => {
             variantColor="gray"
             bg="gray.200"
             borderColor="gray.400"
-          >
-            <Trans id="midFeedback.summary" />
-          </Button>
+            label={<Trans id="midFeedback.summary" />}
+          />
           {isOpen && (
-            <Stack
+            <Container
               bg="gray.200"
               rounded="4px"
               border="1px"
@@ -190,7 +192,7 @@ export const MidFeedbackForm = (props) => {
                   </Form>
                 )}
               </Formik>
-            </Stack>
+            </Container>
           )}
         </Container>
       )}
