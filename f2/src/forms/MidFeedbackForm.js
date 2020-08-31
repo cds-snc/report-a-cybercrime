@@ -5,31 +5,22 @@ import { jsx } from '@emotion/core'
 import { H1, H2 } from '../components/header'
 import { SubmitButton } from '../components/formik/button'
 import { containsData } from '../utils/containsData'
-//import { useLingui } from '@lingui/react'
 import { useLocation } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
-//import { useStateValue } from '../utils/state'
-import { Error } from '../components/formik/alert'
-//import { A } from '../components/formik/link'
-//import { P } from '../components/formik/paragraph'
-//import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
-//import { NextCancelButtons } from '../components/formik/button'
 import { InfoCard } from '../components/container'
 import { Stack } from '@chakra-ui/core'
 import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
+import { Alert } from '../components/Messages'
 
 export const MidFeedbackForm = (props) => {
   const [status, setStatus] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
-  //const [data] = useStateValue()
-  //const information = {
-  // ...data.formData.personalInformation,
-  // }
+
   // const validate = () => {
   //   return {}
   // }
@@ -129,9 +120,14 @@ export const MidFeedbackForm = (props) => {
               >
                 {({ handleSubmit, handleChange, handleBlur }) => (
                   <Form onSubmit={handleSubmit}>
+                    {showWarning ? (
+                      <Alert status="error">
+                        <Trans id="finalFeedback.warning" />
+                      </Alert>
+                    ) : null}
                     <Container>
                       <Row className="form-question" lg={1}>
-                        <Row className="form-label" lg={1}>
+                        <Row className="form-label">
                           <Trans id="midFeedback.problem.label" />
                         </Row>
                         <Row className="form-helper-text">
@@ -156,14 +152,7 @@ export const MidFeedbackForm = (props) => {
                                     onBlur={handleBlur}
                                     type="checkbox"
                                     id={'checkbox-' + question.name}
-                                  >
-                                    <ErrorMessage
-                                      name={question.name}
-                                      component={Error}
-                                    />
-                                  </Field>
-
-                                  {/* <ErrorMessage name="postalCode" component={Error} /> */}
+                                  ></Field>
                                 </React.Fragment>
                               )
                             })
@@ -191,7 +180,6 @@ export const MidFeedbackForm = (props) => {
                           />
                         </Row>
                       </Container>
-
                       <Row>
                         <SubmitButton
                           type="submit"
