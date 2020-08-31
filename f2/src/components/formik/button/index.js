@@ -19,7 +19,11 @@ export const DefaultButton = (props) => {
 
 export const MidFormFeedbackButton = (props) => {
   return (
-    <Button type="button" className="default-button mid-form-feedback-button ">
+    <Button
+      type="button"
+      className="default-button mid-form-feedback-button "
+      onClick={props.onClick}
+    >
       <span className="mid-form-feedback-button-label">{props.label}</span>
     </Button>
   )
