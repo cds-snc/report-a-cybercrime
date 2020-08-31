@@ -1,18 +1,12 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
 import PropTypes from 'prop-types'
-import { Alert } from '../components/Messages'
-import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
+import { Formik, FieldArray, Field } from 'formik'
 import { Error } from '../components/formik/alert'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Radio } from '../components/formik/radio'
 import { TextArea } from '../components/formik/textArea'
 import { FeedbackButton } from '../components/formik/button'
-import { FinalFeedbackFormSchema } from './FinalFeedbackFormSchema'
-
-const validate = () => {
-  return {}
-}
 
 export const FinalFeedbackForm = (props) => {
   const formOptions = [
@@ -43,35 +37,35 @@ export const FinalFeedbackForm = (props) => {
     },
   ]
 
-  let showWarning = false
-
   return (
     <Formik
       initialValues={{
         wasServiceHard: '',
         howCanWeDoBetter: '',
       }}
-      //validationSchema={FinalFeedbackFormSchema()}
-      onSubmit={(values) => {
+      initialStatus={{showWarning:false}}
+      onSubmit={(values, {setStatus}) => {
         if (
           values.wasServiceHard.length === 0 &&
           values.howCanWeDoBetter.length === 0
         ) {
-          showWarning = true
+          setStatus({showWarning: true})
         } else {
           props.onSubmit(values)
         }
       }}
-      //validate={validate}
     >
-      {({ handleSubmit, handleChange, handleBlur }) => (
+
+      {({ handleSubmit, handleChange, handleBlur, status }) => (
         <Form onSubmit={handleSubmit}>
           <Container>
-            {showWarning ? (
-              <Alert status="error">
-                <Trans id="finalFeedback.warning" />
-              </Alert>
-            ) : null}
+            <Row className="form-question">
+              {status.showWarning ? (
+                <Error>
+                  <Trans id="finalFeedback.warning" />
+                </Error>
+              ) : null}
+            </Row>
             <Row className="form-question">
               <Row className="form-label">
                 <Trans id="finalFeedback.wasServiceHard.label" />

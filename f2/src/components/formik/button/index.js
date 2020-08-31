@@ -4,16 +4,6 @@ import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
 
-export const FeedbackButton = (props) => {
-  return (
-    <Button type="submit" className="button feedback-button">
-      <span className="button-label">
-        {props.label}
-      </span>
-    </Button>
-  )
-}
-
 export const SubmitButton = (props) => {
   return (
     <Button type="submit" className="button submit-button">
@@ -82,5 +72,15 @@ export const SkipButton = (props) => {
         </Button>
       )}
     />
+  )
+}
+
+export const FeedbackButton = (props) => {
+  return (
+    <Button type="submit" className="button upload-button">
+      <span className="button-label">
+        {props.label}
+      </span>
+    </Button>
   )
 }

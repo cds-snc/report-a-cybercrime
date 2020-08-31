@@ -38,7 +38,7 @@ export const FinalFeedbackPage = () => {
   return (
     <Route
       render={({ history }) => (
-        <Layout>
+        <Layout  columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>
           <TrackPageViews />
           <Stack spacing={10} shouldWrapChildren>
             <H1>
