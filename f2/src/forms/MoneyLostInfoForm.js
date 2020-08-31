@@ -11,9 +11,9 @@ import { NextCancelButtons } from '../components/formik/button'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { MoneyLostInfoFormSchema } from './MoneyLostInfoFormSchema'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Radio } from '../components/formik/radio'
 import { Error } from '../components/formik/alert'
 import { CheckBox } from '../components/formik/checkbox'
+import { DatePicker } from '../components/formik/datePicker'
 
 export const MoneyLostInfoForm = (props) => {
   const [data] = useStateValue()
@@ -142,65 +142,20 @@ export const MoneyLostInfoForm = (props) => {
                 />
               </Row>
 
-              {/* <FormArrayControl
-                name="methodsOfPayment"
-                label={<Trans id="moneyLostPage.methodPayment" />}
-                helperText={<Trans id="moneyLostPage.selectMethod" />}
-              >
-                {methodsOfPayment.map((key) => {
-                  return (
-                    <Box key={key}>
-                      <CheckboxAdapter name="methodPayment" value={key}>
-                        {i18n._(key)}
-                      </CheckboxAdapter>
-                      {key === 'methodPayment.other' &&
-                        values.methodPayment.includes('methodPayment.other') && (
-                          <ConditionalForm>
-                            <Field name="methodOther" component={Input} />
-                          </ConditionalForm>
-                        )}
-                    </Box>
-                  )
-                })}
-              </FormArrayControl> */}
-
               <Row className="form-label">
                 <Trans id="moneyLostPage.transactionDate" />
               </Row>
               <Row className="form-helper-text">
                 <Trans id="moneyLostPage.transactionDateExample" />
               </Row>
+              <Field
+                name="transaction"
+                component={DatePicker}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                datePickerId={'}transaction'}
+              />
 
-              {/* <Stack direction="row" spacing="2">
-                <Field
-                  name="transactionDay"
-                  label={<Trans id="moneyLostPage.transactionDay" />}
-                  component={Input}
-                  group="transactionDate"
-                  w={70}
-                  maxLength="2"
-                />
-                <Field
-                  name="transactionMonth"
-                  label={<Trans id="moneyLostPage.transactionMonth" />}
-                  component={Input}
-                  group="transactionDate"
-                  w={70}
-                  maxLength="2"
-                />
-                <Field
-                  name="transactionYear"
-                  label={<Trans id="moneyLostPage.transactionYear" />}
-                  component={Input}
-                  group="transactionDate"
-                  w={110}
-                  maxLength="4"
-                />
-              </Stack> */}
-
-              {/* <Well variantColor="blue">
-                <Trans id="moneyLostPage.tip" />
-              </Well> */}
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="businessInfoPage.nextButton" />}
