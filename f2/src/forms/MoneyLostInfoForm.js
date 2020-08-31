@@ -153,7 +153,7 @@ export const MoneyLostInfoForm = (props) => {
                 component={DatePicker}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                datePickerId={'transaction'}
+                id="transactionDate"
               />
 
               <Row>
