@@ -14,6 +14,7 @@ import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { Error, Info } from '../components/formik/alert'
 import { UploadButton } from '../components/formik/button'
 import { List } from '../components/formik/list'
+import { P } from '../components/formik/paragraph'
 
 export const EvidenceInfoForm = (props) => {
   const [data] = useStateValue()
@@ -138,6 +139,10 @@ export const EvidenceInfoForm = (props) => {
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-section">
+                <P fontSize="md">
+                  You can add a maximum of 3 files, each up to 4 MB in size
+                  each.
+                </P>
                 <Field
                   component={UploadButton}
                   label={<Trans id="evidencePage.addFileButton" />}
