@@ -76,6 +76,23 @@ export const WhenDidItHappenForm = (props) => {
     values.description = ''
   }
 
+  const evalInput = (day, month, year) => {
+    const months31 = [1, 3, 5, 7, 8, 10, 12]
+    const months30 = [4, 6, 9, 11]
+
+    if (!isFinite(day)) {
+      console.log('Invalid day ', day)
+    }
+
+    if (!isFinite(month)) {
+      console.log('Invalid month ', month)
+    }
+
+    if (!isFinite(year)) {
+      console.log('Invalid year ', year)
+    }
+  }
+
   const formatData = (values) => {
     let errors = {}
 
@@ -117,7 +134,14 @@ export const WhenDidItHappenForm = (props) => {
       <Formik
         initialValues={whenDidItHappen}
         initialStatus={{ errors: '' }}
-        validationSchema={whenDidItHappenFormSchema()}
+        //validationSchema={whenDidItHappenFormSchema()}
+        validate={(values) => {
+          evalInput(
+            values.happenedOnceDay,
+            values.happenedOnceMonth,
+            values.happenedOnceYear,
+          )
+        }}
         validateOnChange={false}
         onSubmit={(values, { setStatus }) => {
           const errors = formatData(values)
