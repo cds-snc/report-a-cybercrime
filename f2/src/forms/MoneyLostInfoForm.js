@@ -11,8 +11,9 @@ import { NextCancelButtons } from '../components/formik/button'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { MoneyLostInfoFormSchema } from './MoneyLostInfoFormSchema'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Radio } from '../components/formik/radio'
 import { Error } from '../components/formik/alert'
+import { CheckBox } from '../components/formik/checkbox'
+import { DatePicker } from '../components/formik/datePicker'
 
 export const MoneyLostInfoForm = (props) => {
   const [data] = useStateValue()
@@ -25,33 +26,28 @@ export const MoneyLostInfoForm = (props) => {
   const formOptions = [
     {
       name: 'eTransfer',
-      radioLabel: <Trans id="methodPayment.eTransfer" />,
-      radioName: 'methodPayment.eTransfer',
-      radioValue: 'methodPayment.eTransfer',
+      checkboxLabel: <Trans id="methodPayment.eTransfer" />,
+      checkboxName: 'methodPayment.eTransfer',
     },
     {
       name: 'creditCard',
-      radioLabel: <Trans id="methodPayment.creditCard" />,
-      radioName: 'methodPayment.creditCard',
-      radioValue: 'methodPayment.creditCard',
+      checkboxLabel: <Trans id="methodPayment.creditCard" />,
+      checkboxName: 'methodPayment.creditCard',
     },
     {
       name: 'giftCard',
-      radioLabel: <Trans id="methodPayment.giftCard" />,
-      radioName: 'methodPayment.giftCard',
-      radioValue: 'methodPayment.giftCard',
+      checkboxLabel: <Trans id="methodPayment.giftCard" />,
+      checkboxName: 'methodPayment.giftCard',
     },
     {
       name: 'cryptocurrency',
-      radioLabel: <Trans id="methodPayment.cryptocurrency" />,
-      radioName: 'methodPayment.cryptocurrency',
-      radioValue: 'methodPayment.cryptocurrency',
+      checkboxLabel: <Trans id="methodPayment.cryptocurrency" />,
+      checkboxName: 'methodPayment.cryptocurrency',
     },
     {
       name: 'other',
-      radioLabel: <Trans id="methodPayment.other" />,
-      radioName: 'methodPayment.other',
-      radioValue: 'methodPayment.other',
+      checkboxLabel: <Trans id="methodPayment.other" />,
+      checkboxName: 'methodPayment.other',
     },
   ]
 
@@ -110,23 +106,23 @@ export const MoneyLostInfoForm = (props) => {
               </Row>
 
               <Row className="form-section">
-                <ErrorMessage name="methodsOfPayment" component={Error} />
+                <ErrorMessage name="methodPayment" component={Error} />
                 <FieldArray
-                  name="methodsOfPayment"
+                  name="methodPayment"
                   className="form-section"
                   render={() =>
                     formOptions.map((question) => {
                       return (
                         <React.Fragment key={question.name}>
                           <Field
-                            name="methodsOfPayment"
-                            label={question.radioLabel}
-                            component={Radio}
-                            value={question.value}
+                            name="methodPayment"
+                            label={question.checkboxLabel}
+                            component={CheckBox}
+                            value={question.name}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            type="radio"
-                            id={question.id}
+                            type="checkbox"
+                            id={'checkbox-' + question.name}
                           >
                             {question.value === 'other' && (
                               <Field
@@ -146,65 +142,20 @@ export const MoneyLostInfoForm = (props) => {
                 />
               </Row>
 
-              {/* <FormArrayControl
-                name="methodsOfPayment"
-                label={<Trans id="moneyLostPage.methodPayment" />}
-                helperText={<Trans id="moneyLostPage.selectMethod" />}
-              >
-                {methodsOfPayment.map((key) => {
-                  return (
-                    <Box key={key}>
-                      <CheckboxAdapter name="methodPayment" value={key}>
-                        {i18n._(key)}
-                      </CheckboxAdapter>
-                      {key === 'methodPayment.other' &&
-                        values.methodPayment.includes('methodPayment.other') && (
-                          <ConditionalForm>
-                            <Field name="methodOther" component={Input} />
-                          </ConditionalForm>
-                        )}
-                    </Box>
-                  )
-                })}
-              </FormArrayControl> */}
-
               <Row className="form-label">
                 <Trans id="moneyLostPage.transactionDate" />
               </Row>
               <Row className="form-helper-text">
                 <Trans id="moneyLostPage.transactionDateExample" />
               </Row>
+              <Field
+                name="transaction"
+                component={DatePicker}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                datePickerId={'transaction'}
+              />
 
-              {/* <Stack direction="row" spacing="2">
-                <Field
-                  name="transactionDay"
-                  label={<Trans id="moneyLostPage.transactionDay" />}
-                  component={Input}
-                  group="transactionDate"
-                  w={70}
-                  maxLength="2"
-                />
-                <Field
-                  name="transactionMonth"
-                  label={<Trans id="moneyLostPage.transactionMonth" />}
-                  component={Input}
-                  group="transactionDate"
-                  w={70}
-                  maxLength="2"
-                />
-                <Field
-                  name="transactionYear"
-                  label={<Trans id="moneyLostPage.transactionYear" />}
-                  component={Input}
-                  group="transactionDate"
-                  w={110}
-                  maxLength="4"
-                />
-              </Stack> */}
-
-              {/* <Well variantColor="blue">
-                <Trans id="moneyLostPage.tip" />
-              </Well> */}
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="businessInfoPage.nextButton" />}
