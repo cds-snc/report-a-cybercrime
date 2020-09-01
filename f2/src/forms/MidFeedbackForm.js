@@ -7,6 +7,7 @@ import {
   FeedbackButton,
   MidFormFeedbackButton,
 } from '../components/formik/button'
+// import {FeedbackButton} from '../components/formik/button'
 // import { containsData } from '../utils/containsData'
 import { useLocation } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
@@ -21,7 +22,7 @@ import { TextArea } from '../components/text-area'
 import { Error } from '../components/formik/alert'
 
 export const MidFeedbackForm = (props) => {
-  const [status] = useState('')
+  const [status, setStatus] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
 
@@ -108,7 +109,7 @@ export const MidFeedbackForm = (props) => {
                   problemDescription: '',
                 }}
                 initialStatus={{ showWarning: false }}
-                onSubmit={(values, { setStatus }) => {
+                onSubmit={(values) => {
                   if (
                     // !containsData([
                     //   values.midFeedback,
@@ -119,7 +120,7 @@ export const MidFeedbackForm = (props) => {
                   ) {
                     setStatus({ showWarning: true })
                   } else {
-                    // setStatus('feedback.submitted')
+                    setStatus('feedback.submitted')
                     props.onSubmit(values)
                   }
                 }}
@@ -193,12 +194,6 @@ export const MidFeedbackForm = (props) => {
                           />
                         </Row>
                       </Container>
-                      {/* <Row>
-                        <SubmitButton
-                          type="submit"
-                          label={<Trans id="midFeedback.submit" />}
-                        />
-                      </Row> */}
                       <Row>
                         <FeedbackButton
                           label={<Trans id="finalFeedback.submit" />}
