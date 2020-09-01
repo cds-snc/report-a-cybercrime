@@ -386,8 +386,6 @@
   "stepper": "Step {activeStep} of {totalSteps}",
   "suspectClues.intro": "It’s often hard to tell who is behind a computer crime or scam. It’s okay if you don’t know much about the suspect. You can leave the questions you cannot answer blank.",
   "suspectClues.nextButton": "Continue",
-  "suspectClues.question1": "Who did they claim to be?",
-  "suspectClues.question1Details": "Include any name, username, group, or organization mentioned by the suspect.",
   "suspectClues.question2": "Where did they ask you to send things?",
   "suspectClues.question2Details": "Include any addresses where the suspect  asked you to send money or information.",
   "suspectClues.question3": "What other details do you recall?",

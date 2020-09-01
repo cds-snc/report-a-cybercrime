@@ -42,7 +42,7 @@ export const SuspectCluesForm = (props) => {
             spacing={6}
             shouldWrapChildren
           >
-            <Field name="suspectClues1">
+            {/* <Field name="suspectClues1">
               {(props) => (
                 <FormControl>
                   <FormLabel htmlFor="suspectClues1">
@@ -61,7 +61,7 @@ export const SuspectCluesForm = (props) => {
                   />
                 </FormControl>
               )}
-            </Field>
+            </Field> */}
 
             <Field name="suspectClues2">
               {(props) => (
