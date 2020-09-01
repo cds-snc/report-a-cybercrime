@@ -27,7 +27,7 @@ export const WhenDidItHappenForm = (props) => {
       radioLabel: <Trans id="whenDidItHappenPage.options.once" />,
       datePickerLabel: <Trans id="whenDidItHappenPage.singleDate.label" />,
       datePickerHelpText: <Trans id="whenDidItStart.labelExample" />,
-      datePickerId: 'singleIncident',
+      datePickerId: 'happenedOnce',
     },
     {
       name: 'happenedMoreThanOnce',
@@ -38,12 +38,12 @@ export const WhenDidItHappenForm = (props) => {
         <Trans id="whenDidItHappenPage.dateRange.start.label" />
       ),
       datePickerStartHelpText: <Trans id="whenDidItStart.labelExample" />,
-      datePickerStartId: 'multipleIncidentsStart',
+      datePickerStartId: 'happenedMoreThanOnceStart',
       datePickerEndLabel: (
         <Trans id="whenDidItHappenPage.dateRange.end.label" />
       ),
       datePickerEndHelpText: <Trans id="whenDidItStart.labelExample" />,
-      datePickerEndId: 'multipleIncidentsEnd',
+      datePickerEndId: 'happenedMoreThanOnceEnd',
     },
     {
       name: 'description',
