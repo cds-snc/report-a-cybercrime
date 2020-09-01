@@ -30,8 +30,6 @@ const DateEntry = ({ field, form, ...props }) => {
 }
 
 export const DatePicker = ({ field, form, ...props }) => {
-  console.log('Form Errors: ', JSON.stringify(form.errors, null, 2))
-
   return (
     <Container fluid>
       <Row>
@@ -41,6 +39,7 @@ export const DatePicker = ({ field, form, ...props }) => {
         <Form.Text className="input-help-text">{props.helpText}</Form.Text>
       </Row>
 
+      {/* If one of the fields contains an error show one error message. */}
       <Row>
         {((form.errors[`${field.name}` + 'Day'] &&
           form.touched[`${field.name}` + 'Day']) ||

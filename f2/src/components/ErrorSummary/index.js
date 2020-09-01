@@ -27,6 +27,8 @@ export const ErrorSummary = (props) => {
   })
   let errorLength = Object.keys(errors).length
 
+  console.log(JSON.stringify(errors, null, 2))
+
   return (
     <Alert id="error-summary" status="error" aria-atomic>
       <Stack>

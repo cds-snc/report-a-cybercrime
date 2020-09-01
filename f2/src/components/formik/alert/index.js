@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { Trans } from '@lingui/macro'
-import { Row, Container } from 'react-bootstrap'
-import { Alert } from 'react-bootstrap'
+import { Row, Container, Alert } from 'react-bootstrap'
+import { A } from '../link'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { IoIosWarning } from 'react-icons/io'
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
@@ -41,7 +41,9 @@ export const Success = (props) => {
   )
 }
 
-export const ErrorSummary = () => {
+export const ErrorSummary = (props) => {
+  console.log('ErrorSummary: ', JSON.stringify(props.errors, null, 2))
+
   const errorSummaryRef = useRef(null)
 
   const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
@@ -60,6 +62,18 @@ export const ErrorSummary = () => {
         >
           <Row className="error-summary-title ">
             <Trans id="default.hasValidationErrors" />
+          </Row>
+          <Row>
+            {Object.entries(props.errors).forEach(([key, items]) => {
+              return (
+                <React.Fragment>
+                  Test
+                  <A key={key} href={`#${key}`}>
+                    {items}
+                  </A>
+                </React.Fragment>
+              )
+            })}
           </Row>
         </Alert>
       </Row>

@@ -31,7 +31,7 @@ export const WhenDidItHappenForm = (props) => {
     {
       name: 'happenedMoreThanOnce',
       value: 'moreThanOnce',
-      id: 'incidentFrequency-MoreThanOnce',
+      id: 'happenedMoreThanOnce',
       radioLabel: <Trans id="whenDidItHappenPage.options.moreThanOnce" />,
       datePickerStartLabel: (
         <Trans id="whenDidItHappenPage.dateRange.start.label" />
@@ -136,7 +136,9 @@ export const WhenDidItHappenForm = (props) => {
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
-                {Object.keys(errors).length > 0 && <ErrorSummary />}
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary errors={errors} />
+                )}
                 <Row className="form-label">
                   <Trans id="whenDidItHappenPage.question" />
                 </Row>
