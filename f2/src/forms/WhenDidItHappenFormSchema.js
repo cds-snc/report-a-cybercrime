@@ -1,61 +1,52 @@
 import * as Yup from 'yup'
 import { yupSchema } from '../utils/yupSchema'
 
-const { dateSchema } = yupSchema()
-
-const validationSelection = (selection, validation) => ({
+const validationSelection = (selection) => ({
   is: selection,
-  then: validation,
-  otherwise: Yup.number().typeError(''),
+  then: Yup.number().required(),
 })
 
 const whenDidItHappenForm = Yup.object().shape({
   incidentFrequency: Yup.string().required('Please make a selection'),
   startDay: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateSchema.DAY),
+    validationSelection('moreThanOnce'),
   ),
   startMonth: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateSchema.MONTH),
+    validationSelection('moreThanOnce'),
   ),
   startYear: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateSchema.YEAR),
+    validationSelection('moreThanOnce'),
   ),
   endDay: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateSchema.DAY),
+    validationSelection('moreThanOnce'),
   ),
   endMonth: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateSchema.MONTH),
+    validationSelection('moreThanOnce'),
   ),
   endYear: Yup.number().when(
     'incidentFrequency',
-    validationSelection('moreThanOnce', dateSchema.YEAR),
+    validationSelection('moreThanOnce'),
   ),
   happenedOnceDay: Yup.number().when(
     'incidentFrequency',
-    validationSelection('once', dateSchema.DAY),
+    validationSelection('once'),
   ),
   happenedOnceMonth: Yup.number().when(
     'incidentFrequency',
-    validationSelection('once', dateSchema.MONTH),
+    validationSelection('once'),
   ),
   happenedOnceYear: Yup.number().when(
     'incidentFrequency',
-    validationSelection('once', dateSchema.YEAR),
+    validationSelection('once'),
   ),
   description: Yup.string(),
 })
 
-const formSchema = Yup.object().shape({
-  happenedOnceDay: Yup.number().required('Day required'),
-  happenedOnceMonth: Yup.number().required('Month required'),
-  happenedOnceYear: Yup.number().required('Year required'),
-})
-
 export const whenDidItHappenFormSchema = () => {
-  return formSchema
+  return whenDidItHappenForm
 }

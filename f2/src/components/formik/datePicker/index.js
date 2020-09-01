@@ -7,7 +7,7 @@ import { Error } from '../alert'
 const DateEntry = ({ field, form, ...props }) => {
   let length = 2
   let dateClass = 'day-month'
-  const error = form.errors[`${field.name}`]
+  const error = form.errors[`${field.name}`] && form.touched[`${field.name}`]
 
   if (props.type === 'year') {
     length = 4
@@ -30,6 +30,8 @@ const DateEntry = ({ field, form, ...props }) => {
 }
 
 export const DatePicker = ({ field, form, ...props }) => {
+  console.log('Form Errors: ', JSON.stringify(form.errors, null, 2))
+
   return (
     <Container fluid>
       <Row>
@@ -39,11 +41,16 @@ export const DatePicker = ({ field, form, ...props }) => {
         <Form.Text className="input-help-text">{props.helpText}</Form.Text>
       </Row>
 
-      {/*<Row>
-        {(form.errors[field.name + 'Day'] ||
-          form.errors[field.name + 'Month'] ||
-          form.errors[field.name + 'Year']) && <Error>Invalid date</Error>}
-      </Row>*/}
+      <Row>
+        {((form.errors[`${field.name}` + 'Day'] &&
+          form.touched[`${field.name}` + 'Day']) ||
+          (form.errors[`${field.name}` + 'Month'] &&
+            form.touched[`${field.name}` + 'Month']) ||
+          (form.errors[`${field.name}` + 'Year'] &&
+            form.touched[`${field.name}` + 'Year'])) && (
+          <Error>Invalid date</Error>
+        )}
+      </Row>
 
       <Row className="date-group">
         <Field

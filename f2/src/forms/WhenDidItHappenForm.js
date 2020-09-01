@@ -136,6 +136,7 @@ export const WhenDidItHappenForm = (props) => {
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
+                {Object.keys(errors).length > 0 && <ErrorSummary />}
                 <Row className="form-label">
                   <Trans id="whenDidItHappenPage.question" />
                 </Row>
