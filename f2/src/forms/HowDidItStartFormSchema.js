@@ -1,6 +1,4 @@
 import * as Yup from 'yup'
-import React from 'react'
-import { Trans } from '@lingui/macro'
 import { yupSchema } from '../utils/yupSchema'
 
 const howDidItStartFormSchema = Yup.object().shape({
