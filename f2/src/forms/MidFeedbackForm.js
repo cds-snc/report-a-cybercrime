@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { H1, H2 } from '../components/header'
 import {
-  SubmitButton,
+  FeedbackButton,
   MidFormFeedbackButton,
 } from '../components/formik/button'
-import { containsData } from '../utils/containsData'
+// import { containsData } from '../utils/containsData'
 import { useLocation } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
@@ -17,10 +17,11 @@ import { InfoCard } from '../components/container'
 //import { Stack } from '@chakra-ui/core'
 // import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
-import { Alert } from '../components/Messages'
+// import { Alert } from '../components/Messages'
+import { Error } from '../components/formik/alert'
 
 export const MidFeedbackForm = (props) => {
-  const [status, setStatus] = useState('')
+  const [status] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
 
@@ -55,7 +56,7 @@ export const MidFeedbackForm = (props) => {
       checkboxValue: 'midFeedback.problem.other',
     },
   ]
-  let showWarning = false
+  //  let showWarning = false
   return (
     <React.Fragment>
       {status ? (
@@ -106,28 +107,38 @@ export const MidFeedbackForm = (props) => {
                   midFeedback: [],
                   problemDescription: '',
                 }}
-                onSubmit={(values) => {
+                initialStatus={{ showWarning: false }}
+                onSubmit={(values, { setStatus }) => {
                   if (
-                    !containsData([
-                      values.midFeedback,
-                      values.problemDescription,
-                    ])
+                    // !containsData([
+                    //   values.midFeedback,
+                    //   values.problemDescription,
+                    // ])
+                    values.midFeedback.length === 0 &&
+                    values.problemDescription.length === 0
                   ) {
-                    showWarning = true
+                    setStatus({ showWarning: true })
                   } else {
-                    setStatus('feedback.submitted')
+                    // setStatus('feedback.submitted')
                     props.onSubmit(values)
                   }
                 }}
               >
                 {({ handleSubmit, handleChange, handleBlur }) => (
                   <Form onSubmit={handleSubmit}>
-                    {showWarning ? (
+                    {/* {showWarning ? (
                       <Alert status="error">
                         <Trans id="finalFeedback.warning" />
                       </Alert>
-                    ) : null}
+                    ) : null} */}
                     <Container>
+                      <Row className="form-question">
+                        {status.showWarning ? (
+                          <Error>
+                            <Trans id="finalFeedback.warning" />
+                          </Error>
+                        ) : null}
+                      </Row>
                       <Row className="form-question" lg={1}>
                         <Row className="form-label">
                           <Trans id="midFeedback.problem.label" />
@@ -182,10 +193,15 @@ export const MidFeedbackForm = (props) => {
                           />
                         </Row>
                       </Container>
-                      <Row>
+                      {/* <Row>
                         <SubmitButton
                           type="submit"
                           label={<Trans id="midFeedback.submit" />}
+                        />
+                      </Row> */}
+                      <Row>
+                        <FeedbackButton
+                          label={<Trans id="finalFeedback.submit" />}
                         />
                       </Row>
                     </Container>
