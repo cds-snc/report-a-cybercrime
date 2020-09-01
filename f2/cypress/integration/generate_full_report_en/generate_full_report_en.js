@@ -265,7 +265,7 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill to yourLocation page forms', () => {
-  cy.get('form').find('[id="postalCode"]').type('M3H 6A7')
+  cy.get('form').find('[name="postalCode"]').type('M3H 6A7')
 })
 
 Then('I click {string}', () => {
@@ -277,9 +277,9 @@ Given('{string} should be shown', (content) => {
 })
 
 When('I fill yourContactDetails page forms', () => {
-  cy.get('form').find('[id="fullName"]').type('FirstName LastName')
-  cy.get('form').find('[id="email"]').type('Hong.Vu@rcmp-grc.gc.ca')
-  cy.get('form').find('[id="phone"]').type('4161015934')
+  cy.get('form').find('[name="fullName"]').type('FirstName LastName')
+  cy.get('form').find('[name="email"]').type('Hong.Vu@rcmp-grc.gc.ca')
+  cy.get('form').find('[name="phone"]').type('4161015934')
 })
 
 Then('I click {string}', () => {
