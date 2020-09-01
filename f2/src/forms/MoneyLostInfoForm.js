@@ -67,6 +67,7 @@ export const MoneyLostInfoForm = (props) => {
         </div>
       ) : null}
       <Formik
+        initialStatus={{ errors: '' }}
         initialValues={moneyLost}
         validationSchema={MoneyLostInfoFormSchema()}
         onSubmit={(values) => props.onSubmit(values)}
@@ -153,7 +154,7 @@ export const MoneyLostInfoForm = (props) => {
                 component={DatePicker}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                id="transactionDate"
+                id="transaction"
               />
 
               <Row>
