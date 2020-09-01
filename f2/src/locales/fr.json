@@ -239,6 +239,7 @@
   "howDidItStartPage.title": "Comment l’incident a-t-il commencé?",
   "howDidTheyReachYou.app": "Sur une application",
   "howDidTheyReachYou.email": "Par courriel",
+  "howDidTheyReachYou.error": "Cochez au moins une case. Si vous n'êtes pas certain, choisissez \"Autre\".",
   "howDidTheyReachYou.online": "Sur un site Web",
   "howDidTheyReachYou.others": "Autre",
   "howDidTheyReachYou.phone": "Au téléphone",
