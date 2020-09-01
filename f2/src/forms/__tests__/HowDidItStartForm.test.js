@@ -71,6 +71,6 @@ describe('<HowDidItStartForm />', () => {
       await wait(0) // Wait for promises to resolve
     })
 
-    expect(submitMock).toHaveBeenCalledTimes(0)
+    expect(submitMock).toHaveBeenCalledTimes(1)
   })
 })
