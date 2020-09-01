@@ -171,6 +171,22 @@ body {
   background-color: rgb(24, 60, 31);
 }
 
+.feedback-button {
+  background-color: rgb(30, 78, 140);
+  color: rgb(255, 255, 255);
+  border-color: rgb(24, 60, 31);
+}
+
+.feedback-button:hover,
+.feedback-button:focus {
+  background-color: rgb(30, 78, 140);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.feedback-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(24, 60, 31);
+}
+
 .default-button {
   background-color: rgb(232, 232, 232);
   color: rgb(0, 0, 0);
