@@ -67,17 +67,25 @@ export const validateDateRange = (startDate, endDate) => {
 }
 
 export const evalDate = (day, month, year) => {
+  if (!day && !month && !year) {
+    //Do not validate empty input
+    return
+  }
+
+  if (!isFinite(day) || !isFinite(month) || !isFinite(year)) {
+    //Check for any non-number inputs
+    return 'Invalid date'
+  }
+
   const date = moment(`${month} ${day} ${year}`, 'MM DD YYYY')
 
   if (!date.isValid()) {
     return 'Invalid date'
   }
 
-  if (date.isAfter(moment.now())) {
+  if (year && date.isAfter(moment.now())) {
     return 'Date cannot be in the future'
   }
-
-  return
 }
 
 export const evalDateRange = (values) => {
@@ -85,38 +93,30 @@ export const evalDateRange = (values) => {
   let startDate = null
   let endDate = null
 
-  if (values.startDay && values.startMonth && values.startYear) {
-    const startError = evalDate(
-      values.startDay,
-      values.startMonth,
-      values.startYear,
-    )
+  const startError = evalDate(
+    values.startDay,
+    values.startMonth,
+    values.startYear,
+  )
 
-    if (startError) {
-      errors['startError'] = startError
-    } else {
-      startDate = moment(
-        `${values.startMonth} ${values.startDay} ${values.startYear}`,
-        'MM DD YYYY',
-      )
-    }
+  if (startError) {
+    errors['startError'] = startError
   } else {
-    errors['startError'] = 'Invalid date'
+    startDate = moment(
+      `${values.startMonth} ${values.startDay} ${values.startYear}`,
+      'MM DD YYYY',
+    )
   }
 
-  if (values.endDay && values.endMonth && values.endYear) {
-    const endError = evalDate(values.endDay, values.endMonth, values.endYear)
+  const endError = evalDate(values.endDay, values.endMonth, values.endYear)
 
-    if (endError) {
-      errors['endError'] = endError
-    } else {
-      endDate = moment(
-        `${values.endMonth} ${values.endDay} ${values.endYear}`,
-        'MM DD YYYY',
-      )
-    }
+  if (endError) {
+    errors['endError'] = endError
   } else {
-    errors['endError'] = 'Invalid date'
+    endDate = moment(
+      `${values.endMonth} ${values.endDay} ${values.endYear}`,
+      'MM DD YYYY',
+    )
   }
 
   if (startDate && endDate) {

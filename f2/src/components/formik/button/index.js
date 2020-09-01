@@ -57,19 +57,14 @@ export const CancelButton = (props) => {
 }
 
 export const NextCancelButtons = (props) => {
-  const label = props.errors ? (
-    <Trans id="default.hasValidationErrors" />
-  ) : (
-    props.label
-  )
   return (
     <Container className="next-cancel-buttons">
       <Row>
-        <p className="label next-page-label">{label}</p>
+        <p className="label next-page-label">{props.label}</p>
       </Row>
       <Row>
         <Col xs="auto" className="button-container">
-          <SubmitButton label={props.submit} disabled={props.errors} />
+          <SubmitButton label={props.submit} />
         </Col>
         <Col xs="auto" className="button-container">
           <CancelButton label={props.cancel} />

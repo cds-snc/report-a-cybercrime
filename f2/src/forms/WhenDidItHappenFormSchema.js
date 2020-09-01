@@ -50,6 +50,12 @@ const whenDidItHappenForm = Yup.object().shape({
   description: Yup.string(),
 })
 
+const formSchema = Yup.object().shape({
+  happenedOnceDay: Yup.number().required('Day required'),
+  happenedOnceMonth: Yup.number().required('Month required'),
+  happenedOnceYear: Yup.number().required('Year required'),
+})
+
 export const whenDidItHappenFormSchema = () => {
-  return whenDidItHappenForm
+  return formSchema
 }

@@ -11,7 +11,6 @@ import { Error, Info, ErrorSummary } from '../components/formik/alert'
 import { TextArea } from '../components/formik/textArea'
 import { whenDidItHappenFormSchema } from './WhenDidItHappenFormSchema'
 import { evalDate, evalDateRange } from '../utils/validateDate'
-import { FormikListener } from '../components/formik/formikListener'
 
 export const WhenDidItHappenForm = (props) => {
   const [data] = useStateValue()
@@ -76,7 +75,7 @@ export const WhenDidItHappenForm = (props) => {
     values.description = ''
   }
 
-  const formatData = (values) => {
+  const evalDateInput = (values) => {
     let errors = {}
 
     if (values.incidentFrequency === 'once') {
@@ -87,49 +86,54 @@ export const WhenDidItHappenForm = (props) => {
       )
 
       if (happenedOnceError) {
-        errors['happenedOnceError'] = happenedOnceError
-      } else {
-        clearDateRange(values)
-        clearDescription(values)
+        errors['happenedOnce'] = happenedOnceError
       }
     } else if (values.incidentFrequency === 'moreThanOnce') {
       const dateRangeErrors = evalDateRange(values)
 
       if (dateRangeErrors.startError) {
-        errors['startError'] = dateRangeErrors.startError
+        errors['start'] = dateRangeErrors.startError
       }
 
       if (dateRangeErrors.endError) {
-        errors['endError'] = dateRangeErrors.endError
+        errors['end'] = dateRangeErrors.endError
       }
+    }
+
+    return errors
+  }
+
+  const checkRequiredFields = (values) => {}
+
+  const clearData = (values) => {
+    if (values.incidentFrequency === 'once') {
+      clearDateRange(values)
+      clearDescription(values)
+    } else if (values.incidentFrequency === 'moreThanOnce') {
       clearHappenedOnce(values)
       clearDescription(values)
     } else {
       clearHappenedOnce(values)
       clearDateRange(values)
     }
-
-    return errors
   }
 
   return (
     <React.Fragment>
       <Formik
         initialValues={whenDidItHappen}
-        initialStatus={{ errors: '' }}
-        validationSchema={whenDidItHappenFormSchema()}
         validateOnChange={false}
-        onSubmit={(values, { setStatus }) => {
-          const errors = formatData(values)
-          setStatus({ errors })
-          if (Object.keys(errors).length === 0) {
-            props.onSubmit(values)
-          }
+        validationSchema={whenDidItHappenFormSchema()}
+        validate={(values) => {
+          return evalDateInput(values)
+        }}
+        onSubmit={async (values) => {
+          await clearData(values)
+          props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, status, errors }) => (
+        {({ handleSubmit, handleChange, handleBlur, errors }) => (
           <Form onSubmit={handleSubmit}>
-            <FormikListener />
             <Container>
               <Row className="form-question">
                 <Row className="form-label">
@@ -137,7 +141,6 @@ export const WhenDidItHappenForm = (props) => {
                 </Row>
               </Row>
               <Row className="form-section">
-                {status.errors && <ErrorSummary />}
                 <ErrorMessage name="incidentFrequency" component={Error} />
                 <FieldArray
                   name="incidentFrequency"
@@ -158,6 +161,9 @@ export const WhenDidItHappenForm = (props) => {
                           >
                             {question.value === 'once' && (
                               <React.Fragment>
+                                {errors.happenedOnce && (
+                                  <Error>{errors.happenedOnce}</Error>
+                                )}
                                 <Field
                                   name={question.name}
                                   label={question.datePickerLabel}
@@ -171,6 +177,7 @@ export const WhenDidItHappenForm = (props) => {
                             )}
                             {question.value === 'moreThanOnce' && (
                               <React.Fragment>
+                                {errors.start && <Error>{errors.start}</Error>}
                                 <Field
                                   name="start"
                                   label={question.datePickerStartLabel}
@@ -180,6 +187,7 @@ export const WhenDidItHappenForm = (props) => {
                                   onChange={handleChange}
                                   id={question.datePickerStartId}
                                 />
+                                {errors.end && <Error>{errors.end}</Error>}
                                 <Field
                                   name="end"
                                   label={question.datePickerEndLabel}
@@ -217,7 +225,6 @@ export const WhenDidItHappenForm = (props) => {
 
               <Row>
                 <NextCancelButtons
-                  errors={status.errors || Object.keys(errors).length > 0}
                   submit={<Trans id="howDidItStartPage.nextButton" />}
                   cancel={<Trans id="button.cancelReport" />}
                   label={<Trans id="whenDidItHappenPage.nextPage" />}

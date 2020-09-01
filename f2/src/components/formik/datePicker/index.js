@@ -39,14 +39,11 @@ export const DatePicker = ({ field, form, ...props }) => {
         <Form.Text className="input-help-text">{props.helpText}</Form.Text>
       </Row>
 
-      <Row>
+      {/*<Row>
         {(form.errors[field.name + 'Day'] ||
           form.errors[field.name + 'Month'] ||
           form.errors[field.name + 'Year']) && <Error>Invalid date</Error>}
-        {form.status.errors && form.status.errors[field.name + 'Error'] && (
-          <Error>{form.status.errors[field.name + 'Error']}</Error>
-        )}
-      </Row>
+      </Row>*/}
 
       <Row className="date-group">
         <Field
@@ -54,12 +51,16 @@ export const DatePicker = ({ field, form, ...props }) => {
           component={DateEntry}
           id={props.id + 'Day'}
           value={props.day}
+          onChange={props.handleChange}
+          onBlur={props.handleBlur}
           label={<Trans id="whenDidItStart.startDay" />}
         />
         <Field
           name={field.name + 'Month'}
           component={DateEntry}
           id={props.id + 'Month'}
+          onChange={props.handleChange}
+          onBlur={props.handleBlur}
           value={props.month}
           label={<Trans id="whenDidItStart.startMonth" />}
         />
@@ -67,6 +68,8 @@ export const DatePicker = ({ field, form, ...props }) => {
           name={field.name + 'Year'}
           component={DateEntry}
           id={props.id + 'Year'}
+          onChange={props.handleChange}
+          onBlur={props.handleBlur}
           value={props.year}
           type="year"
           label={<Trans id="whenDidItStart.startYear" />}
