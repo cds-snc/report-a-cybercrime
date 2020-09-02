@@ -121,7 +121,7 @@ export const evalDateRange = (values) => {
 
   if (startDate && endDate) {
     if (startDate.isAfter(endDate)) {
-      errors['endError'] = 'End date must be after start date'
+      errors['endError'] = 'End date must be greater than start date'
     }
   }
 

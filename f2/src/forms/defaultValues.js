@@ -26,6 +26,7 @@ const formDefaults = {
     endMonth: '',
     endYear: '',
     end: '',
+    start: '',
     happenedOnceDay: '',
     happenedOnceMonth: '',
     happenedOnceYear: '',

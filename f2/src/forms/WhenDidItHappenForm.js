@@ -95,6 +95,15 @@ export const WhenDidItHappenForm = (props) => {
         clearDescription(values)
       }
     } else if (values.incidentFrequency === 'moreThanOnce') {
+      if (values.startDay && isNaN(parseInt(values.startDay))) {
+        errors.start = 'Invalid Day'
+      }
+      if (values.startMonth && isNaN(parseInt(values.startMonth))) {
+        errors.start = 'Invalid Month'
+      }
+      if (values.startYear && isNaN(parseInt(values.startYear))) {
+        errors.start = 'Invalid Year'
+      }
       const dateRangeErrors = evalDateRange(values)
 
       if (dateRangeErrors.startError) {
@@ -102,7 +111,7 @@ export const WhenDidItHappenForm = (props) => {
       }
 
       if (dateRangeErrors.endError) {
-        errors.end = 'End Error'
+        errors.end = dateRangeErrors.endError
       }
       clearHappenedOnce(values)
       clearDescription(values)
@@ -119,11 +128,11 @@ export const WhenDidItHappenForm = (props) => {
       <Formik
         initialValues={whenDidItHappen}
         validate={formatData}
-        onSubmit={(values, { setStatus }) => {
+        onSubmit={(values) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, errors, touched }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
@@ -165,6 +174,9 @@ export const WhenDidItHappenForm = (props) => {
                             )}
                             {question.value === 'moreThanOnce' && (
                               <React.Fragment>
+                                <ErrorMessage name="start" component={Error} />
+                                {touched.start && <div>Touched</div>}
+                                {!touched.start && <div>Untouched</div>}
                                 <Field
                                   name="start"
                                   label={question.datePickerStartLabel}
