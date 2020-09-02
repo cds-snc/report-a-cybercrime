@@ -90,8 +90,7 @@ export const MoneyLostInfoForm = (props) => {
                   onBlur={handleBlur}
                   id={'demanded-money'}
                 />
-              </Row>
-              <Row className="form-section">
+
                 <Field
                   name="moneyTaken"
                   label={<Trans id="moneyLostPage.moneyTaken" />}
@@ -101,66 +100,68 @@ export const MoneyLostInfoForm = (props) => {
                   onBlur={handleBlur}
                   id={'money-taken'}
                 />
+                <Row className="form-section form-row">
+                  <Row className="form-question" lg={1}>
+                    <Row className="form-label">
+                      <Trans id="moneyLostPage.methodPayment" />
+                    </Row>
+                    <Row className="form-helper-text">
+                      <Trans id="moneyLostPage.selectMethod" />
+                    </Row>
+                  </Row>
+
+                  <FieldArray
+                    name="methodPayment"
+                    className="form-section"
+                    render={() =>
+                      formOptions.map((question) => {
+                        return (
+                          <React.Fragment key={question.name}>
+                            <Field
+                              name="methodPayment"
+                              label={question.checkboxLabel}
+                              component={CheckBox}
+                              value={question.name}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              type="checkbox"
+                              id={'checkbox-' + question.name}
+                            >
+                              {question.value === 'other' && (
+                                <Field
+                                  name={question.name}
+                                  label={question.descriptionLabel}
+                                  helpText={question.descriptionHelpText}
+                                  component={TextArea}
+                                  onBlur={handleBlur}
+                                  onChange={handleChange}
+                                />
+                              )}
+                            </Field>
+                          </React.Fragment>
+                        )
+                      })
+                    }
+                  />
+                </Row>
               </Row>
               <Row className="form-question" lg={1}>
                 <Row className="form-label">
-                  <Trans id="moneyLostPage.methodPayment" />
+                  <Trans id="moneyLostPage.transactionDate" />
                 </Row>
                 <Row className="form-helper-text">
-                  <Trans id="moneyLostPage.selectMethod" />
+                  <Trans id="moneyLostPage.transactionDateExample" />
                 </Row>
               </Row>
-
               <Row className="form-section">
-                <ErrorMessage name="methodPayment" component={Error} />
-                <FieldArray
-                  name="methodPayment"
-                  className="form-section"
-                  render={() =>
-                    formOptions.map((question) => {
-                      return (
-                        <React.Fragment key={question.name}>
-                          <Field
-                            name="methodPayment"
-                            label={question.checkboxLabel}
-                            component={CheckBox}
-                            value={question.name}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            type="checkbox"
-                            id={'checkbox-' + question.name}
-                          >
-                            {question.value === 'other' && (
-                              <Field
-                                name={question.name}
-                                label={question.descriptionLabel}
-                                helpText={question.descriptionHelpText}
-                                component={TextArea}
-                                onBlur={handleBlur}
-                                onChange={handleChange}
-                              />
-                            )}
-                          </Field>
-                        </React.Fragment>
-                      )
-                    })
-                  }
+                <Field
+                  name="transaction"
+                  component={DatePicker}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  id="transaction"
                 />
               </Row>
-
-              <Row className="form-label">
-                <Trans id="moneyLostPage.transactionDate" />
-              </Row>
-              <Row className="form-helper-text">
-                <Trans id="moneyLostPage.transactionDateExample" />
-              </Row>
-              <Field
-                name="transaction"
-                component={DatePicker}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                id="transaction"
-              />
 
               <Row>
                 <NextCancelButtons
