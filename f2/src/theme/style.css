@@ -185,7 +185,7 @@ body {
 }
 
 .feedback-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(24, 60, 31);
+  background-color: rgb(30, 78, 140);
 }
 
 .default-button {
