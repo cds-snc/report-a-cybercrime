@@ -4,7 +4,7 @@ Feature: Test the entire report workflow in english
   
   Scenario: Home page
     Given I open the report home page
-    When I click on create a report button
+    When I click on submit a tip
     Then I click continue without checking consent
     Then "Check the box to accept the terms of the Privacy statement." should be shown
     When I check the consent checkbox
@@ -22,7 +22,7 @@ Feature: Test the entire report workflow in english
 
   Scenario: your location
     Given "Enter your location" should be shown
-    When I fill to yourLocation page forms
+    When I fill postalCode2 page forms
     Then I click "Continue"
 
   Scenario: your contact details
@@ -33,7 +33,7 @@ Feature: Test the entire report workflow in english
   Scenario: Review  your report and  capture a screenshot
     Given "Review your report" should be shown
     Then Take summary page screenshot
-    Then I click submit report
+    Then I submit report
 
   Scenario: Confirm Report ID is generated
     Then "Thank you for reporting" should be shown
