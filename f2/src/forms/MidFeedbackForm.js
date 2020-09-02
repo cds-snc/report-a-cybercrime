@@ -7,8 +7,6 @@ import {
   FeedbackButton,
   MidFormFeedbackButton,
 } from '../components/formik/button'
-// import {FeedbackButton} from '../components/formik/button'
-// import { containsData } from '../utils/containsData'
 import { useLocation } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
@@ -109,12 +107,8 @@ export const MidFeedbackForm = (props) => {
                   problemDescription: '',
                 }}
                 initialStatus={{ showWarning: false }}
-                onSubmit={(values) => {
+                onSubmit={(values, { setStatus }) => {
                   if (
-                    // !containsData([
-                    //   values.midFeedback,
-                    //   values.problemDescription,
-                    // ])
                     values.midFeedback.length === 0 &&
                     values.problemDescription.length === 0
                   ) {
@@ -125,13 +119,8 @@ export const MidFeedbackForm = (props) => {
                   }
                 }}
               >
-                {({ handleSubmit, handleChange, handleBlur }) => (
+                {({ handleSubmit, handleChange, handleBlur, status }) => (
                   <Form onSubmit={handleSubmit}>
-                    {/* {showWarning ? (
-                      <Alert status="error">
-                        <Trans id="finalFeedback.warning" />
-                      </Alert>
-                    ) : null} */}
                     <Container>
                       <Row className="form-question">
                         {status.showWarning ? (
