@@ -10,23 +10,16 @@ import {
 import { useLocation } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
+import { Formik, FieldArray, Field } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { InfoCard } from '../components/container'
-//import { Stack } from '@chakra-ui/core'
-// import { Button } from '../components/button'
 import { TextArea } from '../components/text-area'
-// import { Alert } from '../components/Messages'
 import { Error } from '../components/formik/alert'
 
 export const MidFeedbackForm = (props) => {
   const [isSubmit, setIsSubmit] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
-
-  // const validate = () => {
-  //   return {}
-  // }
 
   const midFeedback = [
     {
@@ -55,7 +48,7 @@ export const MidFeedbackForm = (props) => {
       checkboxValue: 'midFeedback.problem.other',
     },
   ]
-  //  let showWarning = false
+
   return (
     <React.Fragment>
       {isSubmit ? (
@@ -136,7 +129,6 @@ export const MidFeedbackForm = (props) => {
                         <Row className="form-helper-text">
                           <Trans id="midFeedback.problem.helperText" />
                         </Row>
-                        <ErrorMessage name="midFeedback" component={Error} />
                       </Row>
                       <Row className="form-section">
                         <FieldArray
