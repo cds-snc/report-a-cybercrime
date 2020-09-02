@@ -1,6 +1,7 @@
+@smoke
 Feature: Test the entire report workflow in french
   I want to create an online investgation report
-  @smoke
+  
   Scenario: Home page
     Given I open the report home page
     When I change the language
@@ -87,4 +88,4 @@ Scenario: When did the incident happen
 
   Scenario: Confirm Report ID is generated
     Then "Merci pour votre signalement" should be shown
-    And "Votre numéro de référence :" should be shown
+   
