@@ -37,4 +37,3 @@ Feature: Test the entire report workflow in french
 
   Scenario: Confirm Report ID is generated
     Then "Merci pour votre signalement" should be shown
-    And "Votre numéro de référence :" should be shown
