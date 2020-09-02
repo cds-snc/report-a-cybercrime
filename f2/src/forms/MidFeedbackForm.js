@@ -20,7 +20,7 @@ import { TextArea } from '../components/text-area'
 import { Error } from '../components/formik/alert'
 
 export const MidFeedbackForm = (props) => {
-  const [status, setStatus] = useState('')
+  const [isSubmit, setIsSubmit] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
 
@@ -58,7 +58,7 @@ export const MidFeedbackForm = (props) => {
   //  let showWarning = false
   return (
     <React.Fragment>
-      {status ? (
+      {isSubmit ? (
         <Row>
           <InfoCard
             bg="blue.200"
@@ -114,7 +114,7 @@ export const MidFeedbackForm = (props) => {
                   ) {
                     setStatus({ showWarning: true })
                   } else {
-                    setStatus('feedback.submitted')
+                    setIsSubmit('feedback.submitted')
                     props.onSubmit(values)
                   }
                 }}
