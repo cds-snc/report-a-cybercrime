@@ -33,6 +33,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "jimp": "0.12.1",
     "ldapjs": "^1.0.2",
+    "moment": "^2.27.0",
     "mongodb": "^3.5.3",
     "ms-rest-azure": "^3.0.0",
     "nanoid": "^2.1.11",
