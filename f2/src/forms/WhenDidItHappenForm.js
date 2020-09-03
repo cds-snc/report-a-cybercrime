@@ -96,13 +96,22 @@ export const WhenDidItHappenForm = (props) => {
       }
     } else if (values.incidentFrequency === 'moreThanOnce') {
       if (values.startDay && isNaN(parseInt(values.startDay))) {
-        errors.start = 'Invalid Day'
+        errors.startDay = 'Invalid Day'
       }
       if (values.startMonth && isNaN(parseInt(values.startMonth))) {
-        errors.start = 'Invalid Month'
+        errors.startMonth = 'Invalid Month'
       }
       if (values.startYear && isNaN(parseInt(values.startYear))) {
-        errors.start = 'Invalid Year'
+        errors.startYear = 'Invalid Year'
+      }
+      if (values.endDay && isNaN(parseInt(values.endDay))) {
+        errors.endDay = 'Invalid Day'
+      }
+      if (values.endMonth && isNaN(parseInt(values.endMonth))) {
+        errors.endMonth = 'Invalid Month'
+      }
+      if (values.endYear && isNaN(parseInt(values.endYear))) {
+        errors.endYear = 'Invalid Year'
       }
       const dateRangeErrors = evalDateRange(values)
 
@@ -175,8 +184,6 @@ export const WhenDidItHappenForm = (props) => {
                             {question.value === 'moreThanOnce' && (
                               <React.Fragment>
                                 <ErrorMessage name="start" component={Error} />
-                                {touched.start && <div>Touched</div>}
-                                {!touched.start && <div>Untouched</div>}
                                 <Field
                                   name="start"
                                   label={question.datePickerStartLabel}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Row, Col, Container } from 'react-bootstrap'
 import { Trans } from '@lingui/macro'
-import { Field } from 'formik'
+import { Field, ErrorMessage } from 'formik'
 import { Error } from '../alert'
 
 const DateEntry = ({ field, form, ...props }) => {
@@ -38,7 +38,11 @@ export const DatePicker = ({ field, form, ...props }) => {
       <Row>
         <Form.Text className="input-help-text">{props.helpText}</Form.Text>
       </Row>
-
+      <Row className="date-group">
+        <ErrorMessage name={field.name + 'Day'} component={Error} />
+        <ErrorMessage name={field.name + 'Month'} component={Error} />
+        <ErrorMessage name={field.name + 'Year'} component={Error} />
+      </Row>
       <Row className="date-group">
         <Field
           name={field.name + 'Day'}
