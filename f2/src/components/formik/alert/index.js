@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react'
-import { Trans } from '@lingui/macro'
 import { Row, Container, Alert } from 'react-bootstrap'
 import { A } from '../link'
 import { AiOutlineInfoCircle } from 'react-icons/ai'

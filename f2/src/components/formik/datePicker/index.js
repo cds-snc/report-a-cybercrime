@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Form, Row, Col, Container } from 'react-bootstrap'
 import { Trans } from '@lingui/macro'
 import { Field } from 'formik'
-import { Error } from '../alert'
 
 const DateEntry = ({ field, form, ...props }) => {
   let length = 2

@@ -10,7 +10,7 @@ export const Radio = ({ field, form, ...props }) => {
         <Form.Text className="check-help-text">{props.helpText}</Form.Text>
       </Form.Check>
       {field.checked && props.children && (
-        <div className="conditional-field ">{props.children}</div>
+        <div className="conditional-field">{props.children}</div>
       )}
     </Row>
   )
