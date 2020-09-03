@@ -35,6 +35,8 @@ body {
   margin-bottom: 0.25rem;
   line-height: 1;
   margin-left: 0px;
+  opacity: 1;
+  max-width: 600px;
 }
 
 .form-question {
@@ -46,6 +48,7 @@ body {
   line-height: 1.25;
   font-size: 1rem;
   margin-left: 0px;
+  max-width: 600px;
 }
 
 .form-section {
@@ -144,7 +147,7 @@ body {
 .button-label {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 400;
 }
 
@@ -292,6 +295,9 @@ body {
 .custom-control-label {
   padding-left: 1.5rem;
   font-size: 1.25rem;
+  line-height: 1.5rem;
+  margin-left: 0.5rem;
+  padding-top: 0.5rem;
 }
 
 .custom-checkbox .custom-control-label:before {
