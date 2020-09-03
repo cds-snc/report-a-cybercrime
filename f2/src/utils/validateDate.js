@@ -67,39 +67,47 @@ export const validateDateRange = (startDate, endDate) => {
 }
 
 export const evalDate = (day, month, year) => {
+  let errors = {}
   if (!day && !month && !year) {
     //Do not validate empty input
-    return
+    return errors
   }
 
-  if (!isFinite(day) || !isFinite(month) || !isFinite(year)) {
-    //Check for any non-number inputs
-    return 'Invalid date'
+  if (!isFinite(day) || day > 31) {
+    errors['day'] = 'invalid input'
   }
 
-  const date = moment(`${month} ${day} ${year}`, 'MM DD YYYY')
-
-  if (!date.isValid()) {
-    return 'Invalid date'
+  if (!isFinite(month) || month > 12) {
+    errors['month'] = 'invalid input'
   }
 
-  if (year && date.isAfter(moment.now())) {
-    return 'Date cannot be in the future'
+  if (!isFinite(year)) {
+    errors['year'] = 'invalid input'
   }
+
+  if (day && month && year) {
+    const date = moment(`${month} ${day} ${year}`, 'MM DD YYYY')
+
+    if (!date.isValid()) {
+      errors['date'] = 'invalid date'
+    } else if (year && date.isAfter(moment.now())) {
+      errors['future'] = 'invalid date'
+    }
+  }
+
+  return errors
 }
 
 export const evalDateRange = (values) => {
   let errors = {}
-  let startDate = null
-  let endDate = null
+  let startError = {}
+  let endError = {}
+  let startDate
+  let endDate
 
-  const startError = evalDate(
-    values.startDay,
-    values.startMonth,
-    values.startYear,
-  )
+  startError = evalDate(values.startDay, values.startMonth, values.startYear)
 
-  if (startError) {
+  if (Object.keys(startError).length > 0) {
     errors['startError'] = startError
   } else {
     startDate = moment(
@@ -108,9 +116,9 @@ export const evalDateRange = (values) => {
     )
   }
 
-  const endError = evalDate(values.endDay, values.endMonth, values.endYear)
+  endError = evalDate(values.endDay, values.endMonth, values.endYear)
 
-  if (endError) {
+  if (Object.keys(endError).length > 0) {
     errors['endError'] = endError
   } else {
     endDate = moment(

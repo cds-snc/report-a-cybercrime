@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Form, Row, Col, Container } from 'react-bootstrap'
 import { Trans } from '@lingui/macro'
 import { Field } from 'formik'
@@ -7,7 +7,8 @@ import { Error } from '../alert'
 const DateEntry = ({ field, form, ...props }) => {
   let length = 2
   let dateClass = 'day-month'
-  const error = form.errors[`${field.name}`] && form.touched[`${field.name}`]
+  const error =
+    form.errors && form.errors[`${field.name}`] && form.touched[`${field.name}`]
 
   if (props.type === 'year') {
     length = 4
@@ -30,6 +31,7 @@ const DateEntry = ({ field, form, ...props }) => {
 }
 
 export const DatePicker = ({ field, form, ...props }) => {
+  //console.log(JSON.stringify(form, null, 2))
   return (
     <Container fluid>
       <Row>
@@ -37,18 +39,6 @@ export const DatePicker = ({ field, form, ...props }) => {
       </Row>
       <Row>
         <Form.Text className="input-help-text">{props.helpText}</Form.Text>
-      </Row>
-
-      {/* If one of the fields contains an error show one error message. */}
-      <Row>
-        {((form.errors[`${field.name}` + 'Day'] &&
-          form.touched[`${field.name}` + 'Day']) ||
-          (form.errors[`${field.name}` + 'Month'] &&
-            form.touched[`${field.name}` + 'Month']) ||
-          (form.errors[`${field.name}` + 'Year'] &&
-            form.touched[`${field.name}` + 'Year'])) && (
-          <Error>Invalid date</Error>
-        )}
       </Row>
 
       <Row className="date-group">

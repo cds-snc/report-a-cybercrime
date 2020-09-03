@@ -42,15 +42,18 @@ export const Success = (props) => {
 }
 
 export const ErrorSummary = (props) => {
-  console.log('ErrorSummary: ', JSON.stringify(props.errors, null, 2))
-
   const errorSummaryRef = useRef(null)
 
   const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
   useEffect(() => {
-    scrollToRef(errorSummaryRef)
-  }, [])
+    /*
+    If user has attempted to submit scroll to the summary, otherwise simply display it.
+    */
+    if (props.submissions > 0) {
+      scrollToRef(errorSummaryRef)
+    }
+  }, [props.submissions])
 
   return (
     <Container>
@@ -60,20 +63,21 @@ export const ErrorSummary = (props) => {
           className="banner-border error-summary"
           ref={errorSummaryRef}
         >
-          <Row className="error-summary-title ">
-            <Trans id="default.hasValidationErrors" />
-          </Row>
+          <Row className="error-summary-title ">{props.title}</Row>
           <Row>
-            {Object.entries(props.errors).forEach(([key, items]) => {
-              return (
-                <React.Fragment>
-                  Test
-                  <A key={key} href={`#${key}`}>
-                    {items}
-                  </A>
-                </React.Fragment>
-              )
-            })}
+            <Container>
+              {Object.entries(props.errors).map(([key, error]) => {
+                return (
+                  <React.Fragment key={key}>
+                    <Row>
+                      <A href={`#${key}`} marginBottom="0.5rem" color="initial">
+                        {error.label} - {error.message}
+                      </A>
+                    </Row>
+                  </React.Fragment>
+                )
+              })}
+            </Container>
           </Row>
         </Alert>
       </Row>
