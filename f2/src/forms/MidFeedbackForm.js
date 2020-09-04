@@ -80,14 +80,17 @@ export const MidFeedbackForm = (props) => {
           />
           {isOpen && (
             <Container
-              bg="gray.200"
-              rounded="4px"
-              border="1px"
-              bordercolor="gray.400"
-              p={4}
-              py={8}
-              mt={4}
-              spacing={10}
+              className="customer-container"
+              // bg="gray.200"
+              // rounded="4px"
+              // border="1px"
+              // bordercolor="gray.400"
+              // p={4}
+              // py={8}
+              // mt={4}
+              // spacing={10}
+              // tyle="width:300px"
+              //  style={{backgroundcolor: 'rgb(232, 232, 232)'}}
             >
               <H1 as="p">
                 <Trans id="midFeedback.title" />
