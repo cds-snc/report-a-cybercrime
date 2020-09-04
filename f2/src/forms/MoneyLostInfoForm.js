@@ -26,26 +26,31 @@ export const MoneyLostInfoForm = (props) => {
   const formOptions = [
     {
       name: 'eTransfer',
+      value: 'eTransfer',
       checkboxLabel: <Trans id="methodPayment.eTransfer" />,
       checkboxName: 'methodPayment.eTransfer',
     },
     {
       name: 'creditCard',
+      value: 'creditCard',
       checkboxLabel: <Trans id="methodPayment.creditCard" />,
       checkboxName: 'methodPayment.creditCard',
     },
     {
       name: 'giftCard',
+      value: 'giftCard',
       checkboxLabel: <Trans id="methodPayment.giftCard" />,
       checkboxName: 'methodPayment.giftCard',
     },
     {
       name: 'cryptocurrency',
+      value: 'cryptocurrency',
       checkboxLabel: <Trans id="methodPayment.cryptocurrency" />,
       checkboxName: 'methodPayment.cryptocurrency',
     },
     {
       name: 'other',
+      value: 'other',
       checkboxLabel: <Trans id="methodPayment.other" />,
       checkboxName: 'methodPayment.other',
     },
@@ -95,6 +100,7 @@ export const MoneyLostInfoForm = (props) => {
                   id={'money-taken'}
                 />
               </Row>
+
               <Row className="form-question" lg={1}>
                 <Row className="form-label">
                   <Trans id="moneyLostPage.methodPayment" />
@@ -103,9 +109,7 @@ export const MoneyLostInfoForm = (props) => {
                   <Trans id="moneyLostPage.selectMethod" />
                 </Row>
               </Row>
-
               <Row className="form-section">
-                <ErrorMessage name="methodPayment" component={Error} />
                 <FieldArray
                   name="methodPayment"
                   className="form-section"
@@ -140,7 +144,6 @@ export const MoneyLostInfoForm = (props) => {
                   }
                 />
               </Row>
-
               <Row className="form-section">
                 <Row className="form-label">
                   <Trans id="moneyLostPage.transactionDate" />
