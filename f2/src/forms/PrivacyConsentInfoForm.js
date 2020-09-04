@@ -1,17 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
-//import { Form } from 'react-final-form'
-//import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-//import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { A } from '../components/link'
-//import { CheckboxAdapter } from '../components/checkbox'
 import { FormArrayControl } from '../components/FormArrayControl'
 import { useLingui } from '@lingui/react'
-import { ErrorSummary } from '../components/ErrorSummary'
-//import { formDefaults } from './defaultValues'
-
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
@@ -32,7 +25,6 @@ export const PrivacyConsentInfoForm = (props) => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
   const whetherConsent = {
-    //...formDefaults.consent,
     ...data.formData.consent,
   }
   //const consentOptions = ['privacyConsentInfoForm.yes']
@@ -52,25 +44,13 @@ export const PrivacyConsentInfoForm = (props) => {
               <Field
                 name="consentOptions"
                 label={<Trans id="privacyConsentInfoForm.yes" />}
-                //   href={'/privacystatement?lang=' + i18n.locale}
-                //   isExternal
-
-                //   <Trans id="privacyConsentInfoForm.linkOut" />
-                // </A>
-                // <Trans id="privacyConsentInfoForm.period" />
-                //   }
-
                 component={CheckBox}
                 value="privacyConsentInfoForm.yes"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="checkbox"
                 id="checkbox-consent-option"
-              >
-                <Warning>
-                  <Trans id="privacyConsentInfoForm.warning" />
-                </Warning>
-              </Field>
+              ></Field>
             </Row>
             <Row>
               <NextCancelButtons
@@ -84,11 +64,4 @@ export const PrivacyConsentInfoForm = (props) => {
       )}
     </Formik>
   )
-}
-
-{
-  /* 
-PrivacyConsentInfoForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-} */
 }
