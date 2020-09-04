@@ -112,7 +112,7 @@ export const MidFeedbackForm = (props) => {
                           </Error>
                         ) : null}
                       </Row>
-                      <Row className="form-question" lg={1}>
+                      <Row className="form-question">
                         <Row className="form-label">
                           <Trans id="midFeedback.problem.label" />
                         </Row>
