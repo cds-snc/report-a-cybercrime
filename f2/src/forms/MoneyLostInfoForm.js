@@ -85,8 +85,6 @@ export const MoneyLostInfoForm = (props) => {
                   onBlur={handleBlur}
                   id={'demanded-money'}
                 />
-              </Row>
-              <Row className="form-section">
                 <Field
                   name="moneyTaken"
                   label={<Trans id="moneyLostPage.moneyTaken" />}
@@ -143,19 +141,21 @@ export const MoneyLostInfoForm = (props) => {
                 />
               </Row>
 
-              <Row className="form-label">
-                <Trans id="moneyLostPage.transactionDate" />
+              <Row className="form-section">
+                <Row className="form-label">
+                  <Trans id="moneyLostPage.transactionDate" />
+                </Row>
+                <Row className="form-helper-text">
+                  <Trans id="moneyLostPage.transactionDateExample" />
+                </Row>
+                <Field
+                  name="transaction"
+                  component={DatePicker}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  id="transaction"
+                />
               </Row>
-              <Row className="form-helper-text">
-                <Trans id="moneyLostPage.transactionDateExample" />
-              </Row>
-              <Field
-                name="transaction"
-                component={DatePicker}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                id="transaction"
-              />
 
               <Row>
                 <NextCancelButtons
