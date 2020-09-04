@@ -67,15 +67,6 @@ export const MidFeedbackForm = (props) => {
         <Container>
           <MidFormFeedbackButton
             onClick={() => setIsOpen(!isOpen)}
-            h="inherit"
-            py={4}
-            whiteSpace="wrap"
-            w={{ base: '100%', md: 'auto' }}
-            color="black"
-            variant="solid"
-            variantColor="gray"
-            bg="gray.200"
-            bordercolor="gray.400"
             label={<Trans id="midFeedback.summary" />}
           />
           {isOpen && (
@@ -113,7 +104,10 @@ export const MidFeedbackForm = (props) => {
                         ) : null}
                       </Row>
                       <Row className="form-question">
-                        <Row className="form-label">
+                        <Row
+                          className="form-label"
+                          style={{ marginTop: '1rem' }}
+                        >
                           <Trans id="midFeedback.problem.label" />
                         </Row>
                         <Row className="form-helper-text">

@@ -37,7 +37,6 @@ body {
   margin-left: 0px;
   opacity: 1;
   max-width: 600px;
-  margin-top: 1rem;
 }
 
 .form-question {
@@ -271,7 +270,7 @@ body {
   border-color: rgb(174, 174, 174);
   padding: 1rem 1.5rem;
   height: inherit;
-  margin-left: 0rem;
+  margin-left: -1rem;
 }
 
 /*Checkboxes and Radio Buttons*/
@@ -444,4 +443,5 @@ body {
   border: 1px solid rgb(174, 174, 174);
   padding: 2rem 1rem;
   margin-top: 1rem;
+  margin-left: -1rem;
 }
