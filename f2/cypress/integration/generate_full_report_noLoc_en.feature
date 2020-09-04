@@ -1,7 +1,7 @@
-@smoke-bypassed
-Feature: Test the entire report workflow in english
+@regression
+Feature: Test full report but no location workflow in english
   I want to create an online investgation report
-
+  
   Scenario: Home page
     Given I open the report home page
     When I click on create a report button
@@ -26,9 +26,9 @@ Feature: Test the entire report workflow in english
     When I fill howdiditstart page forms
     Then I click "Continue"
 
-  Scenario: When did the incident happen
+  Scenario: When did it happen
     Given "When did the incident happen?" should be shown
-    When I fill whendidithappenmore page forms
+    When I fill whendidithappennotsure page forms
     Then I click "Continue"
 
   Scenario: What could be affected
@@ -38,7 +38,7 @@ Feature: Test the entire report workflow in english
 
   Scenario: How were your money affected
     Given "How were your money or finances affected?" should be shown
-    When I fill Howwereyourmoney page forms
+    When I fill Howwereyourmoney1 page forms
     Then I click "Continue"
 
   Scenario: How was personal information affected
@@ -46,7 +46,7 @@ Feature: Test the entire report workflow in english
     When I fill Howwaspersonalinformationaffected forms
     Then I click "Continue"
 
-  Scenario: How was your devices affected
+  Scenario: How were your devices or accounts affected
     Given "How were your devices or accounts affected?" should be shown
     When I fill Howwereyourdevicesaffected page forms
     Then I click "Continue"
@@ -63,17 +63,17 @@ Feature: Test the entire report workflow in english
 
   Scenario: Add suspect clues
     Given "Add suspect clues" should be shown
-    When I fill Addsuspectclues page forms
+    When I fill Addsuspectclues23 page forms
     Then I click "Continue"
 
   Scenario: Attach supporting evidence
     Given "Attach supporting evidence" should be shown
-    When I fill AttachSupportingEvidenceSensitive page forms
+    When I fill AttachSupportingEvidence page forms
     Then I click "Continue"
 
   Scenario: your location
     Given "Enter your location" should be shown
-    When I fill postalCode1 page forms
+    When I fill no Location page forms
     Then I click "Continue"
 
   Scenario: your contact details
@@ -88,4 +88,4 @@ Feature: Test the entire report workflow in english
 
   Scenario: Confirm Report ID is generated
     Then "Thank you for reporting" should be shown
-	And "Your reference number:" should be shown
+    And "Your reference number:" should be shown
