@@ -73,15 +73,15 @@ export const evalDate = (day, month, year) => {
     return errors
   }
 
-  if (!isFinite(day) || day > 31) {
+  if (!isFinite(day) || day > 31 || day === '00') {
     errors['day'] = 'invalid input'
   }
 
-  if (!isFinite(month) || month > 12) {
+  if (!isFinite(month) || month > 12 || month === '00') {
     errors['month'] = 'invalid input'
   }
 
-  if (!isFinite(year)) {
+  if (!isFinite(year) || year === '0000') {
     errors['year'] = 'invalid input'
   }
 

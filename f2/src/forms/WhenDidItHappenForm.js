@@ -63,7 +63,6 @@ export const WhenDidItHappenForm = (props) => {
     <React.Fragment>
       <Formik
         initialValues={whenDidItHappen}
-        validateOnChange={false}
         validate={(values) => {
           return realTimeValidation(values)
         }}
@@ -81,13 +80,11 @@ export const WhenDidItHappenForm = (props) => {
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
-                {Object.keys(errors).length > 0 && (
-                  <ErrorSummary
-                    errors={createErrorSummary(errors)}
-                    submissions={submitCount}
-                    title={<Trans id="default.hasValidationErrors" />}
-                  />
-                )}
+                <ErrorSummary
+                  errors={createErrorSummary(errors)}
+                  submissions={submitCount}
+                  title={<Trans id="default.hasValidationErrors" />}
+                />
                 <Row className="form-label" id="incidentFrequency">
                   <Trans id="whenDidItHappenPage.question" />
                 </Row>

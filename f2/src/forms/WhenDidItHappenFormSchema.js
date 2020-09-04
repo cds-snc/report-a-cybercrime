@@ -174,7 +174,8 @@ const onSubmitValidation = (values) => {
       }
     }
   } else {
-    errors['incidentFrequency'] = true
+    fields['incidentFrequency'] = true
+    errors['fields'] = fields
   }
 
   return errors
