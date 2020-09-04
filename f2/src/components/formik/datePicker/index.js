@@ -30,7 +30,6 @@ const DateEntry = ({ field, form, ...props }) => {
 }
 
 export const DatePicker = ({ field, form, ...props }) => {
-  //console.log(JSON.stringify(form, null, 2))
   return (
     <Container fluid>
       <Row>
