@@ -27,6 +27,7 @@ export const WhenDidItHappenForm = (props) => {
   const onSubmitValidation = whenDidItHappenFormSchema.ON_SUBMIT_VALIDATION
   const createErrorSummary = whenDidItHappenFormSchema.CREATE_ERROR_SUMMARY
 
+
   const clearHappenedOnce = (values) => {
     values.happenedOnceDay = ''
     values.happenedOnceMonth = ''
