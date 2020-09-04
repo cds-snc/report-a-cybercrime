@@ -79,6 +79,10 @@ export const NextCancelButtons = (props) => {
   )
 }
 
+/*
+  This is just a button, to handle file uploads use the 
+  FileUpload component from f2\src\components\formik\fileUpload\index.js
+*/
 export const UploadButton = (props) => {
   return (
     <Button type="button" className="button upload-button">

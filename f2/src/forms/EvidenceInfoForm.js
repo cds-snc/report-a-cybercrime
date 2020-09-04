@@ -12,9 +12,13 @@ import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { Error, Info } from '../components/formik/alert'
-import { UploadButton } from '../components/formik/button'
 import { List } from '../components/formik/list'
 import { P } from '../components/formik/paragraph'
+import { A } from '../components/formik/link'
+import { NextCancelButtons } from '../components/formik/button'
+import { FileUpload } from '../components/formik/fileUpload'
+import { TextArea } from '../components/formik/textArea'
+import { FormRow } from '../components/formik/row'
 
 export const EvidenceInfoForm = (props) => {
   const [data] = useStateValue()
@@ -35,7 +39,7 @@ export const EvidenceInfoForm = (props) => {
   const [status, setStatus] = useState('')
   useEffect(() => {
     if (status) {
-      document.getElementById('status').focus()
+      //document.getElementById('status').focus()
     }
   }, [status])
   const { i18n } = useLingui()
@@ -145,16 +149,43 @@ export const EvidenceInfoForm = (props) => {
                     borderBottom="2px"
                     borderColor="rgb(232, 232, 232)"
                     marginBottom="1rem"
+                    paddingBottom="1rem"
+                    width="100%"
                   >
                     You can add a maximum of 3 files, each up to 4 MB in size
                     each.
                   </P>
                 </Row>
-                <Field
-                  component={UploadButton}
+
+                {files.map((f, index) => (
+                  <FormRow
+                    display="flex"
+                    flexDirection="column"
+                    paddingTop="1.5rem"
+                    paddingBottom="1.5rem"
+                    marginBottom="1rem"
+                    borderBottom="2px solid rgb(232, 232, 232)"
+                  >
+                    <P fontSize="1.25rem" lineHeight="1.5rem">
+                      {f.name}
+                    </P>
+                    <Field
+                      label={<Trans id="evidencePage.fileDescription" />}
+                      name={`file-description-${index}`}
+                      value={fileDescriptions[index]}
+                      onChange={onFileDescriptionChange}
+                      component={TextArea}
+                    />
+                    <A onClick={() => removeFile(index)} color="red">
+                      <Trans id="evidencePage.removeFileButton" />
+                    </A>
+                  </FormRow>
+                ))}
+
+                <FileUpload
+                  id="evidenceUpload"
                   label={<Trans id="evidencePage.addFileButton" />}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  onChange={onFilesChange}
                 />
               </Row>
               <Row className="form-section">
@@ -165,6 +196,13 @@ export const EvidenceInfoForm = (props) => {
                 <Info>
                   <Trans id="evidencePage.fileWarning" />
                 </Info>
+              </Row>
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="button.continue" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="evidencePage.nextPage" />}
+                />
               </Row>
             </Container>
           </Form>

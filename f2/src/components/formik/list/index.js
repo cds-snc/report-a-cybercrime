@@ -15,9 +15,11 @@ export const List = (props) => {
         )}
         <Row>
           <ListGroup>
-            {props.items.map((item) => {
+            {props.items.map((item, index) => {
               return (
-                <ListGroup.Item className="list-item">{item}</ListGroup.Item>
+                <ListGroup.Item key={index} className="list-item">
+                  {item}
+                </ListGroup.Item>
               )
             })}
           </ListGroup>
