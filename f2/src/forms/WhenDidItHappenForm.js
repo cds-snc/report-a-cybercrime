@@ -10,6 +10,7 @@ import { NextCancelButtons } from '../components/formik/button'
 import { Error, Info, ErrorSummary } from '../components/formik/alert'
 import { TextArea } from '../components/formik/textArea'
 import { whenDidItHappenFormSchema } from './WhenDidItHappenFormSchema'
+import { P } from '../components/formik/paragraph'
 
 export const WhenDidItHappenForm = (props) => {
   const [data] = useStateValue()
@@ -17,6 +18,8 @@ export const WhenDidItHappenForm = (props) => {
     ...data.formData.whenDidItHappen,
   }
 
+  const incidentFrequency =
+    whenDidItHappenFormSchema.QUESTIONS.incidentFrequency
   const once = whenDidItHappenFormSchema.QUESTIONS.once
   const moreThanOnce = whenDidItHappenFormSchema.QUESTIONS.moreThanOnce
   const notSure = whenDidItHappenFormSchema.QUESTIONS.notSure
@@ -80,17 +83,23 @@ export const WhenDidItHappenForm = (props) => {
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
-                <ErrorSummary
-                  errors={createErrorSummary(errors)}
-                  submissions={submitCount}
-                  title={<Trans id="default.hasValidationErrors" />}
-                />
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary
+                    errors={createErrorSummary(errors)}
+                    submissions={submitCount}
+                    title={<Trans id="default.hasValidationErrors" />}
+                  />
+                )}
                 <Row className="form-label" id="incidentFrequency">
                   <Trans id="whenDidItHappenPage.question" />
                 </Row>
               </Row>
               <Row className="form-section">
-                <ErrorMessage name="incidentFrequency" component={Error} />
+                {errors && errors.incidentFrequency && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    {incidentFrequency.errorMessage}
+                  </P>
+                )}
                 <FieldArray
                   name="incidentFrequency"
                   className="form-section"
@@ -111,9 +120,13 @@ export const WhenDidItHappenForm = (props) => {
                             {question.value === 'once' && (
                               <div id={question.name}>
                                 {errors && errors.happenedOnce && (
-                                  <Error>
+                                  <P
+                                    color="#dc3545"
+                                    fontSize="1.25rem"
+                                    marginBottom="0.5rem"
+                                  >
                                     {question.datePicker.errorMessage}
-                                  </Error>
+                                  </P>
                                 )}
                                 <Field
                                   name={question.name}
@@ -130,9 +143,13 @@ export const WhenDidItHappenForm = (props) => {
                               <React.Fragment>
                                 <div id="start">
                                   {errors && errors.start && (
-                                    <Error>
+                                    <P
+                                      color="#dc3545"
+                                      fontSize="1.25rem"
+                                      marginBottom="0.5rem"
+                                    >
                                       {question.datePickerStart.errorMessage}
-                                    </Error>
+                                    </P>
                                   )}
                                   <Field
                                     name="start"
@@ -146,9 +163,13 @@ export const WhenDidItHappenForm = (props) => {
                                 </div>
                                 <div id="end">
                                   {errors && errors.end && (
-                                    <Error>
+                                    <P
+                                      color="#dc3545"
+                                      fontSize="1.25rem"
+                                      marginBottom="0.5rem"
+                                    >
                                       {question.datePickerEnd.errorMessage}
-                                    </Error>
+                                    </P>
                                   )}
                                   <Field
                                     name="end"

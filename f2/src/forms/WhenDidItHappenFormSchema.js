@@ -6,6 +6,11 @@ import { evalDate, evalDateRange } from '../utils/validateDate'
   Define form questions
 */
 const formQuestions = {
+  incidentFrequency: {
+    label: <Trans id="whenDidItHappenPage.question" />,
+    errorMessage:
+      'Please make a selection, if you are not sure select "I\'m not sure".',
+  },
   once: {
     name: 'happenedOnce',
     value: 'once',
@@ -129,6 +134,7 @@ const onSubmitValidation = (values) => {
       }
 
       if (Object.keys(fields).length > 0) {
+        fields['happenedOnce'] = true
         errors['fields'] = fields
       }
     } else if (values.incidentFrequency === 'moreThanOnce') {
@@ -151,6 +157,7 @@ const onSubmitValidation = (values) => {
       }
 
       if (startError) {
+        fields['start'] = true
         errors['fields'] = fields
       }
 
@@ -170,6 +177,7 @@ const onSubmitValidation = (values) => {
       }
 
       if (endError) {
+        fields['end'] = true
         errors['fields'] = fields
       }
     }
