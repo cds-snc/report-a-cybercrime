@@ -13,7 +13,7 @@ import { submitToServer } from './utils/submitToServer'
 import { useStateValue } from './utils/state'
 
 export const FinalFeedbackThanksPage = () => {
-  const [state, dispatch] = useStateValue()
+  const [, dispatch] = useStateValue()
   return (
     <Layout>
       <TrackPageViews />
