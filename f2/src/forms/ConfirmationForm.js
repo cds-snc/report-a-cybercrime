@@ -44,8 +44,8 @@ export const ConfirmationForm = (props) => {
       ) : null}
       <Formik
         initialValues={{}}
-        onSubmit={(values) => {
-          props.onSubmit(values)
+        onSubmit={() => {
+          props.onSubmit()
         }}
       >
         {({ handleSubmit }) => (
