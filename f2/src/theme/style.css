@@ -99,6 +99,7 @@ body {
   min-height: 80px;
   border-color: rgb(174, 174, 174);
   width: 100%;
+  max-width: 600px;
 }
 
 .open-text-entry:hover {

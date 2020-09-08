@@ -156,17 +156,13 @@ export const EvidenceInfoForm = (props) => {
                     each.
                   </P>
                 </Row>
-
                 {files.map((f, index) => (
-                  <FormRow
-                    display="flex"
-                    flexDirection="column"
-                    paddingTop="1.5rem"
-                    paddingBottom="1.5rem"
-                    marginBottom="1rem"
-                    borderBottom="2px solid rgb(232, 232, 232)"
-                  >
-                    <P fontSize="1.25rem" lineHeight="1.5rem">
+                  <FormRow>
+                    <P
+                      fontSize="1.25rem"
+                      lineHeight="1.5rem"
+                      marginBottom="1rem"
+                    >
                       {f.name}
                     </P>
                     <Field
@@ -181,7 +177,6 @@ export const EvidenceInfoForm = (props) => {
                     </A>
                   </FormRow>
                 ))}
-
                 <FileUpload
                   id="evidenceUpload"
                   label={<Trans id="evidencePage.addFileButton" />}
