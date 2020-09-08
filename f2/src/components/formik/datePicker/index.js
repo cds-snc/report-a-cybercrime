@@ -7,7 +7,7 @@ const DateEntry = ({ field, form, ...props }) => {
   let length = 2
   let dateClass = 'day-month'
   const error =
-    form.errors && form.errors[`${field.name}`] && form.touched[`${field.name}`]
+    form.errors && form.errors[field.name] && form.touched[field.name]
 
   if (props.type === 'year') {
     length = 4
@@ -44,7 +44,6 @@ export const DatePicker = ({ field, form, ...props }) => {
           name={field.name + 'Day'}
           component={DateEntry}
           id={props.id + 'Day'}
-          value={props.day}
           onChange={props.handleChange}
           onBlur={props.handleBlur}
           label={<Trans id="whenDidItStart.startDay" />}
@@ -55,7 +54,6 @@ export const DatePicker = ({ field, form, ...props }) => {
           id={props.id + 'Month'}
           onChange={props.handleChange}
           onBlur={props.handleBlur}
-          value={props.month}
           label={<Trans id="whenDidItStart.startMonth" />}
         />
         <Field
@@ -64,7 +62,6 @@ export const DatePicker = ({ field, form, ...props }) => {
           id={props.id + 'Year'}
           onChange={props.handleChange}
           onBlur={props.handleBlur}
-          value={props.year}
           type="year"
           label={<Trans id="whenDidItStart.startYear" />}
         />
