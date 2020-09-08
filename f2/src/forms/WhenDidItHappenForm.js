@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, Field, FieldArray, ErrorMessage } from 'formik'
+import { Formik, Field, FieldArray } from 'formik'
 import { Radio } from '../components/formik/radio'
 import { DatePicker } from '../components/formik/datePicker'
 import { NextCancelButtons } from '../components/formik/button'
-import { Error, Info, ErrorSummary } from '../components/formik/alert'
+import { Info, ErrorSummary } from '../components/formik/alert'
 import { TextArea } from '../components/formik/textArea'
 import { whenDidItHappenFormSchema } from './WhenDidItHappenFormSchema'
 import { P } from '../components/formik/paragraph'
@@ -29,7 +29,6 @@ export const WhenDidItHappenForm = (props) => {
   const realTimeValidation = whenDidItHappenFormSchema.REAL_TIME_VALIDATION
   const onSubmitValidation = whenDidItHappenFormSchema.ON_SUBMIT_VALIDATION
   const createErrorSummary = whenDidItHappenFormSchema.CREATE_ERROR_SUMMARY
-
 
   const clearHappenedOnce = (values) => {
     values.happenedOnceDay = ''

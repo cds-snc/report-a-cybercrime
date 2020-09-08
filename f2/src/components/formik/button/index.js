@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
-import { Trans } from '@lingui/macro'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
