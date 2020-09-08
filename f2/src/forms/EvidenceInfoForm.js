@@ -68,10 +68,29 @@ export const EvidenceInfoForm = (props) => {
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     }
-    setStatus('fileUpload.added')
-    setFiles(files.concat(e.target.files[0]))
-    setFileDescriptions(fileDescriptions.concat(''))
-    e.target.value = '' // clear the file input target, to allow the file to be removed then added again
+    if(file.type.indexOf("image") != -1) {
+      let img = new Image()
+      img.src = window.URL.createObjectURL(file)
+      img.onload = () => {
+        if (img.width < 128 || img.height < 128){
+          alert(
+            "Warning: Your image is too small(either the width or the height is less than 128 pixels). Please increase the image size and try uploading again. \n Alerte : Votre image est trop petite (la largeur ou la hauteur est inférieure à 128 pixels). Veuillez augmenter la taille de l'image et essayer de la télécharger à nouveau.",
+          )
+        }
+        else {
+          setStatus('fileUpload.added')
+          setFiles(files.concat(file))
+          setFileDescriptions(fileDescriptions.concat(''))
+          }        
+      }
+      e.target.value = ''
+    }
+    else {
+      setStatus('fileUpload.added')
+      setFiles(files.concat(e.target.files[0]))
+      setFileDescriptions(fileDescriptions.concat(''))
+      e.target.value = '' // clear the file input target, to allow the file to be removed then added again
+    }
   }
 
   const onFileDescriptionChange = (e) => {
