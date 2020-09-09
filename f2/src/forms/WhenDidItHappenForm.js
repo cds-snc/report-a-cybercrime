@@ -3,15 +3,14 @@ import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, Field, FieldArray, ErrorMessage } from 'formik'
+import { Formik, Field, FieldArray } from 'formik'
 import { Radio } from '../components/formik/radio'
 import { DatePicker } from '../components/formik/datePicker'
 import { NextCancelButtons } from '../components/formik/button'
-import { Error, Info, ErrorSummary } from '../components/formik/alert'
+import { Info, ErrorSummary } from '../components/formik/alert'
 import { TextArea } from '../components/formik/textArea'
 import { whenDidItHappenFormSchema } from './WhenDidItHappenFormSchema'
-import { evalDate, evalDateRange } from '../utils/validateDate'
-import { FormikListener } from '../components/formik/formikListener'
+import { P } from '../components/formik/paragraph'
 
 export const WhenDidItHappenForm = (props) => {
   const [data] = useStateValue()
@@ -19,43 +18,17 @@ export const WhenDidItHappenForm = (props) => {
     ...data.formData.whenDidItHappen,
   }
 
-  const formOptions = [
-    {
-      name: 'happenedOnce',
-      value: 'once',
-      id: 'incidentFrequency-Once',
-      radioLabel: <Trans id="whenDidItHappenPage.options.once" />,
-      datePickerLabel: <Trans id="whenDidItHappenPage.singleDate.label" />,
-      datePickerHelpText: <Trans id="whenDidItStart.labelExample" />,
-      datePickerId: 'happenedOnce',
-    },
-    {
-      name: 'happenedMoreThanOnce',
-      value: 'moreThanOnce',
-      id: 'incidentFrequency-MoreThanOnce',
-      radioLabel: <Trans id="whenDidItHappenPage.options.moreThanOnce" />,
-      datePickerStartLabel: (
-        <Trans id="whenDidItHappenPage.dateRange.start.label" />
-      ),
-      datePickerStartHelpText: <Trans id="whenDidItStart.labelExample" />,
-      datePickerStartId: 'happenedMoreThanOnceStart',
-      datePickerEndLabel: (
-        <Trans id="whenDidItHappenPage.dateRange.end.label" />
-      ),
-      datePickerEndHelpText: <Trans id="whenDidItStart.labelExample" />,
-      datePickerEndId: 'happenedMoreThanOnceEnd',
-    },
-    {
-      name: 'description',
-      value: 'notSure',
-      id: 'incidentFrequency-NotSure',
-      radioLabel: <Trans id="whenDidItHappenPage.options.notSure" />,
-      descriptionLabel: <Trans id="whenDidItHappenPage.notSure.label" />,
-      descriptionHelpText: (
-        <Trans id="whenDidItHappenPage.notSure.helperText" />
-      ),
-    },
-  ]
+  const incidentFrequency =
+    whenDidItHappenFormSchema.QUESTIONS.incidentFrequency
+  const once = whenDidItHappenFormSchema.QUESTIONS.once
+  const moreThanOnce = whenDidItHappenFormSchema.QUESTIONS.moreThanOnce
+  const notSure = whenDidItHappenFormSchema.QUESTIONS.notSure
+
+  const formOptions = [once, moreThanOnce, notSure]
+
+  const realTimeValidation = whenDidItHappenFormSchema.REAL_TIME_VALIDATION
+  const onSubmitValidation = whenDidItHappenFormSchema.ON_SUBMIT_VALIDATION
+  const createErrorSummary = whenDidItHappenFormSchema.CREATE_ERROR_SUMMARY
 
   const clearHappenedOnce = (values) => {
     values.happenedOnceDay = ''
@@ -76,69 +49,57 @@ export const WhenDidItHappenForm = (props) => {
     values.description = ''
   }
 
-  const formatData = (values) => {
-    let errors = {}
-
+  const clearData = (values) => {
     if (values.incidentFrequency === 'once') {
-      const happenedOnceError = evalDate(
-        values.happenedOnceDay,
-        values.happenedOnceMonth,
-        values.happenedOnceYear,
-      )
-
-      if (happenedOnceError) {
-        errors['happenedOnceError'] = happenedOnceError
-      } else {
-        clearDateRange(values)
-        clearDescription(values)
-      }
+      clearDateRange(values)
+      clearDescription(values)
     } else if (values.incidentFrequency === 'moreThanOnce') {
-      const dateRangeErrors = evalDateRange(values)
-
-      if (dateRangeErrors.startError) {
-        errors['startError'] = dateRangeErrors.startError
-      }
-
-      if (dateRangeErrors.endError) {
-        errors['endError'] = dateRangeErrors.endError
-      }
       clearHappenedOnce(values)
       clearDescription(values)
     } else {
       clearHappenedOnce(values)
       clearDateRange(values)
     }
-
-    return errors
   }
 
   return (
     <React.Fragment>
       <Formik
         initialValues={whenDidItHappen}
-        initialStatus={{ errors: '' }}
-        validationSchema={whenDidItHappenFormSchema()}
-        validateOnChange={false}
-        onSubmit={(values, { setStatus }) => {
-          const errors = formatData(values)
-          setStatus({ errors })
-          if (Object.keys(errors).length === 0) {
+        validate={(values) => {
+          return realTimeValidation(values)
+        }}
+        onSubmit={async (values, { setErrors }) => {
+          const errors = onSubmitValidation(values)
+          if (errors.fields) {
+            setErrors(errors.fields)
+          } else {
+            await clearData(values)
             props.onSubmit(values)
           }
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, status, errors }) => (
+        {({ handleSubmit, handleChange, handleBlur, submitCount, errors }) => (
           <Form onSubmit={handleSubmit}>
-            <FormikListener />
             <Container>
               <Row className="form-question">
-                <Row className="form-label">
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary
+                    errors={createErrorSummary(errors)}
+                    submissions={submitCount}
+                    title={<Trans id="default.hasValidationErrors" />}
+                  />
+                )}
+                <Row className="form-label" id="incidentFrequency">
                   <Trans id="whenDidItHappenPage.question" />
                 </Row>
               </Row>
               <Row className="form-section">
-                {status.errors && <ErrorSummary />}
-                <ErrorMessage name="incidentFrequency" component={Error} />
+                {errors && errors.incidentFrequency && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    {incidentFrequency.errorMessage}
+                  </P>
+                )}
                 <FieldArray
                   name="incidentFrequency"
                   className="form-section"
@@ -157,38 +118,69 @@ export const WhenDidItHappenForm = (props) => {
                             id={question.id}
                           >
                             {question.value === 'once' && (
-                              <React.Fragment>
+                              <div id={question.name}>
+                                {errors && errors.happenedOnce && (
+                                  <P
+                                    color="#dc3545"
+                                    fontSize="1.25rem"
+                                    marginBottom="0.5rem"
+                                  >
+                                    {question.datePicker.errorMessage}
+                                  </P>
+                                )}
                                 <Field
                                   name={question.name}
-                                  label={question.datePickerLabel}
-                                  helpText={question.datePickerHelpText}
+                                  label={question.datePicker.label}
+                                  helpText={question.datePicker.helpText}
                                   component={DatePicker}
                                   onBlur={handleBlur}
                                   onChange={handleChange}
-                                  id={question.datePickerId}
+                                  id={question.datePicker.id}
                                 />
-                              </React.Fragment>
+                              </div>
                             )}
                             {question.value === 'moreThanOnce' && (
                               <React.Fragment>
-                                <Field
-                                  name="start"
-                                  label={question.datePickerStartLabel}
-                                  helpText={question.datePickerStartHelpText}
-                                  component={DatePicker}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange}
-                                  id={question.datePickerStartId}
-                                />
-                                <Field
-                                  name="end"
-                                  label={question.datePickerEndLabel}
-                                  helpText={question.datePickerEndHelpText}
-                                  component={DatePicker}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange}
-                                  id={question.datePickerEndId}
-                                />
+                                <div id="start">
+                                  {errors && errors.start && (
+                                    <P
+                                      color="#dc3545"
+                                      fontSize="1.25rem"
+                                      marginBottom="0.5rem"
+                                    >
+                                      {question.datePickerStart.errorMessage}
+                                    </P>
+                                  )}
+                                  <Field
+                                    name="start"
+                                    label={question.datePickerStart.label}
+                                    helpText={question.datePickerStart.helpText}
+                                    component={DatePicker}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    id={question.datePickerStart.id}
+                                  />
+                                </div>
+                                <div id="end">
+                                  {errors && errors.end && (
+                                    <P
+                                      color="#dc3545"
+                                      fontSize="1.25rem"
+                                      marginBottom="0.5rem"
+                                    >
+                                      {question.datePickerEnd.errorMessage}
+                                    </P>
+                                  )}
+                                  <Field
+                                    name="end"
+                                    label={question.datePickerEnd.label}
+                                    helpText={question.datePickerEnd.helpText}
+                                    component={DatePicker}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    id={question.datePickerEnd.id}
+                                  />
+                                </div>
                               </React.Fragment>
                             )}
                             {question.value === 'notSure' && (
@@ -217,7 +209,6 @@ export const WhenDidItHappenForm = (props) => {
 
               <Row>
                 <NextCancelButtons
-                  errors={status.errors || Object.keys(errors).length > 0}
                   submit={<Trans id="howDidItStartPage.nextButton" />}
                   cancel={<Trans id="button.cancelReport" />}
                   label={<Trans id="whenDidItHappenPage.nextPage" />}
