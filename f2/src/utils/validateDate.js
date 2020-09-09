@@ -67,56 +67,64 @@ export const validateDateRange = (startDate, endDate) => {
 }
 
 export const evalDate = (day, month, year) => {
-  const date = moment(`${month} ${day} ${year}`, 'MM DD YYYY')
-
-  if (!date.isValid()) {
-    return 'Invalid date'
+  let errors = {}
+  if (!day && !month && !year) {
+    //Do not validate empty input
+    return errors
   }
 
-  if (date.isAfter(moment.now())) {
-    return 'Date cannot be in the future'
+  if (!isFinite(day) || day > 31 || day === '00') {
+    errors['day'] = 'invalid input'
   }
 
-  return
+  if (!isFinite(month) || month > 12 || month === '00') {
+    errors['month'] = 'invalid input'
+  }
+
+  if (!isFinite(year) || year === '0000') {
+    errors['year'] = 'invalid input'
+  }
+
+  if (day && month && year) {
+    const date = moment(`${month} ${day} ${year}`, 'MM DD YYYY')
+
+    if (!date.isValid()) {
+      errors['date'] = 'invalid date'
+    } else if (year && date.isAfter(moment.now())) {
+      errors['future'] = 'invalid date'
+    }
+  }
+
+  return errors
 }
 
 export const evalDateRange = (values) => {
   let errors = {}
-  let startDate = null
-  let endDate = null
+  let startError = {}
+  let endError = {}
+  let startDate
+  let endDate
 
-  if (values.startDay && values.startMonth && values.startYear) {
-    const startError = evalDate(
-      values.startDay,
-      values.startMonth,
-      values.startYear,
-    )
+  startError = evalDate(values.startDay, values.startMonth, values.startYear)
 
-    if (startError) {
-      errors['startError'] = startError
-    } else {
-      startDate = moment(
-        `${values.startMonth} ${values.startDay} ${values.startYear}`,
-        'MM DD YYYY',
-      )
-    }
+  if (Object.keys(startError).length > 0) {
+    errors['startError'] = startError
   } else {
-    errors['startError'] = 'Invalid date'
+    startDate = moment(
+      `${values.startMonth} ${values.startDay} ${values.startYear}`,
+      'MM DD YYYY',
+    )
   }
 
-  if (values.endDay && values.endMonth && values.endYear) {
-    const endError = evalDate(values.endDay, values.endMonth, values.endYear)
+  endError = evalDate(values.endDay, values.endMonth, values.endYear)
 
-    if (endError) {
-      errors['endError'] = endError
-    } else {
-      endDate = moment(
-        `${values.endMonth} ${values.endDay} ${values.endYear}`,
-        'MM DD YYYY',
-      )
-    }
+  if (Object.keys(endError).length > 0) {
+    errors['endError'] = endError
   } else {
-    errors['endError'] = 'Invalid date'
+    endDate = moment(
+      `${values.endMonth} ${values.endDay} ${values.endYear}`,
+      'MM DD YYYY',
+    )
   }
 
   if (startDate && endDate) {
