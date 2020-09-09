@@ -68,7 +68,7 @@ export const EvidenceInfoForm = (props) => {
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     }
-    if(file.type.indexOf("image") != -1) {
+    if(file.type.indexOf("image") !== -1) {
       let img = new Image()
       img.src = window.URL.createObjectURL(file)
       img.onload = () => {
