@@ -111,7 +111,7 @@ export const WhatWasAffectedForm = (props) => {
               <Row className="form-section">
                 {errors && errors.affectedOptions && (
                   <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
-                    <Trans id="whatWasAffectedForm.hasValidationErrors" />
+                    <Trans id="whatWasAffectedForm.warning" />
                   </P>
                 )}
                 <FieldArray

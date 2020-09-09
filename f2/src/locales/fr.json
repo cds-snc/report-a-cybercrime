@@ -477,6 +477,7 @@
   "whatWasAffectedForm.other.example": "",
   "whatWasAffectedForm.personalInformation": "Données personnelles",
   "whatWasAffectedForm.personalInformation.example": "Par exemple : date de naissance, adresse du domicile, numéro d’assurance sociale",
+  "whatWasAffectedForm.warning": "Cochez au moins une case. Si vous ne savez pas laquelle, choisissez « Autre ».",
   "whatWasAffectedPage.intro": "Vous n’êtes probablement pas la seule personne affectée par une telle situation. Aidez-nous à en apprendre plus en précisant ce que voulait le suspect.",
   "whatWasAffectedPage.title": "D’après vous, quelles pourraient être les répercussions?",
   "whenDidItHappenPage.dateRange.end.label": "Quand est-ce arrivé pour la dernière fois?",

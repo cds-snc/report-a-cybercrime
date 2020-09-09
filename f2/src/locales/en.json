@@ -477,6 +477,7 @@
   "whatWasAffectedForm.other.example": "whatWasAffectedForm.other.example",
   "whatWasAffectedForm.personalInformation": "Personal information",
   "whatWasAffectedForm.personalInformation.example": "For example: date of birth, home address, social insurance number",
+  "whatWasAffectedForm.warning": "Check at least one box. If you’re not sure, choose “Other”.",
   "whatWasAffectedPage.intro": "You’re likely not the only one affected by something like this. Help us learn more about what the suspect was after.",
   "whatWasAffectedPage.title": "What do you think could be affected?",
   "whenDidItHappenPage.dateRange.end.label": "When did it last happen?",
