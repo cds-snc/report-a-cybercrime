@@ -1,14 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
-import { A } from '../components/link'
-import { FormArrayControl } from '../components/FormArrayControl'
 import { useLingui } from '@lingui/react'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
-import { Warning } from '../components/formik/alert'
 import { NextCancelButtons } from '../components/formik/button'
 
 const validate = (values) => {
