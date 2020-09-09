@@ -12,9 +12,10 @@ import isPropValid from '@emotion/is-prop-valid'
 
 export const FormRow = styled(Row)`
   border-bottom: 2px solid;
-  border-color: rgb(232, 232, 232);
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
+  border-color: ${(props) =>
+    props.color ? props.color : 'rgb(232, 232, 232)'};
+  margin: 1rem 0rem;
+  padding: 1.5rem 0rem;
   width: 100%;
 `
 
