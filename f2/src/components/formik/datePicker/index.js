@@ -2,12 +2,12 @@ import React from 'react'
 import { Form, Row, Col, Container } from 'react-bootstrap'
 import { Trans } from '@lingui/macro'
 import { Field } from 'formik'
-import { Error } from '../alert'
 
 const DateEntry = ({ field, form, ...props }) => {
   let length = 2
   let dateClass = 'day-month'
-  const error = form.errors[`${field.name}`]
+  const error =
+    form.errors && form.errors[field.name] && form.touched[field.name]
 
   if (props.type === 'year') {
     length = 4
@@ -39,35 +39,29 @@ export const DatePicker = ({ field, form, ...props }) => {
         <Form.Text className="input-help-text">{props.helpText}</Form.Text>
       </Row>
 
-      <Row>
-        {(form.errors[field.name + 'Day'] ||
-          form.errors[field.name + 'Month'] ||
-          form.errors[field.name + 'Year']) && <Error>Invalid date</Error>}
-        {form.status.errors && form.status.errors[field.name + 'Error'] && (
-          <Error>{form.status.errors[field.name + 'Error']}</Error>
-        )}
-      </Row>
-
       <Row className="date-group">
         <Field
           name={field.name + 'Day'}
           component={DateEntry}
           id={props.id + 'Day'}
-          value={props.day}
+          onChange={props.handleChange}
+          onBlur={props.handleBlur}
           label={<Trans id="whenDidItStart.startDay" />}
         />
         <Field
           name={field.name + 'Month'}
           component={DateEntry}
           id={props.id + 'Month'}
-          value={props.month}
+          onChange={props.handleChange}
+          onBlur={props.handleBlur}
           label={<Trans id="whenDidItStart.startMonth" />}
         />
         <Field
           name={field.name + 'Year'}
           component={DateEntry}
           id={props.id + 'Year'}
-          value={props.year}
+          onChange={props.handleChange}
+          onBlur={props.handleBlur}
           type="year"
           label={<Trans id="whenDidItStart.startYear" />}
         />
