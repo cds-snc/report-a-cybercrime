@@ -468,6 +468,7 @@
   "whatWasAffectedForm.devices.example": "For example: iPhone 7, social media accounts, wireless network",
   "whatWasAffectedForm.financial": "Money or finances",
   "whatWasAffectedForm.financial.example": "For example: bank account, credit card, cryptocurrency",
+  "whatWasAffectedForm.hasValidationErrors": "Select at least one thing that could be affected.",
   "whatWasAffectedForm.nextButton": "Continue",
   "whatWasAffectedForm.nextPage": "Next: Details about what was affected",
   "whatWasAffectedForm.optionsHelpText": "Select at least one thing that could potentially be affected as a result of this incident.",

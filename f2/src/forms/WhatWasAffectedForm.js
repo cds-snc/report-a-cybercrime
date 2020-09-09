@@ -6,9 +6,22 @@ import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
-import { Error } from '../components/formik/alert'
+import { Error, ErrorSummary } from '../components/formik/alert'
 import { NextCancelButtons } from '../components/formik/button'
 import { WhatWasAffectedFormSchema } from './WhatWasAffectedFormSchema'
+import { P } from '../components/formik/paragraph'
+
+const createErrorSummary = (errors) => {
+  const errorSummary = {}
+  if (errors.affectedOptions) {
+    errorSummary['affectedOptions'] = {
+      label: <Trans id="whatWasAffectedForm.optionsTitle" />,
+      message: <Trans id="whatWasAffectedForm.hasValidationErrors" />,
+    }
+  }
+
+  return errorSummary
+}
 
 export const whatWasAffectedPages = [
   {
@@ -77,19 +90,30 @@ export const WhatWasAffectedForm = (props) => {
         }}
         validationSchema={WhatWasAffectedFormSchema()}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
-                <Row className="form-label">
+                <Row className="form-label" id="affectedOptions">
                   <Trans id="whatWasAffectedForm.optionsTitle" />
                 </Row>
                 <Row className="form-helper-text">
                   <Trans id="whatWasAffectedForm.optionsHelpText" />
                 </Row>
-                <ErrorMessage name="affectedOptions" component={Error} />
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary
+                    errors={createErrorSummary(errors)}
+                    submissions={submitCount}
+                    title={<Trans id="default.hasValidationErrors" />}
+                  />
+                )}
               </Row>
               <Row className="form-section">
+                {errors && errors.affectedOptions && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    <Trans id="whatWasAffectedForm.hasValidationErrors" />
+                  </P>
+                )}
                 <FieldArray
                   name="affectedOptions"
                   className="form-section"
