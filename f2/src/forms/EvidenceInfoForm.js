@@ -130,7 +130,7 @@ export const EvidenceInfoForm = (props) => {
       {errors && (
         <ModalMessage
           title="File Size Error"
-          msg="fileUpload.maxSizeError"
+          msg={<Trans id="fileUpload.maxSizeError" />}
           handelClose={() => setErrors('')}
         />
       )}

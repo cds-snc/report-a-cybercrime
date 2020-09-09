@@ -211,6 +211,7 @@
   "fileUpload.isRacy.true": "fileUpload.isRacy.true",
   "fileUpload.malwareScan": "fileUpload.malwareScan",
   "fileUpload.malwareScan.clean": "fileUpload.malwareScan.clean",
+  "fileUpload.maxSizeError": "Warning: Your file size exceeds 4MB. Please reduce the size and try uploading again.",
   "fileUpload.noFiles": "fileUpload.noFiles",
   "fileUpload.racyScore": "fileUpload.racyScore",
   "fileUpload.removed": "fileUpload.removed",

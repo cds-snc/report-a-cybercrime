@@ -5,9 +5,6 @@ import { Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
 export const ModalMessage = (props) => {
-  console.log(props.msg.toString())
-  const { i18n } = useLingui()
-
   const [show, setShow] = useState(true)
 
   const handleClose = () => {
@@ -20,10 +17,7 @@ export const ModalMessage = (props) => {
       <Modal.Header closeButton>
         <Modal.Title> {props.title} </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        {' '}
-        <Trans id={props.msg} />{' '}
-      </Modal.Body>
+      <Modal.Body>{props.msg}</Modal.Body>
       <Modal.Footer>
         <DefaultButton onClick={handleClose} label="OK" />
       </Modal.Footer>
