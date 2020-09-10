@@ -10,7 +10,7 @@ export const TextArea = ({ field, form, ...props }) => {
         {...field}
         as="textarea"
         className={'open-text-entry'}
-        {...props}
+        rows={props.rows}
       />
     </Form.Group>
   )
