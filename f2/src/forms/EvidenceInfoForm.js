@@ -9,7 +9,7 @@ import { fileExtensionPasses } from '../utils/acceptableFiles'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
 
-import { Form, Container, Row } from 'react-bootstrap'
+import { Form, Container } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
 import { Info, Warning } from '../components/formik/alert'
 import { List } from '../components/formik/list'
@@ -52,26 +52,27 @@ export const EvidenceInfoForm = (props) => {
 
   const onFilesChange = (e) => {
     const file = e.target.files[0]
-    if (file.size > 1) {
+    if (file.size > 4194304) {
       // 4MB in bytes is 4194304.
       setErrors('fileUpload.maxSizeError')
+      errorMsg = <Trans id="fileUpload.maxSizeError" />
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     } else if (file.size === 0) {
       errorMsg = <Trans id="fileUpload.zeroSizeError" />
-      setErrors('fileUpload.sizeError')
+      setErrors('fileUpload.zeroSizeError')
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     }
     if (!fileExtensionPasses(file.name)) {
-      alert(
+      errorMsg =
         i18n._('evidencePage.supportedFiles') +
-          i18n._('evidencePage.fileTypes1') +
-          ', ' +
-          i18n._('evidencePage.fileTypes2') +
-          ', ' +
-          i18n._('evidencePage.fileTypes3'),
-      )
+        i18n._('evidencePage.fileTypes1') +
+        ', ' +
+        i18n._('evidencePage.fileTypes2') +
+        ', ' +
+        i18n._('evidencePage.fileTypes3')
+      setErrors('fileUpload.fileExtensionError')
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     }
@@ -130,7 +131,7 @@ export const EvidenceInfoForm = (props) => {
       {errors && (
         <ModalMessage
           title="File Size Error"
-          msg={<Trans id="fileUpload.maxSizeError" />}
+          msg={errorMsg}
           handelClose={() => setErrors('')}
         />
       )}
@@ -148,9 +149,9 @@ export const EvidenceInfoForm = (props) => {
         {({ handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row className="form-section">
+              <FormRow marginBottom="0rem" marginTop="0rem">
                 {!maxFiles && (
-                  <Row className="form-row">
+                  <FormRow marginBottom="3rem">
                     <P
                       fontSize="md"
                       borderBottom="2px"
@@ -161,7 +162,7 @@ export const EvidenceInfoForm = (props) => {
                     >
                       <Trans id="evidencePage.fileSize" />
                     </P>
-                  </Row>
+                  </FormRow>
                 )}
                 {displayFileCount && (
                   <P fontSize="1.25rem" lineHeight="1.33" marginBottom="1rem">
@@ -174,7 +175,7 @@ export const EvidenceInfoForm = (props) => {
                   </P>
                 )}
                 {files.map((f, index) => (
-                  <FormRow>
+                  <FormRow separator marginBottom="3rem">
                     <P
                       fontSize="1.25rem"
                       lineHeight="1.5rem"
@@ -219,14 +220,14 @@ export const EvidenceInfoForm = (props) => {
                 <Info>
                   <Trans id="evidencePage.fileWarning" />
                 </Info>
-              </Row>
-              <Row>
+              </FormRow>
+              <FormRow>
                 <NextCancelButtons
                   submit={<Trans id="button.continue" />}
                   cancel={<Trans id="button.cancelReport" />}
                   label={<Trans id="evidencePage.nextPage" />}
                 />
-              </Row>
+              </FormRow>
             </Container>
           </Form>
         )}

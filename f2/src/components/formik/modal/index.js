@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import { DefaultButton } from '../button'
-import { Trans } from '@lingui/macro'
-import { useLingui } from '@lingui/react'
 
 export const ModalMessage = (props) => {
   const [show, setShow] = useState(true)
