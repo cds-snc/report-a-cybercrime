@@ -56,11 +56,13 @@ const getEmailWarning = (data) =>
   data.evidence.files.some(
     (file) => file.isImageRacyClassified || file.isImageAdultClassified,
   )
-    ? ': WARNING: potential offensive image'
+    ? lang['analystReport.potentialOffensiveImageInEmailSubject']
     : ''
 
 const getSelfHarmWord = (data) =>
-  data.selfHarmWords.length ? ': WARNING: self harm words detected' : ''
+  data.selfHarmWords.length
+    ? lang['analystReport.selfHarmStringInEmailSubject']
+    : ''
 
 const encryptMessage = (uidList, emailAddress, message, data, sendMail) => {
   const openssl = 'openssl smime -des3 -encrypt'
