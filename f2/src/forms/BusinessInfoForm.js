@@ -62,8 +62,6 @@ export const BusinessInfoForm = (props) => {
                   onBlur={handleBlur}
                   id={'name-of-business'}
                 />
-              </Row>
-              <Row className="form-section">
                 <Field
                   name="industry"
                   label={<Trans id="businessPage.industry" />}
@@ -73,8 +71,6 @@ export const BusinessInfoForm = (props) => {
                   onBlur={handleBlur}
                   id={'type-of-industry'}
                 />
-              </Row>
-              <Row className="form-section">
                 <Field
                   name="role"
                   label={<Trans id="businessPage.role" />}
@@ -84,8 +80,6 @@ export const BusinessInfoForm = (props) => {
                   onBlur={handleBlur}
                   id={'role-of-industry'}
                 />
-              </Row>
-              <Row className="form-question" lg={1}>
                 <Row className="form-label">
                   <Trans id="numberOfEmployee.label" />
                 </Row>
