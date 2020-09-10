@@ -10,7 +10,6 @@ import canada from '../../theme/canada'
 import { StateProvider, initialState, reducer } from '../../utils/state'
 import { WhoAreYouReportForForm } from '../WhoAreYouReportForForm'
 
-
 i18n.load('en', { en })
 i18n.activate('en')
 
@@ -22,7 +21,7 @@ describe('<WhoAreYouReportForForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByText } = render(
+    const { getByText, getByLabelText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -33,6 +32,9 @@ describe('<WhoAreYouReportForForm />', () => {
         </ThemeProvider>
       </MemoryRouter>,
     )
+
+    const radio = getByLabelText('whoAreYouReportForPage.options.myself')
+    clickOn(radio)
 
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
