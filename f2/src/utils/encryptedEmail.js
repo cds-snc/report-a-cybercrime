@@ -59,13 +59,12 @@ const prepareUnencryptedReportEmail = (message, data, callback) => {
   )
 }
 
-const getEmailWarning = (data) => {
+const getEmailWarning = (data) =>
   data.evidence.files.some(
     (file) => file.isImageRacyClassified || file.isImageAdultClassified,
   )
     ? lang['analystReport.potentialOffensiveImageInEmailSubject']
     : ''
-}
 
 const getSelfHarmWord = (data) =>
   data.selfHarmWords.length
