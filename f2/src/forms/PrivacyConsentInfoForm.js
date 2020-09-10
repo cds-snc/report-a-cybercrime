@@ -23,7 +23,7 @@ export const PrivacyConsentInfoForm = (props) => {
   const whetherConsent = {
     ...data.formData.consent,
   }
-  //const consentOptions = ['privacyConsentInfoForm.yes']
+
   const { fyiForm } = data.formData
 
   return (
