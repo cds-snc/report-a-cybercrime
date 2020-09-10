@@ -76,7 +76,7 @@ export const WhatWasAffectedForm = (props) => {
     {
       name: 'other',
       checkboxLabel: <Trans id="whatWasAffectedForm.other" />,
-      checkboxHelpText: <Trans id="whatWasAffectedForm.other.example" />,
+      checkboxHelpText: '',
       checkboxValue: 'whatWasAffectedForm.other',
     },
   ]
