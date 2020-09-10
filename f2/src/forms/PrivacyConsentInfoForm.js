@@ -1,16 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { A } from '../components/link'
-import { CheckboxAdapter } from '../components/checkbox'
-import { FormArrayControl } from '../components/FormArrayControl'
 import { useLingui } from '@lingui/react'
-import { ErrorSummary } from '../components/ErrorSummary'
-import { formDefaults } from './defaultValues'
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, Field } from 'formik'
+import { CheckBox } from '../components/formik/checkbox'
+import { NextCancelButtons } from '../components/formik/button'
 
 const validate = (values) => {
   const errors = {}
@@ -26,84 +21,43 @@ export const PrivacyConsentInfoForm = (props) => {
   const { i18n } = useLingui()
   const [data] = useStateValue()
   const whetherConsent = {
-    ...formDefaults.consent,
     ...data.formData.consent,
   }
-  const consentOptions = ['privacyConsentInfoForm.yes']
+
   const { fyiForm } = data.formData
 
   return (
-    <React.Fragment>
-      {false ? ( // mark ids for lingui
-        <div>
-          <Trans id="privacyConsentInfoForm.yes" />
-          <Trans id="privacyConsentInfoForm.consent" />
-        </div>
-      ) : null}
-
-      <Form
-        initialValues={whetherConsent}
-        onSubmit={(values) => {
-          props.onSubmit(values)
-        }}
-        validate={validate}
-        render={({
-          handleSubmit,
-          values,
-          errors,
-          submitFailed,
-          hasValidationErrors,
-        }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            shouldWrapChildren
-            spacing={6}
-          >
-            {submitFailed && hasValidationErrors ? (
-              <ErrorSummary>
-                <Trans id="privacyConsentInfoForm.hasValidationErrors" />
-              </ErrorSummary>
-            ) : null}
-
-            <FormArrayControl
-              name="consentOptions"
-              errorMessage={<Trans id="privacyConsentInfoForm.warning" />}
-            >
-              {consentOptions.map((key) => {
-                return (
-                  <React.Fragment key={key}>
-                    <CheckboxAdapter name="consentOptions" value={key}>
-                      <Trans id="privacyConsentInfoForm.yes" />
-                      <A
-                        href={'/privacystatement?lang=' + i18n.locale}
-                        isExternal
-                      >
-                        <Trans id="privacyConsentInfoForm.linkOut" />
-                      </A>
-                      <Trans id="privacyConsentInfoForm.period" />
-                    </CheckboxAdapter>
-                  </React.Fragment>
-                )
-              })}
-            </FormArrayControl>
-            <NextAndCancelButtons
-              next={
-                fyiForm ? (
-                  <Trans id="fyiForm.nextPage1" />
-                ) : (
-                  <Trans id="privacyConsentInfoForm.nextPage" />
-                )
-              }
-              button={<Trans id="privacyConsentInfoForm.nextButton" />}
-            />
-          </Stack>
-        )}
-      />
-    </React.Fragment>
+    <Formik
+      initialValues={whetherConsent}
+      onSubmit={(values) => {
+        props.onSubmit(values)
+      }}
+    >
+      {({ handleSubmit, handleChange, handleBlur }) => (
+        <Form onSubmit={handleSubmit}>
+          <Container>
+            <Row className="form-section">
+              <Field
+                name="consentOptions"
+                label={<Trans id="privacyConsentInfoForm.yes" />}
+                component={CheckBox}
+                value="privacyConsentInfoForm.yes"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="checkbox"
+                id="checkbox-consent-option"
+              ></Field>
+            </Row>
+            <Row>
+              <NextCancelButtons
+                submit={<Trans id="privacyConsentInfoForm.nextButton" />}
+                cancel={<Trans id="button.cancelReport" />}
+                label={<Trans id="privacyConsentInfoForm.nextPage" />}
+              />
+            </Row>
+          </Container>
+        </Form>
+      )}
+    </Formik>
   )
-}
-
-PrivacyConsentInfoForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 }
