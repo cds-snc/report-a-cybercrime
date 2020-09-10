@@ -21,14 +21,11 @@ const separator = (props) =>
   border-color: rgb(232, 232, 232)};`
     : null
 
-const defaultStyle = (props) => props
-
 export const FormRow = styled(Row, {
   shouldForwardProp: (prop) => cleanProps(prop),
 })`
   ${separator}
-  margin: 1rem 0rem;
-  padding: 1.5rem 0rem;
+  margin-bottom: 1rem;
   width: 100%;
   ${space};
   ${color};

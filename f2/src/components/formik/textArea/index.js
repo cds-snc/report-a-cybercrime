@@ -13,6 +13,7 @@ export const TextArea = ({ field, form, ...props }) => {
         className={
           'open-text-entry' + (largeTextArea ? ' large-text-area' : '')
         }
+        onChange={props.onChange}
       />
     </Form.Group>
   )

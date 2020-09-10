@@ -1,11 +1,12 @@
 import React from 'react'
 import { Container, Row, ListGroup } from 'react-bootstrap'
 import { P } from '../paragraph'
+import { FormRow } from '../row'
 
 export const List = (props) => {
   return (
     <Container>
-      <Row className="form-row">
+      <FormRow>
         {props.label && (
           <Row>
             <P fontSize="md" fontWeight="bold" marginBottom="1rem">
@@ -24,7 +25,7 @@ export const List = (props) => {
             })}
           </ListGroup>
         </Row>
-      </Row>
+      </FormRow>
     </Container>
   )
 }
