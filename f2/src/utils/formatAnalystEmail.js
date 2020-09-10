@@ -293,7 +293,7 @@ const formatIncidentInformation = (data) => {
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
   delete data.fyiForm
-  return formatSection(lang['howDidItStartPage.incidentInformation'], rows)
+  return formatSection(lang['analystReport.incidentInformation'], rows)
 }
 
 const formatNarrative = (data) => {

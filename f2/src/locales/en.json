@@ -15,6 +15,7 @@
   "analystReport.consent.yes": "Yes",
   "analystReport.dateReceived": "Date received",
   "analystReport.flagged": "Flagged",
+  "analystReport.incidentInformation": "Incident information",
   "analystReport.methodOfComms.app": "App",
   "analystReport.methodOfComms.email": "Email",
   "analystReport.methodOfComms.online": "Online",
@@ -496,8 +497,6 @@
   "whenDidItStart.startDay": "Day",
   "whenDidItStart.startMonth": "Month",
   "whenDidItStart.startYear": "Year",
-  "whoAreYouReportForPage.business.helperText": "Provide a business name, a website and/or some way to contact the business",
-  "whoAreYouReportForPage.business.label": "What business are you reporting for?",
   "whoAreYouReportForPage.details": "Details",
   "whoAreYouReportForPage.hasValidationErrors": "Select the option that represents the person you are reporting for",
   "whoAreYouReportForPage.nextButton": "Continue",
@@ -506,7 +505,5 @@
   "whoAreYouReportForPage.options.myself": "Myself",
   "whoAreYouReportForPage.options.someone": "Someone I know",
   "whoAreYouReportForPage.or": "or",
-  "whoAreYouReportForPage.someone.helperText": "Tell us your relationship to them, and their full name",
-  "whoAreYouReportForPage.someone.label": "Who are you reporting for?",
   "whoAreYouReportForPage.title": "Who are you reporting for?"
 }
