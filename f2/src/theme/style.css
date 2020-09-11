@@ -20,6 +20,10 @@ body {
   width: 100%;
 }
 
+.row {
+  width: 100%;
+}
+
 .form-row {
   margin-bottom: 1rem;
   margin-left: 0rem;
@@ -76,6 +80,7 @@ body {
 .error-summary-title {
   color: rgb(0, 0, 0);
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .error-summary {
@@ -85,7 +90,7 @@ body {
 .field-error,
 .field-error:hover,
 .field-error:focus {
-  border-color: rgb(130, 39, 39);
+  border-color: rgb(130, 39, 39) !important;
 }
 
 /*Text Area*/
