@@ -114,10 +114,6 @@ body {
   border-color: rgb(42, 105, 172);
 }
 
-.large-text-area {
-  height: 300px !important;
-}
-
 .conditional-field {
   border-left-width: 0.25rem;
   border-left-color: rgb(174, 174, 174);
