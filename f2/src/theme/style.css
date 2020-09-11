@@ -151,10 +151,6 @@ body {
   padding-right: 1.5rem;
   font-size: 1.125rem;
   font-weight: 400;
-}
-
-.button,
-.button-label {
   display: inline-flex;
   align-items: center;
 }
@@ -181,6 +177,10 @@ body {
   color: rgb(0, 0, 0);
   border-color: rgb(213, 213, 213);
   margin-left: 16px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 400;
 }
 
 .default-button:hover,

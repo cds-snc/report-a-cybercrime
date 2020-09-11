@@ -2,12 +2,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Trans, Plural } from '@lingui/macro'
-import { useLingui } from '@lingui/react'
 import { jsx } from '@emotion/core'
 import { useStateValue } from '../utils/state'
 import { fileExtensionPasses } from '../utils/acceptableFiles'
 import { Form, Container } from 'react-bootstrap'
-import { Formik, Field } from 'formik'
+import { Formik, Field, FieldArray } from 'formik'
 import { Info, Warning } from '../components/formik/alert'
 import { List } from '../components/formik/list'
 import { P } from '../components/formik/paragraph'
@@ -23,7 +22,6 @@ export const EvidenceInfoForm = (props) => {
   const cached = {
     ...data.formData.evidence,
   }
-  console.log(JSON.stringify(cached, null, 2))
 
   const allowedFilesList = [
     <Trans id="evidencePage.fileTypes1" />,
@@ -38,39 +36,45 @@ export const EvidenceInfoForm = (props) => {
   const [status, setStatus] = useState('')
   const [showModal, setShowModal] = useState(false)
 
+  //Place file descriptions into an object to be used by Formik.
+  const fileDescriptionsObj = {}
+
+  const setFormValues = () => {
+    fileDescriptions.map((description, index) => {
+      fileDescriptionsObj[`file-description-${index}`] = description
+    })
+  }
+
+  setFormValues()
+
   useEffect(() => {
-    if (status) {
-      //document.getElementById('status').focus()
+    const element = document.getElementById(
+      'evidencePage.numberOfFilesAttached',
+    )
+    if (status === 'fileUpload.added' && element) {
+      element.focus()
     }
   }, [status])
-  const { i18n } = useLingui()
 
   const displayFileCount = files.length > 0
   const maxFiles = files.length >= 3
-  let errorMsg
 
   const onFilesChange = (e) => {
     const file = e.target.files[0]
     if (file.size > 4194304) {
       // 4MB in bytes is 4194304.
-      errorMsg = <Trans id="fileUpload.maxSizeError" />
+      setStatus('fileUpload.maxSizeError')
       setShowModal(true)
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     } else if (file.size === 0) {
-      errorMsg = <Trans id="fileUpload.zeroSizeError" />
+      setStatus('fileUpload.zeroSizeError')
       setShowModal(true)
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     }
     if (!fileExtensionPasses(file.name)) {
-      errorMsg =
-        i18n._('evidencePage.supportedFiles') +
-        i18n._('evidencePage.fileTypes1') +
-        ', ' +
-        i18n._('evidencePage.fileTypes2') +
-        ', ' +
-        i18n._('evidencePage.fileTypes3')
+      setStatus('evidencePage.supportedFiles')
       setShowModal(true)
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
@@ -81,12 +85,9 @@ export const EvidenceInfoForm = (props) => {
     e.target.value = '' // clear the file input target, to allow the file to be removed then added again
   }
 
-  const onFileDescriptionChange = (e) => {
-    const index = Number(e.target.id.substring(17))
-    let newFileDescriptions = JSON.parse(JSON.stringify(fileDescriptions))
-    newFileDescriptions[index] = e.target.value
-    console.log(index, e.target.value, newFileDescriptions)
-    setFileDescriptions(newFileDescriptions)
+  const onFileDescriptionChange = (description, index) => {
+    fileDescriptions[index] = description
+    setFileDescriptions(fileDescriptions)
   }
 
   const removeFile = (index) => {
@@ -100,7 +101,6 @@ export const EvidenceInfoForm = (props) => {
   }
 
   const handleClose = () => setShowModal(false)
-  const handleOpen = () => setShowModal(true)
 
   return (
     <React.Fragment>
@@ -133,25 +133,47 @@ export const EvidenceInfoForm = (props) => {
 
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title> {props.title} </Modal.Title>
+          <Modal.Title>
+            <Trans id="fileUpload.errorModal.title" />
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body>{errorMsg}</Modal.Body>
+        <Modal.Body>
+          <Container>
+            {status === 'fileUpload.maxSizeError' && (
+              <FormRow>
+                <Trans id="fileUpload.maxSizeError" />
+              </FormRow>
+            )}
+            {status === 'fileUpload.zeroSizeError' && (
+              <FormRow>
+                <Trans id="fileUpload.zeroSizeError" />
+              </FormRow>
+            )}
+            {status === 'evidencePage.supportedFiles' && (
+              <List
+                label={<Trans id="evidencePage.supportedFiles" />}
+                items={allowedFilesList}
+              />
+            )}
+          </Container>
+        </Modal.Body>
         <Modal.Footer>
           <DefaultButton onClick={handleClose} label="OK" />
         </Modal.Footer>
       </Modal>
 
       <Formik
-        initialValues={cached}
+        initialValues={fileDescriptionsObj}
+        enableReinitialize={true}
         onSubmit={() => {
           const data = {
-            files, // from useState()
-            fileDescriptions, // from useState()
+            files,
+            fileDescriptions,
           }
           props.onSubmit(data)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
               {!maxFiles && (
@@ -169,47 +191,65 @@ export const EvidenceInfoForm = (props) => {
                 </FormRow>
               )}
               {displayFileCount && (
-                <FormRow>
-                  <P fontSize="1.25rem" lineHeight="1.33" marginBottom="1rem">
-                    <Plural
-                      id="evidencePage.numberOfFilesAttached"
-                      value={files.length}
-                      one="# file attached"
-                      other="# files attached"
-                    />
-                  </P>
-                </FormRow>
-              )}
-              {files.map((f, index) => (
-                <FormRow
-                  key={index}
-                  separator="true"
-                  marginTop="1rem"
-                  paddingTop="1.5rem"
-                  paddingBottom="1.5rem"
-                >
-                  <P fontSize="1.25rem" lineHeight="1.5rem" marginBottom="1rem">
-                    {f.name}
-                  </P>
-                  <Field
-                    label={<Trans id="evidencePage.fileDescription" />}
-                    name={`file-description-${index}`}
-                    value={fileDescriptions[index]}
-                    onChange={(e) => {
-                      handleChange(e)
-                      onFileDescriptionChange(e)
-                    }}
-                    component={TextArea}
+                <React.Fragment>
+                  <FormRow>
+                    <P fontSize="1.25rem" lineHeight="1.33" marginBottom="1rem">
+                      <Plural
+                        id="evidencePage.numberOfFilesAttached"
+                        value={files.length}
+                        one="# file attached"
+                        other="# files attached"
+                      />
+                    </P>
+                  </FormRow>
+                  <FieldArray
+                    name="fileDescriptions"
+                    render={() =>
+                      files.map((f, index) => {
+                        return (
+                          <FormRow
+                            key={index}
+                            separator="true"
+                            marginTop="1rem"
+                            paddingTop="1.5rem"
+                            paddingBottom="1.5rem"
+                          >
+                            <P
+                              fontSize="1.25rem"
+                              lineHeight="1.5rem"
+                              marginBottom="1rem"
+                            >
+                              {f.name}
+                            </P>
+                            <Field
+                              label={
+                                <Trans id="evidencePage.fileDescription" />
+                              }
+                              name={`file-description-${index}`}
+                              id={`file-description-${index}`}
+                              onChange={(e) => {
+                                handleChange(e)
+                                onFileDescriptionChange(e.target.value, index)
+                              }}
+                              component={TextArea}
+                            />
+                            <A
+                              onClick={() => {
+                                removeFile(index)
+                                setFormValues()
+                              }}
+                              color="red"
+                              fontSize="1.125rem"
+                            >
+                              <Trans id="evidencePage.removeFileButton" />
+                            </A>
+                          </FormRow>
+                        )
+                      })
+                    }
                   />
-                  <A
-                    onClick={() => removeFile(index)}
-                    color="red"
-                    fontSize="1.125rem"
-                  >
-                    <Trans id="evidencePage.removeFileButton" />
-                  </A>
-                </FormRow>
-              ))}
+                </React.Fragment>
+              )}
               {maxFiles && (
                 <FormRow>
                   <Warning>

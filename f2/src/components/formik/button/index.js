@@ -10,9 +10,9 @@ export const DefaultButton = (props) => {
     <Button
       type="button"
       onClick={() => props.onClick()}
-      className="button default-button"
+      className="default-button button"
     >
-      <span className="button-label">{props.label}</span>
+      {props.label}
     </Button>
   )
 }
@@ -49,7 +49,7 @@ export const CancelButton = (props) => {
           className="button default-button"
           onClick={() => history.push('/confirmCancel')}
         >
-          <span className="button-label">{props.label}</span>
+          {props.label}
         </Button>
       )}
     />
