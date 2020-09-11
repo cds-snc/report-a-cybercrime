@@ -40,7 +40,7 @@ export const EvidenceInfoForm = (props) => {
   const fileDescriptionsObj = {}
 
   const setFormValues = () => {
-    fileDescriptions.map((description, index) => {
+    fileDescriptions.forEach((description, index) => {
       fileDescriptionsObj[`file-description-${index}`] = description
     })
   }

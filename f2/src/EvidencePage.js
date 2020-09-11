@@ -54,7 +54,6 @@ export const EvidencePage = () => {
 
               <EvidenceInfoForm
                 onSubmit={(data) => {
-                  console.log(JSON.stringify(data, null, 2))
                   dispatch({ type: 'saveFormData', data: { evidence: data } })
                   history.push(doneForms ? '/confirmation' : '/location')
                 }}
