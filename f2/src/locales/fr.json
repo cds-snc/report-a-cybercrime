@@ -189,8 +189,6 @@
   "evidencePage.fileWarning": "Les fichiers seront vérifiés pour nous assurer que leur contenu est sûr.",
   "evidencePage.intro": "Ce n’est pas grave si vous n’avez pas conservé de documents liés à l’incident. Vous pouvez passer à la section suivante.",
   "evidencePage.maxFileWarning": "Vous avez ajouté le nombre maximum de fichiers possibles.",
-  "evidencePage.nextPage": "Prochaine étape : Votre emplacement géographique",
-  "evidencePage.nextButton": "Continuer",
   "evidencePage.nextPage": "Prochaine étape : Votre emplacement géographique",
   "evidencePage.numberOfFilesAttached": "{0, plural, one {# fichier joint} other {# fichiers joints}}",
   "evidencePage.removeFileButton": "Enlever ce fichier",
