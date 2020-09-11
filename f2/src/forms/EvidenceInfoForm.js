@@ -260,7 +260,7 @@ export const EvidenceInfoForm = (props) => {
               {!maxFiles && (
                 <React.Fragment>
                   <FileUpload
-                    id="evidenceUpload"
+                    id="uploader"
                     label={<Trans id="evidencePage.addFileButton" />}
                     onChange={onFilesChange}
                   />
