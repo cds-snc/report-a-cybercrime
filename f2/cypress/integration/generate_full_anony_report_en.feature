@@ -1,7 +1,7 @@
  @smoke
 Feature: Test the entire report workflow in english
   I want to create an online investgation report
-  
+ 
   Scenario: Home page
     Given I open the report home page
     When I click on create a report button
@@ -18,7 +18,7 @@ Feature: Test the entire report workflow in english
 
   Scenario: Who are you reporting for
     Given "Who are you reporting for?" should be shown
-    When I fill Whoareyoureporting page forms
+    When I fill WhoAreYouReportingMyself page forms
     Then I click "Continue"
 
   Scenario: How did it start
@@ -26,9 +26,9 @@ Feature: Test the entire report workflow in english
     When I fill howdiditstart page forms
     Then I click "Continue"
 
-  Scenario: When did it happen
+  Scenario: When did the incident happen
     Given "When did the incident happen?" should be shown
-    When I fill whendidithappen page forms
+    When I fill whendidithappenonce page forms
     Then I click "Continue"
 
   Scenario: What could be affected
@@ -46,7 +46,7 @@ Feature: Test the entire report workflow in english
     When I fill Howwaspersonalinformationaffected forms
     Then I click "Continue"
 
-  Scenario: How were your devices or accounts affected
+  Scenario: How was your device affected
     Given "How were your devices or accounts affected?" should be shown
     When I fill Howwereyourdevicesaffected page forms
     Then I click "Continue"
@@ -73,14 +73,13 @@ Feature: Test the entire report workflow in english
 
   Scenario: your location
     Given "Enter your location" should be shown
-    When I fill to yourLocation page forms
+    When I fill city and province Location page forms
     Then I click "Continue"
 
   Scenario: Review  your report and  capture a screenshot
     Given "Review your report" should be shown
     Then Take summary page screenshot
-    Then I click submit report
+    Then I submit report
 
   Scenario: Confirm Report ID is generated
     Then "Thank you for reporting" should be shown
-    And "Your reference number:" should be shown

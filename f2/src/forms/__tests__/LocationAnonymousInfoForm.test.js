@@ -1,7 +1,7 @@
 import React from 'react'
 import wait from 'waait'
 import { i18n } from '@lingui/core'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import { render, fireEvent, cleanup, act } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
@@ -36,10 +36,11 @@ describe('<LocationAnonymousInfoForm />', () => {
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
 
-    // Click the next button to trigger the form submission
-    clickOn(nextButton.parentElement)
-    await wait(0) // Wait for promises to resolve
-
+    await act(async () => {
+      // Click the next button to trigger the form submission
+      clickOn(nextButton.parentElement)
+      await wait(0) // Wait for promises to resolve
+    })
     expect(submitMock).toHaveBeenCalledTimes(1)
   })
 })
