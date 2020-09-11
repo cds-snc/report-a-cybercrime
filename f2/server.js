@@ -230,7 +230,7 @@ app
         logger.error('ERROR', err)
         throw err
       }
-      submitFeedback(fields.json)
+      submitFeedback(sanitize(fields.json))
     })
     res.send('thanks')
   })
