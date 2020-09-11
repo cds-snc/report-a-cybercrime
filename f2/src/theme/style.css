@@ -80,6 +80,7 @@ body {
 .error-summary-title {
   color: rgb(0, 0, 0);
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .error-summary {
@@ -89,7 +90,7 @@ body {
 .field-error,
 .field-error:hover,
 .field-error:focus {
-  border-color: rgb(130, 39, 39);
+  border-color: rgb(130, 39, 39) !important;
 }
 
 /*Text Area*/
