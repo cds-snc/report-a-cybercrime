@@ -20,6 +20,10 @@ body {
   width: 100%;
 }
 
+.row {
+  width: 100%;
+}
+
 .form-row {
   margin-bottom: 1rem;
   margin-left: 0rem;
@@ -76,6 +80,7 @@ body {
 .error-summary-title {
   color: rgb(0, 0, 0);
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .error-summary {
@@ -85,7 +90,7 @@ body {
 .field-error,
 .field-error:hover,
 .field-error:focus {
-  border-color: rgb(130, 39, 39);
+  border-color: rgb(130, 39, 39) !important;
 }
 
 /*Text Area*/
@@ -107,10 +112,6 @@ body {
   box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
   outline: none;
   border-color: rgb(42, 105, 172);
-}
-
-.large-text-area {
-  height: 300px !important;
 }
 
 .conditional-field {
