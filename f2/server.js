@@ -92,7 +92,7 @@ async function saveBlobAndEmailReport(data) {
 }
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
-  saveBlobAndEmailReport(data)
+  await saveBlobAndEmailReport(data)
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
@@ -230,7 +230,7 @@ app
         logger.error('ERROR', err)
         throw err
       }
-      submitFeedback(fields.json)
+      submitFeedback(sanitize(fields.json))
     })
     res.send('thanks')
   })

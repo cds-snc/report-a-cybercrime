@@ -114,10 +114,6 @@ body {
   border-color: rgb(42, 105, 172);
 }
 
-.large-text-area {
-  height: 300px !important;
-}
-
 .conditional-field {
   border-left-width: 0.25rem;
   border-left-color: rgb(174, 174, 174);
@@ -174,6 +170,23 @@ body {
 
 .submit-button:not(:disabled):not(.disabled):active {
   background-color: rgb(24, 60, 31);
+}
+
+.feedback-button {
+  min-width: 6rem;
+  background-color: rgb(30, 78, 140);
+  color: rgb(255, 255, 255);
+  border-color: rgb(24, 60, 31);
+}
+
+.feedback-button:hover,
+.feedback-button:focus {
+  background-color: rgb(30, 78, 140);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.feedback-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(30, 78, 140);
 }
 
 .default-button {
