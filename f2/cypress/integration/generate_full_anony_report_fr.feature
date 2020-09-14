@@ -1,34 +1,34 @@
- @smoke
+@smoke-bypassed
 Feature: Test the entire report workflow in french
   I want to create an online investgation report
-
+  
   Scenario: Home page
     Given I open the report home page
     When I change the language
-    Then I read before you start instructions
+    Then I read before you start instructions in French
     And I click continue without checking consent
     Then "Cochez la case pour accepter les conditions de la Déclaration de confidentialité." should be shown
     When I check the consent checkbox
-    Then I click "Continuer"
+    Then I click "Continuer" 
 
-Scenario: Report anonymously
+  Scenario: Report anonymously
     Given "Signaler anonymement?" should be shown
     When I fill ReportAnonymously page forms
-    Then I click "Continue"
+    Then I click "Continue" 
 
-Scenario: Who are you reporting for
+  Scenario: Who are you reporting for
     Given "Pour qui faites-vous le signalement?" should be shown
-    When I fill Whoareyoureporting page forms
-    Then I click "Continue"
+    When I fill WhoAreYouReportingSomeOne in French page forms
+    Then I click "Continue" 
 
   Scenario: How did it start
     Given "Comment l’incident a-t-il commencé?" should be shown
-    When I fill howdiditstart page forms
+    When I fill howdiditstart in French page forms
     Then I click "Continuer"
 
-  Scenario: When did it happen
+  Scenario: When did the incident happen
     Given "Quand est-ce que l'incident s'est produit ?" should be shown
-    When I fill whendidithappen page forms
+    When I fill whendidithappenonce page forms
     Then I click "Continue"
 
   Scenario: What could be affected
@@ -38,48 +38,48 @@ Scenario: Who are you reporting for
 
   Scenario: How were your money affected
     Given "Répercussions sur votre argent ou vos finances" should be shown
-    When I fill Howwereyourmoney page forms
+    When I fill Howwereyourmoney in French page forms
     Then I click "Continuer"
 
   Scenario: How was personal information affected
     Given "Répercussions sur vos données personnelles" should be shown
-    When I fill Howwaspersonalinformationaffected page forms
+    When I fill Howwaspersonalinformationaffected in French page forms
     Then I click "Continuer"
 
   Scenario: How was your device affected
     Given "Répercussions sur vos appareils ou vos comptes" should be shown
-    When I fill Howwereyourdevicesaffected page forms
+    When I fill Howwereyourdevicesaffected in French page forms
     Then I click "Continuer"
 
   Scenario: How your business affected
     Given "Parlez-nous de votre entreprise ou organisation" should be shown
-    When I fill Howyourbusinessaffected page forms
+    When I fill Howyourbusinessaffected in French page forms
     Then I click "Continuer"
 
   Scenario: What happened?
     Given "Que s’est-il passé?" should be shown
-    When I fill Whathappened page forms
+    When I fill Whathappened in French page forms
     Then I click "Continuer"
 
   Scenario: Add suspect clues
     Given "Indices sur le suspect" should be shown
-    When I fill Addsuspectclues page forms
+    When I fill Addsuspectclues in French page forms
     Then I click "Continuer"
 
   Scenario: Attach supporting evidence
     Given "Preuves à l’appui" should be shown
-    When I fill AttachSupportingEvidence page forms
-    Then I click "Continuer"
+    When I fill AttachSupportingEvidence in French page forms
+    Then I click "Continuer" 
 
   Scenario: your location
     Given "Votre emplacement géographique" should be shown
-    When I fill yourLocation page forms
-    Then I click "Continuer"
+    When I fill city and province Location page forms
+    Then I click "Continuer" 
 
   Scenario: Review  your report and  capture a screenshot
     Given "Révisez votre rapport" should be shown
     Then Take summary page screenshot
-    Then I click submit report
+    Then I submit report in French
 
   Scenario: Confirm Report ID is generated
     Then "Merci pour votre signalement" should be shown

@@ -1,5 +1,6 @@
-import React from 'react'
-import { Alert } from 'react-bootstrap'
+import React, { useRef, useEffect } from 'react'
+import { Row, Container, Alert } from 'react-bootstrap'
+import { A } from '../link'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { IoIosWarning } from 'react-icons/io'
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
@@ -36,5 +37,49 @@ export const Success = (props) => {
       <IoIosCheckmarkCircleOutline className="alert-icon" />
       {props.children}
     </Alert>
+  )
+}
+
+export const ErrorSummary = (props) => {
+  const errorSummaryRef = useRef(null)
+
+  const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+
+  useEffect(() => {
+    /*
+    If user has attempted to submit scroll to the summary, otherwise simply display it.
+    */
+    if (props.submissions > 0) {
+      scrollToRef(errorSummaryRef)
+    }
+  }, [props.submissions])
+
+  return (
+    <Container>
+      <Row>
+        <Alert
+          variant="danger"
+          className="banner-border error-summary"
+          ref={errorSummaryRef}
+        >
+          <Row className="error-summary-title ">{props.title}</Row>
+          <Row>
+            <Container>
+              {Object.entries(props.errors).map(([key, error]) => {
+                return (
+                  <React.Fragment key={key}>
+                    <Row>
+                      <A href={`#${key}`} marginBottom="0.5rem" color="initial">
+                        {error.label} - {error.message}
+                      </A>
+                    </Row>
+                  </React.Fragment>
+                )
+              })}
+            </Container>
+          </Row>
+        </Alert>
+      </Row>
+    </Container>
   )
 }

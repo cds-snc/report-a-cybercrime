@@ -1,12 +1,36 @@
 import React from 'react'
-import { Button, Container, Row } from 'react-bootstrap'
+import { Button, Container, Row, Col } from 'react-bootstrap'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
 
+export const DefaultButton = (props) => {
+  return (
+    <Button
+      type="button"
+      disabled={props.disabled}
+      className="button default-button"
+    >
+      <span className="button-label">{props.label}</span>
+    </Button>
+  )
+}
+
+export const MidFormFeedbackButton = (props) => {
+  return (
+    <Button type="button" className="default-button mid-form-feedback-button ">
+      <span className="mid-form-feedback-button-label">{props.label}</span>
+    </Button>
+  )
+}
+
 export const SubmitButton = (props) => {
   return (
-    <Button type="submit" className="button submit-button">
+    <Button
+      type="submit"
+      disabled={props.disabled}
+      className="button submit-button"
+    >
       <span className="button-label">
         {props.label}
         <GoChevronRight className="button-icon-right" />
@@ -21,7 +45,7 @@ export const CancelButton = (props) => {
       render={({ history }) => (
         <Button
           type="button"
-          className="button cancel-button"
+          className="button default-button"
           onClick={() => history.push('/confirmCancel')}
         >
           <span className="button-label">{props.label}</span>
@@ -38,8 +62,12 @@ export const NextCancelButtons = (props) => {
         <p className="label next-page-label">{props.label}</p>
       </Row>
       <Row>
-        <SubmitButton label={props.submit} />
-        <CancelButton label={props.cancel} />
+        <Col xs="auto" className="button-container">
+          <SubmitButton label={props.submit} />
+        </Col>
+        <Col xs="auto" className="button-container">
+          <CancelButton label={props.cancel} />
+        </Col>
       </Row>
     </Container>
   )
@@ -72,5 +100,15 @@ export const SkipButton = (props) => {
         </Button>
       )}
     />
+  )
+}
+
+export const FeedbackButton = (props) => {
+  return (
+    <Button type="submit" className="button feedback-button">
+      <span className="button-label">
+        {props.label}
+      </span>
+    </Button>
   )
 }
