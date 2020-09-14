@@ -131,7 +131,7 @@ export const MoneyLostInfoForm = (props) => {
                                 name={question.name}
                                 label={question.descriptionLabel}
                                 helpText={question.descriptionHelpText}
-                                component={TextArea}
+                                component={Input}
                                 onBlur={handleBlur}
                                 onChange={handleChange}
                               />
