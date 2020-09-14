@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
-import { Trans } from '@lingui/macro'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
@@ -57,19 +56,14 @@ export const CancelButton = (props) => {
 }
 
 export const NextCancelButtons = (props) => {
-  const label = props.errors ? (
-    <Trans id="default.hasValidationErrors" />
-  ) : (
-    props.label
-  )
   return (
     <Container className="next-cancel-buttons">
       <Row>
-        <p className="label next-page-label">{label}</p>
+        <p className="label next-page-label">{props.label}</p>
       </Row>
       <Row>
         <Col xs="auto" className="button-container">
-          <SubmitButton label={props.submit} disabled={props.errors} />
+          <SubmitButton label={props.submit} />
         </Col>
         <Col xs="auto" className="button-container">
           <CancelButton label={props.cancel} />
@@ -106,5 +100,15 @@ export const SkipButton = (props) => {
         </Button>
       )}
     />
+  )
+}
+
+export const FeedbackButton = (props) => {
+  return (
+    <Button type="submit" className="button feedback-button">
+      <span className="button-label">
+        {props.label}
+      </span>
+    </Button>
   )
 }
