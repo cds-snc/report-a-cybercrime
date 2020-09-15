@@ -14,6 +14,30 @@ import { Page } from './components/Page'
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
+  const orignalSelection = data.formData.whatWasAffected.affectedOptions
+  const pages = {
+    firstPage: '/whatwasaffected',
+    lastPage: '/whathappened',
+    affectedOptions: [],
+  }
+
+  const updateSelection = (whatWasAffected) => {
+    if (doneForms) {
+      pages.affectedOptions = whatWasAffected.filter(
+        (option) => !orignalSelection.includes(option),
+      )
+      lastPage = '/confirmation'
+    } else {
+      pages.affectedOptions = whatWasAffected
+    }
+
+    dispatch({
+      type: 'saveWhatWasAffectedOptions',
+      data: pages,
+    })
+
+    return pages
+  }
 
   return (
     <Route
@@ -33,18 +57,17 @@ export const WhatWasAffectedPage = () => {
 
               <WhatWasAffectedForm
                 onSubmit={(data) => {
+                  const nextPages = updateSelection(data.affectedOptions)
+                  const pageNavigation = nextWhatWasAffectedUrl(
+                    nextPages,
+                    'whatwasaffected',
+                  )
+
                   dispatch({
                     type: 'saveFormData',
                     data: { whatWasAffected: data },
                   })
-                  history.push(
-                    doneForms
-                      ? '/confirmation'
-                      : nextWhatWasAffectedUrl(
-                          data.affectedOptions,
-                          'whatwasaffected',
-                        ),
-                  )
+                  history.push(pageNavigation)
                 }}
               />
             </Stack>

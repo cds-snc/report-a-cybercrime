@@ -56,6 +56,11 @@ export const reducer = (state, action) => {
         ...state,
         reportId: action.data,
       }
+    case 'saveWhatWasAffectedOptions':
+      return {
+        ...state,
+        whatWasAffectedOptions: action.data,
+      }
     default:
       return state
   }
