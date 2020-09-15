@@ -52,7 +52,6 @@ export const LocationPage = () => {
                   }}
                 />
               )}
-              />
             </Stack>
           </Layout>
         </Page>

@@ -37,6 +37,8 @@ export const ErrorSummary = (props) => {
         <Ol {...(errorLength <= 1 && { listStyleType: 'none', ml: 0 })}>
           {Object.keys(errors).map((key) => {
             // Omit all errors set to true from showing in ErrorSummary
+            console.log(key)
+            console.log(errors)
             return errors[key] !== true ? (
               <Li key={key} fontSize="md">
                 <A

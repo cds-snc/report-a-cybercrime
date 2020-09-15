@@ -9,7 +9,13 @@ import { useField } from 'react-final-form'
 import { ConditionalForm } from '../container'
 import canada from '../../theme/canada'
 
-export const RadioAdapter = ({ name, value, defaultIsChecked, children }) => {
+export const RadioAdapter = ({
+  name,
+  value,
+  defaultIsChecked,
+  children,
+  ...props
+}) => {
   const {
     input: { checked, ...input },
     meta: { error, touched },
@@ -20,7 +26,12 @@ export const RadioAdapter = ({ name, value, defaultIsChecked, children }) => {
   })
 
   return (
-    <Radio input={input} isChecked={checked} isInvalid={error && touched}>
+    <Radio
+      input={input}
+      isChecked={checked}
+      isInvalid={error && touched}
+      conditionalField={props.conditionalField}
+    >
       {children}
     </Radio>
   )
@@ -33,11 +44,11 @@ export const Radio = ({
   conditionalField,
   ...props
 }) => {
-  const isCheckedAndHasCondition = isChecked && props.conditionalField
+  const isCheckedAndHasCondition = isChecked && conditionalField
 
   return (
     <UniqueID>
-      {id => {
+      {(id) => {
         return (
           <React.Fragment>
             <Flex as="label" id={id} align="start" d="inline-flex">

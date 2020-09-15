@@ -14,36 +14,38 @@ import { Field } from '../components/Field'
 import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import { formDefaults } from './defaultValues'
-import { containsData } from '../utils/containsData'
+import { Flex, Icon } from '@chakra-ui/core'
+import { P } from '../components/paragraph'
+import { Button } from '../components/button'
+import { Link as ReactRouterLink } from 'react-router-dom'
+
+// from https://www.w3resource.com/javascript/form/phone-no-validation.php
+// const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
 
 export const validate = (values) => {
   const errors = {}
 
-  // from https://www.w3resource.com/javascript/form/phone-no-validation.php
-  const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-
-  // build up a bool that returns false if key does not exist in values or if containsData(key) returns false, or if data is not valid
-  const phone =
-    'phone' in values &&
-    containsData(values.phone) &&
-    new RegExp(phoneRegex).test(values.phone)
-  const email =
-    'email' in values &&
-    containsData(values.email) &&
-    addrs(values.email) !== null
-
   //condition for an error to occur: append a lingui id to the list of error
-
   if (!values.fullName || values.fullName === '')
     errors.fullName = 'contactinfoForm.fullName.warning'
 
   //!(email || phone) If either phone or email is not false
-  if (!(email || phone)) {
+  if (!addrs(values.email)) {
     errors.email = 'contactinfoForm.email.warning'
   }
 
-  if (!(email || phone)) {
+  if (!values.phone) {
     errors.phone = 'contactinfoForm.phone.warning'
+  }
+
+  return errors
+}
+
+const fyiValidate = (values) => {
+  const errors = {}
+
+  if (values.email && !addrs(values.email)) {
+    errors.email = 'contactinfoForm.email.warning'
   }
 
   return errors
@@ -61,6 +63,8 @@ export const ContactInfoForm = (props) => {
     ...data.formData.contactInfo,
   }
 
+  const { fyiForm } = data.formData
+
   return (
     <React.Fragment>
       {false ? ( // mark ids for lingui
@@ -71,7 +75,13 @@ export const ContactInfoForm = (props) => {
       <Form
         initialValues={contactInfo}
         onSubmit={localOnSubmit}
-        validate={validate}
+        validate={(values) => {
+          if (fyiForm) {
+            return fyiValidate(values)
+          } else {
+            return validate(values)
+          }
+        }}
         render={({
           handleSubmit,
           values,
@@ -90,12 +100,39 @@ export const ContactInfoForm = (props) => {
                 <Trans id="contactinfoPage.hasValidationErrors" />
               </ErrorSummary>
             ) : null}
+            {fyiForm ? (
+              <Flex direction="row" align="center" wrap="wrap" mb={10}>
+                <P w="100%">
+                  <Trans id="contactinfoPage.skipInfo" />
+                </P>
+                <Button
+                  as={ReactRouterLink}
+                  fontSize={{ base: 'lg', md: 'xl' }}
+                  color="black"
+                  variant="solid"
+                  variantColor="gray"
+                  bg="gray.400"
+                  borderColor="gray.500"
+                  to="/confirmation"
+                  textAlign="center"
+                >
+                  <Trans id="locationinfoPage.skipButton" />
+                  <Icon
+                    focusable="false"
+                    ml={2}
+                    mr={-2}
+                    name="chevron-right"
+                    size="28px"
+                  />
+                </Button>
+              </Flex>
+            ) : null}
             <Field
               name="fullName"
               label={<Trans id="contactinfoPage.fullName" />}
               errorMessage={<Trans id="contactinfoForm.fullName.warning" />}
               component={Input}
-              required
+              required={!fyiForm}
             />
 
             <Field
@@ -103,7 +140,7 @@ export const ContactInfoForm = (props) => {
               label={<Trans id="contactinfoPage.emailAddress" />}
               errorMessage={<Trans id="contactinfoForm.email.warning" />}
               component={Input}
-              required
+              required={!fyiForm}
             />
             <Field
               name="phone"
@@ -111,7 +148,7 @@ export const ContactInfoForm = (props) => {
               helperText={<Trans id="contactinfoForm.phone.warning" />}
               errorMessage={<Trans id="contactinfoForm.phone.warning" />}
               component={Input}
-              required
+              required={!fyiForm}
             />
             <NextAndCancelButtons
               next={<Trans id="contactinfoPage.nextInfo" />}

@@ -4,6 +4,11 @@ const formDefaults = {
   appVersion: '',
   consent: { consentOptions: [] },
   anonymous: { anonymousOptions: [] },
+  whoAreYouReportFor: {
+    whoYouReportFor: '',
+    someoneDescription: '',
+    businessDescription: '',
+  },
   howdiditstart: {
     howDidTheyReachYou: [],
     email: '',
@@ -11,10 +16,19 @@ const formDefaults = {
     online: '',
     application: '',
     others: '',
-    howManyTimes: '',
+  },
+  whenDidItHappen: {
+    incidentFrequency: '',
     startDay: '',
     startMonth: '',
     startYear: '',
+    endDay: '',
+    endMonth: '',
+    endYear: '',
+    happenedOnceDay: '',
+    happenedOnceMonth: '',
+    happenedOnceYear: '',
+    description: '',
   },
   whatWasAffected: {
     affectedOptions: [],
@@ -42,7 +56,6 @@ const formDefaults = {
     numberOfEmployee: '',
   },
   whatHappened: { whatHappened: '' },
-
   suspectClues: {
     suspectClues1: '',
     suspectClues2: '',
@@ -54,6 +67,7 @@ const formDefaults = {
   },
   location: { postalCode: '', city: '', province: '' },
   contactInfo: { fullName: '', email: '', phone: '' },
+  fyiForm: '',
 }
 
 module.exports = { formDefaults }
