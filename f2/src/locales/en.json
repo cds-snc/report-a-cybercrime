@@ -14,6 +14,7 @@
   "analystReport.consent.no": "No",
   "analystReport.consent.yes": "Yes",
   "analystReport.dateReceived": "Date received",
+  "analystReport.fieldsMissing.warning": "Fields missing from above report",
   "analystReport.flagged": "Flagged",
   "analystReport.incidentInformation": "Incident information",
   "analystReport.methodOfComms.app": "App",
