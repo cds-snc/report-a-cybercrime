@@ -15,6 +15,10 @@ export const AnonymousPage = () => {
   const [state, dispatch] = useStateValue()
   const { doneForms } = state
 
+  const anonymous = {
+    ...state.formData.anonymous,
+  }
+
   return (
     <Route
       render={({ history }) => (
@@ -34,9 +38,9 @@ export const AnonymousPage = () => {
                     type: 'saveFormData',
                     data: { anonymous: data },
                   })
-                  history.push(
-                    doneForms ? '/confirmation' : '/whoAreYouReportFor',
-                  )
+                  let isChanged = anonymous.anonymousOptions !== data.anonymousOptions
+                  let destination = doneForms ? (isChanged ? '/location' : '/confirmation') : '/whoAreYouReportFor'
+                  history.push(destination)
                 }}
               />
             </Stack>

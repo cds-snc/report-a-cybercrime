@@ -48,7 +48,7 @@ export const LocationPage = () => {
                   onSubmit={(data) => {
                     data.postalCode = formatPostalCode(data.postalCode)
                     dispatch({ type: 'saveFormData', data: { location: data } })
-                    history.push(doneForms ? '/confirmation' : '/contactinfo')
+                    history.push('/contactinfo')
                   }}
                 />
               )}
