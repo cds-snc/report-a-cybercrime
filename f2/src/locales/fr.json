@@ -14,6 +14,7 @@
   "analystReport.consent.no": "Non",
   "analystReport.consent.yes": "Oui",
   "analystReport.dateReceived": "Date de réception",
+  "analystReport.fieldsMissing.warning": "Champs manquants dans le rapport ci-dessus",
   "analystReport.flagged": "Signalé",
   "analystReport.incidentInformation": "Informations sur l'incident",
   "analystReport.methodOfComms.app": "App",
