@@ -213,7 +213,7 @@ const formatIncidentInformation = (data) => {
         lang['whenDidItHappenPage.dateRange.end.label'],
         endtDateString,
       )
-  } else if (freq === 'notSure'){
+  } else if (freq === 'notSure') {
     const textAreaString = data.whenDidItHappen.description
     occurenceLine =
       formatLineHtml(
@@ -293,7 +293,7 @@ const formatIncidentInformation = (data) => {
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
   delete data.fyiForm
-  return formatSection(lang['howDidItStartPage.incidentInformation'], rows)
+  return formatSection(lang['analystReport.incidentInformation'], rows)
 }
 
 const formatNarrative = (data) => {
@@ -562,7 +562,10 @@ const formatFileAttachments = (data) => {
 
       const moderatorString =
         file.adultClassificationScore === 'Could not scan'
-          ? formatLineHtml('Image classification:', 'Could not scan content')
+          ? formatLineHtml(
+              lang['fileUpload.classification.title'],
+              lang['fileUpload.classification.cannotscan'],
+            )
           : formatLineHtml(
               lang['fileUpload.isAdult'],
               file.isImageAdultClassified,
@@ -606,7 +609,9 @@ const formatFileAttachments = (data) => {
         formatLineHtml(lang['fileUpload.CosmosDBFile'], file.sha1) +
         formatLineHtml(
           lang['fileUpload.malwareScan'],
-          file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
+          file.malwareIsClean
+            ? lang['fileUpload.malwareScan.clean']
+            : file.malwareScanDetail,
         ) +
         moderatorString +
         downloadLink
@@ -644,7 +649,7 @@ const formatAnalystEmail = (dataOrig) => {
     returnString =
       reportInfoString +
       formatVictimDetails(data) +
-      formatIncidentInformation(data) +
+      (data.fyiForm ? '' : formatIncidentInformation(data)) +
       formatNarrative(data) +
       formatSuspectDetails(data) +
       formatFinancialTransactions(data) +
