@@ -6,16 +6,21 @@ import { Trans } from '@lingui/macro'
 import { Input } from '../components/formik/input'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
-import { TextArea } from '../components/formik/textArea'
 import { NextCancelButtons } from '../components/formik/button'
 import { Formik, FieldArray, Field } from 'formik'
-import { MoneyLostInfoFormSchema } from './MoneyLostInfoFormSchema'
+import {
+  realTimeValidation,
+  createErrorSummary,
+} from './MoneyLostInfoFormSchema'
 import { Form, Container, Row } from 'react-bootstrap'
 import { CheckBox } from '../components/formik/checkbox'
 import { DatePicker } from '../components/formik/datePicker'
+import { P } from '../components/formik/paragraph'
+import { ErrorSummary } from '../components/formik/alert'
 
 export const MoneyLostInfoForm = (props) => {
   const [data] = useStateValue()
+  const errorSummary = createErrorSummary
 
   const moneyLost = {
     ...formDefaults.moneyLost,
@@ -73,12 +78,26 @@ export const MoneyLostInfoForm = (props) => {
       <Formik
         initialStatus={{ errors: '' }}
         initialValues={moneyLost}
-        validationSchema={MoneyLostInfoFormSchema()}
+        validate={(values) => {
+          return realTimeValidation(values)
+        }}
         onSubmit={(values) => props.onSubmit(values)}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, submitCount, errors }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
+              <Row className="form-question">
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary
+                    errors={errorSummary(errors)}
+                    submissions={submitCount}
+                    title={<Trans id="default.hasValidationErrors" />}
+                  />
+                )}
+                <Row className="form-label" id="incidentFrequency">
+                  <Trans id="whenDidItHappenPage.question" />
+                </Row>
+              </Row>
               <Row className="form-section">
                 <Field
                   name="demandedMoney"
@@ -150,6 +169,13 @@ export const MoneyLostInfoForm = (props) => {
                 <Row className="form-helper-text">
                   <Trans id="moneyLostPage.transactionDateExample" />
                 </Row>
+                {errors && errors.transaction && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    {
+                      <Trans id="moneyLostPage.transactionDateErrorSummaryMessage" />
+                    }
+                  </P>
+                )}
                 <Field
                   name="transaction"
                   component={DatePicker}

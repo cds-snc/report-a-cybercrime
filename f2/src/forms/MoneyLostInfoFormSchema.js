@@ -1,8 +1,51 @@
-import * as Yup from 'yup'
-//import { yupSchema } from '../utils/yupSchema'
+import React from 'react'
+import { evalDate } from '../utils/validateDate'
+import { Trans } from '@lingui/macro'
 
-const moneyLostInfoFormSchema = Yup.object().shape({})
+export const realTimeValidation = (values) => {
+  let errors = {}
 
-export const MoneyLostInfoFormSchema = () => {
-  return moneyLostInfoFormSchema
+  let transactionError = {}
+
+  transactionError = evalDate(
+    values.transactionDay,
+    values.transactionMonth,
+    values.transactionYear,
+  )
+
+  if (Object.keys(transactionError).length > 0) {
+    errors['transactionDay'] = transactionError.day
+      ? transactionError.day
+      : null
+    errors['transactionMonth'] = transactionError.month
+      ? transactionError.month
+      : null
+    errors['transactionYear'] = transactionError.year
+      ? transactionError.year
+      : null
+    errors['transaction'] = true
+  }
+
+  return errors
 }
+
+export const createErrorSummary = (errors) => {
+  const errorSummary = {}
+
+  const transaction =
+    errors.transaction ||
+    errors.transactionDay ||
+    errors.transactionMonth ||
+    errors.transactionYear
+
+  if (transaction) {
+    errorSummary['transaction'] = {
+      label: <Trans id="moneyLostPage.transactionDateErrorSummaryLabel" />,
+      message: <Trans id="moneyLostPage.transactionDateErrorSummaryMessage" />,
+    }
+  }
+
+  return errorSummary
+}
+
+export const MoneyLostInfoFormSchema = () => {}

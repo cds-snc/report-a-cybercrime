@@ -321,6 +321,8 @@
   "moneyLostPage.selectMethod": "Sélectionnez la méthode de transfert d’argent utilisée.",
   "moneyLostPage.title": "Répercussions sur votre argent ou vos finances",
   "moneyLostPage.transactionDate": "Quand la transaction a-t-elle eu lieu?",
+  "moneyLostPage.transactionDateErrorSummaryLabel": "Date de la transaction?",
+  "moneyLostPage.transactionDateErrorSummaryMessage": "Veuillez revoir la date saisie",
   "moneyLostPage.transactionDateExample": "Par exemple : 26 02 2020",
   "numberOfEmployee.100To499": "100 à 499 employés",
   "numberOfEmployee.1To99": "1 à 99 employés",

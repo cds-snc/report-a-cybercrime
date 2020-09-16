@@ -321,6 +321,8 @@
   "moneyLostPage.selectMethod": "Select the method of payment used.",
   "moneyLostPage.title": "How were your money or finances affected?",
   "moneyLostPage.transactionDate": "When did the transaction take place?",
+  "moneyLostPage.transactionDateErrorSummaryLabel": "Transaction Date?",
+  "moneyLostPage.transactionDateErrorSummaryMessage": "Please review the date entered",
   "moneyLostPage.transactionDateExample": "For example: 26 02 2020",
   "numberOfEmployee.100To499": "100 to 499 employees",
   "numberOfEmployee.1To99": "1 to 99 employees",
