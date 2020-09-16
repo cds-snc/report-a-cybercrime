@@ -40,7 +40,7 @@ export const AnonymousPage = () => {
                   })
                   let isChanged = anonymous.anonymousOptions !== data.anonymousOptions
                   let destination = doneForms ? (isChanged ? '/location' : '/confirmation') : '/whoAreYouReportFor'
-                  history.push(destination)
+                  history.push(destination, { from: 'anonymous' })
                 }}
               />
             </Stack>
