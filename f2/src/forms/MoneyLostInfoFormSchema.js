@@ -48,4 +48,28 @@ export const createErrorSummary = (errors) => {
   return errorSummary
 }
 
+export const onSubmitValidation = (values) => {
+  const errors = {}
+  const fields = {}
+
+  if (!values.transactionDay) {
+    fields['transactionDay'] = true
+  }
+
+  if (!values.ransactionMonth) {
+    fields['transactionMonth'] = true
+  }
+
+  if (!values.ransactionYear) {
+    fields['transactionYear'] = true
+  }
+
+  if (Object.keys(fields).length > 0) {
+    fields['transaction'] = true
+    errors['fields'] = fields
+  }
+
+  return errors
+}
+
 export const MoneyLostInfoFormSchema = () => {}

@@ -11,6 +11,7 @@ import { Formik, FieldArray, Field } from 'formik'
 import {
   realTimeValidation,
   createErrorSummary,
+  onSubmitValidation,
 } from './MoneyLostInfoFormSchema'
 import { Form, Container, Row } from 'react-bootstrap'
 import { CheckBox } from '../components/formik/checkbox'
@@ -81,7 +82,14 @@ export const MoneyLostInfoForm = (props) => {
         validate={(values) => {
           return realTimeValidation(values)
         }}
-        onSubmit={(values) => props.onSubmit(values)}
+        onSubmit={async (values, { setErrors }) => {
+          const errors = onSubmitValidation(values)
+          if (errors.fields) {
+            setErrors(errors.fields)
+          } else {
+            props.onSubmit(values)
+          }
+        }}
       >
         {({ handleSubmit, handleChange, handleBlur, submitCount, errors }) => (
           <Form onSubmit={handleSubmit}>
@@ -94,9 +102,6 @@ export const MoneyLostInfoForm = (props) => {
                     title={<Trans id="default.hasValidationErrors" />}
                   />
                 )}
-                <Row className="form-label" id="incidentFrequency">
-                  <Trans id="whenDidItHappenPage.question" />
-                </Row>
               </Row>
               <Row className="form-section">
                 <Field
