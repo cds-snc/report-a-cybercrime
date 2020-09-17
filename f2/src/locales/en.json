@@ -338,7 +338,7 @@
   "pageNotFound.message": "Sorry, the page you were trying to view does not exist.",
   "privacyConsentInfoForm.nextButton": "Continue",
   "privacyConsentInfoForm.nextPage": "Next: Report anonymously?",
-  "privacyConsentInfoForm.yes": "I accept the terms of the ",
+  "privacyConsentInfoForm.yes.withExternalLink": "I accept the terms of the <0>Privacy of statement</0>",
   "privacyConsentInfoPage.learnMore": "Learn more about who you’re reporting to and how your information is protected in the ",
   "privacyConsentInfoPage.linkOut": "Privacy statement",
   "privacyConsentInfoPage.period": ".",

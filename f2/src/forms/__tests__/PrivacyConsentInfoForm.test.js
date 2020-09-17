@@ -1,7 +1,7 @@
 import React from 'react'
 import wait from 'waait'
 import { i18n } from '@lingui/core'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import { render, fireEvent, cleanup, act } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
@@ -37,10 +37,16 @@ describe('<PrivacyConsentInfoForm />', () => {
     const nextButton = getByText(/nextButton/)
 
     // Click the next button to trigger the form submission
-    clickOn(nextButton.parentElement)
-    await wait(0) // Wait for promises to resolve
+    // clickOn(nextButton.parentElement)
+    // await wait(0) // Wait for promises to resolve
 
-    //expect(submitMock).toHaveBeenCalledTimes(0)
+    await act(async () => {
+      // Click the next button to trigger the form submission
+      clickOn(nextButton.parentElement)
+      await wait(0) // Wait for promises to resolve
+    })
+
+    expect(submitMock).toHaveBeenCalledTimes(1)
   })
 
   it('calls the onSubmit function when the consent box is checked and the form is submitted', async () => {
@@ -58,10 +64,11 @@ describe('<PrivacyConsentInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const checkbox = getByLabelText('privacyConsentInfoForm.yes', {
+    //const checkbox = getByLabelText('privacyConsentInfoForm.yes.withExternalLink', {
+    const checkbox = getByLabelText('I accept the terms of the', {
       exact: false,
     })
-    // find the next button so we can trigger a form submission
+    //find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
 
     clickOn(checkbox)
