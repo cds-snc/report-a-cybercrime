@@ -2,30 +2,16 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { A } from '../components/formik/link'
-import { useLingui } from '@lingui/react'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
-import { Warning } from '../components/formik/alert'
 import { NextCancelButtons } from '../components/formik/button'
 
-const validate = (values) => {
-  const errors = {}
-  //condition for an error to occur: append a lingui id to the list of error
-  if (!values.consentOptions || values.consentOptions.length < 1) {
-    errors.consentOptions = 'privacyConsentInfoForm.warning'
-  }
-
-  return errors
-}
-
 export const PrivacyConsentInfoForm = (props) => {
-  const { i18n } = useLingui()
   const [data] = useStateValue()
   const whetherConsent = {
     ...data.formData.consent,
   }
-  const { fyiForm } = data.formData
 
   return (
     <Formik
