@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { A } from '../components/formik/link'
@@ -26,7 +25,6 @@ export const PrivacyConsentInfoForm = (props) => {
   const whetherConsent = {
     ...data.formData.consent,
   }
-  //const consentOptions = ['privacyConsentInfoForm.yes']
   const { fyiForm } = data.formData
 
   return (
