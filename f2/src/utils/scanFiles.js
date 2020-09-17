@@ -1,7 +1,9 @@
+require('dotenv').config()
 const clamd = require('clamdjs')
 const fs = require('fs')
 var async = require('async')
 const { getLogger } = require('./winstonLogger')
+
 const SUPPORTED_FILE_TYPES = [
   'image/gif',
   'image/jpeg',
@@ -12,7 +14,6 @@ const CognitiveServicesCredentials = require('ms-rest-azure')
   .CognitiveServicesCredentials
 const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmoderator')
 
-require('dotenv').config()
 const logger = getLogger(__filename)
 
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
