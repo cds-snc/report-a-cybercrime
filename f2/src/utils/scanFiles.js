@@ -2,7 +2,13 @@ require('dotenv').config()
 const clamd = require('clamdjs')
 const fs = require('fs')
 var async = require('async')
+
+const CognitiveServicesCredentials = require('ms-rest-azure')
+  .CognitiveServicesCredentials
+const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmoderator')
 const { getLogger } = require('./winstonLogger')
+
+const logger = getLogger(__filename)
 
 const SUPPORTED_FILE_TYPES = [
   'image/gif',
@@ -10,11 +16,6 @@ const SUPPORTED_FILE_TYPES = [
   'image/png',
   'image/bmp',
 ]
-const CognitiveServicesCredentials = require('ms-rest-azure')
-  .CognitiveServicesCredentials
-const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmoderator')
-
-const logger = getLogger(__filename)
 
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
