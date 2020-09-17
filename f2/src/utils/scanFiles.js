@@ -37,6 +37,11 @@ async function scanFiles(data) {
         .then(function (reply) {
           file[1].malwareScanDetail = reply
           file[1].malwareIsClean = clamd.isCleanReply(reply)
+          logger.info({
+            message: 'Virus scan succeeded for ' + data.reportId,
+            path: '/submit',
+            response: JSON.stringify(reply, Object.getOwnPropertyNames(reply)),
+          })
         })
         .catch(function (reply) {
           let lang
@@ -59,7 +64,6 @@ async function scanFiles(data) {
       path: '/submit',
       error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
     })
-    console.warn('WARNING: File scanning failed')
   }
 }
 
