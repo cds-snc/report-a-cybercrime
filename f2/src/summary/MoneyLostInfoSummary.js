@@ -63,9 +63,6 @@ export const MoneyLostInfoSummary = (props) => {
           <EditButton
             path="/moneylost"
             label="confirmationPage.moneyLostTitle.edit"
-            onClick={() => {
-              console.log('click')
-            }}
           />
         </Flex>
 
