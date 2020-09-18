@@ -1,67 +1,80 @@
-import { nextWhatWasAffectedUrl } from '../nextWhatWasAffectedUrl'
-import { whatWasAffectedPages } from '../../forms/WhatWasAffectedForm'
+import {
+  whatWasAffectedPages,
+  pages,
+  nextPage,
+} from '../nextWhatWasAffectedUrl'
 
 describe('nextWhatWasAffectedUrl', () => {
-  describe('when all options selected', () => {
-    const allOptions = whatWasAffectedPages.map(page => page.key)
+  const whatWasAffectedOptions = [
+    whatWasAffectedPages.FINANCIAL.key,
+    whatWasAffectedPages.INFORMATION.key,
+    whatWasAffectedPages.DEVICES.key,
+    whatWasAffectedPages.BUSINESS.key,
+  ]
 
+  describe('when all options selected', () => {
+    const test1Pages = { ...pages }
+    test1Pages.affectedOptions = whatWasAffectedOptions
     it('finds the first page after the how affected page', () => {
-      expect(nextWhatWasAffectedUrl(allOptions, 'whatwasaffected')).toEqual(
-        whatWasAffectedPages[0].url,
-      )
+      const result = nextPage(test1Pages)
+      expect(result.url).toEqual(whatWasAffectedPages.FINANCIAL.url)
     })
 
     it('finds the second page after the how affected page', () => {
-      expect(
-        nextWhatWasAffectedUrl(allOptions, whatWasAffectedPages[0].url),
-      ).toEqual(whatWasAffectedPages[1].url)
+      test1Pages.currentPage = whatWasAffectedPages.FINANCIAL
+      const result = nextPage(test1Pages)
+      expect(result.url).toEqual(whatWasAffectedPages.INFORMATION.url)
     })
 
     it('finds the last page after the how affected page', () => {
-      expect(
-        nextWhatWasAffectedUrl(
-          allOptions,
-          whatWasAffectedPages[whatWasAffectedPages.length - 1].url,
-        ),
-      ).toEqual('whathappened')
+      test1Pages.currentPage = whatWasAffectedPages.BUSINESS
+      const result = nextPage(test1Pages)
+      expect(result.url).toEqual('whathappened')
     })
 
     it('defaults to the whathappened page', () => {
-      expect(nextWhatWasAffectedUrl(allOptions, 'not a page')).toEqual(
-        'whathappened',
-      )
+      test1Pages.currentPage = whatWasAffectedPages.WILL_FAIL
+      const result = nextPage(test1Pages)
+      expect(result.url).toEqual('whathappened')
     })
   })
+
   describe('when two options selected', () => {
-    const twoPages = [whatWasAffectedPages[1], whatWasAffectedPages[3]]
-    const twoOptions = twoPages.map(page => page.key)
+    const test2Pages = { ...pages }
+    const selectedOptions = [
+      whatWasAffectedPages.INFORMATION,
+      whatWasAffectedPages.BUSINESS,
+    ]
+    test2Pages.affectedOptions = [
+      selectedOptions[0].key,
+      selectedOptions[1].key,
+    ]
 
     it('finds the first page after the how affected page', () => {
-      expect(nextWhatWasAffectedUrl(twoOptions, 'whatwasaffected')).toEqual(
-        twoPages[0].url,
-      )
+      const result = nextPage(test2Pages)
+      expect(result.url).toEqual(selectedOptions[0].url)
     })
 
     it('finds the second page after the how affected page', () => {
-      expect(nextWhatWasAffectedUrl(twoOptions, twoPages[0].url)).toEqual(
-        twoPages[1].url,
-      )
+      test2Pages.currentPage = whatWasAffectedPages.INFORMATION
+      const result = nextPage(test2Pages)
+      expect(result.url).toEqual(selectedOptions[1].url)
     })
 
     it('finds the last page after the how affected page', () => {
-      expect(nextWhatWasAffectedUrl(twoOptions, twoPages[1].url)).toEqual(
-        'whathappened',
-      )
+      test2Pages.currentPage = whatWasAffectedPages.BUSINESS
+      const result = nextPage(test2Pages)
+      expect(result.url).toEqual('whathappened')
     })
   })
 
   describe('when no options selected', () => {
-    const noOptions = []
+    const test3Pages = { ...pages }
+    test3Pages.selectedOptions = []
 
     it('skips to the whatHappened page', () => {
-      expect(nextWhatWasAffectedUrl(noOptions, 'whatwasaffected')).toEqual(
-        'whathappened',
-      )
+      const result = nextPage(test3Pages)
+      expect(result.url).toEqual('whathappened')
     })
   })
 })

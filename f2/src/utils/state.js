@@ -16,7 +16,7 @@ export const initialState = {
   doneForms: false,
   formData: { ...formDefaults, prodVersion: '1.7.0' },
   doneFinalFeedback: false,
-  whatWasAffectedOptions: pages,
+  whatWasAffectedOptions: { ...pages },
 }
 
 export const reducer = (state, action) => {
@@ -37,6 +37,7 @@ export const reducer = (state, action) => {
         submitted: false,
         doneFinalFeedback: false,
         reportId: undefined,
+        whatWasAffectedOptions: { ...initialState.whatWasAffectedOptions },
       }
     case 'saveDoneForms':
       return {
