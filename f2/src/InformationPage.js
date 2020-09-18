@@ -9,15 +9,19 @@ import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
+import { nextPage, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 
 export const InformationPage = () => {
   const [state, dispatch] = useStateValue()
-  const { doneForms, formData } = state
-  const affectedOptions = formData.whatWasAffected
-    ? formData.whatWasAffected.affectedOptions
-    : []
+  const { doneForms } = state
+  const pages = state.whatWasAffectedOptions
+
+  pages.currentPage = whatWasAffectedPages.INFORMATION
+
+  if (doneForms) {
+    pages.lastPage = whatWasAffectedPages.CONFIRMATION
+  }
 
   return (
     <Route
@@ -36,16 +40,28 @@ export const InformationPage = () => {
               </Stack>
 
               <InformationForm
-                onSubmit={(data) => {
+                onSubmit={async (data) => {
+                  if (doneForms && !pages.editOptions) {
+                    pages.nextPage = whatWasAffectedPages.CONFIRMATION
+                  } else {
+                    pages.nextPage = await nextPage(pages)
+                  }
+
+                  if (pages.nextPage === whatWasAffectedPages.CONFIRMATION) {
+                    pages.editOptions = false
+                  }
+
+                  dispatch({
+                    type: 'saveWhatWasAffectedOptions',
+                    data: pages,
+                  })
+
                   dispatch({
                     type: 'saveFormData',
                     data: { personalInformation: data },
                   })
-                  history.push(
-                    doneForms
-                      ? '/confirmation'
-                      : nextWhatWasAffectedUrl(affectedOptions, 'information'),
-                  )
+
+                  history.push(pages.nextPage.url)
                 }}
               />
             </Stack>

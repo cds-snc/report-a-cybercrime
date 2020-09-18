@@ -8,35 +8,46 @@ import { WhatWasAffectedForm } from './forms/WhatWasAffectedForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
+import { nextPage, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
-  const orignalSelection = data.formData.whatWasAffected.affectedOptions
+  const originalSelection = data.formData.whatWasAffected.affectedOptions
   const pages = {
-    firstPage: '/whatwasaffected',
-    lastPage: '/whathappened',
+    firstPage: whatWasAffectedPages.FIRST_PAGE,
+    lastPage: whatWasAffectedPages.LAST_PAGE,
     affectedOptions: [],
+    currentPage: whatWasAffectedPages.FIRST_PAGE,
+    nextPage: '',
+    editOptions: false,
+  }
+
+  if (doneForms) {
+    pages.lastPage = whatWasAffectedPages.CONFIRMATION
+    pages.editOptions = true
   }
 
   const updateSelection = (whatWasAffected) => {
-    if (doneForms) {
-      pages.affectedOptions = whatWasAffected.filter(
-        (option) => !orignalSelection.includes(option),
+    pages.affectedOptions = whatWasAffected.filter(
+      (option) => !originalSelection.includes(option),
+    )
+
+    //Remove Other from selections as there is no page to display.
+    if (pages.affectedOptions.includes(whatWasAffectedPages.OTHER.key)) {
+      const otherIndex = pages.affectedOptions.indexOf(
+        whatWasAffectedPages.OTHER.key,
       )
-      lastPage = '/confirmation'
-    } else {
-      pages.affectedOptions = whatWasAffected
+      pages.affectedOptions.splice(otherIndex, 1)
     }
+
+    pages.nextPage = nextPage(pages)
 
     dispatch({
       type: 'saveWhatWasAffectedOptions',
       data: pages,
     })
-
-    return pages
   }
 
   return (
@@ -56,18 +67,14 @@ export const WhatWasAffectedPage = () => {
               </Lead>
 
               <WhatWasAffectedForm
-                onSubmit={(data) => {
-                  const nextPages = updateSelection(data.affectedOptions)
-                  const pageNavigation = nextWhatWasAffectedUrl(
-                    nextPages,
-                    'whatwasaffected',
-                  )
+                onSubmit={async (data) => {
+                  await updateSelection(data.affectedOptions)
 
                   dispatch({
                     type: 'saveFormData',
                     data: { whatWasAffected: data },
                   })
-                  history.push(pageNavigation)
+                  history.push(pages.nextPage.url)
                 }}
               />
             </Stack>
