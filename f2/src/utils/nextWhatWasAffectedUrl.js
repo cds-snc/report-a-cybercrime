@@ -37,6 +37,29 @@ export const whatWasAffectedPages = {
   },
 }
 
+export const pages = {
+  firstPage: whatWasAffectedPages.FIRST_PAGE,
+  lastPage: whatWasAffectedPages.LAST_PAGE,
+  affectedOptions: [],
+  currentPage: whatWasAffectedPages.FIRST_PAGE,
+  nextPage: '',
+  editOptions: false,
+}
+
+export const orderSelection = (selection) => {
+  //Get ordered array of pages
+  const pageOrder = Object.values(whatWasAffectedPages).map((page) => {
+    return page.key
+  })
+
+  //Order selection using ordered pages
+  const orderedSelection = pageOrder.filter((page) => {
+    return selection.includes(page)
+  })
+
+  return orderedSelection
+}
+
 export const nextPage = (navObject) => {
   try {
     const selectedOptions = navObject.affectedOptions

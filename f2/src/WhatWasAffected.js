@@ -8,21 +8,20 @@ import { WhatWasAffectedForm } from './forms/WhatWasAffectedForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { nextPage, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
+import {
+  nextPage,
+  whatWasAffectedPages,
+  orderSelection,
+} from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
+  const pages = data.whatWasAffectedOptions
   const originalSelection = data.formData.whatWasAffected.affectedOptions
-  const pages = {
-    firstPage: whatWasAffectedPages.FIRST_PAGE,
-    lastPage: whatWasAffectedPages.LAST_PAGE,
-    affectedOptions: [],
-    currentPage: whatWasAffectedPages.FIRST_PAGE,
-    nextPage: '',
-    editOptions: false,
-  }
+
+  pages.currentPage = whatWasAffectedPages.FIRST_PAGE
 
   if (doneForms) {
     pages.lastPage = whatWasAffectedPages.CONFIRMATION
@@ -30,9 +29,16 @@ export const WhatWasAffectedPage = () => {
   }
 
   const updateSelection = (whatWasAffected) => {
-    pages.affectedOptions = whatWasAffected.filter(
-      (option) => !originalSelection.includes(option),
-    )
+    //Selections in order of checked, order the selections to keep page navigation consistent
+    const orderedSelection = orderSelection(whatWasAffected)
+
+    if (doneForms) {
+      pages.affectedOptions = orderedSelection.filter(
+        (option) => !originalSelection.includes(option),
+      )
+    } else {
+      pages.affectedOptions = [...orderedSelection]
+    }
 
     //Remove Other from selections as there is no page to display.
     if (pages.affectedOptions.includes(whatWasAffectedPages.OTHER.key)) {
