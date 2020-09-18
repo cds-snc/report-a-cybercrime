@@ -3,9 +3,11 @@ import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { A } from '../components/formik/link'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, Field } from 'formik'
+import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { NextCancelButtons } from '../components/formik/button'
+import { Error } from '../components/formik/alert'
+import { PrivacyConsentInfoFormSchema } from './PrivacyConsentInfoFormSchema'
 
 export const PrivacyConsentInfoForm = (props) => {
   const [data] = useStateValue()
@@ -19,10 +21,14 @@ export const PrivacyConsentInfoForm = (props) => {
       onSubmit={(values) => {
         props.onSubmit(values)
       }}
+      validationSchema={PrivacyConsentInfoFormSchema()}
     >
       {({ handleSubmit, handleChange, handleBlur }) => (
         <Form onSubmit={handleSubmit}>
           <Container>
+            <Row className="form-question">
+              <ErrorMessage name="consentOptions" component={Error} />
+            </Row>
             <Row className="form-section">
               <Field
                 name="consentOptions"

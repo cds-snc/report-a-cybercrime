@@ -18,6 +18,9 @@ const clickOn = (element) => fireEvent.click(element)
 describe('<PrivacyConsentInfoForm />', () => {
   afterEach(cleanup)
 
+  const root = document.createElement('div')
+  expect(root.querySelector('checkbox').textContent.startsWith('Something'))
+
   it('does not call the onSubmit function when the consent box is not checked and the form is submitted', async () => {
     const submitMock = jest.fn()
 

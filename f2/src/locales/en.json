@@ -336,6 +336,7 @@
   "numberOfEmployee.labelExample": "Select the approximate number of employees.",
   "pageNotFound.header": "Page not found",
   "pageNotFound.message": "Sorry, the page you were trying to view does not exist.",
+  "privacyConsentInfoForm.hasValidationErrors": "Please accept the terms.",
   "privacyConsentInfoForm.nextButton": "Continue",
   "privacyConsentInfoForm.nextPage": "Next: Report anonymously?",
   "privacyConsentInfoForm.yes.withExternalLink": "I accept the terms of the <0>Privacy of statement</0>",
