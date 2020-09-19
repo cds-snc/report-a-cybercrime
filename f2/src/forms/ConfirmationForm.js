@@ -19,6 +19,7 @@ export const ConfirmationForm = (props) => {
           <Trans id="analystReport.dateReceived" />
           <Trans id="analystReport.reportLanguage" />
           <Trans id="analystReport.reportVersion" />
+          <Trans id="analystReport.fieldsMissing.warning" />
           <Trans id="analystReport.flagged" />
           <Trans id="analystReport.noData" />
           <Trans id="analystReport.reportInformation" />
@@ -33,6 +34,8 @@ export const ConfirmationForm = (props) => {
           <Trans id="analystReport.numberOfEmployee.100To499" />
           <Trans id="analystReport.numberOfEmployee.1To99" />
           <Trans id="analystReport.numberOfEmployee.500More" />
+          <Trans id="analystReport.potentialOffensiveImageInEmailSubject" />
+          <Trans id="analystReport.selfHarmStringInEmailSubject" />
           <Trans id="analystReport.affected.financial" />
           <Trans id="analystReport.affected.personalinformation" />
           <Trans id="analystReport.affected.business_assets" />
@@ -60,14 +63,13 @@ export const ConfirmationForm = (props) => {
               </Info>
             ) : (
               <NextCancelButtons
-                  submit={<Trans id="confirmationPage.nextButton" />}
-                  cancel={<Trans id="button.cancelReport" />}
-                />
-                )}
+                submit={<Trans id="confirmationPage.nextButton" />}
+                cancel={<Trans id="button.cancelReport" />}
+              />
+            )}
           </Form>
         )}
       </Formik>
-
     </React.Fragment>
   )
 }
