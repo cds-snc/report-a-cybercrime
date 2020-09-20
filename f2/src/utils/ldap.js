@@ -28,13 +28,14 @@ const ldapQuery = (uid, emailAddresses, uidList) => {
         cert += '-----END CERTIFICATE-----'
         fs.writeFile(certFileName(uid), cert, function (err) {
           if (err) throw err
-          else
+          else {
             console.info(
               `ldapQuery: Certificate for ${emailAddress} (${uid}) found`,
             )
+            emailAddresses.push(emailAddress)
+            uidList.push(uid)
+          }
         })
-        emailAddresses.push(emailAddress)
-        uidList.push(uid)
       } else {
         logger.error('User cert or emmail is missing for uid ' + uid)
       }
