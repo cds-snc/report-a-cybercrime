@@ -138,7 +138,7 @@ export const EvidenceInfoForm = (props) => {
         </HiddenText>
       ) : null}
 
-      <Modal show={showModal} onHide={handleClose}>
+      <Modal show={showModal} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>
             <Trans id="fileUpload.errorModal.title" />
