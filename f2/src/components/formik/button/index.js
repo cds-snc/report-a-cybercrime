@@ -106,3 +106,13 @@ export const SkipButton = (props) => {
     />
   )
 }
+
+export const FeedbackButton = (props) => {
+  return (
+    <Button type="submit" className="button feedback-button">
+      <span className="button-label">
+        {props.label}
+      </span>
+    </Button>
+  )
+}
