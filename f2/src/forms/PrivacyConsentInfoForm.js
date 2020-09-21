@@ -3,18 +3,18 @@ import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { A } from '../components/formik/link'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, Field } from 'formik'
+import { Formik, Field, ErrorMessage } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { NextCancelButtons } from '../components/formik/button'
 import { useLingui } from '@lingui/react'
-import { ErrorSummary } from '../components/formik/alert'
+import { Error, ErrorSummary } from '../components/formik/alert'
 import { PrivacyConsentInfoFormSchema } from './PrivacyConsentInfoFormSchema'
 
 const createErrorSummary = (errors) => {
   const errorSummary = {}
   if (errors.consentOptions) {
     errorSummary['consentOptions'] = {
-      message: <Trans id="privacyConsentInfoForm.hasValidationErrors" />,
+      message: <Trans id="privacyConsentInfoForm.newWarning" />,
     }
   }
   return errorSummary
@@ -42,9 +42,17 @@ export const PrivacyConsentInfoForm = (props) => {
               <ErrorSummary
                 errors={createErrorSummary(errors)}
                 submissions={submitCount}
-                title={<Trans id="default.hasValidationErrors" />}
+                title={
+                  <Trans id="privacyConsentInfoForm.hasValidationErrors" />
+                }
               />
             )}
+            <Row className="form-question">
+              <ErrorMessage
+                name="privacyConsentInfoForm.warning"
+                component={Error}
+              />
+            </Row>
             <Row className="form-section">
               <Field
                 name="consentOptions"
