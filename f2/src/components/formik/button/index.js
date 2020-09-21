@@ -1,8 +1,67 @@
 import React from 'react'
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
+import { cleanProps } from '../../../utils/cleanProps'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
+
+const buttonStyle = (props) => {
+  if (props.type === 'submit') {
+    return css`
+      background-color: rgb(31, 81, 38);
+      color: rgb(255, 255, 255);
+      border-color: rgb(24, 60, 31);
+
+      &:hover,
+      &:focus {
+        background-color: rgb(31, 81, 38);
+        box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+      }
+
+      &:not(:disabled):not(.disabled):active {
+        background-color: rgb(24, 60, 31);
+      }
+    `
+  }
+}
+
+const ButtonLabel = styled.span`
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+`
+
+const BaseButton = styled(Button, {
+  shouldForwardProp: (prop) => cleanProps(prop),
+})`
+  height: 3rem;
+  -webkit-box-pack: center;
+  white-space: nowrap;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: outset;
+  min-width: 8rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  align-items: center;
+  ${buttonStyle}
+`
+
+export const TestButton = (props) => {
+  return (
+    <BaseButton type="submit">
+      <ButtonLabel>
+        {props.label}
+        <GoChevronRight className="button-icon-right" />
+      </ButtonLabel>
+    </BaseButton>
+  )
+}
 
 export const DefaultButton = (props) => {
   return (
@@ -106,9 +165,7 @@ export const SkipButton = (props) => {
 export const FeedbackButton = (props) => {
   return (
     <Button type="submit" className="button feedback-button">
-      <span className="button-label">
-        {props.label}
-      </span>
+      <span className="button-label">{props.label}</span>
     </Button>
   )
 }
