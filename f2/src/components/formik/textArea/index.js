@@ -2,7 +2,6 @@ import React from 'react'
 import { Form } from 'react-bootstrap'
 
 export const TextArea = ({ field, form, ...props }) => {
-  const largeTextArea = props.size === 'large'
   return (
     <Form.Group>
       <Form.Label>{props.label}</Form.Label>
@@ -10,9 +9,8 @@ export const TextArea = ({ field, form, ...props }) => {
       <Form.Control
         {...field}
         as="textarea"
-        className={
-          'open-text-entry' + (largeTextArea ? ' large-text-area' : '')
-        }
+        className={'open-text-entry'}
+        rows={props.rows}
         id={props.id}
         onChange={props.onChange}
       />
