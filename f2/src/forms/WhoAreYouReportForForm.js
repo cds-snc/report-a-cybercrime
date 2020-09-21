@@ -23,14 +23,14 @@ export const WhoAreYouReportForForm = (props) => {
     {
       name: 'someoneDescription',
       value: 'whoAreYouReportForPage.options.someone',
-      label: 'whoAreYouReportForPage.someone.label',
-      hint: 'whoAreYouReportForPage.someone.helperText',
+      label: <Trans id="whoAreYouReportForPage.someone.label" />,
+      hint: <Trans id="whoAreYouReportForPage.someone.helperText" />,
     },
     {
       name: 'businessDescription',
       value: 'whoAreYouReportForPage.options.business',
-      label: 'whoAreYouReportForPage.business.label',
-      hint: 'whoAreYouReportForPage.business.helperText',
+      label: <Trans id="whoAreYouReportForPage.business.label" />,
+      hint: <Trans id="whoAreYouReportForPage.business.helperText" />,
     },
   ]
 
@@ -95,8 +95,8 @@ export const WhoAreYouReportForForm = (props) => {
                               />
                               <Field
                                 name={question.name}
-                                label={<Trans id={question.label}/>}
-                                helpText={<Trans id={question.hint}/>}
+                                label={question.label}
+                                helpText={question.hint}
                                 component={TextArea}
                                 onBlur={handleBlur}
                                 onChange={handleChange}
