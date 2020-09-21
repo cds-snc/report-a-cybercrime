@@ -8,10 +8,10 @@ export const DefaultButton = (props) => {
   return (
     <Button
       type="button"
-      disabled={props.disabled}
-      className="button default-button"
+      onClick={() => props.onClick()}
+      className="default-button button"
     >
-      <span className="button-label">{props.label}</span>
+      {props.label}
     </Button>
   )
 }
@@ -48,7 +48,7 @@ export const CancelButton = (props) => {
           className="button default-button"
           onClick={() => history.push('/confirmCancel')}
         >
-          <span className="button-label">{props.label}</span>
+          {props.label}
         </Button>
       )}
     />
@@ -73,6 +73,10 @@ export const NextCancelButtons = (props) => {
   )
 }
 
+/*
+  This is just a button, to handle file uploads use the 
+  FileUpload component from f2\src\components\formik\fileUpload\index.js
+*/
 export const UploadButton = (props) => {
   return (
     <Button type="button" className="button upload-button">

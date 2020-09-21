@@ -100,6 +100,7 @@ body {
   min-height: 80px;
   border-color: rgb(174, 174, 174);
   width: 100%;
+  max-width: 600px;
 }
 
 .open-text-entry:hover {
@@ -147,10 +148,6 @@ body {
   padding-right: 1.5rem;
   font-size: 1.125rem;
   font-weight: 400;
-}
-
-.button,
-.button-label {
   display: inline-flex;
   align-items: center;
 }
@@ -194,6 +191,10 @@ body {
   color: rgb(0, 0, 0);
   border-color: rgb(213, 213, 213);
   margin-left: 16px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 400;
 }
 
 .default-button:hover,
@@ -446,4 +447,12 @@ body {
   margin-right: 0.5rem;
   align-self: center;
   flex: none;
+}
+
+.list-item {
+  display: list-item;
+  list-style-position: inside;
+  border: 0;
+  padding: 0 0 0.5rem 0;
+  background-color: inherit;
 }
