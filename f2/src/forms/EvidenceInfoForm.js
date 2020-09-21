@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Trans, Plural } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import { jsx } from '@emotion/core'
 import { useStateValue } from '../utils/state'
 import { fileExtensionPasses } from '../utils/acceptableFiles'
@@ -9,7 +10,7 @@ import { Form, Container } from 'react-bootstrap'
 import { Formik, Field, FieldArray } from 'formik'
 import { Info, Warning } from '../components/formik/alert'
 import { List } from '../components/formik/list'
-import { P } from '../components/formik/paragraph'
+import { P, HiddenText } from '../components/formik/paragraph'
 import { A } from '../components/formik/link'
 import { NextCancelButtons, DefaultButton } from '../components/formik/button'
 import { FileUpload } from '../components/formik/fileUpload'
@@ -22,6 +23,8 @@ export const EvidenceInfoForm = (props) => {
   const cached = {
     ...data.formData.evidence,
   }
+
+  const { i18n } = useLingui()
 
   const allowedFilesList = [
     <Trans id="evidencePage.fileTypes1" />,
@@ -48,10 +51,8 @@ export const EvidenceInfoForm = (props) => {
   setFormValues()
 
   useEffect(() => {
-    const element = document.getElementById(
-      'evidencePage.numberOfFilesAttached',
-    )
-    if (status === 'fileUpload.added' && element) {
+    const element = document.getElementById('status')
+    if (status === 'fileUpload.added' || status === 'fileUpload.removed') {
       element.focus()
     }
   }, [status])
@@ -129,6 +130,12 @@ export const EvidenceInfoForm = (props) => {
           <Trans id="fileUpload.fileTypeError" />
           <Trans id="fileUpload.noFiles" />
         </div>
+      ) : null}
+
+      {status ? (
+        <HiddenText tabIndex={-1} id="status">
+          {i18n._(status)}
+        </HiddenText>
       ) : null}
 
       <Modal show={showModal} onHide={handleClose}>
