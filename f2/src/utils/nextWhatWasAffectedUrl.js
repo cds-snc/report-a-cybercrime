@@ -98,3 +98,17 @@ export const nextPage = (navObject) => {
     return navObject.lastPage
   }
 }
+
+export const navigate = (doneForms, pages, callback) => {
+  if (doneForms && !pages.editOptions) {
+    pages.nextPage = whatWasAffectedPages.CONFIRMATION
+  } else {
+    pages.nextPage = nextPage(pages)
+  }
+
+  if (pages.nextPage === whatWasAffectedPages.CONFIRMATION) {
+    pages.editOptions = false
+  }
+
+  callback(pages)
+}

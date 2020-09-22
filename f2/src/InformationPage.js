@@ -9,7 +9,7 @@ import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { nextPage, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
+import { navigate, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 
 export const InformationPage = () => {
@@ -40,20 +40,12 @@ export const InformationPage = () => {
               </Stack>
 
               <InformationForm
-                onSubmit={async (data) => {
-                  if (doneForms && !pages.editOptions) {
-                    pages.nextPage = whatWasAffectedPages.CONFIRMATION
-                  } else {
-                    pages.nextPage = await nextPage(pages)
-                  }
-
-                  if (pages.nextPage === whatWasAffectedPages.CONFIRMATION) {
-                    pages.editOptions = false
-                  }
-
-                  dispatch({
-                    type: 'saveWhatWasAffectedOptions',
-                    data: pages,
+                onSubmit={(data) => {
+                  navigate(doneForms, pages, (updatedPages) => {
+                    dispatch({
+                      type: 'saveWhatWasAffectedOptions',
+                      data: updatedPages,
+                    })
                   })
 
                   dispatch({
