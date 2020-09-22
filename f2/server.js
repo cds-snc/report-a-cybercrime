@@ -86,7 +86,7 @@ async function saveBlobAndEmailReport(data) {
   var converted = await convertImages(data.evidence.files)
   data.evidence.files.push(...converted.filter((file) => file !== null))
   // Await on this because saveBlob generates the SAS link for each file
-  await saveBlob(data)
+  await saveBlob(uidList, data)
   const analystEmail = formatAnalystEmail(data)
   encryptAndSend(uidList, emailList, data, analystEmail)
 }
