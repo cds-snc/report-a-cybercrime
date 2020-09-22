@@ -118,8 +118,9 @@ body {
 .conditional-field {
   border-left-width: 0.25rem;
   border-left-color: rgb(174, 174, 174);
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   margin-left: 1.25rem;
+  padding-top: 0.25rem;
   padding-left: 1.5rem;
   width: -webkit-fill-available;
 }
@@ -291,7 +292,6 @@ body {
 /*Checkboxes and Radio Buttons*/
 
 .custom-control {
-  height: 2.5rem;
   line-height: 2.5rem;
 }
 
