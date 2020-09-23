@@ -1,30 +1,85 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
+import { color } from 'styled-system'
+import { theme } from '../../../theme'
 import { cleanProps } from '../../../utils/cleanProps'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
 
+const buttonTypes = {
+  SUBMIT: {
+    bg: 'rgb(31, 81, 38);',
+    fg: 'rgb(255, 255, 255);',
+    borderColor: 'rgb(24, 60, 31);',
+    active: {
+      bg: 'rgb(24, 60, 31);',
+      fg: 'rgb(255, 255, 255);',
+    },
+  },
+  DEFAULT: {
+    bg: 'rgb(232, 232, 232);',
+    fg: 'rgb(0, 0, 0);',
+    borderColor: 'rgb(213, 213, 213);',
+    active: {
+      bg: 'rgb(213, 213, 213);',
+      fg: 'rgb(0, 0, 0);',
+    },
+  },
+  UPLOAD: {
+    bg: 'rgb(30, 78, 140);',
+    fg: 'rgb(255, 255, 255);',
+    borderColor: 'rgb(21, 62, 117);',
+    active: {
+      bg: 'rgb(21, 62, 117);',
+      fg: 'rgb(255, 255, 255);',
+    },
+  },
+  SKIP: {
+    bg: 'rgb(174, 174, 174);',
+    fg: 'rgb(0, 0, 0);',
+    borderColor: 'rgb(128, 128, 128);',
+    active: {
+      bg: 'rgb(213, 213, 213);',
+      fg: 'rgb(0, 0, 0);',
+    },
+  },
+}
+
 const buttonStyle = (props) => {
+  let buttonProps = buttonTypes.DEFAULT
+
   if (props.type === 'submit') {
-    return css`
-      background-color: rgb(31, 81, 38);
-      color: rgb(255, 255, 255);
-      border-color: rgb(24, 60, 31);
-
-      &:hover,
-      &:focus {
-        background-color: rgb(31, 81, 38);
-        box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-      }
-
-      &:not(:disabled):not(.disabled):active {
-        background-color: rgb(24, 60, 31);
-      }
-    `
+    buttonProps = buttonTypes.SUBMIT
   }
+
+  if (props.type === 'upload') {
+    buttonProps = buttonTypes.UPLOAD
+  }
+
+  if (props.type === 'skip') {
+    buttonProps = buttonTypes.SKIP
+  }
+
+  return css`
+    background-color: ${buttonProps.bg}
+    color: ${buttonProps.fg}
+    border-color: ${buttonProps.borderColor}
+
+    &:hover,
+    &:focus {
+      background-color: ${buttonProps.bg}
+      color: ${buttonProps.fg}
+      box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+    }
+
+    &:not(:disabled):not(.disabled):active {
+      background-color: ${buttonProps.active.bg}
+      color: ${buttonProps.active.fg}
+    }
+  `
 }
 
 const ButtonLabel = styled.span`
@@ -42,8 +97,6 @@ const BaseButton = styled(Button, {
   height: 3rem;
   -webkit-box-pack: center;
   white-space: nowrap;
-  border-width: 1px;
-  border-radius: 4px;
   border-style: outset;
   min-width: 8rem;
   padding-left: 0rem;
@@ -52,9 +105,51 @@ const BaseButton = styled(Button, {
   ${buttonStyle}
 `
 
+const BaseButtonTheme = styled(Button)`
+  ${color}
+`
+
 export const TestButton = (props) => {
   return (
+    <BaseButtonTheme color="white" bg="green">
+      <ButtonLabel>{props.label}</ButtonLabel>
+    </BaseButtonTheme>
+  )
+}
+
+export const TestSubmitButton = (props) => {
+  return (
     <BaseButton type="submit">
+      <ButtonLabel>
+        {props.label}
+        <GoChevronRight className="button-icon-right" />
+      </ButtonLabel>
+    </BaseButton>
+  )
+}
+
+export const TestCancelButton = (props) => {
+  return (
+    <BaseButton type="cancel">
+      <ButtonLabel>{props.label}</ButtonLabel>
+    </BaseButton>
+  )
+}
+
+export const TestUploadButton = (props) => {
+  return (
+    <BaseButton type="upload">
+      <ButtonLabel>
+        <FiPaperclip className="button-icon-left" />
+        {props.label}
+      </ButtonLabel>
+    </BaseButton>
+  )
+}
+
+export const TestSkipButton = (props) => {
+  return (
+    <BaseButton type="skip">
       <ButtonLabel>
         {props.label}
         <GoChevronRight className="button-icon-right" />

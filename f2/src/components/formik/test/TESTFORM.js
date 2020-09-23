@@ -3,7 +3,13 @@ import { Trans } from '@lingui/macro'
 import { useStateValue } from '../../../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik } from 'formik'
-import { TestButton, SubmitButton } from '../button'
+import {
+  TestSubmitButton,
+  TestCancelButton,
+  TestUploadButton,
+  TestSkipButton,
+  TestButton,
+} from '../button'
 
 export const TestForm = (props) => {
   const [data] = useStateValue()
@@ -21,8 +27,11 @@ export const TestForm = (props) => {
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <TestButton type="submit" label="Test Button" />
-              <SubmitButton label="Submit Button" />
+              <TestSubmitButton label="Test Button" />
+              <TestCancelButton label="Cancel" />
+              <TestUploadButton label="Upload" />
+              <TestSkipButton label="Skip" />
+              <TestButton label="Test" />
             </Container>
           </Form>
         )}
