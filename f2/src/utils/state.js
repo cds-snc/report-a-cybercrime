@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import { formDefaults } from '../forms/defaultValues'
-import { pages } from './nextWhatWasAffectedUrl'
+import { whatWasAffectedNavState } from './nextWhatWasAffectedUrl'
 
 export const StateContext = createContext()
 
@@ -16,7 +16,7 @@ export const initialState = {
   doneForms: false,
   formData: { ...formDefaults, prodVersion: '1.7.0' },
   doneFinalFeedback: false,
-  whatWasAffectedOptions: { ...pages },
+  whatWasAffectedOptions: { ...whatWasAffectedNavState },
 }
 
 export const reducer = (state, action) => {
@@ -58,11 +58,6 @@ export const reducer = (state, action) => {
       return {
         ...state,
         reportId: action.data,
-      }
-    case 'saveWhatWasAffectedOptions':
-      return {
-        ...state,
-        whatWasAffectedOptions: action.data,
       }
     default:
       return state

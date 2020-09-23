@@ -14,13 +14,9 @@ import { Page } from './components/Page'
 export const MoneyLostPage = () => {
   const [state, dispatch] = useStateValue()
   const { doneForms } = state
-  const pages = state.whatWasAffectedOptions
+  const whatWasAffectedNavState = state.whatWasAffectedOptions
 
-  pages.currentPage = whatWasAffectedPages.FINANCIAL
-
-  if (doneForms) {
-    pages.lastPage = whatWasAffectedPages.CONFIRMATION
-  }
+  whatWasAffectedNavState.currentPage = whatWasAffectedPages.FINANCIAL
 
   return (
     <Route
@@ -39,19 +35,14 @@ export const MoneyLostPage = () => {
               </Stack>
               <MoneyLostInfoForm
                 onSubmit={(data) => {
-                  navigate(doneForms, pages, (updatedPages) => {
-                    dispatch({
-                      type: 'saveWhatWasAffectedOptions',
-                      data: updatedPages,
-                    })
-                  })
+                  navigate(doneForms, whatWasAffectedNavState)
 
                   dispatch({
                     type: 'saveFormData',
                     data: { moneyLost: data },
                   })
 
-                  history.push(pages.nextPage.url)
+                  history.push(whatWasAffectedNavState.nextPage.url)
                 }}
               />
             </Stack>

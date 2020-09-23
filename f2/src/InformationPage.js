@@ -15,13 +15,9 @@ import { Page } from './components/Page'
 export const InformationPage = () => {
   const [state, dispatch] = useStateValue()
   const { doneForms } = state
-  const pages = state.whatWasAffectedOptions
+  const whatWasAffectedNavState = state.whatWasAffectedOptions
 
-  pages.currentPage = whatWasAffectedPages.INFORMATION
-
-  if (doneForms) {
-    pages.lastPage = whatWasAffectedPages.CONFIRMATION
-  }
+  whatWasAffectedNavState.currentPage = whatWasAffectedPages.INFORMATION
 
   return (
     <Route
@@ -41,19 +37,14 @@ export const InformationPage = () => {
 
               <InformationForm
                 onSubmit={(data) => {
-                  navigate(doneForms, pages, (updatedPages) => {
-                    dispatch({
-                      type: 'saveWhatWasAffectedOptions',
-                      data: updatedPages,
-                    })
-                  })
+                  navigate(doneForms, whatWasAffectedNavState)
 
                   dispatch({
                     type: 'saveFormData',
                     data: { personalInformation: data },
                   })
 
-                  history.push(pages.nextPage.url)
+                  history.push(whatWasAffectedNavState.nextPage.url)
                 }}
               />
             </Stack>

@@ -24,7 +24,7 @@ export const whatWasAffectedPages = {
     url: '',
   },
   FIRST_PAGE: {
-    key: '',
+    key: 'whatWasAffectedForm',
     url: 'whatwasaffected',
   },
   LAST_PAGE: {
@@ -37,9 +37,7 @@ export const whatWasAffectedPages = {
   },
 }
 
-export const pages = {
-  firstPage: whatWasAffectedPages.FIRST_PAGE,
-  lastPage: whatWasAffectedPages.LAST_PAGE,
+export const whatWasAffectedNavState = {
   affectedOptions: [],
   currentPage: whatWasAffectedPages.FIRST_PAGE,
   nextPage: '',
@@ -60,7 +58,7 @@ export const orderSelection = (selection) => {
   return orderedSelection
 }
 
-export const nextPage = (navObject) => {
+export const nextPage = (navObject, doneForms) => {
   try {
     const selectedOptions = navObject.affectedOptions
     const lastSelection = selectedOptions.slice(-1)[0]
@@ -72,11 +70,12 @@ export const nextPage = (navObject) => {
       navObject.currentPage.key === lastSelection ||
       selectedOptions.length === 0
     ) {
-      nextPage = navObject.lastPage
-      return nextPage
+      return doneForms
+        ? whatWasAffectedPages.CONFIRMATION
+        : whatWasAffectedPages.LAST_PAGE
     }
 
-    if (navObject.currentPage.key === navObject.firstPage.key) {
+    if (navObject.currentPage.key === whatWasAffectedPages.FIRST_PAGE.key) {
       //Leaving What Was Affected, proceed to first selection.
       index = selectedOptions[0]
     } else {
@@ -94,21 +93,25 @@ export const nextPage = (navObject) => {
     //If an error occurs default to What Happened
     logger.error({
       message: `ERROR getting next What Was Affected page: ${error}`,
+      navObject: navObject,
     })
-    return navObject.lastPage
+    return doneForms
+      ? whatWasAffectedPages.CONFIRMATION
+      : whatWasAffectedPages.LAST_PAGE
   }
 }
 
-export const navigate = (doneForms, pages, callback) => {
-  if (doneForms && !pages.editOptions) {
-    pages.nextPage = whatWasAffectedPages.CONFIRMATION
+export const navigate = (doneForms, whatWasAffectedNavState) => {
+  if (doneForms && !whatWasAffectedNavState.editOptions) {
+    whatWasAffectedNavState.nextPage = whatWasAffectedPages.CONFIRMATION
   } else {
-    pages.nextPage = nextPage(pages)
+    whatWasAffectedNavState.nextPage = nextPage(
+      whatWasAffectedNavState,
+      doneForms,
+    )
   }
 
-  if (pages.nextPage === whatWasAffectedPages.CONFIRMATION) {
-    pages.editOptions = false
+  if (whatWasAffectedNavState.nextPage === whatWasAffectedPages.CONFIRMATION) {
+    whatWasAffectedNavState.editOptions = false
   }
-
-  callback(pages)
 }

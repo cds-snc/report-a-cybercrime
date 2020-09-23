@@ -18,14 +18,13 @@ import { Page } from './components/Page'
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
-  const pages = data.whatWasAffectedOptions
+  const whatWasAffectedNavState = data.whatWasAffectedOptions
   const originalSelection = data.formData.whatWasAffected.affectedOptions
 
-  pages.currentPage = whatWasAffectedPages.FIRST_PAGE
+  whatWasAffectedNavState.currentPage = whatWasAffectedPages.FIRST_PAGE
 
   if (doneForms) {
-    pages.lastPage = whatWasAffectedPages.CONFIRMATION
-    pages.editOptions = true
+    whatWasAffectedNavState.editOptions = true
   }
 
   const updateSelection = (whatWasAffected) => {
@@ -33,27 +32,29 @@ export const WhatWasAffectedPage = () => {
     const orderedSelection = orderSelection(whatWasAffected)
 
     if (doneForms) {
-      pages.affectedOptions = orderedSelection.filter(
+      whatWasAffectedNavState.affectedOptions = orderedSelection.filter(
         (option) => !originalSelection.includes(option),
       )
     } else {
-      pages.affectedOptions = [...orderedSelection]
+      whatWasAffectedNavState.affectedOptions = [...orderedSelection]
     }
 
     //Remove Other from selections as there is no page to display.
-    if (pages.affectedOptions.includes(whatWasAffectedPages.OTHER.key)) {
-      const otherIndex = pages.affectedOptions.indexOf(
+    if (
+      whatWasAffectedNavState.affectedOptions.includes(
         whatWasAffectedPages.OTHER.key,
       )
-      pages.affectedOptions.splice(otherIndex, 1)
+    ) {
+      const otherIndex = whatWasAffectedNavState.affectedOptions.indexOf(
+        whatWasAffectedPages.OTHER.key,
+      )
+      whatWasAffectedNavState.affectedOptions.splice(otherIndex, 1)
     }
 
-    pages.nextPage = nextPage(pages)
-
-    dispatch({
-      type: 'saveWhatWasAffectedOptions',
-      data: pages,
-    })
+    whatWasAffectedNavState.nextPage = nextPage(
+      whatWasAffectedNavState,
+      doneForms,
+    )
   }
 
   return (
@@ -73,14 +74,14 @@ export const WhatWasAffectedPage = () => {
               </Lead>
 
               <WhatWasAffectedForm
-                onSubmit={async (data) => {
-                  await updateSelection(data.affectedOptions)
+                onSubmit={(data) => {
+                  updateSelection(data.affectedOptions)
 
                   dispatch({
                     type: 'saveFormData',
                     data: { whatWasAffected: data },
                   })
-                  history.push(pages.nextPage.url)
+                  history.push(whatWasAffectedNavState.nextPage.url)
                 }}
               />
             </Stack>
