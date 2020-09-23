@@ -11,6 +11,8 @@ export const TextArea = ({ field, form, ...props }) => {
         as="textarea"
         className={'open-text-entry'}
         rows={props.rows}
+        id={props.id}
+        onChange={props.onChange}
       />
     </Form.Group>
   )
