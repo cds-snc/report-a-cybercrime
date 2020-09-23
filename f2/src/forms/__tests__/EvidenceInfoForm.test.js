@@ -34,7 +34,7 @@ describe('<EvidenceInfoForm />', () => {
     )
 
     // find the next button so we can trigger a form submission
-    const nextButton = getByText(/nextButton/)
+    const nextButton = getByText(/continue/)
 
     // Click the next button to trigger the form submission
     clickOn(nextButton.parentElement)
