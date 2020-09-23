@@ -7,8 +7,8 @@ import { I18nProvider } from '@lingui/react'
 import { i18n } from '@lingui/core'
 import { activate } from '../src/i18n.config'
 import { StateProvider, initialState, reducer } from '../src/utils/state'
-import '../src/theme/style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '../src/theme/style.css'
 
 const ThemeDecorator = (storyFn) => {
   activate('en')
