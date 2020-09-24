@@ -71,7 +71,7 @@
     "start:cypress": "npm run dev",
     "cypress:open": "node ./node_modules/.bin/cypress open ",
     "cypress": "start-server-and-test start:cypress http://localhost:3000 cypress:open",
-    "cypress:smoke": "node ./node_modules/.bin/cypress-tags run -e TAGS=@smoke",
+    "cypress:smoke": "node ./node_modules/.bin/cypress-tags run -e TAGS='@smoke'",
     "cypress:consent": "node ./node_modules/.bin/cypress-tags run -e TAGS='@consent'",
     "cypress:cli": "start-server-and-test http://localhost:3000 cypress:smoke",
     "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
