@@ -77,16 +77,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.error-summary-title {
-  color: rgb(0, 0, 0);
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.error-summary {
-  width: 100%;
-}
-
 .field-error,
 .field-error:hover,
 .field-error:focus {
@@ -425,28 +415,6 @@ body {
   box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
   outline: none;
   border-color: rgb(42, 105, 172);
-}
-
-/*Alerts*/
-
-.alert-banner {
-  display: inline-flex;
-  width: 100%;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.banner-border {
-  border-left: 3px solid;
-}
-
-.alert-icon {
-  height: 1.5rem;
-  width: 1.5rem;
-  margin-left: -0.5rem;
-  margin-right: 0.5rem;
-  align-self: center;
-  flex: none;
 }
 
 .list-item {
