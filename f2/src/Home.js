@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import { PageNotFound } from './PageNotFound'
-import { LandingPage } from './LandingPage'
+//import { LandingPage } from './LandingPage'
 import { ThankYouPage } from './ThankYouPage'
 import { WhatHappenedPage } from './WhatHappenedPage'
 import { ContactInfoPage } from './ContactInfoPage'

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
 import { useStateValue } from '../../../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik } from 'formik'

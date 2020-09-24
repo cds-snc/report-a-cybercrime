@@ -85,7 +85,6 @@ export const MidFormFeedbackButton = (props) => {
       border="1px solid"
       padding="1rem 1.5rem"
       marginLeft="0rem"
-      border="1px solid"
       borderStyle="outset"
       height="inherit"
     >
