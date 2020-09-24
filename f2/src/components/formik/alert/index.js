@@ -29,7 +29,7 @@ const Summary = styled(BaseAlert, {
   border-left: 3px solid;
 `
 
-const iconStyle = (props) =>
+const iconStyle = () =>
   css`
     height: 1.5rem;
     width: 1.5rem;
