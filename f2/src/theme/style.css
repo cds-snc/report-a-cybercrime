@@ -100,6 +100,7 @@ body {
   min-height: 80px;
   border-color: rgb(174, 174, 174);
   width: 100%;
+  max-width: 600px;
 }
 
 .open-text-entry:hover {
@@ -117,8 +118,9 @@ body {
 .conditional-field {
   border-left-width: 0.25rem;
   border-left-color: rgb(174, 174, 174);
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   margin-left: 1.25rem;
+  padding-top: 0.25rem;
   padding-left: 1.5rem;
   width: -webkit-fill-available;
 }
@@ -129,6 +131,7 @@ body {
   padding-left: 0rem;
   padding-right: 0rem;
 }
+
 
 .next-cancel-buttons {
   margin-bottom: 2.5rem;
@@ -151,7 +154,6 @@ body {
 /*Checkboxes and Radio Buttons*/
 
 .custom-control {
-  height: 2.5rem;
   line-height: 2.5rem;
 }
 
@@ -307,4 +309,12 @@ body {
   margin-right: 0.5rem;
   align-self: center;
   flex: none;
+}
+
+.list-item {
+  display: list-item;
+  list-style-position: inside;
+  border: 0;
+  padding: 0 0 0.5rem 0;
+  background-color: inherit;
 }

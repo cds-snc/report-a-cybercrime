@@ -1,6 +1,6 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When } from 'cypress-cucumber-preprocessor/steps'
 
-when('I fill Howwaspersonalinformationaffected in French page forms', () => {
+When('I fill Howwaspersonalinformationaffected in French page forms', () => {
   cy.get('form')
     .find('[value="typeOfInfoReq.creditCard"]')
     .check({ force: true })
@@ -25,7 +25,7 @@ when('I fill Howwaspersonalinformationaffected in French page forms', () => {
   //cy.get('form').find('[name="infoObtainedOther"]').type('Permis de conduire')
 })
 
-when('I fill Howwaspersonalinformationaffected123 in French page forms', () => {
+When('I fill Howwaspersonalinformationaffected123 in French page forms', () => {
   cy.get('form')
     .find('[value="typeOfInfoReq.creditCard"]')
     .check({ force: true })

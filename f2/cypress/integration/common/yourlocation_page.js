@@ -1,12 +1,11 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When } from 'cypress-cucumber-preprocessor/steps'
 
 When('I fill city and province Location page forms', () => {
   cy.get('form').find('[name="city"]').type('Ottawa')
   cy.get('form').find('[name="province"]').type('Ontario')
 })
 
-When('I fill no Location page forms', () => {
-})
+When('I fill no Location page forms', () => {})
 
 When('I fill city Location page forms', () => {
   cy.get('form').find('[name="city"]').type('Montreal')
@@ -35,6 +34,3 @@ When('I fill UnusedPostalCode page forms', () => {
 When('I fill InvalidPostalCode page forms', () => {
   cy.get('form').find('[name="postalCode"]').type('f2k1W2')
 })
-
-
-

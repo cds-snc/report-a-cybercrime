@@ -8,15 +8,15 @@ import { MoneyLostInfoForm } from './forms/MoneyLostInfoForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { nextWhatWasAffectedUrl } from './utils/nextWhatWasAffectedUrl'
+import { navigate, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 
 export const MoneyLostPage = () => {
   const [state, dispatch] = useStateValue()
-  const { doneForms, formData } = state
-  const affectedOptions = formData.whatWasAffected
-    ? formData.whatWasAffected.affectedOptions
-    : []
+  const { doneForms } = state
+  const whatWasAffectedNavState = state.whatWasAffectedOptions
+
+  whatWasAffectedNavState.currentPage = whatWasAffectedPages.FINANCIAL
 
   return (
     <Route
@@ -35,15 +35,14 @@ export const MoneyLostPage = () => {
               </Stack>
               <MoneyLostInfoForm
                 onSubmit={(data) => {
+                  navigate(doneForms, whatWasAffectedNavState)
+
                   dispatch({
                     type: 'saveFormData',
                     data: { moneyLost: data },
                   })
-                  history.push(
-                    doneForms
-                      ? '/confirmation'
-                      : nextWhatWasAffectedUrl(affectedOptions, 'moneylost'),
-                  )
+
+                  history.push(whatWasAffectedNavState.nextPage.url)
                 }}
               />
             </Stack>

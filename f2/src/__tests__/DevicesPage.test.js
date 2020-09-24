@@ -9,6 +9,7 @@ import canada from '../theme/canada'
 import en from '../locales/en.json'
 import { StateProvider, reducer } from '../utils/state'
 import { formDefaults } from '../forms/defaultValues'
+import { pages } from '../utils/nextWhatWasAffectedUrl'
 
 i18n.load('en', { en })
 i18n.activate('en')
@@ -26,6 +27,7 @@ describe('<DevicesPage />', () => {
               formData: {
                 ...formDefaults,
               },
+              whatWasAffectedOptions: { ...pages },
             }}
             reducer={reducer}
           >

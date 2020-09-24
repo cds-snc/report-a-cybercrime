@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { Row, Container, Alert } from 'react-bootstrap'
 import { A } from '../link'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
@@ -82,4 +83,11 @@ export const ErrorSummary = (props) => {
       </Row>
     </Container>
   )
+}
+
+ErrorSummary.propTypes = {
+  children: PropTypes.any,
+}
+Error.propTypes = {
+  children: PropTypes.any,
 }
