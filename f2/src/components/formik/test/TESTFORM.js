@@ -4,11 +4,13 @@ import { useStateValue } from '../../../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik } from 'formik'
 import {
-  TestSubmitButton,
-  TestCancelButton,
-  TestUploadButton,
-  TestSkipButton,
-  TestButton,
+  DefaultButton,
+  SubmitButton,
+  CancelButton,
+  UploadButton,
+  SkipButton,
+  FeedbackButton,
+  NextCancelButtons,
 } from '../button'
 
 export const TestForm = (props) => {
@@ -27,11 +29,19 @@ export const TestForm = (props) => {
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <TestSubmitButton label="Test Button" />
-              <TestCancelButton label="Cancel" />
-              <TestUploadButton label="Upload" />
-              <TestSkipButton label="Skip" />
-              <TestButton label="Test" />
+              <DefaultButton label="Test Button" />
+              <SubmitButton label="Submit" />
+              <FeedbackButton label="Feedback" />
+              <CancelButton label="Cancel" />
+              <UploadButton label="Upload" />
+              <SkipButton label="Skip" />
+              <Row>
+                <NextCancelButtons
+                  label="Next Page: Test"
+                  submit="Continue"
+                  cancel="Cancel"
+                />
+              </Row>
             </Container>
           </Form>
         )}

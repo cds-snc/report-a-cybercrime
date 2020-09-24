@@ -1,83 +1,30 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
-import { color } from 'styled-system'
-import { theme } from '../../../theme'
-import { cleanProps } from '../../../utils/cleanProps'
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import { Button as BaseButton, Container, Row, Col } from 'react-bootstrap'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
-
-const buttonTypes = {
-  SUBMIT: {
-    bg: 'rgb(31, 81, 38);',
-    fg: 'rgb(255, 255, 255);',
-    borderColor: 'rgb(24, 60, 31);',
-    active: {
-      bg: 'rgb(24, 60, 31);',
-      fg: 'rgb(255, 255, 255);',
-    },
-  },
-  DEFAULT: {
-    bg: 'rgb(232, 232, 232);',
-    fg: 'rgb(0, 0, 0);',
-    borderColor: 'rgb(213, 213, 213);',
-    active: {
-      bg: 'rgb(213, 213, 213);',
-      fg: 'rgb(0, 0, 0);',
-    },
-  },
-  UPLOAD: {
-    bg: 'rgb(30, 78, 140);',
-    fg: 'rgb(255, 255, 255);',
-    borderColor: 'rgb(21, 62, 117);',
-    active: {
-      bg: 'rgb(21, 62, 117);',
-      fg: 'rgb(255, 255, 255);',
-    },
-  },
-  SKIP: {
-    bg: 'rgb(174, 174, 174);',
-    fg: 'rgb(0, 0, 0);',
-    borderColor: 'rgb(128, 128, 128);',
-    active: {
-      bg: 'rgb(213, 213, 213);',
-      fg: 'rgb(0, 0, 0);',
-    },
-  },
-}
+import { buttonTypes } from '../theme'
 
 const buttonStyle = (props) => {
-  let buttonProps = buttonTypes.DEFAULT
-
-  if (props.type === 'submit') {
-    buttonProps = buttonTypes.SUBMIT
-  }
-
-  if (props.type === 'upload') {
-    buttonProps = buttonTypes.UPLOAD
-  }
-
-  if (props.type === 'skip') {
-    buttonProps = buttonTypes.SKIP
-  }
+  let buttonProps = props.type
 
   return css`
-    background-color: ${buttonProps.bg}
-    color: ${buttonProps.fg}
-    border-color: ${buttonProps.borderColor}
+    background-color: ${buttonProps.bg};
+    color: ${buttonProps.fg};
+    border-color: ${buttonProps.borderColor};
 
     &:hover,
     &:focus {
-      background-color: ${buttonProps.bg}
-      color: ${buttonProps.fg}
-      box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+      background-color: ${buttonProps.bg};
+      color: ${buttonProps.fg};
+      box-shadow: #d5d5d5 0px 0px 0px 2px;
     }
 
     &:not(:disabled):not(.disabled):active {
-      background-color: ${buttonProps.active.bg}
-      color: ${buttonProps.active.fg}
+      background-color: ${buttonProps.active.bg};
+      color: ${buttonProps.active.fg};
     }
   `
 }
@@ -91,9 +38,7 @@ const ButtonLabel = styled.span`
   align-items: center;
 `
 
-const BaseButton = styled(Button, {
-  shouldForwardProp: (prop) => cleanProps(prop),
-})`
+const Button = styled(BaseButton)`
   height: 3rem;
   -webkit-box-pack: center;
   white-space: nowrap;
@@ -105,90 +50,46 @@ const BaseButton = styled(Button, {
   ${buttonStyle}
 `
 
-const BaseButtonTheme = styled(Button)`
-  ${color}
+const BigButton = styled(BaseButton)`
+  padding: 1rem 1.5rem;
+  height: inherit;
+  margin-left: 0rem;
+  ${buttonStyle}
 `
 
-export const TestButton = (props) => {
-  return (
-    <BaseButtonTheme color="white" bg="green">
-      <ButtonLabel>{props.label}</ButtonLabel>
-    </BaseButtonTheme>
-  )
-}
+const RightArrowIcon = styled(GoChevronRight)`
+  margin-left: 0.5rem;
+  margin-right: -0.5rem;
+`
 
-export const TestSubmitButton = (props) => {
-  return (
-    <BaseButton type="submit">
-      <ButtonLabel>
-        {props.label}
-        <GoChevronRight className="button-icon-right" />
-      </ButtonLabel>
-    </BaseButton>
-  )
-}
-
-export const TestCancelButton = (props) => {
-  return (
-    <BaseButton type="cancel">
-      <ButtonLabel>{props.label}</ButtonLabel>
-    </BaseButton>
-  )
-}
-
-export const TestUploadButton = (props) => {
-  return (
-    <BaseButton type="upload">
-      <ButtonLabel>
-        <FiPaperclip className="button-icon-left" />
-        {props.label}
-      </ButtonLabel>
-    </BaseButton>
-  )
-}
-
-export const TestSkipButton = (props) => {
-  return (
-    <BaseButton type="skip">
-      <ButtonLabel>
-        {props.label}
-        <GoChevronRight className="button-icon-right" />
-      </ButtonLabel>
-    </BaseButton>
-  )
-}
+const PaperClipIcon = styled(FiPaperclip)`
+  margin-left: -0.5rem;
+  margin-right: 0.5rem;
+`
 
 export const DefaultButton = (props) => {
   return (
-    <Button
-      type="button"
-      disabled={props.disabled}
-      className="button default-button"
-    >
-      <span className="button-label">{props.label}</span>
+    <Button type={buttonTypes.DEFAULT}>
+      <ButtonLabel>{props.label}</ButtonLabel>
     </Button>
   )
 }
 
 export const MidFormFeedbackButton = (props) => {
   return (
-    <Button type="button" className="default-button mid-form-feedback-button ">
-      <span className="mid-form-feedback-button-label">{props.label}</span>
-    </Button>
+    <BigButton type={buttonTypes.DEFAULT}>
+      <ButtonLabel>{props.label}</ButtonLabel>
+    </BigButton>
   )
 }
 
 export const SubmitButton = (props) => {
   return (
-    <Button
-      type="submit"
-      disabled={props.disabled}
-      className="button submit-button"
-    >
-      <span className="button-label">
+    <Button type={buttonTypes.SUBMIT}>
+      <ButtonLabel>
         {props.label}
-        <GoChevronRight className="button-icon-right" />
-      </span>
+        <RightArrowIcon />
+      </ButtonLabel>
     </Button>
   )
 }
@@ -198,11 +99,10 @@ export const CancelButton = (props) => {
     <Route
       render={({ history }) => (
         <Button
-          type="button"
-          className="button default-button"
+          type={buttonTypes.DEFAULT}
           onClick={() => history.push('/confirmCancel')}
         >
-          <span className="button-label">{props.label}</span>
+          <ButtonLabel>{props.label}</ButtonLabel>
         </Button>
       )}
     />
@@ -229,11 +129,11 @@ export const NextCancelButtons = (props) => {
 
 export const UploadButton = (props) => {
   return (
-    <Button type="button" className="button upload-button">
-      <span className="button-label">
-        <FiPaperclip className="button-icon-left" />
+    <Button type={buttonTypes.UPLOAD}>
+      <ButtonLabel>
+        <PaperClipIcon />
         {props.label}
-      </span>
+      </ButtonLabel>
     </Button>
   )
 }
@@ -242,15 +142,11 @@ export const SkipButton = (props) => {
   return (
     <Route
       render={({ history }) => (
-        <Button
-          type="button"
-          className="button skip-button"
-          onClick={() => history.push(props.to)}
-        >
-          <span className="button-label">
+        <Button type={buttonTypes.SKIP} onClick={() => history.push(props.to)}>
+          <ButtonLabel>
             {props.label}
-            <GoChevronRight className="button-icon-right" />
-          </span>
+            <RightArrowIcon />
+          </ButtonLabel>
         </Button>
       )}
     />
@@ -259,8 +155,8 @@ export const SkipButton = (props) => {
 
 export const FeedbackButton = (props) => {
   return (
-    <Button type="submit" className="button feedback-button">
-      <span className="button-label">{props.label}</span>
+    <Button type={buttonTypes.FEEDBACK}>
+      <ButtonLabel>{props.label}</ButtonLabel>
     </Button>
   )
 }

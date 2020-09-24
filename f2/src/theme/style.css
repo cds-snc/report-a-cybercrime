@@ -125,136 +125,9 @@ body {
 
 /*Button*/
 
-.button {
-  height: 3rem;
-  -webkit-box-pack: center;
-  white-space: nowrap;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: outset;
-  min-width: 8rem;
-  padding-left: 0rem;
-  padding-right: 0rem;
-}
-
 .button-container {
   padding-left: 0rem;
   padding-right: 0rem;
-}
-
-.button-label {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  font-size: 1.125rem;
-  font-weight: 400;
-}
-
-.button,
-.button-label {
-  display: inline-flex;
-  align-items: center;
-}
-
-.submit-button,
-.submit-button:disabled {
-  background-color: rgb(31, 81, 38);
-  color: rgb(255, 255, 255);
-  border-color: rgb(24, 60, 31);
-}
-
-.submit-button:hover,
-.submit-button:focus {
-  background-color: rgb(31, 81, 38);
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-}
-
-.submit-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(24, 60, 31);
-}
-
-.feedback-button {
-  min-width: 6rem;
-  background-color: rgb(30, 78, 140);
-  color: rgb(255, 255, 255);
-  border-color: rgb(24, 60, 31);
-}
-
-.feedback-button:hover,
-.feedback-button:focus {
-  background-color: rgb(30, 78, 140);
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-}
-
-.feedback-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(30, 78, 140);
-}
-
-.default-button {
-  background-color: rgb(232, 232, 232);
-  color: rgb(0, 0, 0);
-  border-color: rgb(213, 213, 213);
-  margin-left: 16px;
-}
-
-.default-button:hover,
-.default-button:focus {
-  background-color: rgb(232, 232, 232);
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-  color: rgb(0, 0, 0);
-}
-
-.default-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(213, 213, 213);
-  color: rgb(0, 0, 0);
-}
-
-.upload-button {
-  background-color: rgb(30, 78, 140);
-  color: rgb(255, 255, 255);
-  border-color: rgb(21, 62, 117);
-}
-
-.upload-button:hover,
-.upload-button:focus {
-  background-color: rgb(30, 78, 140);
-  border-color: rgb(21, 62, 117);
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-}
-
-.upload-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(21, 62, 117);
-  color: rgb(255, 255, 255);
-  border-color: rgb(21, 62, 117);
-}
-
-.skip-button {
-  background-color: rgb(174, 174, 174);
-  color: rgb(0, 0, 0);
-  border-color: rgb(128, 128, 128);
-}
-
-.skip-button:hover,
-.skip-button:focus {
-  background-color: rgb(174, 174, 174);
-  color: rgb(0, 0, 0);
-  border-color: rgb(128, 128, 128);
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-}
-
-.skip-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(213, 213, 213);
-  color: rgb(0, 0, 0);
-  border-color: rgb(128, 128, 128);
-}
-
-.button-icon-right {
-  margin-left: 0.5rem;
-  margin-right: -0.5rem;
-}
-
-.button-icon-left {
-  margin-left: -0.5rem;
-  margin-right: 0.5rem;
 }
 
 .next-cancel-buttons {
@@ -278,13 +151,6 @@ body {
 .mid-form-feedback-button-label {
   font-size: 1.25rem;
   line-height: 1.2;
-}
-
-.mid-form-feedback-button {
-  border-color: rgb(174, 174, 174);
-  padding: 1rem 1.5rem;
-  height: inherit;
-  margin-left: 0rem;
 }
 
 /*Checkboxes and Radio Buttons*/
