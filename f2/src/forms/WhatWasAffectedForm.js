@@ -10,6 +10,7 @@ import { Error, ErrorSummary } from '../components/formik/alert'
 import { NextCancelButtons } from '../components/formik/button'
 import { WhatWasAffectedFormSchema } from './WhatWasAffectedFormSchema'
 import { P } from '../components/formik/paragraph'
+import { whatWasAffectedPages } from '../utils/nextWhatWasAffectedUrl'
 
 const createErrorSummary = (errors) => {
   const errorSummary = {}
@@ -23,20 +24,6 @@ const createErrorSummary = (errors) => {
   return errorSummary
 }
 
-export const whatWasAffectedPages = [
-  {
-    key: 'whatWasAffectedForm.financial',
-    url: 'moneylost',
-  },
-  {
-    key: 'whatWasAffectedForm.personalInformation',
-    url: 'information',
-  },
-  { key: 'whatWasAffectedForm.devices', url: 'devices' },
-  { key: 'whatWasAffectedForm.business_assets', url: 'business' },
-  { key: 'whatWasAffectedForm.other', url: '' },
-]
-
 export const WhatWasAffectedForm = (props) => {
   const [data] = useStateValue()
   const whatWasAffected = {
@@ -49,7 +36,7 @@ export const WhatWasAffectedForm = (props) => {
       name: 'financial',
       checkboxLabel: <Trans id="whatWasAffectedForm.financial" />,
       checkboxHelpText: <Trans id="whatWasAffectedForm.financial.example" />,
-      checkboxValue: 'whatWasAffectedForm.financial',
+      checkboxValue: whatWasAffectedPages.FINANCIAL.key,
     },
     {
       name: 'personalInformation',
@@ -57,13 +44,13 @@ export const WhatWasAffectedForm = (props) => {
       checkboxHelpText: (
         <Trans id="whatWasAffectedForm.personalInformation.example" />
       ),
-      checkboxValue: 'whatWasAffectedForm.personalInformation',
+      checkboxValue: whatWasAffectedPages.INFORMATION.key,
     },
     {
       name: 'devices',
       checkboxLabel: <Trans id="whatWasAffectedForm.devices" />,
       checkboxHelpText: <Trans id="whatWasAffectedForm.devices.example" />,
-      checkboxValue: 'whatWasAffectedForm.devices',
+      checkboxValue: whatWasAffectedPages.DEVICES.key,
     },
     {
       name: 'businessAssets',
@@ -71,13 +58,13 @@ export const WhatWasAffectedForm = (props) => {
       checkboxHelpText: (
         <Trans id="whatWasAffectedForm.business_assets.example" />
       ),
-      checkboxValue: 'whatWasAffectedForm.business_assets',
+      checkboxValue: whatWasAffectedPages.BUSINESS.key,
     },
     {
       name: 'other',
       checkboxLabel: <Trans id="whatWasAffectedForm.other" />,
       checkboxHelpText: '',
-      checkboxValue: 'whatWasAffectedForm.other',
+      checkboxValue: whatWasAffectedPages.OTHER.key,
     },
   ]
 
