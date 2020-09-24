@@ -1,0 +1,74 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../../.storybook/themeDecorator'
+import FormDecorator from '../../../../.storybook/formDecorator'
+import { ErrorSummary, Info, Success, Warning, Error } from '.'
+
+<Meta
+  title="Components/formik/alert"
+  component={ErrorSummary}
+  decorators={[ThemeDecorator, FormDecorator]}
+/>
+
+# Alerts
+
+Various components to show warnings, alerts, and errors
+
+## Info
+
+The Info component displays information
+
+<Preview>
+  <Story name="Info">
+    <Info>This is an important information</Info>
+  </Story>
+</Preview>
+
+## Success
+
+The Success component displays Success information
+
+<Preview>
+  <Story name="Success">
+    <Success>This is a success information</Success>
+  </Story>
+</Preview>
+
+## Warning
+
+The Warning component displays warning information
+
+<Preview>
+  <Story name="Warning">
+    <Warning>This is a warnings information</Warning>
+  </Story>
+</Preview>
+
+## Error
+
+The Error component displays error information
+
+<Preview>
+  <Story name="Error">
+    <Error>This is an error!</Error>
+  </Story>
+</Preview>
+
+## ErrorSummary
+
+The ErrorSummary component uses formik validation to assign errors to fields. This can be set in a `validate` function or Yup schema that returns an errors object. The object is a list of field names as keys, pointing to lingui ids as values. This function is usually defined before exporting the form component.
+
+## Props
+
+Children of `<ErrorSummary>` will render as the main error message, usually through a `<Trans>` element. There is a default error message, so you can omit passing children to this component.
+
+<Preview>
+  <Story name="ErrorSummary">
+    <ErrorSummary
+      submissions={0}
+      title="There are errors"
+      errors={[{ label: 'Invalid Day', message: 'Please input valid day' }]}
+    />
+  </Story>
+</Preview>
+
+<Props of={ErrorSummary} />
