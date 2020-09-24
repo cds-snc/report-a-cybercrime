@@ -119,10 +119,6 @@ export const WhatWasAffectedForm = (props) => {
                             type="checkbox"
                             id={'checkbox-' + question.name}
                           >
-                            <ErrorMessage
-                              name={question.name}
-                              component={Error}
-                            />
                           </Field>
                         </React.Fragment>
                       )
