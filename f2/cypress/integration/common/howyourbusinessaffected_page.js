@@ -1,12 +1,10 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When } from 'cypress-cucumber-preprocessor/steps'
 
 When('I fill to Howyourbusinessaffected forms', () => {
   cy.get('form').find('[name="nameOfBusiness"]').type('Edward Jones')
   cy.get('form').find('[name="industry"]').type('Financial Advisor')
   cy.get('form').find('[name="role"]').type('Expert Advisor')
-  cy.get('form')
-    .find('[value="numberOfEmployee.1To99"]')
-    .check({ force: true })
+  cy.get('form').find('[value="numberOfEmployee.1To99"]').check({ force: true })
 })
 
 When('I fill to Howyourbusinessaffected100 forms', () => {
@@ -25,6 +23,4 @@ When('I fill to Howyourbusinessaffected500 forms', () => {
     .check({ force: true })
 })
 
-When('I fill to NoHowyourbusinessaffected forms', () => {
-})
-
+When('I fill to NoHowyourbusinessaffected forms', () => {})
