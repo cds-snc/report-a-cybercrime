@@ -1,4 +1,4 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When } from 'cypress-cucumber-preprocessor/steps'
 
 // In English
 When('I fill WhoAreYouReportingMyself page forms', () => {
@@ -25,7 +25,7 @@ When('I fill WhoAreYouReportingBusiness page forms', () => {
     .type('Bed Bath & Beyond, https://bedbathandbeyond.ca/ ,613-823-4262')
 })
 
-// In french 
+// In french
 When('I fill WhoAreYouReportingSomeOne in French page forms', () => {
   cy.get('form')
     .find('[value="whoAreYouReportForPage.options.someone"]')
