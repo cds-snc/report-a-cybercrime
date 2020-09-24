@@ -11,6 +11,7 @@ import {
   SkipButton,
   FeedbackButton,
   NextCancelButtons,
+  MidFormFeedbackButton,
 } from '../button'
 
 export const TestForm = (props) => {
@@ -29,18 +30,23 @@ export const TestForm = (props) => {
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <DefaultButton label="Test Button" />
-              <SubmitButton label="Submit" />
-              <FeedbackButton label="Feedback" />
-              <CancelButton label="Cancel" />
-              <UploadButton label="Upload" />
-              <SkipButton label="Skip" />
+              <Row>
+                <DefaultButton label="Test Button" />
+                <SubmitButton label="Submit" />
+                <FeedbackButton label="Feedback" />
+                <CancelButton label="Cancel" />
+                <UploadButton label="Upload" />
+                <SkipButton label="Skip" />
+              </Row>
               <Row>
                 <NextCancelButtons
                   label="Next Page: Test"
                   submit="Continue"
                   cancel="Cancel"
                 />
+              </Row>
+              <Row>
+                <MidFormFeedbackButton label="Is something wrong on this page?" />
               </Row>
             </Container>
           </Form>

@@ -5,55 +5,58 @@ import { Button as BaseButton, Container, Row, Col } from 'react-bootstrap'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
+import { cleanProps } from '../../../utils/cleanProps'
 import { buttonTypes } from '../theme'
+import { space, border, layout, typography } from 'styled-system'
 
 const buttonStyle = (props) => {
   let buttonProps = props.type
 
   return css`
-    background-color: ${buttonProps.bg};
-    color: ${buttonProps.fg};
+    background-color: ${buttonProps.backGround};
+    color: ${buttonProps.color};
     border-color: ${buttonProps.borderColor};
 
     &:hover,
     &:focus {
-      background-color: ${buttonProps.bg};
-      color: ${buttonProps.fg};
+      background-color: ${buttonProps.backGround};
+      color: ${buttonProps.color};
       box-shadow: #d5d5d5 0px 0px 0px 2px;
     }
 
     &:not(:disabled):not(.disabled):active {
-      background-color: ${buttonProps.active.bg};
-      color: ${buttonProps.active.fg};
+      background-color: ${buttonProps.active.backGround};
+      color: ${buttonProps.active.color};
     }
   `
 }
 
-const ButtonLabel = styled.span`
+const ButtonLabel = styled('span', {
+  shouldForwardProp: (prop) => cleanProps(prop),
+})`
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   font-size: 1.125rem;
   font-weight: 400;
   display: inline-flex;
   align-items: center;
+  ${space}
+  ${typography}
 `
 
-const Button = styled(BaseButton)`
+const Button = styled(BaseButton, {
+  shouldForwardProp: (prop) => cleanProps(prop),
+})`
   height: 3rem;
   -webkit-box-pack: center;
-  white-space: nowrap;
   border-style: outset;
-  min-width: 8rem;
+  min-width: 10rem;
   padding-left: 0rem;
   padding-right: 0rem;
   align-items: center;
-  ${buttonStyle}
-`
-
-const BigButton = styled(BaseButton)`
-  padding: 1rem 1.5rem;
-  height: inherit;
-  margin-left: 0rem;
+  ${space}
+  ${border}
+  ${layout}
   ${buttonStyle}
 `
 
@@ -77,9 +80,19 @@ export const DefaultButton = (props) => {
 
 export const MidFormFeedbackButton = (props) => {
   return (
-    <BigButton type={buttonTypes.DEFAULT}>
-      <ButtonLabel>{props.label}</ButtonLabel>
-    </BigButton>
+    <Button
+      type={buttonTypes.DEFAULT}
+      border="1px solid"
+      padding="1rem 1.5rem"
+      marginLeft="0rem"
+      border="1px solid"
+      borderStyle="outset"
+      height="inherit"
+    >
+      <ButtonLabel fontSize="1.25rem" paddingLeft="0rem" paddingRight="0rem">
+        {props.label}
+      </ButtonLabel>
+    </Button>
   )
 }
 
@@ -119,6 +132,7 @@ export const NextCancelButtons = (props) => {
         <Col xs="auto" className="button-container">
           <SubmitButton label={props.submit} />
         </Col>
+        <Col xs="1" className="button-container"></Col>
         <Col xs="auto" className="button-container">
           <CancelButton label={props.cancel} />
         </Col>

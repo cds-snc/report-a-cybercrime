@@ -1,47 +1,47 @@
 export const buttonTypes = {
   SUBMIT: {
-    bg: '#1f5126',
-    fg: '#FFF',
+    backGround: '#1f5126',
+    color: '#FFF',
     borderColor: '#00692f',
     active: {
-      bg: '#183c1f',
-      fg: '#FFF',
+      backGround: '#183c1f',
+      color: '#FFF',
     },
   },
   DEFAULT: {
-    bg: '#e8e8e8',
-    fg: '#000',
+    backGround: '#e8e8e8',
+    color: '#000',
     borderColor: '#d5d5d5',
     active: {
-      bg: '#d5d5d5',
-      fg: '#000',
+      backGround: '#d5d5d5',
+      color: '#000',
     },
   },
   UPLOAD: {
-    bg: '#153e75',
-    fg: '#FFF',
+    backGround: '#153e75',
+    color: '#FFF',
     borderColor: '#153e75',
     active: {
-      bg: '#003a66',
-      fg: '#FFF',
+      backGround: '#003a66',
+      color: '#FFF',
     },
   },
   SKIP: {
-    bg: '#aeaeae',
-    fg: '#000',
+    backGround: '#aeaeae',
+    color: '#000',
     borderColor: '#808080',
     active: {
-      bg: '#d5d5d5',
-      fg: '#000',
+      backGround: '#d5d5d5',
+      color: '#000',
     },
   },
   FEEDBACK: {
-    bg: '#1e4e8c',
-    fg: '#FFF',
+    backGround: '#1e4e8c',
+    color: '#FFF',
     borderColor: '#1e4e8c',
     active: {
-      bg: '#1e4e8c',
-      fg: '#FFF',
+      backGround: '#1e4e8c',
+      color: '#FFF',
     },
   },
 }
