@@ -1,49 +1,18 @@
 /** @jsx jsx */
 import React from 'react'
+import PropTypes from 'prop-types'
 import addrs from 'email-addresses'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
-import { Input } from '../components/input'
-import { containsData } from '../utils/containsData'
-import { Flex, Icon } from '@chakra-ui/core'
 import { P } from '../components/paragraph'
-import { Button } from '../components/button'
-import { Link as ReactRouterLink } from 'react-router-dom'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
 import { TextArea } from '../components/formik/textArea'
 import { NextCancelButtons } from '../components/formik/button'
-import { Error, Info } from '../components/formik/alert'
+import { Error, Info, ErrorSummary } from '../components/formik/alert'
+import { useLingui } from '@lingui/react'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
-
-export const validate = (values) => {
-  const errors = {}
-
-  // from https://www.w3resource.com/javascript/form/phone-no-validation.php
-  const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-
-  const phone =
-    'phone' in values &&
-    containsData(values.phone) &&
-    new RegExp(phoneRegex).test(values.phone)
-  const email =
-    'email' in values &&
-    containsData(values.email) &&
-    addrs(values.email) !== null
-
-  //condition for an error to occur: append a lingui id to the list of error
-  if (!values.fullName || values.fullName === '')
-    errors.fullName = 'contactinfoForm.fullName.warning'
-
-  if (!(email && addrs(values.email)) && !phone) {
-    errors.email = 'contactinfoForm.email.warning'
-    errors.phone = 'contactinfoForm.phone.warning'
-  }
-
-  return errors
-}
 
 const fyiValidate = (values) => {
   const errors = {}
@@ -61,23 +30,10 @@ export const ContactInfoForm = (props) => {
     ...data.formData.contactInfo,
   }
 
-  const contactFormOptions = [
-    {
-      name: 'fullName',
-      label: <Trans id="contactinfoPage.fullName" />,
-      helpText: <Trans id="contactinfoForm.fullName.warning" />,
-    },
-    {
-      name: 'email',
-      label: <Trans id="contactinfoPage.emailAddress" />,
-      helpText: <Trans id="contactinfoForm.email.warning" />,
-    },
-    {
-      name: 'phone',
-      label: <Trans id="contactinfoPage.phoneNumber" />,
-      helpText: <Trans id="contactinfoForm.phone.warning" />,
-    },
-  ]
+  const fullName = ContactInfoFormSchema.CONTACT_INFO.fullName
+
+  const onSubmitValidation = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
+  const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
   const { fyiForm } = data.formData
 
@@ -85,15 +41,31 @@ export const ContactInfoForm = (props) => {
     <React.Fragment>
       <Formik
         initialValues={contactInfo}
-        validationSchema={ContactInfoFormSchema()}
-        onSubmit={(values) => {
-          props.onSubmit(values)
+        onSubmit={async (values, { setErrors }) => {
+          const errors = onSubmitValidation(values)
+          if (errors.fields) {
+            setErrors(errors.fields)
+          } else {
+            props.onSubmit(values)
+          }
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-section">
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary
+                    errors={createErrorSummary(errors)}
+                    submissions={submitCount}
+                    title={<Trans id="contactinfoPage.hasValidationErrors" />}
+                  />
+                )}
+                {errors && errors.fullName && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    {'fullName.errorMessage'}
+                  </P>
+                )}
                 <FieldArray
                   name="contactInfo"
                   className="form-section"
@@ -151,4 +123,8 @@ export const ContactInfoForm = (props) => {
       </Formik>
     </React.Fragment>
   )
+}
+
+ContactInfoForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }

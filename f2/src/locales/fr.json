@@ -139,6 +139,7 @@
   "contactinfoForm.phone.warning": "Entrez un numéro de téléphone de 10 chiffres.",
   "contactinfoPage.emailAddress": "Adresse courriel",
   "contactinfoPage.fullName": "Nom complet",
+  "contactinfoPage.hasValidationErrors": "Veuillez réviser vos coordonnées.",
   "contactinfoPage.intro": "Nous ne faisons pas de suivi auprès de toutes les personnes qui font un signalement. Nous communiquerons avec vous uniquement pour confirmer vos informations ou si nous avons besoin d’en savoir plus.",
   "contactinfoPage.nextButton": "Continuer",
   "contactinfoPage.nextInfo": "Prochaine étape : Révisez votre rapport",

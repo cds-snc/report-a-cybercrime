@@ -139,6 +139,7 @@
   "contactinfoForm.phone.warning": "Enter a phone number that contains 10 digits.",
   "contactinfoPage.emailAddress": "Email address",
   "contactinfoPage.fullName": "Full name",
+  "contactinfoPage.hasValidationErrors": "Please review your contact details.",
   "contactinfoPage.intro": "We do not follow up with everyone who submits a report. We will only contact you to confirm your report or if we need more information.",
   "contactinfoPage.nextButton": "Continue",
   "contactinfoPage.nextInfo": "Next: Review your report",
