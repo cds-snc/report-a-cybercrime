@@ -1,4 +1,4 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When } from 'cypress-cucumber-preprocessor/steps'
 
 When('I fill to Whathappened page forms', () => {
   cy.fixture('form_data.json').then((user) => {
@@ -17,6 +17,6 @@ When('I fill WhathappenedHarmful page forms', () => {
 When('I fill WhathappenedInjection page forms', () => {
   cy.fixture('form_data.json').then((user) => {
     var paragraph = user.xssInjection1
-    cy.get('form').find('[name="whatHappened"]').type(paragraph)  
+    cy.get('form').find('[name="whatHappened"]').type(paragraph)
   })
 })
