@@ -31,31 +31,31 @@ export const MoneyLostInfoForm = (props) => {
   const formOptions = [
     {
       name: 'eTransfer',
-      value: 'eTransfer',
+      value: 'methodPayment.eTransfer',
       checkboxLabel: <Trans id="methodPayment.eTransfer" />,
       checkboxName: 'methodPayment.eTransfer',
     },
     {
       name: 'creditCard',
-      value: 'creditCard',
+      value: 'methodPayment.creditCard',
       checkboxLabel: <Trans id="methodPayment.creditCard" />,
       checkboxName: 'methodPayment.creditCard',
     },
     {
       name: 'giftCard',
-      value: 'giftCard',
+      value: 'methodPayment.giftCard',
       checkboxLabel: <Trans id="methodPayment.giftCard" />,
       checkboxName: 'methodPayment.giftCard',
     },
     {
       name: 'cryptocurrency',
-      value: 'cryptocurrency',
+      value: 'methodPayment.cryptocurrency',
       checkboxLabel: <Trans id="methodPayment.cryptocurrency" />,
       checkboxName: 'methodPayment.cryptocurrency',
     },
     {
       name: 'other',
-      value: 'other',
+      value: 'methodPayment.other',
       checkboxLabel: <Trans id="methodPayment.other" />,
       checkboxName: 'methodPayment.other',
     },
@@ -144,15 +144,15 @@ export const MoneyLostInfoForm = (props) => {
                             name="methodPayment"
                             label={question.checkboxLabel}
                             component={CheckBox}
-                            value={question.name}
+                            value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             type="checkbox"
                             id={'checkbox-' + question.name}
                           >
-                            {question.value === 'other' && (
+                            {question.name === 'other' && (
                               <Field
-                                name={question.name}
+                                name="methodOther"
                                 label={question.descriptionLabel}
                                 helpText={question.descriptionHelpText}
                                 component={Input}
