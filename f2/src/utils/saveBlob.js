@@ -32,14 +32,10 @@ try {
   console.warn('WARNING: File storage not configured')
 }
 
-const uidListInitial = process.env.LDAP_UID
-  ? process.env.LDAP_UID.split(',').map((k) => k.trim())
-  : []
-
 /*
 Given 'data' , find all the files, encrypt and save to cloud
 */
-async function saveBlob(data) {
+async function saveBlob(uidList, data) {
   try {
     if (!blobServiceClient && data.evidence.files.length > 0) {
       console.warn(`WARNING: Report ${data.reportId} not able to save files`)
@@ -76,7 +72,7 @@ async function saveBlob(data) {
           let blobName = file.sha1 + '.' + file.name.split('.').pop()
 
           // Add p7m extension if we are encrypting file. Entrust on RCMP computer will recognize p7m as encrypted file
-          blobName = uidListInitial.length > 0 ? blobName + '.p7m' : blobName
+          blobName = uidList.length > 0 ? blobName + '.p7m' : blobName
 
           const blockBlobClient = containerClient.getBlockBlobClient(blobName)
 
@@ -95,8 +91,8 @@ async function saveBlob(data) {
           }
 
           // If running in a test environment with no HRMIS, upload the raw file instead of encrypting
-          if (uidListInitial.length > 0) {
-            encryptFile(uidListInitial, file, uploadFile)
+          if (uidList.length > 0) {
+            encryptFile(uidList, file, uploadFile)
           } else {
             uploadFile(file, fs.readFileSync(file.path))
           }

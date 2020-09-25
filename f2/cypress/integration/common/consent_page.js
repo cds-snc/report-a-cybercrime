@@ -1,4 +1,4 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When, And, Given } from 'cypress-cucumber-preprocessor/steps'
 
 And('I click continue without checking consent', () => {
   //cy.get('[data-cy=submit]').first().click({ force: true })
