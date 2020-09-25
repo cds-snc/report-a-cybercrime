@@ -85,9 +85,8 @@ export const EvidenceInfoForm = (props) => {
       img.src = window.URL.createObjectURL(file)
       img.onload = () => {
         if (img.width < 128 || img.height < 128){
-          alert(
-            "Warning: Your image is too small(either the width or the height is less than 128 pixels). Please increase the image size and try uploading again. \n Alerte : Votre image est trop petite (la largeur ou la hauteur est inférieure à 128 pixels). Veuillez augmenter la taille de l'image et essayer de la télécharger à nouveau.",
-          )
+          setStatus('fileUpload.imageTooSmallError')
+          setShowModal(true)
         }
         else {
           setStatus('fileUpload.added')
@@ -180,6 +179,11 @@ export const EvidenceInfoForm = (props) => {
                 label={<Trans id="evidencePage.supportedFiles" />}
                 items={allowedFilesList}
               />
+            )}
+            {status === 'fileUpload.imageTooSmallError' && (
+              <FormRow>
+                <Trans id="fileUpload.imageTooSmallError" />
+              </FormRow>
             )}
           </Container>
         </Modal.Body>
