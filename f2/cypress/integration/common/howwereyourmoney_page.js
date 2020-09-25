@@ -89,4 +89,3 @@ When('I fill Howwereyourmoney in French page forms', () => {
   cy.get('form').find('[name="transactionMonth"]').type('2')
   cy.get('form').find('[name="transactionYear"]').type('2020')
 })
-

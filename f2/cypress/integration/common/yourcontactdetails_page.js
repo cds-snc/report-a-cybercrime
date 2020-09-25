@@ -20,5 +20,5 @@ When('I fill yourContactDetailsName page forms', () => {
   cy.get('form').find('[name="fullName"]').type('FirstName LastName')
 })
 
-When('I fill noyourContactDetailsName page forms', () => {
-})
+When('I fill noyourContactDetailsName page forms', () => {})
+

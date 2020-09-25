@@ -36,5 +36,5 @@ Feature: Test the entire report workflow in english
     Then I submit report
 
   Scenario: Confirm Report ID is generated
-    Then "Thank you for reporting" should be shown
-    
+    Then "Thank you for reporting" should be shown 
+

@@ -1,5 +1,6 @@
 import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
 
+
 When('I fill howdiditstart page forms', () => {
   cy.get('form').find('[value="email"]').check({ force: true })
   cy.get('form').find('[name="email"]').type('SuspectEnglish@magma.com')
@@ -45,9 +46,8 @@ When('I fill howdiditstartMailPhone page forms', () => {
   cy.get('form').find('[name="phone"]').type('1-800-000-1111')
 })
 
-When('I fill Nohowdiditstart page forms', () => {
-  
-})
+
+When('I fill Nohowdiditstart page forms', () => {})
 
 When('I fill howdiditstartInjection page forms', () => {
   cy.get('form').find('[value="others"]').check({ force: true })
@@ -56,3 +56,4 @@ When('I fill howdiditstartInjection page forms', () => {
     cy.get('form').find('[name="others"]').type(paragraph)  
   })
 })
+

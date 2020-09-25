@@ -13,5 +13,5 @@ When('I fill AttachSupportingEvidence in French page forms', () => {
 
   cy.get('#uploader').uploadFile(fileName3, 'image/png')
   cy.wait(1000)
-  //cy.screenshot()
+  cy.screenshot()
 })

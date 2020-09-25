@@ -1,4 +1,5 @@
 import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+
 // Test accessibility
 //After(() => {
 //  cy.reportA11y()
@@ -45,5 +46,3 @@ Then('I read before you start instructions in French', () => {
   cy.contains('Continuer').first().click({ force: true })
   //cy.get('[data-cy=submit]').click({ force: true })
 })
-
-

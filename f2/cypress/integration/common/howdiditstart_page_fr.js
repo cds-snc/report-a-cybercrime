@@ -13,4 +13,3 @@ When('I fill howdiditstart in French page forms', () => {
   cy.get('form').find('[name="others"]').type('Une publicité')
 })
 
-

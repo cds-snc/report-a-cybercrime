@@ -6,11 +6,11 @@ When('I fill AttachSupportingEvidence page forms', () => {
   const fileName3 = 'GithubDesktopDocumentation forInstallation_Tutorial.docx'
   cy.get('#uploader').uploadFile(fileName1, 'image/jpeg')
   cy.wait(1000)
-  cy.get('#uploader').uploadFile(fileName2, 'image/jpeg')
+  cy.get('#uploader').uploadFile(fileName2, 'image/jpeg')  
   cy.wait(1000)
   cy.get('#uploader').uploadFile(fileName3, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
   cy.wait(1000)
-
+  
 })
 
 When('I fill AttachSupportingEvidenceSensitive page forms', () => {
