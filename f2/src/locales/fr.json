@@ -210,6 +210,7 @@
   "fileUpload.fileName": "Nom de fichier",
   "fileUpload.fileSize": "Taille du fichier",
   "fileUpload.fileTypeError": "Impossible de numériser - pas un type de fichier pris en charge",
+  "fileUpload.imageTooSmallError": "Alerte : Votre image est trop petite (la largeur ou la hauteur est inférieure à 128 pixels). Veuillez augmenter la taille de l'image et essayer de la télécharger à nouveau.",
   "fileUpload.isAdult": "Est adulte",
   "fileUpload.isRacy": "Est racé",
   "fileUpload.isRacy.false": "Faux",
