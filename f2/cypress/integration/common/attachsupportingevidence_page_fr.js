@@ -1,4 +1,4 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When } from 'cypress-cucumber-preprocessor/steps'
 
 When('I fill AttachSupportingEvidence in French page forms', () => {
   const fileName1 = 'sample.txt'

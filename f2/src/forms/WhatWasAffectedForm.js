@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
+import { Formik, FieldArray, Field } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
-import { Error, ErrorSummary } from '../components/formik/alert'
+import { ErrorSummary } from '../components/formik/alert'
 import { NextCancelButtons } from '../components/formik/button'
 import { WhatWasAffectedFormSchema } from './WhatWasAffectedFormSchema'
 import { P } from '../components/formik/paragraph'
@@ -118,12 +118,7 @@ export const WhatWasAffectedForm = (props) => {
                             onBlur={handleBlur}
                             type="checkbox"
                             id={'checkbox-' + question.name}
-                          >
-                            <ErrorMessage
-                              name={question.name}
-                              component={Error}
-                            />
-                          </Field>
+                          />
                         </React.Fragment>
                       )
                     })
