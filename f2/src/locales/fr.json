@@ -202,7 +202,7 @@
   "fileUpload.adultScore": "Score adulte",
   "fileUpload.classification.cannotscan": "Impossible de scanner le contenu",
   "fileUpload.classification.title": "Classification des images",
-  "fileUpload.errorModal.title": "File Upload Error",
+  "fileUpload.errorModal.title": "Erreur de téléchargement de ficher",
   "fileUpload.fileAttachment": "Pièces jointes aux fichiers",
   "fileUpload.fileAttachment.offensivewarning": "L'image peut être choquante",
   "fileUpload.fileAttachment.offensivewarning.block": "à Alerte:",
