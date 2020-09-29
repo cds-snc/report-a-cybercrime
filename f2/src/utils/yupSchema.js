@@ -5,11 +5,6 @@ import { Trans } from '@lingui/macro'
 
 export const yupSchema = () => {
   return {
-    // nameSchema: Yup.string().name()(
-    //   <Trans id="contactinfoForm.name.warning" />,
-    //   //excludeEmptyString: true,
-    //   //message: 'Please enter a valid full name',
-    // ),
     phoneSchema: Yup.string().matches(regexDef().phoneRegExp, {
       excludeEmptyString: true,
       message: 'Please enter a valid phone number',
