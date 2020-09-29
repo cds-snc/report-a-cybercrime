@@ -5,7 +5,7 @@ import wait from 'waait'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { validate, ContactInfoForm } from '../ContactInfoForm'
+import { ContactInfoForm } from '../ContactInfoForm'
 import en from '../../locales/en.json'
 import canada from '../../theme/canada'
 import { StateProvider, initialState, reducer } from '../../utils/state'
@@ -33,8 +33,6 @@ describe('<ContactInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const fullName = container.querySelector('input[name="fullName"]')
-
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
 
@@ -60,10 +58,6 @@ describe('<ContactInfoForm />', () => {
         </ThemeProvider>
       </MemoryRouter>,
     )
-
-    const fullName = container.querySelector('input[name="fullName"]')
-    const email = container.querySelector('input[name="email"]')
-    const phone = container.querySelector('input[name="phone"]')
 
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
