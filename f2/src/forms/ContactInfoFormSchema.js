@@ -1,4 +1,3 @@
-import * as Yup from 'yup'
 import addrs from 'email-addresses'
 import React from 'react'
 import { Trans } from '@lingui/macro'
