@@ -21,7 +21,7 @@ describe('<ContactInfoForm />', () => {
   it('does not call the onSubmit function when the form is submitted with missing values', async () => {
     const submitMock = jest.fn()
 
-    const { container, getByText } = render(
+    const { getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -47,7 +47,7 @@ describe('<ContactInfoForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { container, getByText } = render(
+    const { getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
