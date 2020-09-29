@@ -11,7 +11,6 @@ import { Formik, FieldArray, Field } from 'formik'
 import {
   realTimeValidation,
   createErrorSummary,
-  onSubmitValidation,
 } from './MoneyLostInfoFormSchema'
 import { Form, Container, Row } from 'react-bootstrap'
 import { CheckBox } from '../components/formik/checkbox'
