@@ -210,6 +210,7 @@
   "fileUpload.fileName": "File name",
   "fileUpload.fileSize": "File size",
   "fileUpload.fileTypeError": "Could not scan - not a supported file type",
+  "fileUpload.imageTooSmallError": "Warning: Your image is too small(either the width or the height is less than 128 pixels). Please increase the image size and try uploading again.",
   "fileUpload.isAdult": "Is adult",
   "fileUpload.isRacy": "Is racy",
   "fileUpload.isRacy.false": "False",

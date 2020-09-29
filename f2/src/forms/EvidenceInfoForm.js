@@ -80,10 +80,28 @@ export const EvidenceInfoForm = (props) => {
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     }
-    setStatus('fileUpload.added')
-    setFiles(files.concat(e.target.files[0]))
-    setFileDescriptions(fileDescriptions.concat(''))
-    e.target.value = '' // clear the file input target, to allow the file to be removed then added again
+    if(file.type.indexOf("image") !== -1) {
+      let img = new Image()
+      img.src = window.URL.createObjectURL(file)
+      img.onload = () => {
+        if (img.width < 128 || img.height < 128){
+          setStatus('fileUpload.imageTooSmallError')
+          setShowModal(true)
+        }
+        else {
+          setStatus('fileUpload.added')
+          setFiles(files.concat(file))
+          setFileDescriptions(fileDescriptions.concat(''))
+          }        
+      }
+      e.target.value = ''
+    }
+    else {
+      setStatus('fileUpload.added')
+      setFiles(files.concat(e.target.files[0]))
+      setFileDescriptions(fileDescriptions.concat(''))
+      e.target.value = '' // clear the file input target, to allow the file to be removed then added again
+    }
   }
 
   const onFileDescriptionChange = (description, index) => {
@@ -161,6 +179,11 @@ export const EvidenceInfoForm = (props) => {
                 label={<Trans id="evidencePage.supportedFiles" />}
                 items={allowedFilesList}
               />
+            )}
+            {status === 'fileUpload.imageTooSmallError' && (
+              <FormRow>
+                <Trans id="fileUpload.imageTooSmallError" />
+              </FormRow>
             )}
           </Container>
         </Modal.Body>
