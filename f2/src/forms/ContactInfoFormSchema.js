@@ -2,34 +2,83 @@ import * as Yup from 'yup'
 import addrs from 'email-addresses'
 import React from 'react'
 import { Trans } from '@lingui/macro'
+import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 
-const contactFormOptions = [
-  {
+const contactFormOptions = {
+  enterContactDetails: {
+    label: <Trans id="contactinfoPage.hasValidationErrors" />,
+    errorMessage: <Trans id="contactinfoPage.hasValidationErrors" />,
+  },
+  fullName: {
     name: 'fullName',
+    value: 'fullName',
+    id: 'enterContactDetails-Fullname',
     label: <Trans id="contactinfoPage.fullName" />,
-    helpText: <Trans id="contactinfoForm.fullName.warning" />,
+    errorMessage: <Trans id="contactinfoForm.fullName.warning" />,
   },
-  {
+  email: {
     name: 'email',
+    value: 'email',
+    id: 'enterContactDetails-Email',
     label: <Trans id="contactinfoPage.emailAddress" />,
-    helpText: <Trans id="contactinfoForm.email.warning" />,
+    errorMessage: <Trans id="contactinfoForm.email.warning" />,
   },
-  {
+  phone: {
     name: 'phone',
+    value: 'phone',
+    id: 'enterContactDetails-Phone',
     label: <Trans id="contactinfoPage.phoneNumber" />,
-    helpText: <Trans id="contactinfoForm.phone.warning" />,
+    errorMessage: <Trans id="contactinfoForm.phone.warning" />,
   },
-]
+}
 
 const createErrorSummary = (errors) => {
   const errorSummary = {}
-  if (errors.fullName) {
+
+  const enterContactDetails = errors.enterContactDetails
+  const fullName = errors.fullName
+  const email = errors.email
+  const phone = errors.phone
+
+  if (fullName) {
     errorSummary['fullName'] = {
-      label: <Trans id="contactinfoForm.fullName.warning" />,
-      message: <Trans id="contactinfoForm.fullName.warning" />,
+      label: contactFormOptions.fullName.label,
+      message: contactFormOptions.fullName.errorMessage,
+    }
+  }
+
+  if (email) {
+    errorSummary['email'] = {
+      label: contactFormOptions.email.label,
+      message: contactFormOptions.email.errorMessage,
+    }
+  }
+
+  if (phone) {
+    errorSummary['phone'] = {
+      label: contactFormOptions.phone.label,
+      message: contactFormOptions.phone.errorMessage,
+    }
+  }
+
+  if (enterContactDetails) {
+    errorSummary['enterContactDetails'] = {
+      label: contactFormOptions.enterContactDetails.label,
+      message: contactFormOptions.enterContactDetails.errorMessage,
     }
   }
   return errorSummary
+}
+
+const fyiValidate = (values) => {
+  const errors = {}
+  const fields = {}
+
+  if (values.email && !addrs(values.email)) {
+    fields['email'] = true
+    errors['fields'] = fields
+  }
+  return errors
 }
 
 const onSubmitValidation = (values) => {
@@ -37,26 +86,33 @@ const onSubmitValidation = (values) => {
   const fields = {}
 
   if (!values.fullName || values.fullName === '') {
-    errors.fullName = 'contactinfoForm.fullName.warning'
     fields['fullName'] = true
     errors['fields'] = fields
   }
 
-  //!(email || phone) If either phone or email is not false
   if (!addrs(values.email)) {
-    errors.email = 'contactinfoForm.email.warning'
+    fields['email'] = true
+    errors['fields'] = fields
   }
 
-  if (!values.phone) {
-    errors.phone = 'contactinfoForm.phone.warning'
+  if (!values.phone || !formatPhoneNumber(values.phone)) {
+    fields['phone'] = true
+    errors['fields'] = fields
   }
+
+  if (!values.fullName && !values.email && !values.phone) {
+    fields['enterContactDetails'] = true
+    errors['fields'] = fields
+  }
+
+  values.phone = formatPhoneNumber(values.phone)
 
   return errors
 }
 
 export const ContactInfoFormSchema = {
-  //return contactInfoFormSchema
   CONTACT_INFO: contactFormOptions,
   ON_SUBMIT_VALIDATION: onSubmitValidation,
+  ON_SUBMIT_FYI_VALIDATION: fyiValidate,
   CREATE_ERROR_SUMMARY: createErrorSummary,
 }

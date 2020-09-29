@@ -13,24 +13,7 @@ import { StateProvider, initialState, reducer } from '../../utils/state'
 i18n.load('en', { en })
 i18n.activate('en')
 
-const fillIn = (element, { with: value }) =>
-  fireEvent.change(element, { target: { value } })
-
 const clickOn = (element) => fireEvent.click(element)
-
-describe('validation', () => {
-  afterEach(cleanup)
-
-  it('passes correct email address', () => {
-    expect(validate({ email: 'aaaa@aaa.com' }).email).toBeUndefined()
-    expect(validate({ email: 'aaa.aaa@aaa.com' }).email).toBeUndefined()
-    expect(validate({ email: 'aaa@aaa-aaa.com' }).email).toBeUndefined()
-  })
-
-  it('fails incorrect email address', () => {
-    expect(validate({ email: 'aaaaaa.com' }).email).not.toBeUndefined()
-  })
-})
 
 describe('<ContactInfoForm />', () => {
   afterEach(cleanup)
@@ -54,10 +37,6 @@ describe('<ContactInfoForm />', () => {
 
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
-
-    fillIn(fullName, {
-      with: 'Mallory',
-    })
 
     // Click the next button to trigger the form submission
     clickOn(nextButton.parentElement)
@@ -89,21 +68,11 @@ describe('<ContactInfoForm />', () => {
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
 
-    fillIn(fullName, {
-      with: 'Mallory',
-    })
-    fillIn(email, {
-      with: 'test@remail.com',
-    })
-    fillIn(phone, {
-      with: '1234567890',
-    })
-
     // Click the next button to trigger the form submission
     clickOn(nextButton.parentElement)
 
     await wait(0) // Wait for promises to resolve
 
-    expect(submitMock).toHaveBeenCalledTimes(1)
+    expect(submitMock).toHaveBeenCalledTimes(0)
   })
 })

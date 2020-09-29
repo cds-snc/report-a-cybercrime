@@ -9,30 +9,26 @@ import { P } from '../components/paragraph'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { TextArea } from '../components/formik/textArea'
-import { NextCancelButtons } from '../components/formik/button'
-import { Error, Info, ErrorSummary } from '../components/formik/alert'
-import { useLingui } from '@lingui/react'
+import { SkipButton, NextCancelButtons } from '../components/formik/button'
+import { Flex, Icon } from '@chakra-ui/core'
+import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
-
-const fyiValidate = (values) => {
-  const errors = {}
-
-  if (values.email && !addrs(values.email)) {
-    errors.email = 'contactinfoForm.email.warning'
-  }
-
-  return errors
-}
+import { Link as ReactRouterLink } from 'react-router-dom'
 
 export const ContactInfoForm = (props) => {
   const [data] = useStateValue()
   const contactInfo = {
     ...data.formData.contactInfo,
   }
+  const enterContactDetails =
+    ContactInfoFormSchema.CONTACT_INFO.enterContactDetails // .QUESTIONS.incidentFrequency
 
   const fullName = ContactInfoFormSchema.CONTACT_INFO.fullName
+  const email = ContactInfoFormSchema.CONTACT_INFO.email
+  const phone = ContactInfoFormSchema.CONTACT_INFO.phone
 
   const onSubmitValidation = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
+  const onSubmitFYIValidation = ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
   const { fyiForm } = data.formData
@@ -42,7 +38,9 @@ export const ContactInfoForm = (props) => {
       <Formik
         initialValues={contactInfo}
         onSubmit={async (values, { setErrors }) => {
-          const errors = onSubmitValidation(values)
+          const errors = !fyiForm
+            ? onSubmitValidation(values)
+            : onSubmitFYIValidation(values)
           if (errors.fields) {
             setErrors(errors.fields)
           } else {
@@ -61,11 +59,60 @@ export const ContactInfoForm = (props) => {
                     title={<Trans id="contactinfoPage.hasValidationErrors" />}
                   />
                 )}
-                {errors && errors.fullName && (
+
+                {errors && errors.enterContactDetails && (
                   <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
-                    {'fullName.errorMessage'}
+                    {enterContactDetails.errorMessage}
                   </P>
                 )}
+                {errors && errors.fullName && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    {fullName.errorMessage}
+                  </P>
+                )}
+                {errors && errors.email && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    {email.errorMessage}
+                  </P>
+                )}
+                {errors && errors.phone && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    {phone.errorMessage}
+                  </P>
+                )}
+
+                <br />
+                <br />
+
+                {fyiForm ? (
+                  <Flex direction="row" align="center" wrap="wrap" mb={10}>
+                    <P w="100%">
+                      <Trans id="contactinfoPage.skipInfo" />
+                    </P>
+                    <SkipButton
+                      label={<Trans id="locationinfoPage.skipButton" />}
+                      as={ReactRouterLink}
+                      fontSize={{ base: 'lg', md: 'xl' }}
+                      color="black"
+                      variant="solid"
+                      variantColor="gray"
+                      bg="gray.400"
+                      borderColor="gray.500"
+                      to="/confirmation"
+                      textAlign="center"
+                    >
+                      <Trans id="locationinfoPage.skipButton" />
+                      <Icon
+                        focusable="false"
+                        ml={2}
+                        mr={-2}
+                        name="chevron-right"
+                        size="28px"
+                      />
+                    </SkipButton>
+                  </Flex>
+                ) : null}
+
                 <FieldArray
                   name="contactInfo"
                   className="form-section"
@@ -73,38 +120,26 @@ export const ContactInfoForm = (props) => {
                     return (
                       <React.Fragment>
                         <Field
-                          name={'fullName'} //question.name
-                          label={<Trans id="contactinfoPage.fullName" />} // question.questionLabel
-                          helpText={
-                            <Trans id="contactinfoForm.fullName.warning" />
-                          }
+                          name={'fullName'}
+                          label={<Trans id="contactinfoPage.fullName" />}
                           component={TextArea}
                           onBlur={handleBlur}
                           onChange={handleChange}
                         />
-                        <ErrorMessage name={'fullName'} component={Error} />
                         <Field
-                          name={'email'} //question.name
-                          label={<Trans id="contactinfoPage.emailAddress" />} // question.questionLabel
-                          helpText={
-                            <Trans id="contactinfoForm.email.warning" />
-                          }
+                          name={'email'}
+                          label={<Trans id="contactinfoPage.emailAddress" />}
                           component={TextArea}
                           onBlur={handleBlur}
                           onChange={handleChange}
                         />
-                        <ErrorMessage name={'email'} component={Error} />
                         <Field
-                          name={'phone'} //question.name
-                          label={<Trans id="contactinfoPage.phoneNumber" />} // question.questionLabel
-                          helpText={
-                            <Trans id="contactinfoForm.phone.warning" />
-                          }
+                          name={'phone'}
+                          label={<Trans id="contactinfoPage.phoneNumber" />}
                           component={TextArea}
                           onBlur={handleBlur}
                           onChange={handleChange}
                         />
-                        <ErrorMessage name={'phone'} component={Error} />
                       </React.Fragment>
                     )
                   }}
@@ -112,7 +147,7 @@ export const ContactInfoForm = (props) => {
               </Row>
               <Row>
                 <NextCancelButtons
-                  submit={<Trans id="contactinfoPage.nextButton" />} //howDidItStartPage.nextButton
+                  submit={<Trans id="contactinfoPage.nextButton" />}
                   cancel={<Trans id="button.cancelReport" />}
                   label={<Trans id="contactinfoPage.nextInfo" />}
                 />
