@@ -7,20 +7,16 @@ import { useStateValue } from '../utils/state'
 import { P } from '../components/paragraph'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field } from 'formik'
-import { TextArea } from '../components/formik/textArea'
+import { Input } from '../components/formik/input'
 import { SkipButton, NextCancelButtons } from '../components/formik/button'
-import { Flex, Icon } from '@chakra-ui/core'
 import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
-import { Link as ReactRouterLink } from 'react-router-dom'
 
 export const ContactInfoForm = (props) => {
   const [data] = useStateValue()
   const contactInfo = {
     ...data.formData.contactInfo,
   }
-  const enterContactDetails =
-    ContactInfoFormSchema.CONTACT_INFO.enterContactDetails // .QUESTIONS.incidentFrequency
 
   const fullName = ContactInfoFormSchema.CONTACT_INFO.fullName
   const email = ContactInfoFormSchema.CONTACT_INFO.email
@@ -58,79 +54,67 @@ export const ContactInfoForm = (props) => {
                     title={<Trans id="contactinfoPage.hasValidationErrors" />}
                   />
                 )}
-
-                {errors && errors.fullName && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
-                    {fullName.errorMessage}
-                  </P>
-                )}
-                {errors && errors.email && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
-                    {email.errorMessage}
-                  </P>
-                )}
-                {errors && errors.phone && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
-                    {phone.errorMessage}
-                  </P>
-                )}
-
-                <br />
-                <br />
-
                 {fyiForm ? (
-                  <Flex direction="row" align="center" wrap="wrap" mb={10}>
+                  <React.Fragment>
                     <P w="100%">
                       <Trans id="contactinfoPage.skipInfo" />
                     </P>
-                    <SkipButton
-                      label={<Trans id="locationinfoPage.skipButton" />}
-                      as={ReactRouterLink}
-                      fontSize={{ base: 'lg', md: 'xl' }}
-                      color="black"
-                      variant="solid"
-                      variantColor="gray"
-                      bg="gray.400"
-                      borderColor="gray.500"
-                      to="/confirmation"
-                      textAlign="center"
-                    >
-                      <Trans id="locationinfoPage.skipButton" />
-                      <Icon
-                        focusable="false"
-                        ml={2}
-                        mr={-2}
-                        name="chevron-right"
-                        size="28px"
-                      />
-                    </SkipButton>
-                  </Flex>
+                    <SkipButton label="Skip" to="/confirmation" />
+                  </React.Fragment>
                 ) : null}
-
+                <br />
+                <br />
                 <FieldArray
                   name="contactInfo"
                   className="form-section"
                   render={() => {
                     return (
                       <React.Fragment>
+                        {errors && errors.fullName && (
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            {fullName.errorMessage}
+                          </P>
+                        )}
                         <Field
                           name={'fullName'}
                           label={<Trans id="contactinfoPage.fullName" />}
-                          component={TextArea}
+                          component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
                         />
+                        {errors && errors.email && (
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            {email.errorMessage}
+                          </P>
+                        )}
                         <Field
                           name={'email'}
                           label={<Trans id="contactinfoPage.emailAddress" />}
-                          component={TextArea}
+                          component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
                         />
+                        {errors && errors.phone && (
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            {phone.errorMessage}
+                          </P>
+                        )}
                         <Field
                           name={'phone'}
                           label={<Trans id="contactinfoPage.phoneNumber" />}
-                          component={TextArea}
+                          component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
                         />

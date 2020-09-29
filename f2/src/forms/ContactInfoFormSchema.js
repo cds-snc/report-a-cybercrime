@@ -34,7 +34,6 @@ const contactFormOptions = {
 const createErrorSummary = (errors) => {
   const errorSummary = {}
 
-  const enterContactDetails = errors.enterContactDetails
   const fullName = errors.fullName
   const email = errors.email
   const phone = errors.phone
@@ -60,12 +59,6 @@ const createErrorSummary = (errors) => {
     }
   }
 
-  if (enterContactDetails) {
-    errorSummary['enterContactDetails'] = {
-      label: contactFormOptions.enterContactDetails.label,
-      message: contactFormOptions.enterContactDetails.errorMessage,
-    }
-  }
   return errorSummary
 }
 
