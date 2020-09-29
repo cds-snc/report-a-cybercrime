@@ -59,11 +59,6 @@ export const ContactInfoForm = (props) => {
                   />
                 )}
 
-                {errors && errors.enterContactDetails && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
-                    {enterContactDetails.errorMessage}
-                  </P>
-                )}
                 {errors && errors.fullName && (
                   <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
                     {fullName.errorMessage}
