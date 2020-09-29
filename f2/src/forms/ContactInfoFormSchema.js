@@ -1,7 +1,19 @@
-import addrs from 'email-addresses'
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import { formatPhoneNumber } from '../utils/formatPhoneNumber'
+import * as Yup from 'yup'
+import { yupSchema } from '../utils/yupSchema'
+
+const contactInfoFormValidation = Yup.object().shape({
+  fullName: Yup.string().required('Name is required'),
+  email: yupSchema().emailSchema.required('Email is required'),
+  phone: yupSchema().phoneSchema.required('Phone is required'),
+})
+
+const contactInfoFYIFormValidation = Yup.object().shape({
+  fullName: Yup.string().required('Name is required'),
+  email: yupSchema().emailSchema,
+  phone: yupSchema().phoneSchema,
+})
 
 const contactFormOptions = {
   enterContactDetails: {
@@ -69,49 +81,9 @@ const createErrorSummary = (errors) => {
   return errorSummary
 }
 
-const fyiValidate = (values) => {
-  const errors = {}
-  const fields = {}
-
-  if (values.email && !addrs(values.email)) {
-    fields['email'] = true
-    errors['fields'] = fields
-  }
-  return errors
-}
-
-const onSubmitValidation = (values) => {
-  const errors = {}
-  const fields = {}
-
-  if (!values.fullName || values.fullName === '') {
-    fields['fullName'] = true
-    errors['fields'] = fields
-  }
-
-  if (!addrs(values.email)) {
-    fields['email'] = true
-    errors['fields'] = fields
-  }
-
-  if (!values.phone || !formatPhoneNumber(values.phone)) {
-    fields['phone'] = true
-    errors['fields'] = fields
-  }
-
-  if (!values.fullName && !values.email && !values.phone) {
-    fields['enterContactDetails'] = true
-    errors['fields'] = fields
-  }
-
-  values.phone = formatPhoneNumber(values.phone)
-
-  return errors
-}
-
 export const ContactInfoFormSchema = {
   CONTACT_INFO: contactFormOptions,
-  ON_SUBMIT_VALIDATION: onSubmitValidation,
-  ON_SUBMIT_FYI_VALIDATION: fyiValidate,
+  ON_SUBMIT_VALIDATION: contactInfoFormValidation,
+  ON_SUBMIT_FYI_VALIDATION: contactInfoFYIFormValidation,
   CREATE_ERROR_SUMMARY: createErrorSummary,
 }
