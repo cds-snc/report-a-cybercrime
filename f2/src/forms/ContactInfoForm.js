@@ -22,8 +22,6 @@ export const ContactInfoForm = (props) => {
   const email = ContactInfoFormSchema.CONTACT_INFO.email
   const phone = ContactInfoFormSchema.CONTACT_INFO.phone
 
-  const onSubmitValidation = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
-  const onSubmitFYIValidation = ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
   const { fyiForm } = data.formData
