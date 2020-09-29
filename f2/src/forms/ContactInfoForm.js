@@ -28,19 +28,17 @@ export const ContactInfoForm = (props) => {
 
   const { fyiForm } = data.formData
 
+  const validationSchema = fyiForm
+    ? ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
+    : ContactInfoFormSchema.ON_SUBMIT_VALIDATION
+
   return (
     <React.Fragment>
       <Formik
         initialValues={contactInfo}
-        onSubmit={async (values, { setErrors }) => {
-          const errors = !fyiForm
-            ? onSubmitValidation(values)
-            : onSubmitFYIValidation(values)
-          if (errors.fields) {
-            setErrors(errors.fields)
-          } else {
-            props.onSubmit(values)
-          }
+        validationSchema={validationSchema}
+        onSubmit={(values) => {
+          props.onSubmit(values)
         }}
       >
         {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
