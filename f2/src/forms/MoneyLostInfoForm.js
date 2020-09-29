@@ -32,31 +32,26 @@ export const MoneyLostInfoForm = (props) => {
       name: 'eTransfer',
       value: 'methodPayment.eTransfer',
       checkboxLabel: <Trans id="methodPayment.eTransfer" />,
-      checkboxName: 'methodPayment.eTransfer',
     },
     {
       name: 'creditCard',
       value: 'methodPayment.creditCard',
       checkboxLabel: <Trans id="methodPayment.creditCard" />,
-      checkboxName: 'methodPayment.creditCard',
     },
     {
       name: 'giftCard',
       value: 'methodPayment.giftCard',
       checkboxLabel: <Trans id="methodPayment.giftCard" />,
-      checkboxName: 'methodPayment.giftCard',
     },
     {
       name: 'cryptocurrency',
       value: 'methodPayment.cryptocurrency',
       checkboxLabel: <Trans id="methodPayment.cryptocurrency" />,
-      checkboxName: 'methodPayment.cryptocurrency',
     },
     {
       name: 'other',
       value: 'methodPayment.other',
       checkboxLabel: <Trans id="methodPayment.other" />,
-      checkboxName: 'methodPayment.other',
     },
   ]
 
