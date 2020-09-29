@@ -77,18 +77,12 @@ export const MoneyLostInfoForm = (props) => {
         </div>
       ) : null}
       <Formik
-        initialStatus={{ errors: '' }}
         initialValues={moneyLost}
         validate={(values) => {
           return realTimeValidation(values)
         }}
-        onSubmit={async (values, { setErrors }) => {
-          const errors = onSubmitValidation(values)
-          if (errors.fields) {
-            setErrors(errors.fields)
-          } else {
-            props.onSubmit(values)
-          }
+        onSubmit={(values) => {
+          props.onSubmit(values)
         }}
       >
         {({ handleSubmit, handleChange, handleBlur, submitCount, errors }) => (
