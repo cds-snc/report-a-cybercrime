@@ -3,11 +3,11 @@ import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { A } from '../components/formik/link'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, Field, ErrorMessage } from 'formik'
+import { Formik, Field } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { NextCancelButtons } from '../components/formik/button'
 import { useLingui } from '@lingui/react'
-import { Error, ErrorSummary } from '../components/formik/alert'
+import { ErrorSummary } from '../components/formik/alert'
 import { PrivacyConsentInfoFormSchema } from './PrivacyConsentInfoFormSchema'
 
 const createErrorSummary = (errors) => {
@@ -27,6 +27,7 @@ export const PrivacyConsentInfoForm = (props) => {
   const whetherConsent = {
     ...data.formData.consent,
   }
+  const { fyiForm } = data.formData
 
   return (
     <Formik
@@ -39,20 +40,16 @@ export const PrivacyConsentInfoForm = (props) => {
       {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
         <Form onSubmit={handleSubmit}>
           <Container>
-            {Object.keys(errors).length > 0 && (
-              <ErrorSummary
-                errors={createErrorSummary(errors)}
-                submissions={submitCount}
-                title={
-                  <Trans id="privacyConsentInfoForm.hasValidationErrors" />
-                }
-              />
-            )}
-            <Row className="form-question">
-              <ErrorMessage
-                name="privacyConsentInfoForm.warning"
-                component={Error}
-              />
+            <Row classname="form-question">
+              {Object.keys(errors).length > 0 && (
+                <ErrorSummary
+                  errors={createErrorSummary(errors)}
+                  submissions={submitCount}
+                  title={
+                    <Trans id="privacyConsentInfoForm.hasValidationErrors" />
+                  }
+                />
+              )}
             </Row>
             <Row className="form-section">
               <Field
@@ -62,7 +59,7 @@ export const PrivacyConsentInfoForm = (props) => {
                     <A
                       color="#0000ff"
                       target="_blank"
-                      href={'/privacystatement?lang=' + i18n.locale} //{'/privacystatement?lang=en'}
+                      href={'/privacystatement?lang=' + i18n.locale}
                     />
                   </Trans>
                 }
@@ -71,14 +68,20 @@ export const PrivacyConsentInfoForm = (props) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="checkbox"
-                id="checkbox-consent-option"
+                id="consentOptions"
               ></Field>
             </Row>
             <Row>
               <NextCancelButtons
                 submit={<Trans id="privacyConsentInfoForm.nextButton" />}
                 cancel={<Trans id="button.cancelReport" />}
-                label={<Trans id="privacyConsentInfoForm.nextPage" />}
+                label={
+                  fyiForm ? (
+                    <Trans id="fyiForm.nextPage1" />
+                  ) : (
+                    <Trans id="privacyConsentInfoForm.nextPage" />
+                  )
+                }
               />
             </Row>
           </Container>
