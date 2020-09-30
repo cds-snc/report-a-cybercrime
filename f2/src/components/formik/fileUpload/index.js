@@ -1,11 +1,12 @@
 import React from 'react'
-import { FormFile, Row } from 'react-bootstrap'
+import { FormFile } from 'react-bootstrap'
 import { UploadButton } from '../button'
 import { acceptableExtensions } from '../../../utils/acceptableFiles'
+import { FormRow } from '../row'
 
 export const FileUpload = ({ field, form, onChange, ...props }) => {
   return (
-    <Row className="form-row">
+    <FormRow>
       <div className="upload-container">
         <FormFile id={props.id} custom>
           <FormFile.Input accept={acceptableExtensions} onChange={onChange} />
@@ -13,6 +14,6 @@ export const FileUpload = ({ field, form, onChange, ...props }) => {
         </FormFile>
         <UploadButton label={props.label} />
       </div>
-    </Row>
+    </FormRow>
   )
 }

@@ -649,7 +649,7 @@ const formatAnalystEmail = (dataOrig) => {
     returnString =
       reportInfoString +
       formatVictimDetails(data) +
-      (data.fyiForm ? '' : formatIncidentInformation(data)) +
+      formatIncidentInformation(data) +
       formatNarrative(data) +
       formatSuspectDetails(data) +
       formatFinancialTransactions(data) +

@@ -135,10 +135,6 @@ export const InformationForm = (props) => {
                                   id={'input-infoReqOther'}
                                 />
                               )}
-                            <ErrorMessage
-                              name={question.name}
-                              component={Error}
-                            />
                           </Field>
                         </React.Fragment>
                       )
@@ -186,10 +182,6 @@ export const InformationForm = (props) => {
                                   id={'input-infoObtainedOther'}
                                 />
                               )}
-                            <ErrorMessage
-                              name={question.name}
-                              component={Error}
-                            />
                           </Field>
                         </React.Fragment>
                       )
