@@ -39,15 +39,17 @@ export const PrivacyConsentInfoForm = (props) => {
       {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
         <Form onSubmit={handleSubmit}>
           <Container>
-            {Object.keys(errors).length > 0 && (
-              <ErrorSummary
-                errors={createErrorSummary(errors)}
-                submissions={submitCount}
-                title={
-                  <Trans id="privacyConsentInfoForm.hasValidationErrors" />
-                }
-              />
-            )}
+            <Row classname="form-question">
+              {Object.keys(errors).length > 0 && (
+                <ErrorSummary
+                  errors={createErrorSummary(errors)}
+                  submissions={submitCount}
+                  title={
+                    <Trans id="privacyConsentInfoForm.hasValidationErrors" />
+                  }
+                />
+              )}
+            </Row>
             <Row className="form-question">
               <ErrorMessage
                 name="privacyConsentInfoForm.warning"
@@ -71,7 +73,7 @@ export const PrivacyConsentInfoForm = (props) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="checkbox"
-                id="checkbox-consent-option"
+                id="consentOptions"
               ></Field>
             </Row>
             <Row>
