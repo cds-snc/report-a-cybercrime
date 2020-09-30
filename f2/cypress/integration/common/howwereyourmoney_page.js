@@ -1,4 +1,4 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When } from 'cypress-cucumber-preprocessor/steps'
 
 When('I fill Howwereyourmoney page forms', () => {
   cy.get('form').find('[name="demandedMoney"]').type('$10000 CAD')
@@ -66,9 +66,7 @@ When('I fill Howwereyourmoney5 page forms', () => {
   cy.get('form').find('[name="transactionYear"]').type('2020')
 })
 
-When('I fill NoHowwereyourmoney page forms', () => {
-
-})
+When('I fill NoHowwereyourmoney page forms', () => {})
 
 When('I fill Howwereyourmoney in French page forms', () => {
   cy.get('form').find('[name="demandedMoney"]').type('$1000 US')
@@ -89,4 +87,3 @@ When('I fill Howwereyourmoney in French page forms', () => {
   cy.get('form').find('[name="transactionMonth"]').type('2')
   cy.get('form').find('[name="transactionYear"]').type('2020')
 })
-

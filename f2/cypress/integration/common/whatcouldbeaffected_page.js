@@ -1,4 +1,4 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When } from 'cypress-cucumber-preprocessor/steps'
 
 When('I fill Whatcouldbeaffected page forms', () => {
   cy.get('form')
