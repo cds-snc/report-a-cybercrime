@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/paragraph'
+import { P } from '../components/formik/paragraph'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field } from 'formik'
 import { Input } from '../components/formik/input'
@@ -22,8 +22,6 @@ export const ContactInfoForm = (props) => {
   const email = ContactInfoFormSchema.CONTACT_INFO.email
   const phone = ContactInfoFormSchema.CONTACT_INFO.phone
 
-  const onSubmitValidation = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
-  const onSubmitFYIValidation = ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
   const { fyiForm } = data.formData
@@ -57,7 +55,10 @@ export const ContactInfoForm = (props) => {
                     <P w="100%">
                       <Trans id="contactinfoPage.skipInfo" />
                     </P>
-                    <SkipButton label="Skip" to="/confirmation" />
+                    <SkipButton
+                      label={<Trans id="locationinfoPage.skipButton" />}
+                      to="/confirmation"
+                    />
                   </React.Fragment>
                 ) : null}
                 <br />
