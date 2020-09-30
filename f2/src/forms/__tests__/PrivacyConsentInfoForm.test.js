@@ -18,9 +18,6 @@ const clickOn = (element) => fireEvent.click(element)
 describe('<PrivacyConsentInfoForm />', () => {
   afterEach(cleanup)
 
-  const root = document.createElement('div')
-  expect(root.querySelector('checkbox').textContent.startsWith('Something'))
-
   it('does not call the onSubmit function when the consent box is not checked and the form is submitted', async () => {
     const submitMock = jest.fn()
 
@@ -40,22 +37,16 @@ describe('<PrivacyConsentInfoForm />', () => {
     const nextButton = getByText(/nextButton/)
 
     // Click the next button to trigger the form submission
-    // clickOn(nextButton.parentElement)
-    // await wait(0) // Wait for promises to resolve
+    clickOn(nextButton.parentElement)
+    await wait(0) // Wait for promises to resolve
 
-    await act(async () => {
-      // Click the next button to trigger the form submission
-      clickOn(nextButton.parentElement)
-      await wait(0) // Wait for promises to resolve
-    })
-
-    expect(submitMock).toHaveBeenCalledTimes(1)
+    expect(submitMock).toHaveBeenCalledTimes(0)
   })
 
   it('calls the onSubmit function when the consent box is checked and the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByText, getByLabelText } = render(
+    const { getByText, getByRole } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -67,10 +58,8 @@ describe('<PrivacyConsentInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    //const checkbox = getByLabelText('privacyConsentInfoForm.yes.withExternalLink', {
-    const checkbox = getByLabelText('I accept the terms of the', {
-      exact: false,
-    })
+    const checkbox = getByRole('checkbox')
+
     //find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
 

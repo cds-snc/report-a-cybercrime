@@ -14,6 +14,7 @@ const createErrorSummary = (errors) => {
   const errorSummary = {}
   if (errors.consentOptions) {
     errorSummary['consentOptions'] = {
+      label: <Trans id="privacyConsentInfoPage.linkOut" />,
       message: <Trans id="privacyConsentInfoForm.newWarning" />,
     }
   }
