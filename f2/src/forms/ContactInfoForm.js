@@ -89,6 +89,7 @@ export const ContactInfoForm = (props) => {
                           component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
+                          id="fullName"
                         />
                         {errors && errors.email && (
                           <P
@@ -105,6 +106,7 @@ export const ContactInfoForm = (props) => {
                           component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
+                          id="email"
                         />
                         {errors && errors.phone && (
                           <P
@@ -121,6 +123,7 @@ export const ContactInfoForm = (props) => {
                           component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
+                          id="phone"
                         />
                       </React.Fragment>
                     )
