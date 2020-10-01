@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
-import { H1, H2 } from '../components/header'
+import { H1, H2 } from '../components/formik/header'
 import {
   FeedbackButton,
   MidFormFeedbackButton,
@@ -12,9 +12,9 @@ import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
-import { InfoCard } from '../components/container'
 import { TextArea } from '../components/formik/textArea'
-import { Error } from '../components/formik/alert'
+import { Box } from '../components/formik/box'
+import { Error, Info } from '../components/formik/alert'
 
 export const MidFeedbackForm = (props) => {
   const [isSubmit, setIsSubmit] = useState('')
@@ -52,26 +52,20 @@ export const MidFeedbackForm = (props) => {
   return (
     <React.Fragment>
       {isSubmit ? (
-        <Row>
-          <InfoCard
-            bg="blue.200"
-            bordercolor="blue.300"
-            columns={{ base: 4 / 4, md: 6 / 8 }}
-          >
-            <H2 as="p">
-              <Trans id="midFeedback.thankYou" />
-            </H2>
-          </InfoCard>
-        </Row>
+        <Info>
+          <H2>
+            <Trans id="midFeedback.thankYou" />
+          </H2>
+        </Info>
       ) : (
-        <Container>
+        <React.Fragment>
           <MidFormFeedbackButton
             onClick={() => setIsOpen(!isOpen)}
             label={<Trans id="midFeedback.summary" />}
           />
           {isOpen && (
-            <Container className="customer-container">
-              <H1 as="p">
+            <Box color="rgb(232, 232, 232)">
+              <H1>
                 <Trans id="midFeedback.title" />
               </H1>
               <Formik
@@ -162,9 +156,9 @@ export const MidFeedbackForm = (props) => {
                   </Form>
                 )}
               </Formik>
-            </Container>
+            </Box>
           )}
-        </Container>
+        </React.Fragment>
       )}
     </React.Fragment>
   )

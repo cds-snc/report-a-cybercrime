@@ -289,7 +289,8 @@ body {
   border-color: rgb(174, 174, 174);
   padding: 1rem 1.5rem;
   height: inherit;
-  margin-left: -1rem;
+  max-width: fit-content;
+  margin-left: 0;
 }
 
 /*Checkboxes and Radio Buttons*/
