@@ -80,23 +80,21 @@ export const EvidenceInfoForm = (props) => {
       e.target.value = '' // clear the file input target, to allow the file to be chosen again
       return
     }
-    if(file.type.indexOf("image") !== -1) {
+    if (file.type.indexOf('image') !== -1) {
       let img = new Image()
       img.src = window.URL.createObjectURL(file)
       img.onload = () => {
-        if (img.width < 128 || img.height < 128){
+        if (img.width < 128 || img.height < 128) {
           setStatus('fileUpload.imageTooSmallError')
           setShowModal(true)
-        }
-        else {
+        } else {
           setStatus('fileUpload.added')
           setFiles(files.concat(file))
           setFileDescriptions(fileDescriptions.concat(''))
-          }        
+        }
       }
       e.target.value = ''
-    }
-    else {
+    } else {
       setStatus('fileUpload.added')
       setFiles(files.concat(e.target.files[0]))
       setFileDescriptions(fileDescriptions.concat(''))
