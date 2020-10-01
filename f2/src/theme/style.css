@@ -44,7 +44,6 @@ body {
 
 .form-question {
   padding-bottom: 1rem;
-  display: grid;
 }
 
 .form-helper-text {
@@ -52,7 +51,6 @@ body {
   line-height: 1.25;
   font-size: 1rem;
   margin-left: 0px;
-  max-width: 600px;
 }
 
 .form-section {
@@ -315,8 +313,8 @@ body {
 .custom-control-label {
   padding-left: 1.5rem;
   font-size: 1.25rem;
-  line-height: 1.5rem;
-  padding-top: 0.5rem;
+  line-height: 2rem;
+  /* padding-top: 0.5rem; */
 }
 
 .custom-checkbox .custom-control-label:before {
