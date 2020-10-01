@@ -288,8 +288,6 @@
   "locationPage.intro": "Nous utilisons votre emplacement géographique pour établir un lien entre votre rapport et les autres rapports de votre région, et pour collaborer avec les services de police locaux partout au Canada.",
   "locationPage.nextButton": "Continuer",
   "locationPage.title": "Votre emplacement géographique",
-  "locationinfoPage.hasValidationErrors": "Veuillez vérifier le code postal.",
-  "locationinfoPage.nextButton": "Continuer",
   "locationinfoPage.nextPage": "Prochaine étape : Vos coordonnées",
   "locationinfoPage.postalCity": "Ville du code postal",
   "locationinfoPage.postalCity.notFoundWarning": "La recherche de la ville est introuvable",

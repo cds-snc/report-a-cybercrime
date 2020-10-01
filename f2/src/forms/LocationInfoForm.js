@@ -5,12 +5,12 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Formik, Field, ErrorMessage } from 'formik'
+import { Formik, Field } from 'formik'
 import { NextCancelButtons, SkipButton } from '../components/formik/button'
 import { LocationInfoFormSchema } from './LocationInfoFormSchema'
 import { P } from '../components/formik/paragraph'
 import { Input } from '../components/formik/input'
-import { Error } from '../components/formik/alert'
+import { ErrorSummary } from '../components/formik/alert'
 import { formDefaults } from './defaultValues'
 
 export const LocationInfoForm = (props) => {
@@ -18,6 +18,13 @@ export const LocationInfoForm = (props) => {
   const locationInfo = {
     ...formDefaults.location,
     ...data.formData.location,
+  }
+
+  const errorDescription = {
+    postalCode: {
+      label: <Trans id="locationinfoPage.postalCode" />,
+      message: <Trans id="locationInfoForm.Warning" />,
+    },
   }
 
   return (
@@ -37,13 +44,18 @@ export const LocationInfoForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
+            {errors.postalCode && (
+              <ErrorSummary
+                errors={errorDescription}
+                submissions={submitCount}
+                title={<Trans id="default.hasValidationErrors" />}
+              />
+            )}
             <Container>
               <Row>
-                <P w="100%">
-                  <Trans id="locationinfoPage.skipInfo" />
-                </P>
+                <Trans id="locationinfoPage.skipInfo" />
               </Row>
               <Row>
                 <SkipButton
@@ -51,11 +63,13 @@ export const LocationInfoForm = (props) => {
                   to="/contactinfo"
                 />
               </Row>
-              <P>
-                <br />
-              </P>
+              <br />
               <Row>
-                <ErrorMessage name="postalCode" component={Error} />
+                {errors.postalCode && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    {errors.postalCode}
+                  </P>
+                )}
               </Row>
               <Row className="form-section">
                 <Field
