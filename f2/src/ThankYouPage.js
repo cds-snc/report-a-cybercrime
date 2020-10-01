@@ -17,6 +17,7 @@ import { P } from './components/paragraph'
 import { Route } from 'react-router-dom'
 import { Page } from './components/Page'
 import { Alert } from './components/Messages'
+import { PdfReportPage } from './PdfReportPage'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
@@ -114,6 +115,8 @@ export const ThankYouPage = () => {
                 <Trans id="thankYouPage.confirmationPageButton" />
               </ButtonLink>
             )}
+
+            <PdfReportPage enabled={submissionSucceeded} />
           </InfoCard>
         </Row>
 
