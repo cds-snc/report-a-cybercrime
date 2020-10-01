@@ -39,6 +39,7 @@ export const LocationInfoForm = (props) => {
       ) : null}
       <Formik
         initialValues={locationInfo}
+        validateOnChange={false}
         validationSchema={LocationInfoFormSchema()}
         onSubmit={(values) => {
           props.onSubmit(values)
