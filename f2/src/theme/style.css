@@ -20,6 +20,10 @@ body {
   width: 100%;
 }
 
+.row {
+  width: 100%;
+}
+
 .form-row {
   margin-bottom: 1rem;
   margin-left: 0rem;
@@ -76,6 +80,7 @@ body {
 .error-summary-title {
   color: rgb(0, 0, 0);
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .error-summary {
@@ -85,7 +90,7 @@ body {
 .field-error,
 .field-error:hover,
 .field-error:focus {
-  border-color: rgb(130, 39, 39);
+  border-color: rgb(130, 39, 39) !important;
 }
 
 /*Text Area*/
@@ -95,6 +100,7 @@ body {
   min-height: 80px;
   border-color: rgb(174, 174, 174);
   width: 100%;
+  max-width: 600px;
 }
 
 .open-text-entry:hover {
@@ -109,15 +115,12 @@ body {
   border-color: rgb(42, 105, 172);
 }
 
-.large-text-area {
-  height: 300px !important;
-}
-
 .conditional-field {
   border-left-width: 0.25rem;
   border-left-color: rgb(174, 174, 174);
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   margin-left: 1.25rem;
+  padding-top: 0.25rem;
   padding-left: 1.5rem;
   width: -webkit-fill-available;
 }
@@ -146,10 +149,6 @@ body {
   padding-right: 1.5rem;
   font-size: 1.125rem;
   font-weight: 400;
-}
-
-.button,
-.button-label {
   display: inline-flex;
   align-items: center;
 }
@@ -171,11 +170,32 @@ body {
   background-color: rgb(24, 60, 31);
 }
 
+.feedback-button {
+  min-width: 6rem;
+  background-color: rgb(30, 78, 140);
+  color: rgb(255, 255, 255);
+  border-color: rgb(24, 60, 31);
+}
+
+.feedback-button:hover,
+.feedback-button:focus {
+  background-color: rgb(30, 78, 140);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.feedback-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(30, 78, 140);
+}
+
 .default-button {
   background-color: rgb(232, 232, 232);
   color: rgb(0, 0, 0);
   border-color: rgb(213, 213, 213);
   margin-left: 16px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 400;
 }
 
 .default-button:hover,
@@ -272,7 +292,6 @@ body {
 /*Checkboxes and Radio Buttons*/
 
 .custom-control {
-  height: 2.5rem;
   line-height: 2.5rem;
 }
 
@@ -428,4 +447,12 @@ body {
   margin-right: 0.5rem;
   align-self: center;
   flex: none;
+}
+
+.list-item {
+  display: list-item;
+  list-style-position: inside;
+  border: 0;
+  padding: 0 0 0.5rem 0;
+  background-color: inherit;
 }

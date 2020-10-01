@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Stack } from '@chakra-ui/core'
 import { Trans } from '@lingui/macro'
 import { jsx } from '@emotion/core'
-import { Form } from 'react-final-form'
-import { Well } from '../components/Messages'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
 import { useStateValue } from '../utils/state'
+import { Form } from 'react-bootstrap'
+import { Formik } from 'formik'
+import { NextCancelButtons } from '../components/formik/button'
+import { Info } from '../components/formik/alert'
 
 export const ConfirmationForm = (props) => {
   const [{ reportId, submitted }] = useStateValue()
@@ -19,6 +19,7 @@ export const ConfirmationForm = (props) => {
           <Trans id="analystReport.dateReceived" />
           <Trans id="analystReport.reportLanguage" />
           <Trans id="analystReport.reportVersion" />
+          <Trans id="analystReport.fieldsMissing.warning" />
           <Trans id="analystReport.flagged" />
           <Trans id="analystReport.noData" />
           <Trans id="analystReport.reportInformation" />
@@ -33,6 +34,8 @@ export const ConfirmationForm = (props) => {
           <Trans id="analystReport.numberOfEmployee.100To499" />
           <Trans id="analystReport.numberOfEmployee.1To99" />
           <Trans id="analystReport.numberOfEmployee.500More" />
+          <Trans id="analystReport.potentialOffensiveImageInEmailSubject" />
+          <Trans id="analystReport.selfHarmStringInEmailSubject" />
           <Trans id="analystReport.affected.financial" />
           <Trans id="analystReport.affected.personalinformation" />
           <Trans id="analystReport.affected.business_assets" />
@@ -40,32 +43,33 @@ export const ConfirmationForm = (props) => {
           <Trans id="analystReport.affected.other" />
           <Trans id="analystReport.selfHarmString" />
           <Trans id="analystReport.selfHarmWord" />
+          <Trans id="analystReport.incidentInformation" />
         </div>
       ) : null}
-      <Form
-        onSubmit={props.onSubmit}
-        render={({ handleSubmit }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            shouldWrapChildren
-            spacing={6}
-          >
+      <Formik
+        initialValues={{}}
+        onSubmit={() => {
+          props.onSubmit()
+        }}
+      >
+        {({ handleSubmit }) => (
+          <Form onSubmit={handleSubmit}>
             {submitted ? (
-              <Well variantColor="blue">
+              <Info>
                 <Trans
                   id="confirmationPage.thankyou"
                   values={{ reference: reportId }}
                 />
-              </Well>
+              </Info>
             ) : (
-              <NextAndCancelButtons
-                button={<Trans id="confirmationPage.nextButton" />}
+              <NextCancelButtons
+                submit={<Trans id="confirmationPage.nextButton" />}
+                cancel={<Trans id="button.cancelReport" />}
               />
             )}
-          </Stack>
+          </Form>
         )}
-      />
+      </Formik>
     </React.Fragment>
   )
 }
