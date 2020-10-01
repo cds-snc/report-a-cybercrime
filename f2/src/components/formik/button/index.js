@@ -19,7 +19,11 @@ export const DefaultButton = (props) => {
 
 export const MidFormFeedbackButton = (props) => {
   return (
-    <Button type="button" className="default-button mid-form-feedback-button ">
+    <Button
+      type="button"
+      className="default-button mid-form-feedback-button "
+      onClick={props.onClick}
+    >
       <span className="mid-form-feedback-button-label">{props.label}</span>
     </Button>
   )
@@ -86,6 +90,14 @@ export const UploadButton = (props) => {
         <FiPaperclip className="button-icon-left" />
         {props.label}
       </span>
+    </Button>
+  )
+}
+
+export const FeedbackButton = (props) => {
+  return (
+    <Button type="submit" className="button feedback-button">
+      <span className="button-label">{props.label}</span>
     </Button>
   )
 }
