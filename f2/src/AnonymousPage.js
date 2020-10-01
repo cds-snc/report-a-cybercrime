@@ -38,8 +38,14 @@ export const AnonymousPage = () => {
                     type: 'saveFormData',
                     data: { anonymous: data },
                   })
-                  let isChanged = JSON.stringify(anonymous.anonymousOptions) !== JSON.stringify(data.anonymousOptions)
-                  let destination = doneForms ? (isChanged ? '/location' : '/confirmation') : '/whoAreYouReportFor'
+                  let isChanged =
+                    JSON.stringify(anonymous.anonymousOptions) !==
+                    JSON.stringify(data.anonymousOptions)
+                  let destination = doneForms
+                    ? isChanged
+                      ? '/location'
+                      : '/confirmation'
+                    : '/whoAreYouReportFor'
                   history.push(destination, { from: 'anonymous' })
                 }}
               />

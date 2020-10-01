@@ -55,19 +55,19 @@ export const WhoAreYouReportForForm = (props) => {
                 <ErrorMessage name="whoYouReportFor" component={Error} />
               </Row>
               <Row className="form-section">
-                <React.Fragment key='myselfDescription'>
+                <React.Fragment key="myselfDescription">
                   <Field
                     name="whoYouReportFor"
-                    label={<Trans id='whoAreYouReportForPage.options.myself'/>}
+                    label={<Trans id="whoAreYouReportForPage.options.myself" />}
                     component={Radio}
-                    value='whoAreYouReportForPage.options.myself'
+                    value="whoAreYouReportForPage.options.myself"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     type="radio"
                     id={'radio-myselfDescription'}
                   />
                 </React.Fragment>
-                <React.Fragment key='Or'>
+                <React.Fragment key="Or">
                   <P ml="0.5rem" mb="0.5rem" fontSize="1.25rem">
                     <Trans id="whoAreYouReportForPage.or" />
                   </P>
@@ -89,19 +89,18 @@ export const WhoAreYouReportForForm = (props) => {
                             type="radio"
                             id={'radio-' + question.name}
                           >
-                              <ErrorMessage
-                                name={question.name}
-                                component={Error}
-                              />
-                              <Field
-                                name={question.name}
-                                label={question.label}
-                                helpText={question.hint}
-                                component={TextArea}
-                                onBlur={handleBlur}
-                                onChange={handleChange}
-                              />
-
+                            <ErrorMessage
+                              name={question.name}
+                              component={Error}
+                            />
+                            <Field
+                              name={question.name}
+                              label={question.label}
+                              helpText={question.hint}
+                              component={TextArea}
+                              onBlur={handleBlur}
+                              onChange={handleChange}
+                            />
                           </Field>
                         </React.Fragment>
                       )

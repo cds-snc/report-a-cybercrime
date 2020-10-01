@@ -4,7 +4,7 @@ import { ThemeProvider } from 'emotion-theming'
 import canada from '../../../theme/canada'
 import { Router, Route } from 'react-router-dom'
 import { StateProvider, initialState, reducer } from '../../../utils/state'
-import {RedirectRoute} from '../'
+import { RedirectRoute } from '../'
 import { createMemoryHistory } from 'history'
 
 describe('<RedirectRoute />', () => {
@@ -18,16 +18,14 @@ describe('<RedirectRoute />', () => {
     const { getAllByText } = render(
       <Router history={mhistory}>
         <ThemeProvider theme={canada}>
-        <StateProvider initialState={initialState} reducer={reducer}>
-            <RedirectRoute path="/howdiditstart">
-                ABC
-            </RedirectRoute>
-        </StateProvider>    
+          <StateProvider initialState={initialState} reducer={reducer}>
+            <RedirectRoute path="/howdiditstart">ABC</RedirectRoute>
+          </StateProvider>
         </ThemeProvider>
       </Router>,
     )
 
-    expect(getAllByText(/ABC/)).toHaveLength(1)    
+    expect(getAllByText(/ABC/)).toHaveLength(1)
   })
 
   it('Renders to / if not consented', () => {
@@ -38,19 +36,16 @@ describe('<RedirectRoute />', () => {
     const { getAllByText } = render(
       <Router history={mhistory}>
         <ThemeProvider theme={canada}>
-        <StateProvider initialState={initialState} reducer={reducer}>
-            <RedirectRoute path="/howdiditstart">
-                ABC
-            </RedirectRoute>
+          <StateProvider initialState={initialState} reducer={reducer}>
+            <RedirectRoute path="/howdiditstart">ABC</RedirectRoute>
             <Route exact path="/">
-                DEF
-            </Route>            
-        </StateProvider>    
+              DEF
+            </Route>
+          </StateProvider>
         </ThemeProvider>
       </Router>,
     )
 
-    expect(getAllByText(/DEF/)).toHaveLength(1)    
-  })  
+    expect(getAllByText(/DEF/)).toHaveLength(1)
+  })
 })
-

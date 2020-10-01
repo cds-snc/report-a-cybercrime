@@ -39,10 +39,12 @@ body {
   margin-bottom: 0.25rem;
   line-height: 1;
   margin-left: 0px;
+  max-width: 600px;
 }
 
 .form-question {
   padding-bottom: 1rem;
+  display: grid;
 }
 
 .form-helper-text {
@@ -50,6 +52,7 @@ body {
   line-height: 1.25;
   font-size: 1rem;
   margin-left: 0px;
+  max-width: 600px;
 }
 
 .form-section {
@@ -147,7 +150,7 @@ body {
 .button-label {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 400;
   display: inline-flex;
   align-items: center;
@@ -286,7 +289,8 @@ body {
   border-color: rgb(174, 174, 174);
   padding: 1rem 1.5rem;
   height: inherit;
-  margin-left: 0rem;
+  max-width: fit-content;
+  margin-left: 0;
 }
 
 /*Checkboxes and Radio Buttons*/
@@ -311,6 +315,8 @@ body {
 .custom-control-label {
   padding-left: 1.5rem;
   font-size: 1.25rem;
+  line-height: 1.5rem;
+  padding-top: 0.5rem;
 }
 
 .custom-checkbox .custom-control-label:before {
