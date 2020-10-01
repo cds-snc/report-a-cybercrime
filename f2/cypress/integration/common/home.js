@@ -1,4 +1,4 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When, Then, Given } from 'cypress-cucumber-preprocessor/steps'
 // Test accessibility
 //After(() => {
 //  cy.reportA11y()
@@ -32,7 +32,7 @@ When('I change the language and click Fournir des informations', () => {
   cy.contains('Fournir des informations').first().click({ force: true })
 })
 
-// Second page - Before you start 
+// Second page - Before you start
 
 Then('I read before you start instructions', () => {
   cy.contains('Start report').first().click({ force: true })
@@ -45,5 +45,3 @@ Then('I read before you start instructions in French', () => {
   cy.contains('Continuer').first().click({ force: true })
   //cy.get('[data-cy=submit]').click({ force: true })
 })
-
-

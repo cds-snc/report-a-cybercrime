@@ -1,4 +1,4 @@
-import { After, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { When } from 'cypress-cucumber-preprocessor/steps'
 
 When('I fill AttachSupportingEvidence page forms', () => {
   const fileName1 = 'fake.jpg'
@@ -8,9 +8,11 @@ When('I fill AttachSupportingEvidence page forms', () => {
   cy.wait(1000)
   cy.get('#uploader').uploadFile(fileName2, 'image/jpeg')
   cy.wait(1000)
-  cy.get('#uploader').uploadFile(fileName3, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+  cy.get('#uploader').uploadFile(
+    fileName3,
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  )
   cy.wait(1000)
-
 })
 
 When('I fill AttachSupportingEvidenceSensitive page forms', () => {
@@ -22,6 +24,9 @@ When('I fill AttachSupportingEvidenceSensitive page forms', () => {
   cy.wait(1000)
   cy.get('#uploader').uploadFile(fileName2, 'image/jpeg')
   cy.wait(1000)
-  cy.get('#uploader').uploadFile(fileName3, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+  cy.get('#uploader').uploadFile(
+    fileName3,
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  )
   cy.wait(1000)
 })

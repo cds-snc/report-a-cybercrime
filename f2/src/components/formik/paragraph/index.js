@@ -43,3 +43,8 @@ export const P = styled('p', {
   ${bottom};
   ${left};
 `
+//This component can be used to render hidden text to be used by a screen reader.
+export const HiddenText = styled.p`
+  opacity: 0;
+  height: 0rem;
+`

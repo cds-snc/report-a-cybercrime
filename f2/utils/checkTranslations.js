@@ -4,7 +4,7 @@ const LinguiDataFails = (data, file) => {
   let returnValue = false
   for (const [key, value] of Object.entries(data)) {
     // "plural" auto-generates keys with { in them
-    if (key != '' && !key.includes('{') && (key === value || value === '')) {
+    if (key !== '' && !key.includes('{') && (key === value || value === '')) {
       console.warn(`Missing Translation in ${file}: ${key}`)
       returnValue = true
     }
