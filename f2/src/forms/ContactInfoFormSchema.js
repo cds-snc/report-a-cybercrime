@@ -5,8 +5,16 @@ import { yupSchema } from '../utils/yupSchema'
 
 const contactInfoFormValidation = Yup.object().shape({
   fullName: Yup.string().required('Name is required'),
-  email: yupSchema().emailSchema.required('Email is required'),
-  phone: yupSchema().phoneSchema.required('Phone is required'),
+  email: Yup.string().when('phone', {
+    is: (val) => val !== '',
+    then: yupSchema().emailSchema.required('Email is required'),
+    otherwise: Yup.string(),
+  }),
+  phone: Yup.string().when('email', {
+    is: (val) => val !== '',
+    then: yupSchema().phoneSchema.required('Phone is required'),
+    otherwise: Yup.string(),
+  }),
 })
 
 const contactInfoFYIFormValidation = Yup.object().shape({
