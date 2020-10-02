@@ -13,4 +13,8 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-knobs',
   ],
+  webpackFinal: async (config, { configType }) => {
+    config.node = { fs: 'empty' }
+    return config
+  },
 }
