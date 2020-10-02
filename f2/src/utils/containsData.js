@@ -1,4 +1,5 @@
 export const containsData = (x) => {
+  console.log('In containsData ' + x)
   switch (typeof x) {
     case 'string':
       return x !== ''
