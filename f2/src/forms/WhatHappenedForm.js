@@ -40,16 +40,14 @@ export const WhatHappenedForm = (props) => {
         <Form onSubmit={handleSubmit}>
           <Container>
             <Row className="form-question">
-              <Row className="form-label">
-                {formLabel}
-              </Row>
+              <Row className="form-label">{formLabel}</Row>
               <Row className="form-helper-text">
                 {formHelpText}
                 {formHelpText2 ? (
-                <p>
-                  <br />
-                  {formHelpText2}
-                </p>
+                  <p>
+                    <br />
+                    {formHelpText2}
+                  </p>
                 ) : null}
               </Row>
             </Row>
@@ -60,8 +58,8 @@ export const WhatHappenedForm = (props) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 rows="12"
-                id="textarea-whatHappened"              >
-              </Field>
+                id="textarea-whatHappened"
+              ></Field>
             </Row>
             <Row>
               <NextCancelButtons

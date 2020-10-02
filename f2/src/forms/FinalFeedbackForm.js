@@ -43,19 +43,18 @@ export const FinalFeedbackForm = (props) => {
         wasServiceHard: '',
         howCanWeDoBetter: '',
       }}
-      initialStatus={{showWarning:false}}
-      onSubmit={(values, {setStatus}) => {
+      initialStatus={{ showWarning: false }}
+      onSubmit={(values, { setStatus }) => {
         if (
           values.wasServiceHard.length === 0 &&
           values.howCanWeDoBetter.length === 0
         ) {
-          setStatus({showWarning: true})
+          setStatus({ showWarning: true })
         } else {
           props.onSubmit(values)
         }
       }}
     >
-
       {({ handleSubmit, handleChange, handleBlur, status }) => (
         <Form onSubmit={handleSubmit}>
           <Container>
@@ -96,20 +95,18 @@ export const FinalFeedbackForm = (props) => {
               />
             </Row>
             <Row className="form-section">
-                <Field
-                  name="howCanWeDoBetter"
-                  label={<Trans id="finalFeedback.howCanWeDoBetter.label" />}
-                  helpText={<Trans id="finalFeedback.howCanWeDoBetter.helper" />}
-                  component={TextArea}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  id="textarea-whatHappened"
-                />
+              <Field
+                name="howCanWeDoBetter"
+                label={<Trans id="finalFeedback.howCanWeDoBetter.label" />}
+                helpText={<Trans id="finalFeedback.howCanWeDoBetter.helper" />}
+                component={TextArea}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                id="textarea-whatHappened"
+              />
             </Row>
             <Row>
-              <FeedbackButton
-                label={<Trans id="finalFeedback.submit" />}
-              />
+              <FeedbackButton label={<Trans id="finalFeedback.submit" />} />
             </Row>
           </Container>
         </Form>
