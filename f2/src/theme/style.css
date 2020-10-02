@@ -20,6 +20,10 @@ body {
   width: 100%;
 }
 
+.row {
+  width: 100%;
+}
+
 .form-row {
   margin-bottom: 1rem;
   margin-left: 0rem;
@@ -35,10 +39,12 @@ body {
   margin-bottom: 0.25rem;
   line-height: 1;
   margin-left: 0px;
+  max-width: 600px;
 }
 
 .form-question {
   padding-bottom: 1rem;
+  display: grid;
 }
 
 .form-helper-text {
@@ -46,6 +52,7 @@ body {
   line-height: 1.25;
   font-size: 1rem;
   margin-left: 0px;
+  max-width: 600px;
 }
 
 .form-section {
@@ -73,13 +80,30 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.error-summary-title {
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.error-summary {
+  width: 100%;
+}
+
+.field-error,
+.field-error:hover,
+.field-error:focus {
+  border-color: rgb(130, 39, 39) !important;
+}
+
 /*Text Area*/
 
 .open-text-entry {
   margin-top: 0.75rem;
   min-height: 80px;
   border-color: rgb(174, 174, 174);
-  width: 80%;
+  width: 100%;
+  max-width: 600px;
 }
 
 .open-text-entry:hover {
@@ -97,8 +121,9 @@ body {
 .conditional-field {
   border-left-width: 0.25rem;
   border-left-color: rgb(174, 174, 174);
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   margin-left: 1.25rem;
+  padding-top: 0.25rem;
   padding-left: 1.5rem;
   width: -webkit-fill-available;
 }
@@ -113,22 +138,26 @@ body {
   border-radius: 4px;
   border-style: outset;
   min-width: 8rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+.button-container {
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 
 .button-label {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 400;
-}
-
-.button,
-.button-label {
   display: inline-flex;
   align-items: center;
 }
 
-.submit-button {
+.submit-button,
+.submit-button:disabled {
   background-color: rgb(31, 81, 38);
   color: rgb(255, 255, 255);
   border-color: rgb(24, 60, 31);
@@ -144,21 +173,42 @@ body {
   background-color: rgb(24, 60, 31);
 }
 
-.cancel-button {
+.feedback-button {
+  min-width: 6rem;
+  background-color: rgb(30, 78, 140);
+  color: rgb(255, 255, 255);
+  border-color: rgb(24, 60, 31);
+}
+
+.feedback-button:hover,
+.feedback-button:focus {
+  background-color: rgb(30, 78, 140);
+  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+}
+
+.feedback-button:not(:disabled):not(.disabled):active {
+  background-color: rgb(30, 78, 140);
+}
+
+.default-button {
   background-color: rgb(232, 232, 232);
   color: rgb(0, 0, 0);
   border-color: rgb(213, 213, 213);
   margin-left: 16px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 400;
 }
 
-.cancel-button:hover,
-.cancel-button:focus {
+.default-button:hover,
+.default-button:focus {
   background-color: rgb(232, 232, 232);
   box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
   color: rgb(0, 0, 0);
 }
 
-.cancel-button:not(:disabled):not(.disabled):active {
+.default-button:not(:disabled):not(.disabled):active {
   background-color: rgb(213, 213, 213);
   color: rgb(0, 0, 0);
 }
@@ -230,10 +280,22 @@ body {
   color: inherit;
 }
 
+.mid-form-feedback-button-label {
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.mid-form-feedback-button {
+  border-color: rgb(174, 174, 174);
+  padding: 1rem 1.5rem;
+  height: inherit;
+  max-width: fit-content;
+  margin-left: 0;
+}
+
 /*Checkboxes and Radio Buttons*/
 
 .custom-control {
-  height: 2.5rem;
   line-height: 2.5rem;
 }
 
@@ -253,6 +315,8 @@ body {
 .custom-control-label {
   padding-left: 1.5rem;
   font-size: 1.25rem;
+  line-height: 1.5rem;
+  padding-top: 0.5rem;
 }
 
 .custom-checkbox .custom-control-label:before {
@@ -389,4 +453,12 @@ body {
   margin-right: 0.5rem;
   align-self: center;
   flex: none;
+}
+
+.list-item {
+  display: list-item;
+  list-style-position: inside;
+  border: 0;
+  padding: 0 0 0.5rem 0;
+  background-color: inherit;
 }

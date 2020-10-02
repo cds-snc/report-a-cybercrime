@@ -1,79 +1,38 @@
 /** @jsx jsx */
 import React from 'react'
-import addrs from 'email-addresses'
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { ErrorSummary } from '../components/ErrorSummary'
-import { CheckboxAdapter } from '../components/checkbox'
-import { Input } from '../components/input'
-import { Field } from '../components/Field'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
-import { formatPhoneNumber } from '../utils/formatPhoneNumber'
-import { Alert } from '../components/Messages'
+import { P } from '../components/formik/paragraph'
+import { Form, Container, Row } from 'react-bootstrap'
 import { formDefaults } from './defaultValues'
-import { containsData } from '../utils/containsData'
-import { Flex, Icon } from '@chakra-ui/core'
-import { P } from '../components/paragraph'
-import { Button } from '../components/button'
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { Formik, FieldArray, Field } from 'formik'
+import { Input } from '../components/formik/input'
+import { SkipButton, NextCancelButtons } from '../components/formik/button'
+import { ErrorSummary } from '../components/formik/alert'
+import { ContactInfoFormSchema } from './ContactInfoFormSchema'
 
 export const skipConsentOption = 'contactinfoPage.anonymousskip.yes'
 
-export const validate = (values) => {
-  const errors = {}
-
-  // from https://www.w3resource.com/javascript/form/phone-no-validation.php
-  const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-
-  const phone =
-    'phone' in values &&
-    containsData(values.phone) &&
-    new RegExp(phoneRegex).test(values.phone)
-  const email =
-    'email' in values &&
-    containsData(values.email) &&
-    addrs(values.email) !== null
-
-  //condition for an error to occur: append a lingui id to the list of error
-  if (!values.fullName || values.fullName === '')
-    errors.fullName = 'contactinfoForm.fullName.warning'
-
-  if (!(email && addrs(values.email)) && !phone) {
-    errors.email = 'contactinfoForm.email.warning'
-    errors.phone = 'contactinfoForm.phone.warning'
-  }
-
-  return errors
-}
-
-const fyiValidate = (values) => {
-  const errors = {}
-
-  if (values.email && !addrs(values.email)) {
-    errors.email = 'contactinfoForm.email.warning'
-  }
-
-  return errors
-}
-
-export const ContactInfoForm = (props) => {
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.contactInfo))
-      props.onSubmit({ ...data, phone: formatPhoneNumber(data.phone) })
-  }
-
+export const ContactInfoForm = (props, values) => {
   const [data] = useStateValue()
   const contactInfo = {
     ...formDefaults.contactInfo,
     ...data.formData.contactInfo,
   }
 
+  const fullName = ContactInfoFormSchema.CONTACT_INFO.fullName
+  const email = ContactInfoFormSchema.CONTACT_INFO.email
+  const phone = ContactInfoFormSchema.CONTACT_INFO.phone
+
+  const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
+
   const { fyiForm } = data.formData
+
+  const validationSchema = fyiForm
+    ? ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
+    : ContactInfoFormSchema.ON_SUBMIT_VALIDATION
 
   return (
     <React.Fragment>
@@ -82,109 +41,112 @@ export const ContactInfoForm = (props) => {
           <Trans id="contactInfoPage.victimDetail" />
         </div>
       ) : null}
-      <Form
+      <Formik
         initialValues={contactInfo}
-        onSubmit={localOnSubmit}
-        validate={(values) => {
-          if (fyiForm) {
-            return fyiValidate(values)
-          } else {
-            return validate(values)
-          }
+        validationSchema={validationSchema}
+        onSubmit={(values) => {
+          props.onSubmit(values)
         }}
-        render={({
-          handleSubmit,
-          values,
-          errors,
-          submitFailed,
-          hasValidationErrors,
-        }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            shouldWrapChildren
-            spacing={6}
-          >
-            <CheckboxAdapter
-              name="anonymousSkipOptions"
-              value={skipConsentOption}
-            >
-              <Trans id="contactinfoPage.anonymousskip.yes" />
-            </CheckboxAdapter>
-            {values.anonymousSkipOptions.includes(skipConsentOption) && (
-              <Alert status="warning" withIcon>
-                <Trans id="contactinfoPage.anonymousskip.warning" />
-              </Alert>
-            )}
-
-            {submitFailed && hasValidationErrors ? (
-              <ErrorSummary>
-                <Trans id="contactinfoPage.hasValidationErrors" />
-              </ErrorSummary>
-            ) : null}
-            {fyiForm ? (
-              <Flex direction="row" align="center" wrap="wrap" mb={10}>
-                <P w="100%">
-                  <Trans id="contactinfoPage.skipInfo" />
-                </P>
-                <Button
-                  as={ReactRouterLink}
-                  fontSize={{ base: 'lg', md: 'xl' }}
-                  color="black"
-                  variant="solid"
-                  variantColor="gray"
-                  bg="gray.400"
-                  borderColor="gray.500"
-                  to="/confirmation"
-                  textAlign="center"
-                >
-                  <Trans id="locationinfoPage.skipButton" />
-                  <Icon
-                    focusable="false"
-                    ml={2}
-                    mr={-2}
-                    name="chevron-right"
-                    size="28px"
+      >
+        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row className="form-section">
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary
+                    errors={createErrorSummary(errors)}
+                    submissions={submitCount}
+                    title={<Trans id="contactinfoPage.hasValidationErrors" />}
                   />
-                </Button>
-              </Flex>
-            ) : null}
-            <Field
-              name="fullName"
-              label={<Trans id="contactinfoPage.fullName" />}
-              helperText={<Trans id="contactinfoForm.fullName.warning" />} //errorMessage
-              component={Input}
-              required={
-                !fyiForm &&
-                !values.anonymousSkipOptions.includes(skipConsentOption)
-              }
-              disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
-            />
-
-            <Field
-              name="email"
-              label={<Trans id="contactinfoPage.emailAddress" />}
-              helperText={<Trans id="contactinfoForm.email.warning" />} //errorMessage
-              component={Input}
-              required={false}
-              disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
-            />
-            <Field
-              name="phone"
-              label={<Trans id="contactinfoPage.phoneNumber" />}
-              helperText={<Trans id="contactinfoForm.phone.warning" />}
-              component={Input}
-              required={false}
-              disabled={values.anonymousSkipOptions.includes(skipConsentOption)}
-            />
-
-            <NextAndCancelButtons
-              next={<Trans id="contactinfoPage.nextInfo" />}
-              button={<Trans id="contactinfoPage.nextButton" />}
-            />
-          </Stack>
+                )}
+                <br />
+                <br />
+                {
+                  <React.Fragment>
+                    <P w="100%">
+                      <Trans id="contactinfoPage.skipInfo" />
+                    </P>
+                    <SkipButton
+                      label={<Trans id="contactinfoPage.skipButton" />}
+                      to="/confirmation"
+                    />
+                  </React.Fragment>
+                }
+                <br />
+                <br />
+                <FieldArray
+                  name="contactInfo"
+                  className="form-section"
+                  render={() => {
+                    return (
+                      <React.Fragment>
+                        {errors && errors.fullName && (
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            {fullName.errorMessage}
+                          </P>
+                        )}
+                        <Field
+                          name={'fullName'}
+                          label={<Trans id="contactinfoPage.fullName" />}
+                          component={Input}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          id="fullName"
+                        />
+                        {errors && errors.email && (
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            {email.errorMessage}
+                          </P>
+                        )}
+                        <Field
+                          name={'email'}
+                          label={<Trans id="contactinfoPage.emailAddress" />}
+                          component={Input}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          id="email"
+                        />
+                        {errors && errors.phone && (
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            {phone.errorMessage}
+                          </P>
+                        )}
+                        <Field
+                          name={'phone'}
+                          label={<Trans id="contactinfoPage.phoneNumber" />}
+                          component={Input}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          id="phone"
+                        />
+                      </React.Fragment>
+                    )
+                  }}
+                />
+              </Row>
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="contactinfoPage.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="contactinfoPage.nextInfo" />}
+                />
+              </Row>
+            </Container>
+          </Form>
         )}
-      />
+      </Formik>
     </React.Fragment>
   )
 }

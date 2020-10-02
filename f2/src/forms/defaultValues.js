@@ -66,12 +66,7 @@ const formDefaults = {
     fileDescriptions: [],
   },
   location: { postalCode: '', city: '', province: '' },
-  contactInfo: {
-    anonymousSkipOptions: [],
-    fullName: '',
-    email: '',
-    phone: '',
-  },
+  contactInfo: { emailORphone: '', fullName: '', email: '', phone: '' },
   fyiForm: '',
 }
 
