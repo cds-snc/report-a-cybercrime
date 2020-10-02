@@ -20,6 +20,13 @@ const contactFormOptions = {
     label: <Trans id="contactinfoPage.hasValidationErrors" />,
     errorMessage: <Trans id="contactinfoPage.hasValidationErrors" />,
   },
+  emailORphone: {
+    name: 'emailORphone',
+    value: 'emailORphone',
+    id: 'enterContactDetails-emailORphone',
+    label: <Trans id="contactinfoPage.emailORphone" />,
+    errorMessage: <Trans id="contactinfoForm.emailORphone.warning" />,
+  },
   fullName: {
     name: 'fullName',
     value: 'fullName',
@@ -47,8 +54,7 @@ const createErrorSummary = (errors) => {
   const errorSummary = {}
 
   const fullName = errors.fullName
-  const email = errors.email
-  const phone = errors.phone
+  const emailORphone = errors.email || errors.phone
 
   if (fullName) {
     errorSummary['fullName'] = {
@@ -57,17 +63,10 @@ const createErrorSummary = (errors) => {
     }
   }
 
-  if (email) {
-    errorSummary['email'] = {
-      label: contactFormOptions.email.label,
-      message: contactFormOptions.email.errorMessage,
-    }
-  }
-
-  if (phone) {
-    errorSummary['phone'] = {
-      label: contactFormOptions.phone.label,
-      message: contactFormOptions.phone.errorMessage,
+  if (emailORphone) {
+    errorSummary['emailORphone'] = {
+      label: contactFormOptions.emailORphone.label,
+      message: contactFormOptions.emailORphone.errorMessage,
     }
   }
 
