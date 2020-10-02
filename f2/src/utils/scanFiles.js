@@ -1,6 +1,7 @@
 const clamd = require('clamdjs')
 const fs = require('fs')
 var async = require('async')
+const { getLogger } = require('./winstonLogger')
 const SUPPORTED_FILE_TYPES = [
   'image/gif',
   'image/jpeg',
@@ -13,7 +14,7 @@ const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmodera
 
 require('dotenv').config()
 
-const logger = require('./winstonLogger')
+const logger = getLogger(__filename)
 
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
@@ -44,6 +45,20 @@ async function scanFiles(data) {
           file[1].malwareScanDetail = lang['fileUpload.virusScanError']
           file[1].malwareIsClean = false
           console.warn('Virus scan failed on ' + data.reportId)
+          logger.error({
+            message: 'Virus scan failed on ' + data.reportId,
+            path: '/submit',
+            error: JSON.stringify(reply, Object.getOwnPropertyNames(reply)),
+          })
+          try {
+            let filesDir = '/home/' + data.reportId
+            if (!fs.existsSync(filesDir)) {
+              fs.mkdirSync(filesDir)
+            }
+            fs.copyFileSync(file[1].path, filesDir + '/' + file[1].name)
+          } catch (ex) {
+            console.error('Failed to save uploaded files ' + ex)
+          }
         })
     }
   } catch (error) {
