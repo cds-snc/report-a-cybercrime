@@ -87,10 +87,6 @@ export const nextPage = (navObject, doneForms) => {
     return nextPage
   } catch (error) {
     //If an error occurs default to What Happened
-    logger.error({
-      message: `ERROR getting next What Was Affected page: ${error}`,
-      navObject: navObject,
-    })
     return doneForms
       ? whatWasAffectedPages.CONFIRMATION
       : whatWasAffectedPages.LAST_PAGE
