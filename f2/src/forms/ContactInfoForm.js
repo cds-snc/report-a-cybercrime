@@ -10,6 +10,7 @@ import { formDefaults } from './defaultValues'
 import { Formik, FieldArray, Field } from 'formik'
 import { Input } from '../components/formik/input'
 import { SkipButton, NextCancelButtons } from '../components/formik/button'
+import { FormRow } from '../components/formik/row'
 import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
 
@@ -25,10 +26,7 @@ export const ContactInfoForm = (props, values) => {
   const phone = ContactInfoFormSchema.CONTACT_INFO.phone
 
   const onSubmitValidation = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
-  const onSubmitFYIValidation = ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
-
-  const { fyiForm } = data.formData
 
   return (
     <React.Fragment>
@@ -39,21 +37,16 @@ export const ContactInfoForm = (props, values) => {
       ) : null}
       <Formik
         initialValues={contactInfo}
-        onSubmit={async (values, { setErrors }) => {
-          const errors = !fyiForm
-            ? onSubmitValidation(values)
-            : onSubmitFYIValidation(values)
-          if (errors.fields) {
-            setErrors(errors.fields)
-          } else {
-            props.onSubmit(values)
-          }
+        validate={onSubmitValidation}
+        validateOnChange={false}
+        onSubmit={(values) => {
+          props.onSubmit(values)
         }}
       >
         {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row className="form-section">
+              <FormRow marginBottom="2rem">
                 {Object.keys(errors).length > 0 && (
                   <ErrorSummary
                     errors={createErrorSummary(errors)}
@@ -61,21 +54,19 @@ export const ContactInfoForm = (props, values) => {
                     title={<Trans id="contactinfoPage.hasValidationErrors" />}
                   />
                 )}
-                <br />
-                <br />
-                {
-                  <React.Fragment>
-                    <P w="100%">
-                      <Trans id="contactinfoPage.skipInfo" />
-                    </P>
-                    <SkipButton
-                      label={<Trans id="contactinfoPage.skipButton" />}
-                      to="/confirmation"
-                    />
-                  </React.Fragment>
-                }
-                <br />
-                <br />
+              </FormRow>
+
+              <FormRow marginBottom="2rem">
+                <P w="100%" marginBottom="1rem">
+                  <Trans id="contactinfoPage.skipInfo" />
+                </P>
+                <SkipButton
+                  label={<Trans id="contactinfoPage.skipButton" />}
+                  to="/confirmation"
+                />
+              </FormRow>
+
+              <FormRow>
                 <FieldArray
                   name="contactInfo"
                   className="form-section"
@@ -137,7 +128,7 @@ export const ContactInfoForm = (props, values) => {
                     )
                   }}
                 />
-              </Row>
+              </FormRow>
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="contactinfoPage.nextButton" />}

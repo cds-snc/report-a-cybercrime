@@ -1,16 +1,15 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import addrs from 'git checkout'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
+import * as Yup from 'yup'
+import { yupSchema } from '../utils/yupSchema'
+
+const contactInfoFormValidation = Yup.object().shape({
+  email: yupSchema().emailSchema,
+  phone: yupSchema().phoneSchema,
+})
 
 const contactFormOptions = {
-  emailORphone: {
-    name: 'emailORphone',
-    value: 'emailORphone',
-    id: 'enterContactDetails-emailORphone',
-    label: <Trans id="contactinfoPage.emailORphone" />,
-    errorMessage: <Trans id="contactinfoForm.emailORphone.warning" />,
-  },
   fullName: {
     name: 'fullName',
     value: 'fullName',
@@ -37,61 +36,67 @@ const contactFormOptions = {
 const createErrorSummary = (errors) => {
   const errorSummary = {}
 
-  const fullName = errors.fullName
-  const emailORphone = errors.email && errors.phone
-
-  if (fullName) {
+  if (errors.fullName) {
     errorSummary['fullName'] = {
       label: contactFormOptions.fullName.label,
       message: contactFormOptions.fullName.errorMessage,
     }
   }
 
-  if (emailORphone) {
+  if (errors.email) {
+    errorSummary['email'] = {
+      label: contactFormOptions.email.label,
+      message: contactFormOptions.email.errorMessage,
+    }
+  }
+
+  if (errors.phone) {
+    errorSummary['phone'] = {
+      label: contactFormOptions.phone.label,
+      message: contactFormOptions.phone.errorMessage,
+    }
+  }
+
+  if (errors.emailOrPhone) {
     errorSummary['emailORphone'] = {
-      label: contactFormOptions.emailORphone.label,
-      message: contactFormOptions.emailORphone.errorMessage,
+      label: <Trans id="contactinfoPage.emailORphone" />,
+      message: <Trans id="contactinfoForm.emailORphone.warning" />,
     }
   }
 
   return errorSummary
 }
 
-const fyiValidate = (values) => {
+const onSubmitValidation = async (values) => {
   const errors = {}
-  const fields = {}
-
-  if (values.email && !addrs(values.email)) {
-    fields['email'] = true
-    errors['fields'] = fields
-  }
-  return errors
-}
-
-const onSubmitValidation = (values) => {
-  const errors = {}
-  const fields = {}
 
   if (!values.fullName || values.fullName === '') {
-    fields['fullName'] = true
-    errors['fields'] = fields
+    errors['fullName'] = true
   }
 
-  if (
-    !addrs(values.email) &&
-    (!values.phone || !formatPhoneNumber(values.phone))
-  ) {
-    fields['email'] = true
-    fields['phone'] = true
-    errors['fields'] = fields
+  if (values.email) {
+    await contactInfoFormValidation
+      .validate({ email: values.email })
+      .catch((err) => {
+        errors['email'] = true
+      })
   }
 
-  if (!values.fullName && !values.email && !values.phone) {
-    fields['enterContactDetails'] = true
-    errors['fields'] = fields
+  if (values.phone) {
+    await contactInfoFormValidation
+      .validate({ phone: values.phone })
+      .catch((err) => {
+        errors['phone'] = true
+      })
+
+    values.phone = errors['phone']
+      ? values.phone
+      : formatPhoneNumber(values.phone)
   }
 
-  values.phone = formatPhoneNumber(values.phone)
+  if (!values.email && !values.phone) {
+    errors['emailOrPhone'] = true
+  }
 
   return errors
 }
@@ -99,6 +104,5 @@ const onSubmitValidation = (values) => {
 export const ContactInfoFormSchema = {
   CONTACT_INFO: contactFormOptions,
   ON_SUBMIT_VALIDATION: onSubmitValidation,
-  ON_SUBMIT_FYI_VALIDATION: fyiValidate,
   CREATE_ERROR_SUMMARY: createErrorSummary,
 }
