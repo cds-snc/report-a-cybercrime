@@ -1,7 +1,3 @@
-const { getLogger } = require('./winstonLogger')
-
-const logger = getLogger(__filename)
-
 export const whatWasAffectedPages = {
   FINANCIAL: {
     key: 'whatWasAffectedForm.financial',
