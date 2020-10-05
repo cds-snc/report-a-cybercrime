@@ -61,19 +61,13 @@ export const ContactInfoForm = (props, values) => {
                     title={<Trans id="contactinfoPage.hasValidationErrors" />}
                   />
                 )}
-                <br />
-                <br />
-                {
-                  <React.Fragment>
-                    <P w="100%">
-                      <Trans id="contactinfoPage.skipInfo" />
-                    </P>
-                    <SkipButton
-                      label={<Trans id="contactinfoPage.skipButton" />}
-                      to="/confirmation"
-                    />
-                  </React.Fragment>
-                }
+                <P w="100%">
+                  <Trans id="contactinfoPage.skipInfo" />
+                </P>
+                <SkipButton
+                  label={<Trans id="contactinfoPage.skipButton" />}
+                  to="/confirmation"
+                />
                 <br />
                 <br />
                 <FieldArray
