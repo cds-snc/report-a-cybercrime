@@ -1,6 +1,6 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import addrs from 'email-addresses'
+import addrs from 'git checkout'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 
 const contactFormOptions = {
