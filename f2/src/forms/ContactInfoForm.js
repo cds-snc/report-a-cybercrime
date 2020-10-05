@@ -13,8 +13,6 @@ import { SkipButton, NextCancelButtons } from '../components/formik/button'
 import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
 
-export const skipConsentOption = 'contactinfoPage.anonymousskip.yes'
-
 export const ContactInfoForm = (props, values) => {
   const [data] = useStateValue()
   const contactInfo = {
@@ -26,13 +24,11 @@ export const ContactInfoForm = (props, values) => {
   const email = ContactInfoFormSchema.CONTACT_INFO.email
   const phone = ContactInfoFormSchema.CONTACT_INFO.phone
 
+  const onSubmitValidation = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
+  const onSubmitFYIValidation = ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
   const { fyiForm } = data.formData
-
-  const validationSchema = fyiForm
-    ? ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
-    : ContactInfoFormSchema.ON_SUBMIT_VALIDATION
 
   return (
     <React.Fragment>
@@ -43,9 +39,15 @@ export const ContactInfoForm = (props, values) => {
       ) : null}
       <Formik
         initialValues={contactInfo}
-        validationSchema={validationSchema}
-        onSubmit={(values) => {
-          props.onSubmit(values)
+        onSubmit={async (values, { setErrors }) => {
+          const errors = !fyiForm
+            ? onSubmitValidation(values)
+            : onSubmitFYIValidation(values)
+          if (errors.fields) {
+            setErrors(errors.fields)
+          } else {
+            props.onSubmit(values)
+          }
         }}
       >
         {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (

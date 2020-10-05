@@ -3,37 +3,49 @@ import { Trans } from '@lingui/macro'
 import * as Yup from 'yup'
 import { yupSchema } from '../utils/yupSchema'
 
+/*Yup.addMethod(Yup.object, 'phoneOrEmail', function(phone, email) {
+  return this.test({
+    name: 'phoneOrEmail',
+    message: 'Phone or email required',
+    params: {values: [phone, email]},
+    exclusive: true,
+    test: value => {
+      console.log(value)
+      console.log(value.phone || value.email)
+      return value.phone || value.email
+    }
+  })
+})*/
+
+const emailOrPhoneTest = {
+  is: (val) => val === undefined,
+  then: Yup.string().test('phoneTest', function (value) {
+    return value
+  }),
+}
+
 const contactInfoFormValidation = Yup.object().shape({
   fullName: Yup.string().required('Name is required'),
-  email: Yup.string().when('phone', {
-    is: (val) => val !== '',
-    then: yupSchema().emailSchema.required('Email is required'),
-    otherwise: Yup.string(),
-  }),
-  phone: Yup.string().when('email', {
-    is: (val) => val !== '',
-    then: yupSchema().phoneSchema.required('Phone is required'),
-    otherwise: Yup.string(),
-  }),
+  email: yupSchema().emailSchema.required('Email is required'),
+  phone: yupSchema().phoneSchema.required('Phone is required'),
+  emailOrPhone: Yup.mixed().when(['email', 'phone']),
 })
 
 const contactInfoFYIFormValidation = Yup.object().shape({
   fullName: Yup.string().required('Name is required'),
   email: yupSchema().emailSchema,
-  phone: yupSchema().phoneSchema,
+  phone: yupSchema().phoneSchema.when('email', {
+    is: (val) => val === undefined,
+    then: Yup.string().test('phoneTest', function (value) {
+      return value
+    }),
+  }),
 })
 
 const contactFormOptions = {
   enterContactDetails: {
     label: <Trans id="contactinfoPage.hasValidationErrors" />,
     errorMessage: <Trans id="contactinfoPage.hasValidationErrors" />,
-  },
-  emailORphone: {
-    name: 'emailORphone',
-    value: 'emailORphone',
-    id: 'enterContactDetails-emailORphone',
-    label: <Trans id="contactinfoPage.emailORphone" />,
-    errorMessage: <Trans id="contactinfoForm.emailORphone.warning" />,
   },
   fullName: {
     name: 'fullName',
@@ -62,7 +74,8 @@ const createErrorSummary = (errors) => {
   const errorSummary = {}
 
   const fullName = errors.fullName
-  const emailORphone = errors.email || errors.phone
+  const email = errors.email
+  const phone = errors.phone
 
   if (fullName) {
     errorSummary['fullName'] = {
@@ -71,10 +84,17 @@ const createErrorSummary = (errors) => {
     }
   }
 
-  if (emailORphone) {
-    errorSummary['emailORphone'] = {
-      label: contactFormOptions.emailORphone.label,
-      message: contactFormOptions.emailORphone.errorMessage,
+  if (email) {
+    errorSummary['email'] = {
+      label: contactFormOptions.email.label,
+      message: contactFormOptions.email.errorMessage,
+    }
+  }
+
+  if (phone) {
+    errorSummary['phone'] = {
+      label: contactFormOptions.phone.label,
+      message: contactFormOptions.phone.errorMessage,
     }
   }
 
