@@ -9,7 +9,6 @@ const formQuestions = {
   incidentFrequency: {
     label: <Trans id="whenDidItHappenPage.question" />,
     errorMessage: <Trans id="whenDidItHappenForm.error" />,
-    // 'Please make a selection, if you are not sure select "I\'m not sure".',
   },
   once: {
     name: 'happenedOnce',
@@ -21,7 +20,6 @@ const formQuestions = {
       helpText: <Trans id="whenDidItStart.labelExample" />,
       id: 'happenedOnceDatePicker',
       errorMessage: <Trans id="whenDidItHappenForm.dateError" />,
-      // 'Please review the date entered',
     },
   },
   moreThanOnce: {
@@ -34,14 +32,12 @@ const formQuestions = {
       helpText: <Trans id="whenDidItStart.labelExample" />,
       id: 'happenedMoreThanOnceStart',
       errorMessage: <Trans id="whenDidItHappenForm.dateError" />,
-      // 'Please review the date entered',
     },
     datePickerEnd: {
       label: <Trans id="whenDidItHappenPage.dateRange.end.label" />,
       helpText: <Trans id="whenDidItStart.labelExample" />,
       id: 'happenedMoreThanOnceEnd',
       errorMessage: <Trans id="whenDidItHappenForm.dateError" />,
-      // 'Please review the date entered',
     },
   },
   notSure: {
@@ -233,7 +229,6 @@ const createErrorSummary = (errors) => {
     errorSummary['incidentFrequency'] = {
       label: <Trans id="whenDidItHappenPage.question" />,
       message: <Trans id="whenDidItHappenForm.error" />,
-      // 'Please make a selection, if you are not sure select "I\'m not sure".',
     }
   }
 
