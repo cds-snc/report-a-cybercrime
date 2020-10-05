@@ -1,51 +1,15 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import * as Yup from 'yup'
-import { yupSchema } from '../utils/yupSchema'
-
-/*Yup.addMethod(Yup.object, 'phoneOrEmail', function(phone, email) {
-  return this.test({
-    name: 'phoneOrEmail',
-    message: 'Phone or email required',
-    params: {values: [phone, email]},
-    exclusive: true,
-    test: value => {
-      console.log(value)
-      console.log(value.phone || value.email)
-      return value.phone || value.email
-    }
-  })
-})*/
-
-const emailOrPhoneTest = {
-  is: (val) => val === undefined,
-  then: Yup.string().test('phoneTest', function (value) {
-    return value
-  }),
-}
-
-const contactInfoFormValidation = Yup.object().shape({
-  fullName: Yup.string().required('Name is required'),
-  email: yupSchema().emailSchema.required('Email is required'),
-  phone: yupSchema().phoneSchema.required('Phone is required'),
-  emailOrPhone: Yup.mixed().when(['email', 'phone']),
-})
-
-const contactInfoFYIFormValidation = Yup.object().shape({
-  fullName: Yup.string().required('Name is required'),
-  email: yupSchema().emailSchema,
-  phone: yupSchema().phoneSchema.when('email', {
-    is: (val) => val === undefined,
-    then: Yup.string().test('phoneTest', function (value) {
-      return value
-    }),
-  }),
-})
+import addrs from 'email-addresses'
+import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 
 const contactFormOptions = {
-  enterContactDetails: {
-    label: <Trans id="contactinfoPage.hasValidationErrors" />,
-    errorMessage: <Trans id="contactinfoPage.hasValidationErrors" />,
+  emailORphone: {
+    name: 'emailORphone',
+    value: 'emailORphone',
+    id: 'enterContactDetails-emailORphone',
+    label: <Trans id="contactinfoPage.emailORphone" />,
+    errorMessage: <Trans id="contactinfoForm.emailORphone.warning" />,
   },
   fullName: {
     name: 'fullName',
@@ -74,8 +38,7 @@ const createErrorSummary = (errors) => {
   const errorSummary = {}
 
   const fullName = errors.fullName
-  const email = errors.email
-  const phone = errors.phone
+  const emailORphone = errors.email && errors.phone
 
   if (fullName) {
     errorSummary['fullName'] = {
@@ -84,26 +47,58 @@ const createErrorSummary = (errors) => {
     }
   }
 
-  if (email) {
-    errorSummary['email'] = {
-      label: contactFormOptions.email.label,
-      message: contactFormOptions.email.errorMessage,
-    }
-  }
-
-  if (phone) {
-    errorSummary['phone'] = {
-      label: contactFormOptions.phone.label,
-      message: contactFormOptions.phone.errorMessage,
+  if (emailORphone) {
+    errorSummary['emailORphone'] = {
+      label: contactFormOptions.emailORphone.label,
+      message: contactFormOptions.emailORphone.errorMessage,
     }
   }
 
   return errorSummary
 }
 
+const fyiValidate = (values) => {
+  const errors = {}
+  const fields = {}
+
+  if (values.email && !addrs(values.email)) {
+    fields['email'] = true
+    errors['fields'] = fields
+  }
+  return errors
+}
+
+const onSubmitValidation = (values) => {
+  const errors = {}
+  const fields = {}
+
+  if (!values.fullName || values.fullName === '') {
+    fields['fullName'] = true
+    errors['fields'] = fields
+  }
+
+  if (
+    !addrs(values.email) &&
+    (!values.phone || !formatPhoneNumber(values.phone))
+  ) {
+    fields['email'] = true
+    fields['phone'] = true
+    errors['fields'] = fields
+  }
+
+  if (!values.fullName && !values.email && !values.phone) {
+    fields['enterContactDetails'] = true
+    errors['fields'] = fields
+  }
+
+  values.phone = formatPhoneNumber(values.phone)
+
+  return errors
+}
+
 export const ContactInfoFormSchema = {
   CONTACT_INFO: contactFormOptions,
-  ON_SUBMIT_VALIDATION: contactInfoFormValidation,
-  ON_SUBMIT_FYI_VALIDATION: contactInfoFYIFormValidation,
+  ON_SUBMIT_VALIDATION: onSubmitValidation,
+  ON_SUBMIT_FYI_VALIDATION: fyiValidate,
   CREATE_ERROR_SUMMARY: createErrorSummary,
 }
