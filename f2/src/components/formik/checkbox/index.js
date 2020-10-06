@@ -23,6 +23,8 @@ const Label = styled(Form.Check.Label)`
   vertical-align: top;
 `
 
+const Check = styled(Form.Check)``
+
 export const CheckBox = ({ field, form, ...props }) => {
   return (
     <FormRow>
