@@ -55,17 +55,19 @@ export const ContactInfoForm = (props, values) => {
                   />
                 )}
               </FormRow>
-
-              <FormRow marginBottom="2rem">
+              <FormRow>
                 <P w="100%" marginBottom="1rem">
                   <Trans id="contactinfoPage.skipInfo" />
                 </P>
+              </FormRow>
+              <FormRow marginBottom="2rem">
                 <SkipButton
                   label={<Trans id="contactinfoPage.skipButton" />}
                   to="/confirmation"
                 />
               </FormRow>
-
+              {/* <FormRow marginBottom="2rem">
+               */}
               <FormRow>
                 <FieldArray
                   name="contactInfo"
