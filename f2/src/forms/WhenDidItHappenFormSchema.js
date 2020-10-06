@@ -135,38 +135,32 @@ const onSubmitValidation = (values) => {
       }
     }
   } else if (values.incidentFrequency === 'moreThanOnce') {
-    let startError = false
-    let endError = false
-
     if (values.startDay || values.startMonth || values.startYear) {
       fields['startDay'] = !values.startDay
       fields['startMonth'] = !values.startMonth
       fields['startYear'] = !values.startYear
 
-      if (fields['startDay'] || fields['startMonth'] || fields['startYear']) {
+      const hasStartError =
+        fields['startDay'] || fields['startMonth'] || fields['startYear']
+
+      if (hasStartError) {
         fields['start'] = true
         errors['fields'] = fields
       }
     }
 
-    if (!values.endDay) {
-      endError = true
-      fields['endDay'] = true
-    }
+    if (values.endDay || values.endMonth || values.endYear) {
+      fields['endDay'] = !values.endDay
+      fields['endMonth'] = !values.endMonth
+      fields['endYear'] = !values.endYear
 
-    if (!values.endMonth) {
-      endError = true
-      fields['endMonth'] = true
-    }
+      const hasEndError =
+        fields['endDay'] || fields['endMonth'] || fields['endYear']
 
-    if (!values.endYear) {
-      endError = true
-      fields['endYear'] = true
-    }
-
-    if (endError) {
-      fields['end'] = true
-      errors['fields'] = fields
+      if (hasEndError) {
+        fields['end'] = true
+        errors['fields'] = fields
+      }
     }
   }
 
