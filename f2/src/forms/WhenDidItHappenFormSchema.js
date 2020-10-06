@@ -119,71 +119,55 @@ const onSubmitValidation = (values) => {
   const errors = {}
   const fields = {}
 
-  if (values.incidentFrequency) {
-    if (values.incidentFrequency === 'once') {
-      if (!values.happenedOnceDay) {
-        fields['happenedOnceDay'] = true
-      }
-
-      if (!values.happenedOnceMonth) {
-        fields['happenedOnceMonth'] = true
-      }
-
-      if (!values.happenedOnceYear) {
-        fields['happenedOnceYear'] = true
-      }
+  if (values.incidentFrequency === 'once') {
+    if (
+      values.happenedOnceDay ||
+      values.happenedOnceMonth ||
+      values.happenedOnceYear
+    ) {
+      fields['happenedOnceDay'] = !values.happenedOnceDay
+      fields['happenedOnceMonth'] = !values.happenedOnceMonth
+      fields['happenedOnceYear'] = !values.happenedOnceYear
 
       if (Object.keys(fields).length > 0) {
         fields['happenedOnce'] = true
         errors['fields'] = fields
       }
-    } else if (values.incidentFrequency === 'moreThanOnce') {
-      let startError = false
-      let endError = false
+    }
+  } else if (values.incidentFrequency === 'moreThanOnce') {
+    let startError = false
+    let endError = false
 
-      if (!values.startDay) {
-        startError = true
-        fields['startDay'] = true
-      }
+    if (values.startDay || values.startMonth || values.startYear) {
+      fields['startDay'] = !values.startDay
+      fields['startMonth'] = !values.startMonth
+      fields['startYear'] = !values.startYear
 
-      if (!values.startMonth) {
-        startError = true
-        fields['startMonth'] = true
-      }
-
-      if (!values.startYear) {
-        startError = true
-        fields['startYear'] = true
-      }
-
-      if (startError) {
+      if (fields['startDay'] || fields['startMonth'] || fields['startYear']) {
         fields['start'] = true
         errors['fields'] = fields
       }
-
-      if (!values.endDay) {
-        endError = true
-        fields['endDay'] = true
-      }
-
-      if (!values.endMonth) {
-        endError = true
-        fields['endMonth'] = true
-      }
-
-      if (!values.endYear) {
-        endError = true
-        fields['endYear'] = true
-      }
-
-      if (endError) {
-        fields['end'] = true
-        errors['fields'] = fields
-      }
     }
-  } else {
-    fields['incidentFrequency'] = true
-    errors['fields'] = fields
+
+    if (!values.endDay) {
+      endError = true
+      fields['endDay'] = true
+    }
+
+    if (!values.endMonth) {
+      endError = true
+      fields['endMonth'] = true
+    }
+
+    if (!values.endYear) {
+      endError = true
+      fields['endYear'] = true
+    }
+
+    if (endError) {
+      fields['end'] = true
+      errors['fields'] = fields
+    }
   }
 
   return errors
