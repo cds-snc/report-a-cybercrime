@@ -129,7 +129,12 @@ const onSubmitValidation = (values) => {
       fields['happenedOnceMonth'] = !values.happenedOnceMonth
       fields['happenedOnceYear'] = !values.happenedOnceYear
 
-      if (Object.keys(fields).length > 0) {
+      const hasError =
+        fields['happenedOnceDay'] ||
+        fields['happenedOnceMonth'] ||
+        fields['happenedOnceYear']
+
+      if (hasError) {
         fields['happenedOnce'] = true
         errors['fields'] = fields
       }
@@ -163,6 +168,8 @@ const onSubmitValidation = (values) => {
       }
     }
   }
+
+  console.log(errors)
 
   return errors
 }
