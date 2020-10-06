@@ -1,10 +1,33 @@
 import React from 'react'
 import { Trans } from '@lingui/macro'
-import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import * as Yup from 'yup'
 import { yupSchema } from '../utils/yupSchema'
+import { regexDef } from '../utils/regex'
 
 const contactInfoFormValidation = Yup.object().shape({
+  fullName: Yup.string().required('Name is required'),
+  email: Yup.string()
+    .email(<Trans id="contactinfoForm.email.warning" />)
+    .test('oneOfRequired', 'One of email or phone must be filled', function (
+      item,
+    ) {
+      return this.parent.email || this.parent.phone
+    }),
+
+  phone: Yup.string()
+    .matches(regexDef().phoneRegExp, {
+      excludeEmptyString: true,
+      message: 'Please enter a valid phone number',
+    })
+    .test('oneOfRequired', 'One of email or phone must be filled', function (
+      item,
+    ) {
+      return this.parent.phone || this.parent.email
+    }),
+})
+
+const contactInfoFYIFormValidation = Yup.object().shape({
+  fullName: Yup.string().required('Name is required'),
   email: yupSchema().emailSchema,
   phone: yupSchema().phoneSchema,
 })
@@ -36,28 +59,17 @@ const contactFormOptions = {
 const createErrorSummary = (errors) => {
   const errorSummary = {}
 
-  if (errors.fullName) {
+  const fullName = errors.fullName
+  const emailORphone = errors.email || errors.phone
+
+  if (fullName) {
     errorSummary['fullName'] = {
       label: contactFormOptions.fullName.label,
       message: contactFormOptions.fullName.errorMessage,
     }
   }
 
-  if (errors.email) {
-    errorSummary['email'] = {
-      label: contactFormOptions.email.label,
-      message: contactFormOptions.email.errorMessage,
-    }
-  }
-
-  if (errors.phone) {
-    errorSummary['phone'] = {
-      label: contactFormOptions.phone.label,
-      message: contactFormOptions.phone.errorMessage,
-    }
-  }
-
-  if (errors.emailOrPhone) {
+  if (emailORphone) {
     errorSummary['emailORphone'] = {
       label: <Trans id="contactinfoPage.emailORphone" />,
       message: <Trans id="contactinfoForm.emailORphone.warning" />,
@@ -67,42 +79,9 @@ const createErrorSummary = (errors) => {
   return errorSummary
 }
 
-const onSubmitValidation = async (values) => {
-  const errors = {}
-
-  if (!values.fullName || values.fullName === '') {
-    errors['fullName'] = true
-  }
-
-  if (values.email) {
-    await contactInfoFormValidation
-      .validate({ email: values.email })
-      .catch((err) => {
-        errors['email'] = true
-      })
-  }
-
-  if (values.phone) {
-    await contactInfoFormValidation
-      .validate({ phone: values.phone })
-      .catch((err) => {
-        errors['phone'] = true
-      })
-
-    values.phone = errors['phone']
-      ? values.phone
-      : formatPhoneNumber(values.phone)
-  }
-
-  if (!values.email && !values.phone) {
-    errors['emailOrPhone'] = true
-  }
-
-  return errors
-}
-
 export const ContactInfoFormSchema = {
   CONTACT_INFO: contactFormOptions,
-  ON_SUBMIT_VALIDATION: onSubmitValidation,
+  ON_SUBMIT_VALIDATION: contactInfoFormValidation,
+  ON_SUBMIT_FYI_VALIDATION: contactInfoFYIFormValidation,
   CREATE_ERROR_SUMMARY: createErrorSummary,
 }

@@ -14,7 +14,9 @@ import { FormRow } from '../components/formik/row'
 import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
 
-export const ContactInfoForm = (props, values) => {
+export const skipConsentOption = 'contactinfoPage.anonymousskip.yes'
+
+export const ContactInfoForm = (props) => {
   const [data] = useStateValue()
   const contactInfo = {
     ...formDefaults.contactInfo,
@@ -25,8 +27,13 @@ export const ContactInfoForm = (props, values) => {
   const email = ContactInfoFormSchema.CONTACT_INFO.email
   const phone = ContactInfoFormSchema.CONTACT_INFO.phone
 
-  const onSubmitValidation = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
+
+  const { fyiForm } = data.formData
+
+  const validationSchema = fyiForm
+    ? ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
+    : ContactInfoFormSchema.ON_SUBMIT_VALIDATION
 
   return (
     <React.Fragment>
@@ -37,8 +44,7 @@ export const ContactInfoForm = (props, values) => {
       ) : null}
       <Formik
         initialValues={contactInfo}
-        validate={onSubmitValidation}
-        validateOnChange={false}
+        validationSchema={validationSchema}
         onSubmit={(values) => {
           props.onSubmit(values)
         }}
@@ -46,7 +52,7 @@ export const ContactInfoForm = (props, values) => {
         {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <FormRow marginBottom="2rem">
+              <Row className="form-section">
                 {Object.keys(errors).length > 0 && (
                   <ErrorSummary
                     errors={createErrorSummary(errors)}
@@ -54,21 +60,17 @@ export const ContactInfoForm = (props, values) => {
                     title={<Trans id="contactinfoPage.hasValidationErrors" />}
                   />
                 )}
-              </FormRow>
-              <FormRow>
-                <P w="100%" marginBottom="1rem">
-                  <Trans id="contactinfoPage.skipInfo" />
-                </P>
-              </FormRow>
-              <FormRow marginBottom="2rem">
-                <SkipButton
-                  label={<Trans id="contactinfoPage.skipButton" />}
-                  to="/confirmation"
-                />
-              </FormRow>
-              {/* <FormRow marginBottom="2rem">
-               */}
-              <FormRow>
+                <FormRow>
+                  <P w="100%" marginBottom="1rem">
+                    <Trans id="contactinfoPage.skipInfo" />
+                  </P>
+                </FormRow>
+                <FormRow marginBottom="2rem">
+                  <SkipButton
+                    label={<Trans id="contactinfoPage.skipButton" />}
+                    to="/confirmation"
+                  />
+                </FormRow>
                 <FieldArray
                   name="contactInfo"
                   className="form-section"
@@ -130,7 +132,7 @@ export const ContactInfoForm = (props, values) => {
                     )
                   }}
                 />
-              </FormRow>
+              </Row>
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="contactinfoPage.nextButton" />}
