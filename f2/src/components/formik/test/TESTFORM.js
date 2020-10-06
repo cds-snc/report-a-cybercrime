@@ -42,7 +42,6 @@ export const TestForm = (props) => {
     },
   ]
 
-  console.log(`Rendering form`)
   return (
     <React.Fragment>
       <Formik
@@ -56,20 +55,6 @@ export const TestForm = (props) => {
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row className="form-question">
-                <Row className="form-label">
-                  <Trans id="howDidTheyReachYou.question" />
-                </Row>
-                <Row className="form-helper-text">
-                  <Trans id="howDidTheyReachYou.reminder" />
-                </Row>
-              </Row>
-              <Row className="form-section">
-                <Error>This is an error</Error>
-                <Info>This is an info message</Info>
-                <Warning>This is a warning message</Warning>
-                <Success>This is a success message</Success>
-              </Row>
               <Row className="form-section">
                 <FieldArray
                   name="howDidTheyReachYou"
@@ -82,6 +67,7 @@ export const TestForm = (props) => {
                             label={question.label}
                             component={CheckBox}
                             value={question.value}
+                            helpText={question.label}
                             type="checkbox"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -132,91 +118,6 @@ export const TestForm = (props) => {
                       )
                     })
                   }
-                />
-              </Row>
-              <Row className="form-section">
-                <Field
-                  name="firstName"
-                  label="First Name"
-                  component={Input}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="first-name-input"
-                  type="input"
-                />
-                <Field
-                  name="lastName"
-                  label="Last Name"
-                  component={Input}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="last-name-input"
-                  type="input"
-                />
-                <Field
-                  name="email"
-                  label="Email"
-                  component={Input}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="email-input"
-                  type="email"
-                  placeholder="example@email.com"
-                  helpText="Email addresses must be unique"
-                />
-                <Field
-                  name="password"
-                  label="Password"
-                  component={Input}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="password-input"
-                  type="password"
-                  helpText="Must include letters, numbers, and special characters"
-                />
-              </Row>
-
-              <Row className="form-section">
-                <FileUpload
-                  id="testUpload"
-                  label={<Trans id="evidencePage.addFileButton" />}
-                  onChange={(e) => {
-                    const file = e.target.files[0]
-                    console.log(file)
-                    alert(`File Uploaded - ${file.name}`)
-                  }}
-                />
-              </Row>
-
-              <Row className="form-section">
-                <DatePicker
-                  name="startDate"
-                  label="When did it start?"
-                  onChange={handleChange}
-                  id="startDate"
-                  helpText="For example: 26 02 2020"
-                  day={values.day}
-                  month={values.month}
-                  year={values.year}
-                />
-              </Row>
-
-              <Row className="form-section">
-                <SkipButton
-                  label={<Trans id="locationinfoPage.skipButton" />}
-                  to="/privacyconsent"
-                />
-              </Row>
-
-              <Row className="form-section">
-                <Trans id="howDidItStartPage.tip" />
-              </Row>
-
-              <Row>
-                <NextCancelButtons
-                  submit={<Trans id="howDidItStartPage.nextButton" />}
-                  cancel={<Trans id="button.cancelReport" />}
-                  label="Test Page Next"
                 />
               </Row>
             </Container>
