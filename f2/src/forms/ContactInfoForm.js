@@ -10,7 +10,6 @@ import { formDefaults } from './defaultValues'
 import { Formik, FieldArray, Field } from 'formik'
 import { Input } from '../components/formik/input'
 import { SkipButton, NextCancelButtons } from '../components/formik/button'
-import { FormRow } from '../components/formik/row'
 import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
 
@@ -24,8 +23,7 @@ export const ContactInfoForm = (props) => {
   }
 
   const fullName = ContactInfoFormSchema.CONTACT_INFO.fullName
-  const email = ContactInfoFormSchema.CONTACT_INFO.email
-  const phone = ContactInfoFormSchema.CONTACT_INFO.phone
+  const email = ContactInfoFormSchema.CONTACT_INFO.email //email and phone will share the same error message based on business logic
 
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
