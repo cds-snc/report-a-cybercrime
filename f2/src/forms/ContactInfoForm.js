@@ -10,6 +10,7 @@ import { formDefaults } from './defaultValues'
 import { Formik, FieldArray, Field } from 'formik'
 import { Input } from '../components/formik/input'
 import { SkipButton, NextCancelButtons } from '../components/formik/button'
+import { FormRow } from '../components/formik/row'
 import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
 
@@ -23,7 +24,8 @@ export const ContactInfoForm = (props) => {
   }
 
   const fullName = ContactInfoFormSchema.CONTACT_INFO.fullName
-  const email = ContactInfoFormSchema.CONTACT_INFO.email //email and phone will share the same error message based on business logic
+  const email = ContactInfoFormSchema.CONTACT_INFO.email
+  const phone = ContactInfoFormSchema.CONTACT_INFO.phone
 
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
@@ -38,7 +40,8 @@ export const ContactInfoForm = (props) => {
       ) : null}
       <Formik
         initialValues={contactInfo}
-        validationSchema={validationSchema}
+        validate={validationSchema}
+        validateOnChange={false}
         onSubmit={(values) => {
           props.onSubmit(values)
         }}
@@ -46,7 +49,7 @@ export const ContactInfoForm = (props) => {
         {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row className="form-section">
+              <FormRow marginBottom="2rem">
                 {Object.keys(errors).length > 0 && (
                   <ErrorSummary
                     errors={createErrorSummary(errors)}
@@ -54,15 +57,20 @@ export const ContactInfoForm = (props) => {
                     title={<Trans id="contactinfoPage.hasValidationErrors" />}
                   />
                 )}
+              </FormRow>
+              <FormRow>
                 <P w="100%">
                   <Trans id="contactinfoPage.skipInfo" />
                 </P>
+              </FormRow>
+              <FormRow marginBottom="2rem">
                 <SkipButton
                   label={<Trans id="contactinfoPage.skipButton" />}
                   to="/confirmation"
                 />
-                <br />
-                <br />
+              </FormRow>
+
+              <FormRow>
                 <FieldArray
                   name="contactInfo"
                   className="form-section"
@@ -79,14 +87,27 @@ export const ContactInfoForm = (props) => {
                           </P>
                         )}
                         <Field
-                          name={'fullName'}
+                          name="fullName"
                           label={<Trans id="contactinfoPage.fullName" />}
                           component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           id="fullName"
                         />
-                        {errors && (errors.email || errors.phone) && (
+                        {errors.emailOrPhone && (
+                          <Container>
+                            <FormRow id="emailOrPhone">
+                              <P
+                                color="#dc3545"
+                                fontSize="1.25rem"
+                                marginBottom="0.5rem"
+                              >
+                                <Trans id="contactinfoForm.emailORphone.warning" />
+                              </P>
+                            </FormRow>
+                          </Container>
+                        )}
+                        {errors.email && (
                           <P
                             color="#dc3545"
                             fontSize="1.25rem"
@@ -96,15 +117,24 @@ export const ContactInfoForm = (props) => {
                           </P>
                         )}
                         <Field
-                          name={'email'}
+                          name="email"
                           label={<Trans id="contactinfoPage.emailAddress" />}
                           component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           id="email"
                         />
+                        {errors.phone && (
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            {phone.errorMessage}
+                          </P>
+                        )}
                         <Field
-                          name={'phone'}
+                          name="phone"
                           label={<Trans id="contactinfoPage.phoneNumber" />}
                           component={Input}
                           onBlur={handleBlur}
@@ -115,7 +145,7 @@ export const ContactInfoForm = (props) => {
                     )
                   }}
                 />
-              </Row>
+              </FormRow>
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="contactinfoPage.nextButton" />}
