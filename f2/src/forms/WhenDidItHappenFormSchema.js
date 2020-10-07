@@ -8,8 +8,7 @@ import { evalDate, evalDateRange } from '../utils/validateDate'
 const formQuestions = {
   incidentFrequency: {
     label: <Trans id="whenDidItHappenPage.question" />,
-    errorMessage:
-      'Please make a selection, if you are not sure select "I\'m not sure".',
+    errorMessage: <Trans id="whenDidItHappenForm.error" />,
   },
   once: {
     name: 'happenedOnce',
@@ -20,7 +19,7 @@ const formQuestions = {
       label: <Trans id="whenDidItHappenPage.singleDate.label" />,
       helpText: <Trans id="whenDidItStart.labelExample" />,
       id: 'happenedOnceDatePicker',
-      errorMessage: 'Please review the date entered',
+      errorMessage: <Trans id="whenDidItHappenForm.dateError" />,
     },
   },
   moreThanOnce: {
@@ -32,13 +31,13 @@ const formQuestions = {
       label: <Trans id="whenDidItHappenPage.dateRange.start.label" />,
       helpText: <Trans id="whenDidItStart.labelExample" />,
       id: 'happenedMoreThanOnceStart',
-      errorMessage: 'Please review the date entered',
+      errorMessage: <Trans id="whenDidItHappenForm.dateError" />,
     },
     datePickerEnd: {
       label: <Trans id="whenDidItHappenPage.dateRange.end.label" />,
       helpText: <Trans id="whenDidItStart.labelExample" />,
       id: 'happenedMoreThanOnceEnd',
-      errorMessage: 'Please review the date entered',
+      errorMessage: <Trans id="whenDidItHappenForm.dateError" />,
     },
   },
   notSure: {
@@ -229,8 +228,7 @@ const createErrorSummary = (errors) => {
   if (incidentFrequency) {
     errorSummary['incidentFrequency'] = {
       label: <Trans id="whenDidItHappenPage.question" />,
-      message:
-        'Please make a selection, if you are not sure select "I\'m not sure".',
+      message: <Trans id="whenDidItHappenForm.error" />,
     }
   }
 
