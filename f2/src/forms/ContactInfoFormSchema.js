@@ -2,28 +2,24 @@ import React from 'react'
 import { Trans } from '@lingui/macro'
 import * as Yup from 'yup'
 import { yupSchema } from '../utils/yupSchema'
-import { regexDef } from '../utils/regex'
 
 const contactInfoFormValidation = Yup.object().shape({
   fullName: Yup.string().required('Name is required'),
-  email: Yup.string()
-    .email(<Trans id="contactinfoForm.email.warning" />)
-    .test('oneOfRequired', 'One of email or phone must be filled', function (
-      item,
-    ) {
+  email: yupSchema().emailSchema.test(
+    'oneOfRequired',
+    'One of email or phone must be filled',
+    function (item) {
       return this.parent.email || this.parent.phone
-    }),
+    },
+  ),
 
-  phone: Yup.string()
-    .matches(regexDef().phoneRegExp, {
-      excludeEmptyString: true,
-      message: 'Please enter a valid phone number',
-    })
-    .test('oneOfRequired', 'One of email or phone must be filled', function (
-      item,
-    ) {
+  phone: yupSchema().phoneSchema.test(
+    'oneOfRequired',
+    'One of email or phone must be filled',
+    function (item) {
       return this.parent.phone || this.parent.email
-    }),
+    },
+  ),
 })
 
 const contactInfoFYIFormValidation = Yup.object().shape({
