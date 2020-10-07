@@ -56,17 +56,15 @@ export const ContactInfoForm = (props) => {
                     title={<Trans id="contactinfoPage.hasValidationErrors" />}
                   />
                 )}
-                <FormRow>
-                  <P w="100%" marginBottom="1rem">
-                    <Trans id="contactinfoPage.skipInfo" />
-                  </P>
-                </FormRow>
-                <FormRow marginBottom="2rem">
-                  <SkipButton
-                    label={<Trans id="contactinfoPage.skipButton" />}
-                    to="/confirmation"
-                  />
-                </FormRow>
+                <P w="100%">
+                  <Trans id="contactinfoPage.skipInfo" />
+                </P>
+                <SkipButton
+                  label={<Trans id="contactinfoPage.skipButton" />}
+                  to="/confirmation"
+                />
+                <br />
+                <br />
                 <FieldArray
                   name="contactInfo"
                   className="form-section"
@@ -90,7 +88,7 @@ export const ContactInfoForm = (props) => {
                           onChange={handleChange}
                           id="fullName"
                         />
-                        {errors && errors.email && (
+                        {errors && (errors.email || errors.phone) && (
                           <P
                             color="#dc3545"
                             fontSize="1.25rem"
@@ -107,15 +105,6 @@ export const ContactInfoForm = (props) => {
                           onChange={handleChange}
                           id="email"
                         />
-                        {errors && errors.phone && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            {phone.errorMessage}
-                          </P>
-                        )}
                         <Field
                           name={'phone'}
                           label={<Trans id="contactinfoPage.phoneNumber" />}
