@@ -18,9 +18,17 @@ const Label = styled(Form.Check.Label)`
   font-size: 1.25rem;
   line-height: 1.5rem;
   padding-top: 0.5rem;
-  position: relative;
-  margin-bottom: 0;
-  vertical-align: top;
+  &:before {
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 0rem;
+  }
+`
+
+const Input = styled(Form.Check.Input)`
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: auto;
 `
 
 const Check = styled(Form.Check)``
@@ -29,7 +37,7 @@ export const CheckBox = ({ field, form, ...props }) => {
   return (
     <FormRow>
       <Form.Check id={props.id} type="checkbox" custom>
-        <Form.Check.Input type="checkbox" {...field} value={props.value} />
+        <Input type="checkbox" {...field} value={props.value} />
         <Label>{props.label}</Label>
         <HelpText>{props.helpText}</HelpText>
       </Form.Check>

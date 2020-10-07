@@ -299,26 +299,6 @@ body {
   line-height: 2.5rem;
 }
 
-.custom-control-input {
-  width: 2.5rem;
-  height: 2.5rem;
-  z-index: auto;
-}
-
-.custom-control-label:before {
-  background-color: white;
-  width: 2.5rem;
-  height: 2.5rem;
-  top: 0rem;
-}
-
-.custom-control-label {
-  padding-left: 1.5rem;
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  padding-top: 0.5rem;
-}
-
 .custom-checkbox .custom-control-label:before {
   border-radius: 0rem;
 }
@@ -350,13 +330,6 @@ body {
   .custom-control-input:not(:checked)
   ~ .custom-control-label::before {
   background-color: rgb(255, 255, 255);
-}
-
-.check-help-text {
-  padding-left: 1.5rem;
-  font-size: 0.875rem;
-  margin-top: -0.5rem;
-  line-height: 1.5;
 }
 
 /*Input Fields*/
