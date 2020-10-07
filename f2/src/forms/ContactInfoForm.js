@@ -29,11 +29,7 @@ export const ContactInfoForm = (props) => {
 
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
-  const { fyiForm } = data.formData
-
-  const validationSchema = fyiForm
-    ? ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
-    : ContactInfoFormSchema.ON_SUBMIT_VALIDATION
+  const validationSchema = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
 
   return (
     <React.Fragment>

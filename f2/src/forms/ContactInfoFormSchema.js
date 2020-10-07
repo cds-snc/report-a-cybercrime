@@ -22,12 +22,6 @@ const contactInfoFormValidation = Yup.object().shape({
   ),
 })
 
-const contactInfoFYIFormValidation = Yup.object().shape({
-  fullName: Yup.string().required('Name is required'),
-  email: yupSchema().emailSchema,
-  phone: yupSchema().phoneSchema,
-})
-
 const contactFormOptions = {
   fullName: {
     name: 'fullName',
@@ -78,6 +72,5 @@ const createErrorSummary = (errors) => {
 export const ContactInfoFormSchema = {
   CONTACT_INFO: contactFormOptions,
   ON_SUBMIT_VALIDATION: contactInfoFormValidation,
-  ON_SUBMIT_FYI_VALIDATION: contactInfoFYIFormValidation,
   CREATE_ERROR_SUMMARY: createErrorSummary,
 }
