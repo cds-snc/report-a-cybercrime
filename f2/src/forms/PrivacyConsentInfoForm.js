@@ -30,63 +30,70 @@ export const PrivacyConsentInfoForm = (props) => {
   const { fyiForm } = data.formData
 
   return (
-    <Formik
-      initialValues={whetherConsent}
-      onSubmit={(values) => {
-        props.onSubmit(values)
-      }}
-      validationSchema={PrivacyConsentInfoFormSchema()}
-    >
-      {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
-        <Form onSubmit={handleSubmit}>
-          <Container>
-            <Row classname="form-question">
-              {Object.keys(errors).length > 0 && (
-                <ErrorSummary
-                  errors={createErrorSummary(errors)}
-                  submissions={submitCount}
-                  title={
-                    <Trans id="privacyConsentInfoForm.hasValidationErrors" />
+    <React.Fragment>
+      {false ? ( // mark ids for lingui
+        <div>
+          <Trans id="privacyConsentInfoForm.consent" />
+        </div>
+      ) : null}
+      <Formik
+        initialValues={whetherConsent}
+        onSubmit={(values) => {
+          props.onSubmit(values)
+        }}
+        validationSchema={PrivacyConsentInfoFormSchema()}
+      >
+        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row classname="form-question">
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary
+                    errors={createErrorSummary(errors)}
+                    submissions={submitCount}
+                    title={
+                      <Trans id="privacyConsentInfoForm.hasValidationErrors" />
+                    }
+                  />
+                )}
+              </Row>
+              <Row className="form-section">
+                <Field
+                  name="consentOptions"
+                  label={
+                    <Trans id="privacyConsentInfoForm.yes.withExternalLink">
+                      <A
+                        color="#0000ff"
+                        target="_blank"
+                        href={'/privacystatement?lang=' + i18n.locale}
+                      />
+                    </Trans>
+                  }
+                  component={CheckBox}
+                  value="privacyConsentInfoForm.yes"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  type="checkbox"
+                  id="consentOptions"
+                ></Field>
+              </Row>
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="privacyConsentInfoForm.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={
+                    fyiForm ? (
+                      <Trans id="fyiForm.nextPage1" />
+                    ) : (
+                      <Trans id="privacyConsentInfoForm.nextPage" />
+                    )
                   }
                 />
-              )}
-            </Row>
-            <Row className="form-section">
-              <Field
-                name="consentOptions"
-                label={
-                  <Trans id="privacyConsentInfoForm.yes.withExternalLink">
-                    <A
-                      color="#0000ff"
-                      target="_blank"
-                      href={'/privacystatement?lang=' + i18n.locale}
-                    />
-                  </Trans>
-                }
-                component={CheckBox}
-                value="privacyConsentInfoForm.yes"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                type="checkbox"
-                id="consentOptions"
-              ></Field>
-            </Row>
-            <Row>
-              <NextCancelButtons
-                submit={<Trans id="privacyConsentInfoForm.nextButton" />}
-                cancel={<Trans id="button.cancelReport" />}
-                label={
-                  fyiForm ? (
-                    <Trans id="fyiForm.nextPage1" />
-                  ) : (
-                    <Trans id="privacyConsentInfoForm.nextPage" />
-                  )
-                }
-              />
-            </Row>
-          </Container>
-        </Form>
-      )}
-    </Formik>
+              </Row>
+            </Container>
+          </Form>
+        )}
+      </Formik>
+    </React.Fragment>
   )
 }
