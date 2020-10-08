@@ -18,7 +18,7 @@ const clickOn = (element) => fireEvent.click(element)
 describe('<HowDidItStartForm />', () => {
   afterEach(cleanup)
 
-  it('calls the onSubmit function when at least one option is checked and the form is submitted', async () => {
+  it('call the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
     const { getByText, getByLabelText } = render(
