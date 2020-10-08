@@ -14,7 +14,14 @@ const mailFrom = process.env.MAIL_FROM
 
 const ANALYST_GROUP_MAIL = process.env.ANALYST_GROUP_MAIL
 
+let lang
+let langEn = fs.readFileSync('src/locales/en.json')
+let langFr = fs.readFileSync('src/locales/fr.json')
+let langJsonEn = JSON.parse(langEn)
+let langJsonFr = JSON.parse(langFr)
+
 const prepareUnencryptedReportEmail = (message, data, callback) => {
+  data.language === 'en' ? (lang = langJsonEn) : (lang = langJsonFr)
   let transporter = nodemailer.createTransport({
     streamTransport: true,
     newline: 'unix',
@@ -56,11 +63,13 @@ const getEmailWarning = (data) =>
   data.evidence.files.some(
     (file) => file.isImageRacyClassified || file.isImageAdultClassified,
   )
-    ? ': WARNING: potential offensive image'
+    ? lang['analystReport.potentialOffensiveImageInEmailSubject']
     : ''
 
 const getSelfHarmWord = (data) =>
-  data.selfHarmWords.length ? ': WARNING: self harm words detected' : ''
+  data.selfHarmWords.length
+    ? lang['analystReport.selfHarmStringInEmailSubject']
+    : ''
 
 const encryptMessage = (uidList, emailAddress, message, data, sendMail) => {
   const openssl = 'openssl smime -des3 -encrypt'
@@ -103,6 +112,8 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
       pass: mailPass,
     },
   })
+
+  //data.language === 'en' ? (lang = langJsonEn) : (lang = langJsonFr)
 
   // With encrypted e-mail, just pass the raw output of openssl to nodemailer.
   // This is because the output of openssl's "smime" command is already a valid RFC822 message

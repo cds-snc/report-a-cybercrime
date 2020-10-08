@@ -19,6 +19,15 @@ export const AnonymousInfoForm = (props) => {
     <Formik
       initialValues={anonymous}
       onSubmit={(values) => {
+        if (
+          JSON.stringify(values.anonymousOptions) ===
+          JSON.stringify(['anonymousPage.yes'])
+        ) {
+          data.formData.location.postalCode = ''
+        } else {
+          data.formData.location.city = ''
+          data.formData.location.province = ''
+        }
         props.onSubmit(values)
       }}
     >

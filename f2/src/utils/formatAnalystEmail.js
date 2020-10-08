@@ -213,7 +213,7 @@ const formatIncidentInformation = (data) => {
         lang['whenDidItHappenPage.dateRange.end.label'],
         endtDateString,
       )
-  } else if (freq === 'notSure'){
+  } else if (freq === 'notSure') {
     const textAreaString = data.whenDidItHappen.description
     occurenceLine =
       formatLineHtml(
@@ -293,7 +293,7 @@ const formatIncidentInformation = (data) => {
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
   delete data.fyiForm
-  return formatSection(lang['howDidItStartPage.incidentInformation'], rows)
+  return formatSection(lang['analystReport.incidentInformation'], rows)
 }
 
 const formatNarrative = (data) => {

@@ -1,37 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { RadioAdapter } from '../components/radio'
-import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormArrayControl } from '../components/FormArrayControl'
-import { TextArea } from '../components/text-area'
-import { Text } from '../components/text'
-import { Field } from '../components/Field'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
+import { Error } from '../components/formik/alert'
+import { Radio } from '../components/formik/radio'
+import { TextArea } from '../components/formik/textArea'
+import { P } from '../components/formik/paragraph'
+import { NextCancelButtons } from '../components/formik/button'
 import { formDefaults } from './defaultValues'
+import { WhoAreYouReportForFormSchema } from './WhoAreYouReportForFormSchema'
+import { ErrorSummary } from '../components/formik/alert'
 
-const clearData = (dataOrig) => {
-  let data = JSON.parse(JSON.stringify(dataOrig))
-
-  if (data.whoYouReportFor !== 'whoAreYouReportForPage.options.someone') {
-    data.someoneDescription = ''
+const createErrorSummary = (errors) => {
+  const errorSummary = {}
+  if (errors.whoYouReportFor) {
+    errorSummary['whoYouReportFor'] = {
+      label: <Trans id="whoAreYouReportForPage.title" />,
+      message: <Trans id="whoAreYouReportForPage.hasValidationErrors" />,
+    }
   }
-  if (data.whoYouReportFor !== 'whoAreYouReportForPage.options.business') {
-    data.businessDescription = ''
-  }
 
-  return data
+  return errorSummary
 }
 
 export const WhoAreYouReportForForm = (props) => {
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.whoAreYouReportFor))
-      props.onSubmit(clearData({ ...data }))
-  }
-
   const [data] = useStateValue()
   const whoAreYouReportFor = {
     ...formDefaults.whoAreYouReportFor,
@@ -42,87 +36,113 @@ export const WhoAreYouReportForForm = (props) => {
     {
       name: 'someoneDescription',
       value: 'whoAreYouReportForPage.options.someone',
-      label: 'whoAreYouReportForPage.someone.label',
-      hint: 'whoAreYouReportForPage.someone.helperText',
+      label: <Trans id="whoAreYouReportForPage.someone.label" />,
+      hint: <Trans id="whoAreYouReportForPage.someone.helperText" />,
     },
     {
       name: 'businessDescription',
       value: 'whoAreYouReportForPage.options.business',
-      label: 'whoAreYouReportForPage.business.label',
-      hint: 'whoAreYouReportForPage.business.helperText',
+      label: <Trans id="whoAreYouReportForPage.business.label" />,
+      hint: <Trans id="whoAreYouReportForPage.business.helperText" />,
     },
   ]
 
   return (
     <React.Fragment>
-      {false ? ( // mark ids for lingui
-        <div>
-          <Trans id="whoAreYouReportForPage.business.helperText" />
-          <Trans id="whoAreYouReportForPage.business.label" />
-          <Trans id="whoAreYouReportForPage.nextButton" />
-          <Trans id="whoAreYouReportForPage.nextPage" />
-          <Trans id="whoAreYouReportForPage.someone.label" />
-          <Trans id="whoAreYouReportForPage.someone.helperText" />
-          <Trans id="whoAreYouReportForPage.options.business" />
-          <Trans id="whoAreYouReportForPage.options.myself" />
-          <Trans id="whoAreYouReportForPage.options.someone" />
-          <Trans id="whoAreYouReportForPage.or" />
-          <Trans id="whoAreYouReportForPage.title" />
-        </div>
-      ) : null}
-
-      <Form
+      <Formik
         initialValues={whoAreYouReportFor}
-        onSubmit={localOnSubmit}
-        render={({ handleSubmit }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            shouldWrapChildren
-            spacing={12}
-          >
-            <FormArrayControl name="whoAreYouReportFor">
-              <React.Fragment key="whoAreYouReportForPage.options.myself">
-                <RadioAdapter
+        onSubmit={(values) => {
+          optionsList.forEach((question) => {
+            if (values.whoYouReportFor !== question.value) {
+              values[question.name] = ''
+            }
+          })
+          props.onSubmit(values)
+        }}
+        validationSchema={WhoAreYouReportForFormSchema()}
+      >
+        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row className="form-question">
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary
+                    errors={createErrorSummary(errors)}
+                    submissions={submitCount}
+                    title={<Trans id="default.hasValidationErrors" />}
+                  />
+                )}
+              </Row>
+              <Row className="form-section" id="whoYouReportFor">
+                {errors && errors.whoYouReportFor && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    <Trans id="whoAreYouReportForPage.hasValidationErrors" />
+                  </P>
+                )}
+                <React.Fragment key="myselfDescription">
+                  <Field
+                    name="whoYouReportFor"
+                    label={<Trans id="whoAreYouReportForPage.options.myself" />}
+                    component={Radio}
+                    value="whoAreYouReportForPage.options.myself"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="radio"
+                    id={'radio-myselfDescription'}
+                  />
+                </React.Fragment>
+                <React.Fragment key="Or">
+                  <P ml="0.5rem" mb="0.5rem" fontSize="1.25rem">
+                    <Trans id="whoAreYouReportForPage.or" />
+                  </P>
+                </React.Fragment>
+                <FieldArray
                   name="whoYouReportFor"
-                  value="whoAreYouReportForPage.options.myself"
-                >
-                  <Trans id="whoAreYouReportForPage.options.myself" />
-                </RadioAdapter>
-              </React.Fragment>
-              <React.Fragment>
-                <Text ml={2} lineHeight="1.5rem">
-                  <Trans id="whoAreYouReportForPage.or" />
-                </Text>
-              </React.Fragment>
-              {optionsList.map((option) => {
-                return (
-                  <React.Fragment key={option.value}>
-                    <RadioAdapter
-                      name="whoYouReportFor"
-                      value={option.value}
-                      conditionalField={
-                        <Field
-                          name={option.name}
-                          label={<Trans id={option.label} />}
-                          helperText={<Trans id={option.hint} />}
-                          component={TextArea}
-                        />
-                      }
-                    >
-                      <Trans id={option.value} />
-                    </RadioAdapter>
-                  </React.Fragment>
-                )
-              })}
-            </FormArrayControl>
-            <NextAndCancelButtons
-              next={<Trans id="whoAreYouReportForPage.nextPage" />}
-              button={<Trans id="whoAreYouReportForPage.nextButton" />}
-            />
-          </Stack>
+                  className="form-section"
+                  render={() =>
+                    optionsList.map((question) => {
+                      return (
+                        <React.Fragment key={question.name}>
+                          <Field
+                            name="whoYouReportFor"
+                            label={<Trans id={question.value} />}
+                            component={Radio}
+                            value={question.value}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            type="radio"
+                            id={'radio-' + question.name}
+                          >
+                            <ErrorMessage
+                              name={question.name}
+                              component={Error}
+                            />
+                            <Field
+                              name={question.name}
+                              label={question.label}
+                              helpText={question.hint}
+                              component={TextArea}
+                              onBlur={handleBlur}
+                              onChange={handleChange}
+                            />
+                          </Field>
+                        </React.Fragment>
+                      )
+                    })
+                  }
+                />
+              </Row>
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="whoAreYouReportForPage.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="whoAreYouReportForPage.nextPage" />}
+                />
+              </Row>
+            </Container>
+          </Form>
         )}
-      />
+      </Formik>
     </React.Fragment>
   )
 }
