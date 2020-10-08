@@ -8,8 +8,7 @@ import { evalDate, evalDateRange } from '../utils/validateDate'
 const formQuestions = {
   incidentFrequency: {
     label: <Trans id="whenDidItHappenPage.question" />,
-    errorMessage:
-      'Please make a selection, if you are not sure select "I\'m not sure".',
+    errorMessage: <Trans id="whenDidItHappenForm.error" />,
   },
   once: {
     name: 'happenedOnce',
@@ -20,7 +19,7 @@ const formQuestions = {
       label: <Trans id="whenDidItHappenPage.singleDate.label" />,
       helpText: <Trans id="whenDidItStart.labelExample" />,
       id: 'happenedOnceDatePicker',
-      errorMessage: 'Please review the date entered',
+      errorMessage: <Trans id="whenDidItHappenForm.dateError" />,
     },
   },
   moreThanOnce: {
@@ -32,13 +31,13 @@ const formQuestions = {
       label: <Trans id="whenDidItHappenPage.dateRange.start.label" />,
       helpText: <Trans id="whenDidItStart.labelExample" />,
       id: 'happenedMoreThanOnceStart',
-      errorMessage: 'Please review the date entered',
+      errorMessage: <Trans id="whenDidItHappenForm.dateError" />,
     },
     datePickerEnd: {
       label: <Trans id="whenDidItHappenPage.dateRange.end.label" />,
       helpText: <Trans id="whenDidItStart.labelExample" />,
       id: 'happenedMoreThanOnceEnd',
-      errorMessage: 'Please review the date entered',
+      errorMessage: <Trans id="whenDidItHappenForm.dateError" />,
     },
   },
   notSure: {
@@ -119,72 +118,57 @@ const onSubmitValidation = (values) => {
   const errors = {}
   const fields = {}
 
-  if (values.incidentFrequency) {
-    if (values.incidentFrequency === 'once') {
-      if (!values.happenedOnceDay) {
-        fields['happenedOnceDay'] = true
-      }
+  if (values.incidentFrequency === 'once') {
+    if (
+      values.happenedOnceDay ||
+      values.happenedOnceMonth ||
+      values.happenedOnceYear
+    ) {
+      fields['happenedOnceDay'] = !values.happenedOnceDay
+      fields['happenedOnceMonth'] = !values.happenedOnceMonth
+      fields['happenedOnceYear'] = !values.happenedOnceYear
 
-      if (!values.happenedOnceMonth) {
-        fields['happenedOnceMonth'] = true
-      }
+      const hasError =
+        fields['happenedOnceDay'] ||
+        fields['happenedOnceMonth'] ||
+        fields['happenedOnceYear']
 
-      if (!values.happenedOnceYear) {
-        fields['happenedOnceYear'] = true
-      }
-
-      if (Object.keys(fields).length > 0) {
+      if (hasError) {
         fields['happenedOnce'] = true
         errors['fields'] = fields
       }
-    } else if (values.incidentFrequency === 'moreThanOnce') {
-      let startError = false
-      let endError = false
+    }
+  } else if (values.incidentFrequency === 'moreThanOnce') {
+    if (values.startDay || values.startMonth || values.startYear) {
+      fields['startDay'] = !values.startDay
+      fields['startMonth'] = !values.startMonth
+      fields['startYear'] = !values.startYear
 
-      if (!values.startDay) {
-        startError = true
-        fields['startDay'] = true
-      }
+      const hasStartError =
+        fields['startDay'] || fields['startMonth'] || fields['startYear']
 
-      if (!values.startMonth) {
-        startError = true
-        fields['startMonth'] = true
-      }
-
-      if (!values.startYear) {
-        startError = true
-        fields['startYear'] = true
-      }
-
-      if (startError) {
+      if (hasStartError) {
         fields['start'] = true
         errors['fields'] = fields
       }
+    }
 
-      if (!values.endDay) {
-        endError = true
-        fields['endDay'] = true
-      }
+    if (values.endDay || values.endMonth || values.endYear) {
+      fields['endDay'] = !values.endDay
+      fields['endMonth'] = !values.endMonth
+      fields['endYear'] = !values.endYear
 
-      if (!values.endMonth) {
-        endError = true
-        fields['endMonth'] = true
-      }
+      const hasEndError =
+        fields['endDay'] || fields['endMonth'] || fields['endYear']
 
-      if (!values.endYear) {
-        endError = true
-        fields['endYear'] = true
-      }
-
-      if (endError) {
+      if (hasEndError) {
         fields['end'] = true
         errors['fields'] = fields
       }
     }
-  } else {
-    fields['incidentFrequency'] = true
-    errors['fields'] = fields
   }
+
+  console.log(errors)
 
   return errors
 }
@@ -229,8 +213,7 @@ const createErrorSummary = (errors) => {
   if (incidentFrequency) {
     errorSummary['incidentFrequency'] = {
       label: <Trans id="whenDidItHappenPage.question" />,
-      message:
-        'Please make a selection, if you are not sure select "I\'m not sure".',
+      message: <Trans id="whenDidItHappenForm.error" />,
     }
   }
 
