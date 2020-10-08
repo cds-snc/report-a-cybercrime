@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
-import { Form, Row } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import { FormRow } from '../row'
-import { cleanProps } from '../../../utils/cleanProps'
-import { space, border, layout, typography } from 'styled-system'
+import { ConditionalField } from '../conditionalField'
 
 const HelpText = styled(Form.Text)`
   padding-left: 1.5rem;
@@ -31,9 +29,9 @@ const Input = styled(Form.Check.Input)`
   z-index: auto;
 `
 
-const Check = styled(Form.Check)``
-
 export const CheckBox = ({ field, form, ...props }) => {
+  const displayField = field.checked && props.children
+
   return (
     <FormRow>
       <Form.Check id={props.id} type="checkbox" custom>
@@ -41,9 +39,7 @@ export const CheckBox = ({ field, form, ...props }) => {
         <Label>{props.label}</Label>
         <HelpText>{props.helpText}</HelpText>
       </Form.Check>
-      {field.checked && props.children && (
-        <div className="conditional-field">{props.children}</div>
-      )}
+      {displayField && <ConditionalField>{props.children}</ConditionalField>}
     </FormRow>
   )
 }

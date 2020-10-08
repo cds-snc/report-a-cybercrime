@@ -67,7 +67,7 @@ export const TestForm = (props) => {
                             label={question.label}
                             component={CheckBox}
                             value={question.value}
-                            helpText={question.label}
+                            //helpText={question.label}
                             type="checkbox"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -77,7 +77,7 @@ export const TestForm = (props) => {
                               name={question.name + 'CheckGroup'}
                               label={question.followUp}
                               helpText={question.helpText}
-                              component={TextArea}
+                              component={Input}
                               onChange={handleChange}
                               onBlur={handleBlur}
                             />
