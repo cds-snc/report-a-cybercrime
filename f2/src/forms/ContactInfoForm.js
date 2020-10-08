@@ -14,8 +14,6 @@ import { FormRow } from '../components/formik/row'
 import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
 
-export const skipConsentOption = 'contactinfoPage.anonymousskip.yes'
-
 export const ContactInfoForm = (props) => {
   const [data] = useStateValue()
   const contactInfo = {
@@ -49,7 +47,7 @@ export const ContactInfoForm = (props) => {
         {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <FormRow marginBottom="2rem">
+              <FormRow>
                 {Object.keys(errors).length > 0 && (
                   <ErrorSummary
                     errors={createErrorSummary(errors)}
