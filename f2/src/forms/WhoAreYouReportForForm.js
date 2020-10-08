@@ -73,7 +73,7 @@ export const WhoAreYouReportForForm = (props) => {
                   />
                 )}
               </Row>
-              <Row className="form-section">
+              <Row className="form-section" id="whoYouReportFor">
                 {errors && errors.whoYouReportFor && (
                   <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
                     <Trans id="whoAreYouReportForPage.hasValidationErrors" />
