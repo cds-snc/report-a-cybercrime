@@ -30,13 +30,27 @@ export const TestForm = (props) => {
       value: 'online',
       id: 'selection-online',
       followUp: 'What was the email address?',
-      helpText: 'Please enter the email address, partial entries are allowed',
     },
     {
       name: 'Radio 3',
       label: 'Other',
       value: 'other',
       id: 'selection-other',
+      followUp: 'Additional details',
+      helpText: 'Please provide any information regarding the situation',
+    },
+    {
+      name: 'Radio 4',
+      label: 'Other1',
+      value: 'other1',
+      id: 'selection-other1',
+      followUp: 'Additional details',
+    },
+    {
+      name: 'Radio 4',
+      label: 'Other2',
+      value: 'other2',
+      id: 'selection-other2',
       followUp: 'Additional details',
       helpText: 'Please provide any information regarding the situation',
     },
@@ -55,7 +69,7 @@ export const TestForm = (props) => {
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row className="form-section">
+              <Row>
                 <FieldArray
                   name="howDidTheyReachYou"
                   render={() =>
@@ -67,7 +81,7 @@ export const TestForm = (props) => {
                             label={question.label}
                             component={CheckBox}
                             value={question.value}
-                            //helpText={question.label}
+                            helpText={question.helpText}
                             type="checkbox"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -88,7 +102,7 @@ export const TestForm = (props) => {
                   }
                 />
               </Row>
-              <Row className="form-section">
+              <Row>
                 <FieldArray
                   name="radioGroup"
                   render={() =>
@@ -102,6 +116,7 @@ export const TestForm = (props) => {
                             value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
+                            helpText={question.helpText}
                             type="radio"
                             id={question.id}
                           >

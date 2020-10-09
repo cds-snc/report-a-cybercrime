@@ -118,16 +118,6 @@ body {
   border-color: rgb(42, 105, 172);
 }
 
-.conditional-field {
-  border-left-width: 0.25rem;
-  border-left-color: rgb(174, 174, 174);
-  margin-top: 0.5rem;
-  margin-left: 1.25rem;
-  padding-top: 0.25rem;
-  padding-left: 1.5rem;
-  width: -webkit-fill-available;
-}
-
 /*Button*/
 
 .button {
@@ -294,10 +284,6 @@ body {
 }
 
 /*Checkboxes and Radio Buttons*/
-
-.custom-control {
-  line-height: 2.5rem;
-}
 
 .custom-checkbox .custom-control-label:before {
   border-radius: 0rem;

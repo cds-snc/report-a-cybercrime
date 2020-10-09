@@ -3,43 +3,45 @@ import styled from '@emotion/styled'
 import { Form } from 'react-bootstrap'
 import { FormRow } from '../row'
 import { ConditionalField } from '../conditionalField'
+import { checkboxRadio } from '../theme'
+import { cleanProps } from '../../../utils/cleanProps'
 
-const HelpText = styled(Form.Text)`
-  padding-left: 1.5rem;
-  font-size: 0.875rem;
-  margin-top: -0.5rem;
-  line-height: 1.5;
-`
-
-const Label = styled(Form.Check.Label)`
-  padding-left: 1.5rem;
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  padding-top: 0.5rem;
-  &:before {
-    width: 2.5rem;
-    height: 2.5rem;
-    top: 0rem;
+const helperTextStyle = (props) => {
+  if (props.checked) {
+    return `${checkboxRadio.HELP_TEXT_CHECKED}`
   }
+}
+const HelpText = styled(Form.Text, {
+  shouldForwardProp: (prop) => cleanProps(prop),
+})`
+  ${checkboxRadio.HELP_TEXT}
+  ${helperTextStyle}
+`
+const Label = styled(Form.Check.Label)`
+  ${checkboxRadio.LABEL}
 `
 
 const Input = styled(Form.Check.Input)`
-  width: 2.5rem;
-  height: 2.5rem;
-  z-index: auto;
+  ${checkboxRadio.INPUT}
 `
 
 export const CheckBox = ({ field, form, ...props }) => {
-  const displayField = field.checked && props.children
+  const paddingBottom = props.helpText ? `0rem` : `1rem`
 
   return (
-    <FormRow>
+    <FormRow
+      height="fit-content"
+      paddingBottom={paddingBottom}
+      paddingLeft="1rem"
+    >
       <Form.Check id={props.id} type="checkbox" custom>
         <Input type="checkbox" {...field} value={props.value} />
         <Label>{props.label}</Label>
-        <HelpText>{props.helpText}</HelpText>
+        <HelpText checked={field.checked}>{props.helpText}</HelpText>
       </Form.Check>
-      {displayField && <ConditionalField>{props.children}</ConditionalField>}
+      {field.checked && props.children && (
+        <ConditionalField>{props.children}</ConditionalField>
+      )}
     </FormRow>
   )
 }
