@@ -33,11 +33,7 @@ export const Radio = ({ field, form, ...props }) => {
   const paddingBottom = props.helpText ? `0rem` : `1rem`
 
   return (
-    <FormRow
-      height="fit-content"
-      paddingBottom={paddingBottom}
-      paddingLeft="1rem"
-    >
+    <FormRow paddingBottom={paddingBottom} paddingLeft="1rem">
       <Form.Check id={props.id} type="radio" custom>
         <Input type="radio" {...field} value={props.value} />
         <Label {...field} {...props}>
