@@ -6,19 +6,23 @@ import { ConditionalField } from '../conditionalField'
 import { checkboxRadio } from '../theme'
 import { cleanProps } from '../../../utils/cleanProps'
 
-const helperTextStyle = (props) => {
-  if (props.checked) {
+const conditionalFieldStyle = (props) => {
+  if (props.checked && props.helpText) {
     return `${checkboxRadio.HELP_TEXT_CHECKED}`
   }
 }
+
 const HelpText = styled(Form.Text, {
   shouldForwardProp: (prop) => cleanProps(prop),
 })`
   ${checkboxRadio.HELP_TEXT}
-  ${helperTextStyle}
+  ${conditionalFieldStyle}
 `
-const Label = styled(Form.Check.Label)`
+const Label = styled(Form.Check.Label, {
+  shouldForwardProp: (prop) => cleanProps(prop),
+})`
   ${checkboxRadio.LABEL}
+  ${conditionalFieldStyle}
 `
 
 const Input = styled(Form.Check.Input)`
@@ -29,15 +33,15 @@ export const CheckBox = ({ field, form, ...props }) => {
   const paddingBottom = props.helpText ? `0rem` : `1rem`
 
   return (
-    <FormRow
-      height="fit-content"
-      paddingBottom={paddingBottom}
-      paddingLeft="1rem"
-    >
+    <FormRow paddingBottom={paddingBottom} paddingLeft="1rem">
       <Form.Check id={props.id} type="checkbox" custom>
         <Input type="checkbox" {...field} value={props.value} />
-        <Label>{props.label}</Label>
-        <HelpText checked={field.checked}>{props.helpText}</HelpText>
+        <Label {...field} {...props}>
+          {props.label}
+        </Label>
+        <HelpText {...field} {...props}>
+          {props.helpText}
+        </HelpText>
       </Form.Check>
       {field.checked && props.children && (
         <ConditionalField>{props.children}</ConditionalField>
