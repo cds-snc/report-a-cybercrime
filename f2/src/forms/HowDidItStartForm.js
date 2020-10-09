@@ -7,7 +7,6 @@ import { CheckBox } from '../components/formik/checkbox'
 import { TextArea } from '../components/formik/textArea'
 import { NextCancelButtons } from '../components/formik/button'
 import { Error, Info } from '../components/formik/alert'
-import { HowDidItStartFormSchema } from './HowDidItStartFormSchema'
 
 export const HowDidItStartForm = (props) => {
   const [data] = useStateValue()
@@ -57,7 +56,6 @@ export const HowDidItStartForm = (props) => {
     <React.Fragment>
       <Formik
         initialValues={howDidItStart}
-        validationSchema={HowDidItStartFormSchema()}
         onSubmit={(values) => {
           formOptions.forEach((question) => {
             if (!values.howDidTheyReachYou.includes(question.name)) {
