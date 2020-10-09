@@ -60,6 +60,8 @@ const formatReportInfo = (data) => {
 
   let reportLanguage = data.language === 'fr' ? 'Français' : 'English'
 
+  let fyiForm = data.fyiForm === 'yes' ? 'Qick Tip' : 'Full Report'
+
   returnString +=
     '<h2>' +
     lang['analystReport.reportInformation'] +
@@ -73,6 +75,7 @@ const formatReportInfo = (data) => {
         formatLineHtml(lang['analystReport.reportLanguage'], reportLanguage) +
         formatLineHtml(lang['analystReport.reportVersion'], data.prodVersion) +
         formatLineHtml(lang['confirmationPage.anonymous.title'], isAnonymous) +
+        formatLineHtml(lang['analystReport.fyiForm'], fyiForm) +
         formatLineHtml(lang['analystReport.flagged'], selfHarmString),
     )
 
