@@ -491,9 +491,7 @@ const formatFinancialTransactions = (data) => {
     .map((method) => unCamel(method.replace('methodPayment.', '')))
     .join(', ')
 
-  let paymentString = origPaymentString
-
-  paymentString =
+  let paymentString =
     data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
       ? String(origPaymentString) + ', ' + [data.moneyLost.methodOther]
       : String(origPaymentString)
