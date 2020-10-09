@@ -484,10 +484,7 @@ const formatSuspectDetails = (data) => {
 }
 
 const formatFinancialTransactions = (data) => {
-  const methods =
-    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
-      ? data.moneyLost.methodPayment.concat([data.moneyLost.methodOther])
-      : data.moneyLost.methodPayment
+  const methods = data.moneyLost.methodPayment
 
   const origPaymentString = methods
     .filter((method) => method !== 'methodPayment.other')
@@ -495,6 +492,12 @@ const formatFinancialTransactions = (data) => {
     .join(', ')
 
   let paymentString = origPaymentString
+
+  paymentString =
+    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
+      ? String(origPaymentString) + ', ' + [data.moneyLost.methodOther]
+      : String(origPaymentString)
+
   let languageAdjustedPaymentString = {
     'e transfer': lang['methodPayment.eTransfer'],
     eTransfer: lang['methodPayment.eTransfer'],
@@ -531,7 +534,7 @@ const formatFinancialTransactions = (data) => {
     ) +
     formatLineHtml(
       lang['confirmationPage.moneyLost.methodPayment'],
-      paymentString,
+      paymentString, //data.moneyLost.paymentString,  // methodOther,
     ) +
     formatLineHtml(
       lang['confirmationPage.moneyLost.transactionDate'],
