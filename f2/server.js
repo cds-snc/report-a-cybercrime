@@ -86,13 +86,13 @@ async function saveBlobAndEmailReport(data) {
   var converted = await convertImages(data.evidence.files)
   data.evidence.files.push(...converted.filter((file) => file !== null))
   // Await on this because saveBlob generates the SAS link for each file
-  await saveBlob(data)
+  await saveBlob(uidList, data)
   const analystEmail = formatAnalystEmail(data)
   encryptAndSend(uidList, emailList, data, analystEmail)
 }
 // These can all be done async to avoid holding up the nodejs process?
 async function save(data, res) {
-  saveBlobAndEmailReport(data)
+  await saveBlobAndEmailReport(data)
   if (notifyIsSetup && data.contactInfo.email) {
     sendConfirmation(data.contactInfo.email, data.reportId, data.language)
   }
@@ -230,7 +230,7 @@ app
         logger.error('ERROR', err)
         throw err
       }
-      submitFeedback(sanitize(JSON.stringify(fields.json)))
+      submitFeedback(sanitize(fields.json))
     })
     res.send('thanks')
   })

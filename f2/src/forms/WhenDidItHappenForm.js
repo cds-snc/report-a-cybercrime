@@ -1,233 +1,223 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { RadioAdapter } from '../components/radio'
-import { Stack } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { FormArrayControl } from '../components/FormArrayControl'
-import { TextArea } from '../components/text-area'
-import { Field } from '../components/Field'
-import { Well } from '../components/Messages'
-import { ErrorSummary } from '../components/ErrorSummary'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
-import { formDefaults } from './defaultValues'
-import { validateDate, validateDateRange } from '../utils/validateDate'
-import { SingleDatePicker, DateRangePicker } from '../components/datePicker'
-
-const validate = (values) => {
-  const errors = {}
-
-  if (values.incidentFrequency === 'once') {
-    const singleDateErrors = validateDate(
-      values.happenedOnceYear,
-      values.happenedOnceMonth,
-      values.happenedOnceDay,
-    )
-
-    errors.whenDidItStart = []
-    singleDateErrors.map((key) => {
-      return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
-    })
-  } else if (values.incidentFrequency === 'moreThanOnce') {
-    const startDateErrors = validateDate(
-      values.startYear,
-      values.startMonth,
-      values.startDay,
-    )
-
-    if (startDateErrors.length > 0) {
-      errors.whenDidItStart = []
-      startDateErrors.map((key) => {
-        return errors.whenDidItStart.push(`whenDidItStart.error.${key}`)
-      })
-    }
-
-    const endDateErrors = validateDate(
-      values.endYear,
-      values.endMonth,
-      values.endDay,
-    )
-
-    if (endDateErrors.length > 0) {
-      errors.whenDidItEnd = []
-      endDateErrors.map((key) => {
-        return errors.whenDidItEnd.push(`whenDidItStart.error.${key}`)
-      })
-    }
-
-    if (startDateErrors.length === 0 && endDateErrors.length === 0) {
-      const startDate = new Date(
-        `${values.startYear} ${values.startMonth} ${values.startDay}`,
-      )
-      const endDate = new Date(
-        `${values.endYear} ${values.endMonth} ${values.endDay}`,
-      )
-
-      return (errors.dateRangeErrors = validateDateRange(startDate, endDate))
-    }
-  }
-
-  return errors
-}
-
-const clearData = (dataOrig) => {
-  let data = JSON.parse(JSON.stringify(dataOrig))
-  if (data.incidentFrequency !== 'moreThanOnce') {
-    data.endYear = ''
-    data.endMonth = ''
-    data.endDay = ''
-    data.startYear = ''
-    data.startMonth = ''
-    data.startDay = ''
-  }
-  if (data.incidentFrequency !== 'once') {
-    data.happenedOnceYear = ''
-    data.happenedOnceMonth = ''
-    data.happenedOnceDay = ''
-  }
-  if (data.incidentFrequency !== 'notSure') {
-    data.description = ''
-  }
-
-  return data
-}
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, Field, FieldArray } from 'formik'
+import { Radio } from '../components/formik/radio'
+import { DatePicker } from '../components/formik/datePicker'
+import { NextCancelButtons } from '../components/formik/button'
+import { Info, ErrorSummary } from '../components/formik/alert'
+import { TextArea } from '../components/formik/textArea'
+import { whenDidItHappenFormSchema } from './WhenDidItHappenFormSchema'
+import { P } from '../components/formik/paragraph'
 
 export const WhenDidItHappenForm = (props) => {
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.whenDidItHappen))
-      props.onSubmit(clearData({ ...data }))
-  }
-
   const [data] = useStateValue()
   const whenDidItHappen = {
-    ...formDefaults.whenDidItHappen,
     ...data.formData.whenDidItHappen,
+  }
+
+  const incidentFrequency =
+    whenDidItHappenFormSchema.QUESTIONS.incidentFrequency
+  const once = whenDidItHappenFormSchema.QUESTIONS.once
+  const moreThanOnce = whenDidItHappenFormSchema.QUESTIONS.moreThanOnce
+  const notSure = whenDidItHappenFormSchema.QUESTIONS.notSure
+
+  const formOptions = [once, moreThanOnce, notSure]
+
+  const realTimeValidation = whenDidItHappenFormSchema.REAL_TIME_VALIDATION
+  const onSubmitValidation = whenDidItHappenFormSchema.ON_SUBMIT_VALIDATION
+  const createErrorSummary = whenDidItHappenFormSchema.CREATE_ERROR_SUMMARY
+
+  const clearHappenedOnce = (values) => {
+    values.happenedOnceDay = ''
+    values.happenedOnceMonth = ''
+    values.happenedOnceYear = ''
+  }
+
+  const clearDateRange = (values) => {
+    values.startDay = ''
+    values.startMonth = ''
+    values.startYear = ''
+    values.endDay = ''
+    values.endMonth = ''
+    values.endYear = ''
+  }
+
+  const clearDescription = (values) => {
+    values.description = ''
+  }
+
+  const clearData = (values) => {
+    if (values.incidentFrequency === 'once') {
+      clearDateRange(values)
+      clearDescription(values)
+    } else if (values.incidentFrequency === 'moreThanOnce') {
+      clearHappenedOnce(values)
+      clearDescription(values)
+    } else {
+      clearHappenedOnce(values)
+      clearDateRange(values)
+    }
   }
 
   return (
     <React.Fragment>
-      {false ? ( // mark ids for lingui
-        <div>
-          <Trans id="whenDidItStart.startYear" />
-          <Trans id="whenDidItHappenPage.title" />
-          <Trans id="whenDidItHappenPage.intro" />
-          <Trans id="whenDidItHappenPage.question" />
-          <Trans id="whenDidItHappenPage.options.once" />
-          <Trans id="whenDidItHappenPage.options.moreThanOnce" />
-          <Trans id="whenDidItHappenPage.options.notSure" />
-          <Trans id="whenDidItHappenPage.singleDate.label" />
-          <Trans id="whenDidItHappenPage.dateRange.start.label" />
-          <Trans id="whenDidItHappenPage.dateRange.end.label" />
-          <Trans id="whenDidItHappenPage.notSure.label" />
-          <Trans id="whenDidItHappenPage.notSure.helperText" />
-          <Trans id="whenDidItStart.error.notDay" />
-          <Trans id="whenDidItStart.error.notMonth" />
-          <Trans id="whenDidItStart.error.isFuture" />
-          <Trans id="whenDidItStart.error.notYear" />
-          <Trans id="whenDidItStart.error.yearLength" />
-          <Trans id="whenDidItStart.error.hasNoYear" />
-          <Trans id="whenDidItStart.error.hasNoMonth" />
-          <Trans id="whenDidItStart.error.hasNoDay" />
-          <Trans id="whenDidItHappen.endBeforeStart" />
-        </div>
-      ) : null}
-
-      <Form
+      <Formik
         initialValues={whenDidItHappen}
-        onSubmit={localOnSubmit}
-        validate={validate}
-        render={({
-          handleSubmit,
-          values,
-          errors,
-          submitFailed,
-          hasValidationErrors,
-        }) => (
-          <Stack
-            as="form"
-            onSubmit={handleSubmit}
-            shouldWrapChildren
-            spacing={12}
-          >
-            {submitFailed ? (
-              <ErrorSummary>
-                <Trans id="whenDidItHappen.hasValidationErrors" />
-              </ErrorSummary>
-            ) : null}
-            <FormArrayControl
-              name="whenDidItHappen"
-              label={<Trans id="whenDidItHappenPage.question" />}
-            >
-              <React.Fragment>
-                <RadioAdapter
+        validate={(values) => {
+          return realTimeValidation(values)
+        }}
+        onSubmit={async (values, { setErrors }) => {
+          const errors = onSubmitValidation(values)
+          if (errors.fields) {
+            setErrors(errors.fields)
+          } else {
+            await clearData(values)
+            props.onSubmit(values)
+          }
+        }}
+      >
+        {({ handleSubmit, handleChange, handleBlur, submitCount, errors }) => (
+          <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row className="form-question">
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary
+                    errors={createErrorSummary(errors)}
+                    submissions={submitCount}
+                    title={<Trans id="default.hasValidationErrors" />}
+                  />
+                )}
+                <Row className="form-label" id="incidentFrequency">
+                  <Trans id="whenDidItHappenPage.question" />
+                </Row>
+              </Row>
+              <Row className="form-section">
+                {errors && errors.incidentFrequency && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    {incidentFrequency.errorMessage}
+                  </P>
+                )}
+                <FieldArray
                   name="incidentFrequency"
-                  value="once"
-                  conditionalField={
-                    <SingleDatePicker
-                      name="singleIncident"
-                      datePickerName="happenedOnce"
-                      label={
-                        <Trans id="whenDidItHappenPage.singleDate.label" />
-                      }
-                      helperText={<Trans id="whenDidItStart.labelExample" />}
-                    />
+                  className="form-section"
+                  render={() =>
+                    formOptions.map((question) => {
+                      return (
+                        <React.Fragment key={question.name}>
+                          <Field
+                            name="incidentFrequency"
+                            label={question.radioLabel}
+                            component={Radio}
+                            value={question.value}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            type="radio"
+                            id={question.id}
+                          >
+                            {question.value === 'once' && (
+                              <div id={question.name}>
+                                {errors && errors.happenedOnce && (
+                                  <P
+                                    color="#dc3545"
+                                    fontSize="1.25rem"
+                                    marginBottom="0.5rem"
+                                  >
+                                    {question.datePicker.errorMessage}
+                                  </P>
+                                )}
+                                <Field
+                                  name={question.name}
+                                  label={question.datePicker.label}
+                                  helpText={question.datePicker.helpText}
+                                  component={DatePicker}
+                                  onBlur={handleBlur}
+                                  onChange={handleChange}
+                                  id={question.datePicker.id}
+                                />
+                              </div>
+                            )}
+                            {question.value === 'moreThanOnce' && (
+                              <React.Fragment>
+                                <div id="start">
+                                  {errors && errors.start && (
+                                    <P
+                                      color="#dc3545"
+                                      fontSize="1.25rem"
+                                      marginBottom="0.5rem"
+                                    >
+                                      {question.datePickerStart.errorMessage}
+                                    </P>
+                                  )}
+                                  <Field
+                                    name="start"
+                                    label={question.datePickerStart.label}
+                                    helpText={question.datePickerStart.helpText}
+                                    component={DatePicker}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    id={question.datePickerStart.id}
+                                  />
+                                </div>
+                                <div id="end">
+                                  {errors && errors.end && (
+                                    <P
+                                      color="#dc3545"
+                                      fontSize="1.25rem"
+                                      marginBottom="0.5rem"
+                                    >
+                                      {question.datePickerEnd.errorMessage}
+                                    </P>
+                                  )}
+                                  <Field
+                                    name="end"
+                                    label={question.datePickerEnd.label}
+                                    helpText={question.datePickerEnd.helpText}
+                                    component={DatePicker}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    id={question.datePickerEnd.id}
+                                  />
+                                </div>
+                              </React.Fragment>
+                            )}
+                            {question.value === 'notSure' && (
+                              <Field
+                                name={question.name}
+                                label={question.descriptionLabel}
+                                helpText={question.descriptionHelpText}
+                                component={TextArea}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                              />
+                            )}
+                          </Field>
+                        </React.Fragment>
+                      )
+                    })
                   }
-                >
-                  <Trans id="whenDidItHappenPage.options.once" />
-                </RadioAdapter>
-              </React.Fragment>
-              <React.Fragment>
-                <RadioAdapter
-                  name="incidentFrequency"
-                  value="moreThanOnce"
-                  conditionalField={
-                    <DateRangePicker
-                      name="multipleIncidents"
-                      startLabel={
-                        <Trans id="whenDidItHappenPage.dateRange.start.label" />
-                      }
-                      endLabel={
-                        <Trans id="whenDidItHappenPage.dateRange.end.label" />
-                      }
-                      helperText={<Trans id="whenDidItStart.labelExample" />}
-                    />
-                  }
-                >
-                  <Trans id="whenDidItHappenPage.options.moreThanOnce" />
-                </RadioAdapter>
-              </React.Fragment>
-              <React.Fragment>
-                <RadioAdapter
-                  name="incidentFrequency"
-                  value="notSure"
-                  conditionalField={
-                    <Field
-                      name="description"
-                      label={<Trans id="whenDidItHappenPage.notSure.label" />}
-                      helperText={
-                        <Trans id="whenDidItHappenPage.notSure.helperText" />
-                      }
-                      component={TextArea}
-                    />
-                  }
-                >
-                  <Trans id="whenDidItHappenPage.options.notSure" />
-                </RadioAdapter>
-              </React.Fragment>
-            </FormArrayControl>
-            <Well variantColor="blue">
-              <Trans id="howDidItStartPage.tip" />
-            </Well>
-            <NextAndCancelButtons
-              next={<Trans id="whenDidItHappenPage.nextPage" />}
-              button={<Trans id="howDidItStartPage.nextButton" />}
-            />
-          </Stack>
+                />
+              </Row>
+
+              <Row className="form-section">
+                <Info>
+                  <Trans id="howDidItStartPage.tip" />
+                </Info>
+              </Row>
+
+              <Row>
+                <NextCancelButtons
+                  submit={<Trans id="howDidItStartPage.nextButton" />}
+                  cancel={<Trans id="button.cancelReport" />}
+                  label={<Trans id="whenDidItHappenPage.nextPage" />}
+                />
+              </Row>
+            </Container>
+          </Form>
         )}
-      />
+      </Formik>
     </React.Fragment>
   )
 }
