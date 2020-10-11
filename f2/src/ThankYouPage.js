@@ -37,8 +37,6 @@ export const ThankYouPage = () => {
   let thankYouMessage
   let thankYouTitle
 
-  const reportId1 = 'NCFRS-cznm52apg8q' //for test
-
   if (submissionInProgress) {
     thankYouTitle = <Trans id="thankYouPage.title" />
     thankYouMessage = <Trans id="thankYouPage.reportSubmission" />
@@ -120,7 +118,7 @@ export const ThankYouPage = () => {
 
             <PdfReportPage
               enabled={submissionSucceeded}
-              referenceNumber={reportId1}
+              referenceNumber={reportId}
             />
           </InfoCard>
         </Row>
