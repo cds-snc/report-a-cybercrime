@@ -1,21 +1,21 @@
 /** @jsx jsx */
-import React from 'react'
 import { jsx } from '@emotion/core'
-import { Trans } from '@lingui/macro'
 import { containsData } from '../utils/containsData'
 import { testdata } from '../ConfirmationSummary'
-import { Text, View } from '@react-pdf/renderer';
+import { Text, View, Image } from '@react-pdf/renderer'
 import { pdfStyles } from './pdfStyles'
+import { DescriptionItemView } from './DescriptionItemView'
+import line from '../images/line.png'
 
-
-const fakeContains = () => {
-  return false
-}
-
-export const WhoAreYouReportForView = (data, i18n) => {
-  //const [data] = useStateValue()
+export const WhoAreYouReportForView = (props) => {
+  //const [data1] = useStateValue()
+  const data = props.data
+  const lang = props.lang
   console.log("WhoAreYouReportForView data----------------------------" )
   console.log(data.formData)
+
+  console.log('Lang is ')
+  console.log(lang)
 
   const whoAreYouReportFor = {
     ...testdata.formData.whoAreYouReportFor,
@@ -25,54 +25,46 @@ export const WhoAreYouReportForView = (data, i18n) => {
   let whoYouReportForString
 
   console.log(data.formData.language)
-  //i18n._activate("en")
+  //lang._activate("en")
   if (
 		whoAreYouReportFor.whoYouReportFor ===
 		'whoAreYouReportForPage.options.myself'
-	  ) {
-		whoYouReportForString = i18n._("whoAreYouReportForPage.options.myself")
-	  } else if (
+	) {
+		whoYouReportForString = lang["whoAreYouReportForPage.options.myself"]
+	} else if (
 		whoAreYouReportFor.whoYouReportFor ===
 		'whoAreYouReportForPage.options.someone'
-	  ) {
-		whoYouReportForString = i18n._("whoAreYouReportForPage.options.someone")
-		
-	  } else {
-		whoYouReportForString = i18n._("whoAreYouReportForPage.options.business")
-	
-    }
+	) {
+		whoYouReportForString = lang["whoAreYouReportForPage.options.someone"]
+	} else {
+		whoYouReportForString = lang["whoAreYouReportForPage.options.business"]	
+  }
     
-  let title = <Trans id="whoAreYouReportForPage.title" />
-  console.log("titles----------------------------")
-  console.log(title)
-
-  const title1="fakse"
-
   return (
-
-    <View style={pdfStyles.container}>
-      <Text style={pdfStyles.subtitle}>{i18n._("whoAreYouReportForPage.title")}</Text>      
+    <View style={pdfStyles.section}>
+      <Text style={pdfStyles.title}>{lang["whoAreYouReportForPage.title"]}</Text>      
       {containsData(whoAreYouReportFor) ? (
         <View>
-          <Text style={pdfStyles.question}>{i18n._("confirmationPage.youAreReportingFor")} 	
-            <Text style={pdfStyles.answer}>{whoYouReportForString}</Text>
+          <Text style={pdfStyles.sectionContent}>
+            {lang["confirmationPage.youAreReportingFor"]}
+            &nbsp;
+            {whoYouReportForString}
           </Text>
-          {containsData(whoAreYouReportFor.someoneDescription) ? (
-            <Text style={pdfStyles.question}>{i18n._("whoAreYouReportForPage.details")}
-              <Text style={pdfStyles.answer}>{whoAreYouReportFor.someoneDescription}</Text>
-            </Text>
-          ) : null}
-          {containsData(whoAreYouReportFor.businessDescription) ? (
-            <Text style={pdfStyles.question}>{i18n._("whoAreYouReportForPage.details")}
-              <Text style={pdfStyles.answer}>{whoAreYouReportFor.businessDescription}</Text>
-            </Text>
-          ) : null} 
+          <DescriptionItemView 
+            title="whoAreYouReportForPage.details" 
+            description={whoAreYouReportFor.someoneDescription} 
+            lang={lang}
+          />   
+          <DescriptionItemView 
+            title="whoAreYouReportForPage.details" 
+            description={whoAreYouReportFor.businessDescription} 
+            lang={lang}
+          />
         </View>
       ) : (
-        <Text>
-         {i18n._("confirmationPage.whoAreYouReportFor.nag")}
-        </Text>
+        <Text style={pdfStyles.sectionContent}>{lang["confirmationPage.whoAreYouReportFor.nag"]}</Text>
       )}
+      <Image style={pdfStyles.sectionSeparator} src={line} />
     </View>
   )
 }

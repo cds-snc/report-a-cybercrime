@@ -336,6 +336,8 @@
   "numberOfEmployee.labelExample": "Sélectionnez le nombre approximatif d’employés.",
   "pageNotFound.header": "Page introuvable",
   "pageNotFound.message": "Désolé, la page que vous essayiez de voir n’existe pas.",
+  "pdf.betaText": "Il s’agit d’un nouveau service.",
+  "pdf.thankyou": "Thank you for reporting",
   "privacyConsentInfoForm.consent": "Consentement",
   "privacyConsentInfoForm.hasValidationErrors": "Veuillez accepter les conditions.",
   "privacyConsentInfoForm.linkOut": "Déclaration de confidentialité",

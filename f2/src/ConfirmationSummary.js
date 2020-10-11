@@ -73,8 +73,8 @@ export const ConfirmationSummary = () => {
         {anonymous.anonymousOptions.includes('anonymousPage.yes') ? (
           <AnonymousSummary />
         ) : (
-          <ContactInfoSummary />
-        )}
+            <ContactInfoSummary />
+          )}
       </Stack>
     </React.Fragment>
   )
