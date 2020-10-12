@@ -114,6 +114,17 @@ export const ThankYouPage = () => {
                 <Trans id="thankYouPage.confirmationPageButton" />
               </ButtonLink>
             )}
+            {submissionSucceeded && (
+              <ButtonLink
+                mt="auto"
+                variantColor="black"
+                title={i18n._('pdf.getPdfReport')}
+                to="/pdfReportPage"
+                className="white-button-link"
+              >
+                <Trans id="pdf.getPdfReport" />
+              </ButtonLink>
+            )}
           </InfoCard>
         </Row>
 

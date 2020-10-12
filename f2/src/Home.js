@@ -30,6 +30,7 @@ import { Covid19Page } from './Covid19Page'
 import { RedirectRoute } from './components/route'
 import { WhenDidItHappenPage } from './WhenDidItHappenPage'
 import { WhoAreYouReportForPage } from './WhoAreYouReportForPage'
+import { PdfReportPage } from './PdfReportPage'
 
 export const Home = () => (
   <Router>
@@ -106,6 +107,9 @@ export const Home = () => (
       </Route>
       <Route path="/finalFeedbackThanks">
         <FinalFeedbackThanksPage />
+      </Route>
+      <Route path="/pdfReportPage">
+        <PdfReportPage />
       </Route>
       <RedirectRoute path="/whenDidItHappen">
         <WhenDidItHappenPage />

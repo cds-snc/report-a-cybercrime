@@ -11,7 +11,7 @@ export async function activate(locale) {
 
   try {
     catalog = await import(
-      /* webpackChunkName: "i18n-[index]" */ `@lingui/loader!./locales/${locale}.json`
+      /* webpackChunkName: "i18n-[index]" */ `./locales/${locale}.js`
     )
   } catch (e) {
     // this fails only during tests due to webpack errors.
