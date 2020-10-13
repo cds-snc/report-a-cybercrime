@@ -68,8 +68,6 @@ const formatReportInfo = (data) => {
     fyiForm = data.language === 'en' ? 'Full Report' : 'Rapport complet'
   }
 
-  // let fyiForm = data.fyiForm === 'yes' ? 'Qick Tip' : 'Full Report'
-
   returnString +=
     '<h2>' +
     lang['analystReport.reportInformation'] +
