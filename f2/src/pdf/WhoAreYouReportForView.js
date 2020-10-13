@@ -8,7 +8,6 @@ import { DescriptionItemView } from './DescriptionItemView'
 import line from '../images/line.png'
 
 export const WhoAreYouReportForView = (props) => {
-  //const [data1] = useStateValue()
   const data = props.data
   const lang = props.lang
   console.log('WhoAreYouReportForView data----------------------------')
@@ -25,7 +24,6 @@ export const WhoAreYouReportForView = (props) => {
   let whoYouReportForString
 
   console.log(data.formData.language)
-  //lang._activate("en")
   if (
     whoAreYouReportFor.whoYouReportFor ===
     'whoAreYouReportForPage.options.myself'
