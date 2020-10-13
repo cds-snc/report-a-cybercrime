@@ -27,7 +27,6 @@ async function convertImages(files) {
           let imageData = fs.readFileSync(jpgPath)
           shasum.update(imageData)
           const sha1Hash = shasum.digest('hex')
-          console.log(JSON.stringify(file))
           let jsonFile = {}
           Object.assign(jsonFile, file)
           jsonFile.name =
@@ -36,7 +35,6 @@ async function convertImages(files) {
           jsonFile.path = jpgPath
           jsonFile.size = imageData.length
           jsonFile.sha1 = sha1Hash
-          console.log(JSON.stringify(jsonFile))
           return jsonFile
         } else {
           return null

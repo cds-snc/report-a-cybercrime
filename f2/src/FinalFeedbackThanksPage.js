@@ -8,12 +8,12 @@ import { Stack, Box, Icon } from '@chakra-ui/core'
 import { Alert } from './components/Messages'
 import { Route } from 'react-router-dom'
 import { Link } from './components/link'
-import { useStateValue } from './utils/state'
 import { MidFeedbackForm } from './forms/MidFeedbackForm'
 import { submitToServer } from './utils/submitToServer'
+import { useStateValue } from './utils/state'
 
 export const FinalFeedbackThanksPage = () => {
-  const [dispatch] = useStateValue()
+  const [, dispatch] = useStateValue()
   return (
     <Layout>
       <TrackPageViews />
@@ -24,7 +24,6 @@ export const FinalFeedbackThanksPage = () => {
         <Alert status="success" withIcon>
           <Trans id="thankYouPage.safelyCloseWindow" />
         </Alert>
-
         <Box mb="auto">
           <Route
             render={({ history }) => (
