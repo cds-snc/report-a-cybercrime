@@ -10,8 +10,10 @@ import { Route } from 'react-router-dom'
 import { Link } from './components/link'
 import { MidFeedbackForm } from './forms/MidFeedbackForm'
 import { submitToServer } from './utils/submitToServer'
+import { useStateValue } from './utils/state'
 
 export const FinalFeedbackThanksPage = () => {
+  const [, dispatch] = useStateValue()
   return (
     <Layout>
       <TrackPageViews />
@@ -25,7 +27,14 @@ export const FinalFeedbackThanksPage = () => {
         <Box mb="auto">
           <Route
             render={({ history }) => (
-              <Link to="/">
+              <Link
+                onClick={() => {
+                  dispatch({
+                    type: 'deleteFormData',
+                  })
+                }}
+                to="/"
+              >
                 <Trans id="thankYouPage.createNewReport" />
               </Link>
             )}
