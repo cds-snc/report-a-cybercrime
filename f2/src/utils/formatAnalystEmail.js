@@ -60,7 +60,14 @@ const formatReportInfo = (data) => {
 
   let reportLanguage = data.language === 'fr' ? 'Français' : 'English'
 
-  let fyiForm = data.fyiForm === 'yes' ? 'Qick Tip' : 'Full Report'
+  let fyiForm
+  if (data.fyiForm === 'yes') {
+    fyiForm = data.language === 'en' ? 'Qick Tip' : 'Conseil rapide'
+  } else {
+    fyiForm = data.language === 'en' ? 'Full Report' : 'Rapport complet'
+  }
+
+  // let fyiForm = data.fyiForm === 'yes' ? 'Qick Tip' : 'Full Report'
 
   returnString +=
     '<h2>' +
