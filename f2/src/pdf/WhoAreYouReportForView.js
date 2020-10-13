@@ -10,11 +10,6 @@ import line from '../images/line.png'
 export const WhoAreYouReportForView = (props) => {
   const data = props.data
   const lang = props.lang
-  console.log('WhoAreYouReportForView data----------------------------')
-  console.log(data.formData)
-
-  console.log('Lang is ')
-  console.log(lang)
 
   const whoAreYouReportFor = {
     ...testdata.formData.whoAreYouReportFor,
@@ -23,7 +18,6 @@ export const WhoAreYouReportForView = (props) => {
 
   let whoYouReportForString
 
-  console.log(data.formData.language)
   if (
     whoAreYouReportFor.whoYouReportFor ===
     'whoAreYouReportForPage.options.myself'
