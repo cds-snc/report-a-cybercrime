@@ -48,8 +48,14 @@ export const LocationPage = () => {
                   onSubmit={(data) => {
                     data.postalCode = formatPostalCode(data.postalCode)
                     dispatch({ type: 'saveFormData', data: { location: data } })
-                    let isFromAnonymous = history.location.state ? history.location.state.from === 'anonymous' : false
-                    history.push(doneForms && !isFromAnonymous ? '/confirmation' : '/contactinfo')
+                    let isFromAnonymous = history.location.state
+                      ? history.location.state.from === 'anonymous'
+                      : false
+                    history.push(
+                      doneForms && !isFromAnonymous
+                        ? '/confirmation'
+                        : '/contactinfo',
+                    )
                   }}
                 />
               )}

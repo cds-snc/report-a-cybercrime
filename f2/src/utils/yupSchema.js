@@ -12,6 +12,11 @@ export const yupSchema = () => {
     emailSchema: Yup.string().email(
       <Trans id="contactinfoForm.email.warning" />,
     ),
+
+    postalCodeSchema: Yup.string().matches(regexDef().postalCodeRegex, {
+      message: <Trans id="locationInfoForm.Warning" />,
+    }),
+
     dateSchema: {
       DAY: Yup.number().min(1).max(31),
       MONTH: Yup.number().min(1).max(12),

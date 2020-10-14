@@ -46,7 +46,7 @@ describe('<PrivacyConsentInfoForm />', () => {
   it('calls the onSubmit function when the consent box is checked and the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { getByText, getByLabelText } = render(
+    const { getByText, getByRole } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -58,10 +58,9 @@ describe('<PrivacyConsentInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const checkbox = getByLabelText('privacyConsentInfoForm.yes', {
-      exact: false,
-    })
-    // find the next button so we can trigger a form submission
+    const checkbox = getByRole('checkbox')
+
+    //find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
 
     clickOn(checkbox)
