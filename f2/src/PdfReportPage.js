@@ -15,6 +15,10 @@ export const PdfReportPage = (props) => {
       {false ? (
         <div>
           <Trans id="pdf.betaText" />
+          <Trans id="pdf.bottom.site1" />
+          <Trans id="pdf.bottom.site2" />
+          <Trans id="pdf.bottom.site3" />
+          <Trans id="pdf.bottom.site4" />
           <Trans id="pdf.getPdfReport" />
           <Trans id="pdf.next.title" />
           <Trans id="pdf.next.content" />
