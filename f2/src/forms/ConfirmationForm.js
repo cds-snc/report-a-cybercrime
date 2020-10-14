@@ -19,6 +19,7 @@ export const ConfirmationForm = (props) => {
           <Trans id="analystReport.dateReceived" />
           <Trans id="analystReport.reportLanguage" />
           <Trans id="analystReport.reportVersion" />
+          <Trans id="analystReport.fyiForm" />
           <Trans id="analystReport.fieldsMissing.warning" />
           <Trans id="analystReport.flagged" />
           <Trans id="analystReport.noData" />
