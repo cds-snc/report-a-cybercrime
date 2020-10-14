@@ -18,7 +18,9 @@ const ldapQuery = (uid, emailAddresses, uidList) => {
     err,
     res,
   ) {
+    let entries = []
     res.on('searchEntry', function (entry) {
+      entries.push(entry.object)
       if (entry.object['mail'] && entry.object['userCertificate;binary']) {
         const emailAddress = entry.object['mail']
         let cert =
@@ -47,6 +49,9 @@ const ldapQuery = (uid, emailAddresses, uidList) => {
       console.warn('Encrypted Mail: error: ' + err.message)
     })
     res.on('end', function (result) {
+      if (entries.length === 0) {
+        logger.error('Could not find LDAP entry for uid ' + uid)
+      }
       if (result.status !== 0)
         console.info('Encrypted Mail: end status: ' + result.status)
       ldapClient.destroy()

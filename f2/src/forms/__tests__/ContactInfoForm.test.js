@@ -5,7 +5,7 @@ import wait from 'waait'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { ThemeProvider } from 'emotion-theming'
 import { I18nProvider } from '@lingui/react'
-import { validate, ContactInfoForm } from '../ContactInfoForm'
+import { ContactInfoForm } from '../ContactInfoForm'
 import en from '../../locales/en.json'
 import canada from '../../theme/canada'
 import { StateProvider, initialState, reducer } from '../../utils/state'
@@ -13,24 +13,7 @@ import { StateProvider, initialState, reducer } from '../../utils/state'
 i18n.load('en', { en })
 i18n.activate('en')
 
-const fillIn = (element, { with: value }) =>
-  fireEvent.change(element, { target: { value } })
-
 const clickOn = (element) => fireEvent.click(element)
-
-describe('validation', () => {
-  afterEach(cleanup)
-
-  it('passes correct email address', () => {
-    expect(validate({ email: 'aaaa@aaa.com' }).email).toBeUndefined()
-    expect(validate({ email: 'aaa.aaa@aaa.com' }).email).toBeUndefined()
-    expect(validate({ email: 'aaa@aaa-aaa.com' }).email).toBeUndefined()
-  })
-
-  it('fails incorrect email address', () => {
-    expect(validate({ email: 'aaaaaa.com' }).email).not.toBeUndefined()
-  })
-})
 
 describe('<ContactInfoForm />', () => {
   afterEach(cleanup)
@@ -38,7 +21,7 @@ describe('<ContactInfoForm />', () => {
   it('does not call the onSubmit function when the form is submitted with missing values', async () => {
     const submitMock = jest.fn()
 
-    const { container, getByText } = render(
+    const { getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -50,14 +33,8 @@ describe('<ContactInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const fullName = container.querySelector('input[name="fullName"]')
-
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
-
-    fillIn(fullName, {
-      with: 'Mallory',
-    })
 
     // Click the next button to trigger the form submission
     clickOn(nextButton.parentElement)
@@ -70,7 +47,7 @@ describe('<ContactInfoForm />', () => {
   it('calls the onSubmit function when the form is submitted', async () => {
     const submitMock = jest.fn()
 
-    const { container, getByText } = render(
+    const { getByText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
@@ -82,28 +59,14 @@ describe('<ContactInfoForm />', () => {
       </MemoryRouter>,
     )
 
-    const fullName = container.querySelector('input[name="fullName"]')
-    const email = container.querySelector('input[name="email"]')
-    const phone = container.querySelector('input[name="phone"]')
-
     // find the next button so we can trigger a form submission
     const nextButton = getByText(/nextButton/)
-
-    fillIn(fullName, {
-      with: 'Mallory',
-    })
-    fillIn(email, {
-      with: 'test@remail.com',
-    })
-    fillIn(phone, {
-      with: '1234567890',
-    })
 
     // Click the next button to trigger the form submission
     clickOn(nextButton.parentElement)
 
     await wait(0) // Wait for promises to resolve
 
-    expect(submitMock).toHaveBeenCalledTimes(1)
+    expect(submitMock).toHaveBeenCalledTimes(0)
   })
 })
