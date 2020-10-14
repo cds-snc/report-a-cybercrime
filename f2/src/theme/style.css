@@ -132,7 +132,6 @@ body {
   padding-right: 0rem;
 }
 
-
 .next-cancel-buttons {
   margin-bottom: 2.5rem;
   margin-top: 2.5rem;
@@ -238,20 +237,6 @@ body {
   box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
   outline: none;
   border-color: rgb(42, 105, 172);
-}
-
-/*File Upload*/
-
-.upload-container {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
-
-.custom-file {
-  position: absolute;
-  font-size: 100px;
-  opacity: 0;
 }
 
 /*Date Picker*/

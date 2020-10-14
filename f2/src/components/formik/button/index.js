@@ -10,7 +10,7 @@ import { buttonTypes } from '../theme'
 import { space, border, layout, typography } from 'styled-system'
 
 const buttonStyle = (props) => {
-  let buttonProps = props.type
+  let buttonProps = props.buttonStyle
 
   return css`
     background-color: ${buttonProps.backGround};
@@ -40,6 +40,7 @@ const ButtonLabel = styled('span', {
   font-weight: 400;
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
   ${space}
   ${typography}
 `
@@ -54,6 +55,7 @@ const Button = styled(BaseButton, {
   padding-left: 0rem;
   padding-right: 0rem;
   align-items: center;
+  z-index: 1;
   ${space}
   ${border}
   ${layout}
@@ -72,7 +74,7 @@ const PaperClipIcon = styled(FiPaperclip)`
 
 export const DefaultButton = (props) => {
   return (
-    <Button type={buttonTypes.DEFAULT}>
+    <Button buttonStyle={buttonTypes.DEFAULT}>
       <ButtonLabel>{props.label}</ButtonLabel>
     </Button>
   )
@@ -81,7 +83,7 @@ export const DefaultButton = (props) => {
 export const MidFormFeedbackButton = (props) => {
   return (
     <Button
-      type={buttonTypes.DEFAULT}
+      buttonStyle={buttonTypes.DEFAULT}
       border="1px solid"
       padding="1rem 1.5rem"
       marginLeft="0rem"
@@ -97,7 +99,7 @@ export const MidFormFeedbackButton = (props) => {
 
 export const SubmitButton = (props) => {
   return (
-    <Button type={buttonTypes.SUBMIT}>
+    <Button buttonStyle={buttonTypes.SUBMIT} type="submit">
       <ButtonLabel>
         {props.label}
         <RightArrowIcon />
@@ -111,7 +113,7 @@ export const CancelButton = (props) => {
     <Route
       render={({ history }) => (
         <Button
-          type={buttonTypes.DEFAULT}
+          buttonStyle={buttonTypes.DEFAULT}
           onClick={() => history.push('/confirmCancel')}
         >
           <ButtonLabel>{props.label}</ButtonLabel>
@@ -146,7 +148,7 @@ export const NextCancelButtons = (props) => {
 */
 export const UploadButton = (props) => {
   return (
-    <Button type={buttonTypes.UPLOAD}>
+    <Button buttonStyle={buttonTypes.UPLOAD} onClick={props.onClick}>
       <ButtonLabel>
         <PaperClipIcon />
         {props.label}
@@ -159,7 +161,10 @@ export const SkipButton = (props) => {
   return (
     <Route
       render={({ history }) => (
-        <Button type={buttonTypes.SKIP} onClick={() => history.push(props.to)}>
+        <Button
+          buttonStyle={buttonTypes.SKIP}
+          onClick={() => history.push(props.to)}
+        >
           <ButtonLabel>
             {props.label}
             <RightArrowIcon />
@@ -172,7 +177,7 @@ export const SkipButton = (props) => {
 
 export const FeedbackButton = (props) => {
   return (
-    <Button type={buttonTypes.FEEDBACK}>
+    <Button buttonStyle={buttonTypes.FEEDBACK}>
       <ButtonLabel>{props.label}</ButtonLabel>
     </Button>
   )
