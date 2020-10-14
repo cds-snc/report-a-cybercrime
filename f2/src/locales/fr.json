@@ -341,7 +341,7 @@
   "privacyConsentInfoForm.newWarning": "Cochez la case pour accepter les conditions de la Déclaration de confidentialité.",
   "privacyConsentInfoForm.nextButton": "Continuer",
   "privacyConsentInfoForm.nextPage": "Étape suivante : Aimeriez-vous rester anonyme?",
-  "privacyConsentInfoForm.yes.withExternalLink": "J’accepte les conditions de la <0>Confidentialité de la déclaration</0>",
+  "privacyConsentInfoForm.yes.withExternalLink": "J’accepte les conditions de la <0>Déclaration de confidentialité</0>",
   "privacyConsentInfoPage.learnMore": "Pour en savoir plus sur les organismes qui recevront votre signalement et sur la manière dont vos renseignements sont protégés, consultez notre ",
   "privacyConsentInfoPage.linkOut": "Déclaration de confidentialité",
   "privacyConsentInfoPage.period": ".",
