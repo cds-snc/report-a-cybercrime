@@ -59,7 +59,7 @@ export const LocationInfoForm = (props) => {
               <FormRow>
                 <Trans id="locationinfoPage.skipInfo" />
               </FormRow>
-              <FormRow marginBottom="2rem">
+              <FormRow marginBottom="1rem">
                 <SkipButton
                   label={<Trans id="locationinfoPage.skipButton" />}
                   to="/contactinfo"
