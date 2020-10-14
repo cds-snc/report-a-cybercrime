@@ -3,36 +3,12 @@ import { Trans } from '@lingui/macro'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import * as Yup from 'yup'
 import { yupSchema } from '../utils/yupSchema'
-import validator from 'validator'
-
-//function validateInternationalNumber(phone) {
-const validateInternationalNumber = (phone) => {
-  let regex = /^\+(?:[0-9] ?){6,14}[0-9]$/
-
-  if (regex.test(phone)) {
-    return true // Valid international phone number
-  } else {
-    return false // Invalid international phone number
-  }
-}
-
-let validatePhoneNumber = (number) => {
-  const isValidPhoneNumber = validator.isInt(number)
-  return isValidPhoneNumber
-}
-
-//.isMobilePhone(number)
 
 const contactInfoFormValidation = Yup.object().shape({
   email: yupSchema().emailSchema,
   phone: yupSchema().phoneSchema,
   extension: yupSchema().phoneExtensionSchema,
 })
-
-// validatePhoneNumber,
-//validateInternationalNumber,
-//phone: yupSchema().phoneSchema,
-// validateInternationalNumber,
 
 const contactFormOptions = {
   fullName: {

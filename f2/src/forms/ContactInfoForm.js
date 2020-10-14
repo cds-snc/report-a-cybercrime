@@ -123,40 +123,46 @@ export const ContactInfoForm = (props) => {
                           onChange={handleChange}
                           id="email"
                         />
-                        {errors.phone && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            {phone.errorMessage}
-                          </P>
-                        )}
-                        <Field
-                          name="phone"
-                          label={<Trans id="contactinfoPage.phoneNumber" />}
-                          component={Input}
-                          onBlur={handleBlur}
-                          onChange={handleChange}
-                          id="phone"
-                        />
-                        {errors.extension && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            {extension.errorMessage}
-                          </P>
-                        )}
-                        <Field
-                          name="extension"
-                          label={<Trans id="contactinfoPage.phoneExtension" />}
-                          component={Input}
-                          onBlur={handleBlur}
-                          onChange={handleChange}
-                          id="extension"
-                        />
+                        <Container>
+                          <Row className="date-group">
+                            {errors.phone && (
+                              <P
+                                color="#dc3545"
+                                fontSize="1.25rem"
+                                marginBottom="0.5rem"
+                              >
+                                {phone.errorMessage}
+                              </P>
+                            )}
+                            <Field
+                              name="phone"
+                              label={<Trans id="contactinfoPage.phoneNumber" />}
+                              component={Input}
+                              onBlur={handleBlur}
+                              onChange={handleChange}
+                              id="phone"
+                            />
+                            {errors.extension && (
+                              <P
+                                color="#dc3545"
+                                fontSize="1.25rem"
+                                marginBottom="0.5rem"
+                              >
+                                {extension.errorMessage}
+                              </P>
+                            )}
+                            <Field
+                              name="extension"
+                              label={
+                                <Trans id="contactinfoPage.phoneExtension" />
+                              }
+                              component={Input}
+                              onBlur={handleBlur}
+                              onChange={handleChange}
+                              id="extension"
+                            />
+                          </Row>
+                        </Container>
                       </React.Fragment>
                     )
                   }}

@@ -26,6 +26,7 @@ export const ContactInfoSummary = (props) => {
           <Trans id="confirmationPage.contactInfo.fullName" />
           <Trans id="confirmationPage.contactInfo.email" />
           <Trans id="confirmationPage.contactInfo.phone" />
+          <Trans id="confirmationPage.contactInfo.extension" />
           <Trans id="confirmationPage.contactTitle.edit" />
         </div>
       ) : null}
@@ -59,6 +60,10 @@ export const ContactInfoSummary = (props) => {
             <DescriptionListItem
               descriptionTitle="confirmationPage.contactInfo.phone"
               description={contactInfo.phone}
+            />
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.contactInfo.extension"
+              description={contactInfo.extension}
             />
           </Stack>
         ) : (

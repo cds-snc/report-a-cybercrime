@@ -139,6 +139,10 @@ const formatVictimDetails = (data) => {
       lang['contactinfoPage.phoneNumber'],
       data.contactInfo.phone,
     ) +
+    formatLineHtml(
+      lang['contactinfoPage.phoneExtension'],
+      data.contactInfo.extension,
+    ) +
     formatLineHtml(lang['LocationAnonymousInfoForm.city'], data.location.city) +
     formatLineHtml(
       lang['LocationAnonymousInfoForm.province'],
