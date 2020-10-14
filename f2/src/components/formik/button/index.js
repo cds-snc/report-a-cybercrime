@@ -91,6 +91,7 @@ export const MidFormFeedbackButton = (props) => {
       marginLeft="0rem"
       borderStyle="outset"
       height="inherit"
+      onClick={props.onClick}
     >
       <ButtonLabel fontSize="1.25rem" paddingLeft="0rem" paddingRight="0rem">
         {props.label}
@@ -161,8 +162,8 @@ export const UploadButton = (props) => {
 
 export const FeedbackButton = (props) => {
   return (
-    <Button type="submit" className="button feedback-button">
-      <span className="button-label">{props.label}</span>
+    <Button buttonStyle={buttonTypes.FEEDBACK} type="submit">
+      <ButtonLabel>{props.label}</ButtonLabel>
     </Button>
   )
 }
