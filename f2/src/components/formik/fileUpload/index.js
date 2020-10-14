@@ -5,7 +5,7 @@ import { UploadButton } from '../button'
 import { acceptableExtensions } from '../../../utils/acceptableFiles'
 import { FormRow } from '../row'
 
-const FileInput = styled(FormFile.Input)`
+const FileInput = styled(FormFile)`
   display: none;
 `
 
@@ -16,10 +16,10 @@ export const FileUpload = ({ field, form, onChange, ...props }) => {
 
   return (
     <FormRow>
-      <FormFile id={props.id} custom>
-        <FileInput accept={acceptableExtensions} onChange={onChange} />
+      <FileInput id={props.id} custom>
+        <FormFile.Input accept={acceptableExtensions} onChange={onChange} />
         <FormFile.Label />
-      </FormFile>
+      </FileInput>
       <UploadButton label={props.label} onClick={selectFileInput} />
     </FormRow>
   )
