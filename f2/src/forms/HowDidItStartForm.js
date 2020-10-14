@@ -1,18 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
-import { Form, Container, Row } from 'react-bootstrap'
+import { Prompt } from 'react-router-dom'
+import { Form, Container, Row, Modal } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { CheckBox } from '../components/formik/checkbox'
 import { TextArea } from '../components/formik/textArea'
-import { NextCancelButtons } from '../components/formik/button'
+import { NextCancelButtons, DefaultButton } from '../components/formik/button'
 import { Error, Info } from '../components/formik/alert'
+
+window.onbeforeunload = function () {
+  return ''
+}
 
 export const HowDidItStartForm = (props) => {
   const [data] = useStateValue()
   const howDidItStart = {
     ...data.formData.howdiditstart,
   }
+
+  const [showModal, setShowModal] = useState(false)
+  const handleClose = () => setShowModal(false)
 
   const formOptions = [
     {
@@ -65,8 +73,29 @@ export const HowDidItStartForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, dirty, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
+            <Prompt
+              when={dirty && !isSubmitting}
+              message={() => {
+                setShowModal(true)
+                return false
+              }}
+            />
+            <Modal show={showModal} onHide={handleClose} backdrop="static">
+              <Modal.Header closeButton>
+                <Modal.Title>
+                  <Trans id="fileUpload.errorModal.title" />
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Container></Container>
+              </Modal.Body>
+              <Modal.Footer>
+                <DefaultButton onClick={handleClose} label="OK" />
+              </Modal.Footer>
+            </Modal>
+
             <Container>
               <Row className="form-question">
                 <Row className="form-label">
