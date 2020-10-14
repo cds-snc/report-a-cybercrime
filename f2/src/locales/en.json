@@ -16,6 +16,7 @@
   "analystReport.dateReceived": "Date received",
   "analystReport.fieldsMissing.warning": "Fields missing from above report",
   "analystReport.flagged": "Flagged",
+  "analystReport.fyiForm": "Report Type",
   "analystReport.incidentInformation": "Incident information",
   "analystReport.methodOfComms.app": "App",
   "analystReport.methodOfComms.email": "Email",
