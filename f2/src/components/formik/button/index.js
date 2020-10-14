@@ -12,23 +12,25 @@ import { space, border, layout, typography } from 'styled-system'
 const buttonStyle = (props) => {
   let buttonProps = props.buttonStyle
 
-  return css`
-    background-color: ${buttonProps.backGround};
-    color: ${buttonProps.color};
-    border-color: ${buttonProps.borderColor};
-
-    &:hover,
-    &:focus {
+  if (buttonProps) {
+    return css`
       background-color: ${buttonProps.backGround};
       color: ${buttonProps.color};
-      box-shadow: #d5d5d5 0px 0px 0px 2px;
-    }
+      border-color: ${buttonProps.borderColor};
 
-    &:not(:disabled):not(.disabled):active {
-      background-color: ${buttonProps.active.backGround};
-      color: ${buttonProps.active.color};
-    }
-  `
+      &:hover,
+      &:focus {
+        background-color: ${buttonProps.backGround};
+        color: ${buttonProps.color};
+        box-shadow: #d5d5d5 0px 0px 0px 2px;
+      }
+
+      &:not(:disabled):not(.disabled):active {
+        background-color: ${buttonProps.active.backGround};
+        color: ${buttonProps.active.color};
+      }
+    `
+  }
 }
 
 const ButtonLabel = styled('span', {
