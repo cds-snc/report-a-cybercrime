@@ -3,11 +3,36 @@ import { Trans } from '@lingui/macro'
 import { formatPhoneNumber } from '../utils/formatPhoneNumber'
 import * as Yup from 'yup'
 import { yupSchema } from '../utils/yupSchema'
+import validator from 'validator'
+
+//function validateInternationalNumber(phone) {
+const validateInternationalNumber = (phone) => {
+  let regex = /^\+(?:[0-9] ?){6,14}[0-9]$/
+
+  if (regex.test(phone)) {
+    return true // Valid international phone number
+  } else {
+    return false // Invalid international phone number
+  }
+}
+
+let validatePhoneNumber = (number) => {
+  const isValidPhoneNumber = validator.isInt(number)
+  return isValidPhoneNumber
+}
+
+//.isMobilePhone(number)
 
 const contactInfoFormValidation = Yup.object().shape({
   email: yupSchema().emailSchema,
   phone: yupSchema().phoneSchema,
+  extension: yupSchema().phoneExtensionSchema,
 })
+
+// validatePhoneNumber,
+//validateInternationalNumber,
+//phone: yupSchema().phoneSchema,
+// validateInternationalNumber,
 
 const contactFormOptions = {
   fullName: {
@@ -30,6 +55,13 @@ const contactFormOptions = {
     id: 'enterContactDetails-Phone',
     label: <Trans id="contactinfoPage.phoneNumber" />,
     errorMessage: <Trans id="contactinfoForm.phone.warning" />,
+  },
+  extension: {
+    name: 'extension',
+    value: 'extension',
+    id: 'enterContactDetails-Extension',
+    label: <Trans id="contactinfoPage.phoneExtension" />,
+    errorMessage: <Trans id="contactinfoForm.phoneExtension.warning" />,
   },
 }
 
@@ -54,6 +86,13 @@ const createErrorSummary = (errors) => {
     errorSummary['phone'] = {
       label: contactFormOptions.phone.label,
       message: contactFormOptions.phone.errorMessage,
+    }
+  }
+
+  if (errors.extension) {
+    errorSummary['extension'] = {
+      label: contactFormOptions.extension.label,
+      message: contactFormOptions.extension.errorMessage,
     }
   }
 
@@ -92,6 +131,14 @@ const onSubmitValidation = async (values) => {
     values.phone = errors['phone']
       ? values.phone
       : formatPhoneNumber(values.phone)
+  }
+
+  if (values.extension) {
+    await contactInfoFormValidation
+      .validate({ extension: values.extension })
+      .catch((err) => {
+        errors['extension'] = true
+      })
   }
 
   if (!values.email && !values.phone) {

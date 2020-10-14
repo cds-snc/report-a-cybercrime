@@ -17,6 +17,10 @@ export const yupSchema = () => {
       message: <Trans id="locationInfoForm.Warning" />,
     }),
 
+    phoneExtensionSchema: Yup.string().matches(/^[0-9]*$/, {
+      message: <Trans id="contactinfoForm.email.warning" />,
+    }),
+
     dateSchema: {
       DAY: Yup.number().min(1).max(31),
       MONTH: Yup.number().min(1).max(12),

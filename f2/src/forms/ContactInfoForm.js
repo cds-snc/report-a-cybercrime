@@ -24,6 +24,7 @@ export const ContactInfoForm = (props) => {
   const fullName = ContactInfoFormSchema.CONTACT_INFO.fullName
   const email = ContactInfoFormSchema.CONTACT_INFO.email
   const phone = ContactInfoFormSchema.CONTACT_INFO.phone
+  const extension = ContactInfoFormSchema.CONTACT_INFO.extension
 
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
@@ -138,6 +139,23 @@ export const ContactInfoForm = (props) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           id="phone"
+                        />
+                        {errors.extension && (
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            {extension.errorMessage}
+                          </P>
+                        )}
+                        <Field
+                          name="extension"
+                          label={<Trans id="contactinfoPage.phoneExtension" />}
+                          component={Input}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          id="extension"
                         />
                       </React.Fragment>
                     )
