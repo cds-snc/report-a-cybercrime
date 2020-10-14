@@ -72,7 +72,7 @@ export const LocationInfoForm = (props) => {
                   </P>
                 )}
               </FormRow>
-              <FormRow className="form-section">
+              <FormRow>
                 <Field
                   name="postalCode"
                   label={<Trans id="locationinfoPage.postalCode" />}
