@@ -6,7 +6,7 @@ import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
 import { cleanProps } from '../../../utils/cleanProps'
-import { buttonTypes } from '../theme'
+import { buttonTypes } from './theme'
 import { space, border, layout, typography } from 'styled-system'
 
 const buttonStyle = (props) => {
