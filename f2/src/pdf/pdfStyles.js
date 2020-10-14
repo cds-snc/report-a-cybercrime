@@ -132,6 +132,8 @@ export const pdfStyles = StyleSheet.create({
     fontFamily: 'Helvetica',
     fontWeight: 'normal',
     marginLeft: 12,
-    marginTop: 10,
+    marginTop: 5,
+    color: 'blue',
+    textDecoration: 'underline',
   },
 })

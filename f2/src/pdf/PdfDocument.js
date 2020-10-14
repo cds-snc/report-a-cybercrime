@@ -100,11 +100,24 @@ export const PdfDocument = (props) => {
           <Text style={pdfStyles.bottomTitle}>
             {lang['pdf.websites.title']}
           </Text>
-          <Link style={pdfStyles.bottomLink}>www.getcybersafe.gc.ca</Link>
+          <Text style={pdfStyles.bottomContent}>
+            {lang['pdf.bottom.site1']}
+          </Text>
           <Link style={pdfStyles.bottomLink}>
             www.antifraudcentre-centreantifraude.ca
           </Link>
+          <Text style={pdfStyles.bottomContent}>
+            {lang['pdf.bottom.site2']}
+          </Text>
           <Link style={pdfStyles.bottomLink}>www.rcmp-grc.gc.ca</Link>
+          <Text style={pdfStyles.bottomContent}>
+            {lang['pdf.bottom.site3']}
+          </Text>
+          <Link style={pdfStyles.bottomLink}>www.rcmp-grc.gc.ca/en/nc3</Link>
+          <Text style={pdfStyles.bottomContent}>
+            {lang['pdf.bottom.site4']}
+          </Text>
+          <Link style={pdfStyles.bottomLink}>www.getcybersafe.gc.ca</Link>
         </View>
         <Image style={pdfStyles.footerCanada} src={footerCanada} fixed />
       </Page>

@@ -12,7 +12,7 @@ export const PdfReportPage = (props) => {
 
   return (
     <React.Fragment>
-      {false ? ( // the following trans tags are for analyst email
+      {false ? (
         <div>
           <Trans id="pdf.betaText" />
           <Trans id="pdf.getPdfReport" />
@@ -26,7 +26,7 @@ export const PdfReportPage = (props) => {
       <BlobProvider document={<PdfDocument data={data} locale={i18n.locale} />}>
         {({ blob, url, loading, error }) => {
           return (
-            <A href={url} target="_blank">
+            <A href={url} target="_blank" fontSize="xl">
               <Trans id="pdf.getPdfReport" />
             </A>
           )
