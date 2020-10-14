@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import { PageNotFound } from './PageNotFound'
-//import { LandingPage } from './LandingPage'
+import { LandingPage } from './LandingPage'
 import { ThankYouPage } from './ThankYouPage'
 import { WhatHappenedPage } from './WhatHappenedPage'
 import { ContactInfoPage } from './ContactInfoPage'
@@ -30,7 +30,6 @@ import { Covid19Page } from './Covid19Page'
 import { RedirectRoute } from './components/route'
 import { WhenDidItHappenPage } from './WhenDidItHappenPage'
 import { WhoAreYouReportForPage } from './WhoAreYouReportForPage'
-import { TestPage } from './components/formik/test/TESTPAGE.js'
 
 export const Home = () => (
   <Router>
@@ -40,7 +39,7 @@ export const Home = () => (
       </Route>
 
       <Route exact path="/">
-        <TestPage />
+        <LandingPage />
       </Route>
       <Route exact path="/startPage">
         <StartPage />
