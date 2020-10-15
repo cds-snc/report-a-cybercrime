@@ -146,6 +146,7 @@
   "contactinfoForm.emailORphone.warning": "Entrez une adresse courriel valide OU entrez un numéro de téléphone valide.",
   "contactinfoForm.fullName.warning": "Entrez votre nom complet",
   "contactinfoForm.phone.warning": "Entrez un numéro de téléphone valide.",
+  "contactinfoForm.phoneExtension.warning": "Veuillez saisir des numéros de poste valides.",
   "contactinfoPage.emailAddress": "Adresse courriel",
   "contactinfoPage.emailORphone": "Email ou Téléphone",
   "contactinfoPage.fullName": "Nom complet",

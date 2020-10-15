@@ -5,7 +5,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/formik/paragraph'
-import { Form, Container, Row } from 'react-bootstrap'
+import { Form, Container, Row, Col } from 'react-bootstrap'
 import { formDefaults } from './defaultValues'
 import { Formik, FieldArray, Field } from 'formik'
 import { Input } from '../components/formik/input'
@@ -68,7 +68,6 @@ export const ContactInfoForm = (props) => {
                   to="/confirmation"
                 />
               </FormRow>
-
               <FormRow>
                 <FieldArray
                   name="contactInfo"
@@ -123,9 +122,9 @@ export const ContactInfoForm = (props) => {
                           onChange={handleChange}
                           id="email"
                         />
-                        <Container>
-                          <Row className="date-group">
-                            {errors.phone && (
+                        {errors.phone && (
+                          <Container>
+                            <FormRow id="PhoneError">
                               <P
                                 color="#dc3545"
                                 fontSize="1.25rem"
@@ -133,7 +132,24 @@ export const ContactInfoForm = (props) => {
                               >
                                 {phone.errorMessage}
                               </P>
-                            )}
+                            </FormRow>
+                          </Container>
+                        )}
+                        {errors.extension && (
+                          <Container>
+                            <FormRow id="ExtensionError">
+                              <P
+                                color="#dc3545"
+                                fontSize="1.25rem"
+                                marginBottom="0.5rem"
+                              >
+                                {extension.errorMessage}
+                              </P>
+                            </FormRow>
+                          </Container>
+                        )}
+                        <Row>
+                          <Col>
                             <Field
                               name="phone"
                               label={<Trans id="contactinfoPage.phoneNumber" />}
@@ -142,15 +158,8 @@ export const ContactInfoForm = (props) => {
                               onChange={handleChange}
                               id="phone"
                             />
-                            {errors.extension && (
-                              <P
-                                color="#dc3545"
-                                fontSize="1.25rem"
-                                marginBottom="0.5rem"
-                              >
-                                {extension.errorMessage}
-                              </P>
-                            )}
+                          </Col>
+                          <Col>
                             <Field
                               name="extension"
                               label={
@@ -161,8 +170,8 @@ export const ContactInfoForm = (props) => {
                               onChange={handleChange}
                               id="extension"
                             />
-                          </Row>
-                        </Container>
+                          </Col>
+                        </Row>
                       </React.Fragment>
                     )
                   }}
