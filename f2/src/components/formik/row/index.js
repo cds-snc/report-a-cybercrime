@@ -12,6 +12,7 @@ import {
   height,
   position,
   zIndex,
+  typography,
 } from 'styled-system'
 
 const separator = (props) =>
@@ -35,4 +36,5 @@ export const FormRow = styled(Row, {
   ${height};
   ${position};
   ${zIndex};
+  ${typography}
 `
