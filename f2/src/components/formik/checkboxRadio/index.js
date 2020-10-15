@@ -1,15 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import { Form } from 'react-bootstrap'
 import { FormRow } from '../row'
 import { ConditionalField } from '../conditionalField'
 import { cleanProps } from '../../../utils/cleanProps'
 
 const conditionalFieldStyle = (props) => {
-  if (props.checked && props.helpText) {
-    return `border-left-width: 0.25rem;
-    border-left-color: rgb(174,174,174);
-    margin-left: -0.25rem;
+  if (props.checked && props.hasChildren) {
+    return css`
+      border-left-width: 0.25rem;
+      border-left-color: #aeaeae;
+      margin-left: -0.25rem;
     `
   }
 }
@@ -24,6 +27,7 @@ const HelpText = styled(Form.Text, {
   margin-top: 0rem;
   ${conditionalFieldStyle}
 `
+
 const Label = styled(Form.Check.Label, {
   shouldForwardProp: (prop) => cleanProps(prop),
 })`
@@ -45,17 +49,18 @@ const Input = styled(Form.Check.Input)`
   z-index: auto;
 `
 
-export const CheckBox = ({ field, form, ...props }) => {
-  const paddingBottom = props.helpText ? `0rem` : `1rem`
+export const CheckBoxRadio = ({ field, form, ...props }) => {
+  const paddingBottom = props.helpText ? '0rem' : '1rem'
+  const hasChildren = props.children
 
   return (
     <FormRow paddingBottom={paddingBottom} paddingLeft="1rem">
-      <Form.Check id={props.id} type="checkbox" custom>
-        <Input type="checkbox" {...field} value={props.value} />
-        <Label {...field} {...props}>
+      <Form.Check id={props.id} type={props.type} custom>
+        <Input type={props.type} {...field} value={props.value} />
+        <Label {...field} {...props} hasChildren={hasChildren}>
           {props.label}
         </Label>
-        <HelpText {...field} {...props}>
+        <HelpText {...field} {...props} hasChildren={hasChildren}>
           {props.helpText}
         </HelpText>
       </Form.Check>
@@ -64,4 +69,8 @@ export const CheckBox = ({ field, form, ...props }) => {
       )}
     </FormRow>
   )
+}
+
+CheckBoxRadio.propTypes = {
+  type: PropTypes.oneOf(['checkbox', 'radio']),
 }

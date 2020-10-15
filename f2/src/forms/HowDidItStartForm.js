@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { TextArea } from '../components/formik/textArea'
 import { NextCancelButtons } from '../components/formik/button'
 import { Error, Info } from '../components/formik/alert'
@@ -90,7 +90,7 @@ export const HowDidItStartForm = (props) => {
                           <Field
                             name="howDidTheyReachYou"
                             label={question.checkboxLabel}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.name}
                             onChange={handleChange}
                             onBlur={handleBlur}

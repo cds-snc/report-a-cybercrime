@@ -2,8 +2,8 @@ import React from 'react'
 import { useStateValue } from '../../../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field } from 'formik'
-import { CheckBox } from '../checkbox'
-import { Radio } from '../radio'
+import { CheckBoxRadio } from '../checkboxRadio'
+//import { Radio } from '../radio'
 import { TextArea } from '../textArea'
 import { Input } from '../input'
 
@@ -80,7 +80,7 @@ export const TestForm = (props) => {
                           <Field
                             name="howDidTheyReachYou"
                             label={question.label}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.value}
                             helpText={question.helpText}
                             type="checkbox"
@@ -113,7 +113,7 @@ export const TestForm = (props) => {
                           <Field
                             name="radioGroup"
                             label={question.label}
-                            component={Radio}
+                            component={CheckBoxRadio}
                             value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
