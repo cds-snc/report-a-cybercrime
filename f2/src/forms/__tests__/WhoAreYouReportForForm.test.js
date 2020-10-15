@@ -49,12 +49,12 @@ describe('<WhoAreYouReportForForm />', () => {
   it('renders the business description field when A business is selected', async () => {
     const submitMock = jest.fn()
 
-    const { getByText,  getByLabelText} = render(
+    const { getByText, getByLabelText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
             <StateProvider initialState={initialState} reducer={reducer}>
-              <WhoAreYouReportForForm  onSubmit={submitMock} />
+              <WhoAreYouReportForForm onSubmit={submitMock} />
             </StateProvider>
           </I18nProvider>
         </ThemeProvider>
@@ -65,18 +65,18 @@ describe('<WhoAreYouReportForForm />', () => {
     clickOn(radio)
 
     // find the "What business are you reporting for?" label
-    expect(getByText('whoAreYouReportForPage.business.label')).toBeTruthy();
+    expect(getByText('whoAreYouReportForPage.business.label')).toBeTruthy()
   })
 
   it('not render the business description field when someone I know is selected', async () => {
     const submitMock = jest.fn()
-    
-    const { queryByText,  getByLabelText} = render(
+
+    const { queryByText, getByLabelText } = render(
       <MemoryRouter initialEntries={['/']}>
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
             <StateProvider initialState={initialState} reducer={reducer}>
-              <WhoAreYouReportForForm  onSubmit={submitMock} />
+              <WhoAreYouReportForForm onSubmit={submitMock} />
             </StateProvider>
           </I18nProvider>
         </ThemeProvider>
@@ -87,7 +87,6 @@ describe('<WhoAreYouReportForForm />', () => {
     clickOn(radio)
 
     //can not find the "What business are you reporting for?" label
-    expect(queryByText('whoAreYouReportForPage.business.label')).toBeFalsy();     
+    expect(queryByText('whoAreYouReportForPage.business.label')).toBeFalsy()
   })
-  
 })

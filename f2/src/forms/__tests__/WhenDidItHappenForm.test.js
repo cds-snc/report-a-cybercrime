@@ -18,7 +18,7 @@ const clickOn = (element) => fireEvent.click(element)
 describe('<WhenDidItHappenForm />', () => {
   afterEach(cleanup)
 
-  it('does not call the onSubmit function when no selection has been made', async () => {
+  it('calls the onSubmit function when no selection has been made', async () => {
     const submitMock = jest.fn()
 
     const { getByText } = render(
@@ -42,7 +42,7 @@ describe('<WhenDidItHappenForm />', () => {
       clickOn(nextButton.parentElement)
     })
 
-    expect(submitMock).toHaveBeenCalledTimes(0)
+    expect(submitMock).toHaveBeenCalledTimes(1)
   })
 
   it('calls the onSubmit function when a selection has been made', async () => {

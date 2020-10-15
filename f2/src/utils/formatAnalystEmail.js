@@ -60,6 +60,14 @@ const formatReportInfo = (data) => {
 
   let reportLanguage = data.language === 'fr' ? 'Français' : 'English'
 
+  let fyiForm
+  if (data.fyiForm === 'yes') {
+    fyiForm =
+      data.language === 'en' ? 'Qick Tip' : 'soumettre des renseignements'
+  } else {
+    fyiForm = data.language === 'en' ? 'Full Report' : 'Rapport complet'
+  }
+
   returnString +=
     '<h2>' +
     lang['analystReport.reportInformation'] +
@@ -73,6 +81,7 @@ const formatReportInfo = (data) => {
         formatLineHtml(lang['analystReport.reportLanguage'], reportLanguage) +
         formatLineHtml(lang['analystReport.reportVersion'], data.prodVersion) +
         formatLineHtml(lang['confirmationPage.anonymous.title'], isAnonymous) +
+        formatLineHtml(lang['analystReport.fyiForm'], fyiForm) +
         formatLineHtml(lang['analystReport.flagged'], selfHarmString),
     )
 
@@ -484,17 +493,18 @@ const formatSuspectDetails = (data) => {
 }
 
 const formatFinancialTransactions = (data) => {
-  const methods =
-    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
-      ? data.moneyLost.methodPayment.concat([data.moneyLost.methodOther])
-      : data.moneyLost.methodPayment
+  const methods = data.moneyLost.methodPayment
 
   const origPaymentString = methods
     .filter((method) => method !== 'methodPayment.other')
     .map((method) => unCamel(method.replace('methodPayment.', '')))
     .join(', ')
 
-  let paymentString = origPaymentString
+  let paymentString =
+    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
+      ? String(origPaymentString) + ', ' + [data.moneyLost.methodOther]
+      : String(origPaymentString)
+
   let languageAdjustedPaymentString = {
     'e transfer': lang['methodPayment.eTransfer'],
     eTransfer: lang['methodPayment.eTransfer'],
@@ -531,7 +541,7 @@ const formatFinancialTransactions = (data) => {
     ) +
     formatLineHtml(
       lang['confirmationPage.moneyLost.methodPayment'],
-      paymentString,
+      paymentString, //data.moneyLost.paymentString,  // methodOther,
     ) +
     formatLineHtml(
       lang['confirmationPage.moneyLost.transactionDate'],

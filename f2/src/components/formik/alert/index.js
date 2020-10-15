@@ -100,6 +100,13 @@ export const ErrorSummary = (props) => {
     }
   }, [props.submissions])
 
+  const focusElement = (id) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView()
+    }
+  }
+
   return (
     <Container>
       <Row>
@@ -113,7 +120,15 @@ export const ErrorSummary = (props) => {
                 return (
                   <React.Fragment key={key}>
                     <Row>
-                      <A href={`#${key}`} marginBottom="0.5rem" color="initial">
+                      <A
+                        href={`#${key}`}
+                        marginBottom="0.5rem"
+                        color="initial"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          focusElement(key)
+                        }}
+                      >
                         {error.label} - {error.message}
                       </A>
                     </Row>

@@ -11,6 +11,19 @@ import { P } from '../components/formik/paragraph'
 import { NextCancelButtons } from '../components/formik/button'
 import { formDefaults } from './defaultValues'
 import { WhoAreYouReportForFormSchema } from './WhoAreYouReportForFormSchema'
+import { ErrorSummary } from '../components/formik/alert'
+
+const createErrorSummary = (errors) => {
+  const errorSummary = {}
+  if (errors.whoYouReportFor) {
+    errorSummary['whoYouReportFor'] = {
+      label: <Trans id="whoAreYouReportForPage.title" />,
+      message: <Trans id="whoAreYouReportForPage.hasValidationErrors" />,
+    }
+  }
+
+  return errorSummary
+}
 
 export const WhoAreYouReportForForm = (props) => {
   const [data] = useStateValue()
@@ -48,26 +61,37 @@ export const WhoAreYouReportForForm = (props) => {
         }}
         validationSchema={WhoAreYouReportForFormSchema()}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
-                <ErrorMessage name="whoYouReportFor" component={Error} />
+                {Object.keys(errors).length > 0 && (
+                  <ErrorSummary
+                    errors={createErrorSummary(errors)}
+                    submissions={submitCount}
+                    title={<Trans id="default.hasValidationErrors" />}
+                  />
+                )}
               </Row>
-              <Row className="form-section">
-                <React.Fragment key='myselfDescription'>
+              <Row className="form-section" id="whoYouReportFor">
+                {errors && errors.whoYouReportFor && (
+                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                    <Trans id="whoAreYouReportForPage.hasValidationErrors" />
+                  </P>
+                )}
+                <React.Fragment key="myselfDescription">
                   <Field
                     name="whoYouReportFor"
-                    label={<Trans id='whoAreYouReportForPage.options.myself'/>}
+                    label={<Trans id="whoAreYouReportForPage.options.myself" />}
                     component={Radio}
-                    value='whoAreYouReportForPage.options.myself'
+                    value="whoAreYouReportForPage.options.myself"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     type="radio"
                     id={'radio-myselfDescription'}
                   />
                 </React.Fragment>
-                <React.Fragment key='Or'>
+                <React.Fragment key="Or">
                   <P ml="0.5rem" mb="0.5rem" fontSize="1.25rem">
                     <Trans id="whoAreYouReportForPage.or" />
                   </P>
@@ -89,19 +113,18 @@ export const WhoAreYouReportForForm = (props) => {
                             type="radio"
                             id={'radio-' + question.name}
                           >
-                              <ErrorMessage
-                                name={question.name}
-                                component={Error}
-                              />
-                              <Field
-                                name={question.name}
-                                label={question.label}
-                                helpText={question.hint}
-                                component={TextArea}
-                                onBlur={handleBlur}
-                                onChange={handleChange}
-                              />
-
+                            <ErrorMessage
+                              name={question.name}
+                              component={Error}
+                            />
+                            <Field
+                              name={question.name}
+                              label={question.label}
+                              helpText={question.hint}
+                              component={TextArea}
+                              onBlur={handleBlur}
+                              onChange={handleChange}
+                            />
                           </Field>
                         </React.Fragment>
                       )
