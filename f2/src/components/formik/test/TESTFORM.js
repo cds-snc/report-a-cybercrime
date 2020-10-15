@@ -7,7 +7,6 @@ import { CheckBoxRadio } from '../checkboxRadio'
 import { TextArea } from '../textArea'
 import { Input } from '../input'
 
-
 export const TestForm = (props) => {
   const [data] = useStateValue()
 
@@ -58,7 +57,6 @@ export const TestForm = (props) => {
     },
   ]
 
-
   return (
     <React.Fragment>
       <Formik
@@ -71,11 +69,6 @@ export const TestForm = (props) => {
         }}
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
-            <ErrorSummary
-              errors={errorSummary}
-              submissions={0}
-              title="Error Summary"
-            />
             <Container>
               <Row>
                 <FieldArray
