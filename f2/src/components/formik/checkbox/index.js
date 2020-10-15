@@ -3,30 +3,46 @@ import styled from '@emotion/styled'
 import { Form } from 'react-bootstrap'
 import { FormRow } from '../row'
 import { ConditionalField } from '../conditionalField'
-import { checkboxRadio } from '../theme'
 import { cleanProps } from '../../../utils/cleanProps'
 
 const conditionalFieldStyle = (props) => {
   if (props.checked && props.helpText) {
-    return `${checkboxRadio.HELP_TEXT_CHECKED}`
+    return `border-left-width: 0.25rem;
+    border-left-color: rgb(174,174,174);
+    margin-left: -0.25rem;
+    `
   }
 }
 
 const HelpText = styled(Form.Text, {
   shouldForwardProp: (prop) => cleanProps(prop),
 })`
-  ${checkboxRadio.HELP_TEXT}
+  padding-left: 1.5rem;
+  font-size: 0.875rem;
+  margin-bottom: -0.25rem;
+  line-height: 1.5;
+  margin-top: 0rem;
   ${conditionalFieldStyle}
 `
 const Label = styled(Form.Check.Label, {
   shouldForwardProp: (prop) => cleanProps(prop),
 })`
-  ${checkboxRadio.LABEL}
+  padding-left: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  padding-top: 0.5rem;
+  &:before {
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 0rem;
+  }
   ${conditionalFieldStyle}
 `
 
 const Input = styled(Form.Check.Input)`
-  ${checkboxRadio.INPUT}
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: auto;
 `
 
 export const CheckBox = ({ field, form, ...props }) => {
