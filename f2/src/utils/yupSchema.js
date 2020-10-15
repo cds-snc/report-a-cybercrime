@@ -6,7 +6,7 @@ import { Trans } from '@lingui/macro'
 export const yupSchema = () => {
   return {
     phoneSchema: Yup.string()
-      .transform((value) => value.replace(/[\s()+\-\.]|ext/gi, ''))
+      .transform((value) => value.replace(/[\s()+\-'.']|ext/gi, ''))
       .matches(regexDef().isValidInternationalPhonenumber, {
         excludeEmptyString: true,
         message: 'Please enter a valid phone number',
