@@ -34,7 +34,8 @@ const formatReportInfo = (data) => {
   //set language to use based report language
   data.language === 'en' ? (lang = langJsonEn) : (lang = langJsonFr)
 
-  let selfHarmString = 'none'
+  let selfHarmString = data.language === 'en' ? 'None' : 'Aucun'
+
   let returnString = ''
 
   if (data.selfHarmWords.length) {
@@ -45,11 +46,19 @@ const formatReportInfo = (data) => {
       `${data.selfHarmWords}</h1>`
   }
 
-  let isAnonymous =
-    data.anonymous.anonymousOptions.length > 0
-      ? data.anonymous.anonymousOptions[0].replace('anonymousPage.', '')
-      : 'no'
-  let reportLanguage = data.language === 'en' ? 'English' : 'French'
+  let origAnonymousFromObj = data.anonymous.anonymousOptions[0].replace(
+    'anonymousPage.',
+    '',
+  )
+
+  let isAnonymous
+  if (origAnonymousFromObj === 'yes') {
+    isAnonymous = data.language === 'en' ? 'Yes' : 'Oui'
+  } else {
+    isAnonymous = data.language === 'en' ? 'No' : 'Non'
+  }
+
+  let reportLanguage = data.language === 'fr' ? 'Français' : 'English'
 
   returnString +=
     '<h2>' +
@@ -81,9 +90,14 @@ const formatReportInfo = (data) => {
 }
 
 const formatVictimDetails = (data) => {
-  const consentString = data.consent.consentOptions
+  const origConsentString = data.consent.consentOptions
     .map((option) => option.replace('privacyConsentInfoForm.', ''))
     .join(', ')
+
+  let consentString =
+    origConsentString === 'yes'
+      ? lang['analystReport.consent.yes']
+      : lang['analystReport.consent.no']
 
   let postalCity = ''
   let postalProv = ''
@@ -91,8 +105,8 @@ const formatVictimDetails = (data) => {
     let location = zipcodes.lookup(data.location.postalCode)
     if (data.location.postalCode) {
       if (location === undefined) {
-        postalCity = 'Location lookup is not found'
-        postalProv = 'Location lookup is not found'
+        postalCity = lang['locationinfoPage.postalCity.notFoundWarning'] //'Location lookup is not found'
+        postalProv = lang['locationinfoPage.postalProv.notFoundWarning'] //ocation lookup is not found'
       } else {
         postalCity = location.city
         postalProv = location.state
@@ -156,7 +170,7 @@ const formatVictimDetails = (data) => {
 
 const formatIncidentInformation = (data) => {
   const freq = data.whenDidItHappen.incidentFrequency
-  let occurenceLine
+  let occurenceLine = ''
 
   if (freq === 'once') {
     const occurenceString = formatDate(
@@ -199,7 +213,7 @@ const formatIncidentInformation = (data) => {
         lang['whenDidItHappenPage.dateRange.end.label'],
         endtDateString,
       )
-  } else {
+  } else if (freq === 'notSure') {
     const textAreaString = data.whenDidItHappen.description
     occurenceLine =
       formatLineHtml(
@@ -212,13 +226,50 @@ const formatIncidentInformation = (data) => {
       )
   }
 
-  const methodOfCommsString = data.howdiditstart.howDidTheyReachYou
+  const OrigMethodOfCommsString = data.howdiditstart.howDidTheyReachYou
     .map((how) => unCamel(how.replace('howDidTheyReachYou.', '')))
     .join(', ')
-  const affectedString = data.whatWasAffected.affectedOptions
+
+  let methodOfCommsString = OrigMethodOfCommsString
+  let languageAdjustedAvailableMethodOfComms = {
+    email: lang['analystReport.methodOfComms.email'],
+    phone: lang['analystReport.methodOfComms.phone'],
+    online: lang['analystReport.methodOfComms.online'],
+    app: lang['analystReport.methodOfComms.app'],
+    others: lang['analystReport.methodOfComms.others'],
+  }
+
+  for (var key_mc in languageAdjustedAvailableMethodOfComms) {
+    if (methodOfCommsString.includes(key_mc)) {
+      methodOfCommsString = methodOfCommsString.replace(
+        key_mc,
+        languageAdjustedAvailableMethodOfComms[key_mc],
+      )
+    }
+  }
+
+  const OrigAffectedString = data.whatWasAffected.affectedOptions
     .map((option) => unCamel(option.replace('whatWasAffectedForm.', '')))
     .filter((option) => option !== 'other')
     .join(', ')
+
+  let affectedString = OrigAffectedString
+  let languageAdjustedAffectedString = {
+    financial: lang['analystReport.affected.financial'],
+    'personal information': lang['analystReport.affected.personalinformation'],
+    business_assets: lang['analystReport.affected.business_assets'],
+    devices: lang['analystReport.affected.devices'],
+    other: lang['analystReport.affected.other'],
+  }
+
+  for (var key_as in languageAdjustedAffectedString) {
+    if (affectedString.includes(key_as)) {
+      affectedString = affectedString.replace(
+        key_as,
+        languageAdjustedAffectedString[key_as],
+      )
+    }
+  }
 
   const rows =
     formatLineHtml(lang['howDidTheyReachYou.question'], methodOfCommsString) +
@@ -242,11 +293,11 @@ const formatIncidentInformation = (data) => {
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
   delete data.fyiForm
-  return formatSection(lang['howDidItStartPage.incidentInformation'], rows)
+  return formatSection(lang['analystReport.incidentInformation'], rows)
 }
 
 const formatNarrative = (data) => {
-  const infoReqString = data.personalInformation.typeOfInfoReq
+  const origInfoReqString = data.personalInformation.typeOfInfoReq
     .map((info) => unCamel(info.replace('typeOfInfoReq.', '')))
     .map((info) =>
       info === 'other' &&
@@ -257,7 +308,25 @@ const formatNarrative = (data) => {
     )
     .join(', ')
 
-  const infoObtainedString = data.personalInformation.typeOfInfoObtained
+  let infoReqString = origInfoReqString
+  let languageAdjustedAvailableInfoReqString = {
+    'credit card': lang['typeOfInfoReq.creditCard'],
+    dob: lang['typeOfInfoReq.dob'],
+    'home address': lang['typeOfInfoReq.homeAddress'],
+    sin: lang['typeOfInfoReq.sin'],
+    other: lang['typeOfInfoReq.other'],
+  }
+
+  for (var key_ir in languageAdjustedAvailableInfoReqString) {
+    if (infoReqString.includes(key_ir)) {
+      infoReqString = infoReqString.replace(
+        key_ir,
+        languageAdjustedAvailableInfoReqString[key_ir],
+      )
+    }
+  }
+
+  const origInfoObtainedString = data.personalInformation.typeOfInfoObtained
     .map((info) => unCamel(info.replace('typeOfInfoObtained.', '')))
     .map((info) =>
       info === 'other' &&
@@ -267,6 +336,45 @@ const formatNarrative = (data) => {
         : info,
     )
     .join(', ')
+
+  let infoObtainedString = origInfoObtainedString
+  let languageAdjustedInfoObtainedString = {
+    'credit card': lang['typeOfInfoObtained.creditCard'],
+    dob: lang['typeOfInfoObtained.dob'],
+    'home address': lang['typeOfInfoObtained.homeAddress'],
+    sin: lang['typeOfInfoObtained.sin'],
+    other: lang['typeOfInfoObtained.other'],
+  }
+
+  for (var key_io in languageAdjustedInfoObtainedString) {
+    if (infoObtainedString.includes(key_io)) {
+      infoObtainedString = infoObtainedString.replace(
+        key_io,
+        languageAdjustedInfoObtainedString[key_io],
+      )
+    }
+  }
+
+  const origNumberofEmployeeString = data.businessInfo.numberOfEmployee.replace(
+    'numberOfEmployee.',
+    '',
+  )
+
+  let numberofEmployeeString = origNumberofEmployeeString
+  let languageAdjustedNumberofEmployeeString = {
+    '1To99': lang['analystReport.numberOfEmployee.1To99'],
+    '100To499': lang['analystReport.numberOfEmployee.100To499'],
+    '500More': lang['analystReport.numberOfEmployee.500More'],
+  }
+
+  for (var key_ne in languageAdjustedNumberofEmployeeString) {
+    if (numberofEmployeeString.includes(key_ne)) {
+      numberofEmployeeString = numberofEmployeeString.replace(
+        key_ne,
+        languageAdjustedNumberofEmployeeString[key_ne],
+      )
+    }
+  }
 
   const rows =
     formatLineHtml(
@@ -311,9 +419,7 @@ const formatNarrative = (data) => {
     ) +
     formatLineHtml(
       lang['confirmationPage.businessInfo.numberOfEmployee'],
-      unCamel(
-        data.businessInfo.numberOfEmployee.replace('numberOfEmployee.', ''),
-      ),
+      numberofEmployeeString,
     ) +
     formatLineHtml(
       lang['confirmationPage.suspectClues.suspectClues3'],
@@ -378,15 +484,37 @@ const formatSuspectDetails = (data) => {
 }
 
 const formatFinancialTransactions = (data) => {
-  const methods =
-    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
-      ? data.moneyLost.methodPayment.concat([data.moneyLost.methodOther])
-      : data.moneyLost.methodPayment
+  const methods = data.moneyLost.methodPayment
 
-  const paymentString = methods
+  const origPaymentString = methods
     .filter((method) => method !== 'methodPayment.other')
     .map((method) => unCamel(method.replace('methodPayment.', '')))
     .join(', ')
+
+  let paymentString =
+    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
+      ? String(origPaymentString) + ', ' + [data.moneyLost.methodOther]
+      : String(origPaymentString)
+
+  let languageAdjustedPaymentString = {
+    'e transfer': lang['methodPayment.eTransfer'],
+    eTransfer: lang['methodPayment.eTransfer'],
+    'credit card': lang['methodPayment.creditCard'],
+    creditCard: lang['methodPayment.creditCard'],
+    'gift card': lang['methodPayment.giftCard'],
+    giftCard: lang['methodPayment.giftCard'],
+    cryptocurrency: lang['methodPayment.cryptocurrency'],
+    other: lang['methodPayment.other'],
+  }
+
+  for (var key_ps in languageAdjustedPaymentString) {
+    if (paymentString.includes(key_ps)) {
+      paymentString = paymentString.replace(
+        key_ps,
+        languageAdjustedPaymentString[key_ps],
+      )
+    }
+  }
 
   const transactionDate = formatDate(
     data.moneyLost.transactionDay,
@@ -404,7 +532,7 @@ const formatFinancialTransactions = (data) => {
     ) +
     formatLineHtml(
       lang['confirmationPage.moneyLost.methodPayment'],
-      paymentString,
+      paymentString, //data.moneyLost.paymentString,  // methodOther,
     ) +
     formatLineHtml(
       lang['confirmationPage.moneyLost.transactionDate'],
@@ -435,7 +563,10 @@ const formatFileAttachments = (data) => {
 
       const moderatorString =
         file.adultClassificationScore === 'Could not scan'
-          ? formatLineHtml('Image classification:', 'Could not scan content')
+          ? formatLineHtml(
+              lang['fileUpload.classification.title'],
+              lang['fileUpload.classification.cannotscan'],
+            )
           : formatLineHtml(
               lang['fileUpload.isAdult'],
               file.isImageAdultClassified,
@@ -446,7 +577,9 @@ const formatFileAttachments = (data) => {
             ) +
             formatLineHtml(
               lang['fileUpload.isRacy'],
-              file.isImageRacyClassified,
+              file.isImageRacyClassified
+                ? lang['fileUpload.isRacy.true']
+                : lang['fileUpload.isRacy.false'],
             ) +
             formatLineHtml(
               lang['fileUpload.racyScore'],
@@ -456,11 +589,17 @@ const formatFileAttachments = (data) => {
       const downloadLink = file.malwareIsClean
         ? formatDownloadLink(file.name, file.sasUrl)
         : ''
+      let offensiveWarningBlockedString =
+        '<b>' +
+        lang['fileUpload.fileAttachment.offensivewarning.block'] +
+        '</b>'
+      let offensiveWarningMessageString =
+        '<b>' + lang['fileUpload.fileAttachment.offensivewarning'] + '</b>'
 
       return (
         formatLineHtml(
-          '<b>WARNING:</b>',
-          offensive ? '<b>Image may be offensive</b>' : '',
+          offensiveWarningBlockedString,
+          offensive ? offensiveWarningMessageString : '',
         ) +
         formatLineHtml(lang['fileUpload.fileName'], file.name) +
         formatLineHtml(
@@ -471,7 +610,9 @@ const formatFileAttachments = (data) => {
         formatLineHtml(lang['fileUpload.CosmosDBFile'], file.sha1) +
         formatLineHtml(
           lang['fileUpload.malwareScan'],
-          file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
+          file.malwareIsClean
+            ? lang['fileUpload.malwareScan.clean']
+            : file.malwareScanDetail,
         ) +
         moderatorString +
         downloadLink
@@ -519,8 +660,11 @@ const formatAnalystEmail = (dataOrig) => {
     Object.keys(data).forEach((key) => {
       if (Object.keys(data[key]).length === 0) delete data[key]
     })
+
+    let fieldsMissingWarningString =
+      '\n<h2>' + lang['analystReport.fieldsMissing.warning'] + '</h2>\n'
     missingFields = Object.keys(data).length
-      ? '\n<h2>Fields missing from above report</h2>\n' +
+      ? fieldsMissingWarningString +
         `<p>${JSON.stringify(data, null, '  ')}</p>\n`
       : ''
   } catch (error) {
