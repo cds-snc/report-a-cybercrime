@@ -6,15 +6,18 @@ import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { P } from '../components/formik/paragraph'
 import { Form, Container, Row } from 'react-bootstrap'
+import { formDefaults } from './defaultValues'
 import { Formik, FieldArray, Field } from 'formik'
 import { Input } from '../components/formik/input'
 import { SkipButton, NextCancelButtons } from '../components/formik/button'
+import { FormRow } from '../components/formik/row'
 import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
 
 export const ContactInfoForm = (props) => {
   const [data] = useStateValue()
   const contactInfo = {
+    ...formDefaults.contactInfo,
     ...data.formData.contactInfo,
   }
 
@@ -24,11 +27,7 @@ export const ContactInfoForm = (props) => {
 
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
-  const { fyiForm } = data.formData
-
-  const validationSchema = fyiForm
-    ? ContactInfoFormSchema.ON_SUBMIT_FYI_VALIDATION
-    : ContactInfoFormSchema.ON_SUBMIT_VALIDATION
+  const validationSchema = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
 
   return (
     <React.Fragment>
@@ -39,7 +38,8 @@ export const ContactInfoForm = (props) => {
       ) : null}
       <Formik
         initialValues={contactInfo}
-        validationSchema={validationSchema}
+        validate={validationSchema}
+        validateOnChange={false}
         onSubmit={(values) => {
           props.onSubmit(values)
         }}
@@ -47,7 +47,7 @@ export const ContactInfoForm = (props) => {
         {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row className="form-section">
+              <FormRow>
                 {Object.keys(errors).length > 0 && (
                   <ErrorSummary
                     errors={createErrorSummary(errors)}
@@ -55,19 +55,20 @@ export const ContactInfoForm = (props) => {
                     title={<Trans id="contactinfoPage.hasValidationErrors" />}
                   />
                 )}
-                {fyiForm ? (
-                  <React.Fragment>
-                    <P w="100%">
-                      <Trans id="contactinfoPage.skipInfo" />
-                    </P>
-                    <SkipButton
-                      label={<Trans id="locationinfoPage.skipButton" />}
-                      to="/confirmation"
-                    />
-                  </React.Fragment>
-                ) : null}
-                <br />
-                <br />
+              </FormRow>
+              <FormRow>
+                <P w="100%">
+                  <Trans id="contactinfoPage.skipInfo" />
+                </P>
+              </FormRow>
+              <FormRow marginBottom="2rem">
+                <SkipButton
+                  label={<Trans id="contactinfoPage.skipButton" />}
+                  to="/confirmation"
+                />
+              </FormRow>
+
+              <FormRow>
                 <FieldArray
                   name="contactInfo"
                   className="form-section"
@@ -84,14 +85,27 @@ export const ContactInfoForm = (props) => {
                           </P>
                         )}
                         <Field
-                          name={'fullName'}
+                          name="fullName"
                           label={<Trans id="contactinfoPage.fullName" />}
                           component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           id="fullName"
                         />
-                        {errors && errors.email && (
+                        {errors.emailOrPhone && (
+                          <Container>
+                            <FormRow id="emailOrPhone">
+                              <P
+                                color="#dc3545"
+                                fontSize="1.25rem"
+                                marginBottom="0.5rem"
+                              >
+                                <Trans id="contactinfoForm.emailORphone.warning" />
+                              </P>
+                            </FormRow>
+                          </Container>
+                        )}
+                        {errors.email && (
                           <P
                             color="#dc3545"
                             fontSize="1.25rem"
@@ -101,14 +115,14 @@ export const ContactInfoForm = (props) => {
                           </P>
                         )}
                         <Field
-                          name={'email'}
+                          name="email"
                           label={<Trans id="contactinfoPage.emailAddress" />}
                           component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           id="email"
                         />
-                        {errors && errors.phone && (
+                        {errors.phone && (
                           <P
                             color="#dc3545"
                             fontSize="1.25rem"
@@ -118,7 +132,7 @@ export const ContactInfoForm = (props) => {
                           </P>
                         )}
                         <Field
-                          name={'phone'}
+                          name="phone"
                           label={<Trans id="contactinfoPage.phoneNumber" />}
                           component={Input}
                           onBlur={handleBlur}
@@ -129,7 +143,7 @@ export const ContactInfoForm = (props) => {
                     )
                   }}
                 />
-              </Row>
+              </FormRow>
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="contactinfoPage.nextButton" />}
