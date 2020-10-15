@@ -57,14 +57,10 @@ export const CheckBoxRadio = ({ field, form, ...props }) => {
     <FormRow paddingBottom={paddingBottom} paddingLeft="1rem">
       <Form.Check id={props.id} type={props.type} custom>
         <Input type={props.type} {...field} value={props.value} />
-        <Label {...field} {...props} hasChildren={hasChildren}>
-          {props.label}
-        </Label>
-        <HelpText {...field} {...props} hasChildren={hasChildren}>
-          {props.helpText}
-        </HelpText>
+        <Label hasChildren={hasChildren}>{props.label}</Label>
+        <HelpText hasChildren={hasChildren}>{props.helpText}</HelpText>
       </Form.Check>
-      {field.checked && props.children && (
+      {field.checked && hasChildren && (
         <ConditionalField>{props.children}</ConditionalField>
       )}
     </FormRow>
