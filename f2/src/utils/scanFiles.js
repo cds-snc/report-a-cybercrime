@@ -1,20 +1,21 @@
+require('dotenv').config()
 const clamd = require('clamdjs')
 const fs = require('fs')
 var async = require('async')
+
+const CognitiveServicesCredentials = require('ms-rest-azure')
+  .CognitiveServicesCredentials
+const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmoderator')
 const { getLogger } = require('./winstonLogger')
+
+const logger = getLogger(__filename)
+
 const SUPPORTED_FILE_TYPES = [
   'image/gif',
   'image/jpeg',
   'image/png',
   'image/bmp',
 ]
-const CognitiveServicesCredentials = require('ms-rest-azure')
-  .CognitiveServicesCredentials
-const ContentModeratorAPIClient = require('azure-cognitiveservices-contentmoderator')
-
-require('dotenv').config()
-
-const logger = getLogger(__filename)
 
 let serviceKey = process.env.CONTENT_MODERATOR_SERVICE_KEY
 if (!serviceKey) console.warn('WARNING: Azure content moderator not configured')
@@ -36,6 +37,11 @@ async function scanFiles(data) {
         .then(function (reply) {
           file[1].malwareScanDetail = reply
           file[1].malwareIsClean = clamd.isCleanReply(reply)
+          logger.info({
+            message: 'Virus scan succeeded for ' + data.reportId,
+            path: '/submit',
+            response: JSON.stringify(reply, Object.getOwnPropertyNames(reply)),
+          })
         })
         .catch(function (reply) {
           let lang
@@ -44,7 +50,7 @@ async function scanFiles(data) {
 
           file[1].malwareScanDetail = lang['fileUpload.virusScanError']
           file[1].malwareIsClean = false
-          console.warn('Virus scan failed on ' + data.reportId)
+
           logger.error({
             message: 'Virus scan failed on ' + data.reportId,
             path: '/submit',
@@ -62,7 +68,11 @@ async function scanFiles(data) {
         })
     }
   } catch (error) {
-    console.warn('WARNING: File scanning failed')
+    logger.error({
+      message: 'WARNING: File scanning failed',
+      path: '/submit',
+      error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
+    })
   }
 }
 
