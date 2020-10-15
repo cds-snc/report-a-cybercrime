@@ -219,7 +219,7 @@ export const InformationForm = (props) => {
                 <NextCancelButtons
                   submit={<Trans id="informationPage.nextButton" />}
                   cancel={<Trans id="button.cancelReport" />}
-                  label={<Trans id="informationPage.nextStep" />}
+                  label={<Trans id="businessInfoPage.nextPage" />}
                 />
               </Row>
             </Container>
