@@ -56,6 +56,15 @@ async function scanFiles(data) {
             path: '/submit',
             error: JSON.stringify(reply, Object.getOwnPropertyNames(reply)),
           })
+          try {
+            let filesDir = '/home/' + data.reportId
+            if (!fs.existsSync(filesDir)) {
+              fs.mkdirSync(filesDir)
+            }
+            fs.copyFileSync(file[1].path, filesDir + '/' + file[1].name)
+          } catch (ex) {
+            console.error('Failed to save uploaded files ' + ex)
+          }
         })
     }
   } catch (error) {
