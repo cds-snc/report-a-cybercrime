@@ -93,15 +93,13 @@ export const ContactInfoForm = (props) => {
                           id="fullName"
                         />
                         {errors.emailOrPhone && (
-                          <FormRow id="emailOrPhone">
-                            <P
-                              color="#dc3545"
-                              fontSize="1.25rem"
-                              marginBottom="0.5rem"
-                            >
-                              <Trans id="contactinfoForm.emailORphone.warning" />
-                            </P>
-                          </FormRow>
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            <Trans id="contactinfoForm.emailORphone.warning" />
+                          </P>
                         )}
                         {errors.email && (
                           <P
@@ -121,28 +119,24 @@ export const ContactInfoForm = (props) => {
                           id="email"
                         />
                         {errors.phone && (
-                          <FormRow id="PhoneError">
-                            <P
-                              color="#dc3545"
-                              fontSize="1.25rem"
-                              marginBottom="0.5rem"
-                            >
-                              {PHONE.errorMessage}
-                            </P>
-                          </FormRow>
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            {PHONE.errorMessage}
+                          </P>
                         )}
                         {errors.extension && (
-                          <FormRow id="ExtensionError">
-                            <P
-                              color="#dc3545"
-                              fontSize="1.25rem"
-                              marginBottom="0.5rem"
-                            >
-                              {EXTENSION.errorMessage}
-                            </P>
-                          </FormRow>
+                          <P
+                            color="#dc3545"
+                            fontSize="1.25rem"
+                            marginBottom="0.5rem"
+                          >
+                            {EXTENSION.errorMessage}
+                          </P>
                         )}
-                        <Row>
+                        <FormRow>
                           <Col>
                             <Field
                               name={PHONE.name}
@@ -163,7 +157,7 @@ export const ContactInfoForm = (props) => {
                               id="extension"
                             />
                           </Col>
-                        </Row>
+                        </FormRow>
                       </React.Fragment>
                     )
                   }}
