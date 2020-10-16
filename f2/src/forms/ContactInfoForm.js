@@ -21,10 +21,10 @@ export const ContactInfoForm = (props) => {
     ...data.formData.contactInfo,
   }
 
-  const fullName = ContactInfoFormSchema.CONTACT_INFO.fullName
-  const email = ContactInfoFormSchema.CONTACT_INFO.email
-  const phone = ContactInfoFormSchema.CONTACT_INFO.phone
-  const extension = ContactInfoFormSchema.CONTACT_INFO.extension
+  const FULL_NAME = ContactInfoFormSchema.CONTACT_INFO.fullName
+  const EMAIL = ContactInfoFormSchema.CONTACT_INFO.email
+  const PHONE = ContactInfoFormSchema.CONTACT_INFO.phone
+  const EXTENSION = ContactInfoFormSchema.CONTACT_INFO.extension
 
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
@@ -81,29 +81,27 @@ export const ContactInfoForm = (props) => {
                             fontSize="1.25rem"
                             marginBottom="0.5rem"
                           >
-                            {fullName.errorMessage}
+                            {FULL_NAME.errorMessage}
                           </P>
                         )}
                         <Field
-                          name="fullName"
-                          label={<Trans id="contactinfoPage.fullName" />}
+                          name={FULL_NAME.name}
+                          label={FULL_NAME.label}
                           component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           id="fullName"
                         />
                         {errors.emailOrPhone && (
-                          <Container>
-                            <FormRow id="emailOrPhone">
-                              <P
-                                color="#dc3545"
-                                fontSize="1.25rem"
-                                marginBottom="0.5rem"
-                              >
-                                <Trans id="contactinfoForm.emailORphone.warning" />
-                              </P>
-                            </FormRow>
-                          </Container>
+                          <FormRow id="emailOrPhone">
+                            <P
+                              color="#dc3545"
+                              fontSize="1.25rem"
+                              marginBottom="0.5rem"
+                            >
+                              <Trans id="contactinfoForm.emailORphone.warning" />
+                            </P>
+                          </FormRow>
                         )}
                         {errors.email && (
                           <P
@@ -111,60 +109,54 @@ export const ContactInfoForm = (props) => {
                             fontSize="1.25rem"
                             marginBottom="0.5rem"
                           >
-                            {email.errorMessage}
+                            {EMAIL.errorMessage}
                           </P>
                         )}
                         <Field
-                          name="email"
-                          label={<Trans id="contactinfoPage.emailAddress" />}
+                          name={EMAIL.name}
+                          label={EMAIL.label}
                           component={Input}
                           onBlur={handleBlur}
                           onChange={handleChange}
                           id="email"
                         />
                         {errors.phone && (
-                          <Container>
-                            <FormRow id="PhoneError">
-                              <P
-                                color="#dc3545"
-                                fontSize="1.25rem"
-                                marginBottom="0.5rem"
-                              >
-                                {phone.errorMessage}
-                              </P>
-                            </FormRow>
-                          </Container>
+                          <FormRow id="PhoneError">
+                            <P
+                              color="#dc3545"
+                              fontSize="1.25rem"
+                              marginBottom="0.5rem"
+                            >
+                              {PHONE.errorMessage}
+                            </P>
+                          </FormRow>
                         )}
                         {errors.extension && (
-                          <Container>
-                            <FormRow id="ExtensionError">
-                              <P
-                                color="#dc3545"
-                                fontSize="1.25rem"
-                                marginBottom="0.5rem"
-                              >
-                                {extension.errorMessage}
-                              </P>
-                            </FormRow>
-                          </Container>
+                          <FormRow id="ExtensionError">
+                            <P
+                              color="#dc3545"
+                              fontSize="1.25rem"
+                              marginBottom="0.5rem"
+                            >
+                              {EXTENSION.errorMessage}
+                            </P>
+                          </FormRow>
                         )}
                         <Row>
                           <Col>
                             <Field
-                              name="phone"
-                              label={<Trans id="contactinfoPage.phoneNumber" />}
+                              name={PHONE.name}
+                              label={PHONE.label}
                               component={Input}
                               onBlur={handleBlur}
                               onChange={handleChange}
                               id="phone"
                             />
                           </Col>
-                          <Col>
+                          <Col lg="4">
                             <Field
-                              name="extension"
-                              label={
-                                <Trans id="contactinfoPage.phoneExtension" />
-                              }
+                              name={EXTENSION.name}
+                              label={EXTENSION.label}
                               component={Input}
                               onBlur={handleBlur}
                               onChange={handleChange}
