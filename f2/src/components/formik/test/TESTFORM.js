@@ -13,7 +13,6 @@ import {
   MidFormFeedbackButton,
 } from '../button'
 
-
 export const TestForm = (props) => {
   const [data] = useStateValue()
 
@@ -29,11 +28,6 @@ export const TestForm = (props) => {
         }}
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
-            <ErrorSummary
-              errors={errorSummary}
-              submissions={0}
-              title="Error Summary"
-            />
             <Container>
               <Row>
                 <DefaultButton label="Test Button" />
@@ -49,7 +43,6 @@ export const TestForm = (props) => {
                   submit="Continue"
                   cancel="Cancel"
                 />
-
               </Row>
               <Row>
                 <MidFormFeedbackButton label="Is something wrong on this page?" />
