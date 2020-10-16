@@ -5,6 +5,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
+import { FormRow } from '../components/formik/row'
 import { Formik, Field } from 'formik'
 import { NextCancelButtons, SkipButton } from '../components/formik/button'
 import { LocationInfoFormSchema } from './LocationInfoFormSchema'
@@ -55,22 +56,21 @@ export const LocationInfoForm = (props) => {
               />
             )}
             <Container>
-              <Row>
+              <FormRow>
                 <Trans id="locationinfoPage.skipInfo" />
-              </Row>
-              <Row>
+              </FormRow>
+              <FormRow marginBottom="1rem">
                 <SkipButton
                   label={<Trans id="locationinfoPage.skipButton" />}
                   to="/contactinfo"
                 />
-              </Row>
-              <br />
-              <Row>
+              </FormRow>
+              <FormRow>
                 {errors.postalCode && (
                   <ErrorText>{errors.postalCode}</ErrorText>
                 )}
-              </Row>
-              <Row className="form-section">
+              </FormRow>
+              <FormRow>
                 <Field
                   name="postalCode"
                   label={<Trans id="locationinfoPage.postalCode" />}
@@ -81,7 +81,7 @@ export const LocationInfoForm = (props) => {
                   type="text"
                   helpText={<Trans id="locationinfoPage.postalCodeExample" />}
                 />
-              </Row>
+              </FormRow>
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="locationPage.nextButton" />}

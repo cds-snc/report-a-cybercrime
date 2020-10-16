@@ -5,6 +5,7 @@ import { Formik } from 'formik'
 import { FormRow } from '../row'
 import { P, ErrorText } from '../paragraph'
 
+
 export const TestForm = (props) => {
   const [data] = useStateValue()
 
@@ -20,6 +21,11 @@ export const TestForm = (props) => {
         }}
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
+            <ErrorSummary
+              errors={errorSummary}
+              submissions={0}
+              title="Error Summary"
+            />
             <Container>
               <FormRow>
                 <P fontWeight="700">---Default Text---</P>

@@ -81,7 +81,7 @@ export const WhatWasAffectedForm = (props) => {
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
-                <Row className="form-label" id="affectedOptions">
+                <Row className="form-label">
                   <Trans id="whatWasAffectedForm.optionsTitle" />
                 </Row>
                 <Row className="form-helper-text">
@@ -95,7 +95,7 @@ export const WhatWasAffectedForm = (props) => {
                   />
                 )}
               </Row>
-              <Row className="form-section">
+              <Row className="form-section" id="affectedOptions">
                 {errors && errors.affectedOptions && (
                   <ErrorText>
                     <Trans id="whatWasAffectedForm.warning" />
