@@ -58,38 +58,42 @@ export const MidFeedbackForm = (props) => {
           </H2>
         </Info>
       ) : (
-        <React.Fragment>
-          <MidFormFeedbackButton
-            onClick={() => setIsOpen(!isOpen)}
-            label={<Trans id="midFeedback.summary" />}
-          />
+        <Container>
+          <Row>
+            <MidFormFeedbackButton
+              onClick={() => setIsOpen(!isOpen)}
+              label={<Trans id="midFeedback.summary" />}
+            />
+          </Row>
           {isOpen && (
-            <Box color="rgb(232, 232, 232)">
-              <H1>
-                <Trans id="midFeedback.title" />
-              </H1>
-              <Formik
-                initialValues={{
-                  page: location.pathname,
-                  midFeedback: [],
-                  problemDescription: '',
-                }}
-                initialStatus={{ showWarning: false }}
-                onSubmit={(values, { setStatus }) => {
-                  if (
-                    values.midFeedback.length === 0 &&
-                    values.problemDescription.length === 0
-                  ) {
-                    setStatus({ showWarning: true })
-                  } else {
-                    setIsSubmit('feedback.submitted')
-                    props.onSubmit(values)
-                  }
-                }}
-              >
-                {({ handleSubmit, handleChange, handleBlur, status }) => (
-                  <Form onSubmit={handleSubmit}>
-                    <Container>
+            <Row>
+              <Box color="rgb(232, 232, 232)">
+                <Row>
+                  <H1>
+                    <Trans id="midFeedback.title" />
+                  </H1>
+                </Row>
+                <Formik
+                  initialValues={{
+                    page: location.pathname,
+                    midFeedback: [],
+                    problemDescription: '',
+                  }}
+                  initialStatus={{ showWarning: false }}
+                  onSubmit={(values, { setStatus }) => {
+                    if (
+                      values.midFeedback.length === 0 &&
+                      values.problemDescription.length === 0
+                    ) {
+                      setStatus({ showWarning: true })
+                    } else {
+                      setIsSubmit('feedback.submitted')
+                      props.onSubmit(values)
+                    }
+                  }}
+                >
+                  {({ handleSubmit, handleChange, handleBlur, status }) => (
+                    <Form onSubmit={handleSubmit}>
                       <Row className="form-question">
                         {status.showWarning ? (
                           <Error>
@@ -152,13 +156,13 @@ export const MidFeedbackForm = (props) => {
                           label={<Trans id="finalFeedback.submit" />}
                         />
                       </Row>
-                    </Container>
-                  </Form>
-                )}
-              </Formik>
-            </Box>
+                    </Form>
+                  )}
+                </Formik>
+              </Box>
+            </Row>
           )}
-        </React.Fragment>
+        </Container>
       )}
     </React.Fragment>
   )

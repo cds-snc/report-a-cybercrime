@@ -24,5 +24,5 @@ Input.propTypes = {
 }
 
 Input.defaultProps = {
-  type: 'input',
+  type: 'text',
 }
