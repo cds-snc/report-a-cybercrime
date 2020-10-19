@@ -2,17 +2,19 @@ import React from 'react'
 import { useStateValue } from '../../../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik } from 'formik'
-import { Error, Info, Warning, Success, ErrorSummary } from '../alert'
+import {
+  DefaultButton,
+  SubmitButton,
+  CancelButton,
+  UploadButton,
+  SkipButton,
+  FeedbackButton,
+  NextCancelButtons,
+  MidFormFeedbackButton,
+} from '../button'
 
 export const TestForm = (props) => {
   const [data] = useStateValue()
-
-  const errorSummary = {}
-
-  errorSummary['errorField'] = {
-    label: 'Error Label',
-    message: 'Error Message',
-  }
 
   return (
     <React.Fragment>
@@ -26,17 +28,24 @@ export const TestForm = (props) => {
         }}
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
-            <ErrorSummary
-              errors={errorSummary}
-              submissions={0}
-              title="Error Summary"
-            />
             <Container>
               <Row>
-                <Info>Info</Info>
-                <Error>Error</Error>
-                <Warning>Warning</Warning>
-                <Success>Success</Success>
+                <DefaultButton label="Test Button" />
+                <SubmitButton label="Submit" />
+                <FeedbackButton label="Feedback" />
+                <CancelButton label="Cancel" />
+                <UploadButton label="Upload" />
+                <SkipButton label="Skip" />
+              </Row>
+              <Row>
+                <NextCancelButtons
+                  label="Next Page: Test"
+                  submit="Continue"
+                  cancel="Cancel"
+                />
+              </Row>
+              <Row>
+                <MidFormFeedbackButton label="Is something wrong on this page?" />
               </Row>
             </Container>
           </Form>

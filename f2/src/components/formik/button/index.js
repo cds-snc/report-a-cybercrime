@@ -1,17 +1,83 @@
 import React from 'react'
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
+import { Button as BaseButton, Container, Row, Col } from 'react-bootstrap'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
+import { cleanProps } from '../../../utils/cleanProps'
+import { buttonTypes } from './theme'
+import { space, border, layout, typography } from 'styled-system'
+
+const buttonStyle = (props) => {
+  let buttonProps = props.buttonStyle
+
+  if (buttonProps) {
+    return css`
+      background-color: ${buttonProps.backGround};
+      color: ${buttonProps.color};
+      border-color: ${buttonProps.borderColor};
+
+      &:hover,
+      &:focus {
+        background-color: ${buttonProps.backGround};
+        color: ${buttonProps.color};
+        box-shadow: #d5d5d5 0px 0px 0px 2px;
+      }
+
+      &:not(:disabled):not(.disabled):active {
+        background-color: ${buttonProps.active.backGround};
+        color: ${buttonProps.active.color};
+      }
+    `
+  }
+}
+
+const ButtonLabel = styled('span', {
+  shouldForwardProp: (prop) => cleanProps(prop),
+})`
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  ${space}
+  ${typography}
+`
+
+const Button = styled(BaseButton, {
+  shouldForwardProp: (prop) => cleanProps(prop),
+})`
+  height: 3rem;
+  -webkit-box-pack: center;
+  border-style: outset;
+  min-width: 10rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  align-items: center;
+  z-index: 1;
+  ${space}
+  ${border}
+  ${layout}
+  ${buttonStyle}
+`
+
+const RightArrowIcon = styled(GoChevronRight)`
+  margin-left: 0.5rem;
+  margin-right: -0.5rem;
+`
+
+const PaperClipIcon = styled(FiPaperclip)`
+  margin-left: -0.5rem;
+  margin-right: 0.5rem;
+`
 
 export const DefaultButton = (props) => {
   return (
-    <Button
-      type="button"
-      onClick={() => props.onClick()}
-      className="default-button button"
-    >
-      {props.label}
+    <Button buttonStyle={buttonTypes.DEFAULT}>
+      <ButtonLabel>{props.label}</ButtonLabel>
     </Button>
   )
 }
@@ -19,26 +85,28 @@ export const DefaultButton = (props) => {
 export const MidFormFeedbackButton = (props) => {
   return (
     <Button
-      type="button"
-      className="default-button mid-form-feedback-button "
+      buttonStyle={buttonTypes.DEFAULT}
+      border="1px solid"
+      padding="1rem 1.5rem"
+      marginLeft="0rem"
+      borderStyle="outset"
+      height="inherit"
       onClick={props.onClick}
     >
-      <span className="mid-form-feedback-button-label">{props.label}</span>
+      <ButtonLabel fontSize="1.25rem" paddingLeft="0rem" paddingRight="0rem">
+        {props.label}
+      </ButtonLabel>
     </Button>
   )
 }
 
 export const SubmitButton = (props) => {
   return (
-    <Button
-      type="submit"
-      disabled={props.disabled}
-      className="button submit-button"
-    >
-      <span className="button-label">
+    <Button buttonStyle={buttonTypes.SUBMIT} type="submit">
+      <ButtonLabel>
         {props.label}
-        <GoChevronRight className="button-icon-right" />
-      </span>
+        <RightArrowIcon />
+      </ButtonLabel>
     </Button>
   )
 }
@@ -48,11 +116,10 @@ export const CancelButton = (props) => {
     <Route
       render={({ history }) => (
         <Button
-          type="button"
-          className="button default-button"
+          buttonStyle={buttonTypes.DEFAULT}
           onClick={() => history.push('/confirmCancel')}
         >
-          {props.label}
+          <ButtonLabel>{props.label}</ButtonLabel>
         </Button>
       )}
     />
@@ -69,6 +136,7 @@ export const NextCancelButtons = (props) => {
         <Col xs="auto" className="button-container">
           <SubmitButton label={props.submit} />
         </Col>
+        <Col xs="1" className="button-container"></Col>
         <Col xs="auto" className="button-container">
           <CancelButton label={props.cancel} />
         </Col>
@@ -83,19 +151,19 @@ export const NextCancelButtons = (props) => {
 */
 export const UploadButton = (props) => {
   return (
-    <Button type="button" className="button upload-button">
-      <span className="button-label">
-        <FiPaperclip className="button-icon-left" />
+    <Button buttonStyle={buttonTypes.UPLOAD} onClick={props.onClick}>
+      <ButtonLabel>
+        <PaperClipIcon />
         {props.label}
-      </span>
+      </ButtonLabel>
     </Button>
   )
 }
 
 export const FeedbackButton = (props) => {
   return (
-    <Button type="submit" className="button feedback-button">
-      <span className="button-label">{props.label}</span>
+    <Button buttonStyle={buttonTypes.FEEDBACK} type="submit">
+      <ButtonLabel>{props.label}</ButtonLabel>
     </Button>
   )
 }
@@ -105,24 +173,15 @@ export const SkipButton = (props) => {
     <Route
       render={({ history }) => (
         <Button
-          type="button"
-          className="button skip-button"
+          buttonStyle={buttonTypes.SKIP}
           onClick={() => history.push(props.to)}
         >
-          <span className="button-label">
+          <ButtonLabel>
             {props.label}
-            <GoChevronRight className="button-icon-right" />
-          </span>
+            <RightArrowIcon />
+          </ButtonLabel>
         </Button>
       )}
     />
   )
 }
-
-/*export const FeedbackButton = (props) => {
-  return (
-    <Button type="submit" className="button feedback-button">
-      <span className="button-label">{props.label}</span>
-    </Button>
-  )
-}*/
