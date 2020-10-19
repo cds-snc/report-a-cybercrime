@@ -32,14 +32,14 @@ export const LocationInfoForm = (props) => {
     return dispatch({
       type: 'saveFormData',
       data: {
-        locationInfo: {
+        location: {
           postalCode: '',
+          city: '',
+          province: '',
         },
       },
     })
   }
-
-  console.log(locationInfo)
 
   return (
     <React.Fragment>
@@ -81,7 +81,6 @@ export const LocationInfoForm = (props) => {
                   to="/contactinfo"
                 />
               </Row>
-
               <br />
               <Row>
                 {errors.postalCode && (

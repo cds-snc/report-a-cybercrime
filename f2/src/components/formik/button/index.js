@@ -107,7 +107,12 @@ export const SkipButton = (props) => {
         <Button
           type="button"
           className="button skip-button"
-          onClick={() => history.push(props.to)}
+          onClick={() => {
+            if (props.onClick) {
+              props.onClick()
+            }
+            history.push(props.to)
+          }}
         >
           <span className="button-label">
             {props.label}
