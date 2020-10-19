@@ -14,6 +14,7 @@ import { ErrorSummary } from '../components/formik/alert'
 import { formDefaults } from './defaultValues'
 
 export const LocationInfoForm = (props) => {
+  const [, dispatch] = useStateValue()
   const [data] = useStateValue()
   const locationInfo = {
     ...formDefaults.location,
@@ -26,6 +27,19 @@ export const LocationInfoForm = (props) => {
       message: <Trans id="locationInfoForm.Warning" />,
     },
   }
+
+  function RemoveData() {
+    return dispatch({
+      type: 'saveFormData',
+      data: {
+        locationInfo: {
+          postalCode: '',
+        },
+      },
+    })
+  }
+
+  console.log(locationInfo)
 
   return (
     <React.Fragment>
@@ -61,9 +75,13 @@ export const LocationInfoForm = (props) => {
               <Row>
                 <SkipButton
                   label={<Trans id="locationinfoPage.skipButton" />}
+                  onClick={() => {
+                    RemoveData()
+                  }}
                   to="/contactinfo"
                 />
               </Row>
+
               <br />
               <Row>
                 {errors.postalCode && (
