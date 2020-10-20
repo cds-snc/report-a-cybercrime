@@ -4,7 +4,7 @@ import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { Warning } from '../components/formik/alert'
 import { NextCancelButtons } from '../components/formik/button'
 
@@ -38,7 +38,7 @@ export const AnonymousInfoForm = (props) => {
               <Field
                 name="anonymousOptions"
                 label={<Trans id="anonymousPage.yes" />}
-                component={CheckBox}
+                component={CheckBoxRadio}
                 value="anonymousPage.yes"
                 onChange={handleChange}
                 onBlur={handleBlur}
