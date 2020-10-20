@@ -13,7 +13,7 @@ import {
   createErrorSummary,
 } from './MoneyLostInfoFormSchema'
 import { Form, Container, Row } from 'react-bootstrap'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { DatePicker } from '../components/formik/datePicker'
 import { P } from '../components/formik/paragraph'
 import { ErrorSummary } from '../components/formik/alert'
@@ -131,7 +131,7 @@ export const MoneyLostInfoForm = (props) => {
                           <Field
                             name="methodPayment"
                             label={question.checkboxLabel}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
