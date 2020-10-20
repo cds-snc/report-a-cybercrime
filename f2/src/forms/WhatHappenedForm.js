@@ -8,6 +8,7 @@ import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
 import { NextCancelButtons } from '../components/formik/button'
+import { HiddenText } from '../components/formik/paragraph'
 
 export const WhatHappenedForm = (props) => {
   const [data] = useStateValue()
@@ -57,6 +58,7 @@ export const WhatHappenedForm = (props) => {
                 component={TextArea}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                label={<HiddenText>{formLabel}</HiddenText>}
                 rows="12"
                 id="textarea-whatHappened"
               ></Field>
