@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
 import { ErrorSummary } from '../components/formik/alert'
@@ -122,7 +122,7 @@ export const WhatWasAffectedForm = (props) => {
                             name="affectedOptions"
                             label={question.checkboxLabel}
                             helpText={question.checkboxHelpText}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.checkboxValue}
                             onChange={handleChange}
                             onBlur={handleBlur}

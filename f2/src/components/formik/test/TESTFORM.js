@@ -1,16 +1,12 @@
 import React from 'react'
-import { Trans } from '@lingui/macro'
 import { useStateValue } from '../../../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field } from 'formik'
-import { CheckBox } from '../checkbox'
-import { Radio } from '../radio'
+import { CheckBoxRadio } from '../checkboxRadio'
+//import { Radio } from '../radio'
 import { TextArea } from '../textArea'
 import { Input } from '../input'
-import { FileUpload } from '../fileUpload'
-import { DatePicker } from '../datePicker'
-import { Error, Info, Warning, Success } from '../alert'
-import { NextCancelButtons, SkipButton } from '../button'
+
 
 export const TestForm = (props) => {
   const [data] = useStateValue()
@@ -30,19 +26,37 @@ export const TestForm = (props) => {
       value: 'online',
       id: 'selection-online',
       followUp: 'What was the email address?',
-      helpText: 'Please enter the email address, partial entries are allowed',
     },
     {
       name: 'Radio 3',
-      label: 'Other',
+      label: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+        in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+        sunt in culpa qui officia deserunt mollit anim id est laborum.`,
       value: 'other',
       id: 'selection-other',
+      followUp: 'Additional details',
+      helpText: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+        in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+        sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    },
+    {
+      name: 'Radio 4',
+      label: 'Other1',
+      value: 'other1',
+      id: 'selection-other1',
+      followUp: 'Additional details',
+    },
+    {
+      name: 'Radio 4',
+      label: 'Other2',
+      value: 'other2',
+      id: 'selection-other2',
       followUp: 'Additional details',
       helpText: 'Please provide any information regarding the situation',
     },
   ]
-
-  console.log(`Rendering form`)
   return (
     <React.Fragment>
       <Formik
@@ -56,21 +70,7 @@ export const TestForm = (props) => {
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row className="form-question">
-                <Row className="form-label">
-                  <Trans id="howDidTheyReachYou.question" />
-                </Row>
-                <Row className="form-helper-text">
-                  <Trans id="howDidTheyReachYou.reminder" />
-                </Row>
-              </Row>
-              <Row className="form-section">
-                <Error>This is an error</Error>
-                <Info>This is an info message</Info>
-                <Warning>This is a warning message</Warning>
-                <Success>This is a success message</Success>
-              </Row>
-              <Row className="form-section">
+              <Row>
                 <FieldArray
                   name="howDidTheyReachYou"
                   render={() =>
@@ -80,8 +80,9 @@ export const TestForm = (props) => {
                           <Field
                             name="howDidTheyReachYou"
                             label={question.label}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.value}
+                            helpText={question.helpText}
                             type="checkbox"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -91,7 +92,7 @@ export const TestForm = (props) => {
                               name={question.name + 'CheckGroup'}
                               label={question.followUp}
                               helpText={question.helpText}
-                              component={TextArea}
+                              component={Input}
                               onChange={handleChange}
                               onBlur={handleBlur}
                             />
@@ -102,7 +103,7 @@ export const TestForm = (props) => {
                   }
                 />
               </Row>
-              <Row className="form-section">
+              <Row>
                 <FieldArray
                   name="radioGroup"
                   render={() =>
@@ -112,10 +113,11 @@ export const TestForm = (props) => {
                           <Field
                             name="radioGroup"
                             label={question.label}
-                            component={Radio}
+                            component={CheckBoxRadio}
                             value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
+                            helpText={question.helpText}
                             type="radio"
                             id={question.id}
                           >
@@ -132,91 +134,6 @@ export const TestForm = (props) => {
                       )
                     })
                   }
-                />
-              </Row>
-              <Row className="form-section">
-                <Field
-                  name="firstName"
-                  label="First Name"
-                  component={Input}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="first-name-input"
-                  type="input"
-                />
-                <Field
-                  name="lastName"
-                  label="Last Name"
-                  component={Input}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="last-name-input"
-                  type="input"
-                />
-                <Field
-                  name="email"
-                  label="Email"
-                  component={Input}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="email-input"
-                  type="email"
-                  placeholder="example@email.com"
-                  helpText="Email addresses must be unique"
-                />
-                <Field
-                  name="password"
-                  label="Password"
-                  component={Input}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="password-input"
-                  type="password"
-                  helpText="Must include letters, numbers, and special characters"
-                />
-              </Row>
-
-              <Row className="form-section">
-                <FileUpload
-                  id="testUpload"
-                  label={<Trans id="evidencePage.addFileButton" />}
-                  onChange={(e) => {
-                    const file = e.target.files[0]
-                    console.log(file)
-                    alert(`File Uploaded - ${file.name}`)
-                  }}
-                />
-              </Row>
-
-              <Row className="form-section">
-                <DatePicker
-                  name="startDate"
-                  label="When did it start?"
-                  onChange={handleChange}
-                  id="startDate"
-                  helpText="For example: 26 02 2020"
-                  day={values.day}
-                  month={values.month}
-                  year={values.year}
-                />
-              </Row>
-
-              <Row className="form-section">
-                <SkipButton
-                  label={<Trans id="locationinfoPage.skipButton" />}
-                  to="/privacyconsent"
-                />
-              </Row>
-
-              <Row className="form-section">
-                <Trans id="howDidItStartPage.tip" />
-              </Row>
-
-              <Row>
-                <NextCancelButtons
-                  submit={<Trans id="howDidItStartPage.nextButton" />}
-                  cancel={<Trans id="button.cancelReport" />}
-                  label="Test Page Next"
                 />
               </Row>
             </Container>

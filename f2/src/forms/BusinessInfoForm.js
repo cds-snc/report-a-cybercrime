@@ -5,7 +5,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
-import { Radio } from '../components/formik/radio'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { Input } from '../components/formik/input'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
@@ -100,7 +100,7 @@ export const BusinessInfoForm = (props) => {
                           <Field
                             name="numberOfEmployee"
                             label={question.radioLabel}
-                            component={Radio}
+                            component={CheckBoxRadio}
                             value={question.radioValue}
                             onChange={handleChange}
                             onBlur={handleBlur}

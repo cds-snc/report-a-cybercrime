@@ -5,7 +5,7 @@ import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { Error } from '../components/formik/alert'
-import { Radio } from '../components/formik/radio'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { TextArea } from '../components/formik/textArea'
 import { P } from '../components/formik/paragraph'
 import { NextCancelButtons } from '../components/formik/button'
@@ -93,7 +93,7 @@ export const WhoAreYouReportForForm = (props) => {
                   <Field
                     name="whoYouReportFor"
                     label={<Trans id="whoAreYouReportForPage.options.myself" />}
-                    component={Radio}
+                    component={CheckBoxRadio}
                     value="whoAreYouReportForPage.options.myself"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -116,7 +116,7 @@ export const WhoAreYouReportForForm = (props) => {
                           <Field
                             name="whoYouReportFor"
                             label={<Trans id={question.value} />}
-                            component={Radio}
+                            component={CheckBoxRadio}
                             value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
