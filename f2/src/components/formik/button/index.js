@@ -6,8 +6,55 @@ import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
 import { cleanProps } from '../../../utils/cleanProps'
-import { buttonTypes } from './theme'
 import { space, border, layout, typography } from 'styled-system'
+
+const buttonTypes = {
+  SUBMIT: {
+    backGround: '#1f5126',
+    color: '#FFF',
+    borderColor: '#00692f',
+    active: {
+      backGround: '#183c1f',
+      color: '#FFF',
+    },
+  },
+  DEFAULT: {
+    backGround: '#e8e8e8',
+    color: '#000',
+    borderColor: '#d5d5d5',
+    active: {
+      backGround: '#d5d5d5',
+      color: '#000',
+    },
+  },
+  UPLOAD: {
+    backGround: '#153e75',
+    color: '#FFF',
+    borderColor: '#153e75',
+    active: {
+      backGround: '#003a66',
+      color: '#FFF',
+    },
+  },
+  SKIP: {
+    backGround: '#aeaeae',
+    color: '#000',
+    borderColor: '#808080',
+    active: {
+      backGround: '#d5d5d5',
+      color: '#000',
+    },
+  },
+  FEEDBACK: {
+    backGround: '#1e4e8c',
+    color: '#FFF',
+    borderColor: '#1e4e8c',
+    active: {
+      backGround: '#1e4e8c',
+      color: '#FFF',
+    },
+  },
+}
 
 const buttonStyle = (props) => {
   let buttonProps = props.buttonStyle
@@ -173,9 +220,8 @@ export const SkipButton = (props) => {
     <Route
       render={({ history }) => (
         <Button
-
           buttonStyle={buttonTypes.SKIP}
-           onClick={() => {
+          onClick={() => {
             if (props.onClick) {
               props.onClick()
             }
