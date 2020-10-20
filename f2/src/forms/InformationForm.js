@@ -11,7 +11,7 @@ import { P } from '../components/formik/paragraph'
 import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { Input } from '../components/formik/input'
 import { NextCancelButtons } from '../components/formik/button'
 
@@ -116,7 +116,7 @@ export const InformationForm = (props) => {
                           <Field
                             name="typeOfInfoReq"
                             label={question.checkboxLabel}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.checkboxValue}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -162,7 +162,7 @@ export const InformationForm = (props) => {
                           <Field
                             name="typeOfInfoObtained"
                             label={question.checkboxLabel}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.checkboxValue}
                             onChange={handleChange}
                             onBlur={handleBlur}

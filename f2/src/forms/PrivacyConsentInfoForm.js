@@ -4,7 +4,7 @@ import { useStateValue } from '../utils/state'
 import { A } from '../components/formik/link'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { NextCancelButtons } from '../components/formik/button'
 import { useLingui } from '@lingui/react'
 import { ErrorSummary } from '../components/formik/alert'
@@ -69,7 +69,7 @@ export const PrivacyConsentInfoForm = (props) => {
                       />
                     </Trans>
                   }
-                  component={CheckBox}
+                  component={CheckBoxRadio}
                   value="privacyConsentInfoForm.yes"
                   onChange={handleChange}
                   onBlur={handleBlur}
