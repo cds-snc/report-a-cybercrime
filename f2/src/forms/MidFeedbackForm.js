@@ -67,40 +67,42 @@ export const MidFeedbackForm = (props) => {
             />
           </Row>
           {isOpen && (
-            <Box color="rgb(232, 232, 232)">
-              <H1>
-                <Trans id="midFeedback.title" />
-              </H1>
-              <Formik
-                initialValues={{
-                  page: location.pathname,
-                  midFeedback: [],
-                  problemDescription: '',
-                }}
-                initialStatus={{ showWarning: false }}
-                onSubmit={(values, { setStatus }) => {
-                  if (
-                    values.midFeedback.length === 0 &&
-                    values.problemDescription.length === 0
-                  ) {
-                    setStatus({ showWarning: true })
-                  } else {
-                    setIsSubmit('feedback.submitted')
-                    props.onSubmit(values)
-                  }
-                }}
-              >
-                {({
-                  handleSubmit,
-                  handleChange,
-                  handleBlur,
-                  status,
-                  dirty,
-                  isSubmitting,
-                }) => (
-                  <Form onSubmit={handleSubmit}>
-                    <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
-                    <Container>
+            <Row>
+              <Box color="rgb(232, 232, 232)">
+                <Row>
+                  <H1>
+                    <Trans id="midFeedback.title" />
+                  </H1>
+                </Row>
+                <Formik
+                  initialValues={{
+                    page: location.pathname,
+                    midFeedback: [],
+                    problemDescription: '',
+                  }}
+                  initialStatus={{ showWarning: false }}
+                  onSubmit={(values, { setStatus }) => {
+                    if (
+                      values.midFeedback.length === 0 &&
+                      values.problemDescription.length === 0
+                    ) {
+                      setStatus({ showWarning: true })
+                    } else {
+                      setIsSubmit('feedback.submitted')
+                      props.onSubmit(values)
+                    }
+                  }}
+                >
+                  {({
+                    handleSubmit,
+                    handleChange,
+                    handleBlur,
+                    status,
+                    dirty,
+                    isSubmitting,
+                  }) => (
+                    <Form onSubmit={handleSubmit}>
+                      <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
                       <Row className="form-question">
                         {status.showWarning ? (
                           <Error>

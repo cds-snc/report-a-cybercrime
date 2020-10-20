@@ -22,6 +22,8 @@ export const WarningModal = (props) => {
   const shouldPrompt = (dirty, isSubmitting) => {
     const alteredForm = dirty && !isSubmitting
 
+    console.log(alteredForm && !confirmNav)
+
     return alteredForm && !confirmNav
   }
 
