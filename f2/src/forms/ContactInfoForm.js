@@ -15,6 +15,7 @@ import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
 
 export const ContactInfoForm = (props) => {
+  const [, dispatch] = useStateValue()
   const [data] = useStateValue()
   const contactInfo = {
     ...formDefaults.contactInfo,
@@ -28,6 +29,19 @@ export const ContactInfoForm = (props) => {
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
   const validationSchema = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
+
+  function RemoveData() {
+    return dispatch({
+      type: 'saveFormData',
+      data: {
+        contactInfo: {
+          fullName: '',
+          email: '',
+          phone: '',
+        },
+      },
+    })
+  }
 
   return (
     <React.Fragment>
@@ -64,6 +78,9 @@ export const ContactInfoForm = (props) => {
               <FormRow marginBottom="2rem">
                 <SkipButton
                   label={<Trans id="contactinfoPage.skipButton" />}
+                  onClick={() => {
+                    RemoveData()
+                  }}
                   to="/confirmation"
                 />
               </FormRow>
