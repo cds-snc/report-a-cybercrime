@@ -24,7 +24,7 @@ export const HowDidItStartView = (props) => {
       summary.push(
         key === 'howDidTheyReachYou.others' && howdiditstart.others !== ''
           ? howdiditstart.others
-          : key.toLowerCase(),
+          : lang[key].toLowerCase(),
       ),
     )
 
