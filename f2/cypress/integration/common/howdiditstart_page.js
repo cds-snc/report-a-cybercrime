@@ -13,9 +13,7 @@ When('I fill howdiditstart page forms', () => {
     .find('[value="howDidTheyReachYou.online"]')
     .check({ force: true })
   cy.get('form').find('[name="online"]').type('http://www.suspectEnglish.com')
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.application"]')
-    .check({ force: true })
+  cy.get('form').find('[value="howDidTheyReachYou.app"]').check({ force: true })
   cy.get('form').find('[name="application"]').type('Whatapps')
   cy.get('form')
     .find('[value="howDidTheyReachYou.others"]')
@@ -45,9 +43,7 @@ When('I fill howdiditstartOnline page forms', () => {
 })
 
 When('I fill howdiditstartApplication page forms', () => {
-  cy.get('form')
-    .find('[value="howDidTheyReachYou.application"]')
-    .check({ force: true })
+  cy.get('form').find('[value="howDidTheyReachYou.app"]').check({ force: true })
   cy.get('form').find('[name="application"]').type('Whatapps')
 })
 
