@@ -107,6 +107,7 @@ export const HowDidItStartForm = (props) => {
                               component={TextArea}
                               onBlur={handleBlur}
                               onChange={handleChange}
+                              id={'text-' + question.name}
                             />
                           </Field>
                         </React.Fragment>
