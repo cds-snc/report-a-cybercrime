@@ -11,6 +11,7 @@ import { useStateValue } from './utils/state'
 import { A } from './components/link'
 import { useLingui } from '@lingui/react'
 import { Page } from './components/Page'
+import { setBeforeUnloadWarning } from './utils/navigationWarning'
 
 export const PrivacyConsentPage = () => {
   const { i18n } = useLingui()
@@ -62,6 +63,7 @@ export const PrivacyConsentPage = () => {
                 </P>
                 <PrivacyConsentInfoForm
                   onSubmit={(data) => {
+                    setBeforeUnloadWarning()
                     dispatch({
                       type: 'saveFormData',
                       data: { consent: data },

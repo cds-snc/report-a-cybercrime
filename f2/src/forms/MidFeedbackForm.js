@@ -15,6 +15,7 @@ import { CheckBox } from '../components/formik/checkbox'
 import { TextArea } from '../components/formik/textArea'
 import { Box } from '../components/formik/box'
 import { Error, Info } from '../components/formik/alert'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const MidFeedbackForm = (props) => {
   const [isSubmit, setIsSubmit] = useState('')
@@ -87,8 +88,16 @@ export const MidFeedbackForm = (props) => {
                   }
                 }}
               >
-                {({ handleSubmit, handleChange, handleBlur, status }) => (
+                {({
+                  handleSubmit,
+                  handleChange,
+                  handleBlur,
+                  status,
+                  dirty,
+                  isSubmitting,
+                }) => (
                   <Form onSubmit={handleSubmit}>
+                    <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
                     <Container>
                       <Row className="form-question">
                         {status.showWarning ? (

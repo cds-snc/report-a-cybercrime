@@ -9,6 +9,7 @@ import { NextCancelButtons } from '../components/formik/button'
 import { useLingui } from '@lingui/react'
 import { ErrorSummary } from '../components/formik/alert'
 import { PrivacyConsentInfoFormSchema } from './PrivacyConsentInfoFormSchema'
+import { WarningModal } from '../components/formik/warningModal'
 
 const createErrorSummary = (errors) => {
   const errorSummary = {}
@@ -43,8 +44,17 @@ export const PrivacyConsentInfoForm = (props) => {
         }}
         validationSchema={PrivacyConsentInfoFormSchema()}
       >
-        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          errors,
+          submitCount,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row classname="form-question">
                 {Object.keys(errors).length > 0 && (

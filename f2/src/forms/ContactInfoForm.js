@@ -13,6 +13,7 @@ import { SkipButton, NextCancelButtons } from '../components/formik/button'
 import { FormRow } from '../components/formik/row'
 import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const ContactInfoForm = (props) => {
   const [data] = useStateValue()
@@ -44,8 +45,17 @@ export const ContactInfoForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          errors,
+          submitCount,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <FormRow>
                 {Object.keys(errors).length > 0 && (

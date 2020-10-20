@@ -17,6 +17,7 @@ import { FileUpload } from '../components/formik/fileUpload'
 import { TextArea } from '../components/formik/textArea'
 import { FormRow } from '../components/formik/row'
 import { Modal } from 'react-bootstrap'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const EvidenceInfoForm = (props) => {
   const [data] = useStateValue()
@@ -186,7 +187,10 @@ export const EvidenceInfoForm = (props) => {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <DefaultButton onClick={handleClose} label="OK" />
+          <DefaultButton
+            onClick={handleClose}
+            label={<Trans id="button.ok" />}
+          />
         </Modal.Footer>
       </Modal>
 
@@ -201,8 +205,9 @@ export const EvidenceInfoForm = (props) => {
           props.onSubmit(data)
         }}
       >
-        {({ handleSubmit, handleChange }) => (
+        {({ handleSubmit, handleChange, dirty, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               {!maxFiles && (
                 <FormRow>

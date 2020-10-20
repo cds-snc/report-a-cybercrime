@@ -9,10 +9,6 @@ import { NextCancelButtons } from '../components/formik/button'
 import { Error, Info } from '../components/formik/alert'
 import { WarningModal } from '../components/formik/warningModal'
 
-window.onbeforeunload = function () {
-  return ''
-}
-
 export const HowDidItStartForm = (props) => {
   const [data] = useStateValue()
   const howDidItStart = {

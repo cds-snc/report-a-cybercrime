@@ -8,6 +8,7 @@ import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
 import { NextCancelButtons } from '../components/formik/button'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const WhatHappenedForm = (props) => {
   const [data] = useStateValue()
@@ -36,8 +37,9 @@ export const WhatHappenedForm = (props) => {
         props.onSubmit(values)
       }}
     >
-      {({ handleSubmit, handleChange, handleBlur }) => (
+      {({ handleSubmit, handleChange, handleBlur, dirty, isSubmitting }) => (
         <Form onSubmit={handleSubmit}>
+          <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
           <Container>
             <Row className="form-question">
               <Row className="form-label">{formLabel}</Row>

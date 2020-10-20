@@ -7,7 +7,6 @@ import { DefaultButton } from '../button'
 
 export const WarningModal = (props) => {
   const [showModal, setShowModal] = useState(false)
-
   const [confirmNav, setConfirmNav] = useState(false)
 
   const confirm = (history) => {
@@ -20,7 +19,7 @@ export const WarningModal = (props) => {
     setShowModal(false)
   }
 
-  const shouldBlock = (dirty, isSubmitting) => {
+  const shouldPrompt = (dirty, isSubmitting) => {
     const alteredForm = dirty && !isSubmitting
 
     return alteredForm && !confirmNav
@@ -31,24 +30,38 @@ export const WarningModal = (props) => {
       render={({ history }) => (
         <React.Fragment>
           <Prompt
-            when={shouldBlock(props.dirty, props.isSubmitting)}
-            message={() => {
-              setShowModal(true)
-              return false
+            when={shouldPrompt(props.dirty, props.isSubmitting)}
+            message={(location, action) => {
+              if (action === 'PUSH') {
+                return true
+              } else {
+                setShowModal(true)
+                return false
+              }
             }}
           />
           <Modal show={showModal} backdrop="static">
             <Modal.Header closeButton>
               <Modal.Title>
-                <Trans id="fileUpload.errorModal.title" />
+                <Trans id="warningModal.title" />
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Container></Container>
+              <Container>
+                <Row>
+                  <Trans id="warningModal.body" />
+                </Row>
+              </Container>
             </Modal.Body>
             <Modal.Footer>
-              <DefaultButton onClick={() => confirm(history)} label="OK" />
-              <DefaultButton onClick={cancel} label="Cancel" />
+              <DefaultButton
+                onClick={() => confirm(history)}
+                label={<Trans id="button.ok" />}
+              />
+              <DefaultButton
+                onClick={cancel}
+                label={<Trans id="button.cancel" />}
+              />
             </Modal.Footer>
           </Modal>
         </React.Fragment>
