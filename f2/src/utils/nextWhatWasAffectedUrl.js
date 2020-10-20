@@ -2,30 +2,37 @@ export const whatWasAffectedPages = {
   FINANCIAL: {
     key: 'whatWasAffectedForm.financial',
     url: 'moneylost',
+    nextPageTextIdInPreviousPage: 'previousPageofMoneyLost.nextPage',
   },
   INFORMATION: {
     key: 'whatWasAffectedForm.personalInformation',
     url: 'information',
+    nextPageTextIdInPreviousPage: 'previousPageofInformation.nextPage',
   },
   DEVICES: {
     key: 'whatWasAffectedForm.devices',
     url: 'devices',
+    nextPageTextIdInPreviousPage: 'previousPageofDevices.nextPage',
   },
   BUSINESS: {
     key: 'whatWasAffectedForm.business_assets',
     url: 'business',
+    nextPageTextIdInPreviousPage: 'previousPageofBusiness.nextPage',
   },
   OTHER: {
     key: 'whatWasAffectedForm.other',
     url: '',
+    nextPageTextIdInPreviousPage: '',
   },
   FIRST_PAGE: {
     key: 'whatWasAffectedForm',
     url: 'whatwasaffected',
+    nextPageTextIdInPreviousPage: '',
   },
   LAST_PAGE: {
     key: '',
     url: 'whathappened',
+    nextPageTextIdInPreviousPage: 'previousPageofWhathappened.nextPage',
   },
   CONFIRMATION: {
     key: '',
