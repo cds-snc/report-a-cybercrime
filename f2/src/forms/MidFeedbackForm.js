@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { TextArea } from '../components/formik/textArea'
 import { Box } from '../components/formik/box'
 import { Error, Info } from '../components/formik/alert'
@@ -123,7 +123,7 @@ export const MidFeedbackForm = (props) => {
                                   <Field
                                     name="midFeedback"
                                     label={question.checkboxLabel}
-                                    component={CheckBox}
+                                    component={CheckBoxRadio}
                                     value={question.checkboxValue}
                                     onChange={handleChange}
                                     onBlur={handleBlur}

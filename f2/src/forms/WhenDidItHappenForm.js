@@ -4,7 +4,7 @@ import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field, FieldArray } from 'formik'
-import { Radio } from '../components/formik/radio'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { DatePicker } from '../components/formik/datePicker'
 import { NextCancelButtons } from '../components/formik/button'
 import { Info, ErrorSummary } from '../components/formik/alert'
@@ -110,7 +110,7 @@ export const WhenDidItHappenForm = (props) => {
                           <Field
                             name="incidentFrequency"
                             label={question.radioLabel}
-                            component={Radio}
+                            component={CheckBoxRadio}
                             value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
