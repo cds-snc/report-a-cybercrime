@@ -60,6 +60,12 @@ export const LandingPage = (props) => {
         onVerify={async (token) => {
           console.log(token)
           checkToken('/checkToken', dispatch, { token })
+          let textarea = document.getElementById('g-recaptcha-response-100000')
+          if (textarea) {
+            textarea.setAttribute('aria-hidden', 'true')
+            textarea.setAttribute('aria-label', 'do not use')
+            textarea.setAttribute('aria-readonly', 'true')
+          }
         }}
       />
       <Route

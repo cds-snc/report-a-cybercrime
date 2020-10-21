@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap'
 
 export const TextArea = ({ field, form, ...props }) => {
   return (
-    <Form.Group>
+    <Form.Group controlId={props.id}>
       <Form.Label>{props.label}</Form.Label>
       <Form.Text className="help-text-label">{props.helpText}</Form.Text>
       <Form.Control
@@ -11,7 +11,6 @@ export const TextArea = ({ field, form, ...props }) => {
         as="textarea"
         className={'open-text-entry'}
         rows={props.rows}
-        id={props.id}
         onChange={props.onChange}
       />
     </Form.Group>

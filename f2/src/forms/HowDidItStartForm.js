@@ -58,7 +58,7 @@ export const HowDidItStartForm = (props) => {
         initialValues={howDidItStart}
         onSubmit={(values) => {
           formOptions.forEach((question) => {
-            if (!values.howDidTheyReachYou.includes(question.name)) {
+            if (!values.howDidTheyReachYou.includes(question.checkboxName)) {
               values[question.name] = ''
             }
           })
@@ -89,7 +89,7 @@ export const HowDidItStartForm = (props) => {
                             name="howDidTheyReachYou"
                             label={question.checkboxLabel}
                             component={CheckBoxRadio}
-                            value={question.name}
+                            value={question.checkboxName}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             type="checkbox"
@@ -107,6 +107,7 @@ export const HowDidItStartForm = (props) => {
                               component={TextArea}
                               onBlur={handleBlur}
                               onChange={handleChange}
+                              id={'text-' + question.name}
                             />
                           </Field>
                         </React.Fragment>
