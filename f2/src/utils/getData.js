@@ -53,8 +53,8 @@ async function getData(data, files) {
   const selfHarmWords = selfHarmWordsScan(data)
 
   if (
-    selfHarmWords !== null &&
-    selfHarmWords.toString() !== '' &&
+    selfHarmWords &&
+    selfHarmWords.length > 0 &&
     selfHarmWords.toString().length > 0
   ) {
     console.warn(`Self harm words detected: ${selfHarmWords}`)
