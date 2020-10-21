@@ -52,11 +52,7 @@ async function getData(data, files) {
 
   const selfHarmWords = selfHarmWordsScan(data)
 
-  if (
-    selfHarmWords &&
-    selfHarmWords.length > 0 &&
-    selfHarmWords.toString().length > 0
-  ) {
+  if (selfHarmWords && selfHarmWords.length > 0) {
     console.warn(`Self harm words detected: ${selfHarmWords}`)
   }
   data.selfHarmWords = selfHarmWords
