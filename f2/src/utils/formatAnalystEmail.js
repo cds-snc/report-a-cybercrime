@@ -60,6 +60,14 @@ const formatReportInfo = (data) => {
 
   let reportLanguage = data.language === 'fr' ? 'Français' : 'English'
 
+  let fyiForm
+  if (data.fyiForm === 'yes') {
+    fyiForm =
+      data.language === 'en' ? 'Quick Tip' : 'soumettre des renseignements'
+  } else {
+    fyiForm = data.language === 'en' ? 'Full Report' : 'Rapport complet'
+  }
+
   returnString +=
     '<h2>' +
     lang['analystReport.reportInformation'] +
@@ -73,6 +81,7 @@ const formatReportInfo = (data) => {
         formatLineHtml(lang['analystReport.reportLanguage'], reportLanguage) +
         formatLineHtml(lang['analystReport.reportVersion'], data.prodVersion) +
         formatLineHtml(lang['confirmationPage.anonymous.title'], isAnonymous) +
+        formatLineHtml(lang['analystReport.fyiForm'], fyiForm) +
         formatLineHtml(lang['analystReport.flagged'], selfHarmString),
     )
 

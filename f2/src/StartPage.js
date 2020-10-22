@@ -25,7 +25,15 @@ export const StartPage = (props) => {
   return (
     <React.Fragment>
       <GoogleReCaptcha
-        onVerify={(token) => console.log(`The token is ${token}`)}
+        onVerify={(token) => {
+          console.log(`The token is ${token}`)
+          let textarea = document.getElementById('g-recaptcha-response-100000')
+          if (textarea) {
+            textarea.setAttribute('aria-hidden', 'true')
+            textarea.setAttribute('aria-label', 'do not use')
+            textarea.setAttribute('aria-readonly', 'true')
+          }
+        }}
       />
       <Route
         render={({ history }) => (

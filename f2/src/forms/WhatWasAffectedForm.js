@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
 import { ErrorSummary } from '../components/formik/alert'
@@ -81,7 +81,7 @@ export const WhatWasAffectedForm = (props) => {
           <Form onSubmit={handleSubmit}>
             <Container>
               <Row className="form-question">
-                <Row className="form-label" id="affectedOptions">
+                <Row className="form-label">
                   <Trans id="whatWasAffectedForm.optionsTitle" />
                 </Row>
                 <Row className="form-helper-text">
@@ -95,7 +95,7 @@ export const WhatWasAffectedForm = (props) => {
                   />
                 )}
               </Row>
-              <Row className="form-section">
+              <Row className="form-section" id="affectedOptions">
                 {errors && errors.affectedOptions && (
                   <ErrorText>
                     <Trans id="whatWasAffectedForm.warning" />
@@ -112,7 +112,7 @@ export const WhatWasAffectedForm = (props) => {
                             name="affectedOptions"
                             label={question.checkboxLabel}
                             helpText={question.checkboxHelpText}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.checkboxValue}
                             onChange={handleChange}
                             onBlur={handleBlur}

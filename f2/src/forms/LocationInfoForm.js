@@ -5,6 +5,7 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
+import { FormRow } from '../components/formik/row'
 import { Formik, Field } from 'formik'
 import { NextCancelButtons, SkipButton } from '../components/formik/button'
 import { LocationInfoFormSchema } from './LocationInfoFormSchema'
@@ -14,6 +15,7 @@ import { ErrorSummary } from '../components/formik/alert'
 import { formDefaults } from './defaultValues'
 
 export const LocationInfoForm = (props) => {
+  const [, dispatch] = useStateValue()
   const [data] = useStateValue()
   const locationInfo = {
     ...formDefaults.location,
@@ -25,6 +27,19 @@ export const LocationInfoForm = (props) => {
       label: <Trans id="locationinfoPage.postalCode" />,
       message: <Trans id="locationInfoForm.Warning" />,
     },
+  }
+
+  function RemoveData() {
+    return dispatch({
+      type: 'saveFormData',
+      data: {
+        location: {
+          postalCode: '',
+          city: '',
+          province: '',
+        },
+      },
+    })
   }
 
   return (
@@ -55,22 +70,24 @@ export const LocationInfoForm = (props) => {
               />
             )}
             <Container>
-              <Row>
+              <FormRow>
                 <Trans id="locationinfoPage.skipInfo" />
-              </Row>
-              <Row>
+              </FormRow>
+              <FormRow marginBottom="1rem">
                 <SkipButton
                   label={<Trans id="locationinfoPage.skipButton" />}
+                  onClick={() => {
+                    RemoveData()
+                  }}
                   to="/contactinfo"
                 />
-              </Row>
-              <br />
-              <Row>
+              </FormRow>
+              <FormRow>
                 {errors.postalCode && (
                   <ErrorText>{errors.postalCode}</ErrorText>
                 )}
-              </Row>
-              <Row className="form-section">
+              </FormRow>
+              <FormRow>
                 <Field
                   name="postalCode"
                   label={<Trans id="locationinfoPage.postalCode" />}
@@ -81,7 +98,7 @@ export const LocationInfoForm = (props) => {
                   type="text"
                   helpText={<Trans id="locationinfoPage.postalCodeExample" />}
                 />
-              </Row>
+              </FormRow>
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="locationPage.nextButton" />}
