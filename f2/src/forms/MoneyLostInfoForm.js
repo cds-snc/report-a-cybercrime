@@ -17,6 +17,7 @@ import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { DatePicker } from '../components/formik/datePicker'
 import { ErrorText } from '../components/formik/paragraph'
 import { ErrorSummary } from '../components/formik/alert'
+import { HiddenText } from '../components/formik/paragraph'
 
 export const MoneyLostInfoForm = (props) => {
   const [data] = useStateValue()
@@ -146,6 +147,7 @@ export const MoneyLostInfoForm = (props) => {
                                 component={Input}
                                 onBlur={handleBlur}
                                 onChange={handleChange}
+                                id={'checkbox-' + question.name}
                               />
                             )}
                           </Field>
@@ -169,6 +171,11 @@ export const MoneyLostInfoForm = (props) => {
                 )}
                 <Field
                   name="transaction"
+                  label={
+                    <HiddenText>
+                      {<Trans id="moneyLostPage.transactionDate" />}
+                    </HiddenText>
+                  }
                   component={DatePicker}
                   onBlur={handleBlur}
                   onChange={handleChange}
