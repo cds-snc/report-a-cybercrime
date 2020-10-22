@@ -62,6 +62,7 @@ export const SuspectCluesForm = (props) => {
                             component={TextArea}
                             onBlur={handleBlur}
                             onChange={handleChange}
+                            id={'text-' + question.name}
                           />
                         </React.Fragment>
                       )
