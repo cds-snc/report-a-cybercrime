@@ -173,8 +173,14 @@ export const SkipButton = (props) => {
     <Route
       render={({ history }) => (
         <Button
+
           buttonStyle={buttonTypes.SKIP}
-          onClick={() => history.push(props.to)}
+           onClick={() => {
+            if (props.onClick) {
+              props.onClick()
+            }
+            history.push(props.to)
+          }}
         >
           <ButtonLabel>
             {props.label}

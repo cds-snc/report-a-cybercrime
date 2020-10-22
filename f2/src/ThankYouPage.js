@@ -17,6 +17,7 @@ import { P } from './components/paragraph'
 import { Route } from 'react-router-dom'
 import { Page } from './components/Page'
 import { Alert } from './components/Messages'
+import { PdfReportPage } from './PdfReportPage'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
@@ -29,6 +30,7 @@ export const ThankYouPage = () => {
 
   // Message displayed on Thank you Page
   const reportId = state.reportId
+  const submitted = state.submitted
   const submissionInProgress = !reportId || reportId === ''
   const submissionSucceeded =
     !submissionInProgress && reportId.startsWith('NCFRS-')
@@ -114,6 +116,8 @@ export const ThankYouPage = () => {
                 <Trans id="thankYouPage.confirmationPageButton" />
               </ButtonLink>
             )}
+
+            {submitted && <PdfReportPage />}
           </InfoCard>
         </Row>
 
