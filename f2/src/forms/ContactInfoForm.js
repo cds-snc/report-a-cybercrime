@@ -60,16 +60,14 @@ export const ContactInfoForm = (props) => {
       >
         {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
+            {Object.keys(errors).length > 0 && (
+              <ErrorSummary
+                errors={createErrorSummary(errors)}
+                submissions={submitCount}
+                title={<Trans id="contactinfoPage.hasValidationErrors" />}
+              />
+            )}
             <Container>
-              <FormRow>
-                {Object.keys(errors).length > 0 && (
-                  <ErrorSummary
-                    errors={createErrorSummary(errors)}
-                    submissions={submitCount}
-                    title={<Trans id="contactinfoPage.hasValidationErrors" />}
-                  />
-                )}
-              </FormRow>
               <FormRow>
                 <P w="100%">
                   <Trans id="contactinfoPage.skipInfo" />
