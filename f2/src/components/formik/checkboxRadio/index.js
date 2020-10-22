@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
 import { Form } from 'react-bootstrap'
 import { FormRow } from '../row'
 import { ConditionalField } from '../conditionalField'
@@ -9,7 +8,7 @@ import { cleanProps } from '../../../utils/cleanProps'
 
 const conditionalFieldStyle = (props) => {
   if (props.checked && props.hasChildren) {
-    return css`
+    return `
       border-left-width: 0.25rem;
       border-left-color: #aeaeae;
       margin-left: -0.25rem;
@@ -35,6 +34,12 @@ const Label = styled(Form.Check.Label, {
   font-size: 1.25rem;
   line-height: 1.5rem;
   padding-top: 0.5rem;
+  &:active {
+    &:before {
+      border-color: black;
+      box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+    }
+  }
   &:before {
     width: 2.5rem;
     height: 2.5rem;

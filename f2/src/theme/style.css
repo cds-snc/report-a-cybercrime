@@ -5,32 +5,8 @@ body {
 
 /*Forms*/
 
-.label {
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  padding-top: 0rem;
-}
-
-.next-page-label {
-  margin-bottom: 1rem;
-  padding-left: 0rem;
-}
-
-.form-group {
-  width: 100%;
-}
-
 .row {
   width: 100%;
-}
-
-.form-row {
-  margin-bottom: 1rem;
-  margin-left: 0rem;
-}
-
-.form-check-label {
-  margin-left: 0.5rem;
 }
 
 .form-label {
@@ -59,65 +35,6 @@ body {
   display: inline-block;
   margin-bottom: 3rem;
   width: 100%;
-}
-
-.help-text-label {
-  line-height: 1.25;
-  font-size: 1rem;
-}
-
-.error-row {
-  padding: 0.75rem 1rem;
-  background-color: rgb(254, 215, 215);
-  border-left: 3px solid rgb(130, 39, 39);
-  border-color: rgb(130, 39, 39);
-  margin: 1rem 0rem;
-  width: 100%;
-}
-
-.error-message {
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.field-error,
-.field-error:hover,
-.field-error:focus {
-  border-color: rgb(130, 39, 39) !important;
-}
-
-/*Text Area*/
-
-.open-text-entry {
-  margin-top: 0.75rem;
-  min-height: 80px;
-  border-color: rgb(174, 174, 174);
-  width: 100%;
-  max-width: 600px;
-}
-
-.open-text-entry:hover {
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-  border-color: rgb(55, 55, 55);
-}
-
-.open-text-entry:focus {
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
-  outline: none;
-  border-color: rgb(42, 105, 172);
-}
-
-/*Button*/
-
-.button-container {
-  padding-left: 0rem;
-  padding-right: 0rem;
-}
-
-.next-cancel-buttons {
-  margin-bottom: 2.5rem;
-  margin-top: 2.5rem;
 }
 
 .white-button-link:hover,
@@ -166,72 +83,4 @@ body {
   .custom-control-input:not(:checked)
   ~ .custom-control-label::before {
   background-color: rgb(255, 255, 255);
-}
-
-/*Input Fields*/
-
-.input-field-control {
-  margin-top: 0.75rem;
-  max-width: 300px;
-}
-
-.input-help-text {
-  line-height: 1.25;
-  font-size: 1rem;
-  max-width: 600px;
-}
-
-.input-field-control:hover {
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-  border-color: rgb(55, 55, 55);
-}
-
-.input-field-control:focus {
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
-  outline: none;
-  border-color: rgb(42, 105, 172);
-}
-
-/*Date Picker*/
-
-.date-picker {
-  padding-left: 0px;
-}
-
-.day-month {
-  width: 70px;
-}
-
-.year {
-  width: 110px;
-}
-
-.date-label {
-  vertical-align: middle;
-}
-
-.date-input,
-.date-group {
-  margin-top: 0.75rem;
-}
-
-.date-input:hover {
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-  border-color: rgb(55, 55, 55);
-}
-
-.date-input:focus {
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
-  outline: none;
-  border-color: rgb(42, 105, 172);
-}
-
-.list-item {
-  display: list-item;
-  list-style-position: inside;
-  border: 0;
-  padding: 0 0 0.5rem 0;
-  background-color: inherit;
 }

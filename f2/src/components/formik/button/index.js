@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
 import { Button as BaseButton, Container, Row, Col } from 'react-bootstrap'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
 import { FiPaperclip } from 'react-icons/fi'
 import { cleanProps } from '../../../utils/cleanProps'
 import { space, border, layout, typography } from 'styled-system'
+import { P } from '../paragraph'
 
 const buttonTypes = {
   SUBMIT: {
@@ -60,7 +60,7 @@ const buttonStyle = (props) => {
   let buttonProps = props.buttonStyle
 
   if (buttonProps) {
-    return css`
+    return `
       background-color: ${buttonProps.backGround};
       color: ${buttonProps.color};
       border-color: ${buttonProps.borderColor};
@@ -121,6 +121,16 @@ const PaperClipIcon = styled(FiPaperclip)`
   margin-right: 0.5rem;
 `
 
+const ButtonContainer = styled(Container)`
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+`
+
+const ButtonOffset = styled(Col)`
+  padding-left: 0rem;
+  padding-right: 0rem;
+`
+
 export const DefaultButton = (props) => {
   return (
     <Button buttonStyle={buttonTypes.DEFAULT}>
@@ -175,20 +185,22 @@ export const CancelButton = (props) => {
 
 export const NextCancelButtons = (props) => {
   return (
-    <Container className="next-cancel-buttons">
+    <ButtonContainer>
       <Row>
-        <p className="label next-page-label">{props.label}</p>
+        <P marginBottom="1rem" fontSize="1.25rem" lineHeight="1.5rem">
+          {props.label}
+        </P>
       </Row>
       <Row>
-        <Col xs="auto" className="button-container">
+        <ButtonOffset xs="auto">
           <SubmitButton label={props.submit} />
-        </Col>
-        <Col xs="1" className="button-container"></Col>
-        <Col xs="auto" className="button-container">
+        </ButtonOffset>
+        <ButtonOffset xs="1"></ButtonOffset>
+        <ButtonOffset xs="auto">
           <CancelButton label={props.cancel} />
-        </Col>
+        </ButtonOffset>
       </Row>
-    </Container>
+    </ButtonContainer>
   )
 }
 
