@@ -18,6 +18,7 @@ const StyledBox = styled(BaseBox, {
 })`
   margin-top: 1rem;
   border: 1px solid rgb(174, 174, 174);
+  padding-top: 0.5rem;
   ${fontSize}
   ${fontWeight}
   ${lineHeight}

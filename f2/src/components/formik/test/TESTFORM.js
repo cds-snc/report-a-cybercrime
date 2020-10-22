@@ -21,11 +21,6 @@ export const TestForm = (props) => {
         }}
         render={({ values, handleSubmit, handleChange, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
-            <ErrorSummary
-              errors={errorSummary}
-              submissions={0}
-              title="Error Summary"
-            />
             <Container>
               <FormRow>
                 <P fontWeight="700">---Default Text---</P>
