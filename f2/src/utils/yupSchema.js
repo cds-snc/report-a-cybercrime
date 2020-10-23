@@ -22,7 +22,7 @@ export const yupSchema = () => {
       message: <Trans id="locationInfoForm.Warning" />,
     }),
 
-    phoneExtensionSchema: Yup.string().matches(/^[0-9]*$/, {
+    phoneExtensionSchema: Yup.string().matches(regexDef().phoneExtensionRegex, {
       message: <Trans id="contactinfoForm.email.warning" />,
     }),
 
@@ -33,3 +33,5 @@ export const yupSchema = () => {
     },
   }
 }
+
+//.matches(/^[0-9]*$/)
