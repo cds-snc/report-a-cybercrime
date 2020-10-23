@@ -17,7 +17,6 @@ import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { DatePicker } from '../components/formik/datePicker'
 import { ErrorText } from '../components/formik/paragraph'
 import { ErrorSummary } from '../components/formik/alert'
-import { HiddenText } from '../components/formik/paragraph'
 
 export const MoneyLostInfoForm = (props) => {
   const [data] = useStateValue()
