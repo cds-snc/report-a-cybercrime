@@ -121,18 +121,15 @@ export const ContactInfoForm = (props) => {
                           onChange={handleChange}
                           id="email"
                         />
+
                         {errors.phone && (
                           <ErrorText>{PHONE.errorMessage}</ErrorText>
                         )}
+
                         {errors.extension && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            {EXTENSION.errorMessage}
-                          </P>
+                          <ErrorText>{EXTENSION.errorMessage}</ErrorText>
                         )}
+
                         <FormRow>
                           <Col>
                             <Field

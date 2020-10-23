@@ -9,7 +9,7 @@ export const yupSchema = () => {
       .transform((value) => value.replace(/[\s()+-.]|ext/gi, ''))
       .matches(/\d/)
       .trim()
-      .matches(regexDef().isValidInternationalPhonenumber, {
+      .matches(regexDef().internationalPhonenumberRegex, {
         excludeEmptyString: true,
         message: 'Please enter a valid phone number',
       }),
