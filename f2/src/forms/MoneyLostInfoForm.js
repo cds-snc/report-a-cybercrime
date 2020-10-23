@@ -147,7 +147,6 @@ export const MoneyLostInfoForm = (props) => {
                                 component={Input}
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                id={'checkbox-' + question.name}
                               />
                             )}
                           </Field>
