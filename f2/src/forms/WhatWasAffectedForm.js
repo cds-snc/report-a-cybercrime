@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
 import { ErrorSummary } from '../components/formik/alert'
 import { NextCancelButtons } from '../components/formik/button'
 import { WhatWasAffectedFormSchema } from './WhatWasAffectedFormSchema'
-import { P } from '../components/formik/paragraph'
+import { ErrorText } from '../components/formik/paragraph'
 import { whatWasAffectedPages } from '../utils/nextWhatWasAffectedUrl'
 
 const createErrorSummary = (errors) => {
@@ -97,9 +97,9 @@ export const WhatWasAffectedForm = (props) => {
               </Row>
               <Row className="form-section" id="affectedOptions">
                 {errors && errors.affectedOptions && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                  <ErrorText>
                     <Trans id="whatWasAffectedForm.warning" />
-                  </P>
+                  </ErrorText>
                 )}
                 <FieldArray
                   name="affectedOptions"
@@ -112,7 +112,7 @@ export const WhatWasAffectedForm = (props) => {
                             name="affectedOptions"
                             label={question.checkboxLabel}
                             helpText={question.checkboxHelpText}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.checkboxValue}
                             onChange={handleChange}
                             onBlur={handleBlur}

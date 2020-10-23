@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/formik/paragraph'
 import { Form, Container, Row, Col } from 'react-bootstrap'
+import { P, ErrorText } from '../components/formik/paragraph'
 import { formDefaults } from './defaultValues'
 import { Formik, FieldArray, Field } from 'formik'
 import { Input } from '../components/formik/input'
@@ -15,6 +15,7 @@ import { ErrorSummary } from '../components/formik/alert'
 import { ContactInfoFormSchema } from './ContactInfoFormSchema'
 
 export const ContactInfoForm = (props) => {
+  const [, dispatch] = useStateValue()
   const [data] = useStateValue()
   const contactInfo = {
     ...formDefaults.contactInfo,
@@ -29,6 +30,19 @@ export const ContactInfoForm = (props) => {
   const createErrorSummary = ContactInfoFormSchema.CREATE_ERROR_SUMMARY
 
   const validationSchema = ContactInfoFormSchema.ON_SUBMIT_VALIDATION
+
+  function RemoveData() {
+    return dispatch({
+      type: 'saveFormData',
+      data: {
+        contactInfo: {
+          fullName: '',
+          email: '',
+          phone: '',
+        },
+      },
+    })
+  }
 
   return (
     <React.Fragment>
@@ -47,16 +61,14 @@ export const ContactInfoForm = (props) => {
       >
         {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
           <Form onSubmit={handleSubmit}>
+            {Object.keys(errors).length > 0 && (
+              <ErrorSummary
+                errors={createErrorSummary(errors)}
+                submissions={submitCount}
+                title={<Trans id="contactinfoPage.hasValidationErrors" />}
+              />
+            )}
             <Container>
-              <FormRow>
-                {Object.keys(errors).length > 0 && (
-                  <ErrorSummary
-                    errors={createErrorSummary(errors)}
-                    submissions={submitCount}
-                    title={<Trans id="contactinfoPage.hasValidationErrors" />}
-                  />
-                )}
-              </FormRow>
               <FormRow>
                 <P w="100%">
                   <Trans id="contactinfoPage.skipInfo" />
@@ -65,6 +77,9 @@ export const ContactInfoForm = (props) => {
               <FormRow marginBottom="2rem">
                 <SkipButton
                   label={<Trans id="contactinfoPage.skipButton" />}
+                  onClick={() => {
+                    RemoveData()
+                  }}
                   to="/confirmation"
                 />
               </FormRow>
@@ -76,13 +91,7 @@ export const ContactInfoForm = (props) => {
                     return (
                       <React.Fragment>
                         {errors && errors.fullName && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            {FULL_NAME.errorMessage}
-                          </P>
+                          <ErrorText>{fullName.errorMessage}</ErrorText>
                         )}
                         <Field
                           name={FULL_NAME.name}
@@ -93,22 +102,16 @@ export const ContactInfoForm = (props) => {
                           id="fullName"
                         />
                         {errors.emailOrPhone && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            <Trans id="contactinfoForm.emailORphone.warning" />
-                          </P>
+                          <Container>
+                            <FormRow id="emailOrPhone">
+                              <ErrorText>
+                                <Trans id="contactinfoForm.emailORphone.warning" />
+                              </ErrorText>
+                            </FormRow>
+                          </Container>
                         )}
                         {errors.email && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            {EMAIL.errorMessage}
-                          </P>
+                          <ErrorText>{email.errorMessage}</ErrorText>
                         )}
                         <Field
                           name={EMAIL.name}
@@ -119,13 +122,7 @@ export const ContactInfoForm = (props) => {
                           id="email"
                         />
                         {errors.phone && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            {PHONE.errorMessage}
-                          </P>
+                          <ErrorText>{phone.errorMessage}</ErrorText>
                         )}
                         {errors.extension && (
                           <P

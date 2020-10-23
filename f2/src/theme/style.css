@@ -108,148 +108,11 @@ body {
   border-color: rgb(42, 105, 172);
 }
 
-.conditional-field {
-  border-left-width: 0.25rem;
-  border-left-color: rgb(174, 174, 174);
-  margin-top: 0.5rem;
-  margin-left: 1.25rem;
-  padding-top: 0.25rem;
-  padding-left: 1.5rem;
-  width: -webkit-fill-available;
-}
-
 /*Button*/
-
-.button {
-  height: 3rem;
-  -webkit-box-pack: center;
-  white-space: nowrap;
-  border-width: 1px;
-  border-radius: 4px;
-  border-style: outset;
-  min-width: 8rem;
-  padding-left: 0rem;
-  padding-right: 0rem;
-}
 
 .button-container {
   padding-left: 0rem;
   padding-right: 0rem;
-}
-
-.button-label {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  font-size: 1.25rem;
-  font-weight: 400;
-  display: inline-flex;
-  align-items: center;
-}
-
-.submit-button,
-.submit-button:disabled {
-  background-color: rgb(31, 81, 38);
-  color: rgb(255, 255, 255);
-  border-color: rgb(24, 60, 31);
-}
-
-.submit-button:hover,
-.submit-button:focus {
-  background-color: rgb(31, 81, 38);
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-}
-
-.submit-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(24, 60, 31);
-}
-
-.feedback-button {
-  min-width: 6rem;
-  background-color: rgb(30, 78, 140);
-  color: rgb(255, 255, 255);
-  border-color: rgb(24, 60, 31);
-}
-
-.feedback-button:hover,
-.feedback-button:focus {
-  background-color: rgb(30, 78, 140);
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-}
-
-.feedback-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(30, 78, 140);
-}
-
-.default-button {
-  background-color: rgb(232, 232, 232);
-  color: rgb(0, 0, 0);
-  border-color: rgb(213, 213, 213);
-  margin-left: 16px;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  font-size: 1.125rem;
-  font-weight: 400;
-}
-
-.default-button:hover,
-.default-button:focus {
-  background-color: rgb(232, 232, 232);
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-  color: rgb(0, 0, 0);
-}
-
-.default-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(213, 213, 213);
-  color: rgb(0, 0, 0);
-}
-
-.upload-button {
-  background-color: rgb(30, 78, 140);
-  color: rgb(255, 255, 255);
-  border-color: rgb(21, 62, 117);
-}
-
-.upload-button:hover,
-.upload-button:focus {
-  background-color: rgb(30, 78, 140);
-  border-color: rgb(21, 62, 117);
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-}
-
-.upload-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(21, 62, 117);
-  color: rgb(255, 255, 255);
-  border-color: rgb(21, 62, 117);
-}
-
-.skip-button {
-  background-color: rgb(174, 174, 174);
-  color: rgb(0, 0, 0);
-  border-color: rgb(128, 128, 128);
-}
-
-.skip-button:hover,
-.skip-button:focus {
-  background-color: rgb(174, 174, 174);
-  color: rgb(0, 0, 0);
-  border-color: rgb(128, 128, 128);
-  box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
-}
-
-.skip-button:not(:disabled):not(.disabled):active {
-  background-color: rgb(213, 213, 213);
-  color: rgb(0, 0, 0);
-  border-color: rgb(128, 128, 128);
-}
-
-.button-icon-right {
-  margin-left: 0.5rem;
-  margin-right: -0.5rem;
-}
-
-.button-icon-left {
-  margin-left: -0.5rem;
-  margin-right: 0.5rem;
 }
 
 .next-cancel-buttons {
@@ -270,44 +133,7 @@ body {
   color: inherit;
 }
 
-.mid-form-feedback-button-label {
-  font-size: 1.25rem;
-  line-height: 1.2;
-}
-
-.mid-form-feedback-button {
-  border-color: rgb(174, 174, 174);
-  padding: 1rem 1.5rem;
-  height: inherit;
-  max-width: fit-content;
-  margin-left: 0;
-}
-
 /*Checkboxes and Radio Buttons*/
-
-.custom-control {
-  line-height: 2.5rem;
-}
-
-.custom-control-input {
-  width: 2.5rem;
-  height: 2.5rem;
-  z-index: auto;
-}
-
-.custom-control-label:before {
-  background-color: white;
-  width: 2.5rem;
-  height: 2.5rem;
-  top: 0rem;
-}
-
-.custom-control-label {
-  padding-left: 1.5rem;
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  padding-top: 0.5rem;
-}
 
 .custom-checkbox .custom-control-label:before {
   border-radius: 0rem;
@@ -342,13 +168,6 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-.check-help-text {
-  padding-left: 1.5rem;
-  font-size: 0.875rem;
-  margin-top: -0.5rem;
-  line-height: 1.5;
-}
-
 /*Input Fields*/
 
 .input-field-control {
@@ -372,20 +191,6 @@ body {
   box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
   outline: none;
   border-color: rgb(42, 105, 172);
-}
-
-/*File Upload*/
-
-.upload-container {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
-
-.custom-file {
-  position: absolute;
-  font-size: 100px;
-  opacity: 0;
 }
 
 /*Date Picker*/

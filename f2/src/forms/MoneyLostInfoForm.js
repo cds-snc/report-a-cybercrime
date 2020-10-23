@@ -13,9 +13,9 @@ import {
   createErrorSummary,
 } from './MoneyLostInfoFormSchema'
 import { Form, Container, Row } from 'react-bootstrap'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { DatePicker } from '../components/formik/datePicker'
-import { P } from '../components/formik/paragraph'
+import { ErrorText } from '../components/formik/paragraph'
 import { ErrorSummary } from '../components/formik/alert'
 
 export const MoneyLostInfoForm = (props) => {
@@ -131,7 +131,7 @@ export const MoneyLostInfoForm = (props) => {
                           <Field
                             name="methodPayment"
                             label={question.checkboxLabel}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -163,11 +163,9 @@ export const MoneyLostInfoForm = (props) => {
                   <Trans id="moneyLostPage.transactionDateExample" />
                 </Row>
                 {errors && errors.transaction && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
-                    {
-                      <Trans id="moneyLostPage.transactionDateErrorSummaryMessage" />
-                    }
-                  </P>
+                  <ErrorText>
+                    <Trans id="moneyLostPage.transactionDateErrorSummaryMessage" />
+                  </ErrorText>
                 )}
                 <Field
                   name="transaction"

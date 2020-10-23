@@ -1,48 +1,33 @@
+import React from 'react'
 import styled from '@emotion/styled'
 import { cleanProps } from '../../../utils/cleanProps'
 import {
-  fontSize,
-  lineHeight,
-  fontFamily,
-  fontWeight,
+  typography,
   space,
-  color,
-  colorStyle,
-  display,
+  layout,
   border,
-  borderColor,
-  width,
-  height,
   position,
-  zIndex,
-  top,
-  right,
-  bottom,
-  left,
+  color,
 } from 'styled-system'
 
 export const P = styled('p', {
   shouldForwardProp: (prop) => cleanProps(prop),
 })`
-  font-family: ${fontFamily};
-  ${fontSize};
-  ${fontWeight};
-  ${lineHeight};
-  ${space};
-  ${color};
-  ${colorStyle};
-  ${display};
-  ${border};
-  ${borderColor};
-  ${width};
-  ${height};
-  ${position};
-  ${zIndex};
-  ${top};
-  ${right};
-  ${bottom};
-  ${left};
+  ${typography}
+  ${space}
+  ${layout}
+  ${border}
+  ${position}
+  ${color}
 `
+
+export const ErrorText = (props) => {
+  return (
+    <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+      {props.children}
+    </P>
+  )
+}
 //This component can be used to render hidden text to be used by a screen reader.
 export const HiddenText = styled.p`
   opacity: 0;

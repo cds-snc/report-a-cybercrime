@@ -55,6 +55,7 @@ const App = () => {
               <PhaseBanner phase={<Trans id="banner.phase" />}>
                 <Trans id="banner.phaseText">
                   <A
+                    id="returnToPreviousVersion"
                     color="blue.900"
                     href={
                       i18n.locale === 'en'
