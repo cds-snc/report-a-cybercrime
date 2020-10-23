@@ -157,12 +157,6 @@ export const MoneyLostInfoForm = (props) => {
                 />
               </Row>
               <Row className="form-section">
-                <Row className="form-label">
-                  <Trans id="moneyLostPage.transactionDate" />
-                </Row>
-                <Row className="form-helper-text">
-                  <Trans id="moneyLostPage.transactionDateExample" />
-                </Row>
                 {errors && errors.transaction && (
                   <ErrorText>
                     <Trans id="moneyLostPage.transactionDateErrorSummaryMessage" />
@@ -170,18 +164,14 @@ export const MoneyLostInfoForm = (props) => {
                 )}
                 <Field
                   name="transaction"
-                  label={
-                    <HiddenText>
-                      {<Trans id="moneyLostPage.transactionDate" />}
-                    </HiddenText>
-                  }
+                  label={<Trans id="moneyLostPage.transactionDate" />}
+                  helpText={<Trans id="moneyLostPage.transactionDateExample" />}
                   component={DatePicker}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   id="transaction"
                 />
               </Row>
-
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="businessInfoPage.nextButton" />}
