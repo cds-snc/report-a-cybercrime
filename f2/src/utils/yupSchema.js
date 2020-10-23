@@ -23,15 +23,14 @@ export const yupSchema = () => {
     }),
 
     phoneExtensionSchema: Yup.string().matches(regexDef().phoneExtensionRegex, {
-      message: <Trans id="contactinfoForm.email.warning" />,
+      excludeEmptyString: true,
+      message: 'Please enter a valid phone extension number',
     }),
 
     dateSchema: {
       DAY: Yup.number().min(1).max(31),
       MONTH: Yup.number().min(1).max(12),
-      YEAR: Yup.number().min(1000).max(9999), //Enforce 4 digit entry
+      YEAR: Yup.number().min(1000).max(9999),
     },
   }
 }
-
-//.matches(/^[0-9]*$/)
