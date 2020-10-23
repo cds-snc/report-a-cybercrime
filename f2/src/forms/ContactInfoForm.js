@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
-import { P } from '../components/formik/paragraph'
+import { P, ErrorText } from '../components/formik/paragraph'
 import { Form, Container, Row } from 'react-bootstrap'
 import { formDefaults } from './defaultValues'
 import { Formik, FieldArray, Field } from 'formik'
@@ -101,13 +101,7 @@ export const ContactInfoForm = (props) => {
                     return (
                       <React.Fragment>
                         {errors && errors.fullName && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            {fullName.errorMessage}
-                          </P>
+                          <ErrorText>{fullName.errorMessage}</ErrorText>
                         )}
                         <Field
                           name="fullName"
@@ -120,24 +114,14 @@ export const ContactInfoForm = (props) => {
                         {errors.emailOrPhone && (
                           <Container>
                             <FormRow id="emailOrPhone">
-                              <P
-                                color="#dc3545"
-                                fontSize="1.25rem"
-                                marginBottom="0.5rem"
-                              >
+                              <ErrorText>
                                 <Trans id="contactinfoForm.emailORphone.warning" />
-                              </P>
+                              </ErrorText>
                             </FormRow>
                           </Container>
                         )}
                         {errors.email && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            {email.errorMessage}
-                          </P>
+                          <ErrorText>{email.errorMessage}</ErrorText>
                         )}
                         <Field
                           name="email"
@@ -148,13 +132,7 @@ export const ContactInfoForm = (props) => {
                           id="email"
                         />
                         {errors.phone && (
-                          <P
-                            color="#dc3545"
-                            fontSize="1.25rem"
-                            marginBottom="0.5rem"
-                          >
-                            {phone.errorMessage}
-                          </P>
+                          <ErrorText>{phone.errorMessage}</ErrorText>
                         )}
                         <Field
                           name="phone"
