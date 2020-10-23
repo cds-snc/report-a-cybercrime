@@ -514,7 +514,7 @@
   "whoAreYouReportForPage.hasValidationErrors": "Sélectionnez l'option qui représente la personne pour laquelle vous faites un rapport",
   "whoAreYouReportForPage.nextButton": "Continuer",
   "whoAreYouReportForPage.nextPage": "Étape suivante : Comment l’incident a-t-il commencé?",
-  "whoAreYouReportForPage.options.business": "Une entreprise",
+  "whoAreYouReportForPage.options.business": "Une entreprise ou une organisation",
   "whoAreYouReportForPage.options.myself": "Moi-même",
   "whoAreYouReportForPage.options.someone": "Une connaissance",
   "whoAreYouReportForPage.or": "ou",
