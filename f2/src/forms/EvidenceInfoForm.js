@@ -39,6 +39,7 @@ export const EvidenceInfoForm = (props) => {
   )
   const [status, setStatus] = useState('')
   const [showModal, setShowModal] = useState(false)
+  const [filesDirty, setFilesDirty] = useState(false)
 
   //Place file descriptions into an object to be used by Formik.
   const fileDescriptionsObj = {}
@@ -50,6 +51,10 @@ export const EvidenceInfoForm = (props) => {
   }
 
   setFormValues()
+
+  const isDirty = (formDirty) => {
+    return formDirty || filesDirty
+  }
 
   useEffect(() => {
     const element = document.getElementById('status')
@@ -97,6 +102,7 @@ export const EvidenceInfoForm = (props) => {
       e.target.value = ''
     } else {
       setStatus('fileUpload.added')
+      setFilesDirty(true)
       setFiles(files.concat(e.target.files[0]))
       setFileDescriptions(fileDescriptions.concat(''))
       e.target.value = '' // clear the file input target, to allow the file to be removed then added again
@@ -116,6 +122,7 @@ export const EvidenceInfoForm = (props) => {
     setFiles(newFiles)
     setFileDescriptions(newFileDescriptions)
     setStatus('fileUpload.removed')
+    setFilesDirty(true)
   }
 
   const handleClose = () => setShowModal(false)
@@ -207,7 +214,7 @@ export const EvidenceInfoForm = (props) => {
       >
         {({ handleSubmit, handleChange, dirty, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
-            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
+            <WarningModal dirty={isDirty(dirty)} isSubmitting={isSubmitting} />
             <Container>
               {!maxFiles && (
                 <FormRow>
