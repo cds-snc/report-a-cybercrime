@@ -1,5 +1,6 @@
 import { Row } from 'react-bootstrap'
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import { cleanProps } from '../../../utils/cleanProps'
 import {
   space,
@@ -16,8 +17,10 @@ import {
 
 const separator = (props) =>
   props.separator
-    ? `border-bottom: 2px solid;
-  border-color: rgb(232, 232, 232)};`
+    ? css`
+        border-bottom: 2px solid;
+        border-color: rgb(232, 232, 232);
+      `
     : null
 
 export const FormRow = styled(Row, {

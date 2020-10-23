@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import { Form } from 'react-bootstrap'
 import { FormRow } from '../row'
 import { ConditionalField } from '../conditionalField'
@@ -8,7 +9,7 @@ import { cleanProps } from '../../../utils/cleanProps'
 
 const conditionalFieldStyle = (props) => {
   if (props.checked && props.hasChildren) {
-    return `
+    return css`
       border-left-width: 0.25rem;
       border-left-color: #aeaeae;
       margin-left: -0.25rem;

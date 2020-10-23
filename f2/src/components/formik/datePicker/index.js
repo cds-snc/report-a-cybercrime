@@ -1,14 +1,26 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import { Form, Row, Col, Container } from 'react-bootstrap'
 import { Trans } from '@lingui/macro'
 import { Field } from 'formik'
 import { FormRow } from '../row'
 
-const hasError = (props) => (props.hasError ? `border-color: #dc3545;` : null)
+const hasError = (props) =>
+  props.hasError
+    ? css`
+        border-color: #dc3545;
+      `
+    : null
 
 const inputLength = (props) =>
-  props.dateType === 'year' ? `width: 110px;` : `width: 70px;`
+  props.dateType === 'year'
+    ? css`
+        width: 110px;
+      `
+    : css`
+        width: 70px;
+      `
 
 const DateLabel = styled(Form.Label)`
   vertical-align: middle;

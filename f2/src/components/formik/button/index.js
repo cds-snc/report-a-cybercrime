@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import { Button as BaseButton, Container, Row, Col } from 'react-bootstrap'
 import { GoChevronRight } from 'react-icons/go'
 import { Route } from 'react-router-dom'
@@ -60,7 +61,7 @@ const buttonStyle = (props) => {
   let buttonProps = props.buttonStyle
 
   if (buttonProps) {
-    return `
+    return css`
       background-color: ${buttonProps.backGround};
       color: ${buttonProps.color};
       border-color: ${buttonProps.borderColor};
@@ -126,7 +127,7 @@ const ButtonContainer = styled(Container)`
   margin-top: 2.5rem;
 `
 
-const ButtonOffset = styled(Col)`
+const ButtonCol = styled(Col)`
   padding-left: 0rem;
   padding-right: 0rem;
 `
@@ -192,13 +193,13 @@ export const NextCancelButtons = (props) => {
         </P>
       </Row>
       <Row>
-        <ButtonOffset xs="auto">
+        <ButtonCol xs="auto">
           <SubmitButton label={props.submit} />
-        </ButtonOffset>
-        <ButtonOffset xs="1"></ButtonOffset>
-        <ButtonOffset xs="auto">
+        </ButtonCol>
+        <ButtonCol xs="1"></ButtonCol>
+        <ButtonCol xs="auto">
           <CancelButton label={props.cancel} />
-        </ButtonOffset>
+        </ButtonCol>
       </Row>
     </ButtonContainer>
   )

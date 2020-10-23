@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { Row, Container, Alert as BaseAlert } from 'react-bootstrap'
 import { A } from '../link'
@@ -29,7 +30,7 @@ const Summary = styled(BaseAlert, {
 `
 
 const iconStyle = () =>
-  `
+  css`
     height: 1.5rem;
     width: 1.5rem;
     margin-left: -0.5rem;
