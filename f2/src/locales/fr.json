@@ -109,7 +109,7 @@
   "confirmationPage.location.city": "Ville ou municipalité",
   "confirmationPage.location.nag": "Aucune information fournie.",
   "confirmationPage.location.postalCode": "Code postal",
-  "confirmationPage.location.province": "Province",
+  "confirmationPage.location.province": "Province ou territoire",
   "confirmationPage.location.title": "Votre emplacement géographique",
   "confirmationPage.location.title.edit": "Modifier Votre emplacement géographique",
   "confirmationPage.moneyLost.demandedMoney": "Montant d’argent demandé par le suspect",
