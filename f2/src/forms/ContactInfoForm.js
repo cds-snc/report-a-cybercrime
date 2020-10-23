@@ -91,7 +91,7 @@ export const ContactInfoForm = (props) => {
                     return (
                       <React.Fragment>
                         {errors && errors.fullName && (
-                          <ErrorText>{fullName.errorMessage}</ErrorText>
+                          <ErrorText>{FULL_NAME.errorMessage}</ErrorText>
                         )}
                         <Field
                           name={FULL_NAME.name}
@@ -111,7 +111,7 @@ export const ContactInfoForm = (props) => {
                           </Container>
                         )}
                         {errors.email && (
-                          <ErrorText>{email.errorMessage}</ErrorText>
+                          <ErrorText>{EMAIL.errorMessage}</ErrorText>
                         )}
                         <Field
                           name={EMAIL.name}
@@ -122,7 +122,7 @@ export const ContactInfoForm = (props) => {
                           id="email"
                         />
                         {errors.phone && (
-                          <ErrorText>{phone.errorMessage}</ErrorText>
+                          <ErrorText>{PHONE.errorMessage}</ErrorText>
                         )}
                         {errors.extension && (
                           <P
