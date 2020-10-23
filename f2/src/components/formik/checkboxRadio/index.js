@@ -35,6 +35,12 @@ const Label = styled(Form.Check.Label, {
   font-size: 1.25rem;
   line-height: 1.5rem;
   padding-top: 0.5rem;
+  &:active {
+    &:before {
+      border-color: black;
+      box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+    }
+  }
   &:before {
     width: 2.5rem;
     height: 2.5rem;
