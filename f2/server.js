@@ -177,6 +177,20 @@ app
     })
   })
 
+  .post('/client-logger', (req, res) => {
+    console.log('client side logging received')
+    if (req.body) {
+      if (req.body.level === 'error') {
+        logger.error(req.body)
+      } else if (req.body.level === 'warn') {
+        logger.warn(req.body)
+      } else if (req.body.level === 'info') {
+        logger.info(req.body)
+      } else {
+        logger.debug(req.body)
+      }
+    }
+  })
   .post('/submit', (req, res) => {
     availabilityService.incrementSubmissions()
     var form = new formidable.IncomingForm()

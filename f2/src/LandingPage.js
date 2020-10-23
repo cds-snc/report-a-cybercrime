@@ -18,6 +18,7 @@ import { Page } from './components/Page'
 import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
 import { LandingBox } from './components/container'
+const { getLogger } = require('./utils/winstonLoggerClient')
 
 function checkToken(url = '', dispatch, data = {}) {
   var form_data = new FormData()
@@ -48,12 +49,27 @@ function checkToken(url = '', dispatch, data = {}) {
 }
 
 export const LandingPage = (props) => {
+  const logger = getLogger(__filename)
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue()
   const { fyiForm } = state.formData
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })
   }
+  console.log(state.sessionId)
+  logger.info({
+    sessionId: state.sessionId,
+    message: 'This is information at landing page',
+  })
+  logger.warn({
+    sessionId: state.sessionId,
+    message: 'This is warning at landing page',
+  })
+  logger.error({
+    sessionId: state.sessionId,
+    message: 'This is error at landing page',
+  })
+  //throw new Error('This is a fake error')
   return (
     <React.Fragment>
       <GoogleReCaptcha
