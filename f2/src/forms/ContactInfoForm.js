@@ -121,15 +121,12 @@ export const ContactInfoForm = (props) => {
                           onChange={handleChange}
                           id="email"
                         />
-
                         {errors.phone && (
                           <ErrorText>{PHONE.errorMessage}</ErrorText>
                         )}
-
                         {errors.extension && (
                           <ErrorText>{EXTENSION.errorMessage}</ErrorText>
                         )}
-
                         <FormRow>
                           <Col>
                             <Field
