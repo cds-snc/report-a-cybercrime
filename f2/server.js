@@ -27,6 +27,7 @@ const {
   fileExtensionPasses,
 } = require('./src/utils/acceptableFiles')
 const { convertImages } = require('./src/utils/imageConversion')
+const { printXML } = require('./src/utils/xmlConverter')
 
 // set up rate limiter: maximum of 100 requests per minute (about 12 page loads)
 var RateLimit = require('express-rate-limit')
@@ -217,6 +218,7 @@ app
     })
     form.on('end', () => {
       if (serverFieldsAreValid(fields)) {
+        printXML(fields)
         uploadData(req, res, unflatten(fields, { safe: true }), files)
       } else {
         res.status(422).send('invalid fields') // 422 is "Unprocessable Entity"

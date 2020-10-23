@@ -57,6 +57,7 @@
     "unidecode": "^0.1.8",
     "winston": "~3.2.1",
     "winston-daily-rotate-file": "^4.4.2",
+    "xmlbuilder": "^15.1.1",
     "yup": "^0.29.1",
     "zipcodes": "^8.0.0"
   },
