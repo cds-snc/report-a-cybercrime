@@ -10,6 +10,7 @@ import { NextCancelButtons } from '../components/formik/button'
 import { Error, Info } from '../components/formik/alert'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const DevicesForm = (props) => {
   const [data] = useStateValue()
@@ -26,8 +27,9 @@ export const DevicesForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, dirty, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question" lg={1}></Row>
               <ErrorMessage name="devicePage" component={Error} />

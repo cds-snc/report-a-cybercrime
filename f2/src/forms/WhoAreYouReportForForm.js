@@ -5,13 +5,14 @@ import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
 import { Error } from '../components/formik/alert'
-import { Radio } from '../components/formik/radio'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { TextArea } from '../components/formik/textArea'
-import { P } from '../components/formik/paragraph'
+import { P, ErrorText } from '../components/formik/paragraph'
 import { NextCancelButtons } from '../components/formik/button'
 import { formDefaults } from './defaultValues'
 import { WhoAreYouReportForFormSchema } from './WhoAreYouReportForFormSchema'
 import { ErrorSummary } from '../components/formik/alert'
+import { WarningModal } from '../components/formik/warningModal'
 
 const createErrorSummary = (errors) => {
   const errorSummary = {}
@@ -61,8 +62,17 @@ export const WhoAreYouReportForForm = (props) => {
         }}
         validationSchema={WhoAreYouReportForFormSchema()}
       >
-        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          errors,
+          submitCount,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question">
                 {Object.keys(errors).length > 0 && (
@@ -75,15 +85,15 @@ export const WhoAreYouReportForForm = (props) => {
               </Row>
               <Row className="form-section" id="whoYouReportFor">
                 {errors && errors.whoYouReportFor && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                  <ErrorText>
                     <Trans id="whoAreYouReportForPage.hasValidationErrors" />
-                  </P>
+                  </ErrorText>
                 )}
                 <React.Fragment key="myselfDescription">
                   <Field
                     name="whoYouReportFor"
                     label={<Trans id="whoAreYouReportForPage.options.myself" />}
-                    component={Radio}
+                    component={CheckBoxRadio}
                     value="whoAreYouReportForPage.options.myself"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -106,7 +116,7 @@ export const WhoAreYouReportForForm = (props) => {
                           <Field
                             name="whoYouReportFor"
                             label={<Trans id={question.value} />}
-                            component={Radio}
+                            component={CheckBoxRadio}
                             value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}

@@ -5,11 +5,12 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
-import { Radio } from '../components/formik/radio'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { Input } from '../components/formik/input'
 import { useStateValue } from '../utils/state'
 import { formDefaults } from './defaultValues'
 import { NextCancelButtons } from '../components/formik/button'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const BusinessInfoForm = (props) => {
   const [data] = useStateValue()
@@ -47,8 +48,9 @@ export const BusinessInfoForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, dirty, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question">
                 <ErrorMessage name="businessInfo" component={Error} />
@@ -98,7 +100,7 @@ export const BusinessInfoForm = (props) => {
                           <Field
                             name="numberOfEmployee"
                             label={question.radioLabel}
-                            component={Radio}
+                            component={CheckBoxRadio}
                             value={question.radioValue}
                             onChange={handleChange}
                             onBlur={handleBlur}

@@ -18,6 +18,7 @@ import { Page } from './components/Page'
 import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
 import { LandingBox } from './components/container'
+import { removeBeforeUnloadWarning } from './utils/navigationWarning'
 
 function checkToken(url = '', dispatch, data = {}) {
   var form_data = new FormData()
@@ -54,12 +55,21 @@ export const LandingPage = (props) => {
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })
   }
+
+  removeBeforeUnloadWarning()
+
   return (
     <React.Fragment>
       <GoogleReCaptcha
         onVerify={async (token) => {
           console.log(token)
           checkToken('/checkToken', dispatch, { token })
+          let textarea = document.getElementById('g-recaptcha-response-100000')
+          if (textarea) {
+            textarea.setAttribute('aria-hidden', 'true')
+            textarea.setAttribute('aria-label', 'do not use')
+            textarea.setAttribute('aria-readonly', 'true')
+          }
         }}
       />
       <Route

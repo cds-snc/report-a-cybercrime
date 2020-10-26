@@ -63,7 +63,7 @@ const formatReportInfo = (data) => {
   let fyiForm
   if (data.fyiForm === 'yes') {
     fyiForm =
-      data.language === 'en' ? 'Qick Tip' : 'soumettre des renseignements'
+      data.language === 'en' ? 'Quick Tip' : 'soumettre des renseignements'
   } else {
     fyiForm = data.language === 'en' ? 'Full Report' : 'Rapport complet'
   }
@@ -138,6 +138,10 @@ const formatVictimDetails = (data) => {
     formatLineHtml(
       lang['contactinfoPage.phoneNumber'],
       data.contactInfo.phone,
+    ) +
+    formatLineHtml(
+      lang['contactinfoPage.phoneExtension'],
+      data.contactInfo.extension,
     ) +
     formatLineHtml(lang['LocationAnonymousInfoForm.city'], data.location.city) +
     formatLineHtml(

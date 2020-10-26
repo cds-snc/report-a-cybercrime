@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Formik, FieldArray, Field } from 'formik'
 import { Error } from '../components/formik/alert'
 import { Form, Container, Row } from 'react-bootstrap'
-import { Radio } from '../components/formik/radio'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { TextArea } from '../components/formik/textArea'
 import { FeedbackButton } from '../components/formik/button'
 
@@ -81,7 +81,7 @@ export const FinalFeedbackForm = (props) => {
                         <Field
                           name="wasServiceHard"
                           label={question.radioLabel}
-                          component={Radio}
+                          component={CheckBoxRadio}
                           value={question.radioValue}
                           onChange={handleChange}
                           onBlur={handleBlur}

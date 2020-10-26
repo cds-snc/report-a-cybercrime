@@ -11,9 +11,10 @@ import { P } from '../components/formik/paragraph'
 import { formDefaults } from './defaultValues'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { Input } from '../components/formik/input'
 import { NextCancelButtons } from '../components/formik/button'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const InformationForm = (props) => {
   const [data] = useStateValue()
@@ -93,8 +94,16 @@ export const InformationForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ values, handleSubmit, handleChange, handleBlur }) => (
+        {({
+          values,
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question" lg={1}>
                 <Row className="form-label">
@@ -116,7 +125,7 @@ export const InformationForm = (props) => {
                           <Field
                             name="typeOfInfoReq"
                             label={question.checkboxLabel}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.checkboxValue}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -162,7 +171,7 @@ export const InformationForm = (props) => {
                           <Field
                             name="typeOfInfoObtained"
                             label={question.checkboxLabel}
-                            component={CheckBox}
+                            component={CheckBoxRadio}
                             value={question.checkboxValue}
                             onChange={handleChange}
                             onBlur={handleBlur}

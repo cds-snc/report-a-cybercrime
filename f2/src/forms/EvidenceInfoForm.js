@@ -17,6 +17,7 @@ import { FileUpload } from '../components/formik/fileUpload'
 import { TextArea } from '../components/formik/textArea'
 import { FormRow } from '../components/formik/row'
 import { Modal } from 'react-bootstrap'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const EvidenceInfoForm = (props) => {
   const [data] = useStateValue()
@@ -38,6 +39,7 @@ export const EvidenceInfoForm = (props) => {
   )
   const [status, setStatus] = useState('')
   const [showModal, setShowModal] = useState(false)
+  const [filesDirty, setFilesDirty] = useState(false)
 
   //Place file descriptions into an object to be used by Formik.
   const fileDescriptionsObj = {}
@@ -49,6 +51,10 @@ export const EvidenceInfoForm = (props) => {
   }
 
   setFormValues()
+
+  const isDirty = (formDirty) => {
+    return formDirty || filesDirty
+  }
 
   useEffect(() => {
     const element = document.getElementById('status')
@@ -96,6 +102,7 @@ export const EvidenceInfoForm = (props) => {
       e.target.value = ''
     } else {
       setStatus('fileUpload.added')
+      setFilesDirty(true)
       setFiles(files.concat(e.target.files[0]))
       setFileDescriptions(fileDescriptions.concat(''))
       e.target.value = '' // clear the file input target, to allow the file to be removed then added again
@@ -115,6 +122,7 @@ export const EvidenceInfoForm = (props) => {
     setFiles(newFiles)
     setFileDescriptions(newFileDescriptions)
     setStatus('fileUpload.removed')
+    setFilesDirty(true)
   }
 
   const handleClose = () => setShowModal(false)
@@ -186,7 +194,10 @@ export const EvidenceInfoForm = (props) => {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <DefaultButton onClick={handleClose} label="OK" />
+          <DefaultButton
+            onClick={handleClose}
+            label={<Trans id="button.ok" />}
+          />
         </Modal.Footer>
       </Modal>
 
@@ -201,8 +212,9 @@ export const EvidenceInfoForm = (props) => {
           props.onSubmit(data)
         }}
       >
-        {({ handleSubmit, handleChange }) => (
+        {({ handleSubmit, handleChange, dirty, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={isDirty(dirty)} isSubmitting={isSubmitting} />
             <Container>
               {!maxFiles && (
                 <FormRow>
