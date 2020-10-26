@@ -17,8 +17,10 @@ import {
 
 const separator = (props) =>
   props.separator
-    ? css`border-bottom: 2px solid;
-  border-color: rgb(232, 232, 232)};`
+    ? css`
+        border-bottom: 2px solid;
+        border-color: rgb(232, 232, 232);
+      `
     : null
 
 export const FormRow = styled(Row, {

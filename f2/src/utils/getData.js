@@ -51,7 +51,8 @@ async function getData(data, files) {
   data.evidence.files = filesToJson
 
   const selfHarmWords = selfHarmWordsScan(data)
-  if (selfHarmWords) {
+
+  if (selfHarmWords && selfHarmWords.length > 0) {
     console.warn(`Self harm words detected: ${selfHarmWords}`)
   }
   data.selfHarmWords = selfHarmWords

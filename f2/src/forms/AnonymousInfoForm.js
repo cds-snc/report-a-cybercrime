@@ -7,6 +7,7 @@ import { Formik, Field } from 'formik'
 import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { Warning } from '../components/formik/alert'
 import { NextCancelButtons } from '../components/formik/button'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const AnonymousInfoForm = (props) => {
   const [data] = useStateValue()
@@ -31,8 +32,16 @@ export const AnonymousInfoForm = (props) => {
         props.onSubmit(values)
       }}
     >
-      {({ values, handleSubmit, handleChange, handleBlur }) => (
+      {({
+        values,
+        handleSubmit,
+        handleChange,
+        handleBlur,
+        dirty,
+        isSubmitting,
+      }) => (
         <Form onSubmit={handleSubmit}>
+          <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
           <Container>
             <Row className="form-section">
               <Field

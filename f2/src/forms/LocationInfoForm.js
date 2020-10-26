@@ -9,10 +9,11 @@ import { FormRow } from '../components/formik/row'
 import { Formik, Field } from 'formik'
 import { NextCancelButtons, SkipButton } from '../components/formik/button'
 import { LocationInfoFormSchema } from './LocationInfoFormSchema'
-import { P } from '../components/formik/paragraph'
+import { ErrorText } from '../components/formik/paragraph'
 import { Input } from '../components/formik/input'
 import { ErrorSummary } from '../components/formik/alert'
 import { formDefaults } from './defaultValues'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const LocationInfoForm = (props) => {
   const [, dispatch] = useStateValue()
@@ -60,8 +61,17 @@ export const LocationInfoForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          errors,
+          submitCount,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             {errors.postalCode && (
               <ErrorSummary
                 errors={errorDescription}
@@ -84,9 +94,7 @@ export const LocationInfoForm = (props) => {
               </FormRow>
               <FormRow>
                 {errors.postalCode && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
-                    {errors.postalCode}
-                  </P>
+                  <ErrorText>{errors.postalCode}</ErrorText>
                 )}
               </FormRow>
               <FormRow>

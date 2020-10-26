@@ -9,8 +9,9 @@ import { formDefaults } from './defaultValues'
 import { ErrorSummary } from '../components/formik/alert'
 import { NextCancelButtons } from '../components/formik/button'
 import { WhatWasAffectedFormSchema } from './WhatWasAffectedFormSchema'
-import { P } from '../components/formik/paragraph'
+import { ErrorText } from '../components/formik/paragraph'
 import { whatWasAffectedPages } from '../utils/nextWhatWasAffectedUrl'
+import { WarningModal } from '../components/formik/warningModal'
 
 const createErrorSummary = (errors) => {
   const errorSummary = {}
@@ -77,8 +78,17 @@ export const WhatWasAffectedForm = (props) => {
         }}
         validationSchema={WhatWasAffectedFormSchema()}
       >
-        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          errors,
+          submitCount,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question">
                 <Row className="form-label">
@@ -97,9 +107,9 @@ export const WhatWasAffectedForm = (props) => {
               </Row>
               <Row className="form-section" id="affectedOptions">
                 {errors && errors.affectedOptions && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
+                  <ErrorText>
                     <Trans id="whatWasAffectedForm.warning" />
-                  </P>
+                  </ErrorText>
                 )}
                 <FieldArray
                   name="affectedOptions"
