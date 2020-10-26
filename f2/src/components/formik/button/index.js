@@ -134,7 +134,7 @@ const ButtonCol = styled(Col)`
 
 export const DefaultButton = (props) => {
   return (
-    <Button buttonStyle={buttonTypes.DEFAULT}>
+    <Button buttonStyle={buttonTypes.DEFAULT} onClick={props.onClick}>
       <ButtonLabel>{props.label}</ButtonLabel>
     </Button>
   )
