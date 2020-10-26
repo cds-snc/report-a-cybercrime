@@ -18,7 +18,9 @@ import { Page } from './components/Page'
 import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
 import { LandingBox } from './components/container'
+import { useLog } from './useLog'
 const { getLogger } = require('./utils/winstonLoggerClient')
+const logger = getLogger(__filename)
 
 function checkToken(url = '', dispatch, data = {}) {
   var form_data = new FormData()
@@ -49,10 +51,10 @@ function checkToken(url = '', dispatch, data = {}) {
 }
 
 export const LandingPage = (props) => {
-  const logger = getLogger(__filename)
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue()
   const { fyiForm } = state.formData
+  useLog(state.sessionId, 'LandingPage')
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })
   }

@@ -190,6 +190,7 @@ app
         logger.debug(req.body)
       }
     }
+    res.send('OK')
   })
   .post('/submit', (req, res) => {
     availabilityService.incrementSubmissions()
