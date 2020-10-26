@@ -37,6 +37,11 @@ export const ContactInfoView = (props) => {
             description={contactInfo.phone}
             lang={lang}
           />
+          <DescriptionItemView
+            title="confirmationPage.contactInfo.extension"
+            description={contactInfo.extension}
+            lang={lang}
+          />
         </View>
       ) : (
         <Text style={pdfStyles.sectionContent}>
