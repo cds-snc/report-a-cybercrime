@@ -500,6 +500,7 @@
   "whenDidItHappenForm.error": "Please make a selection, if you are not sure select 'I'm not sure' ",
   "whenDidItHappenPage.dateRange.end.label": "When did it last happen?",
   "whenDidItHappenPage.dateRange.start.label": "When did it start?",
+  "whenDidItHappenPage.details": "Details",
   "whenDidItHappenPage.intro": "These incidents can happen once or multiple times and sometimes it’s difficult to remember the exact date. ",
   "whenDidItHappenPage.nextPage": "Next: What do you think could be affected?",
   "whenDidItHappenPage.notSure.helperText": "Enter the time frame that the suspect tried to contact you, to the best of your memory.",

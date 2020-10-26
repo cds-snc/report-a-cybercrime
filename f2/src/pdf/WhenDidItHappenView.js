@@ -64,10 +64,15 @@ export const WhenDidItHappenView = (props) => {
             lang={lang}
           />
           {containsData(whenDidItHappen.description) ? (
-            <Text style={pdfStyles.sectionContent}>
-              {whenDidItHappen.description}
-            </Text>
-          ) : null}
+            <DescriptionItemView
+              title="whenDidItHappenPage.details"
+              description={whenDidItHappen.description}
+              lang={lang}
+            />
+          ) : // <Text style={pdfStyles.sectionContent}>
+          //   {whenDidItHappen.description}
+          // </Text>
+          null}
         </View>
       ) : (
         <Text style={pdfStyles.sectionContent}>
