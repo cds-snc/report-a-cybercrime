@@ -17,6 +17,7 @@ import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { DatePicker } from '../components/formik/datePicker'
 import { ErrorText } from '../components/formik/paragraph'
 import { ErrorSummary } from '../components/formik/alert'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const MoneyLostInfoForm = (props) => {
   const [data] = useStateValue()
@@ -79,8 +80,17 @@ export const MoneyLostInfoForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, submitCount, errors }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          submitCount,
+          errors,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question">
                 {Object.keys(errors).length > 0 && (

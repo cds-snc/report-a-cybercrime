@@ -10,6 +10,7 @@ import { NextCancelButtons } from '../components/formik/button'
 import { Info, ErrorSummary } from '../components/formik/alert'
 import { TextArea } from '../components/formik/textArea'
 import { whenDidItHappenFormSchema } from './WhenDidItHappenFormSchema'
+import { WarningModal } from '../components/formik/warningModal'
 import { ErrorText } from '../components/formik/paragraph'
 
 export const WhenDidItHappenForm = (props) => {
@@ -79,8 +80,17 @@ export const WhenDidItHappenForm = (props) => {
           }
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, submitCount, errors }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          submitCount,
+          errors,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question">
                 {Object.keys(errors).length > 0 && (

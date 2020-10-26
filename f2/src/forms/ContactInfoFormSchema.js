@@ -7,6 +7,7 @@ import { yupSchema } from '../utils/yupSchema'
 const contactInfoFormValidation = Yup.object().shape({
   email: yupSchema().emailSchema,
   phone: yupSchema().phoneSchema,
+  extension: yupSchema().phoneExtensionSchema,
 })
 
 const contactFormOptions = {
@@ -31,6 +32,13 @@ const contactFormOptions = {
     label: <Trans id="contactinfoPage.phoneNumber" />,
     errorMessage: <Trans id="contactinfoForm.phone.warning" />,
   },
+  extension: {
+    name: 'extension',
+    value: 'extension',
+    id: 'enterContactDetails-Extension',
+    label: <Trans id="contactinfoPage.phoneExtension" />,
+    errorMessage: <Trans id="contactinfoForm.phoneExtension.warning" />,
+  },
 }
 
 const createErrorSummary = (errors) => {
@@ -54,6 +62,13 @@ const createErrorSummary = (errors) => {
     errorSummary['phone'] = {
       label: contactFormOptions.phone.label,
       message: contactFormOptions.phone.errorMessage,
+    }
+  }
+
+  if (errors.extension) {
+    errorSummary['extension'] = {
+      label: contactFormOptions.extension.label,
+      message: contactFormOptions.extension.errorMessage,
     }
   }
 
@@ -92,6 +107,14 @@ const onSubmitValidation = async (values) => {
     values.phone = errors['phone']
       ? values.phone
       : formatPhoneNumber(values.phone)
+  }
+
+  if (values.extension) {
+    await contactInfoFormValidation
+      .validate({ extension: values.extension })
+      .catch((err) => {
+        errors['extension'] = true
+      })
   }
 
   if (!values.email && !values.phone) {
