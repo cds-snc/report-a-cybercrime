@@ -69,10 +69,7 @@ export const WhenDidItHappenView = (props) => {
               description={whenDidItHappen.description}
               lang={lang}
             />
-          ) : // <Text style={pdfStyles.sectionContent}>
-          //   {whenDidItHappen.description}
-          // </Text>
-          null}
+          ) : null}
         </View>
       ) : (
         <Text style={pdfStyles.sectionContent}>
