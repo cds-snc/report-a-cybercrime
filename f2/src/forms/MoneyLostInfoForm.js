@@ -15,8 +15,9 @@ import {
 import { Form, Container, Row } from 'react-bootstrap'
 import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { DatePicker } from '../components/formik/datePicker'
-import { P } from '../components/formik/paragraph'
+import { ErrorText } from '../components/formik/paragraph'
 import { ErrorSummary } from '../components/formik/alert'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const MoneyLostInfoForm = (props) => {
   const [data] = useStateValue()
@@ -79,8 +80,17 @@ export const MoneyLostInfoForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, submitCount, errors }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          submitCount,
+          errors,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question">
                 {Object.keys(errors).length > 0 && (
@@ -163,11 +173,9 @@ export const MoneyLostInfoForm = (props) => {
                   <Trans id="moneyLostPage.transactionDateExample" />
                 </Row>
                 {errors && errors.transaction && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
-                    {
-                      <Trans id="moneyLostPage.transactionDateErrorSummaryMessage" />
-                    }
-                  </P>
+                  <ErrorText>
+                    <Trans id="moneyLostPage.transactionDateErrorSummaryMessage" />
+                  </ErrorText>
                 )}
                 <Field
                   name="transaction"

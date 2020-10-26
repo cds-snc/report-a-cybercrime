@@ -7,6 +7,7 @@ import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { TextArea } from '../components/formik/textArea'
 import { NextCancelButtons } from '../components/formik/button'
 import { Error, Info } from '../components/formik/alert'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const HowDidItStartForm = (props) => {
   const [data] = useStateValue()
@@ -58,15 +59,16 @@ export const HowDidItStartForm = (props) => {
         initialValues={howDidItStart}
         onSubmit={(values) => {
           formOptions.forEach((question) => {
-            if (!values.howDidTheyReachYou.includes(question.name)) {
+            if (!values.howDidTheyReachYou.includes(question.checkboxName)) {
               values[question.name] = ''
             }
           })
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, dirty, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question">
                 <Row className="form-label">
@@ -89,7 +91,7 @@ export const HowDidItStartForm = (props) => {
                             name="howDidTheyReachYou"
                             label={question.checkboxLabel}
                             component={CheckBoxRadio}
-                            value={question.name}
+                            value={question.checkboxName}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             type="checkbox"

@@ -8,6 +8,7 @@ import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
 import { NextCancelButtons } from '../components/formik/button'
 import { Input } from '../components/formik/input'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const LocationAnonymousInfoForm = (props) => {
   const [data] = useStateValue()
@@ -23,8 +24,9 @@ export const LocationAnonymousInfoForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, dirty, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row>
                 <Field
