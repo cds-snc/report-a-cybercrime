@@ -4,13 +4,14 @@ import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field, FieldArray } from 'formik'
-import { Radio } from '../components/formik/radio'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { DatePicker } from '../components/formik/datePicker'
 import { NextCancelButtons } from '../components/formik/button'
 import { Info, ErrorSummary } from '../components/formik/alert'
 import { TextArea } from '../components/formik/textArea'
 import { whenDidItHappenFormSchema } from './WhenDidItHappenFormSchema'
-import { P } from '../components/formik/paragraph'
+import { WarningModal } from '../components/formik/warningModal'
+import { ErrorText } from '../components/formik/paragraph'
 
 export const WhenDidItHappenForm = (props) => {
   const [data] = useStateValue()
@@ -79,8 +80,17 @@ export const WhenDidItHappenForm = (props) => {
           }
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, submitCount, errors }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          submitCount,
+          errors,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question">
                 {Object.keys(errors).length > 0 && (
@@ -96,9 +106,7 @@ export const WhenDidItHappenForm = (props) => {
               </Row>
               <Row className="form-section">
                 {errors && errors.incidentFrequency && (
-                  <P color="#dc3545" fontSize="1.25rem" marginBottom="0.5rem">
-                    {incidentFrequency.errorMessage}
-                  </P>
+                  <ErrorText>{incidentFrequency.errorMessage}</ErrorText>
                 )}
                 <FieldArray
                   name="incidentFrequency"
@@ -110,7 +118,7 @@ export const WhenDidItHappenForm = (props) => {
                           <Field
                             name="incidentFrequency"
                             label={question.radioLabel}
-                            component={Radio}
+                            component={CheckBoxRadio}
                             value={question.value}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -120,13 +128,9 @@ export const WhenDidItHappenForm = (props) => {
                             {question.value === 'once' && (
                               <div id={question.name}>
                                 {errors && errors.happenedOnce && (
-                                  <P
-                                    color="#dc3545"
-                                    fontSize="1.25rem"
-                                    marginBottom="0.5rem"
-                                  >
+                                  <ErrorText>
                                     {question.datePicker.errorMessage}
-                                  </P>
+                                  </ErrorText>
                                 )}
                                 <Field
                                   name={question.name}
@@ -143,13 +147,9 @@ export const WhenDidItHappenForm = (props) => {
                               <React.Fragment>
                                 <div id="start">
                                   {errors && errors.start && (
-                                    <P
-                                      color="#dc3545"
-                                      fontSize="1.25rem"
-                                      marginBottom="0.5rem"
-                                    >
+                                    <ErrorText>
                                       {question.datePickerStart.errorMessage}
-                                    </P>
+                                    </ErrorText>
                                   )}
                                   <Field
                                     name="start"
@@ -163,13 +163,9 @@ export const WhenDidItHappenForm = (props) => {
                                 </div>
                                 <div id="end">
                                   {errors && errors.end && (
-                                    <P
-                                      color="#dc3545"
-                                      fontSize="1.25rem"
-                                      marginBottom="0.5rem"
-                                    >
+                                    <ErrorText>
                                       {question.datePickerEnd.errorMessage}
-                                    </P>
+                                    </ErrorText>
                                   )}
                                   <Field
                                     name="end"

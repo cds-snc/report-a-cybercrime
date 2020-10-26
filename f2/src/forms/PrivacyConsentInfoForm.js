@@ -4,11 +4,12 @@ import { useStateValue } from '../utils/state'
 import { A } from '../components/formik/link'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, Field } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { NextCancelButtons } from '../components/formik/button'
 import { useLingui } from '@lingui/react'
 import { ErrorSummary } from '../components/formik/alert'
 import { PrivacyConsentInfoFormSchema } from './PrivacyConsentInfoFormSchema'
+import { WarningModal } from '../components/formik/warningModal'
 
 const createErrorSummary = (errors) => {
   const errorSummary = {}
@@ -43,8 +44,17 @@ export const PrivacyConsentInfoForm = (props) => {
         }}
         validationSchema={PrivacyConsentInfoFormSchema()}
       >
-        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          errors,
+          submitCount,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row classname="form-question">
                 {Object.keys(errors).length > 0 && (
@@ -69,7 +79,7 @@ export const PrivacyConsentInfoForm = (props) => {
                       />
                     </Trans>
                   }
-                  component={CheckBox}
+                  component={CheckBoxRadio}
                   value="privacyConsentInfoForm.yes"
                   onChange={handleChange}
                   onBlur={handleBlur}
