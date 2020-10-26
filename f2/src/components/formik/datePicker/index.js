@@ -1,31 +1,92 @@
 import React from 'react'
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import { Form, Row, Col, Container } from 'react-bootstrap'
 import { Trans } from '@lingui/macro'
 import { Field } from 'formik'
+import { FormRow } from '../row'
+
+const hasError = (props) =>
+  props.hasError
+    ? css`
+        border-color: #dc3545;
+      `
+    : null
+
+const inputLength = (props) =>
+  props.dateType === 'year'
+    ? css`
+        width: 110px;
+      `
+    : css`
+        width: 70px;
+      `
+
+const DateLabel = styled(Form.Label)`
+  vertical-align: middle;
+`
+
+const DateColumn = styled(Col)`
+  padding-left: 0rem;
+`
+
+const DateInput = styled(Form.Control)`
+  margin-top: 0.75rem;
+  &:hover {
+    box-shadow: rgb(213, 213, 213) 0px 0px 0px 2px;
+    border-color: black;
+  }
+  &:focus {
+    box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+    outline: none;
+    border-color: black;
+  }
+  ${hasError}
+  ${inputLength}
+`
+
+const HelpText = styled(Form.Text)`
+  line-height: 1.25;
+  font-size: 1rem;
+  max-width: 600px;
+  display: block;
+  margin-top: 0.25rem;
+`
+
+const Label = styled(Form.Label)`
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+  margin-left: 0px;
+  max-width: 600px;
+  display: inline-block;
+`
 
 const DateEntry = ({ field, form, ...props }) => {
   let length = 2
-  let dateClass = 'day-month'
+  let dateType = 'day-month'
   const error =
     form.errors && form.errors[field.name] && form.touched[field.name]
 
   if (props.type === 'year') {
     length = 4
-    dateClass = 'year'
+    dateType = 'year'
   }
 
   return (
-    <Col sm="auto" className="date-picker">
+    <DateColumn sm="auto">
       <Form.Group controlId={props.id}>
-        <Form.Label className="date-label">{props.label}</Form.Label>
-        <Form.Control
-          className={'date-input ' + dateClass + (error ? ' field-error' : '')}
+        <DateLabel>{props.label}</DateLabel>
+        <DateInput
+          hasError={error}
+          dateType={dateType}
           type="text"
           {...field}
           maxLength={length}
         />
       </Form.Group>
-    </Col>
+    </DateColumn>
   )
 }
 
@@ -33,13 +94,13 @@ export const DatePicker = ({ field, form, ...props }) => {
   return (
     <Container fluid>
       <Row>
-        <Form.Label>{props.label}</Form.Label>
+        <Label>{props.label}</Label>
       </Row>
       <Row>
-        <Form.Text className="input-help-text">{props.helpText}</Form.Text>
+        <HelpText>{props.helpText}</HelpText>
       </Row>
 
-      <Row className="date-group">
+      <FormRow marginTop="0.75rem">
         <Field
           name={field.name + 'Day'}
           component={DateEntry}
@@ -65,7 +126,7 @@ export const DatePicker = ({ field, form, ...props }) => {
           type="year"
           label={<Trans id="whenDidItStart.startYear" />}
         />
-      </Row>
+      </FormRow>
     </Container>
   )
 }

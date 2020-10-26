@@ -18,6 +18,7 @@ import { Page } from './components/Page'
 import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
 import { LandingBox } from './components/container'
+import { removeBeforeUnloadWarning } from './utils/navigationWarning'
 
 function checkToken(url = '', dispatch, data = {}) {
   var form_data = new FormData()
@@ -54,6 +55,9 @@ export const LandingPage = (props) => {
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })
   }
+
+  removeBeforeUnloadWarning()
+
   return (
     <React.Fragment>
       <GoogleReCaptcha

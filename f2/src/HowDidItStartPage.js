@@ -32,6 +32,7 @@ export const HowDidItStartPage = () => {
               </Stack>
 
               <HowDidItStartForm
+                history={history}
                 onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
