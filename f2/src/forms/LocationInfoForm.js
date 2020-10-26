@@ -13,6 +13,7 @@ import { ErrorText } from '../components/formik/paragraph'
 import { Input } from '../components/formik/input'
 import { ErrorSummary } from '../components/formik/alert'
 import { formDefaults } from './defaultValues'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const LocationInfoForm = (props) => {
   const [, dispatch] = useStateValue()
@@ -60,8 +61,17 @@ export const LocationInfoForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, errors, submitCount }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          errors,
+          submitCount,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             {errors.postalCode && (
               <ErrorSummary
                 errors={errorDescription}

@@ -17,6 +17,7 @@ import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { DatePicker } from '../components/formik/datePicker'
 import { ErrorText } from '../components/formik/paragraph'
 import { ErrorSummary } from '../components/formik/alert'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const MoneyLostInfoForm = (props) => {
   const [data] = useStateValue()
@@ -79,8 +80,17 @@ export const MoneyLostInfoForm = (props) => {
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur, submitCount, errors }) => (
+        {({
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          submitCount,
+          errors,
+          dirty,
+          isSubmitting,
+        }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question">
                 {Object.keys(errors).length > 0 && (
@@ -156,12 +166,6 @@ export const MoneyLostInfoForm = (props) => {
                 />
               </Row>
               <Row className="form-section">
-                <Row className="form-label">
-                  <Trans id="moneyLostPage.transactionDate" />
-                </Row>
-                <Row className="form-helper-text">
-                  <Trans id="moneyLostPage.transactionDateExample" />
-                </Row>
                 {errors && errors.transaction && (
                   <ErrorText>
                     <Trans id="moneyLostPage.transactionDateErrorSummaryMessage" />
@@ -169,13 +173,14 @@ export const MoneyLostInfoForm = (props) => {
                 )}
                 <Field
                   name="transaction"
+                  label={<Trans id="moneyLostPage.transactionDate" />}
+                  helpText={<Trans id="moneyLostPage.transactionDateExample" />}
                   component={DatePicker}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   id="transaction"
                 />
               </Row>
-
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="businessInfoPage.nextButton" />}

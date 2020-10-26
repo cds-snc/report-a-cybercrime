@@ -18,6 +18,7 @@ import { Page } from './components/Page'
 import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
 import { LandingBox } from './components/container'
+import { removeBeforeUnloadWarning } from './utils/navigationWarning'
 import { useLog } from './useLog'
 const { getLogger } = require('./utils/winstonLoggerClient')
 const logger = getLogger(__filename)
@@ -72,6 +73,7 @@ export const LandingPage = (props) => {
     message: 'This is error at landing page',
   })
   //throw new Error('This is a fake error')
+  removeBeforeUnloadWarning()
   return (
     <React.Fragment>
       <GoogleReCaptcha

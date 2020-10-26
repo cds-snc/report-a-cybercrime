@@ -28,6 +28,7 @@ export const ConfirmCancelPage = () => {
                 </P>
 
                 <Button
+                  id="cancelReport"
                   onClick={() => {
                     dispatch({
                       type: 'deleteFormData',
