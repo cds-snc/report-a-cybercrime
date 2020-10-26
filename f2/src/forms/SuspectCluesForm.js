@@ -8,6 +8,7 @@ import { useStateValue } from '../utils/state'
 import { Formik, FieldArray, Field } from 'formik'
 import { SuspectCluesFormSchema } from './SuspectCluesFormSchema'
 import { Form, Container, Row } from 'react-bootstrap'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const SuspectCluesForm = (props) => {
   const [data] = useStateValue()
@@ -44,8 +45,9 @@ export const SuspectCluesForm = (props) => {
         validationSchema={SuspectCluesFormSchema()}
         onSubmit={(values) => props.onSubmit(values)}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, dirty, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-section">
                 <FieldArray
