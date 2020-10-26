@@ -18,6 +18,7 @@ export const BusinessPage = () => {
   const whatWasAffectedNavState = state.whatWasAffectedOptions
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.BUSINESS
+  navigate(doneForms, whatWasAffectedNavState)
 
   return (
     <Route
@@ -35,9 +36,10 @@ export const BusinessPage = () => {
                 </P>
               </Stack>
               <BusinessInfoForm
+                nextpageText={
+                  whatWasAffectedNavState.nextPage.nextPageTextInPreviousPage
+                }
                 onSubmit={(data) => {
-                  navigate(doneForms, whatWasAffectedNavState)
-
                   dispatch({
                     type: 'saveFormData',
                     data: { businessInfo: data },

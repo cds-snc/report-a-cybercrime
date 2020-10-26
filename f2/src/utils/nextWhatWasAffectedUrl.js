@@ -2,41 +2,42 @@ export const whatWasAffectedPages = {
   FINANCIAL: {
     key: 'whatWasAffectedForm.financial',
     url: 'moneylost',
-    nextPageTextIdInPreviousPage: 'previousPageofMoneyLost.nextPage',
+    nextPageTextInPreviousPage: 'previousPageofMoneyLost.nextPage',
   },
   INFORMATION: {
     key: 'whatWasAffectedForm.personalInformation',
     url: 'information',
-    nextPageTextIdInPreviousPage: 'previousPageofInformation.nextPage',
+    nextPageTextInPreviousPage: 'previousPageofInformation.nextPage',
   },
   DEVICES: {
     key: 'whatWasAffectedForm.devices',
     url: 'devices',
-    nextPageTextIdInPreviousPage: 'previousPageofDevices.nextPage',
+    nextPageTextInPreviousPage: 'previousPageofDevices.nextPage',
   },
   BUSINESS: {
     key: 'whatWasAffectedForm.business_assets',
     url: 'business',
-    nextPageTextIdInPreviousPage: 'previousPageofBusiness.nextPage',
+    nextPageTextInPreviousPage: 'previousPageofBusiness.nextPage',
   },
   OTHER: {
     key: 'whatWasAffectedForm.other',
     url: '',
-    nextPageTextIdInPreviousPage: '',
+    nextPageTextInPreviousPage: '',
   },
   FIRST_PAGE: {
     key: 'whatWasAffectedForm',
     url: 'whatwasaffected',
-    nextPageTextIdInPreviousPage: '',
+    nextPageTextInPreviousPage: '',
   },
   LAST_PAGE: {
     key: '',
     url: 'whathappened',
-    nextPageTextIdInPreviousPage: 'previousPageofWhathappened.nextPage',
+    nextPageTextInPreviousPage: 'previousPageofWhathappened.nextPage',
   },
   CONFIRMATION: {
     key: '',
     url: 'confirmation',
+    nextPageTextInPreviousPage: 'previousPageofConfirmation.nextPage',
   },
 }
 

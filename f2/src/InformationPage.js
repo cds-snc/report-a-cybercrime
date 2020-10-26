@@ -18,6 +18,7 @@ export const InformationPage = () => {
   const whatWasAffectedNavState = state.whatWasAffectedOptions
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.INFORMATION
+  navigate(doneForms, whatWasAffectedNavState)
 
   return (
     <Route
@@ -36,9 +37,10 @@ export const InformationPage = () => {
               </Stack>
 
               <InformationForm
+                nextpageText={
+                  whatWasAffectedNavState.nextPage.nextPageTextInPreviousPage
+                }
                 onSubmit={(data) => {
-                  navigate(doneForms, whatWasAffectedNavState)
-
                   dispatch({
                     type: 'saveFormData',
                     data: { personalInformation: data },

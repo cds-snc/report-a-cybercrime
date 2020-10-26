@@ -62,7 +62,7 @@ export const DevicesForm = (props) => {
                 <NextCancelButtons
                   submit={<Trans id="devicePage.nextButton" />}
                   cancel={<Trans id="button.cancelReport" />}
-                  label={<Trans id="devicePage.nextPage" />}
+                  label={<Trans id={props.nextpageText} />}
                 />
               </Row>
             </Container>

@@ -17,6 +17,7 @@ export const MoneyLostPage = () => {
   const whatWasAffectedNavState = state.whatWasAffectedOptions
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.FINANCIAL
+  navigate(doneForms, whatWasAffectedNavState)
 
   return (
     <Route
@@ -34,9 +35,10 @@ export const MoneyLostPage = () => {
                 </P>
               </Stack>
               <MoneyLostInfoForm
+                nextpageText={
+                  whatWasAffectedNavState.nextPage.nextPageTextInPreviousPage
+                }
                 onSubmit={(data) => {
-                  navigate(doneForms, whatWasAffectedNavState)
-
                   dispatch({
                     type: 'saveFormData',
                     data: { moneyLost: data },

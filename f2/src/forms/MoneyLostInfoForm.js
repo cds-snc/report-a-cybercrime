@@ -68,6 +68,12 @@ export const MoneyLostInfoForm = (props) => {
           <Trans id="transactionDate.error.hasNoMonth" />
           <Trans id="transactionDate.error.hasNoDay" />
           <Trans id="moneyLostPage.financialTransactions" />
+          <Trans id="previousPageofMoneyLost.nextPage" />
+          <Trans id="previousPageofInformation.nextPage" />
+          <Trans id="previousPageofDevices.nextPage" />
+          <Trans id="previousPageofBusiness.nextPage" />
+          <Trans id="previousPageofWhathappened.nextPage" />
+          <Trans id="previousPageofConfirmation.nextPage" />
         </div>
       ) : null}
       <Formik
@@ -182,7 +188,7 @@ export const MoneyLostInfoForm = (props) => {
                 <NextCancelButtons
                   submit={<Trans id="businessInfoPage.nextButton" />}
                   cancel={<Trans id="button.cancelReport" />}
-                  label={<Trans id="businessInfoPage.nextPage" />}
+                  label={<Trans id={props.nextpageText} />}
                 />
               </Row>
             </Container>

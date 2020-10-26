@@ -17,6 +17,7 @@ export const DevicesPage = () => {
   const whatWasAffectedNavState = state.whatWasAffectedOptions
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.DEVICES
+  navigate(doneForms, whatWasAffectedNavState)
 
   return (
     <Route
@@ -35,9 +36,10 @@ export const DevicesPage = () => {
               </Stack>
 
               <DevicesForm
+                nextpageText={
+                  whatWasAffectedNavState.nextPage.nextPageTextInPreviousPage
+                }
                 onSubmit={(data) => {
-                  navigate(doneForms, whatWasAffectedNavState)
-
                   dispatch({
                     type: 'saveFormData',
                     data: { devicesInfo: data },
