@@ -18,7 +18,7 @@ export const FileUpload = ({ field, form, onChange, ...props }) => {
     <FormRow>
       <FileInput id={props.id} custom>
         <FormFile.Input accept={acceptableExtensions} onChange={onChange} />
-        <FormFile.Label />
+        <FormFile.Label>lable={props.label}</FormFile.Label>
       </FileInput>
       <UploadButton label={props.label} onClick={selectFileInput} />
     </FormRow>
