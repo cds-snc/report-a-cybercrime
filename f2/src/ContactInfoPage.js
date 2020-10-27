@@ -10,9 +10,11 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const ContactInfoPage = () => {
   const [, dispatch] = useStateValue()
+  useLog('ContactInfoPage')
   return (
     <Route
       render={({ history }) => (

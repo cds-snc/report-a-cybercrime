@@ -39,6 +39,8 @@ async function scanFiles(data) {
           file[1].malwareIsClean = clamd.isCleanReply(reply)
           logger.info({
             message: 'Virus scan succeeded for ' + data.reportId,
+            sessionId: data.sessionId,
+            reportId: data.reportId,
             path: '/submit',
             response: JSON.stringify(reply, Object.getOwnPropertyNames(reply)),
           })
@@ -53,6 +55,8 @@ async function scanFiles(data) {
 
           logger.error({
             message: 'Virus scan failed on ' + data.reportId,
+            sessionId: data.sessionId,
+            reportId: data.reportId,
             path: '/submit',
             error: JSON.stringify(reply, Object.getOwnPropertyNames(reply)),
           })
@@ -70,6 +74,8 @@ async function scanFiles(data) {
   } catch (error) {
     logger.error({
       message: 'WARNING: File scanning failed',
+      sessionId: data.sessionId,
+      reportId: data.reportId,
       path: '/submit',
       error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
     })
