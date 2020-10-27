@@ -59,7 +59,6 @@ export const LandingPage = (props) => {
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })
   }
-  console.log(state.sessionId)
   logger.info({
     sessionId: state.sessionId,
     message: 'This is information at landing page',
