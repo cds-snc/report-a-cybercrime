@@ -17,5 +17,6 @@ export const useLog = (page) => {
         viewTime: timeSinceLoad,
       })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }

@@ -178,7 +178,6 @@ app
   })
 
   .post('/client-logger', (req, res) => {
-    console.log('client side logging received')
     if (req.body) {
       if (req.body.level === 'error') {
         logger.error(req.body)
