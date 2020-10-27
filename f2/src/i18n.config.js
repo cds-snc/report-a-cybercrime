@@ -17,6 +17,7 @@ export async function activate(locale) {
     const title = locale === 'fr' ? 'signaler une fraude' : 'Report a scam'
 
     document.title = title
+    document.documentElement.setAttribute('lang', locale)
   } catch (e) {
     // this fails only during tests due to webpack errors.
   }
