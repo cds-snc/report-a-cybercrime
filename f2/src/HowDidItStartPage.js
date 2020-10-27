@@ -15,7 +15,7 @@ import { useLog } from './useLog'
 export const HowDidItStartPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
-  useLog(data.sessionId, 'HowDidStartPage')
+  useLog('HowDidStartPage')
 
   return (
     <Route

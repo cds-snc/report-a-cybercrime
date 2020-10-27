@@ -54,7 +54,7 @@ export const LandingPage = (props) => {
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue()
   const { fyiForm } = state.formData
-  useLog(state.sessionId, 'LandingPage')
+  useLog('LandingPage')
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })
   }
