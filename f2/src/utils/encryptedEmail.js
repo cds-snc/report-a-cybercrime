@@ -4,8 +4,11 @@ const fs = require('fs')
 const exec = require('child_process').exec
 const nanoid = require('nanoid')
 const { certFileName } = require('./ldap')
+const { getLogger } = require('./winstonLogger')
 
 require('dotenv').config()
+
+const logger = getLogger(__filename)
 
 const mailHost = process.env.MAIL_HOST
 const mailUser = process.env.MAIL_USER
@@ -90,6 +93,11 @@ const encryptMessage = (uidList, emailAddress, message, data, sendMail) => {
         else if (stderr) console.warn(stderr)
         else {
           console.log('Encrypted Mail: Message encrypted')
+          logger.info({
+            message: 'Encrypted Mail: Message encrypted',
+            reportId: data.reportId,
+            sessionId: data.sessionId,
+          })
           const attachment = fs.readFileSync(encryptedFile)
           fs.unlink(messageFile, () => {})
           fs.unlink(encryptedFile, () => {})
@@ -126,9 +134,10 @@ async function sendMail(emailAddress, attachment, reportId, emailSuffix) {
   }
 
   let info = await transporter.sendMail(message)
-  console.info(
-    `Encrypted Mail: Message sent to ${emailAddress}: ${info.messageId}`,
-  )
+  logger.info({
+    message: `Encrypted Mail: Message sent to ${emailAddress}: ${info.messageId}`,
+    reportId: reportId,
+  })
 }
 
 const encryptAndSend = async (uidList, emailList, data, message) => {
