@@ -69,11 +69,10 @@ export const WhoAreYouReportForSummary = (props) => {
         {containsData(whoAreYouReportFor) ? (
           <React.Fragment>
             <Stack as="dl" spacing={4}>
-              <Text>
-                <Trans id="confirmationPage.youAreReportingFor" />
-                &nbsp;
-                <Text as="span">{whoYouReportForString}</Text>
-              </Text>
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.youAreReportingFor"
+                description={whoYouReportForString}
+              />
               {containsData(whoAreYouReportFor.someoneDescription) ? (
                 <DescriptionListItem
                   descriptionTitle="whoAreYouReportForPage.details"

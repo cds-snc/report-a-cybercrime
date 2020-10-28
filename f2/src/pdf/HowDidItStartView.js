@@ -12,7 +12,7 @@ export const HowDidItStartView = (props) => {
   const lang = props.lang
 
   const summary = []
-  let overviewLine = ' '
+  let methodOfContact = ' '
 
   const howdiditstart = {
     ...testdata.formData.howdiditstart,
@@ -28,13 +28,11 @@ export const HowDidItStartView = (props) => {
       ),
     )
 
-    overviewLine =
-      lang['confirmationPage.howDidItStart.overviewPrefix'] +
-      formatList(summary, {
-        pair: lang['default.pair'],
-        middle: lang['default.middle'],
-        end: lang['default.end'],
-      })
+    methodOfContact = formatList(summary, {
+      pair: lang['default.pair'],
+      middle: lang['default.middle'],
+      end: lang['default.end'],
+    })
   }
 
   return (
@@ -44,7 +42,11 @@ export const HowDidItStartView = (props) => {
       </Text>
       {containsData(howdiditstart) ? (
         <View>
-          <Text style={pdfStyles.sectionContent}>{overviewLine}</Text>
+          <DescriptionItemView
+            title="confirmationPage.howDidItStart.overviewPrefix"
+            description={methodOfContact}
+            lang={lang}
+          />
           <DescriptionItemView
             title="confirmationPage.howDidItStart.email"
             description={howdiditstart.email}

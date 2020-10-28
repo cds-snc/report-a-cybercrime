@@ -11,6 +11,7 @@ import { H2 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Text } from '../components/text'
 import { formatList } from '../utils/formatList'
+import { DescriptionListItem } from '../components/DescriptionListItem'
 
 export const WhatWasAffectedSummary = (props) => {
   const { i18n } = useLingui()
@@ -57,13 +58,10 @@ export const WhatWasAffectedSummary = (props) => {
         </Flex>
         {containsData(impact) ? (
           <Stack as="dl" spacing={4}>
-            <Text>
-              <Trans id="confirmationPage.whatWasAffected.format" />
-              &nbsp;
-              <Text as="span" textTransform="lowercase">
-                {summaryLine}
-              </Text>
-            </Text>
+            <DescriptionListItem
+              descriptionTitle="confirmationPage.whatWasAffected.format"
+              description={summaryLine}
+            />
           </Stack>
         ) : (
           <Text>
