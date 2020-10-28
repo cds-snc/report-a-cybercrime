@@ -15,6 +15,28 @@ export const BusinessInfoView = (props) => {
     ...props.data.formData.businessInfo,
   }
 
+  const origNumberofEmployeeString = businessInfo.numberOfEmployee.replace(
+    'numberOfEmployee.',
+    '',
+  )
+
+  let numberofEmployeeString = origNumberofEmployeeString
+
+  let languageAdjustedNumberofEmployeeString = {
+    '1To99': lang['analystReport.numberOfEmployee.1To99'],
+    '100To499': lang['analystReport.numberOfEmployee.100To499'],
+    '500More': lang['analystReport.numberOfEmployee.500More'],
+  }
+
+  for (var key_ne in languageAdjustedNumberofEmployeeString) {
+    if (numberofEmployeeString.includes(key_ne)) {
+      numberofEmployeeString = numberofEmployeeString.replace(
+        key_ne,
+        languageAdjustedNumberofEmployeeString[key_ne],
+      )
+    }
+  }
+
   return (
     <View style={pdfStyles.section}>
       <Text style={pdfStyles.title}>
@@ -39,7 +61,7 @@ export const BusinessInfoView = (props) => {
           />
           <DescriptionItemView
             title="confirmationPage.businessInfo.numberOfEmployee"
-            description={businessInfo.numberOfEmployee}
+            description={numberofEmployeeString}
             lang={lang}
           />
         </View>
