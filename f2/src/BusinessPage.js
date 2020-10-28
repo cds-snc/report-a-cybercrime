@@ -9,7 +9,10 @@ import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { navigate, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
+import {
+  updateNavigation,
+  whatWasAffectedPages,
+} from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 
 export const BusinessPage = () => {
@@ -18,7 +21,7 @@ export const BusinessPage = () => {
   const whatWasAffectedNavState = state.whatWasAffectedOptions
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.BUSINESS
-  navigate(doneForms, whatWasAffectedNavState)
+  updateNavigation(doneForms, whatWasAffectedNavState)
 
   return (
     <Route

@@ -8,7 +8,10 @@ import { MoneyLostInfoForm } from './forms/MoneyLostInfoForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { navigate, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
+import {
+  updateNavigation,
+  whatWasAffectedPages,
+} from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 
 export const MoneyLostPage = () => {
@@ -17,7 +20,7 @@ export const MoneyLostPage = () => {
   const whatWasAffectedNavState = state.whatWasAffectedOptions
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.FINANCIAL
-  navigate(doneForms, whatWasAffectedNavState)
+  updateNavigation(doneForms, whatWasAffectedNavState)
 
   return (
     <Route

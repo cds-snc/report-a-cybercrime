@@ -101,7 +101,7 @@ export const nextPage = (navObject, doneForms) => {
   }
 }
 
-export const navigate = (doneForms, whatWasAffectedNavState) => {
+export const updateNavigation = (doneForms, whatWasAffectedNavState) => {
   if (doneForms && !whatWasAffectedNavState.editOptions) {
     whatWasAffectedNavState.nextPage = whatWasAffectedPages.CONFIRMATION
   } else {
