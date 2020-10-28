@@ -11,7 +11,7 @@ export const DescriptionItemView = (props) => {
     return null
   }
   return (
-    <View style={pdfStyles.descriptionItem}>
+    <View style={pdfStyles.descriptionItem} wrap={false}>
       <View style={pdfStyles.descriptionRow}>
         <View style={pdfStyles.descriptionItemTitle}>
           <Text style={pdfStyles.descriptionContentTitle}>
