@@ -11,11 +11,11 @@ Given('I open the report home page', () => {
 // Start page in English
 
 When('I click on create a report button', () => {
-  cy.contains('Start report').first().click({ force: true })
+  cy.contains('Start a full report').first().click({ force: true })
 })
 
 When('I click on submit a tip', () => {
-  cy.contains('Submit a tip').first().click({ force: true })
+  cy.contains('Submit a general tip').first().click({ force: true })
 })
 
 // Start page in French
@@ -23,13 +23,13 @@ When('I click on submit a tip', () => {
 When('I change the language', () => {
   cy.contains('Français').first().click({ force: true })
   cy.wait(3000)
-  cy.contains('Commencer le signalement').first().click({ force: true })
+  cy.contains('Commencer un rapport complet').first().click({ force: true })
 })
 
-When('I change the language and click Fournir des informations', () => {
+When('I change the language and click Soumettre un renseignemen', () => {
   cy.contains('Français').first().click({ force: true })
   cy.wait(3000)
-  cy.contains('Fournir des informations').first().click({ force: true })
+  cy.contains('Soumettre un renseignemen').first().click({ force: true })
 })
 
 // Second page - Before you start
