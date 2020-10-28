@@ -10,6 +10,7 @@ import { useLingui } from '@lingui/react'
 import { ErrorSummary } from '../components/formik/alert'
 import { PrivacyConsentInfoFormSchema } from './PrivacyConsentInfoFormSchema'
 import { WarningModal } from '../components/formik/warningModal'
+import { FormRow } from '../components/formik/row'
 
 const createErrorSummary = (errors) => {
   const errorSummary = {}
@@ -56,7 +57,7 @@ export const PrivacyConsentInfoForm = (props) => {
           <Form onSubmit={handleSubmit}>
             <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
-              <Row classname="form-question">
+              <FormRow paddingBottom="1rem">
                 {Object.keys(errors).length > 0 && (
                   <ErrorSummary
                     errors={createErrorSummary(errors)}
@@ -66,8 +67,8 @@ export const PrivacyConsentInfoForm = (props) => {
                     }
                   />
                 )}
-              </Row>
-              <Row className="form-section">
+              </FormRow>
+              <FormRow marginBottom="3rem">
                 <Field
                   name="consentOptions"
                   label={
@@ -86,7 +87,7 @@ export const PrivacyConsentInfoForm = (props) => {
                   type="checkbox"
                   id="consentOptions"
                 ></Field>
-              </Row>
+              </FormRow>
               <Row>
                 <NextCancelButtons
                   submit={<Trans id="privacyConsentInfoForm.nextButton" />}
