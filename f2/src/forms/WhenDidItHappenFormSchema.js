@@ -168,8 +168,6 @@ const onSubmitValidation = (values) => {
     }
   }
 
-  console.log(errors)
-
   return errors
 }
 

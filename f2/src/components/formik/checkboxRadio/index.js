@@ -8,7 +8,7 @@ import { ConditionalField } from '../conditionalField'
 import { cleanProps } from '../../../utils/cleanProps'
 
 const conditionalFieldStyle = (props) => {
-  if (props.checked && props.hasChildren) {
+  if (props.checked && props.haschildren) {
     return css`
       border-left-width: 0.25rem;
       border-left-color: #aeaeae;
@@ -57,14 +57,14 @@ const Input = styled(Form.Check.Input)`
 
 export const CheckBoxRadio = ({ field, form, ...props }) => {
   const paddingBottom = props.helpText ? '0rem' : '1rem'
-  const hasChildren = props.children
+  const hasChildren = props.children ? props.children : undefined
 
   return (
     <FormRow paddingBottom={paddingBottom} paddingLeft="1rem">
       <Form.Check id={props.id} type={props.type} custom>
         <Input type={props.type} {...field} value={props.value} />
-        <Label hasChildren={hasChildren}>{props.label}</Label>
-        <HelpText hasChildren={hasChildren}>{props.helpText}</HelpText>
+        <Label haschildren={hasChildren}>{props.label}</Label>
+        <HelpText haschildren={hasChildren}>{props.helpText}</HelpText>
       </Form.Check>
       {field.checked && hasChildren && (
         <ConditionalField>{props.children}</ConditionalField>

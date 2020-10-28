@@ -58,7 +58,7 @@ const buttonTypes = {
 }
 
 const buttonStyle = (props) => {
-  let buttonProps = props.buttonStyle
+  let buttonProps = props.buttonstyle
 
   if (buttonProps) {
     return css`
@@ -134,7 +134,7 @@ const ButtonCol = styled(Col)`
 
 export const DefaultButton = (props) => {
   return (
-    <Button buttonStyle={buttonTypes.DEFAULT} onClick={props.onClick}>
+    <Button buttonstyle={buttonTypes.DEFAULT} onClick={props.onClick}>
       <ButtonLabel>{props.label}</ButtonLabel>
     </Button>
   )
@@ -143,7 +143,7 @@ export const DefaultButton = (props) => {
 export const MidFormFeedbackButton = (props) => {
   return (
     <Button
-      buttonStyle={buttonTypes.DEFAULT}
+      buttonstyle={buttonTypes.DEFAULT}
       border="1px solid"
       padding="1rem 1.5rem"
       marginLeft="0rem"
@@ -160,7 +160,7 @@ export const MidFormFeedbackButton = (props) => {
 
 export const SubmitButton = (props) => {
   return (
-    <Button buttonStyle={buttonTypes.SUBMIT} type="submit">
+    <Button buttonstyle={buttonTypes.SUBMIT} type="submit">
       <ButtonLabel>
         {props.label}
         <RightArrowIcon />
@@ -174,7 +174,7 @@ export const CancelButton = (props) => {
     <Route
       render={({ history }) => (
         <Button
-          buttonStyle={buttonTypes.DEFAULT}
+          buttonstyle={buttonTypes.DEFAULT}
           onClick={() => history.push('/confirmCancel')}
         >
           <ButtonLabel>{props.label}</ButtonLabel>
@@ -211,7 +211,7 @@ export const NextCancelButtons = (props) => {
 */
 export const UploadButton = (props) => {
   return (
-    <Button buttonStyle={buttonTypes.UPLOAD} onClick={props.onClick}>
+    <Button buttonstyle={buttonTypes.UPLOAD} onClick={props.onClick}>
       <ButtonLabel>
         <PaperClipIcon />
         {props.label}
@@ -222,7 +222,7 @@ export const UploadButton = (props) => {
 
 export const FeedbackButton = (props) => {
   return (
-    <Button buttonStyle={buttonTypes.FEEDBACK} type="submit">
+    <Button buttonstyle={buttonTypes.FEEDBACK} type="submit">
       <ButtonLabel>{props.label}</ButtonLabel>
     </Button>
   )
@@ -233,7 +233,7 @@ export const SkipButton = (props) => {
     <Route
       render={({ history }) => (
         <Button
-          buttonStyle={buttonTypes.SKIP}
+          buttonstyle={buttonTypes.SKIP}
           onClick={() => {
             if (props.onClick) {
               props.onClick()
