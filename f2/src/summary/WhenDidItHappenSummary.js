@@ -41,6 +41,7 @@ export const WhenDidItHappenSummary = (props) => {
           <Trans id="whenDidItHappenPage.singleDate.label" />
           <Trans id="confirmationPage.howManyTimes" />
           <Trans id="whenDidItHappenPage.options.notSure.details" />
+          <Trans id="whenDidItHappenPage.details" />
         </div>
       ) : null}
 
@@ -93,7 +94,10 @@ export const WhenDidItHappenSummary = (props) => {
                 )}
               />
               {containsData(whenDidItHappen.description) ? (
-                <Text>{whenDidItHappen.description}</Text>
+                <DescriptionListItem
+                  descriptionTitle="whenDidItHappenPage.details"
+                  description={whenDidItHappen.description}
+                />
               ) : null}
             </Stack>
           </React.Fragment>
