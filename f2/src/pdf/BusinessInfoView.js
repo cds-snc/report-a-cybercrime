@@ -15,11 +15,6 @@ export const BusinessInfoView = (props) => {
     ...props.data.formData.businessInfo,
   }
 
-  const origNumberofEmployeeString = businessInfo.numberOfEmployee.replace(
-    'numberOfEmployee.',
-    '',
-  )
-
   return (
     <View style={pdfStyles.section}>
       <Text style={pdfStyles.title}>
