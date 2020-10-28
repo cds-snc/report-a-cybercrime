@@ -500,6 +500,7 @@
   "whenDidItHappenForm.error": "Veuillez sélectionner, si vous n'êtes pas certain, sélectionnez Je ne sais pas",
   "whenDidItHappenPage.dateRange.end.label": "Quand est-ce arrivé pour la dernière fois?",
   "whenDidItHappenPage.dateRange.start.label": "Quand est-ce arrivé pour la première fois?",
+  "whenDidItHappenPage.details": "Détails",
   "whenDidItHappenPage.intro": "Ces incidents peuvent se produire une ou plusieurs fois et il est parfois difficile de se souvenir de la date exacte.",
   "whenDidItHappenPage.nextPage": "Étape suivante : D’après vous, quelles pourraient être les répercussions?",
   "whenDidItHappenPage.notSure.helperText": "Indiquez du mieux que vous pouvez la période pendant laquelle le suspect a essayé de communiquer avec vous.",
