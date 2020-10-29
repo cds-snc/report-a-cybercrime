@@ -11,6 +11,7 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { navigate, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const InformationPage = () => {
   const [state, dispatch] = useStateValue()
@@ -18,6 +19,8 @@ export const InformationPage = () => {
   const whatWasAffectedNavState = state.whatWasAffectedOptions
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.INFORMATION
+
+  useLog('InformationPage')
 
   return (
     <Route

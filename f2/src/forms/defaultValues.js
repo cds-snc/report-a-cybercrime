@@ -1,4 +1,5 @@
 const formDefaults = {
+  sessionId: '',
   language: '',
   prodVersion: '',
   appVersion: '',
