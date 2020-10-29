@@ -14,10 +14,12 @@ import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { LandingBox } from './components/container'
 import { Alert } from './components/Messages'
+import { useLog } from './useLog'
 
 export const CancelPage = () => {
   const { i18n } = useLingui()
   const [, dispatch] = useStateValue()
+  useLog('CancelPage')
   return (
     <Page>
       <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>

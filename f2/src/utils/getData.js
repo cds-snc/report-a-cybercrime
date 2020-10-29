@@ -5,7 +5,9 @@ const crypto = require('crypto')
 const { selfHarmWordsScan } = require('./selfHarmWordsScan')
 const { generateReportId } = require('./generateReportId')
 const { formatDate } = require('./formatDate')
+const { getLogger } = require('./winstonLogger')
 
+const logger = getLogger(__filename)
 const padNumber = (x) => `${x}`.padStart(2, 0)
 
 const getFileExtension = (filename) => {
@@ -53,7 +55,11 @@ async function getData(data, files) {
   const selfHarmWords = selfHarmWordsScan(data)
 
   if (selfHarmWords && selfHarmWords.length > 0) {
-    console.warn(`Self harm words detected: ${selfHarmWords}`)
+    logger.warn({
+      message: `Self harm words detected: ${selfHarmWords}`,
+      sessionId: data.sessionId,
+      reportId: data.reportId,
+    })
   }
   data.selfHarmWords = selfHarmWords
   const now = new Date()

@@ -10,10 +10,12 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const SuspectCluesPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
+  useLog('SuspectCluesPage')
 
   return (
     <Route
@@ -32,7 +34,7 @@ export const SuspectCluesPage = () => {
               </Stack>
 
               <SuspectCluesForm
-                onSubmit={data => {
+                onSubmit={(data) => {
                   dispatch({
                     type: 'saveFormData',
                     data: { suspectClues: data },
