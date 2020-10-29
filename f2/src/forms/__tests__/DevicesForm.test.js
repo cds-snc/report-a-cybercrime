@@ -26,7 +26,10 @@ describe('<DevicesForm />', () => {
         <ThemeProvider theme={canada}>
           <I18nProvider i18n={i18n}>
             <StateProvider initialState={initialState} reducer={reducer}>
-              <DevicesForm onSubmit={submitMock} />
+              <DevicesForm
+                nextpageText="previousPageofBusiness.nextPage"
+                onSubmit={submitMock}
+              />
             </StateProvider>
           </I18nProvider>
         </ThemeProvider>

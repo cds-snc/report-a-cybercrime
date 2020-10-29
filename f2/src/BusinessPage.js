@@ -9,7 +9,10 @@ import { Layout } from './components/layout'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { navigate, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
+import {
+  updateNavigation,
+  whatWasAffectedPages,
+} from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 import { useLog } from './useLog'
 
@@ -18,6 +21,7 @@ export const BusinessPage = () => {
   const { doneForms } = state
   const whatWasAffectedNavState = state.whatWasAffectedOptions
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.BUSINESS
+  updateNavigation(doneForms, whatWasAffectedNavState)
 
   useLog('LandingPage')
 
@@ -37,9 +41,10 @@ export const BusinessPage = () => {
                 </P>
               </Stack>
               <BusinessInfoForm
+                nextpageText={
+                  whatWasAffectedNavState.nextPage.nextPageTextInPreviousPage
+                }
                 onSubmit={(data) => {
-                  navigate(doneForms, whatWasAffectedNavState)
-
                   dispatch({
                     type: 'saveFormData',
                     data: { businessInfo: data },

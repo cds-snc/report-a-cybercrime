@@ -8,7 +8,10 @@ import { DevicesForm } from './forms/DevicesForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { navigate, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
+import {
+  updateNavigation,
+  whatWasAffectedPages,
+} from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 import { useLog } from './useLog'
 
@@ -18,6 +21,8 @@ export const DevicesPage = () => {
   const whatWasAffectedNavState = state.whatWasAffectedOptions
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.DEVICES
+  updateNavigation(doneForms, whatWasAffectedNavState)
+
   useLog('DevicesPage')
 
   return (
@@ -37,9 +42,10 @@ export const DevicesPage = () => {
               </Stack>
 
               <DevicesForm
+                nextpageText={
+                  whatWasAffectedNavState.nextPage.nextPageTextInPreviousPage
+                }
                 onSubmit={(data) => {
-                  navigate(doneForms, whatWasAffectedNavState)
-
                   dispatch({
                     type: 'saveFormData',
                     data: { devicesInfo: data },
