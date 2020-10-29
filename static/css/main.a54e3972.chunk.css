@@ -1,0 +1,96 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: rgb(0, 0, 0);
+}
+
+/*Forms*/
+
+.row {
+  width: 100%;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+  margin-left: 0px;
+  max-width: 600px;
+}
+
+.form-question {
+  padding-bottom: 1rem;
+  display: grid;
+}
+
+.form-helper-text {
+  margin-top: 0.25rem;
+  line-height: 1.25;
+  font-size: 1rem;
+  margin-left: 0px;
+  max-width: 600px;
+}
+
+.form-section {
+  display: inline-block;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.white-button-link:hover,
+.black-button-link:hover {
+  text-decoration: none;
+}
+
+.white-button-link:hover {
+  color: rgb(255, 255, 255);
+}
+
+.black-button-link:hover {
+  color: inherit;
+}
+
+/*Checkboxes and Radio Buttons*/
+
+.custom-checkbox .custom-control-label:before {
+  border-radius: 0rem;
+}
+
+.custom-control .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: white;
+  border-color: black;
+}
+
+.custom-control .custom-control-input:checked ~ .custom-control-label::after {
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  -webkit-filter: invert(100%) sepia(32%) saturate(0%) hue-rotate(269deg)
+    brightness(101%) contrast(102%);
+          filter: invert(100%) sepia(32%) saturate(0%) hue-rotate(269deg)
+    brightness(101%) contrast(102%);
+  top: 0rem;
+  display: inline;
+  display: initial;
+  border-color: black;
+}
+
+.custom-control .custom-control-input:focus ~ .custom-control-label::before {
+  background-color: rgb(255, 255, 255);
+  border-color: black;
+  box-shadow: rgba(99, 179, 237, 0.6) 0px 0px 4px 1px;
+  outline: none;
+}
+
+.custom-control
+  .custom-control-input:not(:checked)
+  ~ .custom-control-label::before {
+  background-color: rgb(255, 255, 255);
+}
+
+
+/*# sourceMappingURL=main.a54e3972.chunk.css.map*/
