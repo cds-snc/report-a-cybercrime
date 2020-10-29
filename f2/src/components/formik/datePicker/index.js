@@ -79,8 +79,8 @@ const DateEntry = ({ field, form, ...props }) => {
       <Form.Group controlId={props.id}>
         <DateLabel>{props.label}</DateLabel>
         <DateInput
-          hasError={error}
-          dateType={dateType}
+          haserror={error}
+          datetype={dateType}
           type="text"
           {...field}
           maxLength={length}

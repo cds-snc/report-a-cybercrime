@@ -39,7 +39,7 @@ export const BusinessInfoView = (props) => {
           />
           <DescriptionItemView
             title="confirmationPage.businessInfo.numberOfEmployee"
-            description={businessInfo.numberOfEmployee}
+            description={lang[businessInfo.numberOfEmployee]}
             lang={lang}
           />
         </View>

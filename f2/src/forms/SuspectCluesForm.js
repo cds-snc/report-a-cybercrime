@@ -56,7 +56,7 @@ export const SuspectCluesForm = (props) => {
                   render={() =>
                     formOptions.map((question) => {
                       return (
-                        <React.Fragment>
+                        <React.Fragment key={question.name}>
                           <Field
                             name={question.name}
                             label={question.label}
