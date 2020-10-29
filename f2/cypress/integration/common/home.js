@@ -26,10 +26,10 @@ When('I change the language', () => {
   cy.contains('Commencer un rapport complet').first().click({ force: true })
 })
 
-When('I change the language and click Soumettre un renseignemen', () => {
+When('I change the language and click Soumettre un renseignement', () => {
   cy.contains('Français').first().click({ force: true })
   cy.wait(3000)
-  cy.contains('Soumettre un renseignemen').first().click({ force: true })
+  cy.contains('Soumettre un renseignement').first().click({ force: true })
 })
 
 // Second page - Before you start
