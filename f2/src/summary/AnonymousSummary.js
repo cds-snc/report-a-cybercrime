@@ -6,7 +6,7 @@ import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
-import { H2 } from '../components/header'
+import { H2, H3 } from '../components/header'
 import { Text } from '../components/text'
 
 export const AnonymousSummary = (props) => {
@@ -30,9 +30,15 @@ export const AnonymousSummary = (props) => {
           <H2 fontWeight="normal">
             <Trans id="confirmationPage.anonymous.title" />
           </H2>
+          {anonymous.edited && (
+            <H3 fontWeight="normal" paddingLeft="1rem">
+              <Trans id="confirmationPage.editedTag" />
+            </H3>
+          )}
           <EditButton
             label="confirmationPage.anonymous.title.edit"
-            path="/anonymous"
+            path={{ pathname: '/anonymous', state: { edit: true } }}
+            edited={anonymous.edited}
           />
         </Flex>
 

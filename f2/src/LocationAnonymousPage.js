@@ -9,6 +9,7 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 
 export const LocationAnonymousPage = () => {
   const [data, dispatch] = useStateValue()
@@ -30,6 +31,7 @@ export const LocationAnonymousPage = () => {
 
               <LocationAnonymousInfoForm
                 onSubmit={(data) => {
+                  editCheck(data, history)
                   dispatch({ type: 'saveFormData', data: { location: data } })
                   history.push(doneForms ? '/confirmation' : '/confirmation')
                 }}

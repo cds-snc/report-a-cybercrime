@@ -10,6 +10,7 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 
 export const ContactInfoPage = () => {
   const [, dispatch] = useStateValue()
@@ -29,6 +30,7 @@ export const ContactInfoPage = () => {
 
               <ContactInfoForm
                 onSubmit={(data) => {
+                  editCheck(data, history)
                   dispatch({
                     type: 'saveFormData',
                     data: { contactInfo: data },

@@ -10,6 +10,7 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 
 export const AnonymousPage = () => {
   const [state, dispatch] = useStateValue()
@@ -34,6 +35,7 @@ export const AnonymousPage = () => {
               </Lead>
               <AnonymousInfoForm
                 onSubmit={(data) => {
+                  editCheck(data, history)
                   dispatch({
                     type: 'saveFormData',
                     data: { anonymous: data },

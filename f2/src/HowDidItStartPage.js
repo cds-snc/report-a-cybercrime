@@ -10,6 +10,7 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 
 export const HowDidItStartPage = () => {
   const [data, dispatch] = useStateValue()
@@ -32,8 +33,8 @@ export const HowDidItStartPage = () => {
               </Stack>
 
               <HowDidItStartForm
-                history={history}
                 onSubmit={(data) => {
+                  editCheck(data, history)
                   dispatch({
                     type: 'saveFormData',
                     data: { howdiditstart: data },

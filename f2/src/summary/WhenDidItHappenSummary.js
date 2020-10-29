@@ -8,7 +8,7 @@ import { containsData } from '../utils/containsData'
 import { formatDate } from '../utils/formatDate'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
-import { H2 } from '../components/header'
+import { H2, H3 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
@@ -56,13 +56,19 @@ export const WhenDidItHappenSummary = (props) => {
           <H2 fontWeight="normal">
             <Trans id="whenDidItHappenPage.title" />
           </H2>
+          {whenDidItHappen.edited && (
+            <H3 fontWeight="normal" paddingLeft="1rem">
+              <Trans id="confirmationPage.editedTag" />
+            </H3>
+          )}
           <EditButton
-            path="/whenDidItHappen"
             label="confirmationPage.howDidItStart.title.edit"
+            path={{ pathname: '/whenDidItHappen', state: { edit: true } }}
+            edited={whenDidItHappen.edited}
           />
         </Flex>
 
-        {containsData(whenDidItHappen) ? (
+        {whenDidItHappen.incidentFrequency ? (
           <React.Fragment>
             <Stack as="dl" spacing={4}>
               <DescriptionListItem
@@ -93,7 +99,7 @@ export const WhenDidItHappenSummary = (props) => {
                   whenDidItHappen.endYear,
                 )}
               />
-              {containsData(whenDidItHappen.description) ? (
+              {whenDidItHappen.description ? (
                 <DescriptionListItem
                   descriptionTitle="whenDidItHappenPage.details"
                   description={whenDidItHappen.description}

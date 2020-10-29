@@ -124,6 +124,7 @@ export const ErrorSummary = (props) => {
                         href={`#${key}`}
                         marginBottom="0.5rem"
                         color="initial"
+                        visitedColor="initial"
                         onClick={(e) => {
                           e.preventDefault()
                           focusElement(key)

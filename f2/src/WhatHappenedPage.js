@@ -14,6 +14,7 @@ import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { Li } from './components/list-item'
 import { formDefaults } from './forms/defaultValues'
+import { editCheck } from './utils/flagFieldEdited'
 
 export const WhatHappenedPage = () => {
   const [data, dispatch] = useStateValue()
@@ -93,6 +94,7 @@ export const WhatHappenedPage = () => {
               )}
               <WhatHappenedForm
                 onSubmit={(data) => {
+                  editCheck(data, history)
                   dispatch({
                     type: 'saveFormData',
                     data: { whatHappened: data },

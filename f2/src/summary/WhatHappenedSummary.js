@@ -7,7 +7,7 @@ import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
-import { H2 } from '../components/header'
+import { H2, H3 } from '../components/header'
 import { Text } from '../components/text'
 
 export const WhatHappenedSummary = (props) => {
@@ -39,13 +39,19 @@ export const WhatHappenedSummary = (props) => {
           <H2 fontWeight="normal">
             <Trans id="confirmationPage.whatHappened.title" />
           </H2>
+          {whatHappened.edited && (
+            <H3 fontWeight="normal" paddingLeft="1rem">
+              <Trans id="confirmationPage.editedTag" />
+            </H3>
+          )}
           <EditButton
             label="confirmationPage.whatHappened.title.edit"
-            path="/whathappened"
+            path={{ pathname: '/whathappened', state: { edit: true } }}
+            edited={whatHappened.edited}
           />
         </Flex>
 
-        {containsData(whatHappened) ? (
+        {whatHappened.whatHappened ? (
           <Text>{whatHappened.whatHappened}</Text>
         ) : (
           <Text>

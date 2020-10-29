@@ -9,5 +9,9 @@ export const A = styled.a`
     outline: 0px;
     box-shadow: 0 0 0 4px rgba(99, 179, 237, 0.6);
   }
+  &:visited {
+    color: ${(props) =>
+      props.visitedColor ? props.visitedColor : '#7834bc'} !important;
+  }
   ${fontSize};
 `

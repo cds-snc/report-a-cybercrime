@@ -10,6 +10,7 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { navigate, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 
 export const DevicesPage = () => {
   const [state, dispatch] = useStateValue()
@@ -37,7 +38,7 @@ export const DevicesPage = () => {
               <DevicesForm
                 onSubmit={(data) => {
                   navigate(doneForms, whatWasAffectedNavState)
-
+                  editCheck(data, history)
                   dispatch({
                     type: 'saveFormData',
                     data: { devicesInfo: data },

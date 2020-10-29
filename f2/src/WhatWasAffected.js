@@ -14,6 +14,7 @@ import {
   orderSelection,
 } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
@@ -76,7 +77,7 @@ export const WhatWasAffectedPage = () => {
               <WhatWasAffectedForm
                 onSubmit={(data) => {
                   updateSelection(data.affectedOptions)
-
+                  editCheck(data, history)
                   dispatch({
                     type: 'saveFormData',
                     data: { whatWasAffected: data },

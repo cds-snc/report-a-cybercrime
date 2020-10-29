@@ -7,7 +7,7 @@ import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
-import { H2 } from '../components/header'
+import { H2, H3 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
@@ -41,12 +41,20 @@ export const SuspectCluesSummary = (props) => {
           <H2 fontWeight="normal">
             <Trans id="confirmationPage.suspectClues.title" />
           </H2>
+          {suspectClues.edited && (
+            <H3 fontWeight="normal" paddingLeft="1rem">
+              <Trans id="confirmationPage.editedTag" />
+            </H3>
+          )}
           <EditButton
-            path="/suspectclues"
             label="confirmationPage.suspectClues.title.edit"
+            path={{ pathname: '/suspectclues', state: { edit: true } }}
+            edited={suspectClues.edited}
           />
         </Flex>
-        {containsData(suspectClues) ? (
+        {suspectClues.suspectClues1 ||
+        suspectClues.suspectClues2 ||
+        suspectClues.suspectClues3 ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.suspectClues.suspectClues1"
