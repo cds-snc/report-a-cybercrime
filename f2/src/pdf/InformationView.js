@@ -45,7 +45,7 @@ export const InformationView = (props) => {
   return (
     <View style={pdfStyles.section}>
       <Text style={pdfStyles.title}>
-        {lang['confirmationPage.contactTitle']}
+        {lang['confirmationPage.personalInformation.title']}
       </Text>
       {containsData(personalInformation) ? (
         <View>

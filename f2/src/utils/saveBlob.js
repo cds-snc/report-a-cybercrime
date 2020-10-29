@@ -6,10 +6,14 @@ const {
   SASProtocol,
 } = require('@azure/storage-blob')
 
+const { getLogger } = require('./winstonLogger')
+
 const fs = require('fs')
 const exec = require('child_process').exec
 const { certFileName } = require('./ldap')
 require('dotenv').config()
+
+const logger = getLogger(__filename)
 
 const account = process.env.BLOB_STORAGE_NAME
 const accountKey = process.env.BLOB_STORAGE_KEY
@@ -51,7 +55,13 @@ async function saveBlob(uidList, data) {
         console.warn(
           `ERROR creating container ${containerName}: error code ${errorCode}`,
         )
-      else console.info(`Created container ${containerName} successfully`)
+      else {
+        logger.info({
+          message: `Created container ${containerName} successfully`,
+          sessionId: data.sessionId,
+          reportId: data.reportId,
+        })
+      }
 
       // Generate service level SAS for a container
       const containerSAS = generateBlobSASQueryParameters(
@@ -85,9 +95,11 @@ async function saveBlob(uidList, data) {
                 `ERROR: Upload report ${data.reportId} file ${file.name}, blob ${blobName}: error code ${errorCode}`,
               )
             else
-              console.info(
-                `Uploaded report ${data.reportId} file ${file.name}, blob ${blobName} successfully`,
-              )
+              logger.info({
+                message: `Uploaded file ${file.name} to blob ${blobName} successfully`,
+                sessionId: data.sessionId,
+                reportId: data.reportId,
+              })
           }
 
           // If running in a test environment with no HRMIS, upload the raw file instead of encrypting

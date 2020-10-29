@@ -15,12 +15,14 @@ import { useStateValue } from './utils/state'
 import { BackButton } from './components/backbutton'
 import { Page } from './components/Page'
 import { Well } from './components/Messages'
+import { useLog } from './useLog'
 
 export const StartPage = (props) => {
   const [state, dispatch] = useStateValue()
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })
   }
+  useLog('StartPage')
 
   return (
     <React.Fragment>

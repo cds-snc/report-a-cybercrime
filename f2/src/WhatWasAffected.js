@@ -15,6 +15,7 @@ import {
 } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 import { editCheck } from './utils/flagFieldEdited'
+import { useLog } from './useLog'
 
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
@@ -57,6 +58,7 @@ export const WhatWasAffectedPage = () => {
       doneForms,
     )
   }
+  useLog('WhatWasAffectedPage')
 
   return (
     <Route

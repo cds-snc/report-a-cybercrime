@@ -2,34 +2,42 @@ export const whatWasAffectedPages = {
   FINANCIAL: {
     key: 'whatWasAffectedForm.financial',
     url: 'moneylost',
+    nextPageTextInPreviousPage: 'previousPageofMoneyLost.nextPage',
   },
   INFORMATION: {
     key: 'whatWasAffectedForm.personalInformation',
     url: 'information',
+    nextPageTextInPreviousPage: 'previousPageofInformation.nextPage',
   },
   DEVICES: {
     key: 'whatWasAffectedForm.devices',
     url: 'devices',
+    nextPageTextInPreviousPage: 'previousPageofDevices.nextPage',
   },
   BUSINESS: {
     key: 'whatWasAffectedForm.business_assets',
     url: 'business',
+    nextPageTextInPreviousPage: 'previousPageofBusiness.nextPage',
   },
   OTHER: {
     key: 'whatWasAffectedForm.other',
     url: '',
+    nextPageTextInPreviousPage: '',
   },
   FIRST_PAGE: {
     key: 'whatWasAffectedForm',
     url: 'whatwasaffected',
+    nextPageTextInPreviousPage: '',
   },
   LAST_PAGE: {
     key: '',
     url: 'whathappened',
+    nextPageTextInPreviousPage: 'previousPageofWhathappened.nextPage',
   },
   CONFIRMATION: {
     key: '',
     url: 'confirmation',
+    nextPageTextInPreviousPage: 'previousPageofConfirmation.nextPage',
   },
 }
 
@@ -93,7 +101,7 @@ export const nextPage = (navObject, doneForms) => {
   }
 }
 
-export const navigate = (doneForms, whatWasAffectedNavState) => {
+export const updateNavigation = (doneForms, whatWasAffectedNavState) => {
   if (doneForms && !whatWasAffectedNavState.editOptions) {
     whatWasAffectedNavState.nextPage = whatWasAffectedPages.CONFIRMATION
   } else {

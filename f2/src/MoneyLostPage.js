@@ -8,9 +8,13 @@ import { MoneyLostInfoForm } from './forms/MoneyLostInfoForm'
 import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
-import { navigate, whatWasAffectedPages } from './utils/nextWhatWasAffectedUrl'
+import {
+  updateNavigation,
+  whatWasAffectedPages,
+} from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
 import { editCheck } from './utils/flagFieldEdited'
+import { useLog } from './useLog'
 
 export const MoneyLostPage = () => {
   const [state, dispatch] = useStateValue()
@@ -18,6 +22,9 @@ export const MoneyLostPage = () => {
   const whatWasAffectedNavState = state.whatWasAffectedOptions
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.FINANCIAL
+  updateNavigation(doneForms, whatWasAffectedNavState)
+
+  useLog('MoneyLostPage')
 
   return (
     <Route
@@ -35,8 +42,10 @@ export const MoneyLostPage = () => {
                 </P>
               </Stack>
               <MoneyLostInfoForm
+                nextpageText={
+                  whatWasAffectedNavState.nextPage.nextPageTextInPreviousPage
+                }
                 onSubmit={(data) => {
-                  navigate(doneForms, whatWasAffectedNavState)
                   editCheck(data, history)
                   dispatch({
                     type: 'saveFormData',

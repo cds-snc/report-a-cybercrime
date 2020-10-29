@@ -11,9 +11,11 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { editCheck } from './utils/flagFieldEdited'
+import { useLog } from './useLog'
 
 export const ContactInfoPage = () => {
   const [, dispatch] = useStateValue()
+  useLog('ContactInfoPage')
   return (
     <Route
       render={({ history }) => (

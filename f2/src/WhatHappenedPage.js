@@ -15,6 +15,7 @@ import { Page } from './components/Page'
 import { Li } from './components/list-item'
 import { formDefaults } from './forms/defaultValues'
 import { editCheck } from './utils/flagFieldEdited'
+import { useLog } from './useLog'
 
 export const WhatHappenedPage = () => {
   const [data, dispatch] = useStateValue()
@@ -25,6 +26,7 @@ export const WhatHappenedPage = () => {
     ...formDefaults.whatWasAffected,
     ...data.formData.whatWasAffected,
   }
+  useLog('WhatHappenedPage')
 
   return (
     <Route
