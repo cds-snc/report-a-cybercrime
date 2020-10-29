@@ -4,7 +4,7 @@ Feature: Test the entire report workflow in french
 
   Scenario: Home page
     Given I open the report home page
-    When I change the language and click Fournir des informations
+    When I change the language and click Soumettre un renseignemen
     Then I click continue without checking consent
     Then "Cochez la case pour accepter les conditions de la Déclaration de confidentialité." should be shown
     When I check the consent checkbox
