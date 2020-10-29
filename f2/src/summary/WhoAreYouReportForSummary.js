@@ -46,6 +46,7 @@ export const WhoAreYouReportForSummary = (props) => {
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.whoAreYouReportFor.title.edit" />
           <Trans id="whoAreYouReportForPage.details" />
+          <Trans id="confirmationPage.youAreReportingFor" />
         </div>
       ) : null}
 

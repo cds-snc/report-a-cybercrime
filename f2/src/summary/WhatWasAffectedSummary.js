@@ -38,6 +38,7 @@ export const WhatWasAffectedSummary = (props) => {
         <div>
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.ImpactTitle.edit" />
+          <Trans id="confirmationPage.whatWasAffected.format" />
         </div>
       ) : null}
       <Stack
