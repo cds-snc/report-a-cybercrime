@@ -2,23 +2,16 @@
 import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
-import { Form } from 'react-final-form'
-import { Field } from '../components/Field'
-import { TextArea } from '../components/text-area'
-import { NextAndCancelButtons } from '../components/next-and-cancel-buttons'
-import { Stack } from '@chakra-ui/core'
+import { TextArea } from '../components/formik/textArea'
 import { useStateValue } from '../utils/state'
-import { clientFieldsAreValid } from '../utils/clientFieldsAreValid'
 import { formDefaults } from './defaultValues'
-import { FormHelperText } from '../components/FormHelperText'
-import { FormLabel } from '../components/FormLabel'
+import { Form, Container, Row } from 'react-bootstrap'
+import { Formik, Field } from 'formik'
+import { NextCancelButtons } from '../components/formik/button'
+import { WarningModal } from '../components/formik/warningModal'
+import { HiddenText } from '../components/formik/paragraph'
 
 export const WhatHappenedForm = (props) => {
-  const localOnSubmit = (data) => {
-    if (clientFieldsAreValid(data, formDefaults.whatHappened))
-      props.onSubmit(data)
-  }
-
   const [data] = useStateValue()
   const whatHappened = {
     ...formDefaults.whatHappened,
@@ -28,45 +21,61 @@ export const WhatHappenedForm = (props) => {
 
   let formLabel = <Trans id="whatHappenedPage.summary" />
   let formHelpText = <Trans id="whatHappenedPage.hint" />
-  let nextButton = <Trans id="whatHappenedPage.nextPage" />
+  let nextPage = <Trans id="whatHappenedPage.nextPage" />
   let formHelpText2
 
   if (fyiForm) {
     formLabel = <Trans id="whatHappenedPage.fyi.summary" />
     formHelpText = <Trans id="whatHappenedPage.fyi.hint" />
     formHelpText2 = <Trans id="whatHappenedPage.fyi.hint2" />
-    nextButton = <Trans id="fyiForm.nextPage2" />
+    nextPage = <Trans id="fyiForm.nextPage2" />
   }
 
   return (
-    <Form
+    <Formik
       initialValues={whatHappened}
-      onSubmit={localOnSubmit}
-      render={({ handleSubmit }) => (
-        <Stack as="form" onSubmit={handleSubmit} shouldWrapChildren>
-          <FormLabel htmlFor="whatHappened">{formLabel}</FormLabel>
-          <FormHelperText htmlFor="whatHappened">
-            {formHelpText}
-            {formHelpText2 ? (
-              <p>
-                <br />
-                {formHelpText2}
-              </p>
-            ) : null}
-          </FormHelperText>
-          <Field
-            name="whatHappened"
-            component={TextArea}
-            h="300px"
-            marginTop="-1.5rem"
-          />
-          <NextAndCancelButtons
-            next={nextButton}
-            button={<Trans id="whatHappenedPage.nextButton" />}
-          />
-        </Stack>
+      onSubmit={(values) => {
+        props.onSubmit(values)
+      }}
+    >
+      {({ handleSubmit, handleChange, handleBlur, dirty, isSubmitting }) => (
+        <Form onSubmit={handleSubmit}>
+          <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
+          <Container>
+            <Row className="form-question">
+              <Row className="form-label">{formLabel}</Row>
+              <Row className="form-helper-text">
+                {formHelpText}
+                {formHelpText2 ? (
+                  <p>
+                    <br />
+                    {formHelpText2}
+                  </p>
+                ) : null}
+              </Row>
+            </Row>
+            <Row className="form-section">
+              <Field
+                name="whatHappened"
+                component={TextArea}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                label={<HiddenText>{formLabel}</HiddenText>}
+                rows="12"
+                id="textarea-whatHappened"
+              ></Field>
+            </Row>
+            <Row>
+              <NextCancelButtons
+                submit={<Trans id="whatHappenedPage.nextButton" />}
+                cancel={<Trans id="button.cancelReport" />}
+                label={nextPage}
+              />
+            </Row>
+          </Container>
+        </Form>
       )}
-    />
+    </Formik>
   )
 }
 

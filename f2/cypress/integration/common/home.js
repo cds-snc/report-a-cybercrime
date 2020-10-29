@@ -1,0 +1,47 @@
+import { When, Then, Given } from 'cypress-cucumber-preprocessor/steps'
+// Test accessibility
+//After(() => {
+//  cy.reportA11y()
+//})
+
+Given('I open the report home page', () => {
+  cy.visit(Cypress.env('local'))
+})
+
+// Start page in English
+
+When('I click on create a report button', () => {
+  cy.contains('Start a full report').first().click({ force: true })
+})
+
+When('I click on submit a tip', () => {
+  cy.contains('Submit a general tip').first().click({ force: true })
+})
+
+// Start page in French
+
+When('I change the language', () => {
+  cy.contains('Français').first().click({ force: true })
+  cy.wait(3000)
+  cy.contains('Commencer un rapport complet').first().click({ force: true })
+})
+
+When('I change the language and click Soumettre un renseignemen', () => {
+  cy.contains('Français').first().click({ force: true })
+  cy.wait(3000)
+  cy.contains('Soumettre un renseignemen').first().click({ force: true })
+})
+
+// Second page - Before you start
+
+Then('I read before you start instructions', () => {
+  cy.contains('Start report').first().click({ force: true })
+  cy.contains('Continue').first().click({ force: true })
+  //cy.get('[data-cy=submit]').click({ force: true })
+})
+
+Then('I read before you start instructions in French', () => {
+  cy.contains('Commencer le rapport').first().click({ force: true })
+  cy.contains('Continuer').first().click({ force: true })
+  //cy.get('[data-cy=submit]').click({ force: true })
+})

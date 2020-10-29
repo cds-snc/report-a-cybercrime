@@ -1,0 +1,33 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'
+import ThemeDecorator from '../../../../.storybook/themeDecorator'
+import FormikDecorator from '../../../../.storybook/formikDecorator'
+import { DatePicker } from '.'
+
+<Meta
+  title="Components/formik/datePicker"
+  component={DatePicker}
+  decorators={[ThemeDecorator, FormikDecorator]}
+/>
+
+# DatePicker
+
+Allow users to enter a day month and year
+
+<Preview>
+  <Story name="DatePicker">
+    <Container>
+      <Row className="form-question">
+        <DatePicker
+          id="test"
+          field={{ name: 'test' }}
+          label="Date Picker Label"
+          helpText="DatePicker help text"
+        />
+      </Row>
+    </Container>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={DatePicker} />

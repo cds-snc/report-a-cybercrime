@@ -60,6 +60,14 @@ const formatReportInfo = (data) => {
 
   let reportLanguage = data.language === 'fr' ? 'Français' : 'English'
 
+  let fyiForm
+  if (data.fyiForm === 'yes') {
+    fyiForm =
+      data.language === 'en' ? 'Quick Tip' : 'soumettre des renseignements'
+  } else {
+    fyiForm = data.language === 'en' ? 'Full Report' : 'Rapport complet'
+  }
+
   returnString +=
     '<h2>' +
     lang['analystReport.reportInformation'] +
@@ -73,6 +81,7 @@ const formatReportInfo = (data) => {
         formatLineHtml(lang['analystReport.reportLanguage'], reportLanguage) +
         formatLineHtml(lang['analystReport.reportVersion'], data.prodVersion) +
         formatLineHtml(lang['confirmationPage.anonymous.title'], isAnonymous) +
+        formatLineHtml(lang['analystReport.fyiForm'], fyiForm) +
         formatLineHtml(lang['analystReport.flagged'], selfHarmString),
     )
 
@@ -130,6 +139,10 @@ const formatVictimDetails = (data) => {
       lang['contactinfoPage.phoneNumber'],
       data.contactInfo.phone,
     ) +
+    formatLineHtml(
+      lang['contactinfoPage.phoneExtension'],
+      data.contactInfo.extension,
+    ) +
     formatLineHtml(lang['LocationAnonymousInfoForm.city'], data.location.city) +
     formatLineHtml(
       lang['LocationAnonymousInfoForm.province'],
@@ -170,7 +183,7 @@ const formatVictimDetails = (data) => {
 
 const formatIncidentInformation = (data) => {
   const freq = data.whenDidItHappen.incidentFrequency
-  let occurenceLine
+  let occurenceLine = ''
 
   if (freq === 'once') {
     const occurenceString = formatDate(
@@ -213,7 +226,7 @@ const formatIncidentInformation = (data) => {
         lang['whenDidItHappenPage.dateRange.end.label'],
         endtDateString,
       )
-  } else {
+  } else if (freq === 'notSure') {
     const textAreaString = data.whenDidItHappen.description
     occurenceLine =
       formatLineHtml(
@@ -293,7 +306,7 @@ const formatIncidentInformation = (data) => {
   delete data.howdiditstart.howDidTheyReachYou
   delete data.whatWasAffected.affectedOptions
   delete data.fyiForm
-  return formatSection(lang['howDidItStartPage.incidentInformation'], rows)
+  return formatSection(lang['analystReport.incidentInformation'], rows)
 }
 
 const formatNarrative = (data) => {
@@ -484,17 +497,18 @@ const formatSuspectDetails = (data) => {
 }
 
 const formatFinancialTransactions = (data) => {
-  const methods =
-    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
-      ? data.moneyLost.methodPayment.concat([data.moneyLost.methodOther])
-      : data.moneyLost.methodPayment
+  const methods = data.moneyLost.methodPayment
 
   const origPaymentString = methods
     .filter((method) => method !== 'methodPayment.other')
     .map((method) => unCamel(method.replace('methodPayment.', '')))
     .join(', ')
 
-  let paymentString = origPaymentString
+  let paymentString =
+    data.moneyLost.methodOther && data.moneyLost.methodOther.length > 0
+      ? String(origPaymentString) + ', ' + [data.moneyLost.methodOther]
+      : String(origPaymentString)
+
   let languageAdjustedPaymentString = {
     'e transfer': lang['methodPayment.eTransfer'],
     eTransfer: lang['methodPayment.eTransfer'],
@@ -531,7 +545,7 @@ const formatFinancialTransactions = (data) => {
     ) +
     formatLineHtml(
       lang['confirmationPage.moneyLost.methodPayment'],
-      paymentString,
+      paymentString, //data.moneyLost.paymentString,  // methodOther,
     ) +
     formatLineHtml(
       lang['confirmationPage.moneyLost.transactionDate'],
@@ -562,7 +576,10 @@ const formatFileAttachments = (data) => {
 
       const moderatorString =
         file.adultClassificationScore === 'Could not scan'
-          ? formatLineHtml('Image classification:', 'Could not scan content')
+          ? formatLineHtml(
+              lang['fileUpload.classification.title'],
+              lang['fileUpload.classification.cannotscan'],
+            )
           : formatLineHtml(
               lang['fileUpload.isAdult'],
               file.isImageAdultClassified,
@@ -606,7 +623,9 @@ const formatFileAttachments = (data) => {
         formatLineHtml(lang['fileUpload.CosmosDBFile'], file.sha1) +
         formatLineHtml(
           lang['fileUpload.malwareScan'],
-          file.malwareIsClean ? 'Clean' : file.malwareScanDetail,
+          file.malwareIsClean
+            ? lang['fileUpload.malwareScan.clean']
+            : file.malwareScanDetail,
         ) +
         moderatorString +
         downloadLink

@@ -3,11 +3,11 @@ import { Trans } from '@lingui/macro'
 import { useStateValue } from '../utils/state'
 import { Form, Container, Row } from 'react-bootstrap'
 import { Formik, FieldArray, Field, ErrorMessage } from 'formik'
-import { CheckBox } from '../components/formik/checkbox'
+import { CheckBoxRadio } from '../components/formik/checkboxRadio'
 import { TextArea } from '../components/formik/textArea'
 import { NextCancelButtons } from '../components/formik/button'
 import { Error, Info } from '../components/formik/alert'
-import { HowDidItStartFormSchema } from './HowDidItStartFormSchema'
+import { WarningModal } from '../components/formik/warningModal'
 
 export const HowDidItStartForm = (props) => {
   const [data] = useStateValue()
@@ -57,18 +57,18 @@ export const HowDidItStartForm = (props) => {
     <React.Fragment>
       <Formik
         initialValues={howDidItStart}
-        validationSchema={HowDidItStartFormSchema()}
         onSubmit={(values) => {
           formOptions.forEach((question) => {
-            if (!values.howDidTheyReachYou.includes(question.name)) {
+            if (!values.howDidTheyReachYou.includes(question.checkboxName)) {
               values[question.name] = ''
             }
           })
           props.onSubmit(values)
         }}
       >
-        {({ handleSubmit, handleChange, handleBlur }) => (
+        {({ handleSubmit, handleChange, handleBlur, dirty, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
+            <WarningModal dirty={dirty} isSubmitting={isSubmitting} />
             <Container>
               <Row className="form-question">
                 <Row className="form-label">
@@ -90,8 +90,8 @@ export const HowDidItStartForm = (props) => {
                           <Field
                             name="howDidTheyReachYou"
                             label={question.checkboxLabel}
-                            component={CheckBox}
-                            value={question.name}
+                            component={CheckBoxRadio}
+                            value={question.checkboxName}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             type="checkbox"
@@ -102,12 +102,14 @@ export const HowDidItStartForm = (props) => {
                               component={Error}
                             />
                             <Field
+                              className="conditional-field"
                               name={question.name}
                               label={question.questionLabel}
                               helpText={question.helpText}
                               component={TextArea}
                               onBlur={handleBlur}
                               onChange={handleChange}
+                              id={'text-' + question.name}
                             />
                           </Field>
                         </React.Fragment>

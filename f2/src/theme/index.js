@@ -80,8 +80,8 @@ const theme = {
         color: colors.lightBlue,
       },
     },
-    button: {
-      cursor: 'pointer',
+    /*button: {
+      //cursor: 'pointer',
       color: colors.white,
       backgroundColor: colors.green,
       '&:focus': {
@@ -90,7 +90,7 @@ const theme = {
       '&:hover': {
         backgroundColor: colors.darkGreen,
       },
-    },
+    },*/
     footerLink: {
       color: '#FFF',
       '&:focus': {

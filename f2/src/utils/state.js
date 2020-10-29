@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import { formDefaults } from '../forms/defaultValues'
+import { whatWasAffectedNavState } from './nextWhatWasAffectedUrl'
 
 export const StateContext = createContext()
 
@@ -13,8 +14,9 @@ export const useStateValue = () => useContext(StateContext)
 
 export const initialState = {
   doneForms: false,
-  formData: { ...formDefaults, prodVersion: '1.7.0' },
+  formData: { ...formDefaults, prodVersion: '1.8.0' },
   doneFinalFeedback: false,
+  whatWasAffectedOptions: { ...whatWasAffectedNavState },
 }
 
 export const reducer = (state, action) => {
@@ -33,7 +35,9 @@ export const reducer = (state, action) => {
         formData: { ...initialState.formData },
         doneForms: false,
         submitted: false,
+        doneFinalFeedback: false,
         reportId: undefined,
+        whatWasAffectedOptions: { ...initialState.whatWasAffectedOptions },
       }
     case 'saveDoneForms':
       return {

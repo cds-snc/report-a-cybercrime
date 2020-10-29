@@ -5,7 +5,7 @@
     "production": "https://report.antifraudcentre.ca",
     "local": "http://localhost:3000/",
     "staging": "https://report-staging.con.rcmp-grc.gc.ca",
-    "website": "https://report-staging.con.rcmp-grc.gc.ca",
+    "website": "http://localhost:3000/",
     "dev": "https://report-dev.con.rcmp-grc.gc.ca"
   }
 }

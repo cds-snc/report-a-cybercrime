@@ -27,9 +27,14 @@ export const MoneyLostInfoSummary = (props) => {
 
   moneyLost.methodPayment.map((key) =>
     methodPaymentSummary.push(
-      key === 'methodPayment.other' ? moneyLost.methodOther : i18n._(key),
+      key === 'methodPayment.other' &&
+        moneyLost.methodOther !== null &&
+        moneyLost.methodOther !== ''
+        ? moneyLost.methodOther
+        : i18n._(key),
     ),
   )
+
   methodPaymentLine = formatList(methodPaymentSummary, {
     pair: i18n._('default.pair'),
     middle: i18n._('default.middle'),
