@@ -13,6 +13,7 @@ import {
   whatWasAffectedPages,
 } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const MoneyLostPage = () => {
   const [state, dispatch] = useStateValue()
@@ -21,6 +22,8 @@ export const MoneyLostPage = () => {
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.FINANCIAL
   updateNavigation(doneForms, whatWasAffectedNavState)
+
+  useLog('MoneyLostPage')
 
   return (
     <Route

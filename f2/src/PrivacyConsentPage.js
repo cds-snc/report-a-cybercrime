@@ -12,11 +12,13 @@ import { A } from './components/link'
 import { useLingui } from '@lingui/react'
 import { Page } from './components/Page'
 import { setBeforeUnloadWarning } from './utils/navigationWarning'
+import { useLog } from './useLog'
 
 export const PrivacyConsentPage = () => {
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
   const { fyiForm } = state.formData
+  useLog('PrivacyConsentPage')
 
   return (
     <Route

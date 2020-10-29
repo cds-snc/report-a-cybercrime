@@ -14,6 +14,7 @@ import {
   whatWasAffectedPages,
 } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const InformationPage = () => {
   const [state, dispatch] = useStateValue()
@@ -22,6 +23,8 @@ export const InformationPage = () => {
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.INFORMATION
   updateNavigation(doneForms, whatWasAffectedNavState)
+
+  useLog('InformationPage')
 
   return (
     <Route

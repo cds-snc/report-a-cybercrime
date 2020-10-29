@@ -13,6 +13,7 @@ import {
   whatWasAffectedPages,
 } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const DevicesPage = () => {
   const [state, dispatch] = useStateValue()
@@ -21,6 +22,8 @@ export const DevicesPage = () => {
 
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.DEVICES
   updateNavigation(doneForms, whatWasAffectedNavState)
+
+  useLog('DevicesPage')
 
   return (
     <Route

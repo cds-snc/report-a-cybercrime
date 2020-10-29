@@ -14,14 +14,16 @@ import {
   whatWasAffectedPages,
 } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const BusinessPage = () => {
   const [state, dispatch] = useStateValue()
   const { doneForms } = state
   const whatWasAffectedNavState = state.whatWasAffectedOptions
-
   whatWasAffectedNavState.currentPage = whatWasAffectedPages.BUSINESS
   updateNavigation(doneForms, whatWasAffectedNavState)
+
+  useLog('LandingPage')
 
   return (
     <Route

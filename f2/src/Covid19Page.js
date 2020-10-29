@@ -15,11 +15,13 @@ import { BackButton } from './components/backbutton'
 import { LandingBox } from './components/container'
 import { useStateValue } from './utils/state'
 import { Route } from 'react-router-dom'
+import { useLog } from './useLog'
 
 export const Covid19Page = () => {
   const [state, dispatch] = useStateValue()
   const { i18n } = useLingui()
   const { fyiForm } = state.formData
+  useLog('Covid19Page')
   return (
     <Route
       render={({ history }) => (

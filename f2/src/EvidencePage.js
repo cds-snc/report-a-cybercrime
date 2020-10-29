@@ -12,11 +12,13 @@ import { BackButton } from './components/backbutton'
 import { Stack, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const EvidencePage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
   const { fyiForm } = data.formData
+  useLog('EvidencePage')
 
   return (
     <Route

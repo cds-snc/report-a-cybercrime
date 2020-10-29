@@ -19,6 +19,7 @@ import { WhatWasAffectedSummary } from './summary/WhatWasAffectedSummary'
 import { AnonymousSummary } from './summary/AnonymousSummary'
 import { WhenDidItHappenSummary } from './summary/WhenDidItHappenSummary'
 import { WhoAreYouReportForSummary } from './summary/WhoAreYouReportForSummary'
+import { useLog } from './useLog'
 
 export const testdata = {
   doneForms: true,
@@ -37,6 +38,7 @@ export const ConfirmationSummary = () => {
     ...data.formData.anonymous,
   }
   const { fyiForm } = data.formData
+  useLog('ConfirmationSummaryPage')
   useEffect(() => {
     if (!data.doneForms) {
       dispatch({ type: 'saveDoneForms', data: true })

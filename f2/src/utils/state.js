@@ -1,6 +1,9 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import { formDefaults } from '../forms/defaultValues'
 import { whatWasAffectedNavState } from './nextWhatWasAffectedUrl'
+import { generateSessionId } from './generateSessionId'
+
+const sessionId = generateSessionId()
 
 export const StateContext = createContext()
 
@@ -13,8 +16,9 @@ export const StateProvider = ({ reducer, initialState, children }) => (
 export const useStateValue = () => useContext(StateContext)
 
 export const initialState = {
+  sessionId: sessionId,
   doneForms: false,
-  formData: { ...formDefaults, prodVersion: '1.8.0' },
+  formData: { ...formDefaults, sessionId, prodVersion: '1.8.0' },
   doneFinalFeedback: false,
   whatWasAffectedOptions: { ...whatWasAffectedNavState },
 }
