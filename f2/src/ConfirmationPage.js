@@ -16,6 +16,10 @@ import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { formDefaults } from './forms/defaultValues'
 import { removeEditFlags } from './utils/flagFieldEdited'
+import { useLog } from './useLog'
+
+const { getLogger } = require('./utils/winstonLoggerClient')
+const logger = getLogger(__filename)
 
 async function postData(url = '', data = {}) {
   // Building a multi-part form for file upload!
@@ -114,7 +118,16 @@ const prepFormData = (formDataOrig, language) => {
 
 const submitToServer = async (data, dispatch) => {
   console.log('Submitting data:', data)
+  logger.info({
+    sessionId: data.sessionId,
+    message: 'Submiting report to server',
+  })
   const reportId = await postData('/submit', data)
+  logger.info({
+    sessionId: data.sessionId,
+    reportId: reportId,
+    message: 'Submitted report to server',
+  })
   const submitted = reportId && reportId.startsWith('NCFRS-')
   dispatch({ type: 'saveReportId', data: reportId })
   dispatch({ type: 'saveSubmitted', data: submitted })
@@ -123,6 +136,7 @@ const submitToServer = async (data, dispatch) => {
 export const ConfirmationPage = () => {
   const [{ formData }, dispatch] = useStateValue() // eslint-disable-line no-unused-vars
   const { i18n } = useLingui()
+  useLog('ConfirmationPage')
   return (
     <Route
       render={({ history }) => (

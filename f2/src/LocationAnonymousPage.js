@@ -10,10 +10,12 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { editCheck } from './utils/flagFieldEdited'
+import { useLog } from './useLog'
 
 export const LocationAnonymousPage = () => {
   const [data, dispatch] = useStateValue()
   const { doneForms } = data
+  useLog('LocationAnonymousPage')
 
   return (
     <Route

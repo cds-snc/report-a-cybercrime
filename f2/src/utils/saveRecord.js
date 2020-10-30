@@ -1,4 +1,6 @@
 const MongoClient = require('mongodb').MongoClient
+const { getLogger } = require('./winstonLogger')
+const logger = getLogger(__filename)
 const dbName = process.env.COSMOSDB_NAME
 const dbKey = process.env.COSMOSDB_KEY
 
@@ -29,7 +31,11 @@ async function saveRecord(data, res) {
             res.send(res.statusMessage)
           } else {
             db.close()
-            console.info(`Report ${data.reportId} saved to CosmosDB`)
+            logger.info({
+              message: `Report ${data.reportId} saved to CosmosDB`,
+              reportId: data.reportId,
+              sessionId: data.sessionId,
+            })
             res.statusMessage = data.reportId
             res.send(res.statusMessage)
           }

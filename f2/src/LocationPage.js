@@ -13,6 +13,7 @@ import { formatPostalCode } from './utils/formatPostalCode'
 import { Page } from './components/Page'
 import { formDefaults } from './forms/defaultValues'
 import { editCheck } from './utils/flagFieldEdited'
+import { useLog } from './useLog'
 
 export const LocationPage = () => {
   const [data, dispatch] = useStateValue()
@@ -21,6 +22,7 @@ export const LocationPage = () => {
     ...formDefaults,
     ...data.formData,
   }
+  useLog('LocationPage')
 
   return (
     <Route

@@ -18,6 +18,7 @@ import { Route } from 'react-router-dom'
 import { Page } from './components/Page'
 import { Alert } from './components/Messages'
 import { PdfReportPage } from './PdfReportPage'
+import { useLog } from './useLog'
 
 export const ThankYouPage = () => {
   const { i18n } = useLingui()
@@ -71,6 +72,7 @@ export const ThankYouPage = () => {
       </Text>
     )
   }
+  useLog('ThankYouPage')
 
   return (
     <Page>

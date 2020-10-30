@@ -5,6 +5,7 @@ import { testdata } from '../ConfirmationSummary'
 import { Text, View, Image } from '@react-pdf/renderer'
 import { pdfStyles } from './pdfStyles'
 import { formatList } from '../utils/formatList'
+import { DescriptionItemView } from './DescriptionItemView'
 import line from '../images/line.png'
 
 export const WhatWasAffectedView = (props) => {
@@ -31,11 +32,11 @@ export const WhatWasAffectedView = (props) => {
         {lang['confirmationPage.ImpactTitle']}
       </Text>
       {containsData(impact) ? (
-        <Text style={pdfStyles.sectionContent}>
-          {lang['confirmationPage.whatWasAffected.format']}
-          &nbsp;
-          {summaryLine}
-        </Text>
+        <DescriptionItemView
+          title="confirmationPage.whatWasAffected.format"
+          description={summaryLine}
+          lang={lang}
+        />
       ) : (
         <Text style={pdfStyles.sectionContent}>
           {lang['confirmationPage.contactIntro']}
