@@ -17,7 +17,7 @@ export const HowDidItStartSummary = (props) => {
   const [data] = useStateValue()
   const { i18n } = useLingui()
   const summary = []
-  let overviewLine = ' '
+  let methodOfContact = ' '
 
   const howdiditstart = {
     ...testdata.formData.howdiditstart,
@@ -34,13 +34,11 @@ export const HowDidItStartSummary = (props) => {
       ),
     )
 
-    overviewLine =
-      i18n._('confirmationPage.howDidItStart.overviewPrefix') +
-      formatList(summary, {
-        pair: i18n._('default.pair'),
-        middle: i18n._('default.middle'),
-        end: i18n._('default.end'),
-      })
+    methodOfContact = formatList(summary, {
+      pair: i18n._('default.pair'),
+      middle: i18n._('default.middle'),
+      end: i18n._('default.end'),
+    })
   }
 
   return (
@@ -85,7 +83,10 @@ export const HowDidItStartSummary = (props) => {
         {howdiditstart.howDidTheyReachYou.length ? (
           <React.Fragment>
             <Stack as="dl" spacing={4}>
-              <Text>{overviewLine}</Text>
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.howDidItStart.overviewPrefix"
+                description={methodOfContact}
+              />
               <DescriptionListItem
                 descriptionTitle="confirmationPage.howDidItStart.email"
                 description={howdiditstart.email}

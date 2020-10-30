@@ -46,6 +46,7 @@ export const WhoAreYouReportForSummary = (props) => {
           {/*: mark the proper ids for lingui */}
           <Trans id="confirmationPage.whoAreYouReportFor.title.edit" />
           <Trans id="whoAreYouReportForPage.details" />
+          <Trans id="confirmationPage.youAreReportingFor" />
         </div>
       ) : null}
 
@@ -75,11 +76,10 @@ export const WhoAreYouReportForSummary = (props) => {
         {containsData(whoAreYouReportFor) ? (
           <React.Fragment>
             <Stack as="dl" spacing={4}>
-              <Text>
-                <Trans id="confirmationPage.youAreReportingFor" />
-                &nbsp;
-                <Text as="span">{whoYouReportForString}</Text>
-              </Text>
+              <DescriptionListItem
+                descriptionTitle="confirmationPage.youAreReportingFor"
+                description={whoYouReportForString}
+              />
               {containsData(whoAreYouReportFor.someoneDescription) ? (
                 <DescriptionListItem
                   descriptionTitle="whoAreYouReportForPage.details"

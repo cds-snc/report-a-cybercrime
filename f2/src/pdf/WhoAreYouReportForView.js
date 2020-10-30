@@ -39,11 +39,11 @@ export const WhoAreYouReportForView = (props) => {
       </Text>
       {containsData(whoAreYouReportFor) ? (
         <View>
-          <Text style={pdfStyles.sectionContent}>
-            {lang['confirmationPage.youAreReportingFor']}
-            &nbsp;
-            {whoYouReportForString}
-          </Text>
+          <DescriptionItemView
+            title="confirmationPage.youAreReportingFor"
+            description={whoYouReportForString}
+            lang={lang}
+          />
           <DescriptionItemView
             title="whoAreYouReportForPage.details"
             description={whoAreYouReportFor.someoneDescription}
