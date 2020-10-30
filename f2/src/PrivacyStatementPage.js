@@ -7,11 +7,12 @@ import { Stack } from '@chakra-ui/core'
 import { A } from './components/link'
 import { useLingui } from '@lingui/react'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const PrivacyStatementPage = () => {
   const { i18n } = useLingui()
   // eslint-disable-line no-unused-vars
-
+  useLog('PrivacyStatementPage')
   return (
     <Page>
       <Layout columns={{ base: 4 / 4, md: 6 / 8, lg: 7 / 12 }}>

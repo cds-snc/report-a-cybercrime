@@ -171,6 +171,7 @@ const formatVictimDetails = (data) => {
   delete data.contactInfo.fullName
   delete data.contactInfo.email
   delete data.contactInfo.phone
+  delete data.contactInfo.extension
   delete data.location.city
   delete data.location.province
   delete data.location.postalCode

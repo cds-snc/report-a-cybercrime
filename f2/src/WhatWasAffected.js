@@ -14,6 +14,7 @@ import {
   orderSelection,
 } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const WhatWasAffectedPage = () => {
   const [data, dispatch] = useStateValue()
@@ -56,6 +57,7 @@ export const WhatWasAffectedPage = () => {
       doneForms,
     )
   }
+  useLog('WhatWasAffectedPage')
 
   return (
     <Route
