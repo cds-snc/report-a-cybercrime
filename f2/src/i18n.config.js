@@ -11,13 +11,8 @@ export async function activate(locale) {
 
   try {
     catalog = await import(
-      /* webpackChunkName: "i18n-[index]" */ `./locales/${locale}.js`
+      /* webpackChunkName: "i18n-[index]" */ `@lingui/loader!./locales/${locale}.json`
     )
-
-    const title = locale === 'fr' ? 'signaler une fraude' : 'Report a scam'
-
-    document.title = title
-    document.documentElement.setAttribute('lang', locale)
   } catch (e) {
     // this fails only during tests due to webpack errors.
   }
