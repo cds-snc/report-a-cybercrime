@@ -9,6 +9,7 @@ import { Layout } from './components/layout'
 import { FinalFeedbackForm } from './forms/FinalFeedbackForm'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
+import { useLog } from './useLog'
 
 async function postData(url = '', data = {}) {
   var form_data = new FormData()
@@ -34,6 +35,7 @@ const submitToServer = async (data) => {
 
 export const FinalFeedbackPage = () => {
   const [state, setState] = useStateValue()
+  useLog('FinalFeedbackPage')
 
   return (
     <Route

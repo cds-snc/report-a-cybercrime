@@ -9,9 +9,11 @@ import { P } from './components/paragraph'
 import { Button } from './components/button'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { useLog } from './useLog'
 
 export const ConfirmCancelPage = () => {
   const [, dispatch] = useStateValue()
+  useLog('LandingPage')
 
   return (
     <Route
