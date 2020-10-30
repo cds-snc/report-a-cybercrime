@@ -19,6 +19,12 @@ import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
 import { LandingBox } from './components/container'
 import { removeBeforeUnloadWarning } from './utils/navigationWarning'
+import { isIE } from 'react-device-detect'
+
+let message = document.getElementById('message')
+if (!isIE) {
+  message.remove()
+}
 
 function checkToken(url = '', dispatch, data = {}) {
   var form_data = new FormData()
