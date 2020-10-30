@@ -13,6 +13,7 @@ import {
   whatWasAffectedPages,
 } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 import { useLog } from './useLog'
 
 export const DevicesPage = () => {
@@ -46,6 +47,7 @@ export const DevicesPage = () => {
                   whatWasAffectedNavState.nextPage.nextPageTextInPreviousPage
                 }
                 onSubmit={(data) => {
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { devicesInfo: data },

@@ -7,7 +7,7 @@ import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
-import { H2 } from '../components/header'
+import { H2, H3 } from '../components/header'
 import { Text } from '../components/text'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 
@@ -61,9 +61,15 @@ export const WhoAreYouReportForSummary = (props) => {
           <H2 fontWeight="normal">
             <Trans id="whoAreYouReportForPage.title" />
           </H2>
+          {whoAreYouReportFor.edited && (
+            <H3 fontWeight="normal" paddingLeft="1rem">
+              <Trans id="confirmationPage.editedTag" />
+            </H3>
+          )}
           <EditButton
-            path="/whoAreYouReportFor"
             label="confirmationPage.whoAreYouReportFor.title.edit"
+            path="/whoAreYouReportFor"
+            edited={whoAreYouReportFor.edited}
           />
         </Flex>
 

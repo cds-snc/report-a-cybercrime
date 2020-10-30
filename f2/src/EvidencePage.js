@@ -12,6 +12,7 @@ import { BackButton } from './components/backbutton'
 import { Stack, Box } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 import { useLog } from './useLog'
 
 export const EvidencePage = () => {
@@ -56,6 +57,7 @@ export const EvidencePage = () => {
 
               <EvidenceInfoForm
                 onSubmit={(data) => {
+                  editCheck(data, doneForms)
                   dispatch({ type: 'saveFormData', data: { evidence: data } })
                   history.push(doneForms ? '/confirmation' : '/location')
                 }}

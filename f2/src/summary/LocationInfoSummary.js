@@ -4,10 +4,9 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { containsData } from '../utils/containsData'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
-import { H2 } from '../components/header'
+import { H2, H3 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
@@ -41,12 +40,18 @@ export const LocationInfoSummary = (props) => {
           <H2 fontWeight="normal">
             <Trans id="confirmationPage.location.title" />
           </H2>
+          {location.edited && (
+            <H3 fontWeight="normal" paddingLeft="1rem">
+              <Trans id="confirmationPage.editedTag" />
+            </H3>
+          )}
           <EditButton
-            path="/location"
             label="confirmationPage.location.title.edit"
+            path="/location"
+            edited={location.edited}
           />
         </Flex>
-        {containsData(location) ? (
+        {location.city || location.province || location.postalCode ? (
           <Stack as="dl" spacing={4}>
             <DescriptionListItem
               descriptionTitle="confirmationPage.location.city"

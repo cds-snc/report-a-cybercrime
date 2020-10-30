@@ -5,18 +5,19 @@ import { useLingui } from '@lingui/react'
 import { Link } from '../link'
 import { useStateValue } from '../../utils/state'
 
-export const EditButton = ({ path, label }) => {
+export const EditButton = (props) => {
   const { i18n } = useLingui()
   const [{ submitted }] = useStateValue()
+  const color = props.edited ? '#7834bc' : null
 
   return submitted ? null : (
-    <Link to={path} aria-label={i18n._(label)} ml={4}>
+    <Link to={props.path} aria-label={i18n._(props.label)} ml={4} color={color}>
       <Trans id="button.edit" />
     </Link>
   )
 }
 
 EditButton.propTypes = {
-  path: PropTypes.string.isRequired,
+  path: PropTypes.isRequired,
   label: PropTypes.string.isRequired,
 }

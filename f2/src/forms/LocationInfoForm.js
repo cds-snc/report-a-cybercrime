@@ -18,6 +18,7 @@ import { WarningModal } from '../components/formik/warningModal'
 export const LocationInfoForm = (props) => {
   const [, dispatch] = useStateValue()
   const [data] = useStateValue()
+  const { doneForms } = data
   const locationInfo = {
     ...formDefaults.location,
     ...data.formData.location,
@@ -89,7 +90,7 @@ export const LocationInfoForm = (props) => {
                   onClick={() => {
                     RemoveData()
                   }}
-                  to="/contactinfo"
+                  to={doneForms ? '/confirmation' : '/contactinfo'}
                 />
               </FormRow>
               <FormRow>

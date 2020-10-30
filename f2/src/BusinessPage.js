@@ -14,6 +14,7 @@ import {
   whatWasAffectedPages,
 } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 import { useLog } from './useLog'
 
 export const BusinessPage = () => {
@@ -45,6 +46,7 @@ export const BusinessPage = () => {
                   whatWasAffectedNavState.nextPage.nextPageTextInPreviousPage
                 }
                 onSubmit={(data) => {
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { businessInfo: data },

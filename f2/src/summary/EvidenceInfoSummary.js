@@ -6,7 +6,7 @@ import { Stack, Flex, Box } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
-import { H2 } from '../components/header'
+import { H2, H3 } from '../components/header'
 import { Text } from '../components/text'
 
 export const EvidenceInfoSummary = (props) => {
@@ -39,9 +39,15 @@ export const EvidenceInfoSummary = (props) => {
           <H2 fontWeight="normal">
             <Trans id="confirmationPage.evidence.title" />
           </H2>
+          {evidence.edited && (
+            <H3 fontWeight="normal" paddingLeft="1rem">
+              <Trans id="confirmationPage.editedTag" />
+            </H3>
+          )}
           <EditButton
-            path="/evidence"
             label="confirmationPage.evidence.title.edit"
+            path="/evidence"
+            edited={evidence.edited}
           />
         </Flex>
         {evidence.files && evidence.files.length > 0 ? (

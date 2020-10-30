@@ -10,6 +10,7 @@ import { BackButton } from './components/backbutton'
 import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 import { useLog } from './useLog'
 
 export const SuspectCluesPage = () => {
@@ -35,6 +36,7 @@ export const SuspectCluesPage = () => {
 
               <SuspectCluesForm
                 onSubmit={(data) => {
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { suspectClues: data },

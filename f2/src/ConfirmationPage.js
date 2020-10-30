@@ -15,6 +15,7 @@ import { Stack } from '@chakra-ui/core'
 import { useStateValue } from './utils/state'
 import { Page } from './components/Page'
 import { formDefaults } from './forms/defaultValues'
+import { removeEditFlags } from './utils/flagFieldEdited'
 import { useLog } from './useLog'
 
 const { getLogger } = require('./utils/winstonLoggerClient')
@@ -49,6 +50,7 @@ async function postData(url = '', data = {}) {
 }
 
 const prepFormData = (formDataOrig, language) => {
+  removeEditFlags(formDataOrig)
   Object.keys(formDataOrig).forEach((form) => {
     if (formDefaults[form]) {
       formDataOrig[form] = {

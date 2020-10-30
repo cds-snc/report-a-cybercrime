@@ -13,6 +13,7 @@ import {
   whatWasAffectedPages,
 } from './utils/nextWhatWasAffectedUrl'
 import { Page } from './components/Page'
+import { editCheck } from './utils/flagFieldEdited'
 import { useLog } from './useLog'
 
 export const MoneyLostPage = () => {
@@ -45,6 +46,7 @@ export const MoneyLostPage = () => {
                   whatWasAffectedNavState.nextPage.nextPageTextInPreviousPage
                 }
                 onSubmit={(data) => {
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { moneyLost: data },

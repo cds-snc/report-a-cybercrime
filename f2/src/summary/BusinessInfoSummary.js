@@ -7,7 +7,7 @@ import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
-import { H2 } from '../components/header'
+import { H2, H3 } from '../components/header'
 import { DescriptionListItem } from '../components/DescriptionListItem'
 import { Text } from '../components/text'
 
@@ -43,10 +43,15 @@ export const BusinessInfoSummary = (props) => {
           <H2 fontWeight="normal">
             <Trans id="confirmationPage.businessInfo.title" />
           </H2>
-
+          {businessInfo.edited && (
+            <H3 fontWeight="normal" paddingLeft="1rem">
+              <Trans id="confirmationPage.editedTag" />
+            </H3>
+          )}
           <EditButton
-            path="/business"
             label="confirmationPage.businessInfo.title.edit"
+            path="/business"
+            edited={businessInfo.edited}
           />
         </Flex>
 

@@ -12,6 +12,7 @@ import { useStateValue } from './utils/state'
 import { formatPostalCode } from './utils/formatPostalCode'
 import { Page } from './components/Page'
 import { formDefaults } from './forms/defaultValues'
+import { editCheck } from './utils/flagFieldEdited'
 import { useLog } from './useLog'
 
 export const LocationPage = () => {
@@ -48,6 +49,7 @@ export const LocationPage = () => {
               ) : (
                 <LocationInfoForm
                   onSubmit={(data) => {
+                    editCheck(data, doneForms)
                     data.postalCode = formatPostalCode(data.postalCode)
                     dispatch({ type: 'saveFormData', data: { location: data } })
                     let isFromAnonymous = history.location.state

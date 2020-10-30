@@ -7,7 +7,7 @@ import { useStateValue } from '../utils/state'
 import { containsData } from '../utils/containsData'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
-import { H2 } from '../components/header'
+import { H2, H3 } from '../components/header'
 import { useLingui } from '@lingui/react'
 import { Text } from '../components/text'
 import { formatList } from '../utils/formatList'
@@ -52,9 +52,15 @@ export const WhatWasAffectedSummary = (props) => {
           <H2 fontWeight="normal">
             <Trans id="confirmationPage.ImpactTitle" />
           </H2>
+          {impact.edited && (
+            <H3 fontWeight="normal" paddingLeft="1rem">
+              <Trans id="confirmationPage.editedTag" />
+            </H3>
+          )}
           <EditButton
-            path="/whatwasaffected"
             label="confirmationPage.ImpactTitle.edit"
+            path="/whatwasaffected"
+            edited={impact.edited}
           />
         </Flex>
         {containsData(impact) ? (

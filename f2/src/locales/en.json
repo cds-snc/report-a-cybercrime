@@ -92,6 +92,7 @@
   "confirmationPage.devices.nag": "No information provided.",
   "confirmationPage.devicesTitle": "Devices or accounts",
   "confirmationPage.devicesTitle.edit": "Edit How might your devices or accounts be affected?",
+  "confirmationPage.editedTag": "(Edited)",
   "confirmationPage.evidence.nag": "No information provided.",
   "confirmationPage.evidence.title": "Supporting evidence",
   "confirmationPage.evidence.title.edit": "Edit supporting evidence",
