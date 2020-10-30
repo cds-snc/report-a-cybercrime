@@ -19,12 +19,15 @@ import { Well } from './components/Messages'
 import { CovidWell } from './Covid19Page'
 import { LandingBox } from './components/container'
 import { removeBeforeUnloadWarning } from './utils/navigationWarning'
+import { useLog } from './useLog'
 import { isIE } from 'react-device-detect'
 
 let message = document.getElementById('message')
 if (!isIE) {
   message.remove()
 }
+const { getLogger } = require('./utils/winstonLoggerClient')
+const logger = getLogger(__filename)
 
 function checkToken(url = '', dispatch, data = {}) {
   var form_data = new FormData()
@@ -58,12 +61,24 @@ export const LandingPage = (props) => {
   const { i18n } = useLingui()
   const [state, dispatch] = useStateValue()
   const { fyiForm } = state.formData
+  useLog('LandingPage')
   if (state.doneForms) {
     dispatch({ type: 'saveDoneForms', data: false })
   }
-
+  logger.info({
+    sessionId: state.sessionId,
+    message: 'This is information at landing page',
+  })
+  logger.warn({
+    sessionId: state.sessionId,
+    message: 'This is warning at landing page',
+  })
+  logger.error({
+    sessionId: state.sessionId,
+    message: 'This is error at landing page',
+  })
+  //throw new Error('This is a fake error')
   removeBeforeUnloadWarning()
-
   return (
     <React.Fragment>
       <GoogleReCaptcha
