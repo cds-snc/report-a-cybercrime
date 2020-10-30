@@ -94,7 +94,7 @@ export const WhatHappenedPage = () => {
               )}
               <WhatHappenedForm
                 onSubmit={(data) => {
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { whatHappened: data },

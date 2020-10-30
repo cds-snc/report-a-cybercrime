@@ -55,7 +55,7 @@ export const EvidencePage = () => {
 
               <EvidenceInfoForm
                 onSubmit={(data) => {
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({ type: 'saveFormData', data: { evidence: data } })
                   history.push(doneForms ? '/confirmation' : '/location')
                 }}

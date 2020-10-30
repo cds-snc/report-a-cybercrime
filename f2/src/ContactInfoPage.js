@@ -13,7 +13,9 @@ import { Page } from './components/Page'
 import { editCheck } from './utils/flagFieldEdited'
 
 export const ContactInfoPage = () => {
-  const [, dispatch] = useStateValue()
+  const [state, dispatch] = useStateValue()
+  const { doneForms } = state
+
   return (
     <Route
       render={({ history }) => (
@@ -30,7 +32,7 @@ export const ContactInfoPage = () => {
 
               <ContactInfoForm
                 onSubmit={(data) => {
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { contactInfo: data },

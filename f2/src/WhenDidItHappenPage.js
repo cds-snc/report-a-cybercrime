@@ -34,7 +34,7 @@ export const WhenDidItHappenPage = () => {
 
               <WhenDidItHappenForm
                 onSubmit={(data) => {
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { whenDidItHappen: data },

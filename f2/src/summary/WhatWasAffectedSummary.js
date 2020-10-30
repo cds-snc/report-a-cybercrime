@@ -57,7 +57,7 @@ export const WhatWasAffectedSummary = (props) => {
           )}
           <EditButton
             label="confirmationPage.ImpactTitle.edit"
-            path={{ pathname: '/whatwasaffected', state: { edit: true } }}
+            path="/whatwasaffected"
             edited={impact.edited}
           />
         </Flex>

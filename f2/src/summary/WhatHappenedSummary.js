@@ -4,7 +4,6 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { containsData } from '../utils/containsData'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
 import { H2, H3 } from '../components/header'
@@ -46,7 +45,7 @@ export const WhatHappenedSummary = (props) => {
           )}
           <EditButton
             label="confirmationPage.whatHappened.title.edit"
-            path={{ pathname: '/whathappened', state: { edit: true } }}
+            path="/whathappened"
             edited={whatHappened.edited}
           />
         </Flex>

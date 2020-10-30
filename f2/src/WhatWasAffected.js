@@ -77,7 +77,7 @@ export const WhatWasAffectedPage = () => {
               <WhatWasAffectedForm
                 onSubmit={(data) => {
                   updateSelection(data.affectedOptions)
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { whatWasAffected: data },

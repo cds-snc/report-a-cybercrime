@@ -37,7 +37,7 @@ export const AnonymousSummary = (props) => {
           )}
           <EditButton
             label="confirmationPage.anonymous.title.edit"
-            path={{ pathname: '/anonymous', state: { edit: true } }}
+            path="/anonymous"
             edited={anonymous.edited}
           />
         </Flex>

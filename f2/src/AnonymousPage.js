@@ -35,7 +35,7 @@ export const AnonymousPage = () => {
               </Lead>
               <AnonymousInfoForm
                 onSubmit={(data) => {
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { anonymous: data },

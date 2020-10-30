@@ -67,7 +67,7 @@ export const WhoAreYouReportForSummary = (props) => {
           )}
           <EditButton
             label="confirmationPage.whoAreYouReportFor.title.edit"
-            path={{ pathname: '/whoAreYouReportFor', state: { edit: true } }}
+            path="/whoAreYouReportFor"
             edited={whoAreYouReportFor.edited}
           />
         </Flex>

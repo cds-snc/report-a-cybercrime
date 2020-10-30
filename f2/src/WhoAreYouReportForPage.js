@@ -28,7 +28,7 @@ export const WhoAreYouReportForPage = () => {
 
               <WhoAreYouReportForForm
                 onSubmit={(data) => {
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { whoAreYouReportFor: data },

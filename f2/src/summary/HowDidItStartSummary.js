@@ -5,7 +5,6 @@ import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { containsData } from '../utils/containsData'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
 import { H2, H3 } from '../components/header'
@@ -77,7 +76,7 @@ export const HowDidItStartSummary = (props) => {
           )}
           <EditButton
             label="confirmationPage.howDidItStart.title.edit"
-            path={{ pathname: '/howdiditstart', state: { edit: true } }}
+            path="/howdiditstart"
             edited={howdiditstart.edited}
           />
         </Flex>

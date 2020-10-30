@@ -1,5 +1,5 @@
-export const editCheck = (data, history) => {
-  if (history.location.state && history.location.state.edit) {
+export const editCheck = (data, doneForms) => {
+  if (doneForms) {
     data.edited = true
   }
 }

@@ -38,7 +38,7 @@ export const DevicesPage = () => {
               <DevicesForm
                 onSubmit={(data) => {
                   navigate(doneForms, whatWasAffectedNavState)
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { devicesInfo: data },

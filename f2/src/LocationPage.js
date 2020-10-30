@@ -47,7 +47,7 @@ export const LocationPage = () => {
               ) : (
                 <LocationInfoForm
                   onSubmit={(data) => {
-                    editCheck(data, history)
+                    editCheck(data, doneForms)
                     data.postalCode = formatPostalCode(data.postalCode)
                     dispatch({ type: 'saveFormData', data: { location: data } })
                     let isFromAnonymous = history.location.state

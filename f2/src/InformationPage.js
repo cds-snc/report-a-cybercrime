@@ -39,7 +39,7 @@ export const InformationPage = () => {
               <InformationForm
                 onSubmit={(data) => {
                   navigate(doneForms, whatWasAffectedNavState)
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { personalInformation: data },

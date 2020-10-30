@@ -37,7 +37,7 @@ export const MoneyLostPage = () => {
               <MoneyLostInfoForm
                 onSubmit={(data) => {
                   navigate(doneForms, whatWasAffectedNavState)
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { moneyLost: data },

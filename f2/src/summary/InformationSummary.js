@@ -82,7 +82,7 @@ export const InformationSummary = (props) => {
           )}
           <EditButton
             label="confirmationPage.personalInformation.title.edit"
-            path={{ pathname: '/information', state: { edit: true } }}
+            path="/information"
             edited={personalInformation.edited}
           />
         </Flex>

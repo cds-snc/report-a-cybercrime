@@ -46,7 +46,7 @@ export const EvidenceInfoSummary = (props) => {
           )}
           <EditButton
             label="confirmationPage.evidence.title.edit"
-            path={{ pathname: '/evidence', state: { edit: true } }}
+            path="/evidence"
             edited={evidence.edited}
           />
         </Flex>

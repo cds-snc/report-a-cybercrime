@@ -38,7 +38,7 @@ export const BusinessPage = () => {
               <BusinessInfoForm
                 onSubmit={(data) => {
                   navigate(doneForms, whatWasAffectedNavState)
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { businessInfo: data },

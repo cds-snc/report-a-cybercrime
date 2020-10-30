@@ -49,7 +49,7 @@ export const ContactInfoSummary = (props) => {
           )}
           <EditButton
             label="confirmationPage.contactTitle.edit"
-            path={{ pathname: '/contactinfo', state: { edit: true } }}
+            path="/contactinfo"
             edited={contactInfo.edited}
           />
         </Flex>

@@ -4,7 +4,6 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { containsData } from '../utils/containsData'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
 import { H2, H3 } from '../components/header'
@@ -48,7 +47,7 @@ export const LocationInfoSummary = (props) => {
           )}
           <EditButton
             label="confirmationPage.location.title.edit"
-            path={{ pathname: '/location', state: { edit: true } }}
+            path="/location"
             edited={location.edited}
           />
         </Flex>

@@ -4,7 +4,6 @@ import { jsx } from '@emotion/core'
 import { Trans } from '@lingui/macro'
 import { Stack, Flex } from '@chakra-ui/core'
 import { useStateValue } from '../utils/state'
-import { containsData } from '../utils/containsData'
 import { formatDate } from '../utils/formatDate'
 import { testdata } from '../ConfirmationSummary'
 import { EditButton } from '../components/EditButton'
@@ -63,7 +62,7 @@ export const WhenDidItHappenSummary = (props) => {
           )}
           <EditButton
             label="confirmationPage.howDidItStart.title.edit"
-            path={{ pathname: '/whenDidItHappen', state: { edit: true } }}
+            path="/whenDidItHappen"
             edited={whenDidItHappen.edited}
           />
         </Flex>

@@ -34,7 +34,7 @@ export const HowDidItStartPage = () => {
 
               <HowDidItStartForm
                 onSubmit={(data) => {
-                  editCheck(data, history)
+                  editCheck(data, doneForms)
                   dispatch({
                     type: 'saveFormData',
                     data: { howdiditstart: data },
