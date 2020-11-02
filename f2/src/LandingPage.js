@@ -20,6 +20,12 @@ import { CovidWell } from './Covid19Page'
 import { LandingBox } from './components/container'
 import { removeBeforeUnloadWarning } from './utils/navigationWarning'
 import { useLog } from './useLog'
+import { isIE } from 'react-device-detect'
+
+let message = document.getElementById('message')
+if (!isIE) {
+  message.remove()
+}
 const { getLogger } = require('./utils/winstonLoggerClient')
 const logger = getLogger(__filename)
 
