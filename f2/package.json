@@ -134,7 +134,7 @@
     "@storybook/addon-knobs": "^5.3.17",
     "@storybook/addon-links": "^5.3.17",
     "@storybook/addons": "^5.3.17",
-    "@storybook/eslint-config-storybook": "^2.2.0",
+    "@storybook/eslint-config-storybook": "^3.0.0",
     "@storybook/preset-create-react-app": "^1.5.2",
     "@storybook/react": "^5.3.17",
     "@storybook/storybook-deployer": "^2.8.6",
