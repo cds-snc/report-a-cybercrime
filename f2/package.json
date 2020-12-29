@@ -149,7 +149,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint-plugin-cypress": "^2.11.1",
-    "husky": "^4.2.3",
+    "husky": "^5.0.0",
     "jest-emotion": "^10.0.32",
     "npm-check": "^5.9.2",
     "prettier": "^2.0.5",
