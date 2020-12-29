@@ -38,7 +38,7 @@
     "mongodb": "^3.5.3",
     "ms-rest-azure": "^3.0.0",
     "nanoid": "^2.1.11",
-    "natural": "^2.1.5",
+    "natural": "^2.2.2",
     "nodemailer": "^6.4.6",
     "notifications-node-client": "^4.9.0",
     "react": "^16.12.0",
