@@ -50,7 +50,7 @@
     "react-gtm-module": "^2.0.8",
     "react-icons": "^3.10.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^4.0.0",
     "sanitize-html": "^2.0.0",
     "speakeasy": "^2.0.0",
     "styled-system": "^5.1.5",
@@ -125,7 +125,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@cdssnc/a11y-tracker-client": "^1.1.2",
-    "@lingui/cli": "^3.0.0-7",
+    "@lingui/cli": "^3.0.0",
     "@lingui/loader": "^3.0.0-7",
     "@lingui/macro": "^3.0.0-7",
     "@storybook/addon-actions": "^5.3.17",
